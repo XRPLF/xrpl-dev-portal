@@ -11,9 +11,8 @@
 import os.path
 
 STATUSES = {
-    ":not_enabled:": "template-status_not_enabled.html",
-    ":enabled:": "template-status_enabled.html",
-    ":removed:": "template-status_removed.html",
+    ":not_enabled:": "component-status_not_enabled.html.jinja",
+    ":removed:": "component-status_removed.html.jinja",
 }
 
 

@@ -2,6 +2,8 @@
 html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
 parent: use-payment-channels.html
 blurb: As a digital asset exchange, use a payment channel to make more payments faster with fewer fees.
+labels:
+  - Payment Channels
 ---
 # Open a Payment Channel to Enable an Inter-Exchange Network
 

@@ -2,6 +2,8 @@
 html: ledger_current.html
 parent: ledger-methods.html
 blurb: Get the current working ledger version.
+labels:
+  - Blockchain
 ---
 # ledger_current
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")

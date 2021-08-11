@@ -2,6 +2,9 @@
 html: cryptographic-keys.html
 parent: accounts.html
 blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
+labels:
+  - Smart Contracts
+  - Security
 ---
 # Cryptographic Keys
 
@@ -90,7 +93,7 @@ The [wallet_propose method][] is one way of generating a master key pair. The re
 
 Because changing a master key pair is impossible, you should treat it with care proportionate to the value it holds. A good practice is to [keep your master key pair offline](offline-account-setup.html) and set up a regular key pair to sign transactions from your account instead. By keeping the master key pair enabled but offline, you can be reasonably certain that no one can get access to it using the internet, but you can still go find it to use in an emergency.
 
-Keeping your master key pair offline means not putting the secret information (passphrase, seed, or private key) anywhere that malicious actors can get access to it. In general, this means it is not within reach of a computer program that interacts with the internet at large. For example, you could keep it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or have it completely memorized. (Memorization has some drawbacks, though, including making it impossible to pass they key on after you are dead.)
+Keeping your master key pair offline means not putting the secret information (passphrase, seed, or private key) anywhere that malicious actors can get access to it. In general, this means it is not within reach of a computer program that interacts with the internet at large. For example, you could keep it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or have it completely memorized. (Memorization has some drawbacks, though, including making it impossible to pass the key on after you are dead.)
 
 
 

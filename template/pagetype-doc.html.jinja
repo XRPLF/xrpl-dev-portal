@@ -1,0 +1,57 @@
+{% extends "base.html.jinja" %}
+{% block head %}
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+        });
+    </script>
+
+{% endblock %}
+
+{% block main %}
+  <article class="pt-3 p-md-3">
+    {% if (target.lang != "en" and "en" in currentpage.targets) or currentpage.untranslated_warning %}
+    {# Add a "sorry this page isn't translated" banner. #}
+    <div class="devportal-callout note mb-5"><strong>{% trans %}Sorry, this page is not available in your language.{% endtrans %}</strong>
+      <p class="mb-0">{% trans %}We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a>{% endtrans %}</p>
+    </div><!--/.devportal-callout-->
+    {% endif %}
+    <div class="content">
+        {{ content }}
+    </div>
+  </article>
+  {% include 'component-feedback-widget.html.jinja' %}
+{% endblock %}
+
+{% block right_sidebar %}
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+    {% include 'component-github-edit.html.jinja' %}
+    {% include 'component-label-list.html.jinja' %}
+    <div class="toc-header">
+      <h4>{% trans %}In this document{% endtrans %}</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        {% for h in headers %}{% if h.level < 4 %}
+        <li class="nav-item level-{{h.level}}"><a class="nav-link" href="#{{h.id}}">{{h.text}}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+  </div>
+{% endblock %}
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
+</script>
+
+{% endblock %}

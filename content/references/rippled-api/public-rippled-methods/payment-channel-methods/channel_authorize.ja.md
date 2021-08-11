@@ -2,6 +2,8 @@
 html: channel_authorize.html
 parent: payment-channel-methods.html
 blurb: 特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
+labels:
+  - Payment Channel
 ---
 # channel_authorize
 [[ソース]](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")

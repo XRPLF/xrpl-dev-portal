@@ -2,6 +2,9 @@
 html: set-up-secure-signing.html
 parent: production-readiness.html
 blurb: Set up an environment where you can submit transactions securely.
+labels:
+  - Security
+  - Development
 ---
 # Set Up Secure Signing
 

@@ -5,14 +5,18 @@ blurb: Learn how to send test payments right from your browser.
 cta_text: Send XRP
 embed_ripple_lib: true
 filters:
-    - interactive_steps
-    - include_code
+  - interactive_steps
+  - include_code
+labels:
+  - XRP
+  - Payments
+top_nav_grouping: Popular Pages
 ---
 # Send XRP
 
 This tutorial explains how to send a simple XRP Payment using ripple-lib for JavaScript, `xrpl-py` for Python, or xrpl4j for Java. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
 
-**Tip:** Check out the [Code Samples](https://github.com/ripple/xrpl-dev-portal/tree/master/content/_code-samples) for a complete version of the code used in this tutorial.
+**Tip:** Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) for a complete version of the code used in this tutorial.
 
 ## Prerequisites
 

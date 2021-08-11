@@ -2,6 +2,8 @@
 html: server_state.html
 parent: server-info-methods.html
 blurb: rippledサーバーの現在の状態に関するさまざまな機械可読の情報を問い合わせます。
+labels:
+  - コアサーバー
 ---
 # server_state
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerState.cpp "Source")

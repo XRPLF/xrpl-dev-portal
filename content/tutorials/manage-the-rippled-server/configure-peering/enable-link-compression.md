@@ -2,6 +2,8 @@
 html: enable-link-compression.html
 parent: configure-peering.html
 blurb: Save bandwidth by compressing peer-to-peer communications.
+labels:
+  - Core Server
 ---
 # Enable Link Compression
 

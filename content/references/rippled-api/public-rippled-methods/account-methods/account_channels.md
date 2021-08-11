@@ -2,6 +2,8 @@
 html: account_channels.html
 parent: account-methods.html
 blurb: Get a list of payment channels where the account is the source of the channel.
+labels:
+  - Payment Channels
 ---
 # account_channels
 [[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
@@ -158,7 +160,7 @@ The response follows the [standard format][], with a successful result containin
 |:---------------|:-------------------------|:---------------------------------|
 | `account`      | String                   | The address of the source/owner of the payment channels. This corresponds to the `account` field of the request. |
 | `channels`     | Array of Channel Objects | Payment channels owned by this `account`. [Updated in: rippled 1.5.0][] |
-| `ledger_hash`  | String                   | The identifying [Hash][] of the ledger version used to generate this response. [New in: rippled 0.90.0][] |
+| `ledger_hash`  | String                   | _(May be omitted)_ The identifying [Hash][] of the ledger version used to generate this response. [New in: rippled 0.90.0][] |
 | `ledger_index` | Number                   | The [Ledger Index][] of the ledger version used to generate this response. [New in: rippled 0.90.0][] |
 | `validated`    | Boolean                  | _(May be omitted)_ If `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. [New in: rippled 0.90.0][] |
 | `limit`        | Number                   | _(May be omitted)_ The limit to how many channel objects were actually returned by this request. |

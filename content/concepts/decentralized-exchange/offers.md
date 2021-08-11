@@ -2,6 +2,8 @@
 html: offers.html
 parent: decentralized-exchange.html
 blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
+labels:
+  - Decentralized Exchange
 ---
 # Offers
 

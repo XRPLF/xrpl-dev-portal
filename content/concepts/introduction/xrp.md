@@ -2,6 +2,8 @@
 html: xrp.html
 parent: introduction.html
 blurb: Learn about the uses and properties of XRP, the digital asset for payments.
+labels:
+  - XRP
 ---
 # XRP
 

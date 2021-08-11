@@ -2,6 +2,8 @@
 html: install-rippled-on-centos-rhel-with-yum.html
 parent: install-rippled.html
 blurb: Install a precompiled rippled binary on CentOS or Red Hat Enterprise Linux.
+labels:
+  - Core Server
 ---
 # Install on CentOS/Red Hat with yum
 

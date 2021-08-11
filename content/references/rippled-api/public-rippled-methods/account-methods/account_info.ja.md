@@ -2,6 +2,9 @@
 html: account_info.html
 parent: account-methods.html
 blurb: アカウントとそのアクティビティおよびXRP残高についての情報を取得します。
+labels:
+  - アカウント
+  - XRP
 ---
 # account_info
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp "Source")

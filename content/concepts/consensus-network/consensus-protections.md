@@ -2,6 +2,8 @@
 html: consensus-protections.html
 parent: consensus-network.html
 blurb: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system.
+labels:
+  - Blockchain
 ---
 # Consensus Protections Against Attacks and Failure Modes
 

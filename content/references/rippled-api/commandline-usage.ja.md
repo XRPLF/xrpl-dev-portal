@@ -3,16 +3,18 @@ html: commandline-usage.html
 parent: rippled-api.html
 blurb: rippledサーバーのコマンドライン使用オプションです。
 curated_anchors:
-    - name: 使用できるモード
-      anchor: "#使用できるモード"
-    - name: デーモンモードのオプション
-      anchor: "#デーモンモードのオプション"
-    - name: スタンドアロンモードのオプション
-      anchor: "#スタンドアロンモードのオプション"
-    - name: クライアントモードのオプション
-      anchor: "#クライアントモードのオプション"
-    - name: 単体テスト
-      anchor: "#単体テスト"
+  - name: 使用できるモード
+    anchor: "#使用できるモード"
+  - name: デーモンモードのオプション
+    anchor: "#デーモンモードのオプション"
+  - name: スタンドアロンモードのオプション
+    anchor: "#スタンドアロンモードのオプション"
+  - name: クライアントモードのオプション
+    anchor: "#クライアントモードのオプション"
+  - name: 単体テスト
+    anchor: "#単体テスト"
+labels:
+  - コアサーバー
 ---
 # rippledコマンドライン使用リファレンス
 

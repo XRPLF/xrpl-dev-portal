@@ -2,6 +2,8 @@
 html: configure-statsd.html
 parent: configure-rippled.html
 blurb: Monitor your rippled server with StatsD metrics.
+labels:
+  - Core Server
 ---
 # Configure StatsD
 

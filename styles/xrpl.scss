@@ -4,14 +4,22 @@
 @import "_font-face.scss";
 
 $navbar-padding-y: 0;
-$nav-link-padding-x: 1.25rem;
+$nav-link-padding-x: 2rem;
 $nav-link-padding-y: 1rem;
-$navbar-nav-link-padding-x: 1.25rem;
-$navbar-nav-link-padding-y: 1rem;
-$border-radius: 0;
+$navbar-brand-padding-y: 1.25rem;
+$navbar-nav-link-padding-x: $nav-link-padding-x;
+$navbar-nav-link-padding-y: $nav-link-padding-y;
 $border-radius-lg: 8px;
 $border-radius-sm: 4px;
+$border-radius: $border-radius-sm;
 $dropdown-border-width: 1px;
+$enable-shadows: true;
+$dropdown-box-shadow: 0px 5px 40px $black;
+$card-spacer-x: 2rem;
+$card-spacer-y: 2rem;
+$card-deck-margin: 1.25rem;
+$card-border-radius: $border-radius-lg;
+$card-columns-gap: 2rem;
 $caret-width: .4em;
 
 $input-btn-padding-y: 1rem;
@@ -22,17 +30,21 @@ $input-font-size: 1rem;
 
 // @import "_font-face.scss";
 $font-family-monospace: 'Space Mono', monospace;
-$font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
+$font-family-sans-serif: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$base-size: 16px;
+$line-height-base: 1.5;
 
 // Bootstrap v4
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
 // Import site styles
 @import "_font.scss";
+@import "_forms.scss";
 @import "_layout.scss";
 @import "_side-nav.scss";
 @import "_helpers.scss";
 @import "_buttons.scss";
+@import "_tables.scss";
 @import "_tables.scss";
 @import "_use-cases.scss";
 @import "_github-edit.scss";
@@ -43,13 +55,32 @@ $font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
 @import "_external-links.scss";
 @import "_footer.scss";
 @import "_callouts.scss";
+@import "_cards.scss";
 @import "_breadcrumbs.scss";
 @import "_landings.scss";
 @import "_interactive-tutorials.scss";
 @import "_status-labels.scss";
-@import "_lang-selector.scss";
 @import "_dev-tools.scss";
 @import "_print.scss";
 @import "_pages.scss";
 @import "_rpc-tool.scss";
 @import "_blog.scss";
+@import "_feedback.scss";
+@import "top-banner.scss";
+
+// Light/Dark theme settings ---------------------------------------------------
+// Option to only change theme on user system settings.  No toggle.
+
+//Mixin to conditionaly include other themes
+// @import "light/_mixins.scss";
+
+// Default to dark theme with light being alt
+// $color-scheme-alt: light;
+
+// @include prefers-color-scheme($color-scheme-alt) {
+//     @import "light/_light-theme.scss";
+// }
+
+html.light {
+    @import "light/_light-theme.scss";
+}

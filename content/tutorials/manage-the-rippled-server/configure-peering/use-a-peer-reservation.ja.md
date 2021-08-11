@@ -2,6 +2,8 @@
 html: use-a-peer-reservation.html
 parent: configure-peering.html
 blurb: ピアリザベーションを使用して特定のピアへのより信頼できる接続を設定します。
+lables:
+  - コアサーバー
 ---
 # ピアリザベーションの使用
 

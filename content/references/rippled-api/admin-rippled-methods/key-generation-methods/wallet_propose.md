@@ -2,6 +2,9 @@
 html: wallet_propose.html
 parent: key-generation-methods.html
 blurb: Generate keys for a new account.
+labels:
+  - Security
+  - Accounts
 ---
 # wallet_propose
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")

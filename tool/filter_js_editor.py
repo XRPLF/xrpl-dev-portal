@@ -34,7 +34,7 @@ START_REPL = """<div class="js_interactive" id="\\1">
 END_REPL = """
 <p>
   <button type="button" class="btn btn-primary run-button">Run</button>
-  <button type="reset" class="btn btn-secondary-outline reset-button">Reset</button>
+  <button type="reset" class="btn btn-outline-secondary reset-button">Reset</button>
 </p>
 <div class="response"></div>
 </div>"""

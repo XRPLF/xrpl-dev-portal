@@ -2,6 +2,8 @@
 html: ripplestate.html
 parent: ledger-object-types.html
 blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
+labels:
+  - Tokens
 ---
 # RippleState
 [[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")

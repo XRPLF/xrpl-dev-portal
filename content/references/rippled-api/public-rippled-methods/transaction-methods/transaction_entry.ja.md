@@ -2,6 +2,8 @@
 html: transaction_entry.html
 parent: transaction-methods.html
 blurb: 特定のレジャーバージョンから1つのトランザクションに関する情報を取得します。
+labels:
+  - トランザクション送信
 ---
 # transaction_entry
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")

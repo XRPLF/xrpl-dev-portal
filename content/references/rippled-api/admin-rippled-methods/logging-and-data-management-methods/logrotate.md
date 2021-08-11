@@ -2,6 +2,8 @@
 html: logrotate.html
 parent: logging-and-data-management-methods.html
 blurb: Reopen the log file.
+labels:
+  - Data Retention
 ---
 # logrotate
 [[Source]](https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")

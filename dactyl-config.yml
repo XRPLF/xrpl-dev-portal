@@ -1,24 +1,16 @@
-# Relative paths work OK as long as you start the tool from its local dir
-template_path: tool
-
-# This folder gets copied into the output directory
-template_static_path: assets
-
-# Templates should have filenames starting in template-
-default_template: template-doc.html
-default_pdf_template: template-forpdf.html
-
-# HTML, PDF, GFM all get output here
+# HTML, PDF, GFM all get output here unless you specify -o
 out_path: out
+
+# These folders get copied into the output directory
+template_static_path: assets
+content_static_path: img
+
+template_path: template
+default_template: pagetype-doc.html.jinja
+default_pdf_template: pdf-doc.html.jinja
 
 # MD files should be here (and in subdirs)
 content_path: content
-
-# This folder gets copied into the output directory
-content_static_path: img
-
-# PDF creation needs a dir for temporary files
-temporary_files_path: /tmp/
 
 # Custom filters live here and start with filter_
 filter_paths:
@@ -34,6 +26,7 @@ default_filters:
     - status_badges
     - include_svg
     - css_tables
+    - slug
 
 callout_class: "devportal-callout"
 callout_types:
@@ -49,13 +42,13 @@ callout_types:
 cover_page:
     name: Home
     html: index.html
-    template: template-home.html
+    template: page-home.html.jinja
     sidebar: disabled
     canonical_url: https://xrpl.org/
 
 languages:
     -   code: en
-        display_name: Eng
+        display_name: English
         prefix: "/"
     -   code: ja
         display_name: 日本語
@@ -64,13 +57,13 @@ languages:
 default_keys: &defaults
     # These github_ fields are used by the template's "Edit on GitHub" link.
     #  Override them with --vars to change which fork/branch to edit.
-    github_forkurl: https://github.com/ripple/xrpl-dev-portal
+    github_forkurl: https://github.com/XRPLF/xrpl-dev-portal
     github_branch: master
     # Hover icon markup for permalinking headers
     hover_anchors: <i class="fa fa-link"></i>
     # Script tags used in a variety of tools & examples.
     lodash_tag: '<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>'
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.9.1.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.9.8.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -79,7 +72,8 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
-        blurb: XRPL.org is a community-driven resource for all things XRP and the XRP Ledger—your source for technical information, reference materials and tools.
+        #light_theme_enabled: true
+        blurb: XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools.
 
     -   name: ja
         lang: ja
@@ -165,98 +159,139 @@ targets:
 
 pages:
 
-# "Learn" funnel ---------------------------------------------------------------
-    -   name: Learn
-        template: template-learn-overview.html
-        html: overview.html
+# About tab --------------------------------------------------------------------
+    # "XRP Ledger" Grouping
+    -   name: XRPL Overview
+        template: page-xrpl-overview.html.jinja
+        html: xrp-ledger-overview.html
         parent: index.html
-        top_nav_level: 1
-        top_nav_name: Overview
+        top_nav_name: About
+        top_nav_grouping: XRP Ledger
         sidebar: disabled
+        blurb: An introduction to the key benefits and features of the XRP Ledger, a public blockchain driven by the XRPL developer community.
         targets:
             - en
 
-    -   name: 学ぶ
-        template: template-learn-overview.html
-        html: overview.html
+    -   name: XRPL オーバービュー
+        template: page-xrpl-overview.html.jinja
+        html: xrp-ledger-overview.html
         parent: index.html
-        top_nav_level: 1
-        top_nav_name: オーバービュー
+        top_nav_name: アバウト
+        top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
             - ja
 
-    -   name: Uses
-        template: template-learn-uses.html
+    # Redirect from the old overview.html
+    -   name: XRP Ledger Overview
+        html: overview.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: xrp-ledger-overview.html
+        targets:
+            - en
+            - ja
+
+    -   name: Use Cases & Featured Projects
+        template: page-uses.html.jinja
         html: uses.html
-        parent: overview.html # "Learn"
-        top_nav_level: 1
+        parent: xrp-ledger-overview.html
+        blurb: Here’s how the XRP Ledger is used to power innovative technology across the payments and public blockchain landscape.
+        top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
             - en
 
-    -   name: 使用
-        template: template-learn-uses.html
+    -   name: ユースケースと注目プロジェクト
+        template: page-uses.html.jinja
         html: uses.html
-        parent: overview.html # "Learn"
-        top_nav_level: 1
+        parent: xrp-ledger-overview.html
+        top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
             - ja
 
     -   name: History
-        template: template-learn-history.html
+        template: page-history.html.jinja
         html: history.html
-        parent: overview.html # "Learn"
-        top_nav_level: 1
+        parent: xrp-ledger-overview.html
+        blurb: The history of the XRP Ledger (XRPL), launched in 2012 as a faster, scalable, more sustainable blockchain.
+        top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
             - en
 
     -   name: 沿革
-        template: template-learn-history.html
+        template: page-history.html.jinja
         html: history.html
-        parent: overview.html # "Learn"
-        top_nav_level: 1
+        parent: xrp-ledger-overview.html
+        top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
             - ja
 
+    -   name: Ledger Explorer
+        html: https://livenet.xrpl.org/
+        parent: xrp-ledger-overview.html
+        top_nav_grouping: XRP Ledger
+        targets:
+            - en
+
+    -   name: XRP Ledger エクスプローラ
+        html: https://livenet.xrpl.org/
+        parent: xrp-ledger-overview.html
+        top_nav_grouping: XRP Ledger
+        targets:
+            - ja
+
+    -   name: XRP
+        template: page-xrp-overview.html.jinja
+        html: xrp-overview.html
+        parent: xrp-ledger-overview.html
+        blurb: Learn more about XRP Ledger’s native digital asset, XRP.
+        top_nav_grouping: XRP
+        top_nav_name: XRP Overview
+        sidebar: disabled
+        targets:
+            - en
+            - ja
+
     -   name: Impact
-        template: template-learn-impact.html
         html: impact.html
-        parent: overview.html # "Learn"
-        top_nav_level: 1
+        parent: xrp-ledger-overview.html
+        template: page-impact.html.jinja
+        top_nav_grouping: Sustainability
+        blurb: Learn how the XRP Ledger helps move money around the world faster, cheaper and more sustainably than any other currency available today.
         sidebar: disabled
         targets:
             - en
 
     -   name: インパクト
-        template: template-learn-impact.html
         html: impact.html
-        parent: overview.html # "Learn"
-        top_nav_level: 1
+        parent: xrp-ledger-overview.html
+        template: page-impact.html.jinja
+        top_nav_grouping: Sustainability
         sidebar: disabled
         targets:
             - ja
 
     -   name: Carbon Calculator
-        template: template-calculator.html
         html: carbon-calculator.html
-        parent: overview.html
-        top_nav_level: 1
+        parent: xrp-ledger-overview.html
+        template: page-calculator.html.jinja
+        top_nav_grouping: Sustainability
         sidebar: disabled
-        blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the green currency calculator to compare.
+        blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the XRPL cryptocurrency carbon calculator to compare.
         fb_card: currency-calculator-card-fb.png
         twitter_card: currency-calculator-card-tw.png
         targets:
             - en
 
     -   name: 二酸化炭素電卓
-        template: template-calculator.html
         html: carbon-calculator.html
-        parent: overview.html
-        top_nav_level: 1
+        parent: xrp-ledger-overview.html
+        template: page-calculator.html.jinja
+        top_nav_grouping: Sustainability
         sidebar: disabled
         blurb: 現金、クレジットカード、暗号資産でもエネルギー消費する。インタラクティブツールで消費量を比較しましょう。
         fb_card: currency-calculator-card-fb.png
@@ -264,109 +299,101 @@ pages:
         targets:
             - ja
 
-# "Explore" funnel -------------------------------------------------------------
-    -   name: Explore
-        html: explore.html
-        parent: index.html
-        template: template-redirect.html
-        redirect_url: businesses.html
-        top_nav_omit: true
-        targets:
-            - en
-
-    -   name: 探る
-        html: explore.html
-        parent: index.html
-        template: template-redirect.html
-        redirect_url: businesses.html
-        top_nav_omit: true
-        targets:
-            - ja
-
-    -   name: Wallets
-        template: template-explore-wallets.html
-        html: wallets.html
-        parent: explore.html
-        top_nav_level: 1
+    -   name: XRPL Foundation
+        html: xrpl-foundation.html
+        template: page-xrpl-foundation.html.jinja
+        parent: xrp-ledger-overview.html
+        top_nav_grouping: About
+        blurb: Learn more about the XRPL Foundation, dedicated to advancing the development and use of the XRPL.
         sidebar: disabled
         targets:
             - en
-
-    -   name: ウォレット
-        template: template-explore-wallets.html
-        html: wallets.html
-        parent: explore.html
-        top_nav_level: 1
-        sidebar: disabled
-        targets:
             - ja
 
-    -   name: Exchanges
-        template: template-explore-exchanges.html
-        html: exchanges.html
-        parent: explore.html
-        top_nav_level: 1
-        sidebar: disabled
+    -   md: faq.md
         targets:
             - en
 
-    -   name: 取引所
-        template: template-explore-exchanges.html
-        html: exchanges.html
-        parent: explore.html
-        top_nav_level: 1
-        sidebar: disabled
+    -   md: faq.ja.md
         targets:
             - ja
 
-    -   name: Businesses
-        template: template-explore-businesses.html
-        html: businesses.html
-        parent: explore.html
-        top_nav_level: 1
-        sidebar: disabled
+    # Redirect old technical-faq.html to new faq.html URL
+    -   name: FAQ
+        html: technical-faq.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: faq.html
+        nav_omit: true
         targets:
             - en
-
-    -   name: 企業
-        template: template-explore-businesses.html
-        html: businesses.html
-        parent: explore.html
-        top_nav_level: 1
-        sidebar: disabled
-        targets:
             - ja
 
-    -   name: Ledger Explorer
-        html: https://livenet.xrpl.org/
-        parent: explore.html
-        targets:
-            - en
-
-    -   name: XRP Ledger エクスプローラ
-        html: https://livenet.xrpl.org/
-        parent: explore.html
-        targets:
-            - ja
 
 # "Documentation" section ------------------------------------------------------
-    -   name: Build
-        template: template-landing-docs.html
+    -   name: Documentation
         html: docs.html
         parent: index.html
+        template: page-docs.html.jinja
         sidebar: disabled
-        top_nav_level: 1
         top_nav_name: Docs
+        top_nav_shortcuts:
+            # Programming Languages
+            - get-started-using-python.html
+            - get-started-using-node-js.html
+            - get-started-using-java.html
+            - get-started-using-http-websocket-apis.html
+            # Popular pages
+            - send-xrp.html
+            - reserves.html
+            - xrp-testnet-faucet.html
+            - run-rippled-as-a-validator.html
+            - intro-to-consensus.html
+            - public-rippled-methods.html
+        top_nav_hero_image: assets/img/icons/docs.svg
+        popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
+            - send-xrp.html
+            - reserves.html
+            - xrp-testnet-faucet.html
+            - run-rippled-as-a-validator.html
+            - intro-to-consensus.html
+            - public-rippled-methods.html
+        blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
+        top_nav_blurb: Dive into XRP Ledger technology and start integrating.
+        filters:
+            - labels
         targets:
             - en
 
-    -   name: 作る
-        template: template-landing-docs.html
+    -   name: ドキュメント
         html: docs.html
         parent: index.html
+        template: page-docs.html.jinja
+        sidebar: disabled
         top_nav_level: 1
         top_nav_name: ドキュメント
-        sidebar: disabled
+        top_nav_shortcuts:
+            # Programming Languages
+            - get-started-using-python.html
+            - get-started-using-node-js.html
+            - get-started-using-java.html
+            - get-started-using-http-websocket-apis.html
+            # Popular pages
+            - send-xrp.html
+            - reserves.html
+            - xrp-testnet-faucet.html
+            - run-rippled-as-a-validator.html
+            - intro-to-consensus.html
+            - public-rippled-methods.html
+        top_nav_hero_image: assets/img/icons/docs.svg
+        popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
+            - send-xrp.html
+            - reserves.html
+            - xrp-testnet-faucet.html
+            - run-rippled-as-a-validator.html
+            - intro-to-consensus.html
+        blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
+        filters:
+            - labels
         targets:
             - ja
 
@@ -375,8 +402,8 @@ pages:
     -   name: Concepts
         html: concepts.html
         parent: docs.html
-        top_nav_level: 2
-        template: template-landing-children.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
         blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
         targets:
             - en
@@ -384,8 +411,8 @@ pages:
     -   name: コンセプト
         html: concepts.html
         parent: docs.html
-        top_nav_level: 2
-        template: template-landing-children.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
         targets:
             - ja
@@ -393,7 +420,7 @@ pages:
     -   name: Introduction
         html: introduction.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: Learn the "what" and "why" of the XRP Ledger.
         targets:
             - en
@@ -401,18 +428,20 @@ pages:
     -   name: 基本
         html: introduction.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
         targets:
             - ja
 
-    -   md: concepts/introduction/xrp-ledger-overview.md
-        targets:
-            - en
-
-    -   md: concepts/introduction/xrp-ledger-overview.ja.md
-        targets:
-            - ja
+    # Supplanted by the new xrp-ledger-overview.html landing page.
+    # TODO: fully remove.
+    # -   md: concepts/introduction/xrp-ledger-overview.md
+    #     targets:
+    #         - en
+    #
+    # -   md: concepts/introduction/xrp-ledger-overview.ja.md
+    #     targets:
+    #         - ja
 
     -   md: concepts/introduction/intro-to-consensus.md
         targets:
@@ -438,18 +467,10 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/introduction/technical-faq.md
-        targets:
-            - en
-
-    -   md: concepts/introduction/technical-faq.ja.md
-        targets:
-            - ja
-
     -   name: Payment System Basics
         html: payment-system-basics.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system.
         targets:
             - en
@@ -457,7 +478,7 @@ pages:
     -   name: 支払いシステムの基本
         html: payment-system-basics.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerの主な狙いは決済処理です。主要なコンセプトを詳しく学んで、XRP Ledgerの決済システムの理解を深めましょう。
         targets:
             - ja
@@ -563,7 +584,7 @@ pages:
     -   name: Payment Types
         html: payment-types.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
         targets:
             - en
@@ -571,7 +592,7 @@ pages:
     -   name: 支払いのタイプ
         html: payment-types.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門化した支払いタイプをサポートしています。
         targets:
             - ja
@@ -579,7 +600,7 @@ pages:
         # Redirect from the old landing name/URL
     -   name: Complex Payment Types
         html: complex-payment-types.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: payment-types.html
         targets:
@@ -637,7 +658,7 @@ pages:
     -   name: Issued Currencies
         html: issued-currencies.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger.
         targets:
             - en
@@ -645,7 +666,7 @@ pages:
     -   name: 発行済み通貨
         html: issued-currencies.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerでは、XRP以外の通貨はすべて発行済み通貨とされます。XRP Ledgerで発行済み通貨がどのように機能するか説明します。
         targets:
             - ja
@@ -722,7 +743,7 @@ pages:
     -   name: Decentralized Exchange
         html: decentralized-exchange.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other.
         targets:
             - en
@@ -730,7 +751,7 @@ pages:
     -   name: 分散型取引所
         html: decentralized-exchange.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerには多機能な取引所が含まれており、この取引所を利用してユーザーは発行済み通貨をXRPに、あるいはXRPを発行済み通貨に交換できます。
         targets:
             - ja
@@ -762,7 +783,7 @@ pages:
     -   name: Consensus Network
         html: consensus-network.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
         targets:
             - en
@@ -770,7 +791,7 @@ pages:
     -   name: コンセンサスネットワーク
         html: consensus-network.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerはコンセンサスアルゴリズムを使用して、二重支払いの問題を解決し、どのトランザクションをどのような順番で実行するか選択します。コンセンサスは、トランザクション処理のルールを左右します。
         targets:
             - ja
@@ -884,7 +905,7 @@ pages:
     -   name: rippledサーバー
         html: the-rippled-server.html
         parent: concepts.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: rippledは、XRP Ledgerを管理するコアのピアツーピアサーバーです。このセクションではコンセプトについて説明します。XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学ぶことができます。
         targets:
             - ja
@@ -950,8 +971,8 @@ pages:
     -   name: Tutorials
         html: tutorials.html
         parent: docs.html
-        top_nav_level: 2
-        template: template-landing-children.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
         blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
         targets:
             - en
@@ -959,8 +980,8 @@ pages:
     -   name: チュートリアル
         html: tutorials.html
         parent: docs.html
-        top_nav_level: 2
-        template: template-landing-children.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。
         targets:
             - ja
@@ -973,7 +994,7 @@ pages:
     -   name: 使用開始
         html: get-started.html
         parent: tutorials.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: リソースを活用してXRP Ledgerの使用を開始しましょう。
         targets:
             - ja
@@ -1004,7 +1025,7 @@ pages:
         # Redirect for old JS Client Library URL
     -   name: Get Started Using Node.js
         html: get-started-with-rippleapi-for-javascript.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         redirect_url: get-started-using-node-js.html
         nav_omit: true
         targets:
@@ -1022,7 +1043,7 @@ pages:
         # Redirect for old HTTP/WebSocket APIs URL
     -   name: Get Started Using HTTP / WebSocket APIs
         html: get-started-with-the-rippled-api.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         redirect_url: get-started-using-http-websocket-apis.html
         nav_omit: true
         targets:
@@ -1048,7 +1069,7 @@ pages:
         # Send old "Use Direct XRP Payments" landing to "Get Started" instead
     -   name: Use Direct XRP Payments
         html: use-simple-xrp-payments.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: get-started.html
         targets:
@@ -1059,7 +1080,7 @@ pages:
     -   name: Production Readiness
         html: production-readiness.html
         parent: tutorials.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: Follow these best practices to build a robust, safe production system for using the XRP Ledger.
         targets:
             - en
@@ -1092,7 +1113,7 @@ pages:
         # Redirect for this page's new home outside of tutorials
     -   name: Cancel or Skip a Transaction
         html: cancel-or-skip-a-transaction.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: about-canceling-a-transaction.html
         targets:
@@ -1102,7 +1123,7 @@ pages:
     -   name: Manage Account Settings
         html: manage-account-settings.html
         parent: tutorials.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
         targets:
             - en
@@ -1110,7 +1131,7 @@ pages:
     -   name: アカウントの設定の利用
         html: manage-account-settings.html
         parent: tutorials.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: 希望する方法で支払いをやり取りできるようにXRP Ledgerアカウントを設定します。
         targets:
             - ja
@@ -1182,7 +1203,7 @@ pages:
     -   name: Use Specialized Payment Types
         html: use-specialized-payment-types.html
         parent: tutorials.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger.
         targets:
             - en
@@ -1190,7 +1211,7 @@ pages:
     -   name: 専門化した支払いタイプの使用
         html: use-specialized-payment-types.html
         parent: tutorials.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: EscrowやPayment Channelなどの高度な機能を使用して、XRP Ledgerでスマートアプリケーションを構築します。
         targets:
             - ja
@@ -1198,7 +1219,7 @@ pages:
         # Redirect from old "complex" payment types URL
     -   name: Use Complex Payment Types
         html: use-complex-payment-types.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: use-specialized-payment-types.html
         targets:
@@ -1209,7 +1230,7 @@ pages:
         html: use-escrows.html
         parent: use-specialized-payment-types.html
         blurb: The XRP Ledger supports escrows that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -1217,7 +1238,7 @@ pages:
         html: use-escrows.html
         parent: use-specialized-payment-types.html
         blurb: XRP Ledgerは、一定時間の経過後か暗号条件が満たされた場合にのみ実行されるEscrowをサポートします。Escrowが送金できるのはXRPのみで、発行済み通貨は送金できません。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -1337,7 +1358,7 @@ pages:
         html: xrp-ledger-businesses.html
         parent: tutorials.html
         blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -1345,7 +1366,7 @@ pages:
         html: xrp-ledger-businesses.html
         parent: tutorials.html
         blurb: このセクションでは、さまざまなベストプラクティスに従って、XRPを上場する取引所やXRP Ledgerで通貨を発行するゲートウェアなど、XRP Ledgerとインターフェイス接続するビジネスを運営する方法をデモンストレーションします。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -1375,7 +1396,7 @@ pages:
         parent: tutorials.html
         blurb: Install, configure, and manage the core server that powers the XRP Ledger.
         cta_text: Run rippled
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -1384,15 +1405,16 @@ pages:
         parent: tutorials.html
         blurb: XRP Ledgerをパワーするサーバーをインストール、設定、管理しよう。
         cta_text: インストールしよう
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
     -   name: Install rippled
         html: install-rippled.html
         parent: manage-the-rippled-server.html
+        top_nav_name: Install & Configure
         blurb: Install and update the rippled server.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -1400,7 +1422,7 @@ pages:
         html: install-rippled.html
         parent: manage-the-rippled-server.html
         blurb: rippledサーバーをインストールして更新します。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -1424,7 +1446,7 @@ pages:
     -   name: Install rippled on Ubuntu with Alien
         html: install-rippled-on-ubuntu-with-alien.html
         parent: install-rippled.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: install-rippled-on-ubuntu.html
         targets:
@@ -1441,7 +1463,7 @@ pages:
 
     -   name: Update rippled Automatically on CentOS/RHEL
         html: update-rippled-automatically-on-centos-rhel.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: update-rippled-automatically-on-linux.html
         targets:
@@ -1508,7 +1530,7 @@ pages:
         html: configure-rippled.html
         parent: manage-the-rippled-server.html
         blurb: Customize your rippled server configuration.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -1516,7 +1538,7 @@ pages:
         html: configure-rippled.html
         parent: manage-the-rippled-server.html
         blurb: rippledサーバーの構成をカスタマイズします。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -1677,7 +1699,7 @@ pages:
         html: use-stand-alone-mode.html
         parent: manage-the-rippled-server.html
         blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -1685,7 +1707,7 @@ pages:
         html: use-stand-alone-mode.html
         parent: manage-the-rippled-server.html
         blurb: 新機能や実験用に、スタンドアロンモードを使用してフルネットワークで機能をテストできます。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -1713,11 +1735,11 @@ pages:
         targets:
             - ja
 
-    -   name: Troubleshoot the rippled server
+    -   name: Troubleshooting
         html: troubleshoot-the-rippled-server.html
         parent: manage-the-rippled-server.html
         blurb: Troubleshoot all kinds of problems with the rippled server.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -1725,7 +1747,7 @@ pages:
         html: troubleshoot-the-rippled-server.html
         parent: manage-the-rippled-server.html
         blurb: rippledサーバーのあらゆる種類の問題をトラブルシューティングします。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -1780,10 +1802,10 @@ pages:
 
     -   name: References
         longer_name: API References
-        template: template-landing-references.html
+        template: page-references.html.jinja
         html: references.html
         parent: docs.html
-        top_nav_level: 2
+        top_nav_grouping: Article Types
         sidebar: disabled
         blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
@@ -1791,10 +1813,10 @@ pages:
 
     -   name: リファレンス
         longer_name: API リファレンス
-        template: template-landing-references.html
+        template: page-references.html.jinja
         html: references.html
         parent: docs.html
-        top_nav_level: 2
+        top_nav_grouping: Article Types
         sidebar: disabled
         blurb: XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。
         targets:
@@ -1804,33 +1826,34 @@ pages:
     -   name: XRP Ledger Protocol Reference
         html: protocol-reference.html
         parent: references.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: Features and rules of the XRP Ledger protocol, regardless of how you access it.
+        eyebrow_text: Features and Rules
         targets:
             - en
             - ja
 
-    -   md: references/protocol-reference/basic-data-types.md
+    -   md: references/protocol-reference/data-types/basic-data-types.md
         targets:
             - en
 
-    -   md: references/protocol-reference/basic-data-types.ja.md
+    -   md: references/protocol-reference/data-types/basic-data-types.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/base58-encodings.md
+    -   md: references/protocol-reference/data-types/base58-encodings.md
         targets:
             - en
 
-    -   md: references/protocol-reference/base58-encodings.ja.md
+    -   md: references/protocol-reference/data-types/base58-encodings.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/currency-formats.md
+    -   md: references/protocol-reference/data-types/currency-formats.md
         targets:
             - en
 
-    -   md: references/protocol-reference/currency-formats.ja.md
+    -   md: references/protocol-reference/data-types/currency-formats.ja.md
         targets:
             - ja
 
@@ -1976,6 +1999,7 @@ pages:
         targets:
             - en
 
+        # TODO: update blurb translation based on English version
     -   md: references/protocol-reference/transactions/transaction-formats.ja.md
         targets:
             - ja
@@ -2242,12 +2266,12 @@ pages:
         targets:
             - ja
 
-    -   md: references/protocol-reference/modifying-the-ledger.md
+    -   name: Modifying the Ledger
+        html: modifying-the-ledger.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: transaction-formats.html
         targets:
             - en
-
-    -   md: references/protocol-reference/modifying-the-ledger.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/serialization.md
@@ -2267,7 +2291,7 @@ pages:
             - ja
 
     -   name: JavaScript / TypeScript Client Library
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.4/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.8/docs/index.md
         html: rippleapi-reference.html
         parent: client-libraries.html
         blurb: JavaScript/TypeScript client library to the XRP Ledger.
@@ -2309,7 +2333,7 @@ pages:
     -   name: HTTP / WebSocket APIs
         html: rippled-api.html
         parent: references.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
         targets:
             - en
@@ -2317,7 +2341,7 @@ pages:
     -   name: HTTP / WebSocket API リファレンス
         html: rippled-api.html
         parent: references.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerを管理するコアのピアツーピアサーバーであるrippledと直接通信します。
         targets:
             - ja
@@ -2389,7 +2413,7 @@ pages:
     -   name: Account Methods
         html: account-methods.html
         parent: public-rippled-methods.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info.
         targets:
             - en
@@ -2397,7 +2421,7 @@ pages:
     -   name: Account Methods
         html: account-methods.html
         parent: public-rippled-methods.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: XRP Ledgerのアカウントとは、XRPの保有者とトランザクションの送信者を意味します。以下のメソッドを使用して、アカウント情報を処理します。
         targets:
             - ja
@@ -2478,7 +2502,7 @@ pages:
         html: ledger-methods.html
         parent: public-rippled-methods.html
         blurb: A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -2486,7 +2510,7 @@ pages:
         html: ledger-methods.html
         parent: public-rippled-methods.html
         blurb: レジャーバージョンには、ヘッダー、トランザクションツリー、状態ツリーが含まれ、さらにその中にアカウント設定、トラストライン、残高、トランザクション、その他のデータが含まれます。以下のメソッドを使用して、レジャー情報を取得します。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -2534,7 +2558,7 @@ pages:
     -   name: Transaction Methods
         html: transaction-methods.html # watch for clashes w/ this filename
         parent: public-rippled-methods.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions. #TODO:translate
         targets:
             - en
@@ -2542,7 +2566,7 @@ pages:
     -   name: Transaction Methods
         html: transaction-methods.html # watch for clashes w/ this filename
         parent: public-rippled-methods.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: トランザクションだけが、XRP Ledgerの共有されている状態を変更できます。XRP Ledgerに対するすべてのビジネスはトランザクションの形態をとります。以下のメソッドを使用して、トランザクションを処理します。
         targets:
             - ja
@@ -2607,7 +2631,7 @@ pages:
         html: path-and-order-book-methods.html
         parent: public-rippled-methods.html
         blurb: Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -2615,7 +2639,7 @@ pages:
         html: path-and-order-book-methods.html
         parent: public-rippled-methods.html
         blurb: パスは、支払いが送信者から受信者に届くまでに中間ステップでたどる道筋を定義します。パスは、送信者と受信者をオーダーブックを介してつなぐことで、複数通貨間の支払いを可能にします。パスと他のオーダーブックに関しては、以下のメソッドを使用します。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -2655,7 +2679,7 @@ pages:
         html: payment-channel-methods.html
         parent: public-rippled-methods.html
         blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels. #TODO:translate
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
             - ja
@@ -2680,7 +2704,7 @@ pages:
         html: subscription-methods.html
         parent: public-rippled-methods.html
         blurb: Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. WebSocket API only. #TODO:translate
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -2688,7 +2712,7 @@ pages:
         html: subscription-methods.html
         parent: public-rippled-methods.html
         blurb: 以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -2712,7 +2736,7 @@ pages:
         html: server-info-methods.html
         parent: public-rippled-methods.html
         blurb: Use these methods to retrieve information about the current state of the rippled server.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -2720,7 +2744,7 @@ pages:
         html: server-info-methods.html
         parent: public-rippled-methods.html
         blurb: 以下のメソッドを使用して、rippledサーバーの現在の状態についての情報を取得します。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -2758,7 +2782,7 @@ pages:
         html: utility-methods.html
         parent: public-rippled-methods.html
         blurb: Use these methods to perform convenient tasks, such as ping and random number generation.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
             - ja
@@ -2799,7 +2823,7 @@ pages:
         html: key-generation-methods.html
         parent: admin-rippled-methods.html
         blurb: Use these methods to generate and manage keys.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -2807,7 +2831,7 @@ pages:
         html: key-generation-methods.html
         parent: admin-rippled-methods.html
         blurb: キーを生成および管理するには、以下のメソッドを使用します。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -2831,7 +2855,7 @@ pages:
         html: logging-and-data-management-methods.html
         parent: admin-rippled-methods.html
         blurb: Use these methods to manage log levels and other data, such as ledgers.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -2839,7 +2863,7 @@ pages:
         html: logging-and-data-management-methods.html
         parent: admin-rippled-methods.html
         blurb: Use these methods to manage log levels and other data, such as ledgers. #TODO: translate
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -2904,7 +2928,7 @@ pages:
         html: server-control-methods.html
         parent: admin-rippled-methods.html
         blurb: Use these methods to manage the rippled server.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
             - ja
@@ -2938,7 +2962,7 @@ pages:
         html: peer-management-methods.html
         parent: admin-rippled-methods.html
         blurb: Use these methods to manage your server's peer-to-peer connections.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -2946,7 +2970,7 @@ pages:
         html: peer-management-methods.html
         parent: admin-rippled-methods.html
         blurb: サーバーのピアツーピア接続を管理するにはこれらのメソッドを使用します。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -2994,7 +3018,7 @@ pages:
         html: status-and-debugging-methods.html
         parent: admin-rippled-methods.html
         blurb: Use these methods to check the status of the network and server.
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - en
 
@@ -3002,7 +3026,7 @@ pages:
         html: status-and-debugging-methods.html
         parent: admin-rippled-methods.html
         blurb: ネットワークとサーバーのステータスを確認するには、以下のメソッドを使用します。
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -3080,7 +3104,7 @@ pages:
     -   name: Peer Port Methods
         html: peer-port-methods.html
         parent: rippled-api.html
-        template: template-landing-children.html
+        template: pagetype-category.html.jinja
         blurb: Special API method for sharing network topology and status metrics.
         targets:
             - en
@@ -3132,6 +3156,405 @@ pages:
         targets:
             - ja
 
+    # Landing pages for labels -------------------------------------------------
+    -   name: Accounts
+        html: label-accounts.html
+        parent: by-label.html
+        landing_for: Accounts
+        template: pagetype-label.html.jinja
+        blurb: Pages relating to accounts in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: アカウント
+        html: label-accounts.html
+        parent: by-label.html
+        landing_for: アカウント
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerのアカウントに関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Blockchain
+        html: label-blockchain.html
+        parent: by-label.html
+        landing_for: Blockchain
+        template: pagetype-label.html.jinja
+        blurb: Pages about how the XRP Ledger functions as a blockchain.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: ブロックチェーン
+        html: label-blockchain.html
+        parent: by-label.html
+        landing_for: ブロックチェーン
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerがブロックチェーンとして機能するに関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Checks
+        html: label-checks.html
+        parent: by-label.html
+        landing_for: Checks
+        template: pagetype-label.html.jinja
+        blurb: Pages about the Checks feature.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: Checks
+        html: label-checks.html
+        parent: by-label.html
+        landing_for: Checks
+        template: pagetype-label.html.jinja
+        blurb: Checks機能に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Core Server
+        html: label-rippled.html
+        parent: by-label.html
+        landing_for: Core Server
+        template: pagetype-label.html.jinja
+        blurb: Pages about the XRP Ledger's core server implementation, rippled.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: コアサーバー
+        html: label-rippled.html
+        parent: by-label.html
+        landing_for: コアサーバー
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerのコアサーバー「rippled」に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Cross-Currency
+        html: label-cross-currency.html
+        parent: by-label.html
+        landing_for: Cross-Currency
+        template: pagetype-label.html.jinja
+        blurb: Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: 複数通貨間
+        html: label-cross-currency.html
+        parent: by-label.html
+        landing_for: 複数通貨間
+        template: pagetype-label.html.jinja
+        blurb: XRPと通貨とトークンを支払いと分散型取引所で交換ついての全ページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Data Retention
+        html: label-data-retention.html
+        parent: by-label.html
+        landing_for: Data Retention
+        template: pagetype-label.html.jinja
+        blurb: Pages about how and for how long XRP Ledger software stores data.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: データ保持
+        html: label-data-retention.html
+        parent: by-label.html
+        landing_for: データ保持
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerのソフトウェアがデータを保存する方法と期間に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Decentralized Exchange
+        html: label-decentralized-exchange.html
+        parent: by-label.html
+        landing_for: Decentralized Exchange
+        template: pagetype-label.html.jinja
+        blurb: Pages about the Decentralized Exchange built into the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: 分散型取引所
+        html: label-decentralized-exchange.html
+        parent: by-label.html
+        landing_for: 分散型取引所
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerの分散型取引所に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Development
+        html: label-development.html
+        parent: by-label.html
+        landing_for: Development
+        template: pagetype-label.html.jinja
+        blurb: Pages about developing apps that use the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: 開発
+        html: label-development.html
+        parent: by-label.html
+        landing_for: 開発
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerを使うアプリの開発に関するページ。
+        filters:
+            - labels
+        targets:
+             - ja
+
+    -   name: Escrow
+        html: label-escrow.html
+        parent: by-label.html
+        landing_for: Escrow
+        template: pagetype-label.html.jinja
+        blurb: Pages about the Escrow feature.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: Escrow
+        html: label-escrow.html
+        parent: by-label.html
+        landing_for: Escrow
+        template: pagetype-label.html.jinja
+        blurb: Escrow機能に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Fees
+        html: label-fees.html
+        parent: by-label.html
+        landing_for: Fees
+        template: pagetype-label.html.jinja
+        blurb: Pages about fees and related costs of transacting in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: 手数料
+        html: label-fees.html
+        parent: by-label.html
+        landing_for: 手数料
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerの手数料とコストに関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Payment Channels
+        html: label-payment-channels.html
+        parent: by-label.html
+        landing_for: Payment Channels
+        template: pagetype-label.html.jinja
+        blurb: Pages about the Payment Channels feature.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: Payment Channel
+        html: label-payment-channels.html
+        parent: by-label.html
+        landing_for: Payment Channel
+        template: pagetype-label.html.jinja
+        blurb: Payment Channel機能に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Payments
+        html: label-payments.html
+        parent: by-label.html
+        landing_for: Payments
+        template: pagetype-label.html.jinja
+        blurb: About sending payments (of XRP or tokens) in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: 支払い
+        html: label-payments.html
+        parent: by-label.html
+        landing_for: 支払い
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerでの支払い二ついての全ページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Smart Contracts
+        html: label-smart-contracts.html
+        parent: by-label.html
+        landing_for: Smart Contracts
+        template: pagetype-label.html.jinja
+        blurb: Pages about XRP Ledger features that can be used to build smart contracts.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: スマートコントラクト
+        html: label-smart-contracts.html
+        parent: by-label.html
+        landing_for: スマートコントラクト
+        template: pagetype-label.html.jinja
+        blurb: スマートコントラクトを開発の役に立つ機能に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Security
+        html: label-security.html
+        parent: by-label.html
+        landing_for: Security
+        template: pagetype-label.html.jinja
+        blurb: Pages about security issues and precautions.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: セキュリティ
+        html: label-security.html
+        parent: by-label.html
+        landing_for: セキュリティ
+        template: pagetype-label.html.jinja
+        blurb: セキュリティ問題と予防措置に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Tokens
+        html: label-tokens.html
+        parent: by-label.html
+        landing_for: Tokens
+        template: pagetype-label.html.jinja
+        blurb: Pages about issuing tokens in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: トークン
+        html: label-tokens.html
+        parent: by-label.html
+        landing_for: トークン
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerでのトークンや通貨を発行済みに関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Transaction Sending
+        html: label-transaction-sending.html
+        parent: by-label.html
+        landing_for: Transaction Sending
+        template: pagetype-label.html.jinja
+        blurb: Pages about sending transactions in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: トランザクション送信
+        html: label-transaction-sending.html
+        parent: by-label.html
+        landing_for: トランザクション送信
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerでのトランザクションを送信に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: XRP
+        html: label-xrp.html
+        parent: by-label.html
+        landing_for: XRP
+        template: pagetype-label.html.jinja
+        blurb: Pages about XRP, the native digital asset built into the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: XRP
+        html: label-xrp.html
+        parent: by-label.html
+        landing_for: XRP
+        template: pagetype-label.html.jinja
+        blurb: XRP Ledgerのネイティブ暗号資産「XRP」に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Browse By Label
+        html: by-label.html
+        parent: docs.html
+        template: page-by-label.html.jinja
+        sidebar: left_only
+        blurb: See all pages labeled with a specific topic or idea.
+        top_nav_omit: true
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: ラベル別に閲覧
+        html: by-label.html
+        parent: docs.html
+        template: page-by-label.html.jinja
+        sidebar: left_only
+        blurb: 特定のトピックでラベル付けされたページを表示します。
+        top_nav_omit: true
+        filters:
+            - labels
+        targets:
+            - ja
+
 
 
 # --------------- end "Docs" section -------------------------------------------
@@ -3139,7 +3562,7 @@ pages:
 
     -   name: Use Cases
         html: use-cases.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: uses.html
         targets:
@@ -3147,7 +3570,7 @@ pages:
 
     -   name: ユースケース
         html: use-cases.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: uses.html
         targets:
@@ -3155,7 +3578,7 @@ pages:
 
     -   name: Run a rippled Validator
         html: run-a-rippled-validator.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: run-rippled-as-a-validator.html
         targets:
@@ -3163,7 +3586,7 @@ pages:
 
     -   name: rippledバリデータの実行
         html: run-a-rippled-validator.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: run-rippled-as-a-validator.html
         targets:
@@ -3171,7 +3594,7 @@ pages:
 
     -   name: List XRP In Your Exchange
         html: list-xrp-in-your-exchange.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: list-xrp-as-an-exchange.html
         targets:
@@ -3179,7 +3602,7 @@ pages:
 
     -   name: 取引所でのXRPの上場
         html: list-xrp-in-your-exchange.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: list-xrp-as-an-exchange.html
         targets:
@@ -3187,7 +3610,7 @@ pages:
 
     -   name: Contribute Code to rippled
         html: contribute-code-to-rippled.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: contribute-code.html
         targets:
@@ -3195,7 +3618,7 @@ pages:
 
     -   name: rippledへのコードの提供
         html: contribute-code-to-rippled.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: contribute-code.html
         targets:
@@ -3203,7 +3626,7 @@ pages:
 
     -   name: Contribute Code to ripple-lib
         html: contribute-code-to-ripple-lib.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: contribute-code.html
         targets:
@@ -3211,7 +3634,7 @@ pages:
 
     -   name: ripple-libへのコードの提供
         html: contribute-code-to-ripple-lib.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: contribute-code.html
         targets:
@@ -3221,7 +3644,7 @@ pages:
     -   md: dev-tools/dev-tools.md
         html: dev-tools.html
         parent: docs.html
-        top_nav_level: 1
+        top_nav_grouping: Online Tools
         blurb: Use these web-based tools to interact with the ledger and test your software.
         targets:
             - en
@@ -3229,13 +3652,13 @@ pages:
     -   md: dev-tools/dev-tools.ja.md
         html: dev-tools.html
         parent: docs.html
-        top_nav_level: 1
+        top_nav_grouping: Online Tools
         targets:
             - ja
 
     -   name: Dev Tools # Redirect page for old broken URL
         html: dev-tools-dev-tools.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: dev-tools.html
         targets:
@@ -3248,33 +3671,21 @@ pages:
         targets:
             - en
             - ja
-        template: template-xrp-ledger-rpc-tool.html
+        template: page-rpc-tool.html.jinja
 
     -   name: WebSocket API Tool
         html: websocket-api-tool.html
         parent: dev-tools.html
-        template: template-websocket-api-tool.html
+        template: page-websocket-api-tool.html.jinja
         canonical_url: https://xrpl.org/websocket-api-tool.html
         targets:
             - en
             - ja
 
-    # -   name: Data API v2 Tool
-    #     html: data-api-v2-tool.html
-    #     parent: dev-tools.html
-    #     methods_js: js/apitool-methods-data_v2.js
-    #     rest_host: https://data.ripple.com
-    #     doc_page: data-api.html
-    #     sidebar: custom
-    #     targets:
-    #         - en
-    #         - ja
-    #     template: template-rest-api-tool.html
-
     -   name: ripple.txt Validator # Redirect from ripple.txt validator to toml
         html: ripple-txt-validator.html
         parent: dev-tools.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: xrp-ledger-toml-checker.html
         targets:
@@ -3284,31 +3695,40 @@ pages:
     -   name: xrp-ledger.toml Checker
         html: xrp-ledger-toml-checker.html
         parent: dev-tools.html
+        template: page-toml-checker.html.jinja
         embed_ripple_lib: true
         targets:
             - en
             - ja
-        template: template-xrp-ledger-toml-checker.html
 
     -   name: Domain Verification Checker
         html: validator-domain-verifier.html
         parent: dev-tools.html
+        template: page-validator-domain-verifier.html.jinja
         targets:
             - en
             - ja
-        template: template-validator-domain-verifier.html
 
     -   name: XRP Faucets
         html: xrp-testnet-faucet.html
         parent: dev-tools.html
-        template: template-test-net.html
+        template: page-xrp-faucets.html.jinja
+        top_nav_grouping: Popular Pages
         targets:
             - en
+
+    -   name: XRP Faucets
+        html: xrp-testnet-faucet.html
+        parent: dev-tools.html
+        template: page-xrp-faucets.html.jinja
+        top_nav_grouping: 人気ページ
+        targets:
             - ja
 
-    -   name: XRP Test Net Faucet # Redirect from old URL
+        # Redirect from old URL
+    -   name: XRP Faucets
         html: xrp-test-net-faucet.html
-        template: template-redirect.html
+        template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: xrp-testnet-faucet.html
         targets:
@@ -3318,44 +3738,35 @@ pages:
     -   name: Transaction Sender
         html: tx-sender.html
         parent: dev-tools.html
+        template: page-tx-sender.html.jinja
         embed_ripple_lib: true
         targets:
             - en
             - ja
-        template: template-tx-sender.html
 
-# Dev Blog ---------------------------------------------------------------------
 
-    -   name: Dev Blog
-        html: https://xrpl.org/blog/
-        parent: docs.html
-        blurb: Get news about the latest changes to the XRP Ledger protocol and tools.
-        cta_text: Read the Blog
-        targets:
-            - en
-
-    -   name: 開発者ブログ
-        html: https://xrpl.org/blog/
-        parent: docs.html
-        blurb: Get news about the latest changes to the XRP Ledger protocol and tools.
-        cta_text: ブログを読む
-        targets:
-            - ja
-
-# "Contribute" pages -----------------------------------------------------------
+# "Community" tab --------------------------------------------------------------
     -   name: Contribute
         html: contribute.html
         parent: index.html
-        template: template-contribute.html
+        template: page-community.html.jinja
         sidebar: disabled
+        top_nav_blurb: Join the conversation
+        blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
+        top_nav_name: Community
+        top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - en
 
+        # TODO: translate blurb & contents
     -   name: 貢献する
         html: contribute.html
         parent: index.html
-        template: template-contribute.html
+        template: page-community.html.jinja
         sidebar: disabled
+        blurb: Join the conversation
+        top_nav_name: コミュニティー
+        top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - ja
 
@@ -3367,10 +3778,107 @@ pages:
             - en
             - ja
 
+    -   name: Dev Blog
+        html: https://xrpl.org/blog/
+        parent: contribute.html
+        blurb: Get news about the latest changes to the XRP Ledger protocol and tools.
+        cta_text: Read the Blog
+        targets:
+            - en
+
+    -   name: 開発者ブログ
+        html: https://xrpl.org/blog/
+        parent: contribute.html
+        blurb: Get news about the latest changes to the XRP Ledger protocol and tools.
+        cta_text: ブログを読む
+        targets:
+            - ja
+
+    -   name: XRPL Grants
+        html: https://xrplgrants.org/
+        parent: contribute.html
+        blurb: The XRPL Grants program provides developer grants for XRPL projects.
+        targets:
+            - en
+            - ja
+
+    -   name: GitHub
+        html: https://github.com/XRPLF/xrpl-dev-portal/
+        parent: contribute.html
+        blurb: View and propose changes to this site's source code on GitHub.
+        targets:
+            - en
+            - ja
+
+# Redirects from deprecated "Explore" pages ------------------------------------
+    -   name: Explore
+        html: explore.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrp-ledger-overview.html
+        nav_omit: true
+        targets:
+            - en
+
+    -   name: 探る
+        html: explore.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrp-ledger-overview.html
+        nav_omit: true
+        targets:
+            - ja
+
+    -   name: Wallets
+        html: wallets.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrp-overview.html
+        nav_omit: true
+        targets:
+            - en
+
+    -   name: ウォレット
+        html: wallets.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrp-overview.html
+        nav_omit: true
+        targets:
+            - ja
+
+    -   name: Exchanges
+        html: exchanges.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrp-overview.html
+        nav_omit: true
+        targets:
+            - en
+
+    -   name: 取引所
+        html: exchanges.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrp-overview.html
+        nav_omit: true
+        targets:
+            - ja
+
+    -   name: Businesses
+        html: businesses.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: uses.html
+        nav_omit: true
+        targets:
+            - en
+
+    -   name: 企業
+        html: businesses.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: uses.html
+        nav_omit: true
+        targets:
+            - ja
+
 # Custom 404 page
     -   name: 404 Not Found
         html: 404.html
-        template: template-404.html
+        template: page-404.html.jinja
         nav_omit: true
         prefix: "/"
         targets:
@@ -3380,7 +3888,7 @@ pages:
 # Special sitemap file (for better Google indexing)
     -   name: Sitemap
         html: sitemap.txt
-        template: template-sitemap.txt
+        template: sitemap.txt.jinja
         nav_omit: true
         targets:
             - en

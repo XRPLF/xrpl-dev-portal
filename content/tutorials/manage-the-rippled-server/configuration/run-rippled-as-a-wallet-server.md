@@ -2,6 +2,8 @@
 html: run-rippled-as-a-wallet-server.html
 parent: configure-rippled.html
 blurb: A multipurpose configuration for anyone integrating XRP.
+labels:
+  - Core Server
 ---
 # Run rippled as a Wallet Server
 

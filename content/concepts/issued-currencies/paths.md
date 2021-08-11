@@ -2,6 +2,9 @@
 html: paths.html
 parent: issued-currencies.html
 blurb: Payments of issued currencies must traverse paths of connected users and order books.
+labels:
+  - Payments
+  - Cross-Currency
 ---
 # Paths
 

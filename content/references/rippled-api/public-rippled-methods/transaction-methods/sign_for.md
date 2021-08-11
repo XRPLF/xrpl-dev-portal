@@ -2,6 +2,8 @@
 html: sign_for.html
 parent: transaction-methods.html
 blurb: Contribute to a multi-signature.
+labels:
+  - Transaction Sending
 ---
 # sign_for
 [[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")

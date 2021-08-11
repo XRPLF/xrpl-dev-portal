@@ -1,0 +1,88 @@
+.card-body > p,
+.card-body > p:not(:last-child) {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+/* Full-link cards */
+a.card {
+  border: 0;
+  color: $white;
+}
+a.card:hover,
+a:hover .card-new {
+  text-decoration: none;
+}
+a.card:hover h3 {
+  text-decoration: underline;
+}
+
+.circled-logo {
+  background-color: $gray-600;
+  border-radius: 50%;
+  padding: .75rem;
+  width: 50px;
+  height: 50px;
+  img {
+    width: 26px;
+    height: 26px;
+  }
+  margin-bottom: 0.75rem;
+}
+
+.card-deck {
+  margin-top: 2.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  flex-grow: 1;
+  .card {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &.row-cols-1 .card {
+    // Give cards some breathing room (but not in the 2×2 ones)
+    min-height: 264px;
+    @include media-breakpoint-up(md) {
+      min-height: 347px;
+    }
+  }
+
+  a.card {
+    transition: all 0.35s ease-out;
+    cursor: pointer;
+    &:hover {
+      -webkit-transform: translateY(-16px);
+      -moz-transform: translateY(-16px);
+      -ms-transform: translateY(-16px);
+      -o-transform: translateY(-16px);
+      transform: translateY(-16px);
+    }
+  }
+
+  .card-footer {
+    font-size: 0;
+    padding: 1rem;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: 2rem;
+
+    .card-body {
+      padding: 1rem;
+    }
+    &.row-cols-1 .card {
+      margin: .75rem;
+      max-width: calc(100% - 1.5rem);
+    }
+    &.row-cols-2 .card {
+      margin: .75rem;
+      max-width: calc(50% - 1.5rem);
+    }
+  }
+}

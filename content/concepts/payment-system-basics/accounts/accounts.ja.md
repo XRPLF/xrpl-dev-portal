@@ -2,6 +2,9 @@
 html: accounts.html
 parent: payment-system-basics.html
 blurb: XRP Ledgerのアカウントについて説明します。アカウントはトランザクションを送信でき、XRPを保有できます。
+labels:
+  - アカウント
+  - 支払い
 ---
 # アカウント
 
@@ -118,7 +121,7 @@ XRP Ledgerのアドレスは、[base58][]_形式のディクショナリ_`rpshna
 
 [![マスター公開鍵 + プレフィクスの種類 → アカウントID + チェックサム → アドレス](img/address-encoding.ja.png)](img/address-encoding.ja.png)
 
-公開鍵からXRP Ledgerアドレスを計算する式は次のとおりです。コード例全体については、[`encode_address.js`](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/address_encoding/encode_address.js)を参照してください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、[鍵の導出](cryptographic-keys.html#鍵導出)を参照してください。
+公開鍵からXRP Ledgerアドレスを計算する式は次のとおりです。コード例全体については、[`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/encode_address.js)を参照してください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、[鍵の導出](cryptographic-keys.html#鍵導出)を参照してください。
 
 1. 次の必須アルゴリズムをインポートします。SHA-256、RIPEMD160、base58。base58のディクショナリーを設定します。
 

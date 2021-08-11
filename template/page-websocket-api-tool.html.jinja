@@ -1,0 +1,192 @@
+{% extends "base.html.jinja" %}
+
+{% block right_sidebar %}
+  <div class="command-list-wrapper">
+      <div class="toc-header">
+        <h4>API Methods</h4>
+      </div>
+      <ul class="command-list" id="command_list"></ul>
+  </div>
+{% endblock %}
+
+{% block main %}
+  <section class="container-fluid pt-3 p-md-3 websocket-tool" id="wstool-1">
+    <h1>WebSocket Tool</h1>
+    <div class="api-method-description-wrapper">
+      <h3><a href="server_info.html" class="selected_command">server_info</a></h3>
+      <p class="blurb">Get information about the state of the server, formatted for human consumption.</p>
+      <a class="btn btn-outline-secondary api-readmore" href="server_info.html">Read more</a>
+    </div><!--/.api-method-description-wrapper-->
+
+    <div class="api-input-area pt-4">
+      <h4>Request</h4>
+      <div class="request-body"></div>
+      <div class="btn-toolbar justify-content-between" role="toolbar">
+        <div class="btn-group mr-3" role="group">
+          <button class="btn btn-outline-secondary send-request">Send request</button>
+          <div class="input-group loader send-loader" style="display:none;">
+            <span class="input-group-append">
+              <img src="assets/img/xrp-loader-96.png" height="24" width="24" />
+            </span><!--/.input-group-append-->
+          </div><!--/.input-group.loader-->
+        </div><!--/.btn-group-->
+        <div class="btn-group request-options" role="group">
+          <button class="btn btn-outline-secondary connection" data-toggle="modal" data-target="#wstool-1-connection-settings">Offline (Mainnet)</button>
+          <div class="input-group loader connect-loader" style="display:none;">
+            <span class="input-group-append">
+              <img src="assets/img/xrp-loader-96.png" height="24" width="24" />
+            </span><!--/.input-group-append-->
+          </div><!--/.input-group.loader-->
+          <button class="btn btn-outline-secondary permalink" data-toggle="modal" data-target="#wstool-1-permalink" title="Permalink"><i class="fa fa-link"></i></button>
+          <button class="btn btn-outline-secondary curl" data-toggle="modal" data-target="#wstool-1-curl" title="cURL syntax"><i class="fa fa-terminal"></i></button>
+        </div><!--/.request-options.btn-group-->
+      </div><!--/.btn-toolbar-->
+    </div><!--/.api-input-area-->
+
+    <div class="api-response-area pt-4">
+      <h4>Responses</h4>
+
+      <div class="btn-toolbar justify-content-between response-options" role="toolbar">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="wstool-1-keep-last-label">Keep last:</div>
+          </div><!--/.input-group-prepend-->
+          <input type="number" value="50" min="1" aria-label="Number of responses to keep at once" aria-describedby="wstool-1-keep-last-label" class="form-control keep-last">
+        </div><!--/.input-group-->
+
+        <div class="btn-group" role="group">
+          <button class="btn btn-outline-secondary stream-pause" title="Pause Subscriptions">
+            <i class="fa fa-pause"></i>
+          </button>
+          <button class="btn btn-outline-secondary stream-unpause" title="Unpause Subscriptions" style="display:none;">
+            <i class="fa fa-play"></i>
+          </button>
+          <button class="btn btn-outline-secondary wipe-responses" title="Delete All Responses">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div><!--/.btn-group-->
+
+      </div><!--/.btn-toolbar.response-options-->
+
+      <div class="response-body-wrapper">
+      </div>
+    </div><!--/.api-response-area-->
+
+  </section>
+
+{% endblock %}
+
+{% block endbody %}
+  <!-- Modals for settings -->
+  <div class="modal fade" id="wstool-1-connection-settings" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Connection Settings</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s1" value="wss://s1.ripple.com/" data-jsonrpcurl="https://s1.ripple.com:51234/" data-shortname="Mainnet s1" checked>
+            <label class="form-check-label" for="wstool-1-connection-s1">
+              s1.ripple.com (Mainnet Public Cluster)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-xrplcluster" value="wss://xrplcluster.com/" data-jsonrpcurl="https://xrplcluster.com/" data-shortname="Mainnet xrplcluster">
+            <label class="form-check-label" for="wstool-1-connection-xrplcluster">
+              xrplcluster.com (Mainnet Full History Cluster)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-jsonrpcurl="https://s2.ripple.com:51234/" data-shortname="Mainnet s2">
+            <label class="form-check-label" for="wstool-1-connection-s2">
+              s2.ripple.com (Mainnet Full History Cluster)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-testnet" value="wss://s.altnet.rippletest.net:51233/" data-jsonrpcurl="https://s.altnet.rippletest.net:51234/" data-shortname="Testnet">
+            <label class="form-check-label" for="wstool-1-connection-testnet">
+              s.altnet.rippletest.net (Testnet Public Cluster)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-devnet" value="wss://s.devnet.rippletest.net:51233/" data-jsonrpcurl="https://s.devnet.rippletest.net:51234/" data-shortname="Devnet">
+            <label class="form-check-label" for="wstool-1-connection-devnet">
+              s.devnet.rippletest.net (Devnet Public Cluster)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-localhost" value="ws://localhost:6006/" data-jsonrpcurl="http://localhost:5005/" data-shortname="Local server">
+            <label class="form-check-label" for="wstool-1-connection-localhost">
+              localhost:6006 (Local <code>rippled</code> Server on port 6006) <br/>
+              <small>(Requires that you <a href="install-rippled.html">run <code>rippled</code></a> on this machine with default WebSocket settings)</small>
+            </label>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div><!--/.modal-footer-->
+      </div><!--/.modal-content-->
+    </div><!--/.modal-dialog-->
+  </div><!--/.modal-->
+
+  <div class="modal fade" id="wstool-1-permalink" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Permalink</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form><div class="form-group">
+            <label for="permalink-box-1">Share the following link to load this page with the currently-loaded inputs:</label>
+            <textarea id="permalink-box-1" class="form-control">https://xrpl.org/websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A1%2C%22command%22%3A%22server_info%22%7D</textarea>
+          </div></form>
+
+        </div><!--/.modal-body-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div><!--/.modal-footer-->
+      </div><!--/.modal-content-->
+    </div><!--/.modal-dialog-->
+  </div><!--/.modal-->
+
+  <div class="modal fade" id="wstool-1-curl" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">cURL Syntax</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form><div class="form-group">
+            <label for="curl-box-1">Use the following syntax to make the equivalent JSON-RPC request using <a href="https://curl.haxx.se/">cURL</a> from a commandline interface:</label>
+            <textarea id="curl-box-1" class="form-control" rows="8">curl -H 'Content-Type: application/json' -d '{"method":"server_info","params":[{}]}' https://s1.ripple.com:51234/</textarea>
+          </div></form>
+
+        </div><!--/.modal-body-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div><!--/.modal-footer-->
+      </div><!--/.modal-content-->
+    </div><!--/.modal-dialog-->
+  </div><!--/.modal-->
+
+  <script type="text/javascript" src="assets/vendor/jsonlint.js"></script>
+  <script type="text/javascript" src="assets/vendor/codemirror-js-json-lint.min.js"></script>
+  <script type="text/javascript" src="assets/js/apitool-websocket.js"></script>
+  <script type="text/javascript" src="assets/js/apitool-methods-ws.js"></script>
+
+  <script type="application/javascript">
+    gtag('config', 'UA-157720658-3', {'content_group1': 'API Tools'});
+  </script>
+{% endblock %}

@@ -2,7 +2,7 @@
 html: api-conventions.html
 parent: rippled-api.html
 blurb: rippled APIのデータ型とフォーマットについて説明します。
-template: template-landing-children.html
+template: pagetype-category.html.jinja
 ---
 # APIの規則
 

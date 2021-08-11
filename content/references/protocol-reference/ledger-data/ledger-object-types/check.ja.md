@@ -2,6 +2,8 @@
 html: check.html
 parent: ledger-object-types.html
 blurb: 送信先が清算して資金にできるCheckです。
+labels:
+  - Checks
 ---
 # Check
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")

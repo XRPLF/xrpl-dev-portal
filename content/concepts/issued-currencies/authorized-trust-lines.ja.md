@@ -2,6 +2,9 @@
 html: authorized-trust-lines.html
 parent: issued-currencies.html
 blurb: 通貨発行者が自己の発行済み通貨を保有できる人を制限できる、Authorized Trust Lineについて説明します。
+labels:
+  - トークン
+  - セキュリティ
 ---
 # Authorized Trust Lines
 

@@ -24,6 +24,14 @@
   border-color: $success;
 }
 
+.api-input-area .btn-group > .send-request.btn {
+  // This button is part of a toolbar with a loader animation, which causes the
+  // right edges to not be rounded even though the loader is usually invisible.
+  // So, this forces the button's corners to be consistently rounded.
+  border-bottom-right-radius: $border-radius-sm;
+  border-top-right-radius: $border-radius-sm;
+}
+
 #tx-sender-history ul {
   overflow: auto;
   height: 220px;
@@ -36,6 +44,7 @@
 
 .page-tx-sender .input-group .form-control {
   flex: 1 1 20%;
+  height: auto;
 }
 
 .bootstrap-growl {
@@ -59,43 +68,10 @@
 }
 
 
-#rest_url_wrapper p {
-  margin: 0;
-  border-radius: 4px;
-  // $code-bg and $code-padding are from _code-tabs.scss
-  background-color: $code-bg;
-  padding: $code-padding;
-  overflow: auto;
-}
-
-#rest_url {
-  width: auto;
-  border: 0;
-  background: none;
-  font-size:13px;
-  vertical-align: top;
-
-  .editable {
-    color: $white;
-    font-weight: bold;
-    font-family: $font-family-monospace;
-    border-width: 0 0px 1px 0;
-    border-style: dotted;
-    border-color: $gray-200;
-    min-width: 5em;
-    background: none;
-    vertical-align: top;
-  }
-
- .non_editable {
-    vertical-align: top;
-  }
-
-  div {
-    display: inline-block;
-  }
-
-  input {
-    margin: 0 !important;
+.rpc-tool .main {
+  h1::before, h2::before, h3::before {
+    // These aren't anchors, and the placement of the anchor fix thing
+    // causes things above them to be unclickable
+    display: none;
   }
 }

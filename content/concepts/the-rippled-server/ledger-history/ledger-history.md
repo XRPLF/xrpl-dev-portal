@@ -2,6 +2,10 @@
 html: ledger-history.html
 parent: the-rippled-server.html
 blurb: rippled servers store a variable amount of transaction and state history locally.
+labels:
+  - Data Retention
+  - Blockchain
+  - Core Server
 ---
 # Ledger History
 

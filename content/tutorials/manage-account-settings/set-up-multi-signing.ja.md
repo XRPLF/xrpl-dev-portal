@@ -2,6 +2,8 @@
 html: set-up-multi-signing.html
 parent: manage-account-settings.html
 blurb: アカウントに署名者リストを追加して、マルチ署名を有効にします。
+labels:
+  - セキュリティ
 ---
 # マルチ署名の設定
 

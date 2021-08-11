@@ -2,6 +2,9 @@
 html: account_tx.html
 parent: account-methods.html
 blurb: 指定したアカウントに関連するトランザクションのリストを取得します。
+labels:
+  - Accounts
+  - Payments
 ---
 # account_tx
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
@@ -591,7 +594,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actMalformed` - 要求の`account`フィールドに指定した[アドレス][]が、正しいフォーマットではありません。
 * `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
-* `lgrIdxsInvalid` - 要求で`ledger_index_min`の前にある`ledger_index_max`を指定したか、[ネットワークと同期](troubleshoot-the-rippled-server.html)されていないためにサーバーに検証済みレジャーの範囲が存在しません。<!-- TODO: link more specific docs when https://github.com/ripple/xrpl-dev-portal/issues/714 is done. -->
+* `lgrIdxsInvalid` - 要求で`ledger_index_min`の前にある`ledger_index_max`を指定したか、[ネットワークと同期](troubleshoot-the-rippled-server.html)されていないためにサーバーに検証済みレジャーの範囲が存在しません。
 
 
 {% include '_snippets/rippled_versions.md' %}

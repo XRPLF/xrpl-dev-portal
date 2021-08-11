@@ -2,6 +2,9 @@
 html: rippling.html
 parent: issued-currencies.html
 blurb: Ripplingは、複数当事者間での発行済み通貨残高の自動ネット決済です。
+labels:
+  - トークン
+  - 複数通貨間
 ---
 # Rippling
 

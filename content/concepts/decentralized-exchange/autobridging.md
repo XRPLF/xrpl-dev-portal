@@ -2,6 +2,9 @@
 html: autobridging.html
 parent: decentralized-exchange.html
 blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs.
+labels:
+  - XRP
+  - Decentralized Exchange
 ---
 # Auto-Bridging
 

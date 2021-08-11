@@ -2,6 +2,8 @@
 html: install-rippled-on-ubuntu.html
 parent: install-rippled.html
 blurb: プリコンパイル済みのrippledバイナリーをUbuntu Linuxにインストールします。
+labels:
+  - コアサーバー
 ---
 # UbuntuまたはDebian Linuxへのインストール
 

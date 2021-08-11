@@ -2,6 +2,9 @@
 html: change-or-remove-a-regular-key-pair.html
 parent: manage-account-settings.html
 blurb: Remove or update a regular key pair already authorized by your account.
+labels:
+  - Security
+  - Accounts
 ---
 # Change or Remove a Regular Key Pair
 

@@ -2,6 +2,8 @@
 html: ledger_closed.html
 parent: ledger-methods.html
 blurb: 最新の閉鎖済みレジャーの一意のIDを返します。
+label:
+  - ブロックチェーン
 ---
 # ledger_closed
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerClosed.cpp "Source")

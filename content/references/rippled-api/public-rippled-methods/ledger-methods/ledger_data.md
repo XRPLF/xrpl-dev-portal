@@ -2,6 +2,9 @@
 html: ledger_data.html
 parent: ledger-methods.html
 blurb: Get the raw contents of a ledger version.
+labels:
+  - Blockchain
+  - Data Retention
 ---
 # ledger_data
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerData.cpp "Source")

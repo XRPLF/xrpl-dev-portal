@@ -3,6 +3,8 @@ html: ticket.html
 parent: ledger-object-types.html
 blurb: A Ticket tracks an account sequence number that has been set aside for future use.
 status: not_enabled
+labels:
+  - Transaction Sending
 ---
 # Ticket
 

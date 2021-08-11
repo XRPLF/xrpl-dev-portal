@@ -1,0 +1,128 @@
+{% extends "base.html.jinja" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+<div class="overflow-hidden">
+
+  <div class="position-relative">
+    <img src="./img/backgrounds/impact-green.svg" class="landing-bg" id="impact-green">
+  </div>
+
+  <section class="py-26">
+    <div class="col-lg-5 mx-auto text-center">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="mb-0">{% trans %}Faster, Cheaper, Green Money{% endtrans %}</h1>
+        <h6 class="green-500 mb-3">{% trans %}Impact{% endtrans %}</h6>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm pt-0">
+      <h6 class="longform mb-10">{% trans %}The digital asset XRP is a truly global currency—ideally suited to enable today’s global economy.{% endtrans %}</h6>
+      <p class="mb-6">{% trans %}As an optimal medium of exchange, XRP and the XRP Ledger on which it operates help to move money around the world faster, cheaper and more sustainably than any other currency available today. {% endtrans %}</p>
+      <p class="mb-10">{% trans %}It was designed this way, and it’s proving its impact in global payments and beyond.{% endtrans %}</p>
+      <a class="btn btn-primary btn-arrow" href="carbon-calculator.html">How Green is Your Currency?</a>
+    </div>
+  </section>
+
+  <div class="position-relative d-none-sm">
+    <img src="./img/backgrounds/impact-orange.svg" id="impact-orange">
+  </div>
+
+  <section class="container-new py-26">
+    <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
+      <h2 class="h4 h2-sm mb-8">{% trans %}Creating Economic Opportunity{% endtrans %}</h2>
+      <h5 class="longform mb-10">{% trans %}For more than <a href="https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf" target="_blank">272 million migrants</a> worldwide, sending and receiving money across borders is expensive, unreliable and complex.{% endtrans %}</h5>
+      <p class="mb-6">{% trans %}XRP and the XRP Ledger are changing that. The technology has been adopted by financial institutions around the world to source liquidity for international transactions. Because of the unprecedented efficiency it offers, they’re able to bring down costs and improve services.{% endtrans %}</p>
+      <p class="mb-0">{% trans %}This means hundreds of millions of people worldwide who need to move money safely and securely across borders can do so more affordably and reliably than ever before.{% endtrans %}</p>
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="mt-10 card-grid card-grid-2xN">
+      <div class="col-new ls-none mb-16-sm">
+        <h2 class="h4 h2-sm mb-8">{% trans %}Building for the Future{% endtrans %}</h2>
+        <h5 class="longform mb-10">{% trans %}Digital assets and blockchain technology are the future of finance. Open and decentralized, they offer the first-ever global standards for value exchange broadly—whether it’s money, stocks, loyalty points, intellectual property or more.{% endtrans %}</h5>
+        <p class="mb-6">{% trans %}This has spawned increasing adoption of the technology across the financial services industry, from retail and institutional investment to commercial use cases like CBDCs, NFTs and cross-border payments.{% endtrans %}</p>
+        <p class="mb-0">{% trans %}With usage growing, it’s critical that measures are taken today to ensure that the technology is environmentally sustainable tomorrow.{% endtrans %}</p>
+      </div>
+      <div class="col-new ls-none mb-16-sm">
+        <div class="col-md-8 mx-auto pl-0-sm pr-0-sm">
+          <h6 class="mb-10-until-sm mb-8-sm">{% trans %}Projected BTC, ETH and XRP Transactions in USD{% endtrans %}</h6>
+          <div class="mb-10">
+            <div class="d-flex align-items-baseline mb-3">
+              <h5 class="mb-0">{% trans %}2025{% endtrans %}</h5>
+              <p class="green-500 h6 ml-10 mb-0">
+                <img src="assets/img/icons/green-up-arrow.svg">
+                {% trans %}+195.3%{% endtrans %}
+              </p>
+            </div>
+            <p class="numbers">{% trans %}$8.6T{% endtrans %}</p>
+          </div>
+          <div>
+            <div class="d-flex align-items-baseline mb-3">
+              <h5 class="mb-0">{% trans %}2030{% endtrans %}</h5>
+              <p class="green-500 h6 ml-10 mb-0">
+                <img src="assets/img/icons/green-up-arrow.svg">
+                {% trans %}+21.4%{% endtrans %}
+              </p>
+            </div>
+            <p class="numbers">{% trans %}$10.5T{% endtrans %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="position-relative d-none-sm">
+    <img src="./img/backgrounds/impact-magenta.svg" id="impact-magenta">
+  </div>
+
+  <section class="container-new py-26">
+    <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
+      <h2 class="h4 h2-sm mb-8">{% trans %}Are All Digital Assets Alike?{% endtrans %}</h2>
+      <h5 class="longform mb-10">{% trans %}All digital assets have different strengths that make them ideal for various use cases.{% endtrans %}</h5>
+      <p class="mb-6">{% trans %}Bitcoin has historically been recognized as a store of value and Ether (ETH) for its smart contract capabilities.{% endtrans %}</p>
+      <p class="mb-6">{% trans %}XRP was designed to be optimal for global payments—it’s fast, cheap, scalable and energy-efficient. But the XRP Ledger is also increasingly popular for innovative blockchain use cases, like NFTs and DeFi.{% endtrans %}</p>
+      <p class="mb-6">{% trans %}The same characteristics that make XRP ideal for global transactions mean it’s also better for our environment. XRP is green by nature.{% endtrans %}</p>
+    </div>
+  </section>
+
+
+  <section class="container-new py-26">
+    <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
+      <h2 class="h4 h2-sm mb-8">{% trans %}What Makes the XRP Ledger Green?{% endtrans %}</h2>
+      <h5 class="longform mb-10">{% trans %}Most currencies today—whether digital or physical—are not environmentally friendly. The potential for long-term impact on our planet could hold startling consequences. {% endtrans %}</h5>
+      <p class="mb-6">{% trans %}The XRP Ledger processes transactions through a unique “consensus” mechanism that consumes negligible energy and all XRP currency is already in circulation.{% endtrans %}</p>
+      <p class="mb-6">{% trans %}Cash also leaves a substantial carbon footprint, and the environmental impact goes beyond energy consumption—eutrophication (due to waste), photochemical ozone creation, greenhouse gas emissions and more factor into the equation.{% endtrans %}</p>
+      <p class="mb-6">{% trans %}Other digital assets, like Bitcoin, rely on a different mechanism to both validate transactions and create new coins. This “proof-of-work” algorithm requires “mining.” Mining is an incredibly energy-intensive process for validating transactions that consumes more energy in a year than entire countries.{% endtrans %}</p>
+      <p class="mb-10">{% trans %}Adopting XRP more broadly will help limit this waste and ensure a sustainable future for our planet and global economy.{% endtrans %}
+      </p>
+      <a class="btn btn-primary btn-arrow" href="carbon-calculator.html">{% trans %}Explore the Carbon Calculator{% endtrans %}</a>
+    </div>
+  </section>
+</div>
+
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

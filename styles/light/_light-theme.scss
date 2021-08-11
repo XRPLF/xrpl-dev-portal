@@ -1,0 +1,612 @@
+$light-bg: $gray-100;
+$light-fg: $black;
+$light-fg-muted: $gray-800;
+$light-fg-disabled: $gray-400;
+$light-form-bg: $gray-300;
+$light-box-shadow: 0px 5px 20px 0px $gray-400;
+$light-link-hover-color: $blue-purple-500;
+$light-standout-bg: $white;
+
+// General color elements ------------------------------------------------------
+
+body {
+  background-color: $light-bg;
+  color: $light-fg;
+}
+#topnav-theme .custom-theme-toggle {
+  .custom-control-label::before {
+    background-color: transparent;
+    background-position: bottom right;
+    transform: rotate(-15deg);
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  &:not(.chip) {
+    color: $light-fg;
+  }
+  &.green-500 {
+    color: $green-700;
+    text-shadow: white 0 0 2px, white -1px -1px 2px, white 1px 1px 2px;
+  }
+}
+
+.bg-grey-800 {
+  background-color: $light-standout-bg;
+}
+.grey-400 {
+  color: $gray-600;
+}
+
+.text-muted {
+  color: $light-fg-muted !important;
+}
+.longform {
+  color: $light-fg-muted;
+}
+.numbers {
+  color: $black;
+}
+
+.invertible-img {
+  filter: invert(100%);
+}
+
+// Forms and inputs ------------------------------------------------------------
+.search, .input-group, .form-group {
+  .input-group-text {
+    background-color: $gray-200;
+    color: $gray-800;
+  }
+
+  label .input-group-text,
+  .form-control:not(.btn) {
+    color: $light-fg;
+    background-color: $light-form-bg;
+    border-color: $light-form-bg;
+  }
+
+  .ds-input {
+    color: $light-fg;
+    background-color: $light-form-bg;
+    border-color: $light-form-bg;
+
+    &:focus {
+      border-color: $blue-purple-400;
+    }
+  }
+}
+
+.list-group-item {
+  border-color: $light-fg-muted;
+  background-color: $light-bg;
+
+  &.disabled {
+    color: $light-fg-disabled;
+  }
+}
+
+.progress {
+  background-color: $light-form-bg;
+}
+
+// Algolia search results
+.xrp-ledger-dev-portal {
+  // The extra specificity makes this override the default Algolia styles.
+  .algolia-autocomplete {
+    .ds-dropdown-menu [class^="ds-dataset-"] {
+      background-color: $light-standout-bg;
+    }
+    .ds-dropdown-menu::before {
+      background-color: $light-standout-bg;
+    }
+    .algolia-docsearch-suggestion {
+      background-color: $light-standout-bg;
+    }
+    .algolia-docsearch-suggestion--category-header {
+      color: $black;
+      border-bottom-color:$blue-purple-500;
+    }
+    .algolia-docsearch-suggestion--subcategory-column {
+      color: $black;
+    }
+    .algolia-docsearch-suggestion--title {
+      color: $black;
+    }
+    .algolia-docsearch-suggestion--text {
+      color: $light-fg-muted;
+    }
+    .algolia-docsearch-suggestion--highlight {
+      color: $black;
+      background-color: $gray-300;
+    }
+    .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl0 .algolia-docsearch-suggestion--highlight, .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl1 .algolia-docsearch-suggestion--highlight, .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
+      background-color: $gray-300;
+    }
+  }
+}
+
+// Navigation ------------------------------------------------------------------
+
+a, nav a {
+  color: $light-fg;
+
+  &.btn-primary {
+    // undo this for buttons
+    color: $white;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &:hover, &:active, &.active {
+    color: $light-link-hover-color;
+  }
+
+  &:not(.btn):focus {
+    background-color: transparent;
+  }
+}
+
+.landing-table tbody td {
+  color: $light-fg-muted;
+}
+
+
+// Buttons
+.btn-outline-secondary,
+.content a.button,
+.navbar-dark .navbar-nav .nav-link.btn-outline-secondary {
+  color: $dark;
+  border-color: $dark;
+
+  &:not(:disabled):not(.disabled):hover, &:not(:disabled):not(.disabled):active {
+    color: $primary;
+    border-color: $primary;
+    background-color: transparent;
+  }
+}
+
+// Breadcrumbs
+.breadcrumb {
+  background: $light-bg;
+}
+.breadcrumb-item a {
+  color: $gray-600;
+
+  &:hover {
+    color: $primary
+  }
+}
+
+// Top Nav
+.top-nav {
+  background: $light-bg;
+
+  #topnav-pages .nav-link {
+    color: $light-fg;
+  }
+
+  // Logo
+  .navbar-brand {
+    .logo {
+      content: url(../img/XRPLedger_DevPortal-black.svg);
+      height: 40px;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $white;
+    border-color: $white;
+    box-shadow: $light-box-shadow;
+
+    a:hover, a.active {
+      color: $light-link-hover-color;
+    }
+
+    .dropdown-item.dropdown-hero {
+      > img {
+        background-color: $gray-200;
+      }
+      p {
+        color: $gray-700;
+      }
+    }
+    .dropdown-item.active {
+      color: $light-link-hover-color;
+    }
+
+    h5 {
+      color: $gray-600;
+    }
+
+    .col-for-popular-pages,
+    .col-for-人気ページ,
+    .col-for-questions,
+    .col-for-質問 {
+      background-color: $gray-200;
+    }
+  }
+
+  // Top nav mobile
+  @include media-breakpoint-down(md) {
+    .navbar-toggler {
+      .navbar-toggler-icon {
+        &::after,
+        &::before,
+        div {
+          background-color: $gray-900;
+        }
+      }
+    }
+
+    .navbar-nav .nav-link,
+    .navbar-collapse > .nav-item {
+      background: $gray-100;
+    }
+  }
+}
+
+// Left/right nav
+aside .sidenav_cat_title {
+  color: $black;
+}
+.page-toc .level-1 a,
+.command-list .separator {
+  color: $black;
+}
+aside a:hover,
+aside .sidenav_cat_title:hover,
+aside a.active,
+aside a.active:hover,
+aside .active > a,
+aside .active > a:hover {
+  color: $light-link-hover-color;
+}
+
+.dactyl-tree-nav {
+  nav {
+    border-left: 1px solid $black;
+
+    .nav-link:hover,
+    .nav-link:active {
+      border-left-color: $light-link-hover-color;
+    }
+
+    .active > .nav-link {
+      border-left-color: $light-link-hover-color;
+    }
+  }
+}
+
+
+.page-toc,
+.command-list {
+  border-left: 1px solid $black;
+
+  .level-3 {
+    border-left: 1px solid $black;
+  }
+
+  li a {
+    &:hover,
+    .active {
+      border-left-color: $light-link-hover-color;
+    }
+  }
+}
+
+// Footer
+.footer-brand {
+  .logo {
+    filter: invert(100%);
+  }
+}
+
+.copyright-license {
+  text-shadow: white 0px 0px 2px, white 1px 1px 2px,
+               white 2px 2px 3px, white 2px 2px 4px,
+               white 2px 2px 5px, white 2px 2px 6px,
+               white -1px -1px 2px,
+               white -2px -2px 3px, white -2px -2px 4px;
+}
+
+// Layout elements -------------------------------------------------------------
+.container-new .col-new-card {
+  box-shadow: $light-box-shadow;
+  color: $light-fg;
+}
+
+.card {
+  color: $light-fg;
+  background-color: $light-standout-bg;
+  box-shadow: $light-box-shadow;
+}
+
+// FAQ
+.page-faq,
+.mini-faq {
+  &.landing-builtin-bg::before {
+    // Lighten the background image for legibility, since this one
+    // runs under a significant amount of the header text.
+    opacity: 0.6;
+  }
+
+  .q-wrapper {
+    background-color: $gray-200;
+    color: $light-fg;
+
+    > a.expander:hover {
+      color: $light-fg;
+    }
+  }
+}
+
+.page-community {
+  #platform-stack-overflow {
+    content: url("../img/logos/lightmode/stack-overflow.svg")
+  }
+}
+
+// Status labels
+.status.not_enabled {
+  color: $yellow-700;
+}
+
+// Parent ("category") page in label landings
+.pg-category {
+  color: $gray-600;
+}
+
+.landing {
+  .nav .nav-link {
+    color: $light-fg-muted;
+    border-bottom-color: $gray-300;
+  }
+
+  .circled-logo {
+    background-color: $gray-300;
+
+    img[src="assets/img/logos/globe.svg"] {
+      filter: invert(100%);
+    }
+  }
+
+  p a,
+  .longform a {
+    color: $light-link-hover-color;
+  }
+}
+
+// Callouts
+.devportal-callout.caution, .devportal-callout.注意 {
+  border-color: $yellow-700;
+
+  > strong:first-child::before {
+    color: $yellow-700;
+  }
+}
+
+.devportal-callout.tip, .devportal-callout.ヒント {
+  border-color: $green-600;
+
+    > strong:first-child::before {
+      color: $green-600;
+    }
+}
+
+// Code ------------------------------------------------------------------------
+// Inline code font
+code {
+  color: $light-fg;
+}
+
+// Code blocks
+pre code {
+  color: $white;
+}
+
+// Code tabs
+.multicode {
+  a {
+    color: $black;
+    &.current {
+      color: $white;
+    }
+    &:hover {
+      text-decoration: none;
+      background-color: $light-form-bg;
+      color: $white;
+    }
+    &:focus {
+      background-color: $gray-800;
+    }
+  }
+
+  .code_toggler {
+    background-color: $gray-800;
+    color: $gray-100;
+    border-color: $gray-100;
+  }
+}
+
+.interactive-block {
+  .breadcrumb-item.done a::after {
+    color: $green-900;
+  }
+}
+
+// Dev tools -------------------------------------------------------------------
+.modal-content {
+  background-color: $light-standout-bg;
+}
+
+
+.rpc-tool {
+  pre .toggle {
+    color: $white;
+
+    &:hover {
+      color: $blue-purple-300;
+    }
+  }
+}
+
+
+// Individual page styles ------------------------------------------------------
+
+// Homepage
+
+.page-home {
+  #benefits-list {
+    @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
+      ##{$benefit} {
+        content: url("../img/icons/lightmode/#{$benefit}.svg")
+      }
+    }
+  }
+}
+
+// XRPL Overview
+#validator-graphic {
+  content: url(../img/lightmode/validators.svg);
+}
+
+// XRP Overview
+
+#wallets {
+  #wallet-xumm {
+    content: url("../img/wallets/lightmode/xumm.svg")
+  }
+}
+
+#top-exchanges {
+  // Kraken, eToro are OK on both light and dark
+
+  // Vector logos
+  @each $exchange in "bitstamp", "cex-io", "liquid", "bitfinex", "lmax" {
+    #exch-#{$exchange} {
+      content: url("../img/exchanges/lightmode/#{$exchange}.svg");
+    }
+  }
+
+  // PNG logos
+  @each $exchange in "bittrex", "currency-com", "ftx" {
+    #exch-#{$exchange} {
+      content: url("../img/exchanges/lightmode/#{$exchange}.png");
+    }
+  }
+}
+
+// History page
+.timeline-dot {
+  background-color: $light-bg;
+}
+
+// Carbon calculator
+.page-calculator {
+  #co2Animation, #gasAnimation {
+    //filter: invert(100%) hue-rotate(200deg) brightness(1.8);
+    // Leave these dark for now
+    background: $body-bg;
+    padding: 1rem;
+  }
+
+  #calculator-mobile-toggle.show {
+    background-color: $blue-purple-500;
+    color: $white;
+  }
+  #calculator-inputs.sticky {
+    background-color: $light-bg;
+  }
+
+  #data-selector li:not(.active) a {
+    background-color: $light-form-bg;
+    color: $light-fg;
+  }
+}
+
+// Use Cases & Featured Projects page
+.page-uses {
+  @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
+    ##{$usecase} {
+      content: url("../img/icons/lightmode/#{$usecase}.svg");
+    }
+  }
+
+  // Monochrome logos; invert.
+  #bitpay, #coil, #forte, #xrplorer, #gatehub {
+    .biz-logo {
+      filter: invert(100%);
+    }
+  }
+  // Alternate SVG logos
+  @each $company in "bitgo", "exodus", "ripple", "xrpl-labs" {
+    ##{$company} {
+      .biz-logo {
+        content: url("../img/uses/lightmode/#{$company}.svg");
+      }
+    }
+  }
+  // non-SVG logos:
+  #raisedinspace {
+    .biz-logo {
+      content: url(../img/uses/lightmode/raised.png);
+    }
+  }
+  #towo {
+    .biz-logo {
+      content: url(../img/uses/lightmode/towo.png);
+    }
+  }
+}
+
+.landing-bg {
+  opacity: 0.4;
+  @include media-breakpoint-up(md) {
+    opacity: 1.0;
+  }
+}
+.landing-builtin-bg {
+  &::before {
+    opacity: 0.4;
+    @include media-breakpoint-up(md) {
+      opacity: 1.0;
+    }
+  }
+}
+
+
+// feedback widget
+#feedback-content {
+  .docked-widget {
+
+    .widget-header {
+      background-color: $light-bg !important;
+      color: $light-fg !important;
+    }
+    .widget-header-icon {
+      filter: invert(100%);
+    }
+  }
+}
+
+
+// Placeholder text colors (search bars, etc.)
+$placeholder-color: $gray-600;
+::-webkit-input-placeholder { /* Chrome */
+  color: $placeholder-color;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $placeholder-color;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $placeholder-color;
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: $placeholder-color;
+  opacity: 1;
+}

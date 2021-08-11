@@ -2,6 +2,8 @@
 html: account_lines.html
 parent: account-methods.html
 blurb: Get info about an account's trust lines.
+labels:
+  - Tokens
 ---
 # account_lines
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")

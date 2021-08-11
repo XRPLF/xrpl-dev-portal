@@ -2,6 +2,8 @@
 html: server_info.html
 parent: server-info-methods.html
 blurb: rippledサーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。
+labels:
+  - コアサーバー
 ---
 # server_info
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")

@@ -2,6 +2,8 @@
 html: ping.html
 parent: utility-methods.html
 blurb: Confirm connectivity with the server.
+labels:
+  - Core Server
 ---
 # ping
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")

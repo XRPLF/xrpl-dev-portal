@@ -5,7 +5,6 @@ Thanks for considering a contribution to the XRP Ledger Developer Portal!
 
 We're thrilled you're interested and your help is greatly appreciated. Contributing is a great way to learn about the XRP Ledger (XRPL).
 
-You may also be interested in learning about [Interledger Protocol (ILP)](https://interledger.org/), which, along with XRPL, is another part of the RippleX developer ecosystem.
 
 We are happy to review your pull requests. To make the process as smooth as possible, please read this document and follow the stated guidelines.
 
@@ -24,7 +23,8 @@ The XRPL Dev Portal provides comprehensive documentation of the the XRP Ledger, 
     - [content/\_img-sources/](content/_img-sources/) - Source files for images used in the documentation. Any `.uxf` files are diagrams made with [Umlet](https://www.umlet.com/).
     - [content/\_snippets/](content/_snippets/) - Reusable chunks of Markdown text that are included in other content files, using the Dactyl preprocessor.
 - [img/](img/) - Images used by the documentation contents.
-- [tool/](tool/) - Templates, style-checker rules, and other scripts.
+- [template/](template/) - Template files for building the HTML outputs.
+- [tool/](tool/) - Filters, style-checker rules, and other scripts.
 - [styles/](styles/) - Source files (SCSS) to generate the CSS files in the assets folder.
 - [`dactyl-config.yml`](dactyl-config.yml) - Main config file, which contains the metadata for all the docs. For information on our conventions, see [Config Formatting](#config-formatting).
 
@@ -87,7 +87,7 @@ The Markdown file itself should start with a frontmatter stanza such as the foll
 ---
 html: the-rippled-server.html
 parent: concepts.html
-template: template-landing-children.html
+template: pagetype-category.html.jinja
 blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
 ---
 ```
@@ -101,7 +101,7 @@ At a minimum, most pages should have `html`, `parent` and `blurb` fields (plus t
 | `parent`             | String           | The exact, unique `html` value of this page's "parent" page. Indicates where this page should appear in the navigation. |
 | `blurb`              | String           | Human-readable summary of the page. (Plain text only.) Should be about 1 sentence long. This appears in various places, including landing pages and metadata used in unfurling links on social media. |
 | `name`               | String           | Human-readable page name. (Plain text only.) For files with Markdown content, you should omit this so that Dactyl can automatically detect it from a header on the first line of the contents instead. This is usually only provided on landing pages or other special pages with no Markdown source file. |
-| `template`           | String           | The filename of a template file to use (in the `tool/` directory) for this page. Most pages should use the default template. The `template-landing-children.html` page shows a list of child pages at the end. Pages with special or particularly unique layouts may need custom templates. |
+| `template`           | String           | The filename of a template file to use (in the `template/` directory) for this page. Most pages should use the default template. The `pagetype-category.html.jinja` template shows a list of child pages at the end. Pages with special or particularly unique layouts may need individual templates (conventionally, starting with `page-`). |
 | `status`             | String           | Use the value `not_enabled` on pages relating to an amendment that is not yet enabled on the XRP Ledger mainnet. This displays a "flask" badge with a tooltip next to the page in the navigation. |
 | `nav_omit`           | Boolean          | Use `true` to cause this page not to appear in any navigation elements. |
 | `top_nav_omit`       | Boolean          | Use `true` to cause this page not to appear in the page top dropdown navigation. |
@@ -109,7 +109,7 @@ At a minimum, most pages should have `html`, `parent` and `blurb` fields (plus t
 | `sidebar`            | String           | Use `disabled` to hide the left and right sidebars (if the page uses a template derived from the base template) |
 | `fb_card`            | String           | Filename of an image (in `assets/img/`) to use when unfurling links to this page on Facebook. |
 | `twitter_card`       | String           | Filename of an image (in `assets/img/`) to use when unfurling links to this page on Twitter. |
-| `redirect_url`       | String           | Use with `template: template-redirect.html` only. Automatically redirect the user to the provided URL when they navigate to this page. |
+| `redirect_url`       | String           | Use with `template: pagetype-redirect.html.jinja` only. Automatically redirect the user to the provided URL when they navigate to this page. |
 | `cta_text`           | String           | Text to appear in "call to action" buttons that link to this page (on special landings). |
 | `curated_anchors`    | Array of Objects | A set of anchors in this page to show, similar to child pages, in landings. Each object in the array should have a human-readable `name` field (such as `"Available Modes"`) and an `anchor` field with the HTML ID to link to (such as `"#available-modes"`). |
 | `skip_spell_checker` | Boolean          | Use `true` to make the Dactyl's style checker skip spell-checking this page. |
@@ -141,7 +141,7 @@ The `dactyl-config.yml` contains a "target" entry for each available language. (
     display_name: XRP Ledger Dev Portal
     # These github_ fields are used by the template's "Edit on GitHub" link.
     #  Override them with --vars to change which fork/branch to edit.
-    github_forkurl: https://github.com/ripple/xrpl-dev-portal
+    github_forkurl: https://github.com/XRPLF/xrpl-dev-portal
     github_branch: master
     strings:
         blog: "Blog"
@@ -190,7 +190,7 @@ Example entry for a page that isn't translated:
 
 ### Where to Start
 
-If you want to translate the XRP Ledger Dev Portal into your native language of choice, start with the [XRP Ledger Overview file](https://github.com/ripple/xrpl-dev-portal/blob/master/content/concepts/introduction/xrp-ledger-overview.md), which describes the core properties and functions of the XRP Ledger.
+If you want to translate the XRP Ledger Dev Portal into your native language of choice, start with the [XRP Ledger Overview file](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/concepts/introduction/xrp-ledger-overview.md), which describes the core properties and functions of the XRP Ledger.
 
 Save the file as `xrp-ledger-overview.{language code}.md`, where `{language code}` is the [IETF BCP47](https://tools.ietf.org/html/bcp47) language code. (For example, "es" for Spanish, "ja" for Japanese, "zh-CN" for Simplified Chinese, "zh-TW" for Traditional Chinese as used in Taiwan, and so on.) Then open a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) adding your file to this repository. One of the repository's maintainers can help with the other necessary setup to add the language to the site.
 

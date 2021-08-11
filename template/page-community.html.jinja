@@ -1,0 +1,106 @@
+{% extends "base.html.jinja" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing page-community{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+
+<div class="position-relative">
+  <img src="./img/backgrounds/community-magenta.svg" class="landing-bg" id="community-magenta">
+</div>
+
+<section class="py-26 text-center">
+  <div class="col-lg-5 mx-auto text-center">
+    <div class="d-flex flex-column-reverse">
+      <h1 class="mb-0">{% trans %}Participate in the XRPL Community{% endtrans %}</h1>
+      <h6 class="green-500 mb-3">{% trans %}Join and Contribute{% endtrans %}</h6>
+    </div>
+  </div>
+</section>
+
+<div class="position-relative d-none-sm">
+  <img src="./img/backgrounds/community-purple.svg" id="community-purple">
+</div>
+
+
+<section class="container-new py-26" id="run-a-network-node">
+  <div class="d-flex flex-column-reverse col-sm-8 p-0">
+    <h3 class="h4 h2-sm">{% trans %}Run an XRP Ledger Network Node{% endtrans %}</h3>
+    <h6 class="green-500 mb-3">{% trans %}Contribute to Consensus{% endtrans %}</h6>
+  </div>
+  {% set curated_cards = [
+    "the-rippled-server.html",
+    "install-rippled.html",
+    "run-rippled-as-a-validator.html",
+    "troubleshoot-the-rippled-server.html"
+  ] %}
+  {% include 'component-curated-cards.html.jinja' %}
+</section><!--/#run-a-network-node-->
+
+<section class="container-new py-26" id="find-us-on-platforms">
+  <div class="d-flex flex-column-reverse col-sm-8 p-0">
+    <h3 class="h4 h2-sm">{% trans %}Find us on the platforms below{% endtrans %}</h3>
+    <h6 class="green-500 mb-3">{% trans %}Join the Conversation{% endtrans %}</h6>
+  </div>
+
+  {% set platforms = [
+    { "name": "GitHub",
+      "id": "github",
+      "link": "https://github.com/XRPLF/xrpl-dev-portal",
+      "imgclasses": "invertible-img"},
+    { "name": "Twitch",
+      "id": "twitch",
+      "link": "https://www.twitch.tv/ripplexdev"},
+    { "name": "Stack Overflow",
+      "id": "stack-overflow",
+      "link": "https://stackoverflow.com/questions/tagged/xrp"},
+    { "name": "Twitter",
+      "id": "twitter",
+      "link": "https://twitter.com/XRPLF/"},
+  ] %}
+  <div class="row row-cols-2 row-cols-lg-4 card-deck">
+  {% for plat in platforms %}
+    <a class="card" href="{{plat.link}}">
+      <div class="card-body">
+        <div class="circled-logo"><img id="platform-{{plat.id}}" alt="(logo)" {% if plat.imgclasses %}class="{{plat.imgclasses}}"{% endif %}/></div>
+        <h4 class="card-title h5">{{plat.name}}</h4>
+      </div>
+      <div class="card-footer">&nbsp;</div>
+    </a>
+  {% endfor %}
+  </div>
+</section>
+<section class="container-new py-26">
+  <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 bg-grey-800 text-center">
+    <img src="./img/backgrounds/cta-community-purple.svg" class="d-none-sm cta cta-top-left">
+    <img src="./img/backgrounds/cta-community-green.svg" class="cta cta-bottom-right">
+    <div class="z-index-1 position-relative">
+      <div class="d-flex flex-column-reverse">
+        <h2 class="h4 mb-10-until-sm mb-8-sm">{% trans %}A community-driven resource for all things XRPL.org{% endtrans %}</h2>
+        <h5 class="green-500 mb-3">{% trans %}Contribute to XRPL.org{% endtrans %}</h5>
+      </div>
+      <p class="mb-10">{% trans %}Thank you for your interest in contributing to XRPL.org. This website was created as an XRPL community resource and is meant to be a living, breathing source of truth for XRP Ledger resources. This portal is open-source and anyone can suggest changes.{% endtrans %}</p>
+      <a class="btn btn-primary btn-arrow" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md" target="_blank">{% trans %}Read Contributor Guidelines{% endtrans %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

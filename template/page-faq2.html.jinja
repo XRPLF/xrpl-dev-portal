@@ -1,0 +1,21 @@
+{% extends "pagetype-doc.html.jinja" %}
+
+{% block bodyclasses %}page-faq landing-builtin-bg{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+  <article class="row">
+    {% if (target.lang != "en" and "en" in currentpage.targets) or currentpage.untranslated_warning %}
+    {# Add a "sorry this page isn't translated" banner. #}
+    <div class="devportal-callout note mb-5"><strong>{% trans %}Sorry, this page is not available in your language.{% endtrans %}</strong>
+      <p class="mb-0">{% trans %}We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a>{% endtrans %}</p>
+    </div><!--/.devportal-callout-->
+    {% endif %}
+
+    <div class="content container-new">
+      <div class="d-flex-column">
+        {{ content }}
+      </div>
+    </div>
+  </article>
+{% endblock %}

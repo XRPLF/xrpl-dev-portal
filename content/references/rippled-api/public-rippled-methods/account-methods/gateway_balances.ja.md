@@ -2,6 +2,9 @@
 html: gateway_balances.html
 parent: account-methods.html
 blurb: 特定のアカウントから発行された残高の合計を計算します。
+labels:
+  - トークン
+  - アカウント
 ---
 # gateway_balances
 [[ソース]](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")

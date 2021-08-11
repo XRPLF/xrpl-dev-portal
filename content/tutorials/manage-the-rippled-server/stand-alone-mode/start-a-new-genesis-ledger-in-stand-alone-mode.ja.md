@@ -2,6 +2,8 @@
 html: start-a-new-genesis-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
 blurb: スタンドアロンモードで新しいジェネシスレジャーを開始します。
+labels:
+  - コアサーバー
 ---
 # スタンドアロンモードでの新しいジェネシスレジャーの開始
 

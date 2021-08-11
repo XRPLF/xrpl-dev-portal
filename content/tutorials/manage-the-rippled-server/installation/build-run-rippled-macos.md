@@ -2,6 +2,8 @@
 html: build-run-rippled-macos.html
 parent: install-rippled.html
 blurb: Compile rippled yourself on macOS.
+labels:
+  - Core Server
 ---
 # Build and Run rippled on macOS
 
@@ -61,7 +63,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/).
 
-        $ git clone git@github.com:ripple/rippled.git
+        $ git clone https://github.com/ripple/rippled.git
         $ cd rippled
 
 0. Switch to the appropriate branch for the software version you want:

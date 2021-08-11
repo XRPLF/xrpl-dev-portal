@@ -2,6 +2,9 @@
 html: configure-online-deletion.html
 parent: configure-rippled.html
 blurb: Configure how far back your server should store transaction history.
+labels:
+  - Core Server
+  - Data Retention
 ---
 # Configure Online Deletion
 

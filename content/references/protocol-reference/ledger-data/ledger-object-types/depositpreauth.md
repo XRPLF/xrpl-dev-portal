@@ -2,6 +2,8 @@
 html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
 parent: ledger-object-types.html
 blurb: A record of preauthorization for sending payments to an account that requires authorization.
+labels:
+  - Security
 ---
 # DepositPreauth
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")

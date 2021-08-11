@@ -1,29 +1,4 @@
-/* Site-wide header link styles --------------------------------------------- */
-h1 a,
-h2 a,
-h3 a {
-  color: $white;
-  text-decoration: none;
-}
-h1 a:hover,
-h2 a:hover,
-h3 a:hover,
-.xrpl-footer h5 a:hover {
-  color: $primary;
-}
-
-.curated-links a,
-.children-display a,
-a.card,
-.xrpl-footer a {
-  color: $white;
-
-  &:hover {
-    color: $primary;
-  }
-}
-
-/* Content text styling ----------------------------------------------------- */
+/* Content text styling (applies mostly to Markdown-generated content)------- */
 
 .content {
   padding-bottom: 50px;
@@ -35,9 +10,10 @@ a.card,
 }
 
 .content h1 {
+  font-size: 3rem;
   margin-top: 32px;
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: 700;
 }
 .content h1:first-child,
 .landing section:first-of-type h1:first-child {
@@ -48,26 +24,33 @@ a.card,
   margin-top: -80px;
 }
 .content h2 {
-  margin-top: 72px;
-  margin-bottom: 24px;
-  font-weight: 400;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
   line-height: 1.2;
 }
 .content h3 {
-  margin-top: 24px;
+  font-size: 2.125rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   line-height: 1.2;
 }
 .content h4 {
-  margin-top: 20px;
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 .content h5 {
-  margin-top: 16px;
+  font-size: 1.25rem;
+  margin-top: 1.25rem;
   line-height: 1.2;
   font-weight: 700;
 }
 .content h6 {
-  margin-top: 12px;
+  font-size: 1rem;
+  margin-top: 1rem;
   line-height: 1.2;
   font-weight: 700;
 }
@@ -86,51 +69,6 @@ a.card,
 .content a[title="Source"] {
   float: right;
   padding-left: 20px;
-}
-
-.content .children-display > ul > li {
-  margin-top: 24px;
-}
-
-
-/* Cards ------------------------------- */
-.card {
-  background-color: transparent;
-}
-
-.card-wrapper {
-  width: 100%;
-}
-.card-b {
-  padding: 2rem;
-  background: rgba(34, 37, 43, 0.5);
-  backdrop-filter: blur(3px);
-  border-radius: 8px;
-  opacity: 1;
-  transition: all 0.35s ease-in-out;
-  @include media-breakpoint-down(sm) {
-    margin: 10px;
-  }
-  &.not-hover {
-    opacity: 0.6;
-  }
-}
-.section-marker {
-  position: absolute;
-  font-size: 0.875rem;
-  transform: rotate(90deg);
-  font-weight: normal;
-  top: calc(50% - 64px);
-  margin-left: -32px;
-  transform-origin: top left;
-}
-@include media-breakpoint-down(md) {
-  .card-deck {
-    display: block !important;
-  }
-  .card-deck .card {
-    margin-bottom: 2.5rem !important;
-  }
 }
 
 // Hover anchors ---------------

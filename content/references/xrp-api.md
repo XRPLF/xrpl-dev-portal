@@ -2,8 +2,8 @@
 html: xrp-api.html
 parent: references.html
 blurb: An API server that provides a REST-like interface to the XRP Ledger.
-template: template-redirect.html
-redirect_url: https://github.com/xpring-eng/xrp-api # Update to GH Pages ref if possible
+template: pagetype-redirect.html.jinja
+redirect_url: https://xpring-eng.github.io/xrp-api/
 nav_omit: true
 filters:
     - xrpapi_readme

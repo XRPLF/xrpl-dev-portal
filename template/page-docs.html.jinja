@@ -1,0 +1,140 @@
+{% extends "base.html.jinja" %}
+
+{% block mainclasses %}landing page-docs-index landing-builtin-bg{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+  <section class="py-26 text-center">
+    <div class="col-xl-4 col-lg-6 mx-auto text-center">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="mb-18">{% trans %}What Would You Like to Learn?{% endtrans %}</h1>
+        <h6 class="green-500 mb-3">{% trans %}XRP Ledger Documentation{% endtrans %}</h6>
+      </div>
+      <div class="center-search search">
+        <form role="search">
+          <div class="form-group">
+            <div class="input-group">
+              <label class="input-group-prepend" for="docsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">{% trans %}Search{% endtrans %}</span></label>
+              <input id="docsearchbox" type="text" class="form-control searchinput" placeholder="{% trans %}Search for articles, training, and code samples...{% endtrans %}">
+            </div><!--/.form-group-->
+          </div>
+        </form>
+      </div><!--/.center-search-->
+    </div>
+  </section>
+
+  <section class="container-new mb-50-until-sm" id="docs-browse-by">
+    <div class="row">
+      <div class="col-lg-6 mb-10" id="popular-topics">
+        <h2 class="h4">{% trans %}Browse By Popular Topics{% endtrans %}</h2>
+        <ul class="nav flex-column">
+          {% for pg_html in currentpage.popular_pages %}
+          {% set page = pages|selectattr("html", "defined_and_equalto", pg_html)|first %}
+          <li class="nav-item"><a href="{% if '//' not in page.html %}{{target.prefix}}{% endif %}{{page.html}}" class="nav-link">{{page.name}}</a>
+          {% endfor %}
+        </ul>
+      </div><!--/#popular-topics-->
+
+      <div class="col-lg-6" id="browse-by-label">
+        <h2 class="h4">{% trans %}Browse By Label{% endtrans %}</h2>
+        {% include 'component-tag-cloud.html.jinja' %}
+      </div><!--/#browse-by-label-->
+    </div>
+  </section>
+
+  <section class="container-new mb-50-until-sm" id="software-and-sdks">
+    <div class="d-flex flex-column-reverse col-sm-8">
+      <h2 class="h4">{% trans %}Software and SDKs{% endtrans %}</h2>
+      <h6 class="green-500 mb-3">{% trans %}Start Developing{% endtrans %}</h6>
+    </div>
+
+      {% set curated_cards = [
+        "get-started-using-node-js.html",
+        "get-started-using-python.html",
+        "get-started-using-java.html",
+        "get-started-using-http-websocket-apis.html"
+      ] %}
+      {% set mobile_cols = 2 %}
+      {% set show_blurbs = False %}
+      {% include 'component-curated-cards.html.jinja' %}
+  </section><!--/#software-and-sdks-->
+
+  <section class="container-new mb-50-until-sm" id="doc-types">
+    <div class="d-flex flex-column-reverse col-sm-8">
+      <h2 class="h4">{% trans %}Article types{% endtrans %}</h2>
+      <h6 class="green-500 mb-3">{% trans %}Dive In{% endtrans %}</h6>
+    </div>
+    {% set curated_cards = currentpage.children|selectattr("html","ne","by-label.html")|selectattr("html","ne","faq.html")|map(attribute="html")|list %}
+    {% set mobile_cols = 1 %}
+    {% set show_blurbs = True %}
+    {% include 'component-curated-cards.html.jinja' %}
+  </section><!--/#doc-types-->
+
+  <section class="container-new mb-50-until-sm" id="run-a-network-node">
+    <div class="d-flex flex-column-reverse col-sm-8">
+      <h2 class="h4">{% trans %}Run an XRP Ledger network node{% endtrans %}</h2>
+      <h6 class="green-500 mb-3">{% trans %}Participate in the Network{% endtrans %}</h6>
+    </div>
+    {% set curated_cards = [
+      "the-rippled-server.html",
+      "install-rippled.html",
+      "run-rippled-as-a-validator.html",
+      "troubleshoot-the-rippled-server.html"
+    ] %}
+    {% include 'component-curated-cards.html.jinja' %}
+  </section><!--/#run-a-network-node-->
+
+<section class="container-new mb-50-until-sm" id="docs-hot-topic">
+  <div class="d-flex flex-column-reverse col-sm-8">
+    <h2 class="h4">{% trans %}NFTs{% endtrans %}</h2>
+    <h6 class="green-500 mb-3">{% trans %}Hot Topic{% endtrans %}</h6>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <p class="longform">{% trans %}Interested in non-fungible tokens, but concerned about their <a href="impact.html">large carbon footprint</a>? Check out these proposed standards for issuing NFTs on the XRP Ledger:{% endtrans %}</p>
+    </div>
+    <div class="col-lg-6">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/30" class="nav-link external-link" target="_blank">XLS-14d: Non fungible tokens (indivisible NFT's) on the XRPL</a></li>
+        <li class="nav-item"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/40" class="nav-link external-link" target="_blank">XLS-19d: Wallet based Proof of Digital Asset Property and Rights (NFT)</a></li>
+        <li class="nav-item"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/46" class="nav-link external-link" target="_blank">XLS-20d: Non-Fungible Token Support</a></li>
+      </ul>
+    </div>
+  </div>
+</section><!--/#docs-hot-topic-->
+
+<section class="container-new mb-50-until-sm doc-index">
+  <div class="d-flex flex-column-reverse col-sm-8">
+    <h2 id="full-doc-index" class="h4">{% trans %}Full documentation index{% endtrans %}</h2>
+    <h6 class="green-500 mb-3">{% trans %}See Everything{% endtrans %}</h6>
+  </div>
+
+  <div class="row">
+    {% for page in currentpage.children if page.html not in ("by-label.html", "faq.html") %}
+    {% set parent_html = page.html %}
+    {% set depth = 6 %}
+    {% set show_blurbs = False %}
+    <div class="col-md-6 mt-20">
+      <a href="{{target.prefix}}{{page.html}}"><h5 class="mb-3">{{page.name}}</h5></a>
+      {% include 'children.html' %}
+    </div>
+    {% endfor %}
+  </div>
+</section><!--/.doc-index-->
+{% endblock %}
+
+{% block endbody %}
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#docsearchbox',
+algoliaOptions: { 'facetFilters': ["lang:{{target.lang}}"] },
+debug: false
+});
+</script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

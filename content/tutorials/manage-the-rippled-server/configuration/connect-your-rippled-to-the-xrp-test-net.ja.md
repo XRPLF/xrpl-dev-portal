@@ -2,6 +2,10 @@
 html: connect-your-rippled-to-the-xrp-test-net.html
 parent: configure-rippled.html
 blurb: rippledサーバーをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
+labels:
+  - コアサーバー
+  - ブロックチェーン
+  - 開発
 ---
 # XRPL Altnetへのrippledの接続
 

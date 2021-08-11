@@ -9,14 +9,14 @@ aside .sidenav_cat_title {
 }
 aside a:hover,
 aside .sidenav_cat_title:hover {
-  color: $primary;
+  color: $link-hover-color;
 }
 
 aside a.active,
 aside a.active:hover,
 aside .active > a,
 aside .active > a:hover {
-  color: $primary;
+  color: $link-hover-color;
   font-weight: 700;
 }
 aside a.active-parent,
@@ -27,7 +27,7 @@ aside .active-parent > a {
 .page-toc .level-1 a,
 .command-list .separator {
   font-weight: 700;
-  font-family: "Space Mono", monospace;
+  // font-family: "Space Mono", monospace;
   color: $white;
 }
 
@@ -52,8 +52,6 @@ aside .active-parent > a {
 }
 
 .dactyl-tree-nav {
-  padding: 44px 24px 48px 0;
-  position: relative;
 
   nav {
     margin-left: 1rem;
@@ -62,12 +60,12 @@ aside .active-parent > a {
 
     .nav-link:hover,
     .nav-link:active {
-      border-left: 1px solid $primary;
+      border-left: 1px solid $link-hover-color;
       margin-left: -1px;
     }
 
-    .active > .nav-link, {
-      border-left: 2px solid $primary;
+    .active > .nav-link {
+      border-left: 2px solid $link-hover-color;
       margin-left: -1px;
       padding-left: calc(1rem - 1px);
     }
@@ -80,9 +78,14 @@ aside .active-parent > a {
       padding: 0.25rem 1rem;
       font-size: 0.9rem;
     }
-    &.nav-parent .nav-link {
-      padding-left: 0;
-      font-size: 1.125rem;
+    &.nav-parent {
+      padding-top: 0;
+      
+      .nav-link {
+        padding-left: 0;
+        padding-top: 0;
+        font-size: 1.125rem;
+      }
     }
 
     .nav-toggler + .nav-link {
@@ -108,33 +111,30 @@ aside .active-parent > a {
 
 /* Right navigation --------------------------------------------------------- */
 
-.right-sidebar {
-  padding: 44px 0 24px 48px;
 
-  .toc-header {
-    font-weight: bold;
-    font-size: 14px;
-    padding: 1rem 0;
+.toc-header {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 1rem 0;
 
-    h4 {
-      line-height: 20px;
-      font-size: 1.2em;
-      padding: 0;
-      margin: 0;
-    }
+  h4 {
+    line-height: 20px;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
   }
 }
 
 #page-toc-wrapper {
-  position: sticky;
-  max-height: 85vh;
-  top: 48px;
-  overflow: auto;
-  padding: 0;
-  border: none;
+  // position: sticky;
+  // max-height: 85vh;
+  // top: 48px;
+  // overflow: auto;
+  // padding: 0;
+  // border: none;
 
   .card-body {
-    padding: 0;
+    // padding: 0;
     list-style-type: none;
   }
 }
@@ -161,14 +161,14 @@ aside .active-parent > a {
       &:hover,
       .active {
         text-decoration: none;
-        border-left: 1px solid $primary;
+        border-left: 1px solid $link-hover-color;
         margin-left: -1px;
       }
     }
 
     &.active a,
     &.active a:hover {
-      border-left: 2px solid $primary;
+      border-left: 2px solid $link-hover-color;
       padding-left: calc(1rem - 1px);
       margin-left: -1px;
     }
@@ -186,4 +186,17 @@ aside .active-parent > a {
     }
   }
 
+
+  &.no-sideline {
+    border-left: 0;
+
+    a:hover, a.active {
+      border-left: 0;
+      margin-left: 0;
+    }
+  }
+}
+
+.command-list li a {
+  margin-top: 0;
 }

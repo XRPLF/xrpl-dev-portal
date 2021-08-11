@@ -47,30 +47,67 @@ all copies or substantial portions of the Software.
 */
 
 jQuery.fn.minitabs = function(speed,effect) {
+
+  function saveToLocal(lang){
+    window.localStorage.setItem('user-preferred-devlanguage', lang);
+  }
+
+  function setTabsToFirst(id){
+    $(".multicode[id='"+id+"']" + ">DIV").hide();   
+    $(".multicode[id='"+id+"']" + ">UL>LI>A").removeClass("current"); 
+    // 
+    $(".multicode[id='"+id+"']" + ">DIV:first").show(); 
+    $(".multicode[id='"+id+"']" + ">UL>LI>A:first").addClass("current");
+  }
+
+  function setTabsToLang(id, lang){
+    $(".multicode[id='"+id+"']" + ">DIV").hide();   
+    $(".multicode[id='"+id+"']" + ">UL>LI>A").removeClass("current"); 
+    //
+    $(".multicode[id='"+id+"']" + ">UL>LI>A[class="+lang+"]").addClass("current");
+    $(".multicode[id='"+id+"']" + ">DIV."+lang).show();
+  }
+
+  function showSelectedTabFromSaved(id){
+    var savedValue = window.localStorage.getItem('user-preferred-devlanguage');
+
+    if(savedValue !== null) {
+      showSlectedTab(savedValue);
+    }else {
+      setTabsToFirst(id);
+    }
+  }
+
+  function showSlectedTab(lang) {
+    $('.multicode').each(function() {
+      var hasLang = false;
+      $(this).find(">UL>LI>A").each(function() {
+        if ($(this).attr('class') == lang ) { 
+          hasLang = true;
+        }
+      })
+
+      if(hasLang) {
+        setTabsToLang($(this).attr('id'), lang);
+      } else {
+        setTabsToFirst($(this).attr('id'));
+      }
+    })
+
+    // save in localstorage.
+    saveToLocal(lang);
+  }
+
   this.each(function() {
       var id = "#" + $(this).attr('id')
-      $(id + ">DIV:gt(0)").hide();
-      $(id + ">UL>LI>A:first").addClass("current");
+      //Use saved value or set to first tab
+      showSelectedTabFromSaved($(this).attr('id'));
+
+      //Add click on each tab
       $(id + ">UL>LI>A").click(
         function(){
-          $(id + ">UL>LI>A").removeClass("current");
-          $(this).addClass("current");
-          $(this).blur();
-          var re = /([_\-\w]+$)/i;
-          var target = $('#' + re.exec(this.href)[1]);
-          var old = $(id + ">DIV");
-          switch (effect) {
-            case 'fade':
-              old.fadeOut(speed).fadeOut(speed);
-              target.fadeIn(speed);
-              break;
-            case 'slide':
-              old.slideUp(speed);
-              target.fadeOut(speed).fadeIn(speed);
-              break;
-            default :
-              old.hide(speed);
-              target.show(speed)
+          if(!$(this).hasClass("current") ){
+            showSlectedTab($(this).attr('class'))
           }
           return false;
         }

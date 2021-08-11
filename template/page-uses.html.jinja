@@ -1,0 +1,157 @@
+{% extends "base.html.jinja" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing page-uses landing-builtin-bg{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+<div class="overflow-hidden">
+   <section class="py-26 text-center">
+    <div class="col-lg-5 mx-auto text-center">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="mb-0">{% trans %}Powering Innovative Technology{% endtrans %}</h1>
+        <h6 class="green-500 mb-3">{% trans %}XRPL Use Cases{% endtrans %}</h6>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="container-new py-26">
+    <ul class="card-grid card-grid-3xN ls-none" id="use-case-card-grid">
+      {% set uses = [
+        { "id": "micropayments",
+          "title": _("Micropayments"),
+          "description": _("Developers are using the XRP Ledger to build innovative products for gaming, content, and web monetization, among other applications where currency is at the center.")},
+        { "id": "wallets",
+          "title": _("Cryptocurrency Wallets"),
+          "description": _("Use the Ledger to build digital wallets to store private and public passwords and interact with various blockchains to send and receive digital assets, including XRP.")},
+        { "id": "exchanges",
+          "title": _("Exchanges"),
+          "description": _("Build sophisticated exchanges where users can invest and trade crypto and non-blockchain assets such as stocks, ETFs, and commodities.")},
+        { "id": "stablecoins",
+          "title": _("Stablecoins"),
+          "description": _("Financial institutions can use Issued Currencies to issue stablecoins on the XRP Ledger. XRPL’s integrated decentralized exchange (DEX) allows neutral, counterparty-free digital assets to be seamlessly exchanged to and from “issued assets,” including stablecoins.")},
+        { "id": "nft",
+          "title": _("NFTs"),
+          "description": _("XRPL allows issuance of IOUs which can represent a currency of any value, which can be extended to the issuance of non-fungible tokens (NFTs).")},
+        { "id": "defi",
+          "title": _("DeFi"),
+          "description": _("Provide access to financial products and services online in a decentralized and borderless manner on XRPL, with decentralized smart contract protocols replacing the traditional role of financial institutions.")},
+        { "id": "cbdc",
+          "title": _("CBDCs"),
+          "description": _("The CBDC Private Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).")},
+      ] %}
+      {% for use in uses %}
+      <li class="col-new ls-none">
+        <img id="{{use.id}}" alt="{{use.title}} icon">
+        <h4 class="mt-3 mb-0 h5">{{use.title}}</h4>
+        <p class="mt-6-until-sm mt-3 mb-0">{{use.description}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <div class="position-relative d-none-sm">
+    <img src="./img/backgrounds/use-cases-orange.svg" id="use-cases-orange">
+  </div>
+
+  <section class="container-new py-26">
+    <div class="col-sm-7">
+      <div class="d-flex flex-column-reverse">
+        <h3 class="h4 h2-sm">{% trans %}Businesses and projects running<br class="until-sm"> on the XRP Ledger{% endtrans %}</h3>
+        <h6 class="green-500 mb-3">{% trans %}Solving Real Problems Across Industries{% endtrans %}</h6>
+      </div>
+      <p class="mb-0 longform mt-8-until-sm mt-3 ">{% trans %}There are companies and developer projects around the world that leverage the XRP Ledger to solve interesting problems across a variety of industries and use cases.{% endtrans %}</p>
+    </div>
+
+    {% set cards = [
+      { "link": "https://www.bitgo.com/",
+        "name": "BitGo",
+        "id": "bitgo",
+        "title": _("Asset Custody"),
+        "description": _("BitGo provides custodial and non-custodial asset holdings for digital assets including XRP. BitGo's enterprise-level security empowers businesses to integrate digital currencies like XRP into new and existing financial systems.")},
+      { "link": "https://bitpay.com/",
+        "id": "bitpay",
+        "name": "BitPay",
+        "title": _("Payment Processing"),
+        "description": _("BitPay builds powerful, enterprise-grade tools for accepting and spending cryptocurrencies, including XRP.")},
+      { "link": "https://coil.com/",
+        "id": "coil",
+        "name": "Coil",
+        "title": _("Web Monetization"),
+        "description": _("Coil provides web monetization as an alternative to traditional paid advertising. Coil uses the interledger protocol (ILP) to stream micropayments as users consume content. The XRPL’s payment channels provide an ideal system for settling these micropayments at high speed and low cost.")},
+      { "link": "https://www.forte.io/",
+        "id": "forte",
+        "name": "Forte",
+        "title": _("Online Gaming"),
+        "description": _("Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world.")},
+      { "link": "https://gatehub.net/",
+        "id": "gatehub",
+        "name": "Gatehub",
+        "title": _("Wallet and Platforms"),
+        "description": _("GateHub is a platform for the Internet of Value, built on the XRP Ledger protocol. It allows everyone to send, receive, trade and manage any type of assets.")},
+      { "link": "https://www.exodus.io/",
+        "id": "exodus",
+        "name": "Exodus",
+        "title": _("Wallets and Apps"),
+        "description": _("Exodus offers wallets and applications for securing, managing and exchanging crypto.")},
+      { "link": "https://ripple.com/",
+        "id": "ripple",
+        "name": "Ripple",
+        "title": _("On-Demand Liquidity"),
+        "description": _("Ripple powers instant, lower-cost settlement of cross-border payments using XRP to source liquidity on demand. XRP is ideally suited for global payments because it's quicker, less costly, and more scalable than any other digital asset.")},
+      { "link": "https://towo.io/",
+        "id": "towo",
+        "name": "Towo Labs",
+        "title": _("Infrastructure"),
+        "description": _("Towo Labs was founded in 2019, to develop XRP Ledger and Interledger infrastructures and make non-custodial crypto management easier.")},
+      { "link": "https://raisedinspace.com/",
+        "id": "raisedinspace",
+        "name": "Raised in Space",
+        "title": _("Music"),
+        "description": _("Raised in Space is a music/tech investment group focused on raising the value of music, innovating across the entire value chain of the music industry.")},
+      { "link": "https://xrpl-labs.com/",
+        "id": "xrpl-labs",
+        "name": "XRPL Labs",
+        "title": _("Applications"),
+        "description": _("From cold storage to apps for signing transactions, XRPL Labs is dedicated to building software on the XRP Ledger.")},
+      { "link": "https://xrplorer.com/",
+        "id": "xrplorer",
+        "name": "Xrplorer",
+        "title": _("Security"),
+        "description": _("Xrplorer offers services and tools that help prevent and combat fraudulent activity on the XRPL as well as custom APIs and analytics that supplement the XRPL APIs where they are not enough.")},
+    ] %}
+
+    <div class="mt-10 card-grid card-grid-3xN">
+      {% for card in cards %}
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8" href="{{card.href}}" target="_blank" id="{{card.id}}">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3 biz-logo" alt="{{card.name|default(card.id)}}">
+          <h4 class="h5">{{card.title}}</h4>
+          <p class="mt-6 mb-8">{{card.description}}</p>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

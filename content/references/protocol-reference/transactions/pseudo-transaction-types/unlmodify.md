@@ -3,6 +3,8 @@ html: unlmodify.html
 parent: pseudo-transaction-types.html
 status: not_enabled
 blurb: Change the list of trusted validators currently considered offline.
+labels:
+  - Blockchain
 ---
 # UNLModify
 

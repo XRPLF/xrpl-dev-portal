@@ -2,6 +2,8 @@
 html: require-destination-tags.html
 parent: manage-account-settings.html
 blurb: ユーザーがあなたのアドレスに送金するときに宛先タグを必ず指定しなければならないようにします。
+labels:
+  - アカウント
 ---
 # 宛先タグの要求
 

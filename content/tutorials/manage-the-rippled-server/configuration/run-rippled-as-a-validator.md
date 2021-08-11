@@ -2,6 +2,11 @@
 html: run-rippled-as-a-validator.html
 parent: configure-rippled.html
 blurb: Have your server vote on the consensus ledger.
+labels:
+  - Core Server
+  - Blockchain
+top_nav_grouping: Popular Pages
+top_nav_name: Join UNL
 ---
 # Run rippled as a Validator
 

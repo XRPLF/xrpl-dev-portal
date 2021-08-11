@@ -2,6 +2,9 @@
 html: offline-account-setup.html
 parent: manage-account-settings.html
 blurb: 物理的に隔離されたオフラインのマシンを使用して暗号鍵を保管するXRP Ledgerアカウントを設定します。
+labels:
+  - アカウント
+  - セキュリティ
 ---
 # オフラインでのアカウント設定のチュートリアル
 

@@ -3,8 +3,13 @@ html: get-started-using-python.html
 parent: get-started.html
 blurb: Build a simple Python app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
+top_nav_name: Python
+top_nav_grouping: Get Started
 filters:
-    - include_code
+  - include_code
+labels:
+  - Development
+showcase_icon: assets/img/logos/python.svg
 ---
 
 # Get Started Using Python
@@ -162,11 +167,11 @@ Using these building blocks, we can create a simple Python app that:
 {% include '_code-samples/xrpl-py/get-acct-info.py' %}
 ```
 
-To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the [XRP Ledger Dev Portal repo](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/xrpl-py) and run it locally:
+To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the [XRP Ledger Dev Portal repo](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/xrpl-py) and run it locally:
 
 
 ```sh
-git clone git@github.com:ripple/xrpl-dev-portal.git
+git clone git@github.com:XRPLF/xrpl-dev-portal.git
 cd xrpl-dev-portal/content/_code-samples/xrpl-py/get-acct-info.py
 python3 get-acct-info.py
 ```

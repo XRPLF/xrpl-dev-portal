@@ -2,6 +2,8 @@
 html: ledger_current.html
 parent: ledger-methods.html
 blurb: 現在進行中のレジャーの一意のIDを返します。
+label:
+  - ブロックチェーン
 ---
 # ledger_current
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")

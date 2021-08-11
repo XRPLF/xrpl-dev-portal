@@ -1,0 +1,215 @@
+{% extends "base.html.jinja" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing page-home{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block main %}
+<div class="overflow-hidden">
+  <section class="container-new pb-26-until-sm mt-10 mb-10-sm text-center">
+    <div class="w-100">
+      <img id="home-hero-graphic" src="img/graphics/home-hero.svg">
+    </div>
+    <div class="col-lg-5 mx-auto text-center pl-0 pr-0">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="mb-10">{% trans %}Community<br class="until-sm"/> Powered Utility{% endtrans %}</h1>
+        <h6 class="green-500 mb-3">{% trans %}XRPL | XRP Ledger{% endtrans %}</h6>
+      </div>
+      <a href="docs.html" class="btn btn-primary btn-arrow">{% trans %}Start Building{% endtrans %}</a>
+    </div>
+  </section>
+
+  <div class="position-relative d-none-sm">
+    <img src="./img/backgrounds/home-purple.svg" id="home-purple">
+    <img src="./img/backgrounds/home-green.svg" id="home-green">
+  </div>
+
+  <section class="container-new py-26">
+    <div class="col-lg-6 offset-lg-3 pl-0-sm pr-0-sm p-8-sm p-10-until-sm">
+      <h2 class="h4 mb-8 h2-sm">{% trans %}The XRP Ledger: A Scalable, Sustainable Blockchain{% endtrans %}</h2>
+      <h6 class="longform mb-10">{% trans %}The XRP Ledger (XRPL) is a decentralized, public blockchain led by a global developer community.{% endtrans %}</h6>
+      <p class="mb-0">{% trans %}It’s fast, energy efficient, and reliable. With ease of development, low transaction costs, and a knowledgeable community, it provides developers with a strong open-source foundation for executing on the most demanding projects—without hurting the environment.{% endtrans %}</p>
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="d-flex flex-column-reverse col-sm-8 p-0 mx-10-until-md">
+      <h3 class="h4 h2-sm">{% trans %}Why developers choose the XRP Ledger{% endtrans %}</h3>
+      <h6 class="green-500 mb-3">{% trans %}Discover Benefits{% endtrans %}</h6>
+    </div>
+    <ul class="mt-10 card-grid card-grid-3xN" id="benefits-list">
+      {% set cards = [
+        { "id": "public",
+          "title": _("Public and Decentralized Structure"),
+          "description": _("Open source, open to anyone to build on, maintained by the community")},
+        { "id": "streamlined",
+          "title": _("Streamlined <br class='until-sm'/>Development"),
+          "description": _("Tools and documentation that speed development and reduce time to market")},
+        { "id": "performance",
+          "title": _("High <br class='until-sm'/>Performance"),
+          "description": _("Capable of settling thousands of transactions in seconds")},
+        { "id": "low-cost",
+          "title": _("Low Cost"),
+          "description": _("At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of use cases")},
+        { "id": "community",
+          "title": _("Vibrant Community"),
+          "description": _("Developers, validators, users, and businesses make the XRP Ledger better every day")},
+        { "id": "reliability",
+          "title": _("Proven Reliability"),
+          "description": _("8+ years of consistent performance over more than 63 million ledgers")},
+      ] %}
+      {% for card in cards %}
+      <li class="col-new ls-none">
+        <img id="{{card.id}}" alt="{{card.title}} Icon">
+        <h4 class="mt-3 mb-0 h5">{{card.title}}</h4>
+        <p class="mt-6-until-sm mt-3 mb-0">{{card.description}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="d-flex flex-column-reverse col-sm-8 p-0 mx-10-until-md">
+      <h3 class="h4 h2-sm">{% trans %}Activate the power of the XRP Ledger and find the building blocks for your next innovation{% endtrans %}</h3>
+      <h6 class="green-500 mb-3">{% trans %}Explore Advanced Features{% endtrans %}</h6>
+    </div>
+    <div class="mt-10 card-grid card-grid-3xN" id="advanced-features">
+      {% set cards2 = [
+        { "href": "decentralized-exchange.html",
+          "title":  _("Decentralized Exchange"),
+          "description":  _("A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain")},
+        { "href": "cross-currency-payments.html",
+          "title":  _("Cross-Currency Payments"),
+          "description":  _("Atomically settle multi-hop payments that cross currency or national boundaries with ease")},
+        { "href": "payment-channels.html",
+          "title":  _("Payment <br class='until-sm'/>Channels"),
+          "description":  _("Batched micropayments with unlimited speed, secured with XRP")},
+        { "href": "multi-signing.html",
+          "title":  _("Multi-Signing"),
+          "description":  _("Flexible options for custody and security of on-ledger accounts")},
+        { "href": "issued-currencies-overview.html",
+          "title":  _("Issued Currencies"),
+          "description":  _("All currencies other than XRP can be represented in the XRP Ledger as issued currencies, sometimes called “IOUs”")},
+      ] %}
+      {% for card in cards2 %}
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="{{card.href}}">
+        <span class="card-new d-block">
+          <h4 class="h5">{{card.title}}</h4>
+          <p class="mt-6 mb-8">{{card.description}}</p>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="d-flex flex-column-reverse col-sm-8 p-0 mx-10-until-md">
+      <h3 class="h4 h2-sm">{% trans %}Choose a path to start building on the XRPL{% endtrans %}</h3>
+      <h6 class="green-500 mb-3">{% trans %}Get Started{% endtrans %}</h6>
+    </div>
+    <div class="mt-10 card-grid card-grid-3xN" id="get-started">
+      {% set cards3 = [
+        { "href": "get-started.html",
+          "title":  _("Quickstart"),
+          "description":  _("Access everything you need to get started working with the XRPL")},
+        { "href": "tutorials.html",
+          "title":  _("Guided Tutorials"),
+          "description":  _("Follow step-by-step guides for frequent tasks")},
+        { "href": "concepts.html",
+          "title":  _("XRPL Fundamentals"),
+          "description":  _("Read about the XRPL’s foundational concepts")},
+        { "href": "client-libraries.html",
+          "title":  _("Choose a Language"),
+          "description":  _("Find tools, documentation, and sample code in Python, Java, Javascript, or use HTTP APIs")},
+        { "href": "uses.html",
+          "title":  _("Get Inspired"),
+          "description":  _("See what your peers have built on the XRPL")},
+      ] %}
+      {% for card in cards3 %}
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="{{card.id}}" href="{{card.href}}">
+        <span class="card-new d-block">
+          <h4 class="h5">{{card.title}}</h4>
+          <p class="mt-6 mb-8">{{card.description}}</p>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="col-lg-6 offset-lg-3 p-6-sm p-10-until-sm br-8 bg-grey-800 text-center">
+      <img src="./img/backgrounds/cta-home-purple.svg" class="d-none-sm cta cta-top-left">
+      <img src="./img/backgrounds/cta-home-green.svg" class="cta cta-bottom-right">
+      <div class="z-index-1 position-relative">
+        <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}Our Shared Vision for XRPL’s Future{% endtrans %}</h2>
+        <p class="mb-10">{% trans %}Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life.{% endtrans %}</p>
+        <a class="btn btn-primary btn-arrow" href="overview.html">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="d-flex flex-column-reverse col-sm-8 p-0 mx-10-until-md">
+      <h3 class="h4 h2-sm">{% trans %}Explore what the community is building to enable new features and use cases on XRPL{% endtrans %}</h3>
+      <h6 class="green-500 mb-3">{% trans %}Preview New Features{% endtrans %}</h6>
+    </div>
+    <ul class="mt-10 card-grid card-grid-3xN">
+      {% set features = [
+        { "chip": _("In Development"),
+          "title":  _("Smart Contracts"),
+          "description":  _("Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality."),
+          "href": "https://hooks-testnet.xrpl-labs.com/" },
+        { "chip": _("In Development"),
+          "title":  _("Non-Fungible Tokens"),
+          "description":  _("Lower fees, faster transactions, and custom token functionality make the XRPL ideally suited for building an ecosystem for NFTs. Explore <a href='docs.html#docs-hot-topic'>proposed standards</a> for issuing NFTs."),
+          "href": "docs.html#docs-hot-topic"},
+        { "chip": _("In Development"),
+          "title":  _("Sidechains"),
+          "description":  _("Extend, experiment, and specialize a custom sidechain based on the XRPL's proven blockchain technology. Learn more about <a href='https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-xrp-ledger-2o7o' target='_blank'>the vision of sidechains</a>."),
+          "href": "https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-xrp-ledger-2o7o"},
+      ] %}
+      {% for feat in features %}
+      <li class="col-new ls-none pt-2">
+        <a class="label chip-green" href="{{feat.href}}">{{feat.chip}}</a>
+        <h4 class="mt-3 mb-0 h5">{{feat.title}}</h4>
+        <p class="mt-6-until-sm mt-3 mb-0">{{feat.description}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="col-md-6 offset-md-3 p-8-sm p-10-until-sm br-8 bg-grey-800 text-center">
+      <img src="./img/backgrounds/cta-home-magenta.svg" class="cta cta-bottom-right">
+      <div class="z-index-1 position-relative">
+        <div class="d-flex flex-column-reverse">
+          <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}XRPL.org: by the community, for the community{% endtrans %}</h2>
+          <h5 class="green-500 mb-3">{% trans %}Get Involved{% endtrans %}</h5>
+        </div>
+        <p class="mb-10">{% trans %}XRPL.org is a community-driven resource by and for developers who build on the XRP Ledger (XRPL).{% endtrans %}</p>
+        <a class="btn btn-primary btn-arrow" href="contribute.html">{% trans %}Join the Community{% endtrans %}</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

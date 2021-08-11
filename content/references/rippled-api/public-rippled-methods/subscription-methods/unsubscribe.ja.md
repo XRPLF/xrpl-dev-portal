@@ -2,6 +2,11 @@
 html: unsubscribe.html
 parent: subscription-methods.html
 blurb: 特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
+labels:
+  - 支払い
+  - アカウント
+  - ブロックチェーン
+  - スマートコントラクト
 ---
 # unsubscribe
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")

@@ -2,6 +2,10 @@
 html: public-rippled-methods.html
 parent: rippled-api.html
 blurb: パブリックAPIメソッドを使用して、rippledサーバーと直接通信します。
+labels:
+  - コアサーバー
+top_nav_grouping: 人気ページ
+top_nav_name: APIのメソッド
 ---
 # rippledのパブリックメソッド
 

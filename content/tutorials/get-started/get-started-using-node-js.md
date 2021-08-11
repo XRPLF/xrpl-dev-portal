@@ -2,12 +2,17 @@
 html: get-started-using-node-js.html
 parent: get-started.html
 blurb: Build an entry-level JavaScript application for querying the XRP Ledger in Node.js.
+top_nav_name: JavaScript
+top_nav_grouping: Get Started
+labels:
+  - Development
+showcase_icon: assets/img/logos/javascript.svg
 ---
 # Get Started Using Node.js
 
 This tutorial guides you through the basics of building an XRP Ledger-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](rippleapi-reference.html), a JavaScript/TypeScript client library for accessing the XRP Ledger. You can also use RippleAPI [straight from your browser](get-started.html).
 
-The scripts and config files used in this guide are [available in this website's GitHub Repository](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart).
+The scripts and config files used in this guide are [available in this website's GitHub Repository](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart).
 
 
 <!--#{ keep multiple H1s so that all steps are surfaced in sidebar. Do not change H1 titles unless they provide a clear improvement bc they are linked to on external sites. }# -->
@@ -339,7 +344,7 @@ The file `build/ripple-latest.js` is a direct export of RippleAPI (whatever vers
 
 The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public `rippled` server and report information about that server.
 
-[**`browser-demo.html`**](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/rippleapi_quickstart/browser-demo.html "Source on GitHub")
+[**`browser-demo.html`**](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/rippleapi_quickstart/browser-demo.html "Source on GitHub")
 
 ```
 {% include '_code-samples/rippleapi_quickstart/browser-demo.html' %}

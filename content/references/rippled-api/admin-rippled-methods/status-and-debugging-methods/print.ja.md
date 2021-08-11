@@ -2,6 +2,8 @@
 html: print.html
 parent: status-and-debugging-methods.html
 blurb: さまざまな内部サブシステムの現在の状況を返します。
+labels:
+  - コアサーバー
 ---
 # print
 [[ソース]](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")

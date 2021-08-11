@@ -1,0 +1,53 @@
+{% extends "base.html.jinja" %}
+
+{% block bodyclasses %}page-test-net{% endblock %}
+
+{% block right_sidebar %}
+    <h4>Testnet Servers</h4>
+    <pre><code>// WebSocket
+wss://s.altnet.rippletest.net:51233
+
+// JSON-RPC
+https://s.altnet.rippletest.net:51234</code></pre>
+    <h4>Devnet Servers</h4>
+    <pre><code>// WebSocket
+wss://s.devnet.rippletest.net:51233
+
+// JSON-RPC
+https://s.devnet.rippletest.net:51234</code></pre>
+{% endblock %}
+
+{% block main %}
+<section class="container-fluid pt-3 p-md-3">
+  <h1>XRP Faucets</h1>
+
+  <div class="content">
+    <p>Ripple runs these <a href="parallel-networks.html">parallel XRP Ledger test networks</a>, the Testnet and Devnet, to provide a testing platform for any software products built on the XRP Ledger without using real funds.</p>
+    <p>These funds are intended for <strong>testing</strong> only. The Testnet ledger and balances will be reset approximately every 90 days, or when otherwise necessary. Devnet funds may be reset without warning as needed.</p>
+    <p>Testnet and Devnet balances are separate. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.</p>
+    <div class="btn-toolbar" role="toolbar" aria-label="Button">
+      <button id="testnet-creds-button" class="btn btn-primary mr-2 mb-2">Generate Testnet credentials</button>
+      <button id="devnet-creds-button" class="btn btn-primary mb-2">Generate Devnet credentials</button>
+    </div><!--/.btn-toolbar-->
+    <div id='your-credentials'></div>
+    <div id='loader' style="display: none;"><img class="throbber" src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
+    <div id='address'></div>
+    <div id='secret'></div>
+    <div id='balance'></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block endbody %}
+  <script type='text/javascript' src='assets/js/test-net.js'></script>
+  <script src="assets/js/multicodetab.js"></script>
+  <script type="application/javascript">
+    $(document).ready(function() {
+      $(".multicode").minitabs();
+    });
+  </script>
+
+  <script type="application/javascript">
+    gtag('config', 'UA-157720658-3', {'content_group1': 'API Tools'});
+  </script>
+{% endblock %}

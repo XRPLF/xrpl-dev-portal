@@ -2,6 +2,10 @@
 html: ledger-history.html
 parent: the-rippled-server.html
 blurb: rippledサーバーはトランザクションの変動金額と状態の履歴をローカルに保管します。
+labels:
+  - データ保持
+  - ブロックチェーン
+  - コアサーバー
 ---
 # レジャー履歴
 
