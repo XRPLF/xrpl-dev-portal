@@ -16,7 +16,9 @@ STATUSES = {
 }
 
 
-def filter_markdown(md, config={}, **kwargs):
+def filter_markdown(md, config=None, **kwargs):
+    if config is None:
+        config = {}
     for needle, src_file in STATUSES.items():
         with open(os.path.join(config["template_path"], src_file)) as f:
             replacement = f.read().strip()

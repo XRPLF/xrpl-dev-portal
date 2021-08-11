@@ -16,7 +16,7 @@ def idify(utext):
     """Make a string ID-friendly (but more unicode-friendly)"""
     utext = re.sub(r'[^\w\s-]', '', utext).strip().lower()
     utext = re.sub(r'[\s-]+', '-', utext)
-    if not len(utext):
+    if not utext:
         # IDs and similar must not be an empty string
         return '_'
     return utext
