@@ -511,6 +511,7 @@ async function do_submit(block, submit_opts, wait_step_name) {
     if (wait_step_name){
       activate_wait_step(wait_step_name, prelim_result)
     }
+    return prelim_result
   } catch(error) {
     block.find(".loader").hide()
     show_error(block, error)

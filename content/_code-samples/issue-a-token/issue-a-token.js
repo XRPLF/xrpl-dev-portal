@@ -1,9 +1,17 @@
+// Stand-alone code sample for the "issue a token" tutorial:
+// https://xrpl.org/issue-a-fungible-token.html
+
+// Uncomment these dependencies for Node.js. In browsers, use <script> tags as
+// in the example demo.html.
+// const ripple = require('ripple-lib')
+// const fetch = require('node-fetch')
+// const submit_and_verify = require('../submit-and-verify/submit-and-verify.js').submit_and_verify
+
 // Connect ---------------------------------------------------------------------
-// ripple = require('ripple-lib') // For Node.js. In browsers, use <script>.
-api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
-console.log("Connecting to Testnet...")
-api.connect()
-api.on('connected', async () => {
+async function main() {
+  api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
+  console.log("Connecting to Testnet...")
+  await api.connect()
 
   // Get credentials from the Testnet Faucet -----------------------------------
   // This doesn't technically need to happen after you call api.connect() but
@@ -41,8 +49,14 @@ api.on('connected', async () => {
   // the faucet.
   while (true) {
     try {
-      await api.request("account_info", {account: cold_address, ledger_index: "validated"})
-      await api.request("account_info", {account: hot_address, ledger_index: "validated"})
+      await api.request("account_info", {
+        account: cold_address,
+        ledger_index: "validated"
+      })
+      await api.request("account_info", {
+        account: hot_address,
+        ledger_index: "validated"
+      })
       break
     } catch(e) {
       if (e.data.error != 'actNotFound') throw e
@@ -57,12 +71,16 @@ api.on('connected', async () => {
     "Account": cold_address,
     "TransferRate": 0,
     "TickSize": 5,
+    "Domain": "6578616D706C652E636F6D", // "example.com"
     "SetFlag": 8 // enable Default Ripple
     //"Flags": (api.txFlags.AccountSet.DisallowXRP |
     //          api.txFlags.AccountSet.RequireDestTag)
   }
 
-  const cst_prepared = await api.prepareTransaction(cold_settings_tx, {maxLedgerVersionOffset: 10})
+  const cst_prepared = await api.prepareTransaction(
+    cold_settings_tx,
+    {maxLedgerVersionOffset: 10}
+  )
   const cst_signed = api.sign(cst_prepared.txJSON, cold_secret)
   // submit_and_verify helper function from:
   // https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify/
@@ -80,13 +98,17 @@ api.on('connected', async () => {
   const hot_settings_tx = {
     "TransactionType": "AccountSet",
     "Account": hot_address,
+    "Domain": "6578616D706C652E636F6D", // "example.com"
     "SetFlag": 2 // enable Require Auth so we can't use trust lines that users
                  // make to the hot address, even by accident.
     //"Flags": (api.txFlags.AccountSet.DisallowXRP |
     //          api.txFlags.AccountSet.RequireDestTag)
   }
 
-  const hst_prepared = await api.prepareTransaction(hot_settings_tx, {maxLedgerVersionOffset: 10})
+  const hst_prepared = await api.prepareTransaction(
+    hot_settings_tx,
+    {maxLedgerVersionOffset: 10}
+  )
   const hst_signed = api.sign(hst_prepared.txJSON, hot_secret)
   console.log("Sending hot address AccountSet transaction...")
   const hst_result = await submit_and_verify(api, hst_signed.signedTransaction)
@@ -109,7 +131,10 @@ api.on('connected', async () => {
     }
   }
 
-  const ts_prepared = await api.prepareTransaction(trust_set_tx, {maxLedgerVersionOffset: 10})
+  const ts_prepared = await api.prepareTransaction(
+    trust_set_tx,
+    {maxLedgerVersionOffset: 10}
+  )
   const ts_signed = api.sign(ts_prepared.txJSON, hot_secret)
   console.log("Creating trust line from hot address to issuer...")
   const ts_result = await submit_and_verify(api, ts_signed.signedTransaction)
@@ -133,20 +158,26 @@ api.on('connected', async () => {
     "Destination": hot_address
   }
 
-  const payment_prepared = await api.prepareTransaction(send_token_tx, {maxLedgerVersionOffset: 10})
-  const payment_signed = api.sign(payment_prepared.txJSON, cold_secret)
+  const pay_prepared = await api.prepareTransaction(
+    send_token_tx,
+    {maxLedgerVersionOffset: 10}
+  )
+  const pay_signed = api.sign(pay_prepared.txJSON, cold_secret)
   // submit_and_verify helper from _code-samples/submit-and-verify
   console.log(`Sending ${issue_quantity} ${currency_code} to ${hot_address}...`)
-  const payment_result = await submit_and_verify(api, payment_signed.signedTransaction)
-  if (payment_result == "tesSUCCESS") {
-    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${payment_signed.id}`)
+  const pay_result = await submit_and_verify(api, pay_signed.signedTransaction)
+  if (pay_result == "tesSUCCESS") {
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.id}`)
   } else {
-    throw `Error sending transaction: ${payment_result}`
+    throw `Error sending transaction: ${pay_result}`
   }
 
   // Check balances ------------------------------------------------------------
   console.log("Getting hot address balances...")
-  const hot_balances = await api.request("account_lines", {account: hot_address, ledger_index: "validated"})
+  const hot_balances = await api.request("account_lines", {
+    account: hot_address,
+    ledger_index: "validated"
+  })
   console.log(hot_balances)
 
   console.log("Getting cold address balances...")
@@ -155,6 +186,9 @@ api.on('connected', async () => {
     ledger_index: "validated",
     hotwallet: [hot_address]
   })
-  console.log(cold_balances)
+  console.log(JSON.stringify(cold_balances, null, 2))
 
-}) // End of api.on.('connected')
+  api.disconnect()
+} // End of main()
+
+main()

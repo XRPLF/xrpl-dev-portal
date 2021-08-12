@@ -33,11 +33,9 @@ This page provides examples that use [ripple-lib for JavaScript](get-started-wit
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. You also need one or more recipients who are willing to hold the tokens you issue: unlike in some other blockchains, in the XRP Ledger you cannot force someone to hold a token they do not want.
 
-The best practice is to use ["cold" and "hot" addresses](issuing-and-operational-addresses.html). The cold address is the **issuer** of the token. The hot address is like a regular user's address that you control. It receives tokens from the cold address, which you can then transfer to other users. A hot address is not strictly necessary, since you could send tokens directly to users from the cold address, but it is useful for this tutorial since you need _someone_ to accept the tokens you issue. In production, you should take extra care of the cold address's cryptographic keys (for example, keeping them offline) because it is much harder to replace a cold address than a hot address, if its cryptographic keys are compromised.
+The best practice is to use ["cold" and "hot" addresses](issuing-and-operational-addresses.html). The cold address is the **issuer** of the token. The hot address is like a regular user's address that you control. It receives tokens from the cold address, which you can then transfer to other users. A hot address is not strictly necessary, since you could send tokens directly to users from the cold address, but it is good practice for security reasons. In production, you should take extra care of the cold address's cryptographic keys (for example, keeping them offline) because it is much harder to replace a cold address than a hot address.
 
-
-
-For purposes of this tutorial, you can get the keys for two addresses using the following interface.
+In this tutorial, the hot address receives the tokens you issue from the cold address. You can get the keys for two addresses using the following interface.
 
 <!-- Special version of generate-step.md for getting sender AND receiver credentials -->
 {% if use_network is undefined or use_network == "Testnet" %}
@@ -55,8 +53,8 @@ For purposes of this tutorial, you can get the keys for two addresses using the 
 
 **Caution:** Ripple provides the [Testnet and Devnet](parallel-networks.html) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
 
-
 When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+
 
 ### {{n.next()}}. Connect to the Network
 
@@ -100,9 +98,9 @@ Other settings you may want to, optionally, configure for your cold address (iss
 | Setting                      | Recommended Value   | Summary                 |
 |:-----------------------------|:--------------------|:------------------------|
 | [Require Destination Tags][] | Enabled or Disabled | Enable if you process withdrawals of your token to outside systems. (For example, your token is a stablecoin.) |
-| Disallow XRP                 | Enabled             | Enable if this address isn't meant to process XRP payments. |
+| Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments. |
 | [Transfer Fee][]             | 0–1%                | Charge a percentage fee when users send your token to each other. |
-| [Tick Size][]                | 5                   | Limit the number of decimal places in exchange rates for your token in the [decentralized exchange](decentralized-exchange.html). Reduces churn of almost-equivalent offers and speeds up price discovery. |
+| [Tick Size][]                | 5                   | Limit the number of decimal places in exchange rates for your token in the [decentralized exchange](decentralized-exchange.html). A tick size of 5-6 reduces churn of almost-equivalent offers and speeds up price discovery compared to the default of 15. |
 | [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](xrp-ledger-toml.html#account-verification). This can help reduce confusion or impersonation attempts. |
 
 [Require Destination Tags]: require-destination-tags.html
@@ -125,47 +123,56 @@ _JavaScript_
 
 {{ start_step("Configure Issuer") }}
 <form>
-  <div class="form-group row">
-  <label for="cold-default-ripple" class="col-form-label col-sm-3">Default Ripple</label>
-    <div class="input-group col">
-      <input type="checkbox" class="form-control form-check-input" value="" id="cold-default-ripple" disabled="disabled" checked/>
+  <div class="form-inline">
+    <div class="input-group">
+      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="cold-default-ripple" disabled="disabled" checked/>
+      <label for="cold-default-ripple" class="col-form-label">Default Ripple</label>
     </div>
   </div>
-  <!--<div class="form-group row">
-    <label for="cold-require-auth" class="col-form-label col-sm-3">Require Authorization</label>
-    <div class="input-group col">
-      <input type="checkbox" class="form-control form-check-input" value="" id="cold-require-auth" />
-    </div>
-  </div>-->
-  <div class="form-group row">
-    <label for="cold-require-dest" class="col-form-label col-sm-3">Require Destination Tags</label>
-    <div class="input-group col">
-      <input type="checkbox" class="form-control form-check-input" value="" id="cold-require-dest" />
+  <div class="form-inline">
+    <div class="input-group">
+      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="cold-require-dest" />
+      <label for="cold-require-dest" class="col-form-label">Require Destination Tags</label>
     </div>
   </div>
-  <div class="form-group row">
-    <label for="cold-disallow-xrp" class="col-form-label col-sm-3">Disallow XRP</label>
-    <div class="input-group col">
-      <input type="checkbox" class="form-control form-check-input" value="" id="cold-disallow-xrp" checked />
+  <div class="form-inline">
+    <div class="input-group">
+      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="cold-disallow-xrp" checked />
+      <label for="cold-disallow-xrp" class="col-form-label">Disallow XRP</label>
     </div>
   </div>
   <div class="form-group row">
     <label for="cold-transfer-fee" class="col-form-label col-sm-3">Transfer Fee</label>
     <div class="input-group col">
-      <input type="number" class="form-control" id="cold-transfer-fee" value="0" step="0.01" min="0" max="100" />
+      <input type="number" class="form-control" id="cold-transfer-fee" value="0" step="0.0000001" min="0" max="100" />
       <div class="input-group-append">
         <div class="input-group-text">%</div>
       </div>
     </div>
-  </div><!--/.form-inline-->
+  </div>
   <div class="form-group row">
     <label for="cold-tick-size" class="col-form-label col-sm-3">Tick Size</label>
     <div class="input-group col">
       <input type="number" class="form-control" id="cold-tick-size" value="5" step="1" min="0" max="15" />
     </div>
-  </div><!--/.form-inline-->
+  </div>
+  <div class="form-group row">
+    <label for="cold-domain-text" class="col-form-label col-sm-3">Domain</label>
+    <div class="input-group col">
+      <div>
+        <input type="text" class="form-control" value="example.com" pattern="([a-z0-9][a-z0-9-]{0,62}[.])+[a-z]{2,6}" id="cold-domain-text" title="lower-case domain name of the account owner" />
+        <small class="form-text">(text)</small>
+      </div>
+    </div>
+    <div class="input-group col">
+      <div class="col">
+        <label class="form-control-plaintext" id="cold-domain-hex" for="cold-domain-text">6578616D706C652E636F6D</label>
+        <small class="form-text">(hexadecimal)</small>
+      </div>
+    </div>
+  </div>
 </form>
-<button id="config-issuer-button" class="btn btn-primary">Send AccountSet</button>
+<button id="config-issuer-button" class="btn btn-primary previous-steps-required">Configure issuer</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
@@ -174,11 +181,13 @@ _JavaScript_
 
 The hot address does not strictly require any settings changes from the default, but the following are recommended as best practices:
 
-| Setting                    | Recommended Value | Summary                     |
-|:---------------------------|:------------------|:----------------------------|
-| [Default Ripple][]         | Disabled          | Leave this setting **disabled.** (This is the default.) |
-| [Authorized Trust Lines][] | Enabled           | Users sometimes make trust lines to the hot address by mistake. This setting makes this trust lines unusable, which helps to prevent accidentally issuing tokens from the wrong address. |
-| Disallow XRP               | Enabled           | Enable if this address isn't meant to process XRP payments. |
+| Setting                      | Recommended Value   | Summary                 |
+|:-----------------------------|:--------------------|:------------------------|
+| [Default Ripple][]           | Disabled            | Leave this setting **disabled.** (This is the default.) |
+| [Authorized Trust Lines][]   | Enabled             | Enable this setting on the hot address to prevent accidentally issuing tokens from the wrong address. (Optional, but recommended.) |
+| [Require Destination Tags][] | Enabled or Disabled | Enable if you process withdrawals of your token to outside systems. (For example, your token is a stablecoin.) |
+| Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments. |
+| [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](xrp-ledger-toml.html#account-verification). This can help reduce confusion or impersonation attempts. |
 
 The following code sample shows how to send an [AccountSet transaction][] to enable the recommended hot address settings:
 
@@ -194,15 +203,49 @@ _JavaScript_
 <form>
   <div class="form-inline">
     <div class="input-group">
-      <label for="hot-disallow-xrp" class="form-check-label mr-3">Disallow XRP</label>
-      <input type="checkbox" class="form-control form-check-input" value="" id="hot-disallow-xrp" checked="checked" />
+      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="hot-default-ripple" disabled="disabled" />
+      <label for="hot-default-ripple" class="form-check-label">Default Ripple</label>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="input-group">
+      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="hot-require-dest" />
+      <label for="hot-require-dest" class="col-form-label">Require Destination Tags</label>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="input-group">
+      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="hot-require-auth" disabled="disabled" checked="checked" />
+      <label for="hot-default-ripple" class="form-check-label">Authorized Trust Lines</label>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="input-group">
+      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="hot-disallow-xrp" checked="checked" />
+      <label for="hot-disallow-xrp" class="form-check-label">Disallow XRP</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="hot-domain-text" class="col-form-label col-sm-3">Domain</label>
+    <div class="input-group col">
+      <div>
+        <input type="text" class="form-control" value="example.com" pattern="([a-z0-9][a-z0-9-]{0,62}[.])+[a-z]{2,6}" id="hot-domain-text" title="lower-case domain name of the account owner" />
+        <small class="form-text">(text)</small>
+      </div>
+    </div>
+    <div class="input-group col">
+      <div class="col">
+        <label class="form-control-plaintext" id="hot-domain-hex" for="hot-domain-text">6578616D706C652E636F6D</label>
+        <small class="form-text">(hexadecimal)</small>
+      </div>
     </div>
   </div>
 </form>
-<button id="config-hot-address-button" class="btn btn-primary">Send AccountSet</button>
+<button id="config-hot-address-button" class="btn btn-primary previous-steps-required">Configure hot address</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
+
 
 ### {{n.next()}}. Create Trust Line from Hot to Cold Address
 
@@ -244,7 +287,7 @@ _JavaScript_
     </div>
   </div>
 </form>
-<button id="make-trust-line-button" class="btn btn-primary">Send TrustSet</button>
+<button id="create-trust-line-button" class="btn btn-primary previous-steps-required">Create Trust Line</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
@@ -267,6 +310,7 @@ Now you can create tokens by sending a [Payment transaction][] from the cold add
 | `Destination` | The hot address (or other account receiving the token) |
 | `Paths` | Omit this field when issuing tokens. |
 | `SendMax` | Omit this field when issuing tokens. |
+| `DestinationTag` | Any whole number from 0 to 2<sup>32</sup>-1. You must specify _something_ here if you enabled [Require Destination Tags][] on the hot address. |
 
 You can use [auto-filled values](transaction-common-fields.html#auto-fillable-fields) for all other required fields.
 
@@ -281,7 +325,23 @@ _JavaScript_
 <!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Send Token") }}
-<button id="send-token-button" class="btn btn-primary">Send Token</button>
+<form>
+  <div class="container">
+    <div class="input-group row mt-2">
+      <label for="send-amount" class="input-group-text col-lg-3">Send amount:</label>
+      <input type="number" id="send-amount" min="0" value="123.45" step="0.01" title="How much to send to the hot address" class="form-control col-lg-8" />
+      <div class="input-group-append">
+        <span class="input-group-text" id="send-currency-code">FOO</span>
+      </div>
+    </div>
+    <div class="input-group row">
+      <input type="checkbox" id="use-dest-tag" class="mr-2" checked="checked" />
+      <label for="dest-tag" class="input-group-text col-lg-3">DestinationTag:</label>
+      <input type="number" id="dest-tag" value="0" min="0" max="4294967295" class="form-control col-lg-8" title="Any 32-bit integer" />
+    </div>
+  </div>
+</form>
+<button id="send-token-button" class="btn btn-primary previous-steps-required">Send Token</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
@@ -308,7 +368,7 @@ _JavaScript_
 <!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Confirm Balances") }}
-<button id="check-balances-button" class="btn btn-primary">Confirm Balances</button>
+<button id="confirm-balances-button" class="btn btn-primary previous-steps-required">Confirm Balances</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Checking...</div>
 <div class="output-area"></div>
 {{ end_step() }}

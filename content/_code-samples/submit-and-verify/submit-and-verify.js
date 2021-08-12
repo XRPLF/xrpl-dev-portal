@@ -145,7 +145,7 @@ function lookup_tx_final(api, tx_id, max_ledger, min_ledger) {
 //      warning written to the console can tell you more about what happened.
 async function submit_and_verify(api, tx_blob) {
   const prelim_result = await api.request("submit", {"tx_blob": tx_blob})
-  console.log("Preliminary result:", prelim_result)
+  console.log("Preliminary result code:", prelim_result.engine_result)
   const min_ledger = prelim_result.validated_ledger_index
   if (prelim_result.tx_json.LastLedgerSequence === undefined) {
     console.warn("Transaction has no LastLedgerSequence field. "+
@@ -164,4 +164,12 @@ async function submit_and_verify(api, tx_blob) {
   }
 
   return final_result;
+}
+
+// Exports for node.js; no-op for browsers
+if (typeof module !== "undefined") {
+  module.exports = {
+    submit_and_verify: submit_and_verify,
+    lookup_tx_final: lookup_tx_final
+  }
 }
