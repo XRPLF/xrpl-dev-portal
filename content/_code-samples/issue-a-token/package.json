@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "ripple-lib": "^1.9.8"
+  }
+}

@@ -112,7 +112,7 @@ $(document).ready(() => {
         target="_blank">${prelim_result.engine_result}</a></p>`)
     } catch(err) {
       block.find(".loader").hide()
-      show_error(`An error occurred when sending the test payment: ${err}`)
+      show_error(block, `An error occurred when sending the test payment: ${err}`)
     }
 
 
