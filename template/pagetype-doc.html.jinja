@@ -6,12 +6,22 @@
     <script src="assets/js/expandcode.js"></script>
     <!-- multi-code selection tabs -->
     <script src="assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <script>
         $(document).ready(function() {
             $(".multicode").minitabs();
             make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
         });
     </script>
+    {# temp styling for testing. Need to cleanup #}
+    <style>
+      .clipboard-btn {
+        position: absolute;
+        right: 50px;
+      }
+    </style>
 
 {% endblock %}
 
