@@ -63,7 +63,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     # Script tags used in a variety of tools & examples.
     lodash_tag: '<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>'
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.9.8.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.10.0.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -2291,7 +2291,7 @@ pages:
             - ja
 
     -   name: JavaScript / TypeScript Client Library
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.8/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.10.0/docs/index.md
         html: rippleapi-reference.html
         parent: client-libraries.html
         blurb: JavaScript/TypeScript client library to the XRP Ledger.
