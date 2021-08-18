@@ -9,7 +9,7 @@
     <div class="col-xl-4 col-lg-6 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
         <h1 class="mb-18">{% trans %}What Would You Like to Learn?{% endtrans %}</h1>
-        <h6 class="green-500 mb-3">{% trans %}XRP Ledger Documentation{% endtrans %}</h6>
+        <h6 class="eyebrow mb-3">{% trans %}XRP Ledger Documentation{% endtrans %}</h6>
       </div>
       <div class="center-search search">
         <form role="search">
@@ -46,7 +46,7 @@
   <section class="container-new mb-50-until-sm" id="software-and-sdks">
     <div class="d-flex flex-column-reverse col-sm-8">
       <h2 class="h4">{% trans %}Software and SDKs{% endtrans %}</h2>
-      <h6 class="green-500 mb-3">{% trans %}Start Developing{% endtrans %}</h6>
+      <h6 class="eyebrow mb-3">{% trans %}Start Developing{% endtrans %}</h6>
     </div>
 
       {% set curated_cards = [
@@ -63,7 +63,7 @@
   <section class="container-new mb-50-until-sm" id="doc-types">
     <div class="d-flex flex-column-reverse col-sm-8">
       <h2 class="h4">{% trans %}Article types{% endtrans %}</h2>
-      <h6 class="green-500 mb-3">{% trans %}Dive In{% endtrans %}</h6>
+      <h6 class="eyebrow mb-3">{% trans %}Dive In{% endtrans %}</h6>
     </div>
     {% set curated_cards = currentpage.children|selectattr("html","ne","by-label.html")|selectattr("html","ne","faq.html")|map(attribute="html")|list %}
     {% set mobile_cols = 1 %}
@@ -74,7 +74,7 @@
   <section class="container-new mb-50-until-sm" id="run-a-network-node">
     <div class="d-flex flex-column-reverse col-sm-8">
       <h2 class="h4">{% trans %}Run an XRP Ledger network node{% endtrans %}</h2>
-      <h6 class="green-500 mb-3">{% trans %}Participate in the Network{% endtrans %}</h6>
+      <h6 class="eyebrow mb-3">{% trans %}Participate in the Network{% endtrans %}</h6>
     </div>
     {% set curated_cards = [
       "the-rippled-server.html",
@@ -88,7 +88,7 @@
 <section class="container-new mb-50-until-sm" id="docs-hot-topic">
   <div class="d-flex flex-column-reverse col-sm-8">
     <h2 class="h4">{% trans %}NFTs{% endtrans %}</h2>
-    <h6 class="green-500 mb-3">{% trans %}Hot Topic{% endtrans %}</h6>
+    <h6 class="eyebrow mb-3">{% trans %}Hot Topic{% endtrans %}</h6>
   </div>
   <div class="row">
     <div class="col-lg-6">
@@ -107,7 +107,7 @@
 <section class="container-new mb-50-until-sm doc-index">
   <div class="d-flex flex-column-reverse col-sm-8">
     <h2 id="full-doc-index" class="h4">{% trans %}Full documentation index{% endtrans %}</h2>
-    <h6 class="green-500 mb-3">{% trans %}See Everything{% endtrans %}</h6>
+    <h6 class="eyebrow mb-3">{% trans %}See Everything{% endtrans %}</h6>
   </div>
 
   <div class="row">

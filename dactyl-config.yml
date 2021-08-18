@@ -64,6 +64,7 @@ default_keys: &defaults
     # Script tags used in a variety of tools & examples.
     lodash_tag: '<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>'
     ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.9.8.min.js"></script>'
+    light_theme_enabled: true
 
 targets:
     # First member is the default that gets built when target not specified
@@ -72,7 +73,6 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
-        #light_theme_enabled: true
         blurb: XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools.
 
     -   name: ja
@@ -349,7 +349,7 @@ pages:
             - run-rippled-as-a-validator.html
             - intro-to-consensus.html
             - public-rippled-methods.html
-        top_nav_hero_image: assets/img/icons/docs.svg
+        top_nav_hero_image: top-nav-hero-docs
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
             - reserves.html
@@ -384,7 +384,7 @@ pages:
             - run-rippled-as-a-validator.html
             - intro-to-consensus.html
             - public-rippled-methods.html
-        top_nav_hero_image: assets/img/icons/docs.svg
+        top_nav_hero_image: top-nav-hero-docs
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
             - reserves.html
@@ -3754,7 +3754,7 @@ pages:
         top_nav_blurb: Join the conversation
         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
         top_nav_name: Community
-        top_nav_hero_image: assets/img/icons/contribute.svg
+        top_nav_hero_image: top-nav-hero-contribute
         targets:
             - en
 
@@ -3766,7 +3766,7 @@ pages:
         sidebar: disabled
         blurb: Join the conversation
         top_nav_name: コミュニティー
-        top_nav_hero_image: assets/img/icons/contribute.svg
+        top_nav_hero_image: top-nav-hero-contribute
         targets:
             - ja
 

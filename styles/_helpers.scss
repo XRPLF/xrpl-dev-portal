@@ -450,11 +450,13 @@
 .bg-grey-800 {
   background-color: $gray-800;
 }
-.green-500 {
-  color: $green-500;
-}
 .white {
   color: $white;
+}
+
+.stat-highlight,
+.eyebrow {
+  color: $green-500;
 }
 
 /* ETC */
