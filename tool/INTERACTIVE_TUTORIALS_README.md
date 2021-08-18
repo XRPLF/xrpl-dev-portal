@@ -18,6 +18,33 @@ Interactive Tutorials are intended to demonstrate interactivity with the XRP Led
 
 - As a best practice, don't call the faucet unless the user interacts with the page by clicking a button or something. Otherwise, web crawlers and things just loading the page end up draining the faucet pretty quickly.
 
+## Memos
+
+Transactions sent from interactive tutorials automatically attach a memo indicating what button of which tutorial sent the memo. Anyone who is watching Testnet/Devnet transactions can look for these memos to see when people are using the tutorials.
+
+The memo is identified by a `MemoType` that decodes to the URL of this document:
+
+```
+MemoType (hex):
+68747470733A2F2F6769746875622E636F6D2F5852504C462F7872706C2D6465762D706F7274616C2F626C6F622F6D61737465722F746F6F6C2F494E5445524143544956455F5455544F5249414C535F524541444D452E6D64
+
+MemoType (ASCII-decoded):
+https://github.com/XRPLF/xrpl-dev-portal/blob/master/tool/INTERACTIVE_TUTORIALS_README.md
+```
+
+The memo has a `MemoFormat` value of `6170706C69636174696F6E2F6A736F6E` (hex), which represents the MIME type `application/json`.
+
+The memo has a `MemoData` field which is ASCII-encoded JSON containing the following data:
+
+| Field | Type | Contents |
+|---|---|---|
+| `path` | String | The `window.location.pathname` of the tutorial. For example, `/send-xrp.html`. |
+| `button` | String | The unique html ID of the button that triggered this transaction. For example, `submit-button`. |
+
+For privacy reasons, the memo does not and MUST NOT include personally identifying information about the user or their browser.
+
+**Note:** The interactive tutorial code assumes that the path and ID are both possible to encode with plain ASCII, so please avoid using non-ASCII characters in the IDs and filenames.
+
 ## Recommended Process
 
 An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page like any other page. However, you need to add the following pieces to make the interactive stuff work:

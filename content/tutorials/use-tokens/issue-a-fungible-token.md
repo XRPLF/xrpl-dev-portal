@@ -172,10 +172,21 @@ _JavaScript_
     </div>
   </div>
 </form>
-<button id="config-issuer-button" class="btn btn-primary previous-steps-required">Configure issuer</button>
+<button id="config-issuer-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Issuer Setup)">Configure issuer</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
+
+### {{n.next()}}. Wait for Validation
+
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. You should wait for your earlier transactions to be fully validated before proceeding to the later steps, to avoid unexpected failures from things executing out of order. For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
+
+**Tip:** Technically, you can configure the hot address in parallel with configuring the issuer address. For simplicity, this tutorial waits for each transaction one at a time.
+
+{{ start_step("Wait (Issuer Setup)") }}
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{{ end_step() }}
+
 
 ### {{n.next()}}. Configure Hot Address Settings
 
@@ -241,9 +252,17 @@ _JavaScript_
     </div>
   </div>
 </form>
-<button id="config-hot-address-button" class="btn btn-primary previous-steps-required">Configure hot address</button>
+<button id="config-hot-address-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Hot Address Setup)">Configure hot address</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
+{{ end_step() }}
+
+### {{n.next()}}. Wait for Validation
+
+As before, wait for the previous transaction to be validated by consensus before continuing.
+
+{{ start_step("Wait (Hot Address Setup)") }}
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
 {{ end_step() }}
 
 
@@ -287,12 +306,21 @@ _JavaScript_
     </div>
   </div>
 </form>
-<button id="create-trust-line-button" class="btn btn-primary previous-steps-required">Create Trust Line</button>
+<button id="create-trust-line-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (TrustSet)">Create Trust Line</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
 **Note**: If you use [Authorized Trust Lines][], there is an extra step after this one: the cold address must approve the trust line from the hot address. For details of how to do this, see [Authorizing Trust Lines](authorized-trust-lines.html#authorizing-trust-lines).
+
+
+### {{n.next()}}. Wait for Validation
+
+As before, wait for the previous transaction to be validated by consensus before continuing.
+
+{{ start_step("Wait (TrustSet)") }}
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{{ end_step() }}
 
 
 ### {{n.next()}}. Send Token
@@ -341,9 +369,18 @@ _JavaScript_
     </div>
   </div>
 </form>
-<button id="send-token-button" class="btn btn-primary previous-steps-required">Send Token</button>
+<button id="send-token-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Payment)">Send Token</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
+{{ end_step() }}
+
+
+### {{n.next()}}. Wait for Validation
+
+As before, wait for the previous transaction to be validated by consensus before continuing.
+
+{{ start_step("Wait (Payment)") }}
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
 {{ end_step() }}
 
 

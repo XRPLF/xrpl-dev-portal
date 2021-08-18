@@ -167,9 +167,7 @@ $(document).ready(() => {
         "Flags": flags
       }
 
-      const cst_prepared = await api.prepareTransaction(cold_settings_tx, {maxLedgerVersionOffset: 20})
-      const cst_signed = api.sign(cst_prepared.txJSON, cold_secret)
-      do_submit(block, {tx_blob: cst_signed.signedTransaction})
+      generic_full_send(event, cold_settings_tx, cold_secret)
       complete_step("Configure Issuer")
 
     } catch(err) {
@@ -207,9 +205,7 @@ $(document).ready(() => {
         "Flags": flags
       }
 
-      const hst_prepared = await api.prepareTransaction(hot_settings_tx, {maxLedgerVersionOffset: 10})
-      const hst_signed = api.sign(hst_prepared.txJSON, hot_secret)
-      do_submit(block, {tx_blob: hst_signed.signedTransaction})
+      generic_full_send(event, hot_settings_tx, hot_secret)
       complete_step("Configure Hot Address")
 
     } catch(err) {
@@ -253,12 +249,7 @@ $(document).ready(() => {
           "value": limit
         }
       }
-      const ts_prepared = await api.prepareTransaction(
-        trust_set_tx,
-        {maxLedgerVersionOffset: 10}
-      )
-      const ts_signed = api.sign(ts_prepared.txJSON, hot_secret)
-      do_submit(block, {tx_blob: ts_signed.signedTransaction})
+      generic_full_send(event, trust_set_tx, hot_secret)
       complete_step("Make Trust Line")
 
     } catch(err) {
@@ -303,12 +294,7 @@ $(document).ready(() => {
       if (use_dest_tag) {
         send_token_tx["DestinationTag"] = dest_tag
       }
-      const pay_prepared = await api.prepareTransaction(
-        send_token_tx,
-        {maxLedgerVersionOffset: 10}
-      )
-      const pay_signed = api.sign(pay_prepared.txJSON, cold_secret)
-      do_submit(block, {tx_blob: pay_signed.signedTransaction})
+      generic_full_send(event, send_token_tx, cold_secret)
       complete_step("Send Token")
 
     } catch(err) {
