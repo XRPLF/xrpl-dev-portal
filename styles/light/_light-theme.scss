@@ -475,8 +475,11 @@ pre code {
 // Individual page styles ------------------------------------------------------
 
 // Homepage
-
 .page-home {
+  #home-hero-graphic {
+    content: url("../img/lightmode/home-hero.svg");
+  }
+
   #benefits-list {
     @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
       ##{$benefit} {

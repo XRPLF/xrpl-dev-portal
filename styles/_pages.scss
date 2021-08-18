@@ -9,13 +9,6 @@
   right: -3px;
   top: 60px;
 }
-#home-hero-graphic {
-  margin-left: auto;
-  width: 856px;
-  margin-right: auto;
-  margin-bottom: 24px;
-  max-width: 100%;
-}
 
 .sidelinks {
   &:hover {
@@ -28,10 +21,19 @@
 }
 
 .page-home {
+  #home-hero-graphic {
+    content: url("../img/home-hero.svg");
+    margin-left: auto;
+    width: 856px;
+    margin-right: auto;
+    margin-bottom: 24px;
+    max-width: 100%;
+  }
+
   #benefits-list {
     @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
       ##{$benefit} {
-        content: url("../img/icons/#{$benefit}.svg")
+        content: url("../img/icons/#{$benefit}.svg");
       }
     }
   }
@@ -40,7 +42,7 @@
     $feature-cards: ["pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2"];
     @for $i from 1 through 5 {
       .col-new-card:nth-child(#{$i}) {
-        background-image: url("../img/cards/3col-#{nth($feature-cards, $i)}.svg")
+        background-image: url("../img/cards/3col-#{nth($feature-cards, $i)}.svg");
       }
     }
   }
@@ -49,7 +51,7 @@
     $gs-cards: ["orange-yellow", "magenta-orange", "purple-blue-green", "light-blue", "green-blue"];
     @for $i from 1 through 5 {
       .col-new-card:nth-child(#{$i}) {
-        background-image: url("../img/cards/3col-#{nth($gs-cards, $i)}.svg")
+        background-image: url("../img/cards/3col-#{nth($gs-cards, $i)}.svg");
       }
     }
   }

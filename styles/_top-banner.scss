@@ -57,6 +57,10 @@ body {
 
 $banner-top-offset: 146px;
 
+.floating-nav {
+  top: $banner-top-offset;
+}
+
 .main h1:before,
 .main h2:before,
 .main h3:before,
@@ -88,6 +92,6 @@ html.light {
                 border-color: #E0E0E1;
             }
         }
-        
+
     }
-} 
+}
