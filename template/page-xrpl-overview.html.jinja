@@ -109,27 +109,26 @@
   </section>
 
   <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 w-100 pl-0 pr-0" id="accordion">
+    <div class="col-md-6 offset-md-3 w-100 pl-0 pr-0 mini-faq" id="minifaq-accordion">
       {% set faqs = [
-        { "number": "1",
-          "question": _("Is XRPL a private blockchain, owned by Ripple?"),
+        { "question": _("Is XRPL a private blockchain, owned by Ripple?"),
           "answer": _("No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the Unique Node List (see “What are Unique Node Lists (UNLs)?” in the Full FAQ) — Ripple runs 6 of these nodes.") },
-        { "number": "2",
-          "question": _("Isn’t Proof of Work the best validation mechanism?"),
+        { "question": _("Isn’t Proof of Work the best validation mechanism?"),
           "answer": _("Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. However the XRP Ledger’s consensus mechanism solves the same problem in a far faster, cheaper and more energy efficient way.") },
-        { "number": "3",
-          "question": _("How can a blockchain be sustainable?"),
+        { "question": _("How can a blockchain be sustainable?"),
           "answer": _("It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>. Explore the energy consumption of XRP compared to cash, credit cards and other popular cryptocurrencies with the <a href='carbon-calculator.html'>Green Currency Calculator</a>.") },
       ] %}
       {% for faq in faqs %}
-      <div class="w-100 accordian-row mb-6">
-        <h3 class="mb-0 h6" id="heading{{faq.number}}">
-          <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#collapse{{faq.number}}" aria-expanded="false" aria-controls="collapse{{faq.number}}">
+      <div class="q-wrapper">
+        <a href="#heading{{loop.index}}" class="expander collapsed" data-toggle="collapse" data-target="#answer{{loop.index}}" aria-expanded="false" aria-controls="answer{{loop.index}}">
+        <h4 id="heading{{loop.index}}">
             {{faq.question}}
             <span class="chevron"><span></span><span></span></span>
           </a>
-        </h3>
-        <p id="collapse{{faq.number}}" class="collapse mt-3 mb-0" aria-labelledby="heading{{faq.number}}" data-parent="#accordion">{{faq.answer}}</p>
+        </h4>
+        <div id="answer{{loop.index}}" class="answer-wrapper collapse" aria-labelledby="heading{{loop.index}}">
+          <p>{{faq.answer}}</p>
+        </div><!--/.answer-wrapper {{loop.index}} -->
       </div>
       {% endfor %}
       <center>

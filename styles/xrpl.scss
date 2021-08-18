@@ -44,7 +44,6 @@ $line-height-base: 1.5;
 @import "_side-nav.scss";
 @import "_helpers.scss";
 @import "_buttons.scss";
-@import "_chips.scss";
 @import "_tables.scss";
 @import "_tables.scss";
 @import "_use-cases.scss";
@@ -67,6 +66,7 @@ $line-height-base: 1.5;
 @import "_rpc-tool.scss";
 @import "_blog.scss";
 @import "_feedback.scss";
+@import "top-banner.scss";
 
 // Light/Dark theme settings ---------------------------------------------------
 // Option to only change theme on user system settings.  No toggle.
