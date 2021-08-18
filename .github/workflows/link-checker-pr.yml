@@ -1,7 +1,13 @@
 name: Link Checker (PR Build)
 
 on:
-  pull_request:
+  # Note: this job runs with in-repo permissions so it can comment and commit
+  # on stuff in the repo even when the PR is coming from a PR. This means that
+  # it can, potentially, wreak havoc on the repository by running arbitrary
+  # code. Be sure to ONLY approve job runs AFTER you have confirmed that the
+  # commits in question do not contain malicious or suspicious code (especially
+  # to the .sh or .py files in the tool/ directory.)
+  pull_request_target:
     types: [opened, edited, synchronize]
 
 jobs:
@@ -11,6 +17,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{github.event.pull_request.head.ref}}
+        repository: ${{github.event.pull_request.head.repo.full_name}}
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
       with:
