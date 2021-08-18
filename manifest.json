@@ -229,5 +229,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1138"
       }
     ]
+  },
+  "issue_token_tutorial": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "a7eec0b039a13595baa1c14c7bbe410eb3a6a04e",
+        "updatedAt": "2021-08-18T22:21:14.383Z",
+        "href": "pr-preview/issue_token_tutorial/a7eec0",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1143"
+      }
+    ]
   }
 }
