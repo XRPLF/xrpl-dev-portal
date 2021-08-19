@@ -3893,6 +3893,14 @@ pages:
         targets:
             - en
 
+# Robots.txt for better Google indexing
+    -   name: Robots
+        html: robots.txt
+        template: robots.txt.jinja
+        nav_omit: true
+        targets:
+            - en
+
 
 ignore_anchors_in:
     - data-api-v2-tool.html
