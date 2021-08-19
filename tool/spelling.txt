@@ -23,6 +23,7 @@ base58check
 base64
 blockchains
 cmake
+codebases
 cors
 counterparty
 counterparties
@@ -49,6 +50,8 @@ mainnet
 micropayments
 middleware
 multisigning
+NFT
+NFTs
 noripple
 nudb
 p2p
@@ -64,8 +67,12 @@ rtxp
 secp256k1
 semver
 shor
+sidechain
+sidechains
 SSDs
 SSL
+stablecoin
+stablecoins
 statsd
 testnet
 TLS
@@ -76,6 +83,7 @@ v1
 v2
 v10
 validators
+XRPL
 
 # rippled API methods
 account_channels
@@ -201,6 +209,7 @@ ticksize
 trustsetauth
 
 # Names of people, orgs, etc.
+AWS
 bithomp
 britto
 macbrough
@@ -208,6 +217,7 @@ RippleX
 xpring
 xrpcharts
 xrpchat
+Xrplorer
 xrpscan
 xrpl4j
 XRPLF

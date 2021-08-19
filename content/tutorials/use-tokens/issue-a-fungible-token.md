@@ -13,7 +13,6 @@ labels:
 
 Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial demonstrates the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see [Issued Currencies](issued-currencies.html); for more on the business decisions involved in issuing a stablecoin, see [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html).
 
-
 ## Prerequisites
 
 - You need two funded XRP Ledger accounts, each with an address, secret key, and some XRP. For this tutorial, you can generate new test credentials as needed.
@@ -105,7 +104,7 @@ Other settings you may want to, optionally, configure for your cold address (iss
 
 [Require Destination Tags]: require-destination-tags.html
 [Transfer Fee]: transfer-fees.html
-[Tick Size]: tick-size.html
+[Tick Size]: ticksize.html
 [Domain]: accountset.html#domain
 
 **Note:** Many issuing settings apply equally to all tokens issued by an address, regardless of the currency code. If you want to issue multiple types of tokens in the XRP Ledger with different settings, you should use a different address to issue each different token.

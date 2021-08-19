@@ -156,6 +156,9 @@ targets:
             "ledger-history.html#full-history": "ledger-history.html#すべての履歴"
             # Fix link from untranslated amendment-voting.html and rate-limiting.html:
             "get-started-using-http-websocket-apis.html#admin-access": "get-started-using-http-websocket-apis.html#管理者アクセス権限"
+            # Fix links from untranslated issue-a-fungible-token.html
+            "xrp-ledger-toml.html#account-verification": "xrp-ledger-toml.html#アカウント検証"
+            "offers.html#offers-and-trust": "offers.html#オファーとトラスト"
 
 
 pages:
