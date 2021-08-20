@@ -147,9 +147,9 @@ function pretty_print(j) {
  */
 function disable_followup_steps() {
   $(".previous-steps-required").prop("title", tl("Complete all previous steps first"))
-  $(".previous-steps-required").prop("disabled", true)
+  $(".previous-steps-required").prop("disabled", true).addClass("disabled")
   $(".connection-required").prop("title", tl("Conection to the XRP Ledger required"))
-  $(".connection-required").prop("disabled", true)
+  $(".connection-required").prop("disabled", true).addClass("disabled")
 }
 
 /**

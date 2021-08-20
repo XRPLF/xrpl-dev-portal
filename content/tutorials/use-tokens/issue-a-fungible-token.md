@@ -123,20 +123,20 @@ _JavaScript_
 {{ start_step("Configure Issuer") }}
 <form>
   <div class="form-inline">
-    <div class="input-group">
-      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="cold-default-ripple" disabled="disabled" checked/>
-      <label for="cold-default-ripple" class="col-form-label">Default Ripple</label>
+    <div class="input-group form-check">
+      <input type="checkbox" class="form-check-input mr-3" value="" id="cold-default-ripple" disabled="disabled" checked title="The issuer MUST enable Default Ripple first." />
+      <label for="cold-default-ripple" class="col-form-label" title="The issuer MUST enable Default Ripple first.">Default Ripple</label>
     </div>
   </div>
   <div class="form-inline">
-    <div class="input-group">
-      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="cold-require-dest" />
+    <div class="input-group form-check">
+      <input type="checkbox" class="form-check-input mr-3" value="" id="cold-require-dest" />
       <label for="cold-require-dest" class="col-form-label">Require Destination Tags</label>
     </div>
   </div>
   <div class="form-inline">
-    <div class="input-group">
-      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="cold-disallow-xrp" checked />
+    <div class="input-group form-check">
+      <input type="checkbox" class="form-check-input mr-3" value="" id="cold-disallow-xrp" checked />
       <label for="cold-disallow-xrp" class="col-form-label">Disallow XRP</label>
     </div>
   </div>
@@ -194,7 +194,7 @@ The hot address does not strictly require any settings changes from the default,
 | Setting                      | Recommended Value   | Summary                 |
 |:-----------------------------|:--------------------|:------------------------|
 | [Default Ripple][]           | Disabled            | Leave this setting **disabled.** (This is the default.) |
-| [Authorized Trust Lines][]   | Enabled             | Enable this setting on the hot address to prevent accidentally issuing tokens from the wrong address. (Optional, but recommended.) |
+| [Authorized Trust Lines][]   | Enabled             | Enable this setting on the hot address—and never approve any trust lines to the hot address—to prevent accidentally issuing tokens from the wrong address. (Optional, but recommended.) |
 | [Require Destination Tags][] | Enabled or Disabled | Enable if you process withdrawals of your token to outside systems. (For example, your token is a stablecoin.) |
 | Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments. |
 | [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](xrp-ledger-toml.html#account-verification). This can help reduce confusion or impersonation attempts. |
@@ -212,26 +212,26 @@ _JavaScript_
 {{ start_step("Configure Hot Address") }}
 <form>
   <div class="form-inline">
-    <div class="input-group">
-      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="hot-default-ripple" disabled="disabled" />
-      <label for="hot-default-ripple" class="form-check-label">Default Ripple</label>
+    <div class="input-group form-check">
+      <input type="checkbox" class="form-check-input mr-3" value="" id="hot-default-ripple" disabled="disabled" title="Default Ripple must remain disabled on the hot address." />
+      <label for="hot-default-ripple" class="form-check-label" title="Default Ripple must remain disabled on the hot address.">Default Ripple</label>
     </div>
   </div>
   <div class="form-inline">
-    <div class="input-group">
-      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="hot-require-dest" />
-      <label for="hot-require-dest" class="col-form-label">Require Destination Tags</label>
+    <div class="input-group form-check">
+      <input type="checkbox" class="form-check-input mr-3" value="" id="hot-require-auth" disabled="disabled" checked="checked" title="The hot address should enable Authorized Trust Lines as a precaution." />
+      <label for="hot-default-ripple" class="form-check-label" title="The hot address should enable Authorized Trust Lines as a precaution.">Authorized Trust Lines</label>
     </div>
   </div>
   <div class="form-inline">
-    <div class="input-group">
-      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="hot-require-auth" disabled="disabled" checked="checked" />
-      <label for="hot-default-ripple" class="form-check-label">Authorized Trust Lines</label>
+    <div class="input-group form-check">
+      <input type="checkbox" class="form-check-input mr-3" value="" id="hot-require-dest" />
+      <label for="hot-require-dest" class="form-check-label">Require Destination Tags</label>
     </div>
   </div>
   <div class="form-inline">
-    <div class="input-group">
-      <input type="checkbox" class="form-control form-check-input mr-3" value="" id="hot-disallow-xrp" checked="checked" />
+    <div class="input-group form-check">
+      <input type="checkbox" class="form-check-input mr-3" value="" id="hot-disallow-xrp" checked="checked" />
       <label for="hot-disallow-xrp" class="form-check-label">Disallow XRP</label>
     </div>
   </div>
@@ -288,20 +288,31 @@ _JavaScript_
   <h4>Currency code:</h4>
   <div class="container">
     <div class="input-group row">
-      <input type="radio" id="use-std-code" name="currency-code-type" class="mr-2" checked="checked" />
+      <div class="input-group-prepend">
+        <div class="input-group-text form-check bg-transparent">
+          <input type="radio" id="use-std-code" name="currency-code-type" checked="checked" />
+        </div>
+      </div>
       <label for="use-std-code" class="input-group-text col-lg-3">Standard:</label>
       <input type="text" id="currency-code-std" pattern="[A-Za-z0-9?!@#$%*(){}|\x26\x3c\x3e]{3}" value="FOO" class="form-control col-lg-8" title="3 character code (letters, numbers, and some symbols)" />
     </div>
 
     <div class="input-group row">
-      <input type="radio" id="use-hex-code" name="currency-code-type" class="mr-2" />
+      <div class="input-group-prepend">
+        <div class="input-group-text form-check bg-transparent">
+          <input type="radio" id="use-hex-code" name="currency-code-type" />
+        </div>
+      </div>
       <label for="use-hex-code" class="input-group-text col-lg-3">Non-standard:</label>
       <input type="text" id="currency-code-hex" pattern="[0-9A-F]{40}" value="015841551A748AD2C1F76FF6ECB0CCCD00000000" title="40 hexadecimal characters" class="form-control col-lg-8" />
     </div>
 
     <div class="input-group row mt-2">
+      <div class="input-group-prepend col-lg-1">
+        <div class="input-group-text bg-transparent">&nbsp;</div>
+      </div>
       <label for="trust-limit" class="input-group-text col-lg-3">Limit:</label>
-      <input type="number" id="trust-limit" min="0" value="1000000000" title="Maximum amount the hot address can hold" class="form-control col-lg-8" />
+      <input type="number" id="trust-limit" min="0" value="1000000000" title="Maximum amount the hot address can hold" class="form-control col-lg-9" />
     </div>
   </div>
 </form>
@@ -353,18 +364,24 @@ _JavaScript_
 
 {{ start_step("Send Token") }}
 <form>
-  <div class="container">
-    <div class="input-group row mt-2">
-      <label for="send-amount" class="input-group-text col-lg-3">Send amount:</label>
-      <input type="number" id="send-amount" min="0" value="123.45" step="0.01" title="How much to send to the hot address" class="form-control col-lg-8" />
+  <div class="form-inline mt-2">
+    <div class="input-group">
+      <label for="send-amount" class="input-group-text">Send amount:</label>
+      <input type="number" id="send-amount" min="0" value="123.45" step="0.01" title="How much to send to the hot address" class="form-control" />
       <div class="input-group-append">
         <span class="input-group-text" id="send-currency-code">FOO</span>
       </div>
     </div>
-    <div class="input-group row">
-      <input type="checkbox" id="use-dest-tag" class="mr-2" checked="checked" />
-      <label for="dest-tag" class="input-group-text col-lg-3">DestinationTag:</label>
-      <input type="number" id="dest-tag" value="0" min="0" max="4294967295" class="form-control col-lg-8" title="Any 32-bit integer" />
+  </div>
+  <div class="form-inline mt-2">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-transparent">
+          <input type="checkbox" id="use-dest-tag" class="mr-2" checked="checked" />
+        </div>
+      </div>
+      <label for="dest-tag" class="input-group-text">DestinationTag:</label>
+      <input type="number" id="dest-tag" value="0" min="0" max="4294967295" class="form-control" title="Any 32-bit integer" />
     </div>
   </div>
 </form>

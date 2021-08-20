@@ -36,6 +36,15 @@ button[disabled="disabled"] {
   &:hover {
     background: $blue-purple-600;
   }
+
+  &.disabled,
+  &[disabled="disabled"] {
+    background: $blue-purple-700;
+
+    &:hover {
+      background: $blue-purple-700;
+    }
+  }
 }
 
 .btn-arrow {
