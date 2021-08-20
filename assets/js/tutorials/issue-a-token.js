@@ -114,9 +114,16 @@ $(document).ready(() => {
   function update_currency_code(event) {
     let currency_code
     if ($("#use-std-code").prop("checked")) {
-      currency_code = $("#currency-code-std").val().trim()
+      const std_code = $("#currency-code-std")
+      currency_code = std_code.val().trim()
+      // std_code.prop("disabled", false).removeClass("disabled")
+      // $("#currency-code-hex").prop("disabled", true).addClass("disabled")
+
     } else {
-      currency_code = $("#currency-code-hex").val().trim()
+      const hex_code = $("#currency-code-hex")
+      currency_code = hex_code.val().trim()
+      // hex_code.prop("disabled", false).removeClass("disabled")
+      // $("#currency-code-std").prop("disabled", true).addClass("disabled")
     }
     $("#send-currency-code").text(currency_code)
   }
