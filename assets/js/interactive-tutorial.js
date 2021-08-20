@@ -114,6 +114,7 @@ function complete_step_by_id(step_id) {
                     ".interactive-block").eq(0).find(".previous-steps-required")
   next_ui.prop("title", "")
   next_ui.prop("disabled", false)
+  next_ui.removeClass("disabled")
 }
 
 /**
@@ -360,7 +361,6 @@ function setup_wait_steps() {
           min_ledger,
           max_ledger
         })
-        console.log(tx_result)
 
         if (tx_result.validated) {
           status_box.html(

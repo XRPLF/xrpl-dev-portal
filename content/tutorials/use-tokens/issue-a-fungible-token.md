@@ -17,9 +17,9 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
 
 - You need two funded XRP Ledger accounts, each with an address, secret key, and some XRP. For this tutorial, you can generate new test credentials as needed.
     - Each address needs enough XRP to satisfy the [reserve requirement](reserves.html) including the additional reserve for a trust line.
-- You need a connection to the XRP Ledger network.
+- You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 
-This page provides examples that use [ripple-lib for JavaScript](get-started-with-rippleapi-for-javascript.html). Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
+This page provides examples that use [ripple-lib for JavaScript](get-started-with-rippleapi-for-javascript.html) or [xrpl-py for Python](get-started-using-python.html). You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/issue-a-token.js"></script>
@@ -59,7 +59,11 @@ When you're [building actual production-ready software](production-readiness.htm
 
 You must be connected to the network to submit transactions to it.
 
-The following code uses a [ripple-lib for JavaScript](rippleapi-reference.html) instance to connect to a public XRP Ledger Testnet server:
+The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
+
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
 
 ```js
 ripple = require('ripple-lib') // Node.js only. Use a <script> tag in browsers.
@@ -69,10 +73,19 @@ async function main() {
   await api.connect()
 
   // Code in the following examples continues here...
+
+  api.disconnect() // When done. This lets Node.js stop running.
 }
 
 main()
 ```
+
+_Python_
+
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Connect", end_before="# Get credentials", language="py") }}
+
+<!-- MULTICODE_BLOCK_END -->
+
 
 **Note:** The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
 
@@ -116,7 +129,11 @@ The following code sample shows how to send an [AccountSet transaction][] to ena
 
 _JavaScript_
 
-{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Configure issuer", end_before="// Configure hot", language="js") }}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Configure issuer", end_before="// Configure hot", language="js") }}
+
+_Python_
+
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Configure issuer", end_before="# Configure hot", language="py") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -205,7 +222,11 @@ The following code sample shows how to send an [AccountSet transaction][] to ena
 
 _JavaScript_
 
-{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Configure hot address", end_before="// Create trust line", language="js") }}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Configure hot address", end_before="// Create trust line", language="js") }}
+
+_Python_
+
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Configure hot address", end_before="# Create trust line", language="py") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -279,7 +300,11 @@ The following code sample shows how to send a [TrustSet transaction][] from the 
 
 _JavaScript_
 
-{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Create trust line", end_before="// Send token", language="js") }}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Create trust line", end_before="// Send token", language="js") }}
+
+_Python_
+
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Create trust line", end_before="# Send token", language="py") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -321,7 +346,7 @@ _JavaScript_
 <div class="output-area"></div>
 {{ end_step() }}
 
-**Note**: If you use [Authorized Trust Lines][], there is an extra step after this one: the cold address must approve the trust line from the hot address. For details of how to do this, see [Authorizing Trust Lines](authorized-trust-lines.html#authorizing-trust-lines).
+**Note:** If you use [Authorized Trust Lines][], there is an extra step after this one: the cold address must approve the trust line from the hot address. For details of how to do this, see [Authorizing Trust Lines](authorized-trust-lines.html#authorizing-trust-lines).
 
 
 ### {{n.next()}}. Wait for Validation
@@ -358,7 +383,11 @@ The following code sample shows how to send a [Payment transaction][] to issue 8
 
 _JavaScript_
 
-{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Send token", end_before="// Check balances", language="js") }}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Send token", end_before="// Check balances", language="js") }}
+
+_Python_
+
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Send token", end_before="# Check balances", language="py") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -416,7 +445,11 @@ The following code sample shows how to use both methods:
 
 _JavaScript_
 
-{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Check balances", end_before="// End of", language="js") }}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Check balances", end_before="// End of", language="js") }}
+
+_Python_
+
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Check balances", language="py") }}
 
 <!-- MULTICODE_BLOCK_END -->
 

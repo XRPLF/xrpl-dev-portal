@@ -174,7 +174,7 @@ $(document).ready(() => {
         "Flags": flags
       }
 
-      generic_full_send(event, cold_settings_tx, cold_secret)
+      await generic_full_send(event, cold_settings_tx, cold_secret)
       complete_step("Configure Issuer")
 
     } catch(err) {
@@ -212,7 +212,7 @@ $(document).ready(() => {
         "Flags": flags
       }
 
-      generic_full_send(event, hot_settings_tx, hot_secret)
+      await generic_full_send(event, hot_settings_tx, hot_secret)
       complete_step("Configure Hot Address")
 
     } catch(err) {
@@ -256,7 +256,7 @@ $(document).ready(() => {
           "value": limit
         }
       }
-      generic_full_send(event, trust_set_tx, hot_secret)
+      await generic_full_send(event, trust_set_tx, hot_secret)
       complete_step("Make Trust Line")
 
     } catch(err) {
@@ -301,7 +301,7 @@ $(document).ready(() => {
       if (use_dest_tag) {
         send_token_tx["DestinationTag"] = dest_tag
       }
-      generic_full_send(event, send_token_tx, cold_secret)
+      await generic_full_send(event, send_token_tx, cold_secret)
       complete_step("Send Token")
 
     } catch(err) {
