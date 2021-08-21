@@ -5,7 +5,7 @@ $light-fg-disabled: $gray-400;
 $light-form-bg: $gray-200;
 $light-box-shadow: 0px 5px 20px 0px $gray-400;
 $light-link-hover-color: $blue-purple-500;
-$light-standout-bg: $white;
+$light-standout-bg: $gray-050;
 
 // General color elements ------------------------------------------------------
 
@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6,
 }
 .stat-highlight,
 .eyebrow {
-  color: $green-900;
+  color: $gray-900;
 }
 
 .invertible-img {
@@ -225,7 +225,7 @@ a, nav a {
 
     .dropdown-item.dropdown-hero {
       > img {
-        background-color: $white;
+        background-color: $gray-050;
       }
       p {
         color: $gray-700;
@@ -243,7 +243,7 @@ a, nav a {
     .col-for-人気ページ,
     .col-for-questions,
     .col-for-質問 {
-      background-color: $white;
+      background-color: $gray-050;
     }
   }
 
@@ -422,7 +422,7 @@ code {
 
 // Code blocks
 pre code {
-  color: $white;
+  color: $gray-050;
 }
 
 // Code tabs

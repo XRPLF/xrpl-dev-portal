@@ -91,6 +91,23 @@
         background-color: $blue-purple-200;
       }
     }
+
+    html.light & {
+      background-color: $blue-purple-200;
+      color: $blue-purple-800;
+      .badge-pill {
+        color: $blue-purple-200;
+        background-color: $blue-purple-800;
+      }
+      &:hover {
+        background-color: $blue-purple-300;
+        color: $blue-purple-900;
+        .badge-pill {
+          color: $blue-purple-300;
+          background-color: $blue-purple-900;
+        }
+      }
+    }
   }
 
   @mixin chip-green {
@@ -106,6 +123,23 @@
       .badge-pill {
         background-color: $green-200;
         color: $green-800;
+      }
+    }
+
+    html.light & {
+      background-color: $green-200;
+      color: $green-900;
+      .badge-pill {
+        color: $green-200;
+        background-color: $green-900;
+      }
+      &:hover {
+        background-color: $green-300;
+        color: $black;
+        .badge-pill {
+          color: $green-300;
+          background-color: $black;
+        }
       }
     }
   }
@@ -125,6 +159,23 @@
         color: $red-purple-800;
       }
     }
+
+    html.light & {
+      background-color: $red-purple-200;
+      color: $red-purple-800;
+      .badge-pill {
+        color: $red-purple-200;
+        background-color: $red-purple-800;
+      }
+      &:hover {
+        background-color: $red-purple-300;
+        color: $red-purple-900;
+        .badge-pill {
+          color: $red-purple-300;
+          background-color: $red-purple-900;
+        }
+      }
+    }
   }
 
   @mixin chip-yellow {
@@ -140,6 +191,23 @@
       .badge-pill {
         background-color: $yellow-200;
         color: $yellow-800;
+      }
+    }
+
+    html.light & {
+      background-color: $yellow-200;
+      color: $yellow-800;
+      .badge-pill {
+        color: $yellow-200;
+        background-color: $yellow-800;
+      }
+      &:hover {
+        background-color: $yellow-300;
+        color: $yellow-900;
+        .badge-pill {
+          color: $yellow-300;
+          background-color: $yellow-900;
+        }
       }
     }
   }
@@ -159,6 +227,23 @@
         color: $blue-800;
       }
     }
+
+    html.light & {
+      background-color: $blue-200;
+      color: $blue-800;
+      .badge-pill {
+        color: $blue-200;
+        background-color: $blue-800;
+      }
+      &:hover {
+        background-color: $blue-300;
+        color: $blue-900;
+        .badge-pill {
+          color: $blue-300;
+          background-color: $blue-900;
+        }
+      }
+    }
   }
 
   @mixin chip-orange {
@@ -176,6 +261,23 @@
         color: $orange-800;
       }
     }
+
+    html.light & {
+      background-color: $orange-200;
+      color: $orange-800;
+      .badge-pill {
+        color: $orange-200;
+        background-color: $orange-800;
+      }
+      &:hover {
+        background-color: $orange-300;
+        color: $orange-900;
+        .badge-pill {
+          color: $orange-300;
+          background-color: $orange-900;
+        }
+      }
+    }
   }
 
   @mixin chip-magenta {
@@ -191,6 +293,23 @@
       .badge-pill {
         background-color: $magenta-200;
         color: $magenta-800;
+      }
+    }
+
+    html.light & {
+      background-color: $magenta-200;
+      color: $magenta-800;
+      .badge-pill {
+        color: $magenta-200;
+        background-color: $magenta-800;
+      }
+      &:hover {
+        background-color: $magenta-300;
+        color: $magenta-900;
+        .badge-pill {
+          color: $magenta-300;
+          background-color: $magenta-900;
+        }
       }
     }
   }
