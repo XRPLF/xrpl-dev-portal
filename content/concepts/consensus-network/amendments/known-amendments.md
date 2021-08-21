@@ -8,7 +8,7 @@ labels:
 # Known Amendments
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
 
-The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:
+The following is a comprehensive list of all known [amendments](amendments.html) and their status on the production XRP Ledger:
 
 **Tip:** This list is updated manually. For a live view of amendment voting, see the [XRPScan Amendments Dashboard](https://xrpscan.com/amendments).
 
