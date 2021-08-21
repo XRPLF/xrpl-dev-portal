@@ -240,5 +240,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1143"
       }
     ]
+  },
+  "light_mode_revised": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "bca0b6bf92874ff764b7c8d7262524a961988a3e",
+        "updatedAt": "2021-08-21T00:34:24.226Z",
+        "href": "pr-preview/light_mode_revised/bca0b6",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1152"
+      }
+    ]
   }
 }
