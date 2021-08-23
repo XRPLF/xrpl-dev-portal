@@ -15,12 +15,21 @@
             new ClipboardJS('.clipboard-btn');
         });
     </script>
-    {# temp styling for testing. Need to cleanup #}
+    {# temp styling for testing. #}
     <style>
       .clipboard-btn {
-        position: absolute;
-        right: 50px;
+        position: relative;
+        float: right;
+        z-index: 10;
       }
+      .multicode .clipboard-btn {
+        right: 15px;
+        top: 55px;
+      }
+      .js_interactive .clipboard-btn {
+        display:none;
+      }
+
     </style>
 
 {% endblock %}

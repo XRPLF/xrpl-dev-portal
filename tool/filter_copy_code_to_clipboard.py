@@ -31,9 +31,12 @@ def filter_soup(soup, **kwargs):
         codeBlock["id"] = codeBlock_id
         # Add copy button
         new_tag = soup.new_tag('button', id=codeBlock_id+'button')
-        new_tag.append("Copy to clipboard") #TODO: localize 
+        icon = soup.new_tag('i')
+        icon['class'] = "fa fa-clipboard"
         new_tag['class'] = "clipboard-btn"
+        new_tag['alt'] = "Copy to clipboard"
         new_tag['data-clipboard-target'] = "#"+codeBlock_id
+        new_tag.insert(0, icon)
         code_block.insert(0, new_tag)
         # 
         index1 += 1
