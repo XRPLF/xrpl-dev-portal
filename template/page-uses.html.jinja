@@ -135,7 +135,7 @@
 
     <div class="mt-10 card-grid card-grid-3xN">
       {% for card in cards %}
-      <a class="col-new col-new-card ls-none bg-grey-800 br-8" href="{{card.href}}" target="_blank" id="{{card.id}}">
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8" href="{{card.link}}" target="_blank" id="{{card.id}}">
         <span class="card-new d-block">
           <img class="mw-100 mb-3 biz-logo" alt="{{card.name|default(card.id)}}">
           <h4 class="h5">{{card.title}}</h4>
