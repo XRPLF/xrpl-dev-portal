@@ -9,11 +9,13 @@ if (typeof module !== "undefined") {
 }
 
 // Connect -------------------------------------------------------------------
-api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
-api.connect()
-api.on('connected', async () => {
+async function main() {
+  console.log("Connecting to Testnet...")
+  const api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
+  await api.connect()
 
   // Get credentials from the Testnet Faucet -----------------------------------
+  console.log("Requesting addresses from the Testnet faucet...")
   const data = await api.generateFaucetWallet()
   const address = data.account.address
   const secret = data.account.secret
@@ -58,7 +60,7 @@ api.on('connected', async () => {
     min_ledger: ${min_ledger}`)
   let tx_status
   try {
-    tx_status = await lookup_tx_final(tx_id, max_ledger, min_ledger)
+    tx_status = await lookup_tx_final(api, tx_id, max_ledger, min_ledger)
   } catch(err) {
     tx_status = err
   }
