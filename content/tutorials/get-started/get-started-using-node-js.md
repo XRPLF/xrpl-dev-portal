@@ -256,22 +256,20 @@ See [Reliable Transaction Submission](reliable-transaction-submission.html) for 
 
 # RippleAPI in Web Browsers
 
-RippleAPI can also be used in a web browser. To access it, load [Lodash](https://lodash.com/) and [RippleAPI for JavaScript (ripple-lib)](rippleapi-reference.html) in your site's HTML. For example:
+RippleAPI can also be used in a web browser. To access it, load [RippleAPI for JavaScript (ripple-lib)](rippleapi-reference.html) in your site's HTML. For example:
 
 <!-- MULTICODE_BLOCK_START -->
 
 _unpkg_
 
 ```html
-<script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script>
-<script src="https://unpkg.com/ripple-lib@1.9.1/build/ripple-latest-min.js"></script>
+<script src="https://unpkg.com/ripple-lib@1.10.0/build/ripple-latest-min.js"></script>
 ```
 
 _jsDelivr_
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/ripple-lib@1.9.1/build/ripple-latest-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ripple-lib@1.10.0/build/ripple-latest-min.js"></script>
 ```
 
 <!-- MULTICODE_BLOCK_END -->

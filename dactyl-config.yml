@@ -63,7 +63,6 @@ default_keys: &defaults
     # Hover icon markup for permalinking headers
     hover_anchors: <i class="fa fa-link"></i>
     # Script tags used in a variety of tools & examples.
-    lodash_tag: '<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>'
     ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.10.0.min.js"></script>'
 
 targets:
