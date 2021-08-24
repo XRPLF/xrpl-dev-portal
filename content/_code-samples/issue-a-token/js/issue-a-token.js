@@ -1,11 +1,13 @@
 // Stand-alone code sample for the "issue a token" tutorial:
 // https://xrpl.org/issue-a-fungible-token.html
 
-// Uncomment these dependencies for Node.js. In browsers, use <script> tags as
-// in the example demo.html.
-// const ripple = require('ripple-lib')
-// const fetch = require('node-fetch')
-// const submit_and_verify = require('../submit-and-verify/submit-and-verify.js').submit_and_verify
+// Dependencies for Node.js.
+// In browsers, use <script> tags as in the example demo.html.
+if (typeof module !== "undefined") {
+  // gotta use var here because const/let are block-scoped to the if statement.
+  var ripple = require('ripple-lib')
+  var submit_and_verify = require('../../submit-and-verify/submit-and-verify.js').submit_and_verify
+}
 
 // Connect ---------------------------------------------------------------------
 async function main() {
@@ -14,32 +16,13 @@ async function main() {
   await api.connect()
 
   // Get credentials from the Testnet Faucet -----------------------------------
-  // This doesn't technically need to happen after you call api.connect() but
-  // it's convenient to do here.
-  async function get_faucet_address() {
-    const faucet_url = "https://faucet.altnet.rippletest.net/accounts"
-    const faucet_options = {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: '{}'
-    }
-    const response = await fetch(faucet_url, faucet_options)
-    if (!response.ok) {
-      throw `Faucet returned an error: ${data.error}`
-    }
-    const data = await response.json()
-    return data
-  }
-
   console.log("Requesting addresses from the Testnet faucet...")
-  const hot_data = await get_faucet_address()
-  const hot_address = hot_data.account.address
+  const hot_data = await api.generateFaucetWallet()
+  const hot_address = hot_data.account.classicAddress
   const hot_secret = hot_data.account.secret
 
-  const cold_data = await get_faucet_address()
-  const cold_address = cold_data.account.address
+  const cold_data = await api.generateFaucetWallet()
+  const cold_address = cold_data.account.classicAddress
   const cold_secret = cold_data.account.secret
 
   console.log("Waiting until we have a validated starting sequence number...")
