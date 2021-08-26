@@ -234,9 +234,9 @@
     "apps": [
       {
         "name": "pr-preview",
-        "headCommitId": "511e5c6327e4ab79109a5bd306fae354753ef211",
-        "updatedAt": "2021-08-24T22:22:43.165Z",
-        "href": "pr-preview/issue_token_tutorial/511e5c",
+        "headCommitId": "fe1b5ce43a31633876313d0c9e5f5b659036e313",
+        "updatedAt": "2021-08-26T22:48:07.166Z",
+        "href": "pr-preview/issue_token_tutorial/fe1b5c",
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1143"
       }
     ]
