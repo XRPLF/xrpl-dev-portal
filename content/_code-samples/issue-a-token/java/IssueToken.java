@@ -39,23 +39,20 @@ public class IssueToken {
 
   public static void main(String[] args)
     throws InterruptedException, JsonRpcClientErrorException, JsonProcessingException {
-    // -----------------------------------------------------------
-    // Construct a network client
-    // -----------------------------------------------------------
+    // Construct a network client ----------------------------------------------
     HttpUrl rippledUrl = HttpUrl
       .get("https://s.altnet.rippletest.net:51234/");
     XrplClient xrplClient = new XrplClient(rippledUrl);
+    // Get the current network fee
+    FeeResult feeResult = xrplClient.fee();
 
-    // -----------------------------------------------------------
-    // Create a cold and hot Wallet using a WalletFactory
-    // -----------------------------------------------------------
+
+    // Create cold and hot Wallets using a WalletFactory -----------------------
     WalletFactory walletFactory = DefaultWalletFactory.getInstance();
     Wallet coldWallet = walletFactory.randomWallet(true).wallet();
     Wallet hotWallet = walletFactory.randomWallet(true).wallet();
 
-    // -----------------------------------------------------------
-    // Fund the account using the testnet Faucet
-    // -----------------------------------------------------------
+    // Fund the account using the testnet Faucet -------------------------------
     FaucetClient faucetClient = FaucetClient
       .construct(HttpUrl.get("https://faucet.altnet.rippletest.net"));
     faucetClient.fundAccount(FundAccountRequest.of(coldWallet.classicAddress()));
@@ -91,14 +88,7 @@ public class IssueToken {
       }
     }
 
-    // -----------------------------------------------------------
-    // Get the current network fee
-    // -----------------------------------------------------------
-    FeeResult feeResult = xrplClient.fee();
-
-    // -----------------------------------------------------------
-    // Configure cold wallet settings
-    // -----------------------------------------------------------
+    // Configure issuer settings -----------------------------------------------
     UnsignedInteger coldWalletSequence = xrplClient.accountInfo(
       AccountInfoRequestParams.builder()
         .ledgerIndex(LedgerIndex.CURRENT)
@@ -127,9 +117,7 @@ public class IssueToken {
 
     submitAndWaitForValidation(signedSetDefaultRipple, xrplClient);
 
-    // -----------------------------------------------------------
-    // Configure hot wallet settings
-    // -----------------------------------------------------------
+    // Configure hot address settings ------------------------------------------
     UnsignedInteger hotWalletSequence = xrplClient.accountInfo(
       AccountInfoRequestParams.builder()
         .ledgerIndex(LedgerIndex.CURRENT)
@@ -158,9 +146,7 @@ public class IssueToken {
 
     submitAndWaitForValidation(signedSetRequireAuth, xrplClient);
 
-    // -----------------------------------------------------------
-    // Create TrustLine
-    // -----------------------------------------------------------
+    // Create trust line -------------------------------------------------------
     String currencyCode = "FOO";
     ImmutableTrustSet trustSet = TrustSet.builder()
       .account(hotWallet.classicAddress())
@@ -181,9 +167,7 @@ public class IssueToken {
 
     submitAndWaitForValidation(signedTrustSet, xrplClient);
 
-    // -----------------------------------------------------------
-    // Send token
-    // -----------------------------------------------------------
+    // Send token --------------------------------------------------------------
     Payment payment = Payment.builder()
       .account(coldWallet.classicAddress())
       .fee(feeResult.drops().openLedgerFee())
@@ -204,9 +188,7 @@ public class IssueToken {
 
     submitAndWaitForValidation(signedPayment, xrplClient);
 
-    // -----------------------------------------------------------
-    // Check balances
-    // -----------------------------------------------------------
+    // Check balances ----------------------------------------------------------
     List<TrustLine> lines = xrplClient.accountLines(
       AccountLinesRequestParams.builder()
         .account(hotWallet.classicAddress())
@@ -216,6 +198,7 @@ public class IssueToken {
     System.out.println("Hot wallet TrustLines: " + lines);
   }
 
+  // Helper methods ------------------------------------------------------------
   private static UnsignedInteger computeLastLedgerSequence(XrplClient xrplClient)
     throws JsonRpcClientErrorException {
     // Get the latest validated ledger index

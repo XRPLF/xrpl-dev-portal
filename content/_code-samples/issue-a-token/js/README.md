@@ -1,4 +1,4 @@
-# Issue a Token Sample Code
+# Issue a Token Sample Code (JavaScript)
 
 This code demonstrates how to issue a (fungible) token on the XRP Ledger. For a detailed explanation, see <https://xrpl.org/issue-a-fungible-token.html>.
 
