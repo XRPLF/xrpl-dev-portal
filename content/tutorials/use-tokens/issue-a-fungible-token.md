@@ -18,12 +18,20 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
 - You need two funded XRP Ledger accounts, each with an address, secret key, and some XRP. For this tutorial, you can generate new test credentials as needed.
     - Each address needs enough XRP to satisfy the [reserve requirement](reserves.html) including the additional reserve for a trust line.
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
-
-This page provides examples that use [ripple-lib for JavaScript](get-started-with-rippleapi-for-javascript.html) or [xrpl-py for Python](get-started-using-python.html). You can also read along and use the interactive steps in your browser without any setup.
+- You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
+    - ripple-lib for JavaScript [(Node.js)](get-started-with-rippleapi-for-javascript.html) or [in-browser](get-started.html)
+    - [xrpl-py for Python](get-started-using-python.html)
+    - [xrpl4j for Java](get-started-using-java.html).
+    - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/issue-a-token.js"></script>
 
+## Example Code
+
+Complete sample code for all of the steps of these tutorials is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
+
+- See [Code Samples: Issue a Fungible Token](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/issue-a-token/) in the source repository for this website.
 
 ## Steps
 {% set n = cycler(* range(1,99)) %}
@@ -84,10 +92,14 @@ _Python_
 
 {{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Connect", end_before="# Get credentials", language="py") }}
 
+_Java_
+
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Construct a network client", end_before="// Create cold", language="java") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 
-**Note:** The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
+**Note:** The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
 
 For this tutorial, you can connect directly from your browser by pressing the following button:
 
@@ -120,6 +132,8 @@ Other settings you may want to, optionally, configure for your cold address (iss
 [Tick Size]: ticksize.html
 [Domain]: accountset.html#domain
 
+You can change these settings later as well.
+
 **Note:** Many issuing settings apply equally to all tokens issued by an address, regardless of the currency code. If you want to issue multiple types of tokens in the XRP Ledger with different settings, you should use a different address to issue each different token.
 
 The following code sample shows how to send an [AccountSet transaction][] to enable the recommended cold address settings:
@@ -134,6 +148,10 @@ _JavaScript_
 _Python_
 
 {{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Configure issuer", end_before="# Configure hot", language="py") }}
+
+_Java_
+
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Configure issuer", end_before="// Configure hot", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -197,6 +215,12 @@ _Python_
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. You should wait for your earlier transactions to be fully validated before proceeding to the later steps, to avoid unexpected failures from things executing out of order. For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
+The code samples in this tutorial use helper functions to wait for validation when submitting a transaction:
+
+- **JavaScript:** The `submit_and_verify()` function, as defined in the [submit-and-verify code sample](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify).
+- **Python:** The `send_reliable_submission()` [method of the xrpl-py library](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission).
+- **Java:** The `submitAndWaitForValidation()` method in the [sample Java class](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/issue-a-token/java/IssueToken.java).
+
 **Tip:** Technically, you can configure the hot address in parallel with configuring the issuer address. For simplicity, this tutorial waits for each transaction one at a time.
 
 {{ start_step("Wait (Issuer Setup)") }}
@@ -227,6 +251,10 @@ _JavaScript_
 _Python_
 
 {{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Configure hot address", end_before="# Create trust line", language="py") }}
+
+_Java_
+
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Configure hot address", end_before="// Create trust line", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -306,11 +334,15 @@ _Python_
 
 {{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Create trust line", end_before="# Send token", language="py") }}
 
+_Java_
+
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Create trust line", end_before="// Send token", language="java") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Make Trust Line") }}
 <form>
-  <h4>Currency code:</h4>
+  <p>Currency code:</p>
   <div class="container">
     <div class="input-group row">
       <div class="input-group-prepend">
@@ -322,7 +354,7 @@ _Python_
       <input type="text" id="currency-code-std" pattern="[A-Za-z0-9?!@#$%*(){}|\x26\x3c\x3e]{3}" value="FOO" class="form-control col-lg-8" title="3 character code (letters, numbers, and some symbols)" />
     </div>
 
-    <div class="input-group row">
+    <div class="input-group row mt-2">
       <div class="input-group-prepend">
         <div class="input-group-text form-check bg-transparent">
           <input type="radio" id="use-hex-code" name="currency-code-type" />
@@ -332,10 +364,7 @@ _Python_
       <input type="text" id="currency-code-hex" pattern="[0-9A-F]{40}" value="015841551A748AD2C1F76FF6ECB0CCCD00000000" title="40 hexadecimal characters" class="form-control col-lg-8" />
     </div>
 
-    <div class="input-group row mt-2">
-      <div class="input-group-prepend col-lg-1">
-        <div class="input-group-text bg-transparent">&nbsp;</div>
-      </div>
+    <div class="input-group row mt-4">
       <label for="trust-limit" class="input-group-text col-lg-3">Limit:</label>
       <input type="number" id="trust-limit" min="0" value="1000000000" title="Maximum amount the hot address can hold" class="form-control col-lg-9" />
     </div>
@@ -388,6 +417,10 @@ _JavaScript_
 _Python_
 
 {{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Send token", end_before="# Check balances", language="py") }}
+
+_Java_
+
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Send token", end_before="// Check balances", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -450,6 +483,10 @@ _JavaScript_
 _Python_
 
 {{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Check balances", language="py") }}
+
+_Java_
+
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Check balances", end_before="// Helper", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
