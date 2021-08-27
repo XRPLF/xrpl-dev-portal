@@ -4,16 +4,21 @@
 $(document).ready(() => {
 
   // 3. Send AccountSet --------------------------------------------------------
-  $("#send-accountset").click( (event) => {
+  $("#send-accountset").click( async (event) => {
     const address = get_address(event)
     if (!address) {return}
 
-    generic_full_send(event, {
-      "TransactionType": "AccountSet",
-      "Account": address,
-      "SetFlag": 1 // RequireDest
-    })
-    complete_step("Send AccountSet")
+    try {
+      await generic_full_send(event, {
+        "TransactionType": "AccountSet",
+        "Account": address,
+        "SetFlag": 1 // RequireDest
+      })
+      complete_step("Send AccountSet")
+    } catch(err) {
+      block.find(".loader").hide()
+      show_error(block, err)
+    }
   })
 
   // 4. Wait for Validation: handled by interactive-tutorial.js and by the
@@ -112,7 +117,7 @@ $(document).ready(() => {
         target="_blank">${prelim_result.engine_result}</a></p>`)
     } catch(err) {
       block.find(".loader").hide()
-      show_error(`An error occurred when sending the test payment: ${err}`)
+      show_error(block, `An error occurred when sending the test payment: ${err}`)
     }
 
 

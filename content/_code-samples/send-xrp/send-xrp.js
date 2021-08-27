@@ -9,21 +9,7 @@ api.connect()
 api.on('connected', async () => {
 
   // Get credentials from the Testnet Faucet -----------------------------------
-  // This doesn't technically need to happen after you call api.connect() but
-  // it's convenient to do here because we can use await on the faucet call and
-  // to wait for the new account to be funded.
-  const faucet_url = "https://faucet.altnet.rippletest.net/accounts"
-  const response = await fetch(faucet_url, {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: '{}'
-  })
-  if (!response.ok) {
-    throw `Faucet returned an error: ${data.error}`
-  }
-  const data = await response.json()
+  const data = await api.generateFaucetWallet()
   address = data.account.address
   secret = data.account.secret
 

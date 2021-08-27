@@ -62,7 +62,6 @@ default_keys: &defaults
     # Hover icon markup for permalinking headers
     hover_anchors: <i class="fa fa-link"></i>
     # Script tags used in a variety of tools & examples.
-    lodash_tag: '<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>'
     ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.10.0.min.js"></script>'
 
 targets:
@@ -155,6 +154,10 @@ targets:
             "ledger-history.html#full-history": "ledger-history.html#すべての履歴"
             # Fix link from untranslated amendment-voting.html and rate-limiting.html:
             "get-started-using-http-websocket-apis.html#admin-access": "get-started-using-http-websocket-apis.html#管理者アクセス権限"
+            # Fix links from untranslated issue-a-fungible-token.html
+            "xrp-ledger-toml.html#account-verification": "xrp-ledger-toml.html#アカウント検証"
+            "offers.html#offers-and-trust": "offers.html#オファーとトラスト"
+            "authorized-trust-lines.html#authorizing-trust-lines": "authorized-trust-lines.html#トラストラインの承認"
 
 
 pages:
@@ -1347,6 +1350,22 @@ pages:
 
     -   md: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.ja.md
         targets:
+            - ja
+
+        # TODO: translate title & blurb
+    -   name: Use Tokens
+        html: use-tokens.html
+        parent: tutorials.html
+        blurb: Create and trade tokens (fungible or otherwise) in the XRP Ledger.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/use-tokens/issue-a-fungible-token.md
+        targets:
+            - en
             - ja
 
     # TODO: "Send a Cross-Currency Payment"

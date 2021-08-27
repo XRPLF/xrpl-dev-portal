@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ripple-lib": "^1.10.0"
+  }
+}

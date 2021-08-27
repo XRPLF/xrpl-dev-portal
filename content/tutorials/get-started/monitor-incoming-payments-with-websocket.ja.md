@@ -76,7 +76,7 @@ const socket = new WebSocket('ws://localhost:6006')
 例:
 
 {{ start_step("Connect") }}
-<button id="connect-button" class="btn btn-primary">Connect</button>
+<button id="connect-socket-button" class="btn btn-primary">Connect</button>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
 <h5>Console:</h5>
@@ -85,7 +85,7 @@ const socket = new WebSocket('ws://localhost:6006')
 
 <script type="application/javascript">
 let socket;
-$("#connect-button").click((event) => {
+$("#connect-socket-button").click((event) => {
   socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
   socket.addEventListener('open', (event) => {
     // This callback runs when the connection is open

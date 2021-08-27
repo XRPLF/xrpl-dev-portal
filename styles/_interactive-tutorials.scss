@@ -14,40 +14,46 @@
   margin: 10px 0;
 }
 
-.interactive-block .breadcrumbs-wrap {
-  margin-bottom: 11px;
-}
+.interactive-block {
+  input:invalid {
+    box-shadow: inset 0 0 5px 5px $danger;
+  }
 
-.interactive-block .breadcrumb-item {
-  margin-top: 6px;
-}
+  .breadcrumbs-wrap {
+    margin-bottom: 11px;
+  }
 
-.interactive-block .breadcrumb-item a {
-  text-decoration: none;
-}
+  .breadcrumb-item {
+    margin-top: 6px;
+  }
 
-.interactive-block .breadcrumb-item.current a {
-  font-weight: bold;
-}
+  .breadcrumb-item a {
+    text-decoration: none;
+  }
 
-.interactive-block .breadcrumb-item.active a {
-  color: $blue-purple-300;
-}
+  .breadcrumb-item.current a {
+    font-weight: bold;
+  }
 
-.interactive-block .breadcrumb-item.disabled a {
-  color: $gray-600;
-}
+  .breadcrumb-item.active a {
+    color: $blue-purple-300;
+  }
 
-.interactive-block .breadcrumb-item.done a:after {
-  content: "\f058"; /* fontawesome check-circle icon */
-  font-family: FontAwesome;
-  color: $secondary;
-  padding-right: 5px;
-  padding-left: 5px;
-}
+  .breadcrumb-item.disabled a {
+    color: $gray-600;
+  }
 
-.interactive-block .waiting-for-tx {
-  word-break: break-word;
+  .breadcrumb-item.done a:after {
+    content: "\f058"; /* fontawesome check-circle icon */
+    font-family: FontAwesome;
+    color: $secondary;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .waiting-for-tx {
+    word-break: break-word;
+  }
 }
 
 .ws-console {
