@@ -318,9 +318,20 @@ As before, wait for the previous transaction to be validated by consensus before
 
 Before you can receive tokens, you need to create a [trust line](trust-lines-and-issuing.html) to the token issuer. This trust line is specific to the [currency code](currency-formats.html#currency-codes) of the token you want to issue, such as USD or FOO. You can choose any currency code you want; each issuer's tokens are treated as separate in the XRP Ledger protocol. However, users' balances of tokens with the same currency code can [ripple](rippling.html) between different issuers if the users enable rippling settings.
 
-The hot address needs a trust line like this before it can receive tokens from the issuer. Similarly, each user who wants to hold your token must also create a trust line[¹](#footnotes).
+The hot address needs a trust line like this before it can receive tokens from the issuer. Similarly, each user who wants to hold your token must also create a trust line[¹](#footnotes). Each trust line increases the [reserve requirement](reserves.html) of the hot address, so you must hold enough spare XRP to pay for the increased requirement. Your reserve requirement goes back down if you remove the trust line.
 
 **Tip:** A trust line has a "limit" on how much the recipient is willing to hold; others cannot send you more tokens than your specified limit. For community credit systems, you may want to configure limits per individual based on how much you trust that person. For other types and uses of tokens, it is normally OK to set the limit to a very large number.
+
+To create a trust line, send a [TrustSet transaction][] from the **hot address** with the following fields:
+
+| Field                  | Value                                               |
+|:-----------------------|:----------------------------------------------------|
+| `TransactionType`      | `"TrustSet"`                                        |
+| `Account`              | The hot address. (More generally, this is the account that wants to receive the token.) |
+| `LimitAmount`          | An object specifying how much, of which token, from which issuer, you are willing to hold. |
+| `LimitAmount.currency` | The currency code of the token.                     |
+| `LimitAmount.issuer`   | The cold address.             |
+| `LimitAmount.value`    | The maximum amount of the token you are willing to hold. |
 
 The following code sample shows how to send a [TrustSet transaction][] from the hot address, trusting the issuing address for a limit of 1 billion FOO:
 

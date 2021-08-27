@@ -131,6 +131,10 @@ $(document).ready(() => {
   $("#currency-code-hex").keyup(update_currency_code)
   $("#use-std-code").change(update_currency_code)
   $("#use-hex-code").change(update_currency_code)
+  // run once on load because some browsers pre-fill values from previous
+  // pageviews.
+  update_currency_code()
+
 
   // Configure Issuer Settings handler -----------------------------------------
   $("#config-issuer-button").click( async (event) => {
