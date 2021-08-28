@@ -84,6 +84,9 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
         $ sudo systemctl enable rippled.service
 
+8. Optional: allow `rippled` to bind to privileged ports (e.g.: run http/https/ws/wss on port 80, 443, etc.)
+
+        $ sudo setcap 'cap_net_bind_service=+ep' /opt/ripple/bin/rippled
 
 
 ## Next Steps
