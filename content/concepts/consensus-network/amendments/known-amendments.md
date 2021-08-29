@@ -15,8 +15,8 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | Name                            | Introduced | Status                        |
 |:--------------------------------|:-----------|:------------------------------|
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [NegativeUNL][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [NegativeUNL][]                 | v1.7.3     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.3.html "BADGE_80d0e0") |
 | [fixRmSmallIncreasedQOffers][]  | v1.7.2     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.2.html "BADGE_80d0e0") |
 | [fixSTAmountCanonicalize][]     | v1.7.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
 | [FlowSortStrands][]             | v1.7.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
@@ -570,7 +570,7 @@ With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, re
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | In Development |
+| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | Open for Voting |
 
 Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
 

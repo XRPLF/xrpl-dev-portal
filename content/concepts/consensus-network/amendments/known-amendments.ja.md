@@ -15,8 +15,8 @@ labels:
 | 名前                            | 導入済み | ステータス                              |
 |:--------------------------------|:-----------|:------------------------------------|
 | [CryptoConditionsSuite][]       | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [NegativeUNL][]                 | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [NegativeUNL][]                 | v1.7.3     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.3.html "BADGE_80d0e0") |
 | [fixRmSmallIncreasedQOffers][]  | v1.7.2     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.2.html "BADGE_80d0e0") |
 | [fixSTAmountCanonicalize][]     | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
 | [FlowSortStrands][]             | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
@@ -554,7 +554,7 @@ XRP Ledgerアカウントが[マルチ署名](multi-signing.html) SignerListを�
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 開発中 |
+| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 投票中 |
 
 <!-- TODO: translate amendment description -->
 Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the liveness of the network during periods of network instability.
