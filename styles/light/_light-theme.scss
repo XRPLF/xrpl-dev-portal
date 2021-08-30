@@ -3,7 +3,7 @@ $light-fg: $black;
 $light-fg-muted: $gray-800;
 $light-fg-disabled: $gray-400;
 $light-form-bg: $gray-200;
-$light-box-shadow: 0px 5px 20px 0px $gray-400;
+$light-box-shadow: 0px 5px 20px 0px $gray-300;
 $light-link-hover-color: $blue-purple-500;
 $light-standout-bg: $gray-050;
 
@@ -55,6 +55,10 @@ h1, h2, h3, h4, h5, h6,
 
 .invertible-img {
   filter: invert(100%);
+}
+
+.arrow-link::after {
+  content: url("../img/lightmode/icon-long-arrow.svg");
 }
 
 // Forms and inputs ------------------------------------------------------------
@@ -214,11 +218,6 @@ a, nav a {
     border-color: $gray-100;
     box-shadow: $light-box-shadow;
 
-    &#topnav_dd_docshtml {
-      background-color: $gray-200;
-      border-color: $gray-200;
-    }
-
     a:hover, a.active {
       color: $light-link-hover-color;
     }
@@ -243,7 +242,7 @@ a, nav a {
     .col-for-人気ページ,
     .col-for-questions,
     .col-for-質問 {
-      background-color: $gray-050;
+      background-color: $gray-200;
     }
   }
 
@@ -352,7 +351,7 @@ aside .active > a:hover {
   }
 
   .q-wrapper {
-    background-color: $gray-200;
+    background-color: $light-standout-bg;
     color: $light-fg;
 
     > a.expander:hover {
@@ -363,7 +362,7 @@ aside .active > a:hover {
 
 .page-community {
   #platform-stack-overflow {
-    content: url("../img/logos/lightmode/stack-overflow.svg")
+    content: url("../img/logos/lightmode/stack-overflow.svg");
   }
 }
 
@@ -384,7 +383,7 @@ aside .active > a:hover {
   }
 
   .circled-logo {
-    background-color: $gray-300;
+    background-color: $gray-200;
 
     img[src="assets/img/logos/globe.svg"] {
       filter: invert(100%);
@@ -483,7 +482,7 @@ pre code {
   #benefits-list {
     @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
       ##{$benefit} {
-        content: url("../img/icons/lightmode/#{$benefit}.svg")
+        content: url("../img/icons/lightmode/#{$benefit}.svg");
       }
     }
   }
@@ -491,7 +490,7 @@ pre code {
 
 // XRPL Overview
 #validator-graphic {
-  content: url(../img/lightmode/validators.svg);
+  content: url("../img/lightmode/validators.svg");
 }
 
 // XRP Overview

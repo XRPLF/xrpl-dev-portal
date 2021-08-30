@@ -26,6 +26,7 @@ a.card:hover h3 {
   img {
     width: 26px;
     height: 26px;
+    display: inline-block; // fix sizing in Chrome
   }
   margin-bottom: 0.75rem;
 }
