@@ -262,5 +262,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1158"
       }
     ]
+  },
+  "testnet_faucet_seq": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "fd385d53bebae3f094c1d35219b73ee4ed72ead2",
+        "updatedAt": "2021-08-31T20:56:59.550Z",
+        "href": "pr-preview/testnet_faucet_seq/fd385d",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1159"
+      }
+    ]
   }
 }
