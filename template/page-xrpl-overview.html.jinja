@@ -49,7 +49,7 @@
 
   <section class="container-new py-26">
     <div class="card-grid card-grid-2xN">
-      <div class="col-new">
+      <div class="col">
         <div class="d-flex flex-column-reverse">
           <h2 class="h4 h2-sm mb-8">{% trans %}How the Consensus Protocol works{% endtrans %}</h2>
           <h6 class="eyebrow mb-3">{% trans %}Consensus{% endtrans %}</h6>
@@ -58,14 +58,14 @@
         <p class="mb-6">{% trans %}All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, with strong cryptography to guarantee the integrity of the system.{% endtrans %}</p>
         <p class="mb-0">{% trans %}Anyone can operate a validator; currently, over 150 <a href="https://livenet.xrpl.org/network/validators" target="_blank">validators</a> are active on the ledger, operated by universities, exchanges, businesses, and individuals. Additionally, the consensus protocol ensures the blockchain becomes more decentralized over time as the validator pool grows.{% endtrans %}</p>
       </div>
-      <div class="col-new mb-16-sm">
+      <div class="col mb-16-sm">
         <img class="mw-100" id="validator-graphic" alt="(Graphic: Validators in Consensus)">
       </div>
     </div>
   </section>
 
   <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 bg-grey-800 text-center">
+    <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
       <img src="./img/backgrounds/cta-xrpl-overview-green.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
         <h2 class="h4 mb-10-until-sm mb-8-sm">{% trans %}A Greener Blockchain{% endtrans %}</h2>
@@ -77,7 +77,7 @@
 
   <section class="container-new py-26">
     <div class="card-grid card-grid-2xN">
-      <div class="col-new">
+      <div class="col">
         <div class="d-flex flex-column-reverse">
           <h4 class="h4 h2-sm mb-8">{% trans %}XRPL provides powerful utility across the blockchain space{% endtrans %}</h4>
           <h6 class="eyebrow mb-3">{% trans %}XRPL Today{% endtrans %}</h6>
@@ -86,7 +86,7 @@
         <p class="mb-10">{% trans %}With the XRPL, these developers are building innovative projects and applications across blockchain use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi.{% endtrans %}</p>
         <a class="btn btn-primary btn-arrow mb-10-sm" href="uses.html">{% trans %}Explore More{% endtrans %}</a>
       </div>
-      <div class="col-new mb-0">
+      <div class="col mb-0">
         <div class="d-flex flex-column-reverse">
           <h4 class="h4 h2-sm mb-8">{% trans %}Fulfilling the vision of the XRPL community{% endtrans %}</h4>
           <h6 class="eyebrow mb-3">{% trans %}XRPL Tomorrow{% endtrans %}</h6>
@@ -98,7 +98,7 @@
   </section>
 
   <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 bg-grey-800 text-center">
+    <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
       <img src="./img/backgrounds/cta-xrpl-overview-orange.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
         <h4 class="h4 mb-10-until-sm mb-8-sm">{% trans %}Tomorrow’s Blockchain Starts With You{% endtrans %}</h4>
@@ -121,11 +121,11 @@
       {% for faq in faqs %}
       <div class="q-wrapper">
         <a href="#heading{{loop.index}}" class="expander collapsed" data-toggle="collapse" data-target="#answer{{loop.index}}" aria-expanded="false" aria-controls="answer{{loop.index}}">
-        <h4 id="heading{{loop.index}}">
+          <h4 id="heading{{loop.index}}">
             {{faq.question}}
             <span class="chevron"><span></span><span></span></span>
-          </a>
-        </h4>
+          </h4>
+        </a>
         <div id="answer{{loop.index}}" class="answer-wrapper collapse" aria-labelledby="heading{{loop.index}}">
           <p>{{faq.answer}}</p>
         </div><!--/.answer-wrapper {{loop.index}} -->

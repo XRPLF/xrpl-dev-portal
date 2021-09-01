@@ -1,3 +1,7 @@
+.card, .cta-card, .q-wrapper {
+  box-shadow: $dropdown-box-shadow;
+}
+
 .card-body > p,
 .card-body > p:not(:last-child) {
   padding: 0;
@@ -33,20 +37,53 @@ a.card:hover h3 {
 
 .card-deck {
   margin-top: 2.5rem;
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: (-$card-deck-margin);
+  margin-right: (-$card-deck-margin);
+  margin-bottom: 5rem;
   flex-grow: 1;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 5rem;
+  }
+
   .card {
+    flex-grow: 0;
+    flex-basis: 100%;
+    margin: 0 $card-deck-margin (4 * $card-deck-margin) $card-deck-margin;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
   }
 
   &.row-cols-1 .card {
+    flex-basis: 100%;
     // Give cards some breathing room (but not in the 2×2 ones)
     min-height: 264px;
     @include media-breakpoint-up(md) {
       min-height: 347px;
+    }
+  }
+
+  &.row-cols-lg-3 {
+    @include media-breakpoint-up(xl) {
+      // Double the card deck margin on larger desktops
+      margin-left: (-2 * $card-deck-margin);
+      margin-right: (-2 * $card-deck-margin);
+    }
+    .card {
+      @include media-breakpoint-up(lg) {
+        flex-basis: calc(33% - #{(2 * $card-deck-margin)} );
+      }
+      @include media-breakpoint-up(xl) {
+        margin: 0 (2 * $card-deck-margin) (4 * $card-deck-margin) (2 * $card-deck-margin);
+        flex-basis: calc(33% - #{(4 * $card-deck-margin)} );
+      }
+    }
+  }
+
+  &.row-cols-lg-4 .card {
+    @include media-breakpoint-up(lg) {
+      flex-basis: calc(25% - #{(2 * $card-deck-margin)} );
     }
   }
 
@@ -78,7 +115,7 @@ a.card:hover h3 {
       padding: 1rem;
     }
     &.row-cols-1 .card {
-      margin: .75rem;
+      margin: .75rem .75rem (4 * $card-deck-margin) .75rem;
       max-width: calc(100% - 1.5rem);
     }
     &.row-cols-2 .card {
@@ -86,4 +123,9 @@ a.card:hover h3 {
       max-width: calc(50% - 1.5rem);
     }
   }
+}
+
+.cta-card {
+  text-align: center;
+  background-color: $gray-800;
 }

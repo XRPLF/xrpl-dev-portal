@@ -330,12 +330,7 @@ aside .active > a:hover {
 }
 
 // Layout elements -------------------------------------------------------------
-.container-new .col-new-card {
-  box-shadow: $light-box-shadow;
-  color: $light-fg;
-}
-
-.card {
+.card, .cta-card {
   color: $light-fg;
   background-color: $light-standout-bg;
   box-shadow: $light-box-shadow;
@@ -353,6 +348,7 @@ aside .active > a:hover {
   .q-wrapper {
     background-color: $light-standout-bg;
     color: $light-fg;
+    box-shadow: $light-box-shadow;
 
     > a.expander:hover {
       color: $light-fg;
@@ -563,7 +559,7 @@ pre code {
     "ripple": "blue-light-blue",
     "xrplorer": "green-purple"
   ) {
-    ##{$company} {
+    ##{$company} .card-footer {
       background-image: url("../img/cards/lightmode/3col-#{$card-graphic}.svg");
     }
   }
@@ -584,14 +580,16 @@ pre code {
   }
   // non-SVG logos:
   #raisedinspace {
-    background-image: url(../img/cards/lightmode/3col-orange-yellow-2.svg);
+    .card-footer {
+      background-image: url("../img/cards/lightmode/3col-orange-yellow-2.svg");
+    }
     .biz-logo {
-      content: url(../img/uses/lightmode/raised.png);
+      content: url("../img/uses/lightmode/raised.png");
     }
   }
   #towo {
     .biz-logo {
-      content: url(../img/uses/lightmode/towo.png);
+      content: url("../img/uses/lightmode/towo.png");
     }
   }
 }

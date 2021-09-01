@@ -1,3 +1,9 @@
+// Variables
+$grid-gap: 40px;
+$grid-gap-lg: 80px;
+
+// General stuff ---------------------------------------------------------------
+
 body {
   position: relative; // Makes scrollspy work better
 }
@@ -73,7 +79,7 @@ section {
   @include media-breakpoint-up(lg) {
     display: grid;
     grid-auto-flow: column;
-    grid-column-gap: 80px;
+    grid-column-gap: $grid-gap-lg;
 
     .nav-grid-head {
       margin-top: 0;
@@ -96,36 +102,40 @@ section {
 }
 
 
-// Card Grid styles ------------------------------------------------------------
+// Grid styles (often not for cards) -------------------------------------------
 
 .card-grid {
   display: grid;
-  grid-gap: 40px;
+  grid-gap: $grid-gap;
   padding: 0;
   width: 100%;
+  grid-template-columns: 1fr; // Default to 1 big column on smaller screens
+
+  @include media-breakpoint-up(lg) {
+    grid-gap: $grid-gap-lg;
+  }
+
+  .col {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   &.card-grid-3xN {
     /* 3 equal columns and any number of auto-sized rows. */
-    grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: auto;
-
-    @include media-breakpoint-down(md) {
-      /* Switch to 1-column layout on smaller widths */
-      grid-template-columns: 1fr;
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: 1fr 1fr 1fr;
     }
-    .card-new {
-      min-height: 264px;
-      @include media-breakpoint-up(md) {
-        min-height: 347px;
-      }
-    }
+    // @include media-breakpoint-up(lg) {
+    //   margin-left: (-2 * $grid-gap-lg);
+    //   margin-right: (-2 * $grid-gap-lg);
+    // }
   }
 
   &.card-grid-2xN {
     /* 2 equal columns and any number of auto-sized rows. */
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: auto;
-    gap: 40px;
 
     @include media-breakpoint-down(md) {
       /* Switch to 1-column layout on smaller widths */
@@ -142,16 +152,21 @@ section {
 
     @include media-breakpoint-down(md) {
       /* Switch to 1-column layout on smaller widths */
-      grid-template-columns: 1fr;
+      display: flex;
     }
   }
 
-  .card {
-    padding: 40px;
-    border: 0;
 
-    @include media-breakpoint-down(md) {
-      padding: 20px;
+  .card {
+    padding: 20px;
+    border: 0;
+    min-height: 264px;
+
+    @include media-breakpoint-up(md) {
+      min-height: 347px;
+    }
+    @include media-breakpoint-up(lg) {
+      padding: 40px;
     }
 
     .card-body {
@@ -167,7 +182,6 @@ section {
 }
 
 // New Page Layouts ---------------------------------------------------------------
-$columns: 12; // Number of columns in the grid system
 
 .container-new {
   display: flex;
@@ -180,64 +194,10 @@ $columns: 12; // Number of columns in the grid system
     max-width: 608px;
   }
   @include media-breakpoint-up(lg) {
-    max-width: 832px;
+    max-width: 942px;
   }
   @include media-breakpoint-up(xl) {
     max-width: 1280px;
-  }
-  // create columns
-  @for $width from 1 through $columns {
-    .col-new-#{$width} {
-      flex-basis: $width / $columns * 100%;
-    }
-  }
-  .margin-col {
-    @include media-breakpoint-down(lg) {
-      margin: 24px 0;
-    }
-    @include media-breakpoint-down(sm) {
-      margin: 0 0 40px;
-    }
-    @include media-breakpoint-up(lg) {
-      margin: 40px;
-    }
-  }
-  .col-new {
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: contain;
-    overflow: hidden;
-    max-width: 100%;
-    margin: 0 0 40px;
-
-    @include media-breakpoint-up(md) {
-      margin: 24px 0;
-    }
-    @include media-breakpoint-up(lg) {
-      margin: 24px;
-    }
-    @include media-breakpoint-up(xl) {
-      margin: 40px;
-    }
-  }
-
-  .card-new {
-    padding: 32px;
-    --width: 4;
-  }
-  .col-new-card {
-    transition: all 0.15s ease-out;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0px 5px 40px 0px $black;
-    color: $white;
-    &:hover {
-      -webkit-transform: translateY(-16px);
-      -moz-transform: translateY(-16px);
-      -ms-transform: translateY(-16px);
-      -o-transform: translateY(-16px);
-      transform: translateY(-16px);
-    }
   }
 }
 

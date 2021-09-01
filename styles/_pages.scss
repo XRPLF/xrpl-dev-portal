@@ -41,7 +41,7 @@
   #advanced-features {
     $feature-cards: ["pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2"];
     @for $i from 1 through 5 {
-      .col-new-card:nth-child(#{$i}) {
+      .card:nth-child(#{$i}) .card-footer {
         background-image: url("../img/cards/3col-#{nth($feature-cards, $i)}.svg");
       }
     }
@@ -50,7 +50,7 @@
   #get-started {
     $gs-cards: ["orange-yellow", "magenta-orange", "purple-blue-green", "light-blue", "green-blue"];
     @for $i from 1 through 5 {
-      .col-new-card:nth-child(#{$i}) {
+      .card:nth-child(#{$i}) .card-footer {
         background-image: url("../img/cards/3col-#{nth($gs-cards, $i)}.svg");
       }
     }
@@ -189,14 +189,18 @@
     "xrplorer": "green-purple"
   ) {
     ##{$company} {
-      background-image: url("../img/cards/3col-#{$card-graphic}.svg");
+      .card-footer {
+        background-image: url("../img/cards/3col-#{$card-graphic}.svg");
+      }
       .biz-logo {
         content: url("../img/uses/#{$company}.svg");
       }
     }
   }
   #raisedinspace {
-    background-image: url(../img/cards/3col-orange-yellow-2.svg);
+    .card-footer {
+      background-image: url(../img/cards/3col-orange-yellow-2.svg);
+    }
     .biz-logo {
       content: url(../img/uses/raised.png);
     }
@@ -362,11 +366,15 @@
     border-radius: $border-radius-sm;
     padding: 2rem;
     padding-right: 3rem; // don't overlap chevron
-    margin-bottom: 1.5rem;
+    // margin-bottom: 1.5rem; // this is enough space when a banner isn't active
+    margin-bottom: 3.5rem; // give space so anchor-fix doesn't block clicks
+
     width: 100%;
 
     > a {
       text-decoration: none;
+      position: relative;
+      z-index: 5;
 
       &:hover {
         text-decoration: underline;
@@ -393,6 +401,16 @@
       @include media-breakpoint-down(md) {
         font-size: 1rem;
         line-height: 1.5rem;
+      }
+
+      // Stop anchor-fix from blocking clicks on earlier FAQ items
+      &::before {
+        position: relative;
+        z-index: -1;
+      }
+      > a {
+        position: relative;
+        z-index: 3;
       }
     }
 

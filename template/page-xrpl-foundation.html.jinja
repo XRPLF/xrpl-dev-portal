@@ -43,7 +43,7 @@
   </section>
 
   <section class="container-new py-26">
-    <h3 class="h4 h2-sm mx-10-until-md">{% trans %}Key Areas of Focus{% endtrans %}</h3>
+    <h3 class="h4 h2-sm">{% trans %}Key Areas of Focus{% endtrans %}</h3>
     <ul class="mt-10 card-grid card-grid-3xN mb-0">
       {% set features = [
         { "title":  _("Core Technology"),
@@ -58,7 +58,7 @@
           "description":  _("Support development of tools and platforms for financial inclusion globally.") },
       ] %}
       {% for feat in features %}
-      <li class="col-new ls-none">
+      <li class="col ls-none">
         <h3 class="mb-0 h5">{{feat.title}}</h3>
         <p class="mt-8-until-sm mt-3 mb-0">{{feat.description}}</p>
       </li>
@@ -67,7 +67,7 @@
   </section>
 
   <section class="container-new py-26">
-    <div class="mx-10-until-md">
+    <div>
       <h2 class="h4 h2-sm mb-20-until-sm">{% trans %}XRP Ledger Foundation Values and Beliefs{% endtrans %}</h2>
       <h4 class="h5 mb-3-sm-i mt-10">{% trans %}We Value:{% endtrans %}</h4>
     </div>
@@ -78,11 +78,11 @@
         { "description":  _("Cultivating a diverse developer ecosystem, where many entities contribute to and benefit from the XRP Ledger") },
       ] %}
       {% for val in values %}
-      <li class="col-new ls-none">{{val.description}}</li>
+      <li class="col ls-none">{{val.description}}</li>
       {% endfor %}
     </ul>
 
-    <div class="mx-10-until-md">
+    <div>
       <h4 class="h5 mb-3-sm-i">{% trans %}We Believe:{% endtrans %}</h4>
     </div>
     <ul class="card-grid card-grid-3xN">
@@ -91,13 +91,13 @@
         { "description":  _("Close working relationships between developers and organizations that build on and contribute to the XRP Ledger are critical to its innovation and success") },
       ] %}
       {% for belief in beliefs %}
-      <li class="col-new ls-none">{{belief.description}}</li>
+      <li class="col ls-none">{{belief.description}}</li>
       {% endfor %}
     </ul>
   </section>
 
   <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 bg-grey-800 text-center">
+    <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
       <img src="./img/backgrounds/cta-foundation-orange.svg" class="cta cta-top-left">
       <img src="./img/backgrounds/cta-foundation-magenta.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
