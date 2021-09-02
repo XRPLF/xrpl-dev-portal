@@ -361,13 +361,7 @@
     }
   }
 }
-.top-10 {
-  top: 2.5rem;
-}
-.top-20 {
-  top: 5rem;
-}
-.top-24 {
+.floating-nav {
   top: 6rem;
 }
 .last-section {
@@ -447,14 +441,12 @@
 .grey-700 {
   color: $gray-700;
 }
-.bg-grey-800 {
-  background-color: $gray-800;
-}
-.green-500 {
-  color: $green-500;
-}
 .white {
   color: $white;
+}
+
+.stat-highlight {
+  color: $green-500;
 }
 
 /* ETC */

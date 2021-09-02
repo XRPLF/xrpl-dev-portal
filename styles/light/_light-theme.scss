@@ -2,10 +2,10 @@ $light-bg: $gray-100;
 $light-fg: $black;
 $light-fg-muted: $gray-800;
 $light-fg-disabled: $gray-400;
-$light-form-bg: $gray-300;
-$light-box-shadow: 0px 5px 20px 0px $gray-400;
+$light-form-bg: $gray-200;
+$light-box-shadow: 0px 5px 20px 0px $gray-300;
 $light-link-hover-color: $blue-purple-500;
-$light-standout-bg: $white;
+$light-standout-bg: $gray-050;
 
 // General color elements ------------------------------------------------------
 
@@ -48,9 +48,17 @@ h1, h2, h3, h4, h5, h6,
 .numbers {
   color: $black;
 }
+.stat-highlight,
+.eyebrow {
+  color: $gray-900;
+}
 
 .invertible-img {
   filter: invert(100%);
+}
+
+.arrow-link::after {
+  content: url("../img/lightmode/icon-long-arrow.svg");
 }
 
 // Forms and inputs ------------------------------------------------------------
@@ -150,6 +158,11 @@ a, nav a {
   }
 }
 
+a.card:hover, &:active, &.active {
+  // Don't turn link-card text purple on hover
+  color: $light-fg;
+}
+
 .landing-table tbody td {
   color: $light-fg-muted;
 }
@@ -197,9 +210,17 @@ a, nav a {
     }
   }
 
+  // nav "hero" images
+  #top-nav-hero-docs {
+    content: url(../img/icons/lightmode/docs.svg);
+  }
+  #top-nav-hero-contribute {
+    content: url(../img/icons/lightmode/contribute.svg);
+  }
+
   .dropdown-menu {
-    background-color: $white;
-    border-color: $white;
+    background-color: $gray-100;
+    border-color: $gray-100;
     box-shadow: $light-box-shadow;
 
     a:hover, a.active {
@@ -208,7 +229,7 @@ a, nav a {
 
     .dropdown-item.dropdown-hero {
       > img {
-        background-color: $gray-200;
+        background-color: $gray-050;
       }
       p {
         color: $gray-700;
@@ -244,7 +265,7 @@ a, nav a {
 
     .navbar-nav .nav-link,
     .navbar-collapse > .nav-item {
-      background: $gray-100;
+      background: $gray-200;
     }
   }
 }
@@ -314,12 +335,7 @@ aside .active > a:hover {
 }
 
 // Layout elements -------------------------------------------------------------
-.container-new .col-new-card {
-  box-shadow: $light-box-shadow;
-  color: $light-fg;
-}
-
-.card {
+.card, .cta-card {
   color: $light-fg;
   background-color: $light-standout-bg;
   box-shadow: $light-box-shadow;
@@ -335,8 +351,9 @@ aside .active > a:hover {
   }
 
   .q-wrapper {
-    background-color: $gray-200;
+    background-color: $light-standout-bg;
     color: $light-fg;
+    box-shadow: $light-box-shadow;
 
     > a.expander:hover {
       color: $light-fg;
@@ -346,7 +363,7 @@ aside .active > a:hover {
 
 .page-community {
   #platform-stack-overflow {
-    content: url("../img/logos/lightmode/stack-overflow.svg")
+    content: url("../img/logos/lightmode/stack-overflow.svg");
   }
 }
 
@@ -367,7 +384,7 @@ aside .active > a:hover {
   }
 
   .circled-logo {
-    background-color: $gray-300;
+    background-color: $gray-200;
 
     img[src="assets/img/logos/globe.svg"] {
       filter: invert(100%);
@@ -405,7 +422,7 @@ code {
 
 // Code blocks
 pre code {
-  color: $white;
+  color: $gray-050;
 }
 
 // Code tabs
@@ -458,12 +475,15 @@ pre code {
 // Individual page styles ------------------------------------------------------
 
 // Homepage
-
 .page-home {
+  #home-hero-graphic {
+    content: url("../img/lightmode/home-hero.svg");
+  }
+
   #benefits-list {
     @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
       ##{$benefit} {
-        content: url("../img/icons/lightmode/#{$benefit}.svg")
+        content: url("../img/icons/lightmode/#{$benefit}.svg");
       }
     }
   }
@@ -471,7 +491,7 @@ pre code {
 
 // XRPL Overview
 #validator-graphic {
-  content: url(../img/lightmode/validators.svg);
+  content: url("../img/lightmode/validators.svg");
 }
 
 // XRP Overview
@@ -486,14 +506,14 @@ pre code {
   // Kraken, eToro are OK on both light and dark
 
   // Vector logos
-  @each $exchange in "bitstamp", "cex-io", "liquid", "bitfinex", "lmax" {
+  @each $exchange in "bitstamp", "cex-io", "liquid", "bitfinex" {
     #exch-#{$exchange} {
       content: url("../img/exchanges/lightmode/#{$exchange}.svg");
     }
   }
 
   // PNG logos
-  @each $exchange in "bittrex", "currency-com", "ftx" {
+  @each $exchange in "bittrex", "currency-com", "ftx", "lmax" {
     #exch-#{$exchange} {
       content: url("../img/exchanges/lightmode/#{$exchange}.png");
     }
@@ -536,6 +556,19 @@ pre code {
     }
   }
 
+  // darkened card graphics
+  @each $company,$card-graphic in (
+    "bitpay": "blue-green",
+    "exodus": "green",
+    "forte": "light-blue-2",
+    "ripple": "blue-light-blue",
+    "xrplorer": "green-purple"
+  ) {
+    ##{$company} .card-footer {
+      background-image: url("../img/cards/lightmode/3col-#{$card-graphic}.svg");
+    }
+  }
+
   // Monochrome logos; invert.
   #bitpay, #coil, #forte, #xrplorer, #gatehub {
     .biz-logo {
@@ -552,13 +585,16 @@ pre code {
   }
   // non-SVG logos:
   #raisedinspace {
+    .card-footer {
+      background-image: url("../img/cards/lightmode/3col-orange-yellow-2.svg");
+    }
     .biz-logo {
-      content: url(../img/uses/lightmode/raised.png);
+      content: url("../img/uses/lightmode/raised.png");
     }
   }
   #towo {
     .biz-logo {
-      content: url(../img/uses/lightmode/towo.png);
+      content: url("../img/uses/lightmode/towo.png");
     }
   }
 }
@@ -593,6 +629,53 @@ pre code {
   }
 }
 
+// Docs landing page
+.page-docs-index {
+  #software-and-sdks .card-deck {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/lightmode/4col-green.svg);
+    }
+    .card:nth-child(2) .card-footer {
+      background-image: url(../img/cards/lightmode/4col-light-blue.svg);
+    }
+    .card:nth-child(4) .card-footer {
+      background-image: url(../img/cards/lightmode/4col-yellow.svg);
+    }
+  }
+  #doc-types .card-deck {
+    .card:nth-child(4) .card-footer {
+      background-image: url(../img/cards/lightmode/4col-light-blue-2.svg);
+    }
+  }
+}
+
+.page-docs-index,
+.page-community {
+  #run-a-network-node .card-deck {
+    .card:nth-child(4) .card-footer {
+      background-image: url(../img/cards/lightmode/4col-light-green.svg);
+    }
+  }
+}
+
+#find-us-on-platforms .card-deck {
+  .card:nth-child(2) .card-footer {
+    background-image: url(../img/cards/lightmode/4col-light-blue-3.svg);
+  }
+}
+
+.page-references {
+  #refs-types .card-deck {
+    .card:nth-child(2) .card-footer {
+      background-image: url(../img/cards/lightmode/3col-green-2.svg);
+    }
+  }
+  #xrpl-protocol .card-deck {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/lightmode/4col-light-blue-4.svg);
+    }
+  }
+}
 
 // Placeholder text colors (search bars, etc.)
 $placeholder-color: $gray-600;

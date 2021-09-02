@@ -524,6 +524,15 @@
     }
 
   } // end mobile specific styles ----------------------------------------------
+
+  // nav "hero" images
+  #top-nav-hero-docs {
+    content: url("../img/icons/docs.svg");
+  }
+  #top-nav-hero-contribute {
+    content: url("../img/icons/contribute.svg");
+  }
+
 }
 
 
