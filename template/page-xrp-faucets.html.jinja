@@ -34,11 +34,13 @@ https://s.devnet.rippletest.net:51234</code></pre>
     <div id='address'></div>
     <div id='secret'></div>
     <div id='balance'></div>
+    <div id='sequence'> <div id='loader' style="display: none;"><img class="throbber" src="assets/img/xrp-loader-96.png"> Waiting...</div></div>
   </div>
 </section>
 {% endblock %}
 
 {% block endbody %}
+  {{target.ripple_lib_tag}}
   <script type='text/javascript' src='assets/js/test-net.js'></script>
   <script src="assets/js/multicodetab.js"></script>
   <script type="application/javascript">
