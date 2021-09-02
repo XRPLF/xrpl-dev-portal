@@ -158,6 +158,11 @@ a, nav a {
   }
 }
 
+a.card:hover, &:active, &.active {
+  // Don't turn link-card text purple on hover
+  color: $light-fg;
+}
+
 .landing-table tbody td {
   color: $light-fg-muted;
 }
