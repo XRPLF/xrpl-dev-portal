@@ -46,7 +46,7 @@ Strive to have your validator always embody the following properties. Being a go
 
     A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
 
-Ripple (the company) publishes a [validator list](https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt) with a set of recommended validators. Ripple strongly recommends using exactly this list for production servers.
+It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt).
 
 
 
