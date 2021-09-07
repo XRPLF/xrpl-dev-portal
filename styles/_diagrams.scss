@@ -20,7 +20,8 @@
   }
 }
 
-:not(.light) .content {
+
+html:not(.light) .content {
 
   // Recolor UMLet diagrams for dark theme -------------------------------------
   svg[fill="black"] {
@@ -234,4 +235,62 @@
     }
   }
 
+}
+
+// Less significant tweaks to color schemes for diagrams in light mode
+// Recolor UMLet diagrams for dark theme -------------------------------------
+html.light {
+  svg[fill="black"] {
+
+    g[fill="blue"] {
+      fill: $blue-700;
+    }
+    g[stroke="blue"] {
+      stroke: $blue-500;
+    }
+    g[fill="rgb(120,120,120)"] {
+      fill: $gray-700;
+    }
+    g[stroke="rgb(120,120,120)"] {
+      stroke: $gray-700;
+    }
+    g[fill="rgb(200,200,200)"] {
+      fill: $gray-400;
+    }
+    g[fill="rgb(70,70,70)"] {
+      fill: $gray-700;
+    }
+    g[stroke="rgb(70,70,70)"] {
+      stroke: $gray-700;
+    }
+    g[fill="rgb(29,180,255)"] { // old Ripple blue.
+      fill: $blue-500;
+    }
+    g[stroke="rgb(29,180,255)"] {
+      stroke: $blue-700;
+    }
+    rect[stroke="rgb(245,247,249)"] { // old off-white.
+      stroke: $gray-050;
+    }
+    g[fill="lime"],
+    g[fill="rgb(0,255,0)"] { // standard green.
+      fill: $green-400; // lighten backgrounds a little
+    }
+    g[stroke="lime"] ,
+    g[stroke="rgb(0,255,0)"]{
+      stroke: $green-700; // darken strokes
+    }
+    g[fill="yellow"],
+    g[fill="rgb(255,255,0)"] {
+      fill: $yellow-300; // lighten up yellow BGs a little
+    }
+    g[fill="red"],
+    g[fill="rgb(255,255,0)"] { // magenta-500 is our closest shade to pure red
+      fill: $magenta-400; // ... but let's lighten it a little as a bg
+    }
+    g[stroke="red"],
+    g[stroke="rgb(255,255,0)"] {
+      stroke: $magenta-500;
+    }
+  }
 }
