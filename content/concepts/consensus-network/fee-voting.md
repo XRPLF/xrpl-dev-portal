@@ -43,9 +43,9 @@ The maximum possible values for the fees are limited by the internal data types 
 
 | Parameter | Maximum Value (drops) | Maximum Value (XRP)
 |-----------|-----------------------|----|
-| `reference_fee` | 2**64 | (More XRP than has ever existed.) |
-| `account_reserve` | 2^32 drops | Approximately 4294 XRP |
-| `owner_reserve` | 2^32 drops | Approximately 4294 XRP |
+| `reference_fee` | 2<sup>64</sup> | (More XRP than has ever existed.) |
+| `account_reserve` | 2<sup>32</sup> drops | Approximately 4294 XRP |
+| `owner_reserve` | 2<sup>32</sup> drops | Approximately 4294 XRP |
 
 
 ## See Also
