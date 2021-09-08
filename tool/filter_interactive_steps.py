@@ -48,7 +48,10 @@ def filter_soup(soup, **kwargs):
     in the document. Each step results in a li element such as:
     <li class="breadcrumb-item disabled current bc-connect">
         <a href="#interactive-connect">Connect</a>
-    </li>"""
+    </li>
+
+    Also, add step numbers to the tutorials
+    """
     crumb_uls = soup.find_all(class_="tutorial-step-crumbs")
     steps = [(el.attrs["data-stepid"], el.attrs["data-steplabel"]) for el in crumb_uls]
 
@@ -68,9 +71,17 @@ def filter_soup(soup, **kwargs):
             parent_ul.append(li)
             i += 1
 
-    for ul in crumb_uls:
+    def add_stepnum(crumbs_ul, i, total):
+        steps_div = crumbs_ul.parent.parent.parent
+        if 'interactive-block' not in steps_div['class']:
+            raise ValueError("crumbs_ul not wrapped in .interactive-block as expected")
+        steps_div.attrs['data-stepnumber'] = i+1 # 1-index steps so it's less confusing
+        steps_div.attrs['data-totalsteps'] = total
+
+    for i, ul in enumerate(crumb_uls):
         ul_step_id = ul.attrs["data-stepid"]
         add_lis(ul, steps, ul_step_id)
+        add_stepnum(ul, i, len(steps))
 
 
 

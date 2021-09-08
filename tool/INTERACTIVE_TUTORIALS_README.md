@@ -40,6 +40,8 @@ The memo has a `MemoData` field which is ASCII-encoded JSON containing the follo
 |---|---|---|
 | `path` | String | The `window.location.pathname` of the tutorial. For example, `/send-xrp.html`. |
 | `button` | String | The unique html ID of the button that triggered this transaction. For example, `submit-button`. |
+| `step` | String (Number) | The step number that contained the button to trigger this transaction. For example, `"1"`. The first interactive block is step 1 (they are not 0-indexed). |
+| `totalsteps` | String (Number) | The total number of interactive blocks in the tutorial that triggered this transaction. Not all steps of an interactive tutorial involve sending transactions, but all steps are counted. |
 
 For privacy reasons, the memo does not and MUST NOT include personally identifying information about the user or their browser.
 

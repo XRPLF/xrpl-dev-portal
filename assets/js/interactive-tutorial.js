@@ -451,9 +451,13 @@ function text_to_hex(s) {
  *                         added to them (in-place).
  */
 function add_memo(event, tx_json) {
+  const block = $(event.target).closest(".interactive-block")
+
   const tutorial_info = {
     "path": window.location.pathname,
-    "button": event.target.id
+    "button": event.target.id,
+    "step": block.data("stepnumber"),
+    "totalsteps": block.data("totalsteps")
   }
 
   const memo = {
