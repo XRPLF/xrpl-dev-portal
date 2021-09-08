@@ -284,5 +284,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1163"
       }
     ]
+  },
+  "fee-voting-superscripts": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "2acf70ff3612463632a1b338e254a6d9018e39ec",
+        "updatedAt": "2021-09-08T01:26:50.885Z",
+        "href": "pr-preview/fee-voting-superscripts/2acf70",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1164"
+      }
+    ]
   }
 }
