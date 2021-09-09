@@ -306,5 +306,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1165"
       }
     ]
+  },
+  "license-xrplf": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "3df7801686dfa3f22013373ebfe83bd03324788b",
+        "updatedAt": "2021-09-09T23:46:39.805Z",
+        "href": "pr-preview/license-xrplf/3df780",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1166"
+      }
+    ]
   }
 }
