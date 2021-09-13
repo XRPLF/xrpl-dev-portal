@@ -15,21 +15,44 @@
             new ClipboardJS('.clipboard-btn');
         });
     </script>
+    
     {# temp styling for testing. #}
     <style>
-      .clipboard-btn {
+      .codehilite {
         position: relative;
-        float: right;
+      }
+      .codetabs {
+        position: relative;
         z-index: 10;
       }
-      .multicode .clipboard-btn {
-        right: 15px;
-        top: 55px;
+      .codehilite .btn-group {
+        top: 10px;
+        right: 10px;
+        position: absolute;
+      }
+      .multicode pre code {
+        padding: 2.8rem 1rem 1rem;
+      }
+      .multicode .codehilite .btn-group {
+        right: 20px;
+        top: 60px;
+        position: absolute;
+      }
+      .clipboard-btn {
+        z-index: 10;
+        margin-right: 10px;
+        background-color: #232325;
       }
       .js_interactive .clipboard-btn {
         display:none;
       }
-
+      .multicode .code_toggler {
+          position: unset;
+          z-index: 10;
+      }
+      .code_toggler {
+          background-color: #232325;
+      }
     </style>
 
 {% endblock %}
@@ -38,7 +61,7 @@
   <article class="pt-3 p-md-3">
     {% if (target.lang != "en" and "en" in currentpage.targets) or currentpage.untranslated_warning %}
     {# Add a "sorry this page isn't translated" banner. #}
-    <div class="devportal-callout note mb-5"><strong>{% trans %}Sorry, this page is not available in your language.{% endtrans %}</strong>
+    <div class="mb-5 devportal-callout note"><strong>{% trans %}Sorry, this page is not available in your language.{% endtrans %}</strong>
       <p class="mb-0">{% trans %}We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a>{% endtrans %}</p>
     </div><!--/.devportal-callout-->
     {% endif %}

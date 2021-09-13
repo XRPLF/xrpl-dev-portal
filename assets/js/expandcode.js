@@ -9,12 +9,13 @@ function toggle_cs(eo) {
     if (placeholders.length) {
         // collapsing
         placeholders.remove();
-        $(window).scrollTop(code_el.offset().top - 124)
+        // This caused jumping around when code was closed.
+        // $(window).scrollTop(code_el.offset().top - 124)
     } else {
         code_el.after("<div class='code-placeholder' style='width:"
                             + code_el.outerWidth()
                             + "px; height:"
-                            + code_el.outerHeight()
+                            + (code_el.outerHeight() - 20) // added 20 to cover bottom scrollbar
                             + "px;'>&nbsp;</div>");
     }
     current_button_expanded = code_el.hasClass('expanded');
@@ -38,6 +39,7 @@ function make_code_expandable() {
         return "<div class='code_sample' id='code_autoid_"+newid+"'>";
     });
 
+    // Multi code blocks
     var code_samples = $('.code_sample');
     code_samples.find("code").each(function() {
       let jqThis = $(this);
@@ -45,7 +47,7 @@ function make_code_expandable() {
         jqThis.dblclick(toggle_cs);
         jqThis.attr('title', 'Double-click to expand/collapse');
         var newbtn = $(`<button class='code_toggler btn btn-outline-secondary'>${tExpand}</button>`);
-        newbtn.appendTo(jqThis.parents(".code_sample"));
+        newbtn.appendTo(jqThis.parents(".codehilite").children(".btn-group"));
       }
     });
 
