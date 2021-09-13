@@ -1,4 +1,15 @@
 {% extends "base.html.jinja" %}
+{% block head %}
+
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
+
+{% endblock %}
 
 {% block right_sidebar %}
   <div class="command-list-wrapper">
@@ -152,6 +163,7 @@
 
         </div><!--/.modal-body-->
         <div class="modal-footer">
+          <button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#permalink-box-1" id="permalink-box-1button"><i class="fa fa-clipboard"></i></button>
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
         </div><!--/.modal-footer-->
       </div><!--/.modal-content-->
@@ -175,6 +187,7 @@
 
         </div><!--/.modal-body-->
         <div class="modal-footer">
+        <button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#curl-box-1" id="curl-box-1button"><i class="fa fa-clipboard"></i></button>
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
         </div><!--/.modal-footer-->
       </div><!--/.modal-content-->
