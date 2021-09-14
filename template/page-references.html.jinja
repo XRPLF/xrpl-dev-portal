@@ -102,8 +102,16 @@
 
 {% endblock %}
 
-{% block endbody %}
-<script type="application/javascript">
-  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
-</script>
-{% endblock %}
+{% block analytics %}
+{% from "macro-get_funnel.jinja" import get_funnel %}
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Hub Page",
+      "page_group": "Docs",
+      "page_funnel": "{{get_funnel(pages, currentpage)}}",
+      "page_labels": {{currentpage.labels or []}}
+    })
+    </script>
+{% endblock analytics %}

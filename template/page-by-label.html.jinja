@@ -6,3 +6,14 @@
     {% include 'component-tag-cloud.html.jinja' %}
   </section>
 {% endblock %}
+
+{% block analytics %}
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Hub Page",
+      "page_group": "Docs"
+    })
+    </script>
+{% endblock analytics %}
