@@ -99,8 +99,13 @@
 {% endblock %}
 
 
-{% block endbody %}
-<script type="application/javascript">
-  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
-</script>
-{% endblock %}
+{% block analytics %}
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Splash Page",
+      "page_group": "Community"
+    })
+    </script>
+{% endblock analytics %}

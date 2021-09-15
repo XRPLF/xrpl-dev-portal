@@ -185,8 +185,16 @@
   <script type="text/javascript" src="assets/vendor/codemirror-js-json-lint.min.js"></script>
   <script type="text/javascript" src="assets/js/apitool-websocket.js"></script>
   <script type="text/javascript" src="assets/js/apitool-methods-ws.js"></script>
-
-  <script type="application/javascript">
-    gtag('config', 'UA-157720658-3', {'content_group1': 'API Tools'});
-  </script>
 {% endblock %}
+
+{% block analytics %}
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Tool",
+      "page_group": "Docs",
+      "page_labels": {{currentpage.labels or []}}
+    })
+    </script>
+{% endblock analytics %}

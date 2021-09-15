@@ -33,9 +33,17 @@
 {% endblock %}
 
 {% block endbody %}
-<script type="application/javascript">
-  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
-</script>
-
 {% include 'component-feedback-widget.html.jinja' %}
 {% endblock %}
+
+{% block analytics %}
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Hub Page",
+      "page_group": "Docs",
+      "page_labels": ["{{currentpage.landing_for}}"]
+    })
+    </script>
+{% endblock analytics %}
