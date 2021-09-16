@@ -2331,6 +2331,11 @@ pages:
             - en
             - ja
 
+    -   md: references/xrpljs2-migration-guide.md
+        targets:
+            - en
+            - ja
+
     -   name: Python Client Library
         html: https://xrpl-py.readthedocs.io/
         parent: client-libraries.html
