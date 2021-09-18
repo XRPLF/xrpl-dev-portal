@@ -73,6 +73,9 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | `getTransaction(hash)` | `Client.request({command: "tx", transaction: hash})` | Request/response match the [tx method][] exactly. |
 | `getTransactions(address, options)` | `Client.request({command: "account_tx", ..})` | Request/response match the [account_tx method][] exactly. |
 | `getTrustlines(address, options)` |  `Client.request({command: "account_lines", ..})` | Request/response match the [account_lines method][] exactly. |
+...
+| `isValidAddress(address)` | ***TBD maybe in utils?*** | Separate from isValidXAddress / isValidClassicAddress |
+| `iso8601ToRippleTime(timestamp)` | `ISOTimeToRippleTime(timestamp)` | Now a static method at the `xrpl` module level. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

@@ -1,17 +1,23 @@
+const xrpl = ripple; // TODO: remove when webpack build is updated
 
 async function wait_for_seq(network_url, address) {
-  const api = new ripple.RippleAPI({server: network_url})
+  const api = new xrpl.Client(network_url)
   await api.connect()
-  let result;
+  let response;
   while (true) {
     try {
-      result = await api.request("account_info", {account: address, ledger_index: "validated"})
+      response = await api.request({
+        command: "account_info",
+        account: address,
+        ledger_index: "validated"
+      })
       break
     } catch(e) {
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
   }
-  $("#sequence").html('<h3>Sequence Number</h3> '+result.account_data.Sequence)
+  console.log(response)
+  $("#sequence").html('<h3>Sequence Number</h3> '+response.result.account_data.Sequence)
   api.disconnect()
 }
 

@@ -1,3 +1,5 @@
+const xrpl = ripple; // TODO: remove when webpack build is updated
+
 const set_up_tx_sender = async function() {
   //////////////////////////////////////////////////////////////////////////////
   // Notification helpers
@@ -44,13 +46,13 @@ const set_up_tx_sender = async function() {
   const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
   let connection_ready = false
+  api = new xrpl.Client(TESTNET_URL)
 
-  let sending_address
-  let sending_secret
+  let sending_wallet
   let xrp_balance
 
   function enable_buttons_if_ready() {
-    if ( (typeof sending_address) === "undefined") {
+    if ( (typeof sending_wallet) === "undefined") {
       console.debug("No sending address yet...")
       return false
     }
@@ -66,37 +68,29 @@ const set_up_tx_sender = async function() {
     return true
   }
 
+  $("#init_button").click(async (evt) => {
+    console.log("Connecting to Testnet WebSocket...")
+    await api.connect()
 
-  faucet_response = function(data) {
-    sending_address = data.account.address
-    sending_secret = data.account.secret
-    xrp_balance = Number(data.balance) // Faucet only delivers ~10,000 XRP,
-                                       // so this won't go over JavaScript's
-                                       // 64-bit double precision
+    console.debug("Getting a sending address from the faucet...")
+    try {
+      sending_wallet = await api.generateFaucetWallet()
+    } catch(error) {
+      errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
+      return
+    }
 
+    xrp_balance = "TBD" // TODO old faucet command gave balance, new doesn't
     $("#balance-item").text(xrp_balance)
-    $(".sending-address-item").text(sending_address)
+
+    $(".sending-address-item").text(sending_wallet.classicAddress)
     $("#init_button").prop("disabled", "disabled")
     $("#init_button").addClass("disabled")
     $("#init_button").attr("title", "Done")
     $("#init_button").append('&nbsp;<i class="fa fa-check-circle"></i>')
     enable_buttons_if_ready()
-  }
-
-  $("#init_button").click((evt) => {
-    console.debug("Getting a sending address from the faucet...")
-    $.ajax({
-      url: FAUCET_URL,
-      type: 'POST',
-      dataType: 'json',
-      success: faucet_response,
-      error: function() {
-        errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
-      }
-    })
   })
 
-  api = new ripple.RippleAPI({server: TESTNET_URL})
   api.on('connected', () => {
     connection_ready = true
     $("#connection-status-item").text("Connected")
@@ -108,8 +102,6 @@ const set_up_tx_sender = async function() {
     $("#connection-status-item").text("Not connected")
     $("#connection-status-item").removeClass("active").addClass("disabled")
   })
-  console.log("Connecting to Testnet WebSocket...")
-  api.connect()
 
   //////////////////////////////////////////////////////////////////////////////
   // Generic Transaction Submission
@@ -120,37 +112,18 @@ const set_up_tx_sender = async function() {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  const INTERVAL = 1000 // milliseconds to wait for new ledger versions
-  async function verify_transaction(hash, options) {
-    try {
-      data = await api.getTransaction(hash, options)
-      return data
-    } catch(error) {
-      /* If transaction not in latest validated ledger,
-         try again until max ledger hit */
-      if (error instanceof api.errors.PendingLedgerVersionError) {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => verify_transaction(hash, options)
-  		                     .then(resolve, reject), INTERVAL)
-        })
-      } else {
-        throw error;
-      }
-    }
-  }
-
   async function update_xrp_balance() {
-    balances = await api.getBalances(sending_address, {currency: "XRP"})
+    balances = await api.getBalances(sending_wallet.classicAddress, {currency: "XRP"})
     $("#balance-item").text(balances[0].value)
   }
 
-  async function submit_and_verify(tx_object, use_secret, silent) {
-    if (use_secret === undefined) {
-      use_secret = sending_secret
+  async function submit_and_notify(tx_object, use_wallet, silent) {
+    if (use_wallet === undefined) {
+      use_wallet = sending_wallet
     }
     try {
       // Auto-fill fields like Fee and Sequence
-      prepared = await api.prepareTransaction(tx_object)
+      prepared = await api.autofill(tx_object)
       console.debug("Prepared:", prepared)
     } catch(error) {
       console.log(error)
@@ -162,40 +135,38 @@ const set_up_tx_sender = async function() {
 
     // Determine first and last ledger the tx could be validated in *BEFORE*
     //  signing it.
-    const options = {
-      minLedgerVersion: (await api.getLedger()).ledgerVersion,
-      maxLedgerVersion: prepared.instructions.maxLedgerVersion
-    }
+    min_ledger = (await api.request({"command": "ledger", "ledger_index": "validated"})).result.ledger.ledger_index, // TODO: change to a simpler way when xrpl.js supports it
+    max_ledger = prepared.LastLedgerSequence
 
-    let sign_response
+
+    let signed
     try {
       // Sign, submit
-      sign_response = api.sign(prepared.txJSON, use_secret)
-      await api.submit(sign_response.signedTransaction)
+      signed = use_wallet.sign(prepared)
+      await api.request({"command": "submit", "tx_blob": signed})
     } catch (error) {
       console.log(error)
       if (!silent) {
-        errorNotif("Error signing & submitting "+tx_object.TransactionType+" tx: "+error)
+        errorNotif(`Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
       }
       return
     }
 
     // Wait for tx to be in a validated ledger or to expire
+    const hash = xrpl.computeBinaryTransactionSigningHash(signed)
+
     try {
-      const data = await verify_transaction(sign_response.id, options)
-      const final_result = data.outcome.result
-      // Future feature: output should link to a TestNet tx lookup/explainer
-      if (final_result === "tesSUCCESS") {
-        if (!silent) {
-          successNotif(tx_object.TransactionType+" tx succeeded (hash: "+sign_response.id+")")
-          logTx(tx_object.TransactionType, sign_response.id, final_result)
+      // use lookup_tx_final() from submit-and-verify2.js
+      let final_result_data = await lookup_tx_final(api, tx_id, max_ledger, min_ledger)
+      let final_result = final_result_data.meta.TransactionResult
+      if (!silent) {
+        if (final_result === "tesSUCCESS") {
+          successNotif(`${tx_object.TransactionType} tx succeeded (hash: ${hash})`)
+        } else {
+          errorNotif(`${tx_object.TransactionType} tx failed w/ code ${final_result}
+                      (hash: ${hash})`)
         }
-      } else {
-        if (!silent) {
-          errorNotif(tx_object.TransactionType+" tx failed w/ code "+final_result+
-                      " (hash: "+sign_response.id+")")
-          logTx(tx_object.TransactionType, sign_response.id, final_result)
-        }
+        logTx(tx_object.TransactionType, hash, final_result)
       }
       update_xrp_balance()
       return data
@@ -214,7 +185,7 @@ const set_up_tx_sender = async function() {
   //  an issuer for a fake currency to ripple through.)
   //////////////////////////////////////////////////////////////////////////////
 
-  let pp_issuer_address
+  let pp_issuer_wallet
   let pp_sending_currency = "BAR"
   async function set_up_for_partial_payments() {
     while (!connection_ready) {
@@ -224,15 +195,8 @@ const set_up_tx_sender = async function() {
     console.debug("Starting partial payment setup...")
     $("#pp_progress .progress-bar").addClass("progress-bar-animated")
     // 1. Get a funded address to use as issuer
-    let pp_issuer_secret
     try {
-      const faucet_response = await ($.ajax({
-        url: FAUCET_URL,
-        type: 'POST',
-        dataType: 'json'
-      }))
-      pp_issuer_address = faucet_response.account.address
-      pp_issuer_secret = faucet_response.account.secret
+      pp_issuer_wallet = await api.getFaucetWallet()
     } catch(error) {
       console.log("Error getting issuer address for partial payments:", error)
       return
@@ -244,18 +208,21 @@ const set_up_tx_sender = async function() {
     while (true) {
       try {
         await new Promise(resolve => setTimeout(resolve, 1000))
-        await api.request("account_info", {account: pp_issuer_address,
-          ledger_index: "validated"})
+        await api.request({
+          command: "account_info",
+          account: pp_issuer_wallet.classicAddress,
+          ledger_index: "validated"
+        })
         break
       } catch(e) {}
     }
 
     // 2. Set Default Ripple on issuer
-    let resp = await submit_and_verify({
+    let resp = await submit_and_notify({
       TransactionType: "AccountSet",
-      Account: pp_issuer_address,
+      Account: pp_issuer_wallet.classicAddress,
       SetFlag: 8
-    }, pp_issuer_secret, true)
+    }, pp_issuer_wallet, true)
     if (resp === undefined) {
       console.log("Couldn't set Default Ripple for partial payment issuer")
       return
@@ -263,15 +230,15 @@ const set_up_tx_sender = async function() {
     $("#pp_progress .progress-bar").width("40%")
 
     // 3. Make a trust line from sending address to issuer
-    resp = await submit_and_verify({
+    resp = await submit_and_notify({
       TransactionType: "TrustSet",
-      Account: sending_address,
+      Account: sending_wallet.classicAddress,
       LimitAmount: {
         currency: pp_sending_currency,
         value: "1000000000", // arbitrarily, 1 billion fake currency
-        issuer: pp_issuer_address
+        issuer: pp_issuer_wallet.classicAddress
       }
-    }, sending_secret, true)
+    }, sending_wallet, true)
     if (resp === undefined) {
       console.log("Error making trust line to partial payment issuer")
       return
@@ -279,16 +246,16 @@ const set_up_tx_sender = async function() {
     $("#pp_progress .progress-bar").width("60%")
 
     // 4. Issue fake currency to main sending address
-    resp = await submit_and_verify({
+    resp = await submit_and_notify({
       TransactionType: "Payment",
-      Account: pp_issuer_address,
-      Destination: sending_address,
+      Account: pp_issuer_wallet.classicAddress,
+      Destination: sending_wallet.classicAddress,
       Amount: {
         currency: pp_sending_currency,
         value: "1000000000",
-        issuer: pp_issuer_address
+        issuer: pp_issuer_wallet.classicAddress
       }
-    }, pp_issuer_secret, true)
+    }, pp_issuer_wallet, true)
     if (resp === undefined) {
       console.log("Error sending fake currency from partial payment issuer")
       return
@@ -298,16 +265,16 @@ const set_up_tx_sender = async function() {
     // 5. Place offer to buy issued currency for XRP
     // When sending the partial payment, the sender consumes their own offer (!)
     // so they end up paying themselves issued currency then delivering XRP.
-    resp = await submit_and_verify({
+    resp = await submit_and_notify({
       TransactionType: "OfferCreate",
-      Account: sending_address,
+      Account: sending_wallet.classicAddress,
       TakerGets: "1000000000000000", // 1 billion XRP
       TakerPays: {
         currency: pp_sending_currency,
         value: "1000000000",
-        issuer: pp_issuer_address
+        issuer: pp_issuer_wallet.classicAddress
       }
-    }, sending_secret, true)
+    }, sending_wallet, true)
     if (resp === undefined) {
       console.log("Error placing order to enable partial payments")
       return
@@ -328,7 +295,7 @@ const set_up_tx_sender = async function() {
   // Destination Address box -----------------------------------------------
   async function on_dest_address_update(event) {
     const d_a = $("#destination_address").val()
-    if (api.isValidAddress(d_a)) {
+    if (api.isValidClassicAddress(d_a) || api.isValidXAddress(d_a)) { // TODO: switch back to isValidAddress
       $("#destination_address").addClass("is-valid").removeClass("is-invalid")
       if (d_a[0] == "X") {
         $("#x-address-warning").show()
@@ -354,9 +321,9 @@ const set_up_tx_sender = async function() {
     const xrp_drops_input = $("#send_xrp_payment_amount").val()
     $("#send_xrp_payment .loader").show()
     $("#send_xrp_payment button").prop("disabled","disabled")
-    await submit_and_verify({
+    await submit_and_notify({
       TransactionType: "Payment",
-      Account: sending_address,
+      Account: sending_wallet.classicAddress,
       Destination: destination_address,
       Amount: xrp_drops_input
     })
@@ -372,27 +339,19 @@ const set_up_tx_sender = async function() {
     $("#send_partial_payment .loader").show()
     $("#send_partial_payment button").prop("disabled","disabled")
 
-    // const path_find_result = await api.request("ripple_path_find", {
-    //   source_account: sending_address,
-    //   destination_account: destination_address,
-    //   destination_amount: "-1", // as much XRP as possible
-    //   source_currencies: [{currency: pp_sending_currency, issuer: pp_issuer_address}]
-    // })
-    // console.log("Path find result:", path_find_result)
-    // use_path = path_find_result.alternatives[0].paths_computed
-
-    await submit_and_verify({
+    await submit_and_notify({
       TransactionType: "Payment",
-      Account: sending_address,
+      Account: sending_wallet.classicAddress,
       Destination: destination_address,
       Amount: "1000000000000000", // 1 billion XRP
       SendMax: {
         value: (Math.random()*.01).toPrecision(15), // random very small amount
         currency: pp_sending_currency,
-        issuer: pp_issuer_address
+        issuer: pp_issuer_wallet.classicAddress
       },
       Flags: api.txFlags.Payment.PartialPayment | api.txFlags.Universal.FullyCanonicalSig
     })
+    // TODO: follow txFlags wherever they get moved to
     $("#send_partial_payment .loader").hide()
     $("#send_partial_payment button").prop("disabled",false)
   }
@@ -410,13 +369,13 @@ const set_up_tx_sender = async function() {
       errorNotif("Error: Escrow duration must be a positive number of seconds")
       return
     }
-    const finish_after = api.iso8601ToRippleTime(Date()) + duration_seconds
+    const finish_after = xrpl.ISOTimeToRippleTime(Date()) + duration_seconds
 
     $("#create_escrow .loader").show()
     $("#create_escrow button").prop("disabled","disabled")
-    const escrowcreate_tx_data = await submit_and_verify({
+    const escrowcreate_tx_data = await submit_and_notify({
       TransactionType: "EscrowCreate",
-      Account: sending_address,
+      Account: sending_wallet.classicAddress,
       Destination: destination_address,
       Amount: "1000000",
       FinishAfter: finish_after
@@ -431,14 +390,17 @@ const set_up_tx_sender = async function() {
       let pct_done
       let latestCloseTimeRipple
       while (true) {
-        seconds_left = (finish_after - api.iso8601ToRippleTime(Date()))
+        seconds_left = (finish_after - xrpl.ISOTimeToRippleTime(Date()))
         pct_done = Math.min(99, Math.max(0, (1-(seconds_left / duration_seconds)) * 100))
         $("#escrow_progress .progress-bar").width(pct_done+"%")
         if (seconds_left <= 0) {
           // System time has advanced past FinishAfter. But is there a new
           //  enough validated ledger?
-          latestCloseTimeRipple = api.iso8601ToRippleTime((await api.getLedger()).closeTime)
-          if (latestCloseTimeRipple > finish_after) {
+          latest_close_time = (await api.request({
+              command: "ledger",
+              "ledger_index": "validated"}
+            )).result.ledger.close_time
+          if (latest_close_time > finish_after) {
             $("#escrow_progress .progress-bar").width("100%").removeClass("progress-bar-animated")
             break
           }
@@ -451,10 +413,10 @@ const set_up_tx_sender = async function() {
       // Now submit the EscrowFinish
       // Future feature: submit from a different sender, just to prove that
       //   escrows can be finished by a third party
-      await submit_and_verify({
-        Account: sending_address,
+      await submit_and_notify({
+        Account: sending_wallet.classicAddress,
         TransactionType: "EscrowFinish",
-        Owner: sending_address,
+        Owner: sending_wallet.classicAddress,
         OfferSequence: escrowcreate_tx_data.sequence
       })
     }
@@ -467,12 +429,12 @@ const set_up_tx_sender = async function() {
   async function on_click_create_payment_channel(event) {
     const destination_address = $("#destination_address").val()
     const xrp_drops_input = $("#create_payment_channel_amount").val()
-    const pubkey = api.deriveKeypair(sending_secret).publicKey
+    const pubkey = sending_wallet.publicKey
     $("#create_payment_channel .loader").show()
     $("#create_payment_channel button").prop("disabled","disabled")
-    await submit_and_verify({
+    await submit_and_notify({
       TransactionType: "PaymentChannelCreate",
-      Account: sending_address,
+      Account: sending_wallet.classicAddress,
       Destination: destination_address,
       Amount: xrp_drops_input,
       SettleDelay: 30,
@@ -495,14 +457,14 @@ const set_up_tx_sender = async function() {
     $("#send_issued_currency .loader").show()
     $("#send_issued_currency button").prop("disabled","disabled")
     // Future feature: cross-currency sending with paths?
-    await submit_and_verify({
+    await submit_and_notify({
       TransactionType: "Payment",
-      Account: sending_address,
+      Account: sending_wallet.classicAddress,
       Destination: destination_address,
       Amount: {
         "currency": issue_code,
         "value": issue_amount,
-        "issuer": sending_address
+        "issuer": sending_wallet.classicAddress
       }
     })
     $("#send_issued_currency .loader").hide()
@@ -517,9 +479,9 @@ const set_up_tx_sender = async function() {
     const trust_currency_code = $("#trust_for_currency_code").text()
     $("#trust_for .loader").show()
     $("#trust_for button").prop("disabled","disabled")
-    await submit_and_verify({
+    await submit_and_notify({
       TransactionType: "TrustSet",
-      Account: sending_address,
+      Account: sending_wallet.classicAddress,
       LimitAmount: {
         currency: trust_currency_code,
         value: trust_limit,
