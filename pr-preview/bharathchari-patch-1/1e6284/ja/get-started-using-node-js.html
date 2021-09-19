@@ -1,0 +1,2870 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>RippleAPI入門ガイド - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="RippleAPI入門ガイド | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/get-started-using-node-js.html" />
+    <meta property="og:description" content="XRP Ledgerに照会するエントリーレベルのJavaScriptアプリケーションを構築します。" />
+    <meta name="description" content="XRP Ledgerに照会するエントリーレベルのJavaScriptアプリケーションを構築します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/get-started-using-node-js.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/get-started-using-node-js.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/get-started-using-node-js.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/ja/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ja/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ja/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="/ja/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="/ja/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Document",
+      "page_group": "Docs",
+      "page_funnel": "Tutorials",
+      "page_labels": ['開発']
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <!-- Stylesheet -->
+    <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2021-v2.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+    <!-- Theme switch -->
+    <script src="assets/js/theme-switch.js"></script>
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<div class="top-banner fixed-top"><p>Registration is live for Apex: The XRPL Developer Summit <a class="btn btn-outline-secondary" href="https://apexdevsummit.com/?utm_source=xrpl&utm_medium=web_banner&utm_content=register_now">Register Now</a></p></div>
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item" href="uses.html">ユースケースと注目プロジェクト</a>
+            <a class="dropdown-item" href="history.html">沿革</a>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">インパクト</a>
+            <a class="dropdown-item" href="carbon-calculator.html">二酸化炭素電卓</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="docs.html">
+            <img id="top-nav-hero-docs" alt="ドキュメント icon" />
+            <div class="dropdown-hero-text">
+              <h4>ドキュメント</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-質問">
+            <h5 class="dropdown-item">質問</h5>
+            <a class="dropdown-item" href="faq.html">よくある質問</a>
+          </div><!--./col-->
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="concepts.html">コンセプト</a>
+            <a class="dropdown-item" href="tutorials.html">チュートリアル</a>
+            <a class="dropdown-item" href="references.html">リファレンス</a>
+          </div><!--./col-->
+          <div class="navcol col-for-online-tools">
+            <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="dev-tools.html">開発者用ツール</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item active" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-人気ページ">
+            <h5 class="dropdown-item">人気ページ</h5>
+            <a class="dropdown-item" href="send-xrp.html">XRPの送金</a>
+            <a class="dropdown-item" href="reserves.html">準備金</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">UNLに参加しよう</a>
+            <a class="dropdown-item" href="intro-to-consensus.html">コンセンサスについて</a>
+            <a class="dropdown-item" href="public-rippled-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+            <div class="dropdown-hero-text">
+              <h4>貢献する</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+<!---->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/bharathchari-patch-1/content/tutorials/get-started/get-started-using-node-js.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1171" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <a href="/ja/label-development.html" class="label label-開発">開発</a>
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>目次</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#rippleapi入門ガイド">RippleAPI入門ガイド</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#環境の設置">環境の設置</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nodejsとnpmのインストール">Node.jsとnpmのインストール</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#yarnのインストール">Yarnのインストール</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#rippleapiと依存関係のインストール">RippleAPIと依存関係のインストール</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#1-プロジェクトの新規ディレクトリーを作成">1. プロジェクトの新規ディレクトリーを作成</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#2-プロジェクトの新規packagejsonファイルを作成">2. プロジェクトの新規package.jsonファイルを作成</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#3-yarnを使用してrippleapiと依存関係をインストール">3. Yarnを使用してRippleAPIと依存関係をインストール</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#最初のrippleapiスクリプト">最初のRippleAPIスクリプト</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#スクリプトの実行">スクリプトの実行</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#スクリプトの内容解説">スクリプトの内容解説</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#スクリプトの冒頭">スクリプトの冒頭</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#apiのインスタンス化">APIのインスタンス化</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#接続とpromise">接続とPromise</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#カスタムコード">カスタムコード</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#クリーンアップ">クリーンアップ</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#検証の待機">検証の待機</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#webブラウザーでのrippleapi">WebブラウザーでのRippleAPI</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ブラウザー互換バージョンのrippleapiのビルド">ブラウザー互換バージョンのRippleAPIのビルド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#1-rippleapi-gitリポジトリーのコピーをダウンロード">1. RippleAPI gitリポジトリーのコピーをダウンロード</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#2-yarnのインストール">2. Yarnのインストール</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#3-yarnを使用して依存関係をインストール">3. Yarnを使用して依存関係をインストール</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#4-gulpを使用して単一のjavascript出力をビルド">4. Gulpを使用して単一のJavaScript出力をビルド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ブラウザーでのrippleapiのデモ">ブラウザーでのRippleAPIのデモ</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+    <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/tutorials.html">チュートリアル</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/get-started.html">使用開始</a></li>
+    <li class="active breadcrumb-item">RippleAPI入門ガイド</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="content">
+        <h1 id="rippleapi入門ガイド">RippleAPI入門ガイド<a aria-hidden="true" class="hover_anchor" href="#rippleapi入門ガイド"><i class="fa fa-link"></i></a></h1>
+<p>このチュートリアルでは、<a class="external-link" href="http://nodejs.org/" target="_blank">Node.js <i aria-hidden="true" class="fa fa-external-link"></i></a>と<a href="rippleapi-reference.html">RippleAPI</a>（XRP LedgerにアクセスするためのJavaScript API）を使用して、XRP Ledgerに接続されるアプリケーションを開発するための基本事項を説明します。</p>
+<p>このガイドで使用しているスクリプトと構成ファイルは、<a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart" target="_blank">このサイトのGitHubリポジトリで入手できます <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
+<!--#{ keep multiple H1s so that all steps are surfaced in sidebar. Do not change H1 titles unless they provide a clear improvement bc they are linked to on external sites. }# -->
+<h1 id="環境の設置">環境の設置<a aria-hidden="true" class="hover_anchor" href="#環境の設置"><i class="fa fa-link"></i></a></h1>
+<p>RippleAPIを使用するための最初のステップは、開発環境の設置です。</p>
+<h2 id="nodejsとnpmのインストール">Node.jsとnpmのインストール<a aria-hidden="true" class="hover_anchor" href="#nodejsとnpmのインストール"><i class="fa fa-link"></i></a></h2>
+<p>RippleAPIはNode.jsランタイム環境向けのアプリケーションとして構築されているため、最初のステップはNode.jsのインストールです。RippleAPIでは、Node.js v6以降が必要です。Node.js v10 LTSを使用することをお勧めします。</p>
+<p>このステップは、オペレーティングシステムによって内容が異なります。使用しているオペレーティングシステムの<a class="external-link" href="https://nodejs.org/en/download/package-manager/" target="_blank">パッケージマネージャーを使用してNode.jsをインストールする場合の公式の手引き <i aria-hidden="true" class="fa fa-external-link"></i></a>に準拠することをお勧めします。Node.jsとnpm（Node Package Manager）のパッケージが分かれている場合、両方をインストールします（これに該当するのは、Arch Linux、CentOS、Fedora、RHELの場合です）。</p>
+<p>Node.jsのインストール後、<code>node</code>バイナリーのバージョンはコマンドラインから確認できます。</p>
+<div class="codehilite"><pre><span></span><code>node --version
+</code></pre></div>
+<p>プラットフォームによっては、バイナリーの名前が<code>nodejs</code>となっています。</p>
+<div class="codehilite"><pre><span></span><code>nodejs --version
+</code></pre></div>
+<h2 id="yarnのインストール">Yarnのインストール<a aria-hidden="true" class="hover_anchor" href="#yarnのインストール"><i class="fa fa-link"></i></a></h2>
+<p>RippleAPIでは、Yarnを使用して依存関係を管理します。Yarn v1.13.0を使用することをお勧めします。</p>
+<p>このステップは、オペレーティングシステムによって内容が異なります。使用しているオペレーティングシステムの<a class="external-link" href="https://yarnpkg.com/en/docs/install#mac-stable" target="_blank">パッケージマネージャーを使用してYarnをインストールする場合の公式の手引き <i aria-hidden="true" class="fa fa-external-link"></i></a>に準拠することをお勧めします。</p>
+<p>Yarnのインストール後、<code>yarn</code>バイナリーのバージョンはコマンドラインから確認できます。</p>
+<div class="codehilite"><pre><span></span><code>yarn --version
+</code></pre></div>
+<h2 id="rippleapiと依存関係のインストール">RippleAPIと依存関係のインストール<a aria-hidden="true" class="hover_anchor" href="#rippleapiと依存関係のインストール"><i class="fa fa-link"></i></a></h2>
+<p>以下のステップに従い、Yarnを使用してRippleAPIと依存関係のインストールを完了します。</p>
+<h3 id="1-プロジェクトの新規ディレクトリーを作成">1. プロジェクトの新規ディレクトリーを作成<a aria-hidden="true" class="hover_anchor" href="#1-プロジェクトの新規ディレクトリーを作成"><i class="fa fa-link"></i></a></h3>
+<p><code>my_ripple_experiment</code>といった名前でフォルダーを作成します。</p>
+<div class="codehilite"><pre><span></span><code>mkdir my_ripple_experiment &amp;&amp; cd my_ripple_experiment
+</code></pre></div>
+<p>コードに対する変更を追跡できるよう、このディレクトリーに<a class="external-link" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">Git <i aria-hidden="true" class="fa fa-external-link"></i></a>リポジトリーを作成します（省略可）。</p>
+<div class="codehilite"><pre><span></span><code>git init
+</code></pre></div>
+<p>作業内容のバージョン管理や共有を目的として、<a class="external-link" href="https://help.github.com/articles/create-a-repo/" target="_blank">GitHubにリポジトリーを作成 <i aria-hidden="true" class="fa fa-external-link"></i></a>してもかまいません。設置後、ローカルマシンに<a class="external-link" href="https://help.github.com/articles/cloning-a-repository/" target="_blank">リポジトリーのクローンを作成 <i aria-hidden="true" class="fa fa-external-link"></i></a>し、そのディレクトリーに<code>cd</code>します。</p>
+<h3 id="2-プロジェクトの新規packagejsonファイルを作成">2. プロジェクトの新規<code>package.json</code>ファイルを作成<a aria-hidden="true" class="hover_anchor" href="#2-プロジェクトの新規packagejsonファイルを作成"><i class="fa fa-link"></i></a></h3>
+<p>次の内容が含まれている、以下のテンプレートを使用します。</p>
+<ul>
+<li>RippleAPI自体（<code>ripple-lib</code>）</li>
+<li>（省略可）コード品質を確認するための<a class="external-link" href="http://eslint.org/" target="_blank">ESLint <i aria-hidden="true" class="fa fa-external-link"></i></a>（<code>eslint</code>）</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>{
+  <span class="s2">"</span><span class="s">name</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">my_ripple_experiment</span><span class="s2">"</span>,
+  <span class="s2">"</span><span class="s">version</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">0.0.1</span><span class="s2">"</span>,
+  <span class="s2">"</span><span class="s">license</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">MIT</span><span class="s2">"</span>,
+  <span class="s2">"</span><span class="s">private</span><span class="s2">"</span>: <span class="nv">true</span>,
+  <span class="s2">"</span><span class="s">//</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">Change the license to something appropriate. You may want to use 'UNLICENSED' if you are just starting out.</span><span class="s2">"</span>,
+  <span class="s2">"</span><span class="s">dependencies</span><span class="s2">"</span>: {
+    <span class="s2">"</span><span class="s">ripple-lib</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">*</span><span class="s2">"</span>
+  },
+  <span class="s2">"</span><span class="s">devDependencies</span><span class="s2">"</span>: {
+    <span class="s2">"</span><span class="s">eslint</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">*</span><span class="s2">"</span>
+  }
+}
+</code></pre></div>
+<h3 id="3-yarnを使用してrippleapiと依存関係をインストール">3. Yarnを使用してRippleAPIと依存関係をインストール<a aria-hidden="true" class="hover_anchor" href="#3-yarnを使用してrippleapiと依存関係をインストール"><i class="fa fa-link"></i></a></h3>
+<p>Yarnを使用して、プロジェクトで作成した<code>package.json</code>ファイルに定義されているRippleAPIと依存関係をインストールします。</p>
+<div class="codehilite"><pre><span></span><code>yarn
+</code></pre></div>
+<p>これで、RippleAPIと依存関係がローカルフォルダー<code>node_modules/</code>にインストールされます。</p>
+<p>インストールプロセスの終了時に、いくつかの警告が表示される場合があります。以下の警告は無視してかまいません。</p>
+<div class="codehilite"><pre><span></span><code><span class="n">warning</span><span class="w"> </span><span class="n">eslint</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">file</span><span class="o">-</span><span class="n">entry</span><span class="o">-</span><span class="n">cache</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">flat</span><span class="o">-</span><span class="n">cache</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">circular</span><span class="o">-</span><span class="n">json</span><span class="mf">@0.3.3</span><span class="o">:</span><span class="w"> </span><span class="n">CircularJSON</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">maintenance</span><span class="w"> </span><span class="n">only</span><span class="p">,</span><span class="w"> </span><span class="n">flatted</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">successor</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">npm</span><span class="w"> </span><span class="n">WARN</span><span class="w"> </span><span class="n">optional</span><span class="w"> </span><span class="n">Skipping</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="n">optional</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="o">/</span><span class="n">chokidar</span><span class="o">/</span><span class="nl">fsevents</span><span class="p">:</span><span class="w"></span>
+
+<span class="n">npm</span><span class="w"> </span><span class="n">WARN</span><span class="w"> </span><span class="n">notsup</span><span class="w"> </span><span class="n">Not</span><span class="w"> </span><span class="n">compatible</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">operating</span><span class="w"> </span><span class="n">system</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="nl">architecture</span><span class="p">:</span><span class="w"> </span><span class="n">fsevents</span><span class="mf">@1.0.6</span><span class="w"></span>
+</code></pre></div>
+<h1 id="最初のrippleapiスクリプト">最初のRippleAPIスクリプト<a aria-hidden="true" class="hover_anchor" href="#最初のrippleapiスクリプト"><i class="fa fa-link"></i></a></h1>
+<p>スクリプト<code>get-account-info.js</code>は、ハードコーディングされたアカウントに関する情報をフェッチします。このスクリプトを使用して、RippleAPIが動作することをテストします。</p>
+<div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">RippleAPI</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span><span class="o">.</span><span class="n">RippleAPI</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="n">api</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RippleAPI</span><span class="p">({</span>
+  <span class="n">server</span><span class="p">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="o">//</span> <span class="n">Public</span> <span class="n">rippled</span> <span class="n">server</span>
+<span class="p">});</span>
+<span class="n">api</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">/*</span> <span class="n">begin</span> <span class="n">custom</span> <span class="n">code</span> <span class="o">------------------------------------</span> <span class="o">*/</span>
+  <span class="k">const</span> <span class="n">myAddress</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'getting account info for'</span><span class="p">,</span> <span class="n">myAddress</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">getAccountInfo</span><span class="p">(</span><span class="n">myAddress</span><span class="p">);</span>
+
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">info</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'getAccountInfo done'</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">end</span> <span class="n">custom</span> <span class="n">code</span> <span class="o">--------------------------------------</span> <span class="o">*/</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">disconnect</span><span class="p">();</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'done and disconnected.'</span><span class="p">);</span>
+<span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">error</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="スクリプトの実行">スクリプトの実行<a aria-hidden="true" class="hover_anchor" href="#スクリプトの実行"><i class="fa fa-link"></i></a></h2>
+<p>以下のコマンドを使用して、最初のRippleAPIスクリプトを実行します。</p>
+<div class="codehilite"><pre><span></span><code>node get-account-info.js
+</code></pre></div>
+<p>出力:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">getting</span> <span class="nv">account</span> <span class="nv">info</span> <span class="k">for</span> <span class="nv">rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</span>
+{ <span class="nv">sequence</span>: <span class="mi">359</span>,
+  <span class="nv">xrpBalance</span>: <span class="s1">'</span><span class="s">75.181663</span><span class="s1">'</span>,
+  <span class="nv">ownerCount</span>: <span class="mi">4</span>,
+  <span class="nv">previousInitiatedTransactionID</span>: <span class="s1">'</span><span class="s">E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9</span><span class="s1">'</span>,
+  <span class="nv">previousAffectingTransactionID</span>: <span class="s1">'</span><span class="s">E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9</span><span class="s1">'</span>,
+  <span class="nv">previousAffectingTransactionLedgerVersion</span>: <span class="mi">18489336</span> }
+<span class="nv">getAccountInfo</span> <span class="nv">done</span>
+<span class="nv">done</span> <span class="nv">and</span> <span class="nv">disconnected</span>.
+</code></pre></div>
+<h2 id="スクリプトの内容解説">スクリプトの内容解説<a aria-hidden="true" class="hover_anchor" href="#スクリプトの内容解説"><i class="fa fa-link"></i></a></h2>
+<p>このスクリプトでは、RippleAPI固有のコードに加え、JavaScriptにおける近年の開発成果である構文や規定も利用しています。今回のサンプルコードを小さめのチャンクに分割して、個別に説明していきます。</p>
+<h3 id="スクリプトの冒頭">スクリプトの冒頭<a aria-hidden="true" class="hover_anchor" href="#スクリプトの冒頭"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">RippleAPI</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span><span class="o">.</span><span class="n">RippleAPI</span><span class="p">;</span>
+</code></pre></div>
+<p>先頭行では、<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode" target="_blank">strictモード <i aria-hidden="true" class="fa fa-external-link"></i></a>を有効にしています。このモードを使用するかどうかは任意に選択できますが、JavaScriptで陥りやすいいくつかの落とし穴を回避する上で役立ちます。</p>
+<p>2行目では、Node.jsのrequire関数を使用して、RippleAPIを現在のスコープにインポートしています。RippleAPIは、<a class="external-link" href="https://github.com/ripple/ripple-lib/blob/develop/src/index.ts" target="_blank"><code>ripple-lib</code>がエクスポートするモジュール <i aria-hidden="true" class="fa fa-external-link"></i></a>の1つです。</p>
+<h3 id="apiのインスタンス化">APIのインスタンス化<a aria-hidden="true" class="hover_anchor" href="#apiのインスタンス化"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">api</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RippleAPI</span><span class="p">({</span>
+  <span class="n">server</span><span class="p">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="o">//</span> <span class="n">Public</span> <span class="n">rippled</span> <span class="n">server</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>このセクションでは、RippleAPIクラスの新規インスタンスを作成し、変数<code>api</code>に代入しています（<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const" target="_blank"><code>const</code>キーワード <i aria-hidden="true" class="fa fa-external-link"></i></a>は、値<code>api</code>を何らかの別の値に再代入できないことを意味します。ただし、オブジェクトの内部状態は変化する可能性があります）。</p>
+<p>コンストラクターへの引数の1つはoptionsオブジェクトであり、このオブジェクトには<a href="rippleapi-reference.html#parameters">さまざまなオプション</a>が用意されています。<code>server</code>パラメーターでは、どの<code>rippled</code>サーバーに接続するのかを指定しています。</p>
+<ul>
+<li>この<code>server</code>設定例では、セキュアなWebSocket接続を使用して、Ripple社が運営している公開サーバーの1つに接続しています。</li>
+<li><code>server</code>オプションを記述しない場合、RippleAPIは、ネットワーク接続の不要なメソッドのみが提供される<a href="rippleapi-reference.html#offline-functionality">オフラインモード</a>で実行されます。</li>
+<li>代わりに<a href="xrp-testnet-faucet.html">XRP Ledgerテストネット</a>サーバーを指定すると、本番環境のXRP Ledgerではなく、別空間のテストネットワークに接続できます。</li>
+<li><a href="install-rippled.html">独自の<code>rippled</code>を運用している</a>場合は、ローカルサーバーに接続するよう指示できます。例えば、代わりに<code>server: 'ws://localhost:5005'</code>と記述します。</li>
+</ul>
+<h3 id="接続とpromise">接続とPromise<a aria-hidden="true" class="hover_anchor" href="#接続とpromise"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">api</span>.<span class="k">connect</span><span class="ss">()</span>.<span class="k">then</span><span class="ss">(()</span> <span class="o">=&gt;</span> {
+</code></pre></div>
+<p><a href="rippleapi-reference.html#connect">connect()メソッド</a>は、特殊なJavaScriptオブジェクトである<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promise <i aria-hidden="true" class="fa fa-external-link"></i></a>を返す多くのRippleAPIメソッドの1つです。Promiseは、XRP Ledgerを照会するなど、値を後ほど返す非同期操作の実行を目的としています。</p>
+<p>何らかの式（<code>api.connect()</code>など）からPromiseが返された場合、Promiseの<code>then</code>メソッドを呼び出して、コールバック関数を渡します。関数を引数として渡すことはJavaScriptでは常套的な手法であり、JavaScriptの関数が<a class="external-link" href="https://en.wikipedia.org/wiki/First-class_function" target="_blank">第一級オブジェクト <i aria-hidden="true" class="fa fa-external-link"></i></a>であることを利用しています。</p>
+<p>Promiseは、自身の非同期動作を完了すると、渡されたコールバック関数を実行します。<code>then</code>メソッドからの戻り値は別のPromiseオブジェクトであるため、別の<code>then</code>メソッドへの、または同様にコールバックを受け付けるPromiseの<code>catch</code>メソッドへの「チェーン」にすることができます。<code>catch</code>に渡すコールバックは、何らかの問題が生じた場合に呼び出されます。</p>
+<p>この例では、非同期関数を手軽に定義できる手段である<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">arrow関数 <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用しています。この方法は、1回限りの関数をコールバックとして大量に定義する場合に便利です。<code>()=&gt; {...}</code>という構文は、 {...}/&gt;<code>function() {...}</code>とほぼ等価です。パラメーターを1つ取る非同期関数が必要な場合は、代わりに<code>info =&gt; {...}</code>などの構文を使用できます。この構文は、 {...}/&gt;<code>function(info) {...}</code>という構文とほぼ同一です。</p>
+<h3 id="カスタムコード">カスタムコード<a aria-hidden="true" class="hover_anchor" href="#カスタムコード"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><pre><span></span><code>  <span class="o">/*</span> <span class="n">begin</span> <span class="n">custom</span> <span class="n">code</span> <span class="o">------------------------------------</span> <span class="o">*/</span>
+  <span class="k">const</span> <span class="n">myAddress</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'getting account info for'</span><span class="p">,</span> <span class="n">myAddress</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">getAccountInfo</span><span class="p">(</span><span class="n">myAddress</span><span class="p">);</span>
+
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">info</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'getAccountInfo done'</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">end</span> <span class="n">custom</span> <span class="n">code</span> <span class="o">--------------------------------------</span> <span class="o">*/</span>
+</code></pre></div>
+<p>ここが、スクリプトで実行する処理を記述するために変更を加える部分です。</p>
+<p>このサンプルコードでは、XRP Ledgerアカウントのアドレスを使用してXRP Ledgerアカウントを参照しています。さまざまなアドレスを指定してコードを実行し、結果が変化することを確認してみてください。</p>
+<p><code>console.log()</code>関数はNode.jsとWebブラウザーの両方に組み込まれているもので、結果をコンソールに出力します。この例では大量のコンソール出力を得られるので、コードによって実行される処理の内容を簡単に理解できます。</p>
+<p>このサンプルコードは、（RippleAPIが接続を終了した時点で呼び出される）コールバック関数の中が始点となっています。その関数がRippleAPIの<a href="rippleapi-reference.html#getaccountinfo"><code>getAccountInfo</code></a>メソッドを呼び出すと、結果が返されます。</p>
+<p><code>getAccountInfo</code> APIメソッドは別のPromiseを返すものであるため、<code>}).then( info =&gt; {</code>の行で、このPromiseの非同期処理が完了した時点で実行される別の非同期コールバック関数を定義しています。前述の例とは異なり、このコールバック関数は、<code>getAccountInfo</code> APIメソッドからの非同期戻り値を保持する<code>info</code>という引数を1つ取ります。このコールバック関数の残りの部分は、その戻り値をコンソールに出力するものです。</p>
+<h3 id="クリーンアップ">クリーンアップ<a aria-hidden="true" class="hover_anchor" href="#クリーンアップ"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><pre><span></span><code>}<span class="ss">)</span>.<span class="k">then</span><span class="ss">(()</span> <span class="o">=&gt;</span> {
+  <span class="k">return</span> <span class="nv">api</span>.<span class="k">disconnect</span><span class="ss">()</span><span class="c1">;</span>
+}<span class="ss">)</span>.<span class="k">then</span><span class="ss">(()</span> <span class="o">=&gt;</span> {
+  <span class="nv">console</span>.<span class="nv">log</span><span class="ss">(</span><span class="s1">'</span><span class="s">done and disconnected.</span><span class="s1">'</span><span class="ss">)</span><span class="c1">;</span>
+}<span class="ss">)</span>.<span class="nv">catch</span><span class="ss">(</span><span class="nv">console</span>.<span class="nv">error</span><span class="ss">)</span><span class="c1">;</span>
+</code></pre></div>
+<p>サンプルコードの残りの部分は、概ね<a href="rippleapi-reference.html#boilerplate">ボイラープレートコード</a>としての性質を持ちます。1行目は前のコールバック関数を終了するもので、次に、終了時に実行される別のコールバックへのチェーンを作成しています。そのメソッドはXRP Ledgerからの明示的な切断を実行し、終了時にコンソールへの書き込みを実行する別のコールバックが記述されています。スクリプトで<a href="rippleapi-reference.html#api-events">RippleAPIイベント</a>を待機する場合は、イベントの待機を終了するまで切断を実行しないでください。</p>
+<p><code>catch</code>メソッドで、このPromiseチェーンを終了します。ここに記述しているコールバックは、いずれかのPromiseまたはそのコールバック関数でエラーが発生した場合に実行されます。ここでは、カスタムのコールバックを定義するのではなく、コンソールへの書き込みを実行する標準の<code>console.error</code>関数を渡しています。より高機能のコールバック関数をここに定義して、特定のタイプのエラーをインテリジェントにキャッチすることもできます。</p>
+<h1 id="検証の待機">検証の待機<a aria-hidden="true" class="hover_anchor" href="#検証の待機"><i class="fa fa-link"></i></a></h1>
+<p>XRP Ledger（または任意の分散されたシステム）を使用する上で最大の課題の1つとなるのが、最終的かつ不変のトランザクション結果を把握することです。<a href="reliable-transaction-submission.html">ベストプラクティスに従っている</a>場合も、トランザクションが最終的に受け入れられるか拒否されるまで、<a href="consensus.html">コンセンサスプロセス</a>を待機しなければならないことに変わりはありません。以下のサンプルコードは、トランザクションの最終的な結果を待機する方法を示しています。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">//</span> <span class="n">Submit</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">verify</span> <span class="n">XRPL</span> <span class="n">transaction</span> <span class="n">using</span> <span class="n">ripple</span><span class="o">-</span><span class="n">lib</span> <span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Demonstrates</span> <span class="n">how</span> <span class="n">to</span> <span class="n">submit</span> <span class="n">a</span> <span class="n">transaction</span> <span class="ow">and</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">validation</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">This</span> <span class="k">is</span> <span class="ow">not</span> <span class="bp">true</span> <span class="s2">"robust"</span> <span class="n">transaction</span> <span class="n">submission</span> <span class="n">because</span> <span class="n">it</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">protect</span>
+<span class="o">//</span> <span class="n">against</span> <span class="n">power</span> <span class="n">outages</span> <span class="ow">or</span> <span class="n">other</span> <span class="n">sudden</span> <span class="n">interruptions</span><span class="o">.</span>
+
+<span class="o">//</span> <span class="n">Look</span> <span class="n">up</span> <span class="n">a</span> <span class="n">transaction</span><span class="s1">'s result.</span>
+<span class="o">//</span> <span class="n">Arguments</span><span class="p">:</span>
+<span class="o">//</span> <span class="err">@</span><span class="n">param</span> <span class="n">api</span> <span class="n">object</span> <span class="n">RippleAPI</span> <span class="n">instance</span> <span class="n">connected</span> <span class="n">to</span> <span class="n">the</span> <span class="n">network</span> <span class="n">where</span> <span class="n">you</span>
+<span class="o">//</span>            <span class="n">submitted</span> <span class="n">the</span> <span class="n">transaction</span><span class="o">.</span>
+<span class="o">//</span> <span class="err">@</span><span class="n">param</span> <span class="n">tx_id</span> <span class="n">string</span> <span class="n">The</span> <span class="n">identifying</span> <span class="nb">hash</span> <span class="n">of</span> <span class="n">the</span> <span class="n">transaction</span><span class="o">.</span>
+<span class="o">//</span> <span class="err">@</span><span class="n">param</span> <span class="n">max_ledger</span> <span class="nb nb-Type">int</span> <span class="n">optional</span> <span class="n">The</span> <span class="n">highest</span> <span class="n">ledger</span> <span class="n">index</span> <span class="n">where</span> <span class="n">the</span>
+<span class="o">//</span>            <span class="n">transaction</span> <span class="n">can</span> <span class="n">be</span> <span class="n">validated</span><span class="o">.</span>
+<span class="o">//</span> <span class="err">@</span><span class="n">param</span> <span class="n">min_ledger</span> <span class="nb nb-Type">int</span> <span class="n">optional</span> <span class="n">The</span> <span class="n">lowest</span> <span class="n">ledger</span> <span class="n">index</span> <span class="n">where</span> <span class="n">the</span>
+<span class="o">//</span>            <span class="n">transaction</span> <span class="n">can</span> <span class="n">be</span> <span class="n">validated</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Returns</span><span class="p">:</span> <span class="n">Promise</span><span class="o">&lt;</span><span class="n">object</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="n">result</span> <span class="n">of</span> <span class="n">the</span> <span class="n">tx</span> <span class="n">command</span> <span class="n">with</span> <span class="n">the</span> <span class="n">transaction</span><span class="s1">'s</span>
+<span class="o">//</span>            <span class="n">validated</span> <span class="n">transaction</span> <span class="n">results</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">On</span> <span class="n">failure</span><span class="p">,</span> <span class="n">the</span> <span class="n">reason</span> <span class="k">is</span> <span class="n">an</span> <span class="n">object</span> <span class="n">with</span> <span class="n">two</span> <span class="n">fields</span><span class="p">:</span>
+<span class="o">//</span>    <span class="o">-</span> <span class="n">failure_final</span><span class="p">:</span> <span class="k">if</span> <span class="bp">true</span><span class="p">,</span> <span class="n">this</span> <span class="n">transaction</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">achieve</span> <span class="n">consensus</span> <span class="ow">and</span>
+<span class="o">//</span>                     <span class="n">it</span> <span class="n">can</span> <span class="n">never</span> <span class="n">be</span> <span class="n">validated</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">future</span> <span class="p">(</span><span class="n">assuming</span> <span class="n">the</span>
+<span class="o">//</span>                     <span class="n">min_ledger</span> <span class="ow">and</span> <span class="n">max_ledger</span> <span class="n">values</span> <span class="n">provided</span> <span class="n">were</span> <span class="n">accurate</span><span class="p">)</span><span class="o">.</span>
+<span class="o">//</span>    <span class="o">-</span> <span class="n">msg</span><span class="p">:</span> <span class="n">A</span> <span class="n">human</span><span class="o">-</span><span class="n">readable</span> <span class="n">message</span> <span class="n">explaining</span> <span class="n">what</span> <span class="n">happened</span><span class="o">.</span>
+<span class="n">function</span> <span class="n">lookup_tx_final</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">tx_id</span><span class="p">,</span> <span class="n">max_ledger</span><span class="p">,</span> <span class="n">min_ledger</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">typeof</span> <span class="n">min_ledger</span> <span class="o">==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">min_ledger</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">typeof</span> <span class="n">max_ledger</span> <span class="o">==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">max_ledger</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">min_ledger</span> <span class="o">&gt;</span> <span class="n">max_ledger</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Assume</span> <span class="n">the</span> <span class="n">args</span> <span class="n">were</span> <span class="n">just</span> <span class="n">passed</span> <span class="n">backwards</span> <span class="o">&amp;</span> <span class="n">swap</span> <span class="n">them</span>
+    <span class="p">[</span><span class="n">min_ledger</span><span class="p">,</span> <span class="n">max_ledger</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">max_ledger</span><span class="p">,</span> <span class="n">min_ledger</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="o">//</span> <span class="n">Helper</span> <span class="n">to</span> <span class="n">determine</span> <span class="k">if</span> <span class="n">we</span> <span class="p">(</span><span class="n">should</span><span class="p">)</span> <span class="n">know</span> <span class="n">the</span> <span class="n">transaction</span><span class="s1">'s final result yet.</span>
+  <span class="o">//</span> <span class="n">If</span> <span class="n">the</span> <span class="n">server</span> <span class="n">has</span> <span class="n">validated</span> <span class="n">all</span> <span class="n">ledgers</span> <span class="n">the</span> <span class="n">tx</span> <span class="n">could</span> <span class="n">possibly</span> <span class="n">appear</span> <span class="ow">in</span><span class="p">,</span>
+  <span class="o">//</span> <span class="n">then</span> <span class="n">we</span> <span class="n">should</span> <span class="n">know</span> <span class="n">its</span> <span class="n">final</span> <span class="n">result</span><span class="o">.</span>
+  <span class="n">async</span> <span class="n">function</span> <span class="n">server_has_ledger_range</span><span class="p">(</span><span class="n">min_ledger</span><span class="p">,</span> <span class="n">max_ledger</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="n">si</span> <span class="o">=</span> <span class="n">await</span> <span class="n">api</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"server_info"</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Server</span> <span class="n">has</span> <span class="n">ledger</span> <span class="nb">range</span><span class="p">:</span> <span class="o">$</span><span class="p">{</span><span class="n">si</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">complete_ledgers</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">si</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">complete_ledgers</span> <span class="o">==</span> <span class="s2">"empty"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">console</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">"Connected server is not synced."</span><span class="p">)</span>
+      <span class="k">return</span> <span class="bp">false</span>
+    <span class="p">}</span>
+    <span class="o">//</span> <span class="n">In</span> <span class="n">case</span> <span class="n">of</span> <span class="n">a</span> <span class="n">discontiguous</span> <span class="n">set</span><span class="p">,</span> <span class="n">use</span> <span class="n">only</span> <span class="n">the</span> <span class="n">last</span> <span class="n">set</span><span class="p">,</span> <span class="n">since</span> <span class="n">we</span> <span class="n">need</span>
+    <span class="o">//</span> <span class="n">continuous</span> <span class="n">history</span> <span class="n">from</span> <span class="n">submission</span> <span class="n">to</span> <span class="n">expiration</span> <span class="n">to</span> <span class="n">know</span> <span class="n">that</span> <span class="n">a</span>
+    <span class="o">//</span> <span class="n">transaction</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">achieve</span> <span class="n">consensus</span><span class="o">.</span>
+    <span class="k">const</span> <span class="n">ledger_ranges</span> <span class="o">=</span> <span class="n">si</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">complete_ledgers</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">Note</span><span class="p">:</span> <span class="n">last_range</span> <span class="n">can</span> <span class="n">be</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">form</span> <span class="s1">'x-y'</span> <span class="ow">or</span> <span class="n">just</span> <span class="s1">'y'</span>
+    <span class="k">const</span> <span class="n">last_range</span> <span class="o">=</span> <span class="n">ledger_ranges</span><span class="p">[</span><span class="n">ledger_ranges</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
+    <span class="k">const</span> <span class="n">lr_min</span> <span class="o">=</span> <span class="n">parseInt</span><span class="p">(</span><span class="n">last_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">const</span> <span class="n">lr_max</span> <span class="o">=</span> <span class="n">parseInt</span><span class="p">(</span><span class="n">last_range</span><span class="p">[</span><span class="n">last_range</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lr_min</span> <span class="o">&lt;=</span> <span class="n">min_ledger</span> <span class="o">&amp;&amp;</span> <span class="n">lr_max</span> <span class="o">&gt;=</span> <span class="n">max_ledger</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">//</span> <span class="n">Server</span> <span class="n">has</span> <span class="n">ledger</span> <span class="nb">range</span> <span class="n">needed</span><span class="o">.</span>
+      <span class="k">return</span> <span class="bp">true</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="bp">false</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">ledger_listener</span> <span class="o">=</span> <span class="n">async</span> <span class="p">(</span><span class="n">ledger</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="n">try</span> <span class="p">{</span>
+        <span class="n">tx_result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">api</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"tx"</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s2">"transaction"</span><span class="p">:</span> <span class="n">tx_id</span><span class="p">,</span>
+            <span class="s2">"min_ledger"</span><span class="p">:</span> <span class="n">min_ledger</span><span class="p">,</span>
+            <span class="s2">"max_ledger"</span><span class="p">:</span> <span class="n">max_ledger</span>
+        <span class="p">})</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">tx_result</span><span class="o">.</span><span class="n">validated</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">resolve</span><span class="p">(</span><span class="n">tx_result</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">TransactionResult</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ledger</span><span class="o">.</span><span class="n">ledgerVersion</span> <span class="o">&gt;=</span> <span class="n">max_ledger</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">api</span><span class="o">.</span><span class="n">off</span><span class="p">(</span><span class="s2">"ledger"</span><span class="p">,</span> <span class="n">ledger_listener</span><span class="p">)</span>
+          <span class="o">//</span> <span class="n">Transaction</span> <span class="n">found</span><span class="p">,</span> <span class="ow">not</span> <span class="n">validated</span><span class="p">,</span> <span class="n">but</span> <span class="n">we</span> <span class="n">should</span> <span class="n">have</span> <span class="n">a</span> <span class="n">final</span> <span class="n">result</span>
+          <span class="o">//</span> <span class="n">by</span> <span class="n">now</span><span class="o">.</span>
+          <span class="o">//</span> <span class="n">Work</span> <span class="n">around</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ripple</span><span class="o">/</span><span class="n">rippled</span><span class="o">/</span><span class="n">issues</span><span class="o">/</span><span class="mi">3727</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">await</span> <span class="n">server_has_ledger_range</span><span class="p">(</span><span class="n">min_ledger</span><span class="p">,</span> <span class="n">max_ledger</span><span class="p">))</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="n">Transaction</span> <span class="n">should</span> <span class="n">have</span> <span class="n">been</span> <span class="n">validated</span> <span class="n">by</span> <span class="n">now</span><span class="o">.</span>
+            <span class="n">reject</span><span class="p">({</span>
+              <span class="n">failure_final</span><span class="p">:</span> <span class="bp">true</span><span class="p">,</span>
+              <span class="n">msg</span><span class="p">:</span> <span class="err">`</span><span class="n">Transaction</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">ledgers</span> <span class="o">$</span><span class="p">{</span><span class="n">min_ledger</span><span class="p">}</span><span class="o">-$</span><span class="p">{</span><span class="n">max_ledger</span><span class="p">}</span><span class="o">.</span> <span class="n">This</span> <span class="n">result</span> <span class="k">is</span> <span class="n">final</span> <span class="k">if</span> <span class="n">this</span> <span class="nb">range</span> <span class="k">is</span> <span class="n">correct</span><span class="o">.</span><span class="err">`</span>
+            <span class="p">})</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">reject</span><span class="p">({</span>
+              <span class="n">failure_final</span><span class="p">:</span> <span class="bp">false</span><span class="p">,</span>
+              <span class="n">msg</span><span class="p">:</span> <span class="s2">"Can't get final result (1). Check a full history server."</span>
+            <span class="p">})</span>
+          <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="o">//</span> <span class="n">Transaction</span> <span class="n">may</span> <span class="n">still</span> <span class="n">be</span> <span class="n">validated</span> <span class="n">later</span><span class="o">.</span> <span class="n">Keep</span> <span class="n">waiting</span><span class="o">.</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="n">catch</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">error</span> <span class="o">==</span> <span class="s2">"txnNotFound"</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">searched_all</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">api</span><span class="o">.</span><span class="n">off</span><span class="p">(</span><span class="s2">"ledger"</span><span class="p">,</span> <span class="n">ledger_listener</span><span class="p">)</span>
+            <span class="n">reject</span><span class="p">({</span>
+              <span class="n">failure_final</span><span class="p">:</span> <span class="bp">true</span><span class="p">,</span>
+              <span class="n">msg</span><span class="p">:</span> <span class="err">`</span><span class="n">Transaction</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">ledgers</span> <span class="o">$</span><span class="p">{</span><span class="n">min_ledger</span><span class="p">}</span><span class="o">-$</span><span class="p">{</span><span class="n">max_ledger</span><span class="p">}</span><span class="o">.</span> <span class="n">This</span> <span class="n">result</span> <span class="k">is</span> <span class="n">final</span> <span class="k">if</span> <span class="n">this</span> <span class="nb">range</span> <span class="k">is</span> <span class="n">correct</span><span class="o">.</span><span class="err">`</span>
+            <span class="p">})</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">max_ledger</span> <span class="o">&gt;</span> <span class="n">ledger</span><span class="o">.</span><span class="n">ledgerVersion</span><span class="p">)</span> <span class="p">{</span>
+              <span class="n">api</span><span class="o">.</span><span class="n">off</span><span class="p">(</span><span class="s2">"ledger"</span><span class="p">,</span> <span class="n">ledger_listener</span><span class="p">)</span>
+              <span class="o">//</span> <span class="n">Transaction</span> <span class="n">may</span> <span class="n">yet</span> <span class="n">be</span> <span class="n">confirmed</span><span class="o">.</span> <span class="n">This</span> <span class="n">would</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">a</span> <span class="n">bad</span> <span class="n">time</span>
+              <span class="o">//</span> <span class="n">to</span> <span class="n">resubmit</span> <span class="n">the</span> <span class="n">transaction</span> <span class="n">just</span> <span class="ow">in</span> <span class="n">case</span><span class="o">.</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+              <span class="o">//</span> <span class="n">Work</span> <span class="n">around</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ripple</span><span class="o">/</span><span class="n">rippled</span><span class="o">/</span><span class="n">issues</span><span class="o">/</span><span class="mi">3750</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">await</span> <span class="n">server_has_ledger_range</span><span class="p">(</span><span class="n">min_ledger</span><span class="p">,</span> <span class="n">max_ledger</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">reject</span><span class="p">({</span>
+                  <span class="n">failure_final</span><span class="p">:</span> <span class="bp">true</span><span class="p">,</span>
+                  <span class="n">msg</span><span class="p">:</span> <span class="err">`</span><span class="n">Transaction</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">ledgers</span> <span class="o">$</span><span class="p">{</span><span class="n">min_ledger</span><span class="p">}</span><span class="o">-$</span><span class="p">{</span><span class="n">max_ledger</span><span class="p">}</span><span class="o">.</span> <span class="n">This</span> <span class="n">result</span> <span class="k">is</span> <span class="n">final</span> <span class="k">if</span> <span class="n">this</span> <span class="nb">range</span> <span class="k">is</span> <span class="n">correct</span><span class="o">.</span><span class="err">`</span>
+                <span class="p">})</span>
+              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">reject</span><span class="p">({</span>
+                  <span class="n">failure_final</span><span class="p">:</span> <span class="bp">false</span><span class="p">,</span>
+                  <span class="n">msg</span><span class="p">:</span> <span class="s2">"Can't get final result. Check a full history server."</span>
+                <span class="p">})</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="o">//</span> <span class="n">Unknown</span> <span class="n">error</span><span class="p">;</span> <span class="k">pass</span> <span class="n">it</span> <span class="n">back</span> <span class="n">up</span>
+          <span class="n">reject</span><span class="p">({</span>
+            <span class="n">failure_final</span><span class="p">:</span> <span class="bp">false</span><span class="p">,</span>
+            <span class="n">msg</span><span class="p">:</span> <span class="err">`</span><span class="n">Unknown</span> <span class="n">Error</span><span class="p">:</span> <span class="o">$</span><span class="p">{</span><span class="n">e</span><span class="p">}</span><span class="err">`</span>
+          <span class="p">})</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="o">//</span> <span class="n">end</span> <span class="n">ledger</span> <span class="n">event</span> <span class="n">handler</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">'ledger'</span><span class="p">,</span> <span class="n">ledger_listener</span><span class="p">)</span>
+  <span class="p">})</span> <span class="o">//</span> <span class="n">end</span> <span class="n">promise</span> <span class="n">def</span>
+<span class="p">}</span>
+
+
+<span class="o">//</span> <span class="n">Submit</span> <span class="n">a</span> <span class="n">transaction</span> <span class="n">blob</span> <span class="ow">and</span> <span class="n">get</span> <span class="n">its</span> <span class="n">final</span> <span class="n">result</span> <span class="k">as</span> <span class="n">a</span> <span class="n">string</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">one</span> <span class="n">of</span> <span class="n">these</span> <span class="n">possibilities</span><span class="p">:</span>
+<span class="o">//</span> <span class="n">tesSUCCESS</span><span class="o">.</span> <span class="n">The</span> <span class="n">transaction</span> <span class="n">executed</span> <span class="n">successfully</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">tec</span><span class="o">*.</span> <span class="n">The</span> <span class="n">transaction</span> <span class="n">was</span> <span class="n">validated</span> <span class="n">with</span> <span class="n">a</span> <span class="n">failure</span> <span class="n">code</span><span class="o">.</span> <span class="n">It</span> <span class="n">destroyed</span> <span class="n">the</span> <span class="n">XRP</span>
+<span class="o">//</span>      <span class="n">transaction</span> <span class="n">cost</span> <span class="ow">and</span> <span class="n">may</span> <span class="n">have</span> <span class="n">done</span> <span class="n">some</span> <span class="n">cleanup</span> <span class="n">such</span> <span class="k">as</span> <span class="n">removing</span>
+<span class="o">//</span>      <span class="n">expired</span> <span class="n">objects</span> <span class="n">from</span> <span class="n">the</span> <span class="n">ledger</span><span class="p">,</span> <span class="n">but</span> <span class="n">nothing</span> <span class="k">else</span><span class="o">.</span>
+<span class="o">//</span>      <span class="n">See</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">xrpl</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">tec</span><span class="o">-</span><span class="n">codes</span><span class="o">.</span><span class="n">html</span> <span class="k">for</span> <span class="n">the</span> <span class="n">full</span> <span class="n">list</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">tefMAX_LEDGER</span><span class="o">.</span> <span class="n">The</span> <span class="n">transaction</span> <span class="n">expired</span> <span class="n">without</span> <span class="n">ever</span> <span class="n">being</span> <span class="n">included</span>
+<span class="o">//</span>      <span class="ow">in</span> <span class="n">a</span> <span class="n">validated</span> <span class="n">ledger</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">unknown</span><span class="o">.</span> <span class="n">Either</span> <span class="n">the</span> <span class="n">server</span> <span class="n">you</span> <span class="n">are</span> <span class="n">querying</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">the</span>
+<span class="o">//</span>      <span class="n">necessary</span> <span class="n">ledger</span> <span class="n">history</span> <span class="n">to</span> <span class="n">find</span> <span class="n">the</span> <span class="n">transaction</span><span class="s1">'s final result, or</span>
+<span class="o">//</span>      <span class="n">something</span> <span class="k">else</span> <span class="n">went</span> <span class="n">wrong</span> <span class="n">when</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">look</span> <span class="n">up</span> <span class="n">the</span> <span class="n">results</span><span class="o">.</span> <span class="n">The</span>
+<span class="o">//</span>      <span class="n">warning</span> <span class="n">written</span> <span class="n">to</span> <span class="n">the</span> <span class="n">console</span> <span class="n">can</span> <span class="n">tell</span> <span class="n">you</span> <span class="n">more</span> <span class="n">about</span> <span class="n">what</span> <span class="n">happened</span><span class="o">.</span>
+<span class="n">async</span> <span class="n">function</span> <span class="n">submit_and_verify</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">tx_blob</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="n">prelim_result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">api</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"submit"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"tx_blob"</span><span class="p">:</span> <span class="n">tx_blob</span><span class="p">})</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"Preliminary result code:"</span><span class="p">,</span> <span class="n">prelim_result</span><span class="o">.</span><span class="n">engine_result</span><span class="p">)</span>
+  <span class="k">const</span> <span class="n">min_ledger</span> <span class="o">=</span> <span class="n">prelim_result</span><span class="o">.</span><span class="n">validated_ledger_index</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">prelim_result</span><span class="o">.</span><span class="n">tx_json</span><span class="o">.</span><span class="n">LastLedgerSequence</span> <span class="o">===</span> <span class="n">undefined</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">"Transaction has no LastLedgerSequence field. "</span><span class="o">+</span>
+                 <span class="s2">"It may be impossible to determine final failure."</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">const</span> <span class="n">max_ledger</span> <span class="o">=</span> <span class="n">prelim_result</span><span class="o">.</span><span class="n">tx_json</span><span class="o">.</span><span class="n">LastLedgerSequence</span>
+  <span class="k">const</span> <span class="n">tx_id</span> <span class="o">=</span> <span class="n">prelim_result</span><span class="o">.</span><span class="n">tx_json</span><span class="o">.</span><span class="n">hash</span>
+
+  <span class="n">let</span> <span class="n">final_result</span>
+  <span class="n">try</span> <span class="p">{</span>
+    <span class="n">final_result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">lookup_tx_final</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">tx_id</span><span class="p">,</span> <span class="n">max_ledger</span><span class="p">,</span> <span class="n">min_ledger</span><span class="p">)</span>
+  <span class="p">}</span> <span class="n">catch</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">reason</span><span class="o">.</span><span class="n">failure_final</span><span class="p">)</span> <span class="n">final_result</span> <span class="o">=</span> <span class="s2">"tefMAX_LEDGER"</span>
+    <span class="k">else</span> <span class="n">final_result</span> <span class="o">=</span> <span class="s2">"unknown"</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">final_result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">Exports</span> <span class="k">for</span> <span class="n">node</span><span class="o">.</span><span class="n">js</span><span class="p">;</span> <span class="n">no</span><span class="o">-</span><span class="n">op</span> <span class="k">for</span> <span class="n">browsers</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">typeof</span> <span class="n">module</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">module</span><span class="o">.</span><span class="n">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">submit_and_verify</span><span class="p">:</span> <span class="n">submit_and_verify</span><span class="p">,</span>
+    <span class="n">lookup_tx_final</span><span class="p">:</span> <span class="n">lookup_tx_final</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>このコードは注文トランザクションを作成して送信するものですが、他のタイプのトランザクションにも同様の原則があてはまります。トランザクションを送信した後、setTimeoutを使用して所定の時間が経過するまで待機し、新しいPromiseでレジャーをもう一度照会して、トランザクションが検証済みとなっているかどうかを確認します。検証済みとなっていない場合は、検証済みレジャーの中にトランザクションが見つかるか、返されたレジャーがLastLedgerSequenceパラメーターの値よりも大きくなるまで、このプロセスを繰り返します。</p>
+<p>まれなケースとして（特に、大きな遅延や電源喪失が発生した場合）、トランザクションを送信してから、<code>maxLedgerVersion</code>がネットワークから渡されたと判断するまでの間に、レジャーのいずれかのバージョンが<code>rippled</code>サーバーで欠落することがあります。この場合、トランザクションが失敗したのか、欠落したバージョンのレジャーに含まれているのかを最終的に確定することはできません。RippleAPIは、この場合、<code>MissingLedgerHistoryError</code>を返します。</p>
+<p><code>rippled</code>サーバーの管理者である場合は、<a href="ledger_request.html">欠落しているレジャーを手動で要求できます</a>。管理者でない場合は、別のサーバーを使用してレジャー履歴を確認してみるという方法が考えられます（Rippleは、この目的で、すべての履歴が記録される公開サーバーを<code>s2.ripple.com</code>で運用しています）。</p>
+<p>詳細は、<a href="reliable-transaction-submission.html">信頼できるトランザクションの送信</a>を参照してください。</p>
+<h1 id="webブラウザーでのrippleapi">WebブラウザーでのRippleAPI<a aria-hidden="true" class="hover_anchor" href="#webブラウザーでのrippleapi"><i class="fa fa-link"></i></a></h1>
+<p>RippleAPIは、ブラウザー互換のバージョンをコンパイルし、RippleAPIスクリプトよりも前に<a class="external-link" href="https://www.npmjs.com/package/lodash" target="_blank">lodash <i aria-hidden="true" class="fa fa-external-link"></i></a>を依存関係として含めた場合、Webブラウザーでも使用できます。</p>
+<h2 id="ブラウザー互換バージョンのrippleapiのビルド">ブラウザー互換バージョンのRippleAPIのビルド<a aria-hidden="true" class="hover_anchor" href="#ブラウザー互換バージョンのrippleapiのビルド"><i class="fa fa-link"></i></a></h2>
+<p>RippleAPIをブラウザーで使用するには、ブラウザー互換バージョンをビルドする必要があります。以下の手順では、RippleAPIをコンパイルして、Webページに含めることのできる単一のJavaScriptファイルを生成します。</p>
+<h3 id="1-rippleapi-gitリポジトリーのコピーをダウンロード">1. RippleAPI gitリポジトリーのコピーをダウンロード<a aria-hidden="true" class="hover_anchor" href="#1-rippleapi-gitリポジトリーのコピーをダウンロード"><i class="fa fa-link"></i></a></h3>
+<p><a class="external-link" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">Git <i aria-hidden="true" class="fa fa-external-link"></i></a>がインストールされている場合は、リポジトリーのクローンを作成して、<strong>master</strong>ブランチをチェックアウトできます。このブランチには、常に最新の公式リリースが収められています。</p>
+<div class="codehilite"><pre><span></span><code>git clone https://github.com/ripple/ripple-lib.git
+cd ripple-lib
+git checkout master
+</code></pre></div>
+<p>または、特定のリリースのアーカイブ（.zipまたは.tar.gz）を<a class="external-link" href="https://github.com/ripple/ripple-lib/releases" target="_blank">RippleAPIリリースページ <i aria-hidden="true" class="fa fa-external-link"></i></a>からダウンロードし、抽出します。</p>
+<h3 id="2-yarnのインストール">2. Yarnのインストール<a aria-hidden="true" class="hover_anchor" href="#2-yarnのインストール"><i class="fa fa-link"></i></a></h3>
+<p><a href="#yarnのインストール">Yarnのインストール</a>に関する手順に従います。</p>
+<h3 id="3-yarnを使用して依存関係をインストール">3. Yarnを使用して依存関係をインストール<a aria-hidden="true" class="hover_anchor" href="#3-yarnを使用して依存関係をインストール"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><pre><span></span><code>yarn
+</code></pre></div>
+<h3 id="4-gulpを使用して単一のjavascript出力をビルド">4. Gulpを使用して単一のJavaScript出力をビルド<a aria-hidden="true" class="hover_anchor" href="#4-gulpを使用して単一のjavascript出力をビルド"><i class="fa fa-link"></i></a></h3>
+<p>RippleAPIには、<a class="external-link" href="http://gulpjs.com/" target="_blank">gulp <i aria-hidden="true" class="fa fa-external-link"></i></a>パッケージを使用してすべてのソースコードをコンパイルし、ブラウザー互換バージョンのJavaScriptファイルを生成するためのコードが付属しています。Gulpは依存関係の1つとして自動的にインストールされるため、実行するだけで済みます。RippleAPIの構成上、これは容易に実行できるようになっています。</p>
+<div class="codehilite"><pre><span></span><code>yarn run build
+</code></pre></div>
+<p>出力:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="n">ripple</span><span class="o">-</span><span class="n">lib</span><span class="mf">@0.16.5</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">ripple</span><span class="o">-</span><span class="n">lib</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">gulp</span><span class="w"></span>
+
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mo">02</span><span class="p">]</span><span class="w"> </span><span class="n">Using</span><span class="w"> </span><span class="n">gulpfile</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">ripple</span><span class="o">-</span><span class="n">lib</span><span class="o">/</span><span class="n">gulpfile</span><span class="p">.</span><span class="n">js</span><span class="w"></span>
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mo">02</span><span class="p">]</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="err">'</span><span class="n">build</span><span class="err">'</span><span class="p">...</span><span class="w"></span>
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mo">03</span><span class="p">]</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="err">'</span><span class="n">build</span><span class="o">-</span><span class="n">debug</span><span class="err">'</span><span class="p">...</span><span class="w"></span>
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mo">03</span><span class="p">]</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="err">'</span><span class="n">build</span><span class="o">-</span><span class="n">min</span><span class="err">'</span><span class="p">...</span><span class="w"></span>
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">18</span><span class="p">]</span><span class="w"> </span><span class="n">Finished</span><span class="w"> </span><span class="err">'</span><span class="n">build</span><span class="o">-</span><span class="n">debug</span><span class="err">'</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">18</span><span class="p">]</span><span class="w"> </span><span class="n">Finished</span><span class="w"> </span><span class="err">'</span><span class="n">build</span><span class="err">'</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">18</span><span class="p">]</span><span class="w"> </span><span class="n">Finished</span><span class="w"> </span><span class="err">'</span><span class="n">build</span><span class="o">-</span><span class="n">min</span><span class="err">'</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">18</span><span class="p">]</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="err">'</span><span class="k">default</span><span class="err">'</span><span class="p">...</span><span class="w"></span>
+<span class="p">[</span><span class="mi">14</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">18</span><span class="p">]</span><span class="w"> </span><span class="n">Finished</span><span class="w"> </span><span class="err">'</span><span class="k">default</span><span class="err">'</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="err">μ</span><span class="n">s</span><span class="w"></span>
+</code></pre></div>
+<p>完了までに、しばらく時間がかかる場合があります。最終的に、ビルドプロセスによって、目的のファイルが含まれた新しい<code>build/</code>フォルダーが作成されます。</p>
+<p><code>build/ripple-&lt;VERSION NUMBER&gt;.js</code>ファイルは、ブラウザーですぐに使用できる（ビルドしたバージョンの）RippleAPIの直接エクスポートです。名前の末尾が<code>-min.js</code>のファイルも同じものですが、読み込みを高速化するため、内容が<a class="external-link" href="https://en.wikipedia.org/wiki/Minification_%28programming%29" target="_blank">縮小 <i aria-hidden="true" class="fa fa-external-link"></i></a>されています。</p>
+<h2 id="ブラウザーでのrippleapiのデモ">ブラウザーでのRippleAPIのデモ<a aria-hidden="true" class="hover_anchor" href="#ブラウザーでのrippleapiのデモ"><i class="fa fa-link"></i></a></h2>
+<p>以下のHTMLファイルは、RippleAPIのブラウザーバージョンで公開<code>rippled</code>サーバーに接続し、そのサーバーに関する情報のレポートを生成するための基本的な使用方法を示しています。Node.jsの「require」構文を使用するのではなく、ブラウザーバージョンを使用して、<code>RippleAPI</code>クラスが含まれている<code>ripple</code>という名前のグローバル変数を作成します。</p>
+<p>この例を使用するには、最初に<a href="#ブラウザー互換バージョンのrippleapiのビルド">RippleAPIのブラウザー互換バージョンをビルド</a>した後、結果として生成される出力ファイルのいずれかを、このHTMLファイルと同一のフォルダーにコピーします（縮小バージョンとフルサイズバージョンのどちらを使用してもかまいません）。この例にある2番目の<code>&lt;script&gt;</code>タグを変更して、ビルドしたバージョンのRippleAPIに対応する適切なファイル名が使用されるようにします。</p>
+<p><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/rippleapi_quickstart/browser-demo.html" target="_blank" title="Source on GitHub"><strong>browser-demo.html:</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"</span> <span class="na">integrity</span><span class="o">=</span><span class="s">"sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">"anonymous"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"application/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"assets/js/ripple-lib-1.9.1.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ripple</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span><span class="s1">'wss://s1.ripple.com/'</span><span class="p">});</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getServerInfo</span><span class="p">();</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">server_info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s2">"&lt;p&gt;Connected to rippled server!&lt;/p&gt;"</span> <span class="o">+</span>
+<span class="s2">"      &lt;table&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Version&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">buildVersion</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Ledgers available&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">completeLedgers</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;hostID&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">hostID</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Seq.&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">validatedLedger</span><span class="p">.</span><span class="nx">ledgerVersion</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Hash&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">validatedLedger</span><span class="p">.</span><span class="nx">hash</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Seconds since last ledger validated&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">validatedLedger</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"      &lt;/table&gt;"</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+    <span class="nt">td</span><span class="o">,</span> <span class="nt">th</span> <span class="p">{</span> <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">black</span><span class="p">;</span> <span class="k">padding</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">table</span> <span class="p">{</span> <span class="k">border-collapse</span><span class="p">:</span> <span class="kc">collapse</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>このデモHTMLでは、Lodash v4.17.11をCloudflare上のCDNJSから読み込んだ後、ripple-lib v1.1.2を読み込んでいますが、Lodashのバリアントをローカルにダウンロードして読み込んでもかまいません。 <!--#{ no specific recommended or required version at this time. Update this once we have some guidance to provide here. }#--></p>
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="/ja/assets/vendor/feedback-widget.js"></script>
+<div id="feedback-content"></div>
+ <script>
+  // Options
+  const options = {
+    analyticsConfig: [
+      { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-THHW334' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
+    theme: 'xrpl',
+    currentPath: window.location.pathname,
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="/ja/docs.html">ドキュメント</a>
+  </div>
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/faq.html">よくある質問</a>
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+
+        <a class="nav-link" href="/ja/introduction.html">基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp.html">XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/software-ecosystem.html">ソフトウェアエコシステム</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="/ja/payment-system-basics.html">支払いシステムの基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_1"></a>
+
+        <a class="nav-link" href="/ja/accounts.html">アカウント</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cryptographic-keys.html">暗号鍵</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/reserves.html">準備金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fees.html">手数料（曖昧さの回避）</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledgers.html">レジャー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_4"></a>
+
+        <a class="nav-link" href="/ja/transaction-basics.html">トランザクションの基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-cost.html">トランザクションコスト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/finality-of-results.html">結果のファイナリティー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="/ja/payment-types.html">支払いのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/partial-payments.html">Partial Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/payment-channels.html">Payment Channel</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+
+        <a class="nav-link" href="/ja/issued-currencies.html">発行済み通貨</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/issued-currencies-overview.html">発行済み通貨の概要</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freezes.html">発行済み通貨の凍結</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-fees.html">送金手数料</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/issuing-and-operational-addresses.html">発行アドレスと運用アドレス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+
+        <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/autobridging.html">オートブリッジング</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ticksize.html">ティックサイズ</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+
+        <a class="nav-link" href="/ja/consensus-network.html">コンセンサスネットワーク</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus.html">コンセンサス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus-principles-and-rules.html">コンセンサスの原理とルール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/invariant-checking.html">Invariant Checking</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-queue.html">トランザクションキュー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/about-canceling-a-transaction.html">トランザクションの取消しについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-malleability.html">トランザクション展性</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_6_9"></a>
+
+        <a class="nav-link" href="/ja/amendments.html">Amendment</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fee-voting.html">手数料投票</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus-research.html">コンセンサスの研究</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+
+        <a class="nav-link" href="/ja/the-rippled-server.html">rippledサーバー</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippled-server-modes.html">rippledサーバーのモード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clustering.html">クラスター化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
+
+        <a class="nav-link" href="/ja/ledger-history.html">レジャー履歴</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/online-deletion.html">オンライン削除</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/history-sharding.html">履歴シャーディング</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer-protocol.html">ピアプロトコル</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">取引検閲の検知</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="/ja/tutorials.html">チュートリアル</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3">
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="true" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="/ja/get-started.html">使用開始</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/public-servers.html">Public Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-xrp.html">XRPの送金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/monitor-incoming-payments-with-websocket.html">WebSocketを使用した着信ペイメントの監視</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/production-readiness.html">Production Readiness</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/look-up-transaction-results.html">トランザクションの結果の確認</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/reliable-transaction-submission.html">信頼できるトランザクションの送信</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/change-or-remove-a-regular-key-pair.html">レギュラーキーペアの変更または削除</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/disable-master-key-pair.html">Disable Master Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/require-destination-tags.html">宛先タグの要求</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+
+        <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4_1" aria-expanded="false" aria-controls="tree_nav_group_3_4_1"></a>
+
+        <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-a-conditionally-held-escrow.html">条件に基づくEscrowの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cancel-an-expired-escrow.html">有効期限切れEscrowの取消し</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/look-up-escrows.html">Escrowの検索</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4_2" aria-expanded="false" aria-controls="tree_nav_group_3_4_2"></a>
+
+        <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4_3" aria-expanded="false" aria-controls="tree_nav_group_3_4_3"></a>
+
+        <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cash-a-check-for-an-exact-amount.html">Checkの正確な金額での換金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cash-a-check-for-a-flexible-amount.html">Checkの変動金額での換金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cancel-a-check.html">Checkの取消し</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/look-up-checks-by-sender.html">送金元に基づくCheckの検索</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/look-up-checks-by-recipient.html">受取人に基づくCheckの検索</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+
+        <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+
+        <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+
+        <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_1" aria-expanded="false" aria-controls="tree_nav_group_3_7_1"></a>
+
+        <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-rippled-on-centos-rhel-with-yum.html">yumを使用したCentOS/Red Hatへのインストール</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-rippled-on-ubuntu.html">UbuntuまたはDebian Linuxへのインストール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/update-rippled-automatically-on-linux.html">Linuxでの自動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-centos-rhel.html">CentOS/Red Hatでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-ubuntu.html">Ubuntuでのrippledの構築と実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-macos.html">macOSでのrippledの構築と実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/capacity-planning.html">容量の計画</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippled-1-3-migration-instructions.html">rippled v1.3.xへの移行手順</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_2" aria-expanded="false" aria-controls="tree_nav_group_3_7_2"></a>
+
+        <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-online-deletion.html">オンライン削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-advisory-deletion.html">指示による削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-history-sharding.html">履歴シャーディングの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-full-history.html">全履歴の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-public-signing.html">パブリック署名の有効化</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_3" aria-expanded="false" aria-controls="tree_nav_group_3_7_3"></a>
+
+        <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-a-private-server.html">プライベートサーバーの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/forward-ports-for-peering.html">ピアリングのポート転送</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/manually-connect-to-a-specific-peer.html">特定のピアへの手動接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/set-max-number-of-peers.html">ピアの最大数の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/use-a-peer-reservation.html">ピアリザベーションの使用</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_4" aria-expanded="false" aria-controls="tree_nav_group_3_7_4"></a>
+
+        <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/load-a-saved-ledger-in-stand-alone-mode.html">スタンドアロンモードでの保存済みレジャーの読み込み</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_5" aria-expanded="false" aria-controls="tree_nav_group_3_7_5"></a>
+
+        <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/understanding-log-messages.html">ログメッセージについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server-doesnt-sync.html">rippledサーバーが同期しない</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server-wont-start.html">rippledサーバーが起動しない</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fix-sqlite-tx-db-page-size-issue.html">SQLiteトランザクションデータベースのページサイズの問題の解決</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="/ja/references.html">リファレンス</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+
+        <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_1" aria-expanded="false" aria-controls="tree_nav_group_4_1_1"></a>
+
+        <a class="nav-link" href="/ja/basic-data-types.html">基本的なデータ型</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/base58-encodings.html">base58エンコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/currency-formats.html">通貨フォーマット</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_2"></a>
+
+        <a class="nav-link" href="/ja/ledger-data-formats.html">レジャーのデータ型</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-header.html">レジャーヘッダー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_2_3"></a>
+
+        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3"></a>
+
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_2"></a>
+
+        <a class="nav-link" href="/ja/transaction-types.html">トランザクションのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_3"></a>
+
+        <a class="nav-link" href="/ja/pseudo-transaction-types.html">疑似トランザクション</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_4"></a>
+
+        <a class="nav-link" href="/ja/transaction-results.html">トランザクションの結果</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tec-codes.html">tecコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tef-codes.html">tefコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tel-codes.html">telコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tem-codes.html">temコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ter-codes.html">terコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-metadata.html">トランザクションのメタデータ</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+
+        <a class="nav-link" href="/ja/client-libraries.html">Client Libraries</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+
+        <a class="nav-link" href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_1"></a>
+
+        <a class="nav-link" href="/ja/api-conventions.html">APIの規則</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/request-formatting.html">要求フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/response-formatting.html">応答フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/error-formatting.html">エラーのフォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/markers-and-pagination.html">マーカーとページネーション</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
+
+        <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_1"></a>
+
+        <a class="nav-link" href="/ja/account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_2"></a>
+
+        <a class="nav-link" href="/ja/ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
+
+        <a class="nav-link" href="/ja/transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_4"></a>
+
+        <a class="nav-link" href="/ja/path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_5"></a>
+
+        <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
+
+        <a class="nav-link" href="/ja/subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_7"></a>
+
+        <a class="nav-link" href="/ja/server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
+
+        <a class="nav-link" href="/ja/utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
+
+        <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_1"></a>
+
+        <a class="nav-link" href="/ja/key-generation-methods.html">キー生成のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_2"></a>
+
+        <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータ管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/logrotate.html">logrotate</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_3"></a>
+
+        <a class="nav-link" href="/ja/server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
+
+        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+
+        <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">rippledコマンドライン使用リファレンス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_5"></a>
+
+        <a class="nav-link" href="/ja/peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml.html">xrp-ledger.tomlファイル</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="/ja/by-label.html">ラベル別に閲覧</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-blockchain.html">ブロックチェーン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-rippled.html">コアサーバー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-cross-currency.html">複数通貨間</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-data-retention.html">データ保持</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-decentralized-exchange.html">分散型取引所</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-development.html">開発</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-fees.html">手数料</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-payment-channels.html">Payment Channel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-payments.html">支払い</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-smart-contracts.html">スマートコントラクト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-security.html">セキュリティ</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-tokens.html">トークン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-transaction-sending.html">トランザクション送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-xrp.html">XRP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+
+        <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/websocket-api-tool.html">WebSocket API Tool</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator-domain-verifier.html">Domain Verification Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tx-sender.html">Transaction Sender</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>アバウト</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
+            <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
+            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>ドキュメント</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
+            <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
+            <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
+            <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
+            <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
+            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>コミュニティー</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="/ja/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  indexName: 'xrpl',
+  inputSelector: '#topsearchbox',
+  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+
+
+</body>
+</html>
