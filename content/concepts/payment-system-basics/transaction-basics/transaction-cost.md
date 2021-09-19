@@ -34,8 +34,7 @@ Some transactions have different transaction costs:
 
 ## Beneficiaries of the Transaction Cost
 
-The transaction cost is not paid to any party: the XRP is irrevocably destroyed. Since no new XRP can ever be created, this makes XRP more scarce and benefits all holders of XRP by making XRP more valuable.
-
+The transaction cost is not paid to any party: the XRP is irrevocably destroyed.
 
 ## Load Cost and Open Ledger Cost
 
