@@ -13,7 +13,7 @@ The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared glo
 
 To have an account, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send that address enough XRP to meet the reserve requirement.
 
-The current minimum reserve requirement is **20 XRP**. (This is the cost of an address that owns no other objects in the ledger.) Each new [account](accounts.html) must set aside this much XRP. Some of this XRP can be recovered by [deleting the account](accounts.html#deletion-of-accounts).
+The current minimum reserve requirement is **10 XRP**. (This is the cost of an address that owns no other objects in the ledger.) Each new [account](accounts.html) must set aside this much XRP. Some of this XRP can be recovered by [deleting the account](accounts.html#deletion-of-accounts).
 
 The [Fee Voting](fee-voting.html) process can change the reserve requirement if enough validators agree to new reserve settings.
 
@@ -22,8 +22,8 @@ The [Fee Voting](fee-voting.html) process can change the reserve requirement if 
 
 The reserve requirement is divided into two parts:
 
-* The **Base Reserve** is a minimum amount of XRP that is required for each address in the ledger. Currently, this is 20 XRP (`20000000` [drops](xrp.html#xrp-properties)).
-* The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 5 XRP (`5000000` [drops](xrp.html#xrp-properties)) per item.
+* The **Base Reserve** is a minimum amount of XRP that is required for each address in the ledger. Currently, this is 10 XRP (`10000000` [drops](xrp.html#xrp-properties)).
+* The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 2 XRP (`2000000` [drops](xrp.html#xrp-properties)) per item.
 
 
 ### Owner Reserves
