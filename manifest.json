@@ -328,5 +328,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1168"
       }
     ]
+  },
+  "alloynetworks-patch-1": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "04e40263bf47f63a3818ef6e90a376451f74a853",
+        "updatedAt": "2021-09-20T06:41:29.679Z",
+        "href": "pr-preview/alloynetworks-patch-1/04e402",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1172"
+      }
+    ]
   }
 }
