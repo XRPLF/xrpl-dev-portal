@@ -61,7 +61,7 @@ Along these lines, there's a good chance that you are following industry best pr
 
 - The payer exchange must have a funded XRP Ledger account to be used to send XRP to the payee exchange.
 
-      Aside from the [base reserve](reserves.html) (20 XRP) and the [owner reserve](reserves.html#owner-reserves) of a payment channel (5 XRP), the account must also be able to set aside enough XRP in the payment channel to cover the intended number of transactions.
+      Aside from the [base reserve](reserves.html) (10 XRP) and the [owner reserve](reserves.html#owner-reserves) of a payment channel (2 XRP), the account must also be able to set aside enough XRP in the payment channel to cover the intended number of transactions.
 
       The payer exchange can always top-off the channel using the [PaymentChannelFund](paymentchannelfund.html) transaction if it runs out of XRP. However, topping-off requires an actual on-ledger transaction and confirmation, so it could take 4-5 seconds of processing time and ~10 drops of XRP to complete the top-off transaction. The more XRP the payer exchange pre-funds, the less often they need to top-off, so they can save some time and money by pre-funding more XRP.
 
@@ -73,7 +73,7 @@ Along these lines, there's a good chance that you are following industry best pr
 
 - The payee exchange must have a funded XRP Ledger account to be used to redeem (receive) XRP sent by the payer exchange.
 
-      The account needs at least 21 XRP, which provides the 20 XRP [base reserve](reserves.html), plus enough to pay the transaction costs of redeeming claims, which are trivial. For example, you could redeem thousands of claims for less than 1 XRP in total.
+      The account needs at least 11 XRP, which provides the 10 XRP [base reserve](reserves.html), plus enough to pay the transaction costs of redeeming claims, which are trivial. For example, you could redeem thousands of claims for less than 1 XRP in total.
 
 [Fund XRP Ledger accounts with enough XRP >](accounts.html)
 
