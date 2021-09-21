@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "ripple-lib": "^1.10.0"
+    "ripple-lib": "^1.10.0",
+    "xrpl": "2.0.0-beta.0"
   }
 }

@@ -153,7 +153,7 @@ const set_up_tx_sender = async function() {
     }
 
     // Wait for tx to be in a validated ledger or to expire
-    const hash = xrpl.computeBinaryTransactionSigningHash(signed)
+    const hash = xrpl.computeSignedTransactionHash(signed)
 
     try {
       // use lookup_tx_final() from submit-and-verify2.js

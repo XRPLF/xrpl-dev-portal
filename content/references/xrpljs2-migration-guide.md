@@ -59,7 +59,7 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | `request(command, options)` | `Client.request(options)` | The `command` field moved into the `options` object for consistency with the WebSocket API. |
 | `hasNextPage(response)` | ***TODO (check for marker?)*** | See also: `Client.requestNextPage()` and `Client.requestAll()` |
 | `requestNextPage(command, options, response)` | `Client.requestNextPage(response)` | |
-| `computeBinaryTransactionHash(tx_blob)` | `computeBinaryTransactionSigningHash(tx_blob)` | |
+| `computeBinaryTransactionHash(tx_blob)` | `computeSignedTransactionHash(tx_blob)` | |
 | `classicAddressToXAddress(address)` | ***TBD moving to utils?*** | |
 | `xAddressToClassicAddress(xAddress)` | ***TBD moving to utils?*** | |
 | `renameCounterpartyToIssuer(object)` | (None) | xrpl.js always uses `issuer` already. |

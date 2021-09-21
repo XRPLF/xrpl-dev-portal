@@ -5,25 +5,23 @@
 // In browsers, use <script> tags as in the example demo.html.
 if (typeof module !== "undefined") {
   // gotta use var here because const/let are block-scoped to the if statement.
-  var ripple = require('ripple-lib')
-  var submit_and_verify = require('../../submit-and-verify/submit-and-verify.js').submit_and_verify
+  var xrpl = require('xrpl')
+  var submit_and_verify = require('../../submit-and-verify/submit-and-verify2.js').submit_and_verify
+} else {
+  // TODO: remove when webpack is fixed
+  var xrpl = ripple;
 }
 
 // Connect ---------------------------------------------------------------------
 async function main() {
-  api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
+  api = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
   console.log("Connecting to Testnet...")
   await api.connect()
 
   // Get credentials from the Testnet Faucet -----------------------------------
   console.log("Requesting addresses from the Testnet faucet...")
-  const hot_data = await api.generateFaucetWallet()
-  const hot_address = hot_data.account.classicAddress
-  const hot_secret = hot_data.account.secret
-
-  const cold_data = await api.generateFaucetWallet()
-  const cold_address = cold_data.account.classicAddress
-  const cold_secret = cold_data.account.secret
+  const hot_wallet = await api.generateFaucetWallet()
+  const cold_wallet = await api.generateFaucetWallet()
 
   console.log("Waiting until we have a validated starting sequence number...")
   // If you go too soon, the funding transaction might slip back a ledger and
@@ -32,12 +30,14 @@ async function main() {
   // the faucet.
   while (true) {
     try {
-      await api.request("account_info", {
-        account: cold_address,
+      await api.request({
+        command: "account_info",
+        account: cold_wallet.classicAddress,
         ledger_index: "validated"
       })
-      await api.request("account_info", {
-        account: hot_address,
+      await api.request({
+        command: "account_info",
+        account: hot_wallet.classicAddress,
         ledger_index: "validated"
       })
       break
@@ -46,31 +46,29 @@ async function main() {
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
   }
-  console.log(`Got hot address ${hot_address} and cold address ${cold_address}.`)
+  console.log(`Got hot address ${hot_wallet.classicAddress} and cold address ${cold_wallet.classicAddress}.`)
 
   // Configure issuer (cold address) settings ----------------------------------
   const cold_settings_tx = {
     "TransactionType": "AccountSet",
-    "Account": cold_address,
+    "Account": cold_wallet.classicAddress,
     "TransferRate": 0,
     "TickSize": 5,
     "Domain": "6578616D706C652E636F6D", // "example.com"
     "SetFlag": 8 // enable Default Ripple
     //"Flags": (api.txFlags.AccountSet.DisallowXRP |
     //          api.txFlags.AccountSet.RequireDestTag)
+    // TODO: update to txFlags' new location?
   }
 
-  const cst_prepared = await api.prepareTransaction(
-    cold_settings_tx,
-    {maxLedgerVersionOffset: 10}
-  )
-  const cst_signed = api.sign(cst_prepared.txJSON, cold_secret)
+  const cst_prepared = await api.autofill(cold_settings_tx)
+  const cst_signed = cold_wallet.signTransaction(cst_prepared)
   // submit_and_verify helper function from:
   // https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify/
   console.log("Sending cold address AccountSet transaction...")
-  const cst_result = await submit_and_verify(api, cst_signed.signedTransaction)
+  const cst_result = await submit_and_verify(api, cst_signed)
   if (cst_result == "tesSUCCESS") {
-    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${cst_signed.id}`)
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${xrpl.computeSignedTransactionHash(cst_signed)}`)
   } else {
     throw `Error sending transaction: ${cst_result}`
   }
@@ -80,7 +78,7 @@ async function main() {
 
   const hot_settings_tx = {
     "TransactionType": "AccountSet",
-    "Account": hot_address,
+    "Account": hot_wallet.classicAddress,
     "Domain": "6578616D706C652E636F6D", // "example.com"
     "SetFlag": 2 // enable Require Auth so we can't use trust lines that users
                  // make to the hot address, even by accident.
@@ -88,15 +86,12 @@ async function main() {
     //          api.txFlags.AccountSet.RequireDestTag)
   }
 
-  const hst_prepared = await api.prepareTransaction(
-    hot_settings_tx,
-    {maxLedgerVersionOffset: 10}
-  )
-  const hst_signed = api.sign(hst_prepared.txJSON, hot_secret)
+  const hst_prepared = await api.autofill(hot_settings_tx)
+  const hst_signed = hot_wallet.signTransaction(hst_prepared)
   console.log("Sending hot address AccountSet transaction...")
-  const hst_result = await submit_and_verify(api, hst_signed.signedTransaction)
+  const hst_result = await submit_and_verify(api, hst_signed)
   if (hst_result == "tesSUCCESS") {
-    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${hst_signed.id}`)
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${xrpl.computeSignedTransactionHash(hst_signed)}`)
   } else {
     throw `Error sending transaction: ${hst_result}`
   }
@@ -106,23 +101,20 @@ async function main() {
   const currency_code = "FOO"
   const trust_set_tx = {
     "TransactionType": "TrustSet",
-    "Account": hot_address,
+    "Account": hot_wallet.classicAddress,
     "LimitAmount": {
       "currency": currency_code,
-      "issuer": cold_address,
+      "issuer": cold_wallet.classicAddress,
       "value": "10000000000" // Large limit, arbitrarily chosen
     }
   }
 
-  const ts_prepared = await api.prepareTransaction(
-    trust_set_tx,
-    {maxLedgerVersionOffset: 10}
-  )
-  const ts_signed = api.sign(ts_prepared.txJSON, hot_secret)
+  const ts_prepared = await api.autofill(trust_set_tx)
+  const ts_signed = hot_wallet.signTransaction(ts_prepared)
   console.log("Creating trust line from hot address to issuer...")
-  const ts_result = await submit_and_verify(api, ts_signed.signedTransaction)
+  const ts_result = await submit_and_verify(api, ts_signed)
   if (ts_result == "tesSUCCESS") {
-    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${ts_signed.id}`)
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${xrpl.computeSignedTransactionHash(ts_signed)}`)
   } else {
     throw `Error sending transaction: ${ts_result}`
   }
@@ -132,44 +124,43 @@ async function main() {
   const issue_quantity = "3840"
   const send_token_tx = {
     "TransactionType": "Payment",
-    "Account": cold_address,
+    "Account": cold_wallet.classicAddress,
     "Amount": {
       "currency": currency_code,
       "value": issue_quantity,
-      "issuer": cold_address
+      "issuer": cold_wallet.classicAddress
     },
-    "Destination": hot_address
+    "Destination": hot_wallet.classicAddress
   }
 
-  const pay_prepared = await api.prepareTransaction(
-    send_token_tx,
-    {maxLedgerVersionOffset: 10}
-  )
-  const pay_signed = api.sign(pay_prepared.txJSON, cold_secret)
+  const pay_prepared = await api.autofill(send_token_tx)
+  const pay_signed = cold_wallet.signTransaction(pay_prepared)
   // submit_and_verify helper from _code-samples/submit-and-verify
-  console.log(`Sending ${issue_quantity} ${currency_code} to ${hot_address}...`)
-  const pay_result = await submit_and_verify(api, pay_signed.signedTransaction)
+  console.log(`Sending ${issue_quantity} ${currency_code} to ${hot_wallet.classicAddress}...`)
+  const pay_result = await submit_and_verify(api, pay_signed)
   if (pay_result == "tesSUCCESS") {
-    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.id}`)
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${xrpl.computeSignedTransactionHash(pay_signed)}`)
   } else {
     throw `Error sending transaction: ${pay_result}`
   }
 
   // Check balances ------------------------------------------------------------
   console.log("Getting hot address balances...")
-  const hot_balances = await api.request("account_lines", {
-    account: hot_address,
+  const hot_balances = await api.request({
+    command: "account_lines",
+    account: hot_wallet.classicAddress,
     ledger_index: "validated"
   })
-  console.log(hot_balances)
+  console.log(hot_balances.result)
 
   console.log("Getting cold address balances...")
-  const cold_balances = await api.request("gateway_balances", {
-    account: cold_address,
+  const cold_balances = await api.request({
+    command: "gateway_balances",
+    account: cold_wallet.classicAddress,
     ledger_index: "validated",
-    hotwallet: [hot_address]
+    hotwallet: [hot_wallet.classicAddress]
   })
-  console.log(JSON.stringify(cold_balances, null, 2))
+  console.log(JSON.stringify(cold_balances.result, null, 2))
 
   api.disconnect()
 } // End of main()
