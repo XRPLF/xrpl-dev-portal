@@ -3,29 +3,22 @@
 ## Author: Jake Bonham
 ## Copyright: Ripple Labs, 2021
 ##
-## Finds codeblocks and adds copy to clipboard button 
+## Finds codeblocks and adds copy to clipboard button
 ################################################
-
-
-# Issues/questions
-# Multistep tutoral. > Get started page. Has 5 blocks with 4 hidden? 
-# Position on multitabs 
-# Do we need on any "output" blocks? 
-
 
 def filter_soup(soup, **kwargs):
     """
-    1. Finds all elements with class of "codehilite" 
-    2. Adds copy to clipboard button. 
+    1. Finds all elements with class of "codehilite"
+    2. Adds copy to clipboard button.
         Button looks like >
         <button class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button">Copy to clipboard</button>
-    3. Adds id to <code> element. 
+    3. Adds id to <code> element.
     """
 
     code_blocks = soup.find_all(class_="codehilite")
     index1 = 0
     for code_block in code_blocks:
-        # add id to each child <code> 
+        # add id to each child <code>
         codeBlock = code_block.find("code")
         codeBlock_id = "codeblock-%d" % index1
         codeBlock["id"] = codeBlock_id
@@ -45,6 +38,5 @@ def filter_soup(soup, **kwargs):
         new_tag['data-clipboard-target'] = "#"+codeBlock_id
         new_tag.insert(0, icon)
         btn_group.insert(0, new_tag)
-        # 
+        #
         index1 += 1
-

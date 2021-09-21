@@ -441,13 +441,14 @@ pre code {
       background-color: $gray-800;
     }
   }
-
-  .code_toggler {
-    background-color: $gray-800;
-    color: $gray-100;
-    border-color: $gray-100;
-  }
 }
+
+.codehilite .btn-outline-secondary {
+  background-color: $gray-800;
+  color: $gray-100;
+  border-color: $gray-100;
+}
+
 
 .interactive-block {
   .breadcrumb-item.done a::after {

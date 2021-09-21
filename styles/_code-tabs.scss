@@ -77,12 +77,24 @@ pre {
     }
   }
 
-  .code_toggler { // expand/collapse button
-    position: absolute;
-    bottom: 0;
-    right: 0;
+  .btn { // expand/collapse, copy-to-clipboard, etc.
+    z-index: 10;
+  }
+
+  .codetabs {
+    position: relative;
+    z-index: 10;
   }
 }
+
+.clipboard-btn {
+  z-index: 10;
+  margin-right: 10px;
+}
+.js_interactive .codehilite > .btn-group {
+  display: none;
+}
+
 
 // Syntax highlighting via Codehilite ------------------------------------------
 
@@ -208,8 +220,20 @@ pre {
   }
 }
 
-.multicode .codehilite {
+.codehilite {
   background: transparent;
+  position: relative;
+
+  .btn-group {
+    top: 1rem;
+    right: 1rem;
+    position: absolute;
+
+    .multicode & {
+      top: 70px;
+      right: 20px;
+    }
+  }
 }
 
 
