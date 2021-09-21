@@ -350,5 +350,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1173"
       }
     ]
+  },
+  "reserves_drop": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "1c59a6c7ad236d0eb397d560239d6f3931d532a9",
+        "updatedAt": "2021-09-21T00:00:41.839Z",
+        "href": "pr-preview/reserves_drop/1c59a6",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1174"
+      }
+    ]
   }
 }
