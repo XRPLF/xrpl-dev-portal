@@ -59,7 +59,7 @@ XRP LedgerのConsensusアルゴリズムの動作方法の詳細は、[XRP Ledge
 市場に出回るXRPの供給量は、次のいくつかの要因によって変化 _します_。
 
 - XRP Ledgerで取引を送信すると、毎回少額のXRPが消却されます。送信者は消却する額を選択できますが、予想される取引の処理作業とネットワークの混雑度に応じて一定の最低額が設定されています。ネットワークが混み合っている場合、より多くのXRPを消却するよう選択している取引は、取引キューの前に割り込むことができます。これはスパム防止策で、XRP Ledgerネットワークに対する[DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)攻撃にかかるコストは極めて高額になります。詳細は、[取引コスト](transaction-cost.html)を参照してください。
-- XRP Ledgerの各アカウントは、少額のXRPを準備しておく必要があります。これもスパム防止策で、台帳データが必要以上に増えてしまうことを防ぎます。XRP Ledgerのバリデータは、実世界でのXRPの価値の変動に対応する目的で、準備金として必要なXRPの金額を変更するために投票決議を行うことができます。（この投票が前回発生したのは2013年の12月であり、このときは[必要な準備金が50 XRPから20 XRPに減少しました](https://ripple.com/insights/proposed-change-to-ripple-reserve-requirement-2/)。）必要な準備金が減少すると、以前は準備金によって使用できなくなっていた部分のXRPが再び使用可能になります。
+- XRP Ledgerの各アカウントは、少額のXRPを準備しておく必要があります。これもスパム防止策で、台帳データが必要以上に増えてしまうことを防ぎます。XRP Ledgerのバリデータは、実世界でのXRPの価値の変動に対応する目的で、準備金として必要なXRPの金額を変更するために投票決議を行うことができます。（この投票が前回発生したのは2021年の9月であり、このときは[必要な準備金が20 XRPから10 XRPに減少しました](https://xrpl.org/blog/2021/reserves-lowered.html)。）必要な準備金が減少すると、以前は準備金によって使用できなくなっていた部分のXRPが再び使用可能になります。
 - Ripple（会社）は、大量のXRPをEscrowに保有しています。毎月の初めに、Rippleで使用するために10億XRPがEscrowから引き出されます。（RippleはXRPを使用してXRP Ledgerエコシステムの成長を促し、また一部のXRPを機関投資家に売却しています。Rippleはまた、取引所での取引総量のうちのわずかな比率に限定して、プログラムに従って取引所でXRPを売却しています。Rippleは[XRP市場レポート](https://ripple.com/insights/q1-2018-xrp-markets-report/)で四半期ごとに売上高を公開しています。）毎月の終わりに、Rippleが売却や譲渡をせずに残っているXRPがあればEscrowに戻し、54か月保管します。RippleのEscrowポリシーの詳細は、[RippleはXRPの総供給量の確実性を確保するために550億XRPをエスクローに預託することを発表しました](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/)を参照してください。Escrow機能の技術的詳細は、[Escrow](escrow.html)を参照してください。
 
 
