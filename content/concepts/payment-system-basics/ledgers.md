@@ -56,6 +56,28 @@ Since new ledger versions usually close about every 3 to 5 seconds, these rules 
 
 Generally speaking, the ledger cannot make any time-based measurements that are more precise than the close time resolution. For example, to check if an object has passed an expiration date, the rule is to compare it to the close time of the parent ledger. (The close time of a ledger is not yet known when executing transactions to go into that ledger.) This means that, for example, an [Escrow](escrow.html) could successfully finish at a real-world time that is up to about 10 seconds later than the time-based expiration specified in the Escrow object.
 
+### Example
+
+Lets say the last close time is 12:00:00:
+
+**Current consensus round**
+
+- A validator individually determines that the next close time should be 12:00:03
+- This is then rounded down based on the close time resolution to 12:00:00
+- But since this is not greater than the last close time, it's incremented to 12:00:01
+- The validators then negotiate and agree that the next close time is 12:00:01
+
+**Next consensus round**
+
+- In the next round validators project that the next close time should be 12:00:04
+- This is rounded down based on the close time resolution to 12:00:00
+- But again this is not greater than the last close time, so it's incremented to 12:00:02
+
+**Next consensus round after that**
+
+- Next validators determine that the next close time should be 12:00:05
+- Which is rounded up based on the close time resolution to 12:00:10
+- Since this is greater than the last close time, that value is used
 
 ## See Also
 
