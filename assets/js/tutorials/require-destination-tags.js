@@ -32,17 +32,20 @@ $(document).ready(() => {
 
     block.find(".output-area").html("")
     block.find(".loader").show()
-    let account_info = await api.request("account_info", {
+    let account_info = await api.request({
+        "command": "account_info",
         "account": address,
         "ledger_index": "validated"
     })
     console.log(account_info)
-    const flags = api.parseAccountFlags(account_info.account_data.Flags)
+    // TODO: what's the replacement for parseAccountFlags?
+    //const flags = api.parseAccountFlags(account_info.account_data.Flags)
     block.find(".loader").hide()
 
     block.find(".output-area").append(
         `<pre><code>${pretty_print(flags)}</code></pre>`)
-    if (flags.requireDestinationTag) {
+    //if (flags.requireDestinationTag) {
+    if (account_info.result.account_data.Flags | 0x00020000) { // TODO: change this back if there's a better way
       block.find(".output-area").append(`<p><i class="fa fa-check-circle"></i>
           Require Destination Tag is enabled.</p>`)
     } else {
@@ -63,24 +66,30 @@ $(document).ready(() => {
     let secret = block.data("testSendSecret")
     if (!address || !secret) {
       console.debug("First-time setup for test sender...")
-      const faucet_url = $("#generate-creds-button").data("fauceturl")
-      const data = await call_faucet(faucet_url)
-      address = data.account.classicAddress
-      block.data("testSendAddress", address)
-      secret = data.account.secret
-      block.data("testSendSecret", secret)
+      // Old way:
+      // const faucet_url = $("#generate-creds-button").data("fauceturl")
+      // const data = await call_faucet(faucet_url)
+      // address = data.account.classicAddress
+      // block.data("testSendAddress", address)
+      // secret = data.account.secret
+      // block.data("testSendSecret", secret)
+      // New way: get a wallet
+      let test_sender_wallet = await api.generateFaucetWallet()
+      block.data("testSendAddress", test_sender_wallet.classicAddress)
+      block.data("testSendSecret", test_sender_wallet.seed)
+
       // First time: Wait for our test sender to be fully funded, so we don't
       // get the wrong starting sequence number.
       while (true) {
         try {
-          await api.request("account_info", {account: address, ledger_index: "validated"})
+          await api.request({command: "account_info", account: address, ledger_index: "validated"})
           break
         } catch(e) {
           await new Promise(resolve => setTimeout(resolve, 1000))
         }
       }
     }
-    return {address, secret}
+    return test_sender_wallet
   }
 
   // Actual handler for the two buttons in the Send Test Payments block.
@@ -95,7 +104,7 @@ $(document).ready(() => {
       const test_sender = await get_test_sender(block)
       const tx_json = {
         "TransactionType": "Payment",
-        "Account": test_sender.address,
+        "Account": test_sender.classicAddress,
         "Amount": "3152021",
         "Destination": address
       }
@@ -104,39 +113,21 @@ $(document).ready(() => {
         tx_json["DestinationTag"] = parseInt(dt)
       }
 
-      const prepared = await api.prepareTransaction(tx_json)
-      const signed = api.sign(prepared.txJSON, test_sender.secret)
-      console.debug("Submitting test payment", prepared.txJSON)
-      const prelim_result = await api.request("submit",
-                                          {"tx_blob": signed.signedTransaction})
+      const prepared = await api.autofill(tx_json)
+      const tx_blob = test_sender.signTransaction(prepared)
+      console.debug("Submitting test payment", prepared)
+      const prelim = await api.request({"command": "submit", tx_blob})
+      const tx_hash = xrpl.computeSignedTransactionHash(tx_blob)
 
       block.find(".loader").hide()
       block.find(".output-area").append(`<p>${tx_json.TransactionType}
-        ${prepared.instructions.sequence} ${(dt?"WITH":"WITHOUT")} Dest. Tag:
-        <a href="https://testnet.xrpl.org/transactions/${signed.id}"
-        target="_blank">${prelim_result.engine_result}</a></p>`)
+        ${prepared.Sequence} ${(dt?"WITH":"WITHOUT")} Dest. Tag:
+        <a href="https://testnet.xrpl.org/transactions/${tx_hash}"
+        target="_blank">${prelim.result.engine_result}</a></p>`)
     } catch(err) {
       block.find(".loader").hide()
       show_error(block, `An error occurred when sending the test payment: ${err}`)
     }
-
-
-    // SCRAPPED ALT CODE: using the Faucet as a test sender.
-    // // We can use the Faucet to send a payment to our existing address with a
-    // // destination tag, but only if we roll it into an X-address.
-    // const faucet_url = $("#generate-creds-button").data("fauceturl")
-	  // const XCodec = require('xrpl-tagged-address-codec')
-    // const dt = $(event.target).data("dt")
-    // let dest_x_address
-    // if (dt) {
-    //   dest_x_address = XCodec.Encode({ account: address, tag: dt, test: true })
-    // } else {
-    //   dest_x_address = XCodec.Encode({ account: address, test: true })
-    // }
-    // call_faucet(faucet_url, dest_x_address)
-    //
-    // // TODO: monitor our target address and report when we receive the tx from
-    // // the faucet. (including ✅ or ❌ as appropriate)
   })
 
 })

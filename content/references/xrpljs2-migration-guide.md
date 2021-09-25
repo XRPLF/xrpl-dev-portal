@@ -69,13 +69,15 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | `isConnected()` | `Client.isConnected()` |
 | `getServerInfo()` | `Client.request({command: "server_info"})` | Request/response match the [server_info method][] exactly. |
 | `getFee()` | `Client.getFee()` ***TODO: confirm*** |
-| `getLedgerVersion()` | `(await api.request({"command": "ledger", "ledger_index": "validated"})).result.ledger.ledger_index` | ***TODO: follow up if an easier way gets re-added***
+| `getLedgerVersion()` | `Client.getLedgerIndex()` | |
 | `getTransaction(hash)` | `Client.request({command: "tx", transaction: hash})` | Request/response match the [tx method][] exactly. |
 | `getTransactions(address, options)` | `Client.request({command: "account_tx", ..})` | Request/response match the [account_tx method][] exactly. |
 | `getTrustlines(address, options)` |  `Client.request({command: "account_lines", ..})` | Request/response match the [account_lines method][] exactly. |
 ...
 | `isValidAddress(address)` | ***TBD maybe in utils?*** | Separate from isValidXAddress / isValidClassicAddress |
 | `iso8601ToRippleTime(timestamp)` | `ISOTimeToRippleTime(timestamp)` | Now a static method at the `xrpl` module level. |
+
+Instead of `maxLedgerVersionOffset` when preparing a transaction, use `getLedgerIndex()`, add the offset to it, and provide that as `LastLedgerSequence`. ***TODO details***
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

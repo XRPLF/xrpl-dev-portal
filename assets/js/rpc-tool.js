@@ -1,5 +1,3 @@
-const xrpl = ripple; // TODO: remove when webpack build is updated
-
 jQuery(function ($) {
   const FULL_HISTORY_SERVER = "wss://s2.ripple.com"
   const reTxId = /^[0-9A-Fa-f]{64}$/

@@ -239,12 +239,12 @@ function get_address(event) {
 }
 
 /**
- * Get the secret key from the Generate step (snippet), or display an error in
+ * Get the Wallet from the Generate step (snippet), or display an error in
  * the relevant interactive block if it fails—usually because the user hasn't
  * cliked the "Get Credentials" button yet.
- * @return {String, undefined} The secret key, if available, or undefined if not
+ * @return {Wallet, undefined} The Wallet instance, if available, or undefined if not
  */
-function get_secret(event) {
+function get_wallet(event) {
   const secret = $("#use-secret").text()
   if (!secret) {
     const block = $(event.target).closest(".interactive-block")
@@ -256,7 +256,7 @@ function get_secret(event) {
     if (!block.length) {return}
     show_error(block, tl("Can't use the example secret here. Check that the previous steps were completed successfully."))
   }
-  return secret
+  return xrpl.Wallet.fromSeed(secret)
 }
 
 /**
@@ -301,13 +301,16 @@ function setup_connect_step() {
     console.error("Interactive Tutorial: WS URL not found. Did you set use_network?")
     return
   }
-  api = new ripple.RippleAPI({server: ws_url})
+  api = new xrpl.Client(ws_url)
   api.on('connected', async function() {
     $("#connection-status").text(tl("Connected"))
     $("#connect-button").prop("disabled", true)
     $("#loader-connect").hide()
     $(".connection-required").prop("disabled", false)
     $(".connection-required").prop("title", "")
+
+    // Subscribe to ledger close events
+    api.request({command: "subscribe", streams: ["ledger"]})
 
     complete_step("Connect")
   })
@@ -333,7 +336,7 @@ function setup_connect_step() {
  * step's "tx-validation-status" field doesn't have a final result set.
  * These listeners do very little (just updating the latest validated ledger
  * index) until you activate one with activate_wait_step(step_name).
- * Requires ripple-lib to be loaded and instantiated as "api" first.
+ * Requires xrpl.js to be loaded and instantiated as "api" first.
  */
 function setup_wait_steps() {
   const wait_steps = $(".wait-step")
@@ -342,9 +345,9 @@ function setup_wait_steps() {
     const wait_step = $(el)
     const explorer_url = wait_step.data("explorerurl")
     const status_box = wait_step.find(".tx-validation-status")
-    api.on('ledger', async (ledger) => {
+    api.on('ledgerClosed', async (ledger) => {
       // Update the latest validated ledger index in this step's table
-      wait_step.find(".validated-ledger-version").text(ledger.ledgerVersion)
+      wait_step.find(".validated-ledger-version").text(ledger.ledger_index)
       if (!status_box.data("status_pending")) {
         // Before submission or after a final result.
         // Either way, nothing more to do here.
@@ -354,17 +357,18 @@ function setup_wait_steps() {
       const transaction = wait_step.find(".waiting-for-tx").text().trim()
       const min_ledger = parseInt(wait_step.find(".earliest-ledger-version").text())
       const max_ledger = parseInt(wait_step.find(".lastledgersequence").text())
-      let tx_result
+      let tx_response
       try {
-        tx_result = await api.request("tx", {
+        tx_response = await api.request({
+          command: "tx",
           transaction,
           min_ledger,
           max_ledger
         })
 
-        if (tx_result.validated) {
+        if (tx_response.result.validated) {
           status_box.html(
-          `<th>${tl("Final Result:")}</th><td>${tx_result.meta.TransactionResult}
+          `<th>${tl("Final Result:")}</th><td>${tx_response.result.meta.TransactionResult}
           (<a href="${explorer_url}/transactions/${transaction}"
           target="_blank">${tl("Validated")}</a>)</td>`)
 
@@ -402,22 +406,22 @@ function setup_wait_steps() {
  * @param {String} step_name The exact name of the "Wait" step to activate, as
  *                           defined in the start_step(step_name) function in
  *                           the MD file.
- * @param {Object} prelim_result The (resolved) return value of submitting a
- *                           transaction blob via api.request("submit", {opts})
+ * @param {Object} prelim The (resolved) return value of submitting a
+ *                           transaction blob via api.request({command: "submit", opts})
  */
-async function activate_wait_step(step_name, prelim_result) {
+async function activate_wait_step(step_name, prelim) {
   const step_id = slugify(step_name)
   const wait_step = $(`#interactive-${step_id} .wait-step`)
   const status_box = wait_step.find(".tx-validation-status")
-  const tx_id = prelim_result.tx_json.hash
-  const lls = prelim_result.tx_json.LastLedgerSequence || tl("(None)")
+  const tx_id = prelim.result.tx_json.hash
+  const lls = prelim.result.tx_json.LastLedgerSequence || tl("(None)")
 
   if (wait_step.find(".waiting-for-tx").text() == tx_id) {
     // Re-submitting the same transaction? Don't update min_ledger.
   } else {
     wait_step.find(".waiting-for-tx").text(tx_id)
     wait_step.find(".earliest-ledger-version").text(
-      prelim_result.validated_ledger_index
+      prelim.result.validated_ledger_index
     )
   }
   wait_step.find(".lastledgersequence").text(lls)
@@ -493,36 +497,35 @@ function add_memo(event, tx_json) {
  * @param {Event} event The (click) event that this is helping to handle.
  * @param {Object} tx_json JSON object of transaction instructions to finish
  *                         preparing and send.
- * @param {String} secret (Optional) The base58 seed to use to sign the
+ * @param {Wallet} wallet (Optional) The xrpl.js Wallet instance to use to sign the
  *                        transaction. If omitted, look up the #use-secret field
  *                        which was probably added by a "Get Credentials" step.
  */
-async function generic_full_send(event, tx_json, secret) {
+async function generic_full_send(event, tx_json, wallet) {
   const block = $(event.target).closest(".interactive-block")
   const blob_selector = $(event.target).data("txBlobFrom")
   const wait_step_name = $(event.target).data("waitStepName")
   block.find(".output-area").html("")
 
-  if (secret === undefined) {
-    secret = get_secret(event)
+  if (wallet === undefined) {
+    wallet = get_wallet(event)
   }
-  if (!secret) {return}
+  if (!wallet) {return}
 
   add_memo(event, tx_json)
 
   block.find(".loader").show()
-  const prepared = await api.prepareTransaction(tx_json, {
-    maxLedgerVersionOffset: 20
-  })
+  const prepared = await api.autofill(tx_json)
   block.find(".output-area").append(
     `<p>${tl("Prepared transaction:")}</p>
-    <pre><code>${pretty_print(prepared.txJSON)}</code></pre>`)
+    <pre><code>${pretty_print(prepared)}</code></pre>`)
 
-  const signed = api.sign(prepared.txJSON, secret)
+  const signed = wallet.signTransaction(prepared)
   block.find(".output-area").append(
-    `<p>${tl("Transaction hash:")} <code id="tx_id">${signed.id}</code></p>`)
+    `<p>${tl("Transaction hash:")} <code id="tx_id">${xrpl.computeSignedTransactionHash(signed)}</code></p>`)
+    // TODO: update computeSignedTransactionHash if that changes
 
-  await do_submit(block, {"tx_blob":  signed.signedTransaction}, wait_step_name)
+  await do_submit(block, {"tx_blob":  signed}, wait_step_name)
 }
 
 /**
@@ -559,8 +562,8 @@ async function submit_handler(event) {
 async function do_submit(block, submit_opts, wait_step_name) {
   block.find(".loader").show()
   try {
-    // Future feature: support passing in options like fail_hard here.
-    const prelim_result = await api.request("submit", submit_opts)
+    submit_opts["command"] = "submit"
+    const prelim_result = await api.request(submit_opts)
     block.find(".output-area").append(
       `<p>${tl("Preliminary result:")}</p>
       <pre><code>${pretty_print(prelim_result)}</code></pre>`)

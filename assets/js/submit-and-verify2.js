@@ -1,12 +1,13 @@
-// Submit-and-verify XRPL transaction using ripple-lib (v1.x)
+// Submit-and-verify XRPL transaction using xrpl.js (v2.0)
 // Demonstrates how to submit a transaction and wait for validation.
 // This is not true "robust" transaction submission because it does not protect
 // against power outages or other sudden interruptions.
 
 // Look up a transaction's result.
 // Arguments:
-// @param api object RippleAPI instance connected to the network where you
-//            submitted the transaction.
+// @param api object Client instance connected to the network where you
+//            submitted the transaction. MUST ALREADY BE SUBSCRIBED TO THE
+//            `ledger` event stream.
 // @param tx_id string The identifying hash of the transaction.
 // @param max_ledger int optional The highest ledger index where the
 //            transaction can be validated.
@@ -145,6 +146,9 @@ function lookup_tx_final(api, tx_id, max_ledger, min_ledger) {
 //      something else went wrong when trying to look up the results. The
 //      warning written to the console can tell you more about what happened.
 async function submit_and_verify(api, tx_blob) {
+  // Make sure we subscribe to the ledger stream. This is idempotent so we don't
+  // have to worry about oversubscribing.
+  api.request({"command": "subscribe", "streams": ["ledger"]})
   const prelim = await api.request({"command": "submit", "tx_blob": tx_blob})
   console.log("Preliminary result code:", prelim.result.engine_result)
   const min_ledger = prelim.result.validated_ledger_index

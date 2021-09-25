@@ -13,23 +13,23 @@ $("#prepare-button").click( async function(event) {
   const sender = get_address(event)
   if (!sender) {return}
 
-  const prepared = await api.prepareTransaction({
+  const vli = await api.getLedgerIndex()
+
+  const prepared = await api.autofill({
     "TransactionType": "Payment",
     "Account": sender,
-    "Amount": api.xrpToDrops(send_amount), // Same as "Amount": "22000000"
-    "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-  }, {
-    // Expire this transaction if it doesn't execute within ~5 minutes:
-    "maxLedgerVersionOffset": 75
+    "Amount": xrpl.xrpToDrops(send_amount), // Same as "Amount": "22000000"
+    "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+    "LastLedgerSequence": vli+75 // gives ~5min, rather than the default ~1min
   })
 
   block.find(".output-area").append(
     `<div><strong>Prepared transaction instructions:</strong>
-    <pre><code id='prepared-tx-json'>${pretty_print(prepared.txJSON)}</code></pre>
+    <pre><code id='prepared-tx-json'>${pretty_print(prepared)}</code></pre>
     </div>
-    <div><strong>Transaction cost:</strong> ${prepared.instructions.fee} XRP</div>
+    <div><strong>Transaction cost:</strong> ${xrpl.dropsToXrp(prepared.Fee)} XRP</div>
     <div><strong>Transaction expires after ledger:</strong>
-      ${prepared.instructions.maxLedgerVersion}</div>`)
+      ${prepared.LastLedgerSequence}</div>`)
 
   complete_step("Prepare")
 })
@@ -40,18 +40,19 @@ $("#sign-button").click( function(event) {
   const block = $(event.target).closest(".interactive-block")
   block.find(".output-area").html("")
 
-  const preparedTxJSON = $("#prepared-tx-json").text()
-  const secret = get_secret(event)
-  if (!secret) {return}
+  const preparedTxJSON = JSON.parse($("#prepared-tx-json").text())
+  const wallet = get_wallet(event)
+  if (!wallet) {return}
 
-  signResponse = api.sign(preparedTxJSON, secret)
+  signed = wallet.signTransaction(preparedTxJSON)
+  hash = xrpl.computeSignedTransactionHash(signed) // TODO: update if computeSignedTransactionHash changes
 
   block.find(".output-area").html(
     `<div><strong>Signed Transaction blob:</strong>
     <code id='signed-tx-blob' style='overflow-wrap: anywhere; word-wrap: anywhere'
-    >${signResponse.signedTransaction}</code></div>
+    >${signed}</code></div>
     <div><strong>Identifying hash:</strong> <span id='signed-tx-hash'
-    >${signResponse.id}</span></div>`
+    >${hash}</span></div>`
   )
 
   complete_step("Sign")
@@ -77,16 +78,19 @@ $("#get-tx-button").click( async function(event) {
                 $("#interactive-wait .lastledgersequence").text(), 10)
 
   try {
-    const tx = await api.getTransaction(txID, {
-        minLedgerVersion: earliestLedgerVersion,
-        maxLedgerVersion: lastLedgerSequence
+    const tx = await api.request({
+        command: "tx",
+        transaction: txID,
+        min_ledger: earliestLedgerVersion,
+        max_ledger: lastLedgerSequence
       })
 
     block.find(".output-area").html(
       "<div><strong>Transaction result:</strong> " +
-      tx.outcome.result + "</div>" +
-      "<div><strong>Balance changes:</strong> <pre><code>" +
-      pretty_print(tx.outcome.balanceChanges) +
+      tx.result + "</div>" +
+      // TODO: restore some "balance changes" functionality based on what xrpl.js 2.0 offers.
+      //"<div><strong>Balance changes:</strong> <pre><code>" +
+      //pretty_print(tx.outcome.balanceChanges) +
       "</pre></code></div>"
     )
 

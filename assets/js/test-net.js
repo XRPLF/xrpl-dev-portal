@@ -1,5 +1,3 @@
-const xrpl = ripple; // TODO: remove when webpack build is updated
-
 async function wait_for_seq(network_url, address) {
   const api = new xrpl.Client(network_url)
   await api.connect()

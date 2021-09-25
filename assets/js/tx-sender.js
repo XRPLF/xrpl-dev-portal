@@ -1,5 +1,3 @@
-const xrpl = ripple; // TODO: remove when webpack build is updated
-
 const set_up_tx_sender = async function() {
   //////////////////////////////////////////////////////////////////////////////
   // Notification helpers
@@ -76,6 +74,7 @@ const set_up_tx_sender = async function() {
     try {
       sending_wallet = await api.generateFaucetWallet()
     } catch(error) {
+      console.error(error)
       errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
       return
     }
@@ -135,14 +134,14 @@ const set_up_tx_sender = async function() {
 
     // Determine first and last ledger the tx could be validated in *BEFORE*
     //  signing it.
-    min_ledger = (await api.request({"command": "ledger", "ledger_index": "validated"})).result.ledger.ledger_index, // TODO: change to a simpler way when xrpl.js supports it
+    min_ledger = await api.getLedgerIndex()
     max_ledger = prepared.LastLedgerSequence
 
 
     let signed
     try {
       // Sign, submit
-      signed = use_wallet.sign(prepared)
+      signed = use_wallet.signTransaction(prepared)
       await api.request({"command": "submit", "tx_blob": signed})
     } catch (error) {
       console.log(error)
