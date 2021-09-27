@@ -79,19 +79,18 @@ $("#get-tx-button").click( async function(event) {
 
   try {
     const tx = await api.request({
-        command: "tx",
-        transaction: txID,
-        min_ledger: earliestLedgerVersion,
-        max_ledger: lastLedgerSequence
-      })
+      command: "tx",
+      transaction: txID,
+      min_ledger: earliestLedgerVersion,
+      max_ledger: lastLedgerSequence
+    })
 
     block.find(".output-area").html(
-      "<div><strong>Transaction result:</strong> " +
-      tx.result + "</div>" +
-      // TODO: restore some "balance changes" functionality based on what xrpl.js 2.0 offers.
-      //"<div><strong>Balance changes:</strong> <pre><code>" +
-      //pretty_print(tx.outcome.balanceChanges) +
-      "</pre></code></div>"
+      `<div><strong>Transaction result code:</strong>
+      ${tx.result.meta.TransactionResult} (${tx.result.validated ? "validated": "pending"})</div>
+      <div><strong>XRP Delivered:</strong>
+      ${xrpl.dropsToXrp(tx.meta.delivered_amount)} XRP
+      </div>`
     )
 
     complete_step("Check")

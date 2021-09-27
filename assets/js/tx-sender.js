@@ -195,7 +195,7 @@ const set_up_tx_sender = async function() {
     $("#pp_progress .progress-bar").addClass("progress-bar-animated")
     // 1. Get a funded address to use as issuer
     try {
-      pp_issuer_wallet = await api.getFaucetWallet()
+      pp_issuer_wallet = await api.generateFaucetWallet()
     } catch(error) {
       console.log("Error getting issuer address for partial payments:", error)
       return

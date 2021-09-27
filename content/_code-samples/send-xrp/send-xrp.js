@@ -1,17 +1,14 @@
 // Example credentials
-let address = "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
-let secret = "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"
+const wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9")
 
 // Connect ---------------------------------------------------------------------
-// ripple = require('ripple-lib') // For Node.js. In browsers, use <script>.
-api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
+// const  xrpl = require('xrpl') // For Node.js. In browsers, use <script>.
+const api = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
 api.connect()
 api.on('connected', async () => {
 
   // Get credentials from the Testnet Faucet -----------------------------------
-  const data = await api.generateFaucetWallet()
-  address = data.account.address
-  secret = data.account.secret
+  const wallet = await api.generateFaucetWallet()
 
   console.log("Waiting until we have a validated starting sequence number...")
   // If you go too soon, the funding transaction might slip back a ledger and
@@ -20,7 +17,11 @@ api.on('connected', async () => {
   // the faucet.
   while (true) {
     try {
-      await api.request("account_info", {account: address, ledger_index: "validated"})
+      await api.request({
+        command: "account_info",
+        account: wallet.classicAddress,
+        ledger_index: "validated"
+      })
       break
     } catch(e) {
       await new Promise(resolve => setTimeout(resolve, 1000))
@@ -28,47 +29,49 @@ api.on('connected', async () => {
   }
 
   // Prepare transaction -------------------------------------------------------
-  const preparedTx = await api.prepareTransaction({
+  const prepared = await api.autofill({
     "TransactionType": "Payment",
-    "Account": address,
-    "Amount": api.xrpToDrops("22"), // Same as "Amount": "22000000"
-    "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
-  }, {
-    // Expire this transaction if it doesn't execute within ~5 minutes:
-    "maxLedgerVersionOffset": 75
+    "Account": wallet.classicAddress,
+    "Amount": xrpl.xrpToDrops("22"),
+    "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
   })
-  const maxLedgerVersion = preparedTx.instructions.maxLedgerVersion
-  console.log("Prepared transaction instructions:", preparedTx.txJSON)
-  console.log("Transaction cost:", preparedTx.instructions.fee, "XRP")
-  console.log("Transaction expires after ledger:", maxLedgerVersion)
+  const max_ledger = prepared.LastLedgerSequence
+  console.log("Prepared transaction instructions:", prepared)
+  console.log("Transaction cost:", xrpl.dropsToXrp(prepared.Fee), "XRP")
+  console.log("Transaction expires after ledger:", max_ledger)
 
   // Sign prepared instructions ------------------------------------------------
-  const signed = api.sign(preparedTx.txJSON, secret)
-  const txID = signed.id
-  const tx_blob = signed.signedTransaction
+  const tx_blob = wallet.signTransaction(prepared)
+  const txID = xrpl.computeSignedTransactionHash(tx_blob)
   console.log("Identifying hash:", txID)
   console.log("Signed blob:", tx_blob)
 
   // Submit signed blob --------------------------------------------------------
   // The earliest ledger a transaction could appear in is the first ledger
   // after the one that's already validated at the time it's *first* submitted.
-  const earliestLedgerVersion = (await api.getLedgerVersion()) + 1
-  const result = await api.submit(tx_blob)
-  console.log("Tentative result code:", result.resultCode)
-  console.log("Tentative result message:", result.resultMessage)
+  const min_ledger = (await api.getLedgerIndex()) + 1
+  const result = await api.request({
+    "command": "submit",
+    "tx_blob": tx_blob
+  })
+  console.log("Tentative result code:", result.result.engine_result)
+  console.log("Tentative result message:", result.result.engine_result_message)
 
   // Wait for validation -------------------------------------------------------
   let has_final_status = false
-  api.request("subscribe", {accounts: [address]})
+  api.request({
+    "command": "subscribe",
+    "accounts": [wallet.classicAddress]
+  })
   api.connection.on("transaction", (event) => {
     if (event.transaction.hash == txID) {
       console.log("Transaction has executed!", event)
       has_final_status = true
     }
   })
-  api.on('ledger', ledger => {
-    if (ledger.ledgerVersion > maxLedgerVersion && !has_final_status) {
-      console.log("Ledger version", ledger.ledgerVersion, "was validated.")
+  api.on('ledgerClosed', ledger => {
+    if (ledger.ledger_index > max_ledger && !has_final_status) {
+      console.log("Ledger version", ledger.ledger_index, "was validated.")
       console.log("If the transaction hasn't succeeded by now, it's expired")
       has_final_status = true
     }
@@ -82,10 +85,22 @@ api.on('connected', async () => {
 
   // Check transaction results -------------------------------------------------
   try {
-    tx = await api.getTransaction(txID, {
-        minLedgerVersion: earliestLedgerVersion})
-    console.log("Transaction result:", tx.outcome.result)
-    console.log("Balance changes:", JSON.stringify(tx.outcome.balanceChanges))
+    const tx = await api.request({
+      command: "tx",
+      transaction: txID,
+      min_ledger: min_ledger,
+      max_ledger: max_ledger
+    })
+    if (tx.result.validated) {
+      console.log("This result is validated by consensus and final.")
+    } else {
+      console.log("This result is pending.")
+    }
+    console.log("Transaction result:", tx.result.meta.TransactionResult)
+
+    if (typeof tx.result.meta.delivered_amount === "string" &&
+        typeof tx.result.meta.delivered_amount !== "unavailable")
+    console.log("Delivered:", xrpl.dropsToXrp(tx.result.meta.delivered_amount), "XRP")
   } catch(error) {
     console.log("Couldn't get transaction outcome:", error)
   }
