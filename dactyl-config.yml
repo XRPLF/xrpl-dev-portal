@@ -2347,6 +2347,14 @@ pages:
             - en
             - ja
 
+    -   name: Ruby Client Library
+        html: https://www.rubydoc.info/gems/xrbp
+        parent: client-libraries.html
+        blurb: Ruby client library to the XRP Ledger.
+        targets:
+            - en
+            - ja
+
 
     # HTTP / Websocket APIs ----------------------------------------------------
 
