@@ -104,7 +104,7 @@ Rippleは、XRP Ledgerネットワーク全体でAML(Anti-Money Laundering)フ�
 
 Rippleは、コアとなるXRP Ledgerサーバー（[`rippled`](https://github.com/ripple/rippled)）のリファレンス実装を公開し、オープンソースコードベースに貢献しているエンジニアチームを雇用しています。Rippleはまた、利用可能なソフトウェアのプリコンパイル済みバイナリーパッケージも定期的に発行しています。必要に応じて、誰でも自由に[ソースからソフトウェアをダウンロードしてコンパイル](install-rippled.html)できます。
 
-XRP Ledgerと通信するためにRippleのXRP Ledgerソフトウェアを使用する必要はありません。`rippled`はオープンソースソフトウェアであり、[ISCライセンス](https://github.com/ripple/rippled/blob/develop/LICENSE)の条件に従う限り、誰でも使用、拡張、および変更できます。ISCライセンスは、ソフトウェアの拡張方法と適応方法を厳密に制限する他のオープンソースライセンスと比較して非常に柔軟です。
+XRP Ledgerと通信するためにRippleのXRP Ledgerソフトウェアを使用する必要はありません。`rippled`はオープンソースソフトウェアであり、[ISCライセンス](https://github.com/ripple/rippled/blob/develop/LICENSE.md)の条件に従う限り、誰でも使用、拡張、および変更できます。ISCライセンスは、ソフトウェアの拡張方法と適応方法を厳密に制限する他のオープンソースライセンスと比較して非常に柔軟です。
 
 #### Rippleでは、ソフトウェアを安全にダウンロードする方法を提供していますか?
 

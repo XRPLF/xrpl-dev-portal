@@ -199,9 +199,9 @@ See also:
 
 - United States:
 
-    - [FinCEN Guidance and Definitions around Virtual Currency, March 18, 2013](http://www.fincen.gov/statutes_regs/guidance/html/FIN-2013-G001.html)
+    - [FinCEN Guidance and Definitions around Virtual Currency, March 18, 2013](https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering)
 
-    - [FinCEN Publishes Two Rulings on Virtual Currency Miners and Investors, January 30, 2014](http://www.fincen.gov/news_room/nr/html/20140130.html)
+    - [FinCEN Publishes Two Rulings on Virtual Currency Miners and Investors, January 30, 2014](https://www.fincen.gov/news/news-releases/fincen-publishes-two-rulings-virtual-currency-miners-and-investors)
 
 - Europe:
 
