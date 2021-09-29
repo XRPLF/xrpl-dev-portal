@@ -1,25 +1,25 @@
-'use strict'
-const RippleAPI = require('ripple-lib').RippleAPI
+// Sample code demonstrating secure offline signing using xrpl.js library.
+const xrpl = require('xrpl')
 
-// Load address & secret from environment variables:
-const from_address = process.env['MY_ADDRESS']
-const secret = process.env['MY_SECRET']
+// Load seed value from an environment variable:
+const my_wallet = xrpl.Wallet.fromSeed(process.env['MY_SEED'])
 
-// Can sign offline if the txJSON has all required fields
-const api = new RippleAPI()
+// For offline signing, you need to know your address's next Sequence number
+let my_seq = 21404872
 
-const txJSON = JSON.stringify({
-  "Account": from_address,
+// Provide *all* required fields before signing a transaction
+const txJSON = {
+  "Account": my_wallet.classicAddress,
   "TransactionType":"Payment",
   "Destination":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
   "Amount":"13000000",
   "Flags":2147483648,
-  "LastLedgerSequence":7835923,
+  "LastLedgerSequence":7835923, // Optional, but recommended.
   "Fee":"13",
-  "Sequence":2
-})
+  "Sequence": my_seq
+}
 
-const signed = api.sign(txJSON, secret)
+const tx_blob = my_wallet.signTransaction(txJSON)
 
-console.log("tx_blob is:", signed.signedTransaction)
-console.log("tx hash is:", signed.id)
+console.log("tx_blob is:", tx_blob)
+console.log("tx hash is:", xrpl.computeBinaryTransactionSigningHash(tx_blob))

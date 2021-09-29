@@ -32,6 +32,9 @@ function lookup_tx_final(api, tx_id, max_ledger, min_ledger) {
     [min_ledger, max_ledger] = [max_ledger, min_ledger]
   }
 
+  // Make sure we're subscribed to the ledger stream to trigger updates
+  api.request({"command": "subscribe", "streams": ["ledger"]})
+
   // Helper to determine if we (should) know the transaction's final result yet.
   // If the server has validated all ledgers the tx could possibly appear in,
   // then we should know its final result.
