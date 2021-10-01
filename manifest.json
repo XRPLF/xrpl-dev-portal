@@ -361,5 +361,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1174"
       }
     ]
+  },
+  "grants_banner_wave_2": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "5fbf978ee251bcacd9246d0618bd94614b9dd080",
+        "updatedAt": "2021-10-01T20:32:16.687Z",
+        "href": "pr-preview/grants_banner_wave_2/5fbf97",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1180"
+      }
+    ]
   }
 }
