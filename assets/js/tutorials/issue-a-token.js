@@ -63,17 +63,7 @@ function setup_2x_generate_step() {
   })
 }
 
-function get_address_2(event, which_one) {
-  // which_one should be either "cold" or "hot" (case-sensitive)
-  const address = $(`#${which_one}-use-address`).text()
-  if (!address) {
-    const block = $(event.target).closest(".interactive-block")
-    if (!block.length) {return}
-    show_error(block, tl("Couldn't get a valid address/secret value. Check that the previous steps were completed successfully."))
-  }
-  return address
-}
-function get_secret_2(event, which_one) {
+function get_wallet_2(event, which_one) {
   // which_one should be either "cold" or "hot" (case-sensitive)
   const secret = $(`#${which_one}-use-secret`).text()
   if (!secret) {
@@ -81,13 +71,7 @@ function get_secret_2(event, which_one) {
     if (!block.length) {return}
     show_error(block, tl("Couldn't get a valid address/secret value. Check that the previous steps were completed successfully."))
   }
-  // TODO: check for *both* example secrets
-  // if (secret == EXAMPLE_SECRET) {
-  //   const block = $(event.target).closest(".interactive-block")
-  //   if (!block.length) {return}
-  //   show_error(block, tl("Can't use the example secret here. Check that the previous steps were completed successfully."))
-  // }
-  return secret
+  return xrpl.Wallet.fromSeed(secret)
 }
 
 // Get the hexadecimal ASCII representation of a domain name string.
@@ -140,15 +124,14 @@ $(document).ready(() => {
   $("#config-issuer-button").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     block.find(".output-area").empty()
-    const cold_address = get_address_2(event, "cold")
-    const cold_secret = get_secret_2(event, "cold")
+    const cold_wallet = get_wallet_2(event, "cold")
 
     let flags = 0
     if ($("#cold-require-dest").prop("checked")) {
-      flags |= api.txFlags.AccountSet.RequireDestTag
+      flags |= xrpl.AccountSetTransactionFlags.tfRequireDestTag
     }
     if ($("#cold-disallow-xrp").prop("checked")) {
-      flags |= api.txFlags.AccountSet.DisallowXRP
+      flags |= xrpl.AccountSetTransactionFlags.tfDisallowXRP
     }
 
     const tick_size = parseInt($("#cold-tick-size").val(), 10)
@@ -170,15 +153,15 @@ $(document).ready(() => {
     try {
       const cold_settings_tx = {
         "TransactionType": "AccountSet",
-        "Account": cold_address,
+        "Account": cold_wallet.classicAddress,
         "TransferRate": transfer_rate,
         "TickSize": tick_size,
-        "SetFlag": 8, // enable Default Ripple
+        "SetFlag": xrpl.AccountSetFlags.asfDefaultRipple,
         "Domain": domain,
         "Flags": flags
       }
 
-      await generic_full_send(event, cold_settings_tx, cold_secret)
+      await generic_full_send(event, cold_settings_tx, cold_wallet)
       complete_step("Configure Issuer")
 
     } catch(err) {
@@ -192,15 +175,14 @@ $(document).ready(() => {
   $("#config-hot-address-button").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     block.find(".output-area").empty()
-    const hot_address = get_address_2(event, "hot")
-    const hot_secret = get_secret_2(event, "hot")
+    const hot_wallet = get_wallet_2(event, "hot")
 
     let flags = 0
     if ($("#hot-require-dest").prop("checked")) {
-      flags |= api.txFlags.AccountSet.RequireDestTag
+      flags |= xrpl.AccountSetTransactionFlags.tfRequireDestTag
     }
     if ($("#hot-disallow-xrp").prop("checked")) {
-      flags |= api.txFlags.AccountSet.DisallowXRP
+      flags |= xrpl.AccountSetTransactionFlags.tfDisallowXRP
     }
 
     const domain = $("#hot-domain-hex").text().trim()
@@ -209,14 +191,14 @@ $(document).ready(() => {
     try {
       const hot_settings_tx = {
         "TransactionType": "AccountSet",
-        "Account": hot_address,
-        "SetFlag": 2, // enable Require Auth so we can't accidentally issue from
-                     // the hot address
+        "Account": hot_wallet.classicAddress,
+        // Require Auth so we can't accidentally issue from the hot address
+        "SetFlag": xrpl.AccountSetFlags.asfRequireAuth,
         "Domain": domain,
         "Flags": flags
       }
 
-      await generic_full_send(event, hot_settings_tx, hot_secret)
+      await generic_full_send(event, hot_settings_tx, hot_wallet)
       complete_step("Configure Hot Address")
 
     } catch(err) {
@@ -229,9 +211,8 @@ $(document).ready(() => {
   $("#create-trust-line-button").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     block.find(".output-area").empty()
-    const hot_address = get_address_2(event, "hot")
-    const cold_address = get_address_2(event, "cold")
-    const hot_secret = get_secret_2(event, "hot")
+    const cold_address = get_wallet_2(event, "cold").classicAddress
+    const hot_wallet = get_wallet_2(event, "hot")
 
     let currency_code
     if ($("#use-std-code").prop("checked")) {
@@ -253,14 +234,14 @@ $(document).ready(() => {
     try {
       const trust_set_tx = {
         "TransactionType": "TrustSet",
-        "Account": hot_address,
+        "Account": hot_wallet.classicAddress,
         "LimitAmount": {
           "currency": currency_code,
           "issuer": cold_address,
           "value": limit
         }
       }
-      await generic_full_send(event, trust_set_tx, hot_secret)
+      await generic_full_send(event, trust_set_tx, hot_wallet)
       complete_step("Make Trust Line")
 
     } catch(err) {
@@ -273,9 +254,8 @@ $(document).ready(() => {
   $("#send-token-button").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     block.find(".output-area").empty()
-    const hot_address = get_address_2(event, "hot")
-    const cold_address = get_address_2(event, "cold")
-    const cold_secret = get_secret_2(event, "cold")
+    const hot_address = get_wallet_2(event, "hot").classicAddress
+    const cold_wallet = get_wallet_2(event, "cold")
 
     const currency_code = $("#send-currency-code").text().trim()
     const issue_quantity = $("#send-amount").val().trim()
@@ -294,18 +274,18 @@ $(document).ready(() => {
     try {
       const send_token_tx = {
         "TransactionType": "Payment",
-        "Account": cold_address,
+        "Account": cold_wallet.classicAddress,
         "Amount": {
           "currency": currency_code,
           "value": issue_quantity,
-          "issuer": cold_address
+          "issuer": cold_wallet.classicAddress
         },
         "Destination": hot_address
       }
       if (use_dest_tag) {
         send_token_tx["DestinationTag"] = dest_tag
       }
-      await generic_full_send(event, send_token_tx, cold_secret)
+      await generic_full_send(event, send_token_tx, cold_wallet)
       complete_step("Send Token")
 
     } catch(err) {
@@ -319,28 +299,30 @@ $(document).ready(() => {
   $("#confirm-balances-button").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     block.find(".output-area").empty()
-    const hot_address = get_address_2(event, "hot")
-    const cold_address = get_address_2(event, "cold")
+    const hot_address = get_wallet_2(event, "hot").classicAddress
+    const cold_address = get_wallet_2(event, "cold").classicAddress
 
     block.find(".loader").show()
     try {
-      const hot_balances = await api.request("account_lines", {
-        account: hot_address,
-        ledger_index: "validated"
+      const hot_balances = await api.request({
+        "command": "account_lines",
+        "account": hot_address,
+        "ledger_index": "validated"
       })
       block.find(".output-area").append(`
         <p>Hot address (<a href="https://testnet.xrpl.org/accounts/${hot_address}">${hot_address}</a>) account_lines result:</p>
-        <pre><code>${pretty_print(hot_balances)}</code></pre>
+        <pre><code>${pretty_print(hot_balances.result)}</code></pre>
       `)
 
-      const cold_balances = await api.request("gateway_balances", {
-        account: cold_address,
-        ledger_index: "validated",
-        hotwallet: [hot_address]
+      const cold_balances = await api.request({
+        "command": "gateway_balances",
+        "account": cold_address,
+        "ledger_index": "validated",
+        "hotwallet": [hot_address]
       })
       block.find(".output-area").append(`
         <p>Issuer (<a href="https://testnet.xrpl.org/accounts/${cold_address}">${cold_address}</a>) gateway_balances result:</p>
-        <pre><code>${pretty_print(cold_balances)}</code></pre>
+        <pre><code>${pretty_print(cold_balances.result)}</code></pre>
       `)
 
       block.find(".loader").hide()

@@ -43,8 +43,8 @@ $(document).ready(() => {
     block.find(".loader").hide()
 
     block.find(".output-area").append(
-        `<pre><code>${pretty_print(flags)}</code></pre>`)
-    //if (flags.requireDestinationTag) {
+        `<pre><code>${pretty_print(account_info.result.account_data)}</code></pre>`)
+    // if (flags.requireDestinationTag) {
     if (account_info.result.account_data.Flags | 0x00020000) { // TODO: change this back if there's a better way
       block.find(".output-area").append(`<p><i class="fa fa-check-circle"></i>
           Require Destination Tag is enabled.</p>`)
@@ -62,32 +62,29 @@ $(document).ready(() => {
   // from the faucet in data attributes on the block so we don't have to get a
   // new sending address every time.
   async function get_test_sender(block) {
-    let address = block.data("testSendAddress")
-    let secret = block.data("testSendSecret")
-    if (!address || !secret) {
+    let test_sender_wallet
+    let seed = block.data("testSendSecret")
+    if (!seed) {
       console.debug("First-time setup for test sender...")
-      // Old way:
-      // const faucet_url = $("#generate-creds-button").data("fauceturl")
-      // const data = await call_faucet(faucet_url)
-      // address = data.account.classicAddress
-      // block.data("testSendAddress", address)
-      // secret = data.account.secret
-      // block.data("testSendSecret", secret)
-      // New way: get a wallet
-      let test_sender_wallet = await api.generateFaucetWallet()
-      block.data("testSendAddress", test_sender_wallet.classicAddress)
+      test_sender_wallet = await api.generateFaucetWallet()
       block.data("testSendSecret", test_sender_wallet.seed)
 
       // First time: Wait for our test sender to be fully funded, so we don't
       // get the wrong starting sequence number.
       while (true) {
         try {
-          await api.request({command: "account_info", account: address, ledger_index: "validated"})
+          await api.request({
+            "command": "account_info",
+            "account": test_sender_wallet.classicAddress,
+            "ledger_index": "validated"
+          })
           break
         } catch(e) {
           await new Promise(resolve => setTimeout(resolve, 1000))
         }
       }
+    } else {
+      test_sender_wallet = xrpl.Wallet.fromSeed(seed)
     }
     return test_sender_wallet
   }

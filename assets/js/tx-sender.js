@@ -157,6 +157,7 @@ const set_up_tx_sender = async function() {
     try {
       // use lookup_tx_final() from submit-and-verify2.js
       let final_result_data = await lookup_tx_final(api, hash, max_ledger, min_ledger)
+      console.log("final_result_data is", final_result_data)
       let final_result = final_result_data.result.meta.TransactionResult
       if (!silent) {
         if (final_result === "tesSUCCESS") {
