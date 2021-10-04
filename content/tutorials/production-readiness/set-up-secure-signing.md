@@ -91,7 +91,7 @@ To optimize the security of your signing library:
 
 Here are examples of how to sign transaction instructions locally using the following languages and libraries:
 
-* **JavaScript** / **TypeScript** - [`ripple-lib`](https://github.com/ripple/ripple-lib)  
+* **JavaScript** / **TypeScript** - [`ripple-lib`](https://github.com/XRPLF/xrpl.js)  
 
 * **Python** - [`xrpl-py`](https://github.com/XRPLF/xrpl-py)
 

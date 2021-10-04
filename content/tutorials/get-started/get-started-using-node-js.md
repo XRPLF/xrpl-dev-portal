@@ -75,7 +75,7 @@ Optionally, start a [Git](https://git-scm.com/book/en/v2/Getting-Started-Install
 git init
 ```
 
-Alternatively, you can [create a repo on GitHub](https://help.github.com/articles/create-a-repo/) to version and share your work. After setting it up, [clone the repo](https://help.github.com/articles/cloning-a-repository/) to your local machine and `cd` into that directory.
+Alternatively, you can [create a repo on GitHub](https://docs.github.com/en/get-started/quickstart/create-a-repo/) to version and share your work. After setting it up, [clone the repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository/) to your local machine and `cd` into that directory.
 
 
 ### 2. Create a new `package.json` file for your project
@@ -83,7 +83,7 @@ Alternatively, you can [create a repo on GitHub](https://help.github.com/article
 Use the following template, which includes:
 
 - RippleAPI itself (`ripple-lib`)
-- (Optional) [ESLint](http://eslint.org/) (`eslint`) for checking code quality.
+- (Optional) [ESLint](https://eslint.org/) (`eslint`) for checking code quality.
 
 ```json
 {% include '_code-samples/rippleapi_quickstart/package.json' %}
@@ -161,7 +161,7 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 
 The opening line enables [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode). This is purely optional, but it helps you avoid some common pitfalls of JavaScript.
 
-The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of [the modules `ripple-lib` exports](https://github.com/ripple/ripple-lib/blob/develop/src/index.ts).
+The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of [the modules `ripple-lib` exports](https://github.com/XRPLF/xrpl.js/blob/develop/src/index.ts).
 
 
 ### Instantiating the API
@@ -289,12 +289,12 @@ You can also build a browser-compatible version of the code yourself. Use the fo
 If you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed, you can clone the repository and check out the **master** branch, which always has the latest official release:
 
 ```
-git clone https://github.com/ripple/ripple-lib.git
+git clone https://github.com/XRPLF/xrpl.js.git
 cd ripple-lib
 git checkout master
 ```
 
-Alternatively, you can download an archive (`.zip` or `.tar.gz`) of a specific release from the [RippleAPI releases page](https://github.com/ripple/ripple-lib/releases) and extract it.
+Alternatively, you can download an archive (`.zip` or `.tar.gz`) of a specific release from the [RippleAPI releases page](https://github.com/XRPLF/xrpl.js/releases) and extract it.
 
 
 ### 2. Install Yarn

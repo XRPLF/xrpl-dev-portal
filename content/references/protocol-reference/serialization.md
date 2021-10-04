@@ -266,7 +266,7 @@ The [`rippled` APIs](rippled-api.html) support a **standard format** for transla
 1. The first 8 bits must be `0x00`.
 2. The next 88 bits are reserved, and should be all `0`'s.
 3. The next 24 bits represent 3 characters of ASCII.
-    Ripple recommends using [ISO 4217](http://www.xe.com/iso4217.php) codes, or popular pseudo-ISO 4217 codes such as "BTC". However, any combination of the following characters is permitted: all uppercase and lowercase letters, digits, as well as the symbols `?`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `<`, `>`, `(`, `)`, `{`, `}`, `[`, `]`, and <code>&#124;</code>. The currency code `XRP` (all-uppercase) is reserved for XRP and cannot be used by issued currencies.
+    Ripple recommends using [ISO 4217](https://www.xe.com/iso4217.php) codes, or popular pseudo-ISO 4217 codes such as "BTC". However, any combination of the following characters is permitted: all uppercase and lowercase letters, digits, as well as the symbols `?`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `<`, `>`, `(`, `)`, `{`, `}`, `[`, `]`, and <code>&#124;</code>. The currency code `XRP` (all-uppercase) is reserved for XRP and cannot be used by issued currencies.
 4. The next 40 bits are reserved and should be all `0`'s.
 
 The **nonstandard format** is any 160 bits of data as long as the first 8 bits are not `0x00`.

@@ -130,7 +130,7 @@ Ripple is committed to monitoring and reporting any AML flags across the XRP Led
 
 #### What is the process for reviewing third-party code contributions?
 
-The code contribution process starts with a developer opening a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) to a source code repository such as the [`rippled` repository](https://github.com/ripple/rippled/), which contains Ripple's reference implementation of the core XRP Ledger server and protocol.
+The code contribution process starts with a developer opening a [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to a source code repository such as the [`rippled` repository](https://github.com/ripple/rippled/), which contains Ripple's reference implementation of the core XRP Ledger server and protocol.
 
 This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request affects.
 

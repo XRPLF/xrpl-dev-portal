@@ -13,7 +13,7 @@ XRP Ledgerの高度機能の一部（[Escrow](escrow.html)や[Payment Channel](u
 
 XRPはまた、ネットワークのスパムの防御対策としても機能します。すべてのXRP Ledgerアドレスには、XRP Ledger維持管理コストを支払うために少額のXRPが必要です。[トランザクションコスト](transaction-cost.html)と[準備金](reserves.html)は、XRP建ての中立的な手数料であり、どの当事者にも支払われません。レジャーのデータフォーマットで、XRPは[AccountRootオブジェクト](accountroot.html)に保管されます。
 
-XRPのユースケース、メリット、最新情報についての詳細は、[XRPポータル](https://ripple.com/xrp-portal/)を参照してください。
+XRPのユースケース、メリット、最新情報についての詳細は、[XRPポータル](https://ripple.com/xrp/)を参照してください。
 
 ## XRPの特性
 

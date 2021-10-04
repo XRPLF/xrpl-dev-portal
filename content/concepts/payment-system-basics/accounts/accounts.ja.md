@@ -12,7 +12,7 @@ XRP Ledgerの「アカウント」は、XRPの所有者と[トランザクショ
 
 - 識別用の**アドレス**。例えば、`rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`
 
-  **注記:** XRPコミュニティは、取引所およびウォレットで[宛先タグ](https://xrpl.org/source-and-destination-tags.html)の代わりに使用できる新しいフォーマット、**X**アドレスを[提案](https://github.com/xrp-community/standards-drafts/issues/6)（これをサポートする[コーデック](https://github.com/xrp-community/xrpl-tagged-address-codec)も開発）しました。これらの「パック化」したアドレスは、`r`ではなく`X`で開始します。詳細は、[XRPL 𝗫-address format](https://xrpaddress.info/)のサイトを参照してください。
+  **注記:** XRPコミュニティは、取引所およびウォレットで[宛先タグ](https://xrpl.org/source-and-destination-tags.html)の代わりに使用できる新しいフォーマット、**X**アドレスを[提案](https://github.com/XRPLF/XRPL-Standards/issues/6)（これをサポートする[コーデック](https://github.com/xrp-community/xrpl-tagged-address-codec)も開発）しました。これらの「パック化」したアドレスは、`r`ではなく`X`で開始します。詳細は、[XRPL 𝗫-address format](https://xrpaddress.info/)のサイトを参照してください。
 
 - **XRPの残高**。このXRPの一部は、[準備金](reserves.html)用に確保されています。
 - **シーケンス番号**。このアカウントから送信されるトランザクションがすべて、正しい順序で、それぞれ1回のみ適用されるようにします。トランザクションを実行するには、トランザクションのシーケンス番号と送金元のシーケンス番号が一致する必要があります。その後も、トランザクションが適用されている限り、アカウントのシーケンス番号は1ずつ増加します。（関連項目: [基本的なデータタイプ: アカウントシーケンス](basic-data-types.html#アカウントシーケンス)）
@@ -63,7 +63,7 @@ XRP Ledgerでは、過去の使用という点で、一部のアドレスに特�
 | rrrrrrrrrrrrrrrrrrrrBZbvji | ACCOUNT_ONE | 値`1`を[base58][]形式にエンコードしたXRP Ledgerのアドレス。レジャーの[RippleState項目](ripplestate.html)では、このアドレスは、トラストライン残高の発行者のプレースホルダーとして使用されます。 | はい |
 | rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh | ジェネシスアカウント | `rippled`で新しいジェネシスレジャーが一から開始される場合（例えば、スタンドアロンモード）、このアカウントはすべてのXRPを保持します。このアドレスは、シード値「masterpassphrase」から生成されており、この値は[ハードコーディング](https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184)されています。 | いいえ |
 | rrrrrrrrrrrrrrrrrNAMEtxvNvQ | Ripple名予約のブラックホール | 以前は、Rippleでは、このアカウントにXRPを送信してRipple名を予約するようユーザーに求めていました。 | はい |
-| rrrrrrrrrrrrrrrrrrrn5RM1rHd | NaNアドレス | 以前のバージョンの[ripple-lib](https://github.com/ripple/ripple-lib)では、XRP Ledgerの[base58][]文字列エンコード形式を使用して、値[NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)をエンコードするときにこのアドレスを生成しました。 | はい |
+| rrrrrrrrrrrrrrrrrrrn5RM1rHd | NaNアドレス | 以前のバージョンの[ripple-lib](https://github.com/XRPLF/xrpl.js)では、XRP Ledgerの[base58][]文字列エンコード形式を使用して、値[NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)をエンコードするときにこのアドレスを生成しました。 | はい |
 
 
 ## アカウントの削除

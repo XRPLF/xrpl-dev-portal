@@ -35,7 +35,7 @@ Create or modify a trust line linking two accounts.
 | Field                    | JSON Type | [Internal Type][] | Description       |
 |:-------------------------|:----------|:------------------|:------------------|
 | `LimitAmount`            | Object    | Amount            | Object defining the trust line to create or modify, in the format of a [Currency Amount][]. |
-| `LimitAmount`.`currency` | String    | (Amount.currency) | The currency to this trust line applies to, as a three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or a 160-bit hex value according to [currency format](currency-formats.html). "XRP" is invalid. |
+| `LimitAmount`.`currency` | String    | (Amount.currency) | The currency to this trust line applies to, as a three-letter [ISO 4217 Currency Code](https://www.xe.com/iso4217.php) or a 160-bit hex value according to [currency format](currency-formats.html). "XRP" is invalid. |
 | `LimitAmount`.`value`    | String    | (Amount.value)    | Quoted decimal representation of the limit to set on this trust line. |
 | `LimitAmount`.`issuer`   | String    | (Amount.issuer)   | The address of the account to extend trust to. |
 | `QualityIn`              | Number    | UInt32            | _(Optional)_ Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |

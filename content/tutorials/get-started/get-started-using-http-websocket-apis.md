@@ -19,7 +19,7 @@ If you don't have or don't want to use a [client library](client-libraries.html)
 
 Both JSON-RPC and WebSocket are HTTP-based protocols, and for the most part the data provided over both protocols is the same. The major differences are as follows:
 
-- JSON-RPC uses individual HTTP requests and responses for each call, similar to a RESTful API. You can use any common HTTP client such as [curl](https://curl.haxx.se/), [Postman](https://www.postman.com/downloads/), or [Requests](https://docs.python-requests.org/) to access this API.
+- JSON-RPC uses individual HTTP requests and responses for each call, similar to a RESTful API. You can use any common HTTP client such as [curl](https://curl.se/), [Postman](https://www.postman.com/downloads/), or [Requests](https://docs.python-requests.org/) to access this API.
 - WebSocket uses a persistent connection that allows the server to push data to the client. Functions that require push messages, like [event subscriptions](subscribe.html), are only available using WebSocket.
 
 Both APIs can be served unencrypted (`http://` and `ws://`) or encrypted using TLS (`https://` and `wss://`). Unencrypted connections should not be served over open networks, but can be used when the client is on the same machine as the server.

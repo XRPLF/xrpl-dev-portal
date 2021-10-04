@@ -53,7 +53,7 @@ The `AccountRoot` object has the following fields:
 | `RegularKey`                  | String    | AccountID         | _(Optional)_ The address of a [key pair](cryptographic-keys.html) that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction][] to change this value. |
 | `TicketCount`                 | Number    | UInt32            | _(Optional)_ How many [Tickets](tickets.html) this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. _(Added by the [TicketBatch amendment][] :not_enabled:)_ |
 | `TickSize`                    | Number    | UInt8             | _(Optional)_ How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Added by the [TickSize amendment][].)_ |
-| `TransferRate`                | Number    | UInt32            | _(Optional)_ A [transfer fee](https://ripple.com/knowledge_center/transfer-fees/) to charge other users for sending currency issued by this account to each other. |
+| `TransferRate`                | Number    | UInt32            | _(Optional)_ A [transfer fee](https://xrpl.org/transfer-fees.html/) to charge other users for sending currency issued by this account to each other. |
 | `WalletLocator`               | String    | Hash256           | _(Optional)_ **DEPRECATED**. Do not use. |
 | `WalletSize`                  | Number    | UInt32            | _(Optional)_ **DEPRECATED**. Do not use. |
 

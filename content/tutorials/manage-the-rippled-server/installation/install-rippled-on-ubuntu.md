@@ -7,7 +7,7 @@ labels:
 ---
 # Install on Ubuntu or Debian Linux
 
-This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 16.04 or higher** or **Debian 9 or higher**, using the [`apt`](https://help.ubuntu.com/lts/serverguide/apt.html) utility.
+This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 16.04 or higher** or **Debian 9 or higher**, using the [`apt`](https://ubuntu.com/server/docs) utility.
 
 These instructions install a binary that has been compiled by Ripple.
 

@@ -70,7 +70,7 @@
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 [Interledger Protocol]: https://interledger.org/
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
-[ripple-lib]: https://github.com/ripple/ripple-lib
+[ripple-lib]: https://github.com/XRPLF/xrpl.js
 
 <!--{# rippled API methods #}-->
 {% set api_methods = [
