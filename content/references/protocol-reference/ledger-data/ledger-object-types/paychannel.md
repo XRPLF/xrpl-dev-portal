@@ -32,6 +32,7 @@ For an example of using payment channels, see the [Payment Channels Tutorial](us
     "CancelAfter": 536891313,
     "SourceTag": 0,
     "DestinationTag": 1002341,
+    "DesinationNode": "0000000000000000",
     "Flags": 0,
     "LedgerEntryType": "PayChannel",
     "OwnerNode": "0000000000000000",
