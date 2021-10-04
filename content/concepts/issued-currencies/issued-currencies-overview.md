@@ -55,6 +55,7 @@ Issued currencies are designed to be able to represent any kind of currency or a
     - [Cross-Currency Payments](cross-currency-payments.html)
     - [Decentralized Exchange](decentralized-exchange.html)
 - **Tutorials:**
+    - [Issue a Fungible Token](issue-a-fungible-token.html)
     - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
     - [Look Up Transaction Results](look-up-transaction-results.html)
     - [Use Specialized Payment Types](use-specialized-payment-types.html)
