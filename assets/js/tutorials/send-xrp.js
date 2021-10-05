@@ -88,8 +88,8 @@ $("#get-tx-button").click( async function(event) {
     block.find(".output-area").html(
       `<div><strong>Transaction result code:</strong>
       ${tx.result.meta.TransactionResult} (${tx.result.validated ? "validated": "pending"})</div>
-      <div><strong>XRP Delivered:</strong>
-      ${xrpl.dropsToXrp(tx.meta.delivered_amount)} XRP
+      <div><strong>Balance changes:</strong>
+      <pre><code>${pretty_print(xrpl.getBalanceChanges(tx.result.meta))}</code></pre>
       </div>`
     )
 
