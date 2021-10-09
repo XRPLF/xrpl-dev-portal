@@ -46,7 +46,7 @@ The `AccountTxnID` field cannot be used on transactions that use [Tickets](ticke
 
 ## Auto-fillable Fields
 
-Some fields can be automatically filled in before a transaction is signed, either by a `rippled` server or by a library used for signing such as [ripple-lib][]. Auto-filling values requires an active connection to the XRP Ledger to get the latest state, so it cannot be done offline. Both [ripple-lib][] and `rippled` can automatically provide the following values:
+Some fields can be automatically filled in before a transaction is signed, either by a `rippled` server or by a [client library](client-libraries.html). Auto-filling values requires an active connection to the XRP Ledger to get the latest state, so it cannot be done offline. The details can vary by library, but auto-filling always provides suitable values for at least the following fields:
 
 * `Fee` - Automatically fill in the [Transaction Cost][] based on the network.
 

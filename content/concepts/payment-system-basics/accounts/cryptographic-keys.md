@@ -16,11 +16,7 @@ To make a digital signature, you use a cryptographic key pair associated with th
 
 ## Generating Keys
 
-There are several ways to create a key pair:
-
-- The [wallet_propose method][] in [the `rippled` server](the-rippled-server.html).
-- The [`generateAddress()` method of ripple-lib](rippleapi-reference.html#generateaddress).
-- Other [tools or wallet applications](software-ecosystem.html). <!-- STYLE_OVERRIDE: wallet -->
+Many [client libraries](client-libraries.html) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use keypairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
 
 
 ## Key Components

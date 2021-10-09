@@ -65,9 +65,7 @@ When you're [building actual production-ready software](production-readiness.htm
 
 ### {{n.next()}}. Connect to the Network
 
-You must be connected to the network to submit transactions to it.
-
-The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
+You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
 
 <!-- MULTICODE_BLOCK_START -->
 

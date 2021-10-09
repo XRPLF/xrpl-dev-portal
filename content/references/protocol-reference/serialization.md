@@ -62,11 +62,7 @@ The serialization processes described here are implemented in multiple places an
 - In JavaScript in the [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/) package.
 - In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/serialize.py).
 
-Additionally, the following libraries also provide serialization support:
-
-{% include '_snippets/libs-snippet.md' %}
-
-These implementations are all provided with permissive open-source licenses, so you can import, use, or adapt the code for your needs.
+Additionally, many [client libraries](client-libraries) provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.
 
 
 

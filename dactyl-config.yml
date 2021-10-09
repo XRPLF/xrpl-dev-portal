@@ -64,7 +64,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.0.0b2.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.0.0b5.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -343,7 +343,7 @@ pages:
         top_nav_shortcuts:
             # Programming Languages
             - get-started-using-python.html
-            - get-started-using-node-js.html
+            - get-started-using-javascript.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
             # Popular pages
@@ -378,7 +378,7 @@ pages:
         top_nav_shortcuts:
             # Programming Languages
             - get-started-using-python.html
-            - get-started-using-node-js.html
+            - get-started-using-javascript.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
             # Popular pages
@@ -1018,19 +1018,28 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/get-started/get-started-using-node-js.md
+    -   md: tutorials/get-started/get-started-using-javascript.md
         targets:
             - en
 
-    -   md: tutorials/get-started/get-started-using-node-js.ja.md
+    -   md: tutorials/get-started/get-started-using-javascript.ja.md
         targets:
             - ja
 
-        # Redirect for old JS Client Library URL
-    -   name: Get Started Using Node.js
+        # Redirect for old JS Client Library URLs
+    -   name: Get Started Using JavaScript
+        html: get-started-using-node-js.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: get-started-using-javascript.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    -   name: Get Started Using JavaScript
         html: get-started-with-rippleapi-for-javascript.html
         template: pagetype-redirect.html.jinja
-        redirect_url: get-started-using-node-js.html
+        redirect_url: get-started-using-javascript.html
         nav_omit: true
         targets:
             - en

@@ -14,7 +14,7 @@ top_nav_grouping: Popular Pages
 ---
 # Send XRP
 
-This tutorial explains how to send a simple XRP Payment using ripple-lib for JavaScript, `xrpl-py` for Python, or xrpl4j for Java. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
+This tutorial explains how to send a simple XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, or xrpl4j for Java. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
 
 **Tip:** Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) for a complete version of the code used in this tutorial.
 
@@ -26,7 +26,7 @@ This tutorial explains how to send a simple XRP Payment using ripple-lib for Jav
 
 To interact with the XRP Ledger, you need to set up a dev environment with the necessary tools. This tutorial provides examples using the following options:
 
-- **JavaScript** with the [ripple-lib (RippleAPI) library](https://github.com/XRPLF/xrpl.js/). See the [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) for detailed instructions on getting started.
+- **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
 - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
 - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](get-started-using-java.html) for setup steps.
 
@@ -110,7 +110,7 @@ The bare minimum set of instructions you must provide for an XRP Payment is:
 
 Technically, a viable transaction must contain some additional fields, and certain optional fields such as `LastLedgerSequence` are strongly recommended. Some other language-specific notes:
 
-- If you're using ripple-lib for JavaScript, you can use the [`prepareTransaction()` method](rippleapi-reference.html#preparetransaction) to automatically fill in good defaults for the remaining fields of a transaction.
+- If you're using `xrpl.js` for JavaScript or TypeScript, you can use the [`Client.autofill()` method](TODO: link autofill) to automatically fill in good defaults for the remaining fields of a transaction.
 - With `xrpl-py` for Python, you can use the models in `xrpl.models.transactions` to construct transactions as native Python objects.
 - With xrpl4j for Java, you can use the model objects in the `xrpl4j-model` module to construct transactions as Java objects.
     - Unlike the other libraries, you must provide the account `sequence` and the `signingPublicKey` of the source
@@ -156,7 +156,7 @@ _Java_
 
 Signing a transaction uses your credentials to authorize the transaction on your behalf. The input to this step is a completed set of transaction instructions (usually JSON), and the output is a binary blob containing the instructions and a signature from the sender.
 
-- **JavaScript:** Use the [sign() method](rippleapi-reference.html#sign) to sign the transaction with ripple-lib. The first argument is a string version of the JSON transaction to sign.
+- **JavaScript:** Use the [sign() method of a Wallet instance](TODO: link sign) to sign the transaction with `xrpl.js`.
 - **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and wallet object.
 - **Java:** Use a [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html) instance to sign the transaction. For this tutorial, use the [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html).
 
@@ -181,7 +181,7 @@ _Java_
 
 The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical [binary format](serialization.html), called a "blob".
 
-- In ripple-lib, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
+- In `xrpl.js`, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
 - In `xrpl-py`, you can get the transaction's hash in the response to submitting it in the next step.
 - In xrpl4j, `SignatureService.sign` returns a `SignedTransaction`, which contains the transaction's hash, which you can use to look up the transaction later.
 
@@ -196,8 +196,8 @@ The result of the signing operation is a transaction object containing a signatu
 
 Now that you have a signed transaction, you can submit it to an XRP Ledger server, and that server will relay it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
 
-- **JavaScript:** Use the [`submit()` method](rippleapi-reference.html#submit) to submit a transaction to the network. Use the [`getLedgerVersion()` method](rippleapi-reference.html#getledgerversion) to get the latest validated ledger index.
-- **Python:** Use the [`xrpl.transaction.submit_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.submit_transaction) to submit a transaction to the network. Use the [`xrpl.ledger.get_latest_validated_ledger_sequence()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.ledger.html#xrpl.ledger.get_latest_validated_ledger_sequence) to get the latest validated ledger index.
+- **JavaScript:** Use the [`submitReliable()` method of the Client](TODO: link) to submit a transaction to the network and wait for the response.
+- **Python:** Use the [`xrpl.transaction.send_reliable_submission()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission) to submit a transaction to the network and wait for a response.
 - **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
 
 <!-- MULTICODE_BLOCK_START -->
@@ -348,15 +348,15 @@ Generating an address and secret doesn't get you XRP directly; you're only choos
 
 ### Connecting to the Production XRP Ledger
 
-When you instantiate the `RippleAPI` object, you must specify a server that's synced with the appropriate XRP Ledger. For many cases, you can use Ripple's public servers, such as in the following snippet:
+When you instantiate the `RippleAPI` object, you must specify a server that's synced with the appropriate XRP Ledger. For many cases, you can use [public servers](public-servers.html), such as in the following snippet:
 
 <!-- MULTICODE_BLOCK_START -->
 
 _JavaScript_
 
 ```js
-ripple = require('ripple-lib')
-api = new ripple.RippleAPI({server: 'wss://xrplcluster.com'})
+const xrpl = require('xrpl')
+const api = new xrpl.Client('wss://xrplcluster.com')
 api.connect()
 ```
 
@@ -364,8 +364,7 @@ _Python_
 
 ```py
 from xrpl.clients import JsonRpcClient
-mainnet_url = "https://xrplcluster.com"
-client = JsonRpcClient(mainnet_url)
+client = JsonRpcClient("https://xrplcluster.com")
 ```
 
 _Java_
@@ -384,8 +383,8 @@ If you [install `rippled`](install-rippled.html) yourself, it connects to the pr
 _JavaScript_
 
 ```js
-ripple = require('ripple-lib')
-api = new ripple.RippleAPI({server: 'ws://localhost:6006'})
+const xrpl = require('xrpl')
+const api = new xrpl.Client('ws://localhost:6006')
 api.connect()
 ```
 
@@ -393,8 +392,7 @@ _Python_
 
 ```py
 from xrpl.clients import JsonRpcClient
-mainnet_url = "http://localhost:5005"
-client = JsonRpcClient(mainnet_url)
+client = JsonRpcClient("http://localhost:5005")
 ```
 
 _Java_
@@ -413,7 +411,7 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 After completing this tutorial, you may want to try the following:
 
 - Build [Reliable transaction submission](reliable-transaction-submission.html) for production systems.
-- Consult [RippleAPI JavaScript Reference](rippleapi-reference.html), [`xrpl-py` Python Reference](https://xrpl-py.readthedocs.io/), or [xrpl4j Javadocs](https://javadoc.io/doc/org.xrpl/) for the full range of XRP Ledger functionality. <!-- SPELLING_IGNORE: javadocs -->
+- Consult the your [client library](client-libraries.html)'s API reference for the full range of XRP Ledger functionality. <!-- SPELLING_IGNORE: javadocs -->
 - Customize your [Account Settings](manage-account-settings.html).
 - Learn how [Transaction Metadata](transaction-metadata.html) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](payment-types.html) such as Escrows and Payment Channels.
