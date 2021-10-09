@@ -25,7 +25,6 @@ async function main() {
     "SetFlag": xrpl.AccountSetAsfFlags.asfRequireDest
   })
   console.log("Prepared transaction:", prepared)
-  const max_ledger = prepared.LastLedgerSequence
 
   const signed = wallet.sign(prepared)
   console.log("Transaction hash:", signed.hash)

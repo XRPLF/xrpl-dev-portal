@@ -39,15 +39,39 @@ const ripple = require('ripple-lib');
 const xrpl = require("xrpl");
 
 (async function() {
-  const api = new xrpl.Client('wss://xrplcluster.com');
+  const client = new xrpl.Client('wss://xrplcluster.com');
 
-  await api.connect();
+  await client.connect();
 
   // Your code here
 
-  api.disconnect();
+  client.disconnect();
 })();
 ```
+
+## Transaction Submission
+
+In xrpl.js there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes. Use the `submitReliable(tx_json, wallet)` method to sign a prepared transaction with the given wallet and submit it, like in this example:
+
+```js
+const tx_json = await client.autofill({
+  "TransactionType": "AccountSet",
+  "Account": wallet.address, // "wallet" is an instance of the Wallet class
+  "SetFlag": xrpl.AccountSetAsfFlags.asfRequireDest
+})
+try {
+  const submit_result = await client.submitReliable(tx_json, wallet)
+  // submitReliable() doesn't return until the transaction has a final result.
+  // Raises XrplError if the transaction doesn't get confirmed by the network.
+  console.log("Transaction result:", submit_result)
+} catch(err) {
+  console.log("Error submitting transaction:", err)
+}
+```
+
+Alternatively, you can use the `sign` method of a wallet to sign a transaction and then use `submitSignedReliable(tx_blob)` to submit it. This can be useful for building [reliable transaction submission](reliable-transaction-submission.html) that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)
+
+
 
 ## Quick Reference of Equivalents
 
@@ -59,11 +83,9 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | `request(command, options)` | `Client.request(options)` | The `command` field moved into the `options` object for consistency with the WebSocket API. |
 | `hasNextPage(response)` | ***TODO (check for marker?)*** | See also: `Client.requestNextPage()` and `Client.requestAll()` |
 | `requestNextPage(command, options, response)` | `Client.requestNextPage(response)` | |
-| `computeBinaryTransactionHash(tx_blob)` | `computeSignedTransactionHash(tx_blob)` | |
-| `classicAddressToXAddress(address)` | ***TBD moving to utils?*** | |
-| `xAddressToClassicAddress(xAddress)` | ***TBD moving to utils?*** | |
+| `computeBinaryTransactionHash(tx_blob)` | `xrpl.hashes.hashTx(tx_blob)` | |
 | `renameCounterpartyToIssuer(object)` | (None) | xrpl.js always uses `issuer` already. |
-| `formatBidsAndAsks(base, counter)` | ***TBD moving to utils?*** | |
+| `formatBidsAndAsks(base, counter)` | ***TBD?*** | |
 | `connect()` | `Client.connect()` | |
 | `disconnect()` | `Client.disconnect()` |
 | `isConnected()` | `Client.isConnected()` |
