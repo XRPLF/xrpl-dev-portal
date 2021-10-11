@@ -394,5 +394,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1192"
       }
     ]
+  },
+  "ci_deploy_fix": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "1442031aacd6bcab652135b06899f3ddc214f8f8",
+        "updatedAt": "2021-10-11T23:49:37.969Z",
+        "href": "pr-preview/ci_deploy_fix/144203",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1193"
+      }
+    ]
   }
 }
