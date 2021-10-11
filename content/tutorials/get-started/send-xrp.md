@@ -26,7 +26,7 @@ This tutorial explains how to send a simple XRP Payment using ripple-lib for Jav
 
 To interact with the XRP Ledger, you need to set up a dev environment with the necessary tools. This tutorial provides examples using the following options:
 
-- **JavaScript** with the [ripple-lib (RippleAPI) library](https://github.com/ripple/ripple-lib/). See the [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) for detailed instructions on getting started.
+- **JavaScript** with the [ripple-lib (RippleAPI) library](https://github.com/XRPLF/xrpl.js/). See the [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) for detailed instructions on getting started.
 - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
 - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](get-started-using-java.html) for setup steps.
 

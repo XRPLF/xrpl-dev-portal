@@ -120,6 +120,6 @@ XRP Ledgerと通信するためにRippleのXRP Ledgerソフトウェアを使用
 
 - [`rippled`コードベース](https://github.com/ripple/rippled)
 - ユーザーソフトウェアのコードベース:
-      - [ripple-lib](https://github.com/ripple/ripple-lib)
+      - [ripple-lib](https://github.com/XRPLF/xrpl.js)
       - [ripplecharts-frontend](https://github.com/ripple/ripplecharts-frontend)
 - [Ripple GitHub Organization](https://github.com/ripple/)

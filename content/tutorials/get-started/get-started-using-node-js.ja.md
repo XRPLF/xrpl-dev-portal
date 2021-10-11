@@ -75,7 +75,7 @@ mkdir my_ripple_experiment && cd my_ripple_experiment
 git init
 ```
 
-作業内容のバージョン管理や共有を目的として、[GitHubにリポジトリーを作成](https://help.github.com/articles/create-a-repo/)してもかまいません。設置後、ローカルマシンに[リポジトリーのクローンを作成](https://help.github.com/articles/cloning-a-repository/)し、そのディレクトリーに`cd`します。
+作業内容のバージョン管理や共有を目的として、[GitHubにリポジトリーを作成](https://docs.github.com/en/get-started/quickstart/create-a-repo/)してもかまいません。設置後、ローカルマシンに[リポジトリーのクローンを作成](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository/)し、そのディレクトリーに`cd`します。
 
 
 ### 2. プロジェクトの新規`package.json`ファイルを作成
@@ -83,7 +83,7 @@ git init
 次の内容が含まれている、以下のテンプレートを使用します。
 
 - RippleAPI自体（`ripple-lib`）
-- （省略可）コード品質を確認するための[ESLint](http://eslint.org/)（`eslint`）
+- （省略可）コード品質を確認するための[ESLint](https://eslint.org/)（`eslint`）
 
 ```
 {% include '_code-samples/rippleapi_quickstart/package.json' %}
@@ -160,7 +160,7 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 
 先頭行では、[strictモード](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)を有効にしています。このモードを使用するかどうかは任意に選択できますが、JavaScriptで陥りやすいいくつかの落とし穴を回避する上で役立ちます。
 
-2行目では、Node.jsのrequire関数を使用して、RippleAPIを現在のスコープにインポートしています。RippleAPIは、[`ripple-lib`がエクスポートするモジュール](https://github.com/ripple/ripple-lib/blob/develop/src/index.ts)の1つです。
+2行目では、Node.jsのrequire関数を使用して、RippleAPIを現在のスコープにインポートしています。RippleAPIは、[`ripple-lib`がエクスポートするモジュール](https://github.com/XRPLF/xrpl.js/blob/develop/src/index.ts)の1つです。
 
 
 ### APIのインスタンス化
@@ -273,12 +273,12 @@ RippleAPIをブラウザーで使用するには、ブラウザー互換バー�
 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)がインストールされている場合は、リポジトリーのクローンを作成して、**master**ブランチをチェックアウトできます。このブランチには、常に最新の公式リリースが収められています。
 
 ```
-git clone https://github.com/ripple/ripple-lib.git
+git clone https://github.com/XRPLF/xrpl.js.git
 cd ripple-lib
 git checkout master
 ```
 
-または、特定のリリースのアーカイブ（.zipまたは.tar.gz）を[RippleAPIリリースページ](https://github.com/ripple/ripple-lib/releases)からダウンロードし、抽出します。
+または、特定のリリースのアーカイブ（.zipまたは.tar.gz）を[RippleAPIリリースページ](https://github.com/XRPLF/xrpl.js/releases)からダウンロードし、抽出します。
 
 
 ### 2. Yarnのインストール

@@ -61,7 +61,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 | `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | An address that is the XRP Ledger's [base58][] encoding of the value `1`. In the ledger, [RippleState entries](ripplestate.html) use this address as a placeholder for the issuer of a trust line balance. | Yes |
 | `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | The genesis account | When `rippled` starts a new genesis ledger from scratch (for example, in stand-alone mode), this account holds all the XRP. This address is generated from the seed value `masterpassphrase` which is [hard-coded](https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184). | No |
 | `rrrrrrrrrrrrrrrrrNAMEtxvNvQ` | Ripple Name reservation black-hole | In the past, Ripple asked users to send XRP to this account to reserve Ripple Names.| Yes |
-| `rrrrrrrrrrrrrrrrrrrn5RM1rHd` | NaN Address | Previous versions of [ripple-lib](https://github.com/ripple/ripple-lib) generated this address when encoding the value [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) using the XRP Ledger's [base58][] string encoding format. | Yes |
+| `rrrrrrrrrrrrrrrrrrrn5RM1rHd` | NaN Address | Previous versions of [ripple-lib](https://github.com/XRPLF/xrpl.js) generated this address when encoding the value [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) using the XRP Ledger's [base58][] string encoding format. | Yes |
 
 
 ## Deletion of Accounts

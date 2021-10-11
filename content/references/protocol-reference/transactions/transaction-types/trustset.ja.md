@@ -35,7 +35,7 @@ labels:
 | フィールド                    | JSONの型 | [内部の型][] | 説明       |
 |:-------------------------|:----------|:------------------|:------------------|
 | `LimitAmount`            | オブジェクト    | Amount            | 作成または変更するトラストラインを定義する[通貨額][]フォーマットのオブジェクト。 |
-| `LimitAmount`.`currency` | 文字列    | （Amount.currency） | このトラストラインが適用される通貨。3文字の[ISO 4217通貨コード](http://www.xe.com/iso4217.php)または[通貨フォーマット](currency-formats.html)に基づく160ビットの16進数値です。「XRP」は無効です。 |
+| `LimitAmount`.`currency` | 文字列    | （Amount.currency） | このトラストラインが適用される通貨。3文字の[ISO 4217通貨コード](https://www.xe.com/iso4217.php)または[通貨フォーマット](currency-formats.html)に基づく160ビットの16進数値です。「XRP」は無効です。 |
 | `LimitAmount`.`value`    | 文字列    | （Amount.value）    | このトラストラインに設定される限度を表す引用符で囲んだ10進数値。 |
 | `LimitAmount`.`issuer`   | 文字列    | （Amount.issuer）   | 信頼したいアカウントのアドレス。 |
 | `QualityIn`              | 数値    | UInt32            | _（省略可）_ このトラストラインの受入額を、1,000,000,000単位当たりのこの数値の割合で評価。値`0`は、残高を額面価格で扱うことを示す省略表現です。 |

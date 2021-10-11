@@ -7,7 +7,7 @@ labels:
 ---
 # UbuntuまたはDebian Linuxへのインストール
 
-このページでは、[`apt`](https://help.ubuntu.com/lts/serverguide/apt.html)ユーティリティを使用して、**Ubuntu Linux 16.04以降**または**Debian 9（Stretch）** に`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
+このページでは、[`apt`](https://ubuntu.com/server/docs)ユーティリティを使用して、**Ubuntu Linux 16.04以降**または**Debian 9（Stretch）** に`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
 
 以下の手順では、Rippleによってコンパイルされたバイナリーをインストールします。
 

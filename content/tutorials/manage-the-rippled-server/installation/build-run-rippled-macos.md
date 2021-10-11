@@ -61,7 +61,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
         # bash
         $ source ~/.bash_profile
 
-0. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/).
+0. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://docs.github.com/en/get-started/quickstart/set-up-git/).
 
         $ git clone https://github.com/ripple/rippled.git
         $ cd rippled

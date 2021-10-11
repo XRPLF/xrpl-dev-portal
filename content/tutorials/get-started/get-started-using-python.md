@@ -140,7 +140,7 @@ You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.i
 
 {{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Derive an x-address from the classic address:", end_before="# Look up info about your account", language="py") }}
 
-The X-address format [packs the address and destination tag](https://github.com/xrp-community/standards-drafts/issues/6) into a more user-friendly value.
+The X-address format [packs the address and destination tag](https://github.com/XRPLF/XRPL-Standards/issues/6) into a more user-friendly value.
 
 
 ### {{n.next()}}. Query the XRP Ledger

@@ -55,7 +55,7 @@ labels:
 
         $ source .bash_profile
 
-0. 希望の場所に`rippled`ソースコードをクローンし、`rippled`ディレクトリーにアクセスします。これを行うには、Git（Homebrewを使用して前にインストール済み）とGitHubを設定する必要があります。例えば、GitHubアカウントを作成し、SSHキーを設定します。詳細は、[Set up git](https://help.github.com/articles/set-up-git/)を参照してください。
+0. 希望の場所に`rippled`ソースコードをクローンし、`rippled`ディレクトリーにアクセスします。これを行うには、Git（Homebrewを使用して前にインストール済み）とGitHubを設定する必要があります。例えば、GitHubアカウントを作成し、SSHキーを設定します。詳細は、[Set up git](https://docs.github.com/en/get-started/quickstart/set-up-git/)を参照してください。
 
         $ git clone git@github.com:ripple/rippled.git
         $ cd rippled

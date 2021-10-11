@@ -41,7 +41,7 @@ Main article: [Trust Lines and Issuing](trust-lines-and-issuing.html).
 
 ### XRP
 
-[**XRP**](xrp.html) is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Portal](https://ripple.com/xrp-portal/).
+[**XRP**](xrp.html) is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Portal](https://ripple.com/xrp/).
 
 Issuing gateways do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the [reserve requirements](reserves.html) and pay the [cost of sending transactions](transaction-cost.html) through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy gateway.
 
@@ -115,7 +115,7 @@ See also:
 
 - [Customer Identification Program (USA FFIEC)](https://bsaaml.ffiec.gov/manual/RegulatoryRequirements/01)
 
-- [The Non-US Standard on KYC set by the Financial Action Task Force (FATF)](http://www.fatf-gafi.org/topics/fatfrecommendations/documents/fatf-recommendations.html)
+- [The Non-US Standard on KYC set by the Financial Action Task Force (FATF)](http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html)
 
 <!-- SPELLING_IGNORE: ffiec -->
 
@@ -129,7 +129,7 @@ See also:
 
 - [“International Standards on Combating Money Laundering and the Financing of Terrorism & Proliferation.” FATF, 2012](http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html)
 
-- [“Virtual Currencies: Key Definitions and Potential AML/CFT Risks.” FATF, 2014](http://www.fatf-gafi.org/topics/methodsandtrends/documents/virtual-currency-definitions-aml-cft-risk.html)
+- [“Virtual Currencies: Key Definitions and Potential AML/CFT Risks.” FATF, 2014](http://www.fatf-gafi.org/publications/methodsandtrends/documents/virtual-currency-definitions-aml-cft-risk.html)
 
 <!-- SPELLING_IGNORE: fatf, cft -->
 
@@ -175,7 +175,7 @@ See also:
 
     See also:
 
-    - [The Consumer Financial Protection Bureau description of the regulation and extensions for banks](http://www.consumerfinance.gov/remittances-transfer-rule-amendment-to-regulation-e/#rule)
+    - [The Consumer Financial Protection Bureau description of the regulation and extensions for banks](https://www.consumerfinance.gov/rules-policy/final-rules/electronic-fund-transfers-regulation-e/#rule)
 
 - In the European Union, EU Funds Transfer Regulation requires that the originator’s bank, the beneficiary’s bank, and any intermediary banks include certain details of the payer and payee in transaction details to detect, investigate, and prevent money laundering and terrorist financing.
 
@@ -209,7 +209,7 @@ See also:
 
 - FATF Guidance for Money Service Businesses:
 
-    - [Financial Action Task Force, July 2009](http://www.fatf-gafi.org/media/fatf/documents/reports/RBA%20Guidance%20for%20Money%20Service%20Businesses.pdf)
+    - [Financial Action Task Force, July 2009](http://www.fatf-gafi.org/media/fatf/documents/reports/Guidance-RBA-money-value-transfer-services.pdf)
 
 
 
