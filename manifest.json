@@ -383,5 +383,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1184"
       }
     ]
+  },
+  "remove_old_tracking": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "52aefc346ca7a6f2b281581dda1d8327c9406b0e",
+        "updatedAt": "2021-10-11T18:18:26.687Z",
+        "href": "pr-preview/remove_old_tracking/52aefc",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1192"
+      }
+    ]
   }
 }
