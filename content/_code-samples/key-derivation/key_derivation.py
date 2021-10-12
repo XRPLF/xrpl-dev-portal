@@ -30,7 +30,7 @@ from fastecdsa import keys, curve
 
 import ed25519
 import RFC1751
-from base58 import base58
+import base58
 
 XRPL_SEED_PREFIX = b'\x21'
 XRPL_ACCT_PUBKEY_PREFIX = b'\x23'
