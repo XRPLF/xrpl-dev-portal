@@ -405,5 +405,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1193"
       }
     ]
+  },
+  "fastecdsa-2.1.2": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "f8d822175ab276f4af1f8b816f96cac7438ead8e",
+        "updatedAt": "2021-10-12T16:57:22.956Z",
+        "href": "pr-preview/fastecdsa-2.1.2/f8d822",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1195"
+      }
+    ]
   }
 }
