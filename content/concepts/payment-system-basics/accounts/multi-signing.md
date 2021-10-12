@@ -17,7 +17,7 @@ Benefits of multi-signing include:
 * You can delegate the power to send transactions from your address to a group of people, who can control your address if you are unavailable or unable to sign normally.
 * ... and more.
 
-## Signer Lists
+## SignerLists
 
 Before you can multi-sign, you must create a list of which addresses can sign for you.
 
@@ -25,19 +25,31 @@ The [SignerListSet transaction][] defines which addresses can authorize transact
 
 ### SignerWeight
 
-You can assign a weight to each signer in the signer list. The weight represents the relative authority of the signer to other signers on the list. The higher the value, the more authorization authority. Individual SignerWeight values cannot exceed 2<sup>16</sup>-1.
+You can assign a weight to each signer in the SignerList. The weight represents the relative authority of the signer to other signers on the list. The higher the value, the more authorization authority. Individual SignerWeight values cannot exceed 2<sup>16</sup>-1.
 
 ### SignerQuorum
 
-The SignerQuorum value is the minimum SignerWeight total required to authorize a transaction. The SignerQuorum value must be attainable. The SignerQuorum must be greater than 0 but less than or equal to the sum of the SignerWeight values in the SignerList, or all transactions fail.  
+The SignerQuorum value is the minimum SignerWeight total required to authorize a transaction. The SignerQuorum value must be attainable. The SignerQuorum must be greater than 0 but less than or equal to the sum of the SignerWeight values in the SignerList.  
 
-For example, you might assign a SignerQuorum of 3 to to an account. You assign your CEO a SignerWeight of 3, Vice Presidents a SignerWeight of 2, and Directors  a SignerWeight of 1. To approve a transaction for this account requires the approval of 3 Directors (total weight of 3), 1 Vice President and 1 Director (total weight of 3), 2 Vice Presidents (total weight of 4), or the CEO (total weight of 3). The SignerWeight and SignerQuorum allow you to set an appropriate level of scrutiny for each transaction, based on the relative trust and authority relegated to responsible members of your organization. 
+### Examples Using SignerWeight and SignerQuorum
+
+For a typical use case, you might have a shared account with a SignerQuorum of 1, then give all participants a SignerWeight of 1. A single approval from any one of them is all that is required to approve a transaction.
+
+For a very important account, you might set the SignerQuorum to 3, with 3 participants that have a SignerWeight of 1. All of the participants must agree and approve each transaction.
+
+Another account might also have a SignerQuorum of 3. You assign your CEO a SignerWeight of 3, 3 Vice Presidents a SignerWeight of 2 each, and 3 Directors a SignerWeight of 1 each. To approve a transaction for this account requires the approval of all 3 Directors (total weight of 3), 1 Vice President and 1 Director (total weight of 3), 2 Vice Presidents (total weight of 4), or the CEO (total weight of 3).
+
+In each of the previous three use cases, you would disable the master key without configuring a regular key, so that multi-signing is the only way of authorizing transactions.
+
+There might be a scenario where you create a multi-signing list as a "backup plan." The account owner normally uses a regular key for their transactions (not a multi-signing key). For safety, the owner adds a signer list containing 3 friends, each with a weight of 1. Then the owner sets the SignerQuorum to 3. If the account owner were to lose the private key, they can ask their friends to multi-sign a transaction to replace the regular key.
+
+SignerWeight and SignerQuorum allow you to set an appropriate level of oversight for each transaction, based on the relative trust and authority relegated to responsible participants who manage the account. 
 
 ## Sending Multi-Signed Transactions
 
 To successfully submit a multi-signed transaction, you must do all of the following:
 
-* The address sending the transaction (specified in the `Account` field) must have a [signer list in the ledger](signerlist.html). For instructions on how to do this, see [Set Up Multi-Signing](set-up-multi-signing.html).
+* The address sending the transaction (specified in the `Account` field) must have a [SignerList in the ledger](signerlist.html). For instructions on how to do this, see [Set Up Multi-Signing](set-up-multi-signing.html).
 * The transaction must include the `SigningPubKey` field as an empty string.
 * The transaction must include a [`Signers` field](transaction-common-fields.html#signers-field) containing an array of signatures.
 * The signatures present in the `Signers` array must match signers defined in the SignerList.
