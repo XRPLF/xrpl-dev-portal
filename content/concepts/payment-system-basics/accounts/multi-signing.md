@@ -21,7 +21,17 @@ Benefits of multi-signing include:
 
 Before you can multi-sign, you must create a list of which addresses can sign for you.
 
-The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
+The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include 1 to 8 addresses in a SignerList. The SignerList cannot include the sender's address and there can be no duplicate entries. You can control how many signatures are needed, in which combinations, by using the *SignerWeight* and *SignerQuorum* values of the SignerList.
+
+### SignerWeight
+
+You can assign a weight to each signer in the signer list. The weight represents the relative authority of the signer to other signers on the list. The higher the value, the more authorization authority. Individual SignerWeight values cannot exceed 2<sup>16</sup>-1.
+
+### SignerQuorum
+
+The SignerQuorum value is the minimum SignerWeight total required to authorize a transaction. The SignerQuorum value must be attainable. The SignerQuorum must be greater than 0 but less than or equal to the sum of the SignerWeight values in the SignerList, or all transactions fail.  
+
+For example, you might assign a SignerQuorum of 3 to to an account. You assign your CEO a SignerWeight of 3, Vice Presidents a SignerWeight of 2, and Directors  a SignerWeight of 1. To approve a transaction for this account requires the approval of 3 Directors (total weight of 3), 1 Vice President and 1 Director (total weight of 3), 2 Vice Presidents (total weight of 4), or the CEO (total weight of 3). The SignerWeight and SignerQuorum allow you to set an appropriate level of scrutiny for each transaction, based on the relative trust and authority relegated to responsible members of your organization. 
 
 ## Sending Multi-Signed Transactions
 
