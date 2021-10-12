@@ -58,15 +58,6 @@ jobs:
       continue-on-error: true
       run: dactyl_style_checker -q > out/style_report.txt
 
-    ## old version, deprecated
-    # - name: Deploy preview to gh-pages
-    #   uses: sauloxd/review-apps@v1.3.3
-    #   with:
-    #     build-cmd: "echo 'Using existing build'"
-    #     branch: "gh-pages"
-    #     dist: "out"
-    #     slug: "pr-preview"
-
     # new deploy system. TODO: delete folders from gh-pages when PRs are closed
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
@@ -76,10 +67,8 @@ jobs:
         destination_dir: ./pr-preview/${{ github.head_ref }}
 
     - name: Summarize Output
-      uses: unsplash/comment-on-pr@master
+      uses: thollander/actions-comment-pull-request@v1
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         msg: "${{ env.LINKREPORT }}\n\nPreview: https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/\n\n[Style Report](https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/style_report.txt)"
-        ## Old URLs for review-apps version:
-        # msg: "${{ env.LINKREPORT }}\n\nPreview: https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/${{steps.slug.outputs.sha6}}\n\n[Style Report](https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/${{steps.slug.outputs.sha6}}/style_report.txt)"
