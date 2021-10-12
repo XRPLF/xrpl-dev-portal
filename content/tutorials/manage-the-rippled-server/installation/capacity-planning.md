@@ -173,7 +173,7 @@ If you want to contribute to storing ledger history but you do not have enough d
 
 ##### Amazon Web Services
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but if using Elastic Block Storage (EBS), only use either the io1 or io2 types, and configure them for at least 10,000 IOPS. <!-- SPELLING_IGNORE: iops, ebs, aws -->
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but if using Elastic Block Storage (EBS), only use either the `io1` or `io2` types, and configure them for at least 10,000 IOPS. <!-- SPELLING_IGNORE: iops, ebs, aws -->
 Alternately, AWS instance stores (`ephemeral` storage) also has suitable performance. However, that is not durable, so data loss is to be expected under some circumstances.
 The `database_path` and `node_db` path should each reside on either EBS io1 or io2, or on instance storage.
 
