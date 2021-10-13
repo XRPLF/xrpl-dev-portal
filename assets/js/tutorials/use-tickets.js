@@ -49,9 +49,9 @@ $("#prepare-and-sign").click( async function(event) {
   }
 
   const vli = await api.getLedgerIndex()
-  let prepared = await api.autofill({
+  const prepared = await api.autofill({
     "TransactionType": "TicketCreate",
-    "Account": wallet.classicAddress,
+    "Account": wallet.address,
     "TicketCount": 10,
     "Sequence": current_sequence,
     "LastLedgerSequence": vli+LLS_OFFSET
@@ -61,10 +61,9 @@ $("#prepare-and-sign").click( async function(event) {
     `<p>Prepared transaction:</p>
     <pre><code>${pretty_print(prepared)}</code></pre>`)
 
-  let tx_blob = wallet.signTransaction(prepared)
-  let tx_id = xrpl.computeSignedTransactionHash(tx_blob)
+  const {tx_blob, hash} = wallet.sign(prepared)
   block.find(".output-area").append(
-    `<p>Transaction hash: <code id="tx_id">${tx_id}</code></p>`)
+    `<p>Transaction hash: <code id="tx_id">${hash}</code></p>`)
   block.find(".output-area").append(
     `<p>Signed blob:</p><pre class="tx-blob"><code id="tx_blob">${tx_blob}</code></pre>`)
 
@@ -84,16 +83,15 @@ async function intermission_submit(event, tx_json) {
   const wallet = get_wallet(event)
   if (!wallet) {return}
   const prepared = await api.autofill(tx_json)
-  const tx_blob = wallet.signTransaction(prepared)
+  const {tx_blob, hash} = wallet.sign(prepared)
   const prelim = await api.request({
     "command": "submit",
     "tx_blob": tx_blob
   })
-  const tx_id = xrpl.computeSignedTransactionHash(tx_blob)
 
   block.find(".output-area").append(`<p>${prepared.TransactionType}
     ${prepared.Sequence}:
-    <a href="https://devnet.xrpl.org/transactions/${tx_id}"
+    <a href="https://devnet.xrpl.org/transactions/${hash}"
     target="_blank">${prelim.result.engine_result}</a></p>`)
 }
 
@@ -187,7 +185,7 @@ $("#prepare-ticketed-tx").click(async function(event) {
 
   const prepared_t = await api.autofill({
     "TransactionType": "AccountSet",
-    "Account": wallet.classicAddress,
+    "Account": wallet.address,
     "TicketSequence": use_ticket,
     "Sequence": 0,
     "LastLedgerSequence": vli+LLS_OFFSET
@@ -197,14 +195,13 @@ $("#prepare-ticketed-tx").click(async function(event) {
     `<p>Prepared transaction:</p>
     <pre><code>${pretty_print(prepared_t)}</code></pre>`)
 
-  const tx_blob_t = wallet.signTransaction(prepared_t)
-  const tx_id_t = xrpl.computeSignedTransactionHash(tx_blob_t)
+  const {tx_blob, hash} = wallet.sign(prepared_t)
   block.find(".output-area").append(
-    `<p>Transaction hash: <code id="tx_id_t">${tx_id_t}</code></p>`)
+    `<p>Transaction hash: <code id="tx_id_t">${hash}</code></p>`)
 
   block.find(".output-area").append(
     `<pre style="visibility: none">
-    <code id="tx_blob_t">${tx_blob_t}</code></pre>`)
+    <code id="tx_blob_t">${tx_blob}</code></pre>`)
 
   // Update breadcrumbs & activate next step
   complete_step("Prepare Ticketed Tx")

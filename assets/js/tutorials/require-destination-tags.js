@@ -66,7 +66,7 @@ $(document).ready(() => {
     let seed = block.data("testSendSecret")
     if (!seed) {
       console.debug("First-time setup for test sender...")
-      test_sender_wallet = await api.generateFaucetWallet()
+      test_sender_wallet = (await api.fundWallet()).wallet
       block.data("testSendSecret", test_sender_wallet.seed)
 
       // First time: Wait for our test sender to be fully funded, so we don't
@@ -75,7 +75,7 @@ $(document).ready(() => {
         try {
           await api.request({
             "command": "account_info",
-            "account": test_sender_wallet.classicAddress,
+            "account": test_sender_wallet.address,
             "ledger_index": "validated"
           })
           break
@@ -101,7 +101,7 @@ $(document).ready(() => {
       const test_sender = await get_test_sender(block)
       const tx_json = {
         "TransactionType": "Payment",
-        "Account": test_sender.classicAddress,
+        "Account": test_sender.address,
         "Amount": "3152021",
         "Destination": address
       }
@@ -111,15 +111,14 @@ $(document).ready(() => {
       }
 
       const prepared = await api.autofill(tx_json)
-      const tx_blob = test_sender.signTransaction(prepared)
+      const {tx_blob, hash} = test_sender.sign(prepared)
       console.debug("Submitting test payment", prepared)
       const prelim = await api.request({"command": "submit", tx_blob})
-      const tx_hash = xrpl.computeSignedTransactionHash(tx_blob)
 
       block.find(".loader").hide()
       block.find(".output-area").append(`<p>${tx_json.TransactionType}
         ${prepared.Sequence} ${(dt?"WITH":"WITHOUT")} Dest. Tag:
-        <a href="https://testnet.xrpl.org/transactions/${tx_hash}"
+        <a href="https://testnet.xrpl.org/transactions/${hash}"
         target="_blank">${prelim.result.engine_result}</a></p>`)
     } catch(err) {
       block.find(".loader").hide()

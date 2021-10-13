@@ -44,13 +44,12 @@ $("#sign-button").click( function(event) {
   const wallet = get_wallet(event)
   if (!wallet) {return}
 
-  signed = wallet.signTransaction(preparedTxJSON)
-  hash = xrpl.computeSignedTransactionHash(signed) // TODO: update if computeSignedTransactionHash changes
+  {tx_blob, hash} = wallet.sign(preparedTxJSON)
 
   block.find(".output-area").html(
     `<div><strong>Signed Transaction blob:</strong>
     <code id='signed-tx-blob' style='overflow-wrap: anywhere; word-wrap: anywhere'
-    >${signed}</code></div>
+    >${tx_blob}</code></div>
     <div><strong>Identifying hash:</strong> <span id='signed-tx-hash'
     >${hash}</span></div>`
   )

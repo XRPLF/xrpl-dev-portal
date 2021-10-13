@@ -128,10 +128,10 @@ $(document).ready(() => {
 
     let flags = 0
     if ($("#cold-require-dest").prop("checked")) {
-      flags |= xrpl.AccountSetTransactionFlags.tfRequireDestTag
+      flags |= xrpl.AccountSetTfFlags.tfRequireDestTag
     }
     if ($("#cold-disallow-xrp").prop("checked")) {
-      flags |= xrpl.AccountSetTransactionFlags.tfDisallowXRP
+      flags |= xrpl.AccountSetTfFlags.tfDisallowXRP
     }
 
     const tick_size = parseInt($("#cold-tick-size").val(), 10)
@@ -153,10 +153,10 @@ $(document).ready(() => {
     try {
       const cold_settings_tx = {
         "TransactionType": "AccountSet",
-        "Account": cold_wallet.classicAddress,
+        "Account": cold_wallet.address,
         "TransferRate": transfer_rate,
         "TickSize": tick_size,
-        "SetFlag": xrpl.AccountSetFlags.asfDefaultRipple,
+        "SetFlag": xrpl.AccountSetAsfFlags.asfDefaultRipple,
         "Domain": domain,
         "Flags": flags
       }
@@ -179,10 +179,10 @@ $(document).ready(() => {
 
     let flags = 0
     if ($("#hot-require-dest").prop("checked")) {
-      flags |= xrpl.AccountSetTransactionFlags.tfRequireDestTag
+      flags |= xrpl.AccountSetTfFlags.tfRequireDestTag
     }
     if ($("#hot-disallow-xrp").prop("checked")) {
-      flags |= xrpl.AccountSetTransactionFlags.tfDisallowXRP
+      flags |= xrpl.AccountSetTfFlags.tfDisallowXRP
     }
 
     const domain = $("#hot-domain-hex").text().trim()
@@ -191,9 +191,9 @@ $(document).ready(() => {
     try {
       const hot_settings_tx = {
         "TransactionType": "AccountSet",
-        "Account": hot_wallet.classicAddress,
+        "Account": hot_wallet.address,
         // Require Auth so we can't accidentally issue from the hot address
-        "SetFlag": xrpl.AccountSetFlags.asfRequireAuth,
+        "SetFlag": xrpl.AccountSetAsfFlags.asfRequireAuth,
         "Domain": domain,
         "Flags": flags
       }
@@ -211,7 +211,7 @@ $(document).ready(() => {
   $("#create-trust-line-button").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     block.find(".output-area").empty()
-    const cold_address = get_wallet_2(event, "cold").classicAddress
+    const cold_address = get_wallet_2(event, "cold").address
     const hot_wallet = get_wallet_2(event, "hot")
 
     let currency_code
@@ -234,7 +234,7 @@ $(document).ready(() => {
     try {
       const trust_set_tx = {
         "TransactionType": "TrustSet",
-        "Account": hot_wallet.classicAddress,
+        "Account": hot_wallet.address,
         "LimitAmount": {
           "currency": currency_code,
           "issuer": cold_address,
@@ -254,7 +254,7 @@ $(document).ready(() => {
   $("#send-token-button").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     block.find(".output-area").empty()
-    const hot_address = get_wallet_2(event, "hot").classicAddress
+    const hot_address = get_wallet_2(event, "hot").address
     const cold_wallet = get_wallet_2(event, "cold")
 
     const currency_code = $("#send-currency-code").text().trim()
@@ -274,11 +274,11 @@ $(document).ready(() => {
     try {
       const send_token_tx = {
         "TransactionType": "Payment",
-        "Account": cold_wallet.classicAddress,
+        "Account": cold_wallet.address,
         "Amount": {
           "currency": currency_code,
           "value": issue_quantity,
-          "issuer": cold_wallet.classicAddress
+          "issuer": cold_wallet.address
         },
         "Destination": hot_address
       }
@@ -299,8 +299,8 @@ $(document).ready(() => {
   $("#confirm-balances-button").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     block.find(".output-area").empty()
-    const hot_address = get_wallet_2(event, "hot").classicAddress
-    const cold_address = get_wallet_2(event, "cold").classicAddress
+    const hot_address = get_wallet_2(event, "hot").address
+    const cold_address = get_wallet_2(event, "cold").address
 
     block.find(".loader").show()
     try {

@@ -9,7 +9,7 @@ let my_seq = 21404872
 
 // Provide *all* required fields before signing a transaction
 const txJSON = {
-  "Account": my_wallet.classicAddress,
+  "Account": my_wallet.address,
   "TransactionType":"Payment",
   "Destination":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
   "Amount":"13000000",
@@ -19,7 +19,7 @@ const txJSON = {
   "Sequence": my_seq
 }
 
-const tx_blob = my_wallet.signTransaction(txJSON)
+const signed = my_wallet.sign(txJSON)
 
-console.log("tx_blob is:", tx_blob)
-console.log("tx hash is:", xrpl.computeBinaryTransactionSigningHash(tx_blob))
+console.log("tx_blob is:", signed.tx_blob)
+console.log("tx hash is:", signed.hash)

@@ -520,12 +520,12 @@ async function generic_full_send(event, tx_json, wallet) {
     `<p>${tl("Prepared transaction:")}</p>
     <pre><code>${pretty_print(prepared)}</code></pre>`)
 
-  const signed = wallet.signTransaction(prepared)
+  const {tx_blob, hash} = wallet.sign(prepared)
   block.find(".output-area").append(
-    `<p>${tl("Transaction hash:")} <code id="tx_id">${xrpl.computeSignedTransactionHash(signed)}</code></p>`)
+    `<p>${tl("Transaction hash:")} <code id="tx_id">${hash}</code></p>`)
     // TODO: update computeSignedTransactionHash if that changes
 
-  await do_submit(block, {"tx_blob":  signed}, wait_step_name)
+  await do_submit(block, {"tx_blob":  tx_blob}, wait_step_name)
 }
 
 /**
