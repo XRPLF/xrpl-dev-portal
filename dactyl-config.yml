@@ -1021,10 +1021,13 @@ pages:
     -   md: tutorials/get-started/get-started-using-javascript.md
         targets:
             - en
-
-    -   md: tutorials/get-started/get-started-using-javascript.ja.md
-        targets:
             - ja
+
+    # Old translated JS quickstart for ripple-lib 1.x. Refers to code samples
+    # that have been removed.
+    # -   md: tutorials/get-started/get-started-using-javascript.ja.md
+    #     targets:
+    #         - ja
 
         # Redirect for old JS Client Library URLs
     -   name: Get Started Using JavaScript
