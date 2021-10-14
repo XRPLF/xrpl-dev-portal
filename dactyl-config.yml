@@ -1177,6 +1177,7 @@ pages:
             - en
             - ja
 
+
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         targets:
             - en
@@ -1381,10 +1382,28 @@ pages:
             - en
             - ja
 
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/enable-no-freeze.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/enact-global-freeze.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/freeze-a-trust-line.md
+        targets:
+            - en
+            - ja
+
     # TODO: "Send a Cross-Currency Payment"
 
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
-    # freeze, enable/disable rippling, set transfer fees, use auth'd trust lines
+    # enable/disable rippling, use auth'd trust lines
 
     -   name: XRP Ledger Businesses
         html: xrp-ledger-businesses.html
