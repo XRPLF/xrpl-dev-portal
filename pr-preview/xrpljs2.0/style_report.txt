@@ -1,24 +1,38 @@
 -------------
 Spell Checker
 -------------
-Found 7 possible spelling errors:
+Found 15 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
+<Page 'Enable No Freeze' (enable-no-freeze.html)> Unknown Words:
+  start_with: startwith
+  include_code: 
+  end_before: 
+
+<Page 'Enact Global Freeze' (enact-global-freeze.html)> Unknown Words:
+  start_with: startwith
+  include_code: 
+  end_before: 
+
+<Page 'Freeze a Trust Line' (freeze-a-trust-line.html)> Unknown Words:
+  start_with: startwith
+  end_before: 
+
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iod, ios, ioy
-  io2: iod, ios, ioy
+  io1: io, ios, io-
+  io2: o2, ior, iou
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
-  utils: tils, util, utile
   isvalidclassicaddress: 
+  utils: util, utile, tils
   isvalidxaddress: 
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 215 discouraged words/phrases:
+Found 218 discouraged words/phrases:
 Page: <Page 'Freezing Issued Currencies' (freezes.html)>
    Discouraged word: ious (1 instances); suggest 'issuances' instead.
 Page: <Page 'Demurrage' (demurrage.html)>
@@ -114,6 +128,10 @@ Page: <Page 'Issue a Fungible Token' (issue-a-fungible-token.html)>
    Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
    Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
    Discouraged word: purchase (1 instances); suggest 'buy' instead.
+Page: <Page 'Enact Global Freeze' (enact-global-freeze.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
 Page: <Page 'List XRP as an Exchange' (list-xrp-as-an-exchange.html)>
    Discouraged word: easy (1 instances); suggest '(omit)' instead.
    Discouraged phrase: warm wallet (2 instances); suggest 'standby address' instead.
@@ -213,11 +231,11 @@ Page: <Page 'Dev Tools' (dev-tools.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 47.2 (Difficult)
-  Dale-Chall Readability Score: 8.3 (average 11th or 12-grade student)
+  Flesch Reading Ease Score: 47.3 (Difficult)
+  Dale-Chall Readability Score: 8.2 (average 11th or 12-grade student)
   SMOG Index: Grade level 12.9
   Gunning FOG Index: Grade level 11.2
-  Automated Readability Index: Grade level 14.0
+  Automated Readability Index: Grade level 13.9
   Coleman-Liau Index: Grade level 12.8
   Linsear Write Formula: Grade level 9.4
 
@@ -255,8 +273,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 61
-  Words: 809
-  Characters: 5,094
+  Words: 805
+  Characters: 5,062
 
 Longest pages by character count:
 <Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)> Length Metrics:

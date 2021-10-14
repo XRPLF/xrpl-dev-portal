@@ -265,7 +265,7 @@
 <p>If you want to remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a <a href="setregularkey.html">SetRegularKey transaction</a>, omitting the <code>RegularKey</code> field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a <a href="multi-signing.html">signer list</a>).</p>
 <p>When removing a regular key pair to your account, the <code>SetRegularKey</code> transaction requires signing by your account's master private key (secret) or existing regular key pair. Transmitting your master or regular private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.</p>
 <h3 id="sign-your-transaction">Sign Your Transaction<a aria-hidden="true" class="hover_anchor" href="#sign-your-transaction"><i class="fa fa-link"></i></a></h3>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <p>Populate the request fields with the following values:</p>
@@ -1233,6 +1233,21 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>

@@ -294,7 +294,7 @@
 <p>このように、 <em>完全に</em> 正規である署名を使用する場合には、2つの有効な値のうちどちらを使用するかを選択し、もう一方が無効であることを宣言する必要があります。XRP Ledgerの作成者は、2つの有効な値（<code>S</code>と<code>N-S</code>）のいずれか <em>小さい方</em> を任意に選択すると決めました。トランザクションが選択された（小さな）値<code>S</code>を使用し、正規トランザクションとなるためのすべての標準ルールに準拠している場合、このトランザクションは <em>完全に正規</em> であるとみなされます。</p>
 <p>完全に正規である署名の生成が確実に行われていなかった古いソフトウェアとの互換性を維持するため、XRP Ledgerは完全に正規ではないトランザクションも受け入れます。新しいユーザーを悪用から保護するため、XRP Ledgerではトランザクション向けに<a href="transaction-common-fields.html#グローバルフラグ"><strong>tfFullyCanonicalSig</strong></a>というフラグがあります。このフラグが設定されている場合、トランザクションが有効となるには <em>完全に正規</em> の署名を使用する必要があります。</p>
 <p>完全に正規であるECDSA署名を計算するには、SとN-Sを比較していずれが小さいかを見極めて、トランザクションの<code>Signature</code>フィールドにその値を使用する必要があります。</p>
-<p>Rippleが公開しているすべてのXRP Ledgerソフトウェア（<code>rippled</code>およびripple-lib/RippleAPIを含む）では、完全に正規である署名のみが生成されます。ユーザーの保護を強化するため、Rippleは、可能な限りデフォルトで<strong>tfFullyCanonicalSig</strong>フラグを有効にするようにコードを構成しています。XRP Ledgerソフトウェアのサードパーティ実装においても、完全に正規である署名だけを生成し、デフォルトでトランザクションのtfFullyCanonicalSigが有効にすることを強く推奨します。</p>
+<p>Rippleが公開しているすべてのXRP Ledgerソフトウェア（<code>rippled</code>およびripple-lib/xrpl.jsを含む）では、完全に正規である署名のみが生成されます。ユーザーの保護を強化するため、Rippleは、可能な限りデフォルトで<strong>tfFullyCanonicalSig</strong>フラグを有効にするようにコードを構成しています。XRP Ledgerソフトウェアのサードパーティ実装においても、完全に正規である署名だけを生成し、デフォルトでトランザクションのtfFullyCanonicalSigが有効にすることを強く推奨します。</p>
 <p>次の2つの状況においては、RippleのXRP Ledgerの署名実装によってtfFullyCanonicalSigフラグが自動的に有効になりません。次の状況では、フラグを慎重に設定する必要があります。</p>
 <ul>
 <li>ユーザーがトランザクションの<code>Flags</code>フィールドを明示的に指定している場合。ビット単位のORを使用してtfFullyCanonicalSig <em>と</em> その他の必要なすべてのフラグを適用します。</li>
@@ -1055,6 +1055,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>

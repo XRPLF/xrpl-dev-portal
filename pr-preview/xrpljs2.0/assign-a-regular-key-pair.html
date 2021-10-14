@@ -343,7 +343,7 @@ rippled wallet_propose
 <p>When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are <a href="set-up-secure-signing.html">several ways of securely signing transactions</a>, but this tutorial uses a local <code>rippled</code> server.</p>
 <p>When you send subsequent SetRegularKey transactions, you can sign using the existing regular private key to replace or <a href="change-or-remove-a-regular-key-pair.html">remove itself</a>. Note that you should still not submit your regular private key across the network.</p>
 <h3 id="sign-your-transaction">Sign Your Transaction<a aria-hidden="true" class="hover_anchor" href="#sign-your-transaction"><i class="fa fa-link"></i></a></h3>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <p>Populate the request fields with the following values:</p>
@@ -569,7 +569,7 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 <p>At this point, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. <strong>To avoid losing control of your account,</strong> it is important that you test your regular key before you take any additional steps such as <a href="disable-master-key-pair.html">disabling the master key pair</a>. If you make a mistake and lose access to your account, no one can restore it for you.</p>
 <p>To verify that your account has the regular key pair set correctly, submit an <a href="accountset.html">AccountSet transaction</a> from your account, signing it with the regular private key you assigned to your account in step 2. As in step 1, this tutorial uses a local <code>rippled</code> server as a <a href="set-up-secure-signing.html">way of securely signing transactions</a>.</p>
 <h3 id="sign-your-transaction-1">Sign Your Transaction<a aria-hidden="true" class="hover_anchor" href="#sign-your-transaction-1"><i class="fa fa-link"></i></a></h3>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <p>Populate the request fields with the following values:</p>
@@ -1485,6 +1485,21 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>

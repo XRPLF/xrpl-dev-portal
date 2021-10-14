@@ -365,7 +365,7 @@
 </code></pre></div></div>
 </div>
 <h2 id="2-sign-the-checkcancel-transaction">2. Sign the CheckCancel transaction<a aria-hidden="true" class="hover_anchor" href="#2-sign-the-checkcancel-transaction"><i class="fa fa-link"></i></a></h2>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later. <!--#{ fix md highlighting_ #}--></p>
 <h3 id="example-request">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="rippleapi" href="#code-1-0">RippleAPI</a></li><li><a class="commandline" href="#code-1-1">Commandline</a></li></ul>
@@ -1314,6 +1314,21 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
