@@ -6,14 +6,14 @@ Found 7 possible spelling errors:
   keypairs: 
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iom, iod, iop
-  io2: iop, iow, iou
+  io1: iod, ios, ioy
+  io2: iod, ios, ioy
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
-  isvalidxaddress: 
+  utils: tils, util, utile
   isvalidclassicaddress: 
-  utils: util, tils, utile
+  isvalidxaddress: 
 
 -----------------------------
 Discouraged Words and Phrases
@@ -256,7 +256,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 61
   Words: 809
-  Characters: 5,093
+  Characters: 5,094
 
 Longest pages by character count:
 <Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)> Length Metrics:

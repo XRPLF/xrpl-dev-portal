@@ -350,8 +350,8 @@
 <h3 id="3-generate-wallet">3. Generate Wallet<a aria-hidden="true" class="hover_anchor" href="#3-generate-wallet"><i class="fa fa-link"></i></a></h3>
 <p>The <code>xrpl.js</code> library has a <code>Wallet</code> class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new wallet like this:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Create a wallet and fund it with the Testnet faucet:</span>
-  <span class="kd">const</span> <span class="nx">test_wallet</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">()</span> <span class="c1">// TODO: change to define based on fundWallet result</span>
   <span class="kd">const</span> <span class="nx">fund_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">(</span><span class="nx">test_wallet</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">test_wallet</span> <span class="o">=</span> <span class="nx">fund_result</span><span class="p">.</span><span class="nx">wallet</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fund_result</span><span class="p">)</span>
 </code></pre></div>
 <p>If you just want to generate keys, you can create a new Wallet instance like this:</p>

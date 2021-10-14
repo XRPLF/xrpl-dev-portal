@@ -44,7 +44,7 @@ $("#sign-button").click( function(event) {
   const wallet = get_wallet(event)
   if (!wallet) {return}
 
-  {tx_blob, hash} = wallet.sign(preparedTxJSON)
+  const {tx_blob, hash} = wallet.sign(preparedTxJSON)
 
   block.find(".output-area").html(
     `<div><strong>Signed Transaction blob:</strong>
