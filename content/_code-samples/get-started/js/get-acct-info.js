@@ -10,8 +10,8 @@ async function main() {
   await client.connect()
 
   // Create a wallet and fund it with the Testnet faucet:
-  const test_wallet = new xrpl.Wallet() // TODO: change to define based on fundWallet result
   const fund_result = await client.fundWallet(test_wallet)
+  const test_wallet = fund_result.wallet
   console.log(fund_result)
 
   // Get info from the ledger about the address we just funded

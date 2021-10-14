@@ -32,10 +32,7 @@ api.on('connected', async () => {
   // The earliest ledger a transaction could appear in is the first ledger
   // after the one that's already validated at the time it's *first* submitted.
   const min_ledger = (await api.getLedgerIndex()) + 1
-  const result = await api.request({
-    "command": "submit",
-    "tx_blob": signed.tx_blob
-  })
+  const result = await api.submit(signed.tx_blob)
   console.log("Tentative result code:", result.result.engine_result)
   console.log("Tentative result message:", result.result.engine_result_message)
 
