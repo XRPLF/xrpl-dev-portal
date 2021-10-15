@@ -32,7 +32,7 @@ XRP Ledgerの中心であるピアツーピアネットワークは、コンセ�
 
 プログラミングライブラリーは、XRP Ledgerデータにアクセスするために必ずしも必要なわけではありません。HTTPまたはWebSocketを使用すれば、[`rippled` API](rippled-api.html)に直接接続できるためです。ライブラリーは、`rippled` APIにアクセスする際の一般的な作業の一部を簡素化し、データをライブラリー内のプログラミング言語で理解しやすく、かつプログラミングしやすい形式に変換します。
 
-[JavaScript用のxrpl.js](get-started-with-rippleapi-for-javascript.html)は、長年にわたって使用され、かつ十分なサポートがある、XRP Ledgerにアクセスするためのライブラリーです。多くの[ミドルウェアサービス](#ミドルウェア)が、このような[プログラミングライブラリー](client-libraries.html)を内部で使用しています。
+[JavaScript用のxrpl.js](get-started-using-javascript.html)は、長年にわたって使用され、かつ十分なサポートがある、XRP Ledgerにアクセスするためのライブラリーです。多くの[ミドルウェアサービス](#ミドルウェア)が、このような[プログラミングライブラリー](client-libraries.html)を内部で使用しています。
 
 ### ミドルウェア
 

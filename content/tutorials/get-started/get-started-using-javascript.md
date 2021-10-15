@@ -14,7 +14,7 @@ showcase_icon: assets/img/logos/javascript.svg
 
 This tutorial guides you through the basics of building an XRP Ledger-connected application in JavaScript or TypeScript using the [`xrpl.js`](https://github.com/XRPLF/xrpl.js/) client library in either Node.js or web browsers.
 
-The scripts and config files used in this guide are [available in this website's GitHub Repository](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart).
+The scripts and config files used in this guide are [available in this website's GitHub Repository]({{github_forkurl}}/tree/{{github_branch}}/content/_code-samples/get-started/js/).
 
 
 ## Learning goals

@@ -94,8 +94,8 @@ main()
 Try editing the code above to do something different:
 
 - Connect to the [Testnet](parallel-networks.html) public server at `wss://s.altnet.rippletest.net/` instead. [Answer >](javascript:js_interactives.step2.ex_1())
-- Look up the details of a transaction using the [`getTransaction()` method](rippleapi-reference.html#gettransaction). For the `id`, use one of the `transactionHashes` from the `getLedger()` response! [Answer >](javascript:js_interactives.step2.ex_2())
-- Convert the `totalDrops` from the response to decimal XRP. [Answer >](javascript:js_interactives.step2.ex_3())
+- Look up the details of one of the ledger's transaction using the [tx method][]. [Answer >](javascript:js_interactives.step2.ex_2())
+- Convert the `total_coins` from the response to decimal XRP. [Answer >](javascript:js_interactives.step2.ex_3())
 
 
 ## Setup Steps
@@ -111,8 +111,8 @@ This page has the necessary prerequisites already loaded, but you can access the
 
 When you're ready to move on, continue using the XRP Ledger with these resources:
 
+- [Send XRP](send-xrp.html) to send your first transaction.
 - [Understand the Concepts](concepts.html) behind the XRP Ledger's design.
-- [Use the RippleAPI Reference](rippleapi-reference.html) to see what else you can do.
 - [Install `rippled`](install-rippled.html) to participate in the network.
 - [Get Testnet XRP](xrp-testnet-faucet.html) to try sending and receiving payments.
 

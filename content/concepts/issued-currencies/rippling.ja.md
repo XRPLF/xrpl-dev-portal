@@ -77,16 +77,12 @@ DefaultRippleフラグは、デフォルトで着信トラストラインでのR
 
 [`rippled` API](rippled-api.html)でNoRippleフラグを有効にするには、`tfSetNoRipple`フラグを設定した[TrustSetトランザクション][]を送信します。NoRippleを無効にする（Ripplingを有効にする）には、`tfClearNoRipple`フラグを使用します。
 
-[RippleAPI](rippleapi-reference.html)でNoRippleフラグを有効にするには、トラストラインの`ripplingDisabled` フィールドを`true`に設定して[Trustlineトランザクション](rippleapi-reference.html#preparetrustline)を送信します。
-
 
 ### NoRippleステータスの確認
 
 相互に信頼し合っている2つのアカウントの場合、NoRippleフラグはアカウントごとに管理されます。
 
 [`rippled` API](rippled-api.html)でアドレスに関連付けられているトラストラインを確認するには、[account_linesメソッド][]を使用します。各トラストラインの`no_ripple`フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、`no_ripple_peer`フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。
-
-[RippleAPI](rippleapi-reference.html)でアドレスに関連付けられているトラストラインを確認するには、[getTrustlines](rippleapi-reference.html#gettrustlines)メソッドを使用します。各トラストラインの`ripplingDisabled`フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、`counterparty.ripplingDisabled`フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。
 
 
 ## 関連項目

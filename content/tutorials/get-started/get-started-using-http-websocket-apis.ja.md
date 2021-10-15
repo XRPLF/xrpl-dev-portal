@@ -229,7 +229,7 @@ HTTP Status:200 OK
   - [ソフトウェアエコシステム](software-ecosystem.html)
   - [並列ネットワーク](parallel-networks.html)
 - **チュートリアル:**
-  - [RippleAPI for JavaScriptの使用開始](get-started-with-rippleapi-for-javascript.html)
+  - [xrpl.js for JavaScriptの使用開始](get-started-using-javascript.html)
   - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
   - [rippledサーバーの管理](manage-the-rippled-server.html)
 - **リファレンス:**

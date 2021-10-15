@@ -13,7 +13,7 @@ The `sign` method takes a [transaction in JSON format](transaction-formats.html)
 {% include '_snippets/public-signing-note.md' %}
 <!--_ -->
 
-**Caution:** Unless you run the `rippled` server yourself, you should do [local signing with RippleAPI](rippleapi-reference.html#sign) instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.
+**Caution:** Unless you run the `rippled` server yourself, you should do local signing using a [client library](client-libraries.html) instead of using this command. For more information, see [Set Up Secure Signing](set-up-secure-signing.html).
 
 ## Request Format
 An example of the request format:
