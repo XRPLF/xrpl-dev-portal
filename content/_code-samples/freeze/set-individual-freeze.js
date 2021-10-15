@@ -29,10 +29,11 @@ async function main() {
 
   const data = await client.request(account_lines)
 
-  // Prepare a trustline transaction to enable freeze
   let trustset = {};
   if (data.length !== 1) {
     console.log('trustline not found, making a default one');
+    
+    // Prepare a TrustSet transaction to create a trust line
     trustset = {
       TransactionType: 'TrustSet',
       Account: issuing_address,
@@ -42,8 +43,10 @@ async function main() {
         issuer: address_to_freeze,
       }
     };
+
     // For JS users, this lets you check if your transaction is well-formed
     validate(trustset) 
+
   } else {
     trustset = data[0].specification;
     console.log('trustline found. previous state:', trustline);
