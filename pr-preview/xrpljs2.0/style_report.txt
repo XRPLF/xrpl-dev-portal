@@ -6,28 +6,28 @@ Found 15 possible spelling errors:
   keypairs: 
 
 <Page 'Enable No Freeze' (enable-no-freeze.html)> Unknown Words:
+  end_before: 
   start_with: startwith
   include_code: 
-  end_before: 
 
 <Page 'Enact Global Freeze' (enact-global-freeze.html)> Unknown Words:
+  end_before: 
   start_with: startwith
   include_code: 
-  end_before: 
 
 <Page 'Freeze a Trust Line' (freeze-a-trust-line.html)> Unknown Words:
-  start_with: startwith
   end_before: 
+  start_with: startwith
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iob, io-, iom
-  io2: iob, io-, iom
+  io1: io-, iot, iou
+  io2: io-, iot, io
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
-  isvalidxaddress: 
   isvalidclassicaddress: 
-  utils: utile, tils, util
+  utils: util, utile, tils
+  isvalidxaddress: 
 
 -----------------------------
 Discouraged Words and Phrases
