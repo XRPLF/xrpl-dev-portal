@@ -89,7 +89,8 @@ You can only enable the No Freeze setting with a transaction signed by your addr
 
 - [GB-2014-02 New Feature: Balance Freeze](https://ripple.com/files/GB-2014-02.pdf)
 - [Freeze Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze)
-
+- **Concepts:**
+    - [Trust Lines and Issuing](trust-lines-and-issuing.html)
 - **Tutorials:**
     - [Enable No Freeze](enable-no-freeze.html)
     - [Enact Global Freeze](enact-global-freeze.html)
