@@ -42,15 +42,15 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 _JavaScript_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.js", end_before="// Connect", language="js") }}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Example credentials", end_before="// Connect", language="js") }}
 
 _Python_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.py", end_before="# Connect", language="py") }}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", end_before="# Connect", language="py") }}
 
 _Java_
 
-{{ include_code("_code-samples/send-xrp/SendXrp.java", end_before="// Connect", language="java") }}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", end_before="// Connect", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -63,23 +63,23 @@ When you're [building actual production-ready software](production-readiness.htm
 
 ### {{n.next()}}. Connect to a Testnet Server
 
-First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to automatically fill in certain required fields of a transaction. (For more security, you can sign transactions from a machine that doesn't have an internet connection, but only if you can provide all of the necessary details.) You also must be connected to the network to submit transactions to it.
+First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to [automatically fill in some required fields of a transaction](transaction-common-fields.html#auto-fillable-fields). You also must be connected to the network to submit transactions to it.
 
-The following code connects to one of the public Testnet servers that Ripple runs:
+The following code connects to a public Testnet servers:
 
 <!-- MULTICODE_BLOCK_START -->
 
 _JavaScript_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.js", start_with="// Connect", end_before="// Get credentials", language="js") }}
+{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 _Python_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.py", start_with="# Connect", end_before="# Get credentials", language="py") }}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Connect", end_before="# Get credentials", language="py") }}
 
 _Java_
 
-{{ include_code("_code-samples/send-xrp/SendXrp.java", start_with="// Connect", end_before="// Prepare transaction", language="java") }}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Connect", end_before="// Prepare transaction", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -122,15 +122,15 @@ Here's an example of preparing the above payment:
 
 _JavaScript_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.js", start_with="// Prepare", end_before="// Sign", language="js" ) }}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Prepare", end_before="// Sign", language="js" ) }}
 
 _Python_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.py", start_with="# Prepare", end_before="# Sign", language="py" ) }}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Prepare", end_before="# Sign", language="py" ) }}
 
 _Java_
 
-{{ include_code("_code-samples/send-xrp/SendXrp.java", start_with="// Prepare", end_before="// Sign", language="java") }}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Prepare", end_before="// Sign", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -164,17 +164,17 @@ Signing a transaction uses your credentials to authorize the transaction on your
 
 _JavaScript_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.js",
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js",
     start_with="// Sign", end_before="// Submit", language="js" ) }}
 
 _Python_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.py",
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py",
     start_with="# Sign", end_before="# Submit", language="py" ) }}
 
 _Java_
 
-{{ include_code("_code-samples/send-xrp/SendXrp.java",
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java",
     start_with="// Sign", end_before="// Submit", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
@@ -204,14 +204,14 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 
 _JavaScript_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.js", start_with="// Submit", end_before="// Wait", language="js" ) }}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Submit", end_before="// Wait", language="js" ) }}
 
 _Python_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.py", start_with="# Submit", end_before="# Wait", language="py") }}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Submit", end_before="# Wait", language="py") }}
 
 _Java_
-{{ include_code("_code-samples/send-xrp/SendXrp.java", start_with="// Submit", end_before="// Wait", language="java" ) }}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Submit", end_before="// Wait", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -238,10 +238,9 @@ example transaction</button>
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For more information on expiration of unconfirmed transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
 
-- **JavaScript:** Use an account [subscription](rippleapi-reference.html#listening-to-streams) to listen for an event when the transaction is confirmed. Use the `ledger` event type to trigger your code to run whenever there is a new validated ledger version so that you can know if the transaction can no longer be confirmed.
-- **Python:** Poll the [`xrpl.transaction.get_transaction_from_hash()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash) to see if your transaction has a final result. Periodically use the [`xrpl.ledger.get_latest_validated_ledger_sequence()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.ledger.html#xrpl.ledger.get_latest_validated_ledger_sequence) so you can know if the transaction can no longer be confirmed.
+- **JavaScript:**  If you used the [`.submitSignedReliable()` method](https://js.xrpl.org/classes/Client.html#submitSignedReliable), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
 
-    **Tip:** The [`xrpl.transaction.send_reliable_submission()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission) handles this process all in one call. You can use this instead of `submit_transaction()` wherever it's appropriate for your code to stop and wait for a transaction's [final result](finality-of-results.html) to be confirmed.
+- **Python:** If you used the [`xrpl.transaction.send_reliable_submission()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission), you can wait for the function to return. Other approaches, including asynchronous ones using the WebSocket client, are also possible.
 
 - **Java** Poll the [`XrplClient.transaction()` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the `LastLedgerIndex` of the transaction using the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method.
 
@@ -249,15 +248,15 @@ Most transactions are accepted into the next ledger version after they're submit
 
 _JavaScript_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.js", start_with="// Wait", end_before="// There are other", language="js" ) }}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Wait", end_before="// Check", language="js" ) }}
 
 _Python_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.py", start_with="# Wait", end_before="# Check", language="py") }}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Wait", end_before="# Check", language="py") }}
 
 _Java_
 
-{{ include_code("_code-samples/send-xrp/SendXrp.java", start_with="// Wait", end_before="// Check", language="java" ) }}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Wait", end_before="// Check", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -270,29 +269,31 @@ _Java_
 
 To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version.
 
-- **JavaScript:** Use the [`getTransaction()` method](rippleapi-reference.html#gettransaction) to check the status of a transaction.
-- **Python:** The response of [`xrpl.transaction.get_transaction_from_hash()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash) contains the results if the transaction has been validated by consensus. (See the [tx method response format](tx.html#response-format) for a detailed reference of the fields this can contain.)
+- **JavaScript:** Use the response from `submitSignedReliable()` or call the [tx method][] using [`Client.request()`](https://js.xrpl.org/classes/Client.html#request).
+
+    **Tip:** In **TypeScript** you can pass a [`TxRequest`](https://js.xrpl.org/interfaces/TxRequest.html) to the [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) method.
+
+- **Python:** Use the response from `send_reliable_submission()` or call the [`xrpl.transaction.get_transaction_from_hash()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash). (See the [tx method response format](tx.html#response-format) for a detailed reference of the fields this can contain.)
+
 - **Java:** Use the [`XrplClient.transaction()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) method to check the status of a transaction.
 
 <!-- MULTICODE_BLOCK_START -->
 
 _JavaScript_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.js", start_with="// Check", language="js" ) }}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Check", end_before="// End of", language="js" ) }}
 
 _Python_
 
-{{ include_code("_code-samples/send-xrp/send-xrp.py", start_with="# Check", language="py") }}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Check", language="py") }}
 
 _Java_
 
-{{ include_code("_code-samples/send-xrp/SendXrp.java", start_with="// Check", language="java" ) }}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Check", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
-The RippleAPI `getTransaction()` method only returns success if the transaction is in a validated ledger version. Otherwise, the `await` expression raises an exception.
-
-**Caution:** Other APIs, including `xrpl-py`, may return tentative results from ledger versions that have not yet been validated. For example, if you use the `rippled` APIs' [tx method][], be sure to look for `"validated": true` in the response to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](finality-of-results.html).
+**Caution:** XRP Ledger APIs may return tentative results from ledger versions that have not yet been validated. For example, in [tx method][] response, be sure to look for `"validated": true` to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](finality-of-results.html).
 
 {{ start_step("Check") }}
 <button id="get-tx-button" class="btn btn-primary previous-steps-required">Check transaction status</button>
@@ -316,9 +317,9 @@ This tutorial uses a button to get an address that's already funded with Test Ne
 _JavaScript_
 
 ```js
-const generated = api.generateAddress()
-console.log(generated.address) // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
-console.log(generated.secret) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
+const wallet = new xrpl.Wallet()
+console.log(wallet.address) // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+console.log(wallet.seed) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
 
 _Python_
