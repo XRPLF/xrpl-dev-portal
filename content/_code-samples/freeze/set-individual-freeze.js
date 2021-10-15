@@ -55,7 +55,7 @@ async function main() {
   trustset.Flags = xrpl.TrustSetFlags.tfSetFreeze;
 
   console.log('submitting tx:', trustset);
-  await client.submit(wallet, trustset)
+  await client.submitReliable(wallet, trustset)
 
   client.disconnect()
 }
