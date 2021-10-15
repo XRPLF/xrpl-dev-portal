@@ -320,13 +320,7 @@
   <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>XRP Ledgerは、トランザクションオブジェクトが送信元アドレス（<code>Account</code>内）フィールドによって承認されている場合にのみ、トランザクションを中継して実行します。単一の署名によってのみ承認されたトランザクションの場合、2つの選択肢があります。</p>
-<ol>
-<li>バイナリーブロブに変換してオフラインで署名します。これが望ましい方法です。トランザクションの署名に使用されたアカウントの機密情報がネットワーク接続を介して送信されないことを意味するためです。
-   * オフライン署名には<a href="rippleapi-reference.html#sign">RippleAPI</a>を使用できます。</li>
-<li><code>rippled</code>サーバーにトランザクションの署名を依頼します。<a href="sign.html">signコマンド</a>はJSON形式のトランザクションと機密情報を受け取り、送信可能な署名付きバイナリートランザクション形式を返します。（アカウントの機密情報を送信するのは危険です。そのため、信頼できる暗号化された接続内か、またはローカル接続経由で、自分が管理しているサーバーのみに送信するようにしてください。）
-   * ショートカットとして、<code>tx_json</code>オブジェクトを指定した<a href="submit.html">submitコマンド</a>を使用してトランザクションへの署名とトランザクションの送信を同時に実行できます。これはテストと開発の目的の場合にのみ推奨されます。</li>
-</ol>
+<p>XRP Ledgerは、トランザクションオブジェクトが送信元アドレス（<code>Account</code>内）フィールドによって承認されている場合にのみ、トランザクションを中継して実行します。これを安全に行う方法については、<a href="set-up-secure-signing.html">安全な署名の設定</a>を参照してください。 </p>
 <h2 id="署名付きトランザクションブロブの例">署名付きトランザクションブロブの例<a aria-hidden="true" class="hover_anchor" href="#署名付きトランザクションブロブの例"><i class="fa fa-link"></i></a></h2>
 <p>トランザクションに署名すると、ネットワークに送信できるバイナリーブロブが生成されます。この場合、<code>rippled</code>の<a href="submit.html">submitコマンド</a>を使用します。署名付きブロブと同じトランザクションの例を示します。このトランザクションは、WebSocket APIを使用して送信されています。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>

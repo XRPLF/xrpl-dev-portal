@@ -44,7 +44,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Tutorials",
-      "page_labels": ['Tokens']
+      "page_labels": ['Tokens', 'Security']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -222,6 +222,9 @@
     <li class="list-inline-item">
       <a href="label-tokens.html" class="label label-tokens">Tokens</a>
     </li>
+    <li class="list-inline-item">
+      <a href="label-security.html" class="label label-security">Security</a>
+    </li>
   </ul>
 </div><!--/.labels-wrap-->
     <div class="toc-header">
@@ -283,7 +286,10 @@
 <p>You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a>:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li></ul>
 
-<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// Wrap code in an async function so we can use await</span>
+<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<span class="c1">// const xrpl = require('xrpl')</span>
+
+<span class="c1">// Wrap code in an async function so we can use await</span>
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 
   <span class="c1">// Define the network client</span>
@@ -292,7 +298,7 @@
 
   <span class="c1">// ... custom code goes here</span>
 
-  <span class="c1">// Disconnect when done so Node.js can end the process</span>
+  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
   <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
 <span class="p">}</span>
 
@@ -667,7 +673,28 @@
 <h3 id="7-wait-for-validation">7. Wait for Validation<a aria-hidden="true" class="hover_anchor" href="#7-wait-for-validation"><i class="fa fa-link"></i></a></h3>
 <p>As before, wait for the previous transaction to be validated by consensus before continuing.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
-<p><strong><em>TODO</em></strong></p>
+<ul>
+<li><strong>Concepts:</strong><ul>
+<li><a href="freezes.html">Freezing Issued Currencies</a></li>
+<li><a href="trust-lines-and-issuing.html">Trust Lines and Issuing</a></li>
+</ul>
+</li>
+<li><strong>Tutorials:</strong><ul>
+<li><a href="enable-no-freeze.html">Enable No Freeze</a></li>
+<li><a href="enact-global-freeze.html">Enact Global Freeze</a></li>
+<li><a href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a></li>
+</ul>
+</li>
+<li><strong>References:</strong><ul>
+<li><a href="account_lines.html">account_lines method</a></li>
+<li><a href="account_info.html">account_info method</a></li>
+<li><a href="accountset.html">AccountSet transaction</a></li>
+<li><a href="trustset.html">TrustSet transaction</a></li>
+<li><a href="accountroot.html#accountroot-flags">AccountRoot Flags</a></li>
+<li><a href="ripplestate.html#ripplestate-flags">RippleState (trust line) Flags</a></li>
+</ul>
+</li>
+</ul>
 <!-- -->
 <!-- -->
 <!-- API object types -->

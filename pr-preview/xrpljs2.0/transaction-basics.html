@@ -294,9 +294,9 @@
 <ol>
 <li>Create an <a href="#example-unsigned-transaction">unsigned transaction in JSON format</a>.</li>
 <li>Use one or more signatures to <a href="#authorizing-transactions">authorize the transaction</a>.</li>
-<li>Submit a transaction to a <code>rippled</code> server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.</li>
+<li>Submit a transaction to an XRP Ledger server (usually a <a href="the-rippled-server.html"><code>rippled</code> instance</a>). If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.</li>
 <li>The <a href="consensus.html">consensus process</a> determines which provisional transactions get included in the next validated ledger.</li>
-<li>The <code>rippled</code> servers apply those transactions to the previous ledger in a canonical order and share their results.</li>
+<li>The servers apply those transactions to the previous ledger in a canonical order and share their results.</li>
 <li>If enough <a href="rippled-server-modes.html#validators">trusted validators</a> created the exact same ledger, that ledger is declared <em>validated</em> and the <a href="transaction-results.html">results of the transactions</a> in that ledger are immutable.</li>
 </ol>
 <p>See <a href="send-xrp.html">Send XRP</a> for an interactive tutorial in sending XRP payments.</p>
@@ -316,19 +316,9 @@
   <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the <code>Account</code>) field. For transactions authorized by only a single signature, you have two options:</p>
-<ol>
-<li>Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.<ul>
-<li>You can use <a href="rippleapi-reference.html#sign">RippleAPI</a> for offline signing.</li>
-</ul>
-</li>
-<li>Have a <code>rippled</code> server sign the transaction for you. The <a href="sign.html">sign command</a> takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted connection, or through a local connection, and only to a server you control.)<ul>
-<li>As a shortcut, you can use the <a href="submit.html">submit command</a> with a <code>tx_json</code> object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.</li>
-</ul>
-</li>
-</ol>
+<p>The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the <code>Account</code>) field. For instructions on how to do this securely, see <a href="set-up-secure-signing.html">Set Up Secure Signing</a>.</p>
 <h2 id="example-signed-transaction-blob">Example Signed Transaction Blob<a aria-hidden="true" class="hover_anchor" href="#example-signed-transaction-blob"><i class="fa fa-link"></i></a></h2>
-<p>Signing a transaction generates a binary blob that can be submitted to the network. This means using <code>rippled</code>'s <a href="submit.html">submit command</a>. Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:</p>
+<p>Signing a transaction results in a chunk of binary data, called a "blob", that can be submitted to the network. Here is an example of the same transaction, as a signed blob, being <a href="submit.html">submitted with the WebSocket API</a>:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
   <span class="nt">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"submit"</span><span class="p">,</span>
@@ -336,8 +326,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="example-executed-transaction-with-metadata">Example Executed Transaction with Metadata<a aria-hidden="true" class="hover_anchor" href="#example-executed-transaction-with-metadata"><i class="fa fa-link"></i></a></h2>
-<p>After a transaction has been submitted, you can check its status using the API, for example using the <a href="tx.html">tx command</a>. This shows the transaction instructions, its outcome, and the <a href="transaction-metadata.html">metadata</a> of all changes that were made by executing it.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> The success of a transaction is not final unless the transaction appears in a <strong>validated</strong> ledger with the result code <code>tesSUCCESS</code>. See also: <a href="finality-of-results.html">Finality of Results</a>.</p>
+<p>After a transaction has been executed, the XRP Ledger adds <a href="transaction-metadata.html">metadata</a> to show the transaction's final outcome and all the changes that the transaction made to the shared state of the XRP Ledger.</p>
+<p>You can check a transaction's status using the API, for example using the <a href="tx.html">tx command</a>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The results of a transaction, including all its metadata, are not final unless the transaction appears in a <strong>validated</strong> ledger. See also: <a href="finality-of-results.html">Finality of Results</a>.</p>
 <p>Example response from the <code>tx</code> command:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
   <span class="nt">"id"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>

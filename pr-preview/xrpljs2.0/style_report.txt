@@ -20,8 +20,8 @@ Found 15 possible spelling errors:
   start_with: startwith
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iot, ioc, iop
-  io2: iot, ioc, iop
+  io1: iop, io-, ioy
+  io2: io-, ioy, iof
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -232,7 +232,7 @@ Readability Scores
 ------------------
 Average Page Readability Scores:
   Flesch Reading Ease Score: 47.3 (Difficult)
-  Dale-Chall Readability Score: 8.2 (average 11th or 12-grade student)
+  Dale-Chall Readability Score: 8.3 (average 11th or 12-grade student)
   SMOG Index: Grade level 12.9
   Gunning FOG Index: Grade level 11.2
   Automated Readability Index: Grade level 13.9
@@ -273,8 +273,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 61
-  Words: 805
-  Characters: 5,062
+  Words: 804
+  Characters: 5,060
 
 Longest pages by character count:
 <Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)> Length Metrics:

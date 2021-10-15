@@ -268,7 +268,7 @@
     <div class="content">
         <h1 id="get-started-using-javascript">Get Started Using JavaScript<a aria-hidden="true" class="hover_anchor" href="#get-started-using-javascript"><i class="fa fa-link"></i></a></h1>
 <p>This tutorial guides you through the basics of building an XRP Ledger-connected application in JavaScript or TypeScript using the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank"><code>xrpl.js</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> client library in either Node.js or web browsers.</p>
-<p>The scripts and config files used in this guide are <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart" target="_blank">available in this website's GitHub Repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>The scripts and config files used in this guide are <a href="/tree//content/_code-samples/get-started/js/">available in this website's GitHub Repository</a>.</p>
 <h2 id="learning-goals">Learning goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
 <p>In this tutorial, you'll learn:</p>
 <ul>
@@ -313,7 +313,10 @@
 <h3 id="2-connect-to-the-xrp-ledger">2. Connect to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with <code>xrpl.js</code>, you create an instance of the <code>Client</code> class and use the <code>connect()</code> method.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Many network functions in <code>xrpl.js</code> use <a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promises <i aria-hidden="true" class="fa fa-external-link"></i></a> to return values asynchronously. The code samples here use the <a class="external-link" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank"><code>async/await</code> pattern <i aria-hidden="true" class="fa fa-external-link"></i></a> to wait for the actual result of the Promises.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Wrap code in an async function so we can use await</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<span class="c1">// const xrpl = require('xrpl')</span>
+
+<span class="c1">// Wrap code in an async function so we can use await</span>
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 
   <span class="c1">// Define the network client</span>
@@ -322,7 +325,7 @@
 
   <span class="c1">// ... custom code goes here</span>
 
-  <span class="c1">// Disconnect when done so Node.js can end the process</span>
+  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
   <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
 <span class="p">}</span>
 
