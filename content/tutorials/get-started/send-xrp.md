@@ -349,7 +349,7 @@ Generating an address and secret doesn't get you XRP directly; you're only choos
 
 ### Connecting to the Production XRP Ledger
 
-When you instantiate the `RippleAPI` object, you must specify a server that's synced with the appropriate XRP Ledger. For many cases, you can use [public servers](public-servers.html), such as in the following snippet:
+When you instantiate your client's connect to the XRP Ledger, you must specify a server that's synced with the appropriate [network](parallel-networks.html). For many cases, you can use [public servers](public-servers.html), such as in the following example:
 
 <!-- MULTICODE_BLOCK_START -->
 
