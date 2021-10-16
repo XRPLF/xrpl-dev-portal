@@ -317,7 +317,7 @@
 </code></pre></div></div>
 </div>
 <h3 id="3-send-accountset-transaction-to-enact-the-freeze">3. Send AccountSet Transaction to Enact the Freeze<a aria-hidden="true" class="hover_anchor" href="#3-send-accountset-transaction-to-enact-the-freeze"><i class="fa fa-link"></i></a></h3>
-<p>To enable the Global Freeze setting, send an <a href="accountset.html">AccountSet transaction</a> with a <code>SetFlag</code> field containing the <a href="accountset.html#accountset-flags"><code>asfGlobalFreeze</code> value (<code>7</code>)</a>. To send the transaction, you first <em>prepare</em> it to fill out all the necessary fields, then <em>sign</em> it with your account's secret key, and finally <em>submit</em> it to the network.</p>
+<p>To enable the Global Freeze setting, send an <a href="accountset.html">AccountSet transaction</a> with a <code>SetFlag</code> field containing the <a href="accountset.html#accountsetのフラグ"><code>asfGlobalFreeze</code> value (<code>7</code>)</a>. To send the transaction, you first <em>prepare</em> it to fill out all the necessary fields, then <em>sign</em> it with your account's secret key, and finally <em>submit</em> it to the network.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Enacting a global freeze affects <em>all tokens issued by the address.</em> Furthermore, if you use the No Freeze setting, you cannot undo this action.</p>
 <p>For example:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="websocket" href="#code-1-1">WebSocket</a></li></ul>
@@ -432,7 +432,7 @@
 <p>If you use the <a href="freezes.html#no-freeze">No Freeze setting</a> then the Global Freeze continues forever. If you want to resume issuing tokens, you must create a new account and start over from there.</p>
 <p>Otherwise, you can continue to the next step whenever you're ready.</p>
 <h3 id="6-send-accountset-transaction-to-end-the-freeze">6. Send AccountSet Transaction to End the Freeze<a aria-hidden="true" class="hover_anchor" href="#6-send-accountset-transaction-to-end-the-freeze"><i class="fa fa-link"></i></a></h3>
-<p>To end the Global Freeze, send an <a href="accountset.html">AccountSet transaction</a> with a <code>ClearFlag</code> field containing the <a href="accountset.html#accountset-flags"><code>asfGlobalFreeze</code> value (<code>7</code>)</a>. As always, you first <em>prepare</em> the transaction, <em>sign</em> it, and finally <em>submit</em> it to the network.</p>
+<p>To end the Global Freeze, send an <a href="accountset.html">AccountSet transaction</a> with a <code>ClearFlag</code> field containing the <a href="accountset.html#accountsetのフラグ"><code>asfGlobalFreeze</code> value (<code>7</code>)</a>. As always, you first <em>prepare</em> the transaction, <em>sign</em> it, and finally <em>submit</em> it to the network.</p>
 <p>For example:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="websocket" href="#code-3-1">WebSocket</a></li></ul>
 
@@ -515,7 +515,7 @@
 <li><a href="accountset.html">AccountSet transaction</a></li>
 <li><a href="trustset.html">TrustSet transaction</a></li>
 <li><a href="accountroot.html#accountrootのフラグ">AccountRoot Flags</a></li>
-<li><a href="ripplestate.html#ripplestate-flags">RippleState (trust line) Flags</a></li>
+<li><a href="ripplestate.html#ripplestateのフラグ">RippleState (trust line) Flags</a></li>
 </ul>
 </li>
 </ul>

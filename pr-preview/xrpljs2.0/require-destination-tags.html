@@ -338,7 +338,7 @@
   <span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction hash:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">hash</span><span class="p">)</span>
 
-  <span class="kd">const</span> <span class="nx">submit_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitSignedReliable</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">submit_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Submit result:"</span><span class="p">,</span> <span class="nx">submit_result</span><span class="p">)</span>
 </code></pre></div></div>
 </div>
@@ -2652,7 +2652,7 @@ $(document).ready(() => {
 </script>
 
 <!-- ripple-lib & prerequisites -->
-<script type="application/javascript" src="assets/js/xrpl-2.0.0b5.min.js"></script>
+<script type="application/javascript" src="assets/js/xrpl-2.0.0preview.min.js"></script>
 
 <!-- Helper for interactive tutorials -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>

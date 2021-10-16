@@ -20,8 +20,8 @@ Found 15 possible spelling errors:
   start_with: startwith
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: io-, iot, iou
-  io2: io-, iot, io
+  io2: iod, iob, ion
+  io1: iod, io-, iob
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 

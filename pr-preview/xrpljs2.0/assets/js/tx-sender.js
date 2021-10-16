@@ -136,7 +136,7 @@ const set_up_tx_sender = async function() {
 
     try {
       const {tx_blob, hash} = use_wallet.sign(prepared)
-      const final_result_data = await api.submitSignedReliable(tx_blob)
+      const final_result_data = await api.submitAndWait(tx_blob)
       console.log("final_result_data is", final_result_data)
       let final_result = final_result_data.result.meta.TransactionResult
       if (!silent) {

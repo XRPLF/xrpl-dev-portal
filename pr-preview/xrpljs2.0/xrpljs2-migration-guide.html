@@ -280,22 +280,22 @@
 <span class="p">})();</span>
 </code></pre></div>
 <h2 id="transaction-submission">Transaction Submission<a aria-hidden="true" class="hover_anchor" href="#transaction-submission"><i class="fa fa-link"></i></a></h2>
-<p>In xrpl.js there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes. Use the <code>submitReliable(tx_json, wallet)</code> method to sign a prepared transaction with the given wallet and submit it, like in this example:</p>
+<p>In xrpl.js there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes. Use the <code>submitAndWait(tx_json, wallet)</code> method to sign a prepared transaction with the given wallet and submit it, like in this example:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kd">const</span> <span class="nx">tx_json</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
   <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
   <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span> <span class="c1">// "wallet" is an instance of the Wallet class</span>
   <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfRequireDest</span>
 <span class="p">})</span>
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">submit_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">tx_json</span><span class="p">,</span> <span class="nx">wallet</span><span class="p">)</span>
-  <span class="c1">// submitReliable() doesn't return until the transaction has a final result.</span>
+  <span class="kd">const</span> <span class="nx">submit_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">tx_json</span><span class="p">,</span> <span class="nx">wallet</span><span class="p">)</span>
+  <span class="c1">// submitAndWait() doesn't return until the transaction has a final result.</span>
   <span class="c1">// Raises XrplError if the transaction doesn't get confirmed by the network.</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span> <span class="nx">submit_result</span><span class="p">)</span>
 <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Error submitting transaction:"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Alternatively, you can use the <code>sign</code> method of a wallet to sign a transaction and then use <code>submitSignedReliable(tx_blob)</code> to submit it. This can be useful for building <a href="reliable-transaction-submission.html">reliable transaction submission</a> that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)</p>
+<p>Alternatively, you can use the <code>sign</code> method of a wallet to sign a transaction and then use <code>submitAndWait(tx_blob)</code> to submit it. This can be useful for building <a href="reliable-transaction-submission.html">reliable transaction submission</a> that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)</p>
 <h2 id="quick-reference-of-equivalents">Quick Reference of Equivalents<a aria-hidden="true" class="hover_anchor" href="#quick-reference-of-equivalents"><i class="fa fa-link"></i></a></h2>
 <p>In ripple-lib 1.x all methods and properties were on instances of the <code>RippleAPI</code> class. In xrpl.js 2.x, some methods are static methods of the library and some methods belong to specific classes.</p>
 <table class="table-responsive">
@@ -315,7 +315,7 @@
 <tr>
 <td><code>request(command, options)</code></td>
 <td><code>Client.request(options)</code></td>
-<td>The <code>command</code> field moved into the <code>options</code> object for consistency with the WebSocket API.</td>
+<td>The <code>command</code> field moved into the <code>options</code> object for consistency with the WebSocket API; also, the return value .</td>
 </tr>
 <tr>
 <td><code>hasNextPage(response)</code></td>

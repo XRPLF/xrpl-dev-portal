@@ -387,7 +387,7 @@
 </ul>
 <p>Technically, a viable transaction must contain some additional fields, and certain optional fields such as <code>LastLedgerSequence</code> are strongly recommended. Some other language-specific notes:</p>
 <ul>
-<li>If you're using <code>xrpl.js</code> for JavaScript or TypeScript, you can use the <a href="TODO: link autofill"><code>Client.autofill()</code> method</a> to automatically fill in good defaults for the remaining fields of a transaction.</li>
+<li>If you're using <code>xrpl.js</code> for JavaScript, you can use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#autofill" target="_blank"><code>Client.autofill()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to automatically fill in good defaults for the remaining fields of a transaction. In TypeScript, you can also use the transaction models like <code>xrpl.Payment</code> to enforce the correct fields.</li>
 <li>With <code>xrpl-py</code> for Python, you can use the models in <code>xrpl.models.transactions</code> to construct transactions as native Python objects.</li>
 <li>With xrpl4j for Java, you can use the model objects in the <code>xrpl4j-model</code> module to construct transactions as Java objects.<ul>
 <li>Unlike the other libraries, you must provide the account <code>sequence</code> and the <code>signingPublicKey</code> of the source
@@ -485,7 +485,7 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <h3 id="4-sign-the-transaction-instructions">4. Sign the Transaction Instructions<a aria-hidden="true" class="hover_anchor" href="#4-sign-the-transaction-instructions"><i class="fa fa-link"></i></a></h3>
 <p>Signing a transaction uses your credentials to authorize the transaction on your behalf. The input to this step is a completed set of transaction instructions (usually JSON), and the output is a binary blob containing the instructions and a signature from the sender.</p>
 <ul>
-<li><strong>JavaScript:</strong> Use the <a href="TODO: link sign">sign() method of a Wallet instance</a> to sign the transaction with <code>xrpl.js</code>.</li>
+<li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Wallet.html#sign" target="_blank"><code>sign()</code> method of a Wallet instance <i aria-hidden="true" class="fa fa-external-link"></i></a> to sign the transaction with <code>xrpl.js</code>.</li>
 <li><strong>Python:</strong> Use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction" target="_blank"><code>xrpl.transaction.safe_sign_transaction()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> with a model and wallet object.</li>
 <li><strong>Java:</strong> Use a <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html" target="_blank"><code>SignatureService</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> instance to sign the transaction. For this tutorial, use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html" target="_blank"><code>SingleKeySignatureService</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 </ul>
@@ -545,14 +545,14 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <h3 id="5-submit-the-signed-blob">5. Submit the Signed Blob<a aria-hidden="true" class="hover_anchor" href="#5-submit-the-signed-blob"><i class="fa fa-link"></i></a></h3>
 <p>Now that you have a signed transaction, you can submit it to an XRP Ledger server, and that server will relay it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)</p>
 <ul>
-<li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSignedReliable" target="_blank"><code>submitSignedReliable()</code> method of the Client <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a signed transaction to the network and wait for the response, or use <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSigned" target="_blank"><code>submitSigned()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction and get only the preliminary response.</li>
+<li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitAndWait" target="_blank"><code>submitAndWait()</code> method of the Client <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a signed transaction to the network and wait for the response, or use <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSigned" target="_blank"><code>submitSigned()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction and get only the preliminary response.</li>
 <li><strong>Python:</strong> Use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission" target="_blank"><code>xrpl.transaction.send_reliable_submission()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network and wait for a response.</li>
 <li><strong>Java:</strong> Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)" target="_blank"><code>XrplClient.submit(SignedTransaction)</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network. Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)" target="_blank"><code>XrplClient.ledger()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method to get the latest validated ledger index.</li>
 </ul>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li><li><a class="java" href="#code-4-2">Java</a></li></ul>
 
 <div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1">// Submit signed blob --------------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submitSignedReliable</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
   <span class="c1">// This raises an exception if the transaction isn't confirmed.</span>
 </code></pre></div></div>
 
@@ -595,7 +595,7 @@ example transaction</button>
 <p>Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For more information on expiration of unconfirmed transactions, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.)</p>
 <ul>
 <li>
-<p><strong>JavaScript:</strong>  If you used the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSignedReliable" target="_blank"><code>.submitSignedReliable()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>, you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.</p>
+<p><strong>JavaScript:</strong>  If you used the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitAndWait" target="_blank"><code>.submitAndWait()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>, you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.</p>
 </li>
 <li>
 <p><strong>Python:</strong> If you used the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission" target="_blank"><code>xrpl.transaction.send_reliable_submission()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>, you can wait for the function to return. Other approaches, including asynchronous ones using the WebSocket client, are also possible.</p>
@@ -607,7 +607,7 @@ example transaction</button>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li><li><a class="python" href="#code-5-1">Python</a></li><li><a class="java" href="#code-5-2">Java</a></li></ul>
 
 <div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1">// Wait for validation -------------------------------------------------------</span>
-  <span class="c1">// submitSignedReliable() handles this automatically, but it can take 4-7s.</span>
+  <span class="c1">// submitAndWait() handles this automatically, but it can take 4-7s.</span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1"># Wait for validation ----------------------------------------------------------</span>
@@ -685,7 +685,7 @@ example transaction</button>
 <p>To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version.</p>
 <ul>
 <li>
-<p><strong>JavaScript:</strong> Use the response from <code>submitSignedReliable()</code> or call the <a href="tx.html">tx method</a> using <a class="external-link" href="https://js.xrpl.org/classes/Client.html#request" target="_blank"><code>Client.request()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>JavaScript:</strong> Use the response from <code>submitAndWait()</code> or call the <a href="tx.html">tx method</a> using <a class="external-link" href="https://js.xrpl.org/classes/Client.html#request" target="_blank"><code>Client.request()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> In <strong>TypeScript</strong> you can pass a <a class="external-link" href="https://js.xrpl.org/interfaces/TxRequest.html" target="_blank"><code>TxRequest</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#request" target="_blank"><code>Client.request()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method.</p>
 </li>
 <li>
@@ -3014,7 +3014,7 @@ $(document).ready(() => {
 </script>
 
 <!-- ripple-lib & prerequisites -->
-<script type="application/javascript" src="assets/js/xrpl-2.0.0b5.min.js"></script>
+<script type="application/javascript" src="assets/js/xrpl-2.0.0preview.min.js"></script>
 
 <!-- Helper for interactive tutorials -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
