@@ -110,7 +110,7 @@ The bare minimum set of instructions you must provide for an XRP Payment is:
 
 Technically, a viable transaction must contain some additional fields, and certain optional fields such as `LastLedgerSequence` are strongly recommended. Some other language-specific notes:
 
-- If you're using `xrpl.js` for JavaScript or TypeScript, you can use the [`Client.autofill()` method](TODO: link autofill) to automatically fill in good defaults for the remaining fields of a transaction.
+- If you're using `xrpl.js` for JavaScript, you can use the [`Client.autofill()` method](https://js.xrpl.org/classes/Client.html#autofill) to automatically fill in good defaults for the remaining fields of a transaction. In TypeScript, you can also use the transaction models like `xrpl.Payment` to enforce the correct fields.
 - With `xrpl-py` for Python, you can use the models in `xrpl.models.transactions` to construct transactions as native Python objects.
 - With xrpl4j for Java, you can use the model objects in the `xrpl4j-model` module to construct transactions as Java objects.
     - Unlike the other libraries, you must provide the account `sequence` and the `signingPublicKey` of the source
@@ -156,7 +156,7 @@ _Java_
 
 Signing a transaction uses your credentials to authorize the transaction on your behalf. The input to this step is a completed set of transaction instructions (usually JSON), and the output is a binary blob containing the instructions and a signature from the sender.
 
-- **JavaScript:** Use the [sign() method of a Wallet instance](TODO: link sign) to sign the transaction with `xrpl.js`.
+- **JavaScript:** Use the [`sign()` method of a Wallet instance](https://js.xrpl.org/classes/Wallet.html#sign) to sign the transaction with `xrpl.js`.
 - **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and wallet object.
 - **Java:** Use a [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html) instance to sign the transaction. For this tutorial, use the [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html).
 
@@ -196,7 +196,7 @@ The result of the signing operation is a transaction object containing a signatu
 
 Now that you have a signed transaction, you can submit it to an XRP Ledger server, and that server will relay it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
 
-- **JavaScript:** Use the [`submitSignedReliable()` method of the Client](https://js.xrpl.org/classes/Client.html#submitSignedReliable) to submit a signed transaction to the network and wait for the response, or use [`submitSigned()`](https://js.xrpl.org/classes/Client.html#submitSigned) to submit a transaction and get only the preliminary response.
+- **JavaScript:** Use the [`submitAndWait()` method of the Client](https://js.xrpl.org/classes/Client.html#submitAndWait) to submit a signed transaction to the network and wait for the response, or use [`submitSigned()`](https://js.xrpl.org/classes/Client.html#submitSigned) to submit a transaction and get only the preliminary response.
 - **Python:** Use the [`xrpl.transaction.send_reliable_submission()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission) to submit a transaction to the network and wait for a response.
 - **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
 
@@ -238,7 +238,7 @@ example transaction</button>
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For more information on expiration of unconfirmed transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
 
-- **JavaScript:**  If you used the [`.submitSignedReliable()` method](https://js.xrpl.org/classes/Client.html#submitSignedReliable), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
+- **JavaScript:**  If you used the [`.submitAndWait()` method](https://js.xrpl.org/classes/Client.html#submitAndWait), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
 
 - **Python:** If you used the [`xrpl.transaction.send_reliable_submission()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission), you can wait for the function to return. Other approaches, including asynchronous ones using the WebSocket client, are also possible.
 
@@ -269,7 +269,7 @@ _Java_
 
 To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version.
 
-- **JavaScript:** Use the response from `submitSignedReliable()` or call the [tx method][] using [`Client.request()`](https://js.xrpl.org/classes/Client.html#request).
+- **JavaScript:** Use the response from `submitAndWait()` or call the [tx method][] using [`Client.request()`](https://js.xrpl.org/classes/Client.html#request).
 
     **Tip:** In **TypeScript** you can pass a [`TxRequest`](https://js.xrpl.org/interfaces/TxRequest.html) to the [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) method.
 

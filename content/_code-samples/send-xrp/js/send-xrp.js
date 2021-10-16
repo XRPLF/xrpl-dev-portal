@@ -36,11 +36,11 @@ async function main() {
   console.log("Signed blob:", signed.tx_blob)
 
   // Submit signed blob --------------------------------------------------------
-  const tx = await api.submitSignedReliable(signed.tx_blob)
+  const tx = await api.submitAndWait(signed.tx_blob)
   // This raises an exception if the transaction isn't confirmed.
 
   // Wait for validation -------------------------------------------------------
-  // submitSignedReliable() handles this automatically, but it can take 4-7s.
+  // submitAndWait() handles this automatically, but it can take 4-7s.
 
   // Check transaction results -------------------------------------------------
   console.log("Transaction result:", tx.result.meta.TransactionResult)

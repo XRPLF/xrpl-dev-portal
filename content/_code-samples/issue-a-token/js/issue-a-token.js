@@ -38,7 +38,7 @@ async function main() {
   const cst_prepared = await api.autofill(cold_settings_tx)
   const cst_signed = cold_wallet.sign(cst_prepared)
   console.log("Sending cold address AccountSet transaction...")
-  const cst_result = await api.submitSignedReliable(cst_signed.tx_blob)
+  const cst_result = await api.submitAndWait(cst_signed.tx_blob)
   if (cst_result.result.meta.TransactionResult == "tesSUCCESS") {
     console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${cst_signed.hash}`)
   } else {
@@ -61,7 +61,7 @@ async function main() {
   const hst_prepared = await api.autofill(hot_settings_tx)
   const hst_signed = hot_wallet.sign(hst_prepared)
   console.log("Sending hot address AccountSet transaction...")
-  const hst_result = await api.submitSignedReliable(hst_signed.tx_blob)
+  const hst_result = await api.submitAndWait(hst_signed.tx_blob)
   if (hst_result.result.meta.TransactionResult == "tesSUCCESS") {
     console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${hst_signed.hash}`)
   } else {
@@ -84,7 +84,7 @@ async function main() {
   const ts_prepared = await api.autofill(trust_set_tx)
   const ts_signed = hot_wallet.sign(ts_prepared)
   console.log("Creating trust line from hot address to issuer...")
-  const ts_result = await api.submitSignedReliable(ts_signed.tx_blob)
+  const ts_result = await api.submitAndWait(ts_signed.tx_blob)
   if (ts_result.result.meta.TransactionResult == "tesSUCCESS") {
     console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${ts_signed.hash}`)
   } else {
@@ -108,7 +108,7 @@ async function main() {
   const pay_prepared = await api.autofill(send_token_tx)
   const pay_signed = cold_wallet.sign(pay_prepared)
   console.log(`Sending ${issue_quantity} ${currency_code} to ${hot_wallet.address}...`)
-  const pay_result = await api.submitSignedReliable(pay_signed.tx_blob)
+  const pay_result = await api.submitAndWait(pay_signed.tx_blob)
   if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
     console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.hash}`)
   } else {

@@ -51,7 +51,7 @@ const xrpl = require("xrpl");
 
 ## Transaction Submission
 
-In xrpl.js there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes. Use the `submitReliable(tx_json, wallet)` method to sign a prepared transaction with the given wallet and submit it, like in this example:
+In xrpl.js there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes. Use the `submitAndWait(tx_json, wallet)` method to sign a prepared transaction with the given wallet and submit it, like in this example:
 
 ```js
 const tx_json = await client.autofill({
@@ -60,8 +60,8 @@ const tx_json = await client.autofill({
   "SetFlag": xrpl.AccountSetAsfFlags.asfRequireDest
 })
 try {
-  const submit_result = await client.submitReliable(tx_json, wallet)
-  // submitReliable() doesn't return until the transaction has a final result.
+  const submit_result = await client.submitAndWait(tx_json, wallet)
+  // submitAndWait() doesn't return until the transaction has a final result.
   // Raises XrplError if the transaction doesn't get confirmed by the network.
   console.log("Transaction result:", submit_result)
 } catch(err) {
@@ -69,7 +69,7 @@ try {
 }
 ```
 
-Alternatively, you can use the `sign` method of a wallet to sign a transaction and then use `submitSignedReliable(tx_blob)` to submit it. This can be useful for building [reliable transaction submission](reliable-transaction-submission.html) that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)
+Alternatively, you can use the `sign` method of a wallet to sign a transaction and then use `submitAndWait(tx_blob)` to submit it. This can be useful for building [reliable transaction submission](reliable-transaction-submission.html) that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)
 
 
 
@@ -80,7 +80,7 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | RippleAPI instance method / property | xrpl.js method / property| Notes |
 |-------------------|----------------|---|
 | `new ripple.RippleAPI({server: url})` | `new xrpl.Client(url)` | Use `xrpl.BroadcastClient([url1, url2, ..])` to connect to multiple servers. |
-| `request(command, options)` | `Client.request(options)` | The `command` field moved into the `options` object for consistency with the WebSocket API. |
+| `request(command, options)` | `Client.request(options)` | The `command` field moved into the `options` object for consistency with the WebSocket API; also, the return value . |
 | `hasNextPage(response)` | ***TODO (check for marker?)*** | See also: `Client.requestNextPage()` and `Client.requestAll()` |
 | `requestNextPage(command, options, response)` | `Client.requestNextPage(response)` | |
 | `computeBinaryTransactionHash(tx_blob)` | `xrpl.hashes.hashTx(tx_blob)` | |

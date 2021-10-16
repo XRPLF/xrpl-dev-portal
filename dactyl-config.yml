@@ -64,7 +64,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.0.0b5.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.0.0preview.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -159,7 +159,9 @@ targets:
             "xrp-ledger-toml.html#account-verification": "xrp-ledger-toml.html#アカウント検証"
             "offers.html#offers-and-trust": "offers.html#オファーとトラスト"
             "authorized-trust-lines.html#authorizing-trust-lines": "authorized-trust-lines.html#トラストラインの承認"
-
+            # Fix links from untranslated freeze tutorials:
+            "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
+            "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
 
 pages:
 
