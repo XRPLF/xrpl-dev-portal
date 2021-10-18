@@ -21,10 +21,11 @@ if (typeof module !== "undefined") {
     const response = await client.request(
       {command: 'account_info', account: my_address })
     const settings = response.result
-  
+    const lsfGlobalFreeze = 0x00400000
+
     console.log('Got settings for address', my_address);
     console.log('Global Freeze enabled?',
-                (settings.globalFreeze === true))
+                (settings.Flags & lsfGlobalFreeze === lsfGlobalFreeze))
   
     await client.disconnect()
   
