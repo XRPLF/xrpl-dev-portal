@@ -424,7 +424,11 @@ Look for the following values in the response object:
 Example JavaScript (ECMAScript 6) code to check whether an address has Global Freeze or No Freeze enabled:
 
 ```js
-{% include '_code-samples/freeze/check-global-freeze-no-freeze.js' %}
+{% include '_code-samples/freeze/check-no-freeze.js' %}
+```
+
+```js
+{% include '_code-samples/freeze/check-global-freeze.js' %}
 ```
 
 # See Also
