@@ -75,6 +75,21 @@ async function main() {
   // Submit a TrustSet transaction to set an individual freeze ----------------------
   console.log('Submitting TrustSet tx:', trust_set)
   const result = await client.submitReliable(wallet, trust_set)
+  console.log("Submitted TrustSet!")
+
+  // Investigate --------------------------------------------------------------------
+  console.log(
+    `You would investigate whatever prompted you to freeze the trust line now...`)
+  await new Promise(resolve => setTimeout(resolve, 5000))
+
+  // Clear the individual freeze ----------------------------------------------------
+  // We're reusing our TrustSet transaction from earlier with a different flag
+  trust_set.Flags = xrpl.TrustSetFlags.tfClearFreeze
+
+  // Submit a TrustSet transaction to set an individual freeze ----------------------
+  console.log('Submitting TrustSet tx:', trust_set)
+  const result2 = await client.submitReliable(wallet, trust_set)
+  console.log("Submitted TrustSet!")
 
   console.log("Finished submitting. Now disconnecting.")
   await client.disconnect()

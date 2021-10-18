@@ -28,7 +28,7 @@ async function main() {
   // Investigate ----------------------------------------------------------------
   console.log(
     `You would investigate whatever prompted you to freeze the account now...`)
-  await new Promise(resolve => setTimeout(resolve, 3000))
+  await new Promise(resolve => setTimeout(resolve, 5000))
 
   // Now we disable the global freeze -------------------------------------------
   const accountSetTx2 = {
