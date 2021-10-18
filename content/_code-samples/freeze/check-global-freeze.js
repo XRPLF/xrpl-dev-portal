@@ -25,7 +25,7 @@ if (typeof module !== "undefined") {
 
     console.log('Got settings for address', my_address);
     console.log('Global Freeze enabled?',
-                (settings.Flags & lsfGlobalFreeze === lsfGlobalFreeze))
+                ((settings.account_data.Flags & lsfGlobalFreeze) === lsfGlobalFreeze))
   
     await client.disconnect()
   
