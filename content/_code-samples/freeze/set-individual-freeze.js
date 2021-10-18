@@ -74,7 +74,7 @@ async function main() {
   const result = await client.submitReliable(wallet, trust_set)
 
   console.log('Submitted tx!')
-  client.disconnect()
+  await client.disconnect()
 }
 
 main().catch(console.error)

@@ -15,15 +15,15 @@ async function main() {
   const accountSetTx = {
     TransactionType: "AccountSet",
     Account: wallet.address,
+    // Send a flag to turn on a global freeze on this account
     SetFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
   }
 
   // Sign and submit the settings transaction
   console.log('Sign and submit the transaction:', accountSetTx)
-
   await client.submitReliable(wallet, accountSetTx)
 
-  client.disconnect()
+  await client.disconnect()
 }
 
 main().catch(console.error)
