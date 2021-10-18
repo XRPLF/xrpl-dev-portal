@@ -17,8 +17,9 @@ async function main() {
 
   const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
 
-  // Look up settings object
-  const response = await client.request({command: 'account_info', account: my_address })
+  // Request account info for my_address to check account settings ------------
+  const response = await client.request(
+    {command: 'account_info', account: my_address })
   const settings = response.result
 
   console.log('Got settings for address', my_address);
@@ -27,6 +28,8 @@ async function main() {
   console.log('No Freeze enabled?', (settings.noFreeze === true))
 
   await client.disconnect()
+
+  // End main()
 } 
 
 main().catch(console.error)
