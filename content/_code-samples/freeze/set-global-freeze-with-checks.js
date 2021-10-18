@@ -36,8 +36,10 @@ async function main() {
   console.log('Global Freeze enabled?',
     ((settings.account_data.Flags & lsfGlobalFreeze) === lsfGlobalFreeze))
 
-  // This is where you would investigate what prompted you to freeze the account 
-  console.log(`${wallet.address} should be frozen now.`)
+  // Investigate ----------------------------------------------------------------
+  console.log(
+    `You would investigate whatever prompted you to freeze the account now...`)
+  await new Promise(resolve => setTimeout(resolve, 3000))
 
   // Now we disable the global freeze -------------------------------------------
   const accountSetTx2 = {

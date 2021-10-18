@@ -23,10 +23,12 @@ async function main() {
   // Sign and submit the AccountSet transaction to enable a global freeze -------
   console.log('Signing and submitting the transaction:', accountSetTx)
   await client.submitReliable(wallet, accountSetTx)
-  console.log("Finished submitting!")
+  console.log(`Finished submitting! ${wallet.address} should be frozen now.`)
 
-  // This is where you would investigate what prompted you to freeze the account 
-  console.log(`${wallet.address} should be frozen now.`)
+  // Investigate ----------------------------------------------------------------
+  console.log(
+    `You would investigate whatever prompted you to freeze the account now...`)
+  await new Promise(resolve => setTimeout(resolve, 3000))
 
   // Now we disable the global freeze -------------------------------------------
   const accountSetTx2 = {
