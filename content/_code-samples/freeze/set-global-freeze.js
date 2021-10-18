@@ -6,8 +6,8 @@ async function main() {
   await client.connect()
 
   client.on('error', (errorCode, errorMessage) => {
-    console.log(errorCode + ': ' + errorMessage);
-  });
+    console.log(errorCode + ': ' + errorMessage)
+  })
 
   const { wallet, balance } = await client.fundWallet()
 
@@ -16,12 +16,12 @@ async function main() {
     TransactionType: "AccountSet",
     Account: wallet.address,
     SetFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
-  };
+  }
 
   // Sign and submit the settings transaction
-  console.log('Sign and submit the transaction:', accountSetTx);
+  console.log('Sign and submit the transaction:', accountSetTx)
 
-  await client.submitReliable(wallet, accountSetTx);
+  await client.submitReliable(wallet, accountSetTx)
 
   client.disconnect()
 }

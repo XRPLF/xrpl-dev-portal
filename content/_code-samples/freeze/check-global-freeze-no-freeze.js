@@ -12,19 +12,19 @@ async function main() {
   await client.connect()
 
   client.on('error', (errorCode, errorMessage) => {
-    console.log(errorCode + ': ' + errorMessage);
-  });
+    console.log(errorCode + ': ' + errorMessage)
+  })
 
   const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
 
   // Look up settings object
-  const response = await client.request({command: 'account_info', account: my_address });
+  const response = await client.request({command: 'account_info', account: my_address })
   const settings = response.result
 
   console.log('Got settings for address', my_address);
   console.log('Global Freeze enabled?',
-              (settings.globalFreeze === true));
-  console.log('No Freeze enabled?', (settings.noFreeze === true));
+              (settings.globalFreeze === true))
+  console.log('No Freeze enabled?', (settings.noFreeze === true))
 
   await client.disconnect()
 } 
