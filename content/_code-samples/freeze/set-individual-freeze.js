@@ -1,4 +1,3 @@
-const { validate } = require('xrpl')
 const xrpl = require('xrpl')
 
 async function main() {

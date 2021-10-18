@@ -8,22 +8,26 @@ async function main() {
   client.on('error', (errorCode, errorMessage) => {
     console.log(errorCode + ': ' + errorMessage)
   })
-
+  // Get credentials from the Testnet Faucet ------------------------------------
+  console.log("Requesting an address from the Testnet faucet...")
   const { wallet, balance } = await client.fundWallet()
 
-  // Prepare a settings transaction to enable global freeze
+  // Prepare an AccountSet transaction to enable global freeze ------------------
   const accountSetTx = {
     TransactionType: "AccountSet",
     Account: wallet.address,
-    // Send a flag to turn on a global freeze on this account
+    // Set a flag to turn on a global freeze on this account
     SetFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
   }
 
-  // Sign and submit the settings transaction
+  // Sign and submit the AccountSet transaction to enable a global freeze -------
   console.log('Sign and submit the transaction:', accountSetTx)
   await client.submitReliable(wallet, accountSetTx)
 
+  console.log("Finished submitting. Now disconnecting.")
   await client.disconnect()
+
+  // End main()
 }
 
 main().catch(console.error)
