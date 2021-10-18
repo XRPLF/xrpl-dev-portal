@@ -10,9 +10,11 @@ async function main() {
     console.log(errorCode + ': ' + errorMessage)
   })
 
+  // Get credentials from the Testnet Faucet ------------------------------------
+  console.log("Requesting addresses from the Testnet faucet...")
   const { wallet, balance } = await client.fundWallet()
 
-  // Prepare a settings transaction to enable global freeze
+  // Submit an AccountSet transaction to enable No Freeze ----------------------
   const accountSetTx = {
     TransactionType: "AccountSet",
     Account: wallet.address,
@@ -25,6 +27,8 @@ async function main() {
   
   console.log("Finished submitting. Now disconnecting.")
   await client.disconnect()
+
+  // End main()
 }
 
 main().catch(console.error)
