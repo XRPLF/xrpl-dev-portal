@@ -21,10 +21,48 @@ async function main() {
   }
 
   // Sign and submit the AccountSet transaction to enable a global freeze -------
-  console.log('Sign and submit the transaction:', accountSetTx)
+  console.log('Signing and submitting the transaction:', accountSetTx)
   await client.submitReliable(wallet, accountSetTx)
+  console.log("Finished submitting!")
 
-  console.log("Finished submitting. Now disconnecting.")
+  // Checking the status of the global freeze -----------------------------------
+  const response = await client.request(
+    {command: 'account_info', account: wallet.address})
+  const settings = response.result
+  const lsfGlobalFreeze = 0x00400000
+
+  console.log(settings)
+  console.log('Got settings for address', wallet.address);
+  console.log('Global Freeze enabled?',
+    ((settings.account_data.Flags & lsfGlobalFreeze) === lsfGlobalFreeze))
+
+  // This is where you would investigate what prompted you to freeze the account 
+  console.log(`${wallet.address} should be frozen now.`)
+
+  // Now we disable the global freeze -------------------------------------------
+  const accountSetTx2 = {
+    TransactionType: "AccountSet",
+    Account: wallet.address,
+    // ClearFlag let's us turn off a global freeze on this account
+    ClearFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
+  }
+
+  // Sign and submit the AccountSet transaction to enable a global freeze -------
+  console.log('Signing and submitting the transaction:', accountSetTx2)
+  const result = await client.submitReliable(wallet, accountSetTx2)
+  console.log("Finished submitting!")
+
+  // Checking the status of the global freeze -----------------------------------
+  const response2 = await client.request(
+    {command: 'account_info', account: wallet.address})
+  const settings2 = response2.result
+
+  console.log(settings2)
+  console.log('Got settings for address', wallet.address);
+  console.log('Global Freeze enabled?',
+      ((settings2.account_data.Flags & lsfGlobalFreeze) === lsfGlobalFreeze))
+
+  console.log("Disconnecting")
   await client.disconnect()
 
   // End main()
