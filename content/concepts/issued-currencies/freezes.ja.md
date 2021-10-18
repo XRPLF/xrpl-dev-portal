@@ -422,7 +422,11 @@ console.log(currentFlags & lsfNoFreeze); //0
 アドレスに対するGlobal FreezeまたはNo Freezeが有効になっているかどうかを確認するJavaScript（ECMAScript 6）コードの例:
 
 ```js
-{% include '_code-samples/freeze/check-global-freeze-no-freeze.js' %}
+{% include '_code-samples/freeze/check-no-freeze.js' %}
+```
+
+```js
+{% include '_code-samples/freeze/check-global-freeze.js' %}
 ```
 
 # 関連項目
