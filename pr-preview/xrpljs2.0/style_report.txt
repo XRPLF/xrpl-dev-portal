@@ -6,33 +6,33 @@ Found 15 possible spelling errors:
   keypairs: 
 
 <Page 'Enable No Freeze' (enable-no-freeze.html)> Unknown Words:
-  end_before: 
-  start_with: startwith
   include_code: 
+  start_with: startwith
+  end_before: 
 
 <Page 'Enact Global Freeze' (enact-global-freeze.html)> Unknown Words:
-  end_before: 
-  start_with: startwith
   include_code: 
+  start_with: startwith
+  end_before: 
 
 <Page 'Freeze a Trust Line' (freeze-a-trust-line.html)> Unknown Words:
-  end_before: 
   start_with: startwith
+  end_before: 
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io2: iod, iob, ion
-  io1: iod, io-, iob
+  io1: ior, iom, iod
+  io2: iom, ioy, iou
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
-  isvalidclassicaddress: 
-  utils: util, utile, tils
-  isvalidxaddress: 
+  lastledgersequence: 
+  parseaccountrootflags: 
+  regularkeyset: 
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 218 discouraged words/phrases:
+Found 221 discouraged words/phrases:
 Page: <Page 'Freezing Issued Currencies' (freezes.html)>
    Discouraged word: ious (1 instances); suggest 'issuances' instead.
 Page: <Page 'Demurrage' (demurrage.html)>
@@ -192,7 +192,9 @@ Page: <Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)>
    Discouraged phrase: hot wallet (2 instances); suggest 'operational address' instead.
    Discouraged phrase: in order to (1 instances); suggest 'to' instead.
 Page: <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)>
-   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
 Page: <Page 'Request Formatting' (request-formatting.html)>
    Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Response Formatting' (response-formatting.html)>
@@ -232,7 +234,7 @@ Readability Scores
 ------------------
 Average Page Readability Scores:
   Flesch Reading Ease Score: 47.3 (Difficult)
-  Dale-Chall Readability Score: 8.3 (average 11th or 12-grade student)
+  Dale-Chall Readability Score: 8.2 (average 11th or 12-grade student)
   SMOG Index: Grade level 12.9
   Gunning FOG Index: Grade level 11.2
   Automated Readability Index: Grade level 13.9
@@ -273,8 +275,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 61
-  Words: 804
-  Characters: 5,060
+  Words: 807
+  Characters: 5,077
 
 Longest pages by character count:
 <Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)> Length Metrics:

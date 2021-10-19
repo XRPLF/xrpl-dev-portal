@@ -228,8 +228,11 @@
         <li class="nav-item level-1"><a class="nav-link" href="#migration-guide-for-ripple-lib-1x-to-xrpljs-2x">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#high-level-differences">High-Level Differences</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#boilerplate-comparison">Boilerplate Comparison</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#validated-results">Validated Results</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#transaction-submission">Transaction Submission</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#quick-reference-of-equivalents">Quick Reference of Equivalents</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#controlling-lastledgersequence">Controlling LastLedgerSequence</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#events-and-subscriptions">Events and Subscriptions</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#reference-of-equivalents">Reference of Equivalents</a></li>
       </ul>
   </div>
       </aside>
@@ -286,9 +289,25 @@
   <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
 <span class="p">})();</span>
 </code></pre></div>
+<h2 id="validated-results">Validated Results<a aria-hidden="true" class="hover_anchor" href="#validated-results"><i class="fa fa-link"></i></a></h2>
+<p>By default, most methods in ripple-lib 1.x only returned results that were validated by the <a href="consensus.html">consensus process</a> and final. The xrpl.js equivalents of many methods use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#request" target="_blank"><code>Client.request()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to call the WebSocket API, where the XRP Ledger server's default settings often use the current (pending) ledger to serve data.</p>
+<p>Sometimes you want to use the current open ledger to get data because it has the pending results of many transactions that are likely to succeed, such as when looking up the state of the <a href="decentralized-exchange.html">decentralized exchange</a>. In other cases, you want to use a validated ledger, which only incorporates the results of transactions that are finalized.</p>
+<p>When making API requests with xrpl.js 2.0 using the , you should explicitly <a href="basic-data-types.html#specifying-ledgers">specify what ledger to use</a>. For example, to look up trust lines using a <em>validated ledger</em>:</p>
+<p><strong>ripple-lib 1.x:</strong></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kd">const</span> <span class="nx">trustlines</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getTrustlines</span><span class="p">(</span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">trustlines</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>xrpl.js 2.0:</strong></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="kd">const</span> <span class="nx">trustlines</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+  <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"account_lines"</span><span class="p">,</span>
+  <span class="s2">"account"</span><span class="o">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+  <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">trustlines</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="transaction-submission">Transaction Submission<a aria-hidden="true" class="hover_anchor" href="#transaction-submission"><i class="fa fa-link"></i></a></h2>
 <p>In xrpl.js there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes. Use the <code>submitAndWait(tx_json, wallet)</code> method to sign a prepared transaction with the given wallet and submit it, like in this example:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kd">const</span> <span class="nx">tx_json</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="kd">const</span> <span class="nx">tx_json</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
   <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
   <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span> <span class="c1">// "wallet" is an instance of the Wallet class</span>
   <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfRequireDest</span>
@@ -303,7 +322,56 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Alternatively, you can use the <code>sign</code> method of a wallet to sign a transaction and then use <code>submitAndWait(tx_blob)</code> to submit it. This can be useful for building <a href="reliable-transaction-submission.html">reliable transaction submission</a> that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)</p>
-<h2 id="quick-reference-of-equivalents">Quick Reference of Equivalents<a aria-hidden="true" class="hover_anchor" href="#quick-reference-of-equivalents"><i class="fa fa-link"></i></a></h2>
+<h3 id="controlling-lastledgersequence">Controlling LastLedgerSequence<a aria-hidden="true" class="hover_anchor" href="#controlling-lastledgersequence"><i class="fa fa-link"></i></a></h3>
+<p>In ripple-lib 1.x, you could specify a <code>instructions.maxLedgerVersionOffset</code> when preparing a transaction to define the <code>LastLedgerSequence</code> parameter of the prepared transaction as being some number of ledgers <em>after</em> the latest validated one at the time. In 2.0, you can do this by looking up the latest validated ledger index, then specifying the <code>LastLedgerSequence</code> explicitly before auto-filling the transaction.</p>
+<p><strong>xrpl.js 2.0:</strong></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="kd">const</span> <span class="nx">vli</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getLedgerIndex</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
+  <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
+  <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">sender</span><span class="p">,</span>
+  <span class="s2">"Amount"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="s2">"50.2"</span><span class="p">),</span>
+  <span class="s2">"Destination"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+  <span class="s2">"LastLedgerSequence"</span><span class="o">:</span> <span class="nx">vli</span><span class="o">+</span><span class="mf">75</span> <span class="c1">// gives ~5min, rather than the default ~1min</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>Like the old prepare methods, <code>Client.autofill()</code> provides a reasonable <code>LastLedgerSequence</code> value by default. To prepare a transaction <em>without</em> a <code>LastLedgerSequence</code> field, pass it with the value <code>null</code>:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="kd">const</span> <span class="nx">prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
+  <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
+  <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">sender</span><span class="p">,</span>
+  <span class="s2">"Amount"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="s2">"50.2"</span><span class="p">),</span>
+  <span class="s2">"Destination"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+  <span class="s2">"LastLedgerSequence"</span><span class="o">:</span> <span class="kc">null</span> <span class="c1">// Transaction never expires</span>
+<span class="p">})</span>
+</code></pre></div>
+<h2 id="events-and-subscriptions">Events and Subscriptions<a aria-hidden="true" class="hover_anchor" href="#events-and-subscriptions"><i class="fa fa-link"></i></a></h2>
+<p>In 1.x, you could subscribe to ledger events and API errors using the <code>.on()</code> method of the <code>RippleAPI</code> class; or you could subscribe to specific WebSocket message types using <code>.connection.on()</code>. These have been merged into the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#on" target="_blank"><code>Client.on()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>. Additionally, the client library no longer automatically subscribes to ledger close events when connecting to an XRP Ledger server, so <strong>you must explicitly subscribe to the ledger stream</strong> to get ledger close events in addition to adding a handler.</p>
+<p>To subscribe to ledger close events, use <code>Client.request(method)</code> to call the <a href="subscribe.html">subscribe method</a> with <code>"streams": ["ledger"]</code>. To attach event handlers, use <code>Client.on(event_type, callback)</code>. You can make these calls in either order.</p>
+<p>The RippleAPI-specific <code>ledger</code> event type from 1.x has been removed; instead, use <code>ledgerClosed</code> events. These event messages contain the same data, but the format matches the <a href="subscribe.html#ledger-stream">Ledger Stream</a> messages in the WebSocket API.</p>
+<p>Example:</p>
+<p><strong>ripple-lib 1.x:</strong></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"ledger"</span><span class="p">,</span> <span class="p">(</span><span class="nx">ledger</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ledger #</span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledgerVersion</span><span class="si">}</span><span class="sb"> closed!</span>
+<span class="sb">    It contains </span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">transactionCount</span><span class="si">}</span><span class="sb"> transaction(s) and has</span>
+<span class="sb">    the ledger_hash </span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledgerHash</span><span class="si">}</span><span class="sb">.`</span>
+  <span class="p">)</span>
+<span class="p">})</span>
+<span class="c1">// "ledger" events happen automatically while API is connected.</span>
+</code></pre></div>
+<p><strong>xrpl.js 2.0:</strong></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"ledgerClosed"</span><span class="p">,</span> <span class="p">(</span><span class="nx">ledger</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ledger #</span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_index</span><span class="si">}</span><span class="sb"> closed!</span>
+<span class="sb">    It contains </span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">txn_count</span><span class="si">}</span><span class="sb"> transaction(s) and has</span>
+<span class="sb">    the ledger_hash </span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_hash</span><span class="si">}</span><span class="sb">.`</span>
+  <span class="p">)</span>
+<span class="p">})</span>
+<span class="c1">// Must explicitly subscribe to the "ledger" stream to get "ledgerClosed" events</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+  <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"subscribe"</span><span class="p">,</span>
+  <span class="s2">"streams"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"ledger"</span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div>
+<h2 id="reference-of-equivalents">Reference of Equivalents<a aria-hidden="true" class="hover_anchor" href="#reference-of-equivalents"><i class="fa fa-link"></i></a></h2>
 <p>In ripple-lib 1.x all methods and properties were on instances of the <code>RippleAPI</code> class. In xrpl.js 2.x, some methods are static methods of the library and some methods belong to specific classes.</p>
 <table class="table-responsive">
 <thead>
@@ -322,11 +390,11 @@
 <tr>
 <td><code>request(command, options)</code></td>
 <td><code>Client.request(options)</code></td>
-<td>The <code>command</code> field moved into the <code>options</code> object for consistency with the WebSocket API; also, the return value .</td>
+<td><ul><li>The <code>command</code> field moved into the <code>options</code> object for consistency with the WebSocket API.</li><li>In 1.x the return value of this method (when the Promise resolves) was only the <code>result</code> object. Now it returns the whole <a href="response-formatting.html">WebSocket response format</a>; to get the equivalent value, read the <code>result</code> field of the return value.</li></ul></td>
 </tr>
 <tr>
 <td><code>hasNextPage(response)</code></td>
-<td><strong><em>TODO (check for marker?)</em></strong></td>
+<td><code>Client.hasNextPage(response)</code></td>
 <td>See also: <code>Client.requestNextPage()</code> and <code>Client.requestAll()</code></td>
 </tr>
 <tr>
@@ -340,14 +408,24 @@
 <td></td>
 </tr>
 <tr>
+<td><code>classicAddressToXAddress()</code></td>
+<td><code>xrpl.classicAddressToXAddress()</code></td>
+<td>Now a static method on the module.</td>
+</tr>
+<tr>
+<td><code>xAddressToClassicAddress()</code></td>
+<td><code>xrpl.xAddressToClassicAddress()</code></td>
+<td>Now a static method on the module.</td>
+</tr>
+<tr>
 <td><code>renameCounterpartyToIssuer(object)</code></td>
 <td>(None)</td>
-<td>xrpl.js always uses <code>issuer</code> already.</td>
+<td>No longer needed because xrpl.js always uses <code>issuer</code> already.</td>
 </tr>
 <tr>
 <td><code>formatBidsAndAsks(base, counter)</code></td>
-<td><strong><em>TBD?</em></strong></td>
-<td></td>
+<td>(None)</td>
+<td>No longer needed after changes to <code>getOrderbook()</code>.</td>
 </tr>
 <tr>
 <td><code>connect()</code></td>
@@ -371,8 +449,8 @@
 </tr>
 <tr>
 <td><code>getFee()</code></td>
-<td><code>Client.getFee()</code> <strong><em>TODO: confirm</em></strong></td>
-<td></td>
+<td><code>Client.getFee()</code></td>
+<td>Returns a value in decimal XRP; if use this when constructing transactions be sure to convert to integer <em>drops of XRP</em> instead.</td>
 </tr>
 <tr>
 <td><code>getLedgerVersion()</code></td>
@@ -382,36 +460,275 @@
 <tr>
 <td><code>getTransaction(hash)</code></td>
 <td><code>Client.request({command: "tx", transaction: hash})</code></td>
-<td>Request/response match the <a href="tx.html">tx method</a> exactly.</td>
+<td>Request/response match the <a href="tx.html">tx method</a> exactly. <strong>Warning:</strong> Unlike <code>getTransaction()</code>, the <code>tx</code> method can return <a href="#validated-results">results that are not validated and final</a>. Be sure to look for <code>"validated": true</code> in the response object before taking action in response to a transaction.</td>
 </tr>
 <tr>
 <td><code>getTransactions(address, options)</code></td>
-<td><code>Client.request({command: "account_tx", ..})</code></td>
+<td><code>Client.request({"command": "account_tx", ..})</code></td>
 <td>Request/response match the <a href="account_tx.html">account_tx method</a> exactly.</td>
 </tr>
 <tr>
 <td><code>getTrustlines(address, options)</code></td>
-<td><code>Client.request({command: "account_lines", ..})</code></td>
-<td>Request/response match the <a href="account_lines.html">account_lines method</a> exactly.</td>
+<td><code>Client.request({"command": "account_lines", "ledger_index": "validated", ...})</code></td>
+<td>Request/response match the <a href="account_lines.html">account_lines method</a> exactly. <strong>Warning:</strong> Unlike <code>getTrustlines()</code>, <code>account_lines</code> can return <a href="#validated-results">results that are not validated and final</a>.</td>
 </tr>
 <tr>
-<td>...</td>
+<td><code>getBalances(address, options)</code></td>
+<td><code>Client.getBalances(address, options)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>getBalanceSheet(address, options)</code></td>
+<td>(None)</td>
+<td>Removed. Use <code>.getBalances()</code> instead.</td>
+</tr>
+<tr>
+<td><code>getPaths(options)</code></td>
+<td><code>Client.request({"command": "ripple_path_find", ...})</code></td>
+<td>Request/response match the <a href="ripple_path_find.html">ripple_path_find method</a> exactly.</td>
+</tr>
+<tr>
+<td><code>getOrders(address, options)</code></td>
+<td><code>Client.request({"command": "account_offers", "account": address, ...})</code></td>
+<td>Request/response match the <a href="account_offers.html">account_offers method</a> exactly.</td>
+</tr>
+<tr>
+<td><code>getOrderbook(address, orderbook, options)</code></td>
+<td><code>Client.getOrderbook(takerPays, takerGets, options)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>getSettings(address, options)</code></td>
+<td><code>Client.request({"command": "account_info", "account": address, "ledger_index": "validated", ...})</code></td>
+<td>Use <strong><em>TODO: parseAccountRootFlags mention</em></strong> on the <code>Flags</code> field. <strong>Warning:</strong> Unlike <code>getTrustlines()</code>, <code>account_lines</code> can return <a href="#validated-results">results that are not validated and final</a>.</td>
+</tr>
+<tr>
+<td><code>getAccountInfo(address, options)</code></td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td><code>getAccountObjects(address, options)</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>getPaymentChannel(id)</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>getLedger(options)</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>parseAccountFlags(number)</code></td>
+<td><strong><em>TBD parseAccountRootFlags</em></strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>prepareTransaction(transaction, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td><strong><em>TODO: maybe demonstrate how to mimic <code>maxLedgerVersionOffset</code>?</em></strong></td>
+</tr>
+<tr>
+<td><code>preparePayment(address, payment, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="payment.html">Payment transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareTrustline(address, trustline, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="trustset.html">TrustSet transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareOrder(address, order, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct an <a href="offercreate.html">OfferCreate transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareOrderCancellation(address, orderCancellation, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct an <a href="offercancel.html">OfferCancel transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareSettings(address, settings, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>For most settings, construct an <a href="accountset.html">AccountSet transaction</a> instead. To rotate change a regular key, construct a [RegularKeySet transaction][]. To add or update multi-signing settings, construct a <a href="signerlistset.html">SignerListSet transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareEscrowCreation(address, escrowCreation, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct an <a href="escrowcreate.html">EscrowCreate transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareEscrowCancellation(address, escrowCancellation, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct an <a href="escrowcancel.html">EscrowCancel transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareEscrowExecution(address, escrowExecution, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct an <a href="escrowfinish.html">EscrowFinish transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>preparePaymentChannelCreate(address, paymentChannelCreate, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="paymentchannelcreate.html">PaymentChannelCreate transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>preparePaymentChannelClaim(address, paymentChannelClaim, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="paymentchannelclaim.html">PaymentChannelClaim transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>preparePaymentChannelFund(address, paymentChannelFund, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="paymentchannelfund.html">PaymentChannelFund transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareCheckCreate(address, checkCreate, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="checkcreate.html">CheckCreate transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareCheckCancel(address, checkCancel, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="checkcancel.html">CheckCancel transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareCheckCash(address, checkCash, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="checkcash.html">CheckCash transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>prepareTicketCreate(address, ticketCount, instructions)</code></td>
+<td><code>Client.autofill(tx_json)</code></td>
+<td>Construct a <a href="ticketcreate.html">TicketCreate transaction</a> instead.</td>
+</tr>
+<tr>
+<td><code>sign(txJSON_string, secret, options)</code></td>
+<td><code>Wallet.sign(tx_json)</code></td>
+<td><strong><em>TODO: link summary of Wallet class.</em></strong></td>
+</tr>
+<tr>
+<td><code>combine(signedTransactions)</code></td>
+<td><a class="external-link" href="https://js.xrpl.org/modules.html#multisign" target="_blank"><code>xrpl.multisign(signedTransactions)</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>submit(tx_blob)</code></td>
+<td><code>Client.submit(tx_blob)</code></td>
+<td>Reliable transaction submission is now also available; for details, see <a href="#transaction-submission">Transaction Submission</a>.</td>
+</tr>
+<tr>
+<td><code>generateXAddress(options)</code></td>
+<td><code>xrpl.generateXAddress(options)</code></td>
+<td>Now a static method on the module.</td>
+</tr>
+<tr>
+<td><code>generateAddress(options)</code></td>
+<td>(Removed)</td>
+<td>Use <code>generateXAddress(options)</code> instead.</td>
 </tr>
 <tr>
 <td><code>isValidAddress(address)</code></td>
-<td><strong><em>TBD maybe in utils?</em></strong></td>
-<td>Separate from isValidXAddress / isValidClassicAddress</td>
+<td><code>xrpl.isValidAddress(address)</code></td>
+<td>Now a static method on the module.</td>
+</tr>
+<tr>
+<td><code>isValidSecret(secret)</code></td>
+<td><code>xrpl.isValidSecret(secret)</code></td>
+<td>Now a static method on the module.</td>
+</tr>
+<tr>
+<td><code>deriveKeypair()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>deriveAddress()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>generateFaucetWallet()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>signPaymentChannelClaim()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>verifyPaymentChannelClaim()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>computeLedgerHash()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xrpToDrops()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dropsToXrp()</code></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td><code>iso8601ToRippleTime(timestamp)</code></td>
 <td><code>ISOTimeToRippleTime(timestamp)</code></td>
 <td>Now a static method at the <code>xrpl</code> module level.</td>
 </tr>
+<tr>
+<td><code>txFlags</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>accountSetFlags</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>schemaValidator</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>schemaValidate()</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>.on("ledger", callback)</code></td>
+<td><code>Client.on("ledgerClosed", callback)</code></td>
+<td class="devportal-callout caution"><strong>Caution:</strong> Must also subscribe to the ledger stream. For examples and details, see <a href="#vents-and-subscriptions">Events and Subscriptions</a>.</td>
+</tr>
+<tr>
+<td><code>.on("error", callback)</code></td>
+<td><code>Client.on("error", callback)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>.on("connected", callback)</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>.on("disconnected", callback)</code></td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<p>Instead of <code>maxLedgerVersionOffset</code> when preparing a transaction, use <code>getLedgerIndex()</code>, add the offset to it, and provide that as <code>LastLedgerSequence</code>. <strong><em>TODO details</em></strong></p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
