@@ -248,7 +248,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="response-formatting">Response Formatting<a aria-hidden="true" class="hover_anchor" href="#response-formatting"><i class="fa fa-link"></i></a></h1>
-<p>Responses from the <code>rippled</code> APIs is formatted slightly differently based on whether the method is called with the WebSocket, JSON-RPC, or Commandline interfaces. The Commandline and JSON-RPC interfaces use the same format because the Commandline interface calls JSON-RPC.</p>
+<p>Responses are formatted slightly differently based on whether the method is called with the WebSocket, JSON-RPC, or Commandline interfaces. The Commandline and JSON-RPC interfaces use the same format because the Commandline interface calls JSON-RPC.</p>
 <p>The fields of a successful response include:</p>
 <table class="table-responsive">
 <thead>
@@ -267,17 +267,17 @@
 <tr>
 <td align="left"><code>status</code></td>
 <td align="left">String</td>
-<td align="left">(WebSocket only) The value <code>success</code> indicates the request was successfully received and understood by the server.</td>
+<td align="left">(WebSocket only) The value <code>success</code> indicates the request was successfully received and understood by the server. Some <a href="client-libraries.html">client libraries</a> omit this field on success.</td>
 </tr>
 <tr>
 <td align="left"><code>result.status</code></td>
 <td align="left">String</td>
-<td align="left">(JSON-RPC and Commandline) The value <code>success</code> indicates the request was successfully received and understood by the server.</td>
+<td align="left">(JSON-RPC and Commandline) The value <code>success</code> indicates the request was successfully received and understood by the server. Some <a href="client-libraries.html">client libraries</a> omit this field on success.</td>
 </tr>
 <tr>
 <td align="left"><code>type</code></td>
 <td align="left">String</td>
-<td align="left">(WebSocket only) The value <code>response</code> indicates a successful response to a command. <a href="subscribe.html">Asynchronous notifications</a> use a different value such as <code>ledgerClosed</code> or <code>transaction</code>.</td>
+<td align="left">(WebSocket only) The value <code>response</code> indicates a direct response to an API request. <a href="subscribe.html">Asynchronous notifications</a> use a different value such as <code>ledgerClosed</code> or <code>transaction</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>result</code></td>
@@ -458,6 +458,8 @@
 <p class="devportal-callout caution"><strong>Caution:</strong> If you request ledger data without explicitly <a href="basic-data-types.html#specifying-ledgers">specifying a ledger version</a>, Reporting Mode uses the latest validated ledger by default instead of the current in-progress ledger.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
+<li><a href="request-formatting.html">Request Formatting</a></li>
+<li><a href="error-formatting.html">Error Formatting</a> for unsuccessful API responses.</li>
 <li><strong>Concepts:</strong><ul>
 <li><a href="the-rippled-server.html">The <code>rippled</code> Server</a></li>
 <li><a href="intro-to-consensus.html">Introduction to Consensus</a></li>

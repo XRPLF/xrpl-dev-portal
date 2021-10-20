@@ -229,10 +229,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#get-started-using-javascript">Get Started Using JavaScript</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#learning-goals">Learning goals</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#learning-goals">Learning Goals</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#requirements">Requirements</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#install-with-npm">Install with npm</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start building</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start Building</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#1-import-the-library">1. Import the Library</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#2-connect-to-the-xrp-ledger">2. Connect to the XRP Ledger</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#3-generate-wallet">3. Generate Wallet</a></li>
@@ -261,7 +261,7 @@
         <h1 id="get-started-using-javascript">Get Started Using JavaScript<a aria-hidden="true" class="hover_anchor" href="#get-started-using-javascript"><i class="fa fa-link"></i></a></h1>
 <p>This tutorial guides you through the basics of building an XRP Ledger-connected application in JavaScript or TypeScript using the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank"><code>xrpl.js</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> client library in either Node.js or web browsers.</p>
 <p>The scripts and config files used in this guide are <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/xrpljs2.0/content/_code-samples/get-started/js/" target="_blank">available in this website's GitHub Repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="learning-goals">Learning goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
+<h2 id="learning-goals">Learning Goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
 <p>In this tutorial, you'll learn:</p>
 <ul>
 <li>The basic building blocks of XRP Ledger-based applications.</li>
@@ -276,11 +276,11 @@
 <p>Start a new project by creating an empty folder, then change into that folder and use <a class="external-link" href="https://www.npmjs.com/" target="_blank">NPM <i aria-hidden="true" class="fa fa-external-link"></i></a> to install the latest version of xrpl.js:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">npm install xrpl
 </code></pre></div>
-<h2 id="start-building">Start building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
+<h2 id="start-building">Start Building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
 <p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your <a href="wallets.html">wallet</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="issued-currencies.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
 <p>Here are some steps you use in many XRP Ledger projects:</p>
 <ol>
-<li><a href="#1-import-the-library">Import the library</a></li>
+<li><a href="#1-import-the-library">Import the library.</a></li>
 <li><a href="#2-connect-to-the-xrp-ledger">Connect to the XRP Ledger.</a></li>
 <li><a href="#3-generate-wallet">Generate a wallet.</a></li>
 <li><a href="#4-query-the-xrp-ledger">Query the XRP Ledger.</a></li>
@@ -323,8 +323,8 @@
 
 <span class="nx">main</span><span class="p">()</span>
 </code></pre></div>
-<h4 id="connect-to-the-production-xrp-ledger">Connect to the production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connect-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h4>
-<p>The sample code in the previous section shows you how to connect to the Testnet, which is one of the available <a href="parallel-networks.html">parallel networks</a>. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:</p>
+<h4 id="connect-to-the-xrp-ledger-mainnet">Connect to the XRP Ledger Mainnet<a aria-hidden="true" class="hover_anchor" href="#connect-to-the-xrp-ledger-mainnet"><i class="fa fa-link"></i></a></h4>
+<p>The sample code in the previous section shows you how to connect to the Testnet, which is one of the available <a href="parallel-networks.html">parallel networks</a>. When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:</p>
 <ul>
 <li>
 <p>By <a href="install-rippled.html">installing the core server</a> (<code>rippled</code>) and running a node yourself. The core server connects to the Mainnet by default, but you can <a href="connect-your-rippled-to-the-xrp-test-net.html">change the configuration to use Testnet or Devnet</a>. <a href="the-rippled-server.html#reasons-to-run-your-own-server">There are good reasons to run your own core server</a>. If you run your own server, you can connect to it like so:</p>

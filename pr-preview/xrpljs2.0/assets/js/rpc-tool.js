@@ -11,9 +11,7 @@ jQuery(function ($) {
 
   api.on('connected', () => {
     const target = location.hash.slice(1);
-    // TODO: switch back to isValidAddress
-    if (api.isValidClassicAddress(target) ||
-        api.isValidXAddress(target) ||
+    if (api.isValidAddress(target)
         reTxId.exec(target) ||
         reLedgerSeq.exec(target)) {
       $('#target').val(target);
@@ -47,8 +45,7 @@ jQuery(function ($) {
     $("#permalink").attr("href", locationWithoutHash + "#" + target);
     $("#explorerlink").attr("href", ""); // Reset
 
-    // TODO: switch back to isValidAddress()
-    if (api.isValidClassicAddress(target)) { // Account -------------------------------
+    if (api.isValidAddress(target)) { // Account -------------------------------
       let account = target;
       previousMarkers = []
       nextMarker = undefined
@@ -221,7 +218,7 @@ jQuery(function ($) {
       if (err.error === "remoteError" &&
           "object" === typeof err.remote)
       {
-        // TODO: is this "remoteError" thing still valid with ripple-lib 1.x+?
+        // TODO: is this "remoteError" thing still valid with xrpl.js 2.x+?
         err = err.remote;
       }
 

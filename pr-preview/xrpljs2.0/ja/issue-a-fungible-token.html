@@ -636,8 +636,8 @@
     <span class="s2">"Domain"</span><span class="o">:</span> <span class="s2">"6578616D706C652E636F6D"</span><span class="p">,</span> <span class="c1">// "example.com"</span>
     <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="mf">2</span> <span class="c1">// enable Require Auth so we can't use trust lines that users</span>
                  <span class="c1">// make to the hot address, even by accident.</span>
-    <span class="c1">//"Flags": (api.txFlags.AccountSet.DisallowXRP |</span>
-    <span class="c1">//          api.txFlags.AccountSet.RequireDestTag)</span>
+    <span class="c1">//"Flags": (api.AccountSetAsfFlags.asfDisallowXRP |</span>
+    <span class="c1">//          api.AccountSetAsfFlags.asfRequireDestTag)</span>
   <span class="p">}</span>
 
   <span class="kd">const</span> <span class="nx">hst_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">hot_settings_tx</span><span class="p">)</span>

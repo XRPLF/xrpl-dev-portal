@@ -267,12 +267,12 @@
 
   <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
     <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ledger"</span><span class="p">,</span>
-    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
     <span class="s2">"transactions"</span><span class="o">:</span> <span class="kc">true</span>
   <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nx">main</span><span class="p">()</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net/'</span><span class="p">);</span>
@@ -280,12 +280,12 @@
 
   <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
     <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ledger"</span><span class="p">,</span>
-    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
     <span class="s2">"transactions"</span><span class="o">:</span> <span class="kc">true</span>
   <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nx">main</span><span class="p">()</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://xrplcluster.com'</span><span class="p">);</span>
@@ -304,7 +304,7 @@
   <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response2</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nx">main</span><span class="p">()</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://xrplcluster.com'</span><span class="p">);</span>
@@ -312,12 +312,12 @@
 
   <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
     <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ledger"</span><span class="p">,</span>
-    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
     <span class="s2">"transactions"</span><span class="o">:</span> <span class="kc">true</span>
   <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Total XRP: '</span><span class="o">+</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">total_coins</span><span class="p">));</span>
 <span class="p">}</span>
-<span class="nx">main</span><span class="p">()</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
 <p>
 <button class="btn btn-primary run-button" type="button">Run</button>
