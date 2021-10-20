@@ -336,7 +336,7 @@ const set_up_tx_sender = async function() {
       errorNotif("Error: Escrow duration must be a positive number of seconds")
       return
     }
-    const finish_after = xrpl.ISOTimeToRippleTime(Date()) + duration_seconds
+    const finish_after = xrpl.isoTimeToRippleTime(Date()) + duration_seconds
 
     $("#create_escrow .loader").show()
     $("#create_escrow button").prop("disabled","disabled")
@@ -357,7 +357,7 @@ const set_up_tx_sender = async function() {
       let pct_done
       let latestCloseTimeRipple
       while (true) {
-        seconds_left = (finish_after - xrpl.ISOTimeToRippleTime(Date()))
+        seconds_left = (finish_after - xrpl.isoTimeToRippleTime(Date()))
         pct_done = Math.min(99, Math.max(0, (1-(seconds_left / duration_seconds)) * 100))
         $("#escrow_progress .progress-bar").width(pct_done+"%")
         if (seconds_left <= 0) {

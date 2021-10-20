@@ -118,7 +118,7 @@ $("#intermission-escrowcreate").click( async function(event) {
     "Account": address,
     "Destination": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", // Genesis acct
     "Amount": xrpl.xrpToDrops("0.13"), // Arbitrary amount
-    "FinishAfter": xrpl.ISOTimeToRippleTime(Date()) + 30 // 30 seconds from now
+    "FinishAfter": xrpl.isoTimeToRippleTime(Date()) + 30 // 30 seconds from now
   })
 
   complete_step("Intermission")

@@ -1,13 +1,16 @@
 -------------
 Spell Checker
 -------------
-Found 5 possible spelling errors:
+Found 6 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
+<Page 'Use Tickets' (use-tickets.html)> Unknown Words:
+  autofilling: 
+
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iop, iot, iow
-  io2: iow, iou, ion
+  io1: ior, iop, iod
+  io2: ior, iod, iom
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -253,8 +256,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 54
-  Words: 740
-  Characters: 4,620
+  Words: 739
+  Characters: 4,618
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:

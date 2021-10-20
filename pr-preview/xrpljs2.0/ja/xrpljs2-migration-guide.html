@@ -258,6 +258,7 @@
     <div class="content">
         <h1 id="migration-guide-for-ripple-lib-1x-to-xrpljs-2x">Migration Guide for ripple-lib 1.x to xrpl.js 2.x<a aria-hidden="true" class="hover_anchor" href="#migration-guide-for-ripple-lib-1x-to-xrpljs-2x"><i class="fa fa-link"></i></a></h1>
 <p>Follow these instructions to migrate JavaScript / TypeScript code using the <strong>ripple-lib</strong> (1.x) library to use the <strong>xrpl.js</strong> (2.x) library for the XRP Ledger instead.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> You can still access <a class="external-link" href="https://github.com/XRPLF/xrpl.js/blob/1.x/docs/index.md" target="_blank">documentation for the legacy 1.x "RippleAPI" <i aria-hidden="true" class="fa fa-external-link"></i></a> if necessary.</p>
 <h2 id="high-level-differences">High-Level Differences<a aria-hidden="true" class="hover_anchor" href="#high-level-differences"><i class="fa fa-link"></i></a></h2>
 <p>Many fields and functions have "new" names in xrpl.js v2.0; or more accurately, xrpl.js now uses the same names as the <a href="rippled-api.html">HTTP / WebSocket APIs</a>. Structures that were unique to ripple-lib such as an "orderCancellation" object are gone; in their place the library uses the XRP Ledger's native <a href="transaction-types.html">transaction types</a> like "OfferCancel". Many API methods that return these structures in ripple-lib 1.x are gone; instead, you'll make requests and get responses in the same format as in the WebSocket API.</p>
 <p>The catch-all <code>RippleAPI</code> class from ripple-lib 1.x is also gone. With xrpl.js 2.x, there's a <code>Client</code> class to handle network operations, and all other operations are strictly offline. There's a new <code>Wallet</code> class for addresses &amp; keys, and other classes and properties under the top-level <code>xrpl</code> object.</p>
@@ -718,7 +719,7 @@
 </tr>
 <tr>
 <td><code>iso8601ToRippleTime()</code></td>
-<td><code>xrpl.ISOTimeToRippleTime()</code></td>
+<td><code>xrpl.isoTimeToRippleTime()</code></td>
 <td>Now a static method on the module.</td>
 </tr>
 <tr>
