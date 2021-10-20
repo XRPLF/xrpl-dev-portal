@@ -85,6 +85,7 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
 
 <!--{# TODO: update "See Also" with new tutorials' technical details #}-->
 
+
 # 関連項目
 
 * [GB-2014-02新機能残高凍結](https://ripple.com/files/GB-2014-02.pdf)

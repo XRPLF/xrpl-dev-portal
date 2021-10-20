@@ -1,37 +1,58 @@
-const {RippleAPI} = require('ripple-lib');
+// Dependencies for Node.js.
+// In browsers, use <script> tags as in the example demo.html.
+if (typeof module !== "undefined") {
+  // gotta use var here because const/let are block-scoped to the if statement.
+  var xrpl = require('xrpl')
+}
 
-const api = new RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server
-});
-api.on('error', (errorCode, errorMessage) => {
-  console.log(errorCode + ': ' + errorMessage);
-});
+// Connect -------------------------------------------------------------------
+async function main() {
+  console.log("Connecting to Mainnet...")
+  const client = new xrpl.Client('wss://s1.ripple.com')
+  await client.connect()
 
-const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
-const counterparty_address = 'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v';
-const frozen_currency = 'USD';
+  client.on('error', (errorCode, errorMessage) => {
+    console.log(errorCode + ': ' + errorMessage)
+  })
 
-api.connect().then(() => {
+  const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'
+  const counterparty_address = 'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'
+  const frozen_currency = 'USD'
 
-  // Look up current state of trust line
-  const options = {counterparty: counterparty_address,
-                   currency: frozen_currency};
-  console.log('looking up', frozen_currency, 'trust line from',
-              my_address, 'to', counterparty_address);
-  return api.getTrustlines(my_address, options);
-
-}).then(data => {
-
-  if (data.length !== 1) {
-    throw 'should only be 1 trust line per counterparty+currency pair';
+  // Look up current state of the trust line ----------------------------------
+  const account_lines = {
+    command: 'account_lines',
+    account: my_address,
+    peer: counterparty_address,
   }
 
-  const trustline = data[0];
-  console.log('Trust line frozen from our side?',
-              trustline.specification.frozen === true);
-  console.log('Trust line frozen from counterparty\'s side?',
-              trustline.counterparty.frozen === true);
+  console.log(`Looking up all trust lines from
+              ${counterparty_address} to ${my_address}`)
 
-}).then(() => {
-  return api.disconnect();
-}).catch(console.error);
+  const data = await client.request(account_lines)
+  
+  // Find the trust line for our frozen_currency ------------------------------
+  let trustline = null
+  for (let i = 0; i < data.result.lines.length; i++) {
+    if(data.result.lines[i].currency === frozen_currency) {
+      trustline = data.result.lines[i]
+      break
+    }
+  }
+
+  if(trustline === null) {
+    throw `There was no ${frozen_currency} trust line`
+  }
+
+  // Check if the trust line is frozen -----------------------------------------
+  console.log('Trust line frozen from our side?',
+              trustline.freeze === true)
+  console.log('Trust line frozen from counterparty\'s side?',
+              trustline.freeze_peer === true)
+  
+  await client.disconnect()
+
+  // End main()
+}
+
+main().catch(console.error)

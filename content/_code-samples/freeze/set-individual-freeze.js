@@ -1,57 +1,100 @@
-const {RippleAPI} = require('ripple-lib');
+const xrpl = require('xrpl')
 
-const api = new RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server
-});
-api.on('error', (errorCode, errorMessage) => {
-  console.log(errorCode + ': ' + errorMessage);
-});
+async function main() {
+  // Connect -------------------------------------------------------------------
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+  await client.connect()
 
-const issuing_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
-const issuing_secret = 's████████████████████████████';
-    // Best practice: get your secret from an encrypted
-    //  config file instead
-const address_to_freeze = 'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v';
-const currency_to_freeze = 'USD';
+  client.on('error', (errorCode, errorMessage) => {
+    console.log(errorCode + ': ' + errorMessage)
+  })
 
-api.connect().then(() => {
+  // Get credentials from the Testnet Faucet ------------------------------------
+  console.log("Requesting an address from the Testnet faucet...")
+  const { wallet, balance } = await client.fundWallet()
 
-  // Look up current state of trust line
-  const options = {counterparty: address_to_freeze,
-                 currency: currency_to_freeze};
-  console.log('looking up', currency_to_freeze, 'trust line from',
-              issuing_address, 'to', address_to_freeze);
-  return api.getTrustlines(issuing_address, options);
+  // Look up current state of a trust line --------------------------------------
+  const issuing_address = wallet.address
+  const address_to_freeze = 'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'
+  const currency_to_freeze = 'USD'
 
-}).then(data => {
-
-  // Prepare a trustline transaction to enable freeze
-  let trustline = {};
-  if (data.length !== 1) {
-    console.log('trustline not found, making a default one');
-    trustline = {
-      currency: currency_to_freeze,
-      counterparty: address_to_freeze,
-      limit: 0
-    };
-  } else {
-    trustline = data[0].specification;
-    console.log('trustline found. previous state:', trustline);
+  const account_lines = {
+    command: 'account_lines',
+    account: issuing_address,
+    peer: address_to_freeze,
   }
 
-  trustline.frozen = true;
+  console.log('Looking up', currency_to_freeze, 'trust line from',
+              issuing_address, 'to', address_to_freeze)
 
-  console.log('preparing trustline transaction for line:', trustline);
-  return api.prepareTrustline(issuing_address, trustline);
+  const data = await client.request(account_lines)
+  const trustlines = data.result.lines
 
-}).then(prepared_tx => {
+  // Find the trust line for our currency_to_freeze ------------------------------
+  let trustline = null
+  for (let i = 0; i < trustlines.length; i++) {
+    if(trustlines[i].currency === currency_to_freeze) {
+      trustline = trustlines[i]
+      break
+    }
+  }
 
-  // Sign and submit the trustline transaction
-  console.log('signing tx:', prepared_tx.txJSON);
-  const signed1 = api.sign(prepared_tx.txJSON, issuing_secret);
-  console.log('submitting tx:', signed1.id);
+  // Prepare a TrustSet transaction to create or modify the target trust line ----
+  let trust_set = null
 
-  return api.submit(signed1.signedTransaction);
-}).then(() => {
-  return api.disconnect();
-}).catch(console.error);
+  if(trustline === null) {
+    console.log('Trustline not found, making a default one')
+
+    trust_set = {
+      TransactionType: 'TrustSet',
+      Account: issuing_address,
+      LimitAmount: {
+        value: '0',
+        currency: currency_to_freeze,
+        issuer: address_to_freeze,
+      },
+    }
+
+  } else {
+    console.log('Found existing trustline: ', trustline)
+
+    trust_set = {
+      TransactionType: 'TrustSet',
+      Account: issuing_address,
+      LimitAmount: {
+        value: trustline.limit,
+        currency: trustline.currency,
+        issuer: trustline.account
+      },
+    }
+  }
+
+  // Set a flag to freeze the trust line --------------------------------------------
+  trust_set.Flags = xrpl.TrustSetFlags.tfSetFreeze
+
+  // Submit a TrustSet transaction to set an individual freeze ----------------------
+  console.log('Submitting TrustSet tx:', trust_set)
+  const result = await client.submitReliable(wallet, trust_set)
+  console.log("Submitted TrustSet!")
+
+  // Investigate --------------------------------------------------------------------
+  console.log(
+    `You would investigate whatever prompted you to freeze the trust line now...`)
+  await new Promise(resolve => setTimeout(resolve, 5000))
+
+  // Clear the individual freeze ----------------------------------------------------
+  // We're reusing our TrustSet transaction from earlier with a different flag
+  trust_set.Flags = xrpl.TrustSetFlags.tfClearFreeze
+
+  // Submit a TrustSet transaction to set an individual freeze ----------------------
+  console.log('Submitting TrustSet tx:', trust_set)
+  const result2 = await client.submitReliable(wallet, trust_set)
+  console.log("Submitted TrustSet!")
+
+  console.log("Finished submitting. Now disconnecting.")
+  await client.disconnect()
+
+  //End main()
+}
+
+main().catch(console.error)

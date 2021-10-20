@@ -85,6 +85,7 @@ The No Freeze setting applies to all currencies issued to and from an address. I
 You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a [Regular Key](setregularkey.html) or a [multi-signed transaction](multi-signing.html) to enable No Freeze.
 
 
+
 # See Also
 
 - [GB-2014-02 New Feature: Balance Freeze](https://ripple.com/files/GB-2014-02.pdf)
