@@ -220,7 +220,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/amarantha-k/xrpl-dev-portal/edit/xrpl-1137/content/references/rippled-api/public-rippled-methods/transaction-methods/sign.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1209" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/amarantha-k/xrpl-dev-portal/edit/xrpl-1137/content/references/rippled-api/admin-rippled-methods/signing-methods/sign.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1209" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -251,8 +251,8 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/transaction-methods.html">Transaction Methods</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/admin-rippled-methods.html">管理rippledメソッド</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/signing-methods.html">Signing Methods</a></li>
     <li class="active breadcrumb-item">sign</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
@@ -260,7 +260,7 @@
         <h1 id="sign">sign<a aria-hidden="true" class="hover_anchor" href="#sign"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>sign</code>メソッドは<a href="transaction-formats.html">JSONフォーマットのトランザクション</a>と<a href="cryptographic-keys.html">シード値</a>を受け取り、トランザクションの署名済みバイナリー表現を返します。<a href="multi-signing.html">マルチ署名済みトランザクション</a>に署名を付与する場合は、代わりに<a href="sign_for.html">sign_forメソッド</a>を使用します。</p>
-<p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
+<p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server admin has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
 <!--_ -->
 <p class="devportal-callout 注意"><strong>注意:</strong> 独自の<code>rippled</code>サーバーを運用している場合を除き、このコマンドを使用するのではなく、<a href="rippleapi-reference.html#sign">RippleAPIを使用したローカル署名</a>を実行してください。信用できないサーバーが、トランザクションへの署名前にトランザクションに変更を加えたり、シークレットキーを悪用して、トランザクションの発行元であるかのように任意の追加的なトランザクションに署名したりするおそれがあります。</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
@@ -1923,13 +1923,13 @@ rippled sign s██████████████████████
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="true" aria-controls="tree_nav_group_4_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
         <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
   <div class="nav-item ">
 
@@ -2025,23 +2025,13 @@ rippled sign s██████████████████████
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="true" aria-controls="tree_nav_group_4_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
 
         <a class="nav-link" href="/ja/transaction-methods.html">Transaction Methods</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3_2_3">
-      
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2211,13 +2201,13 @@ rippled sign s██████████████████████
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active-parent">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="true" aria-controls="tree_nav_group_4_3_3"></a>
 
         <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
+    <nav class="nav flex-column show " id="tree_nav_group_4_3_3">
       
   <div class="nav-item ">
 
@@ -2315,13 +2305,35 @@ rippled sign s██████████████████████
   </div>
 
       
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="true" aria-controls="tree_nav_group_4_3_3_4"></a>
+
+        <a class="nav-link" href="/ja/signing-methods.html">Signing Methods</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_4_3_3_4">
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -2354,11 +2366,11 @@ rippled sign s██████████████████████
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>

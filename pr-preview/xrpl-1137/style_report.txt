@@ -3,8 +3,8 @@ Spell Checker
 -------------
 Found 2 possible spelling errors:
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iou, iow, iod
-  io2: iou, iod, io-
+  io1: ior, iom, iof
+  io2: o2, iom, iob
 
 -----------------------------
 Discouraged Words and Phrases

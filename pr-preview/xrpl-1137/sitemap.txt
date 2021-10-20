@@ -258,8 +258,6 @@ https://xrpl.org/ledger_current.html
 https://xrpl.org/ledger_data.html
 https://xrpl.org/ledger_entry.html
 https://xrpl.org/transaction-methods.html
-https://xrpl.org/sign.html
-https://xrpl.org/sign_for.html
 https://xrpl.org/submit.html
 https://xrpl.org/submit_multisigned.html
 https://xrpl.org/transaction_entry.html
@@ -301,6 +299,9 @@ https://xrpl.org/server-control-methods.html
 https://xrpl.org/ledger_accept.html
 https://xrpl.org/stop.html
 https://xrpl.org/validation_seed.html
+https://xrpl.org/signing-methods.html
+https://xrpl.org/sign.html
+https://xrpl.org/sign_for.html
 https://xrpl.org/peer-management-methods.html
 https://xrpl.org/connect.html
 https://xrpl.org/peer_reservations_add.html
