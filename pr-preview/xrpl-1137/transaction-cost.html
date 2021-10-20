@@ -147,7 +147,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -391,18 +391,18 @@
 <p>As a rule, the XRP Ledger executes transactions <em>exactly</em> as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the <code>Fee</code> field, even if the specified amount is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's <a href="reserves.html">reserve requirement</a>.</p>
 <p>Before signing a transaction, we recommend <a href="#querying-the-transaction-cost">looking up the current load-based transaction cost</a>. If the transaction cost is high due to load scaling, you may want to wait for it to decrease. If you do not plan on submitting the transaction immediately, we recommend specifying a slightly higher transaction cost to account for future load-based fluctuations in the transaction cost.</p>
 <h3 id="automatically-specifying-the-transaction-cost">Automatically Specifying the Transaction Cost<a aria-hidden="true" class="hover_anchor" href="#automatically-specifying-the-transaction-cost"><i class="fa fa-link"></i></a></h3>
-<p>When you sign a transaction online, you can omit the <code>Fee</code> field. In this case, <code>rippled</code> or <a href="rippleapi-reference.html">RippleAPI</a> checks the state of the peer-to-peer network for the current requirement and adds a <code>Fee</code> value before signing the transaction. However, there are several drawbacks and limitations to automatically filling in the transaction cost in this manner:</p>
+<p>The <code>Fee</code> field is one of the things that can be <a href="transaction-common-fields.html#auto-fillable-fields">auto-filled</a> when creating a transaction. In this case, the auto-filling software provides a suitable <code>Fee</code> value based on the current load in the peer-to-peer network. However, there are several drawbacks and limitations to automatically filling in the transaction cost in this manner:</p>
 <ul>
-<li>If the network's transaction cost goes up between signing and distributing the transaction, the transaction may not be confirmed.<ul>
-<li>In the worst case, the transaction may be stuck in a state of being neither definitively confirmed or rejected, unless it included a <code>LastLedgerSequence</code> parameter or until you cancel it with a new transaction that uses the same <code>Sequence</code> number. See <a href="reliable-transaction-submission.html">reliable transaction submission</a> for best practices.</li>
+<li>If the network's transaction cost goes up between auto-filling and submitting the transaction, the transaction may not be confirmed.<ul>
+<li>To prevent a transaction from getting stuck in a state of being neither definitively confirmed or rejected, be sure to provide a <code>LastLedgerSequence</code> parameter so it eventually expires. Alternatively, you can try to <a href="about-canceling-a-transaction.html">cancel a stuck transaction</a> by reusing the same <code>Sequence</code> number. See <a href="reliable-transaction-submission.html">reliable transaction submission</a> for best practices.</li>
 </ul>
 </li>
-<li>You do not know in advance exactly what value you are signing for the <code>Fee</code> field.<ul>
+<li>You have to be careful that the automatically provided value isn't too high. You don't want to burn a large fee to send a small transaction.<ul>
 <li>If you are using <code>rippled</code>, you can also use the <code>fee_mult_max</code> and <code>fee_div_max</code> parameters of the <a href="sign.html">sign method</a> to set a limit to the load scaling you are willing to sign.</li>
+<li>Some client libraries (like <a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a> and <a class="external-link" href="https://xrpl-py.readthedocs.io/" target="_blank">xrpl-py <i aria-hidden="true" class="fa fa-external-link"></i></a>) have configurable maximum <code>Fee</code> values, and raise an error instead of signing a transaction whose <code>Fee</code> value is higher than the maximum.</li>
 </ul>
 </li>
-<li>You cannot look up the current transaction cost from an offline machine.</li>
-<li>You cannot automatically specify the transaction cost when <a href="multi-signing.html">multi-signing</a>.</li>
+<li>You cannot auto-fill from an offline machine nor when <a href="multi-signing.html">multi-signing</a>.</li>
 </ul>
 <h2 id="transaction-costs-and-failed-transactions">Transaction Costs and Failed Transactions<a aria-hidden="true" class="hover_anchor" href="#transaction-costs-and-failed-transactions"><i class="fa fa-link"></i></a></h2>
 <p>Since the purpose of the transaction cost is to protect the XRP Ledger peer-to-peer network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, <code>rippled</code> servers try to include failed transactions in ledgers, with <a href="transaction-results.html"><code>tec</code> status codes</a> ("tec" stands for "Transaction Engine - Claimed fee only").</p>
@@ -896,7 +896,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="get-started-using-node-js.html">Get Started Using Node.js</a>
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1116,6 +1116,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1775,7 +1790,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

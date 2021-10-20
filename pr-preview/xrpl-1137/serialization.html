@@ -147,7 +147,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -325,42 +325,7 @@
 <li>In JavaScript in the <a class="external-link" href="https://github.com/ripple/ripple-binary-codec/" target="_blank"><code>ripple-binary-codec</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> package.</li>
 <li>In Python 3 in <a class="external-link" href="https://github.com/amarantha-k/xrpl-dev-portal/blob/xrpl-1137/content/_code-samples/tx-serialization/serialize.py" target="_blank">this repository's code samples section <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 </ul>
-<p>Additionally, the following libraries also provide serialization support:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th>Language</th>
-<th>Library Name</th>
-<th>Get Started</th>
-<th>API Reference</th>
-<th>Source Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Python</strong></td>
-<td><code>xrpl-py</code></td>
-<td><a href="get-started-using-python.html">Get Started</a></td>
-<td><a class="external-link" href="https://xrpl-py.readthedocs.io/" target="_blank">API Reference <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-<td><a class="external-link" href="https://github.com/XRPLF/xrpl-py" target="_blank">Repo <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td><strong>JavaScript</strong> / <strong>TypeScript</strong></td>
-<td><code>ripple-lib</code></td>
-<td><a href="get-started-with-rippleapi-for-javascript.html">Get Started</a></td>
-<td><a href="rippleapi-reference.html">API Reference</a></td>
-<td><a class="external-link" href="https://github.com/XRPLF/xrpl.js" target="_blank">Repo <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td><strong>Java</strong></td>
-<td><code>xrpl4j</code></td>
-<td><a class="external-link" href="https://github.com/XRPLF/xrpl4j#readme" target="_blank">README <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-<td><a class="external-link" href="https://github.com/XRPLF/xrpl4j/tree/main/xrpl4j-integration-tests" target="_blank">API Reference <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-<td><a class="external-link" href="https://github.com/XRPLF/xrpl4j" target="_blank">Repo <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-</tbody>
-</table>
-<p>These implementations are all provided with permissive open-source licenses, so you can import, use, or adapt the code for your needs.</p>
+<p>Additionally, many <a href="client-libraries.html">client libraries</a> provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.</p>
 <h2 id="internal-format">Internal Format<a aria-hidden="true" class="hover_anchor" href="#internal-format"><i class="fa fa-link"></i></a></h2>
 <p>Each field has an "internal" binary format used in the <code>rippled</code> source code to represent that field when signing (and in most other cases). The internal formats for all fields are defined in the source code of <a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp" target="_blank"><code>SField.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>. (This file also includes fields other than transaction fields.) The <a href="transaction-formats.html">Transaction Format Reference</a> also lists the internal formats for all transaction fields.</p>
 <p>For example, the <code>Flags</code> <a href="transaction-common-fields.html">common transaction field</a> becomes a UInt32 (32-bit unsigned integer).</p>
@@ -1248,7 +1213,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="get-started-using-node-js.html">Get Started Using Node.js</a>
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1468,6 +1433,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -2127,7 +2107,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

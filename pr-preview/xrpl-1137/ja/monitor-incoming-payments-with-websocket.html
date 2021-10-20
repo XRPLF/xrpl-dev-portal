@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -263,7 +263,7 @@
         <h1 id="websocketを使用した着信ペイメントの監視">WebSocketを使用した着信ペイメントの監視<a aria-hidden="true" class="hover_anchor" href="#websocketを使用した着信ペイメントの監視"><i class="fa fa-link"></i></a></h1>
 <p>このチュートリアルでは、<a href="rippled-api.html">WebSocket <code>rippled</code> API</a>を使用して、着信<a href="payment-types.html">ペイメント</a>を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。</p>
 <p>WebSocketは、クライアントとサーバーが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、要求ごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です<a href="#footnote-1">¹</a><a id="from-footnote-1"></a>。</p>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、<a href="rippleapi-reference.html">JavaScript向けRippleAPIライブラリ</a>も利用すると、一部の作業を簡素化できます。このチュートリアルでは、RippleAPIを使用できないその他のプログラミング言語にステップを適合できるよう、RippleAPIを使用 <em>しない</em> でトランザクションを監視する方法を説明します。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、<a class="external-link" href="https://js.xrpl.org/" target="_blank">JavaScript向けxrpl.jsライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>も利用すると、一部の作業を簡素化できます。このチュートリアルでは、xrpl.jsを使用できないその他のプログラミング言語にステップを適合できるよう、xrpl.jsを使用 <em>しない</em> でトランザクションを監視する方法を説明します。</p>
 <h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>このページの例では、すべての主要な最新ブラウザーで使用できるJavaScriptおよびWebSocketプロトコルを使用しています。JavaScriptにある程度習熟し、WebSocketクライアントを使用する他のプログラミング言語の専門知識があれば、選択する言語に手順を適合させながら進めていくことができます。</li>
@@ -371,7 +371,7 @@ $("#connect-socket-button").click((event) => {
 <p><a href="subscribe.html">サブスクリプション</a>からのフォローアップメッセージの場合、<code>type</code>は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している<a href="path_find.html">pathfinding要求</a>のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。</p>
 </li>
 </ul>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> <a href="rippleapi-reference.html">JavaScript向けRippleAPI</a>は、デフォルトでこのステップに対応しています。すべての非同期API要求はPromiseを使用して応答を提供します。また<a href="rippleapi-reference.html#listening-to-streams"><code>.on(event, callback)</code>メソッド</a>を使用して、ストリームをリッスンできます。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> <a class="external-link" href="https://js.xrpl.org/" target="_blank">JavaScript向けxrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a>は、デフォルトでこのステップに対応しています。すべての非同期API要求はPromiseを使用して応答を提供します。また<a class="external-link" href="https://js.xrpl.org/classes/Client.html#on" target="_blank"><code>.on(event, callback)</code>メソッド <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して、ストリームをリッスンできます。</p>
 <p>以下のJavaScriptコードでは、API要求を便利な非同期<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" target="_blank">Promise <i aria-hidden="true" class="fa fa-external-link"></i></a>に変換するヘルパー関数を定義し、他のタイプのメッセージをグローバルハンドラーにマップするインターフェイスを設定します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kd">const</span> <span class="nx">AWAITING</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="kd">const</span> <span class="nx">handleResponse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -1389,7 +1389,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1609,6 +1609,21 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -2268,7 +2283,19 @@ $("#tx_read").click((event) => {
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

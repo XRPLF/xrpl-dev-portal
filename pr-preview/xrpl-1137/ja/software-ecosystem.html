@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -274,7 +274,7 @@
 <p>このサーバーは、データの検索、サーバーの管理、トランザクションの送信を行うための<a href="rippled-api.html"><code>rippled</code> API</a>をユーザーに公開します。</p>
 <h3 id="プログラミングライブラリー">プログラミングライブラリー<a aria-hidden="true" class="hover_anchor" href="#プログラミングライブラリー"><i class="fa fa-link"></i></a></h3>
 <p>プログラミングライブラリーは、XRP Ledgerデータにアクセスするために必ずしも必要なわけではありません。HTTPまたはWebSocketを使用すれば、<a href="rippled-api.html"><code>rippled</code> API</a>に直接接続できるためです。ライブラリーは、<code>rippled</code> APIにアクセスする際の一般的な作業の一部を簡素化し、データをライブラリー内のプログラミング言語で理解しやすく、かつプログラミングしやすい形式に変換します。</p>
-<p><a href="get-started-with-rippleapi-for-javascript.html">JavaScript用のRippleAPI</a>（「ripple-lib」とも呼ばれる）は、長年にわたって使用され、かつ十分なサポートがある、XRP Ledgerにアクセスするためのライブラリーです。多くの<a href="#ミドルウェア">ミドルウェアサービス</a>が、RippleAPIのようなプログラミングライブラリーを内部で使用しています。</p>
+<p><a href="get-started-using-javascript.html">JavaScript用のxrpl.js</a>は、長年にわたって使用され、かつ十分なサポートがある、XRP Ledgerにアクセスするためのライブラリーです。多くの<a href="#ミドルウェア">ミドルウェアサービス</a>が、このような<a href="client-libraries.html">プログラミングライブラリー</a>を内部で使用しています。</p>
 <h3 id="ミドルウェア">ミドルウェア<a aria-hidden="true" class="hover_anchor" href="#ミドルウェア"><i class="fa fa-link"></i></a></h3>
 <p>ミドルウェアサービスは、一方ではXRP Ledger APIを利用し、もう一方では独自のAPIを提供するプログラムです。抽象化層を提供して、いくつかの一般的な機能をサービスとして提供することで上位のアプリケーションを容易に構築できるようにします。</p>
 <p><a href="#プログラミングライブラリー">プログラムライブラリー</a>は、インポートしたプログラムによって新規にインスタンス化されたりシャットダウンされたりしますが、ミドルウェアはそれと異なり、多くの場合は無期限に実行され続け、独自のデータベース（リレーショナルSQLデータベースなど）や構成ファイルを持つことがあります。</p>
@@ -753,7 +753,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -973,6 +973,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1632,7 +1647,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

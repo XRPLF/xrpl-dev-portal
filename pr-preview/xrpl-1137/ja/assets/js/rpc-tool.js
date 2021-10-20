@@ -7,11 +7,11 @@ jQuery(function ($) {
   let currentMarker
   let nextMarker
 
-  const api = new ripple.RippleAPI({server: FULL_HISTORY_SERVER})
+  const api = new xrpl.Client(FULL_HISTORY_SERVER)
 
   api.on('connected', () => {
     const target = location.hash.slice(1);
-    if (api.isValidAddress(target) ||
+    if (api.isValidAddress(target)
         reTxId.exec(target) ||
         reLedgerSeq.exec(target)) {
       $('#target').val(target);
@@ -57,20 +57,23 @@ jQuery(function ($) {
       $("#progress .progress-bar").css("width", "10%");
 
       try {
-        let result = await api.request("account_info", {account})
-        $("#progress .progress-bar").css("width", "20%");
-        console.log('account_info', result);
-        format(result, $("#account_info"));
+        let command = "account_info"
+        let result = await api.request({command, account})
+        $("#progress .progress-bar").css("width", "20%")
+        console.log('account_info', result)
+        format(result, $("#account_info"))
 
-        result = await api.request("account_lines", {account})
-        $("#progress .progress-bar").css("width", "40%");
-        console.log('account_lines', result);
-        format(result, $("#account_lines"));
+        command = "account_lines"
+        result = await api.request({command, account})
+        $("#progress .progress-bar").css("width", "40%")
+        console.log('account_lines', result)
+        format(result, $("#account_lines"))
 
         result = await pagedAccountTx(account);
         $("#progress .progress-bar").css("width", "60%");
 
-        result = await api.request("account_objects", {account})
+        command = "account_objects"
+        result = await api.request({command, account})
         $("#progress .progress-bar").css("width", "80%");
         console.log('account_objects', result);
         format(result, $("#account_objects"));
@@ -92,7 +95,8 @@ jQuery(function ($) {
 
       $("#progress .progress-bar").css("width", "10%");
       try {
-        let result = await api.request("ledger", {
+        let result = await api.request({
+          command: "ledger",
           ledger_index: target,
           transactions: true,
           expand: true
@@ -114,7 +118,8 @@ jQuery(function ($) {
 
       try {
         $("#progress .progress-bar").css("width", "10%");
-        let result = await api.request("tx", {
+        let result = await api.request({
+          command: "tx",
           transaction: target,
           binary: false
         })
@@ -213,7 +218,7 @@ jQuery(function ($) {
       if (err.error === "remoteError" &&
           "object" === typeof err.remote)
       {
-        // TODO: is this "remoteError" thing still valid with ripple-lib 1.x+?
+        // TODO: is this "remoteError" thing still valid with xrpl.js 2.x+?
         err = err.remote;
       }
 
@@ -229,6 +234,7 @@ jQuery(function ($) {
 
   async function pagedAccountTx(account, page) {
     let opts = {
+      "command": "account_tx",
       "account": account,
       "ledger_index_min": -1,
       "ledger_index_max": -1,
@@ -251,7 +257,7 @@ jQuery(function ($) {
       currentMarker = opts["marker"]
     }
 
-    let result = await api.request("account_tx", opts)
+    let result = await api.request(opts)
     console.log('account_tx', result)
     format(result, $("#account_tx").empty())
     updateTxMarkerNav(result)

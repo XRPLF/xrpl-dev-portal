@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -277,11 +277,8 @@
 </ul>
 </li>
 <li>CheckCancelトランザクションを送信する資金供給のあるアカウントの<strong>アドレス</strong>と<strong>シークレットキー</strong>。Checkが有効期限切れでない限り、このアドレスは、Checkの送金元または受取人のいずれかでなければなりません。</li>
-<li>トランザクションに安全に署名できる手段（<a href="rippleapi-reference.html">RippleAPI</a>や各自の<a href="install-rippled.html"><code>rippled</code>サーバー</a>など）。</li>
-<li><code>rippled</code>サーバーに接続できるクライアントライブラリ（<a href="rippleapi-reference.html">RippleAPI</a>、HTTPライブラリ、またはWebSocketライブラリなど）。<ul>
-<li>詳細は、<a href="get-started-using-http-websocket-apis.html"><code>rippled</code> APIの使用開始</a>を参照してください。</li>
-</ul>
-</li>
+<li>トランザクションに<a href="set-up-secure-signing.html">安全に署名できる手段</a>。</li>
+<li><a href="client-libraries.html">クライアントライブラリ</a>またはHTTPライブラリ、WebSocketライブラリなど。</li>
 </ul>
 <h2 id="1checkcancelトランザクションの準備">1.CheckCancelトランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#1checkcancelトランザクションの準備"><i class="fa fa-link"></i></a></h2>
 <p><a href="checkcancel.html">CheckCancelトランザクション</a>のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>可能なフィールドです。</p>
@@ -311,11 +308,9 @@
 </tr>
 </tbody>
 </table>
-<p><a href="rippleapi-reference.html">RippleAPI</a>を使用している場合は、<code>prepareCheckCancel()</code>ヘルパーメソッドを使用できます。</p>
-<p class="devportal-callout 注記"><strong>注記:</strong> CheckはRippleAPIバージョン0.19.0以降でサポートされています。</p>
 <h3 id="checkcancelトランザクションの準備の例">CheckCancelトランザクションの準備の例<a aria-hidden="true" class="hover_anchor" href="#checkcancelトランザクションの準備の例"><i class="fa fa-link"></i></a></h3>
 <p>Checkを取り消す例を以下に示します。</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="jsonrpc、websocket、またはコマンドライン" href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a class="rippleapi" href="#code-0-1">RippleAPI</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="jsonrpc、websocket、またはコマンドライン" href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a class="ripplelib1.x" href="#code-0-1">ripple-lib 1.x</a></li></ul>
 
 <div class="code_sample jsonrpc、websocket、またはコマンドライン" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
  <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"CheckCancel"</span><span class="p">,</span>
@@ -325,7 +320,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample rippleapi" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
+<div class="code_sample ripplelib1.x" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
 <span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
@@ -369,12 +364,12 @@
 </code></pre></div></div>
 </div>
 <h2 id="2checkcancelトランザクションの署名">2.CheckCancelトランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#2checkcancelトランザクションの署名"><i class="fa fa-link"></i></a></h2>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later. <!--#{ fix md highlighting_ #}--></p>
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="rippleapi" href="#code-1-0">RippleAPI</a></li><li><a class="コマンドライン" href="#code-1-1">コマンドライン</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-1-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-1-1">コマンドライン</a></li></ul>
 
-<div class="code_sample rippleapi" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="s1">'use strict'</span>
+<div class="code_sample ripplelib1.x" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="s1">'use strict'</span>
 <span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// Can sign offline if the txJSON has all required fields</span>
@@ -400,9 +395,9 @@
 </code></pre></div></div>
 </div>
 <h3 id="応答の例">応答の例<a aria-hidden="true" class="hover_anchor" href="#応答の例"><i class="fa fa-link"></i></a></h3>
-<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="rippleapi" href="#code-2-0">RippleAPI</a></li><li><a class="コマンドライン" href="#code-2-1">コマンドライン</a></li></ul>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-2-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-2-1">コマンドライン</a></li></ul>
 
-<div class="code_sample rippleapi" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">tx_blob is: 12001222800000002400000007201B007A251450182E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C268400000000000000C732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB4007446304402205D77451B0D7BCDA1FE5B98763C5B3B2837453371FE93C2B86157C44B1867AE36022003800273848BC2F8E1C6EC7EE4B0CB2425A888AE80E586886C306C796B25678B8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF
+<div class="code_sample ripplelib1.x" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">tx_blob is: 12001222800000002400000007201B007A251450182E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C268400000000000000C732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB4007446304402205D77451B0D7BCDA1FE5B98763C5B3B2837453371FE93C2B86157C44B1867AE36022003800273848BC2F8E1C6EC7EE4B0CB2425A888AE80E586886C306C796B25678B8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF
 tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 </code></pre></div></div>
 
@@ -432,9 +427,9 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 <p>Take the signed transaction blob from the previous step and submit it to a <code>rippled</code> server. You can do this safely even if you do not run the <code>rippled</code> server. The response contains a provisional result, which should be <code>tesSUCCESS</code>, but this result is <a href="finality-of-results.html">usually not final</a>. A provisional response of <code>terQUEUED</code> is also OK, since <a href="transaction-cost.html#キューに入れられたトランザクション">queued transactions</a> are generally included in the next open ledger version (usually about 10 seconds after submission).</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> If the preliminary result is <code>tefMAX_LEDGER</code>, the transaction has failed permanently because its <code>LastLedgerSequence</code> parameter is lower than the current ledger. This happens when you take longer than the expected number of ledger versions between preparing and submitting the transaction. If this occurs, <a href="#1checkcancelトランザクションの準備">start over from step 1</a> with a higher <code>LastLedgerSequence</code> value. <!--#{ fix md highlighting_ #}--></p>
 <h3 id="要求の例-1">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例-1"><i class="fa fa-link"></i></a></h3>
-<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="rippleapi" href="#code-3-0">RippleAPI</a></li><li><a class="コマンドライン" href="#code-3-1">コマンドライン</a></li></ul>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-3-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-3-1">コマンドライン</a></li></ul>
 
-<div class="code_sample rippleapi" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="s1">'use strict'</span>
+<div class="code_sample ripplelib1.x" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="s1">'use strict'</span>
 <span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
@@ -461,9 +456,9 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 </code></pre></div></div>
 </div>
 <h3 id="応答の例-1">応答の例<a aria-hidden="true" class="hover_anchor" href="#応答の例-1"><i class="fa fa-link"></i></a></h3>
-<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="rippleapi" href="#code-4-0">RippleAPI</a></li><li><a class="コマンドライン" href="#code-4-1">コマンドライン</a></li></ul>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-4-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-4-1">コマンドライン</a></li></ul>
 
-<div class="code_sample rippleapi" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="nx">Connected</span>
+<div class="code_sample ripplelib1.x" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="nx">Connected</span>
 <span class="nx">Preliminary</span> <span class="nx">transaction</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">tesSUCCESS</span>
 <span class="nx">Disconnected</span>
 </code></pre></div></div>
@@ -500,9 +495,9 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 <p>トランザクションのステータスを確認するには、CheckCancelトランザクションの識別用ハッシュを指定した<a href="tx.html">txメソッド</a>を使用します。トランザクションが成功したことを示す<code>"TransactionResult": "tesSUCCESS"</code>フィールドをトランザクションメタデータから検索し、またこの結果が最終結果であることを示す<code>"validated": true</code>フィールドを結果から検索します。</p>
 <p>トランザクションによって<a href="check.html">Checkレジャーオブジェクト</a>が削除されたことを示す<code>"LedgerEntryType": "Check"</code>を含む<code>DeletedNode</code>オブジェクトを、トランザクションメタデータから検索します。このオブジェクトの<code>LedgerIndex</code>はCheckのIDに一致している必要があります。</p>
 <h3 id="要求の例-2">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例-2"><i class="fa fa-link"></i></a></h3>
-<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="rippleapi" href="#code-5-0">RippleAPI</a></li><li><a class="コマンドライン" href="#code-5-1">コマンドライン</a></li></ul>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-5-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-5-1">コマンドライン</a></li></ul>
 
-<div class="code_sample rippleapi" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="s1">'use strict'</span>
+<div class="code_sample ripplelib1.x" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="s1">'use strict'</span>
 <span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
@@ -529,9 +524,9 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 </code></pre></div></div>
 </div>
 <h3 id="応答の例-2">応答の例<a aria-hidden="true" class="hover_anchor" href="#応答の例-2"><i class="fa fa-link"></i></a></h3>
-<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="rippleapi" href="#code-6-0">RippleAPI</a></li><li><a class="コマンドライン" href="#code-6-1">コマンドライン</a></li></ul>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-6-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-6-1">コマンドライン</a></li></ul>
 
-<div class="code_sample rippleapi" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">te</span><span class="err">d</span>
+<div class="code_sample ripplelib1.x" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">te</span><span class="err">d</span>
 <span class="err">Fi</span><span class="kc">nal</span> <span class="kc">transa</span><span class="err">c</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span> <span class="err">resul</span><span class="kc">t</span><span class="p">:</span> <span class="p">{</span> <span class="kc">t</span><span class="err">ype</span><span class="p">:</span> <span class="err">'checkCa</span><span class="kc">n</span><span class="err">cel'</span><span class="p">,</span>
   <span class="err">address</span><span class="p">:</span> <span class="err">'rBXsgNkPcDN</span><span class="mi">2</span><span class="err">ru</span><span class="kc">ns</span><span class="err">vWmwxk</span><span class="mi">3</span><span class="err">Lh</span><span class="mi">97</span><span class="err">zdgo</span><span class="mi">9</span><span class="err">za'</span><span class="p">,</span>
   <span class="err">seque</span><span class="kc">n</span><span class="err">ce</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
@@ -1103,7 +1098,7 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1323,6 +1318,21 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1982,7 +1992,19 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

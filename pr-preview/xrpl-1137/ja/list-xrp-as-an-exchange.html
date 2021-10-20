@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -573,7 +573,7 @@ XRP残高</i></b></td>
 <p>CharlieというユーザーがAlpha Exchangeに50,000XRPを入金したいと希望しています。これには、以下のステップが伴います。</p>
 <ol>
 <li>
-<p>Charlieは50,000XRPの支払いを（<a href="rippleapi-reference.html">RippleAPI</a>または類似のソフトウェアを使用して）、Alpha Exchangeの<a href="#アカウント">コールドウォレット</a>に送信します。</p>
+<p>Charlieは50,000XRPの支払いを、Alpha Exchangeの<a href="#アカウント">コールドウォレット</a>に送信します。</p>
 <p>a. Charlieは識別子（このケースでは<code>789</code>）を支払いに追加し、Alpha Exchangeにある自身のアカウントに関連付けます。これは、<a href="become-an-xrp-ledger-gateway.html#source-and-destination-tags"> <em>宛先タグ</em> </a>と呼ばれます。（これを使用するには、Alpha Exchangeは、すべての入金でCharlieのような宛先タグを必要とするように、すべてのアカウントでasfRequireDestフラグをオンに設定している必要があります。詳細については、<a href="accountset.html#accountsetのフラグ">AccountSet Flags</a>を参照してください。）</p>
 </li>
 <li>
@@ -1316,7 +1316,7 @@ XRP残高</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1536,6 +1536,21 @@ XRP残高</i></b></td>
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -2195,7 +2210,19 @@ XRP残高</i></b></td>
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

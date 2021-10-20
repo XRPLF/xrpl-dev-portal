@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -263,7 +263,6 @@
 <!-- -->
 <p>特定のアドレスで受信および送信されるすべてのCheckのリストを取得するには、送金元アカウントのアドレスを指定した<code>account_objects</code>コマンドを実行し、要求の<code>type</code> フィールドを<code>checks</code>に設定します。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong><code>account_objects</code>コマンドのコマンドラインインターフェイスでは<code>type</code>フィールドは受け入れられません。代わりに<a href="json.html">jsonメソッド</a>を使用してコマンドラインからJSON-RPCフォーマットの要求を送信できます。</p>
-<p class="devportal-callout 注意"><strong>注意:</strong> RippleAPIには、<code>account_objects</code>メソッドの組み込みサポートはありません。<code>api.connection.request(websocket_request_json)</code>メソッドを使用して、Webフォーマットで未加工の要求を作成できます。このメソッドに対する応答のフォーマットは<code>rippled</code> APIフォーマットです。（たとえばXRPは小数ではなく整数の「drop数」で指定します。）</p>
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="rippleapi" href="#code-0-0">RippleAPI</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 
@@ -917,7 +916,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1137,6 +1136,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1796,7 +1810,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

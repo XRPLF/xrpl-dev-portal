@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -238,7 +238,6 @@
         <li class="nav-item level-1"><a class="nav-link" href="#送金手数料">送金手数料</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ペイメントパスでの送金手数料">ペイメントパスでの送金手数料</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#技術詳細">技術詳細</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#rippleapi">RippleAPI</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#rippled">rippled</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
@@ -278,10 +277,6 @@
 <h1 id="技術詳細">技術詳細<a aria-hidden="true" class="hover_anchor" href="#技術詳細"><i class="fa fa-link"></i></a></h1>
 <p>送金手数料は<a href="issuing-and-operational-addresses.html">発行アドレス</a>の設定により表されます。送金手数料には、0%未満の値と100%を超える値は指定できず、0.0000001%の位までで切り捨てられます。TransferRate設定は同一アカウントにより発行されるすべての通貨に適用されます。通貨によって異なる送金手数料のパーセンテージを適用するには、通貨ごとに異なる<a href="issuing-and-operational-addresses.html">発行アドレス</a>を使用します。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> <code>rippled</code> v0.80.0で導入され2017-11-14に有効となった<a href="amendments.html">fix1201 Amendment</a>により、最大送金手数料は実効限度である約329%（32ビット整数の最大サイズに基づく）から100%に引き下げられました。送金手数料の設定が100%（<code>TransferRate</code>が<code>2000000000</code>）を上回るアカウントがレジャーにまだ含まれている可能性があります。すでに設定されている手数料はすべて、規定のレートで引き続き運用されます。</p>
-<h2 id="rippleapi">RippleAPI<a aria-hidden="true" class="hover_anchor" href="#rippleapi"><i class="fa fa-link"></i></a></h2>
-<p>RippleAPIでは、送金手数料は<code>transferRate</code>フィールドに10進数で指定され、この数は受取人が同一通貨を1単位受領できるよう送金する必要のある額を表します。<code>transferRate</code>が<code>1.005</code>の場合、送金手数料0.5%に相当します。デフォルトでは<code>transferRate</code>は手数料なしに設定されています。<code>transferRate</code>には、<code>1.0</code>未満の値と<code>2.0</code>を上回る値は指定できません。送金手数料は、10桁の有効数字に丸められます（1の位の数字を含む）。値<code>null</code>は手数料なしの特殊なケースであり、<code>1.0</code>に相当します。</p>
-<p>金融機関は、<a href="issuing-and-operational-addresses.html">発行アドレス</a>から<a href="rippleapi-reference.html#settings">Settingsトランザクション</a>を送信して、イシュアンスの<code>transferRate</code>を変更することができます。</p>
-<p>アカウントの<code>transferRate</code>を確認するには、<a href="rippleapi-reference.html#getsettings">getSettingsメソッド</a>を使用します。</p>
 <h2 id="rippled">rippled<a aria-hidden="true" class="hover_anchor" href="#rippled"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>のJSON-RPC APIおよびWebSocket APIでは、送金手数料は<code>TransferRate</code>フィールドに10進数で指定され、この数字は受取人が同一通貨を10億単位受領できるよう送金する必要のある額を表します。<code>TransferRate</code>が<code>1005000000</code>の場合、送金手数料0.5%に相当します。デフォルトでは<code>TransferRate</code>は手数料なしに設定されています。<code>TransferRate</code>には、<code>1000000000</code>（手数料「0%」）未満の値と<code>2000000000</code>（手数料「100%」）を上回る値は指定できません。値<code>0</code>は手数料なしの特殊なケースであり、<code>1000000000</code>に相当します。</p>
 <p>金融機関は、<a href="issuing-and-operational-addresses.html">発行アドレス</a>から<a href="accountset.html">AccountSetトランザクション</a>を送信して、イシュアンスの<code>TransferRate</code>を変更することができます。</p>
@@ -763,7 +758,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -983,6 +978,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1642,7 +1652,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

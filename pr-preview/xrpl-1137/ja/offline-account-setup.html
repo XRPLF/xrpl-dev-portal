@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -286,7 +286,7 @@
 <p>XRP Ledgerで署名するためのソフトウェアオプションは次のとおりです。</p>
 <ul>
 <li>パッケージ（<code>.deb</code>または<code>.rpm</code>。使用するLinuxディストリビューションによって異なる）ファイルから<a href="install-rippled.html"><code>rippled</code>をインストール</a>し、<a href="rippled-server-modes.html">スタンドアロンモードで実行します</a>。</li>
-<li><a href="rippleapi-reference.html">ripple-lib</a>とその依存関係をオフラインでインストールします。例えば、Yarn Package Managerでは、<a class="external-link" href="https://yarnpkg.com/blog/2016/11/24/offline-mirror/" target="_blank">オフラインでの使用に関して推奨される手順 <i aria-hidden="true" class="fa fa-external-link"></i></a>があります。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a>とその依存関係をオフラインでインストールします。例えば、Yarn Package Managerでは、<a class="external-link" href="https://yarnpkg.com/blog/2016/11/24/offline-mirror/" target="_blank">オフラインでの使用に関して推奨される手順 <i aria-hidden="true" class="fa fa-external-link"></i></a>があります。</li>
 <li>関連項目: <a href="set-up-secure-signing.html">安全な署名の設定</a></li>
 </ul>
 <p>オフラインマシンでトランザクションの指示を生成するプロセスを容易にするために、カスタムソフトウェアを設定することもできます。例えば、ソフトウェアで次に使用する<a href="basic-data-types.html#アカウントシーケンス">シーケンス番号</a>を追跡したり、送信するトランザクションのタイプに応じた設定済みテンプレートを含めるといったことが可能です。</p>
@@ -984,7 +984,7 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1204,6 +1204,21 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1863,7 +1878,19 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item active" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -234,10 +234,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#get-started-using-java">Get Started Using Java</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#learning-goals">Learning goals</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#learning-goals">Learning Goals</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#requirements">Requirements</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#installation">Installation</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start building</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start Building</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#2-generate-wallet">2. Generate wallet</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#3-query-the-xrp-ledger">3. Query the XRP Ledger</a></li>
@@ -267,7 +267,7 @@
         <h1 id="get-started-using-java">Get Started Using Java<a aria-hidden="true" class="hover_anchor" href="#get-started-using-java"><i class="fa fa-link"></i></a></h1>
 <p>This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using <a class="external-link" href="https://github.com/XRPLF/xrpl4j" target="_blank"><code>xrpl4j</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>, a pure Java library that makes it easy to interact with the XRP Ledger.</p>
 <p>This tutorial is intended for beginners and should take no longer than 30 minutes to complete.</p>
-<h2 id="learning-goals">Learning goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
+<h2 id="learning-goals">Learning Goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
 <p>In this tutorial, you'll learn:</p>
 <ul>
 <li>The basic building blocks of XRP Ledger-based applications.</li>
@@ -310,7 +310,7 @@
 <span class="nt">&lt;/dependencies&gt;</span>
 </code></pre></div>
 <p>Check out the <a class="external-link" href="https://github.com/XRPLF/xrpl4j-sample" target="_blank">xrpl4j sample project <i aria-hidden="true" class="fa fa-external-link"></i></a> for a full Maven project containing the code from this tutorial.</p>
-<h2 id="start-building">Start building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
+<h2 id="start-building">Start Building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
 <p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your <a href="wallets.html">wallet</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="issued-currencies.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
 <p>Here are the basic steps you'll need to cover for almost any XRP Ledger project:</p>
 <ol>
@@ -934,7 +934,7 @@ AccountInfoResult<span class="o">{</span>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1154,6 +1154,21 @@ AccountInfoResult<span class="o">{</span>
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1813,7 +1828,19 @@ AccountInfoResult<span class="o">{</span>
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       

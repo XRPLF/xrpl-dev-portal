@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -278,11 +278,8 @@
 </ul>
 </li>
 <li>Checkを受領する資金供給のあるアカウントの<strong>アドレス</strong>。</li>
-<li>トランザクションに安全に署名できる手段（<a href="rippleapi-reference.html">RippleAPI</a>や各自の<a href="install-rippled.html"><code>rippled</code>サーバー</a>など）。</li>
-<li><code>rippled</code>サーバーに接続できるクライアントライブラリ（<a href="rippleapi-reference.html">RippleAPI</a>、HTTPライブラリ、またはWebSocketライブラリなど）。<ul>
-<li>詳細は、<a href="get-started-using-http-websocket-apis.html"><code>rippled</code> APIの使用開始</a>を参照してください。</li>
-</ul>
-</li>
+<li>トランザクションに<a href="set-up-secure-signing.html">安全に署名できる手段</a>。</li>
+<li><a href="client-libraries.html">クライアントライブラリ</a>またはHTTPライブラリ、WebSocketライブラリなど。</li>
 </ul>
 <h2 id="1checkcreateトランザクションの準備">1.CheckCreateトランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#1checkcreateトランザクションの準備"><i class="fa fa-link"></i></a></h2>
 <p>Checkの額と、Checkを現金化できる当事者を決定します。<a href="checkcreate.html">CheckCreateトランザクション</a>のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>できるフィールドです。</p>
@@ -317,11 +314,9 @@
 </tr>
 </tbody>
 </table>
-<p><a href="rippleapi-reference.html">RippleAPI</a>を使用している場合は、<code>prepareCheckCreate()</code>ヘルパーメソッドを使用できます。</p>
-<p class="devportal-callout 注記"><strong>注記:</strong> ChecksはRippleAPIバージョン0.19.0以上でサポートされています。</p>
 <h3 id="checkcreateトランザクションの準備の例">CheckCreateトランザクションの準備の例<a aria-hidden="true" class="hover_anchor" href="#checkcreateトランザクションの準備の例"><i class="fa fa-link"></i></a></h3>
 <p>以下の例は、BoxSend SG（rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za）がGrand Payments（rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）宛てに作成した100 XRPのCheckです。追加（オプション）のメタデータとして、BoxSend SGはGrand Paymentsの請求書のIDを追加しています。これによりGrand PaymentsはこのCheckがどの請求書に対する支払いかを確認できます。</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="jsonrpc、websocket、またはコマンドライン" href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a class="rippleapi" href="#code-0-1">RippleAPI</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="jsonrpc、websocket、またはコマンドライン" href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a class="ripplelib1.x" href="#code-0-1">ripple-lib 1.x</a></li></ul>
 
 <div class="code_sample jsonrpc、websocket、またはコマンドライン" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
  "TransactionType":"CheckCreate",
@@ -332,7 +327,7 @@
 }
 </code></pre></div></div>
 
-<div class="code_sample rippleapi" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
+<div class="code_sample ripplelib1.x" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
 <span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
@@ -382,7 +377,7 @@
 </code></pre></div></div>
 </div>
 <h2 id="2checkcreateトランザクションへの署名">2.CheckCreateトランザクションへの署名<a aria-hidden="true" class="hover_anchor" href="#2checkcreateトランザクションへの署名"><i class="fa fa-link"></i></a></h2>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
@@ -1325,7 +1320,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1545,6 +1540,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -2204,7 +2214,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
