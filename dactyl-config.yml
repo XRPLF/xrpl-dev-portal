@@ -96,12 +96,14 @@ targets:
             # Fix 2 links from untranslated demurrage.html:
             "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
             "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
-            # Fix 5 links from untranslated become-an-xrp-ledger-gateway.html
+            # Fix links from untranslated become-an-xrp-ledger-gateway.html
             "paths.html#default-paths": "paths.html#デフォルトパス"
             "payment.html#payment-flags": "payment.html#paymentのフラグ"
             "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ"
             "trustset.html#trustset-flags": "trustset.html#trustsetのフラグ"
             "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
+                                # nearest approximation. this translation is also out of date
+            "rippled-server-modes.html#validators": "rippled-server-modes.html#バリデータを運用する理由"
             # Fix links from untranslated open-a-payment-channel-to-enable-an-inter-exchange-network.html
             "use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient": "use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します"
             "use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel": "use-payment-channels.html#2-受取人がpayment-channelの特性を確認します"
@@ -165,6 +167,8 @@ targets:
             # Fix links from untranslated xrpl.js 2.0 migration guide:
             "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
             "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
+                                          # the updates to ledger_entry aren't translated either
+            "ledger_entry.html#get-paychannel-object": "ledger_entry.html"
 
 pages:
 
