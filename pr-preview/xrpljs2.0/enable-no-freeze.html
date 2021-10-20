@@ -304,23 +304,7 @@
 <p>For example:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="websocket" href="#code-1-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span> <span class="nx">xrpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">// Connect -------------------------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">)</span> 
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Connected to Testnet"</span><span class="p">)</span>
-
-  <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">)</span>
-  <span class="p">})</span>
-
-  <span class="c1">// Get credentials from the Testnet Faucet ------------------------------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Requesting an address from the Testnet faucet..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">wallet</span><span class="p">,</span> <span class="nx">balance</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()</span>
-
-  <span class="c1">// Submit an AccountSet transaction to enable No Freeze ----------------------</span>
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1">// Submit an AccountSet transaction to enable No Freeze ----------------------</span>
   <span class="kd">const</span> <span class="nx">accountSetTx</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">TransactionType</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
     <span class="nx">Account</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
@@ -330,14 +314,6 @@
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Sign and submit the transaction:'</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
   <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Finished submitting. Now disconnecting."</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-
-  <span class="c1">// End main()</span>
-<span class="p">}</span>
-
-<span class="nx">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
@@ -356,15 +332,22 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p><strong><em>TODO: add start_with / end_before to all the include_code macros.</em></strong></p>
 <h3 id="4-wait-for-validation">4. Wait for Validation<a aria-hidden="true" class="hover_anchor" href="#4-wait-for-validation"><i class="fa fa-link"></i></a></h3>
 <p>Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.)</p>
 <h3 id="5-confirm-account-settings">5. Confirm Account Settings<a aria-hidden="true" class="hover_anchor" href="#5-confirm-account-settings"><i class="fa fa-link"></i></a></h3>
 <p>After the transaction is validated, you can check your account's settings to confirm that the No Freeze flag is enabled. You can do this by calling the <a href="account_info.html">account_info method</a> and checking the value of the account's <code>Flags</code> field to see if the <a href="accountroot.html#accountroot-flags"><code>lsfNoFreeze</code> bit (<code>0x00200000</code>)</a> is enabled.</p>
-<p><strong><em>TODO: JS code sample for checking No Freeze</em></strong></p>
-<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="websocket" href="#code-2-0">WebSocket</a></li></ul>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="websocket" href="#code-2-1">WebSocket</a></li></ul>
 
-<div class="code_sample websocket" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="err">Reques</span><span class="kc">t</span><span class="p">:</span>
+<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// Request account info for my_address to check account settings ------------</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span>
+      <span class="p">{</span><span class="nx">command</span><span class="o">:</span> <span class="s1">'account_info'</span><span class="p">,</span> <span class="nx">account</span><span class="o">:</span> <span class="nx">my_address</span> <span class="p">})</span>
+    <span class="kd">const</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">result</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Got settings for address'</span><span class="p">,</span> <span class="nx">my_address</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'No Freeze enabled?'</span><span class="p">,</span> <span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">noFreeze</span> <span class="o">===</span> <span class="kc">true</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="code_sample websocket" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">Reques</span><span class="kc">t</span><span class="p">:</span>
 
 <span class="p">{</span>
   <span class="nt">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>

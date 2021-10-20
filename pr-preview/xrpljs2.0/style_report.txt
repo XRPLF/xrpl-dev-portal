@@ -1,23 +1,13 @@
 -------------
 Spell Checker
 -------------
-Found 11 possible spelling errors:
+Found 5 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
-<Page 'Enable No Freeze' (enable-no-freeze.html)> Unknown Words:
-  include_code: 
-  start_with: startwith
-  end_before: 
-
-<Page 'Enact Global Freeze' (enact-global-freeze.html)> Unknown Words:
-  include_code: 
-  start_with: startwith
-  end_before: 
-
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iod, ion, iom
-  io2: iod, iom, ios
+  io1: ioc, iod, ioy
+  io2: ioc, iod, io-
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -264,7 +254,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 740
-  Characters: 4,621
+  Characters: 4,620
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
