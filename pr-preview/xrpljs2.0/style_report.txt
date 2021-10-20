@@ -6,8 +6,8 @@ Found 5 possible spelling errors:
   keypairs: 
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: ioc, iod, ioy
-  io2: ioc, iod, io-
+  io1: iop, iot, iow
+  io2: iow, iou, ion
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
