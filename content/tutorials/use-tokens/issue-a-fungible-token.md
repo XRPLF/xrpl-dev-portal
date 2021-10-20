@@ -71,20 +71,7 @@ You must be connected to the network to submit transactions to it. The following
 
 _JavaScript_
 
-```js
-ripple = require('ripple-lib') // Node.js only. Use a <script> tag in browsers.
-
-async function main() {
-  api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
-  await api.connect()
-
-  // Code in the following examples continues here...
-
-  api.disconnect() // When done. This lets Node.js stop running.
-}
-
-main()
-```
+{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 _Python_
 
