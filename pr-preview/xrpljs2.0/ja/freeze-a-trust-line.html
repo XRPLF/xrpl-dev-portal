@@ -293,7 +293,7 @@
 <p>To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate <a href="issuing-and-operational-addresses.html">"cold" and "hot" addresses</a>, you need the keys to the <em>cold address</em>, which is the <strong>issuer</strong> of the token.</p>
 <h3 id="2-connect-to-the-network">2. Connect to the Network<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-the-network"><i class="fa fa-link"></i></a></h3>
 <p>You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a>:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="websocket" href="#code-0-1">WebSocket</a></li></ul>
 
 <div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
 <span class="c1">// const xrpl = require('xrpl')</span>
@@ -312,6 +312,9 @@
 <span class="p">}</span>
 
 <span class="nx">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="code_sample websocket" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="ss">(</span><span class="k">Connect</span> <span class="nv">to</span> <span class="nv">wss</span>:<span class="o">//</span> <span class="nv">URL</span> <span class="nv">of</span> <span class="nv">an</span> <span class="nv">XRP</span> <span class="nv">Ledger</span> <span class="nv">server</span> <span class="nv">using</span> <span class="nv">your</span> <span class="nv">preferred</span> <span class="nv">client</span>.<span class="ss">)</span>
 </code></pre></div></div>
 </div>
 <h3 id="3-send-trustset-transaction-to-freeze-the-trust-line">3. Send TrustSet Transaction to Freeze the Trust Line<a aria-hidden="true" class="hover_anchor" href="#3-send-trustset-transaction-to-freeze-the-trust-line"><i class="fa fa-link"></i></a></h3>
@@ -363,51 +366,9 @@
 </tbody>
 </table>
 <p>As always, to send a transaction, you <em>prepare</em> it by filling in all the necessary fields, <em>sign</em> it with your cryptographic keys, and <em>submit</em> it to the network. For example:</p>
-<p><strong><em>TODO: start_with / end_before on JS code sample as appropriate</em></strong></p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="websocket" href="#code-1-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span> <span class="nx">xrpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">// Connect -------------------------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
-
-  <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">)</span>
-  <span class="p">})</span>
-
-  <span class="c1">// Get credentials from the Testnet Faucet ------------------------------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Requesting an address from the Testnet faucet..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">wallet</span><span class="p">,</span> <span class="nx">balance</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()</span>
-
-  <span class="c1">// Look up current state of a trust line --------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span>
-  <span class="kd">const</span> <span class="nx">address_to_freeze</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span>
-  <span class="kd">const</span> <span class="nx">currency_to_freeze</span> <span class="o">=</span> <span class="s1">'USD'</span>
-
-  <span class="kd">const</span> <span class="nx">account_lines</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">command</span><span class="o">:</span> <span class="s1">'account_lines'</span><span class="p">,</span>
-    <span class="nx">account</span><span class="o">:</span> <span class="nx">issuing_address</span><span class="p">,</span>
-    <span class="nx">peer</span><span class="o">:</span> <span class="nx">address_to_freeze</span><span class="p">,</span>
-  <span class="p">}</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Looking up'</span><span class="p">,</span> <span class="nx">currency_to_freeze</span><span class="p">,</span> <span class="s1">'trust line from'</span><span class="p">,</span>
-              <span class="nx">issuing_address</span><span class="p">,</span> <span class="s1">'to'</span><span class="p">,</span> <span class="nx">address_to_freeze</span><span class="p">)</span>
-
-  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">account_lines</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">trustlines</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">lines</span>
-
-  <span class="c1">// Find the trust line for our currency_to_freeze ------------------------------</span>
-  <span class="kd">let</span> <span class="nx">trustline</span> <span class="o">=</span> <span class="kc">null</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">trustlines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">trustlines</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">currency</span> <span class="o">===</span> <span class="nx">currency_to_freeze</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">trustline</span> <span class="o">=</span> <span class="nx">trustlines</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-      <span class="k">break</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">// Prepare a TrustSet transaction to create or modify the target trust line ----</span>
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Prepare a TrustSet transaction to create or modify the target trust line ----</span>
   <span class="kd">let</span> <span class="nx">trust_set</span> <span class="o">=</span> <span class="kc">null</span>
 
   <span class="k">if</span><span class="p">(</span><span class="nx">trustline</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
@@ -442,33 +403,11 @@
 
   <span class="c1">// Submit a TrustSet transaction to set an individual freeze ----------------------</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting TrustSet tx:'</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Submitted TrustSet!"</span><span class="p">)</span>
-
-  <span class="c1">// Investigate --------------------------------------------------------------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
-    <span class="sb">`You would investigate whatever prompted you to freeze the trust line now...`</span><span class="p">)</span>
-  <span class="k">await</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="p">=&gt;</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="mf">5000</span><span class="p">))</span>
-
-  <span class="c1">// Clear the individual freeze ----------------------------------------------------</span>
-  <span class="c1">// We're reusing our TrustSet transaction from earlier with a different flag</span>
-  <span class="nx">trust_set</span><span class="p">.</span><span class="nx">Flags</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">TrustSetFlags</span><span class="p">.</span><span class="nx">tfClearFreeze</span>
-
-  <span class="c1">// Submit a TrustSet transaction to set an individual freeze ----------------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting TrustSet tx:'</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Submitted TrustSet!"</span><span class="p">)</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Finished submitting. Now disconnecting."</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-
-  <span class="c1">//End main()</span>
-<span class="p">}</span>
-
-<span class="nx">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample websocket" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
+<div class="code_sample websocket" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
   <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_freeze_individual_line"</span><span class="p">,</span>
   <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"submit"</span><span class="p">,</span>
   <span class="nt">"tx_json"</span><span class="p">:</span> <span class="p">{</span>
@@ -515,31 +454,9 @@
 </table>
 <p class="devportal-callout caution"><strong>Caution:</strong> The response includes <em>all</em> trust lines between the two accounts. (Each different currency code uses a different trust line.) Be sure to check the one for the right token.</p>
 <p>In the response, the field <code>"freeze": true</code> indicates that the account from the request has enabled an Individual Freeze on that trust line. The field <code>"freeze_peer": true</code> indicates that the counterparty (<code>peer</code>) from the request has frozen the trust line.</p>
-<p><strong><em>TODO: start_with / end_before on JS code sample as appropriate</em></strong></p>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="websocket" href="#code-2-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// Dependencies for Node.js.</span>
-<span class="c1">// In browsers, use &lt;script&gt; tags as in the example demo.html.</span>
-<span class="k">if</span> <span class="p">(</span><span class="ow">typeof</span> <span class="nx">module</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// gotta use var here because const/let are block-scoped to the if statement.</span>
-  <span class="kd">var</span> <span class="nx">xrpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// Connect -------------------------------------------------------------------</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Connecting to Mainnet..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://s1.ripple.com'</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
-
-  <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">)</span>
-  <span class="p">})</span>
-
-  <span class="kd">const</span> <span class="nx">my_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span>
-  <span class="kd">const</span> <span class="nx">counterparty_address</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span>
-  <span class="kd">const</span> <span class="nx">frozen_currency</span> <span class="o">=</span> <span class="s1">'USD'</span>
-
-  <span class="c1">// Look up current state of the trust line ----------------------------------</span>
+<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Look up current state of the trust line ----------------------------------</span>
   <span class="kd">const</span> <span class="nx">account_lines</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">command</span><span class="o">:</span> <span class="s1">'account_lines'</span><span class="p">,</span>
     <span class="nx">account</span><span class="o">:</span> <span class="nx">my_address</span><span class="p">,</span>
@@ -569,16 +486,9 @@
               <span class="nx">trustline</span><span class="p">.</span><span class="nx">freeze</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Trust line frozen from counterparty\'s side?'</span><span class="p">,</span>
               <span class="nx">trustline</span><span class="p">.</span><span class="nx">freeze_peer</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span>
-
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-
-  <span class="c1">// End main()</span>
-<span class="p">}</span>
-
-<span class="nx">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample websocket" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">Example</span> <span class="err">Reques</span><span class="kc">t</span><span class="p">:</span>
+<div class="code_sample websocket" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Example</span> <span class="err">Reques</span><span class="kc">t</span><span class="p">:</span>
 
 <span class="p">{</span>
   <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_check_individual_freeze"</span><span class="p">,</span>
@@ -661,112 +571,22 @@
 </tbody>
 </table>
 <p>As always, to send a transaction, you <em>prepare</em> it by filling in all the necessary fields, <em>sign</em> it with your cryptographic keys, and <em>submit</em> it to the network. For example:</p>
-<p><strong><em>TODO: start_with / end_before on JS code sample as appropriate</em></strong></p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="websocket" href="#code-3-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="kd">const</span> <span class="nx">xrpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">// Connect -------------------------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
-
-  <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">)</span>
-  <span class="p">})</span>
-
-  <span class="c1">// Get credentials from the Testnet Faucet ------------------------------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Requesting an address from the Testnet faucet..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">wallet</span><span class="p">,</span> <span class="nx">balance</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()</span>
-
-  <span class="c1">// Look up current state of a trust line --------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span>
-  <span class="kd">const</span> <span class="nx">address_to_freeze</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span>
-  <span class="kd">const</span> <span class="nx">currency_to_freeze</span> <span class="o">=</span> <span class="s1">'USD'</span>
-
-  <span class="kd">const</span> <span class="nx">account_lines</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">command</span><span class="o">:</span> <span class="s1">'account_lines'</span><span class="p">,</span>
-    <span class="nx">account</span><span class="o">:</span> <span class="nx">issuing_address</span><span class="p">,</span>
-    <span class="nx">peer</span><span class="o">:</span> <span class="nx">address_to_freeze</span><span class="p">,</span>
-  <span class="p">}</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Looking up'</span><span class="p">,</span> <span class="nx">currency_to_freeze</span><span class="p">,</span> <span class="s1">'trust line from'</span><span class="p">,</span>
-              <span class="nx">issuing_address</span><span class="p">,</span> <span class="s1">'to'</span><span class="p">,</span> <span class="nx">address_to_freeze</span><span class="p">)</span>
-
-  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">account_lines</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">trustlines</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">lines</span>
-
-  <span class="c1">// Find the trust line for our currency_to_freeze ------------------------------</span>
-  <span class="kd">let</span> <span class="nx">trustline</span> <span class="o">=</span> <span class="kc">null</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">trustlines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">trustlines</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">currency</span> <span class="o">===</span> <span class="nx">currency_to_freeze</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">trustline</span> <span class="o">=</span> <span class="nx">trustlines</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-      <span class="k">break</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">// Prepare a TrustSet transaction to create or modify the target trust line ----</span>
-  <span class="kd">let</span> <span class="nx">trust_set</span> <span class="o">=</span> <span class="kc">null</span>
-
-  <span class="k">if</span><span class="p">(</span><span class="nx">trustline</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Trustline not found, making a default one'</span><span class="p">)</span>
-
-    <span class="nx">trust_set</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="nx">TransactionType</span><span class="o">:</span> <span class="s1">'TrustSet'</span><span class="p">,</span>
-      <span class="nx">Account</span><span class="o">:</span> <span class="nx">issuing_address</span><span class="p">,</span>
-      <span class="nx">LimitAmount</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">value</span><span class="o">:</span> <span class="s1">'0'</span><span class="p">,</span>
-        <span class="nx">currency</span><span class="o">:</span> <span class="nx">currency_to_freeze</span><span class="p">,</span>
-        <span class="nx">issuer</span><span class="o">:</span> <span class="nx">address_to_freeze</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">}</span>
-
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Found existing trustline: '</span><span class="p">,</span> <span class="nx">trustline</span><span class="p">)</span>
-
-    <span class="nx">trust_set</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="nx">TransactionType</span><span class="o">:</span> <span class="s1">'TrustSet'</span><span class="p">,</span>
-      <span class="nx">Account</span><span class="o">:</span> <span class="nx">issuing_address</span><span class="p">,</span>
-      <span class="nx">LimitAmount</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">value</span><span class="o">:</span> <span class="nx">trustline</span><span class="p">.</span><span class="nx">limit</span><span class="p">,</span>
-        <span class="nx">currency</span><span class="o">:</span> <span class="nx">trustline</span><span class="p">.</span><span class="nx">currency</span><span class="p">,</span>
-        <span class="nx">issuer</span><span class="o">:</span> <span class="nx">trustline</span><span class="p">.</span><span class="nx">account</span>
-      <span class="p">},</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">// Set a flag to freeze the trust line --------------------------------------------</span>
-  <span class="nx">trust_set</span><span class="p">.</span><span class="nx">Flags</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">TrustSetFlags</span><span class="p">.</span><span class="nx">tfSetFreeze</span>
-
-  <span class="c1">// Submit a TrustSet transaction to set an individual freeze ----------------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting TrustSet tx:'</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Submitted TrustSet!"</span><span class="p">)</span>
-
-  <span class="c1">// Investigate --------------------------------------------------------------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
-    <span class="sb">`You would investigate whatever prompted you to freeze the trust line now...`</span><span class="p">)</span>
-  <span class="k">await</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="p">=&gt;</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="mf">5000</span><span class="p">))</span>
-
-  <span class="c1">// Clear the individual freeze ----------------------------------------------------</span>
+<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Clear the individual freeze ----------------------------------------------------</span>
   <span class="c1">// We're reusing our TrustSet transaction from earlier with a different flag</span>
   <span class="nx">trust_set</span><span class="p">.</span><span class="nx">Flags</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">TrustSetFlags</span><span class="p">.</span><span class="nx">tfClearFreeze</span>
 
-  <span class="c1">// Submit a TrustSet transaction to set an individual freeze ----------------------</span>
+  <span class="c1">// Submit a TrustSet transaction to clear an individual freeze --------------------</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting TrustSet tx:'</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Submitted TrustSet!"</span><span class="p">)</span>
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Finished submitting. Now disconnecting."</span><span class="p">)</span>
   <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-
-  <span class="c1">//End main()</span>
-<span class="p">}</span>
-
-<span class="nx">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample websocket" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span>
+<div class="code_sample websocket" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="p">{</span>
   <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_end_individual_freeze"</span><span class="p">,</span>
   <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"submit"</span><span class="p">,</span>
   <span class="nt">"tx_json"</span><span class="p">:</span> <span class="p">{</span>

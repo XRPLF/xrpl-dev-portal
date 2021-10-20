@@ -1,7 +1,7 @@
 -------------
 Spell Checker
 -------------
-Found 13 possible spelling errors:
+Found 11 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
@@ -15,13 +15,9 @@ Found 13 possible spelling errors:
   start_with: startwith
   end_before: 
 
-<Page 'Freeze a Trust Line' (freeze-a-trust-line.html)> Unknown Words:
-  start_with: startwith
-  end_before: 
-
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: ios, io-, iow
-  io2: ios, io-, ioy
+  io1: iod, ion, iom
+  io2: iod, iom, ios
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -268,7 +264,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 740
-  Characters: 4,622
+  Characters: 4,621
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:

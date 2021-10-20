@@ -293,11 +293,11 @@
 
   <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
     <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ledger"</span><span class="p">,</span>
-    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
     <span class="s2">"transactions"</span><span class="o">:</span> <span class="kc">true</span>
   <span class="p">});</span>
 
-  <span class="kd">let</span> <span class="nx">tx_id</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">transactions</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+  <span class="kd">let</span> <span class="nx">tx_id</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">transactions</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
   <span class="kd">let</span> <span class="nx">response2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
     <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"tx"</span><span class="p">,</span>
     <span class="s2">"transaction"</span><span class="o">:</span> <span class="nx">tx_id</span>

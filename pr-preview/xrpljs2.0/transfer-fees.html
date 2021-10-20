@@ -281,7 +281,7 @@
 <p class="devportal-callout note"><strong>Note:</strong> The <a href="amendments.html">fix1201 amendment</a>, introduced in <code>rippled</code> v0.80.0 and enabled on 2017-11-14, lowered the maximum transfer fee to 100% from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). The ledger may still contain accounts with a transfer fee setting higher than 100% (a <code>TransferRate</code> of <code>2000000000</code>). Any transfer fees already set continue to apply at their stated rate.</p>
 <h2 id="client-library-support">Client Library Support<a aria-hidden="true" class="hover_anchor" href="#client-library-support"><i class="fa fa-link"></i></a></h2>
 <p>Some <a href="client-libraries.html">client libraries</a> have convenience functions for getting and setting <code>TransferRate</code> functions.</p>
-<p><strong>JavaScript:</strong> <strong><em>TODO based on https://github.com/XRPLF/xrpl.js/pull/1720</em></strong></p>
+<p><strong>JavaScript:</strong> Use <code>xrpl.percentToTransferRate()</code> to convert a percentage transfer fee from a string to the corresponding <code>TransferRate</code> value.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>

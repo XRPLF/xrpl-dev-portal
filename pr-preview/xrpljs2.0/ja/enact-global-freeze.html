@@ -346,7 +346,7 @@
 
   <span class="c1">// Sign and submit the AccountSet transaction to enable a global freeze -------</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Signing and submitting the transaction:'</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Finished submitting! </span><span class="si">${</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb"> should be frozen now.`</span><span class="p">)</span>
 
   <span class="c1">// Investigate ----------------------------------------------------------------</span>
@@ -364,7 +364,7 @@
 
   <span class="c1">// Sign and submit the AccountSet transaction to enable a global freeze -------</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Signing and submitting the transaction:'</span><span class="p">,</span> <span class="nx">accountSetTx2</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx2</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx2</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Finished submitting!"</span><span class="p">)</span>
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Disconnecting"</span><span class="p">)</span>
@@ -475,7 +475,7 @@
 
   <span class="c1">// Sign and submit the AccountSet transaction to enable a global freeze -------</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Signing and submitting the transaction:'</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Finished submitting! </span><span class="si">${</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb"> should be frozen now.`</span><span class="p">)</span>
 
   <span class="c1">// Investigate ----------------------------------------------------------------</span>
@@ -493,7 +493,7 @@
 
   <span class="c1">// Sign and submit the AccountSet transaction to enable a global freeze -------</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Signing and submitting the transaction:'</span><span class="p">,</span> <span class="nx">accountSetTx2</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx2</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx2</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Finished submitting!"</span><span class="p">)</span>
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Disconnecting"</span><span class="p">)</span>

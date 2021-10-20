@@ -399,7 +399,7 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="python" href="#code-2-1">Python</a></li><li><a class="java" href="#code-2-2">Java</a></li></ul>
 
 <div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Prepare transaction -------------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
+  <span class="kd">const</span> <span class="nx">prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
     <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
     <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
     <span class="s2">"Amount"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="s2">"22"</span><span class="p">),</span>
@@ -552,7 +552,7 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li><li><a class="java" href="#code-4-2">Java</a></li></ul>
 
 <div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1">// Submit signed blob --------------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
   <span class="c1">// This raises an exception if the transaction isn't confirmed.</span>
 </code></pre></div></div>
 
