@@ -304,42 +304,40 @@
 <p>For example:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="websocket" href="#code-1-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span> <span class="nx">xrpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
-  <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="c1">// Public rippled server</span>
-<span class="p">});</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">);</span>
-<span class="p">});</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Connect -------------------------------------------------------------------</span>
+  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">)</span> 
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Connected to Testnet"</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">issuing_secret</span> <span class="o">=</span> <span class="s1">'snnDVkSW3aV6jvMJTPdCiE2Qxv1RW'</span><span class="p">;</span>
-    <span class="c1">// Best practice: get your secret from an encrypted</span>
-    <span class="c1">//  config file instead</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">)</span>
+  <span class="p">})</span>
 
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Get credentials from the Testnet Faucet ------------------------------------</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Requesting an address from the Testnet faucet..."</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">wallet</span><span class="p">,</span> <span class="nx">balance</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()</span>
 
-  <span class="c1">// Prepare a settings transaction to enable no freeze</span>
-  <span class="kd">const</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'noFreeze'</span><span class="o">:</span> <span class="kc">true</span>
-  <span class="p">};</span>
+  <span class="c1">// Submit an AccountSet transaction to enable No Freeze ----------------------</span>
+  <span class="kd">const</span> <span class="nx">accountSetTx</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">TransactionType</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
+    <span class="nx">Account</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+    <span class="c1">// Set the NoFreeze flag for this account</span>
+    <span class="nx">SetFlag</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfNoFreeze</span>
+  <span class="p">}</span>
 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'preparing settings transaction for account:'</span><span class="p">,</span>
-              <span class="nx">issuing_address</span><span class="p">);</span>
-  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareSettings</span><span class="p">(</span><span class="nx">issuing_address</span><span class="p">,</span> <span class="nx">settings</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Sign and submit the transaction:'</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitReliable</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="nx">accountSetTx</span><span class="p">)</span>
 
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">prepared_tx</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Finished submitting. Now disconnecting."</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
 
-  <span class="c1">// Sign and submit the settings transaction</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'signing tx:'</span><span class="p">,</span> <span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">signed1</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">issuing_secret</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'submitting tx:'</span><span class="p">,</span> <span class="nx">signed1</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="c1">// End main()</span>
+<span class="p">}</span>
 
-  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">signed1</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">);</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+<span class="nx">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>

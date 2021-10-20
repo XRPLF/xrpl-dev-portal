@@ -20,8 +20,8 @@ Found 13 possible spelling errors:
   end_before: 
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iot, iom, iob
-  io2: iot, iob, ioc
+  io1: ios, io-, iow
+  io2: ios, io-, ioy
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
