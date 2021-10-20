@@ -103,7 +103,7 @@ Try editing the code above to do something different:
 This page has the necessary prerequisites already loaded, but you can access the XRP Ledger from **any webpage** if you load [xrpl.js](https://github.com/XRPLF/xrpl.js/) in that page's HTML. For example:
 
 ```html
-<script src="https://unpkg.com/ripple-lib@1.10.0/build/ripple-latest-min.js"></script>
+<script src="https://unpkg.com/xrpl@2.0.0/build/xrpl-latest-min.js"></script>
 ```
 
 

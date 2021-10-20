@@ -37,7 +37,6 @@ async function main() {
 
   // Submit signed blob --------------------------------------------------------
   const tx = await client.submitAndWait(signed.tx_blob)
-  // This raises an exception if the transaction isn't confirmed.
 
   // Wait for validation -------------------------------------------------------
   // submitAndWait() handles this automatically, but it can take 4-7s.

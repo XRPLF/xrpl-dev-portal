@@ -7,6 +7,8 @@ parent: https://js.xrpl.org/
 
 Follow these instructions to migrate JavaScript / TypeScript code using the **ripple-lib** (1.x) library to use the **xrpl.js** (2.x) library for the XRP Ledger instead.
 
+**Tip:** You can still access [documentation for the legacy 1.x "RippleAPI"](https://github.com/XRPLF/xrpl.js/blob/1.x/docs/index.md) if necessary.
+
 ## High-Level Differences
 
 Many fields and functions have "new" names in xrpl.js v2.0; or more accurately, xrpl.js now uses the same names as the [HTTP / WebSocket APIs](rippled-api.html). Structures that were unique to ripple-lib such as an "orderCancellation" object are gone; in their place the library uses the XRP Ledger's native [transaction types](transaction-types.html) like "OfferCancel". Many API methods that return these structures in ripple-lib 1.x are gone; instead, you'll make requests and get responses in the same format as in the WebSocket API.
@@ -277,7 +279,7 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | `computeLedgerHash()` | `xrpl.hashes.hashLedger()` | |
 | `xrpToDrops()` | `xrpl.xrpToDrops()` | Now a static method on the module. |
 | `dropsToXrp()` | `xrpl.dropsToXrp()` | Now a static method on the module. |
-| `iso8601ToRippleTime()` | `xrpl.ISOTimeToRippleTime()` | Now a static method on the module. |
+| `iso8601ToRippleTime()` | `xrpl.isoTimeToRippleTime()` | Now a static method on the module. |
 | `rippleTimeToISO8601()` | `xrpl.rippleTimeToISOTime()` | Now a static method on the module. You can also use the new method [`rippleTimeToUnixTime()`](https://js.xrpl.org/modules.html#rippleTimeToUnixTime) to get a UNIX-style timestamp in milliseconds since the UNIX epoch of 1970-01-01 00:00:00 UTC. |
 | `txFlags.Universal.FullyCanonicalSig` | (Removed) | No longer needed following the [RequireFullyCanonicalSig amendment][]. |
 | `txFlags.Payment.NoRippleDirect` | `xrpl.PaymentFlags.tfNoDirectRipple` | |

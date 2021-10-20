@@ -30,7 +30,7 @@ In this tutorial, you'll learn:
 
 ## Requirements
 
-To follow this tutorial, you should have some familiarity with writing code in JavaScript and managing small JavaScript projects. In browsers, any modern web browser with JavaScript support should work fine. In Node.js, **version 14** is recommended. It may work with other versions, but they aren't regularly tested.
+To follow this tutorial, you should have some familiarity with writing code in JavaScript and managing small JavaScript projects. In browsers, any modern web browser with JavaScript support should work fine. In Node.js, **version 14** is recommended. Node.js versions 12 and 16 are also regularly tested.
 
 
 ## Install with npm
@@ -67,8 +67,6 @@ Add a `<script>` tag such as the following to your HTML:
 ```
 
 You can load the library from a CDN as in the above example, or download a release and host it on your own website.
-
-***TODO: get a working CDN URL when released***
 
 This loads the module into the top level as `xrpl`.
 
