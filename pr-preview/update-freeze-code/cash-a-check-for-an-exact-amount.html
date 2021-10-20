@@ -273,15 +273,12 @@
 </ul>
 </li>
 <li>The <strong>address</strong> and <strong>secret key</strong> of the Check's stated recipient. The address must match the <code>Destination</code> address in the Check object.</li>
-<li>If the Check is for an issued currency, you (the recipient) must have a trust line to the issuer. Your limit on that trust line must be enough higher than the balance to add the amount you would receive.<ul>
+<li>If the Check is for an issued currency, you (the recipient) must have a trust line to the issuer. Your limit on that trust line must be high enough to hold your previous balance plus the amount you would receive.<ul>
 <li>For more information on trust lines and limits, see <a href="issued-currencies.html">Issued Currencies</a> and <a href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>.</li>
 </ul>
 </li>
-<li>A secure way to sign transactions, such as <a href="rippleapi-reference.html">RippleAPI</a> or your own <a href="install-rippled.html"><code>rippled</code> server</a>.</li>
-<li>A client library that can connect to a <code>rippled</code> server, such as <a href="rippleapi-reference.html">RippleAPI</a> or any HTTP or WebSocket library.<ul>
-<li>For more information, see <a href="get-started-using-http-websocket-apis.html">Get Started with the <code>rippled</code> API</a>. <!--#{ fix md highlighting_ #}--></li>
-</ul>
-</li>
+<li>A <a href="set-up-secure-signing.html">secure way to sign transactions</a>.</li>
+<li>A <a href="client-libraries.html">client library</a> that can connect to the XRP Ledger, or <a href="get-started-using-http-websocket-apis.html">any HTTP or WebSocket client</a>. <!--#{ fix md highlighting_ #}--></li>
 </ul>
 <h2 id="1-prepare-the-checkcash-transaction">1. Prepare the CheckCash transaction<a aria-hidden="true" class="hover_anchor" href="#1-prepare-the-checkcash-transaction"><i class="fa fa-link"></i></a></h2>
 <p>Figure out the values of the <a href="checkcash.html">CheckCash transaction</a> fields. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be <a href="transaction-common-fields.html#auto-fillable-fields">auto-filled</a> when signing:</p>
@@ -378,7 +375,7 @@
 </code></pre></div></div>
 </div>
 <h2 id="2-sign-the-checkcash-transaction">2. Sign the CheckCash transaction<a aria-hidden="true" class="hover_anchor" href="#2-sign-the-checkcash-transaction"><i class="fa fa-link"></i></a></h2>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later. <!--#{ fix md highlighting_ #}--></p>
 <h3 id="example-request">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="commandline" href="#code-1-0">Commandline</a></li></ul>
@@ -1261,6 +1258,21 @@
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1921,7 +1933,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
 
-        <a class="nav-link" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
       

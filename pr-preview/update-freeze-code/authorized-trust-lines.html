@@ -268,7 +268,7 @@
 <p class="devportal-callout tip"><strong>Tip:</strong> An issuing gateway can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. <em>(Added by the <a href="known-amendments.html#trustsetauth">TrustSetAuth amendment</a>.)</em></p>
 <h2 id="requireauth-setting">RequireAuth Setting<a aria-hidden="true" class="hover_anchor" href="#requireauth-setting"><i class="fa fa-link"></i></a></h2>
 <!-- SPELLING_IGNORE: requireauth -->
-<p>The <code>RequireAuth</code> setting (<code>requireAuthorization</code> in <a href="rippleapi-reference.html">RippleAPI</a>) prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved a trust line with that counterparty for the currency in question.</p>
+<p>The <code>RequireAuth</code> setting prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved a trust line with that counterparty for the currency in question.</p>
 <p>As a precaution, Ripple recommends that issuing gateways always enable <code>RequireAuth</code> on <a href="issuing-and-operational-addresses.html">operational addresses and standby addresses</a>, and then never approve any trust lines to those addresses. This prevents operational addresses and standby addresses from issuing currency in the XRP Ledger even by accident. This is a purely precautionary measure, and does not stop those addresses from transferring issued currency balances created by the issuing address, as they are intended to do.</p>
 <p>To use the Authorized Trust Lines feature, an issuer must also enable <code>RequireAuth</code> on its issuing address. After doing so, the issuing address must <a href="#authorizing-trust-lines">submit a <code>TrustSet</code> transaction to approve each trust line</a> from a customer.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> An account can only enable <code>RequireAuth</code> if it owns no trust lines and no offers in the XRP Ledger, so you must decide whether or not to use it before you start doing business in the XRP Ledger.</p>
@@ -1030,6 +1030,21 @@
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1690,7 +1705,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
 
-        <a class="nav-link" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
       

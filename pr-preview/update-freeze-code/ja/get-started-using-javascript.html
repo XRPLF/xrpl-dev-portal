@@ -234,10 +234,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#get-started-using-javascript">Get Started Using JavaScript</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#learning-goals">Learning goals</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#learning-goals">Learning Goals</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#requirements">Requirements</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#install-with-npm">Install with npm</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start building</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start Building</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#1-import-the-library">1. Import the Library</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#2-connect-to-the-xrp-ledger">2. Connect to the XRP Ledger</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#3-generate-wallet">3. Generate Wallet</a></li>
@@ -268,8 +268,8 @@
     <div class="content">
         <h1 id="get-started-using-javascript">Get Started Using JavaScript<a aria-hidden="true" class="hover_anchor" href="#get-started-using-javascript"><i class="fa fa-link"></i></a></h1>
 <p>This tutorial guides you through the basics of building an XRP Ledger-connected application in JavaScript or TypeScript using the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank"><code>xrpl.js</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> client library in either Node.js or web browsers.</p>
-<p>The scripts and config files used in this guide are <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart" target="_blank">available in this website's GitHub Repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="learning-goals">Learning goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
+<p>The scripts and config files used in this guide are <a class="external-link" href="https://github.com/JST5000/xrpl-dev-portal/tree/update-freeze-code/content/_code-samples/get-started/js/" target="_blank">available in this website's GitHub Repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h2 id="learning-goals">Learning Goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
 <p>In this tutorial, you'll learn:</p>
 <ul>
 <li>The basic building blocks of XRP Ledger-based applications.</li>
@@ -284,11 +284,11 @@
 <p>Start a new project by creating an empty folder, then change into that folder and use <a class="external-link" href="https://www.npmjs.com/" target="_blank">NPM <i aria-hidden="true" class="fa fa-external-link"></i></a> to install the latest version of xrpl.js:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">npm install xrpl
 </code></pre></div>
-<h2 id="start-building">Start building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
+<h2 id="start-building">Start Building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
 <p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your <a href="wallets.html">wallet</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="issued-currencies.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
 <p>Here are some steps you use in many XRP Ledger projects:</p>
 <ol>
-<li><a href="#1-import-the-library">Import the library</a></li>
+<li><a href="#1-import-the-library">Import the library.</a></li>
 <li><a href="#2-connect-to-the-xrp-ledger">Connect to the XRP Ledger.</a></li>
 <li><a href="#3-generate-wallet">Generate a wallet.</a></li>
 <li><a href="#4-query-the-xrp-ledger">Query the XRP Ledger.</a></li>
@@ -313,7 +313,10 @@
 <h3 id="2-connect-to-the-xrp-ledger">2. Connect to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with <code>xrpl.js</code>, you create an instance of the <code>Client</code> class and use the <code>connect()</code> method.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Many network functions in <code>xrpl.js</code> use <a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promises <i aria-hidden="true" class="fa fa-external-link"></i></a> to return values asynchronously. The code samples here use the <a class="external-link" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank"><code>async/await</code> pattern <i aria-hidden="true" class="fa fa-external-link"></i></a> to wait for the actual result of the Promises.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Wrap code in an async function so we can use await</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<span class="c1">// const xrpl = require('xrpl')</span>
+
+<span class="c1">// Wrap code in an async function so we can use await</span>
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 
   <span class="c1">// Define the network client</span>
@@ -322,14 +325,14 @@
 
   <span class="c1">// ... custom code goes here</span>
 
-  <span class="c1">// Disconnect when done so Node.js can end the process</span>
+  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
   <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="nx">main</span><span class="p">()</span>
 </code></pre></div>
-<h4 id="connect-to-the-production-xrp-ledger">Connect to the production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connect-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h4>
-<p>The sample code in the previous section shows you how to connect to the Testnet, which is one of the available <a href="parallel-networks.html">parallel networks</a>. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:</p>
+<h4 id="connect-to-the-xrp-ledger-mainnet">Connect to the XRP Ledger Mainnet<a aria-hidden="true" class="hover_anchor" href="#connect-to-the-xrp-ledger-mainnet"><i class="fa fa-link"></i></a></h4>
+<p>The sample code in the previous section shows you how to connect to the Testnet, which is one of the available <a href="parallel-networks.html">parallel networks</a>. When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:</p>
 <ul>
 <li>
 <p>By <a href="install-rippled.html">installing the core server</a> (<code>rippled</code>) and running a node yourself. The core server connects to the Mainnet by default, but you can <a href="connect-your-rippled-to-the-xrp-test-net.html">change the configuration to use Testnet or Devnet</a>. <a href="rippled-server-modes.html#ストックサーバーを運用する理由">There are good reasons to run your own core server</a>. If you run your own server, you can connect to it like so:</p>
@@ -400,7 +403,7 @@
 </ul>
 </li>
 <li><strong>References:</strong><ul>
-<li><a class="external-link" href="https://xrplf.github.io/xrpl.js/" target="_blank"><code>xrpl.js</code> Reference <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://js.xrpl.org/" target="_blank"><code>xrpl.js</code> Reference <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a href="public-rippled-methods.html">Public API Methods</a></li>
 <li><a href="api-conventions.html">API Conventions</a><ul>
 <li><a href="base58-encodings.html">base58 Encodings</a></li>
@@ -1095,6 +1098,21 @@
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1755,7 +1773,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
-        <a class="nav-link" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       

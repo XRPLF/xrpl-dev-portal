@@ -297,11 +297,9 @@
 <h3 id="norippleを有効無効にする">NoRippleを有効/無効にする<a aria-hidden="true" class="hover_anchor" href="#norippleを有効無効にする"><i class="fa fa-link"></i></a></h3>
 <p>トラストライン上のNoRippleフラグは、トラストライン上のアドレスの残高がプラスまたはゼロの場合に限り、有効にできます。これにより、この機能を悪用してトラストラインの残高に示される債務を不履行にすることができなくなります。（ただし、アドレスを放棄すれば債務を不履行にできます。）</p>
 <p><a href="rippled-api.html"><code>rippled</code> API</a>でNoRippleフラグを有効にするには、<code>tfSetNoRipple</code>フラグを設定した<a href="trustset.html">TrustSetトランザクション</a>を送信します。NoRippleを無効にする（Ripplingを有効にする）には、<code>tfClearNoRipple</code>フラグを使用します。</p>
-<p><a href="rippleapi-reference.html">RippleAPI</a>でNoRippleフラグを有効にするには、トラストラインの<code>ripplingDisabled</code> フィールドを<code>true</code>に設定して<a href="rippleapi-reference.html#preparetrustline">Trustlineトランザクション</a>を送信します。</p>
 <h3 id="norippleステータスの確認">NoRippleステータスの確認<a aria-hidden="true" class="hover_anchor" href="#norippleステータスの確認"><i class="fa fa-link"></i></a></h3>
 <p>相互に信頼し合っている2つのアカウントの場合、NoRippleフラグはアカウントごとに管理されます。</p>
 <p><a href="rippled-api.html"><code>rippled</code> API</a>でアドレスに関連付けられているトラストラインを確認するには、<a href="account_lines.html">account_linesメソッド</a>を使用します。各トラストラインの<code>no_ripple</code>フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、<code>no_ripple_peer</code>フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。</p>
-<p><a href="rippleapi-reference.html">RippleAPI</a>でアドレスに関連付けられているトラストラインを確認するには、<a href="rippleapi-reference.html#gettrustlines">getTrustlines</a>メソッドを使用します。各トラストラインの<code>ripplingDisabled</code>フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、<code>counterparty.ripplingDisabled</code>フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。</p>
 <h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong></li>
@@ -1001,6 +999,21 @@
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1661,7 +1674,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
-        <a class="nav-link" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       

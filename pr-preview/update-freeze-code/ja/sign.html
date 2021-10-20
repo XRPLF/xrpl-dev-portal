@@ -262,7 +262,7 @@
 <p><code>sign</code>メソッドは<a href="transaction-formats.html">JSONフォーマットのトランザクション</a>と<a href="cryptographic-keys.html">シード値</a>を受け取り、トランザクションの署名済みバイナリー表現を返します。<a href="multi-signing.html">マルチ署名済みトランザクション</a>に署名を付与する場合は、代わりに<a href="sign_for.html">sign_forメソッド</a>を使用します。</p>
 <p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
 <!--_ -->
-<p class="devportal-callout 注意"><strong>注意:</strong> 独自の<code>rippled</code>サーバーを運用している場合を除き、このコマンドを使用するのではなく、<a href="rippleapi-reference.html#sign">RippleAPIを使用したローカル署名</a>を実行してください。信用できないサーバーが、トランザクションへの署名前にトランザクションに変更を加えたり、シークレットキーを悪用して、トランザクションの発行元であるかのように任意の追加的なトランザクションに署名したりするおそれがあります。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> 独自の<code>rippled</code>サーバーを運用している場合を除き、このコマンドを使用するのではなく、<a href="client-libraries.html">クライアントライブラリ</a>を実行してください。詳細については<a href="set-up-secure-signing.html">安全な署名の設定</a>を参照してください。 </p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-0-2">コマンドライン</a></li></ul>
@@ -1193,6 +1193,21 @@ rippled sign s██████████████████████
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1853,7 +1868,7 @@ rippled sign s██████████████████████
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
-        <a class="nav-link" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       

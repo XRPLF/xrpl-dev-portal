@@ -280,9 +280,8 @@
 <li>Checkに記載されている受取人の<strong>アドレス</strong>と<strong>秘密鍵</strong>。このアドレスは、Checkオブジェクトの<code>Destination</code>アドレスと一致している必要があります。</li>
 <li>発行済み通貨用のCheckの場合は、ご自身（受取人）にイシュアーに対するトラストラインがある必要があります。このトラストライン上のご自身の限度額は、受け取る金額を追加するための残高より十分高くなければなりません。</li>
 <li>トラストラインと限度額について詳しくは、<a href="issued-currencies.html">発行済み通貨</a>および<a href="trust-lines-and-issuing.html">トラストラインと発行</a>を参照してください。</li>
-<li>トランザクションに安全に署名できる手段（<a href="rippleapi-reference.html">RippleAPI</a>や各自の<a href="install-rippled.html"><code>rippled</code>サーバー</a>など）。</li>
-<li><code>rippled</code>サーバーに接続できるクライアントライブラリ（<a href="rippleapi-reference.html">RippleAPI</a>、HTTPライブラリ、WebSocketライブラリなど）。</li>
-<li>詳細は、<a href="get-started-using-http-websocket-apis.html"><code>rippled</code> APIの使用開始</a>を参照してください。<!--#{ fix md highlighting_ #}--></li>
+<li><a href="set-up-secure-signing.html">トランザクションに安全に署名できる手段</a>。</li>
+<li>XRP Ledgerに接続できる<a href="client-libraries.html">クライアントライブラリ</a>か、それとも<a href="get-started-using-http-websocket-apis.html">HTTPライブラリ、WebSocketライブラリなど</a>。<!--#{ fix md highlighting_ #}--></li>
 </ul>
 <h2 id="1checkcashトランザクションの準備">1.CheckCashトランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#1checkcashトランザクションの準備"><i class="fa fa-link"></i></a></h2>
 <p><a href="checkcash.html">CheckCashトランザクション</a>のフィールドの値を決定します。Checkを変動金額で換金する場合、以下のフィールドは必要最小限です。それ以外のフィールドはオプションまたは署名時に<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>可能なフィールドです。</p>
@@ -378,7 +377,7 @@
 </code></pre></div></div>
 </div>
 <h2 id="2checkcashトランザクションの署名">2.CheckCashトランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#2checkcashトランザクションの署名"><i class="fa fa-link"></i></a></h2>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later. <!--#{ fix md highlighting_ #}--></p>
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="コマンドライン" href="#code-1-0">コマンドライン</a></li></ul>
@@ -1355,6 +1354,21 @@
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2015,7 +2029,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
-        <a class="nav-link" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       

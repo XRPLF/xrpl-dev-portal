@@ -287,7 +287,10 @@
 <p>When you're <a href="production-readiness.html">building actual production-ready software</a>, you'll instead use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
 <h3 id="2-connect-to-the-network">2. Connect to the Network<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-the-network"><i class="fa fa-link"></i></a></h3>
 <p>You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// Wrap code in an async function so we can use await</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<span class="c1">// const xrpl = require('xrpl')</span>
+
+<span class="c1">// Wrap code in an async function so we can use await</span>
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 
   <span class="c1">// Define the network client</span>
@@ -296,7 +299,7 @@
 
   <span class="c1">// ... custom code goes here</span>
 
-  <span class="c1">// Disconnect when done so Node.js can end the process</span>
+  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
   <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
 <span class="p">}</span>
 
@@ -335,7 +338,7 @@
   <span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction hash:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">hash</span><span class="p">)</span>
 
-  <span class="kd">const</span> <span class="nx">submit_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitSignedReliable</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">submit_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Submit result:"</span><span class="p">,</span> <span class="nx">submit_result</span><span class="p">)</span>
 </code></pre></div></div>
 </div>
@@ -1131,6 +1134,21 @@
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1791,7 +1809,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
 
-        <a class="nav-link" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
       
@@ -2634,7 +2652,7 @@ $(document).ready(() => {
 </script>
 
 <!-- ripple-lib & prerequisites -->
-<script type="application/javascript" src="assets/js/xrpl-2.0.0b5.min.js"></script>
+<script type="application/javascript" src="assets/js/xrpl-2.0.0preview.min.js"></script>
 
 <!-- Helper for interactive tutorials -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>

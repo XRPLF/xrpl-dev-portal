@@ -182,49 +182,65 @@ async function parse_xrpl_toml(data, domain) {
   }
 }
 
-const testnet = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
-testnet.connect()
-const mainnet = new ripple.RippleAPI({server: 'wss://s1.ripple.com'})
-mainnet.connect()
+// Decode a hexadecimal string into a regular string, assuming 8-bit characters.
+// Not proper unicode decoding, but it'll work for domains which are supposed
+// to be a subset of ASCII anyway.
+function decode_hex(hex) {
+    let str = '';
+    for (let i = 0; i < hex.length; i += 2) {
+      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+    }
+    return str
+}
 
 async function validate_address_domain_on_net(address, domain, net) {
+  if (!domain) { return undefined } // Can't validate an empty domain value
+  let api
   if (net === "main") {
-    let settings
-    try {
-      settings = await mainnet.getSettings(address)
-    } catch(e) {
-      console.error("failed to look up address on mainnet:", address, e)
-      return undefined
-    }
+    api = new xrpl.Client('wss://s1.ripple.com')
+  } else if (net == "testnet") {
+    api = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+  }
+  await api.connect()
 
-    if (settings.domain === domain) {
-      return true
-    } else if (settings.domain === undefined) {
-      console.debug(address, ": Domain is undefined in settings")
-      return undefined
-    } else {
-      console.debug(address, ": Domain mismatch ("+settings.domain+" vs. "+domain+")")
-      return false
-    }
-  } else if (net === "testnet") {
-    let settings
-    try {
-      settings = await testnet.getSettings(address)
-    } catch(e) {
-      console.error("failed to look up address on testnet:", address, e)
-      return undefined
-    }
-
-    if (settings.domain === domain) {
-      return true
-    } else if (settings.domain === undefined) {
-      console.debug(address, ": Domain is undefined in settings")
-      return undefined
-    } else {
-      return false
-    }
-  } else {
+  let ai
+  try {
+    ai = await api.request({
+      "command": "account_info",
+      "account": address
+    })
+  } catch(e) {
+    console.warn(`failed to look up address ${address} on ${net} network"`, e)
+    api.disconnect()
     return undefined
+  }
+
+  if (ai.result.account_data.Domain === undefined) {
+    console.info(`Address ${address} has no Domain defined on-ledger`)
+    api.disconnect()
+    return undefined
+  }
+
+  let domain_decoded
+  try {
+    domain_decoded = decode_hex(ai.result.account_data.Domain)
+  } catch(e) {
+    console.warn("error decoding domain value", ai.result.account_data.Domain, e)
+    api.disconnect()
+    return undefined
+  }
+
+  if (domain_decoded === domain) {
+    api.disconnect()
+    return true
+  } else if (domain_decoded === undefined) {
+    console.debug(address, ": Domain is undefined in settings")
+    api.disconnect()
+    return undefined
+  } else {
+    console.debug(address, ": Domain mismatch ("+domain_decoded+" vs. "+domain+")")
+    api.disconnect()
+    return false
   }
 }
 

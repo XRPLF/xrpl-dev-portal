@@ -119,6 +119,9 @@ https://xrpl.org/look-up-checks-by-sender.html
 https://xrpl.org/look-up-checks-by-recipient.html
 https://xrpl.org/use-tokens.html
 https://xrpl.org/issue-a-fungible-token.html
+https://xrpl.org/enable-no-freeze.html
+https://xrpl.org/enact-global-freeze.html
+https://xrpl.org/freeze-a-trust-line.html
 https://xrpl.org/xrp-ledger-businesses.html
 https://xrpl.org/list-xrp-as-an-exchange.html
 https://xrpl.org/list-your-exchange-on-xrp-charts.html
@@ -230,6 +233,7 @@ https://xrpl.org/modifying-the-ledger.html
 https://xrpl.org/serialization.html
 https://xrpl.org/client-libraries.html
 https://xrpl.org/rippleapi-reference.html
+https://xrpl.org/https://js.xrpl.org/
 https://xrpl.org/xrpljs2-migration-guide.html
 https://xrpl.org/https://xrpl-py.readthedocs.io/
 https://xrpl.org/https://javadoc.io/doc/org.xrpl/

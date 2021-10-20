@@ -347,7 +347,7 @@ rippled wallet_propose
 <p>SetRegularKeyトランザクションでレギュラーキーペアを初めてアカウントに割り当てる際には、アカウントのマスター秘密鍵（シークレット）による署名が必要です。マスター秘密鍵の送信は危険であるため、トランザクションの署名とネットワークへのトランザクション送信を切り離した2段階方式でこのトランザクションを実行します。</p>
 <p>それ以降のSetRegularKeyトランザクションの送信時には、既存のレギュラー秘密鍵で署名し、レギュラー秘密鍵自体を置換または<a href="change-or-remove-a-regular-key-pair.html">削除</a>できます。ネットワーク上でレギュラー秘密鍵を送信してはならないことに注意してください。</p>
 <h3 id="トランザクションの署名">トランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#トランザクションの署名"><i class="fa fa-link"></i></a></h3>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <p>要求フィールドに以下の値を指定します。</p>
@@ -573,7 +573,7 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 <p>アカウントにレギュラーキーペアが正しく設定されていることを検証するため、ステップ2でアカウントに割り当てたレギュラー秘密鍵で<a href="accountset.html">AccountSetトランザクション</a>に署名し、アカウントからこのトランザクションを送信します。</p>
 <p>ステップ2で説明したように、マスター秘密鍵の送信は危険です。レギュラー秘密鍵の送信も同様に危険です。そのため、トランザクションの署名とネットワークへのトランザクションの送信を切り離した2段階方式でこのトランザクションを実行します。</p>
 <h3 id="トランザクションの署名-1">トランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#トランザクションの署名-1"><i class="fa fa-link"></i></a></h3>
-<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <p>要求フィールドに以下の値を指定します。</p>
@@ -1475,6 +1475,21 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2135,7 +2150,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
-        <a class="nav-link" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       

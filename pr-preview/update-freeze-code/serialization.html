@@ -325,7 +325,7 @@
 <li>In JavaScript in the <a class="external-link" href="https://github.com/ripple/ripple-binary-codec/" target="_blank"><code>ripple-binary-codec</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> package.</li>
 <li>In Python 3 in <a class="external-link" href="https://github.com/JST5000/xrpl-dev-portal/blob/update-freeze-code/content/_code-samples/tx-serialization/serialize.py" target="_blank">this repository's code samples section <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 </ul>
-<p>Additionally, many <a href="client-libraries">client libraries</a> provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.</p>
+<p>Additionally, many <a href="client-libraries.html">client libraries</a> provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.</p>
 <h2 id="internal-format">Internal Format<a aria-hidden="true" class="hover_anchor" href="#internal-format"><i class="fa fa-link"></i></a></h2>
 <p>Each field has an "internal" binary format used in the <code>rippled</code> source code to represent that field when signing (and in most other cases). The internal formats for all fields are defined in the source code of <a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp" target="_blank"><code>SField.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>. (This file also includes fields other than transaction fields.) The <a href="transaction-formats.html">Transaction Format Reference</a> also lists the internal formats for all transaction fields.</p>
 <p>For example, the <code>Flags</code> <a href="transaction-common-fields.html">common transaction field</a> becomes a UInt32 (32-bit unsigned integer).</p>
@@ -1435,6 +1435,21 @@
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2095,7 +2110,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
 
-        <a class="nav-link" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
       

@@ -234,8 +234,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#transfer-fees">Transfer Fees</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#transfer-fees-in-payment-paths">Transfer Fees in Payment Paths</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#technical-details">Technical Details</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#rippleapi">RippleAPI</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#rippled">rippled</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#client-library-support">Client Library Support</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
       </ul>
   </div>
@@ -276,15 +275,13 @@
 <!-- SPELLING_IGNORE: waygate, fxmaker -->
 <h1 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h1>
 <p>The transfer fee is represented by a setting on the <a href="issuing-and-operational-addresses.html">issuing address</a>. The transfer fee cannot be less than 0% or more than 100% and is rounded down to the nearest 0.0000001%. The transfer fee applies to all currencies issued by the same account. If you want to have different transfer fees for different currencies, use different <a href="issuing-and-operational-addresses.html">issuing addresses</a> for each currency.</p>
+<p>In the <a href="protocol-reference.html">XRP Ledger protocol</a>, the transfer fee is specified in the <code>TransferRate</code> field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A <code>TransferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>TransferRate</code> is set to no fee. The value of <code>TransferRate</code> cannot be set to less than <code>1000000000</code> ("0%" fee) or more than <code>2000000000</code> (a "100%" fee). The value <code>0</code> is special case for no fee, equivalent to <code>1000000000</code>.</p>
+<p>A token issuer can submit an <a href="accountset.html">AccountSet transaction</a> from its <a href="issuing-and-operational-addresses.html">issuing address</a> to change the <code>TransferRate</code> for all its tokens.</p>
+<p>Anyone can check an account's <code>TransferRate</code> with the <a href="account_info.html">account_info method</a>. If the <code>TransferRate</code> is omitted, then that indicates no fee.</p>
 <p class="devportal-callout note"><strong>Note:</strong> The <a href="amendments.html">fix1201 amendment</a>, introduced in <code>rippled</code> v0.80.0 and enabled on 2017-11-14, lowered the maximum transfer fee to 100% from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). The ledger may still contain accounts with a transfer fee setting higher than 100% (a <code>TransferRate</code> of <code>2000000000</code>). Any transfer fees already set continue to apply at their stated rate.</p>
-<h2 id="rippleapi">RippleAPI<a aria-hidden="true" class="hover_anchor" href="#rippleapi"><i class="fa fa-link"></i></a></h2>
-<p>In RippleAPI, the transfer fee is specified in the <code>transferRate</code> field, as a decimal which represents the amount you must send for the recipient to get 1 unit of the same currency. A <code>transferRate</code> of <code>1.005</code> is equivalent to a transfer fee of 0.5%. By default, the <code>transferRate</code> is set to no fee. The value of <code>transferRate</code> cannot be less than <code>1.0</code> or more than <code>2.0</code>. The transfer rate is rounded to 10 significant digits including the ones digit. The value <code>null</code> is a special case for no fee, equivalent to <code>1.0</code>.</p>
-<p>A financial institution can send a <a href="rippleapi-reference.html#settings">Settings transaction</a> from its <a href="issuing-and-operational-addresses.html">issuing address</a> to change the <code>transferRate</code> for all its issued currencies.</p>
-<p>You can check an account's <code>transferRate</code> with the <a href="rippleapi-reference.html#getsettings"><code>getSettings</code> method</a>.</p>
-<h2 id="rippled">rippled<a aria-hidden="true" class="hover_anchor" href="#rippled"><i class="fa fa-link"></i></a></h2>
-<p>In <code>rippled</code>'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the <code>TransferRate</code> field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A <code>TransferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>TransferRate</code> is set to no fee. The value of <code>TransferRate</code> cannot be set to less than <code>1000000000</code> ("0%" fee) or more than <code>2000000000</code> (a "100%" fee). The value <code>0</code> is special case for no fee, equivalent to <code>1000000000</code>.</p>
-<p>A financial institution can submit an <a href="accountset.html">AccountSet transaction</a> from its <a href="issuing-and-operational-addresses.html">issuing address</a> to change the <code>TransferRate</code> for all its issued currencies.</p>
-<p>You can check an account's <code>TransferRate</code> with the <a href="account_info.html">account_info method</a>. If the <code>TransferRate</code> is omitted, then that indicates no fee.</p>
+<h2 id="client-library-support">Client Library Support<a aria-hidden="true" class="hover_anchor" href="#client-library-support"><i class="fa fa-link"></i></a></h2>
+<p>Some <a href="client-libraries.html">client libraries</a> have convenience functions for getting and setting <code>TransferRate</code> functions.</p>
+<p><strong>JavaScript:</strong> <strong><em>TODO based on https://github.com/XRPLF/xrpl.js/pull/1720</em></strong></p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
@@ -985,6 +982,21 @@
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1645,7 +1657,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
 
-        <a class="nav-link" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
       

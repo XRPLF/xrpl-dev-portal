@@ -318,15 +318,27 @@
 <p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, <strong>do not</strong> use the same addresses on Testnet/Devnet and Mainnet.</p>
 <p>When you're <a href="production-readiness.html">building actual production-ready software</a>, you'll instead use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
 <h3 id="2-connect-to-a-testnet-server">2. Connect to a Testnet Server<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-a-testnet-server"><i class="fa fa-link"></i></a></h3>
-<p>First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to automatically fill in certain required fields of a transaction. (For more security, you can sign transactions from a machine that doesn't have an internet connection, but only if you can provide all of the necessary details.) You also must be connected to the network to submit transactions to it.</p>
-<p>The following code connects to one of the public Testnet servers that Ripple runs:</p>
+<p>First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to <a href="transaction-common-fields.html#auto-fillable-fields">automatically fill in some required fields of a transaction</a>. You also must be connected to the network to submit transactions to it.</p>
+<p>The following code connects to a public Testnet servers:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="python" href="#code-1-1">Python</a></li><li><a class="java" href="#code-1-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// Connect ---------------------------------------------------------------------</span>
-<span class="c1">// const  xrpl = require('xrpl') // For Node.js. In browsers, use &lt;script&gt;.</span>
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">)</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connected'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<span class="c1">// const xrpl = require('xrpl')</span>
+
+<span class="c1">// Wrap code in an async function so we can use await</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">// Define the network client</span>
+  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"https://s.altnet.rippletest.net:51234/"</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+
+  <span class="c1">// ... custom code goes here</span>
+
+  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1"># Connect ----------------------------------------------------------------------</span>
@@ -375,7 +387,7 @@
 </ul>
 <p>Technically, a viable transaction must contain some additional fields, and certain optional fields such as <code>LastLedgerSequence</code> are strongly recommended. Some other language-specific notes:</p>
 <ul>
-<li>If you're using <code>xrpl.js</code> for JavaScript or TypeScript, you can use the <a href="TODO: link autofill"><code>Client.autofill()</code> method</a> to automatically fill in good defaults for the remaining fields of a transaction.</li>
+<li>If you're using <code>xrpl.js</code> for JavaScript, you can use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#autofill" target="_blank"><code>Client.autofill()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to automatically fill in good defaults for the remaining fields of a transaction. In TypeScript, you can also use the transaction models like <code>xrpl.Payment</code> to enforce the correct fields.</li>
 <li>With <code>xrpl-py</code> for Python, you can use the models in <code>xrpl.models.transactions</code> to construct transactions as native Python objects.</li>
 <li>With xrpl4j for Java, you can use the model objects in the <code>xrpl4j-model</code> module to construct transactions as Java objects.<ul>
 <li>Unlike the other libraries, you must provide the account <code>sequence</code> and the <code>signingPublicKey</code> of the source
@@ -473,7 +485,7 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <h3 id="4-sign-the-transaction-instructions">4. Sign the Transaction Instructions<a aria-hidden="true" class="hover_anchor" href="#4-sign-the-transaction-instructions"><i class="fa fa-link"></i></a></h3>
 <p>Signing a transaction uses your credentials to authorize the transaction on your behalf. The input to this step is a completed set of transaction instructions (usually JSON), and the output is a binary blob containing the instructions and a signature from the sender.</p>
 <ul>
-<li><strong>JavaScript:</strong> Use the <a href="TODO: link sign">sign() method of a Wallet instance</a> to sign the transaction with <code>xrpl.js</code>.</li>
+<li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Wallet.html#sign" target="_blank"><code>sign()</code> method of a Wallet instance <i aria-hidden="true" class="fa fa-external-link"></i></a> to sign the transaction with <code>xrpl.js</code>.</li>
 <li><strong>Python:</strong> Use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction" target="_blank"><code>xrpl.transaction.safe_sign_transaction()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> with a model and wallet object.</li>
 <li><strong>Java:</strong> Use a <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html" target="_blank"><code>SignatureService</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> instance to sign the transaction. For this tutorial, use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html" target="_blank"><code>SingleKeySignatureService</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 </ul>
@@ -533,33 +545,22 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <h3 id="5-submit-the-signed-blob">5. Submit the Signed Blob<a aria-hidden="true" class="hover_anchor" href="#5-submit-the-signed-blob"><i class="fa fa-link"></i></a></h3>
 <p>Now that you have a signed transaction, you can submit it to an XRP Ledger server, and that server will relay it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)</p>
 <ul>
-<li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSignedReliable" target="_blank"><code>submitSignedReliable()</code> method of the Client <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a signed transaction to the network and wait for the response, or use <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSigned" target="_blank"><code>submitSigned()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction and get only the preliminary response.</li>
+<li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitAndWait" target="_blank"><code>submitAndWait()</code> method of the Client <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a signed transaction to the network and wait for the response, or use <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSigned" target="_blank"><code>submitSigned()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction and get only the preliminary response.</li>
 <li><strong>Python:</strong> Use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission" target="_blank"><code>xrpl.transaction.send_reliable_submission()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network and wait for a response.</li>
 <li><strong>Java:</strong> Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)" target="_blank"><code>XrplClient.submit(SignedTransaction)</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network. Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)" target="_blank"><code>XrplClient.ledger()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method to get the latest validated ledger index.</li>
 </ul>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li><li><a class="java" href="#code-4-2">Java</a></li></ul>
 
 <div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1">// Submit signed blob --------------------------------------------------------</span>
-  <span class="c1">// The earliest ledger a transaction could appear in is the first ledger</span>
-  <span class="c1">// after the one that's already validated at the time it's *first* submitted.</span>
-  <span class="kd">const</span> <span class="nx">min_ledger</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedgerIndex</span><span class="p">())</span> <span class="o">+</span> <span class="mf">1</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Tentative result code:"</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">engine_result</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Tentative result message:"</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">engine_result_message</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="c1">// This raises an exception if the transaction isn't confirmed.</span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1"># Submit transaction -----------------------------------------------------------</span>
-<span class="n">validated_index</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">ledger</span><span class="o">.</span><span class="n">get_latest_validated_ledger_sequence</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
-<span class="n">min_ledger</span> <span class="o">=</span> <span class="n">validated_index</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Can be validated in ledger range: </span><span class="si">{</span><span class="n">min_ledger</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">max_ledger</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="c1"># Tip: you can use xrpl.transaction.send_reliable_submission(signed_tx, client)</span>
-<span class="c1">#  to send the transaction and wait for the results to be validated.</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">prelim_result</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_transaction</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">XRPLRequestFailureException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">tx_response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">XRPLReliableSubmissionException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="n">exit</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Submit failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Preliminary transaction result:"</span><span class="p">,</span> <span class="n">prelim_result</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="code_sample java" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Submit transaction ---------------------------------------------------------</span>
@@ -593,10 +594,11 @@ example transaction</button>
 <h3 id="6-wait-for-validation">6. Wait for Validation<a aria-hidden="true" class="hover_anchor" href="#6-wait-for-validation"><i class="fa fa-link"></i></a></h3>
 <p>Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For more information on expiration of unconfirmed transactions, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.)</p>
 <ul>
-<li><strong>JavaScript:</strong> Use an account <a href="rippleapi-reference.html#listening-to-streams">subscription</a> to listen for an event when the transaction is confirmed. Use the <code>ledger</code> event type to trigger your code to run whenever there is a new validated ledger version so that you can know if the transaction can no longer be confirmed.</li>
 <li>
-<p><strong>Python:</strong> Poll the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash" target="_blank"><code>xrpl.transaction.get_transaction_from_hash()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see if your transaction has a final result. Periodically use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.ledger.html#xrpl.ledger.get_latest_validated_ledger_sequence" target="_blank"><code>xrpl.ledger.get_latest_validated_ledger_sequence()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> so you can know if the transaction can no longer be confirmed.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> The <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission" target="_blank"><code>xrpl.transaction.send_reliable_submission()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> handles this process all in one call. You can use this instead of <code>submit_transaction()</code> wherever it's appropriate for your code to stop and wait for a transaction's <a href="finality-of-results.html">final result</a> to be confirmed.</p>
+<p><strong>JavaScript:</strong>  If you used the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitAndWait" target="_blank"><code>.submitAndWait()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>, you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.</p>
+</li>
+<li>
+<p><strong>Python:</strong> If you used the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission" target="_blank"><code>xrpl.transaction.send_reliable_submission()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>, you can wait for the function to return. Other approaches, including asynchronous ones using the WebSocket client, are also possible.</p>
 </li>
 <li>
 <p><strong>Java</strong> Poll the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)" target="_blank"><code>XrplClient.transaction()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the <code>LastLedgerIndex</code> of the transaction using the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)" target="_blank"><code>XrplClient.ledger()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method.</p>
@@ -605,43 +607,11 @@ example transaction</button>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li><li><a class="python" href="#code-5-1">Python</a></li><li><a class="java" href="#code-5-2">Java</a></li></ul>
 
 <div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1">// Wait for validation -------------------------------------------------------</span>
-  <span class="kd">let</span> <span class="nx">has_final_status</span> <span class="o">=</span> <span class="kc">false</span>
-  <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"subscribe"</span><span class="p">,</span>
-    <span class="s2">"accounts"</span><span class="o">:</span> <span class="p">[</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">]</span>
-  <span class="p">})</span>
-  <span class="nx">api</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"transaction"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">hash</span> <span class="o">==</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">hash</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction has executed!"</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span>
-      <span class="nx">has_final_status</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-  <span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ledgerClosed'</span><span class="p">,</span> <span class="nx">ledger</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_index</span> <span class="o">&gt;</span> <span class="nx">max_ledger</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">has_final_status</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Ledger version"</span><span class="p">,</span> <span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_index</span><span class="p">,</span> <span class="s2">"was validated."</span><span class="p">)</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"If the transaction hasn't succeeded by now, it's expired"</span><span class="p">)</span>
-      <span class="nx">has_final_status</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
+  <span class="c1">// submitAndWait() handles this automatically, but it can take 4-7s.</span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1"># Wait for validation ----------------------------------------------------------</span>
-<span class="c1"># Note: If you used xrpl.transaction.send_reliable_submission, you can skip this</span>
-<span class="c1">#  and use the result of that method directly.</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">validated_ledger</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">ledger</span><span class="o">.</span><span class="n">get_latest_validated_ledger_sequence</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
-    <span class="n">tx_response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">get_transaction_from_hash</span><span class="p">(</span><span class="n">tx_id</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">tx_response</span><span class="o">.</span><span class="n">is_successful</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">tx_response</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"validated"</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"Got validated result!"</span><span class="p">)</span>
-            <span class="k">break</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Results not yet validated... "</span>
-                  <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">validated_ledger</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">max_ledger</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">validated_ledger</span> <span class="o">&gt;</span> <span class="n">max_ledger</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"max_ledger has passed. Last tx response:"</span><span class="p">,</span> <span class="n">tx_response</span><span class="p">)</span>
+<span class="c1"># send_reliable_submission() handles this automatically, but it can take 4-7s.</span>
 </code></pre></div></div>
 
 <div class="code_sample java" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="c1">// Wait for validation --------------------------------------------------------</span>
@@ -714,35 +684,22 @@ example transaction</button>
 <h3 id="7-check-transaction-status">7. Check Transaction Status<a aria-hidden="true" class="hover_anchor" href="#7-check-transaction-status"><i class="fa fa-link"></i></a></h3>
 <p>To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version.</p>
 <ul>
-<li><strong>JavaScript:</strong> Use the <a href="rippleapi-reference.html#gettransaction"><code>getTransaction()</code> method</a> to check the status of a transaction.</li>
-<li><strong>Python:</strong> The response of <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash" target="_blank"><code>xrpl.transaction.get_transaction_from_hash()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> contains the results if the transaction has been validated by consensus. (See the <a href="tx.html#response-format">tx method response format</a> for a detailed reference of the fields this can contain.)</li>
-<li><strong>Java:</strong> Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)" target="_blank"><code>XrplClient.transaction()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method to check the status of a transaction.</li>
+<li>
+<p><strong>JavaScript:</strong> Use the response from <code>submitAndWait()</code> or call the <a href="tx.html">tx method</a> using <a class="external-link" href="https://js.xrpl.org/classes/Client.html#request" target="_blank"><code>Client.request()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> In <strong>TypeScript</strong> you can pass a <a class="external-link" href="https://js.xrpl.org/interfaces/TxRequest.html" target="_blank"><code>TxRequest</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#request" target="_blank"><code>Client.request()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method.</p>
+</li>
+<li>
+<p><strong>Python:</strong> Use the response from <code>send_reliable_submission()</code> or call the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash" target="_blank"><code>xrpl.transaction.get_transaction_from_hash()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>. (See the <a href="tx.html#response-format">tx method response format</a> for a detailed reference of the fields this can contain.)</p>
+</li>
+<li>
+<p><strong>Java:</strong> Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)" target="_blank"><code>XrplClient.transaction()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method to check the status of a transaction.</p>
+</li>
 </ul>
 <div class="multicode" id="code-6"><ul class="codetabs"><li><a class="javascript" href="#code-6-0">JavaScript</a></li><li><a class="python" href="#code-6-1">Python</a></li><li><a class="java" href="#code-6-2">Java</a></li></ul>
 
 <div class="code_sample javascript" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="c1">// Check transaction results -------------------------------------------------</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-      <span class="nx">command</span><span class="o">:</span> <span class="s2">"tx"</span><span class="p">,</span>
-      <span class="nx">transaction</span><span class="o">:</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">hash</span><span class="p">,</span>
-      <span class="nx">min_ledger</span><span class="o">:</span> <span class="nx">min_ledger</span><span class="p">,</span>
-      <span class="nx">max_ledger</span><span class="o">:</span> <span class="nx">max_ledger</span>
-    <span class="p">})</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">validated</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"This result is validated by consensus and final."</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"This result is pending."</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="ow">typeof</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span> <span class="o">===</span> <span class="s2">"string"</span> <span class="o">&amp;&amp;</span>
-        <span class="ow">typeof</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span> <span class="o">!==</span> <span class="s2">"unavailable"</span><span class="p">)</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Delivered:"</span><span class="p">,</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span><span class="p">),</span> <span class="s2">"XRP"</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Couldn't get transaction outcome:"</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span>
-  <span class="p">}</span>
-
-<span class="p">})</span> <span class="c1">// End of api.on.('connected')</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Balance changes:"</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">getBalanceChanges</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">),</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="c1"># Check transaction results ----------------------------------------------------</span>
@@ -771,8 +728,7 @@ example transaction</button>
 <span class="p">});</span>
 </code></pre></div></div>
 </div>
-<p>The RippleAPI <code>getTransaction()</code> method only returns success if the transaction is in a validated ledger version. Otherwise, the <code>await</code> expression raises an exception.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> Other APIs, including <code>xrpl-py</code>, may return tentative results from ledger versions that have not yet been validated. For example, if you use the <code>rippled</code> APIs' <a href="tx.html">tx method</a>, be sure to look for <code>"validated": true</code> in the response to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see <a href="finality-of-results.html">Finality of Results</a>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> XRP Ledger APIs may return tentative results from ledger versions that have not yet been validated. For example, in <a href="tx.html">tx method</a> response, be sure to look for <code>"validated": true</code> to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see <a href="finality-of-results.html">Finality of Results</a>.</p>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="7" data-totalsteps="7" id="interactive-check">
 <div class="interactive-block-inner">
 <div class="breadcrumbs-wrap">
@@ -795,9 +751,9 @@ example transaction</button>
 <p>This tutorial uses a button to get an address that's already funded with Test Net XRP, which only works because Test Net XRP is not worth anything. For actual XRP, you need to get XRP from someone who already has some. (For example, you might buy it on an exchange.) You can generate an address and secret that'll work on either production or the Testnet as follows:</p>
 <div class="multicode" id="code-7"><ul class="codetabs"><li><a class="javascript" href="#code-7-0">JavaScript</a></li><li><a class="python" href="#code-7-1">Python</a></li><li><a class="java" href="#code-7-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="kd">const</span> <span class="nx">generated</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">generateAddress</span><span class="p">()</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generated</span><span class="p">.</span><span class="nx">address</span><span class="p">)</span> <span class="c1">// Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generated</span><span class="p">.</span><span class="nx">secret</span><span class="p">)</span> <span class="c1">// Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
+<div class="code_sample javascript" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="kd">const</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">)</span> <span class="c1">// Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">seed</span><span class="p">)</span> <span class="c1">// Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
@@ -816,7 +772,7 @@ example transaction</button>
 <p class="devportal-callout warning"><strong>Warning:</strong> You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could potentially also be viable on the other network, depending on the parameters you provided.</p>
 <p>Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to <a href="accounts.html#creating-accounts">fund the account</a>. A common way to acquire XRP is to buy it from an <a href="exchanges.html">exchange</a>, then withdraw it to your own address.</p>
 <h3 id="connecting-to-the-production-xrp-ledger">Connecting to the Production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connecting-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h3>
-<p>When you instantiate the <code>RippleAPI</code> object, you must specify a server that's synced with the appropriate XRP Ledger. For many cases, you can use <a href="public-servers.html">public servers</a>, such as in the following snippet:</p>
+<p>When you instantiate your client's connect to the XRP Ledger, you must specify a server that's synced with the appropriate <a href="parallel-networks.html">network</a>. For many cases, you can use <a href="public-servers.html">public servers</a>, such as in the following example:</p>
 <div class="multicode" id="code-8"><ul class="codetabs"><li><a class="javascript" href="#code-8-0">JavaScript</a></li><li><a class="python" href="#code-8-1">Python</a></li><li><a class="java" href="#code-8-2">Java</a></li></ul>
 
 <div class="code_sample javascript" id="code-8-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="kd">const</span> <span class="nx">xrpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
@@ -1540,6 +1496,21 @@ example transaction</button>
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2200,7 +2171,7 @@ example transaction</button>
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
 
-        <a class="nav-link" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
       
@@ -3043,7 +3014,7 @@ $(document).ready(() => {
 </script>
 
 <!-- ripple-lib & prerequisites -->
-<script type="application/javascript" src="assets/js/xrpl-2.0.0b5.min.js"></script>
+<script type="application/javascript" src="assets/js/xrpl-2.0.0preview.min.js"></script>
 
 <!-- Helper for interactive tutorials -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>

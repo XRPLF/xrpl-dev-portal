@@ -277,9 +277,8 @@
 <li>Checkに記載されている受取人の<strong>アドレス</strong>と<strong>秘密鍵</strong>。このアドレスは、Checkオブジェクトの<code>Destination</code>アドレスと一致している必要があります。</li>
 <li>発行済み通貨用のCheckの場合は、ご自身（受取人）にイシュアーに対するトラストラインがある必要があります。このトラストライン上のご自身の限度額は、受け取る金額を追加するための残高より十分高くなければなりません。</li>
 <li>トラストラインと限度額について詳しくは、<a href="issued-currencies.html">発行済み通貨</a>および<a href="trust-lines-and-issuing.html">トラストラインと発行</a>を参照してください。</li>
-<li>トランザクションに安全に署名できる手段（<a href="rippleapi-reference.html">RippleAPI</a>や各自の<a href="install-rippled.html"><code>rippled</code>サーバー</a>など）。</li>
-<li><code>rippled</code>サーバーに接続できるクライアントライブラリ（<a href="rippleapi-reference.html">RippleAPI</a>、HTTPライブラリ、WebSocketライブラリなど）。</li>
-<li>詳細は、<a href="get-started-using-http-websocket-apis.html"><code>rippled</code> APIの使用開始</a>を参照してください。 <!--#{ fix md highlighting_ #}--></li>
+<li><a href="set-up-secure-signing.html">トランザクションに安全に署名できる手段</a>。</li>
+<li>XRP Ledgerに接続できる<a href="client-libraries.html">クライアントライブラリ</a>か、それとも<a href="get-started-using-http-websocket-apis.html">HTTPライブラリ、WebSocketライブラリなど</a>。 <!--#{ fix md highlighting_ #}--></li>
 </ul>
 <h2 id="1checkcashトランザクションの準備">1.CheckCashトランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#1checkcashトランザクションの準備"><i class="fa fa-link"></i></a></h2>
 <p><a href="checkcash.html">CheckCashトランザクション</a>のフィールドの値を決定します。Checkを正確な金額で換金する場合、以下のフィールドが最低限必要です。それ以外のフィールドはオプションまたは署名時に<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>可能なフィールドです。</p>
@@ -376,7 +375,7 @@
 </code></pre></div></div>
 </div>
 <h2 id="2checkcashトランザクションの署名">2.CheckCashトランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#2checkcashトランザクションの署名"><i class="fa fa-link"></i></a></h2>
-<p>トランザクションに署名する最も安全な方法は、<a href="rippleapi-reference.html">RippleAPI</a>などの署名ライブラリーを使用してローカルで署名することです。<a href="sign.html">signメソッド</a>を使用してトランザクションに署名することもできますが、その場合は信頼できる暗号化された接続を使用するか、ローカル接続を使用して、自分が管理しているサーバーに対してのみに行うようにしてください。</p>
+<p>トランザクションに署名する最も安全な方法は、<a href="client-libraries.html">クライアントライブラリ</a>を使用してローカルで署名することです。<a href="sign.html">signメソッド</a>を使用してトランザクションに署名することもできますが、その場合は信頼できる暗号化された接続を使用するか、ローカル接続を使用して、自分が管理しているサーバーに対してのみに行うようにしてください。</p>
 <p>いずれの場合も、後のために、署名したトランザクションの識別用ハッシュを書き留めておいてください。 <!--#{ fix md highlighting_ #}--></p>
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="コマンドライン" href="#code-1-0">コマンドライン</a></li></ul>
@@ -1264,6 +1263,21 @@
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1924,7 +1938,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
-        <a class="nav-link" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       
