@@ -1,7 +1,7 @@
 ---
 html: xrpljs2-migration-guide.html
 blurb: Learn how to migrate JavaScript code to the newer client library format.
-parent: rippleapi-reference.html
+parent: https://js.xrpl.org/
 ---
 # Migration Guide for ripple-lib 1.x to xrpl.js 2.x
 
@@ -213,7 +213,7 @@ client.request({
 
 ## Reference of Equivalents
 
-In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI` class. In xrpl.js 2.x, some methods are static methods of the library and some methods belong to specific classes. In the following table, `Client.` means that the method is an
+In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI` class. In xrpl.js 2.x, some methods are static methods of the library and some methods belong to specific classes. In the following table, the notation `Client.method()` means that `method()` belongs to instances of the `Client` class.
 
 | RippleAPI instance method / property | xrpl.js method / property | Notes |
 |-------------------|----------------|---|

@@ -2346,23 +2346,22 @@ pages:
             - en
             - ja
 
+        # Redirect old ripple-lib docs.
     -   name: JavaScript / TypeScript Client Library
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.10.0/docs/index.md
         html: rippleapi-reference.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: https://js.xrpl.org/
+        targets:
+            - en
+            - ja
+
+    -   name: JavaScript / TypeScript Client Library
+        html: https://js.xrpl.org/
         parent: client-libraries.html
         blurb: JavaScript/TypeScript client library to the XRP Ledger.
         skip_spell_checker: true
         # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
-        curated_anchors:
-            - name: Transactions
-              anchor: "#transaction-overview"
-            - name: Basic Types
-              anchor: "#basic-types"
-            - name: Methods
-              anchor: "#api-methods"
-        filters:
-            - remove_doctoc
-            - add_version
         targets:
             - en
             - ja
