@@ -32,9 +32,9 @@ This server exposes [`rippled` APIs](rippled-api.html) for users to look up data
 
 ### Programming Libraries
 
-Programming libraries are not strictly required to access XRP Ledger data, since you can use HTTP or WebSocket to connect to the [`rippled` APIs](rippled-api.html) directly. Libraries simplify some of the common work of accessing the `rippled` APIs, and convert the data into forms that are easier to understand and program with in the programming language of the library.
+[Programming libraries](client-libraries.html) are not strictly required to access XRP Ledger data, since you can use HTTP or WebSocket to connect to the [`rippled` APIs](rippled-api.html) directly. Libraries simplify some of the common work of accessing the `rippled` APIs, and convert the data into forms that are easier to understand and program with in the programming language of the library.
 
-[RippleAPI for JavaScript](get-started-with-rippleapi-for-javascript.html) (also called "ripple-lib") is the longest-standing, most well-supported library for accessing the XRP Ledger. Many [middleware services](#middleware) use programming libraries like RippleAPI internally.
+[xrpl.js for JavaScript](get-started-using-javascript.html) (formerly called "ripple-lib") is the longest-standing, most well-supported library for accessing the XRP Ledger. Many [middleware services](#middleware) use programming libraries like this internally.
 
 ### Middleware
 

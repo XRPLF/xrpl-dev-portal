@@ -64,7 +64,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.0.0b5.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.0.0preview.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -159,7 +159,12 @@ targets:
             "xrp-ledger-toml.html#account-verification": "xrp-ledger-toml.html#アカウント検証"
             "offers.html#offers-and-trust": "offers.html#オファーとトラスト"
             "authorized-trust-lines.html#authorizing-trust-lines": "authorized-trust-lines.html#トラストラインの承認"
-
+            # Fix links from untranslated freeze tutorials:
+            "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
+            "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
+            # Fix links from untranslated xrpl.js 2.0 migration guide:
+            "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
+            "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
 
 pages:
 
@@ -1177,6 +1182,7 @@ pages:
             - en
             - ja
 
+
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         targets:
             - en
@@ -1381,10 +1387,28 @@ pages:
             - en
             - ja
 
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/enable-no-freeze.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/enact-global-freeze.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/freeze-a-trust-line.md
+        targets:
+            - en
+            - ja
+
     # TODO: "Send a Cross-Currency Payment"
 
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
-    # freeze, enable/disable rippling, set transfer fees, use auth'd trust lines
+    # enable/disable rippling, use auth'd trust lines
 
     -   name: XRP Ledger Businesses
         html: xrp-ledger-businesses.html
@@ -2322,23 +2346,22 @@ pages:
             - en
             - ja
 
+        # Redirect old ripple-lib docs.
     -   name: JavaScript / TypeScript Client Library
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.10.0/docs/index.md
         html: rippleapi-reference.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: https://js.xrpl.org/
+        targets:
+            - en
+            - ja
+
+    -   name: JavaScript / TypeScript Client Library
+        html: https://js.xrpl.org/
         parent: client-libraries.html
         blurb: JavaScript/TypeScript client library to the XRP Ledger.
         skip_spell_checker: true
         # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
-        curated_anchors:
-            - name: Transactions
-              anchor: "#transaction-overview"
-            - name: Basic Types
-              anchor: "#basic-types"
-            - name: Methods
-              anchor: "#api-methods"
-        filters:
-            - remove_doctoc
-            - add_version
         targets:
             - en
             - ja

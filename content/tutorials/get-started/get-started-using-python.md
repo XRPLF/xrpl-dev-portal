@@ -18,7 +18,7 @@ This tutorial walks you through the basics of building a very simple XRP Ledger-
 
 This tutorial is intended for beginners and should take no longer than 30 minutes to complete.
 
-## Learning goals
+## Learning Goals
 
 In this tutorial, you'll learn:
 
@@ -42,7 +42,7 @@ The [`xrpl-py` library](https://github.com/XRPLF/xrpl-py) is available on [PyPI]
 pip3 install xrpl-py
 ```
 
-## Start building
+## Start Building
 {% set n = cycler(* range(1,99)) %}
 
 When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your [wallet](wallets.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](issued-currencies.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.

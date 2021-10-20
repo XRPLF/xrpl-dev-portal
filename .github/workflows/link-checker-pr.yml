@@ -68,7 +68,6 @@ jobs:
 
     - name: Summarize Output
       uses: thollander/actions-comment-pull-request@v1
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        msg: "${{ env.LINKREPORT }}\n\nPreview: https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/\n\n[Style Report](https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/style_report.txt)"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        message: "${{ env.LINKREPORT }}\n\nPreview: https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/\n\n[Style Report](https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/style_report.txt)"

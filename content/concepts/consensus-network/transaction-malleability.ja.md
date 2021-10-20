@@ -53,7 +53,7 @@ ECDSA署名はRおよびSと呼ばれる2つの整数で構成されています
 
 完全に正規であるECDSA署名を計算するには、SとN-Sを比較していずれが小さいかを見極めて、トランザクションの`Signature`フィールドにその値を使用する必要があります。
 
-Rippleが公開しているすべてのXRP Ledgerソフトウェア（`rippled`およびripple-lib/RippleAPIを含む）では、完全に正規である署名のみが生成されます。ユーザーの保護を強化するため、Rippleは、可能な限りデフォルトで**tfFullyCanonicalSig**フラグを有効にするようにコードを構成しています。XRP Ledgerソフトウェアのサードパーティ実装においても、完全に正規である署名だけを生成し、デフォルトでトランザクションのtfFullyCanonicalSigが有効にすることを強く推奨します。
+Rippleが公開しているすべてのXRP Ledgerソフトウェア（`rippled`およびripple-lib/xrpl.jsを含む）では、完全に正規である署名のみが生成されます。ユーザーの保護を強化するため、Rippleは、可能な限りデフォルトで**tfFullyCanonicalSig**フラグを有効にするようにコードを構成しています。XRP Ledgerソフトウェアのサードパーティ実装においても、完全に正規である署名だけを生成し、デフォルトでトランザクションのtfFullyCanonicalSigが有効にすることを強く推奨します。
 
 次の2つの状況においては、RippleのXRP Ledgerの署名実装によってtfFullyCanonicalSigフラグが自動的に有効になりません。次の状況では、フラグを慎重に設定する必要があります。
 

@@ -29,7 +29,7 @@ async function main() {
   const signed = wallet.sign(prepared)
   console.log("Transaction hash:", signed.hash)
 
-  const submit_result = await client.submitSignedReliable(signed.tx_blob)
+  const submit_result = await client.submitAndWait(signed.tx_blob)
   console.log("Submit result:", submit_result)
 
 

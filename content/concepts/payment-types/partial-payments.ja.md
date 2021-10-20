@@ -70,12 +70,11 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 | [JSON-RPC / WebSocket][] | [transaction_entryメソッド][] | `result.metadata.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [ledgerメソッド][]（トランザクションが展開されている状態） | `result.ledger.transactions` 配列メンバーの`metaData.delivered_amount` [新規: rippled 1.2.1][] |
 | [WebSocket][] | [トランザクションサブスクリプション](subscribe.html#トランザクションストリーム) | サブスクリプションメッセージの`meta.delivered_amount` [新規: rippled 1.2.1][] |
-| [RippleAPI][] | [`getTransaction` メソッド](rippleapi-reference.html#gettransaction) | `outcome.deliveredAmount` |
-| [RippleAPI][] | [`getTransactions` メソッド](rippleapi-reference.html#gettransaction) | 配列メンバーの `outcome.deliveredAmount` |
+| ripple-lib v1.x | `getTransaction` メソッド | `outcome.deliveredAmount` |
+| ripple-lib v1.x | `getTransactions` メソッド | 配列メンバーの `outcome.deliveredAmount` |
 
 [WebSocket]: rippled-api.html
 [JSON-RPC / WebSocket]: rippled-api.html
-[RippleAPI]: rippleapi-reference.html
 
 ## Partial Paymentの悪用
 
