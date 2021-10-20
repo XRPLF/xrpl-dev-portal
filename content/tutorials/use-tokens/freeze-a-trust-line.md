@@ -167,7 +167,7 @@ Example Response:
 
 ### {{n.next()}}. (Optional) Send TrustSet Transaction to End the Freeze
 
-If you decide that the trust line no longer needs to be frozen (for example, you investigated and decided that the suspicious activity was benign), you can end the individual freeze in much the same way that you froze the trust line in the first place. To end an individual freeze, send a [TrustSet transaction][] with the [`tfClearFreeze` flag enabled](trustset.html#trustset-flags). The other fields of the transaction should be the same as when you froze the trust line:
+If you decide that the trust line no longer needs to be frozen (for example, you investigated and decided that the suspicious activity was benign), you can end the individual freeze in almost the same way that you froze the trust line in the first place. To end an individual freeze, send a [TrustSet transaction][] with the [`tfClearFreeze` flag enabled](trustset.html#trustset-flags). The other fields of the transaction should be the same as when you froze the trust line:
 
 | Field                    | Value  | Description |
 |--------------------------|--------|-------------|

@@ -38,14 +38,12 @@ $(document).ready(() => {
         "ledger_index": "validated"
     })
     console.log(account_info)
-    // TODO: what's the replacement for parseAccountFlags?
-    //const flags = api.parseAccountFlags(account_info.account_data.Flags)
+    const flags = xrpl.parseAccountRootFlags(account_info.account_data.Flags)
     block.find(".loader").hide()
 
     block.find(".output-area").append(
         `<pre><code>${pretty_print(account_info.result.account_data)}</code></pre>`)
-    // if (flags.requireDestinationTag) {
-    if (account_info.result.account_data.Flags | 0x00020000) { // TODO: change this back if there's a better way
+    if (flags.lsfRequireDestTag) {
       block.find(".output-area").append(`<p><i class="fa fa-check-circle"></i>
           Require Destination Tag is enabled.</p>`)
     } else {

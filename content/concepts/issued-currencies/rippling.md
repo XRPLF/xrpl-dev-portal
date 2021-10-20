@@ -75,7 +75,7 @@ For more information, see [Default Ripple in 'Becoming an XRP Ledger Gateway'](b
 
 The No Ripple flag can only be enabled on a trust line if the address has a positive or zero balance on that trust line. This is so that the feature cannot be abused to default on the obligation the trust line balance represents. (Of course, you can still default by abandoning the address.)
 
-To enable the No Ripple flag, send a [TrustSet transaction][] with the `tfSetNoRipple` flag. You can disable No Ripple (enable rippling) with the `tfClearNoRipple` flag instead.
+To enable the No Ripple flag, send a [TrustSet transaction][] with the `tfSetNoRipple` flag. You can disable the No Ripple flag (that is, allow rippling) with the `tfClearNoRipple` flag instead.
 
 
 ### Looking Up No Ripple Status

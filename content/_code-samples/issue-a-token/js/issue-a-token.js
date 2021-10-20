@@ -6,9 +6,6 @@
 if (typeof module !== "undefined") {
   // gotta use var here because const/let are block-scoped to the if statement.
   var xrpl = require('xrpl')
-} else {
-  // TODO: remove when webpack is fixed
-  var xrpl = ripple;
 }
 
 // Connect ---------------------------------------------------------------------
@@ -54,8 +51,8 @@ async function main() {
     "Domain": "6578616D706C652E636F6D", // "example.com"
     "SetFlag": 2 // enable Require Auth so we can't use trust lines that users
                  // make to the hot address, even by accident.
-    //"Flags": (api.txFlags.AccountSet.DisallowXRP |
-    //          api.txFlags.AccountSet.RequireDestTag)
+    //"Flags": (api.AccountSetAsfFlags.asfDisallowXRP |
+    //          api.AccountSetAsfFlags.asfRequireDestTag)
   }
 
   const hst_prepared = await api.autofill(hot_settings_tx)

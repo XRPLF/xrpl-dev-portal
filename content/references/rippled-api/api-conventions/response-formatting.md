@@ -5,16 +5,16 @@ blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and
 ---
 # Response Formatting
 
-Responses from the `rippled` APIs is formatted slightly differently based on whether the method is called with the WebSocket, JSON-RPC, or Commandline interfaces. The Commandline and JSON-RPC interfaces use the same format because the Commandline interface calls JSON-RPC.
+Responses are formatted slightly differently based on whether the method is called with the WebSocket, JSON-RPC, or Commandline interfaces. The Commandline and JSON-RPC interfaces use the same format because the Commandline interface calls JSON-RPC.
 
 The fields of a successful response include:
 
 | `Field`         | Type     | Description                                     |
 |:----------------|:---------|:------------------------------------------------|
 | `id`            | (Varies) | (WebSocket only) ID provided in the request that prompted this response |
-| `status`        | String   | (WebSocket only) The value `success` indicates the request was successfully received and understood by the server. |
-| `result.status` | String   | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. |
-| `type`          | String   | (WebSocket only) The value `response` indicates a successful response to a command. [Asynchronous notifications](subscribe.html) use a different value such as `ledgerClosed` or `transaction`. |
+| `status`        | String   | (WebSocket only) The value `success` indicates the request was successfully received and understood by the server. Some [client libraries](client-libraries.html) omit this field on success. |
+| `result.status` | String   | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. Some [client libraries](client-libraries.html) omit this field on success. |
+| `type`          | String   | (WebSocket only) The value `response` indicates a direct response to an API request. [Asynchronous notifications](subscribe.html) use a different value such as `ledgerClosed` or `transaction`. |
 | `result`        | Object   | The result of the query; contents vary depending on the command. |
 | `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.html) threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
 | `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). [New in: rippled 1.5.0][] |
@@ -180,6 +180,8 @@ It is generally safe to ignore this warning.
 
 ## See Also
 
+- [Request Formatting](request-formatting.html)
+- [Error Formatting](error-formatting.html) for unsuccessful API responses.
 - **Concepts:**
     - [The `rippled` Server](the-rippled-server.html)
     - [Introduction to Consensus](intro-to-consensus.html)

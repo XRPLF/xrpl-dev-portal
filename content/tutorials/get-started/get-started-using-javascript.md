@@ -17,7 +17,7 @@ This tutorial guides you through the basics of building an XRP Ledger-connected 
 The scripts and config files used in this guide are [available in this website's GitHub Repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/get-started/js/).
 
 
-## Learning goals
+## Learning Goals
 
 In this tutorial, you'll learn:
 
@@ -42,13 +42,13 @@ npm install xrpl
 ```
 
 
-## Start building
+## Start Building
 
 When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your [wallet](wallets.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](issued-currencies.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
 Here are some steps you use in many XRP Ledger projects:
 
-1. [Import the library](#1-import-the-library)
+1. [Import the library.](#1-import-the-library)
 1. [Connect to the XRP Ledger.](#2-connect-to-the-xrp-ledger)
 1. [Generate a wallet.](#3-generate-wallet)
 1. [Query the XRP Ledger.](#4-query-the-xrp-ledger)
@@ -95,9 +95,9 @@ To make queries and submit transactions, you need to establish a connection to t
 
 {{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
-#### Connect to the production XRP Ledger
+#### Connect to the XRP Ledger Mainnet
 
-The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](parallel-networks.html). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
+The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](parallel-networks.html). When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:
 
 * By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](connect-your-rippled-to-the-xrp-test-net.html). [There are good reasons to run your own core server](the-rippled-server.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 

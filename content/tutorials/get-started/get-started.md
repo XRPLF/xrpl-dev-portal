@@ -27,12 +27,12 @@ async function main() {
 
   let response = await api.request({
     "command": "ledger",
-    "ledger_index": "validated"
+    "ledger_index": "validated",
     "transactions": true
   });
   console.log(response);
 }
-main()
+main();
 ```
 
 ```js
@@ -42,12 +42,12 @@ async function main() {
 
   let response = await api.request({
     "command": "ledger",
-    "ledger_index": "validated"
+    "ledger_index": "validated",
     "transactions": true
   });
   console.log(response);
 }
-main()
+main();
 ```
 
 ```js
@@ -68,7 +68,7 @@ async function main() {
   });
   console.log(response2);
 }
-main()
+main();
 ```
 
 ```js
@@ -78,12 +78,12 @@ async function main() {
 
   let response = await api.request({
     "command": "ledger",
-    "ledger_index": "validated"
+    "ledger_index": "validated",
     "transactions": true
   });
   console.log('Total XRP: '+xrpl.dropsToXrp(response.result.ledger.total_coins));
 }
-main()
+main();
 ```
 
 <!-- JS_EDITOR_END -->

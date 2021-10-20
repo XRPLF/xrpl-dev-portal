@@ -21,7 +21,7 @@ This tutorial walks you through the basics of building a very simple XRP Ledger-
 
 This tutorial is intended for beginners and should take no longer than 30 minutes to complete.
 
-## Learning goals
+## Learning Goals
 
 In this tutorial, you'll learn:
 
@@ -73,7 +73,7 @@ To install with Maven, add the following to your project's `pom.xml` file and th
 
 Check out the [xrpl4j sample project](https://github.com/XRPLF/xrpl4j-sample) for a full Maven project containing the code from this tutorial.
 
-## Start building
+## Start Building
 {% set n = cycler(* range(1,99)) %}
 
 When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your [wallet](wallets.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](issued-currencies.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.

@@ -162,6 +162,9 @@ targets:
             # Fix links from untranslated freeze tutorials:
             "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
             "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
+            # Fix links from untranslated xrpl.js 2.0 migration guide:
+            "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
+            "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
 
 pages:
 

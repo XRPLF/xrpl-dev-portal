@@ -36,7 +36,7 @@ If a power or network outage occurs, applications face more challenges finding t
 
 ### Transaction Timeline
 
-When you submit a transaction to the XRP Ledger, regardless of whether used [HTTP API](rippled-api.html), a [client library](client-libraries.html), or some other app, process of applying the transaction to the ledger is the same. That process goes like this:
+When you submit a transaction to the XRP Ledger, regardless of whether you used [HTTP API](rippled-api.html), a [client library](client-libraries.html), or some other app, process of applying the transaction to the ledger is the same. That process goes like this:
 
 1. An account owner creates and signs a transaction.
 2. The owner submits the transaction to the network as a candidate transaction.

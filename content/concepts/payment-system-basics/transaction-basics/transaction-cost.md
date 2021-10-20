@@ -124,7 +124,7 @@ The `Fee` field is one of the things that can be [auto-filled](transaction-commo
     - To prevent a transaction from getting stuck in a state of being neither definitively confirmed or rejected, be sure to provide a `LastLedgerSequence` parameter so it eventually expires. Alternatively, you can try to [cancel a stuck transaction](about-canceling-a-transaction.html) by reusing the same `Sequence` number. See [reliable transaction submission](reliable-transaction-submission.html) for best practices.
 - You have to be careful that the automatically provided value isn't too high. You don't want to burn a large fee to send a small transaction.
     - If you are using `rippled`, you can also use the `fee_mult_max` and `fee_div_max` parameters of the [sign method][] to set a limit to the load scaling you are willing to sign.
-    - Some client libraries (like xrpl.js and xrpl-py) have configurable maximum `Fee` values, and raise an error instead of signing a transaction whose `Fee` value is higher than the maximum.
+    - Some client libraries (like [xrpl.js](https://js.xrpl.org/) and [xrpl-py](xrpl-py.readthedocs.io/)) have configurable maximum `Fee` values, and raise an error instead of signing a transaction whose `Fee` value is higher than the maximum.
 - You cannot auto-fill from an offline machine nor when [multi-signing](multi-signing.html).
 
 
