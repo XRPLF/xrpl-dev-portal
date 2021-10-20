@@ -74,9 +74,9 @@ labels:
 
 この構成では、トランザクションにローカルで署名するために使用しているプログラミング言語のクライアントライブラリを使用します。使用しているプログラミング言語に対応するクライアントライブラリが必要です。Rippleは、XRP Ledgerのトランザクションにローカルで署名することができる次のクライアントライブラリを公開しています。
 
-- **RippleAPI（ripple-lib）for JavaScript**
-    - [設定](get-started-with-rippleapi-for-javascript.html)
-    - [APIリファレンス](rippleapi-reference.html)
+- **xrpl.js (JavaScript / TypeScript)**
+    - [設定](get-started-using-javascript.html)
+    - [APIリファレンス](https://js.xrpl.org/)
 - **Signing Library for C++**（`rippled`に付属）
     - [ドキュメント](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library)
 
@@ -126,8 +126,8 @@ Rippleが公開したものでないクライアントライブラリを使用�
 - **リファレンス:**
     - [signメソッド][]
     - [submitメソッド][]
-    - [RippleAPIリファレンス](rippleapi-reference.html)
-
+    - [xrpl.jsリファレンス](https://js.xrpl.org/)
+    - [`xrpl-py`リファレンス](https://xrpl-py.readthedocs.io/)
 
 
 

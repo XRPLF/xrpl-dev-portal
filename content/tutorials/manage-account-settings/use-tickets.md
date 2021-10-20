@@ -90,7 +90,7 @@ _JavaScript_
 
 ### {{n.next()}}. Prepare and Sign TicketCreate
 
-Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, to [prepare a transaction](rippleapi-reference.html#preparetransaction) that would make 10 Tickets:
+Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, to prepare a transaction that would make 10 Tickets:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -165,7 +165,7 @@ The power of Tickets is that you can carry on with your account's business as us
 
 ### {{n.next()}}. Check Available Tickets
 
-When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the [account_objects method][] (or [`getAccountObjects()`](rippleapi-reference.html#getaccountobjects)) to look up your available tickets. For example:
+When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the [account_objects method][] to look up your available tickets. For example:
 
 <!-- MULTICODE_BLOCK_START -->
 

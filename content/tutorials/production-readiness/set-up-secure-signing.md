@@ -150,8 +150,9 @@ To use this configuration, follow the steps for [running `rippled` on a private 
 - **References:**
     - [sign method][]
     - [submit method][]
-    - [RippleAPI Reference](rippleapi-reference.html)
+    - [xrpl.js Reference](https://js.xrpl.org/)
     - [`xrpl-py` Reference](https://xrpl-py.readthedocs.io/en/latest/index.html)
+    - [`xrpl4j` Reference](https://javadoc.io/doc/org.xrpl/)
 
 
 

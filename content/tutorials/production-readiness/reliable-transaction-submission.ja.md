@@ -33,7 +33,7 @@ XRP Ledgerプロトコルは、ネットワークのすべてのサーバーで�
 
 ### トランザクションのタイムライン
 
-XRP Ledgerには、[`rippled` API](rippled-api.html)や[RippleAPI](rippleapi-reference.html)など、トランザクションを送信するためのAPIがいくつかあります。使用するAPIにかかわらず、トランザクションは以下のようにレジャーに適用されます。
+XRP Ledgerには、[HTTP / WebSocket API](rippled-api.html)や[クライアントライブラリ](client-libraries.html)など、トランザクションを送信するためのAPIがいくつかあります。使用するAPIにかかわらず、トランザクションは以下のようにレジャーに適用されます。
 
 1. アカウント所有者は、トランザクションを作成して署名します。
 2. 所有者は、トランザクション候補として、そのトランザクションをネットワークに送信します。
@@ -61,9 +61,7 @@ APIは、現在の進行中のレジャーにトランザクション候補を�
 
 `LastLedgerSequence`パラメーターを使用すれば、トランザクションが迅速に確認されず、将来のレジャーに含まれるような好ましくないケースを防止できます。`LastLedgerSequence`パラメーターは、各トランザクションに指定する必要があります。自動プロセスでは、最後に検証されたレジャーインデックスよりも4つ大きい数値を使用して、トランザクションが予測可能な方法で、かつ迅速に検証または拒否されるようにします。
 
-`rippled` APIを使用するアプリケーションは、トランザクションの送信時に、`LastLedgerSequence`を明示的に指定する必要があります。
-
-RippleAPIでは、[Transaction Instructions](rippleapi-reference.html#transaction-instructions)で説明されている`maxLedgerVersion`フィールドを使用して`LastLedgerSequence`を指定します。RippleAPIは、デフォルトで自動的に適切な値を提供します。期限なしで実行される可能性のあるトランザクションを実行する場合には、`maxLedgerVersion`を`null`に指定して故意に`LastLedgerSequence`を省略できますが、これはお勧めできません。
+トランザクションの送信時に、`LastLedgerSequence`を明示的に指定する必要があります。
 
 ## ベストプラクティス
 
@@ -185,9 +183,9 @@ For each persisted transaction without validated result:
 
 アプリケーションでのこれらのアクションの実行方法は、アプリケーションが使用するAPIによって異なります。アプリケーションでは、以下のインターフェイスを使用できます。
 
-1. [`rippled` API](rippled-api.html)
-2. [RippleAPI](rippleapi-reference.html)
-3. `rippled`上にレイヤーされた、任意の数の他のソフトウェアAPI
+1. [HTTP / WebSocket API](rippled-api.html)
+2. [クライアントライブラリ](client-libraries.html)
+3. 任意の数の他のソフトウェアAPI
 
 ### rippled - トランザクションの送信と確認
 

@@ -50,7 +50,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 }
 ```
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/prepareCashFlex.js' %}
@@ -211,6 +211,5 @@ Checkが変動する`DeliverMin`の額で換金された場合は、Checkは少�
     - 発行済み通貨に[送金手数料](transfer-fees.html)がある場合、受取人への入金額を上回る額がCheckの送金元から引き落とされます。（この差額が送金手数料であり、これがイシュアーに戻されることによりイシュアーの正味の債務は減少します。）
 
 <!--{# common links #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

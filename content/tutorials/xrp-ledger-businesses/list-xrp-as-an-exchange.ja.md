@@ -311,7 +311,7 @@ XRP残高</i></b></td>
 
 CharlieというユーザーがAlpha Exchangeに50,000XRPを入金したいと希望しています。これには、以下のステップが伴います。
 
-1. Charlieは50,000XRPの支払いを（[RippleAPI](rippleapi-reference.html)または類似のソフトウェアを使用して）、Alpha Exchangeの[コールドウォレット](#アカウント)に送信します。
+1. Charlieは50,000XRPの支払いを、Alpha Exchangeの[コールドウォレット](#アカウント)に送信します。
 
     a. Charlieは識別子（このケースでは`789`）を支払いに追加し、Alpha Exchangeにある自身のアカウントに関連付けます。これは、[ _宛先タグ_ ](become-an-xrp-ledger-gateway.html#source-and-destination-tags)と呼ばれます。（これを使用するには、Alpha Exchangeは、すべての入金でCharlieのような宛先タグを必要とするように、すべてのアカウントでasfRequireDestフラグをオンに設定している必要があります。詳細については、[AccountSet Flags](accountset.html#accountsetのフラグ)を参照してください。）
 

@@ -26,9 +26,8 @@ XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FA
 - Checkの送信元である資金供給のあるアカウントの**アドレス**と**シークレットキー**。
     - [XRP Ledger Test Net Faucet](xrp-test-net-faucet.html)を使用して、10,000 Test Net XRPを保有する資金供給のあるアドレスおよびシークレットを取得できます。
 - Checkを受領する資金供給のあるアカウントの**アドレス**。
-- トランザクションに安全に署名できる手段（[RippleAPI][]や各自の[`rippled`サーバー](install-rippled.html)など）。
-- `rippled`サーバーに接続できるクライアントライブラリ（[RippleAPI][]、HTTPライブラリ、またはWebSocketライブラリなど）。
-    - 詳細は、[`rippled` APIの使用開始](get-started-using-http-websocket-apis.html)を参照してください。
+- トランザクションに[安全に署名できる手段](set-up-secure-signing.html)。
+- [クライアントライブラリ](client-libraries.html)またはHTTPライブラリ、WebSocketライブラリなど。
 
 ## {{send_n.next()}}.CheckCreateトランザクションの準備
 
@@ -40,10 +39,6 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 | `Account`         | 文字列（アドレス）          | Checkを作成する送金元のアドレス。（あなたのアドレスです。） |
 | `Destination`     | 文字列（アドレス）          | Checkを換金できる指定受取人のアドレス。 |
 | `SendMax`         | 文字列またはオブジェクト（額） | Checkが現金化されるときに送金元から引き出される最大額。XRPの場合、XRPのdrop数を示す文字列を使用します。発行済み通貨の場合、`currency`、`issuer`、および`value` フィールドを含むオブジェクトを使用します。詳細は、[通貨額の指定][]を参照してください。受取人がXRP以外の通貨で正確な額のCheckを換金できるようにし、かつ[送金手数料](transfer-fees.html)を含めるには、送金手数料分の追加パーセンテージを必ず指定してください。（たとえば受取人が送金手数料2%でCheckをイシュアーからの100 CADに現金化できるようにするには、`SendMax`をイシュアーからの102 CADに設定する必要があります。） |
-
-[RippleAPI](rippleapi-reference.html)を使用している場合は、`prepareCheckCreate()`ヘルパーメソッドを使用できます。
-
-**注記:** ChecksはRippleAPIバージョン0.19.0以上でサポートされています。
 
 ### CheckCreateトランザクションの準備の例
 
@@ -63,7 +58,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 }
 ```
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/prepareCreate.js' %}
@@ -241,7 +236,6 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common link defs #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}
