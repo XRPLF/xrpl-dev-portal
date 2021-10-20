@@ -57,11 +57,11 @@ async function main() {
 
   let response = await api.request({
     "command": "ledger",
-    "ledger_index": "validated"
+    "ledger_index": "validated",
     "transactions": true
   });
 
-  let tx_id = response.result.transactions[0];
+  let tx_id = response.result.ledger.transactions[0];
   let response2 = await api.request({
     "command": "tx",
     "transaction": tx_id

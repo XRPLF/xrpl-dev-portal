@@ -59,7 +59,7 @@ Anyone can check an account's `TransferRate` with the [account_info method][]. I
 
 Some [client libraries](client-libraries.html) have convenience functions for getting and setting `TransferRate` functions.
 
-**JavaScript:** ***TODO based on https://github.com/XRPLF/xrpl.js/pull/1720***
+**JavaScript:** Use `xrpl.percentToTransferRate()` to convert a percentage transfer fee from a string to the corresponding `TransferRate` value.
 
 ## See Also
 

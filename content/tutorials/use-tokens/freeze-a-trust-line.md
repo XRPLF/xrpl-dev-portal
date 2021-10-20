@@ -47,6 +47,12 @@ _JavaScript_
 
 {{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
+_WebSocket_
+
+```
+(Connect to wss:// URL of an XRP Ledger server using your preferred client.)
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 
@@ -66,13 +72,11 @@ To enable or disable an Individual Freeze on a specific trust line, send a [Trus
 
 As always, to send a transaction, you _prepare_ it by filling in all the necessary fields, _sign_ it with your cryptographic keys, and _submit_ it to the network. For example:
 
-***TODO: start_with / end_before on JS code sample as appropriate***
-
 <!-- MULTICODE_BLOCK_START -->
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-individual-freeze.js", language="js") }}
+{{ include_code("_code-samples/freeze/set-individual-freeze.js", language="js", start_with="// Prepare a TrustSet", end_before="// Investigate") }}
 
 _WebSocket_
 
@@ -118,13 +122,11 @@ At this point, the trust line from the counterparty should be frozen. You can ch
 
 In the response, the field `"freeze": true` indicates that the account from the request has enabled an Individual Freeze on that trust line. The field `"freeze_peer": true` indicates that the counterparty (`peer`) from the request has frozen the trust line.
 
-***TODO: start_with / end_before on JS code sample as appropriate***
-
 <!-- MULTICODE_BLOCK_START -->
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/check-individual-freeze.js", language="js") }}
+{{ include_code("_code-samples/freeze/check-individual-freeze.js", language="js", start_with="// Look up current state", end_before="await client.disconnect()") }}
 
 _WebSocket_
 
@@ -181,13 +183,11 @@ If you decide that the trust line no longer needs to be frozen (for example, you
 
 As always, to send a transaction, you _prepare_ it by filling in all the necessary fields, _sign_ it with your cryptographic keys, and _submit_ it to the network. For example:
 
-***TODO: start_with / end_before on JS code sample as appropriate***
-
 <!-- MULTICODE_BLOCK_START -->
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-individual-freeze.js", language="js") }}
+{{ include_code("_code-samples/freeze/set-individual-freeze.js", language="js", start_with="// Clear the individual", end_before="// End main") }}
 
 _WebSocket_
 

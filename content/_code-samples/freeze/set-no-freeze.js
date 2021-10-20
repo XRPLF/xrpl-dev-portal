@@ -23,7 +23,7 @@ async function main() {
   }
 
   console.log('Sign and submit the transaction:', accountSetTx)
-  await client.submitReliable(wallet, accountSetTx)
+  await client.submitAndWait(wallet, accountSetTx)
   
   console.log("Finished submitting. Now disconnecting.")
   await client.disconnect()
