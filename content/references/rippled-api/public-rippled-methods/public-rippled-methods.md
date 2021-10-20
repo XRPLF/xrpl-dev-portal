@@ -48,7 +48,7 @@ Transactions are the only thing that can modify the shared state of the XRP Ledg
 * **[`tx`](tx.html)** - Retrieve info about a transaction from all the ledgers on hand.
 * **[`tx_history`](tx_history.html)** - Retrieve info about all recent transactions.
 
-By default, the following methods are [admin-only](admin-rippled-methods.html). They can be used as public methods if the server has [enabled public signing](enable-public-signing.html).
+By default, the following methods are [admin-only](admin-rippled-methods.html). They can be used as public methods if the server admin has [enabled public signing](enable-public-signing.html).
 
 * **[`sign`](sign.html)** - Cryptographically sign a transaction. 
 * **[`sign_for`](sign_for.html)** - Contribute to a multi-signature.

@@ -1,6 +1,6 @@
 ---
 html: sign_for.html
-parent: transaction-methods.html
+parent: signing-methods.html
 blurb: Contribute to a multi-signature.
 labels:
   - Transaction Sending
