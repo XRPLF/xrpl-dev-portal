@@ -2,6 +2,8 @@
 // Demonstrates how to submit a transaction and wait for validation.
 // This is not true "robust" transaction submission because it does not protect
 // against power outages or other sudden interruptions.
+// It may be more robust than the submitAndWait() method included in xrpl.js 2.0
+// because it uses subscriptions and checks the server's available ledger range.
 
 // Look up a transaction's result.
 // Arguments:
