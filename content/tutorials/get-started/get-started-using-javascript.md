@@ -35,7 +35,7 @@ To follow this tutorial, you should have some familiarity with writing code in J
 
 ## Install with npm
 
-Start a new project by creating an empty folder, then change into that folder and use [NPM](https://www.npmjs.com/) to install the latest version of xrpl.js:
+Start a new project by creating an empty folder, then move into that folder and use [NPM](https://www.npmjs.com/) to install the latest version of xrpl.js:
 
 ```sh
 npm install xrpl
