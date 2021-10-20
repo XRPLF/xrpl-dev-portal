@@ -49,7 +49,6 @@ To enable gRPC on your server, complete the following steps:
     - [Software Ecosystem](software-ecosystem.html)
     - [Parallel Networks](parallel-networks.html)
 - **Tutorials:**
-    - [Get Started with RippleAPI for JavaScript](get-started-with-rippleapi-for-javascript.html)
     - [Reliable Transaction Submission](reliable-transaction-submission.html)
     - [Manage the rippled Server](manage-the-rippled-server.html)
 - **References:**

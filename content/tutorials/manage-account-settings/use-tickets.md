@@ -22,7 +22,7 @@ _(Requires the [TicketBatch amendment][] :not_enabled:)_
 <script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
 {% set use_network = "Devnet" %}<!--TODO: change to Testnet eventually -->
 
-This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
+This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
 
@@ -132,8 +132,6 @@ _JavaScript_
 ### {{n.next()}}. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
-
-You use the `ledger` event type in RippleAPI to trigger your code to run whenever there is a new validated ledger version. For example:
 
 <!-- MULTICODE_BLOCK_START -->
 
