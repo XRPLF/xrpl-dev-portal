@@ -57,7 +57,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-no-freeze.js", language="js") }}
+{{ include_code("_code-samples/freeze/set-no-freeze.js", start_with="// Submit an AccountSet transaction", end_before="// Done", language="js") }}
 
 _WebSocket_
 
@@ -80,7 +80,6 @@ _WebSocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-***TODO: add start_with / end_before to all the include_code macros.***
 
 ### {{n.next()}}. Wait for Validation
 
@@ -92,11 +91,11 @@ Most transactions are accepted into the next ledger version after they're submit
 
 After the transaction is validated, you can check your account's settings to confirm that the No Freeze flag is enabled. You can do this by calling the [account_info method][] and checking the value of the account's `Flags` field to see if the [`lsfNoFreeze` bit (`0x00200000`)](accountroot.html#accountroot-flags) is enabled.
 
-
-***TODO: JS code sample for checking No Freeze***
-
-
 <!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
+{{ include_code("_code-samples/freeze/check-no-freeze.js", start_with="// Request account info", end_before="await client.disconnect()", language="js") }}
 
 _WebSocket_
 

@@ -64,7 +64,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-global-freeze.js", language="js") }}
+{{ include_code("_code-samples/freeze/set-global-freeze.js", language="js", start_with="// Prepare an AccountSet", end_before="// Investigate") }}
 
 _WebSocket_
 
@@ -87,8 +87,6 @@ _WebSocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-***TODO: add start_with / end_before to all the include_code macros.***
-
 
 ### {{n.next()}}. Wait for Validation
 
@@ -99,11 +97,11 @@ Most transactions are accepted into the next ledger version after they're submit
 
 After the transaction is validated, you can check your issuing account's settings to confirm that the Global Freeze flag is enabled. You can do this by calling the [account_info method][] and checking the value of the account's `Flags` field to see if the [`lsfGlobalFreeze` bit (`0x00400000`)](accountroot.html#accountroot-flags) is on.
 
-
-***TODO: JS code sample for checking Global Freeze***
-
-
 <!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
+{{ include_code("_code-samples/freeze/check-global-freeze.js", language="js", start_with="// Request account info", end_before="await client.disconnect()") }}
 
 _WebSocket_
 
@@ -174,7 +172,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-global-freeze.js", language="js") }}
+{{ include_code("_code-samples/freeze/set-global-freeze.js", language="js", start_with="// Now we disable", end_before="// Global freeze disabled") }}
 
 _WebSocket_
 
@@ -207,7 +205,6 @@ As before, wait for the previous transaction to be validated by consensus before
 
 After the transaction is validated, you can confirm the status of the Global Freeze flag in the same way as before: by calling the [account_info method][] and checking the value of the account's `Flags` field to see if the [`lsfGlobalFreeze` bit (`0x00400000`)](accountroot.html#accountroot-flags) is **off**.
 
-***TODO: examples***
 
 
 ## See Also

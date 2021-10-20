@@ -2,7 +2,7 @@ const xrpl = require('xrpl')
 
 async function main() {
   // Connect -------------------------------------------------------------------
-  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233') 
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
   await client.connect()
   console.log("Connected to Testnet")
 
@@ -24,7 +24,8 @@ async function main() {
 
   console.log('Sign and submit the transaction:', accountSetTx)
   await client.submitAndWait(wallet, accountSetTx)
-  
+
+  // Done submitting
   console.log("Finished submitting. Now disconnecting.")
   await client.disconnect()
 
