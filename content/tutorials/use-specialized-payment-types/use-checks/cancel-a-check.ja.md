@@ -22,9 +22,8 @@ _[Checks Amendment][]が必要です。_
 - 現在レジャーに記録されているCheckオブジェクトのIDが必要です。
     - たとえばこのチュートリアルの例では、IDが`49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`のCheckを取り消しますが、この手順を自身で実行する場合は異なるIDを使用する必要があります。
 - CheckCancelトランザクションを送信する資金供給のあるアカウントの**アドレス**と**シークレットキー**。Checkが有効期限切れでない限り、このアドレスは、Checkの送金元または受取人のいずれかでなければなりません。
-- トランザクションに安全に署名できる手段（[RippleAPI][]や各自の[`rippled`サーバー](install-rippled.html)など）。
-- `rippled`サーバーに接続できるクライアントライブラリ（[RippleAPI][]、HTTPライブラリ、またはWebSocketライブラリなど）。
-    - 詳細は、[`rippled` APIの使用開始](get-started-using-http-websocket-apis.html)を参照してください。
+- トランザクションに[安全に署名できる手段](set-up-secure-signing.html)。
+- [クライアントライブラリ](client-libraries.html)またはHTTPライブラリ、WebSocketライブラリなど。
 
 
 ## {{cancel_n.next()}}.CheckCancelトランザクションの準備
@@ -36,10 +35,6 @@ _[Checks Amendment][]が必要です。_
 | `TransactionType` | 文字列           | Checkを取り消す場合は文字列`CheckCancel`を使用します。 |
 | `Account`         | 文字列（アドレス） | Checkを取り消す送信元のアドレス。（あなたのアドレスです。） |
 | `CheckID`         | 文字列           | レジャーで取り消すCheckオブジェクトのID。この情報を確認するには、[txメソッド][]を使用してCheckCreateトランザクションのメタデータを調べるか、または[account_objectsメソッド][]を使用してCheckを探します。 |
-
-[RippleAPI](rippleapi-reference.html)を使用している場合は、`prepareCheckCancel()`ヘルパーメソッドを使用できます。
-
-**注記:** CheckはRippleAPIバージョン0.19.0以降でサポートされています。
 
 ### CheckCancelトランザクションの準備の例
 
@@ -58,7 +53,7 @@ Checkを取り消す例を以下に示します。
 }
 ```
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/prepareCancel.js' %}
@@ -74,7 +69,7 @@ Checkを取り消す例を以下に示します。
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/signCancel.js' %}
@@ -93,7 +88,7 @@ Checkを取り消す例を以下に示します。
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```
 {% include '_code-samples/checks/js/sign-cancel-resp.txt' %}
@@ -117,7 +112,7 @@ Checkを取り消す例を以下に示します。
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/submitCancel.js' %}
@@ -136,7 +131,7 @@ Checkを取り消す例を以下に示します。
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/submit-cancel-resp.txt' %}
@@ -164,7 +159,7 @@ Checkを取り消す例を以下に示します。
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/getCancelTx.js' %}
@@ -183,7 +178,7 @@ Checkを取り消す例を以下に示します。
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```json
 {% include '_code-samples/checks/js/get-cancel-tx-resp.txt' %}
@@ -198,7 +193,6 @@ Checkを取り消す例を以下に示します。
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common link defs #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}

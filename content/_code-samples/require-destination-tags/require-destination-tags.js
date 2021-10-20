@@ -5,79 +5,49 @@
 // In browsers, use <script> tags as in the example demo.html.
 if (typeof module !== "undefined") {
   // gotta use var here because const/let are block-scoped to the if statement.
-  var ripple = require('ripple-lib')
+  var xrpl = require('xrpl')
 }
 
 // Connect -------------------------------------------------------------------
 async function main() {
   console.log("Connecting to Testnet...")
-  const api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
-  await api.connect()
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+  await client.connect()
 
   // Get credentials from the Testnet Faucet -----------------------------------
   console.log("Requesting addresses from the Testnet faucet...")
-  const data = await api.generateFaucetWallet()
-  const address = data.account.address
-  const secret = data.account.secret
-
-  console.log("Waiting until we have a validated starting sequence number...")
-  // If you go too soon, the funding transaction might slip back a ledger and
-  // then your starting Sequence number will be off. This is mostly relevant
-  // when you want to use a Testnet account right after getting a reply from
-  // the faucet.
-  while (true) {
-    try {
-      await api.request("account_info", {account: address, ledger_index: "validated"})
-      break
-    } catch(e) {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-    }
-  }
-
+  const { wallet, balance } = await client.fundWallet()
 
   // Send AccountSet transaction -----------------------------------------------
-  const prepared = await api.prepareTransaction({
+  const prepared = await client.autofill({
     "TransactionType": "AccountSet",
-    "Account": address,
-    "SetFlag": 1 // RequireDest
+    "Account": wallet.address,
+    "SetFlag": xrpl.AccountSetAsfFlags.asfRequireDest
   })
-  console.log("Prepared transaction:", prepared.txJSON)
-  const max_ledger = prepared.instructions.maxLedgerVersion
+  console.log("Prepared transaction:", prepared)
 
-  const signed = api.sign(prepared.txJSON, secret)
-  console.log("Transaction hash:", signed.id)
-  const tx_id = signed.id
-  const tx_blob = signed.signedTransaction
+  const signed = wallet.sign(prepared)
+  console.log("Transaction hash:", signed.hash)
 
-  const prelim_result = await api.request("submit", {"tx_blob": tx_blob})
-  console.log("Preliminary result:", prelim_result)
-  const min_ledger = prelim_result.validated_ledger_index
+  const submit_result = await client.submitAndWait(signed.tx_blob)
+  console.log("Submit result:", submit_result)
 
-  // (Semi-)reliable Transaction Submission ------------------------------------
-  console.log(`Begin final outcome lookup.
-    tx_id: ${tx_id}
-    max_ledger: ${max_ledger}
-    min_ledger: ${min_ledger}`)
-  let tx_status
-  try {
-    tx_status = await lookup_tx_final(api, tx_id, max_ledger, min_ledger)
-  } catch(err) {
-    tx_status = err
-  }
-  console.log("Final transaction status:", tx_status)
 
   // Confirm Account Settings --------------------------------------------------
-  let account_info = await api.request("account_info", {
-      "account": address,
-      "ledger_index": "validated"
+  let account_info = await client.request({
+    "command": "account_info",
+    "account": address,
+    "ledger_index": "validated"
   })
-  const flags = api.parseAccountFlags(account_info.account_data.Flags)
+  const flags = xrpl.parseAccountFlags(account_info.result.account_data.Flags)
   console.log(JSON.stringify(flags, null, 2))
-  if (flags.requireDestinationTag) {
+  if (flags.lsfRequireDestTag) {
     console.log("Require Destination Tag is enabled.")
   } else {
     console.log("Require Destination Tag is DISABLED.")
   }
+
+  // End main()
 }
 
 main()

@@ -59,9 +59,9 @@ Sending a transaction to the XRP Ledger involves several steps:
 
 1. Create an [unsigned transaction in JSON format](#example-unsigned-transaction).
 2. Use one or more signatures to [authorize the transaction](#authorizing-transactions).
-3. Submit a transaction to a `rippled` server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
+3. Submit a transaction to an XRP Ledger server (usually a [`rippled` instance](the-rippled-server.html)). If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
 4. The [consensus process](consensus.html) determines which provisional transactions get included in the next validated ledger.
-5. The `rippled` servers apply those transactions to the previous ledger in a canonical order and share their results.
+5. The servers apply those transactions to the previous ledger in a canonical order and share their results.
 6. If enough [trusted validators](rippled-server-modes.html#validators) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](transaction-results.html) in that ledger are immutable.
 
 See [Send XRP](send-xrp.html) for an interactive tutorial in sending XRP payments.
@@ -87,16 +87,11 @@ Here is an example of an unsigned [Payment transaction][] in JSON:
 }
 ```
 
-The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For transactions authorized by only a single signature, you have two options:
-
-1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
-    * You can use [RippleAPI](rippleapi-reference.html#sign) for offline signing.
-2. Have a `rippled` server sign the transaction for you. The [sign command](sign.html) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted connection, or through a local connection, and only to a server you control.)
-    * As a shortcut, you can use the [submit command](submit.html) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.
+The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For instructions on how to do this securely, see [Set Up Secure Signing](set-up-secure-signing.html).
 
 ## Example Signed Transaction Blob
 
-Signing a transaction generates a binary blob that can be submitted to the network. This means using `rippled`'s [submit command](submit.html). Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:
+Signing a transaction results in a chunk of binary data, called a "blob", that can be submitted to the network. Here is an example of the same transaction, as a signed blob, being [submitted with the WebSocket API](submit.html):
 
 ```json
 {
@@ -108,9 +103,11 @@ Signing a transaction generates a binary blob that can be submitted to the netwo
 
 ## Example Executed Transaction with Metadata
 
-After a transaction has been submitted, you can check its status using the API, for example using the [tx command](tx.html). This shows the transaction instructions, its outcome, and the [metadata](transaction-metadata.html) of all changes that were made by executing it.
+After a transaction has been executed, the XRP Ledger adds [metadata](transaction-metadata.html) to show the transaction's final outcome and all the changes that the transaction made to the shared state of the XRP Ledger.
 
-**Caution:** The success of a transaction is not final unless the transaction appears in a **validated** ledger with the result code `tesSUCCESS`. See also: [Finality of Results](finality-of-results.html).
+You can check a transaction's status using the API, for example using the [tx command](tx.html).
+
+**Caution:** The results of a transaction, including all its metadata, are not final unless the transaction appears in a **validated** ledger. See also: [Finality of Results](finality-of-results.html).
 
 Example response from the `tx` command:
 

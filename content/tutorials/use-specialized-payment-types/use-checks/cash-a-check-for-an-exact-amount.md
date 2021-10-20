@@ -49,7 +49,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 }
 ```
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/prepareCashExact.js' %}
@@ -155,6 +155,5 @@ If cashing the Check failed, the Check remains in the ledger so you can try cash
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common links #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

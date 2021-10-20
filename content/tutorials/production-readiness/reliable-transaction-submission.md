@@ -36,19 +36,19 @@ If a power or network outage occurs, applications face more challenges finding t
 
 ### Transaction Timeline
 
-The XRP Ledger provides several APIs for submitting transactions, including [`rippled` API](rippled-api.html), and [RippleAPI](rippleapi-reference.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
+When you submit a transaction to the XRP Ledger, regardless of whether you used [HTTP API](rippled-api.html), a [client library](client-libraries.html), or some other app, process of applying the transaction to the ledger is the same. That process goes like this:
 
 1. An account owner creates and signs a transaction.
 2. The owner submits the transaction to the network as a candidate transaction.
     - Malformed or nonsensical transactions are rejected immediately.
     - Well-formed transactions may provisionally succeed, then later fail.
     - Well-formed transactions may provisionally fail, then later succeed.
-    - Well-formed transactions may provisionally succeed, and then later succeed in a slightly different way. (For example, by consuming a different offer and achieving a better or worse exchange rate than the provisional execution.)
+    - Well-formed transactions may provisionally succeed, and then later succeed in a slightly different way. (For example, the exchange rate when [trading currencies](decentralized-exchange.html) may vary.)
 3. Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied, to enforce a cost for being propagated through the network.
 4. The validated ledger includes the transaction, and its effects are reflected in the ledger state.
     - Transaction results are no longer provisional, success or failure is now final and immutable.
 
-**Note:** When submitting a transaction via `rippled`, a successful status code returned from a submit command indicates the `rippled` server has received the candidate transaction. The transaction may or may not be applied to a validated ledger.
+**Note:** A successful status code returned from a [submit method][] indicates the server has received the candidate transaction. The transaction may or may not be applied to a validated ledger.
 
 APIs may return provisional results based on the result of applying candidate transactions to the current, in-progress ledger. Applications must not confuse these with the final, *immutable*, results of a transaction.  Immutable results are found only in validated ledgers.  Applications may need to query the status of a transaction repeatedly, until the ledger containing the transaction results is validated.
 
@@ -68,9 +68,7 @@ Each validated ledger has a canonical order in which transactions apply. This or
 
 Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger.  You should specify the `LastLedgerSequence` parameter on every transaction.  Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.
 
-Applications using `rippled` APIs should explicitly specify a `LastLedgerSequence` when submitting transactions.
-
-RippleAPI uses the `maxLedgerVersion` field of [Transaction Instructions](rippleapi-reference.html#transaction-instructions) to specify the `LastLedgerSequence`.  RippleAPI automatically provides an appropriate value by default.  You can specify `maxLedgerVersion` as `null` to intentionally omit `LastLedgerSequence`, in case you want a transaction that can be executed after an unlimited amount of time (this is strongly discouraged).
+Applications using the [HTTP / WebSocket APIs](rippled-api.html) should explicitly specify a `LastLedgerSequence` when submitting transactions. Some [client libraries](client-libraries.html) can also [auto-fill](transaction-common-fields.html#auto-fillable-fields) a reasonable value for `LastLedgerSequence`; the details vary by library.
 
 
 
@@ -200,9 +198,9 @@ To implement the transaction submission and verification best practices, applica
 
 How the application does these actions depends on the API the application uses.  An application may use any of the following interfaces:
 
-1. The [`rippled` API](rippled-api.html)
-2. [RippleAPI](rippleapi-reference.html)
-3. Any number of other software APIs layered on top of `rippled`
+- The [HTTP / WebSocket APIs](rippled-api.html) provided directly by XRP Ledger servers
+- A [client library](client-libraries.html)
+- Other middleware or APIs layered on top of the above APIs
 
 
 ### rippled - Submitting and Verifying Transactions

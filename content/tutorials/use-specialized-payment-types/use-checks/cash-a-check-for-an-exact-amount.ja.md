@@ -49,7 +49,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 }
 ```
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/prepareCashExact.js' %}
@@ -155,6 +155,5 @@ Checkを換金できない場合、Checkはレジャーに残るため、後日�
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common links #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

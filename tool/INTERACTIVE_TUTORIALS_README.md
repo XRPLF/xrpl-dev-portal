@@ -51,7 +51,7 @@ For privacy reasons, the memo does not and MUST NOT include personally identifyi
 
 An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page like any other page. However, you need to add the following pieces to make the interactive stuff work:
 
-1. Set page properties, either in the config file or the page's frontmatter. The `interactive_steps` Dactyl filter gives you access to the functions you use to demarcate the interactive bits in your markdown file. The `include_code` filter is optional, but can be useful for pulling code samples out of another file. Most of the time, you'll also want to include ripple-lib and its dependencies as well; you can have the templates handle that for you by setting the field `embed_ripple_lib: true`. For example:
+1. Set page properties, either in the config file or the page's frontmatter. The `interactive_steps` Dactyl filter gives you access to the functions you use to demarcate the interactive bits in your markdown file. The `include_code` filter is optional, but can be useful for pulling code samples out of another file. Most of the time, you'll also want to include xrpl.js and its dependencies as well; you can have the templates handle that for you by setting the field `embed_ripple_lib: true`. For example:
 
         html: use-tickets.html
         parent: manage-account-settings.html
@@ -186,7 +186,8 @@ $("#check-tickets").click( async function(event) {
 
   // Get the address from the "Generate" step snippet, or display an error and
   // quit out of this handler if it hasn't been run successfully yet.
-  // There's also a get_secret(event) function which works the exact same way.
+  // There's also a get_wallet(event) function which works the exact same way,
+  // but returns a Wallet instance.
   const address = get_address(event)
   if (!address) {return}
 
@@ -197,9 +198,10 @@ $("#check-tickets").click( async function(event) {
   // finish.
   block.find(".loader").show()
 
-  // Make a call using ripple-lib. The "api" is provided by the "Connect" step
-  // snippet.
-  let response = await api.request("account_objects", {
+  // Make a call using xrpl.js. The "api" is a Client instance provided by
+  // the "Connect" step snippet.
+  let response = await api.request({
+      "command": "account_objects",
       "account": address,
       "type": "ticket"
     })
@@ -225,7 +227,7 @@ $("#check-tickets").click( async function(event) {
   $("#ticket-selector .form-area").html("")
   // For each ticket from the response, add a radio button to the ticket
   // selector area.
-  response.account_objects.forEach((ticket, i) => {
+  response.result.account_objects.forEach((ticket, i) => {
       $("#ticket-selector .form-area").append(
         `<div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" id="ticket${i}"
@@ -354,7 +356,7 @@ There's also some translation stuff, but it's not ready to be used outside of th
     - [Markdown](../content/tutorials/manage-account-settings/require-destination-tags.md)
     - [Example Code](../content/_code-samples/require-destination-tags/)
     - [Interactive Code](../assets/js/tutorials/require-destination-tags.js)
-- **Monitor Incoming Payments with WebSocket** - An interactive tutorial that doesn't use ripple-lib.
+- **Monitor Incoming Payments with WebSocket** - An interactive tutorial that doesn't use xrpl.js.
     - [Markdown](../content/tutorials/get-started/monitor-incoming-payments-with-websocket.md)
     - [Example Code (incomplete)](../content/_code-samples/require-destination-tags/). The rest is inlined in the Markdown file.
     - The interactive code is inlined in the Markdown file.

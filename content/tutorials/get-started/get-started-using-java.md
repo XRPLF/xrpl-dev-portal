@@ -21,7 +21,7 @@ This tutorial walks you through the basics of building a very simple XRP Ledger-
 
 This tutorial is intended for beginners and should take no longer than 30 minutes to complete.
 
-## Learning goals
+## Learning Goals
 
 In this tutorial, you'll learn:
 
@@ -73,7 +73,7 @@ To install with Maven, add the following to your project's `pom.xml` file and th
 
 Check out the [xrpl4j sample project](https://github.com/XRPLF/xrpl4j-sample) for a full Maven project containing the code from this tutorial.
 
-## Start building
+## Start Building
 {% set n = cycler(* range(1,99)) %}
 
 When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your [wallet](wallets.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](issued-currencies.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
@@ -90,7 +90,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl4j`,
 you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html):
 
-{{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Construct a network client", end_before="// Create a Wallet using a WalletFactory", language="java") }}
+{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Construct a network client", end_before="// Create a Wallet using a WalletFactory", language="java") }}
 
 #### Connect to the production XRP Ledger
 
@@ -122,7 +122,7 @@ an account on the Testnet or Devnet.
 
 To make it easy to generate a new, random Wallet, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
 
-{{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Create a Wallet using a WalletFactory", end_before="// Get the Classic and X-Addresses from testWallet", language="java") }}
+{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Create a Wallet using a WalletFactory", end_before="// Get the Classic and X-Addresses from testWallet", language="java") }}
 
 
 The result of a call to `walletFactory.randomWallet(true).wallet()` is a [`Wallet` instance](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/Wallet.html):
@@ -142,7 +142,7 @@ Wallet {
 
 In order to fund the account on the XRP Ledger, you can use a `FaucetClient` connected to the XRP Ledger Testnet:
 
-{{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Fund the account using the testnet Faucet", end_before="// Look up your Account Info", language="java") }}
+{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Fund the account using the testnet Faucet", end_before="// Look up your Account Info", language="java") }}
 
 ### {{n.next()}}. Query the XRP Ledger
 
@@ -150,7 +150,7 @@ You can query the XRP Ledger to get information about [a specific account](accou
 
 Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [wallet we generated](#2-generate-wallet) in the previous step.
 
-{{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Look up your Account Info", end_before="// Print the result", language="java") }}
+{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Look up your Account Info", end_before="// Print the result", language="java") }}
 
 
 ### {{n.next()}}. Putting it all together
@@ -163,7 +163,7 @@ Using these building blocks, we can create a simple Java app that:
 
 
 ```java
-{% include '_code-samples/xrpl4j/GetAccountInfo.java' %}
+{% include '_code-samples/get-started/java/GetAccountInfo.java' %}
 ```
 
 To run the app, you can download the code from [Github](https://github.com/XRPLF/xrpl4j-sample) and run `GetAccountInfo` either

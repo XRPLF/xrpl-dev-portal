@@ -7,7 +7,7 @@ labels:
 ---
 # 宛先タグの要求
 
-`RequireDest`設定（RippleAPIの`requireDestinationTag`）は、送金先を識別する[宛先タグ](source-and-destination-tags.html)を顧客が付け忘れている場合にあなたのアドレスに[送金](payment-types.html)できないようにするためのものです。有効にすると、XRP Ledgerは宛先タグが付いていないあなたのアドレスへの送金を拒否します。
+`RequireDest`設定は、送金先を識別する[宛先タグ](source-and-destination-tags.html)を顧客が付け忘れている場合にあなたのアドレスに[送金](payment-types.html)できないようにするためのものです。有効にすると、XRP Ledgerは宛先タグが付いていないあなたのアドレスへの送金を拒否します。
 
 以下は、ローカルでホストされている`rippled`の[submitメソッド][]を使用して、`RequireDest`フラグを有効にする[AccountSetトランザクション][]を送信する例です。
 

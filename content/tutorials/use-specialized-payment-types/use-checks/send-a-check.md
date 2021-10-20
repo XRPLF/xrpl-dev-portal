@@ -26,9 +26,8 @@ To send a Check with this tutorial, you need the following:
 - The **address** and **secret key** of a funded account to send the Check from.
     - You can use the [XRP Ledger Test Net Faucet](xrp-test-net-faucet.html) to get a funded address and secret with 10,000 Test Net XRP.
 - The **address** of a funded account to receive the Check.
-- A secure way to sign transactions, such as [RippleAPI][] or your own [`rippled` server](install-rippled.html).
-- A client library that can connect to a `rippled` server, such as [RippleAPI][] or any HTTP or WebSocket library.
-    - For more information, see [Get Started with the `rippled` API](get-started-using-http-websocket-apis.html).
+- A [secure way to sign transactions](set-up-secure-signing.html).
+- A [client library](client-libraries.html) or any HTTP or WebSocket library.
 
 ## {{send_n.next()}}. Prepare the CheckCreate transaction
 
@@ -41,17 +40,13 @@ Decide how much money the Check is for and who can cash it. Figure out the value
 | `Destination`     | String (Address)          | The address of the intended recipient who can cash the Check. |
 | `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the `SendMax` to 102 CAD from that issuer.) |
 
-If you are using [RippleAPI](rippleapi-reference.html), you can use the `prepareCheckCreate()` helper method.
-
-**Note:** RippleAPI supports Checks in versions 0.19.0 and up.
-
 ### Example CheckCreate Preparation
 
 The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za`) to Grand Payments (`rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`) for 100 XRP. As additional (optional) metadata, BoxSend SG adds the ID of the invoice from Grand Payments so Grand Payments knows which invoice this Check is intended to pay.
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/prepareCreate.js' %}
@@ -80,7 +75,7 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/signCreate.js' %}
@@ -104,7 +99,7 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/sign-create-resp.txt' %}
@@ -134,7 +129,7 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/submitCreate.js' %}
@@ -158,7 +153,7 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/submit-create-resp.txt' %}
@@ -190,13 +185,11 @@ Use the [tx method][] with the CheckCreate transaction's identifying hash to che
 
 Look for a `CreatedNode` object in the transaction metadata with a `LedgerEntryType` of `"Check"`. This indicates that the transaction created a [Check ledger object](check.html). The `LedgerIndex` of this object is the ID of the Check. In the following example, the Check's ID is `84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9`.
 
-**Note:** RippleAPI does not report the Check's ID when you look up a CheckCreate transaction. You can work around this by calculating the Check's ID from the [Check ID format](check.html#check-id-format), as in the example RippleAPI code below, or you can use the [`getAccountObjects()` method](rippleapi-reference.html#getaccountobjects) to look up the Check and find its ID.
-
 ### Example Request
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```
 {% include '_code-samples/checks/js/getCreateTx.js' %}
@@ -220,7 +213,7 @@ Look for a `CreatedNode` object in the transaction metadata with a `LedgerEntryT
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```
 {% include '_code-samples/checks/js/get-create-tx-resp.txt' %}
@@ -241,7 +234,6 @@ Look for a `CreatedNode` object in the transaction metadata with a `LedgerEntryT
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common link defs #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}

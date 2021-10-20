@@ -22,9 +22,8 @@ To cancel a Check with this tutorial, you need the following:
 - You need the ID of a Check object currently in the ledger.
     - For example, this tutorial includes examples that cancel a Check with the ID `49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`, although you must use a different ID to go through these steps yourself.
 - The **address** and **secret key** of a funded account to send the CheckCancel transaction. This address must be either the sender or the recipient of the Check, unless the Check is expired.
-- A secure way to sign transactions, such as [RippleAPI][] or your own [`rippled` server](install-rippled.html).
-- A client library that can connect to a `rippled` server, such as [RippleAPI][] or any HTTP or WebSocket library.
-    - For more information, see [Get Started with the `rippled` API](get-started-using-http-websocket-apis.html).
+- A [secure way to sign transactions](set-up-secure-signing.html).
+- A [client library](client-libraries.html) or any HTTP or WebSocket library.
 
 
 ## {{cancel_n.next()}}. Prepare the CheckCancel transaction
@@ -36,10 +35,6 @@ Figure out the values of the [CheckCancel transaction][] fields. The following f
 | `TransactionType` | String           | Use the string `CheckCancel` when canceling a Check. |
 | `Account`         | String (Address) | The address of the sender who is canceling the Check. (In other words, your address.) |
 | `CheckID`         | String           | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [tx method][] or by looking for Checks using the [account_objects method][]. |
-
-If you are using [RippleAPI](rippleapi-reference.html), you can use the `prepareCheckCancel()` helper method.
-
-**Note:** RippleAPI supports Checks in versions 0.19.0 and up.
 
 ### Example CheckCancel Preparation
 
@@ -58,7 +53,7 @@ The following examples demonstrate how to cancel a Check.
 }
 ```
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/prepareCancel.js' %}
@@ -74,7 +69,7 @@ The following examples demonstrate how to cancel a Check.
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/signCancel.js' %}
@@ -93,7 +88,7 @@ The following examples demonstrate how to cancel a Check.
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```
 {% include '_code-samples/checks/js/sign-cancel-resp.txt' %}
@@ -117,7 +112,7 @@ The following examples demonstrate how to cancel a Check.
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/submitCancel.js' %}
@@ -136,7 +131,7 @@ The following examples demonstrate how to cancel a Check.
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/submit-cancel-resp.txt' %}
@@ -164,7 +159,7 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/getCancelTx.js' %}
@@ -183,7 +178,7 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```json
 {% include '_code-samples/checks/js/get-cancel-tx-resp.txt' %}
@@ -198,7 +193,6 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common link defs #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}

@@ -13,7 +13,7 @@ labels:
 
 WebSocketは、クライアントとサーバーが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、要求ごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
 
-**ヒント:** このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、[JavaScript向けRippleAPIライブラリ](rippleapi-reference.html)も利用すると、一部の作業を簡素化できます。このチュートリアルでは、RippleAPIを使用できないその他のプログラミング言語にステップを適合できるよう、RippleAPIを使用 _しない_ でトランザクションを監視する方法を説明します。
+**ヒント:** このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、[JavaScript向けxrpl.jsライブラリ](https://js.xrpl.org/)も利用すると、一部の作業を簡素化できます。このチュートリアルでは、xrpl.jsを使用できないその他のプログラミング言語にステップを適合できるよう、xrpl.jsを使用 _しない_ でトランザクションを監視する方法を説明します。
 
 ## 前提条件
 
@@ -127,7 +127,7 @@ WebSocket接続では、複数のメッセージをどちらの方向にも送�
 
 - [サブスクリプション](subscribe.html)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfinding要求](path_find.html)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
 
-**ヒント:** [JavaScript向けRippleAPI](rippleapi-reference.html)は、デフォルトでこのステップに対応しています。すべての非同期API要求はPromiseを使用して応答を提供します。また[`.on(event, callback)`メソッド](rippleapi-reference.html#listening-to-streams)を使用して、ストリームをリッスンできます。
+**ヒント:** [JavaScript向けxrpl.js](https://js.xrpl.org/)は、デフォルトでこのステップに対応しています。すべての非同期API要求はPromiseを使用して応答を提供します。また[`.on(event, callback)`メソッド](https://js.xrpl.org/classes/Client.html#on)を使用して、ストリームをリッスンできます。
 
 以下のJavaScriptコードでは、API要求を便利な非同期[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)に変換するヘルパー関数を定義し、他のタイプのメッセージをグローバルハンドラーにマップするインターフェイスを設定します。
 

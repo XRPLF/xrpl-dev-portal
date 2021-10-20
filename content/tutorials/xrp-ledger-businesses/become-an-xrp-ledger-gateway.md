@@ -41,7 +41,7 @@ Main article: [Trust Lines and Issuing](trust-lines-and-issuing.html).
 
 ### XRP
 
-[**XRP**](xrp.html) is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Portal](https://ripple.com/xrp/).
+[**XRP**](xrp.html) is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Overview](xrp-overview.html).
 
 Issuing gateways do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the [reserve requirements](reserves.html) and pay the [cost of sending transactions](transaction-cost.html) through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy gateway.
 
@@ -54,9 +54,8 @@ The XRP Ledger contains a [decentralized asset exchange](decentralized-exchange.
 
 Currency traders who hold a gateway's issued currencies can provide liquidity to other popular currencies, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of holding a variety of currencies. However, a gateway _may_ still want to provide liquidity to XRP or other popular currencies at a baseline rate, especially when the gateway is new to the exchange. If you do provide liquidity, **use a different address for trading than your issuing address.**
 
-Third-party liquidity providers can use the [`rippled` APIs](rippled-api.html), [RippleAPI JavaScript Library](rippleapi-reference.html), or a third-party client application to access the distributed exchange. It may also help client applications to surface information about your gateway to clients if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
+Liquidity providers can use the [HTTP / WebSocket APIs](rippled-api.html), [client libraries](client-libraries.html), or another application to access the distributed exchange. It may also help client applications to surface information about your gateway to clients if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
 
-Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing liquidity between your gateway and others.
 
 
 ## Suggested Business Practices
@@ -381,23 +380,23 @@ Historically, Ripple (the company) issued gateway bulletins to introduce new fea
 
 ## Infrastructure
 
-For the gateway's own security as well as the stability of the network, Ripple recommends that each gateway run its own `rippled` servers. Ripple provides detailed and individualized recommendations to businesses interested in running a significant XRP-based business.
+For the gateway's own security as well as the stability of the network, each gateway should run its own `rippled` servers including one [validator](rippled-server-modes.html#validators).
 
-Contact [partners@ripple.com](mailto:partners@ripple.com) to see how Ripple can help.
 
 ### APIs and Middleware
 
 There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:
 
 * [`rippled`](rippled-api.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core XRP Ledger functionality.
-* [RippleAPI](rippleapi-reference.html) provides a simplified API for JavaScript applications.
+* [Client Libraries](client-libraries.html) are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.
+* Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available.
 
 
 ## Tool Security
 
 Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. **Never** send your secret key to a server run by someone else. Either use your own `rippled` server, or sign the transactions locally before sending them to a `rippled` server.
 
-The examples in this document show API methods that include a secret key. This is only safe if you control `rippled` server yourself, *and* you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (`localhost`) network, a private network, or an encrypted VPN.) Alternatively, you could use [RippleAPI](rippleapi-reference.html) to sign transactions locally before submitting them to a third-party server.
+The examples in this document show API methods that include a secret key. This is only safe if you control `rippled` server yourself, *and* you connect to it over a connection that is secure from outside listeners. For instructions and examples of other secure configurations, see [Set Up Secure Signing](set-up-secure-signing.html).
 
 
 ## Default Ripple
@@ -464,7 +463,7 @@ To confirm that an address has Default Ripple enabled, look up the address using
 
 ## Disallow XRP
 
-The Disallow XRP setting (`disallowIncomingXRP` in RippleAPI) is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments, if your gateway does not trade XRP. The Disallow XRP flag is not strictly enforced, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default.
+The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments, if your gateway does not trade XRP. The Disallow XRP flag is not strictly enforced, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default.
 
 An issuing gateway that does not trade XRP should enable the Disallow XRP flag on the gateway's issuing and operational addresses. A private exchange that trades in XRP should only enable the Disallow XRP flag on addresses that are not expected to receive XRP.
 
@@ -600,20 +599,20 @@ To robustly check for incoming payments, gateways should do the following:
 * Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code `tesSUCCESS` can change non-XRP balances. Only transactions from a validated ledger are final.
 * [Look out for Partial Payments](https://ripple.com/files/GB-2014-06.pdf "Partial Payment Flag Gateway Bulletin"). Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.
     * In `rippled`, check the transaction for a `meta.delivered_amount` field. If present, that field indicates how much money *actually* got delivered to the `Destination` address.
-    * In RippleAPI, you can search the `outcome.BalanceChanges` field to see how much the destination address received. In some cases, this can be divided into multiple parts on different trust lines.
+    * In xrpl.js, you can use the [`xrpl.getBalanceChanges()` method](https://js.xrpl.org/modules.html#getBalanceChanges) to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.
 * Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero [transfer fee](#transfer-fees), then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's issued currencies. See [Transfer Fees](#transfer-fees) for more information.
 
 To make things simpler for your customers, we recommend accepting payments to either operational addresses and issuing addresses.
 
 As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.
 
-* Use `rippled`'s [gateway_balances method][] or [RippleAPI's `getTrustlines` method](rippleapi-reference.html#gettrustlines) to check your balances.
+* Use the [gateway_balances method][] to check your balances.
 * If you have a [Transfer Fee](#transfer-fees) set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your issued currencies among themselves.
 
 
 ## Transfer Fees
 
-The `TransferRate` setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issued currencies from one XRP Ledger address to another. See [Transfer Fees](transfer-fees.html) for more information.
+The `TransferRate` setting defines a fee to charge for transferring issued currencies from one XRP Ledger address to another. See [Transfer Fees](transfer-fees.html) for more information.
 
 The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction for the issuing address `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`, setting the `TransferRate` to charge a fee of 0.5%.
 
@@ -666,8 +665,7 @@ Response:
 
 All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending issued currency. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.
 
-* In `rippled`'s APIs, you should set the [`SendMax` transaction parameter][Payment] higher than the destination `Amount` parameter.
-* In RippleAPI, you should set the `source.maxAmount` parameter higher than the `destination.amount` parameter; or, set the `source.amount` parameter higher than the `destination.minAmount` parameter.
+Set the [`SendMax` transaction parameter][Payment] higher than the destination `Amount` parameter by a percentage based on the `TransferRate` setting.
 
 **Note:** Transfer fees do not apply when sending issued currencies directly to the issuing address. The issuing address must always accept its issued currencies at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.
 
@@ -761,10 +759,7 @@ The first requirement to bouncing payments is [robustly monitoring for incoming 
 
 Second, you should send bounced payments as Partial Payments. Since third parties can manipulate the cost of pathways between addresses, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the XRP Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from either an operational address or a standby address.
 
-* To send a Partial Payment using `rippled`, enable the [`tfPartialPayment` flag](payment.html#payment-flags) on the transaction. Set the `Amount` field to the amount you received and omit the `SendMax` field.
-* To send a Partial Payment using RippleAPI, set the `allowPartialPayment` field of the [Payment object](rippleapi-reference.html#payment) to `true`. Set the `source.maxAmount` and `destination.amount` both equal to the amount you received.
-
-You should use the `SourceTag` value (`source.tag` in RippleAPI) from the incoming payment as the `DestinationTag` value (`destination.tag` in RippleAPI) for the return payment.
+To send a Partial Payment, enable the [`tfPartialPayment` flag](payment.html#payment-flags) on the transaction. Set the `Amount` field to the amount you received and omit the `SendMax` field. You should use the `SourceTag` value from the incoming payment as the `DestinationTag` value for the return payment.
 
 To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again.
 
@@ -779,7 +774,7 @@ The goal of reliably submitting transactions is to achieve the following two pro
 To submit transactions reliably, follow these guidelines:
 
 * Persist details of the transaction before submitting it.
-* Use the `LastLedgerSequence` parameter. (RippleAPI does this by default.)
+* Use the `LastLedgerSequence` parameter. (Many [client libraries](client-libraries.html) do this by default.)
 * Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is less than or equal to the transaction's `LastLedgerSequence` parameter.
 
 For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).

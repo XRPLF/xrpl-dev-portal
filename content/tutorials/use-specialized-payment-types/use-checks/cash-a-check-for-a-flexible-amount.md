@@ -50,7 +50,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 }
 ```
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/prepareCashFlex.js' %}
@@ -211,6 +211,5 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
     - If the issued currency has a [transfer fee](transfer-fees.html), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
 
 <!--{# common links #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

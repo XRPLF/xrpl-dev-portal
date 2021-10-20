@@ -34,35 +34,13 @@ print("Transaction expires after ledger:", max_ledger)
 print("Identifying hash:", tx_id)
 
 # Submit transaction -----------------------------------------------------------
-validated_index = xrpl.ledger.get_latest_validated_ledger_sequence(client)
-min_ledger = validated_index + 1
-print(f"Can be validated in ledger range: {min_ledger} - {max_ledger}")
-
-# Tip: you can use xrpl.transaction.send_reliable_submission(signed_tx, client)
-#  to send the transaction and wait for the results to be validated.
 try:
-    prelim_result = xrpl.transaction.submit_transaction(signed_tx, client)
-except xrpl.clients.XRPLRequestFailureException as e:
+    tx_response = xrpl.transaction.send_reliable_submission(signed_tx, client)
+except xrpl.transaction.XRPLReliableSubmissionException as e:
     exit(f"Submit failed: {e}")
-print("Preliminary transaction result:", prelim_result)
 
 # Wait for validation ----------------------------------------------------------
-# Note: If you used xrpl.transaction.send_reliable_submission, you can skip this
-#  and use the result of that method directly.
-from time import sleep
-while True:
-    sleep(1)
-    validated_ledger = xrpl.ledger.get_latest_validated_ledger_sequence(client)
-    tx_response = xrpl.transaction.get_transaction_from_hash(tx_id, client)
-    if tx_response.is_successful():
-        if tx_response.result.get("validated"):
-            print("Got validated result!")
-            break
-        else:
-            print(f"Results not yet validated... "
-                  f"({validated_ledger}/{max_ledger})")
-    if validated_ledger > max_ledger:
-        print("max_ledger has passed. Last tx response:", tx_response)
+# send_reliable_submission() handles this automatically, but it can take 4-7s.
 
 # Check transaction results ----------------------------------------------------
 import json

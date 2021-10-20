@@ -44,8 +44,8 @@ To enable public signing, perform the following steps:
     - [Cryptographic Keys](cryptographic-keys.html)
 - **Tutorials:**
     - [Set Up Secure Signing](set-up-secure-signing.html)
-    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
-    - [Get Started with RippleAPI for JavaScript](get-started-with-rippleapi-for-javascript.html)
+    - [Get Started Using HTTP / WebSocket APIs](get-started-using-http-websocket-apis.html)
+    - [Get Started Using JavaScript](get-started-using-javascript.html)
 - **References:**
     - [sign method][]
     - [sign_for method][]

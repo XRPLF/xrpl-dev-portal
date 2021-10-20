@@ -5,6 +5,7 @@ blurb: Require users to specify a destination tag when sending to your address.
 embed_ripple_lib: true
 filters:
   - interactive_steps
+  - include_code
 labels:
   - Accounts
 ---
@@ -21,7 +22,7 @@ This tutorial demonstrates how to enable the Require Destination Tag flag on you
 - You need a funded XRP Ledger account, with an address, secret key, and some XRP. For production, you can use the same address and secret consistently. For this tutorial, you can generate new test credentials as needed.
 - You need a connection to the XRP Ledger network.
 
-This page provides examples that use [ripple-lib for JavaScript](get-started-with-rippleapi-for-javascript.html). Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
+This page provides examples that use [xrpl.js](get-started-using-javascript.html) in the web browser, so you can read along and use the interactive steps without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/require-destination-tags.js"></script>
@@ -40,24 +41,9 @@ When you're [building actual production-ready software](production-readiness.htm
 
 ### {{n.next()}}. Connect to the Network
 
-You must be connected to the network to submit transactions to it.
+You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
 
-The following code uses a [ripple-lib for JavaScript](rippleapi-reference.html) instance to connect to a public XRP Ledger Testnet server:
-
-```js
-ripple = require('ripple-lib') // Node.js only. Use a <script> tag in browsers.
-
-async function main() {
-  api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
-  await api.connect()
-
-  // Code in the following examples continues here...
-}
-
-main()
-```
-
-**Note:** The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
+{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 For this tutorial, you can connect directly from your browser by pressing the following button:
 
@@ -69,27 +55,13 @@ To enable the `RequireDest` flag, set the [`asfRequireDest` value (`1`)](account
 
 For example:
 
-```js
-const prepared = await api.prepareTransaction({
-  "TransactionType": "AccountSet",
-  "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-  "SetFlag": 1 // RequireDest
-})
-console.log("Prepared transaction:", prepared.txJSON)
-const max_ledger = prepared.instructions.maxLedgerVersion
+<!-- MULTICODE_BLOCK_START -->
 
-const signed = api.sign(prepared.txJSON, "s████████████████████████████")
-console.log("Transaction hash:", signed.id)
-const tx_id = signed.id
-const tx_blob = signed.signedTransaction
+_JavaScript_
 
-const prelim_result = await api.request("submit", {"tx_blob": tx_blob})
-console.log("Preliminary result:", prelim_result)
-const min_ledger = prelim_result.validated_ledger_index
+{{ include_code("_code-samples/require-destination-tags/require-destination-tags.js", language="js", start_with="// Send AccountSet", end_before="// Confirm Account") }}
 
-// min_ledger, max_ledger, and tx_id are useful for looking up the transaction's
-// status later.
-```
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Send AccountSet") }}
 <button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
@@ -111,15 +83,15 @@ Most transactions are accepted into the next ledger version after they're submit
 
 After the transaction is validated, you can check your account's settings to confirm that the Require Destination Tag flag is enabled.
 
-```js
-let account_info = await api.request("account_info", {
-    "account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-    "ledger_index": "validated"
-})
-const flags = api.parseAccountFlags(account_info.account_data.Flags)
-console.log(JSON.stringify(flags, null, 2))
-// Look for "requireDestinationTag": true
-```
+
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
+{{ include_code("_code-samples/require-destination-tags/require-destination-tags.js", language="js", start_with="// Confirm Account", end_before="// End main()") }}
+
+<!-- MULTICODE_BLOCK_END -->
+
 
 {{ start_step("Confirm Settings") }}
 <button id="confirm-settings" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Confirm Settings</button>

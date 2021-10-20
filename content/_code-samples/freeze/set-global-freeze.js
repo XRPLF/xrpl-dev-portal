@@ -1,37 +1,53 @@
-const {RippleAPI} = require('ripple-lib');
+const xrpl = require('xrpl')
 
-const api = new RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server
-});
-api.on('error', (errorCode, errorMessage) => {
-  console.log(errorCode + ': ' + errorMessage);
-});
+async function main() {
+  // Connect -------------------------------------------------------------------
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+  await client.connect()
 
-const issuing_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
-const issuing_secret = 's████████████████████████████';
-    // Best practice: get your secret from an encrypted
-    //  config file instead
+  client.on('error', (errorCode, errorMessage) => {
+    console.log(errorCode + ': ' + errorMessage)
+  })
+  // Get credentials from the Testnet Faucet -----------------------------------
+  console.log("Requesting an address from the Testnet faucet...")
+  const { wallet, balance } = await client.fundWallet()
 
-api.connect().then(() => {
+  // Prepare an AccountSet transaction to enable global freeze -----------------
+  const accountSetTx = {
+    TransactionType: "AccountSet",
+    Account: wallet.address,
+    // Set a flag to turn on a global freeze on this account
+    SetFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
+  }
 
-  // Prepare a settings transaction to enable global freeze
-  const settings = {
-    'globalFreeze': true
-  };
+  // Sign and submit the AccountSet transaction to enable a global freeze ------
+  console.log('Signing and submitting the transaction:', accountSetTx)
+  await client.submitAndWait(wallet, accountSetTx)
+  console.log(`Finished submitting! ${wallet.address} should be frozen now.`)
 
-  console.log('preparing settings transaction for account:',
-              issuing_address);
-  return api.prepareSettings(issuing_address, settings);
+  // Investigate ---------------------------------------------------------------
+  console.log(
+    `You would investigate whatever prompted you to freeze the account now...`)
+  await new Promise(resolve => setTimeout(resolve, 5000))
 
-}).then(prepared_tx => {
+  // Now we disable the global freeze ------------------------------------------
+  const accountSetTx2 = {
+    TransactionType: "AccountSet",
+    Account: wallet.address,
+    // ClearFlag let's us turn off a global freeze on this account
+    ClearFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
+  }
 
-  // Sign and submit the settings transaction
-  console.log('signing tx:', prepared_tx.txJSON);
-  const signed1 = api.sign(prepared_tx.txJSON, issuing_secret);
-  console.log('submitting tx:', signed1.id);
+  // Sign and submit the AccountSet transaction to end a global freeze ---------
+  console.log('Signing and submitting the transaction:', accountSetTx2)
+  const result = await client.submitAndWait(wallet, accountSetTx2)
+  console.log("Finished submitting!")
 
-  return api.submit(signed1.signedTransaction);
+  // Global freeze disabled
+  console.log("Disconnecting")
+  await client.disconnect()
 
-}).then(() => {
-  return api.disconnect();
-}).catch(console.error);
+  // End main()
+}
+
+main().catch(console.error)

@@ -19,8 +19,6 @@ _[Checks Amendment][]が必要です。_
 
 **注記:**`account_objects`コマンドのコマンドラインインターフェイスでは`type`フィールドは受け入れられません。代わりに[jsonメソッド][]を使用してコマンドラインからJSON-RPCフォーマットの要求を送信できます。
 
-**注意:** RippleAPIには、`account_objects`メソッドの組み込みサポートはありません。`api.connection.request(websocket_request_json)`メソッドを使用して、Webフォーマットで未加工の要求を作成できます。このメソッドに対する応答のフォーマットは`rippled` APIフォーマットです。（たとえばXRPは小数ではなく整数の「drop数」で指定します。）
-
 ### 要求の例
 
 <!-- MULTICODE_BLOCK_START -->
@@ -82,6 +80,5 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 ```
 
 <!--{# common links #}-->
-[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

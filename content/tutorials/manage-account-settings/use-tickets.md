@@ -6,6 +6,7 @@ embed_ripple_lib: true
 status: not_enabled
 filters:
   - interactive_steps
+  - include_code
 labels:
   - Accounts
 ---
@@ -21,7 +22,7 @@ _(Requires the [TicketBatch amendment][] :not_enabled:)_
 <script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
 {% set use_network = "Devnet" %}<!--TODO: change to Testnet eventually -->
 
-This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
+This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
 
@@ -50,22 +51,15 @@ When you're [building actual production-ready software](production-readiness.htm
 
 ### {{n.next()}}. Connect to Network
 
-You must be connected to the network to submit transactions to it.
+You must be connected to the network to submit transactions to it. Since Tickets are only available on Devnet so far, you should connect to a Devnet server. For example:
 
-The following code uses a RippleAPI instance to connect to a public XRP Devnet server:
+<!-- MULTICODE_BLOCK_START -->
 
-```js
-ripple = require('ripple-lib')
+_JavaScript_
 
-async function main() {
-  api = new ripple.RippleAPI({server: 'wss://s.devnet.rippletest.net:51233'})
-  await api.connect()
+{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Connect to", end_before="// Get credentials") }}
 
-  // Code in the following examples continues here...
-}
-
-main()
-```
+<!-- MULTICODE_BLOCK_END -->
 
 **Note:** The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
 
@@ -78,17 +72,13 @@ For this tutorial, you can connect directly from your browser by pressing the fo
 
 Before you create any Tickets, you should check what [Sequence Number][] your account is at. You want the current Sequence number for the next step, and the Ticket Sequence numbers it sets aside start from this number.
 
-```js
-async function get_sequence() {
-  const account_info = await api.request("account_info", {
-      "account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-  })
-  console.log("Current sequence:", account_info.account_data.Sequence)
-  return account_info.account_data.Sequence
-}
+<!-- MULTICODE_BLOCK_START -->
 
-let current_sequence = await get_sequence()
-```
+_JavaScript_
+
+{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Check Sequence", end_before="// Prepare and Sign TicketCreate") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Check Sequence") }}
 <button id="check-sequence" class="btn btn-primary previous-steps-required">Check Sequence Number</button>
@@ -100,23 +90,15 @@ let current_sequence = await get_sequence()
 
 ### {{n.next()}}. Prepare and Sign TicketCreate
 
-Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, to [prepare a transaction](rippleapi-reference.html#preparetransaction) that would make 10 Tickets:
+Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, to prepare a transaction that would make 10 Tickets:
 
-```js
-let prepared = await api.prepareTransaction({
-  "TransactionType": "TicketCreate",
-  "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-  "TicketCount": 10,
-  "Sequence": current_sequence
-})
-console.log("Prepared transaction:", prepared.txJSON)
-let max_ledger = prepared.instructions.maxLedgerVersion
+<!-- MULTICODE_BLOCK_START -->
 
-let signed = api.sign(prepared.txJSON, "s████████████████████████████")
-console.log("Transaction hash:", signed.id)
+_JavaScript_
 
-let tx_blob = signed.signedTransaction
-```
+{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Prepare and Sign TicketCreate", end_before="// Submit TicketCreate") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 Record the transaction's hash and `LastLedgerSequence` value so you can [be sure whether or not it got validated](reliable-transaction-submission.html) later.
 
@@ -130,15 +112,15 @@ Record the transaction's hash and `LastLedgerSequence` value so you can [be sure
 
 ### {{n.next()}}. Submit TicketCreate
 
-Submit the signed transaction blob that you created in the previous step. Record the latest validated ledger index at the time of submission, so you can set a lower bound on what ledger versions the transaction could be validated in. For example:
+Submit the signed transaction blob that you created in the previous step. For example:
 
-```js
-let prelim_result = await api.request("submit", {"tx_blob": tx_blob})
-console.log("Preliminary result:", prelim_result)
-const min_ledger = prelim_result.validated_ledger_index
-```
+<!-- MULTICODE_BLOCK_START -->
 
-**Warning:** Be sure that you **DO NOT UPDATE** the `min_ledger` value. It is safe to submit a signed transaction blob multiple times (the transaction can only execute at most once), but when you look up the status of the transaction you should use the earliest possible ledger index that the transaction could be in, _not_ the validated ledger index at the time of the most recent submission. Using the wrong minimum ledger value could cause you to incorrectly conclude that the transaction did not execute. For best practices, see [Reliable Transaction Submission](reliable-transaction-submission.html).
+_JavaScript_
+
+{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Submit TicketCreate", end_before="// Wait for Validation") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Submit") }}
 <button id="ticketcreate-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob" data-wait-step-name="Wait">Submit</button>
@@ -151,51 +133,13 @@ const min_ledger = prelim_result.validated_ledger_index
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
 
-You use the `ledger` event type in RippleAPI to trigger your code to run whenever there is a new validated ledger version. For example:
+<!-- MULTICODE_BLOCK_START -->
 
-```js
-// signed.id is the hash we're waiting for
-// min_ledger is the validated ledger index at time of first submission
-// max_ledger is the transaction's LastLedgerSequence value
-let tx_status = ""
-api.on('ledger', async (ledger) => {
-  console.log("Ledger version", ledger.ledgerVersion, "was validated.")
-  if (!tx_status) {
-    try {
-      tx_result = await api.request("tx", {
-          "transaction": signed.id,
-          "min_ledger": min_ledger,
-          "max_ledger": max_ledger
-      })
+_JavaScript_
 
-      if (tx_result.validated) {
-        console.log("Got validated result:", tx_result.meta.TransactionResult)
-        tx_status = "validated"
-      } else {
-        // Transaction found, but not yet validated. No change.
-      }
-    } catch(e) {
-      if (e.data.error == "txnNotFound") {
-        if (e.data.searched_all) {
-          console.log(`Tx not found in ledgers ${min_ledger}-${max_ledger}`)
-          tx_status = "rejected"
-          // This result is final if min_ledger and max_ledger are correct
-        } else {
-          if (max_ledger > ledger.ledgerVersion) {
-            // Transaction may yet be confirmed. Keep waiting.
-          } else {
-            console.log("Can't get final result. Check a full history server.")
-            tx_result = "unknown - check full history"
-          }
-        }
-      } else {
-        // Unknown error; pass it back up
-        throw e
-      }
-    }
-  }
-})
-```
+{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Wait for Validation", end_before="// Check Available") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Wait") }}
 {% include '_snippets/interactive-tutorials/wait-step.md' %}
@@ -219,17 +163,15 @@ The power of Tickets is that you can carry on with your account's business as us
 
 ### {{n.next()}}. Check Available Tickets
 
-When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the [account_objects method][] (or [`getAccountObjects()`](rippleapi-reference.html#getaccountobjects)) to look up your available tickets. For example:
+When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the [account_objects method][] to look up your available tickets. For example:
 
-```js
-let response = await api.request("account_objects", {
-    "account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-    "type": "ticket"
-  })
+<!-- MULTICODE_BLOCK_START -->
 
-console.log("Available Tickets:", response.account_objects)
-let use_ticket = response.account_objects[0].TicketSequence
-```
+_JavaScript_
+
+{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Check Available Tickets", end_before="// Prepare and Sign Ticketed") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 
 {{ start_step("Check Tickets") }}
@@ -245,27 +187,18 @@ Now that you have a Ticket available, you can prepare a transaction that uses it
 
 This can be any [type of transaction](transaction-types.html) you like. The following example uses a no-op [AccountSet transaction][] since that doesn't require any other setup in the ledger. Set the `Sequence` field to `0` and include a `TicketSequence` field with the Ticket Sequence number of one of your available Tickets.
 
-```js
-let prepared_t = await api.prepareTransaction({
-  "TransactionType": "AccountSet",
-  "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-  "TicketSequence": use_ticket,
-  "Sequence": 0
-}, {
-  // Adjust instructions to allow more time before submitting the transaction
-  maxLedgerVersionOffset: 20
-  //maxLedgerVersion: null // or, let the transaction remain valid indefinitely
-})
-console.log("Prepared JSON:", prepared_t.txJSON)
+<!-- MULTICODE_BLOCK_START -->
 
-let signed_t = api.sign(prepared_t.txJSON,
-                                   "s████████████████████████████")
-console.log("Transaction hash:", signed_t.id)
-let tx_blob_t = signed.signedTransaction
-console.log("Signed transaction blob:", tx_blob_t)
-```
+_JavaScript_
 
-**Tip:** If you don't plan to submit the TicketCreate transaction right away, you should explicitly set the [instructions'](rippleapi-reference.html#transaction-instructions) `maxLedgerVersionOffset` to a larger number of ledgers. To create a transaction that could remain valid indefinitely, set the `maxLedgerVersion` to `null`.
+{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Prepare and Sign Ticketed", end_before="// Submit Ticketed Transaction") }}
+
+<!-- MULTICODE_BLOCK_END -->
+
+> **Tip:** If you don't plan to submit the TicketCreate transaction right away, you should be sure not to set the `LastLedgerSequence` so that the transaction does not expire. The way you do this varies by library:
+>
+> - **xrpl.js:** Specify `"LastLedgerSequence": null` when autofilling the transaction.
+> - **`rippled`:** Omit `LastLedgerSequence` from the prepared instructions. The server does not provide a value by default.
 
 {{ start_step("Prepare Ticketed Tx") }}
 <div id="ticket-selector">
@@ -281,10 +214,13 @@ console.log("Signed transaction blob:", tx_blob_t)
 
 Submit the signed transaction blob that you created in the previous step. For example:
 
-```js
-let prelim_result_t = await api.request("submit", {"tx_blob": tx_blob_t})
-console.log("Preliminary result:", prelim_result_t)
-```
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
+{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Submit Ticketed Transaction", end_before="// Wait for Validation (again)") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Submit Ticketed Tx") }}
 <button id="ticketedtx-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob_t" data-wait-step-name="Wait Again">Submit</button>

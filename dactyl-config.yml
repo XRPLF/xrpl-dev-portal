@@ -64,7 +64,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.10.0.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.0.0.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -96,12 +96,14 @@ targets:
             # Fix 2 links from untranslated demurrage.html:
             "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
             "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
-            # Fix 5 links from untranslated become-an-xrp-ledger-gateway.html
+            # Fix links from untranslated become-an-xrp-ledger-gateway.html
             "paths.html#default-paths": "paths.html#デフォルトパス"
             "payment.html#payment-flags": "payment.html#paymentのフラグ"
             "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ"
             "trustset.html#trustset-flags": "trustset.html#trustsetのフラグ"
             "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
+                                # nearest approximation. this translation is also out of date
+            "rippled-server-modes.html#validators": "rippled-server-modes.html#バリデータを運用する理由"
             # Fix links from untranslated open-a-payment-channel-to-enable-an-inter-exchange-network.html
             "use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient": "use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します"
             "use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel": "use-payment-channels.html#2-受取人がpayment-channelの特性を確認します"
@@ -159,7 +161,14 @@ targets:
             "xrp-ledger-toml.html#account-verification": "xrp-ledger-toml.html#アカウント検証"
             "offers.html#offers-and-trust": "offers.html#オファーとトラスト"
             "authorized-trust-lines.html#authorizing-trust-lines": "authorized-trust-lines.html#トラストラインの承認"
-
+            # Fix links from untranslated freeze tutorials:
+            "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
+            "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
+            # Fix links from untranslated xrpl.js 2.0 migration guide:
+            "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
+            "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
+                                          # the updates to ledger_entry aren't translated either
+            "ledger_entry.html#get-paychannel-object": "ledger_entry.html"
 
 pages:
 
@@ -343,7 +352,7 @@ pages:
         top_nav_shortcuts:
             # Programming Languages
             - get-started-using-python.html
-            - get-started-using-node-js.html
+            - get-started-using-javascript.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
             # Popular pages
@@ -378,7 +387,7 @@ pages:
         top_nav_shortcuts:
             # Programming Languages
             - get-started-using-python.html
-            - get-started-using-node-js.html
+            - get-started-using-javascript.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
             # Popular pages
@@ -438,7 +447,7 @@ pages:
             - ja
 
     # Supplanted by the new xrp-ledger-overview.html landing page.
-    # TODO: fully remove.
+    # TODO: fully replace. https://github.com/XRPLF/xrpl-dev-portal/issues/1202
     # -   md: concepts/introduction/xrp-ledger-overview.md
     #     targets:
     #         - en
@@ -1018,19 +1027,31 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/get-started/get-started-using-node-js.md
+    -   md: tutorials/get-started/get-started-using-javascript.md
         targets:
             - en
-
-    -   md: tutorials/get-started/get-started-using-node-js.ja.md
-        targets:
             - ja
 
-        # Redirect for old JS Client Library URL
-    -   name: Get Started Using Node.js
+    # Old translated JS quickstart for ripple-lib 1.x. Refers to code samples
+    # that have been removed.
+    # -   md: tutorials/get-started/get-started-using-javascript.ja.md
+    #     targets:
+    #         - ja
+
+        # Redirect for old JS Client Library URLs
+    -   name: Get Started Using JavaScript
+        html: get-started-using-node-js.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: get-started-using-javascript.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    -   name: Get Started Using JavaScript
         html: get-started-with-rippleapi-for-javascript.html
         template: pagetype-redirect.html.jinja
-        redirect_url: get-started-using-node-js.html
+        redirect_url: get-started-using-javascript.html
         nav_omit: true
         targets:
             - en
@@ -1164,6 +1185,7 @@ pages:
         targets:
             - en
             - ja
+
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         targets:
@@ -1369,10 +1391,28 @@ pages:
             - en
             - ja
 
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/enable-no-freeze.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/enact-global-freeze.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/freeze-a-trust-line.md
+        targets:
+            - en
+            - ja
+
     # TODO: "Send a Cross-Currency Payment"
 
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
-    # freeze, enable/disable rippling, set transfer fees, use auth'd trust lines
+    # enable/disable rippling, use auth'd trust lines
 
     -   name: XRP Ledger Businesses
         html: xrp-ledger-businesses.html
@@ -2310,23 +2350,27 @@ pages:
             - en
             - ja
 
+        # Redirect old ripple-lib docs.
     -   name: JavaScript / TypeScript Client Library
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.10.0/docs/index.md
         html: rippleapi-reference.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: https://js.xrpl.org/
+        targets:
+            - en
+            - ja
+
+    -   name: JavaScript / TypeScript Client Library
+        html: https://js.xrpl.org/
         parent: client-libraries.html
         blurb: JavaScript/TypeScript client library to the XRP Ledger.
         skip_spell_checker: true
         # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
-        curated_anchors:
-            - name: Transactions
-              anchor: "#transaction-overview"
-            - name: Basic Types
-              anchor: "#basic-types"
-            - name: Methods
-              anchor: "#api-methods"
-        filters:
-            - remove_doctoc
-            - add_version
+        targets:
+            - en
+            - ja
+
+    -   md: references/xrpljs2-migration-guide.md
         targets:
             - en
             - ja
