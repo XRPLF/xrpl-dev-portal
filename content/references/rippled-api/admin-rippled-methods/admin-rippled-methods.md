@@ -39,6 +39,15 @@ Use these methods to manage the `rippled` server.
 * **[`ledger_accept`](ledger_accept.html)** - Close and advance the ledger in stand-alone mode.
 * **[`stop`](stop.html)** - Shut down the `rippled` server.
 
+## [Transaction Methods](transaction-methods.html)
+
+Use these methods to work with transactions. 
+
+* **[`sign`](sign.html)** - Cryptographically sign a transaction.
+* **[`sign_for`](sign_for.html)** - Contribute to a multi-signature.
+
+By default, these methods are [admin-only](admin-rippled-methods.html). They can be used as public methods if the server has [enabled public signing](enable-public-signing.html).
+
 ## [Peer Management Methods](peer-management-methods.html)
 
 Use these methods to manage the server's connections in the peer-to-peer XRP Ledger network.
