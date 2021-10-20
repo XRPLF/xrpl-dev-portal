@@ -269,7 +269,7 @@
 <!-- Source for this specific tutorial's interactive bits: -->
 <script src="assets/js/tutorials/use-tickets.js" type="application/javascript"></script>
 <!--TODO: change to Testnet eventually -->
-<p>This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The <a href="get-started-with-rippleapi-for-javascript.html">RippleAPI Beginners Guide</a> describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.</p>
+<p>This page provides JavaScript examples that use the <a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a> library. See <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> for setup instructions.</p>
 <p>Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.</p>
 <p>Tickets must be enabled. At this time, the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is only available on Devnet.</p>
 <h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
@@ -402,7 +402,6 @@
 </div>
 <h3 id="6-wait-for-validation">6. Wait for Validation<a aria-hidden="true" class="hover_anchor" href="#6-wait-for-validation"><i class="fa fa-link"></i></a></h3>
 <p>Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.)</p>
-<p>You use the <code>ledger</code> event type in RippleAPI to trigger your code to run whenever there is a new validated ledger version. For example:</p>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li></ul>
 
 <div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Wait for Validation -------------------------------------------------------</span>

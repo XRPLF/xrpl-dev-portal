@@ -9,11 +9,11 @@ Found 7 possible spelling errors:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: apps, capps, lapps
+  xapps: lapps, apps, capps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io2: iot, io, iop
-  io1: iot, iof, io
+  io1: ior, iod, iou
+  io2: io-, iob, ioc
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -22,7 +22,7 @@ Found 7 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 208 discouraged words/phrases:
+Found 207 discouraged words/phrases:
 Page: <Page 'Freezing Issued Currencies' (freezes.html)>
    Discouraged word: ious (1 instances); suggest 'issuances' instead.
 Page: <Page 'Demurrage' (demurrage.html)>
@@ -177,7 +177,7 @@ Page: <Page 'AccountSet' (accountset.html)>
    Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
 Page: <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)>
    Discouraged word: therefore (1 instances); suggest 'so' instead.
-   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
    Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
 Page: <Page 'Request Formatting' (request-formatting.html)>
    Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
@@ -217,7 +217,7 @@ Page: <Page 'Dev Tools' (dev-tools.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 47.4 (Difficult)
+  Flesch Reading Ease Score: 47.3 (Difficult)
   Dale-Chall Readability Score: 8.3 (average 11th or 12-grade student)
   SMOG Index: Grade level 12.9
   Gunning FOG Index: Grade level 11.2
@@ -260,13 +260,13 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 739
-  Characters: 4,613
+  Characters: 4,616
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
-  Sentences: 412
-  Words: 6,411
-  Characters: 40,382
+  Sentences: 411
+  Words: 6,392
+  Characters: 40,237
 
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
   Sentences: 364

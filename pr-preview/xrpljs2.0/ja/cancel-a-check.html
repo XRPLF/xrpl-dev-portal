@@ -277,11 +277,8 @@
 </ul>
 </li>
 <li>CheckCancelトランザクションを送信する資金供給のあるアカウントの<strong>アドレス</strong>と<strong>シークレットキー</strong>。Checkが有効期限切れでない限り、このアドレスは、Checkの送金元または受取人のいずれかでなければなりません。</li>
-<li>トランザクションに安全に署名できる手段（[RippleAPI][]や各自の<a href="install-rippled.html"><code>rippled</code>サーバー</a>など）。</li>
-<li><code>rippled</code>サーバーに接続できるクライアントライブラリ（[RippleAPI][]、HTTPライブラリ、またはWebSocketライブラリなど）。<ul>
-<li>詳細は、<a href="get-started-using-http-websocket-apis.html"><code>rippled</code> APIの使用開始</a>を参照してください。</li>
-</ul>
-</li>
+<li>トランザクションに<a href="set-up-secure-signing.html">安全に署名できる手段</a>。</li>
+<li><a href="client-libraries.html">クライアントライブラリ</a>またはHTTPライブラリ、WebSocketライブラリなど。</li>
 </ul>
 <h2 id="1checkcancelトランザクションの準備">1.CheckCancelトランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#1checkcancelトランザクションの準備"><i class="fa fa-link"></i></a></h2>
 <p><a href="checkcancel.html">CheckCancelトランザクション</a>のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>可能なフィールドです。</p>

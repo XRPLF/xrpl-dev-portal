@@ -263,7 +263,7 @@
         <h1 id="websocketを使用した着信ペイメントの監視">WebSocketを使用した着信ペイメントの監視<a aria-hidden="true" class="hover_anchor" href="#websocketを使用した着信ペイメントの監視"><i class="fa fa-link"></i></a></h1>
 <p>このチュートリアルでは、<a href="rippled-api.html">WebSocket <code>rippled</code> API</a>を使用して、着信<a href="payment-types.html">ペイメント</a>を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。</p>
 <p>WebSocketは、クライアントとサーバーが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、要求ごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です<a href="#footnote-1">¹</a><a id="from-footnote-1"></a>。</p>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、<a class="external-link" href="https://js.xrpl.org/" target="_blank">JavaScript向けRippleAPIライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>も利用すると、一部の作業を簡素化できます。このチュートリアルでは、RippleAPIを使用できないその他のプログラミング言語にステップを適合できるよう、xrpl.jsを使用 <em>しない</em> でトランザクションを監視する方法を説明します。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、<a class="external-link" href="https://js.xrpl.org/" target="_blank">JavaScript向けxrpl.jsライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>も利用すると、一部の作業を簡素化できます。このチュートリアルでは、xrpl.jsを使用できないその他のプログラミング言語にステップを適合できるよう、xrpl.jsを使用 <em>しない</em> でトランザクションを監視する方法を説明します。</p>
 <h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>このページの例では、すべての主要な最新ブラウザーで使用できるJavaScriptおよびWebSocketプロトコルを使用しています。JavaScriptにある程度習熟し、WebSocketクライアントを使用する他のプログラミング言語の専門知識があれば、選択する言語に手順を適合させながら進めていくことができます。</li>
