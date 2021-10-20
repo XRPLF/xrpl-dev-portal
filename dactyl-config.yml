@@ -2599,22 +2599,6 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.ja.md
-        targets:
-            - ja
-
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.md
         targets:
             - en
@@ -2985,6 +2969,30 @@ pages:
         targets:
             - ja
 
+    -   name: Signing Methods
+        html: signing-methods.html
+        parent: admin-rippled-methods.html
+        blurb: Use these methods to work with transactions. #TODO:translate
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/signing-methods/sign.md
+        targets:
+            - en
+
+    -   md: references/rippled-api/admin-rippled-methods/signing-methods/sign.ja.md
+        targets:
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/signing-methods/sign_for.md
+        targets:
+            - en
+
+    -   md: references/rippled-api/admin-rippled-methods/signing-methods/sign_for.ja.md
+        targets:
+            - ja
 
     -   name: Peer Management Methods
         html: peer-management-methods.html
