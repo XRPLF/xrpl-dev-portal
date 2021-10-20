@@ -39,9 +39,9 @@ For a very important account, you might set the SignerQuorum to 3, with 3 partic
 
 Another account might also have a SignerQuorum of 3. You assign your CEO a SignerWeight of 3, 3 Vice Presidents a SignerWeight of 2 each, and 3 Directors a SignerWeight of 1 each. To approve a transaction for this account requires the approval of all 3 Directors (total weight of 3), 1 Vice President and 1 Director (total weight of 3), 2 Vice Presidents (total weight of 4), or the CEO (total weight of 3).
 
-In each of the previous three use cases, you would disable the master key without configuring a regular key, so that multi-signing is the only way of authorizing transactions.
+In each of the previous three use cases, you would disable the master key without configuring a regular key, so that multi-signing is the only way of [authorizing transactions](transaction-basics.html#authorizing-transactions).
 
-There might be a scenario where you create a multi-signing list as a "backup plan." The account owner normally uses a regular key for their transactions (not a multi-signing key). For safety, the owner adds a signer list containing 3 friends, each with a weight of 1. Then the owner sets the SignerQuorum to 3. If the account owner were to lose the private key, they can ask their friends to multi-sign a transaction to replace the regular key.
+There might be a scenario where you create a multi-signing list as a "backup plan." The account owner normally uses a regular key for their transactions (not a multi-signing key). For safety, the owner adds a SignerList containing 3 friends, each with a weight of 1, and a SignerQuorum of 3. If the account owner were to lose the private key, they can ask their friends to multi-sign a transaction to replace the regular key.
 
 SignerWeight and SignerQuorum allow you to set an appropriate level of oversight for each transaction, based on the relative trust and authority relegated to responsible participants who manage the account. 
 
