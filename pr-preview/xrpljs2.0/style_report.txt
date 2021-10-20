@@ -6,13 +6,13 @@ Found 13 possible spelling errors:
   keypairs: 
 
 <Page 'Enable No Freeze' (enable-no-freeze.html)> Unknown Words:
-  start_with: startwith
   include_code: 
+  start_with: startwith
   end_before: 
 
 <Page 'Enact Global Freeze' (enact-global-freeze.html)> Unknown Words:
-  start_with: startwith
   include_code: 
+  start_with: startwith
   end_before: 
 
 <Page 'Freeze a Trust Line' (freeze-a-trust-line.html)> Unknown Words:
@@ -20,8 +20,8 @@ Found 13 possible spelling errors:
   end_before: 
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io2: iop, io-, iom
-  io1: iop, io-, ios
+  io1: iot, iom, iob
+  io2: iot, iob, ioc
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -30,7 +30,7 @@ Found 13 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 221 discouraged words/phrases:
+Found 208 discouraged words/phrases:
 Page: <Page 'Freezing Issued Currencies' (freezes.html)>
    Discouraged word: ious (1 instances); suggest 'issuances' instead.
 Page: <Page 'Demurrage' (demurrage.html)>
@@ -183,12 +183,6 @@ Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
    Discouraged word: performed (1 instances); suggest 'done' instead.
 Page: <Page 'AccountSet' (accountset.html)>
    Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
-Page: <Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)>
-   Discouraged word: frequently (1 instances); suggest 'often' instead.
-   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
-   Discouraged word: wallet (8 instances); suggest 'address, client application, account' instead.
-   Discouraged phrase: hot wallet (2 instances); suggest 'operational address' instead.
-   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
 Page: <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)>
    Discouraged word: therefore (1 instances); suggest 'so' instead.
    Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
@@ -232,7 +226,7 @@ Readability Scores
 ------------------
 Average Page Readability Scores:
   Flesch Reading Ease Score: 47.4 (Difficult)
-  Dale-Chall Readability Score: 8.2 (average 11th or 12-grade student)
+  Dale-Chall Readability Score: 8.3 (average 11th or 12-grade student)
   SMOG Index: Grade level 12.9
   Gunning FOG Index: Grade level 11.2
   Automated Readability Index: Grade level 13.9
@@ -272,16 +266,11 @@ Most difficult pages by Flesch Reading Ease:
 Page Length Metrics
 -------------------
 Average Page Length Metrics:
-  Sentences: 61
-  Words: 808
-  Characters: 5,087
+  Sentences: 54
+  Words: 740
+  Characters: 4,622
 
 Longest pages by character count:
-<Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)> Length Metrics:
-  Sentences: 2,063
-  Words: 19,379
-  Characters: 131,147
-
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
   Sentences: 417
   Words: 6,490
@@ -291,6 +280,11 @@ Longest pages by character count:
   Sentences: 364
   Words: 5,134
   Characters: 36,492
+
+<Page 'Look Up Transaction Results' (look-up-transaction-results.html)> Length Metrics:
+  Sentences: 189
+  Words: 3,377
+  Characters: 20,590
 
 Shortest pages by character count:
 <Page 'API Conventions' (api-conventions.html)> Length Metrics:
