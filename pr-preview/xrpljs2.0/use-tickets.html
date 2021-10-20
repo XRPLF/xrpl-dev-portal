@@ -351,7 +351,7 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <h3 id="4-prepare-and-sign-ticketcreate">4. Prepare and Sign TicketCreate<a aria-hidden="true" class="hover_anchor" href="#4-prepare-and-sign-ticketcreate"><i class="fa fa-link"></i></a></h3>
-<p>Construct a <a href="ticketcreate.html">TicketCreate transaction</a> using the sequence number you determined in the previous step. Use the <code>TicketCount</code> field to specify how many Tickets to create. For example, to <a href="rippleapi-reference.html#preparetransaction">prepare a transaction</a> that would make 10 Tickets:</p>
+<p>Construct a <a href="ticketcreate.html">TicketCreate transaction</a> using the sequence number you determined in the previous step. Use the <code>TicketCount</code> field to specify how many Tickets to create. For example, to prepare a transaction that would make 10 Tickets:</p>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li></ul>
 
 <div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Prepare and Sign TicketCreate ---------------------------------------------</span>
@@ -456,7 +456,7 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <h3 id="7-check-available-tickets">7. Check Available Tickets<a aria-hidden="true" class="hover_anchor" href="#7-check-available-tickets"><i class="fa fa-link"></i></a></h3>
-<p>When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the <a href="account_objects.html">account_objects method</a> (or <a href="rippleapi-reference.html#getaccountobjects"><code>getAccountObjects()</code></a>) to look up your available tickets. For example:</p>
+<p>When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the <a href="account_objects.html">account_objects method</a> to look up your available tickets. For example:</p>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li></ul>
 
 <div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1">// Check Available Tickets ---------------------------------------------------</span>

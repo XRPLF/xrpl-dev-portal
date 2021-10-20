@@ -278,11 +278,8 @@
 </ul>
 </li>
 <li>Checkを受領する資金供給のあるアカウントの<strong>アドレス</strong>。</li>
-<li>トランザクションに安全に署名できる手段（<a href="rippleapi-reference.html">RippleAPI</a>や各自の<a href="install-rippled.html"><code>rippled</code>サーバー</a>など）。</li>
-<li><code>rippled</code>サーバーに接続できるクライアントライブラリ（<a href="rippleapi-reference.html">RippleAPI</a>、HTTPライブラリ、またはWebSocketライブラリなど）。<ul>
-<li>詳細は、<a href="get-started-using-http-websocket-apis.html"><code>rippled</code> APIの使用開始</a>を参照してください。</li>
-</ul>
-</li>
+<li>トランザクションに<a href="set-up-secure-signing.html">安全に署名できる手段</a>。</li>
+<li><a href="client-libraries.html">クライアントライブラリ</a>またはHTTPライブラリ、WebSocketライブラリなど。</li>
 </ul>
 <h2 id="1checkcreateトランザクションの準備">1.CheckCreateトランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#1checkcreateトランザクションの準備"><i class="fa fa-link"></i></a></h2>
 <p>Checkの額と、Checkを現金化できる当事者を決定します。<a href="checkcreate.html">CheckCreateトランザクション</a>のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>できるフィールドです。</p>
@@ -317,11 +314,9 @@
 </tr>
 </tbody>
 </table>
-<p><a href="rippleapi-reference.html">RippleAPI</a>を使用している場合は、<code>prepareCheckCreate()</code>ヘルパーメソッドを使用できます。</p>
-<p class="devportal-callout 注記"><strong>注記:</strong> ChecksはRippleAPIバージョン0.19.0以上でサポートされています。</p>
 <h3 id="checkcreateトランザクションの準備の例">CheckCreateトランザクションの準備の例<a aria-hidden="true" class="hover_anchor" href="#checkcreateトランザクションの準備の例"><i class="fa fa-link"></i></a></h3>
 <p>以下の例は、BoxSend SG（rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za）がGrand Payments（rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）宛てに作成した100 XRPのCheckです。追加（オプション）のメタデータとして、BoxSend SGはGrand Paymentsの請求書のIDを追加しています。これによりGrand PaymentsはこのCheckがどの請求書に対する支払いかを確認できます。</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="jsonrpc、websocket、またはコマンドライン" href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a class="rippleapi" href="#code-0-1">RippleAPI</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="jsonrpc、websocket、またはコマンドライン" href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a class="ripplelib1.x" href="#code-0-1">ripple-lib 1.x</a></li></ul>
 
 <div class="code_sample jsonrpc、websocket、またはコマンドライン" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
  "TransactionType":"CheckCreate",
@@ -332,7 +327,7 @@
 }
 </code></pre></div></div>
 
-<div class="code_sample rippleapi" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
+<div class="code_sample ripplelib1.x" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
 <span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>

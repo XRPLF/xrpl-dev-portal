@@ -263,7 +263,6 @@
 <!-- -->
 <p>特定のアドレスで受信および送信されるすべてのCheckのリストを取得するには、送金元アカウントのアドレスを指定した<code>account_objects</code>コマンドを実行し、要求の<code>type</code> フィールドを<code>checks</code>に設定します。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong><code>account_objects</code>コマンドのコマンドラインインターフェイスでは<code>type</code>フィールドは受け入れられません。代わりに<a href="json.html">jsonメソッド</a>を使用してコマンドラインからJSON-RPCフォーマットの要求を送信できます。</p>
-<p class="devportal-callout 注意"><strong>注意:</strong> RippleAPIには、<code>account_objects</code>メソッドの組み込みサポートはありません。<code>api.connection.request(websocket_request_json)</code>メソッドを使用して、Webフォーマットで未加工の要求を作成できます。このメソッドに対する応答のフォーマットは<code>rippled</code> APIフォーマットです。（たとえばXRPは小数ではなく整数の「drop数」で指定します。）</p>
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="rippleapi" href="#code-0-0">RippleAPI</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 

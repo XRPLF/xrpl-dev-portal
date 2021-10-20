@@ -283,7 +283,7 @@
 <p>正しい形式のトランザクションを信頼できるXRP Ledgerサーバーに送信すると、数秒で検証または拒否されます。ただし、正しい形式のトランザクションであっても迅速に検証も拒否もされないことがあります。このような特殊なケースは、アプリケーションがトランザクションを送信した後にグローバル<a href="transaction-cost.html">トランザクションコスト</a>が増加すると発生することがあります。トランザクションに指定された額よりもトランザクションコストが増加すると、そのトランザクションは次回の検証済みレジャーに含まれません。後日、グローバルトランザクションコストが下がった場合には、そのトランザクションは後のレジャーに含まれます。トランザクションに有効期限が指定されていない場合には、レジャーへの追加はいつになるか分かりません。</p>
 <p>電源やネットワークに障害が発生した場合には、送信済みトランザクションのステータスの検出時にさらに多くの問題に直面します。アプリケーションは、トランザクションの適切な送信と、その後の正式結果の適切な受信の両方に十分な注意を払う必要があります。</p>
 <h3 id="トランザクションのタイムライン">トランザクションのタイムライン<a aria-hidden="true" class="hover_anchor" href="#トランザクションのタイムライン"><i class="fa fa-link"></i></a></h3>
-<p>XRP Ledgerには、<a href="rippled-api.html"><code>rippled</code> API</a>や<a href="rippleapi-reference.html">RippleAPI</a>など、トランザクションを送信するためのAPIがいくつかあります。使用するAPIにかかわらず、トランザクションは以下のようにレジャーに適用されます。</p>
+<p>XRP Ledgerには、<a href="rippled-api.html">HTTP / WebSocket API</a>や<a href="client-libraries.html">クライアントライブラリ</a>など、トランザクションを送信するためのAPIがいくつかあります。使用するAPIにかかわらず、トランザクションは以下のようにレジャーに適用されます。</p>
 <ol>
 <li>アカウント所有者は、トランザクションを作成して署名します。</li>
 <li>所有者は、トランザクション候補として、そのトランザクションをネットワークに送信します。
@@ -303,8 +303,7 @@
 <h3 id="lastledgersequence">LastLedgerSequence<a aria-hidden="true" class="hover_anchor" href="#lastledgersequence"><i class="fa fa-link"></i></a></h3>
 <p><code>LastLedgerSequence</code>は、省略可能な<a href="transaction-common-fields.html">全トランザクションに適用されるパラメーター</a>です。このパラメーターはXRP Ledgerに対して、トランザクションを特定のレジャーバージョンで検証する必要があること、またはトランザクションを特定のレジャーバージョンの前に検証する必要があることを指示します。XRP Ledgerは、レジャーインデックスがトランザクションの<code>LastLedgerSequence</code>パラメーターよりも大きいトランザクションをレジャーバージョンに含めることは決してありません。</p>
 <p><code>LastLedgerSequence</code>パラメーターを使用すれば、トランザクションが迅速に確認されず、将来のレジャーに含まれるような好ましくないケースを防止できます。<code>LastLedgerSequence</code>パラメーターは、各トランザクションに指定する必要があります。自動プロセスでは、最後に検証されたレジャーインデックスよりも4つ大きい数値を使用して、トランザクションが予測可能な方法で、かつ迅速に検証または拒否されるようにします。</p>
-<p><code>rippled</code> APIを使用するアプリケーションは、トランザクションの送信時に、<code>LastLedgerSequence</code>を明示的に指定する必要があります。</p>
-<p>RippleAPIでは、<a href="rippleapi-reference.html#transaction-instructions">Transaction Instructions</a>で説明されている<code>maxLedgerVersion</code>フィールドを使用して<code>LastLedgerSequence</code>を指定します。RippleAPIは、デフォルトで自動的に適切な値を提供します。期限なしで実行される可能性のあるトランザクションを実行する場合には、<code>maxLedgerVersion</code>を<code>null</code>に指定して故意に<code>LastLedgerSequence</code>を省略できますが、これはお勧めできません。</p>
+<p>トランザクションの送信時に、<code>LastLedgerSequence</code>を明示的に指定する必要があります。</p>
 <h2 id="ベストプラクティス">ベストプラクティス<a aria-hidden="true" class="hover_anchor" href="#ベストプラクティス"><i class="fa fa-link"></i></a></h2>
 <p>次の図は、トランザクションの送信と結果の判断に推奨されるフローを示します。</p>
 <p><a href="img/reliable-tx-submission.svg"><img alt="信頼できるトランザクションの送信フローチャート" src="img/reliable-tx-submission.svg"/></a></p>
@@ -416,9 +415,9 @@
 </ol>
 <p>アプリケーションでのこれらのアクションの実行方法は、アプリケーションが使用するAPIによって異なります。アプリケーションでは、以下のインターフェイスを使用できます。</p>
 <ol>
-<li><a href="rippled-api.html"><code>rippled</code> API</a></li>
-<li><a href="rippleapi-reference.html">RippleAPI</a></li>
-<li><code>rippled</code>上にレイヤーされた、任意の数の他のソフトウェアAPI</li>
+<li><a href="rippled-api.html">HTTP / WebSocket API</a></li>
+<li><a href="client-libraries.html">クライアントライブラリ</a></li>
+<li>任意の数の他のソフトウェアAPI</li>
 </ol>
 <h3 id="rippled-トランザクションの送信と確認">rippled - トランザクションの送信と確認<a aria-hidden="true" class="hover_anchor" href="#rippled-トランザクションの送信と確認"><i class="fa fa-link"></i></a></h3>
 <h4 id="アカウントシーケンスの判断">アカウントシーケンスの判断<a aria-hidden="true" class="hover_anchor" href="#アカウントシーケンスの判断"><i class="fa fa-link"></i></a></h4>

@@ -1,16 +1,19 @@
 -------------
 Spell Checker
 -------------
-Found 6 possible spelling errors:
+Found 7 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
 
+<Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
+  xapps: apps, capps, lapps
+
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: ior, iop, iod
-  io2: ior, iod, iom
+  io2: iot, io, iop
+  io1: iot, iof, io
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -257,13 +260,13 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 739
-  Characters: 4,618
+  Characters: 4,613
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
-  Sentences: 417
-  Words: 6,490
-  Characters: 40,895
+  Sentences: 412
+  Words: 6,411
+  Characters: 40,382
 
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
   Sentences: 364
