@@ -125,7 +125,7 @@ const prepared = await client.autofill({
 })
 ```
 
-Like the old prepare methods, `Client.autofill()` provides a reasonable `LastLedgerSequence` value by default. To prepare a transaction _without_ a `LastLedgerSequence` field, set "LastLedgerSequence" to the value `null`:
+Like the old prepare methods, `Client.autofill()` provides a reasonable `LastLedgerSequence` value by default. To prepare a transaction _without_ a `LastLedgerSequence` field, provide a `LastLedgerSequence` with the value `null`:
 
 ```js
 const prepared = await client.autofill({
