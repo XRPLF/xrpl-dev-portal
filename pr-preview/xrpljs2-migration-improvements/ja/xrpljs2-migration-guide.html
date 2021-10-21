@@ -343,7 +343,7 @@
   <span class="s2">"LastLedgerSequence"</span><span class="o">:</span> <span class="nx">vli</span><span class="o">+</span><span class="mf">75</span> <span class="c1">// gives ~5min, rather than the default ~1min</span>
 <span class="p">})</span>
 </code></pre></div>
-<p>Like the old prepare methods, <code>Client.autofill()</code> provides a reasonable <code>LastLedgerSequence</code> value by default. To prepare a transaction <em>without</em> a <code>LastLedgerSequence</code> field, set "LastLedgerSequence" to the value <code>null</code>:</p>
+<p>Like the old prepare methods, <code>Client.autofill()</code> provides a reasonable <code>LastLedgerSequence</code> value by default. To prepare a transaction <em>without</em> a <code>LastLedgerSequence</code> field, provide a <code>LastLedgerSequence</code> with the value <code>null</code>:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="kd">const</span> <span class="nx">prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
   <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
   <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">sender</span><span class="p">,</span>
