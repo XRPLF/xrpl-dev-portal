@@ -81,9 +81,9 @@ console.log(trustlines.result)
 
 ## Transaction Submission
 
-In xrpl.js there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes. Options
+In xrpl.js, there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes:
 
-- Use `submitAndWait()` to submit a transaction and wait for its [final outcome](finality-of-results.html). If the transaction becomes validated, this resolves to a [tx method][] response; otherwise, it raises an exception.
+- Use `submitAndWait()` to submit a transaction and wait for its [final outcome](finality-of-results.html). If the transaction becomes validated, this resolves to a [tx method][] response; otherwise, it raises an exception. An exception does not guarantee that the transaction was not validated. For example, if the server has a [ledger gap](reliable-transaction-submission.html#ledger-gaps), then the transaction could have been validated in that gap.
 - Use `submit()` to submit and return immediately. This resolves to a [submit method][] response, which shows the preliminary (non-final) result. This method only raises an exception if there was a problem sending the transaction to the XRP Ledger server.
 
 For both methods, you can pass a signed transaction to the method directly, or you can sign the transaction right before submitting, by passing prepared transaction instructions and a [`Wallet` instance](#keys-and-wallets).
@@ -125,7 +125,7 @@ const prepared = await client.autofill({
 })
 ```
 
-Like the old prepare methods, `Client.autofill()` provides a reasonable `LastLedgerSequence` value by default. To prepare a transaction _without_ a `LastLedgerSequence` field, pass it with the value `null`:
+Like the old prepare methods, `Client.autofill()` provides a reasonable `LastLedgerSequence` value by default. To prepare a transaction _without_ a `LastLedgerSequence` field, set "LastLedgerSequence" to the value `null`:
 
 ```js
 const prepared = await client.autofill({
