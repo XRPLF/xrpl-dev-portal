@@ -1,6 +1,6 @@
 ---
 html: sign.html # watch for clashes w/ this filename
-parent: transaction-methods.html
+parent: signing-methods.html
 blurb: Cryptographically sign a transaction.
 labels:
   - Transaction Sending

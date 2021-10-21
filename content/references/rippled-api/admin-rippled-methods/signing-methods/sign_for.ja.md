@@ -1,6 +1,6 @@
 ---
 html: sign_for.html
-parent: transaction-methods.html
+parent: signing-methods.html
 blurb: マルチ署名済みトランザクションの署名を1つ提供します。
 labels:
   - トランザクション送信

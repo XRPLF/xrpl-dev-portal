@@ -42,13 +42,16 @@ A ledger version contains a header, a transaction tree, and a state tree, which 
 
 Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions.
 
-* **[`sign`](sign.html)** - Cryptographically sign a transaction.
-* **[`sign_for`](sign_for.html)** - Contribute to a multi-signature.
 * **[`submit`](submit.html)** - Send a transaction to the network.
 * **[`submit_multisigned`](submit_multisigned.html)** - Send a multi-signed transaction to the network.
 * **[`transaction_entry`](transaction_entry.html)** - Retrieve info about a transaction from a particular ledger version.
 * **[`tx`](tx.html)** - Retrieve info about a transaction from all the ledgers on hand.
 * **[`tx_history`](tx_history.html)** - Retrieve info about all recent transactions.
+
+By default, the following methods are [admin-only](admin-rippled-methods.html). They can be used as public methods if the server admin has [enabled public signing](enable-public-signing.html).
+
+* **[`sign`](sign.html)** - Cryptographically sign a transaction. 
+* **[`sign_for`](sign_for.html)** - Contribute to a multi-signature.
 
 
 ## [Path and Order Book Methods](path-and-order-book-methods.html)
