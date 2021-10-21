@@ -78,7 +78,7 @@ async function main() {
 
   // Submit a TrustSet transaction to set an individual freeze ----------------------
   console.log('Submitting TrustSet tx:', trust_set)
-  const result = await client.submitAndWait(wallet, trust_set)
+  const result = await client.submitAndWait(trust_set, { wallet: wallet })
   console.log("Submitted TrustSet!")
 
   // Investigate --------------------------------------------------------------------
@@ -92,7 +92,7 @@ async function main() {
 
   // Submit a TrustSet transaction to clear an individual freeze --------------------
   console.log('Submitting TrustSet tx:', trust_set)
-  const result2 = await client.submitAndWait(wallet, trust_set)
+  const result2 = await client.submitAndWait(trust_set, { wallet: wallet })
   console.log("Submitted TrustSet!")
 
   console.log("Finished submitting. Now disconnecting.")

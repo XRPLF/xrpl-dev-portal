@@ -22,9 +22,6 @@ async function main() {
     peer: counterparty_address,
   }
 
-  // Best practice for JS users - validate checks if a transaction is well-formed
-  xrpl.validate(account_lines)
-
   console.log(`Looking up all trust lines from
               ${counterparty_address} to ${my_address}`)
 

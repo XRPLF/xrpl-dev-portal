@@ -27,7 +27,7 @@ async function main() {
   xrpl.validate(accountSetTx)
 
   console.log('Sign and submit the transaction:', accountSetTx)
-  await client.submitAndWait(wallet, accountSetTx)
+  await client.submitAndWait(accountSetTx, { wallet: wallet })
 
   // Done submitting
   console.log("Finished submitting. Now disconnecting.")

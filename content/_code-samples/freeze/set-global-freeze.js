@@ -27,7 +27,7 @@ async function main() {
 
   // Sign and submit the AccountSet transaction to enable a global freeze ------
   console.log('Signing and submitting the transaction:', accountSetTx)
-  await client.submitAndWait(wallet, accountSetTx)
+  await client.submitAndWait(accountSetTx, { wallet })
   console.log(`Finished submitting! ${wallet.address} should be frozen now.`)
 
   // Investigate ---------------------------------------------------------------
@@ -48,7 +48,7 @@ async function main() {
 
   // Sign and submit the AccountSet transaction to end a global freeze ---------
   console.log('Signing and submitting the transaction:', accountSetTx2)
-  const result = await client.submitAndWait(wallet, accountSetTx2)
+  const result = await client.submitAndWait(accountSetTx2, { wallet: wallet })
   console.log("Finished submitting!")
 
   // Global freeze disabled
