@@ -11,10 +11,6 @@ async function main() {
   await client.connect()
   console.log("Connected to Testnet")
 
-  client.on('error', (errorCode, errorMessage) => {
-    console.log(errorCode + ': ' + errorMessage)
-  })
-
   // Get credentials from the Testnet Faucet ------------------------------------
   console.log("Requesting an address from the Testnet faucet...")
   const { wallet, balance } = await client.fundWallet()

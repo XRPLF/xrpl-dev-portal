@@ -10,10 +10,6 @@ async function main() {
   const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
   await client.connect()
 
-  client.on('error', (errorCode, errorMessage) => {
-    console.log(errorCode + ': ' + errorMessage)
-  })
-
   // Get credentials from the Testnet Faucet ------------------------------------
   console.log("Requesting an address from the Testnet faucet...")
   const { wallet, balance } = await client.fundWallet()

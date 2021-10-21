@@ -11,10 +11,6 @@ async function main() {
   const client = new xrpl.Client('wss://s1.ripple.com')
   await client.connect()
 
-  client.on('error', (errorCode, errorMessage) => {
-    console.log(errorCode + ': ' + errorMessage)
-  })
-
   const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
 
   // Request account info for my_address to check account settings ------------
