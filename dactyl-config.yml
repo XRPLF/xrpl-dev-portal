@@ -169,6 +169,7 @@ targets:
             "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
                                           # the updates to ledger_entry aren't translated either
             "ledger_entry.html#get-paychannel-object": "ledger_entry.html"
+            "reliable-transaction-submission.html#ledger-gaps": "reliable-transaction-submission.html#レジャーのギャップ"
 
 pages:
 
