@@ -22,6 +22,9 @@ async function main() {
     SetFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
   }
 
+  // Best practice for JS users - validate checks if a transaction is well-formed
+  xrpl.validate(accountSetTx)
+
   // Sign and submit the AccountSet transaction to enable a global freeze ------
   console.log('Signing and submitting the transaction:', accountSetTx)
   await client.submitAndWait(wallet, accountSetTx)
@@ -39,6 +42,9 @@ async function main() {
     // ClearFlag let's us turn off a global freeze on this account
     ClearFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
   }
+
+  // Best practice for JS users - validate checks if a transaction is well-formed
+  xrpl.validate(accountSetTx2)
 
   // Sign and submit the AccountSet transaction to end a global freeze ---------
   console.log('Signing and submitting the transaction:', accountSetTx2)

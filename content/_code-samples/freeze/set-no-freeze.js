@@ -23,6 +23,9 @@ async function main() {
     SetFlag: xrpl.AccountSetAsfFlags.asfNoFreeze
   }
 
+  // Best practice for JS users - validate checks if a transaction is well-formed
+  xrpl.validate(accountSetTx)
+
   console.log('Sign and submit the transaction:', accountSetTx)
   await client.submitAndWait(wallet, accountSetTx)
 

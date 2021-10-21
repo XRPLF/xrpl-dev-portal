@@ -73,6 +73,9 @@ async function main() {
   // Set a flag to freeze the trust line --------------------------------------------
   trust_set.Flags = xrpl.TrustSetFlags.tfSetFreeze
 
+  // Best practice for JS users - validate checks if a transaction is well-formed
+  xrpl.validate(trust_set)
+
   // Submit a TrustSet transaction to set an individual freeze ----------------------
   console.log('Submitting TrustSet tx:', trust_set)
   const result = await client.submitAndWait(wallet, trust_set)
