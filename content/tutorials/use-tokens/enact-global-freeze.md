@@ -2,7 +2,9 @@
 html: enact-global-freeze.html
 parent: use-tokens.html
 blurb: Freeze all tokens issued by your address.
+embed_ripple_lib: true
 filters:
+  - interactive_steps
   - include_code
 labels:
   - Tokens
@@ -21,6 +23,8 @@ If you [issue tokens](issued-currencies.html) in the XRP Ledger, can enact a [Gl
     - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
 - You don't need to have [issued a token](issue-a-fungible-token.html) in the XRP Ledger to enact a Global Freeze, but the main reason you would do so is if you have already issued such a token.
 
+<!-- Source for this specific tutorial's interactive bits: -->
+<script type="application/javascript" src="assets/js/tutorials/enact-global-freeze.js"></script>
 
 ## Example Code
 
@@ -38,6 +42,12 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 **Tip:** Unlike the No Freeze setting, you _can_ enable and disable a Global Freeze using a [regular key pair](cryptographic-keys.html) or [multi-signing](multi-signing.html).
 
+For this tutorial, you can get credentials from the following interface:
+
+{% include '_snippets/interactive-tutorials/generate-step.md' %}
+
+When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+
 
 ### {{n.next()}}. Connect to the Network
 
@@ -50,6 +60,10 @@ _JavaScript_
 {{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 <!-- MULTICODE_BLOCK_END -->
+
+For this tutorial, you can connect directly from your browser by pressing the following button:
+
+{% include '_snippets/interactive-tutorials/connect-step.md' %}
 
 
 ### {{n.next()}}. Send AccountSet Transaction to Enact the Freeze
@@ -87,10 +101,20 @@ _WebSocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
+{{ start_step("Send AccountSet") }}
+<button class="btn btn-primary previous-steps-required send-accountset" data-wait-step-name="Wait" data-action="start_freeze">Send AccountSet</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="output-area"></div>
+{{ end_step() }}
+
 
 ### {{n.next()}}. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
+
+{{ start_step("Wait") }}
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{{ end_step() }}
 
 
 ### {{n.next()}}. Confirm Account Settings
@@ -148,6 +172,12 @@ Response:
 
 <!-- MULTICODE_BLOCK_END -->
 
+{{ start_step("Confirm Settings") }}
+<button id="confirm-settings" class="btn btn-primary previous-steps-required">Confirm Settings</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="output-area"></div>
+{{ end_step() }}
+
 
 ### Intermission: While Frozen
 
@@ -195,16 +225,31 @@ _WebSocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
+{{ start_step("End Freeze") }}
+<button class="btn btn-primary previous-steps-required send-accountset" data-wait-step-name="Wait (again)" data-action="end_freeze">Send AccountSet (end the freeze)</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="output-area"></div>
+{{ end_step() }}
+
 
 ### {{n.next()}}. Wait for Validation
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
+
+{{ start_step("Wait (again)") }}
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{{ end_step() }}
 
 
 ### {{n.next()}}. Confirm Account Settings
 
 After the transaction is validated, you can confirm the status of the Global Freeze flag in the same way as before: by calling the [account_info method][] and checking the value of the account's `Flags` field to see if the [`lsfGlobalFreeze` bit (`0x00400000`)](accountroot.html#accountroot-flags) is **off**.
 
+{{ start_step("Confirm Settings (After Freeze)") }}
+<button id="confirm-settings-end" class="btn btn-primary previous-steps-required">Confirm Settings (After Freeze)</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="output-area"></div>
+{{ end_step() }}
 
 
 ## See Also

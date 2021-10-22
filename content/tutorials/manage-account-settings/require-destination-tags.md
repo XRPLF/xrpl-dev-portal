@@ -94,7 +94,7 @@ _JavaScript_
 
 
 {{ start_step("Confirm Settings") }}
-<button id="confirm-settings" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Confirm Settings</button>
+<button id="confirm-settings" class="btn btn-primary previous-steps-required">Confirm Settings</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}

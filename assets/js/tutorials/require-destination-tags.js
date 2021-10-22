@@ -5,6 +5,7 @@ $(document).ready(() => {
 
   // 3. Send AccountSet --------------------------------------------------------
   $("#send-accountset").click( async (event) => {
+    const block = $(event.target).closest(".interactive-block")
     const address = get_address(event)
     if (!address) {return}
 
