@@ -1,13 +1,14 @@
-const xrpl = require('xrpl')
+// Dependencies for Node.js.
+// In browsers, use <script> tags as in the example demo.html.
+if (typeof module !== "undefined") {
+  // gotta use var here because const/let are block-scoped to the if statement.
+  var xrpl = require('xrpl')
+}
 
 async function main() {
   // Connect -------------------------------------------------------------------
   const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
   await client.connect()
-
-  client.on('error', (errorCode, errorMessage) => {
-    console.log(errorCode + ': ' + errorMessage)
-  })
 
   // Get credentials from the Testnet Faucet ------------------------------------
   console.log("Requesting an address from the Testnet faucet...")
@@ -72,9 +73,12 @@ async function main() {
   // Set a flag to freeze the trust line --------------------------------------------
   trust_set.Flags = xrpl.TrustSetFlags.tfSetFreeze
 
+  // Best practice for JS users - validate checks if a transaction is well-formed
+  xrpl.validate(trust_set)
+
   // Submit a TrustSet transaction to set an individual freeze ----------------------
   console.log('Submitting TrustSet tx:', trust_set)
-  const result = await client.submitAndWait(wallet, trust_set)
+  const result = await client.submitAndWait(trust_set, { wallet: wallet })
   console.log("Submitted TrustSet!")
 
   // Investigate --------------------------------------------------------------------
@@ -88,7 +92,7 @@ async function main() {
 
   // Submit a TrustSet transaction to clear an individual freeze --------------------
   console.log('Submitting TrustSet tx:', trust_set)
-  const result2 = await client.submitAndWait(wallet, trust_set)
+  const result2 = await client.submitAndWait(trust_set, { wallet: wallet })
   console.log("Submitted TrustSet!")
 
   console.log("Finished submitting. Now disconnecting.")

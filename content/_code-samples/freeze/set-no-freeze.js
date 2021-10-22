@@ -1,14 +1,15 @@
-const xrpl = require('xrpl')
+// Dependencies for Node.js.
+// In browsers, use <script> tags as in the example demo.html.
+if (typeof module !== "undefined") {
+  // gotta use var here because const/let are block-scoped to the if statement.
+  var xrpl = require('xrpl')
+}
 
 async function main() {
   // Connect -------------------------------------------------------------------
   const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
   await client.connect()
   console.log("Connected to Testnet")
-
-  client.on('error', (errorCode, errorMessage) => {
-    console.log(errorCode + ': ' + errorMessage)
-  })
 
   // Get credentials from the Testnet Faucet ------------------------------------
   console.log("Requesting an address from the Testnet faucet...")
@@ -22,8 +23,11 @@ async function main() {
     SetFlag: xrpl.AccountSetAsfFlags.asfNoFreeze
   }
 
+  // Best practice for JS users - validate checks if a transaction is well-formed
+  xrpl.validate(accountSetTx)
+
   console.log('Sign and submit the transaction:', accountSetTx)
-  await client.submitAndWait(wallet, accountSetTx)
+  await client.submitAndWait(accountSetTx, { wallet: wallet })
 
   // Done submitting
   console.log("Finished submitting. Now disconnecting.")

@@ -1,13 +1,15 @@
-const xrpl = require('xrpl')
+// Dependencies for Node.js.
+// In browsers, use <script> tags as in the example demo.html.
+if (typeof module !== "undefined") {
+  // gotta use var here because const/let are block-scoped to the if statement.
+  var xrpl = require('xrpl')
+}
 
 async function main() {
   // Connect -------------------------------------------------------------------
   const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
   await client.connect()
 
-  client.on('error', (errorCode, errorMessage) => {
-    console.log(errorCode + ': ' + errorMessage)
-  })
   // Get credentials from the Testnet Faucet -----------------------------------
   console.log("Requesting an address from the Testnet faucet...")
   const { wallet, balance } = await client.fundWallet()
@@ -20,9 +22,12 @@ async function main() {
     SetFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
   }
 
+  // Best practice for JS users - validate checks if a transaction is well-formed
+  xrpl.validate(accountSetTx)
+
   // Sign and submit the AccountSet transaction to enable a global freeze ------
   console.log('Signing and submitting the transaction:', accountSetTx)
-  await client.submitAndWait(wallet, accountSetTx)
+  await client.submitAndWait(accountSetTx, { wallet })
   console.log(`Finished submitting! ${wallet.address} should be frozen now.`)
 
   // Investigate ---------------------------------------------------------------
@@ -38,9 +43,12 @@ async function main() {
     ClearFlag: xrpl.AccountSetAsfFlags.asfGlobalFreeze
   }
 
+  // Best practice for JS users - validate checks if a transaction is well-formed
+  xrpl.validate(accountSetTx2)
+
   // Sign and submit the AccountSet transaction to end a global freeze ---------
   console.log('Signing and submitting the transaction:', accountSetTx2)
-  const result = await client.submitAndWait(wallet, accountSetTx2)
+  const result = await client.submitAndWait(accountSetTx2, { wallet: wallet })
   console.log("Finished submitting!")
 
   // Global freeze disabled
