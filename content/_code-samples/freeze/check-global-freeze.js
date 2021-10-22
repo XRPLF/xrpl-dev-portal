@@ -18,11 +18,12 @@ async function main() {
   const response = await client.request(
     {command: 'account_info', account: my_address })
   const settings = response.result
+  const lsfGlobalFreeze = xrpl.LedgerEntry.AccountRootFlags.lsfGlobalFreeze
 
   console.log('Got settings for address', my_address);
   console.log('Global Freeze enabled?',
-              ((settings.account_data.Flags & AccountRootFlags.lsfGlobalFreeze) 
-              === AccountRootFlags.lsfGlobalFreeze))
+              ((settings.account_data.Flags & lsfGlobalFreeze) 
+              === lsfGlobalFreeze))
 
   await client.disconnect()
 

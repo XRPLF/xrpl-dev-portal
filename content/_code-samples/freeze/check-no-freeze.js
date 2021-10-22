@@ -3,7 +3,6 @@
 if (typeof module !== "undefined") {
   // gotta use var here because const/let are block-scoped to the if statement.
   var xrpl = require('xrpl')
-  var { AccountRootFlags } = require('xrpl/dist/npm/models/ledger');
 }
 
 
@@ -19,11 +18,12 @@ async function main() {
   const response = await client.request(
     {command: 'account_info', account: my_address })
   const settings = response.result
+  const lsfNoFreeze = xrpl.LedgerEntry.AccountRootFlags.lsfNoFreeze
 
   console.log('Got settings for address', my_address);
   console.log('No Freeze enabled?',
-    (settings.account_data.Flags & AccountRootFlags.lsfNoFreeze) 
-    === AccountRootFlags.lsfNoFreeze)
+    (settings.account_data.Flags & lsfNoFreeze) 
+    === lsfNoFreeze)
 
   await client.disconnect()
 
