@@ -365,11 +365,12 @@
   <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span>
     <span class="p">{</span><span class="nx">command</span><span class="o">:</span> <span class="s1">'account_info'</span><span class="p">,</span> <span class="nx">account</span><span class="o">:</span> <span class="nx">my_address</span> <span class="p">})</span>
   <span class="kd">const</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">result</span>
+  <span class="kd">const</span> <span class="nx">lsfGlobalFreeze</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">LedgerEntry</span><span class="p">.</span><span class="nx">AccountRootFlags</span><span class="p">.</span><span class="nx">lsfGlobalFreeze</span>
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Got settings for address'</span><span class="p">,</span> <span class="nx">my_address</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Global Freeze enabled?'</span><span class="p">,</span>
-              <span class="p">((</span><span class="nx">settings</span><span class="p">.</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Flags</span> <span class="o">&amp;</span> <span class="nx">AccountRootFlags</span><span class="p">.</span><span class="nx">lsfGlobalFreeze</span><span class="p">)</span> 
-              <span class="o">===</span> <span class="nx">AccountRootFlags</span><span class="p">.</span><span class="nx">lsfGlobalFreeze</span><span class="p">))</span>
+              <span class="p">((</span><span class="nx">settings</span><span class="p">.</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Flags</span> <span class="o">&amp;</span> <span class="nx">lsfGlobalFreeze</span><span class="p">)</span> 
+              <span class="o">===</span> <span class="nx">lsfGlobalFreeze</span><span class="p">))</span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">Reques</span><span class="kc">t</span><span class="p">:</span>
