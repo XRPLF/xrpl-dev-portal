@@ -89,8 +89,8 @@ $(document).ready(() => {
     complete_step("Choose Trust Line")
   })
 
-  // 4. Send TrustSet to freeze ------------------------------------------------
-  // also 7. Send TrustSet to end the freeze
+  // 4. Send TrustSet to Freeze ------------------------------------------------
+  // also 7. Send TrustSet to End the Freeze
   $(".send-trustset").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     const address = get_address(event)
@@ -128,7 +128,8 @@ $(document).ready(() => {
     }
   })
 
-  // 5. Wait for Validation is handled by the snippet
+  // 5. Wait for Validation: handled by interactive-tutorial.js and by the
+  // generic full send in the previous step. -----------------------------------
 
   // 6. Check Trust Line Freeze Status
   $("#confirm-settings").click( async (event) => {
@@ -171,6 +172,6 @@ $(document).ready(() => {
     show_error(block, `Couldn't find a ${CURRENCY_TO_FREEZE} line between ${address} and ${peer.address}`)
   })
 
-  // 7. Send TrustSet to End the Freeze is covered by the shared handler above
+  // 7. Send TrustSet to End the Freeze: same handler as step 4
 
 })

@@ -1,7 +1,7 @@
 // Dependencies for Node.js.
 // In browsers, use a <script> tag instead.
 if (typeof module !== "undefined") {
-  // gotta use var here because const/let are block-scoped to the if statement.
+  // Use var here because const/let are block-scoped to the if statement.
   var xrpl = require('xrpl')
 }
 

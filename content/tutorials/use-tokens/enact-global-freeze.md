@@ -2,7 +2,7 @@
 html: enact-global-freeze.html
 parent: use-tokens.html
 blurb: Freeze all tokens issued by your address.
-embed_ripple_lib: true
+embed_xrpl_js: true
 filters:
   - interactive_steps
   - include_code
@@ -46,7 +46,7 @@ For this tutorial, you can get credentials from the following interface:
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network
@@ -61,12 +61,12 @@ _JavaScript_
 
 <!-- MULTICODE_BLOCK_END -->
 
-For this tutorial, you can connect directly from your browser by pressing the following button:
+For this tutorial, click the following button to connect:
 
 {% include '_snippets/interactive-tutorials/connect-step.md' %}
 
 
-### {{n.next()}}. Send AccountSet Transaction to Enact the Freeze
+### {{n.next()}}. Send AccountSet Transaction to Start the Freeze
 
 To enable the Global Freeze setting, send an [AccountSet transaction][] with a `SetFlag` field containing the [`asfGlobalFreeze` value (`7`)](accountset.html#accountset-flags). To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
 
@@ -101,7 +101,7 @@ _WebSocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-{{ start_step("Send AccountSet") }}
+{{ start_step("Send AccountSet (Start Freeze)") }}
 <button class="btn btn-primary previous-steps-required send-accountset" data-wait-step-name="Wait" data-action="start_freeze">Send AccountSet</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
@@ -225,7 +225,7 @@ _WebSocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-{{ start_step("End Freeze") }}
+{{ start_step("Send AccountSet (End Freeze)") }}
 <button class="btn btn-primary previous-steps-required send-accountset" data-wait-step-name="Wait (again)" data-action="end_freeze">Send AccountSet (end the freeze)</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>

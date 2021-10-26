@@ -3777,7 +3777,7 @@ pages:
         html: xrp-ledger-toml-checker.html
         parent: dev-tools.html
         template: page-toml-checker.html.jinja
-        embed_ripple_lib: true
+        embed_xrpl_js: true
         targets:
             - en
             - ja
@@ -3820,7 +3820,7 @@ pages:
         html: tx-sender.html
         parent: dev-tools.html
         template: page-tx-sender.html.jinja
-        embed_ripple_lib: true
+        embed_xrpl_js: true
         targets:
             - en
             - ja

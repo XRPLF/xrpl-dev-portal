@@ -2,7 +2,7 @@
 html: freeze-a-trust-line.html
 parent: use-tokens.html
 blurb: Freeze an individual holder of a token.
-embed_ripple_lib: true
+embed_xrpl_js: true
 filters:
   - interactive_steps
   - include_code
@@ -69,7 +69,7 @@ For purposes of this tutorial, use the following interface to connect and perfor
 
 ### {{n.next()}}. Choose Trust Line
 
-You can only freeze one trust line per transaction, so you need to know which one you want. A trust line is uniquely identified by these 3 things:
+You can only freeze one trust line per transaction, so you need to know which trust line you want. Each of your trust lines is uniquely identified by these 3 things:
 
 - Your own address.
 - The address of the account linked to yours via the trust line.
@@ -188,7 +188,7 @@ _WebSocket_
 <div class="output-area"></div>
 {{ end_step() }}
 
-**Note:** If you want to freeze multiple trust lines in different currencies with the same counterparty, repeat this step for each one, choosing a different currency code each time. It is possible to send several transactions in a single ledger if you use different [sequence numbers](basic-data-types.html#account-sequence) for each. <!--{# TODO: link rapid/batch submission guidelines when https://github.com/XRPLF/xrpl-dev-portal/issues/1025 is done #}-->
+**Note:** If you want to freeze multiple trust lines in different currencies with the same counterparty, repeat this step for each trust line. It is possible to send several transactions in a single ledger if you use a different [sequence number](basic-data-types.html#account-sequence) for each transaction. <!--{# TODO: link rapid/batch submission guidelines when https://github.com/XRPLF/xrpl-dev-portal/issues/1025 is done #}-->
 
 
 ### {{n.next()}}. Wait for Validation

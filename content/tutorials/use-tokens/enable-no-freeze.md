@@ -2,7 +2,7 @@
 html: enable-no-freeze.html
 parent: use-tokens.html
 blurb: Permanently give up your account's ability to freeze tokens it issues.
-embed_ripple_lib: true
+embed_xrpl_js: true
 filters:
   - interactive_steps
   - include_code
@@ -43,7 +43,7 @@ For this tutorial, you can get credentials from the following interface:
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network
@@ -58,7 +58,7 @@ _JavaScript_
 
 <!-- MULTICODE_BLOCK_END -->
 
-For this tutorial, you can connect directly from your browser by pressing the following button:
+For this tutorial, click the following button to connect:
 
 {% include '_snippets/interactive-tutorials/connect-step.md' %}
 

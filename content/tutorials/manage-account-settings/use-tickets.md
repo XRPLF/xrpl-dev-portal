@@ -2,7 +2,7 @@
 html: use-tickets.html
 parent: manage-account-settings.html
 blurb: Use Tickets to send a transaction outside of normal Sequence order.
-embed_ripple_lib: true
+embed_xrpl_js: true
 status: not_enabled
 filters:
   - interactive_steps
@@ -46,7 +46,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
 
 
 ### {{n.next()}}. Connect to Network
@@ -63,7 +63,7 @@ _JavaScript_
 
 **Note:** The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
 
-For this tutorial, you can connect directly from your browser by pressing the following button:
+For this tutorial, click the following button to connect:
 
 {% include '_snippets/interactive-tutorials/connect-step.md' %}
 
