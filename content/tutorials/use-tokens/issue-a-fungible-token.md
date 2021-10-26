@@ -2,7 +2,7 @@
 html: issue-a-fungible-token.html
 parent: use-tokens.html
 blurb: Create your own token and issue it on the XRP Ledger Testnet.
-embed_ripple_lib: true
+embed_xrpl_js: true
 filters:
   - interactive_steps
   - include_code
@@ -60,7 +60,7 @@ In this tutorial, the hot address receives the tokens you issue from the cold ad
 
 **Caution:** Ripple provides the [Testnet and Devnet](parallel-networks.html) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
 
-When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network
@@ -86,7 +86,7 @@ _Java_
 
 **Note:** The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
 
-For this tutorial, you can connect directly from your browser by pressing the following button:
+For this tutorial, click the following button to connect:
 
 {% include '_snippets/interactive-tutorials/connect-step.md' %}
 

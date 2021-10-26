@@ -51,12 +51,12 @@ For privacy reasons, the memo does not and MUST NOT include personally identifyi
 
 An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page like any other page. However, you need to add the following pieces to make the interactive stuff work:
 
-1. Set page properties, either in the config file or the page's frontmatter. The `interactive_steps` Dactyl filter gives you access to the functions you use to demarcate the interactive bits in your markdown file. The `include_code` filter is optional, but can be useful for pulling code samples out of another file. Most of the time, you'll also want to include xrpl.js and its dependencies as well; you can have the templates handle that for you by setting the field `embed_ripple_lib: true`. For example:
+1. Set page properties, either in the config file or the page's frontmatter. The `interactive_steps` Dactyl filter gives you access to the functions you use to demarcate the interactive bits in your markdown file. The `include_code` filter is optional, but can be useful for pulling code samples out of another file. Most of the time, you'll also want to include xrpl.js and its dependencies as well; you can have the templates handle that for you by setting the field `embed_xrpl_js: true`. For example:
 
         html: use-tickets.html
         parent: manage-account-settings.html
         blurb: Use Tickets to send a transaction outside of normal Sequence order.
-        embed_ripple_lib: true
+        embed_xrpl_js: true
         filters:
             - interactive_steps
             - include_code

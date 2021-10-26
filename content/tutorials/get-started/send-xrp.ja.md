@@ -3,7 +3,7 @@ html: send-xrp.html
 parent: get-started.html
 blurb: Test Netを使用してXRPの送金をテストします。
 cta_text: XRPを送金しよう
-embed_ripple_lib: true
+embed_xrpl_js: true
 filters:
     - interactive_steps
     - include_code

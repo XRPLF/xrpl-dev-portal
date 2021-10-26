@@ -2,7 +2,9 @@
 html: enable-no-freeze.html
 parent: use-tokens.html
 blurb: Permanently give up your account's ability to freeze tokens it issues.
+embed_xrpl_js: true
 filters:
+  - interactive_steps
   - include_code
 labels:
   - Tokens
@@ -17,6 +19,9 @@ If you [issue tokens](issued-currencies.html) in the XRP Ledger, can enable the 
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
     - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
 - You don't need to have [issued a token](issue-a-fungible-token.html) in the XRP Ledger to enable No Freeze, but the main reason you would do so is if you intend to or have already issued such a token.
+
+<!-- Source for this specific tutorial's interactive bits: -->
+<script type="application/javascript" src="assets/js/tutorials/enable-no-freeze.js"></script>
 
 
 ## Example Code
@@ -34,6 +39,13 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 **Caution:** You cannot use a [regular key pair](cryptographic-keys.html) or [multi-signing](multi-signing.html) to enable the No Freeze setting.
 
+For this tutorial, you can get credentials from the following interface:
+
+{% include '_snippets/interactive-tutorials/generate-step.md' %}
+
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+
+
 ### {{n.next()}}. Connect to the Network
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
@@ -46,6 +58,10 @@ _JavaScript_
 
 <!-- MULTICODE_BLOCK_END -->
 
+For this tutorial, click the following button to connect:
+
+{% include '_snippets/interactive-tutorials/connect-step.md' %}
+
 
 ### {{n.next()}}. Send AccountSet Transaction
 
@@ -57,7 +73,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-no-freeze.js", start_with="// Submit an AccountSet transaction", end_before="// Done", language="js") }}
+{{ include_code("_code-samples/freeze/js/set-no-freeze.js", start_with="// Submit an AccountSet transaction", end_before="// Done", language="js") }}
 
 _WebSocket_
 
@@ -81,10 +97,21 @@ _WebSocket_
 <!-- MULTICODE_BLOCK_END -->
 
 
+{{ start_step("Send AccountSet") }}
+<button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="output-area"></div>
+{{ end_step() }}
+
+
+
 ### {{n.next()}}. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
 
+{{ start_step("Wait") }}
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{{ end_step() }}
 
 
 ### {{n.next()}}. Confirm Account Settings
@@ -95,7 +122,7 @@ After the transaction is validated, you can check your account's settings to con
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/check-no-freeze.js", start_with="// Request account info", end_before="await client.disconnect()", language="js") }}
+{{ include_code("_code-samples/freeze/js/check-no-freeze.js", start_with="// Request account info", end_before="await client.disconnect()", language="js") }}
 
 _WebSocket_
 
@@ -141,6 +168,12 @@ Response:
 ```
 
 <!-- MULTICODE_BLOCK_END -->
+
+{{ start_step("Confirm Settings") }}
+<button id="confirm-settings" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Confirm Settings</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="output-area"></div>
+{{ end_step() }}
 
 
 ## See Also

@@ -115,7 +115,7 @@ At a minimum, most pages should have `html`, `parent` and `blurb` fields (plus t
 | `skip_spell_checker` | Boolean          | Use `true` to make the Dactyl's style checker skip spell-checking this page. |
 | `filters`            | Array of Strings | A list of additional filters to use on this page. [Filters](https://github.com/ripple/dactyl/blob/master/README.md#filters) are Python scripts that provide additional pre- or post-processing of page contents. |
 | `canonical_url`      | String           | Provides the canonical URL for a page that takes query parameters. Search engines and other tools may use this when linking to the page. |
-| `embed_ripple_lib`   | Boolean          | Use `true` to have the latest version of ripple-lib and its dependencies loaded on the page. |
+| `embed_xrpl_js`      | Boolean          | Use `true` to have the latest version of [xrpl.js](https://js.xrpl.org) loaded on the page. |
 
 ### Conventions
 

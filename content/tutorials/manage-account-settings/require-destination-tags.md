@@ -2,7 +2,7 @@
 html: require-destination-tags.html
 parent: manage-account-settings.html
 blurb: Require users to specify a destination tag when sending to your address.
-embed_ripple_lib: true
+embed_xrpl_js: true
 filters:
   - interactive_steps
   - include_code
@@ -37,7 +37,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
 
 ### {{n.next()}}. Connect to the Network
 
@@ -45,7 +45,7 @@ You must be connected to the network to submit transactions to it. The following
 
 {{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
-For this tutorial, you can connect directly from your browser by pressing the following button:
+For this tutorial, click the following button to connect:
 
 {% include '_snippets/interactive-tutorials/connect-step.md' %}
 
@@ -94,7 +94,7 @@ _JavaScript_
 
 
 {{ start_step("Confirm Settings") }}
-<button id="confirm-settings" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Confirm Settings</button>
+<button id="confirm-settings" class="btn btn-primary previous-steps-required">Confirm Settings</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
