@@ -14,11 +14,11 @@ Found 10 possible spelling errors:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: lapps, apps, capps
+  xapps: capps, apps, lapps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iob, iow, ios
-  io2: iob, iow, iom
+  io2: iou, ion, iod
+  io1: ios, iow, ioc
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -267,7 +267,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 744
-  Characters: 4,648
+  Characters: 4,647
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:

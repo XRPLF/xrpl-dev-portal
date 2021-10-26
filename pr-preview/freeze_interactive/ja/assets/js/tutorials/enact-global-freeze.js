@@ -3,8 +3,8 @@
 // The code for these steps is handled by interactive-tutorial.js
 $(document).ready(() => {
 
-  // 3. Send AccountSet --------------------------------------------------------
-  // also 6. Send AccountSet to end the freeze.
+  // 3. Send AccountSet to Start the Freeze ------------------------------------
+  // also 6. Send AccountSet to End the Freeze.
   $(".send-accountset").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     const address = get_address(event)
@@ -17,10 +17,10 @@ $(document).ready(() => {
     let step_name
     if ($(event.target).data("action") === "start_freeze") {
       astx["SetFlag"] = xrpl.AccountSetAsfFlags.asfGlobalFreeze
-      step_name = "Send AccountSet"
+      step_name = "Send AccountSet (Start Freeze)"
     } else if ($(event.target).data("action") === "end_freeze") {
       astx["ClearFlag"] = xrpl.AccountSetAsfFlags.asfGlobalFreeze
-      step_name = "End Freeze"
+      step_name = "Send AccountSet (End Freeze)"
     } else {
       show_error(block, "There was an error with this tutorial: the button clicked must have data-action defined.")
     }
@@ -60,10 +60,10 @@ $(document).ready(() => {
         <pre><code>${pretty_print(flags)}</code></pre>`)
     if (flags.lsfGlobalFreeze) {
       block.find(".output-area").append(`<p><i class="fa fa-check-circle"></i>
-          Global Freeze is enabled.</p>`)
+          Global Freeze flag is enabled.</p>`)
     } else {
       block.find(".output-area").append(`<p><i class="fa fa-times-circle"></i>
-          Global Freeze Tag is DISABLED.</p>`)
+          Global Freeze flag is DISABLED.</p>`)
     }
 
     complete_step("Confirm Settings")
@@ -73,7 +73,7 @@ $(document).ready(() => {
 
   // 7. Wait for Validation: handled by generic full send as before.
 
-  // 8. Confirm Account Settings (freeze ended)
+  // 8. Confirm Account Settings (Freeze Ended)
   $("#confirm-settings-end").click( async (event) => {
     const block = $(event.target).closest(".interactive-block")
     const address = get_address(event)

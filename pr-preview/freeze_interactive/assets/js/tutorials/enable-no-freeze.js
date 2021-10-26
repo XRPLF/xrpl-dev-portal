@@ -47,10 +47,10 @@ $(document).ready(() => {
         <pre><code>${pretty_print(flags)}</code></pre>`)
     if (flags.lsfNoFreeze) {
       block.find(".output-area").append(`<p><i class="fa fa-check-circle"></i>
-          No Freeze is enabled.</p>`)
+          No Freeze flag is enabled.</p>`)
     } else {
       block.find(".output-area").append(`<p><i class="fa fa-times-circle"></i>
-          No Freeze Tag is DISABLED.</p>`)
+          No Freeze flag is DISABLED.</p>`)
     }
 
     complete_step("Confirm Settings")
