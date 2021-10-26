@@ -5,7 +5,7 @@
 async function main() {
 
   // Define the network client
-  const client = new xrpl.Client("https://s.altnet.rippletest.net:51234/")
+  const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233")
   await client.connect()
 
   // ... custom code goes here
