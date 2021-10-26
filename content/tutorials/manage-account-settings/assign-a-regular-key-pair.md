@@ -22,9 +22,15 @@ This tutorial walks through the steps required to assign a regular key pair to y
 
 ## 1. Generate a Key Pair
 
+Generate a key pair that you'll assign to your account as a regular key pair.
+
+You can generate the key pair using one the following methods.
+
+### The wallet_propose method
+
 Use the [wallet_propose method][] to generate the key pair that you'll assign to your account as a regular key pair.
 
-### Request Format
+#### Request Format
 
 An example of the request format:
 
@@ -56,7 +62,7 @@ rippled wallet_propose
 <!-- MULTICODE_BLOCK_END -->
 
 
-### Response Format
+#### Response Format
 
 An example of a successful response:
 
@@ -115,6 +121,32 @@ An example of a successful response:
 ```
 
 <!-- MULTICODE_BLOCK_END -->
+
+### Python using xrpl-py
+
+````python
+keypair = xrpl.wallet.Wallet.create()
+print("seed:", keypair.seed)
+print("classic address:", keypair.classic_address)
+````
+
+### JavaScript using xrpl-js
+
+````javascript
+const keypair = new xrpl.Wallet()
+console.log("seed:", keypair.seed)
+console.log("classic address:", keypair.classicAddress)
+````
+
+### Java using xrpl4j
+
+````java
+WalletFactory walletFactory = DefaultWalletFactory.getInstance();
+Wallet keypair = walletFactory.randomWallet(true).wallet();
+System.out.println(keypair);
+System.out.println(keypair.privateKey().get());
+````
+
 
 In the next step, you'll use the `account_id` from this response to assign the key pair as a regular key pair to your account. Also, save the `master_seed` value somewhere securely. (Everything else, you can forget about.)
 
