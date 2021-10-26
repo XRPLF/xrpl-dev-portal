@@ -73,7 +73,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-no-freeze.js", start_with="// Submit an AccountSet transaction", end_before="// Done", language="js") }}
+{{ include_code("_code-samples/freeze/js/set-no-freeze.js", start_with="// Submit an AccountSet transaction", end_before="// Done", language="js") }}
 
 _WebSocket_
 
@@ -122,7 +122,7 @@ After the transaction is validated, you can check your account's settings to con
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/check-no-freeze.js", start_with="// Request account info", end_before="await client.disconnect()", language="js") }}
+{{ include_code("_code-samples/freeze/js/check-no-freeze.js", start_with="// Request account info", end_before="await client.disconnect()", language="js") }}
 
 _WebSocket_
 

@@ -78,7 +78,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-global-freeze.js", language="js", start_with="// Prepare an AccountSet", end_before="// Investigate") }}
+{{ include_code("_code-samples/freeze/js/set-global-freeze.js", language="js", start_with="// Prepare an AccountSet", end_before="// Investigate") }}
 
 _WebSocket_
 
@@ -125,7 +125,7 @@ After the transaction is validated, you can check your issuing account's setting
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/check-global-freeze.js", language="js", start_with="// Request account info", end_before="await client.disconnect()") }}
+{{ include_code("_code-samples/freeze/js/check-global-freeze.js", language="js", start_with="// Request account info", end_before="await client.disconnect()") }}
 
 _WebSocket_
 
@@ -202,7 +202,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/set-global-freeze.js", language="js", start_with="// Now we disable", end_before="// Global freeze disabled") }}
+{{ include_code("_code-samples/freeze/js/set-global-freeze.js", language="js", start_with="// Now we disable", end_before="// Global freeze disabled") }}
 
 _WebSocket_
 

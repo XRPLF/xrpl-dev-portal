@@ -14,10 +14,13 @@ $(document).ready(() => {
       "TransactionType": "AccountSet",
       "Account": address
     }
+    let step_name
     if ($(event.target).data("action") === "start_freeze") {
       astx["SetFlag"] = xrpl.AccountSetAsfFlags.asfGlobalFreeze
+      step_name = "Send AccountSet"
     } else if ($(event.target).data("action") === "end_freeze") {
       astx["ClearFlag"] = xrpl.AccountSetAsfFlags.asfGlobalFreeze
+      step_name = "End Freeze"
     } else {
       show_error(block, "There was an error with this tutorial: the button clicked must have data-action defined.")
     }
@@ -25,7 +28,7 @@ $(document).ready(() => {
     try {
       block.find(".loader").show()
       await generic_full_send(event, astx)
-      complete_step("Send AccountSet")
+      complete_step(step_name)
     } catch(err) {
       block.find(".loader").hide()
       show_error(block, err)

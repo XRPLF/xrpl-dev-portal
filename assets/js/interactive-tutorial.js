@@ -255,6 +255,7 @@ function get_wallet(event) {
     const block = $(event.target).closest(".interactive-block")
     if (!block.length) {return}
     show_error(block, tl("Can't use the example secret here. Check that the previous steps were completed successfully."))
+    return
   }
   return xrpl.Wallet.fromSeed(secret)
 }
@@ -284,6 +285,16 @@ async function call_faucet(faucet_url, destination) {
   }
   return data
 }
+
+/**
+ * Tutorials' scripts should push functions to this array to have them run
+ * automatically after connecting to the network. The scopes don't work out
+ * right to use api.on("connect", callback) directly from the tutorials' unique
+ * scripts because the api instance (specific to the network) is instantiated
+ * by the setup_connect_step() in this file, below.
+ */
+window.after_connect = window.after_connect || [];
+
 
 /**
  * To be used with _snippets/interactive-tutorials/connect-step.md
@@ -322,10 +333,14 @@ function setup_connect_step() {
 
     disable_followup_steps()
   })
-  $("#connect-button").click(() => {
+  $("#connect-button").click(async (event) => {
     $("#connection-status").text( tl("Connecting...") )
     $("#loader-connect").show()
-    api.connect()
+    await api.connect()
+
+    for (const fn of after_connect) {
+      fn()
+    }
   })
 }
 
