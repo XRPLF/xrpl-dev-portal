@@ -3721,7 +3721,22 @@ pages:
         targets:
             - ja
 
+# Code Samples page (final location TBD)
+    -   name: Code Samples
+        html: code-samples.html
+        parent: docs.html
+        template: page-code-samples.html.jinja
+        sidebar: left_only
+        filters:
+            - code_samples
+        top_nav_grouping: Online Tools
+        blurb: Browse sample code for building common use cases on the XRP Ledger.
+        targets:
+            - en
+            - ja
+
 # Dev Tools --------------------------------------------------------------------
+
     -   md: dev-tools/dev-tools.md
         html: dev-tools.html
         parent: docs.html
