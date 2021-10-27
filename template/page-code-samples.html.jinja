@@ -45,7 +45,7 @@
     } %}
 
     {% for card in code_samples %}
-      <a class="card" href="{{target.prefix}}{{card.href}}">
+      <a class="card" href="{{target.github_forkurl}}/tree/{{target.github_branch}}/{{card.href}}">
         <div class="card-header">
         {% for lang in card.langs %}
           <span class="circled-logo"><img src="{{lang_icons[lang]}}" /></span>
