@@ -13,7 +13,7 @@ import re
 from bs4 import BeautifulSoup
 from markdown import markdown
 
-cs_dir = "content/_code-samples/" #TODO: make a configurable field
+cs_dir = "content/_code-samples/"
 skip_dirs = [
     "node_modules",
     ".git",
@@ -48,7 +48,7 @@ def all_code_samples():
 
         cs = {
             "path": dirpath,
-            "langs": dirnames,
+            "langs": sorted(list(set(["http" if d in ("websocket", "json-rpc") else d for d in dirnames]))),
         }
 
         if "README.md" in filenames:
@@ -62,7 +62,10 @@ def all_code_samples():
             else:
                 cs["title"] = to_title_case(os.path.basename(dirpath))
             p = soup.find("p") # first paragraph defines the blurb
-            cs["description"] = p.get_text()
+            if p:
+                cs["description"] = p.get_text()
+            else:
+                cs["description"] = ""
 
         else:
             cs["title"] = to_title_case(os.path.basename(dirpath))
@@ -70,7 +73,8 @@ def all_code_samples():
         cs["href"] = dirpath
         cses.append(cs)
 
-    return cses
+    # Current sort value: alphabetical by title.
+    return sorted(cses, key=lambda x: x["title"])
 
 export = {
     "all_code_samples": all_code_samples,
