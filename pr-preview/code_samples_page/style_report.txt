@@ -7,8 +7,8 @@ Found 10 possible spelling errors:
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerquorum: 
   signerweight: 
+  signerquorum: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
@@ -17,8 +17,8 @@ Found 10 possible spelling errors:
   xapps: apps, capps, lapps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iof, io, iot
-  io2: ior, iot, iop
+  io1: ior, ios, io-
+  io2: iou, o2, iob
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
