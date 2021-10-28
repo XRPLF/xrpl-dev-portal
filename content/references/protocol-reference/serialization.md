@@ -45,13 +45,13 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 **JSON:**
 
 ```json
-{% include '_code-samples/tx-serialization/test-cases/tx1.json' %}
+{% include '_code-samples/tx-serialization/py/test-cases/tx1.json' %}
 ```
 
 **Binary (represented as hexadecimal):**
 
 ```text
-{% include '_code-samples/tx-serialization/test-cases/tx1-binary.txt' %}
+{% include '_code-samples/tx-serialization/py/test-cases/tx1-binary.txt' %}
 ```
 
 ## Sample Code
@@ -60,7 +60,7 @@ The serialization processes described here are implemented in multiple places an
 
 - In C++ [in the `rippled` code base](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp).
 - In JavaScript in the [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/) package.
-- In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/serialize.py).
+- In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/).
 
 Additionally, many [client libraries](client-libraries.html) provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.
 
