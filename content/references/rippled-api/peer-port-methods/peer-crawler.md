@@ -77,7 +77,7 @@ Response:
 ```json
 200 OK
 
-{% include '_code-samples/peer-crawler/crawl.json' %}
+{% include '_api-examples/peer-crawler/crawl.json' %}
 ```
 
 

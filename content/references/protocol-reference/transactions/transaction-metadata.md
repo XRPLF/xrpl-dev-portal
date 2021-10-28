@@ -20,7 +20,7 @@ Some fields that may appear in transaction metadata include:
 The following JSON object shows the metadata for [a complex cross-currency payment](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B):
 
 ```json
-{% include '_code-samples/metadata/cross-currency-payment.json' %}
+{% include '_api-examples/metadata/cross-currency-payment.json' %}
 ```
 
 ## AffectedNodes

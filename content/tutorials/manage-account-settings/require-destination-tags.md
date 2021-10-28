@@ -59,7 +59,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/require-destination-tags/require-destination-tags.js", language="js", start_with="// Send AccountSet", end_before="// Confirm Account") }}
+{{ include_code("_code-samples/require-destination-tags/js/require-destination-tags.js", language="js", start_with="// Send AccountSet", end_before="// Confirm Account") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -88,7 +88,7 @@ After the transaction is validated, you can check your account's settings to con
 
 _JavaScript_
 
-{{ include_code("_code-samples/require-destination-tags/require-destination-tags.js", language="js", start_with="// Confirm Account", end_before="// End main()") }}
+{{ include_code("_code-samples/require-destination-tags/js/require-destination-tags.js", language="js", start_with="// Confirm Account", end_before="// End main()") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
