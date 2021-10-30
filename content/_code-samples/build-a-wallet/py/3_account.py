@@ -1,11 +1,11 @@
-# "Build a Wallet" tutorial, step 2: Watch ledger closes from a worker thread.
+# "Build a Wallet" tutorial, step 3: Take account input & show account info
 
 import xrpl
 import wx
 from threading import Thread
 import wx.lib.newevent
 
-# Set up an event type to pass info from the worker thread to the main thread
+# Set up event types to pass info from the worker thread to the main UI thread
 GotNewLedger, EVT_NEW_LEDGER = wx.lib.newevent.NewEvent()
 GotAccountInfo, EVT_ACCT_INFO = wx.lib.newevent.NewEvent()
 class XRPLMonitorThread(Thread):
@@ -99,7 +99,7 @@ class TWaXLFrame(wx.Frame):
             self.set_up_account(account_dialog.GetValue())
             account_dialog.Destroy()
         else:
-            # If the user presses Cancel, exit the app.
+            # If the user presses Cancel on the account entry, exit the app.
             exit(1)
 
         self.Bind(EVT_NEW_LEDGER, self.update_ledger)
@@ -112,7 +112,6 @@ class TWaXLFrame(wx.Frame):
         if xrpl.core.addresscodec.is_valid_xaddress(value):
             classic_address, dest_tag, test_network = xrpl.core.addresscodec.xaddress_to_classic_address(value)
             if test_network != self.test_network:
-                # TODO: handle network mismatch error better
                 print(f"X-address {value} is meant for a different network type"
                       f"than this client is connected to."
                       f"(Client is on: {'a test network' if self.test_network else 'Mainnet'})")
@@ -136,7 +135,6 @@ class TWaXLFrame(wx.Frame):
                 self.xaddress = self.wallet.get_xaddress(is_test=self.test_network)
                 self.classic_address = self.wallet.classic_address
             except Exception as e:
-                # TODO: handle invalid value better
                 print(e)
                 exit(1)
         self.st_classic_address.SetLabel(self.classic_address)
