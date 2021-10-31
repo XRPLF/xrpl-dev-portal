@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -220,7 +220,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/references/rippled-api/public-rippled-methods/transaction-methods/sign_for.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/references/rippled-api/admin-rippled-methods/signing-methods/sign_for.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -250,8 +250,8 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/transaction-methods.html">Transaction Methods</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/admin-rippled-methods.html">管理rippledメソッド</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/signing-methods.html">Signing Methods</a></li>
     <li class="active breadcrumb-item">sign_for</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
@@ -259,7 +259,7 @@
         <h1 id="sign_for">sign_for<a aria-hidden="true" class="hover_anchor" href="#sign_for"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>sign_for</code>コマンドは、<a href="multi-signing.html">マルチ署名済みトランザクション</a>の署名を1つ提供します。</p>
-<p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
+<p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server admin has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
 <!--_ -->
 <p>このコマンドを使用するには、<a href="known-amendments.html#multisign">MultiSign Amendment</a>が有効になっている必要があります。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
@@ -975,7 +975,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1195,6 +1195,21 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1854,7 +1869,19 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1927,13 +1954,13 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="true" aria-controls="tree_nav_group_4_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
         <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
   <div class="nav-item ">
 
@@ -2029,23 +2056,13 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="true" aria-controls="tree_nav_group_4_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
 
         <a class="nav-link" href="/ja/transaction-methods.html">Transaction Methods</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2215,13 +2232,13 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active-parent">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="true" aria-controls="tree_nav_group_4_3_3"></a>
 
         <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
+    <nav class="nav flex-column show " id="tree_nav_group_4_3_3">
       
   <div class="nav-item ">
 
@@ -2319,13 +2336,35 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
   </div>
 
       
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="true" aria-controls="tree_nav_group_4_3_3_4"></a>
+
+        <a class="nav-link" href="/ja/signing-methods.html">Signing Methods</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_4_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -2358,11 +2397,11 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>

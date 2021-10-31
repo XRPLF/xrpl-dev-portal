@@ -147,7 +147,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -216,7 +216,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/tutorials/manage-account-settings/offline-account-setup.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/tutorials/manage-account-settings/offline-account-setup.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -284,7 +284,7 @@
 <p>Software options for signing on the XRP Ledger include:</p>
 <ul>
 <li><a href="install-rippled.html">Install <code>rippled</code></a> from a package (<code>.deb</code> or <code>.rpm</code> depending on which Linux distribution you use) file, then <a href="rippled-server-modes.html">run it in stand-alone mode</a>.</li>
-<li>Install <a href="rippleapi-reference.html">ripple-lib</a> and its dependencies offline. The Yarn package manager, for example, has <a class="external-link" href="https://yarnpkg.com/blog/2016/11/24/offline-mirror/" target="_blank">recommended instructions for offline usage <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
+<li>Install <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a> (or another <a href="client-libraries.html">client library</a>) and its dependencies offline. The Yarn package manager, for example, has <a class="external-link" href="https://yarnpkg.com/blog/2016/11/24/offline-mirror/" target="_blank">recommended instructions for offline usage <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 <li>See also: <a href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
 </ul>
 <p>You may want to set up custom software to help construct transaction instructions on the offline machine. For example, your software may track what <a href="basic-data-types.html#account-sequence">sequence number</a> to use next, or contain preset templates for certain types of transactions you expect to send.</p>
@@ -986,7 +986,7 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="get-started-using-node-js.html">Get Started Using Node.js</a>
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1206,6 +1206,21 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1865,7 +1880,19 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -2047,16 +2074,6 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -2334,9 +2351,31 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
 
-        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -2369,11 +2408,11 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>

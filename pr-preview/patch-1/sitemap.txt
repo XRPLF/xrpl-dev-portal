@@ -78,6 +78,7 @@ https://xrpl.org/get-started.html
 https://xrpl.org/public-servers.html
 https://xrpl.org/get-started-using-python.html
 https://xrpl.org/get-started-using-java.html
+https://xrpl.org/get-started-using-javascript.html
 https://xrpl.org/get-started-using-node-js.html
 https://xrpl.org/get-started-with-rippleapi-for-javascript.html
 https://xrpl.org/get-started-using-http-websocket-apis.html
@@ -118,6 +119,9 @@ https://xrpl.org/look-up-checks-by-sender.html
 https://xrpl.org/look-up-checks-by-recipient.html
 https://xrpl.org/use-tokens.html
 https://xrpl.org/issue-a-fungible-token.html
+https://xrpl.org/enable-no-freeze.html
+https://xrpl.org/enact-global-freeze.html
+https://xrpl.org/freeze-a-trust-line.html
 https://xrpl.org/xrp-ledger-businesses.html
 https://xrpl.org/list-xrp-as-an-exchange.html
 https://xrpl.org/list-your-exchange-on-xrp-charts.html
@@ -229,6 +233,8 @@ https://xrpl.org/modifying-the-ledger.html
 https://xrpl.org/serialization.html
 https://xrpl.org/client-libraries.html
 https://xrpl.org/rippleapi-reference.html
+https://xrpl.org/https://js.xrpl.org/
+https://xrpl.org/xrpljs2-migration-guide.html
 https://xrpl.org/https://xrpl-py.readthedocs.io/
 https://xrpl.org/https://javadoc.io/doc/org.xrpl/
 https://xrpl.org/https://www.rubydoc.info/gems/xrbp
@@ -258,8 +264,6 @@ https://xrpl.org/ledger_current.html
 https://xrpl.org/ledger_data.html
 https://xrpl.org/ledger_entry.html
 https://xrpl.org/transaction-methods.html
-https://xrpl.org/sign.html
-https://xrpl.org/sign_for.html
 https://xrpl.org/submit.html
 https://xrpl.org/submit_multisigned.html
 https://xrpl.org/transaction_entry.html
@@ -301,6 +305,9 @@ https://xrpl.org/server-control-methods.html
 https://xrpl.org/ledger_accept.html
 https://xrpl.org/stop.html
 https://xrpl.org/validation_seed.html
+https://xrpl.org/signing-methods.html
+https://xrpl.org/sign.html
+https://xrpl.org/sign_for.html
 https://xrpl.org/peer-management-methods.html
 https://xrpl.org/connect.html
 https://xrpl.org/peer_reservations_add.html

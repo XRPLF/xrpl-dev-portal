@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -220,7 +220,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/tutorials/get-started/send-xrp.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/tutorials/get-started/send-xrp.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -237,8 +237,8 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#xrpの送金">XRPの送金</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#前提条件">前提条件</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#test-netでの送金">Test Netでの送金</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#1-test-netサーバーへの接続">1. Test Netサーバーへの接続</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#testnetでの送金">Testnetでの送金</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#1-testnetサーバーへの接続">1. Testnetサーバーへの接続</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#2-トランザクションの準備">2. トランザクションの準備</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#3-トランザクションの指示への署名">3. トランザクションの指示への署名</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#4-署名済みブロブの送信">4. 署名済みブロブの送信</a></li>
@@ -267,16 +267,16 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="xrpの送金">XRPの送金<a aria-hidden="true" class="hover_anchor" href="#xrpの送金"><i class="fa fa-link"></i></a></h1>
-<p>このチュートリアルでは、RippleAPI for JavaScriptを使用してシンプルなXRP送金を行う方法について説明します。まずは、XRP Test Netを使用してプロセスを順に進めます。次に、そのプロセスと、本番で同様の処理を行う場合に発生する追加要件とを比較します。</p>
+<p>このチュートリアルでは、xrpl.jsを使用してシンプルなXRP送金を行う方法について説明します。まずは、XRP Testnetを使用してプロセスを順に進めます。次に、そのプロセスと、本番で同様の処理を行う場合に発生する追加要件とを比較します。</p>
 <h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
 <!-- このチュートリアルのインタラクティブ部分のソースコード： -->
 <script src="assets/js/tutorials/send-xrp.js" type="application/javascript"></script>
 <ul>
 <li>
-<p>このページでは、ripple-lib（RippleAPI）ライブラリーバージョン1.8.2を使用するJavaScriptの例を紹介します。<a href="get-started-with-rippleapi-for-javascript.html">RippleAPI入門ガイド</a>に、RippleAPIを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。</p>
+<p>このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。<a href="get-started-using-javascript.html">xrpl.js入門ガイド</a>に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。</p>
 </li>
 <li>
-<p>XRP Ledgerでトランザクションを送信するには、まずアドレスと秘密鍵、そしていくらかのXRPが必要となります。次のインターフェイスを使用して、XRP Test NetにあるアドレスとTest Net XRPを入手できます。</p>
+<p>XRP Ledgerでトランザクションを送信するには、まずアドレスと秘密鍵、そしていくらかのXRPが必要となります。次のインターフェイスを使用して、XRP Test NetにあるアドレスとTestnet XRPを入手できます。</p>
 </li>
 </ul>
 <div class="interactive-block" data-stepnumber="1" data-totalsteps="7" id="interactive-generate">
@@ -293,14 +293,42 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <p class="devportal-callout 注意"><strong>注意:</strong> Rippleは<a href="parallel-networks.html">TestnetとDevnet</a>をテストの目的でのみ運用しており、その状態とすべての残高を定期的にリセットしています。予防措置として、Testnet、DevnetとMainnetで同じアドレスを使用<strong>しない</strong>ことをお勧めします。</p>
-<h2 id="test-netでの送金">Test Netでの送金<a aria-hidden="true" class="hover_anchor" href="#test-netでの送金"><i class="fa fa-link"></i></a></h2>
-<h3 id="1-test-netサーバーへの接続">1. Test Netサーバーへの接続<a aria-hidden="true" class="hover_anchor" href="#1-test-netサーバーへの接続"><i class="fa fa-link"></i></a></h3>
+<h2 id="testnetでの送金">Testnetでの送金<a aria-hidden="true" class="hover_anchor" href="#testnetでの送金"><i class="fa fa-link"></i></a></h2>
+<h3 id="1-testnetサーバーへの接続">1. Testnetサーバーへの接続<a aria-hidden="true" class="hover_anchor" href="#1-testnetサーバーへの接続"><i class="fa fa-link"></i></a></h3>
 <p>必須の自動入力可能フィールドに入力されるようにするために、ripple-libを、アカウントの現在のステータスと共有レジャー自体を取得できるサーバーに接続する必要があります。（セキュリティを高めるために、トランザクションの署名はオフライン中に行うことを推奨します。ただしその場合は、自動入力可能フィールドに手動で入力する必要があります。）トランザクションの送信先となるネットワークに接続する必要があります。</p>
-<p>以下のサンプルコードでは、新しいRippleAPIインスタンスを作成し、Rippleが運用している公開XRP Test Netサーバーに接続します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="nx">ripple</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span>
-<span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
-</code></pre></div>
+<p>以下のサンプルコードでは公開XRP Testnetサーバーに接続します。</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="python" href="#code-0-1">Python</a></li><li><a class="java" href="#code-0-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<span class="c1">// const xrpl = require('xrpl')</span>
+
+<span class="c1">// Wrap code in an async function so we can use await</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">// Define the network client</span>
+  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+
+  <span class="c1">// ... custom code goes here</span>
+
+  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1"># Connect ----------------------------------------------------------------------</span>
+<span class="kn">import</span> <span class="nn">xrpl</span>
+<span class="n">testnet_url</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234"</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Connect --------------------------------------------------------------------</span>
+<span class="n">HttpUrl</span> <span class="n">rippledUrl</span> <span class="o">=</span> <span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span>
+<span class="n">XrplClient</span> <span class="n">xrplClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
 <p>このチュートリアルでは、以下のボタンをクリックすることでブラウザーから直接接続できます。</p>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="2" data-totalsteps="7" id="interactive-connect">
 <div class="interactive-block-inner">
@@ -320,7 +348,7 @@
 </div>
 <h3 id="2-トランザクションの準備">2. トランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#2-トランザクションの準備"><i class="fa fa-link"></i></a></h3>
 <p>通常は、XRP LedgerトランザクションをオブジェクトとしてJSON<a href="transaction-formats.html">トランザクションフォーマット</a>で作成します。以下の例に、必要最小限の送金仕様を示します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
   <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
   <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
   <span class="nt">"Amount"</span><span class="p">:</span> <span class="s2">"2000000"</span><span class="p">,</span>
@@ -334,27 +362,71 @@
 <li>XRPを受け取るアドレス（<code>"Destination"</code>）。このアドレスは送信元アドレスと同じものではいけません。</li>
 <li>送金するXRP額（<code>"Amount"</code>）。通常、XRPの「drop数」を示す整数として指定します。1,000,000ドロップは1 XRPです。</li>
 </ul>
-<p>技術上、一部の追加のフィールドは実行可能なトランザクションに含める必要があり、また、省略可能なフィールドでも、<code>LastLedgerSequence</code>などは含めることを強く推奨します。<a href="rippleapi-reference.html#preparetransaction"><code>prepareTransaction()</code>メソッド</a>は、トランザクションの残りのフィールドに適切なデフォルトを自動的に入力します。上記の送金を準備する際の例を示します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Continuing after connecting to the API</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">doPrepare</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span>
-  <span class="kd">const</span> <span class="nx">preparedTx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareTransaction</span><span class="p">({</span>
+<p>技術上、一部の追加のフィールドは実行可能なトランザクションに含める必要があり、また、省略可能なフィールドでも、<code>LastLedgerSequence</code>などは含めることを強く推奨します。<a class="external-link" href="https://js.xrpl.org/classes/Client.html#autofill" target="_blank"><code>autofill()</code>メソッド <i aria-hidden="true" class="fa fa-external-link"></i></a>は、トランザクションの残りのフィールドに適切なデフォルトを自動的に入力します。上記の送金を準備する際の例を示します。</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="python" href="#code-1-1">Python</a></li><li><a class="java" href="#code-1-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Prepare transaction -------------------------------------------------------</span>
+  <span class="kd">const</span> <span class="nx">prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
     <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">sender</span><span class="p">,</span>
-    <span class="s2">"Amount"</span><span class="o">:</span> <span class="nx">api</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="s2">"22"</span><span class="p">),</span> <span class="c1">// Same as "Amount": "22000000"</span>
-    <span class="s2">"Destination"</span><span class="o">:</span> <span class="s2">"rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"</span>
-  <span class="p">},</span> <span class="p">{</span>
-    <span class="c1">// Expire this transaction if it doesn't execute within ~5 minutes:</span>
-    <span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span> <span class="mf">75</span>
+    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+    <span class="s2">"Amount"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="s2">"22"</span><span class="p">),</span>
+    <span class="s2">"Destination"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span>
   <span class="p">})</span>
-  <span class="kd">const</span> <span class="nx">maxLedgerVersion</span> <span class="o">=</span> <span class="nx">preparedTx</span><span class="p">.</span><span class="nx">instructions</span><span class="p">.</span><span class="nx">maxLedgerVersion</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"準備されたトランザクション指示："</span><span class="p">,</span> <span class="nx">preparedTx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"トランザクションコスト："</span><span class="p">,</span> <span class="nx">preparedTx</span><span class="p">.</span><span class="nx">instructions</span><span class="p">.</span><span class="nx">fee</span><span class="p">,</span> <span class="s2">"XRP"</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"トランザクションの有効期限はこのレジャー後："</span><span class="p">,</span> <span class="nx">maxLedgerVersion</span><span class="p">)</span>
-  <span class="k">return</span> <span class="nx">preparedTx</span><span class="p">.</span><span class="nx">txJSON</span>
-<span class="p">}</span>
-<span class="nx">txJSON</span> <span class="o">=</span> <span class="nx">doPrepare</span><span class="p">()</span>
-</code></pre></div>
+  <span class="kd">const</span> <span class="nx">max_ledger</span> <span class="o">=</span> <span class="nx">prepared</span><span class="p">.</span><span class="nx">LastLedgerSequence</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Prepared transaction instructions:"</span><span class="p">,</span> <span class="nx">prepared</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction cost:"</span><span class="p">,</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">prepared</span><span class="p">.</span><span class="nx">Fee</span><span class="p">),</span> <span class="s2">"XRP"</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction expires after ledger:"</span><span class="p">,</span> <span class="nx">max_ledger</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1"># Prepare transaction ----------------------------------------------------------</span>
+<span class="n">my_payment</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">Payment</span><span class="p">(</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">amount</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">xrp_to_drops</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span>
+    <span class="n">destination</span><span class="o">=</span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Payment object:"</span><span class="p">,</span> <span class="n">my_payment</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Prepare transaction --------------------------------------------------------</span>
+<span class="c1">// Look up your Account Info</span>
+<span class="n">AccountInfoRequestParams</span> <span class="n">requestParams</span> <span class="o">=</span> <span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+  <span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">AccountInfoResult</span> <span class="n">accountInfoResult</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="n">requestParams</span><span class="p">);</span>
+<span class="n">UnsignedInteger</span> <span class="n">sequence</span> <span class="o">=</span> <span class="n">accountInfoResult</span><span class="p">.</span><span class="na">accountData</span><span class="p">().</span><span class="na">sequence</span><span class="p">();</span>
+
+<span class="c1">// Request current fee information from rippled</span>
+<span class="n">FeeResult</span> <span class="n">feeResult</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">fee</span><span class="p">();</span>
+<span class="n">XrpCurrencyAmount</span> <span class="n">openLedgerFee</span> <span class="o">=</span> <span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">openLedgerFee</span><span class="p">();</span>
+
+<span class="c1">// Get the latest validated ledger index</span>
+<span class="n">LedgerIndex</span> <span class="n">validatedLedger</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">ledger</span><span class="p">(</span>
+    <span class="n">LedgerRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+      <span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">build</span><span class="p">()</span>
+  <span class="p">)</span>
+  <span class="p">.</span><span class="na">ledgerIndex</span><span class="p">()</span>
+  <span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s">"LedgerIndex not available."</span><span class="p">));</span>
+
+<span class="c1">// Workaround for https://github.com/XRPLF/xrpl4j/issues/84</span>
+<span class="n">UnsignedInteger</span> <span class="n">lastLedgerSequence</span> <span class="o">=</span> <span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span>
+  <span class="n">validatedLedger</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">UnsignedLong</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="na">unsignedLongValue</span><span class="p">().</span><span class="na">intValue</span><span class="p">()</span>
+<span class="p">);</span>
+
+<span class="c1">// Construct a Payment</span>
+<span class="n">Payment</span> <span class="n">payment</span> <span class="o">=</span> <span class="n">Payment</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+  <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">amount</span><span class="p">(</span><span class="n">XrpCurrencyAmount</span><span class="p">.</span><span class="na">ofXrp</span><span class="p">(</span><span class="n">BigDecimal</span><span class="p">.</span><span class="na">ONE</span><span class="p">))</span>
+  <span class="p">.</span><span class="na">destination</span><span class="p">(</span><span class="n">Address</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">))</span>
+  <span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">openLedgerFee</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">testWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span>
+  <span class="p">.</span><span class="na">lastLedgerSequence</span><span class="p">(</span><span class="n">lastLedgerSequence</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Constructed Payment: "</span> <span class="o">+</span> <span class="n">payment</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="3" data-totalsteps="7" id="interactive-prepare">
 <div class="interactive-block-inner">
 <div class="breadcrumbs-wrap">
@@ -377,14 +449,41 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <h3 id="3-トランザクションの指示への署名">3. トランザクションの指示への署名<a aria-hidden="true" class="hover_anchor" href="#3-トランザクションの指示への署名"><i class="fa fa-link"></i></a></h3>
-<p>RippleAPIの<a href="rippleapi-reference.html#sign">sign()メソッド</a>を使用して、トランザクションに署名します。最初の引数は、署名するJSONトランザクションの文字列バージョンです。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// Continuing from the previous step...</span>
-<span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">txJSON</span><span class="p">,</span> <span class="s2">"s████████████████████████████"</span><span class="p">)</span>
-<span class="kd">const</span> <span class="nx">txID</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">id</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Identifying hash:"</span><span class="p">,</span> <span class="nx">txID</span><span class="p">)</span>
-<span class="kd">const</span> <span class="nx">txBlob</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">signedTransaction</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Signed blob:"</span><span class="p">,</span> <span class="nx">txBlob</span><span class="p">)</span>
-</code></pre></div>
+<p>xrpl.jsの<a class="external-link" href="https://js.xrpl.org/classes/Wallet.html#sign" target="_blank">Wallet.sign()メソッド <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して、トランザクションに署名します。最初の引数は、署名するJSONトランザクションの文字列バージョンです。</p>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="python" href="#code-2-1">Python</a></li><li><a class="java" href="#code-2-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Sign prepared instructions ------------------------------------------------</span>
+  <span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Identifying hash:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">hash</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Signed blob:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1"># Sign transaction -------------------------------------------------------------</span>
+<span class="n">signed_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
+        <span class="n">my_payment</span><span class="p">,</span> <span class="n">test_wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+<span class="n">max_ledger</span> <span class="o">=</span> <span class="n">signed_tx</span><span class="o">.</span><span class="n">last_ledger_sequence</span>
+<span class="n">tx_id</span> <span class="o">=</span> <span class="n">signed_tx</span><span class="o">.</span><span class="n">get_hash</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Signed transaction:"</span><span class="p">,</span> <span class="n">signed_tx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Transaction cost:"</span><span class="p">,</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">drops_to_xrp</span><span class="p">(</span><span class="n">signed_tx</span><span class="o">.</span><span class="n">fee</span><span class="p">),</span> <span class="s2">"XRP"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Transaction expires after ledger:"</span><span class="p">,</span> <span class="n">max_ledger</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Identifying hash:"</span><span class="p">,</span> <span class="n">tx_id</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1">// Sign transaction -----------------------------------------------------------</span>
+<span class="c1">// Construct a SignatureService to sign the Payment</span>
+<span class="n">PrivateKey</span> <span class="n">privateKey</span> <span class="o">=</span> <span class="n">PrivateKey</span><span class="p">.</span><span class="na">fromBase16EncodedPrivateKey</span><span class="p">(</span>
+  <span class="n">testWallet</span><span class="p">.</span><span class="na">privateKey</span><span class="p">().</span><span class="na">get</span><span class="p">()</span>
+<span class="p">);</span>
+<span class="n">SignatureService</span> <span class="n">signatureService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleKeySignatureService</span><span class="p">(</span><span class="n">privateKey</span><span class="p">);</span>
+
+<span class="c1">// Sign the Payment</span>
+<span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span> <span class="n">signedPayment</span> <span class="o">=</span> <span class="n">signatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span>
+  <span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span>
+  <span class="n">payment</span>
+<span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Signed Payment: "</span> <span class="o">+</span> <span class="n">signedPayment</span><span class="p">.</span><span class="na">signedTransaction</span><span class="p">());</span>
+</code></pre></div></div>
+</div>
 <p>署名処理の結果は、署名を含むトランザクションオブジェクトになります。通常、XRP Ledger APIは、署名済みトランザクションがトランザクションの正規の<a href="serialization.html">バイナリーフォーマット</a>（「ブロブ」と呼ばれる）の16進数表現になることを想定しています。</p>
 <p>署名APIは、トランザクションのID、つまり識別用ハッシュを返します。この識別用ハッシュは、後でトランザクションを検索する際に使用します。識別用ハッシュは、このトランザクションに固有の64文字の16進文字列です。</p>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="4" data-totalsteps="7" id="interactive-sign">
@@ -400,24 +499,25 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <h3 id="4-署名済みブロブの送信">4. 署名済みブロブの送信<a aria-hidden="true" class="hover_anchor" href="#4-署名済みブロブの送信"><i class="fa fa-link"></i></a></h3>
-<p><a href="rippleapi-reference.html#submit">submit()メソッド</a>を使用して、トランザクションをネットワークに送信します。送信する前に、<a href="rippleapi-reference.html#getledgerversion">getLedgerVersion()メソッド</a>を使用して最新の検証済みレジャーインデックスを書き留めておくことをお勧めします。この送信の結果としてトランザクションが追加される可能性のある最も古いレジャーバージョンは、送信時に最新の検証済みレジャーより1つ大きなバージョンとなります。</p>
-<p>ただし、同じトランザクションが以前に送信されたことがある場合、そのトランザクションはすでに以前のレジャーに入っています。（2回目の送信は成功しませんが、正しいレジャーバージョンの中を確認しないと、すでに成功していたことに気付かない可能性があります。）</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// use txBlob from the previous example</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">doSubmit</span><span class="p">(</span><span class="nx">txBlob</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">latestLedgerVersion</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedgerVersion</span><span class="p">()</span>
+<p>トランザクションをネットワークに送信します。</p>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="python" href="#code-3-1">Python</a></li><li><a class="java" href="#code-3-2">Java</a></li></ul>
 
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">txBlob</span><span class="p">)</span>
+<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1">// Submit signed blob --------------------------------------------------------</span>
+  <span class="kd">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+</code></pre></div></div>
 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"予備結果コード："</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">resultCode</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"予備結果メッセージ"</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">resultMessage</span><span class="p">)</span>
+<div class="code_sample python" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="c1"># Submit transaction -----------------------------------------------------------</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">tx_response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">XRPLReliableSubmissionException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">exit</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Submit failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></div>
 
-  <span class="c1">// Return the earliest ledger index this transaction could appear in</span>
-  <span class="c1">// as a result of this submission, which is the first one after the</span>
-  <span class="c1">// validated ledger at time of submission.</span>
-  <span class="k">return</span> <span class="nx">latestLedgerVersion</span> <span class="o">+</span> <span class="mf">1</span>
-<span class="p">}</span>
-<span class="kd">const</span> <span class="nx">earliestLedgerVersion</span> <span class="o">=</span> <span class="nx">doSubmit</span><span class="p">(</span><span class="nx">txBlob</span><span class="p">)</span>
-</code></pre></div>
+<div class="code_sample java" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="c1">// Submit transaction ---------------------------------------------------------</span>
+<span class="n">SubmitResult</span><span class="o">&lt;</span><span class="n">Transaction</span><span class="o">&gt;</span> <span class="n">prelimResult</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">submit</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">prelimResult</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
 <p>このメソッドは、ローカルでトランザクションを適用しようと試みたときの<strong>一時的な</strong>結果を返します。この結果は、トランザクションが検証済みレジャーに含まれた時点で変わる_可能性があります_。当初は成功していたトランザクションが最終的に失敗となったり、当初失敗していたトランザクションが最終的に成功する場合があります。しかしながら、一時的な結果はほとんどの場合は最終結果と一致するため、ここで<code>tesSUCCESS</code>が表示されたらひとまず安心しても問題ありません。😁</p>
 <p>他の結果が表示された場合は、以下の点を確認します。</p>
 <ul>
@@ -442,14 +542,54 @@
 </div>
 <h3 id="5-検証の待機">5. 検証の待機<a aria-hidden="true" class="hover_anchor" href="#5-検証の待機"><i class="fa fa-link"></i></a></h3>
 <p>ほとんどのトランザクションは送信後の次のレジャーバージョンに承認されます。つまり、4～7秒でトランザクションの結果が最終的なものになる可能性があります。XRP Ledgerがビジーになっているか、ネットワーク接続の品質が悪いためにトランザクションをネットワーク内で中継する処理が遅延した場合は、トランザクション確定までにもう少し時間がかかることがあります。（トランザクションの有効期限を設定する方法については、<a href="reliable-transaction-submission.html">信頼できるトランザクションの送信</a>を参照してください。）</p>
-<p>RippleAPIの<code>ledger</code>イベントタイプを使用して、新しい検証済みレジャーバージョンがあるときにコードが実行されるようにしておきます。例:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ledger'</span><span class="p">,</span> <span class="nx">ledger</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"レジャーインデックス"</span><span class="p">,</span> <span class="nx">ledger</span><span class="p">.</span><span class="nx">ledgerVersion</span><span class="p">,</span> <span class="s2">"は検証されました。"</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledgerVersion</span> <span class="o">&gt;</span> <span class="nx">maxLedgerVersion</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"トランザクションはまだ検証されていませんなら、有効期限が切れています。"</span><span class="p">)</span>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li><li><a class="java" href="#code-4-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1">// Wait for validation -------------------------------------------------------</span>
+  <span class="c1">// submitAndWait() handles this automatically, but it can take 4-7s.</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1"># Wait for validation ----------------------------------------------------------</span>
+<span class="c1"># send_reliable_submission() handles this automatically, but it can take 4-7s.</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Wait for validation --------------------------------------------------------</span>
+<span class="kt">boolean</span> <span class="n">transactionValidated</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kt">boolean</span> <span class="n">transactionExpired</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">transactionValidated</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">transactionExpired</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="n">LedgerIndex</span> <span class="n">latestValidatedLedgerIndex</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">ledger</span><span class="p">(</span>
+      <span class="n">LedgerRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">).</span><span class="na">build</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="p">.</span><span class="na">ledgerIndex</span><span class="p">()</span>
+    <span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span> <span class="o">-&gt;</span>
+      <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s">"Ledger response did not contain a LedgerIndex."</span><span class="p">)</span>
+    <span class="p">);</span>
+
+  <span class="n">TransactionResult</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span> <span class="n">transactionResult</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">transaction</span><span class="p">(</span>
+    <span class="n">TransactionRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">()),</span>
+    <span class="n">Payment</span><span class="p">.</span><span class="na">class</span>
+  <span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">transactionResult</span><span class="p">.</span><span class="na">validated</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Payment was validated with result code "</span> <span class="o">+</span>
+      <span class="n">transactionResult</span><span class="p">.</span><span class="na">metadata</span><span class="p">().</span><span class="na">get</span><span class="p">().</span><span class="na">transactionResult</span><span class="p">());</span>
+    <span class="n">transactionValidated</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="kt">boolean</span> <span class="n">lastLedgerSequenceHasPassed</span> <span class="o">=</span> <span class="n">FluentCompareTo</span><span class="p">.</span>
+      <span class="nf">is</span><span class="p">(</span><span class="n">latestValidatedLedgerIndex</span><span class="p">.</span><span class="na">unsignedLongValue</span><span class="p">())</span>
+      <span class="p">.</span><span class="na">greaterThan</span><span class="p">(</span><span class="n">UnsignedLong</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">lastLedgerSequence</span><span class="p">.</span><span class="na">intValue</span><span class="p">()));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lastLedgerSequenceHasPassed</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"LastLedgerSequence has passed. Last tx response: "</span>
+        <span class="n">transactionResult</span><span class="p">);</span>
+    <span class="p">);</span>
+      <span class="n">transactionExpired</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Payment not yet validated."</span><span class="p">);</span>
+    <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">})</span>
-</code></pre></div>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="6" data-totalsteps="7" id="interactive-wait">
 <div class="interactive-block-inner">
 <div class="breadcrumbs-wrap">
@@ -480,20 +620,41 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <h3 id="6-トランザクションステータスの確認">6. トランザクションステータスの確認<a aria-hidden="true" class="hover_anchor" href="#6-トランザクションステータスの確認"><i class="fa fa-link"></i></a></h3>
-<p>トランザクションが行った内容を正確に把握するために、トランザクションが検証済みレジャーバージョンに記録されたときにトランザクションの結果を調べる必要があります。例えば、<a href="rippleapi-reference.html#gettransaction">getTransaction()メソッド</a>を使用して、トランザクションのステータスを確認できます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Continues from previous examples.</span>
-<span class="c1">// earliestLedgerVersion was noted when the transaction was submitted.</span>
-<span class="c1">// txID was noted when the transaction was signed.</span>
-<span class="k">try</span> <span class="p">{</span>
-  <span class="nx">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="nx">txID</span><span class="p">,</span> <span class="p">{</span><span class="nx">minLedgerVersion</span><span class="o">:</span> <span class="nx">earliestLedgerVersion</span><span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"トランザクションの結果："</span><span class="p">,</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">outcome</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"残高変化："</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">outcome</span><span class="p">.</span><span class="nx">balanceChanges</span><span class="p">))</span>
-<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"トランザクションの結果を取得出来ませんでした。エラー："</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>RippleAPIの<code>getTransaction()</code>メソッドは、トランザクションが検証済みレジャーバージョンに登録された場合にのみ成功を返します。登録されなかった場合は、<code>await</code>式が例外を発生させます。</p>
-<p class="devportal-callout 注意"><strong>注意:</strong> 他のAPIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、<code>rippled</code> APIの<a href="tx.html">txメソッド</a>を使用した場合は、応答内の<code>"validated": true</code>を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、<a href="finality-of-results.html">結果のファイナリティー</a>を参照してください。</p>
+<p>トランザクションが行った内容を正確に把握するために、トランザクションが検証済みレジャーバージョンに記録されたときにトランザクションの結果を調べる必要があります。例えば、<a href="tx.html">txメソッド</a>を使用して、トランザクションのステータスを確認できます。</p>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li><li><a class="python" href="#code-5-1">Python</a></li><li><a class="java" href="#code-5-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1">// Check transaction results -------------------------------------------------</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Balance changes:"</span><span class="p">,</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">getBalanceChanges</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">),</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1"># Check transaction results ----------------------------------------------------</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tx_response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Explorer link: https://testnet.xrpl.org/transactions/</span><span class="si">{</span><span class="n">tx_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">tx_response</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"meta"</span><span class="p">,</span> <span class="p">{})</span>
+<span class="k">if</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TransactionResult"</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Result code:"</span><span class="p">,</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">"TransactionResult"</span><span class="p">])</span>
+<span class="k">if</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"delivered_amount"</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"XRP delivered:"</span><span class="p">,</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">drops_to_xrp</span><span class="p">(</span>
+                <span class="n">metadata</span><span class="p">[</span><span class="s2">"delivered_amount"</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="c1">// Check transaction results --------------------------------------------------</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">transactionResult</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Explorer link: https://testnet.xrpl.org/transactions/"</span> <span class="o">+</span>
+    <span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">());</span>
+<span class="n">transactionResult</span><span class="p">.</span><span class="na">metadata</span><span class="p">().</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">metadata</span> <span class="o">-&gt;</span> <span class="p">{</span>
+  <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Result code: "</span> <span class="o">+</span> <span class="n">metadata</span><span class="p">.</span><span class="na">transactionResult</span><span class="p">());</span>
+
+  <span class="n">metadata</span><span class="p">.</span><span class="na">deliveredAmount</span><span class="p">().</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">deliveredAmount</span> <span class="o">-&gt;</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"XRP Delivered: "</span> <span class="o">+</span>
+      <span class="p">((</span><span class="n">XrpCurrencyAmount</span><span class="p">)</span> <span class="n">deliveredAmount</span><span class="p">).</span><span class="na">toXrp</span><span class="p">())</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+</div>
+<p class="devportal-callout 注意"><strong>注意:</strong> APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、<code>rippled</code> APIの<a href="tx.html">txメソッド</a>を使用した場合は、応答内の<code>"validated": true</code>を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、<a href="finality-of-results.html">結果のファイナリティー</a>を参照してください。</p>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="7" data-totalsteps="7" id="interactive-check">
 <div class="interactive-block-inner">
 <div class="breadcrumbs-wrap">
@@ -513,30 +674,52 @@
 <li><a href="#本番xrp-ledgerへの接続">本番XRP Ledgerネットワークと同期されているサーバーに接続する必要があります。</a></li>
 </ul>
 <h3 id="実際のxrpアカウントの取得">実際のXRPアカウントの取得<a aria-hidden="true" class="hover_anchor" href="#実際のxrpアカウントの取得"><i class="fa fa-link"></i></a></h3>
-<p>このチュートリアルでは、Test Net XRPがすでに資金供給されているアドレスをボタンで取得しましたが、それが可能だったのはTest Net XRPに何の価値もないからです。実際のXRPでは、XRPを所有している他者からXRPを入手する必要があります。（たとえば、取引所で購入する方法など。）RippleAPIの<a href="rippleapi-reference.html#generateaddress">generateAddress()メソッド</a>を使用して、本番またはTest Netで機能するアドレスとシークレットを生成できます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="kd">const</span> <span class="nx">generated</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">generateAddress</span><span class="p">()</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generated</span><span class="p">.</span><span class="nx">address</span><span class="p">)</span> <span class="c1">// 例: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generated</span><span class="p">.</span><span class="nx">secret</span><span class="p">)</span> <span class="c1">// 例: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
-</code></pre></div>
+<p>このチュートリアルでは、Test Net XRPがすでに資金供給されているアドレスをボタンで取得しましたが、それが可能だったのはTest Net XRPに何の価値もないからです。実際のXRPでは、XRPを所有している他者からXRPを入手する必要があります。（たとえば、取引所で購入する方法など。）<a class="external-link" href="https://js.xrpl.org/classes/Wallet.html" target="_blank">xrpl.jsのWallet()クラス <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して、本番またはTestnetで機能するアドレスとシークレットを生成できます。</p>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="javascript" href="#code-6-0">JavaScript</a></li><li><a class="python" href="#code-6-1">Python</a></li><li><a class="java" href="#code-6-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="kd">const</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">)</span> <span class="c1">// Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">seed</span><span class="p">)</span> <span class="c1">// Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
+<span class="n">my_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span> <span class="c1"># Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>            <span class="c1"># Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-6-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="n">WalletFactory</span> <span class="n">walletFactory</span> <span class="o">=</span> <span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<span class="n">SeedWalletGenerationResult</span> <span class="n">generationResult</span> <span class="o">=</span> <span class="n">walletFactory</span><span class="p">.</span><span class="na">randomWallet</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="n">Wallet</span> <span class="n">wallet</span> <span class="o">=</span> <span class="n">generationResult</span><span class="p">.</span><span class="na">wallet</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">wallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">());</span> <span class="c1">// Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">generationResult</span><span class="p">.</span><span class="na">seed</span><span class="p">());</span> <span class="c1">// Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
+</code></pre></div></div>
+</div>
 <p class="devportal-callout 警告"><strong>警告:</strong> ローカルマシンで安全な方法で生成したアドレスとシークレットのみを使用してください。別のコンピューターでアドレスとシークレットを生成して、ネットワーク経由でそれらを自分に送信した場合は、ネットワーク上の他の人がその情報を見ることができる可能性があります。その情報見ることができる人は、あなたと同じようにあなたのXRPを操作できます。また、Test Netと本番で同じアドレスを使用しないことも推奨します。指定したパラメーターによっては、一方のネットワークに向けて作成したトランザクションが、もう一方のネットワークでも実行可能になるおそれがあるためです。</p>
-<p>アドレスとシークレットを生成しても、直接XRPを入手できるわけではありません。単に乱数を選択しているだけです。また、そのアドレスでXRPを受け取って<a href="accounts.html#アカウントの作成">アカウントに資金供給</a>する必要があります。XRPを取得する方法として最も一般的なのは、取引所から購入し、所有しているアドレスに入れる方法です。詳細は、Rippleの<a class="external-link" href="https://ripple.com/xrp/buy-xrp/" target="_blank">XRP購入ガイド <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
+<p>アドレスとシークレットを生成しても、直接XRPを入手できるわけではありません。単に乱数を選択しているだけです。また、そのアドレスでXRPを受け取って<a href="accounts.html#アカウントの作成">アカウントに資金供給</a>する必要があります。XRPを取得する方法として最も一般的なのは、取引所から購入し、所有しているアドレスに入れる方法です。詳細は、<a href="xrp-overview.html">XRP Overview</a>を参照してください。</p>
 <h3 id="本番xrp-ledgerへの接続">本番XRP Ledgerへの接続<a aria-hidden="true" class="hover_anchor" href="#本番xrp-ledgerへの接続"><i class="fa fa-link"></i></a></h3>
-<p><code>RippleAPI</code>オブジェクトのインスタンスを作成するときに、適切なXRP Ledgerと同期しているサーバーを指定する必要があります。多くの場合はRippleの公開サーバーを、以下のスニペットなどで使用できます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="nx">ripple</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span>
-<span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com:51233'</span><span class="p">})</span>
+<p>XRP Ledgerと同期しているサーバーを指定する必要があります。多くの場合は公開サーバーを、以下のスニペットなどで使用できます。</p>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a class="javascript" href="#code-7-0">JavaScript</a></li><li><a class="python" href="#code-7-1">Python</a></li><li><a class="java" href="#code-7-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="kd">const</span> <span class="nx">xrpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://xrplcluster.com'</span><span class="p">)</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
-</code></pre></div>
-<p>自分で<a href="install-rippled.html"><code>rippled</code>をインストール</a>した場合は、デフォルトで本番ネットワークに接続されます。（代わりに、<a href="connect-your-rippled-to-the-xrp-test-net.html">Test Netに接続するように構成</a>することもできます。）サーバーが同期されると（通常は起動から約15分以内）、RippleAPIをサーバーにローカルで接続することができます。そうすると、<a href="rippled-server-modes.html#ストックサーバーを運用する理由">さまざまなメリット</a>があります。以下の例は、RippleAPIをデフォルト構成で運用されているサーバーに接続する方法を示しています。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="nx">ripple</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span>
-<span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'ws://localhost:6006'</span><span class="p">})</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
-</code></pre></div>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="s2">"https://xrplcluster.com"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-7-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="kd">final</span> <span class="n">HttpUrl</span> <span class="n">rippledUrl</span> <span class="o">=</span> <span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://xrplcluster.com"</span><span class="p">);</span>
+<span class="n">XrplClient</span> <span class="n">xrplClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> ローカル接続では、WebSocketプロトコルのTLSで暗号化されたバージョン（<code>wss</code>）ではなく、暗号化されていないバージョン（<code>ws</code>）を使用します。この方式は、通信が同じマシンの中だけで行われてマシンの外に出て行かないという点で安全で、TLS証明書が不要であるため設定が簡単です。外部ネットワークとの接続では、必ず<code>wss</code>を使用してください。</p>
 <h2 id="次のステップ">次のステップ<a aria-hidden="true" class="hover_anchor" href="#次のステップ"><i class="fa fa-link"></i></a></h2>
 <p>このチュートリアルを完了後は、以下を試してみてください。</p>
 <ul>
 <li>本番システム向けに<a href="reliable-transaction-submission.html">信頼できるトランザクションの送信</a>を構築する</li>
-<li><a href="rippleapi-reference.html">RippleAPI JavaScriptリファレンス</a>を参照して、XRP Ledgerの全機能を確認する</li>
+<li><a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.jsリファレンス <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照して、XRP Ledgerの全機能を確認する</li>
 <li><a href="manage-account-settings.html">アカウント設定</a>をカスタマイズする</li>
 <li><a href="transaction-metadata.html">トランザクションのメタデータ</a>にトランザクションの結果の詳細がどのように記述されているかを知る</li>
 <li>escrowやPayment Channelなどの<a href="complex-payment-types.html">複雑な支払いタイプ</a>について調べる</li>
@@ -1006,7 +1189,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1226,6 +1409,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1885,7 +2083,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -2067,16 +2277,6 @@
         <a class="nav-link" href="/ja/transaction-methods.html">Transaction Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2354,9 +2554,31 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
 
-        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+        <a class="nav-link" href="/ja/signing-methods.html">Signing Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+
+        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -2389,11 +2611,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>
@@ -2719,7 +2941,7 @@ $(document).ready(() => {
 </script>
 
 <!-- ripple-lib & prerequisites -->
-<script type="application/javascript" src="assets/js/ripple-lib-1.10.0.min.js"></script>
+<script type="application/javascript" src="assets/js/xrpl-2.0.0.min.js"></script>
 
 <!-- Helper for interactive tutorials -->
 <script type="application/javascript" src="/ja/assets/js/interactive-tutorial.js"></script>

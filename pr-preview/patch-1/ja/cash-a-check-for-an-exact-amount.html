@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -220,7 +220,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -277,9 +277,8 @@
 <li>Checkに記載されている受取人の<strong>アドレス</strong>と<strong>秘密鍵</strong>。このアドレスは、Checkオブジェクトの<code>Destination</code>アドレスと一致している必要があります。</li>
 <li>発行済み通貨用のCheckの場合は、ご自身（受取人）にイシュアーに対するトラストラインがある必要があります。このトラストライン上のご自身の限度額は、受け取る金額を追加するための残高より十分高くなければなりません。</li>
 <li>トラストラインと限度額について詳しくは、<a href="issued-currencies.html">発行済み通貨</a>および<a href="trust-lines-and-issuing.html">トラストラインと発行</a>を参照してください。</li>
-<li>トランザクションに安全に署名できる手段（<a href="rippleapi-reference.html">RippleAPI</a>や各自の<a href="install-rippled.html"><code>rippled</code>サーバー</a>など）。</li>
-<li><code>rippled</code>サーバーに接続できるクライアントライブラリ（<a href="rippleapi-reference.html">RippleAPI</a>、HTTPライブラリ、WebSocketライブラリなど）。</li>
-<li>詳細は、<a href="get-started-using-http-websocket-apis.html"><code>rippled</code> APIの使用開始</a>を参照してください。 <!--#{ fix md highlighting_ #}--></li>
+<li><a href="set-up-secure-signing.html">トランザクションに安全に署名できる手段</a>。</li>
+<li>XRP Ledgerに接続できる<a href="client-libraries.html">クライアントライブラリ</a>か、それとも<a href="get-started-using-http-websocket-apis.html">HTTPライブラリ、WebSocketライブラリなど</a>。 <!--#{ fix md highlighting_ #}--></li>
 </ul>
 <h2 id="1checkcashトランザクションの準備">1.CheckCashトランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#1checkcashトランザクションの準備"><i class="fa fa-link"></i></a></h2>
 <p><a href="checkcash.html">CheckCashトランザクション</a>のフィールドの値を決定します。Checkを正確な金額で換金する場合、以下のフィールドが最低限必要です。それ以外のフィールドはオプションまたは署名時に<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>可能なフィールドです。</p>
@@ -316,7 +315,7 @@
 </table>
 <h3 id="正確な金額で換金するcheckcashトランザクションの準備の例">正確な金額で換金するCheckCashトランザクションの準備の例<a aria-hidden="true" class="hover_anchor" href="#正確な金額で換金するcheckcashトランザクションの準備の例"><i class="fa fa-link"></i></a></h3>
 <p>Checkを正確な金額で換金するためのトランザクションを準備する手順を以下の例に示します。</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="jsonrpc、websocket、またはコマンドライン" href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a class="rippleapi" href="#code-0-1">RippleAPI</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="jsonrpc、websocket、またはコマンドライン" href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a class="ripplelib1.x" href="#code-0-1">ripple-lib 1.x</a></li></ul>
 
 <div class="code_sample jsonrpc、websocket、またはコマンドライン" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
  <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy"</span><span class="p">,</span>
@@ -327,7 +326,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample rippleapi" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
+<div class="code_sample ripplelib1.x" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
 <span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
@@ -376,7 +375,7 @@
 </code></pre></div></div>
 </div>
 <h2 id="2checkcashトランザクションの署名">2.CheckCashトランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#2checkcashトランザクションの署名"><i class="fa fa-link"></i></a></h2>
-<p>トランザクションに署名する最も安全な方法は、<a href="rippleapi-reference.html">RippleAPI</a>などの署名ライブラリーを使用してローカルで署名することです。<a href="sign.html">signメソッド</a>を使用してトランザクションに署名することもできますが、その場合は信頼できる暗号化された接続を使用するか、ローカル接続を使用して、自分が管理しているサーバーに対してのみに行うようにしてください。</p>
+<p>トランザクションに署名する最も安全な方法は、<a href="client-libraries.html">クライアントライブラリ</a>を使用してローカルで署名することです。<a href="sign.html">signメソッド</a>を使用してトランザクションに署名することもできますが、その場合は信頼できる暗号化された接続を使用するか、ローカル接続を使用して、自分が管理しているサーバーに対してのみに行うようにしてください。</p>
 <p>いずれの場合も、後のために、署名したトランザクションの識別用ハッシュを書き留めておいてください。 <!--#{ fix md highlighting_ #}--></p>
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="コマンドライン" href="#code-1-0">コマンドライン</a></li></ul>
@@ -1042,7 +1041,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1262,6 +1261,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1921,7 +1935,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -2103,16 +2129,6 @@
         <a class="nav-link" href="/ja/transaction-methods.html">Transaction Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2390,9 +2406,31 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
 
-        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+        <a class="nav-link" href="/ja/signing-methods.html">Signing Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+
+        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -2425,11 +2463,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>

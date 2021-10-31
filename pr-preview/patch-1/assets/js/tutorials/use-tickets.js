@@ -2,6 +2,7 @@
 // 2. Connect
 // The code for these steps is handled by interactive-tutorial.js
 $(document).ready(() => {
+  const LLS_OFFSET = 75 // Expire unconfirmed transactions after about ~5 min
 
 // 3. Check Sequence Number
 $("#check-sequence").click( async function(event) {
@@ -12,12 +13,14 @@ $("#check-sequence").click( async function(event) {
   // Wipe previous output
   block.find(".output-area").html("")
   block.find(".loader").show()
-  const account_info = await api.request("account_info", {"account": address})
+  const account_info = await api.request({
+    "command": "account_info", "account": address
+  })
   block.find(".loader").hide()
 
   block.find(".output-area").append(
     `<p>Current sequence:
-    <code id="current_sequence">${account_info.account_data.Sequence}</code>
+    <code id="current_sequence">${account_info.result.account_data.Sequence}</code>
     </p>`)
 
   complete_step("Check Sequence")
@@ -26,10 +29,8 @@ $("#check-sequence").click( async function(event) {
 // 4. Prepare and Sign TicketCreate --------------------------------------------
 $("#prepare-and-sign").click( async function(event) {
   const block = $(event.target).closest(".interactive-block")
-  const address = get_address(event)
-  if (!address) {return}
-  const secret = get_secret(event)
-  if (!secret) {return}
+  const wallet = get_wallet(event)
+  if (!wallet) {return}
   let current_sequence
   try {
     current_sequence = parseInt($("#current_sequence").text())
@@ -47,24 +48,22 @@ $("#prepare-and-sign").click( async function(event) {
     return;
   }
 
-  let prepared = await api.prepareTransaction({
+  const vli = await api.getLedgerIndex()
+  const prepared = await api.autofill({
     "TransactionType": "TicketCreate",
-    "Account": address,
+    "Account": wallet.address,
     "TicketCount": 10,
-    "Sequence": current_sequence
-  }, {
-    maxLedgerVersionOffset: 20
+    "Sequence": current_sequence,
+    "LastLedgerSequence": vli+LLS_OFFSET
   })
 
   block.find(".output-area").append(
     `<p>Prepared transaction:</p>
-    <pre><code>${pretty_print(prepared.txJSON)}</code></pre>`)
+    <pre><code>${pretty_print(prepared)}</code></pre>`)
 
-  let signed = api.sign(prepared.txJSON, secret)
+  const {tx_blob, hash} = wallet.sign(prepared)
   block.find(".output-area").append(
-    `<p>Transaction hash: <code id="tx_id">${signed.id}</code></p>`)
-
-  let tx_blob = signed.signedTransaction
+    `<p>Transaction hash: <code id="tx_id">${hash}</code></p>`)
   block.find(".output-area").append(
     `<p>Signed blob:</p><pre class="tx-blob"><code id="tx_blob">${tx_blob}</code></pre>`)
 
@@ -80,18 +79,20 @@ $("#ticketcreate-submit").click( submit_handler )
 
 // Intermission ----------------------------------------------------------------
 async function intermission_submit(event, tx_json) {
-  const secret = get_secret(event)
-  if (!secret) {return}
   const block = $(event.target).closest(".interactive-block")
-  let prepared = await api.prepareTransaction(tx_json)
-  let signed = api.sign(prepared.txJSON, secret)
-  let prelim_result = await api.request("submit",
-                                        {"tx_blob": signed.signedTransaction})
+  const wallet = get_wallet(event)
+  if (!wallet) {return}
+  const prepared = await api.autofill(tx_json)
+  const {tx_blob, hash} = wallet.sign(prepared)
+  const prelim = await api.request({
+    "command": "submit",
+    "tx_blob": tx_blob
+  })
 
-  block.find(".output-area").append(`<p>${tx_json.TransactionType}
-    ${prepared.instructions.sequence}:
-    <a href="https://devnet.xrpl.org/transactions/${signed.id}"
-    target="_blank">${prelim_result.engine_result}</a></p>`)
+  block.find(".output-area").append(`<p>${prepared.TransactionType}
+    ${prepared.Sequence}:
+    <a href="https://devnet.xrpl.org/transactions/${hash}"
+    target="_blank">${prelim.result.engine_result}</a></p>`)
 }
 
 $("#intermission-payment").click( async function(event) {
@@ -102,7 +103,7 @@ $("#intermission-payment").click( async function(event) {
     "TransactionType": "Payment",
     "Account": address,
     "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe", // Testnet Faucet
-    "Amount": api.xrpToDrops("201")
+    "Amount": xrpl.xrpToDrops("201")
   })
 
   complete_step("Intermission")
@@ -116,8 +117,8 @@ $("#intermission-escrowcreate").click( async function(event) {
     "TransactionType": "EscrowCreate",
     "Account": address,
     "Destination": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", // Genesis acct
-    "Amount": api.xrpToDrops("0.13"), // Arbitrary amount
-    "FinishAfter": api.iso8601ToRippleTime(Date()) + 30 // 30 seconds from now
+    "Amount": xrpl.xrpToDrops("0.13"), // Arbitrary amount
+    "FinishAfter": xrpl.isoTimeToRippleTime(Date()) + 30 // 30 seconds from now
   })
 
   complete_step("Intermission")
@@ -144,7 +145,8 @@ $("#check-tickets").click( async function(event) {
   block.find(".output-area").html("")
   block.find(".loader").show()
 
-  let response = await api.request("account_objects", {
+  let response = await api.request({
+      "command": "account_objects",
       "account": address,
       "type": "ticket"
     })
@@ -155,7 +157,7 @@ $("#check-tickets").click( async function(event) {
 
   // Reset the next step's form & add these tickets
   $("#ticket-selector .form-area").html("")
-  response.account_objects.forEach((ticket, i) => {
+  response.result.account_objects.forEach((ticket, i) => {
       $("#ticket-selector .form-area").append(
         `<div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" id="ticket${i}"
@@ -169,10 +171,8 @@ $("#check-tickets").click( async function(event) {
 
 // 8. Prepare Ticketed Transaction ---------------------------------------------
 $("#prepare-ticketed-tx").click(async function(event) {
-  const address = get_address(event)
-  if (!address) {return}
-  const secret = get_secret(event)
-  if (!secret) {return}
+  const wallet = get_wallet(event)
+  if (!wallet) {return}
 
   const block = $(event.target).closest(".interactive-block")
   block.find(".output-area").html("")
@@ -181,28 +181,27 @@ $("#prepare-ticketed-tx").click(async function(event) {
     show_error(block, "You must choose a ticket first.")
     return
   }
+  const vli = await api.getLedgerIndex()
 
-  let prepared_t = await api.prepareTransaction({
+  const prepared_t = await api.autofill({
     "TransactionType": "AccountSet",
-    "Account": address,
+    "Account": wallet.address,
     "TicketSequence": use_ticket,
-    "Sequence": 0
-  }, {
-    maxLedgerVersionOffset: 20
+    "Sequence": 0,
+    "LastLedgerSequence": vli+LLS_OFFSET
   })
 
   block.find(".output-area").append(
     `<p>Prepared transaction:</p>
-    <pre><code>${pretty_print(prepared_t.txJSON)}</code></pre>`)
+    <pre><code>${pretty_print(prepared_t)}</code></pre>`)
 
-  let signed_t = api.sign(prepared_t.txJSON, secret)
+  const {tx_blob, hash} = wallet.sign(prepared_t)
   block.find(".output-area").append(
-    `<p>Transaction hash: <code id="tx_id_t">${signed_t.id}</code></p>`)
+    `<p>Transaction hash: <code id="tx_id_t">${hash}</code></p>`)
 
-  let tx_blob_t = signed_t.signedTransaction
   block.find(".output-area").append(
     `<pre style="visibility: none">
-    <code id="tx_blob_t">${tx_blob_t}</code></pre>`)
+    <code id="tx_blob_t">${tx_blob}</code></pre>`)
 
   // Update breadcrumbs & activate next step
   complete_step("Prepare Ticketed Tx")

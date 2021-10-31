@@ -147,7 +147,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -216,7 +216,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/references/rippled-api/public-rippled-methods/public-rippled-methods.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/references/rippled-api/public-rippled-methods/public-rippled-methods.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -283,13 +283,16 @@
 <h2 id="transaction-methods"><a href="transaction-methods.html">Transaction Methods</a><a aria-hidden="true" class="hover_anchor" href="#transaction-methods"><i class="fa fa-link"></i></a></h2>
 <p>Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions.</p>
 <ul>
-<li><strong><a href="sign.html"><code>sign</code></a></strong> - Cryptographically sign a transaction.</li>
-<li><strong><a href="sign_for.html"><code>sign_for</code></a></strong> - Contribute to a multi-signature.</li>
 <li><strong><a href="submit.html"><code>submit</code></a></strong> - Send a transaction to the network.</li>
 <li><strong><a href="submit_multisigned.html"><code>submit_multisigned</code></a></strong> - Send a multi-signed transaction to the network.</li>
 <li><strong><a href="transaction_entry.html"><code>transaction_entry</code></a></strong> - Retrieve info about a transaction from a particular ledger version.</li>
 <li><strong><a href="tx.html"><code>tx</code></a></strong> - Retrieve info about a transaction from all the ledgers on hand.</li>
 <li><strong><a href="tx_history.html"><code>tx_history</code></a></strong> - Retrieve info about all recent transactions.</li>
+</ul>
+<p>By default, the following methods are <a href="admin-rippled-methods.html">admin-only</a>. They can be used as public methods if the server admin has <a href="enable-public-signing.html">enabled public signing</a>.</p>
+<ul>
+<li><strong><a href="sign.html"><code>sign</code></a></strong> - Cryptographically sign a transaction. </li>
+<li><strong><a href="sign_for.html"><code>sign_for</code></a></strong> - Contribute to a multi-signature.</li>
 </ul>
 <h2 id="path-and-order-book-methods"><a href="path-and-order-book-methods.html">Path and Order Book Methods</a><a aria-hidden="true" class="hover_anchor" href="#path-and-order-book-methods"><i class="fa fa-link"></i></a></h2>
 <p>Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.</p>
@@ -779,7 +782,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="get-started-using-node-js.html">Get Started Using Node.js</a>
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -999,6 +1002,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1658,7 +1676,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1840,16 +1870,6 @@
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -2127,9 +2147,31 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
 
-        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -2162,11 +2204,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>

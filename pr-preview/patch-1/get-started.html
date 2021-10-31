@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -220,7 +220,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/tutorials/get-started/get-started.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/tutorials/get-started/get-started.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -255,69 +255,69 @@
     <div class="content">
         <h1 id="get-started">Get Started<a aria-hidden="true" class="hover_anchor" href="#get-started"><i class="fa fa-link"></i></a></h1>
 <p>The XRP Ledger is always online and entirely public. Anyone can access it <strong>directly from a web browser</strong> with source code like what's on this page.</p>
-<p>The following example gets the latest <a href="ledgers.html">ledger version</a> and a list of transactions that were newly-validated in that ledger version, using the <a href="rippleapi-reference.html#getledger"><code>getLedger()</code> method</a>. Try running it as-is, or change the code and see what happens.</p>
+<p>The following example gets the latest <a href="ledgers.html">ledger version</a> and a list of transactions that were newly-validated in that ledger version, using the <a href="ledger.html">ledger method</a>. Try running it as-is, or change the code and see what happens.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> If you can, open your browser's Developer Tools by pressing <strong>F12</strong>. The "Console" tab provides a native JavaScript console and can give insight into what code is running on any webpage. <!-- SPELLING_IGNORE: f12 --></p>
 <!-- ripple-lib & prerequisites -->
-<script src="assets/js/ripple-lib-1.10.0.min.js" type="application/javascript"></script>
+<script src="assets/js/xrpl-2.0.0.min.js" type="application/javascript"></script>
 <div class="js_interactive" id="step2">
 <div class="editor"></div>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kd">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
-  <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span>
-<span class="p">});</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://xrplcluster.com'</span><span class="p">);</span>
   <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 
-  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
-    <span class="nx">includeTransactions</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ledger"</span><span class="p">,</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
+    <span class="s2">"transactions"</span><span class="o">:</span> <span class="kc">true</span>
   <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-
-<span class="p">})(</span><span class="nx">mainnet</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
-  <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net/'</span>
-<span class="p">});</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net/'</span><span class="p">);</span>
   <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 
-  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
-      <span class="nx">includeTransactions</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">});</span>
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ledger"</span><span class="p">,</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
+    <span class="s2">"transactions"</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-
-<span class="p">})(</span><span class="nx">mainnet</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kd">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
-  <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span>
-<span class="p">});</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://xrplcluster.com'</span><span class="p">);</span>
   <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 
-  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
-      <span class="nx">includeTransactions</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">});</span>
-  <span class="kd">let</span> <span class="nx">tx_id</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">transactionHashes</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
-  <span class="kd">let</span> <span class="nx">response2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="nx">tx_id</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ledger"</span><span class="p">,</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
+    <span class="s2">"transactions"</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">});</span>
+
+  <span class="kd">let</span> <span class="nx">tx_id</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">transactions</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+  <span class="kd">let</span> <span class="nx">response2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"tx"</span><span class="p">,</span>
+    <span class="s2">"transaction"</span><span class="o">:</span> <span class="nx">tx_id</span>
+  <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response2</span><span class="p">);</span>
-
-<span class="p">})(</span><span class="nx">mainnet</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="kd">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
-  <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span>
-<span class="p">});</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://xrplcluster.com'</span><span class="p">);</span>
   <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 
-  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
-      <span class="nx">includeTransactions</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">});</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Total XRP: '</span><span class="o">+</span><span class="nx">api</span><span class="p">.</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">totalDrops</span><span class="p">));</span>
-
-<span class="p">})(</span><span class="nx">mainnet</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ledger"</span><span class="p">,</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
+    <span class="s2">"transactions"</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">});</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Total XRP: '</span><span class="o">+</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">total_coins</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
 <p>
 <button class="btn btn-primary run-button" type="button">Run</button>
@@ -329,21 +329,28 @@
 <p>Try editing the code above to do something different:</p>
 <ul>
 <li>Connect to the <a href="parallel-networks.html">Testnet</a> public server at <code>wss://s.altnet.rippletest.net/</code> instead. <a class="btn btn-primary" href="javascript:js_interactives.step2.ex_1()">Answer</a></li>
-<li>Look up the details of a transaction using the <a href="rippleapi-reference.html#gettransaction"><code>getTransaction()</code> method</a>. For the <code>id</code>, use one of the <code>transactionHashes</code> from the <code>getLedger()</code> response! <a class="btn btn-primary" href="javascript:js_interactives.step2.ex_2()">Answer</a></li>
-<li>Convert the <code>totalDrops</code> from the response to decimal XRP. <a class="btn btn-primary" href="javascript:js_interactives.step2.ex_3()">Answer</a></li>
+<li>Look up the details of one of the ledger's transaction using the <a href="tx.html">tx method</a>. <a class="btn btn-primary" href="javascript:js_interactives.step2.ex_2()">Answer</a></li>
+<li>Convert the <code>total_coins</code> from the response to decimal XRP. <a class="btn btn-primary" href="javascript:js_interactives.step2.ex_3()">Answer</a></li>
 </ul>
 <h2 id="setup-steps">Setup Steps<a aria-hidden="true" class="hover_anchor" href="#setup-steps"><i class="fa fa-link"></i></a></h2>
-<p>This page has the necessary prerequisites already loaded, but you can access the XRP Ledger from <strong>any webpage</strong> if you load <a href="rippleapi-reference.html">RippleAPI for JavaScript (ripple-lib)</a> in that page's HTML. For example:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/ripple-lib@1.10.0/build/ripple-latest-min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<p>This page has the necessary prerequisites already loaded, but you can access the XRP Ledger from <strong>any webpage</strong> if you load <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a> in that page's HTML. For example:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/xrpl@2.0.0/build/xrpl-latest-min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <h2 id="further-reading">Further Reading<a aria-hidden="true" class="hover_anchor" href="#further-reading"><i class="fa fa-link"></i></a></h2>
 <p>When you're ready to move on, continue using the XRP Ledger with these resources:</p>
 <ul>
+<li><a href="send-xrp.html">Send XRP</a> to send your first transaction.</li>
 <li><a href="concepts.html">Understand the Concepts</a> behind the XRP Ledger's design.</li>
-<li><a href="rippleapi-reference.html">Use the RippleAPI Reference</a> to see what else you can do.</li>
 <li><a href="install-rippled.html">Install <code>rippled</code></a> to participate in the network.</li>
 <li><a href="xrp-testnet-faucet.html">Get Testnet XRP</a> to try sending and receiving payments.</li>
 </ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -795,7 +802,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="get-started-using-node-js.html">Get Started Using Node.js</a>
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1015,6 +1022,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1674,7 +1696,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1856,16 +1890,6 @@
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -2143,9 +2167,31 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
 
-        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -2178,11 +2224,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>

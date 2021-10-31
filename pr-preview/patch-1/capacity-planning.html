@@ -147,7 +147,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -216,7 +216,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/tutorials/manage-the-rippled-server/installation/capacity-planning.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/tutorials/manage-the-rippled-server/installation/capacity-planning.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -441,7 +441,7 @@
 <p>For instructions on how to change the amount of history you keep, see <a href="configure-online-deletion.html">Configure Online Deletion</a>.</p>
 <p>If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the <a href="history-sharding.html">History Sharding</a> feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the <code>[shard_db]</code> stanza, and it can use a different type of key-value store than the one you defined for the ledger store using the <code>[node_db]</code> stanza.</p>
 <h5 id="amazon-web-services">Amazon Web Services<a aria-hidden="true" class="hover_anchor" href="#amazon-web-services"><i class="fa fa-link"></i></a></h5>
-<p>Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run <code>rippled</code> in AWS, but if using Elastic Block Storage (EBS), only use either the io1 or io2 types, and configure them for at least 10,000 IOPS. <!-- SPELLING_IGNORE: iops, ebs, aws -->
+<p>Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run <code>rippled</code> in AWS, but if using Elastic Block Storage (EBS), only use either the <code>io1</code> or <code>io2</code> types, and configure them for at least 10,000 IOPS. <!-- SPELLING_IGNORE: iops, ebs, aws -->
 Alternately, AWS instance stores (<code>ephemeral</code> storage) also has suitable performance. However, that is not durable, so data loss is to be expected under some circumstances.
 The <code>database_path</code> and <code>node_db</code> path should each reside on either EBS io1 or io2, or on instance storage.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> AWS instance storage is not guaranteed to provide durability in the event of hard drive failure. You also lose data when you stop/start or reboot the instance. The latter type of data loss can be acceptable for a <code>rippled</code> server because an individual server can usually re-acquire the lost data from its peer servers.</p>
@@ -962,7 +962,7 @@ The <code>database_path</code> and <code>node_db</code> path should each reside 
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="get-started-using-node-js.html">Get Started Using Node.js</a>
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1182,6 +1182,21 @@ The <code>database_path</code> and <code>node_db</code> path should each reside 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -1841,7 +1856,19 @@ The <code>database_path</code> and <code>node_db</code> path should each reside 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -2023,16 +2050,6 @@ The <code>database_path</code> and <code>node_db</code> path should each reside 
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -2310,9 +2327,31 @@ The <code>database_path</code> and <code>node_db</code> path should each reside 
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
 
-        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -2345,11 +2384,11 @@ The <code>database_path</code> and <code>node_db</code> path should each reside 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>

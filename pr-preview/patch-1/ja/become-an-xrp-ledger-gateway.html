@@ -151,7 +151,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -220,7 +220,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -333,14 +333,13 @@
 <p>All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as <em>issued currencies</em>, which are digital balances that represent currency or assets of value held by an issuer. The XRP Ledger has a system of directional accounting relationships, called <em>trust lines</em>, to make sure that users only hold issued currencies from counterparties they trust.</p>
 <p>Main article: <a href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>.</p>
 <h3 id="xrp">XRP<a aria-hidden="true" class="hover_anchor" href="#xrp"><i class="fa fa-link"></i></a></h3>
-<p><a href="xrp.html"><strong>XRP</strong></a> is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the <a class="external-link" href="https://ripple.com/xrp/" target="_blank">XRP Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><a href="xrp.html"><strong>XRP</strong></a> is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the <a href="xrp-overview.html">XRP Overview</a>.</p>
 <p>Issuing gateways do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the <a href="reserves.html">reserve requirements</a> and pay the <a href="transaction-cost.html">cost of sending transactions</a> through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy gateway.</p>
 <p>Main article: <a href="xrp.html">XRP</a>.</p>
 <h3 id="liquidity-and-currency-exchange">Liquidity and Currency Exchange<a aria-hidden="true" class="hover_anchor" href="#liquidity-and-currency-exchange"><i class="fa fa-link"></i></a></h3>
 <p>The XRP Ledger contains a <a href="decentralized-exchange.html">decentralized asset exchange</a>, where any user can place and fulfill bids to exchange XRP and issued currencies in any combination. <a href="cross-currency-payments.html">Cross-currency payments</a> use the decentralized exchange to convert currency atomically when the transaction is executed. In this way, users who choose make offers in the decentralized exchange provide the liquidity that makes it possible to trade issued currencies.</p>
 <p>Currency traders who hold a gateway's issued currencies can provide liquidity to other popular currencies, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of holding a variety of currencies. However, a gateway <em>may</em> still want to provide liquidity to XRP or other popular currencies at a baseline rate, especially when the gateway is new to the exchange. If you do provide liquidity, <strong>use a different address for trading than your issuing address.</strong></p>
-<p>Third-party liquidity providers can use the <a href="rippled-api.html"><code>rippled</code> APIs</a>, <a href="rippleapi-reference.html">RippleAPI JavaScript Library</a>, or a third-party client application to access the distributed exchange. It may also help client applications to surface information about your gateway to clients if you provide an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>.</p>
-<p>Contact <a href="mailto:partners@ripple.com">partners@ripple.com</a> for help establishing liquidity between your gateway and others.</p>
+<p>Liquidity providers can use the <a href="rippled-api.html">HTTP / WebSocket APIs</a>, <a href="client-libraries.html">client libraries</a>, or another application to access the distributed exchange. It may also help client applications to surface information about your gateway to clients if you provide an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>.</p>
 <h2 id="suggested-business-practices">Suggested Business Practices<a aria-hidden="true" class="hover_anchor" href="#suggested-business-practices"><i class="fa fa-link"></i></a></h2>
 <p>The value of a gateway's issued currency in the XRP Ledger comes directly from the trust that customers can redeem the issued balance from the gateway when needed. We recommend the following precautions to reduce the risk of business interruptions:</p>
 <ul>
@@ -633,17 +632,17 @@
 </ul>
 <h1 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h1>
 <h2 id="infrastructure">Infrastructure<a aria-hidden="true" class="hover_anchor" href="#infrastructure"><i class="fa fa-link"></i></a></h2>
-<p>For the gateway's own security as well as the stability of the network, Ripple recommends that each gateway run its own <code>rippled</code> servers. Ripple provides detailed and individualized recommendations to businesses interested in running a significant XRP-based business.</p>
-<p>Contact <a href="mailto:partners@ripple.com">partners@ripple.com</a> to see how Ripple can help.</p>
+<p>For the gateway's own security as well as the stability of the network, each gateway should run its own <code>rippled</code> servers including one <a href="rippled-server-modes.html#バリデータを運用する理由">validator</a>.</p>
 <h3 id="apis-and-middleware">APIs and Middleware<a aria-hidden="true" class="hover_anchor" href="#apis-and-middleware"><i class="fa fa-link"></i></a></h3>
 <p>There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:</p>
 <ul>
 <li><a href="rippled-api.html"><code>rippled</code></a> provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core XRP Ledger functionality.</li>
-<li><a href="rippleapi-reference.html">RippleAPI</a> provides a simplified API for JavaScript applications.</li>
+<li><a href="client-libraries.html">Client Libraries</a> are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.</li>
+<li>Other tools such as <a class="external-link" href="https://xumm.readme.io/docs/xapps" target="_blank">xApps <i aria-hidden="true" class="fa fa-external-link"></i></a> are also available.</li>
 </ul>
 <h2 id="tool-security">Tool Security<a aria-hidden="true" class="hover_anchor" href="#tool-security"><i class="fa fa-link"></i></a></h2>
 <p>Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. <strong>Never</strong> send your secret key to a server run by someone else. Either use your own <code>rippled</code> server, or sign the transactions locally before sending them to a <code>rippled</code> server.</p>
-<p>The examples in this document show API methods that include a secret key. This is only safe if you control <code>rippled</code> server yourself, <em>and</em> you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (<code>localhost</code>) network, a private network, or an encrypted VPN.) Alternatively, you could use <a href="rippleapi-reference.html">RippleAPI</a> to sign transactions locally before submitting them to a third-party server.</p>
+<p>The examples in this document show API methods that include a secret key. This is only safe if you control <code>rippled</code> server yourself, <em>and</em> you connect to it over a connection that is secure from outside listeners. For instructions and examples of other secure configurations, see <a href="set-up-secure-signing.html">Set Up Secure Signing</a>.</p>
 <h2 id="default-ripple">Default Ripple<a aria-hidden="true" class="hover_anchor" href="#default-ripple"><i class="fa fa-link"></i></a></h2>
 <p>The Default Ripple flag controls whether the balances in an accounting relationship <a href="rippling.html">allowed to ripple</a> by default. Rippling is what allows customers to trade issued currencies, so a gateway must allow rippling on all the accounting relationships to its issuing address.</p>
 <p>Before asking customers to create accounting relationships to its issuing address, a gateway should enable the Default Ripple flag on that address. Otherwise, the gateway must individually disable the No Ripple flag for each accounting relationship that other addresses have created.</p>
@@ -693,7 +692,7 @@
 </code></pre></div>
 <p>To confirm that an address has Default Ripple enabled, look up the address using the <a href="account_info.html">account_info method</a>, specifying a validated ledger version. Use <a class="external-link" href="https://en.wikipedia.org/wiki/Bitwise_operation#AND" target="_blank">a bitwise-AND operator <i aria-hidden="true" class="fa fa-external-link"></i></a> to compare the <code>Flags</code> field with <code>0x00800000</code> (the <a href="accountroot.html#accountrootのフラグ">ledger flag <code>lsfDefaultRipple</code></a>). If the result of the bitwise-AND operation is nonzero, then the address has Default Ripple enabled.</p>
 <h2 id="disallow-xrp">Disallow XRP<a aria-hidden="true" class="hover_anchor" href="#disallow-xrp"><i class="fa fa-link"></i></a></h2>
-<p>The Disallow XRP setting (<code>disallowIncomingXRP</code> in RippleAPI) is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments, if your gateway does not trade XRP. The Disallow XRP flag is not strictly enforced, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default.</p>
+<p>The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments, if your gateway does not trade XRP. The Disallow XRP flag is not strictly enforced, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default.</p>
 <p>An issuing gateway that does not trade XRP should enable the Disallow XRP flag on the gateway's issuing and operational addresses. A private exchange that trades in XRP should only enable the Disallow XRP flag on addresses that are not expected to receive XRP.</p>
 <p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an AccountSet transaction to enable the Disallow XRP flag:</p>
 <p>Request:</p>
@@ -800,7 +799,7 @@
 <li>Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code <code>tesSUCCESS</code> can change non-XRP balances. Only transactions from a validated ledger are final.</li>
 <li><a class="external-link" href="https://ripple.com/files/GB-2014-06.pdf" target="_blank" title="Partial Payment Flag Gateway Bulletin">Look out for Partial Payments <i aria-hidden="true" class="fa fa-external-link"></i></a>. Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.<ul>
 <li>In <code>rippled</code>, check the transaction for a <code>meta.delivered_amount</code> field. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> address.</li>
-<li>In RippleAPI, you can search the <code>outcome.BalanceChanges</code> field to see how much the destination address received. In some cases, this can be divided into multiple parts on different trust lines.</li>
+<li>In xrpl.js, you can use the <a class="external-link" href="https://js.xrpl.org/modules.html#getBalanceChanges" target="_blank"><code>xrpl.getBalanceChanges()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.</li>
 </ul>
 </li>
 <li>Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero <a href="#transfer-fees">transfer fee</a>, then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's issued currencies. See <a href="#transfer-fees">Transfer Fees</a> for more information.</li>
@@ -808,11 +807,11 @@
 <p>To make things simpler for your customers, we recommend accepting payments to either operational addresses and issuing addresses.</p>
 <p>As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.</p>
 <ul>
-<li>Use <code>rippled</code>'s <a href="gateway_balances.html">gateway_balances method</a> or <a href="rippleapi-reference.html#gettrustlines">RippleAPI's <code>getTrustlines</code> method</a> to check your balances.</li>
+<li>Use the <a href="gateway_balances.html">gateway_balances method</a> to check your balances.</li>
 <li>If you have a <a href="#transfer-fees">Transfer Fee</a> set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your issued currencies among themselves.</li>
 </ul>
 <h2 id="transfer-fees">Transfer Fees<a aria-hidden="true" class="hover_anchor" href="#transfer-fees"><i class="fa fa-link"></i></a></h2>
-<p>The <code>TransferRate</code> setting (<code>transferRate</code> in RippleAPI) defines a fee to charge for transferring issued currencies from one XRP Ledger address to another. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
+<p>The <code>TransferRate</code> setting defines a fee to charge for transferring issued currencies from one XRP Ledger address to another. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
 <p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an AccountSet transaction for the issuing address <code>rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW</code>, setting the <code>TransferRate</code> to charge a fee of 0.5%.</p>
 <p>Request:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span>
@@ -855,10 +854,7 @@
 </code></pre></div>
 <h3 id="transfer-fees-with-operational-and-standby-addresses">Transfer Fees with Operational and Standby Addresses<a aria-hidden="true" class="hover_anchor" href="#transfer-fees-with-operational-and-standby-addresses"><i class="fa fa-link"></i></a></h3>
 <p>All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending issued currency. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.</p>
-<ul>
-<li>In <code>rippled</code>'s APIs, you should set the <a href="payment.html"><code>SendMax</code> transaction parameter</a> higher than the destination <code>Amount</code> parameter.</li>
-<li>In RippleAPI, you should set the <code>source.maxAmount</code> parameter higher than the <code>destination.amount</code> parameter; or, set the <code>source.amount</code> parameter higher than the <code>destination.minAmount</code> parameter.</li>
-</ul>
+<p>Set the <a href="payment.html"><code>SendMax</code> transaction parameter</a> higher than the destination <code>Amount</code> parameter by a percentage based on the <code>TransferRate</code> setting.</p>
 <p class="devportal-callout note"><strong>Note:</strong> Transfer fees do not apply when sending issued currencies directly to the issuing address. The issuing address must always accept its issued currencies at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.</p>
 <p>For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. (The issuing address's total obligations in the XRP Ledger decrease by 0.05 EUR.ACME.) When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address <em>and</em> the transfer fee, giving the customer €5,05 in ACME's systems.</p>
 <h2 id="sending-payments-to-customers">Sending Payments to Customers<a aria-hidden="true" class="hover_anchor" href="#sending-payments-to-customers"><i class="fa fa-link"></i></a></h2>
@@ -932,11 +928,7 @@
 <p>When one of your addresses receives a payment whose purpose is unclear, we recommend that you try to return the money to its sender. While this is more work than pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically.</p>
 <p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) The <a class="external-link" href="https://ripple.com/files/GB-2014-06.pdf" target="_blank">Partial Payment Flag Gateway Bulletin (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a> explains how to avoid a common problem.</p>
 <p>Second, you should send bounced payments as Partial Payments. Since third parties can manipulate the cost of pathways between addresses, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the XRP Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from either an operational address or a standby address.</p>
-<ul>
-<li>To send a Partial Payment using <code>rippled</code>, enable the <a href="payment.html#paymentのフラグ"><code>tfPartialPayment</code> flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field.</li>
-<li>To send a Partial Payment using RippleAPI, set the <code>allowPartialPayment</code> field of the <a href="rippleapi-reference.html#payment">Payment object</a> to <code>true</code>. Set the <code>source.maxAmount</code> and <code>destination.amount</code> both equal to the amount you received.</li>
-</ul>
-<p>You should use the <code>SourceTag</code> value (<code>source.tag</code> in RippleAPI) from the incoming payment as the <code>DestinationTag</code> value (<code>destination.tag</code> in RippleAPI) for the return payment.</p>
+<p>To send a Partial Payment, enable the <a href="payment.html#paymentのフラグ"><code>tfPartialPayment</code> flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field. You should use the <code>SourceTag</code> value from the incoming payment as the <code>DestinationTag</code> value for the return payment.</p>
 <p>To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again.</p>
 <h2 id="reliable-transaction-submission">Reliable Transaction Submission<a aria-hidden="true" class="hover_anchor" href="#reliable-transaction-submission"><i class="fa fa-link"></i></a></h2>
 <p>The goal of reliably submitting transactions is to achieve the following two properties in a finite amount of time:</p>
@@ -947,7 +939,7 @@
 <p>To submit transactions reliably, follow these guidelines:</p>
 <ul>
 <li>Persist details of the transaction before submitting it.</li>
-<li>Use the <code>LastLedgerSequence</code> parameter. (RippleAPI does this by default.)</li>
+<li>Use the <code>LastLedgerSequence</code> parameter. (Many <a href="client-libraries.html">client libraries</a> do this by default.)</li>
 <li>Resubmit a transaction if it has not appeared in a validated ledger whose <a href="basic-data-types.html#レジャーインデックス">ledger index</a> is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
 </ul>
 <p>For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
@@ -1440,7 +1432,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1660,6 +1652,21 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -2319,7 +2326,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -2501,16 +2520,6 @@
         <a class="nav-link" href="/ja/transaction-methods.html">Transaction Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2788,9 +2797,31 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
 
-        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+        <a class="nav-link" href="/ja/signing-methods.html">Signing Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+
+        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -2823,11 +2854,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>

@@ -147,7 +147,7 @@
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
@@ -216,7 +216,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/DennisDawson/xrpl-dev-portal/edit/patch-1/content/tutorials/use-tokens/issue-a-fungible-token.md?pr=/XRPLF/xrpl-dev-portal/pull/1194" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-1/content/tutorials/use-tokens/issue-a-fungible-token.md?pr=/XRPLF/xrpl-dev-portal/pull/1223" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -273,9 +273,9 @@
 </li>
 <li>You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.</li>
 <li>You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:<ul>
-<li>ripple-lib for JavaScript <a href="get-started-with-rippleapi-for-javascript.html">(Node.js)</a> or <a href="get-started.html">in-browser</a></li>
-<li><a href="get-started-using-python.html">xrpl-py for Python</a></li>
-<li><a href="get-started-using-java.html">xrpl4j for Java</a>.</li>
+<li><strong>JavaScript</strong> with the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank">xrpl.js library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> for setup steps.</li>
+<li><strong>Python</strong> with the <a class="external-link" href="https://xrpl-py.readthedocs.io/" target="_blank"><code>xrpl-py</code> library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-python.html">Get Started using Python</a> for setup steps.</li>
+<li><strong>Java</strong> with the <a class="external-link" href="https://github.com/XRPLF/xrpl4j" target="_blank">xrpl4j library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-java.html">Get Started Using Java</a> for setup steps.</li>
 <li>You can also read along and use the interactive steps in your browser without any setup.</li>
 </ul>
 </li>
@@ -307,21 +307,25 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, <strong>do not</strong> use the same addresses on Testnet/Devnet and Mainnet.</p>
-<p>When you're <a href="production-readiness.html">building actual production-ready software</a>, you'll instead use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
+<p>When you're <a href="production-readiness.html">building production-ready software</a>, you should use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
 <h3 id="2-connect-to-the-network">2. Connect to the Network<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-the-network"><i class="fa fa-link"></i></a></h3>
-<p>You must be connected to the network to submit transactions to it.</p>
-<p>The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a>:</p>
+<p>You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a>:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="python" href="#code-0-1">Python</a></li><li><a class="java" href="#code-0-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="nx">ripple</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span> <span class="c1">// Node.js only. Use a &lt;script&gt; tag in browsers.</span>
+<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<span class="c1">// const xrpl = require('xrpl')</span>
 
+<span class="c1">// Wrap code in an async function so we can use await</span>
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
-  <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
 
-  <span class="c1">// Code in the following examples continues here...</span>
+  <span class="c1">// Define the network client</span>
+  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
 
-  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span> <span class="c1">// When done. This lets Node.js stop running.</span>
+  <span class="c1">// ... custom code goes here</span>
+
+  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="nx">main</span><span class="p">()</span>
@@ -342,7 +346,7 @@
 </code></pre></div></div>
 </div>
 <p class="devportal-callout note"><strong>Note:</strong> The JavaScript code samples in this tutorial use the <a class="external-link" href="https://javascript.info/async-await" target="_blank"><code>async</code>/<code>await</code> pattern <i aria-hidden="true" class="fa fa-external-link"></i></a>. Since <code>await</code> needs to be used from within an <code>async</code> function, the remaining code samples are written to continue inside the <code>main()</code> function started here. You can also use Promise methods <code>.then()</code> and <code>.catch()</code> instead of <code>async</code>/<code>await</code> if you prefer.</p>
-<p>For this tutorial, you can connect directly from your browser by pressing the following button:</p>
+<p>For this tutorial, click the following button to connect:</p>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="2" data-totalsteps="11" id="interactive-connect">
 <div class="interactive-block-inner">
 <div class="breadcrumbs-wrap">
@@ -411,26 +415,22 @@
 <div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// Configure issuer (cold address) settings ----------------------------------</span>
   <span class="kd">const</span> <span class="nx">cold_settings_tx</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">cold_address</span><span class="p">,</span>
+    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
     <span class="s2">"TransferRate"</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
     <span class="s2">"TickSize"</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
     <span class="s2">"Domain"</span><span class="o">:</span> <span class="s2">"6578616D706C652E636F6D"</span><span class="p">,</span> <span class="c1">// "example.com"</span>
-    <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="mf">8</span> <span class="c1">// enable Default Ripple</span>
-    <span class="c1">//"Flags": (api.txFlags.AccountSet.DisallowXRP |</span>
-    <span class="c1">//          api.txFlags.AccountSet.RequireDestTag)</span>
+    <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfDefaultRipple</span><span class="p">,</span>
+    <span class="c1">// Using tf flags, we can enable more flags in one transaction</span>
+    <span class="s2">"Flags"</span><span class="o">:</span> <span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfDisallowXRP</span> <span class="o">|</span>
+             <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfRequireDestTag</span><span class="p">)</span>
   <span class="p">}</span>
 
-  <span class="kd">const</span> <span class="nx">cst_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareTransaction</span><span class="p">(</span>
-    <span class="nx">cold_settings_tx</span><span class="p">,</span>
-    <span class="p">{</span><span class="nx">maxLedgerVersionOffset</span><span class="o">:</span> <span class="mf">10</span><span class="p">}</span>
-  <span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">cst_signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">cst_prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">cold_secret</span><span class="p">)</span>
-  <span class="c1">// submit_and_verify helper function from:</span>
-  <span class="c1">// https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify/</span>
+  <span class="kd">const</span> <span class="nx">cst_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">cold_settings_tx</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">cst_signed</span> <span class="o">=</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">cst_prepared</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sending cold address AccountSet transaction..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">cst_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">submit_and_verify</span><span class="p">(</span><span class="nx">api</span><span class="p">,</span> <span class="nx">cst_signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">cst_result</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">cst_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">cst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">cst_result</span><span class="si">}</span><span class="sb">`</span>
   <span class="p">}</span>
@@ -630,25 +630,23 @@
 
   <span class="kd">const</span> <span class="nx">hot_settings_tx</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">hot_address</span><span class="p">,</span>
+    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
     <span class="s2">"Domain"</span><span class="o">:</span> <span class="s2">"6578616D706C652E636F6D"</span><span class="p">,</span> <span class="c1">// "example.com"</span>
-    <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="mf">2</span> <span class="c1">// enable Require Auth so we can't use trust lines that users</span>
-                 <span class="c1">// make to the hot address, even by accident.</span>
-    <span class="c1">//"Flags": (api.txFlags.AccountSet.DisallowXRP |</span>
-    <span class="c1">//          api.txFlags.AccountSet.RequireDestTag)</span>
+    <span class="c1">// enable Require Auth so we can't use trust lines that users</span>
+    <span class="c1">// make to the hot address, even by accident:</span>
+    <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfRequireAuth</span><span class="p">,</span>
+    <span class="s2">"Flags"</span><span class="o">:</span> <span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfDisallowXRP</span> <span class="o">|</span>
+              <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfRequireDestTag</span><span class="p">)</span>
   <span class="p">}</span>
 
-  <span class="kd">const</span> <span class="nx">hst_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareTransaction</span><span class="p">(</span>
-    <span class="nx">hot_settings_tx</span><span class="p">,</span>
-    <span class="p">{</span><span class="nx">maxLedgerVersionOffset</span><span class="o">:</span> <span class="mf">10</span><span class="p">}</span>
-  <span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">hst_signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">hst_prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">hot_secret</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">hst_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">hot_settings_tx</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">hst_signed</span> <span class="o">=</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">hst_prepared</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sending hot address AccountSet transaction..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">hst_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">submit_and_verify</span><span class="p">(</span><span class="nx">api</span><span class="p">,</span> <span class="nx">hst_signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">hst_result</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">hst_signed</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">hst_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">hst_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">hst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">hst_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">hst_result</span><span class="si">}</span><span class="sb">`</span>
+    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">hst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span>
   <span class="p">}</span>
 </code></pre></div></div>
 
@@ -828,25 +826,22 @@
   <span class="kd">const</span> <span class="nx">currency_code</span> <span class="o">=</span> <span class="s2">"FOO"</span>
   <span class="kd">const</span> <span class="nx">trust_set_tx</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"TrustSet"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">hot_address</span><span class="p">,</span>
+    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
     <span class="s2">"LimitAmount"</span><span class="o">:</span> <span class="p">{</span>
       <span class="s2">"currency"</span><span class="o">:</span> <span class="nx">currency_code</span><span class="p">,</span>
-      <span class="s2">"issuer"</span><span class="o">:</span> <span class="nx">cold_address</span><span class="p">,</span>
+      <span class="s2">"issuer"</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
       <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"10000000000"</span> <span class="c1">// Large limit, arbitrarily chosen</span>
     <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="kd">const</span> <span class="nx">ts_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareTransaction</span><span class="p">(</span>
-    <span class="nx">trust_set_tx</span><span class="p">,</span>
-    <span class="p">{</span><span class="nx">maxLedgerVersionOffset</span><span class="o">:</span> <span class="mf">10</span><span class="p">}</span>
-  <span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">ts_signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">ts_prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">hot_secret</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">ts_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">trust_set_tx</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">ts_signed</span> <span class="o">=</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">ts_prepared</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Creating trust line from hot address to issuer..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">ts_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">submit_and_verify</span><span class="p">(</span><span class="nx">api</span><span class="p">,</span> <span class="nx">ts_signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">ts_result</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">ts_signed</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">ts_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">ts_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">ts_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">ts_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">ts_result</span><span class="si">}</span><span class="sb">`</span>
+    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">ts_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span>
   <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1024,27 +1019,25 @@
   <span class="kd">const</span> <span class="nx">issue_quantity</span> <span class="o">=</span> <span class="s2">"3840"</span>
   <span class="kd">const</span> <span class="nx">send_token_tx</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">cold_address</span><span class="p">,</span>
+    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
     <span class="s2">"Amount"</span><span class="o">:</span> <span class="p">{</span>
       <span class="s2">"currency"</span><span class="o">:</span> <span class="nx">currency_code</span><span class="p">,</span>
       <span class="s2">"value"</span><span class="o">:</span> <span class="nx">issue_quantity</span><span class="p">,</span>
-      <span class="s2">"issuer"</span><span class="o">:</span> <span class="nx">cold_address</span>
+      <span class="s2">"issuer"</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span>
     <span class="p">},</span>
-    <span class="s2">"Destination"</span><span class="o">:</span> <span class="nx">hot_address</span>
+    <span class="s2">"Destination"</span><span class="o">:</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+    <span class="s2">"DestinationTag"</span><span class="o">:</span> <span class="mf">1</span> <span class="c1">// Needed since we enabled Require Destination Tags</span>
+                        <span class="c1">// on the hot account earlier.</span>
   <span class="p">}</span>
 
-  <span class="kd">const</span> <span class="nx">pay_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareTransaction</span><span class="p">(</span>
-    <span class="nx">send_token_tx</span><span class="p">,</span>
-    <span class="p">{</span><span class="nx">maxLedgerVersionOffset</span><span class="o">:</span> <span class="mf">10</span><span class="p">}</span>
-  <span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">pay_signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">pay_prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">cold_secret</span><span class="p">)</span>
-  <span class="c1">// submit_and_verify helper from _code-samples/submit-and-verify</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Sending </span><span class="si">${</span><span class="nx">issue_quantity</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">currency_code</span><span class="si">}</span><span class="sb"> to </span><span class="si">${</span><span class="nx">hot_address</span><span class="si">}</span><span class="sb">...`</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">pay_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">submit_and_verify</span><span class="p">(</span><span class="nx">api</span><span class="p">,</span> <span class="nx">pay_signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">pay_result</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">pay_signed</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">pay_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">send_token_tx</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">pay_signed</span> <span class="o">=</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">pay_prepared</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Sending </span><span class="si">${</span><span class="nx">issue_quantity</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">currency_code</span><span class="si">}</span><span class="sb"> to </span><span class="si">${</span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">...`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">pay_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">pay_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">pay_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">pay_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">pay_result</span><span class="si">}</span><span class="sb">`</span>
+    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">pay_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span>
   <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1167,21 +1160,23 @@
 
 <div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Check balances ------------------------------------------------------------</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Getting hot address balances..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">hot_balances</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"account_lines"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">account</span><span class="o">:</span> <span class="nx">hot_address</span><span class="p">,</span>
+  <span class="kd">const</span> <span class="nx">hot_balances</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+    <span class="nx">command</span><span class="o">:</span> <span class="s2">"account_lines"</span><span class="p">,</span>
+    <span class="nx">account</span><span class="o">:</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
     <span class="nx">ledger_index</span><span class="o">:</span> <span class="s2">"validated"</span>
   <span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hot_balances</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hot_balances</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Getting cold address balances..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">cold_balances</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"gateway_balances"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">account</span><span class="o">:</span> <span class="nx">cold_address</span><span class="p">,</span>
+  <span class="kd">const</span> <span class="nx">cold_balances</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+    <span class="nx">command</span><span class="o">:</span> <span class="s2">"gateway_balances"</span><span class="p">,</span>
+    <span class="nx">account</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
     <span class="nx">ledger_index</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
-    <span class="nx">hotwallet</span><span class="o">:</span> <span class="p">[</span><span class="nx">hot_address</span><span class="p">]</span>
+    <span class="nx">hotwallet</span><span class="o">:</span> <span class="p">[</span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">]</span>
   <span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">cold_balances</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">cold_balances</span><span class="p">.</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
 
-  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1696,7 +1691,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="get-started-using-node-js.html">Get Started Using Node.js</a>
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
   </div>
 
       
@@ -1916,6 +1911,21 @@
       
   <div class="nav-item active">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
   </div>
 
     </nav>
@@ -2575,7 +2585,19 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -2757,16 +2779,6 @@
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign.html">sign</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -3044,9 +3056,31 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
 
-        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -3079,11 +3113,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
@@ -3409,7 +3443,7 @@ $(document).ready(() => {
 </script>
 
 <!-- ripple-lib & prerequisites -->
-<script type="application/javascript" src="assets/js/ripple-lib-1.10.0.min.js"></script>
+<script type="application/javascript" src="assets/js/xrpl-2.0.0.min.js"></script>
 
 <!-- Helper for interactive tutorials -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
