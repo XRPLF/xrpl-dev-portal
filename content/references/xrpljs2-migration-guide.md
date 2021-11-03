@@ -165,7 +165,7 @@ const signed = api.sign(JSON.stringify(tx_json), seed)
 **xrpl.js 2.0:**
 
 ```js
-const wallet = new xrpl.Wallet.fromSeed('s████████████████████████████')
+const wallet = xrpl.Wallet.fromSeed('s████████████████████████████') 
 const tx_json = {
   "Account": wallet.address,
   "TransactionType":"Payment",
