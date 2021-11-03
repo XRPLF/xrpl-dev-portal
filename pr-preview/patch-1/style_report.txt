@@ -14,11 +14,11 @@ Found 10 possible spelling errors:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: lapps, capps, apps
+  xapps: apps, lapps, capps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: ion, io-, iob
-  io2: io-, iob, iom
+  io2: iom, iod, o2
+  io1: iop, iom, ios
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
