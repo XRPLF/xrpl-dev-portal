@@ -216,7 +216,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/diadal/xrpl-dev-portal/edit/patch-1/content/references/xrpljs2-migration-guide.md?pr=/XRPLF/xrpl-dev-portal/pull/1224" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wilsonianb/ripple-dev-portal/edit/patch-1/content/references/xrpljs2-migration-guide.md?pr=/XRPLF/xrpl-dev-portal/pull/1225" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit -->    <div class="toc-header">
       <h4>In this document</h4>
     </div>
@@ -365,7 +365,7 @@
 <span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tx_json</span><span class="p">),</span> <span class="nx">seed</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>xrpl.js 2.0:</strong></p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="kd">const</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="s1">'s████████████████████████████'</span><span class="p">)</span> 
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="kd">const</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="s1">'s████████████████████████████'</span><span class="p">)</span>
 <span class="kd">const</span> <span class="nx">tx_json</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
   <span class="s2">"TransactionType"</span><span class="o">:</span><span class="s2">"Payment"</span><span class="p">,</span>
