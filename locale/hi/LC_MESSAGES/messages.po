@@ -1,0 +1,1742 @@
+# Hindi translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR tpardhe@gmail.com, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-05-12 17:00-0700\n"
+"PO-Revision-Date: 2021-11-05 20:34+0530\n"
+"Last-Translator: FULL NAME tpardhe@gmail.com\n"
+"Language: hi\n"
+"Language-Team: hi <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: tool/template-calculator.html:24 tool/template-home.html:109
+msgid "Sustainability"
+msgstr "स्थिरता"
+
+#: tool/template-calculator.html:26 tool/template-home.html:111
+msgid "Sustainability icon"
+msgstr "स्थिरता आइकन"
+
+#: tool/template-calculator.html:29 tool/template-learn-impact.html:30
+msgid "How Green Is Your Currency?"
+msgstr "आपकी मुद्रा कितनी हरित है?"
+
+#: tool/template-calculator.html:30
+msgid "Explore the Interactive Tool"
+msgstr "इंटरएक्टिव टूल का अन्वेषण करें"
+
+#: tool/template-calculator.html:31
+msgid "Energy Consumption for Cash, Credit Cards and Crypto"
+msgstr "नकद, क्रेडिट कार्ड और क्रिप्टो के लिए ऊर्जा की खपत"
+
+#: tool/template-calculator.html:34
+msgid ""
+"Moving money carries cost—and not just the fee on your transaction or the"
+" value of your payment."
+msgstr "पैसे ले जाने में लागत होती है- न कि केवल आपके लेन-देन पर शुल्क या आपके भुगतान का मूल्य।"
+
+#: tool/template-calculator.html:35
+msgid ""
+"Whether it’s in cash, on a credit card or with crypto, every transaction "
+"you make consumes energy, and therefore, emits pollutants into the "
+"environment."
+msgstr "चाहे वह नकद में हो, क्रेडिट कार्ड पर या क्रिप्टो के साथ, आपके द्वारा किया गया प्रत्येक लेनदेन ऊर्जा की खपत करता है, और इसलिए, पर्यावरण में प्रदूषकों का उत्सर्जन करता है।"
+
+#: tool/template-calculator.html:38
+msgid ""
+"The impact of this is startling when you look at the total transactions "
+"across an entire year—for any one form of currency."
+msgstr "इसका प्रभाव चौंका देने वाला होता है जब आप एक पूरे वर्ष के कुल लेन-देन को देखते हैं—मुद्रा के किसी एक रूप के लिए।"
+
+#: tool/template-calculator.html:39
+msgid ""
+"Find out more about the environmental cost of some of the world’s most "
+"popular and innovative currencies, and start making more educated choices"
+" about how you transact."
+msgstr "दुनिया की कुछ सबसे लोकप्रिय और नवोन्मेषी मुद्राओं की पर्यावरणीय लागत के बारे में और जानें, और आप कैसे लेन-देन करते हैं, इसके बारे में अधिक शिक्षित विकल्प बनाना शुरू करें।"
+
+#: tool/template-calculator.html:48
+msgid "How Does XRP Compare to Other Currencies?"
+msgstr "एक्सआरपी अन्य मुद्राओं की तुलना कैसे करता है?"
+
+#: tool/template-calculator.html:49 tool/template-calculator.html:84
+msgid "Learn more about the methodology"
+msgstr "कार्यप्रणाली के बारे में अधिक जानें"
+
+#: tool/template-calculator.html:55
+msgid "Change Inputs"
+msgstr "इनपुट बदलें"
+
+#: tool/template-calculator.html:60
+msgid "Comparing<br/> Transaction Data"
+msgstr "तुलना<br/> लेन-देन डेटा"
+
+#: tool/template-calculator.html:62
+msgid "Crypto"
+msgstr "क्रिप्टो"
+
+#: tool/template-calculator.html:63
+msgid "Credit Cards"
+msgstr "क्रेडिट कार्ड"
+
+#: tool/template-calculator.html:64 tool/template-calculator.html:129
+msgid "Cash"
+msgstr "नकद"
+
+#: tool/template-calculator.html:78
+msgid "Twitter share"
+msgstr "ट्विटर शेयर"
+
+#: tool/template-calculator.html:79
+msgid "LinkedIn share"
+msgstr "लिंक्डइन शेयर"
+
+#: tool/template-calculator.html:80
+msgid "Facebook share"
+msgstr "फेसबुक शेयर"
+
+#: tool/template-calculator.html:90
+msgid "Energy Consumption of Portugal"
+msgstr "पुर्तगाल की ऊर्जा खपत"
+
+#: tool/template-calculator.html:92 tool/template-calculator.html:177
+#: tool/template-calculator.html:220
+msgid "Comparing <span class=\"slider-amt\"></span> Million Transactions in 2019"
+msgstr "तुलना <span class=\slider-amt\></span> 2019 में मिलियन लेनदेन"
+
+#: tool/template-calculator.html:94
+msgid ""
+"The country of Portugal consumes 46.94 billion Kilowatt hours (kWh) of "
+"energy annually. Explore how much energy today’s various currencies "
+"consume in relation to Portugal."
+msgstr "पुर्तगाल देश सालाना 46.94 बिलियन किलोवाट घंटे (kWh) ऊर्जा की खपत करता है। अन्वेषण करें कि पुर्तगाल के संबंध में आज की विभिन्न मुद्राएं कितनी ऊर्जा की खपत करती हैं।"
+
+#: tool/template-calculator.html:100 tool/template-calculator.html:148
+#: tool/template-calculator.html:160
+msgid "Portugal"
+msgstr "पुर्तगाल"
+
+#: tool/template-calculator.html:105 tool/template-learn-overview.html:44
+msgid "Bitcoin"
+msgstr "बिटकॉइन"
+
+#: tool/template-calculator.html:107 tool/template-calculator.html:119
+#: tool/template-calculator.html:131 tool/template-calculator.html:143
+#: tool/template-calculator.html:155 tool/template-calculator.html:167
+msgid "kWh"
+msgstr "किलोवाट"
+
+#: tool/template-calculator.html:117
+msgid "Ethereum"
+msgstr "एथेरियम"
+
+#: tool/template-calculator.html:152
+msgid "Visa"
+msgstr "वीसा"
+
+#: tool/template-calculator.html:164 tool/template-calculator.html:165
+msgid "Mastercard"
+msgstr "मास्टर कार्ड"
+
+#: tool/template-calculator.html:175
+msgid "CO<sub>2</sub> Emissions from Airline Flights"
+msgstr "CO<sub>2</sub> एयरलाइन उड़ानों से उत्सर्जन"
+
+#: tool/template-calculator.html:179
+msgid ""
+"A 12-hour flight from London to Hong Kong releases 3 tons of carbon "
+"dioxide (CO<sub>2</sub>). Discover how much CO<sub>2</sub> different "
+"forms of currency release in comparison to emissions from airline "
+"flights."
+msgstr "लंदन से हांगकांग के लिए 12 घंटे की उड़ान से 3 टन कार्बन डाइऑक्साइड (CO<sub>2</sub>) निकलती है। पता लगाएं कि एयरलाइन उड़ानों से उत्सर्जन की तुलना में कितनी CO<sub>2</sub> मुद्रा जारी करने के विभिन्न रूप हैं।"
+
+#: tool/template-calculator.html:187 tool/template-calculator.html:192
+#: tool/template-calculator.html:197 tool/template-calculator.html:202
+#: tool/template-calculator.html:207 tool/template-calculator.html:212
+msgid "metric tons of CO<sub>2</sub>"
+msgstr "मीट्रिक टन CO<sub>2</sub>"
+
+#: tool/template-calculator.html:218
+msgid "Gas Consumption by the Gallon"
+msgstr "गैलन द्वारा गैस की खपत"
+
+#: tool/template-calculator.html:222
+msgid ""
+"An Ultra Large Crude Carrier (ULCC) carries approximately 120 million "
+"gallons of gas. Measure the environmental impact between currencies in "
+"relation to the amount of gas they would consume in the real-world."
+msgstr "एक अल्ट्रा लार्ज क्रूड कैरियर (ULCC) लगभग 120 मिलियन गैलन गैस वहन करता है। वास्तविक दुनिया में उनके द्वारा उपभोग की जाने वाली गैस की मात्रा के संबंध में मुद्राओं के बीच पर्यावरणीय प्रभाव को मापें।"
+
+#: tool/template-calculator.html:230 tool/template-calculator.html:235
+#: tool/template-calculator.html:240 tool/template-calculator.html:245
+#: tool/template-calculator.html:250 tool/template-calculator.html:255
+#: tool/template-calculator.html:277
+msgid "Gallons of Gas"
+msgstr "गैस के गैलन"
+
+#: tool/template-calculator.html:267
+msgid "Breaking Down Individual Transactions"
+msgstr "व्यक्तिगत लेनदेन को तोड़ना"
+
+#: tool/template-calculator.html:268
+msgid ""
+"Looking at individual transactions below, compare how a single "
+"transaction across each form of currency equates to kWh, CO<sub>2</sub> "
+"emissions, and gallons of gas."
+msgstr "नीचे दिए गए व्यक्तिगत लेन-देन को देखते हुए, तुलना करें कि मुद्रा के प्रत्येक रूप में एक एकल लेनदेन kWh, CO<sub>2</sub> उत्सर्जन और गैलन गैस के बराबर कैसे होता है।"
+
+#: tool/template-calculator.html:275
+msgid "Kilowatt Hour"
+msgstr "किलोवाट घंटा"
+
+#: tool/template-calculator.html:276
+msgid "CO<sub>2</sub> Emissions*"
+msgstr "CO<sub>2</sub> उत्सर्जन*"
+
+#: tool/template-calculator.html:312
+msgid "Paper Currency"
+msgstr "कागज़ी मुद्रा"
+
+#: tool/template-calculator.html:319
+msgid "*Calculations in million tonne (Mt)"
+msgstr "*गणना मिलियन टन (माउंट) में"
+
+#: tool/template-contribute.html:21
+msgid "For Developers"
+msgstr "डेवलपर्स के लिए"
+
+#: tool/template-contribute.html:34
+msgid ""
+"Thank you for your interest in contributing to XRPL.org. This website was"
+" created for the community and is meant to be a living, breathing source "
+"of truth for XRP and XRP Ledger resources."
+msgstr "XRPL.org में योगदान करने में आपकी रुचि के लिए धन्यवाद। यह वेबसाइट समुदाय के लिए बनाई गई थी और यह XRP और XRP लेजर संसाधनों के लिए सत्य का एक जीवित, सांस लेने वाला स्रोत है।"
+
+#: tool/template-contribute.html:35
+msgid ""
+"Contributing to XRPL.org is a great way to learn about the XRP Ledger. "
+"This portal is open-source and anyone can suggest changes. For more "
+"information, please <a href=\"https://github.com/ripple/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\" target=\"_blank\">read and consider "
+"the contributing guidelines</a>."
+msgstr "XRPL.org में योगदान करना XRP लेजर के बारे में जानने का एक शानदार तरीका है। यह पोर्टल ओपन-सोर्स है और कोई भी बदलाव का सुझाव दे सकता है। अधिक जानकारी के लिए, कृपया <a href=\https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\ target=\_blank\>योगदान दिशानिर्देशों को पढ़ें और उन पर विचार करें</a> ."
+
+#: tool/template-contribute.html:36
+msgid ""
+"You may also be interested in learning about <a "
+"href=\"https://interledger.org/\" target=\"_blank\">Interledger</a>, <a "
+"href=\"https://ripplex.io/\" target=\"_blank\">RippleX</a>, and <a "
+"href=\"https://paystring.org/\" target=\"_blank\">PayString</a>."
+msgstr "आपको <a href=\https://interledger.org/\ target=\_blank\>Interledger</a>, <a href=\https://ripplex.io/\ target= के बारे में जानने में भी रुचि हो सकती है। \_blank\>RippleX</a>, और <a href=\https://paystring.org/\ target=\_blank\>PayString</a>।"
+
+#: tool/template-doc.html:22
+msgid "Sorry, this page is not available in your language."
+msgstr "क्षमा करें, यह पृष्ठ आपकी भाषा में उपलब्ध नहीं है।"
+
+#: tool/template-doc.html:23
+msgid ""
+"We are making an effort to offer the XRP Ledger Dev Portal in a variety "
+"of languages, but not all pages are available in all languages. If you'd "
+"like to help, <a href=\"https://github.com/ripple/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
+msgstr "हम एक्सआरपी लेजर देव पोर्टल को विभिन्न भाषाओं में पेश करने का प्रयास कर रहे हैं, लेकिन सभी पेज सभी भाषाओं में उपलब्ध नहीं हैं। अगर आप मदद करना चाहते हैं, तो <a href=\https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\>कृपया योगदान दें!</a>"
+
+#: tool/template-doc.html:35
+msgid "In this document"
+msgstr "इस दस्तावेज़ में"
+
+#: tool/template-explore-businesses.html:24
+msgid "Solving Real Problems Across Industries"
+msgstr "उद्योगों में वास्तविक समस्याओं का समाधान"
+
+#: tool/template-explore-businesses.html:25
+msgid "Businesses Running on the XRP Ledger"
+msgstr "एक्सआरपी लेजर पर चलने वाले व्यवसाय"
+
+#: tool/template-explore-businesses.html:28
+msgid ""
+"While exchanges and wallet providers are the most common businesses "
+"running on the XRP Ledger, there are many other companies that leverage "
+"the technology to solve interesting problems across myriad industries."
+msgstr "जबकि एक्सचेंज और वॉलेट प्रदाता एक्सआरपी लेजर पर चलने वाले सबसे आम व्यवसाय हैं, कई अन्य कंपनियां हैं जो असंख्य उद्योगों में दिलचस्प समस्याओं को हल करने के लिए प्रौद्योगिकी का लाभ उठाती हैं।"
+
+#: tool/template-explore-businesses.html:31
+#: tool/template-explore-businesses.html:52
+msgid "Asset Custody"
+msgstr "एसेट कस्टडी"
+
+#: tool/template-explore-businesses.html:32
+#: tool/template-explore-businesses.html:57
+msgid "Payment Processing"
+msgstr "भुगतान प्रक्रिया"
+
+#: tool/template-explore-businesses.html:33 tool/template-learn-uses.html:50
+#: tool/template-learn-uses.html:55
+msgid "Micropayments"
+msgstr "सूक्ष्म भुगतान"
+
+#: tool/template-explore-businesses.html:34
+msgid "Wallets"
+msgstr "पर्स"
+
+#: tool/template-explore-businesses.html:35
+#: tool/template-explore-businesses.html:82
+msgid "Music"
+msgstr "संगीत"
+
+#: tool/template-explore-businesses.html:38
+#: tool/template-explore-businesses.html:87
+msgid "On-Demand Liquidity"
+msgstr "मांग पर चलनिधि"
+
+#: tool/template-explore-businesses.html:39
+msgid "Gaming"
+msgstr "खेल"
+
+#: tool/template-explore-businesses.html:40
+#: tool/template-explore-businesses.html:92
+msgid "Infrastructure"
+msgstr "आधारभूत संरचना"
+
+#: tool/template-explore-businesses.html:41
+#: tool/template-explore-businesses.html:97
+msgid "Security"
+msgstr "सुरक्षा"
+
+#: tool/template-explore-businesses.html:42
+#: tool/template-explore-businesses.html:102
+msgid "Applications"
+msgstr "अनुप्रयोग"
+
+#: tool/template-explore-businesses.html:49
+msgid "Businesses Using XRP"
+msgstr "एक्सआरपी का उपयोग करने वाले व्यवसाय"
+
+#: tool/template-explore-businesses.html:53
+msgid ""
+"BitGo provides custodial and non-custodial asset holdings for digital "
+"assets including XRP. BitGo's enterprise-level security empowers "
+"businesses to integrate digital currencies like XRP into new and existing"
+" financial systems."
+msgstr "BitGo, XRP सहित डिजिटल परिसंपत्तियों के लिए कस्टोडियल और गैर-कस्टोडियल एसेट होल्डिंग्स प्रदान करता है। BitGo की उद्यम-स्तरीय सुरक्षा व्यवसायों को XRP जैसी डिजिटल मुद्राओं को नई और मौजूदा वित्तीय प्रणालियों में एकीकृत करने का अधिकार देती है।"
+
+#: tool/template-explore-businesses.html:58
+msgid ""
+"BitPay builds powerful, enterprise-grade tools for accepting and spending"
+" cryptocurrencies, including XRP."
+msgstr "बिटपे एक्सआरपी सहित क्रिप्टोकरेंसी को स्वीकार करने और खर्च करने के लिए शक्तिशाली, एंटरप्राइज-ग्रेड टूल बनाता है।"
+
+#: tool/template-explore-businesses.html:62
+msgid "Web Monetization"
+msgstr "वेब मुद्रीकरण"
+
+#: tool/template-explore-businesses.html:63
+msgid ""
+"Coil provides an alternative to the status quo of paid advertisements "
+"with web monetization. Coil's web monetization uses the interledger "
+"protocol (ILP) to stream micropayments as users consume content. The XRP "
+"Ledger's payment channels provide an ideal system for settling these "
+"micropayments at high speed and low cost."
+msgstr "कॉइल वेब मुद्रीकरण के साथ भुगतान किए गए विज्ञापनों की यथास्थिति का एक विकल्प प्रदान करता है। जब उपयोगकर्ता सामग्री का उपभोग करते हैं तो कॉइल का वेब मुद्रीकरण माइक्रोपेमेंट को स्ट्रीम करने के लिए इंटरलेजर प्रोटोकॉल (ILP) का उपयोग करता है। एक्सआरपी लेजर के भुगतान चैनल इन सूक्ष्म भुगतानों को उच्च गति और कम लागत पर निपटाने के लिए एक आदर्श प्रणाली प्रदान करते हैं।"
+
+#: tool/template-explore-businesses.html:67
+msgid "Online Gaming"
+msgstr "ऑनलाइन गेमिंग"
+
+#: tool/template-explore-businesses.html:68
+msgid ""
+"Forte offers an unprecedented set of easy-to-use tools and services for "
+"game developers to integrate blockchain technology into their games, to "
+"unlock new economic and creative opportunities for gamers across the "
+"world."
+msgstr "Forte गेम डेवलपर्स के लिए उपयोग में आसान टूल और सेवाओं का एक अभूतपूर्व सेट प्रदान करता है ताकि दुनिया भर के गेमर्स के लिए नए आर्थिक और रचनात्मक अवसरों को अनलॉक करने के लिए अपने गेम में ब्लॉकचेन तकनीक को एकीकृत किया जा सके।"
+
+#: tool/template-explore-businesses.html:72
+msgid "Wallet and Platform"
+msgstr "वॉलेट और प्लेटफॉर्म"
+
+#: tool/template-explore-businesses.html:73
+msgid ""
+"GateHub is a platform for the Internet of Value, built on XRP Ledger "
+"protocol. It allows everyone to send, receive, trade and manage any type "
+"of assets."
+msgstr "गेटहब इंटरनेट ऑफ वैल्यू के लिए एक प्लेटफॉर्म है, जिसे एक्सआरपी लेजर प्रोटोकॉल पर बनाया गया है। यह सभी को किसी भी प्रकार की संपत्ति भेजने, प्राप्त करने, व्यापार करने और प्रबंधित करने की अनुमति देता है।"
+
+#: tool/template-explore-businesses.html:77
+msgid "Wallets and Apps"
+msgstr "वॉलेट और ऐप्स"
+
+#: tool/template-explore-businesses.html:78
+msgid ""
+"Exodus offers wallets and applications for securing, managing and "
+"exchanging crypto."
+msgstr "एक्सोडस क्रिप्टो को सुरक्षित करने, प्रबंधित करने और एक्सचेंज करने के लिए वॉलेट और एप्लिकेशन प्रदान करता है।"
+
+#: tool/template-explore-businesses.html:83
+msgid ""
+"Raised in Space is a music/tech investment group focused on raising the "
+"value of music, innovating across the entire value chain of the music "
+"industry."
+msgstr "राइज़्ड इन स्पेस एक संगीत/तकनीक निवेश समूह है जो संगीत उद्योग की संपूर्ण मूल्य श्रृंखला में नवाचार करते हुए संगीत के मूल्य को बढ़ाने पर केंद्रित है।"
+
+#: tool/template-explore-businesses.html:88
+msgid ""
+"Ripple powers instant, lower-cost settlement of cross-border payments "
+"using XRP to source liquidity on demand. XRP is ideally suited for global"
+" payments because it's quicker, less costly, and more scalable than any "
+"other digital asset."
+msgstr "रिपल ने मांग पर तरलता के स्रोत के लिए एक्सआरपी का उपयोग करके सीमा पार से भुगतान के तत्काल, कम लागत वाले निपटान की शक्ति प्रदान की। एक्सआरपी वैश्विक भुगतान के लिए आदर्श रूप से अनुकूल है क्योंकि यह किसी भी अन्य डिजिटल संपत्ति की तुलना में तेज, कम खर्चीला और अधिक स्केलेबल है।"
+
+#: tool/template-explore-businesses.html:93
+msgid ""
+"Towo Labs was founded in 2019, to develop XRP Ledger and Interledger "
+"infrastructures and make non-custodial crypto management easier."
+msgstr "टोवो लैब्स की स्थापना 2019 में एक्सआरपी लेजर और इंटरलेजर इन्फ्रास्ट्रक्चर को विकसित करने और गैर-कस्टोडियल क्रिप्टो प्रबंधन को आसान बनाने के लिए की गई थी।"
+
+#: tool/template-explore-businesses.html:98
+msgid ""
+"Xrplorer offers services and tools that help prevent and combat "
+"fraudulent activity on the XRP Ledger as well as custom APIs and "
+"analytics that supplement the XRP Ledger APIs where they are not enough."
+msgstr "Xrplorer सेवाएं और उपकरण प्रदान करता है जो XRP लेजर के साथ-साथ कस्टम API और एनालिटिक्स पर धोखाधड़ी गतिविधि को रोकने और मुकाबला करने में मदद करता है जो XRP लेजर एपीआई के पूरक हैं जहां वे पर्याप्त नहीं हैं।"
+
+#: tool/template-explore-businesses.html:103
+msgid ""
+"From cold storage to apps for signing transactions, XRPL Labs is "
+"dedicated to building software on the XRP Ledger."
+msgstr "लेनदेन पर हस्ताक्षर करने के लिए कोल्ड स्टोरेज से लेकर ऐप्स तक, एक्सआरपीएल लैब्स एक्सआरपी लेजर पर सॉफ्टवेयर बनाने के लिए समर्पित है।"
+
+#: tool/template-explore-businesses.html:107
+msgid ""
+"Disclaimer: XRPL.org does not endorse or recommend any wallets or "
+"exchanges, or make any representations with respect to wallets. It’s "
+"advisable to conduct your own due diligence before relying on any third "
+"party or third-party technology."
+msgstr "अस्वीकरण: XRPL.org किसी भी वॉलेट या एक्सचेंज का समर्थन या अनुशंसा नहीं करता है, या वॉलेट के संबंध में कोई प्रतिनिधित्व नहीं करता है। यह सलाह दी जाती है कि किसी भी तृतीय पक्ष या तृतीय-पक्ष तकनीक पर भरोसा करने से पहले अपना स्वयं का उचित परिश्रम करें।"
+
+#: tool/template-explore-exchanges.html:23
+msgid "XRP Is Traded on More Than 100 Markets and Exchanges Worldwide"
+msgstr "XRP का दुनिया भर में 100 से अधिक बाजारों और एक्सचेंजों पर कारोबार होता है"
+
+#: tool/template-explore-exchanges.html:24
+msgid "XRP Exchanges"
+msgstr "एक्सआरपी एक्सचेंज"
+
+#: tool/template-explore-exchanges.html:27
+msgid "Exchanges are where people trade currencies."
+msgstr "एक्सचेंज वे हैं जहां लोग मुद्राओं का व्यापार करते हैं।"
+
+#: tool/template-explore-exchanges.html:28
+msgid ""
+"There are different types of exchanges that vary depending on the type of"
+" market (spot, futures, options, swaps), and the type of security model "
+"(custodial, non-custodial)."
+msgstr "विभिन्न प्रकार के एक्सचेंज हैं जो बाजार के प्रकार (स्पॉट, फ्यूचर्स, ऑप्शंस, स्वैप्स) और सुरक्षा मॉडल के प्रकार (कस्टोडियल, नॉन-कस्टोडियल) के आधार पर भिन्न होते हैं।"
+
+#: tool/template-explore-exchanges.html:29
+msgid ""
+"Spot exchanges allow people to buy and sell cryptocurrencies at current "
+"(spot) market rates. Futures, options and swap exchanges allow people to "
+"buy and sell standardized contracts of cryptocurrency market rates in the"
+" future."
+msgstr "स्पॉट एक्सचेंज लोगों को वर्तमान (स्पॉट) बाजार दरों पर क्रिप्टोकरेंसी खरीदने और बेचने की अनुमति देते हैं। फ्यूचर्स, ऑप्शंस और स्वैप एक्सचेंज लोगों को भविष्य में क्रिप्टोक्यूरेंसी बाजार दरों के मानकीकृत अनुबंधों को खरीदने और बेचने की अनुमति देते हैं।"
+
+#: tool/template-explore-exchanges.html:30
+msgid ""
+"Custodial exchanges manage a user’s private keys, and publish centralized"
+" order books of buyers and sellers. Non-custodial exchanges, also known "
+"as decentralized exchanges, do not manage a user’s private keys, and "
+"publish decentralized order books of buyers and sellers on a blockchain."
+msgstr "कस्टोडियल एक्सचेंज उपयोगकर्ता की निजी कुंजी का प्रबंधन करते हैं, और खरीदारों और विक्रेताओं की केंद्रीकृत ऑर्डर बुक प्रकाशित करते हैं। गैर-कस्टोडियल एक्सचेंज, जिसे विकेंद्रीकृत एक्सचेंज के रूप में भी जाना जाता है, उपयोगकर्ता की निजी कुंजी का प्रबंधन नहीं करता है, और एक ब्लॉकचेन पर खरीदारों और विक्रेताओं की विकेन्द्रीकृत ऑर्डर बुक प्रकाशित करता है।"
+
+#: tool/template-explore-exchanges.html:35
+msgid "Top Exchanges, according to CryptoCompare (as of August 2020):"
+msgstr "क्रिप्टोकरंसी के अनुसार शीर्ष एक्सचेंज (अगस्त 2020 तक):"
+
+#: tool/template-explore-exchanges.html:70
+msgid ""
+"Disclaimer: This information is drawn from other sources on the internet."
+"  XRPL.org does not endorse or recommend any exchanges or make any "
+"representations with respect to exchanges or the purchase or sale of "
+"digital assets more generally. It’s advisable to conduct your own due "
+"diligence before relying on any third party or third-party technology, "
+"and providers may vary significantly in their compliance, data security, "
+"and privacy practices."
+msgstr "अस्वीकरण: यह जानकारी इंटरनेट पर अन्य स्रोतों से ली गई है। XRPL.org आम तौर पर एक्सचेंजों या डिजिटल संपत्तियों की खरीद या बिक्री के संबंध में किसी भी एक्सचेंज का समर्थन या अनुशंसा नहीं करता है या कोई प्रतिनिधित्व नहीं करता है। किसी भी तीसरे पक्ष या तीसरे पक्ष की तकनीक पर भरोसा करने से पहले अपने स्वयं के उचित परिश्रम का संचालन करने की सलाह दी जाती है, और प्रदाता उनके अनुपालन, डेटा सुरक्षा और गोपनीयता प्रथाओं में महत्वपूर्ण रूप से भिन्न हो सकते हैं।"
+
+#: tool/template-explore-wallets.html:24
+msgid "Options for Storing XRP"
+msgstr "एक्सआरपी स्टोर करने के विकल्प"
+
+#: tool/template-explore-wallets.html:25
+msgid "XRP Wallets"
+msgstr "एक्सआरपी वॉलेट"
+
+#: tool/template-explore-wallets.html:28
+msgid ""
+"Digital wallets are pieces of software that allow people to send, receive"
+" and store cryptocurrencies, including XRP. There are two types of "
+"digital wallets: custodial and non-custodial."
+msgstr "डिजिटल वॉलेट सॉफ्टवेयर के टुकड़े हैं जो लोगों को XRP सहित क्रिप्टोकरेंसी भेजने, प्राप्त करने और संग्रहीत करने की अनुमति देते हैं। डिजिटल वॉलेट दो प्रकार के होते हैं: कस्टोडियल और नॉन-कस्टोडियल।"
+
+#: tool/template-explore-wallets.html:29
+msgid ""
+"Custodial wallets manage a user's private key, which allows the wallet to"
+" withdraw cryptocurrency on a user's behalf. Non-custodial wallets do not"
+" manage a user's private key, which is up to the user to manage, and "
+"therefore cannot send cryptocurrency on the user's behalf."
+msgstr "कस्टोडियल वॉलेट उपयोगकर्ता की निजी कुंजी का प्रबंधन करते हैं, जो वॉलेट को उपयोगकर्ता की ओर से क्रिप्टोकरेंसी को वापस लेने की अनुमति देता है। गैर-कस्टोडियल वॉलेट उपयोगकर्ता की निजी कुंजी का प्रबंधन नहीं करते हैं, जो उपयोगकर्ता को प्रबंधित करने के लिए है, और इसलिए उपयोगकर्ता की ओर से क्रिप्टोकुरेंसी नहीं भेज सकता है।"
+
+#: tool/template-explore-wallets.html:34
+msgid "XRP Ledger Software Wallets:"
+msgstr "एक्सआरपी लेजर सॉफ्टवेयर वॉलेट:"
+
+#: tool/template-explore-wallets.html:50
+msgid "Hardware Wallets:"
+msgstr "हार्डवेयर वॉलेट:"
+
+#: tool/template-explore-wallets.html:63
+msgid ""
+"Disclaimer: XRPL.org does not endorse or recommend any wallets or make "
+"any representations with respect to wallets or the purchase or sale of "
+"digital assets more generally. It’s advisable to conduct your own due "
+"diligence before relying on any third party or third-party technology, "
+"and providers may vary significantly in their compliance, data security, "
+"and privacy practices."
+msgstr "अस्वीकरण: XRPL.org किसी भी वॉलेट का समर्थन या अनुशंसा नहीं करता है या आमतौर पर वॉलेट या डिजिटल संपत्ति की खरीद या बिक्री के संबंध में कोई प्रतिनिधित्व नहीं करता है। किसी भी तीसरे पक्ष या तीसरे पक्ष की तकनीक पर भरोसा करने से पहले अपने स्वयं के उचित परिश्रम का संचालन करने की सलाह दी जाती है, और प्रदाता उनके अनुपालन, डेटा सुरक्षा और गोपनीयता प्रथाओं में महत्वपूर्ण रूप से भिन्न हो सकते हैं।"
+
+#: tool/template-footer.html:24
+msgid "License"
+msgstr "लाइसेंस"
+
+#: tool/template-footer.html:31
+msgid "Jump to top of page"
+msgstr "पृष्ठ के शीर्ष पर जाएं"
+
+#: tool/template-footer.html:31
+msgid "Top"
+msgstr "शीर्ष"
+
+#: tool/template-github-edit.html:26
+msgid "Edit"
+msgstr "संपादित करें"
+
+#: tool/template-home.html:22
+msgid "Scroll Down"
+msgstr "नीचे स्क्रॉल करें"
+
+#: tool/template-home.html:25
+msgid "XRP: The Best Digital Asset for Payments"
+msgstr "एक्सआरपी: भुगतान के लिए सर्वश्रेष्ठ डिजिटल संपत्ति"
+
+#: tool/template-home.html:26 tool/template-learn-uses.html:93
+msgid "Learn More"
+msgstr "और अधिक जानें"
+
+#: tool/template-home.html:27
+msgid "Build with the XRP Ledger"
+msgstr "एक्सआरपी लेजर के साथ निर्माण"
+
+#: tool/template-home.html:32
+msgid "XRP Ledger"
+msgstr "एक्सआरपी लेजर"
+
+#: tool/template-home.html:36
+msgid "What is XRPL.org?"
+msgstr "XRPL.org क्या है?"
+
+#: tool/template-home.html:37
+msgid "A Community-Driven Resource for All Things XRP and XRP Ledger"
+msgstr "सभी चीजों के लिए एक समुदाय-संचालित संसाधन एक्सआरपी और एक्सआरपी लेजर"
+
+#: tool/template-home.html:38
+msgid ""
+"Whether you’re a developer building on the XRP Ledger (XRPL) or just "
+"getting acquainted with blockchain and digital assets, XRPL.org is your "
+"source for technical information, reference materials, tools and all "
+"things XRP."
+msgstr "चाहे आप एक्सआरपी लेजर (एक्सआरपीएल) पर एक डेवलपर बिल्डिंग हों या सिर्फ ब्लॉकचैन और डिजिटल संपत्तियों से परिचित हों, एक्सआरपीएल.org तकनीकी जानकारी, संदर्भ सामग्री, टूल और सभी चीजों के लिए एक्सआरपी का स्रोत है।"
+
+#: tool/template-home.html:48 tool/template-learn-overview.html:49
+#: tool/template-learn-overview.html:142
+msgid "Fast"
+msgstr "तेज़"
+
+#: tool/template-home.html:52 tool/template-learn-overview.html:59
+#: tool/template-learn-overview.html:160
+msgid "Scalable"
+msgstr "मापनीय"
+
+#: tool/template-home.html:60 tool/template-learn-overview.html:54
+#: tool/template-learn-overview.html:151
+msgid "Low-Cost"
+msgstr "कम लागत"
+
+#: tool/template-home.html:64 tool/template-learn-overview.html:64
+#: tool/template-learn-overview.html:169
+msgid "Sustainable"
+msgstr "टिकाऊ"
+
+#: tool/template-home.html:70 tool/template-learn-overview.html:28
+msgid "What is XRP?"
+msgstr "एक्सआरपी क्या है?"
+
+#: tool/template-home.html:71
+msgid "A Digital Asset Built for Payments"
+msgstr "भुगतान के लिए निर्मित एक डिजिटल संपत्ति"
+
+#: tool/template-home.html:72
+msgid ""
+"XRP is a digital asset built for payments. It is the native digital asset"
+" on the XRP Ledger—an open-source, permissionless and decentralized "
+"blockchain technology that can settle transactions in 3-5 seconds."
+msgstr "XRP भुगतान के लिए बनाई गई एक डिजिटल संपत्ति है। यह एक्सआरपी लेजर पर मूल डिजिटल संपत्ति है - एक खुला स्रोत, अनुमति रहित और विकेन्द्रीकृत ब्लॉकचेन तकनीक जो 3-5 सेकंड में लेनदेन का निपटान कर सकती है।"
+
+#: tool/template-home.html:73
+msgid ""
+"It is the best way to move money around the world; the fuel for our "
+"growing digital economy."
+msgstr "यह दुनिया भर में पैसा स्थानांतरित करने का सबसे अच्छा तरीका है; हमारी बढ़ती डिजिटल अर्थव्यवस्था के लिए ईंधन।"
+
+#: tool/template-home.html:75
+msgid "Learn about XRP"
+msgstr "एक्सआरपी के बारे में जानें"
+
+#: tool/template-home.html:76 tool/template-learn-history.html:35
+msgid "XRP History"
+msgstr "एक्सआरपी इतिहास"
+
+#: tool/template-home.html:83
+msgid "Use Cases"
+msgstr "बक्सों का इस्तेमाल करें"
+
+#: tool/template-home.html:84
+msgid "XRP in the Real World"
+msgstr "वास्तविक दुनिया में एक्सआरपी"
+
+#: tool/template-home.html:89
+msgid "Uses of XRP"
+msgstr "एक्सआरपी के उपयोग"
+
+#: tool/template-home.html:90
+msgid ""
+"XRP is helping solve previously unsolvable problems for people and "
+"industries around the world, and is one of the only digital assets with a"
+" commercial use case."
+msgstr "एक्सआरपी दुनिया भर के लोगों और उद्योगों के लिए पहले से न सुलझाई जा सकने वाली समस्याओं को हल करने में मदद कर रहा है, और व्यावसायिक उपयोग के मामले में एकमात्र डिजिटल संपत्ति में से एक है।"
+
+#: tool/template-home.html:91 tool/template-learn-overview.html:183
+msgid "Explore Uses"
+msgstr "उपयोग का अन्वेषण करें"
+
+#: tool/template-home.html:94
+msgid "Businesses on the Ledger"
+msgstr "खाता बही पर व्यवसाय"
+
+#: tool/template-home.html:95
+msgid ""
+"From gaming to web monetization, XRP and the XRP Ledger are powering "
+"innovative new technology across the payments space."
+msgstr "गेमिंग से लेकर वेब मुद्रीकरण तक, एक्सआरपी और एक्सआरपी लेजर भुगतान क्षेत्र में नवीन नई तकनीक को सशक्त कर रहे हैं।"
+
+#: tool/template-home.html:96
+msgid "Explore Businesses"
+msgstr "व्यवसायों का अन्वेषण करें"
+
+#: tool/template-home.html:99
+msgid "Real-World Impact"
+msgstr "वास्तविक-विश्व प्रभाव"
+
+#: tool/template-home.html:100
+msgid ""
+"With its real-world utility and inherently green design, XRP helps ensure"
+" a more sustainable future for our planet and global economy."
+msgstr "अपनी वास्तविक दुनिया की उपयोगिता और स्वाभाविक रूप से हरे रंग के डिजाइन के साथ, एक्सआरपी हमारे ग्रह और वैश्विक अर्थव्यवस्था के लिए एक अधिक टिकाऊ भविष्य सुनिश्चित करने में मदद करता है।"
+
+#: tool/template-home.html:101
+msgid "Explore Impact"
+msgstr "प्रभाव का अन्वेषण करें"
+
+#: tool/template-home.html:114
+msgid "Green by Nature"
+msgstr "प्रकृति द्वारा हरा"
+
+#: tool/template-home.html:115
+msgid ""
+"XRP was designed with sustainability in mind. Contrary to other "
+"blockchains that use proof-of-work, the XRP Ledger confirms transactions "
+"through a unique “<a href=\"intro-to-consensus.html\">consensus</a>” "
+"mechanism and is one of the first truly <a href=\"https://ripple.com"
+"/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-"
+"neutrality-by-2030/\" target=\"_blank\">carbon neutral blockchains</a>."
+msgstr "XRP को स्थिरता को ध्यान में रखकर बनाया गया था। काम के सबूत का उपयोग करने वाले अन्य ब्लॉकचेन के विपरीत, एक्सआरपी लेजर एक अद्वितीय "<a href=\intro-to-consensus.html\>Consensus</a>" तंत्र के माध्यम से लेनदेन की पुष्टि करता है और यह वास्तव में पहले <a href=\intro-to-consensus.html\>Consensus</a> में से एक है। a href=\https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/\ target=\_blank\>कार्बन न्यूट्रल ब्लॉकचेन</a> ."
+
+#: tool/template-home.html:116
+msgid ""
+"Explore the energy consumption of XRP compared to cash, credit cards and "
+"other popular crypto with the <a href=\"carbon-calculator.html\">Green "
+"Currency Calculator</a>."
+msgstr "<a href=\carbon-calculator.html\>ग्रीन करेंसी कैलकुलेटर</a> के साथ नकद, क्रेडिट कार्ड और अन्य लोकप्रिय क्रिप्टो की तुलना में XRP की ऊर्जा खपत का अन्वेषण करें।"
+
+#: tool/template-home.html:117
+msgid "Go Green"
+msgstr "पर्यावरण के अनुकूल बनें"
+
+#: tool/template-home.html:118
+msgid "Partners in Sustainability"
+msgstr "स्थिरता में भागीदार"
+
+#: tool/template-landing-docs.html:8
+msgid "XRP Ledger Documentation"
+msgstr "एक्सआरपी लेजर दस्तावेज़ीकरण"
+
+#: tool/template-landing-docs.html:9
+msgid "Dive into our documentation and start integrating with the XRP Ledger."
+msgstr "हमारे दस्तावेज़ीकरण में गोता लगाएँ और XRP लेजर के साथ एकीकरण शुरू करें।"
+
+#: tool/template-landing-docs.html:10
+msgid ""
+"Browse by category, or skip straight to the <a href=\"#full-doc-"
+"index\">full documentation index</a>."
+msgstr "श्रेणी के अनुसार ब्राउज़ करें, या सीधे <a href=\#full-doc-index\>पूर्ण दस्तावेज़ीकरण अनुक्रमणिका</a> पर जाएं।"
+
+#: tool/template-landing-docs.html:31
+#, python-format
+msgid "View All %(parent_name)s"
+msgstr "सभी देखें %(parent_name)s"
+
+#: tool/template-landing-docs.html:40
+msgid "Full Documentation Index"
+msgstr "पूर्ण दस्तावेज़ीकरण सूचकांक"
+
+#: tool/template-landing-references.html:9
+msgid ""
+"Or, skip ahead to the <a href=\"#full-reference-index\">Full Reference "
+"Index</a>."
+msgstr "या, <a href=\#full-reference-index\>पूर्ण संदर्भ अनुक्रमणिका</a> पर जाएं।"
+
+#: tool/template-landing-references.html:41
+msgid "Full Reference Index"
+msgstr "पूर्ण संदर्भ सूचकांक"
+
+#: tool/template-learn-history.html:24
+msgid "Build a Better Bitcoin"
+msgstr "एक बेहतर बिटकॉइन बनाएं"
+
+#: tool/template-learn-history.html:25
+msgid "XRP’s Origin"
+msgstr "एक्सआरपी की उत्पत्ति"
+
+#: tool/template-learn-history.html:28
+msgid ""
+"In 2011, three engineers—David Schwartz, Jed McCaleb and Arthur "
+"Britto—began developing the XRP Ledger."
+msgstr "2011 में, तीन इंजीनियरों- डेविड श्वार्ट्ज, जेड मैककलेब और आर्थर ब्रिटो- ने एक्सआरपी लेजर विकसित करना शुरू किया।"
+
+#: tool/template-learn-history.html:29
+msgid ""
+"Fascinated by Bitcoin, they set out to create a better version that "
+"improved upon its limitations—with the goal of creating a digital asset "
+"that was more sustainable and built specifically for payments."
+msgstr "बिटकॉइन से मोहित होकर, उन्होंने एक बेहतर संस्करण बनाने के लिए निर्धारित किया जो इसकी सीमाओं में सुधार करता है-एक डिजिटल संपत्ति बनाने के लक्ष्य के साथ जो अधिक टिकाऊ और विशेष रूप से भुगतान के लिए बनाया गया था।"
+
+#: tool/template-learn-history.html:30
+msgid ""
+"The XRP Ledger first launched in June 2012. Shortly thereafter, they were"
+" joined by Chris Larsen and the group started the Company OpenCoin in "
+"September 2012 (now named Ripple)."
+msgstr "एक्सआरपी लेजर को पहली बार जून 2012 में लॉन्च किया गया था। इसके तुरंत बाद, वे क्रिस लार्सन से जुड़ गए और समूह ने सितंबर 2012 में कंपनी ओपनकॉइन शुरू किया (जिसे अब रिपल नाम दिया गया है)।"
+
+#: tool/template-learn-history.html:31
+msgid ""
+"The founders of the XRP Ledger gifted 80 billion XRP to the company. "
+"Ripple has since sold some of its XRP and put the rest in <a "
+"href=\"https://ripple.com/insights/explanation-ripples-xrp-escrow/\" "
+"target=\"_blank\">escrow</a>."
+msgstr "XRP लेजर के संस्थापकों ने कंपनी को 80 बिलियन XRP उपहार में दिए। रिपल ने तब से अपने कुछ एक्सआरपी को बेच दिया है और बाकी को <a href=\https://ripple.com/insights/explanation-ripples-xrp-escrow/\ target=\_blank\>एस्क्रो</a> में डाल दिया है।"
+
+#: tool/template-learn-history.html:36
+msgid "Timeline of XRP Evolution"
+msgstr "एक्सआरपी विकास की समयरेखा"
+
+#: tool/template-learn-history.html:42
+msgid "2011 XRP Ledger Development"
+msgstr "2011 एक्सआरपी लेजर विकास"
+
+#: tool/template-learn-history.html:43
+msgid ""
+"The history of the XRP Ledger and its native digital asset XRP dates back"
+" to early 2011 when three developers—David Schwartz, Jed McCaleb and "
+"Arthur Britto—were fascinated with Bitcoin but observed the <a href"
+"=\"carbon-calculator.html\">waste inherent in mining</a>. They sought to "
+"create a better system for sending value (an idea outlined in a <a "
+"href=\"https://bitcointalk.org/index.php?topic=10193.0\" "
+"target=\"_blank\">May 2011 forum post: “Bitcoin without mining”</a>)."
+msgstr "एक्सआरपी लेजर और इसकी मूल डिजिटल संपत्ति एक्सआरपी का इतिहास 2011 की शुरुआत में है, जब तीन डेवलपर्स-डेविड श्वार्ट्ज, जेड मैककेलेब और आर्थर ब्रिटो-बिटकॉइन से मोहित थे, लेकिन उन्होंने <a href=\carbon-calculator.html\>अपशिष्ट देखा खनन में निहित</a>। उन्होंने मूल्य भेजने के लिए एक बेहतर प्रणाली बनाने की मांग की (एक <a href=\https://bitcointalk.org/index.php?topic=10193.0\ target=\_blank\>मई 2011 फोरम पोस्ट में उल्लिखित एक विचार: "बिटकॉइन खनन के बिना"</a>)।"
+
+#: tool/template-learn-history.html:44
+msgid ""
+"Their initial observations about the high energy consumption and "
+"scalability issues that would plague Bitcoin proved prescient. (In 2019, "
+"estimates suggest <a href=\"carbon-calculator.html\">Bitcoin mining "
+"used</a> more energy than the entire country of Portugal!) Moreover, "
+"their initial read indicated that significant problems could arise if any"
+" miner obtained (or miners colluded to obtain) greater than 50&#37; of "
+"the mining power—that risk persists with Bitcoin (and Ethereum) today as "
+"mining power has consolidated in China."
+msgstr "उच्च ऊर्जा खपत और मापनीयता के मुद्दों के बारे में उनकी प्रारंभिक टिप्पणियां जो बिटकॉइन को प्रभावित करती हैं, प्रेजेंटेटिव साबित हुईं। (2019 में, अनुमान बताते हैं कि <a href=\carbon-calculator.html\>बिटकॉइन माइनिंग का इस्तेमाल किया गया</a> पूरे पुर्तगाल देश की तुलना में अधिक ऊर्जा है!) इसके अलावा, उनके प्रारंभिक पढ़ने से संकेत मिलता है कि यदि कोई खनिक (या खनिक प्राप्त करने के लिए मिलीभगत) 50&#37 से अधिक; खनन शक्ति का - यह जोखिम आज भी बिटकॉइन (और एथेरियम) के साथ बना हुआ है क्योंकि खनन शक्ति चीन में समेकित हो गई है।"
+
+#: tool/template-learn-history.html:50
+msgid "2012 XRP Launched"
+msgstr "2012 एक्सआरपी लॉन्च किया गया"
+
+#: tool/template-learn-history.html:51
+msgid ""
+"In 2011 and early 2012, the trio of developers started a project to build"
+" a distributed ledger that improved upon these fundamental limitations of"
+" Bitcoin—their first ever code commit was in November 2011."
+msgstr "2011 और 2012 की शुरुआत में, डेवलपर्स की तिकड़ी ने एक वितरित बहीखाता बनाने के लिए एक परियोजना शुरू की, जो बिटकॉइन की इन मूलभूत सीमाओं में सुधार करती है - उनकी पहली कोड प्रतिबद्धता नवंबर 2011 में थी।"
+
+#: tool/template-learn-history.html:52
+msgid ""
+"They wrote code, that when executed, would create a distributed ledger, "
+"which they named Ripple. It included a digital asset that would be called"
+" “ripples” (XRP as the currency code) to follow the same naming "
+"convention as Bitcoin (BTC). At the time, Ripple stood for the open-"
+"source project, the unique consensus ledger (Ripple Consensus Ledger), "
+"transaction protocol (Ripple Transaction Protocol or RTXP), the network "
+"(Ripple network) and the digital asset (known as “ripples”)."
+msgstr "उन्होंने कोड लिखा, कि निष्पादित होने पर, एक वितरित खाता बही बनाएगा, जिसे उन्होंने रिपल नाम दिया। इसमें एक डिजिटल संपत्ति शामिल थी जिसे बिटकॉइन (बीटीसी) के समान नामकरण सम्मेलन का पालन करने के लिए "रिपल्स" (मुद्रा कोड के रूप में एक्सआरपी) कहा जाएगा। उस समय, रिपल ओपन-सोर्स प्रोजेक्ट के लिए खड़ा था, अद्वितीय सर्वसम्मति बहीखाता (रिपल सर्वसम्मति लेजर), लेनदेन प्रोटोकॉल (रिपल लेनदेन प्रोटोकॉल या आरटीएक्सपी), नेटवर्क (रिपल नेटवर्क) और डिजिटल संपत्ति (जिसे "लहर" के रूप में जाना जाता है) ."
+
+#: tool/template-learn-history.html:53
+msgid ""
+"In practice, this approach led to many, broad uses of “Ripple.” To "
+"clarify, the community simply started calling the digital asset, “XRP.”"
+msgstr "व्यवहार में, इस दृष्टिकोण ने "रिपल" के कई व्यापक उपयोगों को जन्म दिया। स्पष्ट करने के लिए, समुदाय ने डिजिटल संपत्ति को "XRP" कहना शुरू कर दिया।"
+
+#: tool/template-learn-history.html:54
+msgid ""
+"By June 2012, Schwartz, McCaleb and Britto completed code development and"
+" the XRP Ledger was fully functioning."
+msgstr "जून 2012 तक, श्वार्ट्ज, मैककेलेब और ब्रिटो ने कोड विकास पूरा कर लिया और एक्सआरपी लेजर पूरी तरह से काम कर रहा था।"
+
+#: tool/template-learn-history.html:55
+msgid ""
+"At that time, they decided their next move would be to gift 80 billion "
+"XRP to a not-yet-formed private company that would work with the broader "
+"community as well as pursue its own payments mission. The ledger code "
+"itself would be open source and for anyone to use."
+msgstr "उस समय, उन्होंने फैसला किया कि उनका अगला कदम 80 बिलियन एक्सआरपी को एक अभी तक गठित निजी कंपनी को उपहार में देना होगा जो व्यापक समुदाय के साथ काम करेगी और साथ ही अपने स्वयं के भुगतान मिशन को आगे बढ़ाएगी। लेज़र कोड स्वयं खुला स्रोत होगा और किसी के भी उपयोग के लिए होगा।"
+
+#: tool/template-learn-history.html:56
+msgid ""
+"They all agreed on how to allocate the XRP among themselves and the "
+"future company, and they eventually created the company along with Chris "
+"Larsen in September 2012."
+msgstr "वे सभी इस बात पर सहमत हुए कि एक्सआरपी को आपस में और भविष्य की कंपनी के बीच कैसे आवंटित किया जाए, और उन्होंने अंततः सितंबर 2012 में क्रिस लार्सन के साथ कंपनी बनाई।"
+
+#: tool/template-learn-history.html:57
+msgid ""
+"Once the XRP Ledger was fully functioning, 80&#37; of the XRP was gifted "
+"to the company—initially called NewCoin and renamed quickly to OpenCoin."
+msgstr "एक बार एक्सआरपी लेजर पूरी तरह से काम कर रहा था, 80&#37; XRP का उपहार कंपनी को उपहार में दिया गया था - शुरू में इसे NewCoin कहा जाता था और जल्दी से इसका नाम बदलकर OpenCoin कर दिया गया।"
+
+#: tool/template-learn-history.html:58
+msgid ""
+"Chris Larsen was the CEO of OpenCoin, and at the company's founding, Jed "
+"was co-founder and CTO, David Schwartz was the Chief Cryptography "
+"Officer, and Arthur Britto an advisor."
+msgstr "क्रिस लार्सन ओपनकॉइन के सीईओ थे, और कंपनी की स्थापना में, जेड सह-संस्थापक और सीटीओ थे, डेविड श्वार्ट्ज मुख्य क्रिप्टोग्राफी अधिकारी थे, और आर्थर ब्रिटो एक सलाहकार थे।"
+
+#: tool/template-learn-history.html:64
+msgid "2013 OpenCoin Rebranded To Ripple Labs"
+msgstr "2013 ओपनकॉइन को रिपल लैब्स में रीब्रांड किया गया"
+
+#: tool/template-learn-history.html:65
+msgid ""
+"At the outset of the company, OpenCoin set out to revolutionize the "
+"global financial system. Despite the revolutionary ideals of many of "
+"Bitcoin’s early believers, Larsen never thought blockchain technology "
+"should be used to overthrow the existing financial system. He believed "
+"that history’s most transformative innovations have always relied on the "
+"great ideas that came before them—not disrupting them."
+msgstr "कंपनी की शुरुआत में, OpenCoin ने वैश्विक वित्तीय प्रणाली में क्रांति लाने की शुरुआत की। बिटकॉइन के शुरुआती विश्वासियों के क्रांतिकारी आदर्शों के बावजूद, लार्सन ने कभी नहीं सोचा था कि मौजूदा वित्तीय प्रणाली को उखाड़ फेंकने के लिए ब्लॉकचेन तकनीक का इस्तेमाल किया जाना चाहिए। उनका मानना ​​​​था कि इतिहास के सबसे परिवर्तनकारी नवाचारों ने हमेशा उनके सामने आए महान विचारों पर भरोसा किया है - उन्हें बाधित नहीं किया है।"
+
+#: tool/template-learn-history.html:66
+msgid ""
+"In early conversations with potential customers, the team was asked about"
+" the differences between the Ripple project and OpenCoin company. With "
+"the community starting to call the  digital asset by its currency code "
+"\"XRP\" more widely, company leaders decided to rebrand the company to "
+"Ripple Labs, which has been shortened over time to \"Ripple.\""
+msgstr "संभावित ग्राहकों के साथ शुरुआती बातचीत में, टीम से रिपल प्रोजेक्ट और ओपनकॉइन कंपनी के बीच अंतर के बारे में पूछा गया था। समुदाय ने  डिजिटल एसेट को अपने मुद्रा कोड \XRP\ द्वारा अधिक व्यापक रूप से कॉल करना शुरू कर दिया, कंपनी के नेताओं ने कंपनी को Ripple Labs में रीब्रांड करने का निर्णय लिया, जिसे समय के साथ \Ripple में छोटा कर दिया गया।"
+
+#: tool/template-learn-history.html:67
+msgid ""
+"Today, the company uses XRP and the XRP Ledger for liquidity management "
+"in its cross-border payments business. Ripple also remains a stakeholder "
+"and contributor to the broader XRP community."
+msgstr "आज, कंपनी अपने सीमा-पार भुगतान व्यवसाय में तरलता प्रबंधन के लिए XRP और XRP लेजर का उपयोग करती है। रिपल भी व्यापक एक्सआरपी समुदाय में एक हितधारक और योगदानकर्ता बना हुआ है।"
+
+#: tool/template-learn-history.html:75
+msgid "Podcast"
+msgstr "पॉडकास्ट"
+
+#: tool/template-learn-history.html:77
+msgid "How Digital Assets Will Help Create a Sustainable Global Economy"
+msgstr "कैसे डिजिटल संपत्ति एक सतत वैश्विक अर्थव्यवस्था बनाने में मदद करेगी"
+
+#: tool/template-learn-history.html:78
+msgid ""
+"Hear from Ripple co-founder Chris Larsen in the inaugural episode of the "
+"Block Stars podcast."
+msgstr "ब्लॉक स्टार्स पॉडकास्ट के उद्घाटन एपिसोड में रिपल के सह-संस्थापक क्रिस लार्सन से सुनें।"
+
+#: tool/template-learn-history.html:79
+msgid "Listen Now"
+msgstr "सुनो अब"
+
+#: tool/template-learn-impact.html:23
+msgid "Faster, Cheaper, Green Money"
+msgstr "तेज़, सस्ता, हरा धन"
+
+#: tool/template-learn-impact.html:24
+msgid "Impact"
+msgstr "प्रभाव"
+
+#: tool/template-learn-impact.html:27
+msgid ""
+"The digital asset XRP is a truly global currency—ideally suited to enable"
+" today’s growing digital economy."
+msgstr "डिजिटल संपत्ति एक्सआरपी वास्तव में एक वैश्विक मुद्रा है-आज की बढ़ती डिजिटल अर्थव्यवस्था को सक्षम करने के लिए आदर्श रूप से उपयुक्त है।"
+
+#: tool/template-learn-impact.html:28
+msgid ""
+"As an optimal medium of exchange, XRP and the XRP Ledger on which it "
+"operates help to move money around the world faster, cheaper and more "
+"sustainably than any other currency available today."
+msgstr "एक्सचेंज के इष्टतम माध्यम के रूप में, एक्सआरपी और एक्सआरपी लेजर, जिस पर यह संचालित होता है, आज उपलब्ध किसी भी अन्य मुद्रा की तुलना में दुनिया भर में तेजी से, सस्ता और अधिक स्थायी रूप से पैसा स्थानांतरित करने में मदद करता है।"
+
+#: tool/template-learn-impact.html:29
+msgid ""
+"It was designed this way, and it’s proving its impact in global payments "
+"and beyond."
+msgstr "इसे इस तरह से डिजाइन किया गया था, और यह वैश्विक भुगतान और उससे आगे के प्रभाव को साबित कर रहा है।"
+
+#: tool/template-learn-impact.html:39
+msgid "Global Payments"
+msgstr "वैश्विक भुगतान"
+
+#: tool/template-learn-impact.html:44
+msgid "Creating Economic Opportunity"
+msgstr "आर्थिक अवसर बनाना"
+
+#: tool/template-learn-impact.html:45
+msgid ""
+"For the more than <a "
+"href=\"https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf\" "
+"target=\"_blank\">272 million migrants</a> worldwide, sending and "
+"receiving money across borders is expensive, unreliable and complex."
+msgstr "दुनिया भर में <a href=\https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf\ target=\_blank\>272 मिलियन प्रवासियों</a> से अधिक के लिए, भेजने और सीमाओं के पार धन प्राप्त करना महंगा, अविश्वसनीय और जटिल है।"
+
+#: tool/template-learn-impact.html:48
+msgid "XRP and the XRP Ledger are changing that."
+msgstr "एक्सआरपी और एक्सआरपी लेजर इसे बदल रहे हैं।"
+
+#: tool/template-learn-impact.html:49
+msgid ""
+"The technology has been adopted by financial institutions around the "
+"world. They use it to source liquidity for international transactions, "
+"and because of the unprecedented efficiency it offers, they’re able to "
+"both bring down costs and improve services."
+msgstr "प्रौद्योगिकी को दुनिया भर के वित्तीय संस्थानों द्वारा अपनाया गया है। वे इसका उपयोग अंतरराष्ट्रीय लेनदेन के लिए तरलता के स्रोत के लिए करते हैं, और इसकी अभूतपूर्व दक्षता के कारण, वे लागत कम करने और सेवाओं में सुधार करने में सक्षम हैं।"
+
+#: tool/template-learn-impact.html:51
+msgid ""
+"This means hundreds of  millions of people worldwide who need to move "
+"money safely and securely across borders can do so more affordably and "
+"reliably than ever before."
+msgstr "इसका मतलब यह है कि दुनिया भर में करोड़ों लोग जिन्हें सीमाओं के पार सुरक्षित और सुरक्षित रूप से धन स्थानांतरित करने की आवश्यकता है, वे पहले से कहीं अधिक किफायती और मज़बूती से ऐसा कर सकते हैं।"
+
+#: tool/template-learn-impact.html:57 tool/template-learn-impact.html:92
+msgid "Future of Finance"
+msgstr "वित्त का भविष्य"
+
+#: tool/template-learn-impact.html:63
+msgid "Building for the Future"
+msgstr "भविष्य के लिए भवन"
+
+#: tool/template-learn-impact.html:64
+msgid ""
+"Digital assets and blockchain technology are the future of finance. Open "
+"and decentralized, they offer the first-ever global standards for value "
+"exchange broadly—whether it’s money, stocks, loyalty points, intellectual"
+" property or more."
+msgstr "डिजिटल संपत्ति और ब्लॉकचेन तकनीक वित्त का भविष्य हैं। खुले और विकेंद्रीकृत, वे व्यापक रूप से मूल्य विनिमय के लिए पहले वैश्विक मानकों की पेशकश करते हैं-चाहे वह पैसा, स्टॉक, वफादारी अंक, बौद्धिक संपदा या अधिक हो।"
+
+#: tool/template-learn-impact.html:66
+msgid ""
+"This has spawned increasing adoption of the technology across the "
+"financial services industry, from retail and institutional investment to "
+"commercial use cases like cross-border payments."
+msgstr "इसने वित्तीय सेवा उद्योग में खुदरा और संस्थागत निवेश से लेकर सीमा पार से भुगतान जैसे व्यावसायिक उपयोग के मामलों में प्रौद्योगिकी को अपनाने में वृद्धि की है।"
+
+#: tool/template-learn-impact.html:67
+msgid ""
+"With usage growing, it’s critical that measures are taken today to ensure"
+" that the technology is environmentally sustainable tomorrow."
+msgstr "उपयोग बढ़ने के साथ, यह महत्वपूर्ण है कि यह सुनिश्चित करने के लिए आज उपाय किए जाएं कि प्रौद्योगिकी कल पर्यावरण की दृष्टि से टिकाऊ हो।"
+
+#: tool/template-learn-impact.html:73
+msgid "Digital Assets"
+msgstr "डिजिटल संपत्ति"
+
+#: tool/template-learn-impact.html:78
+msgid "Are All Digital Assets Alike?"
+msgstr "क्या सभी डिजिटल एसेट एक जैसे हैं?"
+
+#: tool/template-learn-impact.html:79
+msgid ""
+"Each digital asset has different strengths that make it ideal for various"
+" use cases today."
+msgstr "प्रत्येक डिजिटल संपत्ति में अलग-अलग ताकत होती है जो इसे आज के विभिन्न उपयोग के मामलों के लिए आदर्श बनाती है।"
+
+#: tool/template-learn-impact.html:82
+msgid ""
+"Bitcoin is recognized broadly as a store of value and ether (ETH) for use"
+" in smart contracts."
+msgstr "बिटकॉइन को मोटे तौर पर स्मार्ट अनुबंधों में उपयोग के लिए मूल्य और ईथर (ETH) के भंडार के रूप में मान्यता प्राप्त है।"
+
+#: tool/template-learn-impact.html:83
+msgid ""
+"XRP is optimal for transacting—it’s fast, cheap, scalable and energy-"
+"efficient. It was designed for use in global payments."
+msgstr "XRP लेन-देन के लिए इष्टतम है - यह तेज़, सस्ता, स्केलेबल और ऊर्जा-कुशल है। इसे वैश्विक भुगतान में उपयोग के लिए डिज़ाइन किया गया था।"
+
+#: tool/template-learn-impact.html:86
+msgid ""
+"And, the same characteristics that make it ideal for payments mean it’s "
+"also better for our environment. XRP is green by nature."
+msgstr "और, वही विशेषताएं जो इसे भुगतान के लिए आदर्श बनाती हैं, इसका मतलब है कि यह हमारे पर्यावरण के लिए भी बेहतर है। एक्सआरपी स्वभाव से हरा है।"
+
+#: tool/template-learn-impact.html:97
+msgid "What Makes XRP and the XRP Ledger Green?"
+msgstr "एक्सआरपी और एक्सआरपी लेजर ग्रीन क्या बनाता है?"
+
+#: tool/template-learn-impact.html:98
+msgid ""
+"Most currency today—whether digital or physical—is not environmentally "
+"friendly. The potential long-term impact on our planet could hold "
+"startling consequences."
+msgstr "आज अधिकांश मुद्रा - चाहे डिजिटल हो या भौतिक - पर्यावरण के अनुकूल नहीं है। हमारे ग्रह पर संभावित दीर्घकालिक प्रभाव के चौंकाने वाले परिणाम हो सकते हैं।"
+
+#: tool/template-learn-impact.html:101
+msgid ""
+"The digital asset XRP was designed with sustainability in mind. The XRP "
+"Ledger processes transactions through a unique “consensus” mechanism that"
+" consumes negligible energy and all XRP currency is already in "
+"circulation. It is the first major blockchain network to be <a "
+"href=\"https://ripple.com/ripple-press/ripple-leads-sustainability-"
+"agenda-to-achieve-carbon-neutrality-by-2030/\" target=\"_blank\">fully "
+"carbon neutral</a>."
+msgstr "डिजिटल संपत्ति एक्सआरपी को स्थिरता को ध्यान में रखकर डिजाइन किया गया था। एक्सआरपी लेजर एक अद्वितीय "आम सहमति" तंत्र के माध्यम से लेनदेन की प्रक्रिया करता है जो नगण्य ऊर्जा की खपत करता है और सभी एक्सआरपी मुद्रा पहले से ही प्रचलन में है। यह पहला प्रमुख ब्लॉकचेन नेटवर्क है जो <a href=\https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/\ target=\ _blank\>पूरी तरह से कार्बन न्यूट्रल</a>."
+
+#: tool/template-learn-impact.html:102
+msgid ""
+"Other digital assets, like Bitcoin, rely on a different mechanism to both"
+" validate transactions and create new coins. This “proof-of-work” "
+"algorithm requires “mining.” Mining is an incredibly energy-intensive "
+"process for validating transactions that consumes more energy in a year "
+"than entire countries."
+msgstr "अन्य डिजिटल संपत्ति, जैसे बिटकॉइन, लेनदेन को मान्य करने और नए सिक्के बनाने के लिए एक अलग तंत्र पर भरोसा करते हैं। इस "प्रूफ-ऑफ-वर्क" एल्गोरिथम के लिए "खनन" की आवश्यकता होती है। पूरे देशों की तुलना में एक वर्ष में अधिक ऊर्जा की खपत करने वाले लेनदेन को मान्य करने के लिए खनन एक अविश्वसनीय रूप से ऊर्जा-गहन प्रक्रिया है।"
+
+#: tool/template-learn-impact.html:105
+msgid ""
+"Cash also leaves a substantial carbon footprint, and the environmental "
+"impact goes beyond energy consumption—eutrophication (due to waste), "
+"photochemical ozone creation, greenhouse gas emissions and more factor "
+"into the equation."
+msgstr "नकद भी एक पर्याप्त कार्बन पदचिह्न छोड़ देता है, और पर्यावरणीय प्रभाव ऊर्जा खपत से परे चला जाता है-यूट्रोफिकेशन (अपशिष्ट के कारण), फोटोकैमिकल ओजोन निर्माण, ग्रीनहाउस गैस उत्सर्जन और समीकरण में अधिक कारक।"
+
+#: tool/template-learn-impact.html:106
+msgid ""
+"Adopting XRP more broadly will help limit this waste and ensure a "
+"sustainable future for our planet and global economy."
+msgstr "एक्सआरपी को अधिक व्यापक रूप से अपनाने से इस कचरे को सीमित करने और हमारे ग्रह और वैश्विक अर्थव्यवस्था के लिए एक स्थायी भविष्य सुनिश्चित करने में मदद मिलेगी।"
+
+#: tool/template-learn-impact.html:109
+msgid "Discover the Green Currency Calculator"
+msgstr "ग्रीन करेंसी कैलकुलेटर की खोज करें"
+
+#: tool/template-learn-overview.html:23
+msgid "XRP Overview"
+msgstr "एक्सआरपी अवलोकन"
+
+#: tool/template-learn-overview.html:24
+msgid "Your Questions About XRP, Answered."
+msgstr "एक्सआरपी के बारे में आपके प्रश्न, उत्तर दिए गए।"
+
+#: tool/template-learn-overview.html:30
+msgid ""
+"XRP is a digital asset that’s native to the XRP Ledger, an open-source, "
+"permissionless and decentralized <a "
+"href=\"https://www.distributedagreement.com/2018/09/24/what-"
+"is-a-blockchain/\" target=\"_blank\">blockchain technology</a>."
+msgstr "एक्सआरपी एक डिजिटल संपत्ति है जो एक्सआरपी लेजर के मूल निवासी है, एक खुला स्रोत, अनुमति रहित और विकेंद्रीकृत <a href=\https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/\ target=\_blank\>ब्लॉकचैन तकनीक</a>."
+
+#: tool/template-learn-overview.html:31
+msgid ""
+"Created in 2012 specifically for payments, XRP can settle transactions on"
+" the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, "
+"cheaper and greener than any other digital asset.  "
+msgstr "2012 में विशेष रूप से भुगतान के लिए बनाया गया, XRP 3-5 सेकंड में खाता बही पर लेनदेन का निपटान कर सकता है। यह किसी भी अन्य डिजिटल संपत्ति की तुलना में बेहतर बिटकॉइन-तेज, सस्ता और हरित होने के लिए बनाया गया था।"
+
+#: tool/template-learn-overview.html:37 tool/template-learn-overview.html:42
+msgid "Benefits"
+msgstr "लाभ"
+
+#: tool/template-learn-overview.html:43
+msgid "XRP"
+msgstr "एक्सआरपी"
+
+#: tool/template-learn-overview.html:50
+msgid "3-5 seconds to settle"
+msgstr "3-5 सेकंड बसने के लिए"
+
+#: tool/template-learn-overview.html:51
+msgid "500 seconds to settle"
+msgstr "सेटल होने के लिए 500 सेकंड"
+
+#: tool/template-learn-overview.html:55
+msgid "$0.0002/transaction"
+msgstr "$0.0002/लेनदेन"
+
+#: tool/template-learn-overview.html:56
+msgid "$0.50/transaction"
+msgstr "$0.50/लेनदेन"
+
+#: tool/template-learn-overview.html:60
+msgid "1,500 transactions per second"
+msgstr "प्रति सेकंड 1,500 लेनदेन"
+
+#: tool/template-learn-overview.html:61
+msgid "3 transactions per second"
+msgstr "प्रति सेकंड 3 लेनदेन"
+
+#: tool/template-learn-overview.html:65
+msgid "Environmentally sustainable and carbon neutral"
+msgstr "पर्यावरण की दृष्टि से टिकाऊ और कार्बन न्यूट्रल"
+
+#: tool/template-learn-overview.html:66
+msgid "0.3&#37; of global energy consumption"
+msgstr "0.3&#37; वैश्विक ऊर्जा खपत का"
+
+#: tool/template-learn-overview.html:78
+msgid "Finite Supply of XRP"
+msgstr "एक्सआरपी की सीमित आपूर्ति"
+
+#: tool/template-learn-overview.html:79
+msgid ""
+"XRP can be sent directly without needing a central intermediary, making "
+"it a convenient instrument in bridging two different currencies quickly "
+"and efficiently. It is freely exchanged on the open market and used in "
+"the real world for enabling cross-border payments and microtransactions."
+msgstr "एक्सआरपी को केंद्रीय मध्यस्थ की आवश्यकता के बिना सीधे भेजा जा सकता है, जिससे यह दो अलग-अलग मुद्राओं को जल्दी और कुशलता से पाटने में एक सुविधाजनक साधन बन जाता है। खुले बाजार में इसका स्वतंत्र रूप से आदान-प्रदान किया जाता है और वास्तविक दुनिया में सीमा पार से भुगतान और सूक्ष्म लेनदेन को सक्षम करने के लिए उपयोग किया जाता है।"
+
+#: tool/template-learn-overview.html:80
+msgid ""
+"Unlike Bitcoin, there is a finite amount of XRP. All XRP is already in "
+"existence today—100 billion in total."
+msgstr "बिटकॉइन के विपरीत, एक्सआरपी की एक सीमित मात्रा है। आज सभी एक्सआरपी पहले से मौजूद हैं—कुल मिलाकर 100 अरब।"
+
+#: tool/template-learn-overview.html:81
+msgid "History of XRP"
+msgstr "एक्सआरपी का इतिहास"
+
+#: tool/template-learn-overview.html:87
+msgid "How Does the XRP Ledger Work?"
+msgstr "एक्सआरपी लेजर कैसे काम करता है?"
+
+#: tool/template-learn-overview.html:90
+msgid ""
+"The XRP Ledger is open-source technology on which anyone can build. The "
+"XRP Ledger is maintained by a global “XRP Community”—a diverse set of "
+"participants composed of software engineers, server operators and <a "
+"href=\"run-a-rippled-validator.html\">validators</a>."
+msgstr "एक्सआरपी लेजर ओपन-सोर्स तकनीक है जिस पर कोई भी निर्माण कर सकता है। XRP लेजर को एक वैश्विक "XRP समुदाय" द्वारा बनाए रखा जाता है - सॉफ्टवेयर इंजीनियरों, सर्वर ऑपरेटरों और <a href=\run-a-rippled-validator.html\>validators</a> से बना प्रतिभागियों का एक विविध समूह।"
+
+#: tool/template-learn-overview.html:91
+msgid ""
+"The XRP Ledger uses a consensus protocol, in which validators come to an "
+"agreement on the order of XRP transactions every 3-5 seconds. This "
+"agreement serves as the final and irreversible settlement."
+msgstr "एक्सआरपी लेजर एक आम सहमति प्रोटोकॉल का उपयोग करता है, जिसमें सत्यापनकर्ता हर 3-5 सेकंड में एक्सआरपी लेनदेन के आदेश पर एक समझौते पर आते हैं। यह समझौता अंतिम और अपरिवर्तनीय निपटान के रूप में कार्य करता है।"
+
+#: tool/template-learn-overview.html:94
+msgid ""
+"Transactions are executed in a deterministic order to prevent double "
+"spending and malicious activity. Unlike other blockchains, transaction "
+"fees are destroyed as part of transaction execution. The XRP Ledger "
+"adjusts fees in near real time to respond to network conditions, with the"
+" twin goals of maximizing transaction throughput while keeping "
+"transaction fees as low as possible."
+msgstr "दोहरे खर्च और दुर्भावनापूर्ण गतिविधि को रोकने के लिए लेन-देन एक नियतात्मक क्रम में निष्पादित किए जाते हैं। अन्य ब्लॉकचेन के विपरीत, लेन-देन निष्पादन के हिस्से के रूप में लेनदेन शुल्क नष्ट हो जाते हैं। XRP लेजर नेटवर्क स्थितियों का जवाब देने के लिए लगभग वास्तविक समय में शुल्क को समायोजित करता है, लेन-देन शुल्क को यथासंभव कम रखते हुए लेनदेन थ्रूपुट को अधिकतम करने के दोहरे लक्ष्यों के साथ।"
+
+#: tool/template-learn-overview.html:95
+msgid ""
+"All servers in the network process each transaction according to the same"
+" rules, and any transaction that follows the protocol is confirmed as "
+"soon as validators reach a quorum."
+msgstr "नेटवर्क में सभी सर्वर समान नियमों के अनुसार प्रत्येक लेनदेन को संसाधित करते हैं, और जैसे ही सत्यापनकर्ता कोरम तक पहुंचते हैं, प्रोटोकॉल का पालन करने वाले किसी भी लेनदेन की पुष्टि की जाती है।"
+
+#: tool/template-learn-overview.html:100
+msgid "XRP Validators"
+msgstr "एक्सआरपी सत्यापनकर्ता"
+
+#: tool/template-learn-overview.html:106
+msgid ""
+"Anyone can operate a validator; currently, over 150 <a href=\"run-a"
+"-rippled-validator.html\" class=\"underline\">validators</a> are active "
+"on the ledger, operated by  universities, exchanges, businesses and "
+"individuals."
+msgstr "कोई भी सत्यापनकर्ता संचालित कर सकता है; वर्तमान में, 150 से अधिक <a href=\run-a-rippled-validator.html\ class=\underline\>सत्यापनकर्ता</a> विश्वविद्यालय, एक्सचेंजों, व्यवसायों और व्यक्तियों द्वारा संचालित बहीखाता पर सक्रिय हैं।"
+
+#: tool/template-learn-overview.html:107
+msgid "Get Technical"
+msgstr "तकनीकी प्राप्त करें"
+
+#: tool/template-learn-overview.html:114
+msgid "Why Is XRP Useful?"
+msgstr "एक्सआरपी क्यों उपयोगी है?"
+
+#: tool/template-learn-overview.html:115
+msgid ""
+"XRP is fast, low-cost, sustainable and scalable. It is the key to fueling"
+" growth and realizing the true potential of our global economy—the <a "
+"href=\"https://ripple.com/insights/the-internet-of-value-what-it-means-"
+"and-how-it-benefits-everyone/\" target=\"_blank\" "
+"class=\"underline\">Internet of Value</a>."
+msgstr "एक्सआरपी तेज, कम लागत वाला, टिकाऊ और स्केलेबल है। यह विकास को बढ़ावा देने और हमारी वैश्विक अर्थव्यवस्था की वास्तविक क्षमता को साकार करने की कुंजी है—<a href=\https://ripple.com/insights/the-internet-of-value-what-it-means-and-how -it-benefits-everyone/\ target=\_blank\ class=\underline\>इंटरनेट ऑफ वैल्यू</a>।"
+
+#: tool/template-learn-overview.html:119
+msgid "Businesses"
+msgstr "व्यवसायों"
+
+#: tool/template-learn-overview.html:120
+msgid ""
+"Many businesses are building on the XRP Ledger, pursuing powerful use "
+"cases in decentralized finance, micropayments, gaming, web monetization "
+"and more. Additionally, Ripple, the technology company, is focused on "
+"building a network and infrastructure that leverages XRP to power faster,"
+" more affordable cross-border payments around the world."
+msgstr "कई व्यवसाय एक्सआरपी लेजर पर निर्माण कर रहे हैं, विकेंद्रीकृत वित्त, सूक्ष्म भुगतान, गेमिंग, वेब मुद्रीकरण और अधिक में शक्तिशाली उपयोग के मामलों का पीछा कर रहे हैं। इसके अतिरिक्त, रिपल, प्रौद्योगिकी कंपनी, एक नेटवर्क और बुनियादी ढांचे के निर्माण पर ध्यान केंद्रित कर रही है जो दुनिया भर में तेजी से, अधिक किफायती सीमा पार से भुगतान करने के लिए एक्सआरपी का लाभ उठाती है।"
+
+#: tool/template-learn-overview.html:121
+msgid "More About Businesses"
+msgstr "व्यवसायों के बारे में अधिक"
+
+#: tool/template-learn-overview.html:124
+msgid "Individuals"
+msgstr "व्यक्तियों"
+
+#: tool/template-learn-overview.html:125
+msgid ""
+"Individual consumers can use XRP to move different currencies around the "
+"world. For example, through wallets and exchanges that use <a "
+"href=\"https://paystring.org/\" target=\"_blank\">PayID</a>, anyone can "
+"use XRP—or any currency, be it fiat or digital assets—to easily make "
+"purchases across any payments network."
+msgstr "अलग-अलग उपभोक्ता दुनिया भर में विभिन्न मुद्राओं को स्थानांतरित करने के लिए एक्सआरपी का उपयोग कर सकते हैं। उदाहरण के लिए, वॉलेट और एक्सचेंजों के माध्यम से जो <a href=\https://paystring.org/\ target=\_blank\>PayID</a> का उपयोग करते हैं, कोई भी XRP—या किसी भी मुद्रा का उपयोग कर सकता है, चाहे वह कानूनी संपत्ति हो या डिजिटल संपत्ति —किसी भी भुगतान नेटवर्क पर आसानी से खरीदारी करने के लिए।"
+
+#: tool/template-learn-overview.html:126
+msgid "More About Uses"
+msgstr "उपयोग के बारे में अधिक"
+
+#: tool/template-learn-overview.html:129
+msgid "Developers"
+msgstr "डेवलपर्स"
+
+#: tool/template-learn-overview.html:130
+msgid ""
+"By building on the XRP Ledger, developers can easily integrate payments "
+"into their products—seamlessly putting money at the center of their "
+"applications. Projects like <a href=\"https://github.com/XRPLF/xrpl-py\" "
+"target=\"_blank\">xrpl-py</a> are making it easier for developers to "
+"leverage XRP."
+msgstr "एक्सआरपी लेजर पर निर्माण करके, डेवलपर्स आसानी से अपने उत्पादों में भुगतान को एकीकृत कर सकते हैं-मूल रूप से अपने अनुप्रयोगों के केंद्र में पैसा डालते हैं। <a href=\https://github.com/XRPLF/xrpl-py\ target=\_blank\>xrpl-py</a> जैसी परियोजनाएं डेवलपर्स के लिए XRP का लाभ उठाना आसान बना रही हैं।"
+
+#: tool/template-learn-overview.html:131
+msgid "More About Developers"
+msgstr "डेवलपर्स के बारे में"
+
+#: tool/template-learn-overview.html:136
+msgid "Internet of Value"
+msgstr "मूल्य का इंटरनेट"
+
+#: tool/template-learn-overview.html:143
+msgid ""
+"The XRP Ledger settles transactions faster than any other blockchain—in "
+"3-5 seconds."
+msgstr "एक्सआरपी लेजर किसी भी अन्य ब्लॉकचेन की तुलना में 3-5 सेकंड में लेनदेन को तेजी से निपटाता है।"
+
+#: tool/template-learn-overview.html:152
+msgid ""
+"XRP transactions cost a fraction of a penny ($0.0002)—much less than "
+"other cryptocurrencies and average fiat payments."
+msgstr "एक्सआरपी लेनदेन में एक पैसा ($ 0.0002) का एक अंश खर्च होता है - अन्य क्रिप्टोकरेंसी और औसत कानूनी भुगतानों की तुलना में बहुत कम।"
+
+#: tool/template-learn-overview.html:161
+msgid "The XRP Ledger can handle up to 1,500 transactions per second."
+msgstr "XRP लेजर प्रति सेकंड 1,500 लेनदेन तक संभाल सकता है।"
+
+#: tool/template-learn-overview.html:170
+msgid ""
+"XRP transactions settle without the enormous and unsustainable energy "
+"costs associated with proof-of-work (or mining)."
+msgstr "XRP लेन-देन प्रूफ-ऑफ-वर्क (या माइनिंग) से जुड़ी भारी और अस्थिर ऊर्जा लागतों के बिना निपटता है।"
+
+#: tool/template-learn-overview.html:178
+msgid "Real"
+msgstr "असली"
+
+#: tool/template-learn-overview.html:179
+msgid ""
+"XRP is one of the only digital assets with a proven, real-world use case:"
+" cross-border payments."
+msgstr "XRP एकमात्र ऐसी डिजिटल संपत्ति में से एक है, जो एक सिद्ध, वास्तविक दुनिया के उपयोग के मामले में है: सीमा पार से भुगतान।"
+
+#: tool/template-learn-overview.html:188 tool/template-learn-uses.html:86
+msgid "Trading"
+msgstr "व्यापार"
+
+#: tool/template-learn-overview.html:207
+msgid "How Is XRP Used in Trading?"
+msgstr "ट्रेडिंग में एक्सआरपी का उपयोग कैसे किया जाता है?"
+
+#: tool/template-learn-overview.html:208
+msgid ""
+"XRP is traded on more than 140 markets and <a "
+"href=\"exchanges.html\">exchanges</a> worldwide."
+msgstr "XRP का दुनिया भर में 140 से अधिक बाजारों और <a href=\exchanges.html\>एक्सचेंजों</a> में कारोबार होता है।"
+
+#: tool/template-learn-overview.html:209
+msgid ""
+"XRP’s low transaction fees, reliability and high speed enable traders to "
+"use the digital asset as fast, cost-efficient and reliable collateral "
+"across trading venues—<a href=\"https://ripple.com/insights/xrp-a"
+"-preferred-base-currency-for-arbitrage-trading/\" "
+"target=\"_blank\">seizing arbitrage opportunities</a>, servicing margin "
+"calls and managing general trading inventory in real time."
+msgstr "एक्सआरपी की कम लेनदेन शुल्क, विश्वसनीयता और उच्च गति व्यापारियों को डिजिटल संपत्ति का उपयोग व्यापारिक स्थानों पर तेज, लागत प्रभावी और विश्वसनीय संपार्श्विक के रूप में करने में सक्षम बनाती है—<a href=\https://ripple.com/insights/xrp-a-preferred- बेस-करेंसी-फॉर-आर्बिट्रेज-ट्रेडिंग/\ target=\_blank\>आर्बिट्रेज के अवसरों को जब्त करना</a>, मार्जिन कॉल की सर्विसिंग और वास्तविक समय में सामान्य ट्रेडिंग इन्वेंट्री का प्रबंधन करना।"
+
+#: tool/template-learn-overview.html:210
+msgid ""
+"Because of the properties inherent to XRP and the ecosystem around it, "
+"traders worldwide are able to shift collateral, bridge currencies and "
+"switch from one crypto into another nearly instantly, across any exchange"
+" on the planet."
+msgstr "एक्सआरपी और उसके आसपास के पारिस्थितिकी तंत्र में निहित गुणों के कारण, दुनिया भर के व्यापारी ग्रह पर किसी भी एक्सचेंज में संपार्श्विक, पुल मुद्राओं को स्थानांतरित करने और एक क्रिप्टो से दूसरी क्रिप्टो में स्विच करने में सक्षम हैं।"
+
+#: tool/template-learn-overview.html:211
+msgid "Find Out More"
+msgstr "और अधिक जानकारी प्राप्त करें"
+
+#: tool/template-learn-overview.html:217
+msgid "Ripple vs. XRP"
+msgstr "रिपल बनाम एक्सआरपी"
+
+#: tool/template-learn-overview.html:223
+msgid "What Is the Relationship Between Ripple and XRP?"
+msgstr "रिपल और एक्सआरपी के बीच क्या संबंध है?"
+
+#: tool/template-learn-overview.html:224
+msgid ""
+"Ripple is a technology company that makes it easier to build a high-"
+"performance, global payments business through its platform, RippleNet. "
+"XRP is a digital asset independent of this, and is used in Ripple’s On-"
+"Demand Liquidity service to facilitate efficient and cost-effective "
+"cross-border transactions. In December of 2017, Ripple placed 55 Billion "
+"XRP into a cryptographically secured <a "
+"href=\"https://ripple.com/insights/explanation-ripples-xrp-escrow/\" "
+"target=\"_blank\">escrow</a> account to support stable and healthy <a "
+"href=\"https://ripple.com/xrp/market-performance\" target=\"_blank\">XRP "
+"markets</a>."
+msgstr "Ripple एक प्रौद्योगिकी कंपनी है जो अपने प्लेटफॉर्म RippleNet के माध्यम से एक उच्च-प्रदर्शन, वैश्विक भुगतान व्यवसाय बनाना आसान बनाती है। एक्सआरपी इससे स्वतंत्र एक डिजिटल संपत्ति है, और इसका उपयोग कुशल और लागत प्रभावी सीमा पार लेनदेन की सुविधा के लिए रिपल की ऑन-डिमांड तरलता सेवा में किया जाता है। 2017 के दिसंबर में, Ripple ने क्रिप्टोग्राफ़िक रूप से सुरक्षित <a href=\https://ripple.com/insights/explanation-ripples-xrp-escrow/\ target=\_blank\>एस्क्रो</a> खाते में 55 बिलियन XRP रखा। स्थिर और स्वस्थ <a href=\https://ripple.com/xrp/market-performance\ target=\_blank\>XRP बाजारों</a> का समर्थन करने के लिए।"
+
+#: tool/template-learn-overview.html:225
+msgid "Visit Ripple's Website"
+msgstr "रिपल की वेबसाइट पर जाएँ"
+
+#: tool/template-learn-overview.html:231
+msgid "XRP Community"
+msgstr "एक्सआरपी समुदाय"
+
+#: tool/template-learn-overview.html:237
+msgid "XRPL.org: For the Community, by the Community"
+msgstr "XRPL.org: समुदाय के लिए, समुदाय द्वारा"
+
+#: tool/template-learn-overview.html:238
+msgid ""
+"XRPL.org is a community-driven resource for all things XRP and XRP Ledger"
+" (XRPL). If you’d like to suggest additional information around XRP, you "
+"can suggest changes <a href=\"contribute.html\">here</a>."
+msgstr "XRPL.org सभी चीजों के लिए XRP और XRP लेजर (XRPL) के लिए एक समुदाय-संचालित संसाधन है। यदि आप XRP के बारे में अतिरिक्त जानकारी का सुझाव देना चाहते हैं, तो आप <a href=\contribute.html\>यहां</a> परिवर्तनों का सुझाव दे सकते हैं।"
+
+#: tool/template-learn-overview.html:239
+msgid "Suggest Changes"
+msgstr "परिवर्तन सुझाएं"
+
+#: tool/template-learn-uses.html:23
+msgid "The Best Way To Move Money Around the World"
+msgstr "दुनिया भर में पैसा स्थानांतरित करने का सबसे अच्छा तरीका"
+
+#: tool/template-learn-uses.html:24
+msgid "Using XRP"
+msgstr "एक्सआरपी का उपयोग करना"
+
+#: tool/template-learn-uses.html:27
+msgid ""
+"XRP and the XRP Ledger are used to power innovative technology across the"
+" payments space."
+msgstr "एक्सआरपी और एक्सआरपी लेजर का उपयोग भुगतान क्षेत्र में नवीन प्रौद्योगिकी को शक्ति प्रदान करने के लिए किया जाता है।"
+
+#: tool/template-learn-uses.html:28
+msgid ""
+"From cross-border payments to decentralized finance, businesses and "
+"developers around the world are leveraging the XRP Ledger and its native "
+"digital asset, XRP—a faster, cheaper and greener currency."
+msgstr "सीमा पार से भुगतान से लेकर विकेंद्रीकृत वित्त तक, दुनिया भर के व्यवसाय और डेवलपर्स एक्सआरपी लेजर और इसकी मूल डिजिटल संपत्ति, एक्सआरपी-एक तेज, सस्ती और हरित मुद्रा का लाभ उठा रहे हैं।"
+
+#: tool/template-learn-uses.html:37 tool/template-learn-uses.html:42
+msgid "Cross-Border Payments"
+msgstr "सीमा पार से भुगतान"
+
+#: tool/template-learn-uses.html:43
+msgid ""
+"Through RippleNet, financial institutions can use XRP to bridge two "
+"currencies in 3-5 seconds, ensuring payments are quickly sent and "
+"received in the local currency on either side of a transaction."
+msgstr "RippleNet के माध्यम से, वित्तीय संस्थान 3-5 सेकंड में दो मुद्राओं को पाटने के लिए XRP का उपयोग कर सकते हैं, यह सुनिश्चित करते हुए कि लेनदेन के दोनों ओर स्थानीय मुद्रा में भुगतान जल्दी से भेजा और प्राप्त किया जाता है।"
+
+#: tool/template-learn-uses.html:45
+msgid "Learn About On-Demand Liquidity"
+msgstr "ऑन-डिमांड लिक्विडिटी के बारे में जानें"
+
+#: tool/template-learn-uses.html:56
+msgid ""
+"Businesses are leveraging XRP and the XRP Ledger to build innovative "
+"products for gaming, content and web monetization, among other "
+"applications where money is at the center."
+msgstr "गेमिंग, सामग्री और वेब मुद्रीकरण के लिए अभिनव उत्पादों के निर्माण के लिए व्यवसाय एक्सआरपी और एक्सआरपी लेजर का लाभ उठा रहे हैं, अन्य अनुप्रयोगों के बीच जहां पैसा केंद्र में है।"
+
+#: tool/template-learn-uses.html:57
+msgid "Learn About XRP Ledger Businesses"
+msgstr "एक्सआरपी लेजर व्यवसायों के बारे में जानें"
+
+#: tool/template-learn-uses.html:62
+msgid "Digital Cryptocurrency"
+msgstr "डिजिटल क्रिप्टोक्यूरेंसी"
+
+#: tool/template-learn-uses.html:67
+msgid "Digital Cryptocurrency Wallets"
+msgstr "डिजिटल क्रिप्टोक्यूरेंसी वॉलेट"
+
+#: tool/template-learn-uses.html:68
+msgid ""
+"Individuals can use mobile wallets to store private and public passwords "
+"and interact with various blockchains to send and receive digital assets,"
+" including XRP."
+msgstr "व्यक्ति निजी और सार्वजनिक पासवर्ड स्टोर करने के लिए मोबाइल वॉलेट का उपयोग कर सकते हैं और एक्सआरपी सहित डिजिटल संपत्ति भेजने और प्राप्त करने के लिए विभिन्न ब्लॉकचेन के साथ बातचीत कर सकते हैं।"
+
+#: tool/template-learn-uses.html:69
+msgid "Explore Wallets"
+msgstr "वॉलेट का अन्वेषण करें"
+
+#: tool/template-learn-uses.html:74 tool/template-learn-uses.html:79
+msgid "Exchanges"
+msgstr "एक्सचेंजों"
+
+#: tool/template-learn-uses.html:80
+msgid ""
+"Market makers and individuals use exchanges to trade XRP and other "
+"digital assets. Exchanges are often also intermediaries in cross-border "
+"payments among financial institutions."
+msgstr "बाजार निर्माता और व्यक्ति एक्सआरपी और अन्य डिजिटल संपत्तियों का व्यापार करने के लिए एक्सचेंजों का उपयोग करते हैं। एक्सचेंज अक्सर वित्तीय संस्थानों के बीच सीमा पार भुगतान में मध्यस्थ भी होते हैं।"
+
+#: tool/template-learn-uses.html:81
+msgid "Explore Exchanges"
+msgstr "एक्सचेंजों का अन्वेषण करें"
+
+#: tool/template-learn-uses.html:91
+msgid "Institutional Trading"
+msgstr "संस्थागत व्यापार"
+
+#: tool/template-learn-uses.html:92
+msgid ""
+"Market participants use XRP as a high-speed, cost-efficient and reliable "
+"trading collateral. This means seizing arbitrage opportunities, servicing"
+" margin calls and managing general trade inventory in real time."
+msgstr "बाजार सहभागी एक्सआरपी का उपयोग उच्च गति, लागत प्रभावी और विश्वसनीय व्यापारिक संपार्श्विक के रूप में करते हैं। इसका मतलब है कि आर्बिट्राज के अवसरों को जब्त करना, मार्जिन कॉल की सेवा करना और वास्तविक समय में सामान्य व्यापार सूची का प्रबंधन करना।"
+
+#: tool/template-top-nav.html:36
+msgid "Open Search"
+msgstr "ओपन सर्च"
+
+#: tool/template-top-nav.html:41 tool/template-top-nav.html:42
+msgid "Search site..."
+msgstr "अनुसंधान क्षेत्र..."
+
+#: tool/template-top-nav.html:44
+msgid "Close Search"
+msgstr "खोज बंद करें"
+
+#: tool/template-top-nav.html:53
+msgid "Get Started"
+msgstr "शुरू हो जाओ"
+
+#: tool/template-tx-sender.html:8
+msgid "Status"
+msgstr "स्थिति"
+
+#: tool/template-tx-sender.html:12
+msgid "XRP Testnet:"
+msgstr "एक्सआरपी टेस्टनेट:"
+
+#: tool/template-tx-sender.html:13
+msgid "Not Connected"
+msgstr "जुड़े नहीं हैं"
+
+#: tool/template-tx-sender.html:14
+msgid "Sending Address:"
+msgstr "भेजने का पता:"
+
+#: tool/template-tx-sender.html:15 tool/template-tx-sender.html:17
+msgid "(None)"
+msgstr "(कोई नहीं)"
+
+#: tool/template-tx-sender.html:16
+msgid "Testnet XRP Available:"
+msgstr "टेस्टनेट एक्सआरपी उपलब्ध:"
+
+#: tool/template-tx-sender.html:20
+msgid "Transaction History"
+msgstr "लेनदेन इतिहास"
+
+#: tool/template-tx-sender.html:30
+msgid "Transaction Sender"
+msgstr "लेन-देन प्रेषक"
+
+#: tool/template-tx-sender.html:33
+msgid ""
+"This tool sends transactions to the <a href=\"xrp-test-net-"
+"faucet.html\">XRP Testnet</a> address of your choice so you can test how "
+"you monitor and respond to incoming transactions."
+msgstr "यह टूल लेन-देन को आपकी पसंद के <a href=\xrp-test-net-faucet.html\>XRP टेस्टनेट</a> पते पर भेजता है ताकि आप परीक्षण कर सकें कि आप आने वाले लेन-देन की निगरानी और प्रतिक्रिया कैसे करते हैं।"
+
+#: tool/template-tx-sender.html:37
+msgid "Initialize"
+msgstr "प्रारंभ"
+
+#: tool/template-tx-sender.html:38
+msgid "Set up the necessary Testnet XRP addresses to send test payments."
+msgstr "परीक्षण भुगतान भेजने के लिए आवश्यक टेस्टनेट एक्सआरपी पते सेट करें।"
+
+#: tool/template-tx-sender.html:42
+msgid "Destination Address"
+msgstr "गंतव्य पता"
+
+#: tool/template-tx-sender.html:44
+msgid "Send transactions to this XRP Testnet address"
+msgstr "इस एक्सआरपी टेस्टनेट पते पर लेनदेन भेजें"
+
+#: tool/template-tx-sender.html:46
+msgid ""
+"<strong>Caution:</strong> This X-address is intended for use on Mainnet. "
+"Testnet addresses have a \"T\" prefix instead."
+msgstr "<strong>सावधानी:</strong> यह X-पता मेननेट पर उपयोग के लिए है। इसके बजाय टेस्टनेट पतों में \T\ उपसर्ग होता है।"
+
+#: tool/template-tx-sender.html:48
+msgid "Send Transaction"
+msgstr "लेनदेन भेजें"
+
+#: tool/template-tx-sender.html:53
+msgid "(loading)"
+msgstr "(लोड हो रहा है)"
+
+#: tool/template-tx-sender.html:55
+msgid "Send XRP Payment"
+msgstr "एक्सआरपी भुगतान भेजें"
+
+#: tool/template-tx-sender.html:58 tool/template-tx-sender.html:116
+msgid "drops of XRP"
+msgstr "एक्सआरपी की बूँदें"
+
+#: tool/template-tx-sender.html:62
+msgid "Send a <a href=\"send-xrp.html\">simple XRP-to-XRP payment</a>."
+msgstr "एक <a href=\send-xrp.html\>साधारण XRP-to-XRP भुगतान</a> भेजें।"
+
+#: tool/template-tx-sender.html:70
+msgid "(Getting ready to send partial payments)"
+msgstr "(आंशिक भुगतान भेजने की तैयारी)"
+
+#: tool/template-tx-sender.html:76
+msgid "Send Partial Payment"
+msgstr "आंशिक भुगतान भेजें"
+
+#: tool/template-tx-sender.html:78
+msgid ""
+"Deliver a small amount of XRP with a large <code>Amount</code> value, to "
+"test your handling of <a href=\"partial-payments.html\">partial "
+"payments</a>."
+msgstr "<a href=\partial-payments.html\>आंशिक भुगतान</a> के अपने प्रबंधन का परीक्षण करने के लिए, एक बड़े <code>राशि</code> मान के साथ XRP की एक छोटी राशि वितरित करें।"
+
+#: tool/template-tx-sender.html:88
+msgid "Create Escrow"
+msgstr "एस्क्रो बनाएं"
+
+#: tool/template-tx-sender.html:91
+msgid "seconds"
+msgstr "सेकंड"
+
+#: tool/template-tx-sender.html:96
+msgid "Finish automatically"
+msgstr "स्वचालित रूप से समाप्त करें"
+
+#: tool/template-tx-sender.html:99
+msgid ""
+"Create a <a href=\"escrow.html\">time-based escrow</a> of 1 XRP for the "
+"specified number of seconds."
+msgstr "निर्दिष्ट सेकंड के लिए 1 XRP का <a href=\escrow.html\>समय-आधारित एस्क्रो</a> बनाएं।"
+
+#: tool/template-tx-sender.html:102
+msgid "(Waiting to release Escrow when it's ready)"
+msgstr "(एस्क्रो के तैयार होने की प्रतीक्षा में)"
+
+#: tool/template-tx-sender.html:113
+msgid "Create Payment Channel"
+msgstr "भुगतान चैनल बनाएं"
+
+#: tool/template-tx-sender.html:119
+msgid ""
+"Create a <a href=\"payment-channels.html\">payment channel</a> and fund "
+"it with the specified amount of XRP."
+msgstr "एक <a href=\payment-channels.html\>भुगतान चैनल</a> बनाएं और एक्सआरपी की निर्दिष्ट राशि से इसे निधि दें।"
+
+#: tool/template-tx-sender.html:129
+msgid "Send Issued Currency"
+msgstr "जारी मुद्रा भेजें"
+
+#: tool/template-tx-sender.html:135
+msgid ""
+"Your destination address needs a <a href=\"trust-lines-and-"
+"issuing.html\">trust line</a> to <span class=\"sending-address-"
+"item\">(the test sender)</span> for the currency in question. Otherwise, "
+"you'll get tecPATH_DRY."
+msgstr "आपके गंतव्य पते के लिए <a href=\trust-lines-and-issuing.html\>ट्रस्ट लाइन</a> से <span class=\sending-address-item\>(परीक्षा प्रेषक)</span> की आवश्यकता है प्रश्न में मुद्रा। अन्यथा, आपको tecPATH_DRY मिलेगा।"
+
+#: tool/template-tx-sender.html:145
+msgid "Trust for"
+msgstr "के लिए भरोसा करें"
+
+#: tool/template-tx-sender.html:151
+msgid ""
+"The test sender creates a <a href=\"trust-lines-and-issuing.html\">trust "
+"line</a> to your account for the given currency."
+msgstr "परीक्षण प्रेषक दी गई मुद्रा के लिए आपके खाते में एक <a href=\trust-lines-and-issuing.html\>ट्रस्ट लाइन</a> बनाता है।"
+
+#: tool/template-validator-domain-verifier.html:5
+msgid "Domain Verification Checker"
+msgstr "डोमेन सत्यापन परीक्षक"
+
+#: tool/template-validator-domain-verifier.html:7
+msgid ""
+"This tool allows you to verify that <a href=\"xrp-ledger-toml.html"
+"#domain-verification\">domain verification</a> is properly configured."
+msgstr "यह टूल आपको यह सत्यापित करने की अनुमति देता है कि <a href=\xrp-ledger-toml.html#domain-verification\>डोमेन सत्यापन</a> ठीक से कॉन्फ़िगर किया गया है।"
+
+#: tool/template-validator-domain-verifier.html:8
+msgid ""
+"Enter the manifest found in your validator-keys.json file. Do not confuse"
+" this with your validator's secret key."
+msgstr "अपनी सत्यापनकर्ता-keys.json फ़ाइल में पाया गया मेनिफेस्ट दर्ज करें। इसे अपने सत्यापनकर्ता की गुप्त कुंजी के साथ भ्रमित न करें।"
+
+#: tool/template-validator-domain-verifier.html:9
+msgid "To do this with the validator-keys-tool use the following command:"
+msgstr "सत्यापनकर्ता-कुंजी-उपकरण के साथ ऐसा करने के लिए निम्न आदेश का उपयोग करें:"
+
+#: tool/template-validator-domain-verifier.html:14
+msgid "Your Manifest Here"
+msgstr "आपका प्रकट यहाँ"
+
+#: tool/template-validator-domain-verifier.html:20
+#: tool/template-xrp-ledger-rpc-tool.html:18
+msgid "Result"
+msgstr "नतीजा"
+
+#: tool/template-xrp-ledger-rpc-tool.html:14
+msgid "Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>."
+msgstr "<em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em> जैसा खाता आज़माएं."
+
+#: tool/template-xrp-ledger-rpc-tool.html:15
+msgid "Get info"
+msgstr "जानकारी मिलना"
+
+#: tool/template-xrp-ledger-rpc-tool.html:24
+msgid "Permalink"
+msgstr "स्थायी लिंक"
+
+#: tool/template-xrp-ledger-rpc-tool.html:25
+msgid "Explorer"
+msgstr "एक्सप्लोरर"
+
+#: tool/template-xrp-ledger-rpc-tool.html:30
+#: tool/template-xrp-ledger-rpc-tool.html:35
+#: tool/template-xrp-ledger-rpc-tool.html:45
+#: tool/template-xrp-ledger-rpc-tool.html:50
+#: tool/template-xrp-ledger-rpc-tool.html:56
+#: tool/template-xrp-ledger-rpc-tool.html:64
+#: tool/template-xrp-ledger-rpc-tool.html:71
+#: tool/template-xrp-ledger-rpc-tool.html:76
+#: tool/template-xrp-ledger-rpc-tool.html:85
+#: tool/template-xrp-ledger-rpc-tool.html:91
+msgid "expand all"
+msgstr "सभी का विस्तार करें"
+
+#: tool/template-xrp-ledger-rpc-tool.html:31
+#: tool/template-xrp-ledger-rpc-tool.html:36
+#: tool/template-xrp-ledger-rpc-tool.html:46
+#: tool/template-xrp-ledger-rpc-tool.html:51
+#: tool/template-xrp-ledger-rpc-tool.html:57
+#: tool/template-xrp-ledger-rpc-tool.html:65
+#: tool/template-xrp-ledger-rpc-tool.html:72
+#: tool/template-xrp-ledger-rpc-tool.html:77
+#: tool/template-xrp-ledger-rpc-tool.html:86
+#: tool/template-xrp-ledger-rpc-tool.html:92
+msgid "collapse all"
+msgstr "सभी को संकुचित करें"
+
+#: tool/template-xrp-ledger-rpc-tool.html:55
+#: tool/template-xrp-ledger-rpc-tool.html:63
+#: tool/template-xrp-ledger-rpc-tool.html:84
+#: tool/template-xrp-ledger-rpc-tool.html:90
+msgid "expand tx"
+msgstr "tx . का विस्तार करें"
+
+#: tool/template-xrp-ledger-rpc-tool.html:58
+#: tool/template-xrp-ledger-rpc-tool.html:66
+msgid "next 20"
+msgstr "अगले 20"
+
+#: tool/template-xrp-ledger-rpc-tool.html:59
+#: tool/template-xrp-ledger-rpc-tool.html:67
+msgid "prev 20"
+msgstr "पिछला 20"
