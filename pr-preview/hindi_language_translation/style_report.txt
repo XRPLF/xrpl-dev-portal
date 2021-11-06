@@ -1,0 +1,303 @@
+-------------
+Spell Checker
+-------------
+Found 10 possible spelling errors:
+<Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
+  keypairs: 
+
+<Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
+  signerlists: signerlist
+  signerweight: 
+  signerquorum: 
+
+<Page 'Use Tickets' (use-tickets.html)> Unknown Words:
+  autofilling: 
+
+<Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
+  xapps: apps, capps, lapps
+
+<Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
+  io2: ios, io-, iop
+  io1: iot, ios, io-
+
+<Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
+  ordercancellation: 
+  lastledgersequence: 
+
+-----------------------------
+Discouraged Words and Phrases
+-----------------------------
+Found 210 discouraged words/phrases:
+Page: <Page 'Multi-Signing' (multi-signing.html)>
+   Discouraged word: vice (3 instances); suggest 'instead of, versus' instead.
+Page: <Page 'Freezing Issued Currencies' (freezes.html)>
+   Discouraged word: ious (1 instances); suggest 'issuances' instead.
+Page: <Page 'Demurrage' (demurrage.html)>
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Consensus' (consensus.html)>
+   Discouraged word: proceed (1 instances); suggest 'do, go ahead, try' instead.
+Page: <Page 'Consensus Principles and Rules' (consensus-principles-and-rules.html)>
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Known Amendments' (known-amendments.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged word: encounter (2 instances); suggest 'meet' instead.
+Page: <Page 'Ledger History' (ledger-history.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'Online Deletion' (online-deletion.html)>
+   Discouraged word: feasible (1 instances); suggest 'can be done, workable' instead.
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+Page: <Page 'History Sharding' (history-sharding.html)>
+   Discouraged word: witnessed (1 instances); suggest 'saw' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'Peer Protocol' (peer-protocol.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged word: prioritize (1 instances); suggest 'rank' instead.
+   Discouraged word: eliminate (1 instances); suggest 'cut, drop, end' instead.
+Page: <Page 'Transaction Censorship Detection' (transaction-censorship-detection.html)>
+   Discouraged word: impacted (1 instances); suggest 'affected, changed' instead.
+Page: <Page 'Get Started Using Python' (get-started-using-python.html)>
+   Discouraged word: simple (3 instances); suggest '(omit)' instead.
+   Discouraged word: easy (2 instances); suggest '(omit)' instead.
+   Discouraged word: wallet (8 instances); suggest 'address, client application, account' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Get Started Using Java' (get-started-using-java.html)>
+   Discouraged word: simple (3 instances); suggest '(omit)' instead.
+   Discouraged word: easy (2 instances); suggest '(omit)' instead.
+   Discouraged word: wallet (7 instances); suggest 'address, client application, account' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Get Started Using JavaScript' (get-started-using-javascript.html)>
+   Discouraged word: wallet (7 instances); suggest 'address, client application, account' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Send XRP' (send-xrp.html)>
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+   Discouraged word: viable (2 instances); suggest 'practical, workable' instead.
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: consult (1 instances); suggest 'see' instead.
+Page: <Page 'Monitor Incoming Payments with WebSocket' (monitor-incoming-payments-with-websocket.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Set Up Secure Signing' (set-up-secure-signing.html)>
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Look Up Transaction Results' (look-up-transaction-results.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Reliable Transaction Submission' (reliable-transaction-submission.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+Page: <Page 'Assign a Regular Key Pair' (assign-a-regular-key-pair.html)>
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+   Discouraged word: transmit (2 instances); suggest 'send' instead.
+Page: <Page 'Change or Remove a Regular Key Pair' (change-or-remove-a-regular-key-pair.html)>
+   Discouraged word: whereas (1 instances); suggest 'because, since' instead.
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Disable Master Key Pair' (disable-master-key-pair.html)>
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Offline Account Setup Tutorial' (offline-account-setup.html)>
+   Discouraged word: accurate (2 instances); suggest 'correct, exact, right' instead.
+   Discouraged word: simple (2 instances); suggest '(omit)' instead.
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: viable (1 instances); suggest 'practical, workable' instead.
+Page: <Page 'Use Tickets' (use-tickets.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Use an Escrow as a Smart Contract' (use-an-escrow-as-a-smart-contract.html)>
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+Page: <Page 'Open a Payment Channel to Enable an Inter-Exchange Network' (open-a-payment-channel-to-enable-an-inter-exchange-network.html)>
+   Discouraged word: wallet (4 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: cold wallet (1 instances); suggest 'issuing address' instead.
+   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
+   Discouraged word: designate (1 instances); suggest 'appoint, choose, name' instead.
+   Discouraged word: viable (1 instances); suggest 'practical, workable' instead.
+Page: <Page 'Cancel a Check' (cancel-a-check.html)>
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Issue a Fungible Token' (issue-a-fungible-token.html)>
+   Discouraged word: ious (1 instances); suggest 'issuances' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+Page: <Page 'Enact Global Freeze' (enact-global-freeze.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
+Page: <Page 'List XRP as an Exchange' (list-xrp-as-an-exchange.html)>
+   Discouraged word: easy (1 instances); suggest '(omit)' instead.
+   Discouraged phrase: warm wallet (2 instances); suggest 'standby address' instead.
+   Discouraged word: wallet (21 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: cold wallet (4 instances); suggest 'issuing address' instead.
+   Discouraged phrase: hot wallet (2 instances); suggest 'operational address' instead.
+Page: <Page 'List Your Exchange on XRP Charts' (list-your-exchange-on-xrp-charts.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)>
+   Discouraged word: feasible (1 instances); suggest 'can be done, workable' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+Page: <Page 'System Requirements' (system-requirements.html)>
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Capacity Planning' (capacity-planning.html)>
+   Discouraged phrase: in the near future (1 instances); suggest 'shortly, soon' instead.
+   Discouraged word: utilization (2 instances); suggest 'use' instead.
+   Discouraged word: encounter (1 instances); suggest 'meet' instead.
+   Discouraged word: therefore (2 instances); suggest 'so' instead.
+   Discouraged word: reside (1 instances); suggest 'live' instead.
+   Discouraged phrase: in the event of (1 instances); suggest 'if' instead.
+   Discouraged word: substantial (1 instances); suggest 'large, much' instead.
+   Discouraged word: transmit (4 instances); suggest 'send' instead.
+Page: <Page 'rippled v1.3.x Migration Instructions' (rippled-1-3-migration-instructions.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Run rippled as a Validator' (run-rippled-as-a-validator.html)>
+   Discouraged word: timely (2 instances); suggest 'prompt' instead.
+   Discouraged word: clearly (1 instances); suggest '(omit)' instead.
+Page: <Page 'Run rippled as a Wallet Server' (run-rippled-as-a-wallet-server.html)>
+   Discouraged word: wallet (6 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Connect Your rippled to a Parallel Network' (connect-your-rippled-to-the-xrp-test-net.html)>
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+Page: <Page 'Configure Full History' (configure-full-history.html)>
+   Discouraged word: sufficient (2 instances); suggest 'enough' instead.
+Page: <Page 'Diagnosing Problems with rippled' (diagnosing-problems.html)>
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'Health Check Interventions' (health-check-interventions.html)>
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+Page: <Page 'Understanding Log Messages' (understanding-log-messages.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+Page: <Page 'rippled Server Doesn't Sync' (server-doesnt-sync.html)>
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+   Discouraged word: impacted (1 instances); suggest 'affected, changed' instead.
+Page: <Page 'Fix SQLite Transaction Database Page Size Issue' (fix-sqlite-tx-db-page-size-issue.html)>
+   Discouraged word: encounter (3 instances); suggest 'meet' instead.
+   Discouraged word: easily (1 instances); suggest '(omit)' instead.
+Page: <Page 'Currency Formats' (currency-formats.html)>
+   Discouraged word: encounter (1 instances); suggest 'meet' instead.
+Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+Page: <Page 'AccountSet' (accountset.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Request Formatting' (request-formatting.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Response Formatting' (response-formatting.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Public rippled Methods' (public-rippled-methods.html)>
+   Discouraged phrase: is authorized to (1 instances); suggest 'may' instead.
+Page: <Page 'ledger' (ledger.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'tx' (tx.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'deposit_authorized' (deposit_authorized.html)>
+   Discouraged phrase: is authorized to (2 instances); suggest 'may' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'subscribe' (subscribe.html)>
+   Discouraged word: establish (2 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'manifest' (manifest.html)>
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'server_info' (server_info.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'server_state' (server_state.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'wallet_propose' (wallet_propose.html)>
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+Page: <Page 'validators' (validators.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'rippled Commandline Usage Reference' (commandline-usage.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'xrp-ledger.toml File' (xrp-ledger-toml.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: consult (1 instances); suggest 'see' instead.
+   Discouraged word: desire (1 instances); suggest 'want, wish' instead.
+Page: <Page 'Dev Tools' (dev-tools.html)>
+   Discouraged word: component (1 instances); suggest 'part' instead.
+------------------
+Readability Scores
+------------------
+Average Page Readability Scores:
+  Flesch Reading Ease Score: 47.4 (Difficult)
+  Dale-Chall Readability Score: 8.2 (average 11th or 12-grade student)
+  SMOG Index: Grade level 12.9
+  Gunning FOG Index: Grade level 11.2
+  Automated Readability Index: Grade level 13.9
+  Coleman-Liau Index: Grade level 12.8
+  Linsear Write Formula: Grade level 9.4
+
+
+Most difficult pages by Flesch Reading Ease:
+<Page 'tem Codes' (tem-codes.html)> Readability Scores:
+  Flesch Reading Ease Score: 13.8 (Very Confusing)
+  Dale-Chall Readability Score: 8.5 (average 11th or 12-grade student)
+  SMOG Index: Grade level 20.0
+  Gunning FOG Index: Grade level 21.8
+  Automated Readability Index: Grade level 28.5
+  Coleman-Liau Index: Grade level 14.2
+  Linsear Write Formula: Grade level 12.0
+
+<Page 'Consensus Research' (consensus-research.html)> Readability Scores:
+  Flesch Reading Ease Score: 19.0 (Very Confusing)
+  Dale-Chall Readability Score: 12.1 (higher than average college level)
+  SMOG Index: Grade level 20.9
+  Gunning FOG Index: Grade level 20.1
+  Automated Readability Index: Grade level 25.8
+  Coleman-Liau Index: Grade level 18.9
+  Linsear Write Formula: Grade level 26.0
+
+<Page 'XRP-API' (xrp-api.html)> Readability Scores:
+  Flesch Reading Ease Score: 20.7 (Very Confusing)
+  Dale-Chall Readability Score: 12.5 (higher than average college level)
+  SMOG Index: Grade level 0.0
+  Gunning FOG Index: Grade level 19.6
+  Automated Readability Index: Grade level 18.2
+  Coleman-Liau Index: Grade level 14.8
+  Linsear Write Formula: Grade level 20.5
+
+-------------------
+Page Length Metrics
+-------------------
+Average Page Length Metrics:
+  Sentences: 54
+  Words: 744
+  Characters: 4,647
+
+Longest pages by character count:
+<Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
+  Sentences: 411
+  Words: 6,392
+  Characters: 40,237
+
+<Page 'Known Amendments' (known-amendments.html)> Length Metrics:
+  Sentences: 364
+  Words: 5,134
+  Characters: 36,492
+
+<Page 'Look Up Transaction Results' (look-up-transaction-results.html)> Length Metrics:
+  Sentences: 189
+  Words: 3,377
+  Characters: 20,590
+
+Shortest pages by character count:
+<Page 'API Conventions' (api-conventions.html)> Length Metrics:
+  Sentences: 4
+  Words: 38
+  Characters: 231
+
+<Page 'XRP-API' (xrp-api.html)> Length Metrics:
+  Sentences: 3
+  Words: 29
+  Characters: 169
+
+<Page 'Use Checks' (use-checks.html)> Length Metrics:
+  Sentences: 3
+  Words: 22
+  Characters: 129
+
