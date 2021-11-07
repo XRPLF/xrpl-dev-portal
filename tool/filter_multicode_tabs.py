@@ -67,7 +67,7 @@ def filter_soup(soup, mode="html", **kwargs):
                 label = "Code Sample %d-%d" % (index1, index2)
             linkback.string = label
             #add class with name of tab label
-            label_class = label.replace(" ","").replace("-","").replace(",","").lower()
+            label_class = label.replace(" ","").replace("-","").replace(",","").replace("(","").replace(")","").replace(":","").lower()
             linkback["class"] = label_class
             code_sample_wrapper["class"] = "code_sample " + label_class
             prev_p.decompose()
