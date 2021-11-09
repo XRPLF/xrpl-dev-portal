@@ -85,46 +85,46 @@ class XRPLMonitorThread(Thread):
         self.account = classic_address
         self.client = SmartWSClient(self.ws_url)
 
-        def notify_ledger(self, message):
-            wx.QueueEvent(self.notify_window, GotNewLedger(data=message))
+    def notify_ledger(self, message):
+        wx.QueueEvent(self.notify_window, GotNewLedger(data=message))
 
-        def notify_account(self, message):
-            wx.QueueEvent(self.notify_window, GotAccountInfo(data=message["result"]))
+    def notify_account(self, message):
+        wx.QueueEvent(self.notify_window, GotAccountInfo(data=message["result"]))
 
-        def on_transaction(self, client, message):
-            """
-            Re-check the balance whenever a new transaction
-            touches the account.
-            """
-            client.request({
+    def on_transaction(self, client, message):
+        """
+        Re-check the balance whenever a new transaction
+        touches the account.
+        """
+        client.request({
+            "command": "account_info",
+            "account": self.account,
+            "ledger_index": message["ledger_index"]
+        }, self.notify_account)
+
+    def run(self):
+        client = self.client
+        client.open()
+        # Subscribe to ledger updates
+        client.request({
+                "command": "subscribe",
+                "streams": ["ledger"],
+                "accounts": [self.account]
+            },
+            lambda message: self.notify_ledger(message["result"])
+        )
+        client.on("ledgerClosed", self.notify_ledger)
+        client.on("transaction", lambda message: self.on_transaction(client, message))
+
+        # Look up our balance right away
+        client.request({
                 "command": "account_info",
                 "account": self.account,
-                "ledger_index": message["ledger_index"]
-            }, self.notify_account)
-
-        def run(self):
-            client = self.client
-            client.open()
-            # Subscribe to ledger updates
-            client.request({
-                    "command": "subscribe",
-                    "streams": ["ledger"],
-                    "accounts": [self.account]
-                },
-                lambda message: self.notify_ledger(message["result"])
-            )
-            client.on("ledgerClosed", self.notify_ledger)
-            client.on("transaction", lambda message: self.on_transaction(client, message))
-
-            # Look up our balance right away
-            client.request({
-                    "command": "account_info",
-                    "account": self.account,
-                    "ledger_index": "validated"
-                },
-                self.notify_account
-            )
-            client.run_forever()
+                "ledger_index": "validated"
+            },
+            self.notify_account
+        )
+        client.run_forever()
 
 class TWaXLFrame(wx.Frame):
     """
@@ -154,10 +154,9 @@ class TWaXLFrame(wx.Frame):
 
         main_sizer.Add(self.acct_info_area, 1, wx.EXPAND|wx.ALL, 25)
 
-        # send XRP button.
+        ## Send XRP button.
         self.sxb = wx.Button(main_panel, label="Send XRP")
-        main_sizer.Add(self.sxb, 0, wx.ALIGN_LEFT)
-        self.Bind(wx.EVT_BUTTON, self.send_xrp, self.sxb)
+        main_sizer.Add(self.sxb, 1, wx.ALL, 25)
 
         self.ledger_info = wx.StaticText(main_panel, label="Not connected")
         main_sizer.Add(self.ledger_info, 1, wx.EXPAND|wx.ALL, 25)
@@ -168,7 +167,8 @@ class TWaXLFrame(wx.Frame):
                 "Please enter an account address (for read-only)"
                 " or your secret (for read-write access)",
                 caption="Enter account",
-                value="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
+                # value="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
+                value="snX6rmeLQasF2fLswCB7C4PwMSPD7")#TODO: remove test secret
 
         if account_dialog.ShowModal() == wx.ID_OK:
             self.set_up_account(account_dialog.GetValue())
@@ -177,10 +177,12 @@ class TWaXLFrame(wx.Frame):
             # If the user presses Cancel on the account entry, exit the app.
             exit(1)
 
+        self.Bind(wx.EVT_BUTTON, self.send_xrp, source=self.sxb)
         self.Bind(EVT_NEW_LEDGER, self.update_ledger)
         self.Bind(EVT_ACCT_INFO, self.update_account)
         self.worker = XRPLMonitorThread(url, self, self.classic_address)
         self.worker.start()
+        # XRPLMonitorThread(url, self, self.classic_address).start()
 
     def set_up_account(self, value):
         value = value.strip()
@@ -236,18 +238,21 @@ class TWaXLFrame(wx.Frame):
         """
         # TODO: can we safely autofill with the client in another thread??
         # TODO: confirm we have filled out wallet's sequence first
+        print("\n\n\nsend XRP clicked\n\n\n")
 
         tx = xrpl.models.transactions.transaction.Transaction.from_xrpl({
             "TransactionType": "Payment",
             "Account": self.classic_address,
             "Sequence": self.wallet.sequence,
             "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-            "Amount": "20",
+            "Amount": xrpl.utils.xrp_to_drops(20),
             "Fee": "12",
             #TODO: LLS
             "Flags": 0
         })
-        tx_blob = xrpl.transaction.safe_sign_transaction(tx, self.wallet, check_fee=False)
+        #TODO: why is a fee of 12 drops triggering the fee exception?
+        signed_tx = xrpl.transaction.safe_sign_transaction(tx, self.wallet, check_fee=False)
+        tx_blob = xrpl.core.binarycodec.encode(signed_tx.to_xrpl())
         req = {
             "command": "submit",
             "tx_blob": tx_blob
