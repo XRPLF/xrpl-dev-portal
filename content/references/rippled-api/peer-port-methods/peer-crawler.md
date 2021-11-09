@@ -85,7 +85,7 @@ Response:
 
 - [Peer Protocol](peer-protocol.html)
 - [Configure the Peer Crawler](configure-the-peer-crawler.html)
-- The [XRP Ledger Network Crawler](https://github.com/ripple/rippled-network-crawler) is an example of a tool that uses the peer crawler data to collect and store information about the XRP Ledger network.
+- [Validator History Service](https://github.com/ripple/validator-history-service) is an example of a service that uses the peer crawler for ingesting, aggregating, storing, and disbursing validation related data.
 
 
 <!--{# common link defs #}-->
