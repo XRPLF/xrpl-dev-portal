@@ -1,4 +1,4 @@
-If you've been scammed, make sure to collect as much information as you can about the scam and scammer ASAP!
+If you've been scammed, make sure to collect as much information as you can about the scam and scammer as soon as possible!
 
 1. Submit the scammer's wallet address to [xrplorer's forensics team](https://xrplorer.com/forensics/submit)
 2. Report your case to your local law enforcement
@@ -6,7 +6,7 @@ If you've been scammed, make sure to collect as much information as you can abou
 If the scammer sent XRP to an exchange, be sure to contact the exchange's support team to freeze their account:
 
  - [Binance](https://www.binance.com/en/support)
- - [Coinbase](https://help.coinbase.com/), 
+ - [Coinbase](https://help.coinbase.com/) 
  - [Uphold](https://support.uphold.com/hc/en-us/requests/new)
  - [Bitrue](https://www.bitrue.com/exchange-web/footer/contactus.html)
 
