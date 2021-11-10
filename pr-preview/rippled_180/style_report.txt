@@ -17,8 +17,8 @@ Found 10 possible spelling errors:
   xapps: lapps, apps, capps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io2: iof, iot, iom
-  io1: iof, ion, iot
+  io2: ior, io-, iom
+  io1: ior, io-, iom
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
