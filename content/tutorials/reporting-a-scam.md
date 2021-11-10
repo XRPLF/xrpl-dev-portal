@@ -3,7 +3,12 @@ If you've been scammed, make sure to collect as much information as you can abou
 1. Submit the scammer's wallet address to [xrplorer's forensics team](https://xrplorer.com/forensics/submit)
 2. Report your case to your local law enforcement
 
-If the scammer sent XRP to an exchange, be sure to contact the exchange's support team to freeze their account.
+If the scammer sent XRP to an exchange, be sure to contact the exchange's support team to freeze their account:
+
+ - [Binance](https://www.binance.com/en/support)
+ - [Coinbase](https://help.coinbase.com/), 
+ - [Uphold](https://support.uphold.com/hc/en-us/requests/new)
+ - [Bitrue](https://www.bitrue.com/exchange-web/footer/contactus.html)
 
 If the scammer exchanged XRP for another currency (trustline) on the XRP Ledger, get in contact with the trustline issuer and freeze their account, this is only limited to their trustline holdings.
 
