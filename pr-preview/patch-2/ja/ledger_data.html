@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,7 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -220,7 +220,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/Gambaard/xrpl-dev-portal/edit/patch-2/content/references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1227" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/wojake/xrpl-dev-portal/edit/patch-2/content/references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1231" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit -->    <div class="toc-header">
       <h4>目次</h4>
     </div>
@@ -323,9 +323,9 @@
 <p><code>ledger</code>フィールドは廃止予定であり、今後予告なしに削除される可能性があります。</p>
 <h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>処理が成功した応答の例:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket(binary:true)" href="#code-1-0">WebSocket (binary:true)</a></li><li><a class="websocket(binary:false)" href="#code-1-1">WebSocket (binary:false)</a></li><li><a class="jsonrpc(binary:true)" href="#code-1-2">JSON-RPC (binary:true)</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocketbinarytrue" href="#code-1-0">WebSocket (binary:true)</a></li><li><a class="websocketbinaryfalse" href="#code-1-1">WebSocket (binary:false)</a></li><li><a class="jsonrpcbinarytrue" href="#code-1-2">JSON-RPC (binary:true)</a></li></ul>
 
-<div class="code_sample websocket(binary:true)" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
+<div class="code_sample websocketbinarytrue" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
    <span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
    <span class="nt">"result"</span><span class="p">:{</span>
        <span class="nt">"ledger_hash"</span><span class="p">:</span><span class="s2">"842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8"</span><span class="p">,</span>
@@ -359,7 +359,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample websocket(binary:false)" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
+<div class="code_sample websocketbinaryfalse" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
    <span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
    <span class="nt">"result"</span><span class="p">:{</span>
        <span class="nt">"ledger_hash"</span><span class="p">:</span><span class="s2">"842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8"</span><span class="p">,</span>
@@ -455,7 +455,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc(binary:true)" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mi">200</span> <span class="err">OK</span>
+<div class="code_sample jsonrpcbinarytrue" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mi">200</span> <span class="err">OK</span>
 
 <span class="p">{</span>
    <span class="nt">"result"</span><span class="p">:{</span>
