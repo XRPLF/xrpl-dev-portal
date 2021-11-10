@@ -1,9 +1,11 @@
-# "Build a Wallet" tutorial, step 2: Watch ledger closes from a worker thread.
+# "Build a Wallet" tutorial, step 4: Send XRP button.
 
+import re
 import xrpl
 import wx
 from threading import Thread
 from queue import Queue, Empty
+from decimal import Decimal
 import wx.lib.newevent
 
 # Set up event types to pass info from the worker thread to the main UI thread
@@ -126,6 +128,64 @@ class XRPLMonitorThread(Thread):
         )
         client.run_forever()
 
+class SendXRPDialog(wx.Dialog):
+    def __init__(self, parent, max_send):
+        wx.Dialog.__init__(self, parent, title="Send XRP")
+        sizer = wx.GridBagSizer(vgap=5, hgap=5)
+        self.SetSizer(sizer)
+        lbl_to = wx.StaticText(self, label="To (Address):")
+        lbl_dtag = wx.StaticText(self, label="Destination Tag:")
+        lbl_amt = wx.StaticText(self, label="Amount of XRP:")
+        self.txt_to = wx.TextCtrl(self)
+        self.txt_dtag = wx.TextCtrl(self)
+        self.txt_amt = wx.SpinCtrlDouble(self, value="20.0", min=0.000001, max=max_send)
+        self.txt_amt.SetDigits(6)
+        self.txt_amt.SetIncrement(1.0)
+
+        btn_send = wx.Button(self, wx.ID_OK, label="Send")
+        btn_cancel = wx.Button(self, wx.ID_CANCEL)
+
+        # Lay out the controls in a 2x3 grid
+        ctrls = ((lbl_to, self.txt_to),
+                 (lbl_dtag, self.txt_dtag),
+                 (lbl_amt, self.txt_amt),
+                 (btn_cancel, btn_send))
+        for x, row in enumerate(ctrls):
+            for y, ctrl in enumerate(row):
+                sizer.Add(ctrl, (x,y), flag=wx.EXPAND|wx.ALL, border=5)
+
+        sizer.Fit(self)
+
+        self.txt_dtag.Bind(wx.EVT_TEXT, self.onDestTagEdit)
+        self.txt_to.Bind(wx.EVT_TEXT, self.onToEdit)
+
+    def onToEdit(self, event):
+        v = self.txt_to.GetValue().strip()
+        if xrpl.core.addresscodec.is_valid_xaddress(v):
+            cl_addr, tag, is_test = xrpl.core.addresscodec.xaddress_to_classic_address(v)
+            self.txt_dtag.ChangeValue(str(tag))
+            self.txt_dtag.SetEditable(False)
+        elif not self.txt_dtag.IsEditable():
+            # Maybe the user erased an X-address from here
+            self.txt_dtag.Clear()
+            self.txt_dtag.SetEditable(True)
+
+    def onDestTagEdit(self, event):
+        v = self.txt_dtag.GetValue().strip()
+        v = re.sub(r"[^0-9]", "", v)
+        self.txt_dtag.ChangeValue(v) # SetValue would generate another EVT_TEXT
+        self.txt_dtag.SetInsertionPointEnd()
+
+    def GetPaymentData(self):
+        return {
+            "to": self.txt_to.GetValue().strip(),
+            "dtag": self.txt_dtag.GetValue().strip(),
+            "amt": self.txt_amt.GetValue(),
+        }
+
+
+
+
 class TWaXLFrame(wx.Frame):
     """
     Tutorial Wallet for the XRP Ledger (TWaXL)
@@ -236,22 +296,43 @@ class TWaXLFrame(wx.Frame):
         """
         TODO: make this a full-featured send with a popup
         """
+        xrp_bal = Decimal(self.st_xrp_balance.GetLabelText())
+        tx_cost = Decimal("0.000010")
+        dlg = SendXRPDialog(self, max_send=float(xrp_bal - tx_cost))
+        dlg.CenterOnScreen()
+        resp = dlg.ShowModal()
+        if resp != wx.ID_OK:
+            print("Send XRP canceled")
+            return
+
+        paydata = dlg.GetPaymentData()
+
         # TODO: can we safely autofill with the client in another thread??
         # TODO: confirm we have filled out wallet's sequence first
-        print("\n\n\nsend XRP clicked\n\n\n")
 
-        tx = xrpl.models.transactions.transaction.Transaction.from_xrpl({
+        tx = {
             "TransactionType": "Payment",
             "Account": self.classic_address,
             "Sequence": self.wallet.sequence,
-            "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-            "Amount": xrpl.utils.xrp_to_drops(20),
-            "Fee": "12",
+            "Destination": paydata["to"],
+            "Amount": xrpl.utils.xrp_to_drops(paydata["amt"]),
+            "Fee": "10",
             #TODO: LLS
             "Flags": 0
-        })
-        #TODO: why is a fee of 12 drops triggering the fee exception?
-        signed_tx = xrpl.transaction.safe_sign_transaction(tx, self.wallet, check_fee=False)
+        }
+        dtag = paydata.get("dtag")
+        if dtag is not None and dtag != "":
+            try:
+                dtag = int(dtag)
+                if dtag < 0 or dtag > 2**32-1:
+                    raise ValueError("Destination tag must be a 32-bit unsigned integer")
+            except ValueError as e:
+                print("Invalid destination tag:", e)
+                print("Canceled sending payment.")
+                return
+            tx["DestinationTag"] = dtag
+        txm = xrpl.models.transactions.transaction.Transaction.from_xrpl(tx)
+        signed_tx = xrpl.transaction.safe_sign_transaction(txm, self.wallet)
         tx_blob = xrpl.core.binarycodec.encode(signed_tx.to_xrpl())
         req = {
             "command": "submit",
