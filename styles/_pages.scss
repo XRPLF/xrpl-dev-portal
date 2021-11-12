@@ -371,6 +371,14 @@
 
     width: 100%;
 
+    &::before {
+      display: block;
+      content: " ";
+      margin-top: -80px;
+      height: 80px;
+      visibility: hidden;
+    }
+
     > a {
       text-decoration: none;
       position: relative;
@@ -405,9 +413,9 @@
 
       // Stop anchor-fix from blocking clicks on earlier FAQ items
       &::before {
-        position: relative;
-        z-index: -1;
+        content: none;
       }
+
       > a {
         position: relative;
         z-index: 3;
@@ -416,7 +424,7 @@
 
     .chevron {
       position: absolute;
-      top: 80px; // Compensate for anchor-fix ::before size
+      top: 10px; // Compensate for anchor-fix ::before size
       right: -1rem;
     }
   }
