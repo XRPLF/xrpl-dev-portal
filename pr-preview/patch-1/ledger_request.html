@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -216,7 +216,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/wilsonianb/ripple-dev-portal/edit/patch-1/content/references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md?pr=/XRPLF/xrpl-dev-portal/pull/1225" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/jyrihovila/xrpl-dev-portal/edit/patch-1/content/references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md?pr=/XRPLF/xrpl-dev-portal/pull/1236" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -298,9 +298,9 @@
 <p>The response follows the <a href="response-formatting.html">standard format</a>. However, the request returns a failure response if it does not have the specified ledger <em>even if it successfully instructed the <code>rippled</code> server to start retrieving the ledger</em>.</p>
 <p class="devportal-callout note"><strong>Note:</strong> To retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the <a href="connect.html">connect method</a> or the <code>fixed_ips</code> section of the config file to add Ripple's full-history server at <code>s2.ripple.com</code> and then make the <code>ledger_request</code> request again.</p>
 <p>A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the <a href="ledger.html">ledger method</a>.</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="commandline(failure)" href="#code-1-0">Commandline (failure)</a></li><li><a class="commandline(inprogress)" href="#code-1-1">Commandline (in-progress)</a></li><li><a class="commandline(success)" href="#code-1-2">Commandline (success)</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="commandlinefailure" href="#code-1-0">Commandline (failure)</a></li><li><a class="commandlineinprogress" href="#code-1-1">Commandline (in-progress)</a></li><li><a class="commandlinesuccess" href="#code-1-2">Commandline (success)</a></li></ul>
 
-<div class="code_sample commandline(failure)" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
+<div class="code_sample commandlinefailure" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
 <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
@@ -323,7 +323,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline(inprogress)" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
+<div class="code_sample commandlineinprogress" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
 <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
@@ -367,7 +367,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline(success)" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
+<div class="code_sample commandlinesuccess" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
 <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>

@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,7 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -220,7 +220,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/wilsonianb/ripple-dev-portal/edit/patch-1/content/tutorials/get-started/get-started-using-javascript.md?pr=/XRPLF/xrpl-dev-portal/pull/1225" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/jyrihovila/xrpl-dev-portal/edit/patch-1/content/tutorials/get-started/get-started-using-javascript.md?pr=/XRPLF/xrpl-dev-portal/pull/1236" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -268,7 +268,7 @@
     <div class="content">
         <h1 id="get-started-using-javascript">Get Started Using JavaScript<a aria-hidden="true" class="hover_anchor" href="#get-started-using-javascript"><i class="fa fa-link"></i></a></h1>
 <p>This tutorial guides you through the basics of building an XRP Ledger-connected application in JavaScript or TypeScript using the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank"><code>xrpl.js</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> client library in either Node.js or web browsers.</p>
-<p>The scripts and config files used in this guide are <a class="external-link" href="https://github.com/wilsonianb/ripple-dev-portal/tree/patch-1/content/_code-samples/get-started/js/" target="_blank">available in this website's GitHub Repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>The scripts and config files used in this guide are <a class="external-link" href="https://github.com/jyrihovila/xrpl-dev-portal/tree/patch-1/content/_code-samples/get-started/js/" target="_blank">available in this website's GitHub Repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="learning-goals">Learning Goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
 <p>In this tutorial, you'll learn:</p>
 <ul>
@@ -352,7 +352,7 @@
 <h3 id="3-generate-wallet">3. Generate Wallet<a aria-hidden="true" class="hover_anchor" href="#3-generate-wallet"><i class="fa fa-link"></i></a></h3>
 <p>The <code>xrpl.js</code> library has a <code>Wallet</code> class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new wallet like this:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Create a wallet and fund it with the Testnet faucet:</span>
-  <span class="kd">const</span> <span class="nx">fund_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">(</span><span class="nx">test_wallet</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">fund_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()</span>
   <span class="kd">const</span> <span class="nx">test_wallet</span> <span class="o">=</span> <span class="nx">fund_result</span><span class="p">.</span><span class="nx">wallet</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fund_result</span><span class="p">)</span>
 </code></pre></div>
