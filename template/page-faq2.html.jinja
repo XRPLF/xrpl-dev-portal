@@ -1,4 +1,11 @@
 {% extends "pagetype-doc.html.jinja" %}
+{% block head %}
+    <script>
+        $(document).ready(function() {
+            $(window.location.hash).closest(".q-wrapper").find('.answer-wrapper').collapse('show');
+        });
+    </script>
+{% endblock %}
 
 {% block bodyclasses %}page-faq landing-builtin-bg{% endblock %}
 {% block breadcrumbs %}{% endblock %}

@@ -368,27 +368,9 @@
     padding-right: 3rem; // don't overlap chevron
     // margin-bottom: 1.5rem; // this is enough space when a banner isn't active
     margin-bottom: 3.5rem; // give space so anchor-fix doesn't block clicks
-
+    position: relative;
+    z-index: 5;
     width: 100%;
-
-    &::before {
-      display: block;
-      content: " ";
-      margin-top: -80px;
-      height: 80px;
-      visibility: hidden;
-    }
-
-    > a {
-      text-decoration: none;
-      position: relative;
-      z-index: 5;
-
-      &:hover {
-        text-decoration: underline;
-        color: $white;
-      }
-    }
 
     p a {
       text-decoration: none;
@@ -401,32 +383,39 @@
     }
 
     h4 {
-      position: relative;
       font-size: 1.25rem;
       line-height: 1.625rem;
       margin-top: 0;
+
+      &::before {
+        display: block;
+        content: " ";
+        margin-top: -80px;
+        height: 80px;
+        visibility: hidden;
+      }
+
+      > a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+          color: $black;
+        }
+      }
 
       @include media-breakpoint-down(md) {
         font-size: 1rem;
         line-height: 1.5rem;
       }
 
-      // Stop anchor-fix from blocking clicks on earlier FAQ items
-      &::before {
-        content: none;
-      }
-
-      > a {
-        position: relative;
-        z-index: 3;
+      .chevron {
+        position: absolute;
+        top: 40px;
+        right: 2rem;
       }
     }
 
-    .chevron {
-      position: absolute;
-      top: 10px; // Compensate for anchor-fix ::before size
-      right: -1rem;
-    }
   }
 }
 
