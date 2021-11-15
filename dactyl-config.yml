@@ -3891,6 +3891,11 @@ pages:
             - en
             - ja
 
+    -   md: contributing/report-a-scam.md
+        targets:
+            - en
+            - ja
+
 # Redirects from deprecated "Explore" pages ------------------------------------
     -   name: Explore
         html: explore.html
