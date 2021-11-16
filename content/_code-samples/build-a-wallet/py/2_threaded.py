@@ -14,28 +14,30 @@ class XRPLMonitorThread(Thread):
     the main frame to be shown in the UI. Using a thread lets us maintain the
     responsiveness of the UI while doing work in the background.
     """
-    def __init__(self, ws_url, notify_window):
+    def __init__(self, ws_url, gui):
         Thread.__init__(self, daemon=True)
-        self.notify_window = notify_window
+        self.gui = gui
         self.ws_url = ws_url
+        self.client = xrpl.clients.WebsocketClient(self.ws_url)
 
     def run(self):
-        with xrpl.clients.WebsocketClient(self.ws_url) as client:
-            # Subscribe to ledger updates
-            client.send(xrpl.models.requests.Subscribe(
-                id="ledger_sub",
-                streams=[xrpl.models.requests.StreamParameter.LEDGER]
-            ))
-            # Watch for messages in the client
-            for message in client:
-                if message.get("id") == "ledger_sub":
-                    # Immediate response to our subscribe command.
-                    wx.QueueEvent(self.notify_window, GotNewLedger(data=message["result"]))
-                elif message.get("type") == "ledgerClosed":
-                    # Ongoing notifications that new ledgers have been validated.
-                    wx.QueueEvent(self.notify_window, GotNewLedger(data=message))
-                else:
-                    print("Unhandled message:", message)
+        self.client.open()
+        # Subscribe to ledger updates
+        #TODO: use request/response and on for this
+        self.client.send(xrpl.models.requests.Subscribe(
+            id="ledger_sub",
+            streams=[xrpl.models.requests.StreamParameter.LEDGER]
+        ))
+        # Watch for messages in the client
+        for message in self.client:
+            if message.get("id") == "ledger_sub":
+                # Immediate response to our subscribe command.
+                wx.QueueEvent(self.gui, GotNewLedger(data=message["result"]))
+            elif message.get("type") == "ledgerClosed":
+                # Ongoing notifications that new ledgers have been validated.
+                wx.QueueEvent(self.gui, GotNewLedger(data=message))
+            else:
+                print("Unhandled message:", message)
 
 class TWaXLFrame(wx.Frame):
     """

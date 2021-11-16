@@ -104,7 +104,8 @@ class TWaXLFrame(wx.Frame):
 
         self.Bind(EVT_NEW_LEDGER, self.update_ledger)
         self.Bind(EVT_ACCT_INFO, self.update_account)
-        XRPLMonitorThread(url, self, self.classic_address).start()
+        self.worker = XRPLMonitorThread(url, self, self.classic_address)
+        self.worker.start()
 
     def set_up_account(self, value):
         value = value.strip()

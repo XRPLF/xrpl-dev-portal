@@ -1,21 +1,23 @@
-# "Build a Wallet" tutorial, extra: List various objects attached to an account
+# "Build a Wallet" tutorial, step 4: Show transaction history
 
 import xrpl
 import wx
 import wx.lib.newevent
 import wx.dataview
+import wx.adv
 from threading import Thread
 from decimal import Decimal
 
 class WSResponseError(Exception):
     pass
 
+WSC_TIMEOUT = 0.2
 class SmartWSClient(xrpl.clients.WebsocketClient):
     def __init__(self, *args, **kwargs):
         self._handlers = {}
         self._pending_requests = {}
         self._id = 0
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs, timeout=WSC_TIMEOUT)
 
     def on(self, event_type, callback):
         """
@@ -39,7 +41,7 @@ class SmartWSClient(xrpl.clients.WebsocketClient):
         self._pending_requests[req.id] = callback
         self.send(req)
 
-    def handle_messages(self):
+    def run_forever(self):
         for message in self:
             if message.get("type") == "response":
                 if message.get("status") == "success":
@@ -75,6 +77,7 @@ class XRPLMonitorThread(Thread):
         self.notify_window = notify_window
         self.ws_url = ws_url
         self.account = classic_address
+        self.client = SmartWSClient(self.ws_url)
 
     def notify_ledger(self, message):
         wx.QueueEvent(self.notify_window, GotNewLedger(data=message))
@@ -85,12 +88,12 @@ class XRPLMonitorThread(Thread):
     def notify_account_tx(self, message):
         wx.QueueEvent(self.notify_window, GotAccountTx(data=message["result"]))
 
-    def on_transaction(self, client, message):
+    def on_transaction(self, message):
         """
         Update our account history and re-check our balance whenever a new
         transaction touches our account.
         """
-        client.request({
+        self.client.request({
             "command": "account_info",
             "account": self.account,
             "ledger_index": message["ledger_index"]
@@ -98,35 +101,35 @@ class XRPLMonitorThread(Thread):
         wx.QueueEvent(self.notify_window, GotTxSub(data=message))
 
     def run(self):
-        with SmartWSClient(self.ws_url) as client:
-            # Subscribe to ledger updates
-            client.request({
-                    "command": "subscribe",
-                    "streams": ["ledger"],
-                    "accounts": [self.account]
-                },
-                lambda message: self.notify_ledger(message["result"])
-            )
-            client.on("ledgerClosed", self.notify_ledger)
-            client.on("transaction", lambda message: self.on_transaction(client, message))
+        self.client.open()
+        # Subscribe to ledger updates
+        self.client.request({
+                "command": "subscribe",
+                "streams": ["ledger"],
+                "accounts": [self.account]
+            },
+            lambda message: self.notify_ledger(message["result"])
+        )
+        self.client.on("ledgerClosed", self.notify_ledger)
+        self.client.on("transaction", self.on_transaction)
 
-            # Look up our balance right away
-            client.request({
-                    "command": "account_info",
-                    "account": self.account,
-                    "ledger_index": "validated"
-                },
-                self.notify_account
-            )
-            # Look up our transaction history
-            client.request({
-                    "command": "account_tx",
-                    "account": self.account
-                },
-                self.notify_account_tx
-            )
-            # Start looping through messages received. This runs indefinitely.
-            client.handle_messages()
+        # Look up our balance right away
+        self.client.request({
+                "command": "account_info",
+                "account": self.account,
+                "ledger_index": "validated"
+            },
+            self.notify_account
+        )
+        # Look up our transaction history
+        self.client.request({
+                "command": "account_tx",
+                "account": self.account
+            },
+            self.notify_account_tx
+        )
+        # Start looping through messages received. This runs indefinitely.
+        self.client.run_forever()
 
 class TWaXLFrame(wx.Frame):
     """
@@ -182,7 +185,6 @@ class TWaXLFrame(wx.Frame):
 
         objs_panel.SetSizer(objs_sizer)
 
-
         # Pop up to ask user for their account ---------------------------------
         account_dialog = wx.TextEntryDialog(self,
                 "Please enter an account address (for read-only)"
@@ -202,7 +204,8 @@ class TWaXLFrame(wx.Frame):
         self.Bind(EVT_ACCT_INFO, self.update_account)
         self.Bind(EVT_ACCT_TX, self.update_account_tx)
         self.Bind(EVT_TX_SUB, self.add_tx_from_sub)
-        XRPLMonitorThread(url, self, self.classic_address).start()
+        self.worker = XRPLMonitorThread(url, self, self.classic_address)
+        self.worker.start()
 
     def set_up_account(self, value):
         value = value.strip()
@@ -250,12 +253,6 @@ class TWaXLFrame(wx.Frame):
         acct = event.data["account_data"]
         xrp_balance = str(xrpl.utils.drops_to_xrp(acct["Balance"]))
         self.st_xrp_balance.SetLabel(xrp_balance)
-
-    def repr_amount(self, a):
-        if type(bal) == str:
-            return xrpl.utils.drops_to_xrp(bal), "XRP"
-
-        return Decimal(bal["value"]), bal["currency"]
 
     @staticmethod
     def displayable_amount(a):
@@ -325,6 +322,8 @@ class TWaXLFrame(wx.Frame):
         Add 1 transaction to the history based on a subscription stream message.
         Assumes only validated transaction streams (e.g. transactions, accounts)
         not proposed transaction streams.
+
+        Also send a notification to the user about it.
         """
         t = event.data
         # Convert to same format as account_tx results
@@ -332,6 +331,16 @@ class TWaXLFrame(wx.Frame):
         self.add_tx_row(t, prepend=True)
         # Scroll to top of list.
         self.tx_list.EnsureVisible(self.tx_list.RowToItem(0))
+
+        # Send a notification message ("toast") about the transaction
+        # Note the transaction stream and account_tx include all transactions
+        # that "affect" the account, no just ones directly from/to the account.
+        # For example, an issuer gets notified when users transfer its tokens
+        # among themselves.
+        notif = wx.adv.NotificationMessage(title="New Transaction", message =
+                f"New {t['tx']['TransactionType']} transaction confirmed!")
+        notif.SetFlags(wx.ICON_INFORMATION)
+        notif.Show()
 
 if __name__ == "__main__":
     #JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"

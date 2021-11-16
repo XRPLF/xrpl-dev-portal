@@ -1,16 +1,15 @@
-# "Build a Wallet" tutorial, step 4: Send XRP button.
+# "Build a Wallet" tutorial, step 5: Send XRP button.
+# This step finally introduces events from the GUI to the worker thread.
 
 import re
 import xrpl
 import wx
-from threading import Thread
-from queue import Queue, Empty
-from decimal import Decimal
 import wx.lib.newevent
-
-# Set up event types to pass info from the worker thread to the main UI thread
-GotNewLedger, EVT_NEW_LEDGER = wx.lib.newevent.NewEvent()
-GotAccountInfo, EVT_ACCT_INFO = wx.lib.newevent.NewEvent()
+import wx.dataview
+import wx.adv
+from threading import Thread
+from decimal import Decimal
+from queue import Queue, Empty
 
 class WSResponseError(Exception):
     pass
@@ -21,7 +20,6 @@ class SmartWSClient(xrpl.clients.WebsocketClient):
         self._handlers = {}
         self._pending_requests = {}
         self._id = 0
-        self.running = False
         self.jobq = Queue() # for incoming UI events
         super().__init__(*args, **kwargs, timeout=WSC_TIMEOUT)
 
@@ -48,7 +46,6 @@ class SmartWSClient(xrpl.clients.WebsocketClient):
         self.send(req)
 
     def run_forever(self):
-        self.running = True
         while True:
             try:
                 req, callback = self.jobq.get(block=False)
@@ -73,6 +70,11 @@ class SmartWSClient(xrpl.clients.WebsocketClient):
                 elif message.get("type") in self._handlers:
                     self._handlers[message.get("type")](message)
 
+# Set up event types to pass info from the worker thread to the main UI thread
+GotNewLedger, EVT_NEW_LEDGER = wx.lib.newevent.NewEvent()
+GotAccountInfo, EVT_ACCT_INFO = wx.lib.newevent.NewEvent()
+GotAccountTx, EVT_ACCT_TX = wx.lib.newevent.NewEvent()
+GotTxSub, EVT_TX_SUB = wx.lib.newevent.NewEvent()
 
 class XRPLMonitorThread(Thread):
     """
@@ -93,40 +95,51 @@ class XRPLMonitorThread(Thread):
     def notify_account(self, message):
         wx.QueueEvent(self.notify_window, GotAccountInfo(data=message["result"]))
 
-    def on_transaction(self, client, message):
+    def notify_account_tx(self, message):
+        wx.QueueEvent(self.notify_window, GotAccountTx(data=message["result"]))
+
+    def on_transaction(self, message):
         """
-        Re-check the balance whenever a new transaction
-        touches the account.
+        Update our account history and re-check our balance whenever a new
+        transaction touches our account.
         """
-        client.request({
+        self.client.request({
             "command": "account_info",
             "account": self.account,
             "ledger_index": message["ledger_index"]
         }, self.notify_account)
+        wx.QueueEvent(self.notify_window, GotTxSub(data=message))
 
     def run(self):
-        client = self.client
-        client.open()
+        self.client.open()
         # Subscribe to ledger updates
-        client.request({
+        self.client.request({
                 "command": "subscribe",
                 "streams": ["ledger"],
                 "accounts": [self.account]
             },
             lambda message: self.notify_ledger(message["result"])
         )
-        client.on("ledgerClosed", self.notify_ledger)
-        client.on("transaction", lambda message: self.on_transaction(client, message))
+        self.client.on("ledgerClosed", self.notify_ledger)
+        self.client.on("transaction", self.on_transaction)
 
         # Look up our balance right away
-        client.request({
+        self.client.request({
                 "command": "account_info",
                 "account": self.account,
                 "ledger_index": "validated"
             },
             self.notify_account
         )
-        client.run_forever()
+        # Look up our transaction history
+        self.client.request({
+                "command": "account_tx",
+                "account": self.account
+            },
+            self.notify_account_tx
+        )
+        # Start looping through messages received. This runs indefinitely.
+        self.client.run_forever()
 
 class SendXRPDialog(wx.Dialog):
     def __init__(self, parent, max_send):
@@ -164,11 +177,13 @@ class SendXRPDialog(wx.Dialog):
         if xrpl.core.addresscodec.is_valid_xaddress(v):
             cl_addr, tag, is_test = xrpl.core.addresscodec.xaddress_to_classic_address(v)
             self.txt_dtag.ChangeValue(str(tag))
-            self.txt_dtag.SetEditable(False)
+            # self.txt_dtag.SetEditable(False)
+            self.txt_dtag.Disable()
         elif not self.txt_dtag.IsEditable():
             # Maybe the user erased an X-address from here
             self.txt_dtag.Clear()
-            self.txt_dtag.SetEditable(True)
+            # self.txt_dtag.SetEditable(True)
+            self.txt_dtag.Enable()
 
     def onDestTagEdit(self, event):
         v = self.txt_dtag.GetValue().strip()
@@ -196,7 +211,11 @@ class TWaXLFrame(wx.Frame):
 
         self.test_network = test_network
 
-        main_panel = wx.Panel(self)
+        self.tabs = wx.Notebook(self, style=wx.BK_DEFAULT)
+
+        # Tab 1: "Summary" pane ------------------------------------------------
+        main_panel = wx.Panel(self.tabs)
+        self.tabs.AddPage(main_panel, "Summary")
         main_sizer = wx.BoxSizer(wx.VERTICAL)
 
         self.acct_info_area = wx.StaticBox(main_panel, label="Account Info")
@@ -216,6 +235,7 @@ class TWaXLFrame(wx.Frame):
 
         ## Send XRP button.
         self.sxb = wx.Button(main_panel, label="Send XRP")
+        self.sxb.Disable()
         main_sizer.Add(self.sxb, 1, wx.ALL, 25)
 
         self.ledger_info = wx.StaticText(main_panel, label="Not connected")
@@ -223,6 +243,25 @@ class TWaXLFrame(wx.Frame):
 
         main_panel.SetSizer(main_sizer)
 
+        # Tab 2: "Transaction History" pane ------------------------------------
+        objs_panel = wx.Panel(self.tabs)
+        self.tabs.AddPage(objs_panel, "Transaction History")
+        objs_sizer = wx.BoxSizer(wx.VERTICAL)
+
+        self.tx_list = wx.dataview.DataViewListCtrl(objs_panel)
+        self.tx_list.AppendTextColumn("Confirmed")
+        self.tx_list.AppendTextColumn("Type")
+        self.tx_list.AppendTextColumn("From")
+        self.tx_list.AppendTextColumn("To")
+        self.tx_list.AppendTextColumn("Value Delivered")
+        self.tx_list.AppendTextColumn("Identifying Hash")
+        self.tx_list.AppendTextColumn("Raw JSON")
+        objs_sizer.Add(self.tx_list, 1, wx.EXPAND|wx.ALL)
+        self.pending_tx_rows = {} # Map pending tx hashes to rows in the history UI
+
+        objs_panel.SetSizer(objs_sizer)
+
+        # Pop up to ask user for their account ---------------------------------
         account_dialog = wx.TextEntryDialog(self,
                 "Please enter an account address (for read-only)"
                 " or your secret (for read-write access)",
@@ -237,12 +276,14 @@ class TWaXLFrame(wx.Frame):
             # If the user presses Cancel on the account entry, exit the app.
             exit(1)
 
+        # Attach handlers and start bg thread for updates from the ledger ------
         self.Bind(wx.EVT_BUTTON, self.send_xrp, source=self.sxb)
         self.Bind(EVT_NEW_LEDGER, self.update_ledger)
         self.Bind(EVT_ACCT_INFO, self.update_account)
+        self.Bind(EVT_ACCT_TX, self.update_account_tx)
+        self.Bind(EVT_TX_SUB, self.add_tx_from_sub)
         self.worker = XRPLMonitorThread(url, self, self.classic_address)
         self.worker.start()
-        # XRPLMonitorThread(url, self, self.classic_address).start()
 
     def set_up_account(self, value):
         value = value.strip()
@@ -291,10 +332,127 @@ class TWaXLFrame(wx.Frame):
         xrp_balance = str(xrpl.utils.drops_to_xrp(acct["Balance"]))
         self.st_xrp_balance.SetLabel(xrp_balance)
         self.wallet.sequence = acct["Sequence"]
+        # Now that we have a sequence number we can enable the Send XRP button
+        self.sxb.Enable()
+
+    @staticmethod
+    def displayable_amount(a):
+        """
+        Convert an arbitrary amount value from the XRPL to a string to be
+        displayed to the user:
+        - Convert drops of XRP to 6-digit decimal XRP (e.g. '12.345000 XRP')
+        - For issued tokens, show amount, currency code, and issuer. For
+          example, 100 USD issued by address r12345... is returned as
+          '100 USD.r12345...'
+
+        Leaves non-standard (hex) currency codes as-is.
+        """
+        if a == "unavailable":
+            # Special case for pre-2014 partial payments.
+            return a
+        elif type(a) == str:
+            # It's an XRP amount in drops. Convert to decimal.
+            return f"{xrpl.utils.drops_to_xrp(a)} XRP"
+        else:
+            # It's a token amount.
+            return f"{a['value']} {a['currency']}.{a['issuer']}"
+
+    def add_tx_row(self, t, prepend=False):
+        """
+        Add one row to the account transaction history control.
+        """
+        conf_dt = xrpl.utils.ripple_time_to_datetime(t["tx"]["date"])
+        # Convert datetime to locale-default representation & time zone
+        confirmation_time = conf_dt.astimezone().strftime("%c")
+
+        tx_hash = t["tx"]["hash"]
+        tx_type = t["tx"]["TransactionType"]
+        from_acct = t["tx"].get("Account") or ""
+        if from_acct == self.classic_address:
+            from_acct = "(Me)"
+        to_acct = t["tx"].get("Destination") or ""
+        if to_acct == self.classic_address:
+            to_acct = "(Me)"
+
+        delivered_amt = t["meta"].get("delivered_amount")
+        if delivered_amt:
+            delivered_amt = self.displayable_amount(delivered_amt)
+        else:
+            delivered_amt = ""
+
+        cols = (confirmation_time, tx_type, from_acct, to_acct, delivered_amt,
+                tx_hash, str(t))
+        if prepend:
+            self.tx_list.PrependItem(cols)
+        else:
+            self.tx_list.AppendItem(cols)
+
+    def update_account_tx(self, event):
+        """
+        Update the transaction history tab with information from an account_tx
+        response.
+        """
+        txs = event.data["transactions"]
+        # TODO: with pagination, we should leave existing items
+        self.tx_list.DeleteAllItems()
+        for t in txs:
+            self.add_tx_row(t)
+
+    def add_tx_from_sub(self, event):
+        """
+        Add 1 transaction to the history based on a subscription stream message.
+        Assumes only validated transaction streams (e.g. transactions, accounts)
+        not proposed transaction streams.
+
+        Also send a notification to the user about it.
+        """
+        t = event.data
+        # Convert to same format as account_tx results
+        t["tx"] = t["transaction"]
+        if t["tx"]["hash"] in self.pending_tx_rows.keys():
+            dvi = self.pending_tx_rows[t["tx"]["hash"]]
+            pending_row = self.tx_list.ItemToRow(dvi)
+            self.tx_list.DeleteItem(pending_row)
+
+        self.add_tx_row(t, prepend=True)
+        # Scroll to top of list.
+        self.tx_list.EnsureVisible(self.tx_list.RowToItem(0))
+
+        # Send a notification message ("toast") about the transaction
+        # Note the transaction stream and account_tx include all transactions
+        # that "affect" the account, no just ones directly from/to the account.
+        # For example, an issuer gets notified when users transfer its tokens
+        # among themselves.
+        notif = wx.adv.NotificationMessage(title="New Transaction", message =
+                f"New {t['tx']['TransactionType']} transaction confirmed!")
+        notif.SetFlags(wx.ICON_INFORMATION)
+        notif.Show()
+
+    def add_pending_tx(self, txm):
+        """
+        Add a "pending" transaction to the history based on a transaction model
+        that was (presumably) just submitted.
+        """
+        tx = txm.to_xrpl()
+        confirmation_time = "(pending)"
+        tx_type = tx["TransactionType"]
+        from_acct = tx.get("Account") or ""
+        if from_acct == self.classic_address:
+            from_acct = "(Me)"
+        to_acct = tx.get("Destination") or ""
+        if to_acct == self.classic_address:
+            to_acct = "(Me)"
+        delivered_amt = ""
+        tx_hash = txm.get_hash()
+        cols = (confirmation_time, tx_type, from_acct, to_acct, delivered_amt,
+                tx_hash, str(tx))
+        self.tx_list.PrependItem(cols)
+        self.pending_tx_rows[tx_hash] = self.tx_list.RowToItem(0)
 
     def send_xrp(self, event):
         """
-        TODO: make this a full-featured send with a popup
+        Pop up a dialog for the user to input how much XRP to send where, and
+        send the transaction (if the user doesn't cancel).
         """
         xrp_bal = Decimal(self.st_xrp_balance.GetLabelText())
         tx_cost = Decimal("0.000010")
@@ -308,7 +466,6 @@ class TWaXLFrame(wx.Frame):
         paydata = dlg.GetPaymentData()
 
         # TODO: can we safely autofill with the client in another thread??
-        # TODO: confirm we have filled out wallet's sequence first
 
         tx = {
             "TransactionType": "Payment",
@@ -340,6 +497,7 @@ class TWaXLFrame(wx.Frame):
         }
         nop = lambda x: x # TODO: actually handle response from sending
         self.worker.client.jobq.put( (req, nop) )
+        self.add_pending_tx(signed_tx)
 
 
 if __name__ == "__main__":
