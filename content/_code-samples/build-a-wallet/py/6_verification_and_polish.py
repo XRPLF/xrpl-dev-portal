@@ -141,11 +141,52 @@ class XRPLMonitorThread(Thread):
         # Start looping through messages received. This runs indefinitely.
         self.client.run_forever()
 
+class AutoGridBagSizer(wx.GridBagSizer):
+    """
+    Helper class for adding a bunch of items uniformly to a GridBagSizer.
+    """
+    def __init__(self, parent):
+        wx.GridBagSizer.__init__(self, vgap=5, hgap=5)
+        self.parent = parent
+
+    def BulkAdd(self, ctrls):
+        """
+        Given a two-dimensional iterable `ctrls`, add all the items in a grid
+        top-to-bottom, left-to-right, with each inner iterable being a row and a
+        total number of columns based on the longest iterable.
+        """
+        flags = wx.EXPAND|wx.ALL|wx.RESERVE_SPACE_EVEN_IF_HIDDEN|wx.ALIGN_CENTER_VERTICAL
+        for x, row in enumerate(ctrls):
+            for y, ctrl in enumerate(row):
+                self.Add(ctrl, (x,y), flag=flags, border=5)
+        self.parent.SetSizer(self)
+
 class SendXRPDialog(wx.Dialog):
+    """
+    Pop-up dialog that prompts the user for the information necessary to send a
+    direct XRP-to-XRP payment on the XRPL.
+    """
     def __init__(self, parent, max_send=100000000.0):
         wx.Dialog.__init__(self, parent, title="Send XRP")
-        sizer = wx.GridBagSizer(vgap=5, hgap=5)
-        self.SetSizer(sizer)
+        sizer = AutoGridBagSizer(self)
+        self.parent = parent
+
+        # little "X" icons to indicate a validation error
+        bmp_err = wx.ArtProvider.GetBitmap(wx.ART_ERROR, wx.ART_CMN_DIALOG, size=(16,16))
+        self.err_to = wx.StaticBitmap(self, bitmap=bmp_err)
+        self.err_dtag = wx.StaticBitmap(self, bitmap=bmp_err)
+        self.err_amt = wx.StaticBitmap(self, bitmap=bmp_err)
+        self.err_to.Hide()
+        self.err_dtag.Hide()
+        self.err_amt.Hide()
+
+        # TODO: add controls for domain verification
+
+        if max_send <= 0:
+            max_send = 100000000.0
+            self.err_amt.Show()
+            self.err_amt.SetToolTip("Not enough XRP to pay the reserve and transaction cost!")
+
         lbl_to = wx.StaticText(self, label="To (Address):")
         lbl_dtag = wx.StaticText(self, label="Destination Tag:")
         lbl_amt = wx.StaticText(self, label="Amount of XRP:")
@@ -155,35 +196,49 @@ class SendXRPDialog(wx.Dialog):
         self.txt_amt.SetDigits(6)
         self.txt_amt.SetIncrement(1.0)
 
+
         btn_send = wx.Button(self, wx.ID_OK, label="Send")
         btn_cancel = wx.Button(self, wx.ID_CANCEL)
 
-        # Lay out the controls in a 2x3 grid
-        ctrls = ((lbl_to, self.txt_to),
-                 (lbl_dtag, self.txt_dtag),
-                 (lbl_amt, self.txt_amt),
-                 (btn_cancel, btn_send))
-        for x, row in enumerate(ctrls):
-            for y, ctrl in enumerate(row):
-                sizer.Add(ctrl, (x,y), flag=wx.EXPAND|wx.ALL, border=5)
-
+        sizer.BulkAdd( ((lbl_to, self.txt_to, self.err_to),
+                       (lbl_dtag, self.txt_dtag, self.err_dtag),
+                       (lbl_amt, self.txt_amt, self.err_amt),
+                       (btn_cancel, btn_send)) )
         sizer.Fit(self)
+
 
         self.txt_dtag.Bind(wx.EVT_TEXT, self.onDestTagEdit)
         self.txt_to.Bind(wx.EVT_TEXT, self.onToEdit)
 
     def onToEdit(self, event):
         v = self.txt_to.GetValue().strip()
+        err_msg = ""
         if xrpl.core.addresscodec.is_valid_xaddress(v):
             cl_addr, tag, is_test = xrpl.core.addresscodec.xaddress_to_classic_address(v)
             self.txt_dtag.ChangeValue(str(tag))
-            # self.txt_dtag.SetEditable(False)
             self.txt_dtag.Disable()
+
+            if cl_addr == self.parent.classic_address:
+                err_msg = "Can't send XRP to self."
+            elif is_test != self.parent.test_network:
+                err_msg = "This address is intended for a different network."
+
         elif not self.txt_dtag.IsEditable():
-            # Maybe the user erased an X-address from here
             self.txt_dtag.Clear()
-            # self.txt_dtag.SetEditable(True)
             self.txt_dtag.Enable()
+
+        if not (xrpl.core.addresscodec.is_valid_classic_address(v) or
+                xrpl.core.addresscodec.is_valid_xaddress(v) ):
+            err_msg = "Not a valid address."
+        elif v == self.parent.classic_address:
+            err_msg = "Can't send XRP to self."
+        # TODO: check for Disallow XRP, Deposit Auth, domain verification
+
+        if err_msg:
+            self.err_to.SetToolTip(err_msg)
+            self.err_to.Show()
+        else:
+            self.err_to.Hide()
 
     def onDestTagEdit(self, event):
         v = self.txt_dtag.GetValue().strip()
@@ -216,31 +271,41 @@ class TWaXLFrame(wx.Frame):
         # Tab 1: "Summary" pane ------------------------------------------------
         main_panel = wx.Panel(self.tabs)
         self.tabs.AddPage(main_panel, "Summary")
-        main_sizer = wx.BoxSizer(wx.VERTICAL)
 
         self.acct_info_area = wx.StaticBox(main_panel, label="Account Info")
-        aia_sizer = wx.GridBagSizer(vgap=5, hgap=5)
-        self.acct_info_area.SetSizer(aia_sizer)
-        aia_sizer.Add(wx.StaticText(self.acct_info_area, label="Classic Address:"), (0,0))
+
+        lbl_address = wx.StaticText(self.acct_info_area, label="Classic Address:")
         self.st_classic_address = wx.StaticText(self.acct_info_area, label="TBD")
-        aia_sizer.Add(self.st_classic_address, (0,1))
-        aia_sizer.Add(wx.StaticText(self.acct_info_area, label="X-Address:"), (1,0))
+        lbl_xaddress = wx.StaticText(self.acct_info_area, label="X-Address:")
         self.st_x_address = wx.StaticText(self.acct_info_area, label="TBD")
-        aia_sizer.Add(self.st_x_address, (1,1), flag=wx.EXPAND)
-        aia_sizer.Add(wx.StaticText(self.acct_info_area, label="XRP Balance:"), (2,0))
+        lbl_xrp_bal = wx.StaticText(self.acct_info_area, label="XRP Balance:")
         self.st_xrp_balance = wx.StaticText(self.acct_info_area, label="TBD")
-        aia_sizer.Add(self.st_xrp_balance, (2,1), flag=wx.EXPAND)
+        lbl_reserve = wx.StaticText(self.acct_info_area, label="XRP Reserved:")
+        self.st_reserve = wx.StaticText(self.acct_info_area, label="TBD")
 
-        main_sizer.Add(self.acct_info_area, 1, wx.EXPAND|wx.ALL, 25)
+        aia_sizer = AutoGridBagSizer(self.acct_info_area)
+        aia_sizer.BulkAdd( ((lbl_address, self.st_classic_address),
+                           (lbl_xaddress, self.st_x_address),
+                           (lbl_xrp_bal, self.st_xrp_balance),
+                           (lbl_reserve, self.st_reserve)) )
 
-        ## Send XRP button.
+
+        # Send XRP button.
         self.sxb = wx.Button(main_panel, label="Send XRP")
         self.sxb.Disable()
-        main_sizer.Add(self.sxb, 1, wx.ALL, 25)
 
+        # Ledger info text. One multi-line static text, unlike the account area.
         self.ledger_info = wx.StaticText(main_panel, label="Not connected")
-        main_sizer.Add(self.ledger_info, 1, wx.EXPAND|wx.ALL, 25)
 
+        # The ledger's current reserve settings. To be filled in when we get a
+        # ledger event.
+        self.reserve_base = None
+        self.reserve_inc = None
+
+        main_sizer = wx.BoxSizer(wx.VERTICAL)
+        main_sizer.Add(self.acct_info_area, 1, flag=wx.EXPAND|wx.ALL, border=5)
+        main_sizer.Add(self.sxb, 0, flag=wx.ALL, border=5)
+        main_sizer.Add(self.ledger_info, 1, flag=wx.EXPAND|wx.ALL, border=5)
         main_panel.SetSizer(main_sizer)
 
         # Tab 2: "Transaction History" pane ------------------------------------
@@ -267,7 +332,9 @@ class TWaXLFrame(wx.Frame):
                 " or your secret (for read-write access)",
                 caption="Enter account",
                 # value="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
-                value="snX6rmeLQasF2fLswCB7C4PwMSPD7")#TODO: remove test secret
+                value="snX6rmeLQasF2fLswCB7C4PwMSPD7",#TODO: remove test secret
+                )
+        account_dialog.Bind(wx.EVT_TEXT, self.toggle_dialog_style)
 
         if account_dialog.ShowModal() == wx.ID_OK:
             self.set_up_account(account_dialog.GetValue())
@@ -285,7 +352,23 @@ class TWaXLFrame(wx.Frame):
         self.worker = XRPLMonitorThread(url, self, self.classic_address)
         self.worker.start()
 
+    def toggle_dialog_style(self, event):
+        """
+        Automatically switches to a password-style dialog if it looks like the
+        user is entering a secret key, and display ***** instead of s12345...
+        """
+        dlg = event.GetEventObject()
+        v = dlg.GetValue().strip()
+        if v[:1] == "s":
+            dlg.SetWindowStyle(wx.TE_PASSWORD)
+        else:
+            dlg.SetWindowStyle(wx.TE_LEFT)
+
     def set_up_account(self, value):
+        """
+        Set up fields for address and wallet (or quit with an error) depending
+        on what input the user provided.
+        """
         value = value.strip()
 
         if xrpl.core.addresscodec.is_valid_xaddress(value):
@@ -298,12 +381,14 @@ class TWaXLFrame(wx.Frame):
             self.xaddress = value
             self.classic_address = classic_address
             self.wallet = None
+            self.sxb.SetToolTip("Disabled in read-only mode.")
 
         elif xrpl.core.addresscodec.is_valid_classic_address(value):
             self.xaddress = xrpl.core.addresscodec.classic_address_to_xaddress(
                     value, tag=None, is_test_network=self.test_network)
             self.classic_address = value
             self.wallet = None
+            self.sxb.SetToolTip("Disabled in read-only mode.")
 
         else:
             try:
@@ -320,21 +405,51 @@ class TWaXLFrame(wx.Frame):
         self.st_x_address.SetLabel(self.xaddress)
 
     def update_ledger(self, event):
+        """
+        Process a ledger subscription message to update the UI with
+        information about the latest validated ledger.
+        """
         message = event.data
         close_time_iso = xrpl.utils.ripple_time_to_datetime(message["ledger_time"]).isoformat()
         self.ledger_info.SetLabel(f"Latest validated ledger:\n"
                          f"Ledger Index: {message['ledger_index']}\n"
                          f"Ledger Hash: {message['ledger_hash']}\n"
                          f"Close time: {close_time_iso}")
+        # Save reserve settings (in drops of XRP) so we can calc account reserve
+        self.reserve_base = Decimal(message["reserve_base"])
+        self.reserve_inc = Decimal(message["reserve_inc"])
+
+    def calculate_reserve_xrp(self, owner_count):
+        """
+        Calculates how much XRP the user needs to reserve based on the account's
+        OwnerCount and the reserve values in the latest ledger.
+        """
+        if self.reserve_base == None or self.reserve_inc == None:
+            return None
+        oc_decimal = Decimal(owner_count)
+        reserve_drops = self.reserve_base + (self.reserve_inc * oc_decimal)
+        reserve_xrp = xrpl.utils.drops_to_xrp(str(reserve_drops))
+        return reserve_xrp
 
     def update_account(self, event):
+        """
+        Process an account_info response to update the account info area of the
+        UI.
+        """
         acct = event.data["account_data"]
         xrp_balance = str(xrpl.utils.drops_to_xrp(acct["Balance"]))
         self.st_xrp_balance.SetLabel(xrp_balance)
-        self.wallet.sequence = acct["Sequence"]
-        # Now that we have a sequence number we can enable the Send XRP button,
-        # if we aren't read-only.
+
+        # Display account reserve and save for calculating max send.
+        reserve_xrp = self.calculate_reserve_xrp(acct.get("OwnerCount", 0))
+        if reserve_xrp != None:
+            self.st_reserve.SetLabel(str(reserve_xrp))
+            self.reserve_xrp = reserve_xrp
+
+        # If we're not read-only, we can set the Sequence number and enable the
+        # Send XRP button.
         if self.wallet:
+            self.wallet.sequence = acct["Sequence"]
             self.sxb.Enable()
 
     @staticmethod
@@ -458,7 +573,8 @@ class TWaXLFrame(wx.Frame):
         """
         xrp_bal = Decimal(self.st_xrp_balance.GetLabelText())
         tx_cost = Decimal("0.000010")
-        dlg = SendXRPDialog(self, max_send=float(xrp_bal - tx_cost))
+        reserve = self.reserve_xrp or Decimal(0.000000)
+        dlg = SendXRPDialog(self, max_send=float(xrp_bal - reserve - tx_cost))
         dlg.CenterOnScreen()
         resp = dlg.ShowModal()
         if resp != wx.ID_OK:
