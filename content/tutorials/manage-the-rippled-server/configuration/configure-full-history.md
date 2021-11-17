@@ -50,8 +50,8 @@ To configure your server to acquire and store full history, complete the followi
 0. Set the `[ips_fixed]` stanza of your server's config file to explicitly peer with at least one server that has full history available.
 
         [ips_fixed]
-        169.55.164.20
-        50.22.123.215
+        169.55.164.20 51235
+        50.22.123.215 51235
 
     Your server can only download historical data from the peer-to-peer network if one its direct peers has the data available. The easiest way to ensure you can download full history is to peer with a server that already has full history.
 
