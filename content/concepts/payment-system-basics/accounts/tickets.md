@@ -59,10 +59,11 @@ Any account can create and use Tickets on any type of transaction. However, some
 
 ## See Also
 
-<!-- TODO: add a tutorial for creating & using a Ticket -->
 
 - **Concepts:**
     - [Multi-Signing](multi-signing.html)
+- **Tutorials:**
+    - [Use Tickets](use-tickets.html)
 - **References:**
     - [TicketCreate transaction][]
     - [Transaction Common Fields](transaction-common-fields.html)
