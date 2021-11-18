@@ -89,7 +89,7 @@ The `streams` parameter provides access to the following default streams of info
 - `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes
 - `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 
-**Note:** The following streams are not available from servers in [Reporting Mode][]: `server`, `manifests`, `validations`, `peer_status`, `consensus`. Reporting Mode servers return the error `reportingUnsupported` if you request one of these streams.
+**Note:** The following streams are not available from servers in [Reporting Mode][]: `server`, `peer_status`, `consensus`. Reporting Mode servers return the error `reportingUnsupported` if you request one of these streams. [Updated in: rippled 1.8.0][]
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
@@ -215,18 +215,21 @@ The fields from a validations stream message are as follows:
 | `Field`                 | Type             | Description                     |
 |:------------------------|:-----------------|:--------------------------------|
 | `type`                  | String           | The value `validationReceived` indicates this is from the validations stream. |
-| `amendments`            | Array of Strings | (May be omitted) The [amendments](amendments.html) this server wants to be added to the protocol. [New in: rippled 0.32.0][] |
-| `base_fee`              | Integer          | (May be omitted) The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
+| `amendments`            | Array of Strings | _(May be omitted)_ The [amendments](amendments.html) this server wants to be added to the protocol. [New in: rippled 0.32.0][] |
+| `base_fee`              | Integer          | _(May be omitted)_ The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
+| `cookie`                | String - Number  | _(May be omitted)_ An arbitrary value chosen by the server at startup. If the same validation key pair signs validations with different cookies concurrently, that usually indicates that multiple servers are incorrectly configured to use the same validation key pair. [New in: rippled 1.8.0][] |
 | `flags`                 | Number           | Bit-mask of flags added to this validation message. The flag `0x80000000` indicates that the validation signature is fully-canonical. The flag `0x00000001` indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
 | `full`                  | Boolean          | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
 | `ledger_hash`           | String           | The identifying hash of the proposed ledger is being validated. |
-| `ledger_index`          | String - Integer | The [Ledger Index][] of the proposed ledger. [New in: rippled 0.31.0][] |
-| `load_fee`              | Integer          | (May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. [New in: rippled 0.32.0][] |
+| `ledger_index`          | String - Number  | The [Ledger Index][] of the proposed ledger. [New in: rippled 0.31.0][] |
+| `load_fee`              | Integer          | _(May be omitted)_ The local load-scaled transaction cost this validator is currently enforcing, in fee units. [New in: rippled 0.32.0][] |
 | `master_key`            | String           | _(May be omitted)_ The validator's master public key, if the validator is using a validator token, in the XRP Ledger's [base58][] format. (See also: [Enable Validation on your `rippled` Server](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).) [New in: rippled 1.4.0][] |
-| `reserve_base`          | Integer          | (May be omitted) The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
-| `reserve_inc`           | Integer          | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
+| `reserve_base`          | Integer          | _(May be omitted)_ The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
+| `reserve_inc`           | Integer          | _(May be omitted)_ The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
+| `server_version`        | String - Number  | _(May be omitted)_ An 64-bit integer that encodes the version number of the validating server. For example, `"1745990410175512576"`. Only provided once every 256 ledgers. [New in: rippled 1.8.0][] |
 | `signature`             | String           | The signature that the validator used to sign its vote for this ledger. |
 | `signing_time`          | Number           | When this validation vote was signed, in [seconds since the Ripple Epoch][]. [New in: rippled 0.32.0][] |
+| `validated_hash`        | String           | The unique hash of the proposed ledger this validation applies to. [New in: rippled 1.8.0][] |
 | `validation_public_key` | String           | The public key from the key-pair that the validator used to sign the message, in the XRP Ledger's [base58][] format. This identifies the validator sending the message and can also be used to verify the `signature`. If the validator is using a token, this is an ephemeral public key. |
 
 
