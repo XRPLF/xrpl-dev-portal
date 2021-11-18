@@ -8,7 +8,7 @@ labels:
 ---
 # Peer Protocol
 
-Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP.
+Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol.
 
 The peer protocol is the main mode of communication between servers in the XRP Ledger. All information about the behavior, progress, and connectivity of the XRP Ledger passes through the peer protocol. Examples of peer-to-peer communications include all of the following:
 
@@ -17,7 +17,7 @@ The peer protocol is the main mode of communication between servers in the XRP L
 - Requesting ledger data from historical ledgers, or providing that data.
 - Proposing a set of transactions for consensus, or sharing the calculated outcome of applying a consensus transaction set.
 
-To establish a peer-to-peer connection, one server connects to another via HTTPS and requests an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to RTXP. (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
+To establish a peer-to-peer connection, one server connects to another via HTTPS and requests an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to the `XRPL/2.0` protocol (formerly `RTXP/1.2`). (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/96bbabbd2ece106779bb544aa0e4ce174e99fdf6/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
 
 ## Peer Discovery
 
