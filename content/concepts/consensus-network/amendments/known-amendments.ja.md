@@ -14,13 +14,14 @@ labels:
 
 | 名前                            | 導入済み | ステータス                              |
 |:--------------------------------|:-----------|:------------------------------------|
+| [CheckCashMakesTrustLine][]     | v1.8.0     | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [NegativeUNL][]                 | v1.7.3     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.3.html "BADGE_80d0e0") |
-| [fixRmSmallIncreasedQOffers][]  | v1.7.2     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.2.html "BADGE_80d0e0") |
-| [fixSTAmountCanonicalize][]     | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
-| [FlowSortStrands][]             | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
-| [TicketBatch][]                 | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
+| [NegativeUNL][]                 | v1.7.3     | [予定: 2021/11/21](https://xrpl.org/blog/2021/five-upcoming-amendments.html "BADGE_BLUE") |
+| [fixRmSmallIncreasedQOffers][]  | v1.7.2     | [有効: 2021/11/18](https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7 "BADGE_GREEN") |
+| [TicketBatch][]                 | v1.7.0     | [有効: 2021/11/18](https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36 "BADGE_GREEN") |
+| [fixSTAmountCanonicalize][]     | v1.7.0     | [有効: 2021/11/11](https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532 "BADGE_GREEN") |
+| [FlowSortStrands][]             | v1.7.0     | [有効: 2021/11/11](https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1 "BADGE_GREEN") |
 | [fix1781][]                     | v1.6.0     | [有効: 2021/04/08](https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB "BADGE_GREEN") |
 | [fixAmendmentMajorityCalc][]    | v1.6.0     | [有効: 2021/04/08](https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF "BADGE_GREEN") |
 | [HardenedValidations][]         | v1.6.0     | [有効: 2021/04/08](https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF "BADGE_GREEN") |
@@ -417,7 +418,7 @@ This amendment has no known impact on transaction processing.
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2 | 投票中 |
+| B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2 | 有効 |
 
 <!-- TODO: translate amendment description -->
 This amendment fixes an issue where certain Offers, when almost completely consumed, have a much lower exchange rate than when they were first placed. This occurs when the remaining amounts of one or both assets are so small that they cannot be rounded to a similar ratio as when the Offer was placed.
@@ -432,7 +433,7 @@ With this amendment, payments and trades can remove these types of Offers the sa
 
 | Amendment ID                                                     | ステータス    |
 |:-----------------------------------------------------------------|:----------|
-| 452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB | 投票中 |
+| 452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB | 有効 |
 
 <!-- TODO: translate amendment description -->
 Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
@@ -482,7 +483,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422 | 投票中 |
+| AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422 | 有効 |
 
 <!-- TODO: translate amendment description -->
 Improves the payment engine's calculations for finding the most cost-efficient way to execute a cross-currency transaction.
@@ -554,7 +555,7 @@ XRP Ledgerアカウントが[マルチ署名](multi-signing.html) SignerListを�
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 投票中 |
+| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 予定: 2021/11/21 |
 
 <!-- TODO: translate amendment description -->
 Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the liveness of the network during periods of network instability.
@@ -640,7 +641,7 @@ For more information, see [`rippled` issue #3042](https://github.com/ripple/ripp
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| 955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C | 投票中 |
+| 955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C | 有効 |
 
 <!-- TODO: translate amendment description -->
 This amendment adds [Tickets](tickets.html) as a way of sending transactions out of the typical sequence number order.
