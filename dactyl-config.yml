@@ -912,6 +912,10 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/consensus-network/federated-sideschains.md
+        targets:
+            - en            
+
     -   md: concepts/the-rippled-server/the-rippled-server.md
         targets:
             - en
