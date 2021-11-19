@@ -912,7 +912,7 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/consensus-network/federated-sideschains.md
+    -   md: concepts/consensus-network/federated-sidechains.md
         targets:
             - en            
 
