@@ -7,7 +7,7 @@ labels:
 ---
 # Federated Sidechains
 
-_Federated Sidechains are available as an Engineering Preview and can be used to develop and test using `rippled` 1.8.0.  It is not yet available as an [amendment](amendments.html) to the XRP Ledger protocol. A `Federated Sidechains` amendment :not_enabled: may be included in a future XRP Ledger release after additional testing and validation of the Engineering Preview build._
+_Federated Sidechains are available as an Engineering Preview and can be used to develop and test using `rippled` 1.8.0._
 
 A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. It acts as its own blockchain. Federation enables value in the form of XRP and other tokens (IOUs) to move efficiently between a sidechain and the XRP Ledger mainchain (Devnet, Testnet, or Mainnet). Federated sidechains operate without compromising the impressive speed, efficiency, and throughput of the public Mainnet.
 
@@ -60,17 +60,14 @@ Federated Sidechains are currently available as an Engineering Preview so you ca
 
 Setting up a sidechain involves the following high-level steps:
 
-1. [**P2P Mode**](#p2p-mode) - This is the main mode of the server: it follows the peer-to-peer network, processes transactions, and maintains some amount of [ledger history](ledger-history.html). This mode can be configured to do any or all of the following roles:
-    - [**Validator**](#validators) - Helps secure the network by participating in consensus
-    - [**API Server**](#api-servers) 
-2. Clone the rippled sidechain branch: https://github.com/ripple/rippled/tree/sidechain.
-3. Write custom transactors for your sidechain. Note that this is an important and non-trivial task. Refer to the XRP Ledger Protocol Reference for information about transaction types.
+1. Clone the rippled sidechain branch: https://github.com/ripple/rippled/tree/sidechain.
+2. Write custom transactors for your sidechain. Note that this is an important and non-trivial task. Refer to the XRP Ledger Protocol Reference for information about transaction types.
 For example, the XRPL Labs Hooks project uses custom transactors. 
-4. Each sidechain federator has its own configuration file that must be updated to include the following information:  
+3. Each sidechain federator has its own configuration file that must be updated to include the following information:  
     - [sidechain] stanza - add details such as signing key, main chain account, and the main chain address (IP and port) to listen to. 
     - [sidechain_assets] stanza - define assets that can be used for cross-chain transactions (XRP or IOU), exchange rate for the assets, and optional refund penalty to discourage transactions that may default.
     - [sidechain_federators] stanza - list of federators public keys to be used for signing. This list is common for all federators on the sidechain.
-5. Setup “Door” accounts to enable cross chain transactions which involves the following tasks:
+4. Setup “Door” accounts to enable cross chain transactions which involves the following tasks:
     - Create and fund the door accounts. 
     - Set the signers list for the door accounts.
     - Reserve 3 tickets for error handling.
