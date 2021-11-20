@@ -252,7 +252,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="federated-sidechains">Federated Sidechains<a aria-hidden="true" class="hover_anchor" href="#federated-sidechains"><i class="fa fa-link"></i></a></h1>
-<p><em>Federated Sidechains are available as an Engineering Preview and can be used to develop and test using <code>rippled</code> 1.8.0.  It is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. A <code>Federated Sidechains</code> amendment <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> may be included in a future XRP Ledger release after additional testing and validation of the Engineering Preview build.</em></p>
+<p><em>Federated Sidechains are available as an Engineering Preview and can be used to develop and test using <code>rippled</code> 1.8.0.</em></p>
 <p>A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. It acts as its own blockchain. Federation enables value in the form of XRP and other tokens (IOUs) to move efficiently between a sidechain and the XRP Ledger mainchain (Devnet, Testnet, or Mainnet). Federated sidechains operate without compromising the impressive speed, efficiency, and throughput of the public Mainnet.</p>
 <p>Federated sidechains enable the XRP Ledger community developers to launch new features and innovative applications built on foundational XRP Ledger technology. You can customize the core XRP Ledger technology to the needs of a specific use case or project and run it as its own blockchain. Here are a few examples:</p>
 <ul>
@@ -282,11 +282,6 @@ Simultaneously, federators also listen for signed transactions from other federa
 <p class="devportal-callout caution"><strong>Caution:</strong> You can connect sidechains to the XRP Ledger Mainnet to develop and test with small amounts; it is not recommended for production use cases until federated sidechains are available in a release. </p>
 <p>Setting up a sidechain involves the following high-level steps:</p>
 <ol>
-<li><a href="#p2p-mode"><strong>P2P Mode</strong></a> - This is the main mode of the server: it follows the peer-to-peer network, processes transactions, and maintains some amount of <a href="ledger-history.html">ledger history</a>. This mode can be configured to do any or all of the following roles:<ul>
-<li><a href="#validators"><strong>Validator</strong></a> - Helps secure the network by participating in consensus</li>
-<li><a href="#api-servers"><strong>API Server</strong></a> </li>
-</ul>
-</li>
 <li>Clone the rippled sidechain branch: https://github.com/ripple/rippled/tree/sidechain.</li>
 <li>Write custom transactors for your sidechain. Note that this is an important and non-trivial task. Refer to the XRP Ledger Protocol Reference for information about transaction types.
 For example, the XRPL Labs Hooks project uses custom transactors. </li>
