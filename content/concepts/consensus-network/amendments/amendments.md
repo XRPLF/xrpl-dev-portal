@@ -57,16 +57,18 @@ Theoretically, a `tfLostMajority` EnableAmendment pseudo-transaction could be in
 
 ## Amendment Voting
 
-Each version of `rippled` is compiled with a list of known amendments and the code to implement those amendments. By default, `rippled` supports known amendments and opposes unknown amendments. Operators of `rippled` validators can [configure their servers](configure-amendment-voting.html) to explicitly support or oppose certain amendments, even if those amendments are not known to their `rippled` versions.
+Each version of `rippled` is compiled with a list of known amendments and the code to implement those amendments. Operators of `rippled` validators [configure their servers](configure-amendment-voting.html) to vote in favor or against each inactive amendment. Server operators can change their votes at any time. If the operator does not choose a setting for a particular amendment, the server uses a default vote which is defined in the source code. The default can change in new software releases. For example, version 2.0 of the server might understand a new amendment but vote against it by default; then version 2.1 of the server might vote in favor of the same amendment by default. [Updated in: rippled 1.8.0][]
 
-To become enabled, an amendment must be supported by at least 80% of trusted validators continuously for two weeks. If support for an amendment goes below 80% of trusted validators, the amendment is temporarily rejected. The two week period starts over if the amendment regains support of at least 80% of trusted validators. (This can occur if validators vote differently, or if there is a change in which validators are trusted.) An amendment can gain and lose a majority any number of times before it becomes permanently enabled. An amendment cannot be permanently rejected, but it becomes very unlikely for an amendment to become enabled if new versions of `rippled` do not have the amendment in their known amendments list.
+To become enabled, an amendment must be supported by at least 80% of trusted validators continuously for two weeks. If support for an amendment goes below 80% of trusted validators, the amendment is temporarily rejected. The two week period starts over if the amendment regains support of at least 80% of trusted validators. (This can occur if validators vote differently, or if there is a change in which validators are trusted.) An amendment can gain and lose a majority any number of times before it becomes permanently enabled.
+
+An amendment cannot be permanently rejected, but it becomes very unlikely for an amendment to become enabled if new versions of `rippled` do not have the amendment in their known amendments list. Amendments that have had their source code removed without becoming enabled are considered "Vetoed" by the network.
 
 As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. <!-- TODO: link an explanation of validator list publishers when one's ready -->
 
 For information on how to configure your server's amendment votes, see [Configure Amendment Voting](configure-amendment-voting.html). [Updated in: rippled 1.7.0][]
 
 
-### Amendment Blocked
+## Amendment Blocked
 
 When an amendment gets enabled for the network after the voting process, servers running earlier versions of `rippled` that do not know about the amendment become "amendment blocked" because they no longer understand the rules of the network. Servers that are amendment blocked:
 
@@ -84,7 +86,7 @@ If your server is amendment blocked, you must [upgrade to a new version](install
 It is also possible to be amendment blocked because you connected your server to a [parallel network](parallel-networks.html) that has different amendments enabled. For example, the XRP Ledger Devnet typically has upcoming and experimental amendments enabled. If you are using the latest production release, your server is likely to be amendment blocked when connecting to Devnet. You could resolve this issue by upgrading to an unstable pre-release or nightly build, or you could [connect to a different network such as Testnet](connect-your-rippled-to-the-xrp-test-net.html) instead.
 
 
-#### How to Tell If Your `rippled` Server Is Amendment Blocked
+### How to Tell If Your `rippled` Server Is Amendment Blocked
 
 One of the first signs that your `rippled` server is amendment blocked is an `amendmentBlocked` error that is returned [when you submit a transaction](submit.html). Here's an example `amendmentBlocked` error:
 
@@ -138,7 +140,7 @@ If your server is not amendment blocked, the `amendment_blocked` field is not re
 **Caution:** `rippled` versions older than 0.80.0 do not include the `amendment_blocked` field, even if your server is amendment blocked.
 
 
-#### How to Unblock an Amendment-Blocked `rippled` Server
+### How to Unblock an Amendment-Blocked `rippled` Server
 
 Upgrade to the `rippled` version that supports the amendments that are causing your server to be amendment blocked. Ripple recommends that you [upgrade to the newest `rippled` version](install-rippled.html) to unblock your server and enable it to sync with the network again.
 
@@ -221,6 +223,15 @@ To forcibly enable a feature, add a `[features]` stanza to your `rippled.cfg` fi
 MultiSign
 TrustSetAuth
 ```
+
+
+## Retiring Amendments
+
+After an amendment has become enabled, it can never be disabled. (To reverse protocol changes, it would be necessary to create a new amendment.) However, separate ledger chains, such as [test networks](parallel-networks.html) or [stand-alone mode](rippled-server-modes.html#stand-alone-mode) can have different sets of amendments applied.
+
+Rather than maintain the source code for all old behavior indefinitely, [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussions/19) defines a process for retiring the pre-amendment code. In this process, amendments that have been enabled on the XRP Ledger Mainnet can have the pre-amendment code removed, making them apply unconditionally as part of the XRP Ledger protocol. For the XRP Ledger's [reference server implementation](the-rippled-server.html), the developers periodically chooses a cutoff date **at least 2 years** in the past, and retire pre-amendment source code for amendments that were enabled on the network before the cutoff date.
+
+When pre-amendment code has been retired, the server follows the amended logic for all transactions at all times. As a result, the server is no longer guaranteed to produce historically-accurate results if you try to replay ledgers older than the cutoff date. The server prints a warning if you try to [load and replay a ledger](load-a-saved-ledger-in-stand-alone-mode.html) that is older than the cutoff date. To produce historically-accurate results, you must compile or download an old server binary that has the legacy code.
 
 
 ## See Also
