@@ -2980,6 +2980,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/node_to_shard.md
+        targets:
+            - en
+            - ja
+
         #TODO: translate title and blurb
     -   name: Server Control Methods
         html: server-control-methods.html
