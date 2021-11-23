@@ -9,7 +9,7 @@ labels:
 
 _Federated Sidechains are available as an Engineering Preview and can be used to develop and test using `rippled` 1.8.0._
 
-A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. It acts as its own blockchain. Federation enables value in the form of XRP and other tokens (IOUs) to move efficiently between a sidechain and the XRP Ledger mainchain (Devnet, Testnet, or Mainnet). Federated sidechains operate without compromising the impressive speed, efficiency, and throughput of the public Mainnet.
+A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. It acts as its own blockchain. Federation enables value in the form of XRP and other tokens to move efficiently between a sidechain and an XRP Ledger _mainchain_ (usually Mainnet, but could be [Testnet or Devnet](parallel-networks.html) for testing). Federated sidechains operate without compromising the speed, efficiency, and throughput of the public Mainnet.
 
 Federated sidechains enable the XRP Ledger community developers to launch new features and innovative applications built on foundational XRP Ledger technology. You can customize the core XRP Ledger technology to the needs of a specific use case or project and run it as its own blockchain. Here are a few examples:
 
