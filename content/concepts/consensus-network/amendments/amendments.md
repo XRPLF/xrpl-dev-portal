@@ -225,9 +225,9 @@ TrustSetAuth
 ```
 
 
-## Retiring Amendments
+## Retiring Legacy Code
 
-After an amendment has become enabled, it can never be disabled. (To reverse protocol changes, it would be necessary to create a new amendment.) However, separate ledger chains, such as [test networks](parallel-networks.html) or [stand-alone mode](rippled-server-modes.html#stand-alone-mode) can have different sets of amendments applied.
+After an amendment has become enabled, it can never be disabled. (To reverse protocol changes, it would be necessary to create a new amendment.) However, separate ledger chains, such as [test networks](parallel-networks.html) or [stand-alone mode](rippled-server-modes.html#stand-alone-mode) can have different sets of amendments applied. Therefore, the pre-amendment code may continue to run in those cases, and the software must work with an increasing number of combinations of amendments that may or may not be enabled on any given test network.
 
 Rather than maintain the source code for all old behavior indefinitely, [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussions/19) defines a process for retiring the pre-amendment code. In this process, amendments that have been enabled on the XRP Ledger Mainnet can have the pre-amendment code removed, making them apply unconditionally as part of the XRP Ledger protocol. For the XRP Ledger's [reference server implementation](the-rippled-server.html), the developers periodically chooses a cutoff date **at least 2 years** in the past, and retire pre-amendment source code for amendments that were enabled on the network before the cutoff date.
 
