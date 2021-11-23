@@ -30,6 +30,7 @@ Use these methods to manage log levels and other data, such as ledgers.
 * **[`ledger_request`](ledger_request.html)** - Query a peer server for a specific ledger version.
 * **[`log_level`](log_level.html)** - Get or modify log verbosity.
 * **[`logrotate`](logrotate.html)** - Reopen the log file.
+* **[`node_to_shard`](node_to_shard.html)** - Copy data from the ledger store to the shard store.
 
 
 ## [Server Control Methods](server-control-methods.html)
@@ -41,7 +42,7 @@ Use these methods to manage the `rippled` server.
 
 ## [Signing Methods](signing-methods.html)
 
-Use these methods to sign transactions. 
+Use these methods to sign transactions.
 
 * **[`sign`](sign.html)** - Cryptographically sign a transaction.
 * **[`sign_for`](sign_for.html)** - Contribute to a multi-signature.
