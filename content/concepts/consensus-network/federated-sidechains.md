@@ -18,7 +18,7 @@ Federated sidechains enable developers to launch new features and innovative app
 * Build permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet [decentralized exchange](decentralized-exchange.html).
 * Create private or public sidechains, and possibly make the public sidechains available to the community to leverage various use cases. For example, a [smart sidechain with Hooks](https://hooks-testnet.xrpl-labs.com/) enabled.
 
-## How Do Federated Sidechains Work
+## How Federated Sidechains Work
 
 
 A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. Each sidechain runs its own set of servers (nodes and validators) and does not rely on the validators on the Mainnet to submit transactions on the sidechain.
