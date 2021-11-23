@@ -62,7 +62,6 @@ Setting up a sidechain involves the following high-level steps:
 
 1. Clone the `rippled` source code and check out the `sidechain` branch: https://github.com/ripple/rippled/tree/sidechain.
 2. Customize the source code for your sidechain. For example, you may want to write custom [transaction types](transaction-types.html). Note that this is an important and non-trivial task.
-For example, the XRPL Labs Hooks project uses custom transactors. 
 3. Each sidechain federator has its own configuration file that must be updated to include the following information:  
     - [sidechain] stanza - add details such as signing key, main chain account, and the main chain address (IP and port) to listen to. 
     - [sidechain_assets] stanza - define assets that can be used for cross-chain transactions (XRP or IOU), exchange rate for the assets, and optional refund penalty to discourage transactions that may default.
