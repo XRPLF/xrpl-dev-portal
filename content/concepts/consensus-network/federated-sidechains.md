@@ -70,12 +70,13 @@ For example, the XRPL Labs Hooks project uses custom transactors.
 4. Setup “Door” accounts to enable cross chain transactions which involves the following tasks:
     - Create and fund the door accounts. 
     - Set the signers list for the door accounts.
-    - Reserve 3 tickets for error handling.
-    - And finally, disable the master key to the door account to ensure that the federators jointly control the door account. 
-    Note that it is important to perform this final step only after successful completion of the previous steps.
+    - Reserve 3 [tickets](tickets.html) for error handling.
+    - And finally, [disable the master key pair](disable-master-key-pair.html) to the door account to ensure that the federators jointly control the door account. 
+
+        Note that it is important to perform this final step only after successful completion of the previous steps.
 
 
-The _Sidechain Launch Kit_ is a commandline tool that simplifies setting up federated sidechains and can be used to quickly spin up a sidechain on your local machine. The launch kit also installs an interactive sidechain_shell (RiplRepl) that enables you to interact with the sidechain.
+The _Sidechain Launch Kit_ is a commandline tool that simplifies setting up federated sidechains and can be used to quickly spin up a sidechain on your local machine. The launch kit also installs an interactive Sidechain Shell that enables you to interact with the sidechain.
 
 [Sidechain Launch Kit >](https://github.com/xpring-eng/sidechain-launch-kit/blob/main/README.md)
 
@@ -83,7 +84,7 @@ The _Sidechain Launch Kit_ is a commandline tool that simplifies setting up fede
 ## See Also
 
 - **Concepts:**
-    - [Federated Sidechains Video](https://www.youtube.com/embed/UpVjO68tLIo)
+    - [Federated Sidechains Video](https://www.youtube.com/embed/NhH4LM8NxgY)
 
 
 
