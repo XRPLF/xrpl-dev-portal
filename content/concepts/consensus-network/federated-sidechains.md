@@ -47,7 +47,7 @@ _Sidechain_: A custom blockchain where some assets are backed by a mainchain. Pr
 
 _Door account_: An account controlled by the federators. There are two door accounts: one on the mainchain and one on the sidechain. Cross chain transactions are started by users sending assets to a door account. Mainchain to sidechain transactions cause the balance to increase on the mainchain door account and the balance to decrease on the sidechain door account. It is called a "door" because it is the mechanism to move assets from one chain to another—much like going between rooms in a house requires stepping through a door.
 
-_Triggering transaction_: A transaction that causes the federators to start the process of signing and submitting a new response transaction. For example, sending XRP to the main chain's door account is a triggering transaction that will cause the federators to submit a new transaction on the side chain.
+_Triggering transaction_: A transaction that causes the federators to start the process of signing and submitting a new response transaction. For example, sending XRP to the mainchain's door account is a triggering transaction that causes the federators to submit a new transaction on the sidechain.
 
 _Response transaction_: A transaction submitted by the federators in reaction to a triggering transaction. Note that triggering transaction and response transaction depends on context. Sending XRP from a door account to a user account is a response transaction when thinking about cross chain transactions. It is a triggering transaction when thinking about how to handle failed transactions.
 
