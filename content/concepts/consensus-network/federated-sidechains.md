@@ -75,9 +75,9 @@ For example, the XRPL Labs Hooks project uses custom transactors.
     Note that it is important to perform this final step only after successful completion of the previous steps.
 
 
-The _Sidechain Launch Kit_ is a CLI tool that simplifies setting up federated sidechains and can be used to quickly spin up a sidechain on your local machine. The launch kit also installs the interactive sidechain_shell (RiplRepl) that enables you to interact with these sidechains.
+The _Sidechain Launch Kit_ is a commandline tool that simplifies setting up federated sidechains and can be used to quickly spin up a sidechain on your local machine. The launch kit also installs an interactive sidechain_shell (RiplRepl) that enables you to interact with the sidechain.
 
-Follow the instructions on https://github.com/xpring-eng/sidechain-launch-kit/blob/main/README.md to install and play with sidechains.
+[Sidechain Launch Kit >](https://github.com/xpring-eng/sidechain-launch-kit/blob/main/README.md)
 
 
 ## See Also
