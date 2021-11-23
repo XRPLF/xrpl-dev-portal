@@ -15,7 +15,7 @@ Federated sidechains enable developers to launch new features and innovative app
 
 * Build a smart contract layer, powered by an engine compatible with the Ethereum Virtual Machine (EVM), web assembly, or a Move VM. 
 * Build your own algorithmic stable coin with customised ledger types and transaction rules.
-* Build permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet DEX
+* Build permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet [decentralized exchange](decentralized-exchange.html).
 * Create private or public sidechains, and possibly make the public sidechains available to the community to leverage various use cases. For example, a [smart sidechain with Hooks](https://hooks-testnet.xrpl-labs.com/) enabled.
 
 ## How Do Federated Sidechains Work
