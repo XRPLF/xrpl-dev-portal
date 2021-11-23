@@ -7,26 +7,26 @@ Found 16 possible spelling errors:
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerquorum: 
   signerweight: 
+  signerquorum: 
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
   permissionless: 
-  evm: eum, evp, erm
+  evm: edm, evi, vm
   federators: federator
-  riplrepl: 
   sidechain_shell: 
+  riplrepl: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: lapps, capps, apps
+  xapps: capps, lapps, apps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: ioc, iof, iod
-  io2: iod, iob, ion
+  io2: iot, iom, ioc
+  io1: iot, io, iom
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -277,8 +277,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 54
-  Words: 745
-  Characters: 4,657
+  Words: 746
+  Characters: 4,658
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
