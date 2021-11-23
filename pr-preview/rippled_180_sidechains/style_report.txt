@@ -1,7 +1,7 @@
 -------------
 Spell Checker
 -------------
-Found 16 possible spelling errors:
+Found 14 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
@@ -12,11 +12,9 @@ Found 16 possible spelling errors:
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
+  evm: evi, eva, eve
   permissionless: 
-  evm: eve, ehm, eom
   federators: federator
-  riplrepl: 
-  sidechain_shell: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
@@ -25,8 +23,8 @@ Found 16 possible spelling errors:
   xapps: capps, lapps, apps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: io-, iop, iod
-  io2: io-, iop, iod
+  io1: iof, ioc, io-
+  io2: iow, iof, ior
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
