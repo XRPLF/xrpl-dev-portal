@@ -25,7 +25,7 @@ A sidechain is an independent ledger with its own consensus algorithm and transa
 
 Each sidechain has two door accounts, one on the sidechain and one on the mainchain, that are controlled by the federators on the sidechain. The federators listen for transactions to and from both of these door accounts.
 
-Federators, similar to validators on the mainchain but only live on the sidechain, jointly control the door accounts using the built-in multi-signature scheme available on the XRP Ledger. The door account has a signers list which consists of signing keys of all federators on the sidechain. 
+The sidechain has _federators_ who jointly control the door accounts on both networks using [multi-signing](multi-signing.html) so that 80% of federators must approve a transaction. In many cases, the federators should also be the trusted validators of the sidechain.
 
 When a door account receives a transaction on either the sidechain or the mainchain, the federators create a mirror transaction on the other chain. (For example, if you send XRP _to_ the mainchain door account, the federators create a transaction on the sidechain to send XRP _from_ the sidechain door account to the intended recipient.) The federators sign the transaction and broadcast it to each other.
 Simultaneously, federators also listen for signed transactions from other federators and collect them.
