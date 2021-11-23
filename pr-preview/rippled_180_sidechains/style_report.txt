@@ -12,22 +12,22 @@ Found 17 possible spelling errors:
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: ecm, edm, elm
+  evm: eam, eum, edm
   permissionless: 
   federators: federator
   transactors: transactor
-  sidechain_shell: 
   riplrepl: 
+  sidechain_shell: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: lapps, apps, capps
+  xapps: lapps, capps, apps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iop, iom, io
-  io2: iop, io, iof
+  io2: iow, iop, o2
+  io1: iow, iop, iot
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
