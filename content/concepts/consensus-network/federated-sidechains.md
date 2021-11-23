@@ -41,7 +41,7 @@ _Sidechain_: An XRP Ledger sidechain is another blockchain based on XRP Ledger t
  
 _Federator_: A server on the sidechain that listens for triggering transactions on both the main chain and the side chain. Each federator has a signing key associated with it that is used to sign transactions. A transaction must be signed by a quorum of federators before it can be submitted. Federators are responsible for creating and signing valid response transactions, collecting signatures from other federators, and submitting transactions to the main chain and side chain.
 
-_Main chain_: XRP Ledger where assets originate and where assets will be locked while being used on the side chain. For most applications, the main chain will be the XRP Ledger Devnet, Testnet, or Mainnet.
+_Mainchain_: The blockchain where assets originate and where assets are held while being used on the side chain. For most sidechains, the mainchain is the XRP Ledger Mainnet, Testnet, or Devnet.
 
 _Side chain_: Custom independent ledger where proxy assets for the locked main chain assets are issued. Side chains may have rules, transactors, and validators that are very different from the main chain. Proxy assets on the side chain can be sent back to the main chain where they will be unlocked from the control of the federators.
 
