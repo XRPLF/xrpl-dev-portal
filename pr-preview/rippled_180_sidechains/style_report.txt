@@ -7,26 +7,26 @@ Found 16 possible spelling errors:
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerquorum: 
   signerweight: 
+  signerquorum: 
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: eem, edm, evp
   permissionless: 
+  evm: emm, em, erm
   federators: federator
-  sidechain_shell: 
   riplrepl: 
+  sidechain_shell: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: capps, apps, lapps
+  xapps: apps, capps, lapps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io2: iof, ios, o2
-  io1: ior, iof, ios
+  io1: ios, iob, iod
+  io2: ios, iob, iom
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
