@@ -37,7 +37,7 @@ When an asset is issued from the mainchain to the sidechain, that asset is locke
 
 ## Terminology
 
-_Sidechain_: A sidechain is an independent ledger which provides a way to transfer assets from the XRP Ledger to the sidechain, and return assets from the sidechain back to the XRP Ledger. Each sidechain has its own consensus algorithm and transaction types and rules. 
+_Sidechain_: An XRP Ledger sidechain is another blockchain based on XRP Ledger technology. A _federated_ sidechain provides a way to transfer assets from a mainchain to the sidechain and back. A sidechain can use an exact copy of the XRP Ledger's protocol or it can make changes, including to the [consensus algorithm](consensus.html), [transaction types](transaction-types.html), and other rules.
  
 _Federator_: A server on the sidechain that listens for triggering transactions on both the main chain and the side chain. Each federator has a signing key associated with it that is used to sign transactions. A transaction must be signed by a quorum of federators before it can be submitted. Federators are responsible for creating and signing valid response transactions, collecting signatures from other federators, and submitting transactions to the main chain and side chain.
 
