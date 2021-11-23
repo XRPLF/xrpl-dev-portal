@@ -229,7 +229,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#federated-sidechains">Federated Sidechains</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#how-do-federated-sidechains-work">How Do Federated Sidechains Work</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#how-federated-sidechains-work">How Federated Sidechains Work</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#terminology">Terminology</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#how-to-set-up-a-federated-sidechain">How to Set Up a Federated Sidechain</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
@@ -258,10 +258,10 @@
 <ul>
 <li>Build a smart contract layer, powered by an engine compatible with the Ethereum Virtual Machine (EVM), web assembly, or a Move VM. </li>
 <li>Build your own algorithmic stable coin with customised ledger types and transaction rules.</li>
-<li>Build permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet DEX</li>
+<li>Build permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet <a href="decentralized-exchange.html">decentralized exchange</a>.</li>
 <li>Create private or public sidechains, and possibly make the public sidechains available to the community to leverage various use cases. For example, a <a class="external-link" href="https://hooks-testnet.xrpl-labs.com/" target="_blank">smart sidechain with Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a> enabled.</li>
 </ul>
-<h2 id="how-do-federated-sidechains-work">How Do Federated Sidechains Work<a aria-hidden="true" class="hover_anchor" href="#how-do-federated-sidechains-work"><i class="fa fa-link"></i></a></h2>
+<h2 id="how-federated-sidechains-work">How Federated Sidechains Work<a aria-hidden="true" class="hover_anchor" href="#how-federated-sidechains-work"><i class="fa fa-link"></i></a></h2>
 <p>A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. Each sidechain runs its own set of servers (nodes and validators) and does not rely on the validators on the Mainnet to submit transactions on the sidechain.</p>
 <p>Each sidechain has two door accounts, one each on mainchain and sidechain, that are controlled by the federators on the sidechain.The federators independently listen for transactions on these door accounts.</p>
 <p>Federators, similar to validators on the mainchain but only live on the sidechain, jointly control the door accounts using the built-in multi-signature scheme available on the XRP Ledger. The door account has a signers list which consists of signing keys of all federators on the sidechain. </p>
@@ -300,8 +300,8 @@ Note that it is important to perform this final step only after successful compl
 </ul>
 </li>
 </ol>
-<p>The <em>Sidechain Launch Kit</em> is a CLI tool that simplifies setting up federated sidechains and can be used to quickly spin up a sidechain on your local machine. The launch kit also installs the interactive sidechain_shell (RiplRepl) that enables you to interact with these sidechains.</p>
-<p>Follow the instructions on https://github.com/xpring-eng/sidechain-launch-kit/blob/main/README.md to install and play with sidechains.</p>
+<p>The <em>Sidechain Launch Kit</em> is a commandline tool that simplifies setting up federated sidechains and can be used to quickly spin up a sidechain on your local machine. The launch kit also installs an interactive sidechain_shell (RiplRepl) that enables you to interact with the sidechain.</p>
+<p><a class="btn btn-primary external-link" href="https://github.com/xpring-eng/sidechain-launch-kit/blob/main/README.md" target="_blank">Sidechain Launch Kit <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
