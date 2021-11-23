@@ -282,7 +282,7 @@ Simultaneously, federators also listen for signed transactions from other federa
 <p class="devportal-callout caution"><strong>Caution:</strong> You can connect sidechains to the XRP Ledger Mainnet to develop and test with small amounts; it is not recommended for production use cases until federated sidechains are available in a release. </p>
 <p>Setting up a sidechain involves the following high-level steps:</p>
 <ol>
-<li>Clone the rippled sidechain branch: https://github.com/ripple/rippled/tree/sidechain.</li>
+<li>Clone the <code>rippled</code> source code and check out the <code>sidechain</code> branch: https://github.com/ripple/rippled/tree/sidechain.</li>
 <li>Write custom transactors for your sidechain. Note that this is an important and non-trivial task. Refer to the XRP Ledger Protocol Reference for information about transaction types.
 For example, the XRPL Labs Hooks project uses custom transactors. </li>
 <li>Each sidechain federator has its own configuration file that must be updated to include the following information:  <ul>
