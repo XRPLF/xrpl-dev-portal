@@ -13,7 +13,7 @@ Found 17 possible spelling errors:
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
   permissionless: 
-  evm: eum, evo, eom
+  evm: vm, esm, dvm
   federators: federator
   transactors: transactor
   sidechain_shell: 
@@ -26,8 +26,8 @@ Found 17 possible spelling errors:
   xapps: apps, lapps, capps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io2: ior, o2, iob
-  io1: iow, ior, ion
+  io1: iof, iop, iob
+  io2: iop, iom, iod
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -279,7 +279,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 745
-  Characters: 4,656
+  Characters: 4,657
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
