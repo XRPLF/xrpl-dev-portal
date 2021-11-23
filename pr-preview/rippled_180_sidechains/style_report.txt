@@ -7,16 +7,16 @@ Found 16 possible spelling errors:
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerweight: 
   signerquorum: 
+  signerweight: 
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: evy, bvm, eem
+  evm: eva, eom, emm
   permissionless: 
   federators: federator
-  sidechain_shell: 
   riplrepl: 
+  sidechain_shell: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
@@ -25,8 +25,8 @@ Found 16 possible spelling errors:
   xapps: capps, apps, lapps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io2: ior, iof, ioy
-  io1: iof, ioy, iob
+  io1: iom, iof, iob
+  io2: iof, iob, io-
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
