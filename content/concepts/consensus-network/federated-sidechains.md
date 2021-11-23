@@ -30,7 +30,7 @@ Federators, similar to validators on the mainchain but only live on the sidechai
 When a door account receives a transaction, the federator signs the transaction and broadcasts this information to other federators on the sidechain.
 Simultaneously, federators also listen for signed transactions from other federators and collect them.
 
-A transaction is valid only when 80% of the signers on the list have signed. A quorum is reached when 80% of federators have signed and the transaction is submitted to the door account and an asset is issued to the destination.
+When 80% of the federators have signed the transaction, they submit it to the sidechain or mainchain as appropriate. This way, assets that the mainchain door account holds can be allocated to others on the sidechain, and assets that sidechain door account receives can be sent to others on the mainchain.
 
 When an asset is issued from the mainchain to the sidechain, that asset is locked up in the door account. The asset is only unlocked on the mainchain when a transaction from the sidechain to the main chain is submitted. Transactions within the sidechain are not visible to the servers on the sidechain. 
 
