@@ -27,7 +27,7 @@ Each sidechain has two door accounts, one on the sidechain and one on the mainch
 
 Federators, similar to validators on the mainchain but only live on the sidechain, jointly control the door accounts using the built-in multi-signature scheme available on the XRP Ledger. The door account has a signers list which consists of signing keys of all federators on the sidechain. 
 
-When a door account receives a transaction, the federator signs the transaction and broadcasts this information to other federators on the sidechain.
+When a door account receives a transaction on either the sidechain or the mainchain, the federators create a mirror transaction on the other chain. (For example, if you send XRP _to_ the mainchain door account, the federators create a transaction on the sidechain to send XRP _from_ the sidechain door account to the intended recipient.) The federators sign the transaction and broadcast it to each other.
 Simultaneously, federators also listen for signed transactions from other federators and collect them.
 
 When 80% of the federators have signed the transaction, they submit it to the sidechain or mainchain as appropriate. This way, assets that the mainchain door account holds can be allocated to others on the sidechain, and assets that sidechain door account receives can be sent to others on the mainchain.
