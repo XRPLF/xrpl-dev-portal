@@ -13,7 +13,7 @@ A sidechain is an independent ledger with its own consensus algorithm and transa
 
 Federated sidechains enable developers to launch new features and innovative applications using the foundation of XRP Ledger technology. Sidechains can customize the XRP Ledger protocol to the needs of a specific use case or project and run it as its own blockchain. Here are a few examples:
 
-* Build a smart contract layer like EVM smart contract, a web assembly smart contract, or a Move VM smart contract. 
+* Build a smart contract layer, powered by an engine compatible with the Ethereum Virtual Machine (EVM), web assembly, or a Move VM. 
 * Build your own algorithmic stable coin with customised ledger types and transaction rules.
 * Build permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet DEX
 * Create private or public sidechains, and possibly make the public sidechains available to the community to leverage various use cases. For example, a [smart sidechain with Hooks](https://hooks-testnet.xrpl-labs.com/) enabled.
