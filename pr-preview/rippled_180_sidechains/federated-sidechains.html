@@ -285,7 +285,7 @@ Simultaneously, federators also listen for signed transactions from other federa
 <li>Clone the <code>rippled</code> source code and check out the <code>sidechain</code> branch: https://github.com/ripple/rippled/tree/sidechain.</li>
 <li>Customize the source code for your sidechain. For example, you may want to write custom <a href="transaction-types.html">transaction types</a>. Note that this is an important and non-trivial task.</li>
 <li>Each sidechain federator has its own configuration file that must be updated to include the following information:  <ul>
-<li>[sidechain] stanza - add details such as signing key, main chain account, and the main chain address (IP and port) to listen to. </li>
+<li><code>[sidechain]</code> stanza - add details such as signing key, mainchain account, and the mainchain address (IP and port) to listen to. </li>
 <li><code>[sidechain_assets]</code> stanza - define assets that can be used for cross-chain transactions (XRP or <a href="issued-currencies.html">issued tokens</a>), exchange rate for the assets, and optional refund penalty to discourage transactions that may default.</li>
 <li>[sidechain_federators] stanza - list of federators public keys to be used for signing. This list is common for all federators on the sidechain.</li>
 </ul>
