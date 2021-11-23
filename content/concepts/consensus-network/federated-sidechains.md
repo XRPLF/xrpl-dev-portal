@@ -21,7 +21,7 @@ Federated sidechains enable developers to launch new features and innovative app
 ## How Federated Sidechains Work
 
 
-A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. Each sidechain runs its own set of servers (nodes and validators) and does not rely on the validators on the Mainnet to submit transactions on the sidechain.
+A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. Each sidechain is run by its own set of servers (including validators) and does not rely on the validators on the Mainnet for transactions on the sidechain.
 
 Each sidechain has two door accounts, one on the sidechain and one on the mainchain, that are controlled by the federators on the sidechain. The federators listen for transactions to and from both of these door accounts.
 
