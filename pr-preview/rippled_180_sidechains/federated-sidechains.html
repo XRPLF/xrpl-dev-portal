@@ -278,12 +278,12 @@ Simultaneously, federators also listen for signed transactions from other federa
 <p><em>Triggering transaction</em>: A transaction that causes the federators to start the process of signing and submitting a new response transaction. For example, sending XRP to the main chain's door account is a triggering transaction that will cause the federators to submit a new transaction on the side chain.</p>
 <p><em>Response transaction</em>: A transaction submitted by the federators in reaction to a triggering transaction. Note that triggering transaction and response transaction depends on context. Sending XRP from a door account to a user account is a response transaction when thinking about cross chain transactions. It is a triggering transaction when thinking about how to handle failed transactions.</p>
 <h2 id="how-to-set-up-a-federated-sidechain">How to Set Up a Federated Sidechain<a aria-hidden="true" class="hover_anchor" href="#how-to-set-up-a-federated-sidechain"><i class="fa fa-link"></i></a></h2>
-<p>Federated Sidechains are currently available as an Engineering Preview so you can experiment and explore the potential of sidechains. You can connect sidechains to the XRP Ledger Testnet, Devnet, or Mainnet as soon as network servers upgrade to XRPL 1.8.</p>
+<p>Federated Sidechains are currently available as an Engineering Preview so you can experiment and explore the potential of sidechains. You can connect sidechains to the XRP Ledger Testnet, Devnet, or Mainnet as long as <a href="the-rippled-server.html">the servers</a> in the mainchain network are running version 1.8.0 or higher.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> You can connect sidechains to the XRP Ledger Mainnet to develop and test with small amounts; it is not recommended for production use cases until federated sidechains are available in a release. </p>
 <p>Setting up a sidechain involves the following high-level steps:</p>
 <ol>
 <li>Clone the <code>rippled</code> source code and check out the <code>sidechain</code> branch: https://github.com/ripple/rippled/tree/sidechain.</li>
-<li>Write custom transactors for your sidechain. Note that this is an important and non-trivial task. Refer to the XRP Ledger Protocol Reference for information about transaction types.
+<li>Customize the source code for your sidechain. For example, you may want to write custom <a href="transaction-types.html">transaction types</a>. Note that this is an important and non-trivial task.
 For example, the XRPL Labs Hooks project uses custom transactors. </li>
 <li>Each sidechain federator has its own configuration file that must be updated to include the following information:  <ul>
 <li>[sidechain] stanza - add details such as signing key, main chain account, and the main chain address (IP and port) to listen to. </li>

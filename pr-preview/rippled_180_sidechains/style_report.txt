@@ -12,11 +12,11 @@ Found 16 possible spelling errors:
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: eva, eom, emm
+  evm: eem, edm, evp
   permissionless: 
   federators: federator
-  riplrepl: 
   sidechain_shell: 
+  riplrepl: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
@@ -25,8 +25,8 @@ Found 16 possible spelling errors:
   xapps: capps, apps, lapps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iom, iof, iob
-  io2: iof, iob, io-
+  io2: iof, ios, o2
+  io1: ior, iof, ios
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
