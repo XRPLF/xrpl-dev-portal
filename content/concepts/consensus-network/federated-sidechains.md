@@ -60,7 +60,7 @@ Federated Sidechains are currently available as an Engineering Preview so you ca
 
 Setting up a sidechain involves the following high-level steps:
 
-1. Clone the rippled sidechain branch: https://github.com/ripple/rippled/tree/sidechain.
+1. Clone the `rippled` source code and check out the `sidechain` branch: https://github.com/ripple/rippled/tree/sidechain.
 2. Write custom transactors for your sidechain. Note that this is an important and non-trivial task. Refer to the XRP Ledger Protocol Reference for information about transaction types.
 For example, the XRPL Labs Hooks project uses custom transactors. 
 3. Each sidechain federator has its own configuration file that must be updated to include the following information:  
