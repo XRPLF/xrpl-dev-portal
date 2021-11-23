@@ -23,7 +23,7 @@ Federated sidechains enable developers to launch new features and innovative app
 
 A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. Each sidechain runs its own set of servers (nodes and validators) and does not rely on the validators on the Mainnet to submit transactions on the sidechain.
 
-Each sidechain has two door accounts, one each on mainchain and sidechain, that are controlled by the federators on the sidechain.The federators independently listen for transactions on these door accounts.
+Each sidechain has two door accounts, one on the sidechain and one on the mainchain, that are controlled by the federators on the sidechain. The federators listen for transactions to and from both of these door accounts.
 
 Federators, similar to validators on the mainchain but only live on the sidechain, jointly control the door accounts using the built-in multi-signature scheme available on the XRP Ledger. The door account has a signers list which consists of signing keys of all federators on the sidechain. 
 
