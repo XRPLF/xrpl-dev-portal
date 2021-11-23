@@ -1,7 +1,7 @@
 -------------
 Spell Checker
 -------------
-Found 17 possible spelling errors:
+Found 16 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
@@ -12,22 +12,21 @@ Found 17 possible spelling errors:
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
+  evm: evp, edm, evi
   permissionless: 
-  evm: eum, elm, eom
   federators: federator
-  transactors: transactor
-  sidechain_shell: 
   riplrepl: 
+  sidechain_shell: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: apps, capps, lapps
+  xapps: capps, apps, lapps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iob, ios, ioy
-  io2: ios, ior, iof
+  io2: ios, iod, ion
+  io1: ioc, ios, iod
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -36,7 +35,7 @@ Found 17 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 213 discouraged words/phrases:
+Found 212 discouraged words/phrases:
 Page: <Page 'Multi-Signing' (multi-signing.html)>
    Discouraged word: vice (3 instances); suggest 'instead of, versus' instead.
 Page: <Page 'Freezing Issued Currencies' (freezes.html)>
@@ -53,7 +52,7 @@ Page: <Page 'Known Amendments' (known-amendments.html)>
    Discouraged word: encounter (2 instances); suggest 'meet' instead.
 Page: <Page 'Federated Sidechains' (federated-sidechains.html)>
    Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
-   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Ledger History' (ledger-history.html)>
    Discouraged word: sufficient (1 instances); suggest 'enough' instead.
    Discouraged word: portion (1 instances); suggest 'part' instead.
