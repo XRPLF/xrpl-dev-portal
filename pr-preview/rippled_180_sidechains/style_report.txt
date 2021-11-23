@@ -7,12 +7,12 @@ Found 14 possible spelling errors:
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerweight: 
   signerquorum: 
+  signerweight: 
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: evi, eva, eve
+  evm: eum, ehm, bvm
   permissionless: 
   federators: federator
 
@@ -20,11 +20,11 @@ Found 14 possible spelling errors:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: capps, lapps, apps
+  xapps: capps, apps, lapps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: iof, ioc, io-
-  io2: iow, iof, ior
+  io2: iou, iod, iob
+  io1: ioc, iou, iod
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -33,7 +33,7 @@ Found 14 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 212 discouraged words/phrases:
+Found 211 discouraged words/phrases:
 Page: <Page 'Multi-Signing' (multi-signing.html)>
    Discouraged word: vice (3 instances); suggest 'instead of, versus' instead.
 Page: <Page 'Freezing Issued Currencies' (freezes.html)>
@@ -50,7 +50,6 @@ Page: <Page 'Known Amendments' (known-amendments.html)>
    Discouraged word: encounter (2 instances); suggest 'meet' instead.
 Page: <Page 'Federated Sidechains' (federated-sidechains.html)>
    Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Ledger History' (ledger-history.html)>
    Discouraged word: sufficient (1 instances); suggest 'enough' instead.
    Discouraged word: portion (1 instances); suggest 'part' instead.
