@@ -7,8 +7,8 @@ Found 11 possible spelling errors:
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerweight: 
   signerquorum: 
+  signerweight: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -17,11 +17,11 @@ Found 11 possible spelling errors:
   autofilling: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: apps, lapps, capps
+  xapps: lapps, apps, capps
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  io1: ion, iow, iop
-  io2: iow, iop, iom
+  io2: iof, ioc, iom
+  io1: iof, iow, iop
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -30,7 +30,7 @@ Found 11 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 212 discouraged words/phrases:
+Found 213 discouraged words/phrases:
 Page: <Page 'Multi-Signing' (multi-signing.html)>
    Discouraged word: vice (3 instances); suggest 'instead of, versus' instead.
 Page: <Page 'Freezing Issued Currencies' (freezes.html)>
@@ -43,6 +43,7 @@ Page: <Page 'Consensus' (consensus.html)>
 Page: <Page 'Consensus Principles and Rules' (consensus-principles-and-rules.html)>
    Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
 Page: <Page 'Amendments' (amendments.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
    Discouraged word: accurate (2 instances); suggest 'correct, exact, right' instead.
 Page: <Page 'Known Amendments' (known-amendments.html)>
    Discouraged word: therefore (1 instances); suggest 'so' instead.
@@ -271,8 +272,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 54
-  Words: 745
-  Characters: 4,656
+  Words: 746
+  Characters: 4,657
 
 Longest pages by character count:
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
