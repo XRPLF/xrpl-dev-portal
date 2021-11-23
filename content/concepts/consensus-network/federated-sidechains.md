@@ -43,7 +43,7 @@ _Federator_: A server on the sidechain that listens for triggering transactions 
 
 _Mainchain_: The blockchain where assets originate and where assets are held while being used on the side chain. For most sidechains, the mainchain is the XRP Ledger Mainnet, Testnet, or Devnet.
 
-_Side chain_: Custom independent ledger where proxy assets for the locked main chain assets are issued. Side chains may have rules, transactors, and validators that are very different from the main chain. Proxy assets on the side chain can be sent back to the main chain where they will be unlocked from the control of the federators.
+_Sidechain_: A custom blockchain where some assets are backed by a mainchain. Proxy assets are issued in the sidechain, with the equivalent assets held by a door account on the mainchain. Sidechains have separate history, rules, and validators than the mainchain. Proxy assets on the sidechain can be sent back to the mainchain and unlocked from the control of the federators.
 
 _Door account_: An account controlled by the federators. There are two door accounts: one on the main chain and one on the side chain. Cross chain transactions are started by users sending assets to a door account. Main chain to side chain transactions cause the balance to increase on the main chain door account and the balance to decrease on the side chain door account. It is called a "door" because it is the mechanism to move assets from one chain to another - much like going between rooms in a house requires stepping through a door.
 
