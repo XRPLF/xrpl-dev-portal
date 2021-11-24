@@ -2,14 +2,13 @@
 html: tickets.html
 parent: accounts.html
 blurb: Send transactions in non-sequential order.
-status: not_enabled
 labels:
   - Accounts
   - Transaction Sending
 ---
 # Tickets
 
-_(Requires the [TicketBatch amendment][] :not_enabled:)_
+_(Added by the [TicketBatch amendment][].)_
 
 A Ticket in the XRP Ledger is a way of setting aside a [sequence number][Sequence Number] for a transaction without sending it right away. Tickets allow transactions to be sent outside of the normal sequence order. One use case for this is to allow for [multi-signed transactions](multi-signing.html) where it may take a while to collect the necessary signatures: while collecting signatures for a transaction that uses a Ticket, you can still send other transactions.
 

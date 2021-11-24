@@ -2,7 +2,6 @@
 html: ticketcreate.html
 parent: transaction-types.html
 blurb: Set aside one or more sequence numbers as Tickets.
-status: not_enabled
 labels:
   - Transaction Sending
 ---
@@ -10,7 +9,7 @@ labels:
 
 [[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/CreateTicket.cpp "Source")
 
-_(Requires the [TicketBatch amendment][] :not_enabled:)_
+_(Added by the [TicketBatch amendment][].)_
 
 A TicketCreate transaction sets aside one or more [sequence numbers][Sequence Number] as [Tickets](tickets.html).
 

@@ -17,7 +17,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | [CheckCashMakesTrustLine][]     | v1.8.0     | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [NegativeUNL][]                 | v1.7.3     | [Expected: 2021-11-21](https://xrpl.org/blog/2021/five-upcoming-amendments.html "BADGE_BLUE") |
+| [NegativeUNL][]                 | v1.7.3     | [Enabled: 2021-11-21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
 | [fixRmSmallIncreasedQOffers][]  | v1.7.2     | [Enabled: 2021-11-18](https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7 "BADGE_GREEN") |
 | [TicketBatch][]                 | v1.7.0     | [Enabled: 2021-11-18](https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36 "BADGE_GREEN") |
 | [fixSTAmountCanonicalize][]     | v1.7.0     | [Enabled: 2021-11-11](https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532 "BADGE_GREEN") |
@@ -228,6 +228,7 @@ Provides "suspended payments" for XRP for escrow within the XRP Ledger, includin
 |:----------|:-----------|
 | Amendment ID | 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE |
 | Status | Enabled   |
+| Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
 Changes the way the [transaction cost](transaction-cost.html) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
@@ -698,7 +699,7 @@ With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, re
 | Amendment | NegativeUNL |
 |:----------|:-----------|
 | Amendment ID | B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 |
-| Status | Expected  |
+| Status | Enabled   |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
