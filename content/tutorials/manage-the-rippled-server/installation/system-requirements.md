@@ -7,14 +7,23 @@ labels:
 ---
 # System Requirements
 
+## Recommended Specifications
+
+For reliable performance in production environments, it is recommended to run an XRP Ledger (`rippled`) server on bare metal with the following characteristics:
+
+- Operating System: Ubuntu (LTS) or CentOS or RedHat Enterprise Linux (latest release)
+- CPU: Intel Xeon 3+ GHz processor with 8+ cores and hyperthreading enabled
+- Disk: SSD / NVMe (10,000 IOPS or better)
+- RAM: 64 GB
+- Network: Enterprise data center network with a gigabit network interface on the host
+
+
 ## Minimum Specifications
 
-A `rippled` server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, Ripple recommends the following minimum requirements:
+For testing purposes or occasional use, you can run an XRP Ledger server should on commodity hardware. The following minimum requirements should work for most cases, but may not always [stay synced with the network](server-doesnt-sync.html):
 
-- Operating System:
-    - Production: CentOS or RedHat Enterprise Linux (latest release), Ubuntu (16.04+), or Debian (9.x, 10.x) supported
-    - Development: Mac OS X, Windows (64-bit), or most Linux distributions
-- CPU: 64-bit x86_64, 2+ cores
+- Operating System: Mac OS X, Windows (64-bit), or most Linux distributions (Red Hat, Ubuntu, and Debian supported)
+- CPU: 64-bit x86_64, 4+ cores
 - Disk: Minimum 50 GB for the database partition. SSD strongly recommended (minimum 1000 IOPS, more is better)
 - RAM: 16 GB+
 
@@ -22,16 +31,6 @@ A `rippled` server should run comfortably on commodity hardware, to make it inex
 
 Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
 
-
-## Recommended Specifications
-
-For best performance in enterprise production environments, it is recommended to run `rippled` on bare metal with the following characteristics:
-
-- Operating System: Ubuntu (LTS) or CentOS or RedHat Enterprise Linux (latest release)
-- CPU: Intel Xeon 3+ GHz processor with 8 cores and hyperthreading enabled
-- Disk: SSD / NVMe(10,000 IOPS or better)
-- RAM: 64 GB
-- Network: Enterprise data center network with a gigabit network interface on the host
 
 ## System Time
 

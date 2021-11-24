@@ -8,39 +8,42 @@ labels:
 ---
 # Capacity Planning
 
-This section describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of your `rippled` server. Being aware of these considerations can help you ensure that your `rippled` server is ready to handle XRP Ledger network capacity today and in the near future.
+This document describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of an XRP Ledger server.
+
+The load on an XRP Ledger server varies based on multiple factors. One is the activity in the network. The total size of data in the shared ledger and the total volume of transactions being sent vary based on organic factors throughout the global XRP Ledger community. Another factor is API usage; different types of [API calls](rippled-api.html) put different load on the server. The performance characteristics can be very different between servers that provide a public API, provide a private API to specific integration software, or provide no API at all.
+
+You should consider these factors to ensure that your server has the capacity to handle XRP Ledger network activity today and in the future.
 
 
 
 ## Configuration Settings
 
-Ripple recommends using these configuration guidelines to optimize resource utilization and performance of your `rippled` server.
+The default configuration file contains settings for a broad range of common use cases. You can get better performance by customizing the settings for your specific hardware and intended usage pattern.
 
-You can set the following parameters in the `rippled.cfg` file used for your `rippled` server. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo.
+The settings in this section are parameters in the `rippled.cfg` file. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo. The settings in the example config file match the default config installed alongside the server.
 
 
 ### Node Size
 
-Set the `node_size` based on your server's expected load and the amount of memory you can make available to `rippled`.
+The `[node_size]` parameter should reflect the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) [Updated in: rippled 1.8.1][]
 
-Ripple recommends you always use the largest node size your available RAM can support. See the following table for recommended settings.
+As a general rule, you should always use the largest node size your available RAM can support. See the following table for recommended settings.
 
 #### Recommendation
 
-Each `node_size` has a corresponding requirement for available RAM. For example, if you set `node_size` to `huge`, you should have at least 32 GB of available RAM to help ensure that `rippled` can run smoothly.
+Each `[node_size]` has a corresponding requirement for available RAM. For example, if you set `[node_size]` to `huge`, you should have at least 32 GB of available RAM to help ensure that `rippled` can run smoothly.
 
 To tune your server, it may be useful to start with `tiny` and increase the size to `small`, `medium`, and so on as you refine the requirements for your use case.
 
-| RAM available for `rippled` | `node_size` value | Notes                      |
-|:----------------------------|:------------------|:---------------------------|
-| < 8 GB                      | `tiny`            | Not recommended for testing or production servers. This is the default value if you don't specify a value in `rippled.cfg`. |
-| 8 GB                        | `small`           | Recommended for test servers. |
-| 16 GB                       | `medium`          | The `rippled-example.cfg` file uses this value. |
-| 64 GB                       | `huge`            | Recommended for production servers. |
+| RAM available | `node_size` value | Notes                                    |
+|:--------------|:------------------|:-----------------------------------------|
+| < 8 GB        | `tiny`            | **Not recommended.** A server with this setting may not sync to a busy network. |
+| 8 GB          | `small`           | Recommended for test servers that only need to run occasionally. |
+| 16 GB         | `medium`          | The `rippled-example.cfg` file uses this value. |
+| 32 GB         | `large`           | **Not recommended.** In practice, this setting performs worse than `huge` in most circumstances. Always use `huge` if you want stability. |
+| 64 GB         | `huge`            | Recommended for production servers.      |
 
-Although `large` is also a legal value for `[node_size]`, in practice it performs worse than `huge` in most circumstances. Ripple recommends always using `huge` instead of `large`. Always use `huge` if you want stability.
-
-If you set the `node_size` parameter to an invalid value, the [server fails to start](server-wont-start.html#bad-node_size-value).
+If you set the `[node_size]` parameter to an invalid value, the [server fails to start](server-wont-start.html#bad-node_size-value).
 
 
 ### Node DB Type
@@ -49,27 +52,21 @@ The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the ty
 
 This setting does not directly configure RAM settings, but the choice of key-value store has important implications for RAM usage because of the different ways these technologies cache and index data for fast lookup.
 
-You can set the value to either `RocksDB` or `NuDB`.
-
-- If your server is a validator, it only needs a small amount of history, so use `RocksDB` for best performance. [Learn more](#more-about-using-rocksdb)
-
 - For most cases, use `NuDB` because its performance is constant even with large amounts of data on disk. A fast SSD is required. [Learn more](#more-about-using-nudb)
 
-- If you are using rotational disks (not recommended) or an unusually slow SSD, use `RocksDB`. [Learn more](#more-about-using-rocksdb)
+- If you are using rotational disks (not recommended) or an unusually slow SSD, use `RocksDB`. You should avoid this setting for production servers. [Learn more](#more-about-using-rocksdb)
 
-The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza set to `RocksDB`.
+The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza set to `NuDB`.
 
 #### More About Using RocksDB
 
 [RocksDB](https://rocksdb.org/docs/getting-started.html) is an persistent key-value store built into `rippled`.
 
-RocksDB works well on solid-state disks. RocksDB performs better than NuDB when used with rotational disks, but you may still encounter performance problems unless you use solid-state disks.
+**Caution:** As of late 2021, the total size of the ledger has grown large enough that servers using RocksDB often struggle to maintain sync with the Mainnet. Large amounts of RAM can help, but you should generally use NuDB instead.
 
-RocksDB requires approximately one-third less [disk storage](#disk-space) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
+RocksDB is intended to work on either solid-state disks or rotational disks. It requires approximately one-third less [disk storage](#disk-space) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
 
-Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of [historical data](#disk-space)) in the ledger store.
-
-RocksDB has performance-related configuration options that you can set in `rippled.cfg` to achieve maximum transaction processing throughput. Here is the recommended configuration for a `rippled` server using RocksDB:
+RocksDB has performance-related configuration options that you can tweak for more transaction processing throughput. Here is a recommended `[node_db]` configuration for RocksDB:
 
 ```
 [node_db]
@@ -92,9 +89,9 @@ advisory_delete=0
 
 NuDB has nearly constant performance and memory footprints regardless of the [amount of data being stored](#disk-space). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
 
-Non-validator production servers should be configured to use NuDB and to store the amount of historical data required for the use case.
+Production servers should be configured to use NuDB and to store the amount of historical data required for the use case.
 
-NuDB does not have performance-related configuration options available in `rippled.cfg`. Here is the recommended configuration for a `rippled` server using NuDB:
+NuDB does not have performance-related configuration options available in `rippled.cfg`. Here is the recommended `[node_db]` configuration for a `rippled` server using NuDB:
 
 ```
 [node_db]
@@ -111,26 +108,16 @@ advisory_delete=0
 
 The example `rippled-example.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
 
-**Caution:** If you omit the `log_level` command from the `[rpc_startup]` stanza, `rippled` writes logs to disk at the `debug` level and outputs `warning` level logs to the console. `debug` level logging requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.
+**Caution:** If you omit the `log_level` command from the `[rpc_startup]` stanza, the server writes logs to disk at the `debug` level and outputs `warning` level logs to the console. Logging at the `debug` level requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.
 
 
 ## Network and Hardware
 
-Each `rippled` server in the XRP Ledger network performs all of the transaction processing work of the network. Therefore, the baseline hardware for production `rippled` servers should be similar to that used in Ripple's [performance testing](https://xrpl.org/blog/2017/high-scalability-xrp-ledger.html).
-
-Ensuring that your `rippled` server meets these network and hardware requirements helps achieve consistent, good performance across the XRP Ledger network.
-
+Each server in the XRP Ledger network performs all of the transaction processing work of the network. Total activity on the network varies but has mostly increased over time, so you should choose hardware with greater capacity than you need for the current network activity.
 
 ### Recommendation
 
-For best performance in enterprise production environments, Ripple recommends running `rippled` on bare metal with the following characteristics:
-
-- Operating System: Ubuntu 16.04+
-- CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
-- Disk speed: SSD (10,000 IOPS)
-- Disk space: Varies. At least 50 GB recommended.
-- RAM: 64 GB
-- Network: Enterprise data center network with a gigabit network interface on the host
+See [System Requirements](system-requirements.html) for a summary of the recommended hardware specs.
 
 #### CPU Utilization and Virtualization
 
@@ -138,14 +125,16 @@ You'll get the best performance on bare metal, but virtual machines can perform 
 
 #### Disk Speed
 
-Ripple _strongly recommends_ using a high-grade solid state disk drive (SSD) with low-latency random reads and high throughput. Ripple engineers have observed the following maximum reads and writes per second:
+The speed of storage is one of the most important factors in a server's capacity. Use a high-grade solid state disk drive (SSD) with low-latency random reads and high throughput. Ripple engineers have observed the following maximum reads and writes per second:
 
 - Over 10,000 reads per second (in heavily-used public server clusters)
 - Over 7,000 writes per second (in dedicated performance testing)
 
+<!--{# TODO 2021-11: have bigger numbers been seen lately? These might need an update #}-->
+
 #### Disk Space
 
-The amount of disk space `rippled` requires depend on how much [ledger history](ledger-history.html) you plan to keep available locally. A `rippled` server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally.
+The `[node_db]` stanza controls the server's _ledger store_, which holds [ledger history](ledger-history.html). The amount of disk space you need depends on how much history you plan to keep available locally. An XRP Ledger server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. Configure the `path` of the `[node_db]` to point to your chosen storage location for the ledger store.
 
 You can control how much data you keep with [online deletion](online-deletion.html); the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
 
@@ -168,16 +157,20 @@ The `online_delete` setting tells the server how many ledger versions to keep af
 
 For instructions on how to change the amount of history you keep, see [Configure Online Deletion](configure-online-deletion.html).
 
-If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the [History Sharding](history-sharding.html) feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the `[shard_db]` stanza, and it can use a different type of key-value store than the one you defined for the ledger store using the `[node_db]` stanza.
+The `[database_path]` configures separate bookkeeping databases: these include transaction data as well as some runtime configurations.
+
+As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for a `rippled` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](configure-amendment-voting.html) and [peer reservations](use-a-peer-reservation.html).
+
+If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the [History Sharding](history-sharding.html) feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the `[shard_db]` stanza.
 
 
 ##### Amazon Web Services
 
 Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but if using Elastic Block Storage (EBS), only use either the `io1` or `io2` types, and configure them for at least 10,000 IOPS. <!-- SPELLING_IGNORE: iops, ebs, aws -->
-Alternately, AWS instance stores (`ephemeral` storage) also has suitable performance. However, that is not durable, so data loss is to be expected under some circumstances.
-The `database_path` and `node_db` path should each reside on either EBS io1 or io2, or on instance storage.
 
-**Caution:** AWS instance storage is not guaranteed to provide durability in the event of hard drive failure. You also lose data when you stop/start or reboot the instance. The latter type of data loss can be acceptable for a `rippled` server because an individual server can usually re-acquire the lost data from its peer servers.
+Alternately, AWS instance stores (`ephemeral` storage) provide suitable performance, but you may lose data in some circumstances, including when you start/stop an instance. This may be acceptable, since an individual XRP Ledger server can usually re-acquire lost ledger history from its peers. Configuration settings should be stored on more reliable storage.
+
+Make sure the `path` of your `[node_db]` stanza and your `[database_path]` both point to the appropriate storage.
 
 #### RAM/Memory
 
@@ -185,11 +178,11 @@ Memory requirements are mainly a function of the `node_size` configuration setti
 
 #### Network
 
-Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use.
+Any enterprise or carrier-class data center should have substantial network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use. Consumer-grade home internet is generally not sufficient to run a reliable server.
 
-During exceptionally high periods of transaction volume, some operators have reported that their `rippled` servers have completely saturated a 100 megabit/s network link. Therefore, a gigabit network interface is required for reliable performance.
+During exceptionally high periods of transaction volume, some operators have reported that their servers have completely saturated a 100 megabit/s network link. Therefore, a gigabit network interface is required for reliable performance.
 
-Here are examples of observed uncompressed network bandwidth use for common `rippled` tasks:
+Here are examples of observed uncompressed network bandwidth use for common tasks:
 
 | Task                                            | Transmit/Receive           |
 |:------------------------------------------------|:---------------------------|
