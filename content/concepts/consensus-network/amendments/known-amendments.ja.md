@@ -17,7 +17,7 @@ labels:
 | [CheckCashMakesTrustLine][]     | v1.8.0     | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [NegativeUNL][]                 | v1.7.3     | [予定: 2021/11/21](https://xrpl.org/blog/2021/five-upcoming-amendments.html "BADGE_BLUE") |
+| [NegativeUNL][]                 | v1.7.3     | [有効: 2021/11/21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
 | [fixRmSmallIncreasedQOffers][]  | v1.7.2     | [有効: 2021/11/18](https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7 "BADGE_GREEN") |
 | [TicketBatch][]                 | v1.7.0     | [有効: 2021/11/18](https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36 "BADGE_GREEN") |
 | [fixSTAmountCanonicalize][]     | v1.7.0     | [有効: 2021/11/11](https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532 "BADGE_GREEN") |
@@ -65,6 +65,20 @@ labels:
 | [SusPay][]                      | v0.31.0    | [禁止: v0.60.0で削除](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 
 **注記:** 多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。
+
+## CheckCashMakesTrustLine
+[CheckCashMakesTrustLine]: #checkcashmakestrustline
+
+| Amendment ID                                                     | ステータス |
+|:-----------------------------------------------------------------|:---------|
+| 98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F | 開発中 |
+
+Adjusts the [CheckCash transaction][] so that cashing a [Check](checks.html) for an issued token automatically creates a [trust line](trust-lines-and-issuing.html) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users purchase tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
+
+Without this amendment, users have to separately send a [TrustSet transaction][] before they can cash a Check for an issued token.
+
+This amendment does not change the fact that you cannot force anyone to hold tokens they don't want in the XRP Ledger.
+
 
 ## Checks
 [Checks]: #checks
@@ -555,7 +569,7 @@ XRP Ledgerアカウントが[マルチ署名](multi-signing.html) SignerListを�
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 予定: 2021/11/21 |
+| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 有効 |
 
 <!-- TODO: translate amendment description -->
 Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the liveness of the network during periods of network instability.

@@ -2,7 +2,7 @@
 
 すべての[XRP Ledgerアカウント](accounts.html)には、`Sequence`フィールドに1つのシーケンス番号があり、アカウントがトランザクションを送信し、そのトランザクションが[検証済みレジャー](ledgers.html)に記録されるたびに、1ずつ増加します。シーケンス番号は各[トランザクション](transaction-basics.html)の`Sequence`フィールドにもあり、そのトランザクションが実行される際にアカウントの現在のシーケンス番号と一致している必要があります。各アカウントで、各シーケンス番号は番号順に一度だけ使用できます。
 
-[DeletableAccounts Amendment](known-amendments.html#deletableaccounts) :not_enabled: を適用する場合、アカウントの`Sequence`番号の始まりが、アカウントが作成されたレジャーバージョンの[レジャーインデックス][]と一致します。DeletableAccountsを適用しない場合、どのアカウントの`Sequence`番号も1で始まります。
+[DeletableAccounts Amendment](known-amendments.html#deletableaccounts) を適用する場合、アカウントの`Sequence`番号の始まりが、アカウントが作成されたレジャーバージョンの[レジャーインデックス][]と一致します。DeletableAccountsを適用しない場合、どのアカウントの`Sequence`番号も1で始まります。
 
 トランザクションがレジャーに記録されると、トランザクションの実行が成功したか[`tec`クラスのエラーコード](tec-codes.html)で失敗したかを問わず、シーケンス番号が1つ消費されます。トランザクションのその他の失敗についてはレジャーに記録されないため、送金元のシーケンス番号は変更されません（その他の影響もありません）。
 

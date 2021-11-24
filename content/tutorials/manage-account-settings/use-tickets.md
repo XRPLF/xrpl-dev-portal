@@ -3,7 +3,6 @@ html: use-tickets.html
 parent: manage-account-settings.html
 blurb: Use Tickets to send a transaction outside of normal Sequence order.
 embed_xrpl_js: true
-status: not_enabled
 filters:
   - interactive_steps
   - include_code
@@ -12,21 +11,17 @@ labels:
 ---
 # Use Tickets
 
-_(Requires the [TicketBatch amendment][] :not_enabled:)_
-
 [Tickets](tickets.html) provide a way to send transactions out of the normal order. This tutorial walks through the steps of creating a Ticket, then using it to send another transaction.
 
 ## Prerequisites
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
-{% set use_network = "Devnet" %}<!--TODO: change to Testnet eventually -->
+{% set use_network = "Devnet" %}<!--TODO: change to Testnet eventually. NOTE, Testnet is a few days behind Mainnet in getting the amendment one enabled -->
 
 This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
-
-Tickets must be enabled. At this time, the [TicketBatch amendment][] :not_enabled: is only available on Devnet.
 
 
 

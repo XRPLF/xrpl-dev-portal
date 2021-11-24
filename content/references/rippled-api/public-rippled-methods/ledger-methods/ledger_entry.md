@@ -92,7 +92,7 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 > - [`Amendments`](amendments-object.html) - `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`
 > - [`FeeSettings`](feesettings.html) - `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`
 > - [Recent History `LedgerHashes`](ledgerhashes.html) - `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`
-> - [`NegativeUNL`](negativeunl.html) :not_enabled: - `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`
+> - [`NegativeUNL`](negativeunl.html) - `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`
 
 
 
@@ -510,7 +510,7 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 
 ### Get Ticket Object
 
-Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] set aside for future use. Can be provided as string (object ID of the Ticket) or as an object. _(Requires the [TicketBatch amendment][])_ :not_enabled:
+Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] set aside for future use. Can be provided as string (object ID of the Ticket) or as an object. _(Added by the [TicketBatch amendment][])_
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
