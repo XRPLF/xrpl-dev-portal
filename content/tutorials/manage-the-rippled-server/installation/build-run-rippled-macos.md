@@ -17,19 +17,19 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. Install Xcode command line tools.
 
-        $ xcode-select --install
+        xcode-select --install
 
 0. Install [Homebrew](https://brew.sh/).
 
-        $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 0. Update Homebrew.
 
-        $ brew update
+        brew update
 
 0. Use Homebrew to install dependencies.
 
-        $ brew install git cmake pkg-config protobuf openssl ninja
+        brew install git cmake pkg-config protobuf openssl ninja
 
 0. Install a compatible version of Boost. `rippled` 1.7.2 is compatible with Boost 1.75.0. To compile Boost yourself, complete the following steps:
 
@@ -39,9 +39,9 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
     3. In a terminal, run:
 
-            $ cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
-            $ ./bootstrap.sh
-            $ ./b2 cxxflags="-std=c++14"
+            cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
+            ./bootstrap.sh
+            ./b2 cxxflags="-std=c++14"
 
 0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
 
@@ -50,67 +50,67 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
       2. Edit the code below with your Boost directory location and run it to add Boost environment variable to your `.zshrc` or `.bash_profile` file so it's automatically set when you log in.
 
               # for zsh
-              $ echo "export BOOST_ROOT=/Users/my_user/boost_1_75_0" >> ~/.zshrc
+              echo "export BOOST_ROOT=/Users/my_user/boost_1_75_0" >> ~/.zshrc
               # for bash
-              $ echo "export BOOST_ROOT=/Users/my_user/boost_1_75_0" >> ~/.bash_profile
+              echo "export BOOST_ROOT=/Users/my_user/boost_1_75_0" >> ~/.bash_profile
 
 0. If you updated your `.bash_profile` file in the previous step, be sure to source it in a new Terminal window. For example:
 
         # zsh
-        $ source ~/.zshrc
+        source ~/.zshrc
         # bash
-        $ source ~/.bash_profile
+        source ~/.bash_profile
 
 0. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://docs.github.com/en/get-started/quickstart/set-up-git/).
 
-        $ git clone https://github.com/ripple/rippled.git
-        $ cd rippled
+        git clone https://github.com/ripple/rippled.git
+        cd rippled
 
 0. Switch to the appropriate branch for the software version you want:
 
     For the latest stable release, use the `master` branch.
 
-        $ git checkout master
+        git checkout master
 
     For the latest release candidate, use the `release` branch:
 
-        $ git checkout release
+        git checkout release
 
     For the latest in-progress version, use the `develop` branch:
 
-        $ git checkout develop
+        git checkout develop
 
     Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
 
 0. Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The [release announcements for `rippled`](https://xrpl.org/blog/label/rippled-release-notes.html) generally show the exact commit to expect for that release.
 
-        $ git log -1
+        git log -1
 
 0. In the `rippled` directory you cloned, create your build directory and access it. For example:
 
-        $ mkdir my_build
-        $ cd my_build
+        mkdir my_build
+        cd my_build
 
 0. Build `rippled`. This could take about 5 minutes, depending on your hardware specs.
 
-        $ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ..
+        cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ..
 
       You can set `CMAKE_BUILD_TYPE` to the `Debug` or `Release` build type. All four standard [`CMAKE_BUILD_TYPE`](https://cmake.org/cmake/help/v3.0/variable/CMAKE_BUILD_TYPE.html) values are supported.
 
 0. Run the build using CMake. This could take about 10 minutes, depending on your hardware specs.
 
-        $ cmake --build . -- -j 4
+        cmake --build . -- -j 4
 
       **Tip:** This example uses a `-j` parameter set to `4`, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -n hw.ncpu` to get your CPU core count.
 
 0. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended)
 
-        $ ./rippled --unittest
+        ./rippled --unittest
 
 0. `rippled` requires the `rippled.cfg` config file to run. You can find an example config file, `rippled-example.cfg` in `rippled/cfg`. Make a copy and save it as `rippled.cfg` in a location that enables you to run `rippled` as a non-root user. Access the `rippled` directory and run:
 
-        $ mkdir -p $HOME/.config/ripple
-        $ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
+        mkdir -p $HOME/.config/ripple
+        cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
 0. Edit `rippled.cfg` to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here.
 
@@ -124,13 +124,13 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. `rippled` requires the `validators.txt` file to run. You can find an example validators file, `validators-example.txt`, in `rippled/cfg/`. Make a copy and save it as `validators.txt` in the same folder as your `rippled.cfg` file. Access the `rippled` directory and run:
 
-        $ cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
+        cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
 
       **Warning:** The `validators.txt` file contains settings that determine how your server declares a ledger to be validated. If you are not careful, changes to this file could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
 0. Access your build directory, `my_build` for example, and start the `rippled` service.
 
-        $ ./rippled
+        ./rippled
 
       Here's an excerpt of what you can expect to see in your terminal:
 

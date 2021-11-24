@@ -16,7 +16,7 @@ A `rippled` server should run comfortably on commodity hardware, to make it inex
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
 - Disk: Minimum 50 GB for the database partition. SSD strongly recommended (minimum 1000 IOPS, more is better)
-- RAM: 8 GB+
+- RAM: 16 GB+
 
 <!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2 -->
 
@@ -25,12 +25,12 @@ Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A
 
 ## Recommended Specifications
 
-For best performance in enterprise production environments, Ripple recommends running `rippled` on bare metal with the following characteristics:
+For best performance in enterprise production environments, it is recommended to run `rippled` on bare metal with the following characteristics:
 
 - Operating System: Ubuntu (LTS) or CentOS or RedHat Enterprise Linux (latest release)
-- CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
-- Disk: SSD (10,000 IOPS or better)
-- RAM: 32 GB
+- CPU: Intel Xeon 3+ GHz processor with 8 cores and hyperthreading enabled
+- Disk: SSD / NVMe(10,000 IOPS or better)
+- RAM: 64 GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
 ## System Time

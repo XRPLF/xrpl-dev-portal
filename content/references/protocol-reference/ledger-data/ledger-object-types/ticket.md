@@ -2,7 +2,6 @@
 html: ticket.html
 parent: ledger-object-types.html
 blurb: A Ticket tracks an account sequence number that has been set aside for future use.
-status: not_enabled
 labels:
   - Transaction Sending
 ---
@@ -10,7 +9,7 @@ labels:
 
 [[Source]](https://github.com/ripple/rippled/blob/76a6956138c4ecd156c5c408f136ed3d6ab7d0c1/src/ripple/protocol/impl/LedgerFormats.cpp#L155-L164)
 
-_(Requires the [TicketBatch amendment][] :not_enabled:)_
+_(Added by the [TicketBatch amendment][].)_
 
 The `Ticket` object type represents a [Ticket](tickets.html), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][]. [New in: rippled 1.7.0][]
 

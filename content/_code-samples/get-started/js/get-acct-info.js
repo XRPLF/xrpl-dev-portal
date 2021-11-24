@@ -10,7 +10,7 @@ async function main() {
   await client.connect()
 
   // Create a wallet and fund it with the Testnet faucet:
-  const fund_result = await client.fundWallet(test_wallet)
+  const fund_result = await client.fundWallet()
   const test_wallet = fund_result.wallet
   console.log(fund_result)
 

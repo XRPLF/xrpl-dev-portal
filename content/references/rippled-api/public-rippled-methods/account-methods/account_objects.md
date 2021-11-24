@@ -20,7 +20,7 @@ The types of objects that may appear in the `account_objects` response for an ac
 - [PayChannel objects](paychannel.html) for open payment channels.
 - [Check objects](check.html) for pending Checks.
 - [DepositPreauth objects](depositpreauth-object.html) for deposit preauthorizations. [New in: rippled 1.1.0][]
-- [Ticket objects](known-amendments.html#tickets) :not_enabled: for Tickets.
+- [Ticket objects](known-amendments.html#tickets) for Tickets.
 
 
 ## Request Format
@@ -74,7 +74,7 @@ The request includes the following parameters:
 | `Field`                  | Type             | Description                    |
 |:-------------------------|:-----------------|:-------------------------------|
 | `account`                | String           | A unique identifier for the account, most commonly the account's address. |
-| `type`                   | String           | _(Optional)_ If included, filter results to include only this type of ledger object. The valid types are: `check` :not_enabled:, `deposit_preauth`, `escrow`, `offer`, `payment_channel`, `signer_list`, `ticket` :not_enabled:, and `state` (trust line). <!-- Author's note: Omitted types that can't be owned by an account --> |
+| `type`                   | String           | _(Optional)_ If included, filter results to include only this type of ledger object. The valid types are: `check`, `deposit_preauth`, `escrow`, `offer`, `payment_channel`, `signer_list`, `ticket`, and `state` (trust line). <!-- Author's note: Omitted types that can't be owned by an account --> |
 | `deletion_blockers_only` | Boolean          | _(Optional)_ If `true`, the response only includes objects that would block this account from [being deleted](accounts.html#deletion-of-accounts). The default is `false`. [New in: rippled 1.4.0][] |
 | `ledger_hash`            | String           | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`           | String or Number | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |

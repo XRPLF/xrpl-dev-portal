@@ -94,7 +94,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 結果の`account_data`の`Sequence`フィールドにある、アカウントのシーケンス番号をメモします。この後のステップでアカウントのトランザクションに署名するために、このシーケンス番号を把握しておく必要があります。
 
-[DeletableAccounts Amendment](known-amendments.html#deletableaccounts) :not_enabled:がenabledになっている場合、新しく資金を供給したアカウントの`Sequence`番号は、資金を供給したときの[レジャーインデックス][]と一致します。enabledになっていない場合、新しく資金を供給したアカウントの`Sequence`番号は常に1です。
+[DeletableAccounts Amendment](known-amendments.html#deletableaccounts)がenabledになっている場合、新しく資金を供給したアカウントの`Sequence`番号は、資金を供給したときの[レジャーインデックス][]と一致します。enabledになっていない場合、新しく資金を供給したアカウントの`Sequence`番号は常に1です。
 
 <!-- MULTICODE_BLOCK_START -->
 
