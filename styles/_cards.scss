@@ -1,6 +1,23 @@
 .card, .cta-card, .q-wrapper {
   box-shadow: $dropdown-box-shadow;
 }
+#code-samples-deck  {
+  .card {
+    box-shadow: none;
+    margin: 0 2rem 5rem 2rem;
+  }
+  .card-header {
+    border-bottom: none;
+    background-color: unset;
+  }
+  .card-footer {
+    background-color: unset;
+  }
+
+  .card-deck .card a{
+    margin: 0 2.5rem 5rem 2.5rem;
+  }
+}
 
 .card-body > p,
 .card-body > p:not(:last-child) {
@@ -33,6 +50,8 @@ a.card:hover h3 {
     display: inline-block; // fix sizing in Chrome
   }
   margin-bottom: 0.75rem;
+  margin-left: -15px;
+  border: 2px solid #232325;
 }
 
 .card-deck {
