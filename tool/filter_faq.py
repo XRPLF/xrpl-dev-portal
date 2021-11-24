@@ -47,13 +47,18 @@ def wrap_question(soup, qi, q, elements):
     q_toggler["aria-controls"] = "a{qi}".format(qi=qi)
     q_toggler["aria-expanded"] = "false"
     q_toggler["class"] = "expander collapsed"
+    q_toggler.insert(0, q.text)
+
+    q_id = "{qid}".format(qid=q["id"])
+    q = soup.new_tag("h4")
+    q["id"] = q_id
 
     # Strip out permalinks since that would be a link inside a link (invalid)
     [a.decompose() for a in q.find_all("a")]
 
-    append_chevron(soup, q)
-    q_toggler.insert(0, q)
-    q_wrapper.insert(0, q_toggler)
+    append_chevron(soup, q_toggler)
+    q.insert(0, q_toggler)
+    q_wrapper.insert(0, q)
     return q_wrapper
 
 def wrap_section(soup, elements):
