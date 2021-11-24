@@ -127,10 +127,10 @@ Each member of the `peers` array of the response is an object that describes one
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
 | `complete_shards` | String | The range of complete history shards this peer has available. This may be disjointed. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. |
-| `incomplete_shards` | String | _(May be omitted)_ A comma-separated list of history shards this peer has partially downloaded, and percent completion for each. For example, `1:50,2:25` indicates that shard 1 is 50% downloaded and shard 2 is 25% downloaded. [New in: rippled 1.8.0][] |
+| `incomplete_shards` | String | _(May be omitted)_ A comma-separated list of history shards this peer has partially downloaded, and percent completion for each. For example, `1:50,2:25` indicates that shard 1 is 50% downloaded and shard 2 is 25% downloaded. [New in: rippled 1.8.1][] |
 | `public_key` | String | _(Omitted unless the request specified `"public_key": true`)_ The public key this peer uses for peer-to-peer communications, in the XRP Ledger's [base58 format](base58-encodings.html). |
 
-The `ip` field is no longer provided. [Removed in: rippled 1.8.0][]
+The `ip` field is no longer provided. [Removed in: rippled 1.8.1][]
 
 
 ### Possible Errors

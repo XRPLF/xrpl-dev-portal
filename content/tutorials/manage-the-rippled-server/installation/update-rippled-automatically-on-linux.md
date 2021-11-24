@@ -20,7 +20,7 @@ To set up automatic updates, complete the following steps:
 
         sudo ln -s /opt/ripple/etc/update-rippled-cron /etc/cron.d/
 
-    This configuration runs a script to update the installed `rippled` package within an hour of each new release. To avoid network instability from too many servers updating at the same time, this script does not automatically restart the server, so it continues to run the old version until it restarts. [Updated in: rippled 1.8.0][]
+    This configuration runs a script to update the installed `rippled` package within an hour of each new release. To avoid network instability from too many servers updating at the same time, this script does not automatically restart the server, so it continues to run the old version until it restarts. [Updated in: rippled 1.8.1][]
 
 3. **Whenever a new release comes out,** you must manually restart the `rippled` service to switch to the updated software.
 
