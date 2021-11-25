@@ -18,7 +18,7 @@ labels:
 
 1. `rippled` 1.7.0にその以前のバージョンから更新する場合は、リポジトリを再度追加して、Rippleの更新されたGPGキーを取得します。それ以外の場合は、この手順をスキップしてください。
 
-        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-stable]
         name=XRP Ledger Packages
         enabled=1
@@ -30,15 +30,15 @@ labels:
 
 1. 最新の`rippled`パッケージをダウンロードしてインストールします。
 
-        $ sudo yum update rippled
+        sudo yum update rippled
 
 2. `systemd`ユニットファイルを再度読み込みます。
 
-        $ sudo systemctl daemon-reload
+        sudo systemctl daemon-reload
 
 3. `rippled`サービスを再起動します。
 
-        $ sudo service rippled restart
+        sudo systemctl restart rippled.service
 
 
 ## 関連項目
