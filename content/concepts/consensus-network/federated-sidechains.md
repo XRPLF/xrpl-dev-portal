@@ -49,7 +49,7 @@ _Door account_: An account controlled by the federators. There are two door acco
 
 _Triggering transaction_: A transaction that causes the federators to start the process of signing and submitting a new response transaction. For example, sending XRP to the mainchain's door account is a triggering transaction that causes the federators to submit a new transaction on the sidechain.
 
-_Response transaction_: A transaction submitted by the federators in reaction to a triggering transaction. Note that triggering transaction and response transaction depends on context. Sending XRP from a door account to a user account is a response transaction when thinking about cross chain transactions. It is a triggering transaction when thinking about how to handle failed transactions.
+_Response transaction_: A transaction submitted by the federators in reaction to a triggering transaction. In most cases, the response transaction occurs on the opposite chain as the triggering transaction. However, there are some exceptions for handling failed transactions.
 
 
 ## How to Set Up a Federated Sidechain
