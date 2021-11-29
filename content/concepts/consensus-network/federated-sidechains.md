@@ -66,7 +66,7 @@ Setting up a sidechain involves the following high-level steps:
     - `[sidechain]` stanza - add details such as signing key, mainchain account, and the mainchain address (IP and port) to listen to. 
     - `[sidechain_assets]` stanza - define assets that can be used for cross-chain transactions (XRP or [issued tokens](issued-currencies.html)), exchange rate for the assets, and optional refund penalty to discourage transactions that may default.
     - [sidechain_federators] stanza - list of federators public keys to be used for signing. This list is common for all federators on the sidechain.
-4. Setup “Door” accounts to enable cross chain transactions which involves the following tasks:
+4. Set up door accounts to enable cross chain transactions. This involves the following steps (on _both_ chains):
     - Create and fund the door accounts. 
     - Set the signers list for the door accounts.
     - Reserve 3 [tickets](tickets.html) for error handling.
