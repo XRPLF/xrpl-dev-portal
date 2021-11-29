@@ -58,26 +58,29 @@ Generally speaking, the ledger cannot make any time-based measurements that are 
 
 ### Example
 
-Lets say the last close time is 12:00:00:
+The following examples demonstrate the rounding behavior of ledger close times, from the perspective of an example validator, following a ledger with the close time **12:00:00**:
 
 **Current consensus round**
 
-- A validator individually determines that the next close time should be 12:00:03
-- This is then rounded down based on the close time resolution to 12:00:00
-- But since this is not greater than the last close time, it's incremented to 12:00:01
-- The validators then negotiate and agree that the next close time is 12:00:01
+1. A validator notes that it was **12:00:03** when the ledger closed and entered consensus. The validator includes this close time in its proposals.
+2. The validator observes that most other validators (on its UNL) proposed a close time of 12:00:02, and one other proposed a close time of 12:00:03. It changes its proposed close time to match the consensus of **12:00:02**.
+3. The validator rounds this value to the nearest close time interval, resulting in **12:00:00**.
+4. Since 12:00:00 is not greater than the previous ledger's close time, the validator adjusts the close time to be exactly 1 second after the previous ledger's close time. The result is an adjusted close time of **12:00:01**.
+5. The validator builds the ledger with these details, calculates the resulting hash, and confirms in the [validation step](consensus.html#validation) that others did the same.
+
+Non-validating servers do all the same steps, except they don't propose their recorded close times to the rest of the network.
 
 **Next consensus round**
 
-- In the next round validators project that the next close time should be 12:00:04
-- This is rounded down based on the close time resolution to 12:00:00
-- But again this is not greater than the last close time, so it's incremented to 12:00:02
+1. The next ledger enters consensus at **12:00:04** according to most validators.
+2. This rounds down again, to a close time of **12:00:00**.
+3. Since this is not greater than the previous ledger's close time of 12:00:01, the adjusted close time is **12:00:02**.
 
 **Next consensus round after that**
 
-- Next validators determine that the next close time should be 12:00:05
-- Which is rounded up based on the close time resolution to 12:00:10
-- Since this is greater than the last close time, that value is used
+1. The ledger after that enters consensus at **12:00:05** according to most validators.
+2. This rounds up, based on the close time resolution, to **12:00:10**.
+3. Since this value is larger than the previous ledger's close time, it does not need to be adjusted. **12:00:10** becomes the official close time.
 
 ## See Also
 
