@@ -16,7 +16,7 @@ labels:
 
 - トランザクションを送信するための十分なXRPが供給されていて、新しい署名者リストの[必要準備金](reserves.html)を満たしている資金供給のあるXRP Ledger[アドレス](accounts.html)が必要です。
 
-  - [MultiSignReserve Amendment][]が有効な場合、マルチ署名を使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として5 XRPが必要です。（MultiSignReserve Amendmentは**2019年4月7日**以降、本番環境のXRP Ledgerで有効になっています。)
+  - [MultiSignReserve Amendment][]が有効な場合、マルチ署名を使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として2 XRPが必要です。（MultiSignReserve Amendmentは**2019年4月7日**以降、本番環境のXRP Ledgerで有効になっています。)
 
   - [MultiSignReserve Amendment][]が有効ではないテストネットワークでは、マルチ署名を使用するには[アカウント準備金](reserves.html)に通常よりも多くのXRPが必要となります。必要額は、リストの署名者の数に応じて増加します。
 

@@ -90,7 +90,7 @@ SignerList objects can have the following flag value:
 
 A signer list contributes to its owner's [reserve requirement](reserves.html).
 
-The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one object, regardless of how many members it has. As a result, the owner reserve associated with a new signer list is 5 XRP.
+The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one object, regardless of how many members it has. As a result, the owner reserve associated with a new signer list is 2 XRP.
 
 A signer list created before the [MultiSignReserve amendment][] itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with the signer list is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](ripplestate.html)) or [Offer](offer.html) object in the ledger. To update a signer list to use the new, reduced reserve, update the signer list by sending a [SignerListSet transaction][].
 
