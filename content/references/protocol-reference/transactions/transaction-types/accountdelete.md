@@ -37,7 +37,7 @@ An AccountDelete transaction deletes an [account](accountroot.html) and any obje
 
 ## Special Transaction Cost
 
-As an additional deterrent against ledger spam, the AccountDelete transaction requires a much higher than usual [transaction cost](transaction-cost.html): instead of the standard minimum of 0.00001 XRP, AccountDelete must destroy at least the owner reserve amount, currently 5 XRP. This discourages excessive creation of new accounts because the [reserve requirement](reserves.html) cannot be fully recouped by deleting the account.
+As an additional deterrent against ledger spam, the AccountDelete transaction requires a much higher than usual [transaction cost](transaction-cost.html): instead of the standard minimum of 0.00001 XRP, AccountDelete must destroy at least the owner reserve amount, currently 2 XRP. This discourages excessive creation of new accounts because the [reserve requirement](reserves.html) cannot be fully recouped by deleting the account.
 
 The transaction cost always applies when a transaction is included in a validated ledger, even if the transaction fails to delete the account. (See [Error Cases](#error-cases).) To greatly reduce the chances of paying the high transaction cost if the account cannot be deleted, [submit the transaction](submit.html) with `fail_hard` enabled.
 
