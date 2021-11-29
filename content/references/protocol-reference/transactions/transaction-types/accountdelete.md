@@ -21,7 +21,7 @@ An AccountDelete transaction deletes an [account](accountroot.html) and any obje
     "Account": "rWYkbWkCeg8dP6rXALnjgZSjjLyih5NXm",
     "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
     "DestinationTag": 13,
-    "Fee": "5000000",
+    "Fee": "2000000",
     "Sequence": 2470665,
     "Flags": 2147483648
 }
