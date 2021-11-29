@@ -16,7 +16,7 @@ This tutorial demonstrates how to enable multi-signing for an address.
 
 - You must have a funded XRP Ledger [address](accounts.html) with enough spare XRP to send transactions and meet the [reserve requirement](reserves.html) of a new signer list.
 
-    - With the [MultiSignReserve amendment][] enabled, multi-signing requires 5 XRP for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
+    - With the [MultiSignReserve amendment][] enabled, multi-signing requires 2 XRP for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
 
     - If you are on a test network that does not have the [MultiSignReserve amendment][] enabled, multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html), increasing with the number of signers in the list.
 
