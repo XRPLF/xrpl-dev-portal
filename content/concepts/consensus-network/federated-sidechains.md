@@ -67,7 +67,7 @@ Setting up a sidechain involves the following high-level steps:
 4. Set up door accounts to enable cross chain transactions. This involves the following steps (on _both_ chains):
     - Create and fund the door accounts. 
     - Set the ["SignerList"](set-up-multi-signing.html) for door accounts.
-    - Reserve three(3) [tickets](tickets.html) for error handling.
+    - Create three [tickets](tickets.html) for error handling.
     - And finally, [disable the master key pair](disable-master-key-pair.html) to the door account to ensure that the federators jointly control the door account. 
 
         Note that it is important to perform this final step only after successful completion of the previous steps.
