@@ -13,10 +13,9 @@ A sidechain is an independent ledger with its own consensus algorithm and transa
 
 Federated sidechains enable developers to launch new features and innovative applications using the foundation of XRP Ledger technology. Sidechains can customize the XRP Ledger protocol to the needs of a specific use case or project and run it as its own blockchain. Here are a few examples:
 
-* Build a smart contract layer, powered by an engine compatible with the Ethereum Virtual Machine (EVM), web assembly, or a Move VM. 
+* Build a smart contract layer, powered by an engine compatible with the Ethereum Virtual Machine (EVM), web assembly, or a Move VM. For example, a [smart sidechain with Hooks](https://hooks-testnet.xrpl-labs.com/) enabled.
 * Build your own algorithmic stable coin with customised ledger types and transaction rules.
 * Build permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet [decentralized exchange](decentralized-exchange.html).
-* Create private or public sidechains, and possibly make the public sidechains available to the community to leverage various use cases. For example, a [smart sidechain with Hooks](https://hooks-testnet.xrpl-labs.com/) enabled.
 
 ## How Federated Sidechains Work
 
@@ -27,12 +26,11 @@ Each sidechain has two door accounts, one on the sidechain and one on the mainch
 
 The sidechain has _federators_ who jointly control the door accounts on both networks using [multi-signing](multi-signing.html) so that 80% of federators must approve a transaction. In many cases, the federators should also be the trusted validators of the sidechain.
 
-When a door account receives a transaction on either the sidechain or the mainchain, the federators create a mirror transaction on the other chain. (For example, if you send XRP _to_ the mainchain door account, the federators create a transaction on the sidechain to send XRP _from_ the sidechain door account to the intended recipient.) The federators sign the transaction and broadcast it to each other.
-Simultaneously, federators also listen for signed transactions from other federators and collect them.
+When a door account receives a transaction on either the sidechain or the mainchain, the federators create a mirror transaction on the other chain. (For example, if you send XRP _to_ the mainchain door account, the federators create a transaction on the sidechain to send XRP _from_ the sidechain door account to the intended recipient.) The federators sign the transaction and broadcast it to each other. Simultaneously, federators also listen for signed transactions from other federators and collect them.
 
 When 80% of the federators have signed the transaction, they submit it to the sidechain or mainchain as appropriate. This way, assets that the mainchain door account holds can be allocated to others on the sidechain, and assets that sidechain door account receives can be sent to others on the mainchain.
 
-When an asset is issued from the mainchain to the sidechain, that asset is locked up in the door account. The asset is only unlocked on the mainchain when a transaction from the sidechain to the main chain is submitted. Transactions within the sidechain are not visible to the servers on the sidechain. 
+Transactions within the sidechain are not visible to the servers on the sidechain. 
 
 
 ## Terminology
@@ -68,8 +66,8 @@ Setting up a sidechain involves the following high-level steps:
     - [sidechain_federators] stanza - list of federators public keys to be used for signing. This list is common for all federators on the sidechain.
 4. Set up door accounts to enable cross chain transactions. This involves the following steps (on _both_ chains):
     - Create and fund the door accounts. 
-    - Set the signers list for the door accounts.
-    - Reserve 3 [tickets](tickets.html) for error handling.
+    - Set the ["SignerList"](set-up-multi-signing.html) for door accounts.
+    - Reserve three(3) [tickets](tickets.html) for error handling.
     - And finally, [disable the master key pair](disable-master-key-pair.html) to the door account to ensure that the federators jointly control the door account. 
 
         Note that it is important to perform this final step only after successful completion of the previous steps.
