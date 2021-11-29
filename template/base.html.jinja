@@ -109,6 +109,11 @@
             {% endif %}
             {% include "component-tree-nav.html.jinja" %}
           {% endblock %}
+
+      {% if currentpage.codesamples is defined %}
+        {% include "component-code-sample-filter.html.jinja" %}
+      {% endif %}
+
       </aside>
       {% endif %}
     </div><!--/.row (main layout)-->

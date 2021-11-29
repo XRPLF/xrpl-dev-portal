@@ -3926,9 +3926,10 @@ pages:
 # Code Samples page (final location TBD)
     -   name: Code Samples
         html: code-samples.html
-        # parent: docs.html
+        parent: docs.html
         template: page-code-samples.html.jinja
-        sidebar: disabled
+        sidebar: left_only
+        codesamples: true
         filters:
             - code_samples
         top_nav_grouping: Online Tools
