@@ -69,8 +69,8 @@ An example of a successful response:
                 "available":true,
                 "expiration":"2017-Oct-13 14:56:00",
                 "list":[
-                    "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H",
-                    "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1"
+                    "nHBtBkHGfL4NpB54H1AwBaaSJkSJLUSPvnUNAcuNpuffYB51VjH6",
+                    "nHBe4vqSAzjpPRLKwSFzRFtmvzXaf5wPPmuVrQCAoJoS1zskgDA4"
                 ],
                 "pubkey_publisher":"ED58ED4AA543B524F16771F6E1367BAA220D99DCF22CD8CF7A11309E9EAB1B647B",
                 "seq":1,
@@ -80,8 +80,8 @@ An example of a successful response:
         "signing_keys":{},
         "status":"success",
         "trusted_validator_keys":[
-            "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
-            "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H"
+            "nHBe4vqSAzjpPRLKwSFzRFtmvzXaf5wPPmuVrQCAoJoS1zskgDA4",
+            "nHBtBkHGfL4NpB54H1AwBaaSJkSJLUSPvnUNAcuNpuffYB51VjH6"
         ],
         "validation_quorum":2,
         "validator_list_expires":"2017-Oct-13 14:56:00"
@@ -102,8 +102,8 @@ An example of a successful response:
                 "available":true,
                 "expiration":"2017-Oct-13 14:56:00",
                 "list":[
-                    "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H",
-                    "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1"
+                    "nHBtBkHGfL4NpB54H1AwBaaSJkSJLUSPvnUNAcuNpuffYB51VjH6",
+                    "nHBe4vqSAzjpPRLKwSFzRFtmvzXaf5wPPmuVrQCAoJoS1zskgDA4"
                 ],
                 "pubkey_publisher":"ED58ED4AA543B524F16771F6E1367BAA220D99DCF22CD8CF7A11309E9EAB1B647B",
                 "seq":1,
@@ -113,8 +113,8 @@ An example of a successful response:
         "signing_keys":{},
         "status":"success",
         "trusted_validator_keys":[
-            "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
-            "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H"
+            "nHBe4vqSAzjpPRLKwSFzRFtmvzXaf5wPPmuVrQCAoJoS1zskgDA4",
+            "nHBtBkHGfL4NpB54H1AwBaaSJkSJLUSPvnUNAcuNpuffYB51VjH6"
         ],
         "validation_quorum":2,
         "validator_list_expires":"2017-Oct-13 14:56:00"
@@ -137,8 +137,8 @@ Connecting to 127.0.0.1:5005
                 "available":true,
                 "expiration":"2017-Oct-13 14:56:00",
                 "list":[
-                    "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H",
-                    "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1"
+                    "nHBtBkHGfL4NpB54H1AwBaaSJkSJLUSPvnUNAcuNpuffYB51VjH6",
+                    "nHBe4vqSAzjpPRLKwSFzRFtmvzXaf5wPPmuVrQCAoJoS1zskgDA4"
                 ],
                 "pubkey_publisher":"ED58ED4AA543B524F16771F6E1367BAA220D99DCF22CD8CF7A11309E9EAB1B647B",
                 "seq":1,
@@ -148,8 +148,8 @@ Connecting to 127.0.0.1:5005
         "signing_keys":{},
         "status":"success",
         "trusted_validator_keys":[
-            "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
-            "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H"
+            "nHBe4vqSAzjpPRLKwSFzRFtmvzXaf5wPPmuVrQCAoJoS1zskgDA4",
+            "nHBtBkHGfL4NpB54H1AwBaaSJkSJLUSPvnUNAcuNpuffYB51VjH6"
         ],
         "validation_quorum":2,
         "validator_list_expires":"2017-Oct-13 14:56:00"
