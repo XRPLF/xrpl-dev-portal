@@ -121,7 +121,7 @@ The `xrpl.js` library has a `Wallet` class for handling the keys and address of 
 If you just want to generate keys, you can create a new Wallet instance like this:
 
 ```js
-const test_wallet = new xrpl.Wallet()
+const test_wallet = xrpl.Wallet.generate()
 ```
 
 Or, if you already have a seed encoded in [base58][], you can instantiate a Wallet from it like this:
