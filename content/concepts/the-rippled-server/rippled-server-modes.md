@@ -13,7 +13,7 @@ The `rippled` server software can run in several modes depending on its configur
     - [**Validator**](#validators) - Helps secure the network by participating in consensus
     - [**API Server**](#api-servers) - Provides [API access](get-started-using-http-websocket-apis.html) to read data from the shared ledger, submit transactions, and watch activity in the ledger. Optionally, this can be a [**Full History Server**](#full-history-servers), which keeps a complete record of transaction and ledger history.
     - [**Hub Server**](#public-hubs) - Relays messages between many other members of the peer-to-peer network.
-- [**Reporting mode**](#reporting-mode) - A specialized mode for serving API requests from a relational database. Since it does not participate in the peer-to-peer network, it requires a connection to a P2P Mode server. [New in: rippled 1.7.0][]
+- [**Reporting mode**](#reporting-mode) - A specialized mode for serving API requests from a relational database. It does not participate in the peer-to-peer network. It requires a connection to a P2P Mode server. [New in: rippled 1.7.0][]
 - [**Stand-alone mode**](#stand-alone-mode) - An offline mode for testing. Does not connect to the peer-to-peer network or use consensus.
 
 You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](rippled-api.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
