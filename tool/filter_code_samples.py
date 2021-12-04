@@ -13,6 +13,7 @@ import re
 from bs4 import BeautifulSoup
 from markdown import markdown
 
+
 cs_dir = "content/_code-samples/"
 skip_dirs = [
     "node_modules",
@@ -32,6 +33,10 @@ def to_title_case(s):
     words = [w.upper() if w in words_to_caps else w.title() for w in words if w] #remove empty splits
     return " ".join(words).replace("'S", "'s").replace(" A ", " a ")
 
+# def all_langs():
+langs = []
+    
+
 def all_code_samples():
     cses = []
 
@@ -50,6 +55,12 @@ def all_code_samples():
             "path": dirpath,
             "langs": sorted(list(set(["http" if d in ("websocket", "json-rpc") else d for d in dirnames]))),
         }
+
+        # add unique names to list for sorting. 
+        for d in dirnames: 
+            lang = "http" if d in ("websocket", "json-rpc") else d 
+            if lang not in langs:
+                langs.append(lang)
 
         if "README.md" in filenames:
             with open(os.path.join(dirpath, "README.md"), "r") as f:
@@ -78,4 +89,5 @@ def all_code_samples():
 
 export = {
     "all_code_samples": all_code_samples,
+    "all_langs": langs,
 }

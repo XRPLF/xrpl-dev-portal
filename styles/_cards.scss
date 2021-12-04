@@ -12,12 +12,92 @@
   }
   .card-footer {
     background-color: unset;
+    font-size: initial;
   }
 
   .card-deck .card a{
     margin: 0 2.5rem 5rem 2.5rem;
   }
 }
+
+.contribute_1 {
+  // border-top: 2px solid linear-gradient(to right rgba(255,0,0,.8), rgba(255,0,0,0));
+  &::before {
+    content:"";
+    background: -webkit-linear-gradient(left, rgba(254, 255, 1, 1), rgba(255, 45, 154, 1) );
+    display: block;
+    height:2px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    &::before {
+      left: 0;
+      // transform: rotate(90deg);
+      height: 100%;
+      width: 2px;
+    }
+  }
+}
+.contribute_2 {
+  &::before {
+    content:"";
+    background: -webkit-linear-gradient(left,  rgba(255, 45, 154, 1), rgba(226, 76, 255, 1));
+    display: block;
+    height:2px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+  @include media-breakpoint-down(md) {
+    &::before {
+      left: 0;
+      height: 100%;
+      width: 2px;
+    }
+  }
+}
+.contribute_3 {
+  &::before {
+    content:"";
+    background: -webkit-linear-gradient(left, rgba(226, 76, 255, 1),rgba(154, 82, 255, 1)    );
+    display: block;
+    height:2px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  } 
+  @include media-breakpoint-down(md) {
+    &::before {
+      left: 0;
+      height: 100%;
+      width: 2px;
+    }
+  }
+}
+.contribute_4 {
+  &::before {
+    content:"";
+    background: -webkit-linear-gradient(left, rgba(154, 82, 255, 1),rgba(154, 82, 255, 1)    );
+    display: block;
+    height:2px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+  @include media-breakpoint-down(md) {
+    &::before {
+      left: 0;
+      height: 100%;
+      width: 2px;
+    }
+  }
+}
+
+
+
 
 .card-body > p,
 .card-body > p:not(:last-child) {
