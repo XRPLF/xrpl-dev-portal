@@ -20,8 +20,19 @@
   }
 }
 
+.code-contribute {
+  @include media-breakpoint-up(lg) {
+  width: 75vw;
+  position: relative;
+  left: 20%;
+  right: 20%;
+  margin-left: -30vw;
+  margin-right: -30vw;
+  }
+}
+
 .contribute_1 {
-  // border-top: 2px solid linear-gradient(to right rgba(255,0,0,.8), rgba(255,0,0,0));
+  
   &::before {
     content:"";
     background: -webkit-linear-gradient(left, rgba(254, 255, 1, 1), rgba(255, 45, 154, 1) );
