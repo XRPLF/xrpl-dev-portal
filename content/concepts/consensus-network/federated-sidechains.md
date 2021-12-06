@@ -30,7 +30,7 @@ When a door account receives a transaction on either the sidechain or the mainch
 
 When 80% of the federators have signed the transaction, they submit it to the sidechain or mainchain as appropriate. This way, assets that the mainchain door account holds can be allocated to others on the sidechain, and assets that sidechain door account receives can be sent to others on the mainchain.
 
-Transactions within the sidechain are not visible to the servers on the sidechain. 
+Transactions within the sidechain are not visible to the servers on the mainchain. 
 
 
 ## Terminology
