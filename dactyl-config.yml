@@ -916,7 +916,10 @@ pages:
     -   md: concepts/consensus-network/federated-sidechains.md
         targets:
             - en
-            - ja            
+
+    -   md: concepts/consensus-network/federated-sidechains.ja.md
+        targets:
+            - ja     
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
         targets:
@@ -1006,12 +1009,15 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: tutorials/get-started/get-started.md
         targets:
             - en
 
-    -   name: 使用開始
+    -   md: tutorials/get-started/get-started.ja.md
+        targets:
+            - ja
+
+    -   name: 始めましょう
         html: get-started.html
         parent: tutorials.html
         template: pagetype-category.html.jinja
@@ -1021,7 +1027,10 @@ pages:
 
     -   md: tutorials/get-started/public-servers.md
         targets:
-            - en
+            - ja
+
+    -   md: tutorials/get-started/public-servers.ja.md
+        targets:
             - ja
 
     -   md: tutorials/get-started/get-started-using-python.md
@@ -1037,6 +1046,9 @@ pages:
     -   md: tutorials/get-started/get-started-using-javascript.md
         targets:
             - en
+
+    -   md: tutorials/get-started/get-started-using-javascript.ja.md
+        targets:
             - ja
 
     # Old translated JS quickstart for ripple-lib 1.x. Refers to code samples
