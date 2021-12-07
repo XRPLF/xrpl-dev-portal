@@ -1,21 +1,21 @@
-It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers.
+It can take several minutes to sync with the rest of the XRP Ledger network, during which time the server outputs various warnings. For information about log messages, see [Understanding Log Messages](understanding-log-messages.html).
 
-For information about `rippled` log messages, see [Understanding Log Messages](understanding-log-messages.html).
-
-After your `rippled` has synchronized with the rest of the network, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger. Use [`rippled` server states](rippled-server-states.html) to tell whether your `rippled` server has synchronized with the network. You can use the [`rippled` commandline interface](get-started-using-http-websocket-apis.html#commandline) to test this quickly:
+You can use the [`rippled` commandline interface](get-started-using-http-websocket-apis.html#commandline) to see if your server is synced with the network:
 
 {% if currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md" or
       currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md" %}
-    $ ./rippled server_info
+    ./rippled server_info
 {% else %}
-    $ /opt/ripple/bin/rippled server_info
+    /opt/ripple/bin/rippled server_info
 {% endif %}
 
-For more information about communicating with your `rippled` server using the rippled APIs, see the [rippled API reference](rippled-api.html).
+If the `server_state` in the response is `full` or `proposing`, then your server is fully synced to the network. Otherwise, you may need to wait longer. Fresh servers usually sync within 15 minutes; servers that already have [ledger history](ledger-history.html) stored can take longer.
 
-Once you have your stock `rippled` server running, you may want to consider running it as a validating server. For information about validating servers and why you might want to run one, see [Run rippled as a Validator](run-rippled-as-a-validator.html).
+After your server has synchronized with the rest of the network, you have a fully functional XRP Ledger peer-to-peer server that you can use to submit transactions or get API access to the XRP Ledger. See [Client Libraries](client-libraries.html) or [HTTP / WebSocket APIs](rippled-api.html) for different ways to communicate with the server.
 
-Having trouble getting your `rippled` server started? See [rippled Server Won't Start](server-wont-start.html).
+If you use the XRP Ledger for your business or you just want to contribute to the stability of the network, you should run one server as a validator. For information about validating servers and why you might want to run one, see [Run rippled as a Validator](run-rippled-as-a-validator.html).
+
+Having trouble getting your server started? See [rippled Server Won't Start](server-wont-start.html).
 
 ### Additional Configuration
 

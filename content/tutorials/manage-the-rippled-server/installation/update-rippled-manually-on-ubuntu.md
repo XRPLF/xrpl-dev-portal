@@ -10,7 +10,7 @@ labels:
 
 This page describes how to update manually to the latest release of `rippled` on Ubuntu Linux. These instructions assume you have already [installed `rippled` using the native package](install-rippled-on-ubuntu.html). Ripple recommends setting up [automatic updates](update-rippled-automatically-on-linux.html) instead, where possible.
 
-> **Caution:** Ripple renewed the GPG key used to sign binary packages shortly before the release of v1.7.0. If you are upgrading to v1.7.0 from an earlier package, you must first download and manually trust the updated public key as follows:
+> **Caution:** Ripple renewed the GPG key used to sign binary packages shortly before the release of v1.7.0. If you are upgrading from a version earlier than 1.7.0, you must first download and manually trust the updated public key as follows:
 >
 >     wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | \
 >       sudo apt-key add -

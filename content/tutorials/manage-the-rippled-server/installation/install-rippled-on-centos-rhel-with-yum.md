@@ -31,7 +31,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     *Stable*
 
-        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-stable]
         name=XRP Ledger Packages
         enabled=1
@@ -43,7 +43,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     *Pre-release*
 
-        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-unstable]
         name=XRP Ledger Packages
         enabled=1
@@ -55,7 +55,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     *Development*
 
-        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-nightly]
         name=XRP Ledger Packages
         enabled=1
@@ -70,25 +70,23 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 2. Fetch the latest repo updates:
 
-        $ sudo yum -y update
+        sudo yum -y update
 
 3. Install the new `rippled` package:
 
-        $ sudo yum install rippled
-
-    Version 1.3.1 does not require any changes to your config files (`rippled.cfg` and `validators.txt`). This update procedure leaves your existing config files in place.
+        sudo yum install rippled
 
 4. Reload systemd unit files:
 
-        $ sudo systemctl daemon-reload
+        sudo systemctl daemon-reload
 
 5. Configure the `rippled` service to start on boot:
 
-        $ sudo systemctl enable rippled.service
+        sudo systemctl enable rippled.service
 
 6. Start the `rippled` service:
 
-        $ sudo systemctl start rippled.service
+        sudo systemctl start rippled.service
 
 
 ## Next Steps

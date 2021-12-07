@@ -7,13 +7,9 @@ labels:
 ---
 # Build and Run rippled on Ubuntu
 
-`rippled` is the core peer-to-peer server that manages the XRP Ledger. A `rippled` server can connect to a network of peers, relay cryptographically signed transactions, and maintain a local copy of the complete shared global ledger.
+[`rippled`](the-rippled-server.html) is the reference implementation of an XRP Ledger peer-to-peer server. This server can connect to a network of peers, relay cryptographically signed transactions, and maintain a local copy of the complete shared global ledger. Use these instructions to build a `rippled` executable from source. These instructions were tested on Ubuntu 18.04 LTS.
 
-For an overview of `rippled`, see [Operating rippled Servers](install-rippled.html).
-
-Use these instructions to build a `rippled` executable from source. These instructions were tested on Ubuntu 18.04 LTS.
-
-For information about building `rippled` for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
+For information about building for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
 
 
 ## Prerequisites
@@ -38,7 +34,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
 4. Install CMake.
 
-    Version 1.7.2 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3.
+    Version 1.8.1 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3.
 
     If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
 
@@ -51,7 +47,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
 5. Compile Boost.
 
-    Version 1.7.2 of `rippled` requires the Boost library and is compatible with Boost versions 1.70.0 to 1.75.0. The Ubuntu 18.04 (or 20.04) software repositories don't have a compatible Boost version, so you must compile it yourself. The following examples use Boost 1.75.0.
+    Version 1.8.1 of `rippled` requires the Boost library and is compatible with Boost versions 1.70.0 to 1.75.0. The Ubuntu 18.04 (or 20.04) software repositories don't have a compatible Boost version, so you must compile it yourself. The following examples use Boost 1.75.0.
 
     If you have previously built Boost 1.75.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
@@ -95,11 +91,11 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
     $ git log -1
 
-8. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault). <!-- SPELLING_IGNORE: segfault -->
+8. If you previously built, or (more importantly) tried and failed to build the XRPL server, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like an executable that crashes due to a segmentation fault (segfault). <!-- SPELLING_IGNORE: segfault -->
 
-    If this is your first time building `rippled` 1.0.0 or higher, you won't have a `my_build/` directory and can move on to the next step.
+    If this is your first time building `rippled`, you won't have a `my_build/` directory and can move on to the next step.
 
-9. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
+9. Use CMake to build a `rippled` binary executable from source code. This creates a `rippled` binary executable in the `my_build` directory.
 
       1. Generate the build system. Builds should be performed in a directory that is separate from the source tree root. In this example, we'll use a `my_build` directory that is a subdirectory of `rippled`.
 
@@ -109,7 +105,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
           **Tip:** The default build includes debugging symbols, which can be useful for development but are inefficient in production. To build `rippled` for use on production servers, add the `-DCMAKE_BUILD_TYPE=Release` flag when running the `cmake` command.
 
-      2. Build the `rippled` binary executable. This may take about 30 minutes, depending on your hardware specs.
+      2. Build the `rippled` executable. This may take about 30 minutes, depending on your hardware specs.
 
               cmake --build .
 
