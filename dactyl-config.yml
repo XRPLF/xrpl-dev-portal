@@ -321,7 +321,16 @@ pages:
         blurb: Learn more about the XRPL Foundation, dedicated to advancing the development and use of the XRPL.
         sidebar: disabled
         targets:
-            - en
+            - ja
+
+    -   name: XRPL財団
+        html: xrpl-foundation.html
+        template: page-xrpl-foundation.html.jinja
+        parent: xrp-ledger-overview.html
+        top_nav_grouping: About
+        blurb: XRPLの開発と利用を促進するためのXRPL財団についてはこちらをご覧ください。
+        sidebar: disabled
+        targets:
             - ja
 
     -   md: faq.md
@@ -532,6 +541,9 @@ pages:
     -   md: concepts/payment-system-basics/accounts/tickets.md
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/accounts/tickets.ja.md
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/depositauth.md
@@ -1241,6 +1253,9 @@ pages:
     -   md: tutorials/manage-account-settings/use-tickets.md
         targets:
             - en
+
+    -   md: tutorials/manage-account-settings/use-tickets.ja.md
+        targets:
             - ja
 
     # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
@@ -2072,6 +2087,9 @@ pages:
     -   md: references/protocol-reference/ledger-data/ledger-object-types/ticket.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/ticket.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-formats.md
@@ -2237,10 +2255,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ticketcreate.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ticketcreate.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/trustset.md
