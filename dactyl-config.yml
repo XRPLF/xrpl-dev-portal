@@ -321,7 +321,7 @@ pages:
         blurb: Learn more about the XRPL Foundation, dedicated to advancing the development and use of the XRPL.
         sidebar: disabled
         targets:
-            - ja
+            - en
 
     -   name: XRPL財団
         html: xrpl-foundation.html
@@ -1031,7 +1031,7 @@ pages:
 
     -   md: tutorials/get-started/public-servers.md
         targets:
-            - ja
+            - en
 
     -   md: tutorials/get-started/public-servers.ja.md
         targets:
