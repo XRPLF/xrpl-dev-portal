@@ -1029,14 +1029,6 @@ pages:
         targets:
             - ja
 
-    -   name: 始めましょう
-        html: get-started.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: リソースを活用してXRP Ledgerの使用を開始しましょう。
-        targets:
-            - ja
-
     -   md: tutorials/get-started/public-servers.md
         targets:
             - ja
