@@ -6,6 +6,10 @@ on:
   pull_request:
     types: [opened, edited, synchronize]
 
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
   build:
     name: "Build and Check Links"
