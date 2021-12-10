@@ -48,7 +48,7 @@ The `[ledger_history]` setting defines a minimum number of ledgers to accumulate
 
 Some servers in the XRP Ledger network are configured as "full-history" servers. These servers, which require significantly more disk space than other tracking servers, collect all available XRP Ledger history and **do not use online deletion**.
 
-The XRP Ledger Foundation provides access to a set of full history servers operated by community members (see https://xrplcluster.com for more details).
+The XRP Ledger Foundation provides access to a set of full history servers operated by community members (see [xrplcluster.com](https://xrplcluster.com) for more details).
 Ripple also provides a set of public full-history servers as a public service at `s2.ripple.com`.
 
 Providers of Full History servers reserve the right to block access that is found to abuse resources, or put inordinate load on the systems.
