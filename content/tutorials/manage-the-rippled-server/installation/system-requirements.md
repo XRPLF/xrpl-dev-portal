@@ -13,7 +13,7 @@ For reliable performance in production environments, it is recommended to run an
 
 - Operating System: Ubuntu (LTS) or CentOS or RedHat Enterprise Linux (latest release)
 - CPU: Intel Xeon 3+ GHz processor with 8+ cores and hyperthreading enabled
-- Disk: SSD / NVMe (10,000 IOPS or better)
+- Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better)
 - RAM: 64 GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
@@ -24,7 +24,7 @@ For testing purposes or occasional use, you can run an XRP Ledger server on comm
 
 - Operating System: Mac OS X, Windows (64-bit), or most Linux distributions (Red Hat, Ubuntu, and Debian supported)
 - CPU: 64-bit x86_64, 4+ cores
-- Disk: Minimum 50 GB for the database partition. SSD strongly recommended (minimum 1000 IOPS, more is better)
+- Disk: Minimum 50 GB for the database partition. SSD strongly recommended (minimum 10,000 IOPS, more is better)
 - RAM: 16 GB+
 
 <!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2 -->
