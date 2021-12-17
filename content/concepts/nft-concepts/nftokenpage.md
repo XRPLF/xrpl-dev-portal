@@ -5,7 +5,7 @@ blurb: Ledger structure for recording NFTokens.
 embed_xrpl_js: true
 filters:
  - include_code
-labels
+labels:
  - Non-fungible Tokens, NFTs
 ---
 # The `NFTokenPage` Object
