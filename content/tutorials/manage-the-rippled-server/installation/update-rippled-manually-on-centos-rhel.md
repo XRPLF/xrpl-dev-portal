@@ -32,6 +32,8 @@ To update manually, complete the following steps:
 
         $ sudo yum update rippled
 
+    This update procedure leaves your existing config files in place.
+
 2. Reload the `systemd` unit files:
 
         $ sudo systemctl daemon-reload
