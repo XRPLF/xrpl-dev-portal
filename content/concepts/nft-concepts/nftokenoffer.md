@@ -5,7 +5,7 @@ blurb: Create offers to buy or sell NFTs.
 embed_xrpl_js: true
 filters:
  - include_code
-labels
+labels:
  - Non-fungible Tokens, NFTs
 ---
 # The `NFTokenOffer` Ledger Entry
