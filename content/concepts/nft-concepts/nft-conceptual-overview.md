@@ -5,9 +5,10 @@ blurb: Introduction to XRPL NFTs.
 embed_xrpl_js: true
 filters:
  - include_code
-labels
+labels:
  - Non-fungible Tokens, NFTs
 ---
+
 # NFT Conceptual Overview
 
 The XRP Ledger offers support for tokens, also known as _IOUs _or _issued assets_. Such assets are, primarily, fungible. 
