@@ -5,7 +5,7 @@ blurb: Use TokenBurn to permanently destroy NFTs.
 embed_xrpl_js: true
 filters:
  - include_code
-labels
+labels:
  - Non-fungible Tokens, NFTs
 ---
 # The `NFTokenBurn` Transaction
