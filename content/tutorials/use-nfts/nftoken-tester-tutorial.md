@@ -27,7 +27,7 @@ ipfs://QmQjDvDhfHcMyUgDAxKig4AoMTtS5JrsfpiEEpFa3F9QRt
 ```
 
 
-Open `NFTokenTester.html` in a web browser, and display the JavaScript console. For example, in Google Chrome choose **View>Developer>JavaScript Console**.
+Open `NFTokenTester.htm` in a web browser, and display the JavaScript console. For example, in Google Chrome choose **View>Developer>JavaScript Console**.
 
 You can find the full code for the `NFTokenTester.htm` <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/content/tutorials/use-nfts/NFTokenTester.htm">here</a>. The walkthrough below describes key sections in the code. The functions share much of the same code, with the only changes in the body of the transaction arguments themselves.
 
