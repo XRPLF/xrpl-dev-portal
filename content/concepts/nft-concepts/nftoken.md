@@ -5,7 +5,7 @@ blurb: Introduction to XRPL NFTs.
 embed_xrpl_js: true
 filters:
  - include_code
-labels
+labels:
  - Non-fungible Tokens, NFTs
 ---
 # The `NFToken` Object
