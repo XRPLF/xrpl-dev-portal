@@ -41,7 +41,7 @@ The following is an example `NFTokenPage` object in JSON format.
 
 
 
-## In the interest of minimizing the size of a page and optimizing storage, the `Owner` field is not present, since it is encoded as part of the object's ledger identifier.
+In the interest of minimizing the size of a page and optimizing storage, the `Owner` field is not present, since it is encoded as part of the object's ledger identifier.
 
 
 ## Fields
