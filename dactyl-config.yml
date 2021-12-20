@@ -931,7 +931,7 @@ pages:
 
     -   md: concepts/consensus-network/federated-sidechains.ja.md
         targets:
-            - ja     
+            - ja
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
         targets:
@@ -1000,7 +1000,7 @@ pages:
     -   md: concepts/the-rippled-server/transaction-censorship-detection.ja.md
         targets:
             - ja
-            
+
     -   name: Non-fungible Tokens (NFTs)
         html: nft-concepts.html
         parent: concepts.html
@@ -1009,36 +1009,36 @@ pages:
         targets:
             - en
             - ja
-            
-   -    md: concepts/nft-concepts/nft-conceptual-overview.md
+
+    -   md: concepts/nft-concepts/nft-conceptual-overview.md
         targets:
-            -en
-            -ja
-   
-   -    md: concepts/nft-concepts/nftoken.md
+            - en
+            - ja
+
+    -   md: concepts/nft-concepts/nftoken.md
         targets:
-            -en
-            -ja
-            
-   -    md: concepts/nft-concepts/nftokenmint.md
+            - en
+            - ja
+
+    -   md: concepts/nft-concepts/nftokenmint.md
         targets:
-            -en
-            -ja
-            
-   -    md: concepts/nft-concepts/nftokenpage.md
+            - en
+            - ja
+
+    -   md: concepts/nft-concepts/nftokenpage.md
         targets:
-            -en
-            -ja
-            
-   -    md: concepts/nft-concepts/nftokenoffer.md
+            - en
+            - ja
+
+    -   md: concepts/nft-concepts/nftokenoffer.md
         targets:
-            -en
-            -ja
-            
-   -    md: concepts/nft-concepts/nftokenburn.md
+            - en
+            - ja
+
+    -   md: concepts/nft-concepts/nftokenburn.md
         targets:
-            -en
-            -ja
+            - en
+            - ja
 
 # Tutorials --------------------------------------------------------------------
 
@@ -1931,13 +1931,13 @@ pages:
         targets:
             - en
             - ja
-    
+
     - md: tutorials/use-nfts/nftoken-tester-tutorial.md
       targets:
             - en
             - ja
-    
-            
+
+
 # References -------------------------------------------------------------------
 
     -   name: References
