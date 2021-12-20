@@ -58,8 +58,26 @@
     margin-top: -2px;
   }
 
+  // default, uncolored labels (gray)
   background-color: $gray-900;
   color: $gray-300;
+
+  html.light & {
+    background-color: $gray-200;
+    color: $gray-800;
+    .badge-pill {
+      color: $gray-200;
+      background-color: $gray-800;
+    }
+    &:hover {
+      background-color: $gray-300;
+      color: $gray-900;
+      .badge-pill {
+        color: $gray-300;
+        background-color: $gray-900;
+      }
+    }
+  }
 
   .badge-pill {
     color: $gray-900;
@@ -325,6 +343,7 @@
   &.label-blockchain,
   &.label-xrp,
   &.label-ブロックチェーン,
+  &.label-non-fungible-tokens-nfts,
   &.chip-green {
     @include chip-green;
   }

@@ -7,6 +7,7 @@ filters:
  - include_code
 labels:
   - Non-fungible Tokens, NFTs
+status: not_enabled
 ---
 # NFToken Tester Tutorial
 

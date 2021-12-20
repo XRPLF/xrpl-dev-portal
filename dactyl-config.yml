@@ -3547,6 +3547,17 @@ pages:
         targets:
             - ja
 
+    -   name: "Non-fungible Tokens, NFTs"
+        html: label-nfts.html
+        landing_for: "Non-fungible Tokens, NFTs"
+        template: pagetype-label.html.jinja
+        blurb: Pages about non-fungible tokens.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
     -   name: Payment Channels
         html: label-payment-channels.html
         parent: by-label.html
