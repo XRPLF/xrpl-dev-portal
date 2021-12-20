@@ -109,7 +109,7 @@ Flags are properties or other options associated with the `NFToken` object.
 
 The example sets three flags: lsfBurnable (0x0001), lsfOnlyXRP (0x0002), lsfTransferable (0x0008). 1+2+8 = 11, or 0x000B in big endian format.
 
-![Flags](images/nftokena.png "Flags")
+![Flags](img/nftokena.png "Flags")
 
 
 ### TransferFee
@@ -121,7 +121,7 @@ The TransferFee value specifies the percentage fee, in units of 1/10,000, charge
 
 This value sets the transfer fee to 314 bps, or 3.14%.
 
-![Txr Fee](images/nftokenb.png "Txr Fee")
+![Txr Fee](img/nftokenb.png "Txr Fee")
 
 
 
@@ -129,7 +129,7 @@ This value sets the transfer fee to 314 bps, or 3.14%.
 
 The third section of the TokenID is a big endian representation of the issuer’s public address.
 
-![Issuer Address](images/nftokenc.png "Issuer Address")
+![Issuer Address](img/nftokenc.png "Issuer Address")
 
 
 
@@ -137,11 +137,11 @@ The third section of the TokenID is a big endian representation of the issuer’
 
 The fourth section is a taxon created by the issuer. 
  
-![Taxon](images/nftokend.png "Taxon")
+![Taxon](img/nftokend.png "Taxon")
 
 An issuer might issue several NFTs with the same taxon; to ensure that NFTs are spread across multiple pages, the taxon is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual taxon.
 
-![Dumb Sequential](images/nftokene.png "Dumb Sequential")
+![Dumb Sequential](img/nftokene.png "Dumb Sequential")
 
 Notice that the scrambled version of the taxon is `0xBC8B858E`: the scrambled version of the taxon specified by the issuer. But the _actual_ value of the taxon is the unscrambled value.
 
