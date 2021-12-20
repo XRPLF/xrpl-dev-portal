@@ -2,7 +2,6 @@
 html: nftokenmint.html
 parent: nft-concepts.html
 blurb: Use TokenMint to issue new NFTs.
-embed_xrpl_js: true
 filters:
  - include_code
 labels:

@@ -2,7 +2,6 @@
 html: nftoken-tester-tutorial.html
 parent: use-nfts.html
 blurb: Use a JavaScript test harness to mint, trade, and destroy NFTs.
-embed_xrpl_js: true
 filters:
  - include_code
 labels:

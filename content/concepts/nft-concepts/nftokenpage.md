@@ -2,7 +2,6 @@
 html: nftokenpage.html
 parent: nft-concepts.html
 blurb: Ledger structure for recording NFTokens.
-embed_xrpl_js: true
 filters:
  - include_code
 labels:

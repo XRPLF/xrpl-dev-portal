@@ -2,7 +2,6 @@
 html: nftokenoffer.html
 parent: nft-concepts.html
 blurb: Create offers to buy or sell NFTs.
-embed_xrpl_js: true
 filters:
  - include_code
 labels:

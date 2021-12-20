@@ -2,7 +2,6 @@
 html: nftoken.html
 parent: nft-concepts.html
 blurb: Introduction to XRPL NFTs.
-embed_xrpl_js: true
 filters:
  - include_code
 labels:

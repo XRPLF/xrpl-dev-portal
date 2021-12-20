@@ -2,7 +2,6 @@
 html: nftokenburn.html
 parent: nft-concepts.html
 blurb: Use TokenBurn to permanently destroy NFTs.
-embed_xrpl_js: true
 filters:
  - include_code
 labels:
