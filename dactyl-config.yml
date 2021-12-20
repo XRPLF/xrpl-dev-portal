@@ -1000,6 +1000,45 @@ pages:
     -   md: concepts/the-rippled-server/transaction-censorship-detection.ja.md
         targets:
             - ja
+            
+    -   name: Non-fungible Tokens (NFTs)
+        html: nft-concepts.html
+        parent: concepts.html
+        template: pagetype-category.html.jinja
+        blurb: Explore XRPL-native support for NFTs.
+        targets:
+            - en
+            - ja
+            
+   -    md: concepts/nft-concepts/nft-conceptual-overview.md
+        targets:
+            -en
+            -ja
+   
+   -    md: concepts/nft-concepts/nftoken.md
+        targets:
+            -en
+            -ja
+            
+   -    md: concepts/nft-concepts/nftokenmint.md
+        targets:
+            -en
+            -ja
+            
+   -    md: concepts/nft-concepts/nftokenpage.md
+        targets:
+            -en
+            -ja
+            
+   -    md: concepts/nft-concepts/nftokenoffer.md
+        targets:
+            -en
+            -ja
+            
+   -    md: concepts/nft-concepts/nftokenburn.md
+        targets:
+            -en
+            -ja
 
 # Tutorials --------------------------------------------------------------------
 
@@ -1884,6 +1923,21 @@ pages:
         targets:
             - ja
 
+    -   name: Use NFTs
+        html: use-nfts.html
+        parent: tutorials.html
+        blurb: Create and trade non-fungible tokens (NFTs) on Devnet.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+    
+    - md: tutorials/use-nfts/nftoken-tester-tutorial.md
+      targets:
+            - en
+            - ja
+    
+            
 # References -------------------------------------------------------------------
 
     -   name: References
