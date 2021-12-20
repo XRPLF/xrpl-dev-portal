@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>リファレンス - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="リファレンス | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/references.html" />
+    <meta property="og:description" content="XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。" />
+    <meta name="description" content="XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/references.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/references.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/references.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/ja/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ja/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ja/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="/ja/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="/ja/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Hub Page",
+      "page_group": "Docs",
+      "page_funnel": "Other",
+      "page_labels": []
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+
+    <!-- Stylesheet -->
+    <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2021-v5.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+    <!-- Theme switch -->
+    <script src="assets/js/theme-switch.js"></script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<!---->
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item" href="uses.html">ユースケースと注目プロジェクト</a>
+            <a class="dropdown-item" href="history.html">沿革</a>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">インパクト</a>
+            <a class="dropdown-item" href="carbon-calculator.html">二酸化炭素電卓</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item" href="xrpl-foundation.html">XRPL財団</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="docs.html">
+            <img id="top-nav-hero-docs" alt="ドキュメント icon" />
+            <div class="dropdown-hero-text">
+              <h4>ドキュメント</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-質問">
+            <h5 class="dropdown-item">質問</h5>
+            <a class="dropdown-item" href="faq.html">よくある質問</a>
+          </div><!--./col-->
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="concepts.html">コンセプト</a>
+            <a class="dropdown-item" href="tutorials.html">チュートリアル</a>
+            <a class="dropdown-item active" href="references.html">リファレンス</a>
+          </div><!--./col-->
+          <div class="navcol col-for-online-tools">
+            <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="dev-tools.html">開発者用ツール</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-人気ページ">
+            <h5 class="dropdown-item">人気ページ</h5>
+            <a class="dropdown-item" href="send-xrp.html">XRPの送金</a>
+            <a class="dropdown-item" href="reserves.html">準備金</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">UNLに参加しよう</a>
+            <a class="dropdown-item" href="intro-to-consensus.html">コンセンサスについて</a>
+            <a class="dropdown-item" href="public-rippled-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+            <div class="dropdown-hero-text">
+              <h4>貢献する</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+<!---->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+
+      <!-- main column -->
+      <main class="main col-md-12 order-md-3  landing page-references" role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap  px-0 pt-5 pb-3 " aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+    <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
+    <li class="active breadcrumb-item">リファレンス</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <section class="py-20 text-center">
+    <div class="col-xl-4 col-lg-6 mx-auto text-center">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="mb-18">References and APIs</h1>
+        <h6 class="eyebrow mb-3">Everything You Need to Know</h6>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-new mb-30" id="refs-types">
+    <div class="row row-cols-1 row-cols-lg-3 card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title h5">
+            <a href="client-libraries.html">
+Client Libraries            </a>
+          </h4>
+          <p class="card-text">Use these libraries to access the XRP Ledger from your programming language of choice.</p>
+
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link external-link" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library</a></li>
+            <li class="nav-item"><a class="nav-link external-link" href="https://xrpl-py.readthedocs.io/">Python Client Library</a></li>
+            <li class="nav-item"><a class="nav-link external-link" href="https://javadoc.io/doc/org.xrpl/">Java Client Library</a></li>
+            <li class="nav-item"><a class="nav-link external-link" href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library</a></li>
+          </ul>
+        </div><!--/.card-body-->
+        <div class="card-footer">&nbsp;</div>
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title h5">
+            <a href="rippled-api.html">
+HTTP / WebSocket API リファレンス            </a>
+          </h4>
+          <p class="card-text">XRP Ledgerを管理するコアのピアツーピアサーバーであるrippledと直接通信します。</p>
+
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="api-conventions.html">APIの規則</a></li>
+            <li class="nav-item"><a class="nav-link" href="public-rippled-methods.html">rippledのパブリックメソッド</a></li>
+            <li class="nav-item"><a class="nav-link" href="admin-rippled-methods.html">管理rippledメソッド</a></li>
+            <li class="nav-item"><a class="nav-link" href="commandline-usage.html">rippledコマンドライン使用リファレンス</a></li>
+            <li class="nav-item"><a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a></li>
+          </ul>
+        </div><!--/.card-body-->
+        <div class="card-footer">&nbsp;</div>
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title h5">
+            <a href="xrp-ledger-toml.html">
+xrp-ledger.tomlファイル            </a>
+          </h4>
+          <p class="card-text">機械が読み取れる、あなたに関する情報を他のXRP Ledgerユーザーに提供します。</p>
+
+          <div class="curated-links">
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" href="xrp-ledger-toml.html#ファイルの提供方法">ファイルの提供方法</a></li>
+              <li class="nav-item"><a class="nav-link" href="xrp-ledger-toml.html#内容">内容</a></li>
+              <li class="nav-item"><a class="nav-link" href="xrp-ledger-toml.html#corsの設定">CORSの設定</a></li>
+              <li class="nav-item"><a class="nav-link" href="xrp-ledger-toml.html#ドメイン検証">ドメイン検証</a></li>
+              <li class="nav-item"><a class="nav-link" href="xrp-ledger-toml.html#アカウント検証">アカウント検証</a></li>
+            </ul>
+          </div><!--/.curated-links-->
+        </div><!--/.card-body-->
+        <div class="card-footer">&nbsp;</div>
+      </div><!--/.card-->
+    </div><!--/.card-deck-->
+  </section>
+
+  <section class="container-new mb-30" id="xrpl-protocol">
+    <div class="d-flex flex-column-reverse col-sm-8 p-0">
+      <h2 class="h4">XRP Ledger Protocol Reference</h2>
+      <h6 class="eyebrow mb-3">Features and Rules</h6>
+    </div>
+    <div class="row row-cols-1 row-cols-lg-4 card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title h5">
+            <a href="basic-data-types.html">
+基本的なデータ型            </a>
+          </h4>
+          <p class="card-text">さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。</p>
+
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="base58-encodings.html">base58エンコード</a></li>
+            <li class="nav-item"><a class="nav-link" href="currency-formats.html">通貨フォーマット</a></li>
+          </ul>
+        </div><!--/.card-body-->
+        <div class="card-footer">&nbsp;</div>
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title h5">
+            <a href="ledger-data-formats.html">
+レジャーのデータ型            </a>
+          </h4>
+          <p class="card-text">XRP Ledgerの共有状態を構成する個別のデータオブジェクトについて説明します。</p>
+
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="ledger-header.html">レジャーヘッダー</a></li>
+            <li class="nav-item"><a class="nav-link" href="ledger-object-ids.html">レジャーオブジェクトID</a></li>
+            <li class="nav-item"><a class="nav-link" href="ledger-object-types.html">レジャーオブジェクトのタイプ</a></li>
+          </ul>
+        </div><!--/.card-body-->
+        <div class="card-footer">&nbsp;</div>
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title h5">
+            <a href="transaction-formats.html">
+トランザクションのフォーマット            </a>
+          </h4>
+          <p class="card-text">トランザクションは、XRP Ledgerを変更する唯一の方法です。</p>
+
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="transaction-common-fields.html">トランザクションの共通フィールド</a></li>
+            <li class="nav-item"><a class="nav-link" href="transaction-types.html">トランザクションのタイプ</a></li>
+            <li class="nav-item"><a class="nav-link" href="pseudo-transaction-types.html">疑似トランザクション</a></li>
+            <li class="nav-item"><a class="nav-link" href="transaction-results.html">トランザクションの結果</a></li>
+            <li class="nav-item"><a class="nav-link" href="transaction-metadata.html">トランザクションのメタデータ</a></li>
+          </ul>
+        </div><!--/.card-body-->
+        <div class="card-footer">&nbsp;</div>
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title h5">
+            <a href="serialization.html">
+シリアル化フォーマット            </a>
+          </h4>
+          <p class="card-text">XRP Ledgerトランザクションやその他のオブジェクトの場合のJSONフォーマットと正規バイナリーフォーマットとの変換です。</p>
+
+          <div class="curated-links">
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" href="serialization.html#サンプルコード">サンプルコード</a></li>
+              <li class="nav-item"><a class="nav-link" href="serialization.html#フィールドの正規順序">フィールドの正規順序</a></li>
+              <li class="nav-item"><a class="nav-link" href="serialization.html#タイプリスト">タイプリスト</a></li>
+            </ul>
+          </div><!--/.curated-links-->
+        </div><!--/.card-body-->
+        <div class="card-footer">&nbsp;</div>
+      </div><!--/.card-->
+    </div>
+    </div><!--/.card-deck-->
+  </section>
+
+      </main>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>アバウト</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
+            <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
+            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>ドキュメント</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
+            <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
+            <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
+            <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
+            <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
+            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>コミュニティー</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="/ja/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  indexName: 'xrpl',
+  inputSelector: '#topsearchbox',
+  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+
+
+</body>
+</html>
