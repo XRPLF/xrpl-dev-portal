@@ -3,6 +3,8 @@
 import xrpl
 
 import asyncio
+import requests
+import toml
 import re
 import wx
 import wx.dataview
@@ -51,7 +53,13 @@ class SendXRPDialog(wx.Dialog):
         self.err_dtag.Hide()
         self.err_amt.Hide()
 
-        # TODO: add controls for domain verification
+        # ✅/❌ for domain verification
+        bmp_check = wx.ArtProvider.GetBitmap(wx.ART_TICK_MARK, wx.ART_CMN_DIALOG, size=(16,16))
+        self.domain_text = wx.StaticText(self, label="")
+        self.domain_verified = wx.StaticBitmap(self, bitmap=bmp_check)
+        self.domain_verified.Hide()
+        #self.domain_mismatch = wx.StaticBitmap(self, bitmap=bmp_err)
+        #self.domain_mismatch.SetTooltip("Fail to verify domain")
 
         if max_send <= 0:
             max_send = 100000000.0
@@ -71,7 +79,8 @@ class SendXRPDialog(wx.Dialog):
         btn_send = wx.Button(self, wx.ID_OK, label="Send")
         btn_cancel = wx.Button(self, wx.ID_CANCEL)
 
-        sizer.BulkAdd( ((lbl_to, self.txt_to, self.err_to),
+        sizer.BulkAdd(((lbl_to, self.txt_to, self.err_to),
+                       (self.domain_verified, self.domain_text),
                        (lbl_dtag, self.txt_dtag, self.err_dtag),
                        (lbl_amt, self.txt_amt, self.err_amt),
                        (btn_cancel, btn_send)) )
@@ -79,9 +88,11 @@ class SendXRPDialog(wx.Dialog):
 
 
         self.txt_dtag.Bind(wx.EVT_TEXT, self.onDestTagEdit)
-        self.txt_to.Bind(wx.EVT_TEXT, self.onToEdit)
+        ## TODO: why does this only run when the dialog is closed?
+        ## and is there a fix for AsyncShowDialog causing an invalid ptr deref??
+        AsyncBind(wx.EVT_TEXT, self.onToEdit, self.txt_to)
 
-    def onToEdit(self, event):
+    async def onToEdit(self, event):
         v = self.txt_to.GetValue().strip()
         err_msg = ""
         if xrpl.core.addresscodec.is_valid_xaddress(v):
@@ -103,7 +114,42 @@ class SendXRPDialog(wx.Dialog):
             err_msg = "Not a valid address."
         elif v == self.parent.classic_address:
             err_msg = "Can't send XRP to self."
-        # TODO: check for Disallow XRP, Deposit Auth, domain verification
+
+        # Check for Disallow XRP
+        try:
+            response = await xrpl.asyncio.account.get_account_info(v,
+                    self.parent.client, ledger_index="validated")
+            dest_funded = True
+            dest_acct = response.result["account_data"]
+        except xrpl.asyncio.clients.exceptions.XRPLRequestFailureException:
+            dest_funded = False
+
+        if dest_funded:
+            lsfDisallowXRP = 0x00080000
+            if dest_acct["Flags"] & lsfDisallowXRP:
+                err_msg = "This account does not want to receive XRP"
+
+            # Domain verification
+            bmp_err = wx.ArtProvider.GetBitmap(wx.ART_ERROR, wx.ART_CMN_DIALOG, size=(16,16))
+            bmp_check = wx.ArtProvider.GetBitmap(wx.ART_TICK_MARK, wx.ART_CMN_DIALOG, size=(16,16))
+            domain, verified = verify_account_domain(dest_acct)
+            if not domain:
+                self.domain_text.Hide()
+                self.domain_verified.Show()
+            elif verified:
+                self.domain_text.SetLabel(domain)
+                self.domain_text.Show()
+                self.domain_verified.SetTooltip("Domain verified")
+                self.domain_verified.SetBitmap(bmp_check)
+                self.domain_verified.Show()
+            else:
+                self.domain_text.SetLabel(domain)
+                self.domain_text.Show()
+                self.domain_verified.SetTooltip("Failed to verify domain")
+                self.domain_verified.SetBitmap(bmp_err)
+                self.domain_verified.Show()
+
+        # TODO: Check for Deposit Auth
 
         if err_msg:
             self.err_to.SetToolTip(err_msg)
@@ -124,7 +170,29 @@ class SendXRPDialog(wx.Dialog):
             "amt": self.txt_amt.GetValue(),
         }
 
+def verify_account_domain(account):
+    """
+    Verify an account using an xrp-ledger.toml file.
 
+    Params:
+        account:dict - the AccountRoot object to verify
+    Returns (domain:str, verified:bool)
+    """
+    domain_hex = account.get("Domain")
+    if not domain_hex:
+        return "", False
+    verified = False
+    domain = xrpl.utils.hex_to_str(domain_hex)
+    toml_url = f"https://{domain}/.well-known/xrp-ledger.toml"
+    toml_response = requests.get(toml_url)
+    if toml_response.ok:
+        parsed_toml = toml.loads(toml_response.text)
+        toml_accounts = parsed_toml.get("ACCOUNTS", [])
+        for t_a in toml_accounts:
+            if t_a.get("address") == account.get("Account"):
+                verified = True
+                break
+    return domain, verified
 
 
 class TWaXLFrame(wx.Frame):
