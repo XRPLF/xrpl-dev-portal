@@ -1,0 +1,1 @@
+_The XLS-20 standard for NFTs :not_enabled: has a preliminary implementation that can be used in test networks, but is not yet available as an [amendment](amendments.html) to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release._

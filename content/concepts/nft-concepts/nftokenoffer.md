@@ -9,6 +9,7 @@ labels:
 status: not_enabled
 ---
 # The `NFTokenOffer` Ledger Entry
+{% include '_snippets/nfts-disclaimer.md' %}
 
 Tokens that have the `lsfTransferable` flag set can be transferred among participants using offers.
 
@@ -307,7 +308,7 @@ Each offer costs one incremental reserve.
 <li>
 If the offer is to buy a token, this field must be present and it must be different than <code>Account</code> (since an offer to buy a token one already holds is meaningless).
 
-<li>If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as <code>Account</code> (since an offer to sell a token one doesn't already hold is meaningless).	
+<li>If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as <code>Account</code> (since an offer to sell a token one doesn't already hold is meaningless).
 </li>
 </ul>
    </td>

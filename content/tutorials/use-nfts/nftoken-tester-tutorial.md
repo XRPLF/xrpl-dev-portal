@@ -10,6 +10,8 @@ status: not_enabled
 ---
 # NFToken Tester Tutorial
 
+{% include '_snippets/nfts-disclaimer.md' %}
+
 This example builds a JavaScript test harness where you can create NFTokens and associated transactions. Each button triggers a frequently used request or transaction used to manage `NFTokens`. The fields provided let you enter required parameters.
 
 
@@ -131,7 +133,7 @@ async function mintToken() {
 
 ```
 	console.log("Transaction result:", tx.result.meta.TransactionResult)
-	console.log("Balance changes:", 
+	console.log("Balance changes:",
 	  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
 
 ```
@@ -231,7 +233,7 @@ async function getTokens() {
 
 ## The `NFTokenBurn` Transaction
 
-Use `NFTokenBurn` to permanently destroy a `NFToken`. In practice, the `NFToken` is transferred to an account that is inaccessible, rendering it irretrievable. 
+Use `NFTokenBurn` to permanently destroy a `NFToken`. In practice, the `NFToken` is transferred to an account that is inaccessible, rendering it irretrievable.
 
 To destroy a `NFToken`:
 
@@ -322,7 +324,7 @@ async function burnToken() {
 ```
   console.log(nfts)
   console.log("Transaction result:", tx.result.meta.TransactionResult)
-  console.log("Balance changes:", 
+  console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
 
 ```
@@ -347,7 +349,7 @@ You use `NFTokenCreateOffer` to offer `NFTokens` for sale or to propose a purcha
 
 ### The `createSellOffer()` function
 
-The `createSellOffer`() function adds an item to the ledger placing a `NFToken` from your account up for sale. Other accounts can discover the offer and choose to accept the  transaction to purchase your item. 
+The `createSellOffer`() function adds an item to the ledger placing a `NFToken` from your account up for sale. Other accounts can discover the offer and choose to accept the  transaction to purchase your item.
 
 To create an offer to sell a `NFToken`:
 
@@ -457,9 +459,9 @@ async function createSellOffer() {
 
 
 ```
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
-  console.log("Balance changes:", 
+  console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
 
 ```
@@ -590,9 +592,9 @@ async function createBuyOffer() {
 
 
 ```
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
-  console.log("Balance changes:", 
+  console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
 
 ```
@@ -768,7 +770,7 @@ async function cancelOffer() {
 
 
 ```
-  const tx = await client.submitAndWait(transactionBlob,{wallet}) 
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
 
 ```
 
@@ -810,9 +812,9 @@ async function cancelOffer() {
 
 ```
   console.log(JSON.stringify(nftBuyOffers,null,2))
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
-  console.log("Balance changes:", 
+  console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
 
 ```
@@ -900,7 +902,7 @@ async function acceptSellOffer() {
 
 
 ```
-  const tx = await client.submitAndWait(transactionBlob,{wallet}) 
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
 
 ```
 
@@ -915,10 +917,10 @@ async function acceptSellOffer() {
 	account: wallet.classicAddress  
   })
   console.log(JSON.stringify(nfts,null,2))
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
-  console.log("Balance changes:", 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)) 
+  console.log("Balance changes:",
+    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
 
 ```
 
@@ -1000,7 +1002,7 @@ async function acceptBuyOffer() {
 
 
 ```
-  const tx = await client.submitAndWait(transactionBlob,{wallet}) 
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
 
 ```
 
@@ -1015,10 +1017,10 @@ async function acceptBuyOffer() {
 	account: wallet.classicAddress  
   })
   console.log(JSON.stringify(nfts,null,2))
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
       JSON.stringify(tx.result.meta.TransactionResult, null, 2))
   console.log("Balance changes:",
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)) 
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
 
 ```
 

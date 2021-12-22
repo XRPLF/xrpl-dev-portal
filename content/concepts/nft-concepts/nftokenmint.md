@@ -9,6 +9,7 @@ labels:
 status: not_enabled
 ---
 # The `NFTokenMint` Transaction
+{% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenMint` transaction creates a `NFToken` object and adds it to the relevant `NFTokenPage` object of the `minter`. A required parameter to this transaction is the `Token` field specifying the actual token. This transaction is the only opportunity the `minter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
 
@@ -91,7 +92,7 @@ In executing, this transaction examines the `MintedTokens` field in the account 
 
 <li>match the <code>Issuer</code> field in the <code>NFToken</code> object; or
 
-<li>match the <code>MintAccount</code> field in the <code>AccountRoot</code> of the <code>Issuer</code> field in the <code>NFToken</code> object.	
+<li>match the <code>MintAccount</code> field in the <code>AccountRoot</code> of the <code>Issuer</code> field in the <code>NFToken</code> object.
 </li>
 </ul>
    </td>

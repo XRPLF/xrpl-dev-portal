@@ -9,6 +9,7 @@ labels:
 status: not_enabled
 ---
 # The `NFToken` Object
+{% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFToken` object represents a single NFT. This is an example of an `NFToken` object in JSON format, consisting of `TokenID` and `URI` fields.
 
@@ -47,7 +48,7 @@ The 16-bit flags, transfer fee fields, the 32-bit taxon, and the sequence number
 
 ## Flags
 
-Flags are properties or other options associated with the `NFToken` object. 
+Flags are properties or other options associated with the `NFToken` object.
 
 
 <table>
@@ -136,7 +137,7 @@ The third section of the TokenID is a big endian representation of the issuer’
 ### Taxon
 
 The fourth section is a taxon created by the issuer. 
- 
+
 ![Taxon](img/nftokend.png "Taxon")
 
 An issuer might issue several NFTs with the same taxon; to ensure that NFTs are spread across multiple pages, the taxon is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual taxon.
@@ -151,7 +152,7 @@ Notice that the scrambled version of the taxon is `0xBC8B858E`: the scrambled ve
 
 The URI field points to the data and/or metadata associated with the `NFToken`. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 ["data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an opaque issuer-specific encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.
 
-One drawback of using this method is that the value is immutable, so it commits the issuer to hosting the data in perpetuity. 
+One drawback of using this method is that the value is immutable, so it commits the issuer to hosting the data in perpetuity.
 
 
 # Retrieving `NFToken` Data and Metadata

@@ -9,6 +9,7 @@ labels:
 status: not_enabled
 ---
 # The `NFTokenBurn` Transaction
+{% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenBurn` transaction is used to remove a `NFToken` object from the `NFTokenPage` in which it is being held, effectively removing the token from the ledger (_burning_ it).
 

@@ -10,8 +10,9 @@ status: not_enabled
 ---
 
 # NFT Conceptual Overview
+{% include '_snippets/nfts-disclaimer.md' %}
 
-The XRP Ledger offers support for tokens, also known as _IOUs _or _issued assets_. Such assets are, primarily, fungible. 
+The XRP Ledger offers support for tokens, also known as _IOUs _or _issued assets_. Such assets are, primarily, fungible.
 
 
     Fun·gi·ble /ˈfənjəbəl/ (adj)
@@ -27,7 +28,7 @@ A good example of a fungible item might be a postage stamp. If you are standing 
 
 ![Jenny Stamps](img/nft-concepts1.png "Jenny Stamps")
 
-But since you are standing around in 1919, you might be offered 24-cent airmail stamps where the aeroplane on the stamp is accidentally printed upside down. These are the world famous “Inverted Jenny” stamps. Only 100 were circulated on a single sheet of stamps, making them extremely rare and sought after. The current value of each mint condition stamp is appraised at over $1.5 million dollars. 
+But since you are standing around in 1919, you might be offered 24-cent airmail stamps where the aeroplane on the stamp is accidentally printed upside down. These are the world famous “Inverted Jenny” stamps. Only 100 were circulated on a single sheet of stamps, making them extremely rare and sought after. The current value of each mint condition stamp is appraised at over $1.5 million dollars.
 
 ![Jenny Stamps](img/nft-concepts2.png "Jenny Stamps")
 

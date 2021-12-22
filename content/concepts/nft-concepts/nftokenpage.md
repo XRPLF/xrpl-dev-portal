@@ -9,6 +9,7 @@ labels:
 status: not_enabled
 ---
 # The `NFTokenPage` Object
+{% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenPage` object represents a collection of `NFToken` objects owned by the same account. An account can have multiple `NFTokenPage` ledger objects, which form a doubly-linked list (DLL).
 
@@ -20,16 +21,16 @@ The following is an example `NFTokenPage` object in JSON format.
     "LedgerEntryType": "NFTokenPage",
     "PreviousTokenPage":
       "598EDFD7CF73460FB8C695d6a9397E907378C8A841F7204C793DCBEF5406",
-    "PreviousTokenNext": 
+    "PreviousTokenNext":
       "598EDFD7CF73460FB8C695d6a9397E9073781BA3B78198904F659AAA252A",
-    "PreviousTxnID": 
+    "PreviousTxnID":
       "95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822",
-    "PreviousTxnLgrSeq": 
+    "PreviousTxnLgrSeq":
       42891441,
     "Tokens":
         {
             {
-                "TokenID": 
+                "TokenID":
                   "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
                 "URI":
                   "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"
@@ -234,4 +235,3 @@ The value of the incremental reserve is, as of this writing, 2 XRP. The table be
    </td>
   </tr>
 </table>
-
