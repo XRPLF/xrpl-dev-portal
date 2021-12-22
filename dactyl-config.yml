@@ -849,10 +849,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate this page and blurb
     -   md: concepts/consensus-network/invariant-checking.md
         targets:
             - en
+
+    -   md: concepts/consensus-network/invariant-checking.ja.md
+        targets:
             - ja
 
         # TODO: translate this page and blurb
