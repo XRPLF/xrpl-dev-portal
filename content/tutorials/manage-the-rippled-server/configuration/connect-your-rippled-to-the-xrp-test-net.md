@@ -111,7 +111,7 @@ To connect to Devnet, you must also forcefully enable any experimental features 
 
 ```
 [features]
-NegativeUNL
+NonFungibleTokensV1
 ```
 
 **Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
@@ -135,21 +135,21 @@ The following example shows how to check the latest validated ledger from the co
 *Local Server*
 
 ```sh
-$ rippled server_info | grep seq
+rippled server_info | grep seq
 ```
 
 *Testnet*
 
 ```sh
 # s.altnet.rippletest.net
-$ rippled --rpc_ip 35.158.96.209:51234 server_info | grep seq
+rippled --rpc_ip 35.158.96.209:51234 server_info | grep seq
 ```
 
 *Devnet*
 
 ```sh
 # s.devnet.rippletest.net
-$ rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
+rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
 ```
 
 
@@ -157,7 +157,7 @@ $ rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
 
 ```sh
 # s1.ripple.com
-$ rippled --rpc_ip 34.201.59.230:51234 server_info | grep seq
+rippled --rpc_ip 34.201.59.230:51234 server_info | grep seq
 ```
 
 <!-- MULTICODE_BLOCK_END -->
