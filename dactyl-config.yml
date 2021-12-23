@@ -861,7 +861,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/consensus-network/negative-unl.md
+    -   md: concepts/consensus-network/negative-unl.ja.md
         targets:
             - ja
 
