@@ -111,7 +111,7 @@ To connect to Devnet, you must also forcefully enable any experimental features 
 
 ```
 [features]
-NonFungibleTokensV1
+XLS20
 ```
 
 **Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
