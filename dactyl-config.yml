@@ -1210,12 +1210,13 @@ pages:
         targets:
             - ja
 
-    # TODO: translate this page & blurb
     -   md: tutorials/manage-account-settings/disable-master-key-pair.md
         targets:
             - en
-            - ja
 
+    -   md: tutorials/manage-account-settings/disable-master-key-pair.ja.md
+        targets:
+            - ja
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         targets:
