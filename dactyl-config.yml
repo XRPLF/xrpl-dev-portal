@@ -1131,7 +1131,6 @@ pages:
             - en
             - ja
 
-        # TODO: translate this page name and blurb
     -   name: Production Readiness
         html: production-readiness.html
         parent: tutorials.html
@@ -1139,6 +1138,13 @@ pages:
         blurb: Follow these best practices to build a robust, safe production system for using the XRP Ledger.
         targets:
             - en
+
+    -   name: 本番環境への準備
+        html: production-readiness.html
+        parent: tutorials.html
+        template: pagetype-category.html.jinja
+        blurb: 以下のベストプラクティスに従って、XRPレジャーを使用するための堅牢で安全な本番システムを構築してください。
+        targets:
             - ja
 
     -   md: tutorials/production-readiness/set-up-secure-signing.md
