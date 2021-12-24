@@ -383,12 +383,14 @@ pages:
             - run-rippled-as-a-validator.html
             - intro-to-consensus.html
             - public-rippled-methods.html
+            - run-rippled-in-reporting-mode.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
             - public-rippled-methods.html
         blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
@@ -424,6 +426,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
         blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
         filters:
@@ -1697,6 +1700,12 @@ pages:
         targets:
             - en
             - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-in-reporting-mode.md
+        targets:
+            - en
+            - ja        
 
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md
