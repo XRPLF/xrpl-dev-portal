@@ -8,7 +8,7 @@ labels:
  - Non-fungible Tokens, NFTs
 status: not_enabled
 ---
-# The `NFTokenBurn` Transaction
+# NFTokenBurn
 {% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenBurn` transaction is used to remove a `NFToken` object from the `NFTokenPage` in which it is being held, effectively removing the token from the ledger (_burning_ it).
@@ -16,7 +16,7 @@ The `NFTokenBurn` transaction is used to remove a `NFToken` object from the `NFT
 If this operation succeeds, the corresponding `NFToken` is removed. If this operation empties the `NFTokenPage` holding the `NFToken` or results in consolidation, thus removing a `NFTokenPage`, the owner’s reserve requirement is reduced by one.
 
 
-## Example `NFTokenBurn` JSON
+## Example {{currentpage.name}} JSON
 
 
 ```
@@ -28,10 +28,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
 }
 ```
 
-
-
-## NFTokenBurn Transaction Fields
-
+{% include '_snippets/tx-fields-intro.md' %}
 
 <table>
   <tr>
@@ -89,7 +86,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
 ## Account Root Enhancements
 
 
-### `MintAccount`
+### MintAccount
 
 
 Issuers might want to issue NFTs from their well known account, while at the same time wanting to delegate the issuance of such NFTs to a mint or other third party.
@@ -125,15 +122,21 @@ Issuers might want to issue NFTs from their well known account, while at the sam
 
 The `SetAccount` transaction allows the `MintAccount` field to be set or cleared.
 
-### `MintedTokens`
+### MintedTokens
 
 
 The `MintedTokens` field is used to form the `TokenID` of a new object, to ensure the uniqueness of `NFToken` objects. If this field is not present, the value is 0.
 
 
-### `BurnedTokens`
+### BurnedTokens
 
 
 The `BurnedTokens` field provides a convenient way to determine how many `NFToken` objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.
 
 An account for which the difference the number of minted and burned tokens, as stored in the `MintedTokens` and `BurnedTokens` fields respectively, is non-zero cannot be deleted.
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
