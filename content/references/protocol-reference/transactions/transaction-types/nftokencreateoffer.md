@@ -9,6 +9,7 @@ labels:
 status: not_enabled
 ---
 # `NFTokenCreateOffer` transaction
+{% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenCreateOffer` transaction creates either a new _Sell_ offer for an `NFToken` owned by the account executing the transaction, or a new _Buy_ offer for an `NFToken` owned by another account.
 
