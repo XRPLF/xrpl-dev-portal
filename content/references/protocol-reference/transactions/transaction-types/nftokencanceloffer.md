@@ -9,7 +9,7 @@ labels:
 
 The `NFTokenCancelOffer` transaction can be used to cancel existing token offers created using `NFTokenCreateOffer`.
 
-##Example {{currentpage.name}} JSON
+## Example {{currentpage.name}} JSON
 
 ```json
 {
