@@ -68,27 +68,21 @@ You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the
 
 
 
-* <code>[NFToken](nftoken.html)</code>
-* <code>[NFTokenOffer](nftokenoffer.html)</code>
-
-
-### Ledger Structure
-
-
-
-* <code>[NFTokenPage](nftokenpage.html)</code>
+* <code>[NFToken](references/protocol-reference/ledger-data/ledger-object-types/nftoken.html)</code>
+* <code>[NFTokenOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.html)</code>
+* <code>[NFTokenPage](references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.html)</code>
 
 
 ### Transactions
 
 
 
-* <code>[NFTokenMint](references/protocol-reference/ledger-data/ledger-object-types/nftokenmint.html)</code>
-* <code>[NFTokenOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.html)</code>
-    * [NFTokenCreateOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokencreateoffer.html)
-    * [NFTokenCancelOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokencanceloffer.html)
-    * [NFTokenAcceptOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokenacceptoffer.html)
-* <code>[NFTokenBurn](references/protocol-reference/ledger-data/ledger-object-types/nftokenburn.html)</code>
+* <code>[NFTokenMint](references/protocol-reference/transactions/transaction-types/nftokenmint.html)</code>
+* <code>[NFTokenOffer](references/protocol-reference/transactions/transaction-types/nftokenoffer.html)</code>
+    * [NFTokenCreateOffer](references/protocol-reference/transactions/transaction-types/nftokencreateoffer.html)
+    * [NFTokenCancelOffer](references/protocol-reference/transactions/transaction-types/nftokencanceloffer.html)
+    * [NFTokenAcceptOffer](references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.html)
+* <code>[NFTokenBurn](references/protocol-reference/transactions/transaction-types/nftokenburn.html)</code>
 
 
 ### Requests
