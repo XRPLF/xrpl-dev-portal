@@ -79,9 +79,9 @@ You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the
 
 * <code>[NFTokenMint](references/protocol-reference/transactions/transaction-types/nftokenmint.html)</code>
 * <code>[NFTokenOffer](references/protocol-reference/transactions/transaction-types/nftokenoffer.html)</code>
-    * [NFTokenCreateOffer](references/protocol-reference/transactions/transaction-types/nftokencreateoffer.html)
-    * [NFTokenCancelOffer](references/protocol-reference/transactions/transaction-types/nftokencanceloffer.html)
-    * [NFTokenAcceptOffer](references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.html)
+    * <code>[NFTokenCreateOffer](references/protocol-reference/transactions/transaction-types/nftokencreateoffer.html)</code>
+    * <code>[NFTokenCancelOffer](references/protocol-reference/transactions/transaction-types/nftokencanceloffer.html)</code>
+    * <code>[NFTokenAcceptOffer](references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.html)</code>
 * <code>[NFTokenBurn](references/protocol-reference/transactions/transaction-types/nftokenburn.html)</code>
 
 
