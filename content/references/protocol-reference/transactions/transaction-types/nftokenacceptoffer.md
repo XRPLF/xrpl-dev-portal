@@ -6,6 +6,7 @@ labels:
   - NFTs, Non-fungible Tokens
 ---
 # NFTokenAcceptOffer
+{% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenAcceptOffer` transaction is used to accept offers to `buy` or `sell` an `NFToken`. It can either:
 
