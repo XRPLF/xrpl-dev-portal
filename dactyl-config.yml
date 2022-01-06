@@ -1015,31 +1015,6 @@ pages:
             - en
             - ja
 
-    -   md: concepts/nft-concepts/nftoken.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/nft-concepts/nftokenmint.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/nft-concepts/nftokenpage.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/nft-concepts/nftokenoffer.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/nft-concepts/nftokenburn.md
-        targets:
-            - en
-            - ja
-
 # Tutorials --------------------------------------------------------------------
 
     -   name: Tutorials
@@ -2097,7 +2072,22 @@ pages:
         targets:
             - en
             - ja
+            
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftoken.md
+        targets:
+            - en
+            - ja
 
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.md
+        targets:
+            - en
+            - ja
+            
     -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.md
         targets:
             - en
@@ -2237,6 +2227,32 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.md
+        targets:
+            - en
+            - ja
+
+     -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md
+        targets:
+            - en
+            - ja
+
+         
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.md
+        targets:
+            - en
+            - ja
+            
     -   md: references/protocol-reference/transactions/transaction-types/offercancel.md
         targets:
             - en
