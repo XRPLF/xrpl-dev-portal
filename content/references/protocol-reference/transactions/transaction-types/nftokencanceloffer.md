@@ -11,12 +11,13 @@ The `NFTokenCancelOffer` transaction can be used to cancel existing token offers
 
 ##Example {{currentpage.name}} JSON
 
+```json
 {
       	"TransactionType": "NFTokenCancelOffer",
       	"Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
       	"TokenIDs": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007"
   }
-
+```
 
 ## Permissions
 
