@@ -42,15 +42,15 @@ The XRPL Labs team has created a framework that supports non-fungible tokens (NF
 
 Extensions to the XRP Ledger support two new objects and a new ledger structure.
 
-The <code>[NFToken](nftoken.html)</code> is a native NFT type. It has operations to enumerate, purchase, sell, and hold such tokens. An <code>NFToken</code> is a unique, indivisible unit that is not used for payments.
+The <code>[NFToken](references/protocol-reference/ledger-data/ledger-object-types/nftoken.html)</code> is a native NFT type. It has operations to enumerate, purchase, sell, and hold such tokens. An <code>NFToken</code> is a unique, indivisible unit that is not used for payments.
 
-An <code>[NFTokenPage](nftokenpage.html)</code> is a ledger structure that contains a set of <code>NFToken</code> objects owned by the same account.
+<code>[NFTokenPage](references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.html)</code> is a ledger structure that contains a set of <code>NFToken</code> objects owned by the same account.
 
-You create a new `NFToken` using the <code>[NFTokenMint](nftokenmint.html)</code> transaction
+You create a new `NFToken` using the <code>[NFTokenMint](references/protocol-reference/ledger-data/ledger-object-types/nftokenmint.html)</code> transaction
 
-An <code>[NFTokenOffer](nftokenoffer.html)</code> is a new object that describes an offer to buy or sell a single <code>NFToken</code>.
+<code>[NFTokenOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.html)</code> is a new object that describes an offer to buy or sell a single <code>NFToken</code>.
 
-You destroy an `NFToken` using the <code>[NFTokenBurn](nftokenburn.html)</code> transaction.
+You destroy an `NFToken` using the <code>[NFTokenBurn](references/protocol-reference/ledger-data/ledger-object-types/nftokenburn.html)</code> transaction.
 
 
 ## `NFToken` Lifecycle
@@ -83,12 +83,12 @@ You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the
 
 
 
-* <code>[NFTokenMint](nftokenmint.html)</code>
-* <code>[NFTokenOffer](nftokenoffer.html)</code>
-    * NFTokenCreateOffer
-    * NFTokenCancelOffer
-    * NFTokenAcceptOffer
-* <code>[NFTokenBurn](nftokenburn.html)</code>
+* <code>[NFTokenMint](references/protocol-reference/ledger-data/ledger-object-types/nftokenmint.html)</code>
+* <code>[NFTokenOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.html)</code>
+    * [NFTokenCreateOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokencreateoffer.html)
+    * [NFTokenCancelOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokencanceloffer.html)
+    * [NFTokenAcceptOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokenacceptoffer.html)
+* <code>[NFTokenBurn](references/protocol-reference/ledger-data/ledger-object-types/nftokenburn.html)</code>
 
 
 ### Requests
