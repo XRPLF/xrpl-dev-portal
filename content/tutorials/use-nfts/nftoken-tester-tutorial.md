@@ -19,7 +19,7 @@ This example builds a JavaScript test harness where you can create NFTokens and 
 
 # Prerequisites
 
-To mint a token, you need to generate Account and Secret credentials. Go to [https://xrpl.org/xrp-testnet-faucet.html](https://xrpl.org/xrp-testnet-faucet.html) and click **Generate Devnet credentials**. You can also obtain a second set of account credentials to try creating and accepting buy and sell offers.
+To mint a `NFToken`, you need to generate Account and Secret credentials for the NFT sandbox (wss://xls20-sandbox.rippletest.net:51233). Go to [https://xrpl.org/xrp-testnet-faucet.html](https://xrpl.org/xrp-testnet-faucet.html) and click **Generate NFT-Devnet credentials**. You can also obtain a second set of account credentials to try creating and accepting buy and sell offers.
 
 You will need a URL to the token data you want to turn into a `NFToken`. You can use your own object or this example IPFS address for testing.
 
@@ -29,7 +29,7 @@ ipfs://QmQjDvDhfHcMyUgDAxKig4AoMTtS5JrsfpiEEpFa3F9QRt
 ```
 
 
-Open `NFTokenTester.htm` in a web browser, and display the JavaScript console. For example, in Google Chrome choose **View>Developer>JavaScript Console**.
+Open `NFTokenTester.htm` in a web browser, and display the JavaScript console. For example, in Google Chrome choose **View> Developer> JavaScript Console**.
 
 You can find the full code for the `NFTokenTester.htm` <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/content/tutorials/use-nfts/NFTokenTester.htm">here</a>. The walkthrough below describes key sections in the code. The functions share much of the same code, with the only changes in the body of the transaction arguments themselves.
 
@@ -80,7 +80,7 @@ The `mintToken()`function creates a `NFToken` object on your account’s `NFToke
 async function mintToken() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
 	const client = new
-         xrpl.Client("wss://devnet.xrpl.org/:51233")
+         xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to devnet")
 
@@ -190,7 +190,7 @@ The `getTokens` function steps are:
 ```
 async function getTokens() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://devnet.xrpl.org/:51233")
+	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to devnet")
 
@@ -273,7 +273,7 @@ The `getTokens` function steps are:
 ```
 async function burnToken() {
   const wallet = xrpl.Wallet.fromSeed(secret.value)
-  const client = new xrpl.Client("wss://devnet.xrpl.org/:51233")
+  const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
   await client.connect()
   console.log("Connected to devnet")
 
@@ -389,7 +389,7 @@ The `createSellOffer()` function steps are:
 ```
 async function createSellOffer() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://devnet.xrpl.org/:51233")
+	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to devnet")
 
@@ -523,7 +523,7 @@ The `createBuyOffer()` function steps are:
 async function createBuyOffer() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://devnet.xrpl.org/:51233")
+	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to devnet")
 
@@ -649,7 +649,7 @@ async function getOffers() {
 
 ```
     const wallet = xrpl.Wallet.fromSeed(secret.value)
-    const client = new xrpl.Client("wss://devnet.xrpl.org/:51233")
+    const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
     await client.connect()
     console.log("Connected to devnet")
 
@@ -741,7 +741,7 @@ The `cancelOffer()` function steps are:
 ```
 async function cancelOffer() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://devnet.xrpl.org/:51233")
+	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to devnet")
 
@@ -876,7 +876,7 @@ The `acceptSellOffer()` function steps are:
 async function acceptSellOffer() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://devnet.xrpl.org/:51233")
+	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to devnet")
 
@@ -976,7 +976,7 @@ async function acceptBuyOffer() {
 
 ```
   const wallet = xrpl.Wallet.fromSeed(secret.value)
-  const client = new xrpl.Client("wss://devnet.xrpl.org/:51233")
+  const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
   await client.connect()
   console.log("Connected to devnet")
 
