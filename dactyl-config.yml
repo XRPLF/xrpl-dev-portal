@@ -2072,7 +2072,7 @@ pages:
         targets:
             - en
             - ja
-            
+
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftoken.md
         targets:
             - en
@@ -2087,7 +2087,7 @@ pages:
         targets:
             - en
             - ja
-            
+
     -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.md
         targets:
             - en
@@ -2237,7 +2237,7 @@ pages:
             - en
             - ja
 
-     -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
+    -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
         targets:
             - en
             - ja
@@ -2247,12 +2247,12 @@ pages:
             - en
             - ja
 
-         
+
     -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.md
         targets:
             - en
             - ja
-            
+
     -   md: references/protocol-reference/transactions/transaction-types/offercancel.md
         targets:
             - en
