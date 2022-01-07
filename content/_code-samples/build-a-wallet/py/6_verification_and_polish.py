@@ -1,18 +1,17 @@
 # "Build a Wallet" tutorial, step 6: Verification and Polish
-# TODO: description
+# This step adds sanity checks to the Send XRP dialog, along with some other
+# small improvements.
 import xrpl
 
 import asyncio
-import requests
-import toml
 import re
 import wx
 import wx.dataview
 import wx.adv
 from threading import Thread
 from decimal import Decimal
-from queue import Queue, Empty
 
+from verify_domain import verify_account_domain
 
 class XRPLMonitorThread(Thread):
     """
@@ -25,15 +24,23 @@ class XRPLMonitorThread(Thread):
         self.gui = gui
         self.url = url
         self.account = account
-        #self.client = xrpl.clients.WebsocketClient(self.ws_url, timeout=0.2)
-        #self.jobq = Queue() # for incoming requests from the GUI
         self.loop = loop
 
     def run(self):
+        """
+        This thread runs a never-ending event-loop that monitors messages coming
+        from the XRPL, sending them to the GUI thread when necessary, and also
+        handles making requests to the XRPL when the GUI prompts them.
+        """
         asyncio.set_event_loop(self.loop)
         self.loop.run_forever()
 
     async def watch_xrpl(self):
+        """
+        This is the task that opens the connection to the XRPL, then handles
+        incoming subscription messages by dispatching them to the appropriate
+        part of the GUI.
+        """
         async with xrpl.asyncio.clients.AsyncWebsocketClient(self.url) as self.client:
             await self.on_connected()
             async for message in self.client:
@@ -50,22 +57,29 @@ class XRPLMonitorThread(Thread):
 
     async def on_connected(self):
         """
-        Set up initial subscriptions and pass initial responses from the network
-        back to the GUI thread for display.
+        Set up initial subscriptions and populate the GUI with data from the
+        ledger on startup. Requires that self.client be connected first.
         """
+        # Set up 2 subscriptions: all new ledgers, and any new transactions that
+        # affect the chosen account.
         response = await self.client.request(xrpl.models.requests.Subscribe(
             streams=["ledger"],
             accounts=[self.account]
         ))
-        # The immediate response contains details for the last validated ledger
+        # The immediate response contains details for the last validated ledger.
+        # We can use this to fill in that area of the GUI without waiting for a
+        # new ledger to close.
         wx.CallAfter(self.gui.update_ledger, response.result)
 
-        # Get starting values for account info, account transaction history
+        # Get starting values for account info.
         response = await self.client.request(xrpl.models.requests.AccountInfo(
             account=self.account,
             ledger_index="validated"
         ))
         wx.CallAfter(self.gui.update_account, response.result["account_data"])
+        # Get the first page of the account's transaction history. Depending on
+        # the server we're connected to, the account's full history may not be
+        # available.
         response = await self.client.request(xrpl.models.requests.AccountTx(
             account=self.account
         ))
@@ -74,7 +88,8 @@ class XRPLMonitorThread(Thread):
 
     async def check_destination(self, destination, dlg):
         """
-        Check a potential destination address's details:
+        Check a potential destination address's details, and pass them back to
+        a "Send XRP" dialog:
         - Is the account funded?
             If not, payments below the reserve base will fail
         - Do they have DisallowXRP enabled?
@@ -82,6 +97,8 @@ class XRPLMonitorThread(Thread):
             through.
         - Do they have a verified Domain?
             If so, we want to show the user the associated domain info.
+
+        Requires that self.client be connected first.
         """
 
         # The data to send back to the GUI thread: None for checks that weren't
@@ -94,7 +111,7 @@ class XRPLMonitorThread(Thread):
             "domain_str": "" # the decoded domain, regardless of verification
         }
 
-        # Look up account, see if it's even funded
+        # Look up the account. If this fails, the account isn't funded.
         try:
             response = await xrpl.asyncio.account.get_account_info(destination,
                     self.client, ledger_index="validated")
@@ -103,7 +120,7 @@ class XRPLMonitorThread(Thread):
         except xrpl.asyncio.clients.exceptions.XRPLRequestFailureException:
             # Not funded, so the other checks don't apply.
             account_status["funded"] = False
-            wx.CallAfter(dlg.UpdateDestInfo, account_status)
+            wx.CallAfter(dlg.update_dest_info, account_status)
             return
 
         # Check DisallowXRP flag
@@ -118,14 +135,16 @@ class XRPLMonitorThread(Thread):
         account_status["domain_verified"] = verified
         account_status["domain_str"] = domain
 
-        # TODO: check Deposit Auth
+        # If you want to also check Deposit Auth, here's where you would do so.
 
         # Send data back to the main thread.
-        wx.CallAfter(dlg.UpdateDestInfo, account_status)
+        wx.CallAfter(dlg.update_dest_info, account_status)
 
     async def send_xrp(self, paydata):
+        """
+        Prepare, sign, and send an XRP payment with the provided parameters.
+        """
         dtag = paydata.get("dtag")
-        wallet = paydata.get("wallet")
         if dtag.strip() == "":
             dtag = None
         if dtag is not None:
@@ -140,12 +159,11 @@ class XRPLMonitorThread(Thread):
 
         tx = xrpl.models.transactions.Payment(
             account=self.account,
-            sequence=wallet.sequence,
             destination=paydata["to"],
             amount=xrpl.utils.xrp_to_drops(paydata["amt"]),
             destination_tag=dtag
         )
-        tx_signed = await xrpl.asyncio.transaction.safe_sign_and_autofill_transaction(tx, wallet, self.client)
+        tx_signed = await xrpl.asyncio.transaction.safe_sign_and_autofill_transaction(tx, self.gui.wallet, self.client)
         await xrpl.asyncio.transaction.submit_transaction(tx_signed, self.client)
         wx.CallAfter(self.gui.add_pending_tx, tx_signed)
 
@@ -161,8 +179,8 @@ class AutoGridBagSizer(wx.GridBagSizer):
     def BulkAdd(self, ctrls):
         """
         Given a two-dimensional iterable `ctrls`, add all the items in a grid
-        top-to-bottom, left-to-right, with each inner iterable being a row and a
-        total number of columns based on the longest iterable.
+        top-to-bottom, left-to-right, with each inner iterable being a row. Set
+        the total number of columns based on the longest iterable.
         """
         flags = wx.EXPAND|wx.ALL|wx.RESERVE_SPACE_EVEN_IF_HIDDEN|wx.ALIGN_CENTER_VERTICAL
         for x, row in enumerate(ctrls):
@@ -209,7 +227,7 @@ class SendXRPDialog(wx.Dialog):
         self.txt_amt.SetDigits(6)
         self.txt_amt.SetIncrement(1.0)
 
-
+        # The "Send" button is functionally an "OK" button except for the text.
         btn_send = wx.Button(self, wx.ID_OK, label="Send")
         btn_cancel = wx.Button(self, wx.ID_CANCEL)
 
@@ -220,14 +238,16 @@ class SendXRPDialog(wx.Dialog):
                        (btn_cancel, btn_send)) )
         sizer.Fit(self)
 
+        self.txt_dtag.Bind(wx.EVT_TEXT, self.on_dest_tag_edit)
+        self.txt_to.Bind(wx.EVT_TEXT, self.on_to_edit)
 
-        self.txt_dtag.Bind(wx.EVT_TEXT, self.onDestTagEdit)
-        ## TODO: why does this only run when the dialog is closed?
-        ## and is there a fix for AsyncShowDialog causing an invalid ptr deref??
-        self.txt_to.Bind(wx.EVT_TEXT, self.onToEdit)
-        #AsyncBind(wx.EVT_TEXT, self.onToEdit, self.txt_to)
-
-    def onToEdit(self, event):
+    def on_to_edit(self, event):
+        """
+        When the user edits the "To" field, check that the address is well-
+        formatted. If it's an X-address, fill in the destination tag and disable
+        it. Also, start a background check to confirm more details about the
+        address.
+        """
         v = self.txt_to.GetValue().strip()
         # Reset warnings / domain verification
         err_msg = ""
@@ -256,8 +276,7 @@ class SendXRPDialog(wx.Dialog):
         elif v == self.parent.classic_address:
             err_msg = "Can't send XRP to self."
         else:
-            task = asyncio.run_coroutine_threadsafe(self.parent.worker.check_destination(v, self), self.parent.worker_loop)
-            task.result()
+            self.parent.run_bg_job(self.parent.worker.check_destination(v, self))
 
         if err_msg:
             self.err_to.SetToolTip(err_msg)
@@ -265,21 +284,32 @@ class SendXRPDialog(wx.Dialog):
         else:
             self.err_to.Hide()
 
-    def onDestTagEdit(self, event):
+    def on_dest_tag_edit(self, event):
+        """
+        When the user edits the Destination Tag field, strip non-numeric
+        characters from it.
+        """
         v = self.txt_dtag.GetValue().strip()
         v = re.sub(r"[^0-9]", "", v)
         self.txt_dtag.ChangeValue(v) # SetValue would generate another EVT_TEXT
         self.txt_dtag.SetInsertionPointEnd()
 
-    def GetPaymentData(self):
+    def get_payment_data(self):
+        """
+        Construct a dictionary with the relevant payment details to pass to the
+        worker thread for making a payment. Called after the user clicks "Send".
+        """
         return {
             "to": self.txt_to.GetValue().strip(),
             "dtag": self.txt_dtag.GetValue().strip(),
             "amt": self.txt_amt.GetValue(),
         }
 
-    def UpdateDestInfo(self, dest_status):
-        print("dest_status:", dest_status) #TODO: remove
+    def update_dest_info(self, dest_status):
+        """
+        Update the UI with details provided by a background job to check the
+        destination address.
+        """
         # Keep existing error message if there is one
         err_msg = self.err_to.GetToolTip().GetTip().strip()
 
@@ -337,8 +367,7 @@ class TWaXLFrame(wx.Frame):
         self.acct_info_area = wx.StaticBox(main_panel, label="Account Info")
 
         lbl_address = wx.StaticText(self.acct_info_area, label="Classic Address:")
-        self.tc_classic_address = wx.TextCtrl(self.acct_info_area, value="TBD")
-        #self.tc_classic_address.Disable() # Only a text control so user can copy-paste
+        self.st_classic_address = wx.StaticText(self.acct_info_area, label="TBD")
         lbl_xaddress = wx.StaticText(self.acct_info_area, label="X-Address:")
         self.st_x_address = wx.StaticText(self.acct_info_area, label="TBD")
         lbl_xrp_bal = wx.StaticText(self.acct_info_area, label="XRP Balance:")
@@ -347,7 +376,7 @@ class TWaXLFrame(wx.Frame):
         self.st_reserve = wx.StaticText(self.acct_info_area, label="TBD")
 
         aia_sizer = AutoGridBagSizer(self.acct_info_area)
-        aia_sizer.BulkAdd( ((lbl_address, self.tc_classic_address),
+        aia_sizer.BulkAdd( ((lbl_address, self.st_classic_address),
                            (lbl_xaddress, self.st_x_address),
                            (lbl_xrp_bal, self.st_xrp_balance),
                            (lbl_reserve, self.st_reserve)) )
@@ -394,9 +423,7 @@ class TWaXLFrame(wx.Frame):
                 "Please enter an account address (for read-only)"
                 " or your secret (for read-write access)",
                 caption="Enter account",
-                # value="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
-                value="snX6rmeLQasF2fLswCB7C4PwMSPD7",#TODO: remove test secret
-                )
+                value="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
         account_dialog.Bind(wx.EVT_TEXT, self.toggle_dialog_style)
 
         if account_dialog.ShowModal() == wx.ID_OK:
@@ -408,14 +435,18 @@ class TWaXLFrame(wx.Frame):
 
         # Attach handlers and start bg thread for updates from the ledger ------
         self.Bind(wx.EVT_BUTTON, self.click_send_xrp, source=self.sxb)
-        #AsyncBind(wx.EVT_BUTTON, self.send_xrp, self.sxb)
-
-        #StartCoroutine(self.monitor_xrpl, self)
         self.worker_loop = asyncio.new_event_loop()
         self.worker = XRPLMonitorThread(url, self, self.classic_address, self.worker_loop)
         self.worker.start()
-        task = asyncio.run_coroutine_threadsafe(self.worker.watch_xrpl(), self.worker_loop)
+        self.run_bg_job(self.worker.watch_xrpl())
 
+    def run_bg_job(self, job):
+        """
+        Schedules a job to run asynchronously in the XRPL worker thread.
+        The job should be a Future (for example, from calling an async function)
+        """
+        task = asyncio.run_coroutine_threadsafe(job, self.worker_loop)
+        
     def toggle_dialog_style(self, event):
         """
         Automatically switches to a password-style dialog if it looks like the
@@ -431,7 +462,9 @@ class TWaXLFrame(wx.Frame):
     def set_up_account(self, value):
         """
         Set up fields for address and wallet (or quit with an error) depending
-        on what input the user provided.
+        on what input the user provided. If the user provides an address, go
+        into "read-only" mode. Note: this app does is not capable of using
+        regular keys or multi-signing yet.
         """
         value = value.strip()
 
@@ -465,8 +498,7 @@ class TWaXLFrame(wx.Frame):
             except Exception as e:
                 print(e)
                 exit(1)
-        #self.st_classic_address.SetLabel(self.classic_address)
-        self.tc_classic_address.ChangeValue(self.classic_address)
+        self.st_classic_address.SetLabel(self.classic_address)
         self.st_x_address.SetLabel(self.xaddress)
 
 
@@ -499,7 +531,7 @@ class TWaXLFrame(wx.Frame):
     def update_account(self, acct):
         """
         Process an account_info response to update the account info area of the
-        UI.
+        UI. This also updates the sequence number of the wallet.
         """
         xrp_balance = str(xrpl.utils.drops_to_xrp(acct["Balance"]))
         self.st_xrp_balance.SetLabel(xrp_balance)
@@ -510,8 +542,8 @@ class TWaXLFrame(wx.Frame):
             self.st_reserve.SetLabel(str(reserve_xrp))
             self.reserve_xrp = reserve_xrp
 
-        # If we're not read-only, we can set the Sequence number and enable the
-        # Send XRP button.
+        # If we're not read-only, we can set/update the Sequence number, and
+        # enable the Send XRP button if it isn't enabled yet.
         if self.wallet:
             self.wallet.sequence = acct["Sequence"]
             self.sxb.Enable()
@@ -521,7 +553,7 @@ class TWaXLFrame(wx.Frame):
         """
         Convert an arbitrary amount value from the XRPL to a string to be
         displayed to the user:
-        - Convert drops of XRP to 6-digit decimal XRP (e.g. '12.345000 XRP')
+        - Convert drops of XRP to 6-decimal XRP (e.g. '12.345000 XRP')
         - For issued tokens, show amount, currency code, and issuer. For
           example, 100 USD issued by address r12345... is returned as
           '100 USD.r12345...'
@@ -540,7 +572,8 @@ class TWaXLFrame(wx.Frame):
 
     def add_tx_row(self, t, prepend=False):
         """
-        Add one row to the account transaction history control.
+        Add one row to the account transaction history control. Helper function
+        called by other methods.
         """
         conf_dt = xrpl.utils.ripple_time_to_datetime(t["tx"]["date"])
         # Convert datetime to locale-default representation & time zone
@@ -574,7 +607,8 @@ class TWaXLFrame(wx.Frame):
         response.
         """
         txs = data["transactions"]
-        # TODO: with pagination, we should leave existing items
+        # Note: if you extend the code to do paginated responses, you might want
+        # to keep previous history instead of deleting the contents first.
         self.tx_list.DeleteAllItems()
         for t in txs:
             self.add_tx_row(t)
@@ -585,7 +619,7 @@ class TWaXLFrame(wx.Frame):
         Assumes only validated transaction streams (e.g. transactions, accounts)
         not proposed transaction streams.
 
-        Also send a notification to the user about it.
+        Also, send a notification to the user about it.
         """
         # Convert to same format as account_tx results
         t["tx"] = t["transaction"]
@@ -598,11 +632,11 @@ class TWaXLFrame(wx.Frame):
         # Scroll to top of list.
         self.tx_list.EnsureVisible(self.tx_list.RowToItem(0))
 
-        # Send a notification message ("toast") about the transaction
+        # Send a notification message (aka a "toast") about the transaction.
         # Note the transaction stream and account_tx include all transactions
         # that "affect" the account, no just ones directly from/to the account.
-        # For example, an issuer gets notified when users transfer its tokens
-        # among themselves.
+        # For example, if the account has issued tokens, it gets notified when
+        # other users transfer those tokens among themselves.
         notif = wx.adv.NotificationMessage(title="New Transaction", message =
                 f"New {t['tx']['TransactionType']} transaction confirmed!")
         notif.SetFlags(wx.ICON_INFORMATION)
@@ -613,19 +647,21 @@ class TWaXLFrame(wx.Frame):
         Add a "pending" transaction to the history based on a transaction model
         that was (presumably) just submitted.
         """
-        tx = txm.to_xrpl()
         confirmation_time = "(pending)"
-        tx_type = tx["TransactionType"]
-        from_acct = tx.get("Account") or ""
+        tx_type = txm.transaction_type
+        from_acct = txm.account
         if from_acct == self.classic_address:
             from_acct = "(Me)"
-        to_acct = tx.get("Destination") or ""
+        # Some transactions don't have a destination, so we need to handle that.
+        to_acct = getattr(txm, "destination", "")
         if to_acct == self.classic_address:
             to_acct = "(Me)"
+        # Delivered amount is only known after a transaction is processed, so
+        # leave this column empty in the display for pending transactions.
         delivered_amt = ""
         tx_hash = txm.get_hash()
         cols = (confirmation_time, tx_type, from_acct, to_acct, delivered_amt,
-                tx_hash, str(tx))
+                tx_hash, str(txm.to_xrpl()))
         self.tx_list.PrependItem(cols)
         self.pending_tx_rows[tx_hash] = self.tx_list.RowToItem(0)
 
@@ -644,42 +680,12 @@ class TWaXLFrame(wx.Frame):
             print("Send XRP canceled")
             return
 
-        paydata = dlg.GetPaymentData()
-        paydata["wallet"] = self.wallet #TODO: is this threadsafe???
-        task = asyncio.run_coroutine_threadsafe(self.worker.send_xrp(paydata), self.worker_loop)
-        task.result()
-
-def verify_account_domain(account):
-    """
-    Verify an account using an xrp-ledger.toml file.
-
-    Params:
-        account:dict - the AccountRoot object to verify
-    Returns (domain:str, verified:bool)
-    """
-    domain_hex = account.get("Domain")
-    if not domain_hex:
-        return "", False
-    verified = False
-    domain = xrpl.utils.hex_to_str(domain_hex)
-    toml_url = f"https://{domain}/.well-known/xrp-ledger.toml"
-    toml_response = requests.get(toml_url)
-    if toml_response.ok:
-        parsed_toml = toml.loads(toml_response.text)
-        toml_accounts = parsed_toml.get("ACCOUNTS", [])
-        for t_a in toml_accounts:
-            if t_a.get("address") == account.get("Account"):
-                verified = True
-                break
-    return domain, verified
+        paydata = dlg.get_payment_data()
+        self.run_bg_job(self.worker.send_xrp(paydata))
 
 if __name__ == "__main__":
-    #JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
-    #JSON_RPC_URL = "http://localhost:5005/"
-    #WS_URL = "wss://s.altnet.rippletest.net:51233"
-    WS_URL= "wss://xrplcluster.com"
-
+    WS_URL = "wss://s.altnet.rippletest.net:51233"
     app = wx.App()
-    frame = TWaXLFrame(WS_URL, test_network=False)
+    frame = TWaXLFrame(WS_URL, test_network=True)
     frame.Show()
     app.MainLoop()
