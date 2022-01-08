@@ -2,10 +2,8 @@
 html: nftokenburn.html
 parent: transaction-types.html
 blurb: Use TokenBurn to permanently destroy NFTs.
-filters:
- - include_code
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 status: not_enabled
 ---
 # NFTokenBurn
@@ -62,7 +60,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    </td>
    <td>string
    </td>
-   <td>Account ID
+   <td>AccountID
    </td>
    <td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>MintAccount</code>).
    </td>
@@ -74,7 +72,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    </td>
    <td>string
    </td>
-   <td>UINT256
+   <td>Hash256
    </td>
    <td>Identifies the <code>NFToken</code> object to be removed by the transaction.
    </td>
@@ -112,7 +110,7 @@ Issuers might want to issue NFTs from their well known account, while at the sam
    </td>
    <td>string
    </td>
-   <td>Account ID
+   <td>AccountID
    </td>
    <td>The <code>MintAccount</code> field, if set, specifies an alternate account which is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
    </td>

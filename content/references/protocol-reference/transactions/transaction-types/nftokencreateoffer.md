@@ -2,13 +2,11 @@
 html: nftokencreateoffer.html
 parent: transaction-types.html
 blurb: Create an offer to buy or sell NFTs.
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 status: not_enabled
 ---
-# `NFTokenCreateOffer` transaction
+# NFTokenCreateOffer
 {% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenCreateOffer` transaction creates either a new _Sell_ offer for an `NFToken` owned by the account executing the transaction, or a new _Buy_ offer for an `NFToken` owned by another account.
@@ -19,12 +17,12 @@ Each offer costs one incremental reserve.
 
 ```json
 {
-      	"TransactionType": "NFTokenCreateOffer",
-      	"Account": "rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX",
-      	"TokenID": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007",
-      	"Amount": "1000000",
-      	"Flags": 1
-  }
+  	"TransactionType": "NFTokenCreateOffer",
+  	"Account": "rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX",
+  	"TokenID": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007",
+  	"Amount": "1000000",
+  	"Flags": 1
+}
 ```
 
 ## `NFTokenCreateOffer` Fields
@@ -49,7 +47,7 @@ Each offer costs one incremental reserve.
    </td>
    <td>string
    </td>
-   <td>UINT16
+   <td>UInt16
    </td>
    <td>Indicates the new transaction type <code>NFTokenCreateOffer</code>. The integer identifier is <code>27</code>.
    </td>
@@ -73,9 +71,9 @@ Each offer costs one incremental reserve.
    </td>
    <td>string
    </td>
-   <td>Account ID
+   <td>AccountID
    </td>
-   <td>Indicates the <code>AccountID</code> of the account that owns the corresponding <code>NFToken</code>.
+   <td>Who owns the corresponding <code>NFToken</code>.
 <ul>
 
 <li>
@@ -119,7 +117,7 @@ The amount must be non-zero, except where this is an offer to sell and the asset
    </td>
    <td>number
    </td>
-   <td>UINT32
+   <td>UInt32
    </td>
    <td>Indicates the time after which the offer will no longer be valid. The value is the number of seconds since the <a href="https://xrpl.org/basic-data-types.html#specifying-time">Ripple Epoch</a>.
    </td>
@@ -135,7 +133,7 @@ The amount must be non-zero, except where this is an offer to sell and the asset
    </td>
    <td>If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to accept this offer MUST fail.
 <p>
-If succesful, <code>NFTokenCreateOffer</code> transaction results in the creation of <code>NFTokenOffer</code> object.
+If successful, the transaction creates a [NFTokenOffer object][].
    </td>
   </tr>
   <tr>
@@ -145,7 +143,7 @@ If succesful, <code>NFTokenCreateOffer</code> transaction results in the creatio
    </td>
    <td>number
    </td>
-   <td>UINT32
+   <td>UInt32
    </td>
    <td>A set of flags that specifies options or controls the behavior of the transaction. The flag is defined in the table below.
    </td>

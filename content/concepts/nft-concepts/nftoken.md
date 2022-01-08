@@ -27,7 +27,7 @@ Unlike other objects, `NFToken` has no field to identify the object type or curr
 
 ## TokenID
 
-TokenID, optional, string, UINT256
+TokenID, optional, string, UInt256
 
 This composite field uniquely identifies a token, and consists of the following sections.
 

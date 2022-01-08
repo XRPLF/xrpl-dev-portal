@@ -77,7 +77,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    </td>
    <td>string
    </td>
-   <td>UINT256
+   <td>UInt256
    </td>
    <td>Identifies the <code>NFToken</code> object to be removed by the transaction.
    </td>

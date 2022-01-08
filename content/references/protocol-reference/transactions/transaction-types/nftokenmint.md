@@ -2,16 +2,14 @@
 html: nftokenmint.html
 parent: transaction-types.html
 blurb: Use TokenMint to issue new NFTs.
-filters:
- - include_code
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 status: not_enabled
 ---
 # NFTokenMint
 {% include '_snippets/nfts-disclaimer.md' %}
 
-The `NFTokenMint` transaction creates a `NFToken` object and adds it to the relevant `NFTokenPage` object of the `minter`. A required parameter to this transaction is the `Token` field specifying the actual token. This transaction is the only opportunity the `minter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
+The `NFTokenMint` transaction creates a [NFToken object][] and adds it to the relevant [NFTokenPage object][] of the `minter`. A required parameter to this transaction is the `Token` field specifying the actual token. This transaction is the only opportunity the `minter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
 
 If the transaction is successful, the newly minted token is owned by the account (the `minter` account) that executed the transaction. If needed, the server creates a new `NFTokenPage`  for the account and applies a reserve charge.
 
@@ -71,7 +69,7 @@ In executing, this transaction examines the `MintedTokens` field in the account 
    </td>
    <td><code>string</code>
    </td>
-   <td><code>UINT16</code>
+   <td><code>UInt16</code>
    </td>
    <td>Indicates the new transaction type <code>NFTokenMint</code>. The integer value is <code>25</code>.
    </td>
@@ -83,7 +81,7 @@ In executing, this transaction examines the `MintedTokens` field in the account 
    </td>
    <td><code>string</code>
    </td>
-   <td><code>ACCOUNT ID</code>
+   <td><code>AccountID</code>
    </td>
    <td>Indicates the account that is minting the token. The account MUST <em>either</em>:
 <ul>
@@ -102,7 +100,7 @@ In executing, this transaction examines the `MintedTokens` field in the account 
    </td>
    <td><code>string</code>
    </td>
-   <td><code>ACCOUNT ID</code>
+   <td><code>AccountID</code>
    </td>
    <td>Indicates the account that issues the token. This value is <em>optional</em> and should only be specified if the account executing the transaction is not the <code>Issuer</code> of the <code>NFToken</code> object. If it is present, the <code>MintAccount</code> field in the <code>AccountRoot</code> of the <code>Issuer</code> field must match the <code>Account</code>. Otherwise, the transaction fails.
    </td>
@@ -114,7 +112,7 @@ In executing, this transaction examines the `MintedTokens` field in the account 
    </td>
    <td><code>number</code>
    </td>
-   <td><code>UINT32</code>
+   <td><code>UInt32</code>
    </td>
    <td>The taxon associated with the token. The taxon is generally a value chosen by the <code>minter</code> of the token. A given taxon can be used for multiple tokens. This implementation reserves all taxon identifiers greater than or equal to <code>0x80000000</code>; attempts to use mint tokens with such taxons should fail and a fee should be claimed.
    </td>
@@ -126,7 +124,7 @@ In executing, this transaction examines the `MintedTokens` field in the account 
    </td>
    <td><code>number</code>
    </td>
-   <td><code>UINT16</code>
+   <td><code>UInt16</code>
    </td>
    <td>The value specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01.
 <p>
@@ -152,7 +150,7 @@ The field MUST NOT be present if <code>tfTransferable</code> is not set. If it i
    </td>
    <td><code>number</code>
    </td>
-   <td><code>UINT32</code>
+   <td><code>UInt32</code>
    </td>
    <td>Specifies the flags used for the minting transaction. See the mint transaction flags in the following table.
    </td>

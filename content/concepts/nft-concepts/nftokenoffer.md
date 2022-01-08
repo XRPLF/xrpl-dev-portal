@@ -65,7 +65,7 @@ The unique ID (`NFTokenOfferID)` of the `NFTokenOffer` object is the result of t
    </td>
    <td>string
    </td>
-   <td>UINT16
+   <td>UInt16
    </td>
    <td>The type of ledger object (<code>0x0074</code>).
    </td>
@@ -89,7 +89,7 @@ The unique ID (`NFTokenOfferID)` of the `NFTokenOffer` object is the result of t
    </td>
    <td>number
    </td>
-   <td>UINT32
+   <td>UInt32
    </td>
    <td>Index of the ledger that contains the transaction that most recently modified this object.
    </td>
@@ -101,7 +101,7 @@ The unique ID (`NFTokenOfferID)` of the `NFTokenOffer` object is the result of t
    </td>
    <td>string
    </td>
-   <td>UINT256
+   <td>UInt256
    </td>
    <td><code>TokenID</code> of the <code>NFToken</code> object referenced by this offer.
    </td>
@@ -127,7 +127,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
    </td>
    <td>number
    </td>
-   <td>UINT32
+   <td>UInt32
    </td>
    <td>The time after which the offer is no longer active. The value is the number of seconds since the <a href="https://xrpl.org/basic-data-types.html#specifying-time">Ripple Epoch</a>.
    </td>
@@ -151,7 +151,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
    </td>
    <td>string
    </td>
-   <td>UINT64
+   <td>UInt64
    </td>
    <td>Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.
    </td>
@@ -163,7 +163,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
    </td>
    <td>string
    </td>
-   <td>UINT64
+   <td>UInt64
    </td>
    <td>Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.
    </td>
@@ -175,7 +175,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
    </td>
    <td>number
    </td>
-   <td>UINT32
+   <td>UInt32
    </td>
    <td>A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.
    </td>
@@ -276,7 +276,7 @@ Each offer costs one incremental reserve.
    </td>
    <td>string
    </td>
-   <td>UINT16
+   <td>UInt16
    </td>
    <td>Indicates the new transaction type <code>NFTokenCreateOffer</code>. The integer identifier is <code>27</code>.
    </td>
@@ -346,7 +346,7 @@ The amount must be non-zero, except where this is an offer to sell and the asset
    </td>
    <td>number
    </td>
-   <td>UINT32
+   <td>UInt32
    </td>
    <td>Indicates the time after which the offer will no longer be valid. The value is the number of seconds since the <a href="https://xrpl.org/basic-data-types.html#specifying-time">Ripple Epoch</a>.
    </td>
@@ -372,7 +372,7 @@ If succesful, <code>NFTokenCreateOffer</code> transaction results in the creatio
    </td>
    <td>number
    </td>
-   <td>UINT32
+   <td>UInt32
    </td>
    <td>A set of flags that specifies options or controls the behavior of the transaction. The flag is defined in the table below.
    </td>
@@ -453,7 +453,7 @@ An `NFTokenCancelOffer` object can have the following required and optional fiel
    </td>
    <td>string
    </td>
-   <td>UINT16
+   <td>UInt16
    </td>
    <td><code>NFTokenCancelOffer</code> transaction type . The integer identifier is <code>28</code>.
    </td>
@@ -590,7 +590,7 @@ In brokered mode, the `NFTokenAcceptOffer` transaction fails if:
    </td>
    <td>string
    </td>
-   <td>UINT16
+   <td>UInt16
    </td>
    <td>Transaction type <code>NFTokenAcceptOffer</code>. The sequence number of a previous <code>NFTokenCreateOffer</code> transaction. The integer identifier is <code>29</code>.
    </td>
@@ -602,7 +602,7 @@ In brokered mode, the `NFTokenAcceptOffer` transaction fails if:
    </td>
    <td>string
    </td>
-   <td>UINT256
+   <td>UInt256
    </td>
    <td>Identifies the <code>NFTokenOffer</code> that offers to sell the <code>NFToken</code>.
 <p>
@@ -616,7 +616,7 @@ In direct mode this field is optional, but you must specify either the <code>Sel
    </td>
    <td>string
    </td>
-   <td>UINT256
+   <td>UInt256
    </td>
    <td>Identifies the <code>NFTokenOffer</code> that offers to buy the <code>NFToken</code>.
 <p>

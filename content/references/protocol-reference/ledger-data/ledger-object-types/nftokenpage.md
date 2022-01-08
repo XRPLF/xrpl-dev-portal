@@ -8,7 +8,7 @@ labels:
  - Non-fungible Tokens, NFTs
 status: not_enabled
 ---
-# The `NFTokenPage` Object
+# NFTokenPage
 {% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenPage` object represents a collection of `NFToken` objects owned by the same account. An account can have multiple `NFTokenPage` ledger objects, which form a doubly-linked list (DLL).
@@ -69,7 +69,7 @@ An `NFTokenPage` object can have the following required and optional fields:
    </td>
    <td>string
    </td>
-   <td>UINT16
+   <td>UInt16
    </td>
    <td>Identifies the type of ledger object. The reserved ledger entry type is <code>0x0050</code>.
    </td>
@@ -81,7 +81,7 @@ An `NFTokenPage` object can have the following required and optional fields:
    </td>
    <td>string
    </td>
-   <td>UINT256
+   <td>Hash256
    </td>
    <td>The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
    </td>
@@ -93,7 +93,7 @@ An `NFTokenPage` object can have the following required and optional fields:
    </td>
    <td><code>string</code>
    </td>
-   <td><code>UINT256</code>
+   <td><code>Hash256</code>
    </td>
    <td>The locator of the next page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
    </td>
@@ -117,7 +117,7 @@ An `NFTokenPage` object can have the following required and optional fields:
    </td>
    <td><code>number</code>
    </td>
-   <td><code>UINT32</code>
+   <td><code>UInt32</code>
    </td>
    <td>The sequence of the ledger that contains the transaction that most recently modified this <code>NFTokenPage</code> object.
    </td>

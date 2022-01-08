@@ -4,6 +4,7 @@ parent: transaction-types.html
 blurb: Cancel existing token offers to buy or sell an NFToken.
 labels:
   - NFTs, Non-fungible Tokens
+status: not_enabled
 ---
 # NFTokenCancelOffer
 {% include '_snippets/nfts-disclaimer.md' %}
@@ -14,17 +15,15 @@ The `NFTokenCancelOffer` transaction can be used to cancel existing token offers
 
 ```json
 {
-      	"TransactionType": "NFTokenCancelOffer",
-      	"Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      	"TokenIDs": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007"
-  }
+  	"TransactionType": "NFTokenCancelOffer",
+  	"Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+  	"TokenIDs": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007"
+}
 ```
 
 ## Permissions
 
 An existing offer, represented by an `NFTokenOffer` object, can be cancelled by:
-
-
 
 * The account that originally created the `NFTokenOffer`.
 * The account in the `Destination` field of the `NFTokenOffer`, if one is present.
@@ -35,47 +34,10 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 
 {% include '_snippets/tx-fields-intro.md' %}
 
-<table>
-  <tr>
-   <td><strong>Field Name</strong>
-   </td>
-   <td><strong>Required?</strong>
-   </td>
-   <td><strong>JSON Type</strong>
-   </td>
-   <td><strong>Internal Type</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><code>TransactionType</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>UINT16
-   </td>
-   <td><code>NFTokenCancelOffer</code> transaction type. The integer identifier is <code>28</code>.
-   </td>
-  </tr>
-  <tr>
-   <td><code>TokenIDs</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>array
-   </td>
-   <td>VECTOR256
-   </td>
-   <td>An array of <code>TokenID</code> objects, each identifying the <code>NFTokenOffer</code> object that should be cancelled by this transaction.
-<p>
-It is an error if an entry in this list points to an object that is not an <code>NFTokenOffer</code> object. It is not an error if an entry in this list points to an object that does not exist.
-   </td>
-  </tr>
-</table>
-
+| Field           | JSON Type | [Internal Type][] | Description                |
+|:----------------|:----------|:------------------|:---------------------------|
+| TransactionType | String    | UInt16            | NFTokenCancelOffer transaction type. The integer identifier is 28. |
+| TokenIDs        | Array     | VECTOR256         | An array of TokenID objects, each identifying the NFTokenOffer object that should be cancelled by this transaction. It is an error if an entry in this list points to an object that is not an [NFTokenOffer object][]. It is not an error if an entry in this list points to an object that does not exist. |
 
 
 
