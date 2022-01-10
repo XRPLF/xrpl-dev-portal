@@ -29,7 +29,7 @@ ipfs://QmQjDvDhfHcMyUgDAxKig4AoMTtS5JrsfpiEEpFa3F9QRt
 
 Open `nftoken-tester.html` in a web browser, and display the JavaScript console. For example, in Google Chrome choose **View> Developer> JavaScript Console**.
 
-You can find [the NFToken Tester source code in this website's repository]({{github_forkurl}}/tree/{{github_branch}}/content/_code-samples/nftoken-tester/js/nftoken-tester.html). The walkthrough below describes key sections in the code. The functions share much of the same code, with the only changes in the body of the transaction arguments themselves.
+You can find [the NFToken Tester source code in this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/nftoken-tester/js/nftoken-tester.html). The walkthrough below describes key sections in the code. The functions share much of the same code, with the only changes in the body of the transaction arguments themselves.
 
 
 ## The `NFTokenMint` Transaction
