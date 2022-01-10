@@ -49,7 +49,7 @@ An `Offer` object has the following fields:
 | `Sequence`          | Number    | UInt32    | The `Sequence` value of the [OfferCreate][] transaction that created this `Offer` object. Used in combination with the `Account` to identify this Offer. |
 | `TakerPays`         | String or Object | Amount | The remaining amount and type of currency requested by the offer creator. |
 | `TakerGets`         | String or Object | Amount | The remaining amount and type of currency being provided by the offer creator. |
-| `BookDirectory`     | String    | UInt256   | The ID of the [Offer Directory](directorynode.html) that links to this offer. |
+| `BookDirectory`     | String    | Hash256   | The ID of the [Offer Directory](directorynode.html) that links to this offer. |
 | `BookNode`          | String    | UInt64    | A hint indicating which page of the offer directory links to this object, in case the directory consists of multiple pages. |
 | `OwnerNode`         | String    | UInt64    | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | `PreviousTxnID`     | String | Hash256 | The identifying hash of the transaction that most recently modified this object. |

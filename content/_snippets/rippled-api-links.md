@@ -59,9 +59,41 @@
 [XRP、drop単位]: basic-data-types.html#通貨額の指定
 
 <!-- API object types -->
-[AccountRoot object]: accountroot.html
-[AccountRootオブジェクト]: accountroot.html
-[Ticket object]: ticket.html
+{% set ledger_entries = [
+  "AccountRoot",
+  "Amendments",
+  "Check",
+  "DepositPreauth",
+  "DirectoryNode",
+  "Escrow",
+  "FeeSettings",
+  "LedgerHashes",
+  "NegativeUNL",
+  "NFToken",
+  "NFTokenOffer",
+  "NFTokenPage",
+  "Offer",
+  "PayChannel",
+  "RippleState",
+  "SignerList",
+  "Ticket"
+] %}
+
+{% for ledger_entry in ledger_entries %}
+{% if ledger_entry in ["amendments", "depositpreauth", "escrow"] %}
+  {# objects where the naive URL is already taken #}
+[{{ledger_entry}} object]: {{ledger_entry|lower}}-object.html
+  {% if target.lang == "ja" %}
+[{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}-object.html
+  {% endif %}
+{% else %}
+[{{ledger_entry}} object]: {{ledger_entry|lower}}.html
+  {% if target.lang == "ja" %}
+[{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}.html
+  {% endif %}
+{% endif %}
+{% endfor %}
+
 
 <!--{# Links to external sites #}-->
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
