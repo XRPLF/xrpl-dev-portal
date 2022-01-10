@@ -14,12 +14,9 @@ status: not_enabled
 
 The XRP Ledger offers support for tokens, also known as _IOUs _or _issued assets_. Such assets are, primarily, fungible.
 
-
-    Fun·gi·ble /ˈfənjəbəl/ (adj)
-
-
-
-1. able to replace or be replaced by another identical item; mutually interchangeable.
+> Fun·gi·ble /ˈfənjəbəl/ (adj)
+>
+> 1. able to replace or be replaced by another identical item; mutually interchangeable.
 
 Fungible tokens can be easily traded between users for XRP or other issued assets on the XRP Ledger's decentralized exchange. This makes them ideal for payments.
 
