@@ -120,10 +120,10 @@ Edit your `validators.txt` file. This file is located in the same folder as your
     *NFT-Devnet*
 
         [validator_list_sites]
-        TODO
+        http://nftvalidators.s3.us-west-2.amazonaws.com/index.json
 
         [validator_list_keys]
-        TODO
+        EDDB9B7F8D3F2378B3CBCAEFA8BCECFDE67017E06D55EA6C9EA25751072341CA8B
 
     <!-- MULTICODE_BLOCK_END -->
 
@@ -155,7 +155,7 @@ To connect to the NFT-Devnet, you must also forcefully enable the NFT feature, `
 
 ```
 [features]
-XLS20
+NonFungibleTokensV1
 ```
 
 **Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.

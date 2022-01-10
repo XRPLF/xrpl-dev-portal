@@ -84,7 +84,7 @@ $(document).ready(function() {
       "Devnet")
   }
   function nftnet_click(evt) {
-    rippleTestNetCredentials("http://35.161.243.164:3000/accounts",
+    rippleTestNetCredentials("http://faucet.xls20-sandbox.rippletest.net/accounts",
       "NFT-Devnet")
   }
 
