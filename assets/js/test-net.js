@@ -56,6 +56,8 @@ function rippleTestNetCredentials(url, altnet_name) {
       sequence.html('<h3>Sequence</h3> <img class="throbber" src="assets/img/xrp-loader-96.png"> Waiting...').fadeIn('fast')
       if (altnet_name=="Testnet") {
         wait_for_seq("wss://s.altnet.rippletest.net:51233", data.account.address)
+      } else if (altnet_name=="NFT-Devnet") {
+        wait_for_seq("wss://xls20-sandbox.rippletest.net:51233", data.account.address)
       } else {
         wait_for_seq("wss://s.devnet.rippletest.net:51233", data.account.address)
       }
@@ -81,7 +83,12 @@ $(document).ready(function() {
     rippleTestNetCredentials("https://faucet.devnet.rippletest.net/accounts",
       "Devnet")
   }
+  function nftnet_click(evt) {
+    rippleTestNetCredentials("http://faucet.xls20-sandbox.rippletest.net/accounts",
+      "NFT-Devnet")
+  }
 
   $('#testnet-creds-button').click(testnet_click)
   $('#devnet-creds-button').click(devnet_click)
+  $('#nftnet-creds-button').click(nftnet_click)
 })

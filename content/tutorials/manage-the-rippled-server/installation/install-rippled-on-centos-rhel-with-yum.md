@@ -26,6 +26,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     - `stable` for the latest production release (`master` branch)
     - `unstable` for pre-release builds (`release` branch)
     - `nightly` for experimental/development builds (`develop` branch)
+    - `xls20` for the preview of the [XLS-20d NFT standard](https://github.com/XRPLF/XRPL-Standards/discussions/46) :not_enabled:.
 
     <!-- MULTICODE_BLOCK_START -->
 
@@ -63,6 +64,18 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         repo_gpgcheck=1
         baseurl=https://repos.ripple.com/repos/rippled-rpm/nightly/
         gpgkey=https://repos.ripple.com/repos/rippled-rpm/nightly/repodata/repomd.xml.key
+        REPOFILE
+
+    *XLS-20d*
+
+        cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        [xls20]
+        name=xls20
+        baseurl=https://repos.ripple.com/repos/rippled-rpm-test-mirror/xls20
+        enabled=1
+        gpgcheck=0
+        repo_gpgcheck=1
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm-test-mirror/xls20/repodata/repomd.xml.key
         REPOFILE
 
     <!-- MULTICODE_BLOCK_START -->

@@ -9,9 +9,9 @@ labels:
 ---
 # Connect Your rippled to a Parallel Network
 
-Ripple hosts [alternative test and development networks](parallel-networks.html) for developers to test their apps on the latest non-production version of the XRP Ledger (Testnet) or to test and experiment with features on the latest beta version (Devnet). **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](the-rippled-server.html) to either the Testnet or Devnet.
+Various [alternative test and development networks](parallel-networks.html) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](the-rippled-server.html) to any of these test networks.
 
-**Caution:** The Devnet frequently has new and experimental [amendments](amendments.html) enabled, so the latest production release version is likely to be amendment blocked when connecting to Devnet. You should use a pre-release or nightly build when connecting to Devnet.
+**Caution:** On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See the [Parallel Networks Page](parallel-networks.html) for information on what code version each network needs.
 
 ## Steps
 
@@ -42,13 +42,47 @@ Edit your `rippled.cfg` file.
 
         # No [ips] stanza. Use the default hubs to connect to Mainnet.
 
+    *NFT-Devnet*
 
-3. Comment out the previous `[ips]` stanza, if there is one:
+        [ips]
+        xls20-sandbox.rippletest.net 51235
+
+    <!-- MULTICODE_BLOCK_END -->
+
+2. Comment out the previous `[ips]` stanza, if there is one:
 
         # [ips]
         # r.ripple.com 51235
         # zaphod.alloy.ee 51235
         # sahyadri.isrdc.in 51235
+
+3. Add a `[network_id]` stanza with the appropriate value:
+
+    <!-- MULTICODE_BLOCK_START -->
+
+    *Testnet*
+
+        [network_id]
+        testnet
+
+    *Devnet*
+
+        [network_id]
+        devnet
+
+    *Mainnet*
+
+        [network_id]
+        main
+
+    *NFT-Devnet*
+
+        [network_id]
+        20
+
+    <!-- MULTICODE_BLOCK_END -->
+
+    **Note:** This setting is optional, and does not strictly define which network your server follows, but it helps servers find peers who are following the same network.
 
 ## 2. Set your trusted validator list.
 
@@ -83,7 +117,17 @@ Edit your `validators.txt` file. This file is located in the same folder as your
         [validator_list_keys]
         ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 
+    *NFT-Devnet*
+
+        [validator_list_sites]
+        http://nftvalidators.s3.us-west-2.amazonaws.com/index.json
+
+        [validator_list_keys]
+        EDDB9B7F8D3F2378B3CBCAEFA8BCECFDE67017E06D55EA6C9EA25751072341CA8B
+
     <!-- MULTICODE_BLOCK_END -->
+
+    **Tip:** The packages for the NFT preview should already contain the necessary stanzas, but check them just in case.
 
 1. Comment out any previous `[validator_list_sites]`, `[validator_list_keys]`, or `[validators]` stanzas.
 
@@ -105,13 +149,13 @@ Edit your `validators.txt` file. This file is located in the same folder as your
             # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
             # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
 
-## 3. (Devnet Only) Enable Features
+## 3. (NFT-Devnet Only) Enable Features
 
-To connect to Devnet, you must also forcefully enable any experimental features that are currently in testing on Devnet. Add or modify the `[features]` stanza of your config file as follows:
+To connect to the NFT-Devnet, you must also forcefully enable the NFT feature, `XLS20`. Add or modify the `[features]` stanza of your config file as follows:
 
 ```
 [features]
-NegativeUNL
+NonFungibleTokensV1
 ```
 
 **Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
@@ -135,21 +179,21 @@ The following example shows how to check the latest validated ledger from the co
 *Local Server*
 
 ```sh
-$ rippled server_info | grep seq
+rippled server_info | grep seq
 ```
 
 *Testnet*
 
 ```sh
 # s.altnet.rippletest.net
-$ rippled --rpc_ip 35.158.96.209:51234 server_info | grep seq
+rippled --rpc_ip 35.158.96.209:51234 server_info | grep seq
 ```
 
 *Devnet*
 
 ```sh
 # s.devnet.rippletest.net
-$ rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
+rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
 ```
 
 
@@ -157,7 +201,14 @@ $ rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
 
 ```sh
 # s1.ripple.com
-$ rippled --rpc_ip 34.201.59.230:51234 server_info | grep seq
+rippled --rpc_ip 34.201.59.230:51234 server_info | grep seq
+```
+
+*NFT-Devnet*
+
+```sh
+# xls20-sandbox.rippletest.net
+rippled --rpc_ip 34.211.220.150:51234 server_info | grep seq
 ```
 
 <!-- MULTICODE_BLOCK_END -->

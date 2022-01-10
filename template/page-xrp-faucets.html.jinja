@@ -9,12 +9,20 @@ wss://s.altnet.rippletest.net:51233
 
 // JSON-RPC
 https://s.altnet.rippletest.net:51234</code></pre>
+
     <h4>Devnet Servers</h4>
     <pre><code>// WebSocket
 wss://s.devnet.rippletest.net:51233
 
 // JSON-RPC
 https://s.devnet.rippletest.net:51234</code></pre>
+
+    <h4>NFT-Devnet Servers</h4>
+    <pre><code>// WebSocket
+wss://xls20-sandbox.rippletest.net:51233
+
+// JSON-RPC
+https://xls20-sandbox.rippletest.net:51234</code></pre>
 {% endblock %}
 
 {% block main %}
@@ -27,7 +35,8 @@ https://s.devnet.rippletest.net:51234</code></pre>
     <p>Testnet and Devnet balances are separate. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.</p>
     <div class="btn-toolbar" role="toolbar" aria-label="Button">
       <button id="testnet-creds-button" class="btn btn-primary mr-2 mb-2">Generate Testnet credentials</button>
-      <button id="devnet-creds-button" class="btn btn-primary mb-2">Generate Devnet credentials</button>
+      <button id="devnet-creds-button" class="btn btn-primary mr-2 mb-2">Generate Devnet credentials</button>
+      <button id="nftnet-creds-button" class="btn btn-primary mb-2">Generate NFT-Devnet credentials</button>
     </div><!--/.btn-toolbar-->
     <div id='your-credentials'></div>
     <div id='loader' style="display: none;"><img class="throbber" src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
