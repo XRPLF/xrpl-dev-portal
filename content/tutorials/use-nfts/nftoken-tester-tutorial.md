@@ -406,7 +406,7 @@ async function createSellOffer() {
       	"Account": wallet.classicAddress,
       	"TokenID": tokenId.value,
       	"Amount": amount.value,
-      	"Flags": 1 //parseInt(flags.value)
+      	"Flags": parseInt(flags.value)
   }
 
 ```
@@ -541,7 +541,7 @@ async function createBuyOffer() {
       	"Owner": owner.value,
       	"TokenID": tokenId.value,
       	"Amount": amount.value,
-      	"Flags": 0 //parseInt(flags.value)
+      	"Flags": parseInt(flags.value)
   }
 
 ```
