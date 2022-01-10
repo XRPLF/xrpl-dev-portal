@@ -62,6 +62,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     - `unstable` - Pre-release builds ([`release` branch](https://github.com/ripple/rippled/tree/release))
     - `nightly` - Experimental/development builds ([`develop` branch](https://github.com/ripple/rippled/tree/develop))
+    - `xls20` - Preview of the [XLS-20d NFT standard](https://github.com/XRPLF/XRPL-Standards/discussions/46) :not_enabled:.
 
     **Warning:** Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.
 
