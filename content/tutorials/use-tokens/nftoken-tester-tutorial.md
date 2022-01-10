@@ -407,7 +407,7 @@ async function createSellOffer() {
 
 
 ```js
-  const tx = await client.submitAndWait(transactionBlob,{wallet})//AndWait
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
 
 ```
 
@@ -539,7 +539,7 @@ async function createBuyOffer() {
 
 
 ```js
-  const tx = await client.submit(transactionBlob,{wallet})//AndWait
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
 
 ```
 

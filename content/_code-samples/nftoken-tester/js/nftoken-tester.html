@@ -14,7 +14,7 @@ async function mintToken() {
 	await client.connect()
 	console.log("Connected to Sandbox")
 
-	// Note that you must convert the token URL to a hexadecimal 
+	// Note that you must convert the token URL to a hexadecimal
 	// value for this transaction.
 	// ----------------------------------------------------------
 	const transactionBlob = {
@@ -29,13 +29,13 @@ async function mintToken() {
 
 	const nfts = await client.request({
 		method: "account_nfts",
-		account: wallet.classicAddress  
+		account: wallet.classicAddress
 	})
 	console.log(nfts)
-	
+
 	// Check transaction results -------------------------------------------------
 	console.log("Transaction result:", tx.result.meta.TransactionResult)
-	console.log("Balance changes:", 
+	console.log("Balance changes:",
 	  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
 	client.disconnect()
 } //End of mintToken
@@ -51,7 +51,7 @@ async function getTokens() {
 	console.log("Connected to Sandbox")
 	const nfts = await client.request({
 		method: "account_nfts",
-		account: wallet.classicAddress  
+		account: wallet.classicAddress
 	})
 	console.log(nfts)
 	client.disconnect()
@@ -78,12 +78,12 @@ async function burnToken() {
   const tx = await client.submitAndWait(transactionBlob,{wallet})
   const nfts = await client.request({
 	method: "account_nfts",
-	account: wallet.classicAddress  
+	account: wallet.classicAddress
   })
   console.log(nfts)
   // Check transaction results -------------------------------------------------
   console.log("Transaction result:", tx.result.meta.TransactionResult)
-  console.log("Balance changes:", 
+  console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
   client.disconnect()
 }
@@ -109,7 +109,7 @@ async function createSellOffer() {
   }
 
   // Submit signed blob --------------------------------------------------------
-  
+
   const tx = await client.submitAndWait(transactionBlob,{wallet})//AndWait
 
 
@@ -118,7 +118,7 @@ async function createSellOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value  
+		tokenid: tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -136,9 +136,9 @@ async function createSellOffer() {
   console.log(JSON.stringify(nftBuyOffers,null,2))
 
   // Check transaction results -------------------------------------------------
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
-  console.log("Balance changes:", 
+  console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
   client.disconnect()
   // End of createSellOffer()
@@ -165,14 +165,14 @@ async function createBuyOffer() {
   }
 
   // Submit signed blob --------------------------------------------------------
-  const tx = await client.submit(transactionBlob,{wallet})//AndWait
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
 
   console.log("***Sell Offers***")
   let nftSellOffers
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value  
+		tokenid: tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -191,9 +191,9 @@ async function createBuyOffer() {
 
 
   // Check transaction results -------------------------------------------------
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
-  console.log("Balance changes:", 
+  console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
   client.disconnect()
   // End of createBuyOffer()
@@ -209,7 +209,7 @@ async function cancelOffer() {
 	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to Sandbox")
-	
+
 	const tokenID = tokenOfferIndex.value
 	const tokenIDs = [tokenID]
 
@@ -221,15 +221,15 @@ async function cancelOffer() {
   }
 
   // Submit signed blob --------------------------------------------------------
-  const tx = await client.submitAndWait(transactionBlob,{wallet}) 
-  
- 
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
+
+
   console.log("***Sell Offers***")
   let nftSellOffers
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value  
+		tokenid: tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -248,11 +248,11 @@ async function cancelOffer() {
 
   // Check transaction results -------------------------------------------------
 
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
-  console.log("Balance changes:", 
+  console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
-  
+
   client.disconnect()
   // End of cancelOffer()
 }
@@ -271,7 +271,7 @@ async function getOffers() {
       try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value  
+		tokenid: tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -308,18 +308,18 @@ async function acceptSellOffer() {
       	"SellOffer": tokenOfferIndex.value,
   }
   // Submit signed blob --------------------------------------------------------
-  const tx = await client.submitAndWait(transactionBlob,{wallet}) 
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
   const nfts = await client.request({
 	method: "account_nfts",
-	account: wallet.classicAddress  
+	account: wallet.classicAddress
   })
   console.log(JSON.stringify(nfts,null,2))
 
   // Check transaction results -------------------------------------------------
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
-  console.log("Balance changes:", 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)) 
+  console.log("Balance changes:",
+    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
   client.disconnect()
   // End of acceptSellOffer()
 }
@@ -341,18 +341,18 @@ async function acceptBuyOffer() {
       	"BuyOffer": tokenOfferIndex.value
   }
   // Submit signed blob --------------------------------------------------------
-  const tx = await client.submitAndWait(transactionBlob,{wallet}) 
+  const tx = await client.submitAndWait(transactionBlob,{wallet})
   const nfts = await client.request({
 	method: "account_nfts",
-	account: wallet.classicAddress  
+	account: wallet.classicAddress
   })
   console.log(JSON.stringify(nfts,null,2))
 
   // Check transaction results -------------------------------------------------
-  console.log("Transaction result:", 
+  console.log("Transaction result:",
       JSON.stringify(tx.result.meta.TransactionResult, null, 2))
   console.log("Balance changes:",
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)) 
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
   client.disconnect()
   // End of submitTransaction()
 }
@@ -389,7 +389,7 @@ async function acceptBuyOffer() {
   </tr>
   <tr>
     <td align="right">Token URL</td>
-    <td><input type="text" id="tokenUrl"  
+    <td><input type="text" id="tokenUrl"
 value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
     </td>
   </tr>
