@@ -161,7 +161,7 @@ async function createBuyOffer() {
       	"Owner": owner.value,
       	"TokenID": tokenId.value,
       	"Amount": amount.value,
-      	"Flags": 0 //parseInt(flags.value)
+      	"Flags": parseInt(flags.value)
   }
 
   // Submit signed blob --------------------------------------------------------
