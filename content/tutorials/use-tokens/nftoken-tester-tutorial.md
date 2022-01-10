@@ -1,9 +1,7 @@
 ---
 html: nftoken-tester-tutorial.html
-parent: use-nfts.html
+parent: use-tokens.html
 blurb: Use a JavaScript test harness to mint, trade, and destroy NFTs.
-filters:
- - include_code
 labels:
   - Non-fungible Tokens, NFTs
 status: not_enabled
@@ -19,7 +17,7 @@ This example builds a JavaScript test harness where you can create NFTokens and 
 
 # Prerequisites
 
-To mint a `NFToken`, you need to generate Account and Secret credentials for the NFT sandbox (wss://xls20-sandbox.rippletest.net:51233). Go to [https://xrpl.org/xrp-testnet-faucet.html](https://xrpl.org/xrp-testnet-faucet.html) and click **Generate NFT-Devnet credentials**. You can also obtain a second set of account credentials to try creating and accepting buy and sell offers.
+To mint a `NFToken`, you need to generate Account and Secret credentials on the NFT-Devnet (`wss://xls20-sandbox.rippletest.net:51233`). Go to the [Test XRP Faucet](xrp-testnet-faucet.html) and click **Generate NFT-Devnet credentials**. You can also obtain a second set of account credentials to try creating and accepting buy and sell offers.
 
 You will need a URL to the token data you want to turn into a `NFToken`. You can use your own object or this example IPFS address for testing.
 
@@ -29,9 +27,9 @@ ipfs://QmQjDvDhfHcMyUgDAxKig4AoMTtS5JrsfpiEEpFa3F9QRt
 ```
 
 
-Open `NFTokenTester.htm` in a web browser, and display the JavaScript console. For example, in Google Chrome choose **View> Developer> JavaScript Console**.
+Open `nftoken-tester.html` in a web browser, and display the JavaScript console. For example, in Google Chrome choose **View> Developer> JavaScript Console**.
 
-You can find the full code for the `NFTokenTester.htm` <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/content/tutorials/use-nfts/NFTokenTester.htm">here</a>. The walkthrough below describes key sections in the code. The functions share much of the same code, with the only changes in the body of the transaction arguments themselves.
+You can find [the NFToken Tester source code in this website's repository]({{github_forkurl}}/tree/{{github_branch}}/content/_code-samples/nftoken-tester/js/nftoken-tester.html). The walkthrough below describes key sections in the code. The functions share much of the same code, with the only changes in the body of the transaction arguments themselves.
 
 
 ## The `NFTokenMint` Transaction
@@ -39,8 +37,6 @@ You can find the full code for the `NFTokenTester.htm` <a href="https://raw.gith
 The best place to begin is by creating your own `NFToken`.
 
 To create an `NFToken`:
-
-
 
 1. In the appropriate fields, enter your **Account** and **Secret** credentials.
 2. Enter the URL to your NFT data.
@@ -64,7 +60,7 @@ The `mintToken()`function creates a `NFToken` object on your account’s `NFToke
 6. Disconnect from the server.
 
 
-```
+```js
 //***************************
 //** Mint Token *************
 //***************************
@@ -76,7 +72,7 @@ The `mintToken()`function creates a `NFToken` object on your account’s `NFToke
 1. Create a wallet and client, then connect to the developer network.
 
 
-```
+```js
 async function mintToken() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
 	const client = new
@@ -91,7 +87,7 @@ async function mintToken() {
 2. Create a `NFTokenMint` transaction using your account address and the `URI` to your token data. Note that you must convert the token `URI` to a hexadecimal value for this transaction. The `TokenTaxon` is a required field, but if you are not using the value as a custom indexing field, you can set it to 0.
 
 
-```
+```js
 	const transactionBlob = {
 		TransactionType: "NFTokenMint",
 		Account: wallet.classicAddress,
@@ -107,7 +103,7 @@ async function mintToken() {
 3. Submit the signed transaction blob and wait for the response.
 
 
-```
+```js
 	const tx = await client.submitAndWait(transactionBlob,{wallet})
 
 ```
@@ -117,7 +113,7 @@ async function mintToken() {
 4.  Send an `account_nfts` request to list all `NFTokens` for your account.
 
 
-```
+```js
 	const nfts = await client.request({
 		method: "account_nfts",
 		account: wallet.classicAddress  
@@ -143,7 +139,7 @@ async function mintToken() {
 6. `Disconnect`
 
 
-```
+```js
 	client.disconnect()
 } //End of mintToken
 ```
@@ -175,7 +171,7 @@ The `getTokens` function steps are:
 4. Disconnect from the server.
 
 
-```
+```js
 //***************************
 //** Get Tokens *************
 //***************************
@@ -187,7 +183,7 @@ The `getTokens` function steps are:
 1. Connect to the devnet server.
 
 
-```
+```js
 async function getTokens() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
 	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
@@ -201,7 +197,7 @@ async function getTokens() {
 2. Request `account_nfts` for your wallet account.
 
 
-```
+```js
 	const nfts = await client.request({
 		method: "account_nfts",
 		account: wallet.classicAddress  
@@ -214,9 +210,8 @@ async function getTokens() {
 3. Display the results in your console log.
 
 
-```
+```js
 	console.log(nfts)
-
 ```
 
 
@@ -224,7 +219,7 @@ async function getTokens() {
 4. Disconnect from the server.
 
 
-```
+```js
 	client.disconnect()
 } //End of getTokens
 ```
@@ -258,7 +253,7 @@ The `getTokens` function steps are:
 6. Disconnect from the server.
 
 
-```
+```js
 //***************************
 //** Burn Token *************
 //***************************
@@ -270,7 +265,7 @@ The `getTokens` function steps are:
 1. Connect to the devnet server
 
 
-```
+```js
 async function burnToken() {
   const wallet = xrpl.Wallet.fromSeed(secret.value)
   const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
@@ -284,7 +279,7 @@ async function burnToken() {
 2. Prepare the `NFTokenBurn` transaction.
 
 
-```
+```js
   const transactionBlob = {
       "TransactionType": "NFTokenBurn",
       "Account": wallet.classicAddress,
@@ -298,9 +293,8 @@ async function burnToken() {
 3. Submit the transaction and wait for the results.
 
 
-```
+```js
   const tx = await client.submitAndWait(transactionBlob,{wallet})
-
 ```
 
 
@@ -308,12 +302,11 @@ async function burnToken() {
 4. Request a refreshed list of the current `NFTokens`, if any.
 
 
-```
+```js
   const nfts = await client.request({
 	method: "account_nfts",
 	account: wallet.classicAddress  
   })
-
 ```
 
 
@@ -321,12 +314,11 @@ async function burnToken() {
 5. Display the results in your console log.
 
 
-```
+```js
   console.log(nfts)
   console.log("Transaction result:", tx.result.meta.TransactionResult)
   console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
-
 ```
 
 
@@ -334,7 +326,7 @@ async function burnToken() {
 6. Disconnect from the server.
 
 
-```
+```js
   client.disconnect()
 }
 // End of burnToken()
@@ -374,7 +366,7 @@ The `createSellOffer()` function steps are:
 6. Disconnect from the server.
 
 
-```
+```js
 //********************************
 //** Create Sell Offer ***********
 //********************************
@@ -386,13 +378,12 @@ The `createSellOffer()` function steps are:
 1. Connect to the devnet server.
 
 
-```
+```js
 async function createSellOffer() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
 	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to devnet")
-
 ```
 
 
@@ -400,7 +391,7 @@ async function createSellOffer() {
 2. Prepare a transaction blob.
 
 
-```
+```js
   const transactionBlob = {
       	"TransactionType": "NFTokenCreateOffer",
       	"Account": wallet.classicAddress,
@@ -408,7 +399,6 @@ async function createSellOffer() {
       	"Amount": amount.value,
       	"Flags": 1 //parseInt(flags.value)
   }
-
 ```
 
 
@@ -416,9 +406,7 @@ async function createSellOffer() {
 3. Submit the transaction and wait for the results.
 
 
-```
-
-
+```js
   const tx = await client.submitAndWait(transactionBlob,{wallet})//AndWait
 
 ```
@@ -428,7 +416,7 @@ async function createSellOffer() {
 4. Request lists of current Sell Offers and Buy Offers. Note that these requests must go in `Try/Catch` blocks: otherwise, If either the Buy offers or Sell offers are empty for the `NFToken`, the script fails with an error.
 
 
-```
+```js
   console.log("***Sell Offers***")
   let nftSellOffers
     try {
@@ -458,7 +446,7 @@ async function createSellOffer() {
 5. Display the results in your console log.
 
 
-```
+```js
   console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
   console.log("Balance changes:",
@@ -471,7 +459,7 @@ async function createSellOffer() {
 6. Disconnect from the server.
 
 
-```
+```js
   client.disconnect()
   // End of createSellOffer()
 }
@@ -507,7 +495,7 @@ The `createBuyOffer()` function steps are:
 6. Disconnect from the server.
 
 
-```
+```js
 //********************************
 //** Create Buy Offer ***********
 //********************************
@@ -519,7 +507,7 @@ The `createBuyOffer()` function steps are:
 1. Connect to the devnet server.
 
 
-```
+```js
 async function createBuyOffer() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
@@ -534,7 +522,7 @@ async function createBuyOffer() {
 2. Prepare a transaction blob.
 
 
-```
+```js
   const transactionBlob = {
       	"TransactionType": "NFTokenCreateOffer",
       	"Account": wallet.classicAddress,
@@ -543,7 +531,6 @@ async function createBuyOffer() {
       	"Amount": amount.value,
       	"Flags": 0 //parseInt(flags.value)
   }
-
 ```
 
 
@@ -551,7 +538,7 @@ async function createBuyOffer() {
 3. Submit the transaction and wait for the results.
 
 
-```
+```js
   const tx = await client.submit(transactionBlob,{wallet})//AndWait
 
 ```
@@ -561,7 +548,7 @@ async function createBuyOffer() {
 4. Request lists of current Sell Offers and Buy Offers.
 
 
-```
+```js
   console.log("***Sell Offers***")
   let nftSellOffers
     try {
@@ -591,7 +578,7 @@ async function createBuyOffer() {
 5. Display the results in your console log.
 
 
-```
+```js
   console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
   console.log("Balance changes:",
@@ -604,7 +591,7 @@ async function createBuyOffer() {
 6. Disconnect from the server.
 
 
-```
+```js
   client.disconnect()
   // End of createBuyOffer()
 }
@@ -633,7 +620,7 @@ The `getOffers()` function steps are:
 3. Disconnect from the server.
 
 
-```
+```js
 //***************************
 //** Get Offers *************
 //***************************
@@ -647,7 +634,7 @@ async function getOffers() {
 1. Enter your **Account** and **Secret** in the appropriate fields.
 
 
-```
+```js
     const wallet = xrpl.Wallet.fromSeed(secret.value)
     const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
     await client.connect()
@@ -660,7 +647,7 @@ async function getOffers() {
 2. Request `nft_sell_offers` and `nft_buy_offers` for your wallet account and send the results to your console log.
 
 
-```
+```js
     console.log("***Sell Offers***")
     let nftSellOffers
       try {
@@ -691,7 +678,7 @@ async function getOffers() {
 3. Disconnect from the server.
 
 
-```
+```js
     client.disconnect()
   // End of getOffers()
 }
@@ -726,7 +713,7 @@ The `cancelOffer()` function steps are:
 6. Disconnect from the server.
 
 
-```
+```js
 //***************************
 //** Cancel Offer ***********
 //***************************
@@ -738,7 +725,7 @@ The `cancelOffer()` function steps are:
 1. Connect to the devnet server.
 
 
-```
+```js
 async function cancelOffer() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
 	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
@@ -752,7 +739,7 @@ async function cancelOffer() {
 2. Prepare a transaction blob. The tokenID argument requires an array rather than a single string.
 
 
-```
+```js
 	const tokenID = offerTokenId.value
 	const tokenIDs = [tokenID]
 
@@ -769,7 +756,7 @@ async function cancelOffer() {
 3. Submit the transaction and wait for the results.
 
 
-```
+```js
   const tx = await client.submitAndWait(transactionBlob,{wallet})
 
 ```
@@ -779,9 +766,7 @@ async function cancelOffer() {
 4. Request lists of current Sell Offers and Buy Offers.
 
 
-```
-
-
+```js
   console.log("***Sell Offers***")
   let nftSellOffers
     try {
@@ -810,7 +795,7 @@ async function cancelOffer() {
 5. Display the results in your console log.
 
 
-```
+```js
   console.log(JSON.stringify(nftBuyOffers,null,2))
   console.log("Transaction result:",
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
@@ -824,7 +809,7 @@ async function cancelOffer() {
 6. Disconnect from the server.
 
 
-```
+```js
   client.disconnect()
   // End of cancelOffer()
 }
@@ -860,7 +845,7 @@ The `acceptSellOffer()` function steps are:
 5. Disconnect from the server.
 
 
-```
+```js
 //***************************
 //** Accept Sell Offer ******
 //***************************
@@ -872,14 +857,13 @@ The `acceptSellOffer()` function steps are:
 1. Connect to the devnet server.
 
 
-```
+```js
 async function acceptSellOffer() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
 	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to devnet")
-
 ```
 
 
@@ -887,13 +871,12 @@ async function acceptSellOffer() {
 2. Prepare a transaction blob.
 
 
-```
+```js
   const transactionBlob = {
       	"TransactionType": "NFTokenAcceptOffer",
       	"Account": wallet.classicAddress,
       	"SellOffer": tokenOfferIndex.value,
   }
-
 ```
 
 
@@ -901,9 +884,8 @@ async function acceptSellOffer() {
 3. Submit the transaction and wait for the results.
 
 
-```
+```js
   const tx = await client.submitAndWait(transactionBlob,{wallet})
-
 ```
 
 
@@ -911,7 +893,7 @@ async function acceptSellOffer() {
 4. Display the results in your console log.
 
 
-```
+```js
   const nfts = await client.request({
 	method: "account_nfts",
 	account: wallet.classicAddress  
@@ -921,7 +903,6 @@ async function acceptSellOffer() {
     JSON.stringify(tx.result.meta.TransactionResult, null, 2))
   console.log("Balance changes:",
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
-
 ```
 
 
@@ -929,7 +910,7 @@ async function acceptSellOffer() {
 6. Disconnect from the server.
 
 
-```
+```js
   client.disconnect()
   // End of acceptSellOffer()
 }
@@ -960,7 +941,7 @@ The `acceptBuyOffer()` function steps are:
 5. Disconnect from the server.
 
 
-```
+```js
 //***************************
 //** Accept Buy Offer ******
 //***************************
@@ -974,12 +955,11 @@ async function acceptBuyOffer() {
 1. Connect to the devnet server.
 
 
-```
+```js
   const wallet = xrpl.Wallet.fromSeed(secret.value)
   const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
   await client.connect()
   console.log("Connected to devnet")
-
 ```
 
 
@@ -987,13 +967,12 @@ async function acceptBuyOffer() {
 2. Prepare a transaction blob.
 
 
-```
+```js
   const transactionBlob = {
       	"TransactionType": "NFTokenAcceptOffer",
       	"Account": wallet.classicAddress,
       	"BuyOffer": tokenOfferIndex.value
   }
-
 ```
 
 
@@ -1001,9 +980,8 @@ async function acceptBuyOffer() {
 3. Submit the transaction and wait for the results.
 
 
-```
+```js
   const tx = await client.submitAndWait(transactionBlob,{wallet})
-
 ```
 
 
@@ -1011,7 +989,7 @@ async function acceptBuyOffer() {
 4. Display the results in your console log.
 
 
-```
+```js
   const nfts = await client.request({
 	method: "account_nfts",
 	account: wallet.classicAddress  
@@ -1021,7 +999,6 @@ async function acceptBuyOffer() {
       JSON.stringify(tx.result.meta.TransactionResult, null, 2))
   console.log("Balance changes:",
       JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2))
-
 ```
 
 
@@ -1029,7 +1006,7 @@ async function acceptBuyOffer() {
 5. Disconnect from the server.
 
 
-```
+```js
   client.disconnect()
   // End of submitTransaction()
 }
@@ -1043,7 +1020,7 @@ async function acceptBuyOffer() {
 The remainder of the test harness file creates a standard HTML form with 9 buttons to initiate the form functions and 8 fields to hold the required parameters.
 
 
-```
+```html
 <title>NFToken Tester</title>
 </head>
 <body>
