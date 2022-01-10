@@ -708,7 +708,7 @@ To cancel an offer to sell or buy a `NFToken`:
 
 
 1. Enter your **Account** and **Secret** in the appropriate fields.
-2. Enter the **Token Offer Index** of the offer you want to accept. (Labeled as **Index** in the responses to `nft_buy_offers `and` nft_sell_offers` requests.)
+2. Enter the **Token Offer Index** of the offer you want to cancel. (Labeled as **Index** in the responses to `nft_buy_offers `and` nft_sell_offers` requests.)
 3. Click **Cancel Offer**.
 
 
@@ -846,7 +846,7 @@ To accept a sell offer:
 
 
 1. Enter your **Account** and **Secret** in the appropriate fields.
-2. Enter the **Token Offer Index** of the offer you want to cancel. (Labeled as **Index** in the responses to `nft_sell_offers` requests.)
+2. Enter the **Token Offer Index** of the offer you want to accept. (Labeled as **Index** in the responses to `nft_sell_offers` requests.)
 3. Click **Accept Sell Offer**.
 
 The `acceptSellOffer()` function steps are:
