@@ -70,10 +70,6 @@ function rippleTestNetCredentials(url, altnet_name) {
   })
 }
 
-async function fill_starting_sequence(address) {
-
-}
-
 $(document).ready(function() {
   function testnet_click(evt) {
     rippleTestNetCredentials("https://faucet.altnet.rippletest.net/accounts",
@@ -84,7 +80,7 @@ $(document).ready(function() {
       "Devnet")
   }
   function nftnet_click(evt) {
-    rippleTestNetCredentials("https://faucet.xls20-sandbox.rippletest.net/accounts",
+    rippleTestNetCredentials("https://faucet-nft.ripple.com/accounts",
       "NFT-Devnet")
   }
 
