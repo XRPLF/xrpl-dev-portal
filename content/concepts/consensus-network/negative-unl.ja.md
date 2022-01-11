@@ -166,14 +166,14 @@ V<sub>a</sub>は、サーバー側のコンセンサス見解と一致した過�
 {{ include_svg("img/negative-unl-11.svg", "Diagram: MissingAをネガティブUNLから削除。") }}
 
 
-## ## 関連項目
+### 関連項目
 
 - **コンセンサス:**
     - [コンセンサスプロトコル](consensus.html)
 - **チュートリアル:**
     - [Testnetや別の並列ネットワークへ接続する](connect-your-rippled-to-the-xrp-test-net.html)
     - [バリデータとしての`rippled`の実行](run-rippled-as-a-validator.html)
-- **- **リファレンス:**
+- **リファレンス:**
     - [negativeUNL オブジェクト](negativeunl.html)
     - [UNLModify pseudo-transaction][]
     - [ledger_entry メソッド][]
