@@ -56,7 +56,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     - `xenial` for **Ubuntu 16.04 Xenial Xerus** (Not recommended) <!-- SPELLING_IGNORE: xenial, xerus -->
     - `stretch` for **Debian 9 Stretch**
     - `buster` for **Debian 10 Buster**
-    <!--{# - `bullseye` for **Debian 11 Bullseye** is not available yet -->
+    <!--{# - `bullseye` for **Debian 11 Bullseye** is not available yet #}-->
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
 
