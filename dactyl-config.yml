@@ -764,6 +764,9 @@ pages:
     -   md: concepts/issued-currencies/demurrage.md
         targets:
             - en
+
+    -   md: concepts/issued-currencies/demurrage.ja.md
+        targets:
             - ja
 
     -   name: Decentralized Exchange
@@ -846,16 +849,20 @@ pages:
         targets:
             - ja
 
-        # TODO: translate this page and blurb
     -   md: concepts/consensus-network/invariant-checking.md
         targets:
             - en
+
+    -   md: concepts/consensus-network/invariant-checking.ja.md
+        targets:
             - ja
 
-        # TODO: translate this page and blurb
     -   md: concepts/consensus-network/negative-unl.md
         targets:
             - en
+
+    -   md: concepts/consensus-network/negative-unl.ja.md
+        targets:
             - ja
 
     -   md: concepts/consensus-network/transaction-queue.md
@@ -1138,7 +1145,6 @@ pages:
             - en
             - ja
 
-        # TODO: translate this page name and blurb
     -   name: Production Readiness
         html: production-readiness.html
         parent: tutorials.html
@@ -1146,6 +1152,13 @@ pages:
         blurb: Follow these best practices to build a robust, safe production system for using the XRP Ledger.
         targets:
             - en
+
+    -   name: 本番環境への準備
+        html: production-readiness.html
+        parent: tutorials.html
+        template: pagetype-category.html.jinja
+        blurb: 以下のベストプラクティスに従って、XRPレジャーを使用するための堅牢で安全な本番システムを構築してください。
+        targets:
             - ja
 
     -   md: tutorials/production-readiness/set-up-secure-signing.md
@@ -1217,12 +1230,13 @@ pages:
         targets:
             - ja
 
-    # TODO: translate this page & blurb
     -   md: tutorials/manage-account-settings/disable-master-key-pair.md
         targets:
             - en
-            - ja
 
+    -   md: tutorials/manage-account-settings/disable-master-key-pair.ja.md
+        targets:
+            - ja
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         targets:

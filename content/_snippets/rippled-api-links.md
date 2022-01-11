@@ -174,6 +174,7 @@
 [{{method}} command]: {{method|lower}}.html
 {% if target.lang == "ja" %}
 [{{method}}メソッド]: {{method|lower}}.html
+[{{method}} メソッド]: {{method|lower}}.html
 {% endif %}
 {% endfor %}
 
