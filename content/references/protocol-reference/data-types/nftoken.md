@@ -1,21 +1,19 @@
 ---
 html: nftoken.html
-parent: ledger-object-types.html
+parent: basic-data-types.html
 blurb: Introduction to XRPL NFTs.
-filters:
- - include_code
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 status: not_enabled
 ---
 # NFToken
 {% include '_snippets/nfts-disclaimer.md' %}
 
-The `NFToken` object represents a single non-fungible token. 
+The `NFToken` object represents a single non-fungible token (NFT). It is not stored on its own, but is contained in a [NFTokenPage object][] alongside other NFTs.
 
 Example {{currentpage.name}} JSON
 
-```
+```json
 {
     "TokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
     "URI": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"
@@ -31,8 +29,6 @@ Unlike other objects, `NFToken` has no field to identify the object type or curr
 TokenID, optional, string, Hash256
 
 This composite field uniquely identifies a token, and consists of the following sections.
-
-
 
 1. 16 bits that identify flags or settings specific to the NFT
 2. 16 bits that encode the transfer fee associated with this token, if any
@@ -137,7 +133,7 @@ The third section of the TokenID is a big endian representation of the issuer’
 
 ### Taxon
 
-The fourth section is a taxon created by the issuer. 
+The fourth section is a taxon created by the issuer.
 
 ![Taxon](img/nftokend.png "Taxon")
 
@@ -173,17 +169,17 @@ The format for a text record is as follows.
 
 
 ```
-xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{:tokenid:}"
+xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{tokenid}"
 ```
 
 
-Replace the string `{:tokenid:}` with the requested token’s `TokenID` as a 64-byte hex string when you attempt to query information.
+Replace the string `{tokenid}` with the requested token’s `TokenID` as a 64-byte hex string when you attempt to query information.
 
 Your implementation should check for the presence of `TXT` records and use those query strings if present. If no string is present, implementations should attempt to use a default URL. Assuming the domain is _example.com_, the default URL would be:
 
 
 ```
-https://example.com/.well-known/xrpl-nft/{:tokenid:}
+https://example.com/.well-known/xrpl-nft/{tokenid}
 ```
 
 

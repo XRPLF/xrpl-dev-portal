@@ -57,6 +57,7 @@
 [汎用エラータイプ]: error-formatting.html#汎用エラー
 [XRP, in drops]: basic-data-types.html#specifying-currency-amounts
 [XRP、drop単位]: basic-data-types.html#通貨額の指定
+[NFToken]: nftoken.html
 
 <!-- API object types -->
 {% set ledger_entries = [
@@ -69,7 +70,6 @@
   "FeeSettings",
   "LedgerHashes",
   "NegativeUNL",
-  "NFToken",
   "NFTokenOffer",
   "NFTokenPage",
   "Offer",

@@ -12,7 +12,7 @@ status: not_enabled
 # NFT Conceptual Overview
 {% include '_snippets/nfts-disclaimer.md' %}
 
-The XRP Ledger offers support for tokens, also known as _IOUs _or _issued assets_. Such assets are, primarily, fungible.
+The XRP Ledger offers support for tokens, also known as _IOUs_ or [_issued currencies_](issued-currencies.html). Such assets are, primarily, fungible.
 
 > Fun·gi·ble /ˈfənjəbəl/ (adj)
 >
@@ -29,7 +29,6 @@ But since you are standing around in 1919, you might be offered 24-cent airmail 
 
 ![Jenny Stamps](img/nft-concepts2.png "Jenny Stamps")
 
-
 Those stamps cannot be replaced by just another other 24-cent stamp. They have become _non-fungible_.
 
 The XRPL Labs team has created a framework that supports non-fungible tokens (NFTs, or “nifties” in the vernacular).  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
@@ -39,15 +38,15 @@ The XRPL Labs team has created a framework that supports non-fungible tokens (NF
 
 Extensions to the XRP Ledger support two new objects and a new ledger structure.
 
-The <code>[NFToken](references/protocol-reference/ledger-data/ledger-object-types/nftoken.html)</code> is a native NFT type. It has operations to enumerate, purchase, sell, and hold such tokens. An <code>NFToken</code> is a unique, indivisible unit that is not used for payments.
+The [NFToken][] is a native NFT type. It has operations to enumerate, purchase, sell, and hold such tokens. An `NFToken` is a unique, indivisible unit that is not used for payments.
 
-<code>[NFTokenPage](references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.html)</code> is a ledger structure that contains a set of <code>NFToken</code> objects owned by the same account.
+The [NFTokenPage object][] contains a set of `NFToken` objects owned by the same account.
 
-You create a new `NFToken` using the <code>[NFTokenMint](references/protocol-reference/ledger-data/ledger-object-types/nftokenmint.html)</code> transaction
+You create a new `NFToken` using the [NFTokenMint transaction][].
 
-<code>[NFTokenOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.html)</code> is a new object that describes an offer to buy or sell a single <code>NFToken</code>.
+[NFTokenOffer object][] is a new object that describes an offer to buy or sell a single `NFToken`.
 
-You destroy an `NFToken` using the <code>[NFTokenBurn](references/protocol-reference/ledger-data/ledger-object-types/nftokenburn.html)</code> transaction.
+You destroy an `NFToken` using the [NFTokenBurn transaction][].
 
 
 ## `NFToken` Lifecycle
@@ -58,34 +57,27 @@ You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the
 
 
 
-## Extensions
+## Reference
+
+- [NFToken][] data type
+- Ledger Objects
+    - [NFTokenOffer object][]
+    - [NFTokenPage object][]
+- Transactions
+    - [NFTokenMint transaction][]
+    - [NFTokenCreateOffer transaction][]
+    - [NFTokenCancelOffer transaction][]
+    - [NFTokenAcceptOffer transaction][]
+    - [NFTokenBurn transaction][]
 
 
-### Objects
-
-
-
-* <code>[NFToken](references/protocol-reference/ledger-data/ledger-object-types/nftoken.html)</code>
-* <code>[NFTokenOffer](references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.html)</code>
-* <code>[NFTokenPage](references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.html)</code>
-
-
-### Transactions
-
-
-
-* <code>[NFTokenMint](references/protocol-reference/transactions/transaction-types/nftokenmint.html)</code>
-* <code>[NFTokenOffer](references/protocol-reference/transactions/transaction-types/nftokenoffer.html)</code>
-    * <code>[NFTokenCreateOffer](references/protocol-reference/transactions/transaction-types/nftokencreateoffer.html)</code>
-    * <code>[NFTokenCancelOffer](references/protocol-reference/transactions/transaction-types/nftokencanceloffer.html)</code>
-    * <code>[NFTokenAcceptOffer](references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.html)</code>
-* <code>[NFTokenBurn](references/protocol-reference/transactions/transaction-types/nftokenburn.html)</code>
-
-
-### Requests
-
-
+### API Methods
 
 * `acct_nfts`
 * `nft_sell_offers`
 * `nft_buy_offers`
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
