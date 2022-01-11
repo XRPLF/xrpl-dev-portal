@@ -4,9 +4,9 @@
     "node-sass": "^6.0.1"
   },
   "scripts": {
-    "build-css": "node-sass --include-path scss xrpl.scss ../assets/css/devportal2021-v5.css --output-style compressed",
-    "build-css-out": "node-sass --include-path scss xrpl.scss ../out/assets/css/devportal2021-v5.css --output-style compressed --source-map true",
-    "build-css-watch-out": "node-sass --recursive --watch  --include-path scss xrpl.scss ../out/assets/css/devportal2021-v5.css --output-style compressed --source-map true"
+    "build-css": "node-sass --include-path scss xrpl.scss ../assets/css/devportal2021-v6.css --output-style compressed",
+    "build-css-out": "node-sass --include-path scss xrpl.scss ../out/assets/css/devportal2021-v6.css --output-style compressed --source-map true",
+    "build-css-watch-out": "node-sass --recursive --watch  --include-path scss xrpl.scss ../out/assets/css/devportal2021-v6.css --output-style compressed --source-map true"
   },
   "dependencies": {
     "sass": "^1.26.10"
