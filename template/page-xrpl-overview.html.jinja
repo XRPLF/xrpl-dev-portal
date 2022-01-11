@@ -8,6 +8,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+  <!-- Play videos from youtube -->
+  <script src="assets/js/video.js"></script>
+
 {% endblock %}
 
 {% block bodyclasses %}no-sidebar{% endblock %}
@@ -17,6 +21,13 @@
 
 {% block main %}
 <div class="overflow-hidden">
+  
+  <div id="video-overlay"></div>
+  <div id="video">
+    <div id="videoWrapper">
+    <iframe id="player" width="853" height="480" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
 
   <div class="position-relative">
     <img src="./img/backgrounds/xrpl-overview-purple.svg" class="landing-bg" id="xrpl-overview-purple">
@@ -36,14 +47,29 @@
   </div>
 
   <section class="container-new py-26">
-    <div class="col-lg-6 offset-lg-3 pl-0-sm pr-0-sm p-10-until-sm">
-      <div class="d-flex flex-column-reverse">
-        <h2 class="h4 h2-sm mb-8">{% trans %}How the XRP Ledger works{% endtrans %}</h2>
-        <h6 class="eyebrow mb-3">{% trans %}XRP Ledger Basics{% endtrans %}</h6>
+    <div class="card-grid card-grid-2xN">
+      <div class="col">
+        <div class="d-flex flex-column-reverse">
+          <h2 class="h4 h2-sm mb-8">{% trans %}How the XRP Ledger works{% endtrans %}</h2>
+          <h6 class="eyebrow mb-3">{% trans %}XRP Ledger Basics{% endtrans %}</h6>
+        </div>
+        <h5 class="longform mb-10">{% trans %}The XRP Ledger is a decentralized public blockchain. {% endtrans %}</h5>
+        <p class="mb-4">{% trans %}Anyone can connect their computer to the peer-to-peer network that manages the ledger. The global XRP Ledger community—a diverse set of software engineers, server operators, users, and businesses—maintains the ledger.{% endtrans %}</p>
+        <div class="d-none d-lg-block">
+          <a class="btn btn-primary btn-arrow" href="docs.html">{% trans %}Read Technical Docs{% endtrans %}</a> <a class="ml-4 video-external-link" target="_blank" href="https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg">{% trans %}Watch Explainer Videos {% endtrans %}</a> 
+        </div>
       </div>
-      <h5 class="longform mb-10">{% trans %}The XRP Ledger is a decentralized public blockchain. {% endtrans %}</h5>
-      <p class="mb-10">{% trans %}Anyone can connect their computer to the peer-to-peer network that manages the ledger. The global XRP Ledger community—a diverse set of software engineers, server operators, users, and businesses—maintains the ledger.{% endtrans %}</p>
-      <a class="btn btn-primary btn-arrow" href="docs.html">{% trans %}Get Technical{% endtrans %}</a>
+      <div class="col">
+        <iframe id="video1" style="display:none;" width="560" height="315" src="https://www.youtube.com/embed/sVTybJ3cNyo" title="Intro to the XRP Ledger" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <a href="#/" id="playvideo">
+          <img src="./assets/img/overview/video_explainer_intro@2x.png" id="xrpl-overview-video-intro" class="w-100 video-image">
+        </a>
+
+        <div class="text-center d-lg-none">
+        <a class="btn btn-primary btn-arrow mt-5 mb-4" href="docs.html">{% trans %}Read Technical Docs{% endtrans %}</a> <a class="ml-4 video-external-link" target="_blank" href="https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg">{% trans %}Watch Explainer Videos {% endtrans %}</a> 
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -94,6 +120,43 @@
         <h5 class="longform mb-10">{% trans %}While XRPL is the choice of developers who don’t want to sacrifice security or performance and who want to build on the greenest blockchain, that’s only the beginning.{% endtrans %}</h5>
         <p class="mb-0">{% trans %}As a community-led blockchain, XRPL’s vision is also a community effort. <a href="https://xrplf.org/" target="_blank">The XRPL Foundation</a> is currently collaborating with community members to define a shared vision statement. Stay tuned for more on this effort—we can’t wait to share it with you.{% endtrans %}</p>
       </div>
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="d-flex flex-column-reverse col-xl-6 mb-lg-4 pl-0 ">
+      <h2 class="h4 h2-sm">{% trans %}Watch the explainer video series to learn more about the XRP Ledger.{% endtrans %}</h2>
+      <h6 class="eyebrow mb-3">{% trans %}Tune In{% endtrans %}</h6>
+    </div>
+
+    <div class="row row-cols-1 row-cols-lg-3 d-flex justify-content-between w-100 mx-0 mx-md-n3 mt-md-5">
+        <div class="px-md-3 pt-5 pt-md-0">
+          <a href="#/" class="btn1" data-url="https://www.youtube.com/embed/k6VqEkqRTmk?rel=0&amp;showinfo=0&amp;autoplay=1">
+            <img src="./assets/img/overview/video_explainer_consensus@2x.png" id="xrpl-overview-video-consensus" class="w-100 video-image">
+          </a>
+          <div class="mt-2">
+            <h4 class="video-title mt-3 mb-0">{% trans %}The Consensus Mechanism{% endtrans %}</h4>            
+          </div>
+        </div>
+        <div class="px-md-3 pt-5 pt-md-0">
+          <a href="#/" class="btn1" data-url="https://www.youtube.com/embed/JjaVDXPqnbA?rel=0&amp;showinfo=0&amp;autoplay=1">
+            <img src="./assets/img/overview/video_explainer_nodes@2x.png" id="xrpl-overview-video-nodes" class="w-100 video-image">
+          </a>
+          <div class="mt-2">
+            <h4 class="video-title mt-3 mb-0">{% trans %}Nodes and Validators{% endtrans %}</h4>            
+          </div>
+        </div>
+        <div class="px-md-3 pt-5 pt-md-0">
+          <a href="#/" class="btn1" data-url="https://www.youtube.com/embed/WsmldDNGQ9s?rel=0&amp;showinfo=0&amp;autoplay=1">
+            <img src="./assets/img/overview/video_explainer_sustainability@2x.png" id="xrpl-overview-video-sustainability" class="w-100 video-image">
+          </a>
+          <div class="mt-2">
+            <h4 class="video-title mt-3 mb-0">{% trans %}Sustainability of the XRP Ledger{% endtrans %}</h4>            
+          </div>
+        </div>
+    </div>
+    <div class="pt-5 w-100">
+      <a class="btn btn-primary btn-arrow" target="_blank" href="https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg">{% trans %}Watch Full Series on YouTube{% endtrans %}</a>
     </div>
   </section>
 
