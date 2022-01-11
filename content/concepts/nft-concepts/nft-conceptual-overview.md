@@ -73,7 +73,7 @@ You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the
 
 ### API Methods
 
-* `acct_nfts`
+* `account_nfts`
 * `nft_sell_offers`
 * `nft_buy_offers`
 
