@@ -19,11 +19,10 @@ class XRPLMonitorThread(Thread):
     the main frame to be shown in the UI. Using a thread lets us maintain the
     responsiveness of the UI while doing work in the background.
     """
-    def __init__(self, url, gui, account, loop):
+    def __init__(self, url, gui, loop):
         Thread.__init__(self, daemon=True)
         self.gui = gui
         self.url = url
-        self.account = account
         self.loop = loop
 
     def run(self):
@@ -35,12 +34,15 @@ class XRPLMonitorThread(Thread):
         asyncio.set_event_loop(self.loop)
         self.loop.run_forever()
 
-    async def watch_xrpl(self):
+    async def watch_xrpl_account(self, address, wallet=None):
         """
         This is the task that opens the connection to the XRPL, then handles
         incoming subscription messages by dispatching them to the appropriate
         part of the GUI.
         """
+        self.account = address
+        self.wallet = wallet
+
         async with xrpl.asyncio.clients.AsyncWebsocketClient(self.url) as self.client:
             await self.on_connected()
             async for message in self.client:
@@ -76,7 +78,16 @@ class XRPLMonitorThread(Thread):
             account=self.account,
             ledger_index="validated"
         ))
+        if not response.is_successful():
+            print("Got error from server:", response)
+            # This most often happens if the account in question doesn't exist
+            # on the network we're connected to. Better handling would be to use
+            # wx.CallAfter to display an error dialog in the GUI and possibly
+            # let the user try inputting a different account.
+            exit(1)
         wx.CallAfter(self.gui.update_account, response.result["account_data"])
+        if self.wallet:
+            wx.CallAfter(self.gui.enable_readwrite)
         # Get the first page of the account's transaction history. Depending on
         # the server we're connected to, the account's full history may not be
         # available.
@@ -163,7 +174,11 @@ class XRPLMonitorThread(Thread):
             amount=xrpl.utils.xrp_to_drops(paydata["amt"]),
             destination_tag=dtag
         )
-        tx_signed = await xrpl.asyncio.transaction.safe_sign_and_autofill_transaction(tx, self.gui.wallet, self.client)
+        # Autofill provides a sequence number, but this may fail if you try to
+        # send too many transactions too fast. You can send transactions more
+        # rapidly if you track the sequence number more carefully.
+        tx_signed = await xrpl.asyncio.transaction.safe_sign_and_autofill_transaction(
+                tx, self.wallet, self.client)
         await xrpl.asyncio.transaction.submit_transaction(tx_signed, self.client)
         wx.CallAfter(self.gui.add_pending_tx, tx_signed)
 
@@ -355,11 +370,27 @@ class TWaXLFrame(wx.Frame):
     def __init__(self, url, test_network=True):
         wx.Frame.__init__(self, None, title="TWaXL", size=wx.Size(800,400))
 
-        self.url = url
         self.test_network = test_network
+        # The ledger's current reserve settings. To be filled in later.
+        self.reserve_base = None
+        self.reserve_inc = None
+        # This account's total XRP reserve including base + owner amounts
+        self.reserve_xrp = None
 
+        self.build_ui()
+
+        # Pop up to ask user for their account ---------------------------------
+        address, wallet = self.prompt_for_account()
+        self.classic_address = address
+
+        # Start background thread for updates from the ledger ------------------
+        self.worker_loop = asyncio.new_event_loop()
+        self.worker = XRPLMonitorThread(url, self, self.worker_loop)
+        self.worker.start()
+        self.run_bg_job(self.worker.watch_xrpl_account(address, wallet))
+
+    def build_ui(self):
         self.tabs = wx.Notebook(self, style=wx.BK_DEFAULT)
-
         # Tab 1: "Summary" pane ------------------------------------------------
         main_panel = wx.Panel(self.tabs)
         self.tabs.AddPage(main_panel, "Summary")
@@ -382,17 +413,15 @@ class TWaXLFrame(wx.Frame):
                            (lbl_reserve, self.st_reserve)) )
 
 
-        # Send XRP button.
+        # Send XRP button. Disabled until we have a secret key & network connection
         self.sxb = wx.Button(main_panel, label="Send XRP")
+        self.sxb.SetToolTip("Disabled in read-only mode.")
         self.sxb.Disable()
+        self.Bind(wx.EVT_BUTTON, self.click_send_xrp, source=self.sxb)
+
 
         # Ledger info text. One multi-line static text, unlike the account area.
         self.ledger_info = wx.StaticText(main_panel, label="Not connected")
-
-        # The ledger's current reserve settings. To be filled in when we get a
-        # ledger event.
-        self.reserve_base = None
-        self.reserve_inc = None
 
         main_sizer = wx.BoxSizer(wx.VERTICAL)
         main_sizer.Add(self.acct_info_area, 1, flag=wx.EXPAND|wx.ALL, border=5)
@@ -418,35 +447,13 @@ class TWaXLFrame(wx.Frame):
 
         objs_panel.SetSizer(objs_sizer)
 
-        # Pop up to ask user for their account ---------------------------------
-        account_dialog = wx.TextEntryDialog(self,
-                "Please enter an account address (for read-only)"
-                " or your secret (for read-write access)",
-                caption="Enter account",
-                value="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
-        account_dialog.Bind(wx.EVT_TEXT, self.toggle_dialog_style)
-
-        if account_dialog.ShowModal() == wx.ID_OK:
-            self.set_up_account(account_dialog.GetValue())
-            account_dialog.Destroy()
-        else:
-            # If the user presses Cancel on the account entry, exit the app.
-            exit(1)
-
-        # Attach handlers and start bg thread for updates from the ledger ------
-        self.Bind(wx.EVT_BUTTON, self.click_send_xrp, source=self.sxb)
-        self.worker_loop = asyncio.new_event_loop()
-        self.worker = XRPLMonitorThread(url, self, self.classic_address, self.worker_loop)
-        self.worker.start()
-        self.run_bg_job(self.worker.watch_xrpl())
-
     def run_bg_job(self, job):
         """
         Schedules a job to run asynchronously in the XRPL worker thread.
         The job should be a Future (for example, from calling an async function)
         """
         task = asyncio.run_coroutine_threadsafe(job, self.worker_loop)
-        
+
     def toggle_dialog_style(self, event):
         """
         Automatically switches to a password-style dialog if it looks like the
@@ -459,48 +466,71 @@ class TWaXLFrame(wx.Frame):
         else:
             dlg.SetWindowStyle(wx.TE_LEFT)
 
-    def set_up_account(self, value):
+    def prompt_for_account(self):
         """
-        Set up fields for address and wallet (or quit with an error) depending
-        on what input the user provided. If the user provides an address, go
-        into "read-only" mode. Note: this app does is not capable of using
-        regular keys or multi-signing yet.
+        Prompt the user for an account to use, in a base58-encoded format:
+        - master key seed: Grants read-write access.
+          (assumes the master key pair is not disabled)
+        - classic address. Grants read-only access.
+        - X-address. Grants read-only access.
+
+        Exits with error code 1 if the user cancels the dialog, if the input
+        doesn't match any of the formats, or if the user inputs an X-address
+        intended for use on a different network type (test/non-test).
+
+        Populates the classic address and X-address labels in the UI.
+
+        Returns (classic_address, wallet) where wallet is None in read-only mode
         """
-        value = value.strip()
+        account_dialog = wx.TextEntryDialog(self,
+                "Please enter an account address (for read-only)"
+                " or your secret (for read-write access)",
+                caption="Enter account",
+                value="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
+        account_dialog.Bind(wx.EVT_TEXT, self.toggle_dialog_style)
+
+        if account_dialog.ShowModal() != wx.ID_OK:
+            # If the user presses Cancel on the account entry, exit the app.
+            exit(1)
+
+        value = account_dialog.GetValue().strip()
+        account_dialog.Destroy()
+
+        classic_address = ""
+        wallet = None
+        x_address = ""
 
         if xrpl.core.addresscodec.is_valid_xaddress(value):
+            x_address = value
             classic_address, dest_tag, test_network = xrpl.core.addresscodec.xaddress_to_classic_address(value)
             if test_network != self.test_network:
+                on_net = "a test network" if self.test_network else "Mainnet"
                 print(f"X-address {value} is meant for a different network type"
                       f"than this client is connected to."
-                      f"(Client is on: {'a test network' if self.test_network else 'Mainnet'})")
+                      f"(Client is on: {on_net})")
                 exit(1)
-            self.xaddress = value
-            self.classic_address = classic_address
-            self.wallet = None
-            self.sxb.SetToolTip("Disabled in read-only mode.")
 
         elif xrpl.core.addresscodec.is_valid_classic_address(value):
-            self.xaddress = xrpl.core.addresscodec.classic_address_to_xaddress(
+            classic_address = value
+            x_address = xrpl.core.addresscodec.classic_address_to_xaddress(
                     value, tag=None, is_test_network=self.test_network)
-            self.classic_address = value
-            self.wallet = None
-            self.sxb.SetToolTip("Disabled in read-only mode.")
 
         else:
             try:
                 # Check if it's a valid seed
                 seed_bytes, alg = xrpl.core.addresscodec.decode_seed(value)
-                self.wallet = xrpl.wallet.Wallet(seed=value, sequence=0)
-                # We'll fill in the actual sequence later.
-                self.xaddress = self.wallet.get_xaddress(is_test=self.test_network)
-                self.classic_address = self.wallet.classic_address
+                wallet = xrpl.wallet.Wallet(seed=value, sequence=0)
+                x_address = wallet.get_xaddress(is_test=self.test_network)
+                classic_address = wallet.classic_address
             except Exception as e:
                 print(e)
                 exit(1)
-        self.st_classic_address.SetLabel(self.classic_address)
-        self.st_x_address.SetLabel(self.xaddress)
 
+        # Update the UI with the address values
+        self.st_classic_address.SetLabel(classic_address)
+        self.st_x_address.SetLabel(x_address)
+
+        return classic_address, wallet
 
     def update_ledger(self, message):
         """
@@ -530,8 +560,7 @@ class TWaXLFrame(wx.Frame):
 
     def update_account(self, acct):
         """
-        Process an account_info response to update the account info area of the
-        UI. This also updates the sequence number of the wallet.
+        Update the account info UI based on an account_info response.
         """
         xrp_balance = str(xrpl.utils.drops_to_xrp(acct["Balance"]))
         self.st_xrp_balance.SetLabel(xrp_balance)
@@ -542,11 +571,12 @@ class TWaXLFrame(wx.Frame):
             self.st_reserve.SetLabel(str(reserve_xrp))
             self.reserve_xrp = reserve_xrp
 
-        # If we're not read-only, we can set/update the Sequence number, and
-        # enable the Send XRP button if it isn't enabled yet.
-        if self.wallet:
-            self.wallet.sequence = acct["Sequence"]
-            self.sxb.Enable()
+    def enable_readwrite(self):
+        """
+        Enable buttons for sending transactions.
+        """
+        self.sxb.Enable()
+        self.sxb.SetToolTip("")
 
     @staticmethod
     def displayable_amount(a):
@@ -684,7 +714,7 @@ class TWaXLFrame(wx.Frame):
         self.run_bg_job(self.worker.send_xrp(paydata))
 
 if __name__ == "__main__":
-    WS_URL = "wss://s.altnet.rippletest.net:51233"
+    WS_URL = "wss://s.altnet.rippletest.net:51233" # Testnet
     app = wx.App()
     frame = TWaXLFrame(WS_URL, test_network=True)
     frame.Show()
