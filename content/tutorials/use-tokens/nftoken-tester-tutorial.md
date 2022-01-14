@@ -241,7 +241,7 @@ To destroy a `NFToken`:
 
 ### The `burnToken()` function
 
-The `getTokens` function steps are:
+The `burnToken` function steps are:
 
 
 
