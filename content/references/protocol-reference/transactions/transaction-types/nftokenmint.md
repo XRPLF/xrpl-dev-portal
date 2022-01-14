@@ -23,9 +23,10 @@ If the transaction is successful, the newly minted token is owned by the account
   "Account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
   "Issuer": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
   "TransferFee": 314,
+  "TokenTaxon": 0,
   "Flags": 2147483659,
   "Fee": 10,
-  "URI": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"
+  "URI": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi",
   "Memos": [
         {
             "Memo": {
@@ -34,7 +35,7 @@ If the transaction is successful, the newly minted token is owned by the account
                 "MemoData": "72656E74"
             }
         }
-    ],
+    ]
 }
 ```
 
