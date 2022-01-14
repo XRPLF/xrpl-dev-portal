@@ -38,7 +38,6 @@ class TWaXLFrame(wx.Frame):
 
 if __name__ == "__main__":
     JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
-    #JSON_RPC_URL = "http://localhost:5005/"
 
     app = wx.App()
     frame = TWaXLFrame(JSON_RPC_URL)

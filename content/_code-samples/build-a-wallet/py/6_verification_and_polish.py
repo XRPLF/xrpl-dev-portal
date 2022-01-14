@@ -243,14 +243,14 @@ class SendXRPDialog(wx.Dialog):
         self.txt_amt.SetIncrement(1.0)
 
         # The "Send" button is functionally an "OK" button except for the text.
-        btn_send = wx.Button(self, wx.ID_OK, label="Send")
+        self.btn_send = wx.Button(self, wx.ID_OK, label="Send")
         btn_cancel = wx.Button(self, wx.ID_CANCEL)
 
         sizer.BulkAdd(((lbl_to, self.txt_to, self.err_to),
                        (self.domain_verified, self.domain_text),
                        (lbl_dtag, self.txt_dtag, self.err_dtag),
                        (lbl_amt, self.txt_amt, self.err_amt),
-                       (btn_cancel, btn_send)) )
+                       (btn_cancel, self.btn_send)) )
         sizer.Fit(self)
 
         self.txt_dtag.Bind(wx.EVT_TEXT, self.on_dest_tag_edit)
@@ -287,8 +287,10 @@ class SendXRPDialog(wx.Dialog):
 
         if not (xrpl.core.addresscodec.is_valid_classic_address(v) or
                 xrpl.core.addresscodec.is_valid_xaddress(v) ):
+            self.btn_send.Disable()
             err_msg = "Not a valid address."
         elif v == self.parent.classic_address:
+            self.btn_send.Disable()
             err_msg = "Can't send XRP to self."
         else:
             self.parent.run_bg_job(self.parent.worker.check_destination(v, self))
@@ -359,6 +361,7 @@ class SendXRPDialog(wx.Dialog):
             self.err_to.SetToolTip(err_msg)
             self.err_to.Show()
         else:
+            self.btn_send.Enable()
             self.err_to.Hide()
 
 
@@ -712,6 +715,10 @@ class TWaXLFrame(wx.Frame):
 
         paydata = dlg.get_payment_data()
         self.run_bg_job(self.worker.send_xrp(paydata))
+        notif = wx.adv.NotificationMessage(title="Sending!", message =
+                f"Sending a payment for {paydata['amt']} XRP!")
+        notif.SetFlags(wx.ICON_INFORMATION)
+        notif.Show()
 
 if __name__ == "__main__":
     WS_URL = "wss://s.altnet.rippletest.net:51233" # Testnet
