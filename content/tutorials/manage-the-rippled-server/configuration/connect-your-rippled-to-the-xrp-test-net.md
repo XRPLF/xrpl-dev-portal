@@ -123,7 +123,7 @@ Edit your `validators.txt` file. This file is located in the same folder as your
         http://nftvalidators.s3.us-west-2.amazonaws.com/index.json
 
         [validator_list_keys]
-        EDDB9B7F8D3F2378B3CBCAEFA8BCECFDE67017E06D55EA6C9EA25751072341CA8B
+        ED8E43A943A174190BA2FAE91F44AC6E2D1D8202EFDCC2EA3DBB39814576D690F7
 
     <!-- MULTICODE_BLOCK_END -->
 
