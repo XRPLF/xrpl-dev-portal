@@ -11,7 +11,7 @@ labels:
 # Payment
 [[ソース]](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "ソース")
 
-Paymentトランザクションは、アカウント間での価値の移動を表現するものです（通過するパスによっては、非可分的に発生する追加的な価値交換を伴うことがあります）。
+Paymentトランザクションは、アカウント間での価値の移動を表現するものです(通過するパスによっては、非可分的に発生する追加的な価値交換を伴うことがあります)。このトランザクションタイプはいくつかの[支払いの種類](#types-of-payments)に使用することがでできます。
 
 Paymentは、[アカウントを作成](#アカウントの作成)する唯一の手段でもあります。
 
@@ -46,6 +46,23 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 | Paths          | パス配列の配列  | PathSet           | （省略可。自動入力可能）このトランザクションに使用される[支払いパス](paths.html)の配列。XRP間のトランザクションでは省略する必要があります。 |
 | SendMax        | [通貨額][]     | Amount            |  _（省略可）_ [送金手数料](transfer-fees.html)、為替レート、[スリッページ](http://en.wikipedia.org/wiki/Slippage_%28finance%29)を含め、このトランザクションに関して支払い元通貨での負担を許容する上限額。[トランザクションの送信コストとして消却されるXRP](transaction-cost.html)は含めないでください。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。複数通貨間の支払いまたは複数の発行を伴う支払いについては、このフィールドを入力する必要があります。XRP間の支払いでは省略する必要があります。 |
 | DeliverMin     | [通貨額][]     | Amount            |  _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](partial-payments.html)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
+
+## Paymentの種類
+
+Paymentトランザクションタイプは、いくつかの異なるタイプの抽象的なアクションを表現することができる汎用ツールです。下の表で説明するように、トランザクションのフィールドに基づいてトランザクションタイプを識別することができます。
+
+| Paymentの種類 | `Amount`  | `SendMax`  | `Paths`   | `Address` = `Destination`? | 説明 |
+|:-------------|:----------|:-----------|:----------|:---------------------------|:--|
+| [XRP同士の直接支払い][] | String (XRP) | Omitted | Omitted | No          | アカウント間でへ直接XRPを送金します。常に正確な金額を送信します。基本的な[取引コスト](transaction-cost.html)以外の手数料は適用されません。 |
+| [発行通貨の作成・償還][] | Object | Object (optional) | Optional | No | XRP Ledgerに追跡されているXRP以外の通貨や資産の量を増減させます。[送金手数料](transfer-fees.html)と[凍結](freeze.html)は、直接送金・換金する際には適用されません。 |
+| [クロスカレンシー（通貨間）決済][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | 発行された通貨を保有者から別の保有者に送信します。`Amount`と`SendMax`の両方をXRPにすることはできません。これらの支払いは、発行者を介して[リップリング](rippling.html)し、トランザクションがパスセットを指定した場合、複数の仲介者を介してより長い[パス](paths.html)を取ることができます。トランザクション形式には、発行者が設定した[送金手数料](transfer-fees.html) が適用されます。これらのトランザクションは、異なる通貨間や、場合によっては同じ通貨コードで異なる発行者の通貨間を接続するために、[分散型取引所](decentralized-exchange.html)のオファーを利用します。 |
+| [一部支払い][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | 任意の通貨を特定の金額まで送ります。[`tfPartialPayment` フラグ](#payment-flags)を使用します。トランザクションが成功するための最小値を指定する `DeliverMin` 値を含めることができます。トランザクションが `DeliverMin` を指定しない場合、_任意の正の値_ を指定して成功させることができる。 |
+| 通貨変換 | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](decentralized-exchange.html) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. The [Data API](data-api.html) tracks this type of transaction as an "exchange" and not a "payment". |
+
+[Direct XRP-to-XRP Payment]: direct-xrp-payments.html
+[Creating or redeeming issued currency]: issued-currencies-overview.html
+[Cross-currency Payment]: cross-currency-payments.html
+[Partial payment]: partial-payments.html
 
 ## SendMaxおよびAmountで使用する特殊なイシュアーの値
 
