@@ -22,15 +22,15 @@ Postgres database to hold relational data, which is used mainly by tx and accoun
 
 When a reporting mode server receives an API request, it loads the data from these data stores if possible. For requests that require data from the P2P network, the reporting mode forwards the request to a P2P server, and then passes the response back to the client.
 
-Multiple reporting nodes can share access to the same network accessible databases (Postgres and Cassandra); at any given time, only one reporting node will be performing ETL and writing to the databases, while the others simply read from the databases. 
+Multiple reporting mode servers can share access to the same network accessible databases (PostgreSQL and Cassandra); at any given time, only one reporting mode server writes to the databases, while all the others read from the databases. 
 
 ## How to Run Reporting Mode
 
 ### Prerequisites
 
-1. Ensure that your system meets the requirements to run rippled. For more information, see https://xrpl.org/system-requirements.html. 
+1. Ensure that your system meets the [system requirements](system-requirements.html).
 
-    Note: If you choose to use Cassandra as the database, the disk requirements for rippled will be lower as the data will not be stored on your local disk.  
+    **Note:** If you choose to use Cassandra as the database, the disk requirements for rippled will be lower as the data will not be stored on your local disk.  
 
 2. In order to run reporting mode, you also need to run one or more rippled nodes in P2P mode. Ensure that you have at least one rippled node running in P2P mode. 
 
@@ -57,7 +57,7 @@ Multiple reporting nodes can share access to the same network accessible databas
 
         *NuDB*: If you’re running rippled in reporting mode for your local network, you can choose to use NuDB instead of Cassandra as your backend database. NuDB is installed as part of your rippled build setup and does not require any additional installation steps.
 
-    c. On Mac OS, you need to manually install the Cassandra cpp driver. The Cassandra driver is built as part of the rippled build on all other platforms. 
+    c. On macOS, you need to manually install the Cassandra cpp driver. On all other platforms, the Cassandra driver is built as part of the `rippled` build. 
         
         brew install cassandra-cpp-driver
 
@@ -88,7 +88,10 @@ Complete instructions to build and run rippled are available on https://xrpl.org
         cmake --build . -- -j 4
 
 2. Create a configuration file to run rippled in reporting mode. 
-    Make a copy of the example config file,rippled.cfg, and save it as ripple-reporting-mode.cfg in a location that enables you to run rippled as a non-root user. Access the rippled directory and run:
+
+    Make a copy of the example config file, `rippled.cfg`, and save it as `reporting-mode.cfg` in a location that enables you to run `rippled` as a non-root user. For example:
+    
+        cd /etc/opt/ripple/
 
         mkdir -p $HOME/.config/ripple
 
@@ -106,7 +109,7 @@ Note that these are the only configurations required for rippled to start up suc
 
 4. Edit rippled-reporting-mode.cfg to enable Reporting Mode by updating the [Reporting ] stanza in your rippled.cfg. 
 
-    a. Uncomment the Reporting stanza:
+    a. Uncomment the `[reporting]` stanza or add a new one:
 
         [reporting]
         etl_source
