@@ -11,7 +11,7 @@ top_nav_grouping: Popular Pages
 
 [Reporting mode](rippled-server-modes.html) is a mode of the XRP Ledger core server specialized for serving [HTTP and WebSocket APIs](rippled-api.html).
 
-A rippled node running in reporting mode does not connect to the P2P network, but instead extracts validated data from one or more rippled nodes that are connected to the P2P network. 
+In reporting mode, the server does not connect to the peer-to-peer network. Instead, it uses gRPC to get validated data from one or more trusted servers that are connected to the P2P network. 
 It can then efficiently handle RPCs, reducing the load on rippled nodes running in P2P mode.
 
 Fig: High-level illustration of how reporting mode works
