@@ -295,7 +295,7 @@ There are initiatives in progress to provide packages for reporting mode.
 
 The answer depends on the location of your primary datastore. If you use Cassandra as the primary datastore, the disk space requirement to run rippled in reporting mode will be lower as the data is not stored on your local disk. The PostgreSQL server can be remote as well.
 
-Lastly, the p2p mode server only needs to keep very recent history, since reporting mode will persist long term history.
+Lastly, the P2P mode server only needs to keep very recent history, while the reporting mode server keeps long term history.
 
 For more information on system requirements to run rippled, see https://xrpl.org/system-requirements.html. 
 
