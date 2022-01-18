@@ -20,9 +20,7 @@ The reporting mode of rippled uses two datastores:
 The primary persistent datastore for rippled that includes transaction metadata, account states, and ledger headers. You can use NuDB or Cassandra as the primary persistent datastore.
 Postgres database to hold relational data, which is used mainly by tx and account_tx. 
 
-When a client RPC request is received by a server running in reporting mode:
-The server accesses data from these datastores to respond to the request. 
-If any request requires access to the P2P network, then the reporting mode server forwards the request to a P2P node and then forwards the response from the P2P node to the client.
+When a reporting mode server receives an API request, it loads the data from these data stores if possible. For requests that require data from the P2P network, the reporting mode forwards the request to a P2P server, and then passes the response back to the client.
 
 Multiple reporting nodes can share access to the same network accessible databases (Postgres and Cassandra); at any given time, only one reporting node will be performing ETL and writing to the databases, while the others simply read from the databases. 
 
