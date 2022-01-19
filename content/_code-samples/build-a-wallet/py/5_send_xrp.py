@@ -2,12 +2,11 @@
 # This step finally introduces events from the GUI to the worker thread.
 
 import xrpl
-
-import asyncio
-import re
 import wx
 import wx.dataview
 import wx.adv
+import asyncio
+import re
 from threading import Thread
 from decimal import Decimal
 
@@ -19,6 +18,8 @@ class XRPLMonitorThread(Thread):
     """
     def __init__(self, url, gui, loop):
         Thread.__init__(self, daemon=True)
+        # Note: For thread safety, this thread should treat self.gui as
+        # read-only; to modify the GUI, use wx.CallAfter(...)
         self.gui = gui
         self.url = url
         self.loop = loop
@@ -244,6 +245,9 @@ class TWaXLFrame(wx.Frame):
         self.run_bg_job(self.worker.watch_xrpl_account(address, wallet))
 
     def build_ui(self):
+        """
+        Called during __init__ to set up all the GUI components.
+        """
         self.tabs = wx.Notebook(self, style=wx.BK_DEFAULT)
         # Tab 1: "Summary" pane ------------------------------------------------
         main_panel = wx.Panel(self.tabs)
@@ -273,8 +277,6 @@ class TWaXLFrame(wx.Frame):
         self.sxb.Disable()
         self.Bind(wx.EVT_BUTTON, self.click_send_xrp, source=self.sxb)
 
-
-        # Ledger info text. One multi-line static text, unlike the account area.
         self.ledger_info = wx.StaticText(main_panel, label="Not connected")
 
         main_sizer = wx.BoxSizer(wx.VERTICAL)

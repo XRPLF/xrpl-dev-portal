@@ -1,10 +1,8 @@
 # "Build a Wallet" tutorial, step 2: Watch ledger closes from a worker thread.
 
 import xrpl
-
-import asyncio
-import re
 import wx
+import asyncio
 from threading import Thread
 
 class XRPLMonitorThread(Thread):
@@ -15,6 +13,8 @@ class XRPLMonitorThread(Thread):
     """
     def __init__(self, url, gui, loop):
         Thread.__init__(self, daemon=True)
+        # Note: For thread safety, this thread should treat self.gui as
+        # read-only; to modify the GUI, use wx.CallAfter(...)
         self.gui = gui
         self.url = url
         self.loop = loop
@@ -47,8 +47,7 @@ class XRPLMonitorThread(Thread):
         Set up initial subscriptions and populate the GUI with data from the
         ledger on startup. Requires that self.client be connected first.
         """
-        # Set up 2 subscriptions: all new ledgers, and any new transactions that
-        # affect the chosen account.
+        # Set up a subscriptions for new ledgers
         response = await self.client.request(xrpl.models.requests.Subscribe(
             streams=["ledger"]
         ))
@@ -63,10 +62,8 @@ class TWaXLFrame(wx.Frame):
     Tutorial Wallet for the XRP Ledger (TWaXL)
     user interface, main frame.
     """
-    def __init__(self, url, test_network=True):
+    def __init__(self, url):
         wx.Frame.__init__(self, None, title="TWaXL", size=wx.Size(800,400))
-
-        self.test_network = test_network
 
         self.build_ui()
 
@@ -77,8 +74,10 @@ class TWaXLFrame(wx.Frame):
         self.run_bg_job(self.worker.watch_xrpl())
 
     def build_ui(self):
+        """
+        Called during __init__ to set up all the GUI components.
+        """
         main_panel = wx.Panel(self)
-
         self.ledger_info = wx.StaticText(main_panel, label="Not connected")
 
         main_sizer = wx.BoxSizer(wx.VERTICAL)
@@ -107,6 +106,6 @@ class TWaXLFrame(wx.Frame):
 if __name__ == "__main__":
     WS_URL = "wss://s.altnet.rippletest.net:51233" # Testnet
     app = wx.App()
-    frame = TWaXLFrame(WS_URL, test_network=True)
+    frame = TWaXLFrame(WS_URL)
     frame.Show()
     app.MainLoop()

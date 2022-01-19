@@ -11,6 +11,7 @@ default_pdf_template: pdf-doc.html.jinja
 
 # MD files should be here (and in subdirs)
 content_path: content
+default_html_names: tail
 
 # Custom filters live here and start with filter_
 filter_paths:
@@ -1101,6 +1102,17 @@ pages:
         targets:
             - en
             - ja
+
+    -   name: Build Apps
+        html: build-apps.html
+        parent: tutorials.html
+        template: pagetype-category.html.jinja
+        blurb: Develop applications and services that use the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
 
         # TODO: translate this page name and blurb
     -   name: Production Readiness

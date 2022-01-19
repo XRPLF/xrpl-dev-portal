@@ -1,10 +1,8 @@
 # "Build a Wallet" tutorial, step 3: Take account input & show account info
 
 import xrpl
-
-import asyncio
-import re
 import wx
+import asyncio
 from threading import Thread
 from decimal import Decimal
 
@@ -16,6 +14,8 @@ class XRPLMonitorThread(Thread):
     """
     def __init__(self, url, gui, loop):
         Thread.__init__(self, daemon=True)
+        # Note: For thread safety, this thread should treat self.gui as
+        # read-only; to modify the GUI, use wx.CallAfter(...)
         self.gui = gui
         self.url = url
         self.loop = loop
@@ -129,6 +129,9 @@ class TWaXLFrame(wx.Frame):
         self.run_bg_job(self.worker.watch_xrpl_account(address, wallet))
 
     def build_ui(self):
+        """
+        Called during __init__ to set up all the GUI components.
+        """
         main_panel = wx.Panel(self)
 
         self.acct_info_area = wx.StaticBox(main_panel, label="Account Info")
@@ -148,14 +151,12 @@ class TWaXLFrame(wx.Frame):
                            (lbl_xrp_bal, self.st_xrp_balance),
                            (lbl_reserve, self.st_reserve)) )
 
-        # Ledger info text. One multi-line static text, unlike the account area.
         self.ledger_info = wx.StaticText(main_panel, label="Not connected")
 
         main_sizer = wx.BoxSizer(wx.VERTICAL)
         main_sizer.Add(self.acct_info_area, 1, flag=wx.EXPAND|wx.ALL, border=5)
         main_sizer.Add(self.ledger_info, 1, flag=wx.EXPAND|wx.ALL, border=5)
         main_panel.SetSizer(main_sizer)
-
 
     def run_bg_job(self, job):
         """
