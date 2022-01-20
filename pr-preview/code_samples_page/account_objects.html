@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,6 +178,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -217,7 +218,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/references/rippled-api/public-rippled-methods/account-methods/account_objects.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/account-methods/account_objects.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -268,7 +269,7 @@
 <li><a href="paychannel.html">PayChannel objects</a> for open payment channels.</li>
 <li><a href="check.html">Check objects</a> for pending Checks.</li>
 <li><a href="depositpreauth-object.html">DepositPreauth objects</a> for deposit preauthorizations. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a href="known-amendments.html#tickets">Ticket objects</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> for Tickets.</li>
+<li><a href="known-amendments.html#tickets">Ticket objects</a> for Tickets.</li>
 </ul>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
@@ -321,7 +322,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 <tr>
 <td align="left"><code>type</code></td>
 <td align="left">String</td>
-<td align="left"><em>(Optional)</em> If included, filter results to include only this type of ledger object. The valid types are: <code>check</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>, <code>deposit_preauth</code>, <code>escrow</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>ticket</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>, and <code>state</code> (trust line). <!-- Author's note: Omitted types that can't be owned by an account --></td>
+<td align="left"><em>(Optional)</em> If included, filter results to include only this type of ledger object. The valid types are: <code>check</code>, <code>deposit_preauth</code>, <code>escrow</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>ticket</code>, and <code>state</code> (trust line). <!-- Author's note: Omitted types that can't be owned by an account --></td>
 </tr>
 <tr>
 <td align="left"><code>deletion_blockers_only</code></td>
@@ -1619,7 +1620,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
       
@@ -1828,7 +1829,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -1876,6 +1877,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -2067,7 +2073,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -2614,7 +2620,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -2639,7 +2645,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -2758,7 +2764,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -2790,7 +2796,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -3302,6 +3308,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3640,7 +3651,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -3683,6 +3696,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 

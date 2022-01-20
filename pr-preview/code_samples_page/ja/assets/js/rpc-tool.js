@@ -9,16 +9,19 @@ jQuery(function ($) {
 
   const api = new xrpl.Client(FULL_HISTORY_SERVER)
 
+
   api.on('connected', () => {
     const target = location.hash.slice(1);
-    if (api.isValidAddress(target)
+    if (xrpl.isValidAddress(target) ||
         reTxId.exec(target) ||
         reLedgerSeq.exec(target)) {
       $('#target').val(target);
       fetchTarget(target);
     }
   })
+  api.on('disconnected', (code) => console.warn("disconnected", code));
   api.connect();
+
 
   $('#account-entry').submit(function (e) {
     e.preventDefault()
@@ -45,7 +48,7 @@ jQuery(function ($) {
     $("#permalink").attr("href", locationWithoutHash + "#" + target);
     $("#explorerlink").attr("href", ""); // Reset
 
-    if (api.isValidAddress(target)) { // Account -------------------------------
+    if (xrpl.isValidAddress(target)) { // Account ------------------------------
       let account = target;
       previousMarkers = []
       nextMarker = undefined

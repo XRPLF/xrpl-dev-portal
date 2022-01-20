@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,7 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -182,6 +182,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -221,7 +222,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/tutorials/get-started/monitor-incoming-payments-with-websocket.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/tutorials/get-started/monitor-incoming-payments-with-websocket.ja.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -598,7 +599,7 @@ WS_HANDLERS["transaction"] = log_tx
 <p class="devportal-callout 警告"><strong>警告:</strong> 代わりに<code>transaction.Amount</code>フィールドを使用すると、<a href="partial-payments.html#partial-paymentの悪用">Partial Paymentの悪用</a>に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。</p>
 </li>
 <li>
-<p><strong><a href="checkcash.html">CheckCashトランザクション</a></strong> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> では、アカウントは別のアカウントの<a href="checkcreate.html">CheckCreateトランザクション</a>によって承認された金額を受け取ることができます。<strong>CheckCashトランザクション</strong>のメタデータを確認すると、アカウントが受け取った通貨の額を確認できます。</p>
+<p><strong><a href="checkcash.html">CheckCashトランザクション</a></strong>では、アカウントは別のアカウントの<a href="checkcreate.html">CheckCreateトランザクション</a>によって承認された金額を受け取ることができます。<strong>CheckCashトランザクション</strong>のメタデータを確認すると、アカウントが受け取った通貨の額を確認できます。</p>
 </li>
 <li>
 <p><strong><a href="escrowfinish.html">EscrowFinishトランザクション</a></strong> は、以前の<a href="escrowcreate.html">EscrowCreateトランザクション</a>によって作成された<a href="escrow.html">Escrow</a>を終了することでXRPを送金できます。<strong>EscrowFinishトランザクション</strong>のメタデータを確認すると、escrowからXRPを受け取ったアカウントと、その額を確認できます。</p>
@@ -1036,7 +1037,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets</a>
   </div>
 
       
@@ -1245,7 +1246,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -1293,6 +1294,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -1484,7 +1490,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -2031,7 +2037,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -2056,7 +2062,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -2175,7 +2181,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -2207,7 +2213,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -2719,6 +2725,11 @@ $("#tx_read").click((event) => {
     <a class="nav-link nav-leaf" href="/ja/logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3057,7 +3068,9 @@ $("#tx_read").click((event) => {
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -3100,6 +3113,7 @@ $("#tx_read").click((event) => {
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 

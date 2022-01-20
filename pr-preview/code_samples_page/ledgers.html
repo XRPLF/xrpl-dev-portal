@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,6 +178,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -217,7 +218,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/concepts/payment-system-basics/ledgers.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/payment-system-basics/ledgers.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -236,6 +237,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#tree-format">Tree Format</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#open-closed-and-validated-ledgers">Open, Closed, and Validated Ledgers</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ledger-close-times">Ledger Close Times</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#example">Example</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
       </ul>
   </div>
@@ -315,6 +317,29 @@
 <p>The time that a ledger version closed is recorded at the <code>close_time</code> field of the <a href="ledger-header.html">ledger header</a>. To make it easier for the network to reach a consensus on an exact close time, this value is rounded to a number of seconds based on the close time resolution, currently 10 seconds. If rounding would cause a ledger's close time to be the same as (or earlier than) its parent ledger's, the child ledger has its close time set to the parent's close time plus 1. This guarantees that the close times of validated ledgers are strictly increasing. <!-- STYLE_OVERRIDE: a number of --></p>
 <p>Since new ledger versions usually close about every 3 to 5 seconds, these rules result in a loose pattern where ledgers' close times end in :00, :01, :02, :10, :11, :20, :21, and so on. Times ending in 2 are less common and times ending in 3 are very rare, but both occur randomly when more ledgers randomly happen to close within a 10-second window.</p>
 <p>Generally speaking, the ledger cannot make any time-based measurements that are more precise than the close time resolution. For example, to check if an object has passed an expiration date, the rule is to compare it to the close time of the parent ledger. (The close time of a ledger is not yet known when executing transactions to go into that ledger.) This means that, for example, an <a href="escrow.html">Escrow</a> could successfully finish at a real-world time that is up to about 10 seconds later than the time-based expiration specified in the Escrow object.</p>
+<h3 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h3>
+<p>The following examples demonstrate the rounding behavior of ledger close times, from the perspective of an example validator, following a ledger with the close time <strong>12:00:00</strong>:</p>
+<p><strong>Current consensus round</strong></p>
+<ol>
+<li>A validator notes that it was <strong>12:00:03</strong> when the ledger closed and entered consensus. The validator includes this close time in its proposals.</li>
+<li>The validator observes that most other validators (on its UNL) proposed a close time of 12:00:02, and one other proposed a close time of 12:00:03. It changes its proposed close time to match the consensus of <strong>12:00:02</strong>.</li>
+<li>The validator rounds this value to the nearest close time interval, resulting in <strong>12:00:00</strong>.</li>
+<li>Since 12:00:00 is not greater than the previous ledger's close time, the validator adjusts the close time to be exactly 1 second after the previous ledger's close time. The result is an adjusted close time of <strong>12:00:01</strong>.</li>
+<li>The validator builds the ledger with these details, calculates the resulting hash, and confirms in the <a href="consensus.html#validation">validation step</a> that others did the same.</li>
+</ol>
+<p>Non-validating servers do all the same steps, except they don't propose their recorded close times to the rest of the network.</p>
+<p><strong>Next consensus round</strong></p>
+<ol>
+<li>The next ledger enters consensus at <strong>12:00:04</strong> according to most validators.</li>
+<li>This rounds down again, to a close time of <strong>12:00:00</strong>.</li>
+<li>Since this is not greater than the previous ledger's close time of 12:00:01, the adjusted close time is <strong>12:00:02</strong>.</li>
+</ol>
+<p><strong>Next consensus round after that</strong></p>
+<ol>
+<li>The ledger after that enters consensus at <strong>12:00:05</strong> according to most validators.</li>
+<li>This rounds up, based on the close time resolution, to <strong>12:00:10</strong>.</li>
+<li>Since this value is larger than the previous ledger's close time, it does not need to be adjusted. <strong>12:00:10</strong> becomes the official close time.</li>
+</ol>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>For more information about ledger headers, ledger object IDs, and ledger object types, see <a href="ledger-data-formats.html">Ledger Data Formats</a></li>
@@ -424,7 +449,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
       
@@ -633,7 +658,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -681,6 +706,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -872,7 +902,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -1419,7 +1449,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -1444,7 +1474,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -1563,7 +1593,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -1595,7 +1625,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -2107,6 +2137,11 @@
     <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2445,7 +2480,9 @@
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -2488,6 +2525,7 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 

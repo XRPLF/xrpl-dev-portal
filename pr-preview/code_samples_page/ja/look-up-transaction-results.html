@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,7 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -182,6 +182,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -221,7 +222,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/tutorials/production-readiness/look-up-transaction-results.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/tutorials/production-readiness/look-up-transaction-results.ja.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -587,7 +588,7 @@
 </code></pre></div>
 <h3 id="payment-channel">Payment Channel<a aria-hidden="true" class="hover_anchor" href="#payment-channel"><i class="fa fa-link"></i></a></h3>
 <p>Payment Channelの作成時に、LedgerEntryTypeが<code>PayChannel</code>の<code>CreatedNode</code>を探します。また、送金元の残高の減少を示す、LedgerEntryTypeが<code>AccountRoot</code>の<code>ModifiedNode</code>も探す必要があります。アドレスが送金元に一致することを確認するために<code>FinalFields</code>の<code>Account</code>フィールドを探し、XRP残高の変化を確認するために<code>Balance</code>フィールドの差異を確認します。</p>
-<p><a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir Amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> が有効な場合は、メタデータは宛先のアカウントの<a href="directorynode.html">所有者ディレクトリー</a>を変更して、新しく作成されるPayment Channelをリストで示す必要もあります。これにより、アカウントがオープンPayment Channelの受取人である場合に、そのアカウントが<a href="accounts.html#アカウントの削除">削除される</a>ことを防ぎます。（fixPayChanRecipientOwnerDir Amendmentが有効になる前にPayment Channelが作成された場合は、アカウントを削除できます。）</p>
+<p><a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir Amendment</a>が有効な場合は、メタデータは宛先のアカウントの<a href="directorynode.html">所有者ディレクトリー</a>を変更して、新しく作成されるPayment Channelをリストで示す必要もあります。これにより、アカウントがオープンPayment Channelの受取人である場合に、そのアカウントが<a href="accounts.html#アカウントの削除">削除される</a>ことを防ぎます。（fixPayChanRecipientOwnerDir Amendmentが有効になる前にPayment Channelが作成された場合は、アカウントを削除できます。）</p>
 <p>Payment Channelの閉鎖を要求する方法は、Payment Channelの不変の<code>CancelAfter</code>時刻（作成時にのみ設定されます）以外にもいくつかあります。トランザクションでChannelの閉鎖をスケジュールする場合は、そのChannel用にLedgerEntryTypeが<code>PayChannel</code>の<code>ModifiedNode</code>エントリーがあり、<code>FinalFields</code>の<code>Expiration</code>フィールドには閉鎖時刻が新たに追加されています。以下の例は、送金元がクレームを清算せずにChannelを閉鎖するよう要求した場合に<code>PayChannel</code>に対して行われる変更を示します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="p">{</span>
   <span class="nt">"ModifiedNode"</span><span class="p">:</span> <span class="p">{</span>
@@ -774,7 +775,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets</a>
   </div>
 
       
@@ -983,7 +984,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -1031,6 +1032,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -1222,7 +1228,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -1769,7 +1775,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -1794,7 +1800,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -1913,7 +1919,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -1945,7 +1951,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -2457,6 +2463,11 @@
     <a class="nav-link nav-leaf" href="/ja/logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2795,7 +2806,9 @@
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -2838,6 +2851,7 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 

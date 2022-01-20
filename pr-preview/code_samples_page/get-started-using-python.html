@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,6 +178,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -217,7 +218,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/tutorials/get-started/get-started-using-python.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/tutorials/get-started/get-started-using-python.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -344,7 +345,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1"># Sign the transaction</span>
 <span class="kn">from</span> <span class="nn">xrpl.transaction</span> <span class="kn">import</span> <span class="n">safe_sign_and_autofill_transaction</span>
 
-<span class="n">my_tx_payment_signed</span> <span class="o">=</span> <span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span><span class="n">my_tx_payment</span><span class="p">,</span><span class="n">test_wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+<span class="n">my_tx_payment_signed</span> <span class="o">=</span> <span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span><span class="n">my_tx_payment</span><span class="p">,</span> <span class="n">test_wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="send">Send<a aria-hidden="true" class="hover_anchor" href="#send"><i class="fa fa-link"></i></a></h5>
 <p>To send the transaction:</p>
@@ -577,7 +578,7 @@ response.status:  ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
       
@@ -786,7 +787,7 @@ response.status:  ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -834,6 +835,11 @@ response.status:  ResponseStatus.SUCCESS
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -1025,7 +1031,7 @@ response.status:  ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -1572,7 +1578,7 @@ response.status:  ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -1597,7 +1603,7 @@ response.status:  ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -1716,7 +1722,7 @@ response.status:  ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -1748,7 +1754,7 @@ response.status:  ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -2260,6 +2266,11 @@ response.status:  ResponseStatus.SUCCESS
     <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2598,7 +2609,9 @@ response.status:  ResponseStatus.SUCCESS
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -2641,6 +2654,7 @@ response.status:  ResponseStatus.SUCCESS
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 

@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,6 +178,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -217,7 +218,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/concepts/consensus-network/amendments/known-amendments.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/consensus-network/amendments/known-amendments.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -230,6 +231,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#known-amendments">Known Amendments</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#checks">Checks</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
@@ -311,6 +313,11 @@
 </thead>
 <tbody>
 <tr>
+<td align="left"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
+<td align="left">v1.8.0</td>
+<td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
 <td align="left"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
 <td align="left">TBD</td>
 <td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
@@ -323,27 +330,27 @@
 <tr>
 <td align="left"><a href="#negativeunl">NegativeUNL</a></td>
 <td align="left">v1.7.3</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.3.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA" target="_blank" title="Enabled: 2021-11-21"><img alt="Enabled: 2021-11-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></td>
 <td align="left">v1.7.2</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.2.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td align="left"><a href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td align="left"><a href="#flowsortstrands">FlowSortStrands</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7" target="_blank" title="Enabled: 2021-11-18"><img alt="Enabled: 2021-11-18" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#ticketbatch">TicketBatch</a></td>
 <td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36" target="_blank" title="Enabled: 2021-11-18"><img alt="Enabled: 2021-11-18" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></td>
+<td align="left">v1.7.0</td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532" target="_blank" title="Enabled: 2021-11-11"><img alt="Enabled: 2021-11-11" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#flowsortstrands">FlowSortStrands</a></td>
+<td align="left">v1.7.0</td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1" target="_blank" title="Enabled: 2021-11-11"><img alt="Enabled: 2021-11-11" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#fix1781">fix1781</a></td>
@@ -553,18 +560,60 @@
 </tbody>
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.</p>
-<h2 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h2>
+<h2 id="checkcashmakestrustline">CheckCashMakesTrustLine<a aria-hidden="true" class="hover_anchor" href="#checkcashmakestrustline"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">CheckCashMakesTrustLine</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
+<td align="left">98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">In Development</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">No</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adjusts the <a href="checkcash.html">CheckCash transaction</a> so that cashing a <a href="checks.html">Check</a> for an issued token automatically creates a <a href="trust-lines-and-issuing.html">trust line</a> to hold the token. The new behavior is similar to how the <a href="offercreate.html">OfferCreate transaction</a> behaves when users purchase tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)</p>
+<p>Without this amendment, users have to separately send a <a href="trustset.html">TrustSet transaction</a> before they can cash a Check for an issued token.</p>
+<p>This amendment does not change the fact that you cannot force anyone to hold tokens they don't want in the XRP Ledger.</p>
+<h2 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Amendment</th>
+<th align="left">Checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Amendment ID</td>
 <td align="left">157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -576,14 +625,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">CryptoConditions</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -592,14 +653,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">CryptoConditionsSuite</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">In Development</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">No</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -609,14 +682,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">DeletableAccounts</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -627,14 +712,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">DepositAuth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -646,14 +743,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">DepositPreauth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -664,14 +773,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">EnforceInvariants</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -689,14 +810,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">Escrow</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -706,14 +839,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">FeeEscalation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -730,14 +875,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1201</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -747,14 +904,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1368</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -763,14 +932,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1373</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -780,14 +961,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1512</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -797,14 +990,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1513</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -814,14 +1019,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1515</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -833,14 +1050,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1523</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -850,14 +1079,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1528</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -867,14 +1108,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1543</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -889,14 +1142,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1571</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -909,14 +1174,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1578</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -929,14 +1206,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1623</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -947,14 +1236,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fix1781</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -965,14 +1266,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fixAmendmentMajorityCalc</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -982,14 +1295,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fixCheckThreading</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -999,14 +1324,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fixMasterKeyAsRegularKey</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1017,14 +1354,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fixPayChanRecipientOwnerDir</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1034,14 +1383,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fixQualityUpperBound</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1051,14 +1412,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fixRmSmallIncreasedQOffers</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2</td>
-<td align="left">Open for Voting</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1069,14 +1442,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fixSTAmountCanonicalize</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB</td>
-<td align="left">Open for Voting</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1085,14 +1470,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">fixTakerDryOfferRemoval</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1103,14 +1500,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">Flow</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1120,14 +1529,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">FlowCross</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1141,14 +1562,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">FlowSortStrands</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422</td>
-<td align="left">Open for Voting</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1158,14 +1591,22 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">FlowV2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Vetoed</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1174,14 +1615,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">HardenedValidations</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1191,14 +1644,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">MultiSign</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1219,14 +1684,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">MultiSignReserve</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1237,14 +1714,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">NegativeUNL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076</td>
-<td align="left">Open for Voting</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">No</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1253,14 +1742,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">OwnerPaysFee</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">In Development</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">N/A</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1271,14 +1772,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">PayChan</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1289,14 +1802,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">RequireFullyCanonicalSig</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1308,14 +1833,22 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">SHAMapV2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Vetoed</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1325,14 +1858,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">SortedDirectories</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1342,14 +1887,22 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">SusPay</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Vetoed</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1358,14 +1911,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">TicketBatch</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C</td>
-<td align="left">Open for Voting</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1375,14 +1940,22 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">Tickets</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Vetoed</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
 </tr>
 </tbody>
 </table>
@@ -1391,14 +1964,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">TickSize</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1408,14 +1993,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th align="left">Amendment</th>
+<th align="left">TrustSetAuth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="left">Amendment ID</td>
 <td align="left">6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
+</tr>
+<tr>
+<td align="left">Status</td>
 <td align="left">Enabled</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1525,7 +2122,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
       
@@ -1734,7 +2331,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -1782,6 +2379,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -1973,7 +2575,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -2520,7 +3122,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -2545,7 +3147,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -2664,7 +3266,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -2696,7 +3298,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -3208,6 +3810,11 @@ the latest ledger that the validator considers to be fully validated. The consen
     <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3546,7 +4153,9 @@ the latest ledger that the validator considers to be fully validated. The consen
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -3589,6 +4198,7 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 

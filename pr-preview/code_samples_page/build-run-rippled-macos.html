@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,6 +178,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -217,7 +218,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -263,22 +264,22 @@
 </li>
 <li>
 <p>Install Xcode command line tools.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">$ xcode-select --install
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">xcode-select --install
 </code></pre></div>
 </li>
 <li>
 <p>Install <a class="external-link" href="https://brew.sh/" target="_blank">Homebrew <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">$ ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 </code></pre></div>
 </li>
 <li>
 <p>Update Homebrew.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">$ brew update
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">brew update
 </code></pre></div>
 </li>
 <li>
 <p>Use Homebrew to install dependencies.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">$ brew install git cmake pkg-config protobuf openssl ninja
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">brew install git cmake pkg-config protobuf openssl ninja
 </code></pre></div>
 </li>
 <li>
@@ -292,9 +293,9 @@
 </li>
 <li>
 <p>In a terminal, run:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">$ <span class="nb">cd</span> /LOCATION/OF/YOUR/BOOST/DIRECTORY
-$ ./bootstrap.sh
-$ ./b2 <span class="nv">cxxflags</span><span class="o">=</span><span class="s2">"-std=c++14"</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
+./bootstrap.sh
+./b2 cxxflags="-std=c++14"
 </code></pre></div>
 </li>
 </ol>
@@ -308,9 +309,9 @@ $ ./b2 <span class="nv">cxxflags</span><span class="o">=</span><span class="s2">
 <li>
 <p>Edit the code below with your Boost directory location and run it to add Boost environment variable to your <code>.zshrc</code> or <code>.bash_profile</code> file so it's automatically set when you log in.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">  <span class="c1"># for zsh</span>
-  <span class="o">$</span> <span class="n">echo</span> <span class="s2">"export BOOST_ROOT=/Users/my_user/boost_1_75_0"</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">zshrc</span>
+  <span class="n">echo</span> <span class="s2">"export BOOST_ROOT=/Users/my_user/boost_1_75_0"</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">zshrc</span>
   <span class="c1"># for bash</span>
-  <span class="o">$</span> <span class="n">echo</span> <span class="s2">"export BOOST_ROOT=/Users/my_user/boost_1_75_0"</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bash_profile</span>
+  <span class="n">echo</span> <span class="s2">"export BOOST_ROOT=/Users/my_user/boost_1_75_0"</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bash_profile</span>
 </code></pre></div>
 </li>
 </ol>
@@ -318,62 +319,62 @@ $ ./b2 <span class="nv">cxxflags</span><span class="o">=</span><span class="s2">
 <li>
 <p>If you updated your <code>.bash_profile</code> file in the previous step, be sure to source it in a new Terminal window. For example:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"># zsh
-$ source ~/.zshrc
+source ~/.zshrc
 # bash
-$ source ~/.bash_profile
+source ~/.bash_profile
 </code></pre></div>
 </li>
 <li>
 <p>Clone the <code>rippled</code> source code into your desired location and access the <code>rippled</code> directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see <a class="external-link" href="https://docs.github.com/en/get-started/quickstart/set-up-git/" target="_blank">Set up git <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">$ git clone https://github.com/ripple/rippled.git
-$ <span class="nb">cd</span> rippled
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">git clone https://github.com/ripple/rippled.git
+cd rippled
 </code></pre></div>
 </li>
 <li>
 <p>Switch to the appropriate branch for the software version you want:</p>
 <p>For the latest stable release, use the <code>master</code> branch.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">$ git checkout master
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">git checkout master
 </code></pre></div>
 <p>For the latest release candidate, use the <code>release</code> branch:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">$ git checkout release
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">git checkout release
 </code></pre></div>
 <p>For the latest in-progress version, use the <code>develop</code> branch:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">$ git checkout develop
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">git checkout develop
 </code></pre></div>
 <p>Or, you can checkout one of the tagged releases listed on <a class="external-link" href="https://github.com/ripple/rippled/releases" target="_blank">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 </li>
 <li>
 <p>Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The <a class="external-link" href="https://xrpl.org/blog/label/rippled-release-notes.html" target="_blank">release announcements for <code>rippled</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> generally show the exact commit to expect for that release.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">$ git log -1
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">git log -1
 </code></pre></div>
 </li>
 <li>
 <p>In the <code>rippled</code> directory you cloned, create your build directory and access it. For example:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">$ mkdir my_build
-$ <span class="nb">cd</span> my_build
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">mkdir my_build
+cd my_build
 </code></pre></div>
 </li>
 <li>
 <p>Build <code>rippled</code>. This could take about 5 minutes, depending on your hardware specs.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">$ cmake -G <span class="s2">"Unix Makefiles"</span> -DCMAKE_BUILD_TYPE<span class="o">=</span>Debug ..
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ..
 </code></pre></div>
 <p>You can set <code>CMAKE_BUILD_TYPE</code> to the <code>Debug</code> or <code>Release</code> build type. All four standard <a class="external-link" href="https://cmake.org/cmake/help/v3.0/variable/CMAKE_BUILD_TYPE.html" target="_blank"><code>CMAKE_BUILD_TYPE</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> values are supported.</p>
 </li>
 <li>
 <p>Run the build using CMake. This could take about 10 minutes, depending on your hardware specs.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">$ cmake --build . -- -j <span class="m">4</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">cmake --build . -- -j 4
 </code></pre></div>
 <p class="devportal-callout tip"><strong>Tip:</strong> This example uses a <code>-j</code> parameter set to <code>4</code>, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use <code>sysctl -n hw.ncpu</code> to get your CPU core count.</p>
 </li>
 <li>
 <p>Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended)</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">$ ./rippled --unittest
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">./rippled --unittest
 </code></pre></div>
 </li>
 <li>
 <p><code>rippled</code> requires the <code>rippled.cfg</code> config file to run. You can find an example config file, <code>rippled-example.cfg</code> in <code>rippled/cfg</code>. Make a copy and save it as <code>rippled.cfg</code> in a location that enables you to run <code>rippled</code> as a non-root user. Access the <code>rippled</code> directory and run:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16">$ mkdir -p <span class="nv">$HOME</span>/.config/ripple
-$ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/rippled.cfg
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16">mkdir -p $HOME/.config/ripple
+cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 </code></pre></div>
 </li>
 <li>
@@ -393,13 +394,13 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 </li>
 <li>
 <p><code>rippled</code> requires the <code>validators.txt</code> file to run. You can find an example validators file, <code>validators-example.txt</code>, in <code>rippled/cfg/</code>. Make a copy and save it as <code>validators.txt</code> in the same folder as your <code>rippled.cfg</code> file. Access the <code>rippled</code> directory and run:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">$ cp cfg/validators-example.txt <span class="nv">$HOME</span>/.config/ripple/validators.txt
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
 </code></pre></div>
 <p class="devportal-callout warning"><strong>Warning:</strong> The <code>validators.txt</code> file contains settings that determine how your server declares a ledger to be validated. If you are not careful, changes to this file could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.</p>
 </li>
 <li>
 <p>Access your build directory, <code>my_build</code> for example, and start the <code>rippled</code> service.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18">$ ./rippled
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18">./rippled
 </code></pre></div>
 <p>Here's an excerpt of what you can expect to see in your terminal:</p>
 </li>
@@ -601,7 +602,7 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
       
@@ -810,7 +811,7 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -858,6 +859,11 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -1049,7 +1055,7 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -1596,7 +1602,7 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -1621,7 +1627,7 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -1740,7 +1746,7 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -1772,7 +1778,7 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -2284,6 +2290,11 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
     <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2622,7 +2633,9 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -2665,6 +2678,7 @@ $ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/ripple
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 

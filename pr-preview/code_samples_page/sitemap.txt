@@ -65,6 +65,7 @@ https://xrpl.org/known-amendments.html
 https://xrpl.org/fee-voting.html
 https://xrpl.org/consensus-research.html
 https://xrpl.org/parallel-networks.html
+https://xrpl.org/federated-sidechains.html
 https://xrpl.org/the-rippled-server.html
 https://xrpl.org/rippled-server-modes.html
 https://xrpl.org/clustering.html
@@ -301,6 +302,7 @@ https://xrpl.org/ledger_cleaner.html
 https://xrpl.org/ledger_request.html
 https://xrpl.org/log_level.html
 https://xrpl.org/logrotate.html
+https://xrpl.org/node_to_shard.html
 https://xrpl.org/server-control-methods.html
 https://xrpl.org/ledger_accept.html
 https://xrpl.org/stop.html
@@ -370,6 +372,7 @@ https://xrpl.org/contribute-code.html
 https://xrpl.org/https://xrpl.org/blog/
 https://xrpl.org/https://xrplgrants.org/
 https://xrpl.org/https://github.com/XRPLF/xrpl-dev-portal/
+https://xrpl.org/report-a-scam.html
 https://xrpl.org/explore.html
 https://xrpl.org/wallets.html
 https://xrpl.org/exchanges.html

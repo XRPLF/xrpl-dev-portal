@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,7 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -182,6 +182,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -221,7 +222,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/concepts/consensus-network/amendments/known-amendments.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/consensus-network/amendments/known-amendments.ja.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -234,6 +235,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#既知のamendment">既知のAmendment</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#checks">Checks</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
@@ -315,6 +317,11 @@
 </thead>
 <tbody>
 <tr>
+<td align="left"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
+<td align="left">v1.8.0</td>
+<td align="left"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+</tr>
+<tr>
 <td align="left"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
 <td align="left">未定</td>
 <td align="left"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
@@ -327,27 +334,27 @@
 <tr>
 <td align="left"><a href="#negativeunl">NegativeUNL</a></td>
 <td align="left">v1.7.3</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.3.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA" target="_blank" title="有効: 2021/11/21"><img alt="有効: 2021/11/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></td>
 <td align="left">v1.7.2</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.2.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td align="left"><a href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td align="left"><a href="#flowsortstrands">FlowSortStrands</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7" target="_blank" title="有効: 2021/11/18"><img alt="有効: 2021/11/18" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#ticketbatch">TicketBatch</a></td>
 <td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36" target="_blank" title="有効: 2021/11/18"><img alt="有効: 2021/11/18" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></td>
+<td align="left">v1.7.0</td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532" target="_blank" title="有効: 2021/11/11"><img alt="有効: 2021/11/11" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#flowsortstrands">FlowSortStrands</a></td>
+<td align="left">v1.7.0</td>
+<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1" target="_blank" title="有効: 2021/11/11"><img alt="有効: 2021/11/11" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#fix1781">fix1781</a></td>
@@ -557,6 +564,24 @@
 </tbody>
 </table>
 <p class="devportal-callout 注記"><strong>注記:</strong> 多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。</p>
+<h2 id="checkcashmakestrustline">CheckCashMakesTrustLine<a aria-hidden="true" class="hover_anchor" href="#checkcashmakestrustline"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F</td>
+<td align="left">開発中</td>
+</tr>
+</tbody>
+</table>
+<p>Adjusts the <a href="checkcash.html">CheckCash transaction</a> so that cashing a <a href="checks.html">Check</a> for an issued token automatically creates a <a href="trust-lines-and-issuing.html">trust line</a> to hold the token. The new behavior is similar to how the <a href="offercreate.html">OfferCreate transaction</a> behaves when users purchase tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)</p>
+<p>Without this amendment, users have to separately send a <a href="trustset.html">TrustSet transaction</a> before they can cash a Check for an issued token.</p>
+<p>This amendment does not change the fact that you cannot force anyone to hold tokens they don't want in the XRP Ledger.</p>
 <h2 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1066,7 +1091,7 @@
 <tbody>
 <tr>
 <td align="left">B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2</td>
-<td align="left">投票中</td>
+<td align="left">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1085,7 +1110,7 @@
 <tbody>
 <tr>
 <td align="left">452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB</td>
-<td align="left">投票中</td>
+<td align="left">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1158,7 +1183,7 @@
 <tbody>
 <tr>
 <td align="left">AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422</td>
-<td align="left">投票中</td>
+<td align="left">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1256,7 +1281,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 <tbody>
 <tr>
 <td align="left">B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076</td>
-<td align="left">投票中</td>
+<td align="left">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1379,7 +1404,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 <tbody>
 <tr>
 <td align="left">955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C</td>
-<td align="left">投票中</td>
+<td align="left">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1545,7 +1570,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets</a>
   </div>
 
       
@@ -1754,7 +1779,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -1802,6 +1827,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -1993,7 +2023,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -2540,7 +2570,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -2565,7 +2595,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -2684,7 +2714,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -2716,7 +2746,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -3228,6 +3258,11 @@ the latest ledger that the validator considers to be fully validated. The consen
     <a class="nav-link nav-leaf" href="/ja/logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3566,7 +3601,9 @@ the latest ledger that the validator considers to be fully validated. The consen
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -3609,6 +3646,7 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 

@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"><p>Fund your XRPL project with a developer grant. <a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class="btn btn-outline-secondary">Apply now!</a></p></div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,6 +178,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -217,7 +218,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/mDuo13/xrpl-dev-portal/edit/code_samples_page/content/concepts/consensus-network/amendments/amendments.md?pr=/XRPLF/xrpl-dev-portal/pull/1222" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/consensus-network/amendments/amendments.md" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -234,8 +235,11 @@
         <li class="nav-item level-2"><a class="nav-link" href="#about-amendments">About Amendments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amendment-process">Amendment Process</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amendment-voting">Amendment Voting</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#amendment-blocked">Amendment Blocked</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amendment-blocked">Amendment Blocked</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#how-to-tell-if-your-rippled-server-is-amendment-blocked">How to Tell If Your rippled Server Is Amendment Blocked</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#how-to-unblock-an-amendment-blocked-rippled-server">How to Unblock an Amendment-Blocked rippled Server</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#testing-amendments">Testing Amendments</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#retiring-legacy-code">Retiring Legacy Code</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
       </ul>
   </div>
@@ -286,11 +290,12 @@
 </ul>
 <p>Theoretically, a <code>tfLostMajority</code> EnableAmendment pseudo-transaction could be included in the same ledger as the pseudo-transaction to enable an amendment. In this case, the pseudo-transaction with the <code>tfLostMajority</code> pseudo-transaction has no effect.</p>
 <h2 id="amendment-voting">Amendment Voting<a aria-hidden="true" class="hover_anchor" href="#amendment-voting"><i class="fa fa-link"></i></a></h2>
-<p>Each version of <code>rippled</code> is compiled with a list of known amendments and the code to implement those amendments. By default, <code>rippled</code> supports known amendments and opposes unknown amendments. Operators of <code>rippled</code> validators can <a href="configure-amendment-voting.html">configure their servers</a> to explicitly support or oppose certain amendments, even if those amendments are not known to their <code>rippled</code> versions.</p>
-<p>To become enabled, an amendment must be supported by at least 80% of trusted validators continuously for two weeks. If support for an amendment goes below 80% of trusted validators, the amendment is temporarily rejected. The two week period starts over if the amendment regains support of at least 80% of trusted validators. (This can occur if validators vote differently, or if there is a change in which validators are trusted.) An amendment can gain and lose a majority any number of times before it becomes permanently enabled. An amendment cannot be permanently rejected, but it becomes very unlikely for an amendment to become enabled if new versions of <code>rippled</code> do not have the amendment in their known amendments list.</p>
+<p>Each version of <code>rippled</code> is compiled with a list of known amendments and the code to implement those amendments. Operators of <code>rippled</code> validators <a href="configure-amendment-voting.html">configure their servers</a> to vote in favor or against each inactive amendment. Server operators can change their votes at any time. If the operator does not choose a setting for a particular amendment, the server uses a default vote which is defined in the source code. The default can change in new software releases. For example, version 2.0 of the server might understand a new amendment but vote against it by default; then version 2.1 of the server might vote in favor of the same amendment by default. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>To become enabled, an amendment must be supported by at least 80% of trusted validators continuously for two weeks. If support for an amendment goes below 80% of trusted validators, the amendment is temporarily rejected. The two week period starts over if the amendment regains support of at least 80% of trusted validators. (This can occur if validators vote differently, or if there is a change in which validators are trusted.) An amendment can gain and lose a majority any number of times before it becomes permanently enabled.</p>
+<p>An amendment cannot be permanently rejected, but it becomes very unlikely for an amendment to become enabled if new versions of <code>rippled</code> do not have the amendment in their known amendments list. Amendments that have had their source code removed without becoming enabled are considered "Vetoed" by the network.</p>
 <p>As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. <!-- TODO: link an explanation of validator list publishers when one's ready --></p>
 <p>For information on how to configure your server's amendment votes, see <a href="configure-amendment-voting.html">Configure Amendment Voting</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<h3 id="amendment-blocked">Amendment Blocked<a aria-hidden="true" class="hover_anchor" href="#amendment-blocked"><i class="fa fa-link"></i></a></h3>
+<h2 id="amendment-blocked">Amendment Blocked<a aria-hidden="true" class="hover_anchor" href="#amendment-blocked"><i class="fa fa-link"></i></a></h2>
 <p>When an amendment gets enabled for the network after the voting process, servers running earlier versions of <code>rippled</code> that do not know about the amendment become "amendment blocked" because they no longer understand the rules of the network. Servers that are amendment blocked:</p>
 <ul>
 <li>Cannot determine the validity of a ledger</li>
@@ -302,7 +307,7 @@
 <p>The amendments that a <code>rippled</code> server is configured to vote for or against have no impact on whether the server becomes amendment blocked. A <code>rippled</code> server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if an enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.</p>
 <p>If your server is amendment blocked, you must <a href="install-rippled.html">upgrade to a new version</a> to sync with the network.</p>
 <p>It is also possible to be amendment blocked because you connected your server to a <a href="parallel-networks.html">parallel network</a> that has different amendments enabled. For example, the XRP Ledger Devnet typically has upcoming and experimental amendments enabled. If you are using the latest production release, your server is likely to be amendment blocked when connecting to Devnet. You could resolve this issue by upgrading to an unstable pre-release or nightly build, or you could <a href="connect-your-rippled-to-the-xrp-test-net.html">connect to a different network such as Testnet</a> instead.</p>
-<h4 id="how-to-tell-if-your-rippled-server-is-amendment-blocked">How to Tell If Your <code>rippled</code> Server Is Amendment Blocked<a aria-hidden="true" class="hover_anchor" href="#how-to-tell-if-your-rippled-server-is-amendment-blocked"><i class="fa fa-link"></i></a></h4>
+<h3 id="how-to-tell-if-your-rippled-server-is-amendment-blocked">How to Tell If Your <code>rippled</code> Server Is Amendment Blocked<a aria-hidden="true" class="hover_anchor" href="#how-to-tell-if-your-rippled-server-is-amendment-blocked"><i class="fa fa-link"></i></a></h3>
 <p>One of the first signs that your <code>rippled</code> server is amendment blocked is an <code>amendmentBlocked</code> error that is returned <a href="submit.html">when you submit a transaction</a>. Here's an example <code>amendmentBlocked</code> error:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
    <span class="nt">"result"</span><span class="p">:{</span>
@@ -342,7 +347,7 @@
 </code></pre></div>
 <p>If your server is not amendment blocked, the <code>amendment_blocked</code> field is not returned in the response.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> <code>rippled</code> versions older than 0.80.0 do not include the <code>amendment_blocked</code> field, even if your server is amendment blocked.</p>
-<h4 id="how-to-unblock-an-amendment-blocked-rippled-server">How to Unblock an Amendment-Blocked <code>rippled</code> Server<a aria-hidden="true" class="hover_anchor" href="#how-to-unblock-an-amendment-blocked-rippled-server"><i class="fa fa-link"></i></a></h4>
+<h3 id="how-to-unblock-an-amendment-blocked-rippled-server">How to Unblock an Amendment-Blocked <code>rippled</code> Server<a aria-hidden="true" class="hover_anchor" href="#how-to-unblock-an-amendment-blocked-rippled-server"><i class="fa fa-link"></i></a></h3>
 <p>Upgrade to the <code>rippled</code> version that supports the amendments that are causing your server to be amendment blocked. Ripple recommends that you <a href="install-rippled.html">upgrade to the newest <code>rippled</code> version</a> to unblock your server and enable it to sync with the network again.</p>
 <p>Depending on the scenario, you may be able to (and want to) unblock your server by upgrading to a <code>rippled</code> version that is older than the newest version. This is possible if the older version supports the amendments that are blocking your <code>rippled</code> server.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> If the newest <code>rippled</code> version provides security or other urgent fixes, you should upgrade to the newest version as soon as possible.</p>
@@ -413,6 +418,10 @@
 <span class="na">MultiSign</span>
 <span class="na">TrustSetAuth</span>
 </code></pre></div>
+<h2 id="retiring-legacy-code">Retiring Legacy Code<a aria-hidden="true" class="hover_anchor" href="#retiring-legacy-code"><i class="fa fa-link"></i></a></h2>
+<p>After an amendment has become enabled, it can never be disabled. (To reverse protocol changes, it would be necessary to create a new amendment.) However, separate ledger chains, such as <a href="parallel-networks.html">test networks</a> or <a href="rippled-server-modes.html#stand-alone-mode">stand-alone mode</a> can have different sets of amendments applied. Therefore, the pre-amendment code may continue to run in those cases, and the software must work with an increasing number of combinations of amendments that may or may not be enabled on any given test network.</p>
+<p>Rather than maintain the source code for all old behavior indefinitely, <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/19" target="_blank">XRP Ledger Standard 11d <i aria-hidden="true" class="fa fa-external-link"></i></a> defines a process for retiring the pre-amendment code. In this process, amendments that have been enabled on the XRP Ledger Mainnet can have the pre-amendment code removed, making them apply unconditionally as part of the XRP Ledger protocol. For the XRP Ledger's <a href="the-rippled-server.html">reference server implementation</a>, the developers periodically chooses a cutoff date <strong>at least 2 years</strong> in the past, and retire pre-amendment source code for amendments that were enabled on the network before the cutoff date.</p>
+<p>When pre-amendment code has been retired, the server follows the amended logic for all transactions at all times. As a result, the server is no longer guaranteed to produce historically-accurate results if you try to replay ledgers older than the cutoff date. The server prints a warning if you try to <a href="load-a-saved-ledger-in-stand-alone-mode.html">load and replay a ledger</a> that is older than the cutoff date. To produce historically-accurate results, you must compile or download an old server binary that has the legacy code.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
@@ -537,7 +546,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
       
@@ -746,7 +755,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -794,6 +803,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
   </div>
 
     </nav>
@@ -985,7 +999,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -1532,7 +1546,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
   </div>
 
       
@@ -1557,7 +1571,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -1676,7 +1690,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -1708,7 +1722,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -2220,6 +2234,11 @@
     <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2558,7 +2577,9 @@
 
   </div>
 
-</nav>      </aside>
+</nav>
+
+      </aside>
     </div><!--/.row (main layout)-->
   </div>
 
@@ -2601,6 +2622,7 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 
