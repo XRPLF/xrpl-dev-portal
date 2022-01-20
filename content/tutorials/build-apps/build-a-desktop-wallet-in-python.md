@@ -60,7 +60,7 @@ This installs and upgrades the following Python libraries:
 - [Requests](https://docs.python-requests.org/), a library for easily making HTTP requests.
 - [toml](https://github.com/uiri/toml), a library for parsing TOML-formatted files.
 
-The `requests` and `toml` libraries are only needed for the [domain verification in step 6](TODO:link), but you can install them now while you're installing other dependencies.
+The `requests` and `toml` libraries are only needed for the [domain verification in step 6](#6-domain-verification-and-polish), but you can install them now while you're installing other dependencies.
 
 ### 1. Hello World
 
@@ -74,11 +74,15 @@ When you run this script, it displays a single window that (hopefully) shows the
 
 Under the hood, the code makes a JSON-RPC client, connects to a public Testnet server, and uses the [ledger method][] to get this information. Meanwhile, it creates a [`wx.Frame`](https://docs.wxpython.org/wx.Frame.html) subclass as the base of the user interface. This class makes a window the user can see, with a [`wx.StaticText`](https://docs.wxpython.org/wx.StaticText.html) widget to display text to the user, and a [`wx.Panel`](https://docs.wxpython.org/wx.Panel.html) to hold that widget.
 
-### 2. Showing Updates
+### 2. Show Ledger Updates
 
-**Full code for this step:** [`2_threaded.py`](TODO:link).
+**Full code for this step:** [`2_threaded.py`](({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/2_threaded.py)).
 
-You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the app doesn't keep watching for updates. If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
+You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the text displayed never changes unless you close the app and reopen it. The actual XRP Ledger is constantly making forward progress, so a more useful app would show it, something like this:
+
+![Animation: Step 2, showing ledger updates](img/python-wallet-2.gif)
+
+If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
 
 The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that you each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, the class attributes (anything starting with `self.`) are  When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:
 
@@ -122,28 +126,118 @@ Since the app uses a WebSocket client instead of the JSON-RPC client now, the co
 **Tip:** If you [run your own `rippled` server](the-rippled-server.html#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](public-servers.html) to connect to the Mainnet or other test networks.
 
 
-### 3. Viewing an Account
+### 3. Display an Account
 
-**Full code for this step:** [`3_account.py`](TODO:link)
+**Full code for this step:** [`3_account.py`](({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/3_account.py))
 
 A "wallet" application is one that lets you manage your account. Now that we have a working, ongoing connection to the XRP Ledger, it's time to start adding details for a specific account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the [reserve requirement](reserves.html).
 
-When you do math on XRP amounts, you should import the `Decimal` class so that you don't get rounding errors. Add this to the top of the file:
+The prompt is in a popup dialog like this:
+
+![Screenshot: step 3, account input prompt](img/python-wallet-3-enter.png)
+
+After the user inputs the prompt, the updated GUI looks like this:
+
+![Screenshot, step 3, showing account details](img/python-wallet-3-main.png)
+
+When you do math on XRP amounts, you should use the `Decimal` class so that you don't get rounding errors. Add this to the top of the file, with the other imports:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="from decimal", end_before="class XRPLMonitorThread") }}
 
-Update the `watch_xrpl()` and `on_connected()` methods as follows:
+In the `XRPLMonitorThread` class, rename and update the `watch_xrpl()` method as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="async def watch_xrpl", end_before="class AutoGridBagSizer") }}
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="async def watch_xrpl", end_before="async def on_connected") }}
 
-The `watch_xrpl()` method has been renamed to `watch_xrpl_account()` because now it takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for [transaction stream messages](subscribe.html#transaction-streams), because the `on_connected()` method now also subscribes to transactions for the provided account. When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the [account_info method][]. The `on_connected()` method now also calls [account_info][account_info method] on startup. In both cases, the worker passes the `account_data` object from the response back to the GUI using `wx.CallAfter()`.
+The newly renamed `watch_xrpl_account()` method now it takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for [transaction stream messages](subscribe.html#transaction-streams). When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the [account_info method][]. When _that_ response arrives, the worker passes the account data to the GUI for display.
+
+Still in the `XRPLMonitorThread` class, update the `on_connected()` method as follows:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="async def on_connected", end_before="class AutoGridBagSizer") }}
+
+The `on_connected()` method now subscribes to transactions for the provided account (in addition to the ledger stream). Furthermore, it now calls [account_info][account_info method] on startup, and passes the response to the GUI for display.
 
 The new GUI has a lot more fields that need to be laid out in two dimensions. The following subclass of [`wx.GridBagSizer`](https://docs.wxpython.org/wx.GridBagSizer.html) provides a quick way to do so, setting the appropriate padding and sizing values for a two-dimensional list of widgets. Add this code to the same file:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="class AutoGridBagSizer", end_before="class TWaXLFrame") }}
 
+Update the `TWaXLFrame`'s constructor as follows:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def __init__(self, url, test_network=True):", end_before="def build_ui(self):") }}
+
+Now the constructor takes a boolean to indicate whether it's connecting to a test network. (If you provide a Mainnet URL, you should also pass `False`.) It uses this to encode and decode X-addresses and warn if they're intended for a different network. It also calls a new method, `prompt_for_account()` to get an address and wallet, and passes those to the renamed `watch_xrpl_account()` background job.
+
+Update the `build_ui()` method definition as follows:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def build_ui(self):", end_before="def run_bg_job(self, job):") }}
+
+This adds a [`wx.StaticBox`](https://docs.wxpython.org/wx.StaticBox.html) with several new widgets, then uses the `AutoGridBagSizer` (defined above) to lay them out in 2×4 grid within the box. These new widgets are all static text to display [details of the account](accountroot.html), though some of them start with placeholder text. (Since they require data from the ledger, you have to wait for the worker thread to send that data back.)
+
+**Caution:** You may notice that even though the constructor for this class sees the `wallet` variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be threadsafe.
+
+Add these two new methods to the `TWaXLFrame` class:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def prompt_for_account", end_before="def update_ledger") }}
+
+The `prompt_for_account()` method is the important one: the constructor calls this method to prompt the user for their address or master seed, then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
+
+1. Create a new dialog, such as [`wx.TextEntryDialog`](https://docs.wxpython.org/wx.TextEntryDialog.html).
+2. Use `showModal()` to display it to the user and get a return code based on which button the user clicked.
+3. If the user clicked OK, get a value the user input, in this, whatever text the user entered in the box.
+4. Destroy the dialog.
+
+From there, the code branches based on whether the input is a classic address, X-address, seed, or not a valid value at all. Assuming the value decodes successfully, it updates the `wx.StaticText` widgets with both the classic and X-address equivalents of the address and returns them. (As noted above, the constructor passes these values to the worker thread.)
+
+**Tip:** This code exits if the user inputs an invalid value, but you could rewrite it to prompt again or display a different message to the user.
+
+This code also does something unusual: it binds an _event handler_, which is a method that is called whenever a certain type of thing happens in the GUI, usually based on the user's actions. In this case, the trigger is `wx.EVT_TEXT` on the dialog, which triggers immediately when the user types or pastes anything into the dialog's text box.
+
+Add the following method to `TWaXLFrame` class to define the handler:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def toggle_dialog_style", end_before="def prompt_for_account") }}
+
+Event handlers generally take one positional argument, a [`wx.Event` object](https://docs.wxpython.org/wx.Event.html) which is provided by the GUI toolkit and describes the exact event that occurred. In this case, the handler uses this object to find out what value the user input. If the input looks like a master seed (it starts with the letter "s"), the handler switches the dialog to a "password" style that masks the user input, so people viewing the user's screen won't see the secret. And, if the user erases it and switches back to inputting an address, it toggles the style back.
+
+Add the following lines **at the end of** the `update_ledger()` method:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="# Save reserve settings", end_before="def calculate_reserve_xrp") }}
+
+This saves the ledger's current reserves settings, so that you can use them to calculate the account's total amount of XRP reserved. Add the following method to the `TWaXLFrame` class, to do exactly that:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def calculate_reserve_xrp", end_before="def update_account") }}
+
+Add an `update_account()` method:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def update_account", end_before="if __name__") }}
+
+The worker thread calls this method to pass account details to the GUI for display.
+
+Lastly, towards the end of the file, pass the new `test_net` parameter when instantiating the `TWaXLFrame` class:
+
+{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="frame = TWaXLFrame", end_before="frame.Show()") }}
+
+(If you change the code to connect to a Mainnet server URL, also change this value to `False`.)
+
+To test your wallet app with your own test account, first go to the [Testnet Faucet](xrp-testnet-faucet.html) and **Get Testnet credentials**. Save the address and secret key somewhere, and try your wallet app with either one. Then, to see balance changes, go to the [Transaction Sender](tx-sender.html) and paste your address into the **Destination Address** field. Click **Initialize** and try out some of the transaction types there, and see if the balance displayed by your wallet app updates as you expect.
 
 
+### 4. Show Account's Transactions
+
+**Full code for this step:** [`4_tx_history.py`]({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/4_tx_history.py)
+
+
+***TODO***
+
+
+### 5. Send XRP
+
+**Full code for this step:** [`5_send_xrp.py`]({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/5_send_xrp.py)
+
+***TODO***
+
+
+### 6. Domain Verification and Polish
+
+**Full code for this step:** [`6_verification_and_polish.py`]({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/6_verification_and_polish.py)
 
 ***TODO***
 

@@ -547,9 +547,9 @@ class TWaXLFrame(wx.Frame):
                          f"Ledger Index: {message['ledger_index']}\n"
                          f"Ledger Hash: {message['ledger_hash']}\n"
                          f"Close time: {close_time_iso}")
-        # Save reserve settings (in drops of XRP) so we can calc account reserve
-        self.reserve_base = Decimal(message["reserve_base"])
-        self.reserve_inc = Decimal(message["reserve_inc"])
+        # Save reserve settings so we can calculate account reserve
+        self.reserve_base = xrpl.utils.drops_to_xrp(str(message["reserve_base"]))
+        self.reserve_inc = xrpl.utils.drops_to_xrp(str(message["reserve_inc"]))
 
     def calculate_reserve_xrp(self, owner_count):
         """
@@ -559,8 +559,7 @@ class TWaXLFrame(wx.Frame):
         if self.reserve_base == None or self.reserve_inc == None:
             return None
         oc_decimal = Decimal(owner_count)
-        reserve_drops = self.reserve_base + (self.reserve_inc * oc_decimal)
-        reserve_xrp = xrpl.utils.drops_to_xrp(str(reserve_drops))
+        reserve_xrp = self.reserve_base + (self.reserve_inc * oc_decimal)
         return reserve_xrp
 
     def update_account(self, acct):

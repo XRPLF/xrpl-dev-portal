@@ -18,6 +18,11 @@ def include_code(filename, lines="", mark_disjoint="", language="",
         start_i = s.find(start_with)
         if start_i == -1:
             raise ValueError("include_code: couldn't find start_with point '%s'"%start_with)
+        # Backtrack to start of the line
+        while start_i > 0:
+            if s[start_i] == "\n":
+                break
+            start_i -= 1
         s = s[start_i:]
 
     # Truncate everything after the specified ending point (end_before)
@@ -42,7 +47,28 @@ def include_code(filename, lines="", mark_disjoint="", language="",
             old_i = i
         s = s2
 
-    return "```%s\n%s\n```" % (language, s.strip())
+    if language == "py":
+        # Indentation in Python is meaningful so we can't remove all whitespace.
+        # Instead, remove only blank lines at the begining and end.
+        slines = s.split("\n")
+        s = ""
+        started = False
+        blank_tail = "" # Keep a running block of blank lines in case they're
+                        # *between* meaningful lines.
+        for i, line in enumerate(slines):
+            if line.strip():
+                started = True
+                s += blank_tail
+                blank_tail = ""
+                s += line + "\n"
+            elif started:
+                blank_tail += line + "\n"
+
+
+    else:
+        s = s.strip()
+
+    return "```%s\n%s\n```" % (language, s)
 
 def parse_range(range_string):
     range_list = []
