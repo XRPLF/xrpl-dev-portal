@@ -1,4 +1,7 @@
 # "Build a Wallet" tutorial, step 2: Watch ledger closes from a worker thread.
+# This step builds an app architecture that keeps the GUI responsive while
+# showing realtime updates to the XRP Ledger.
+# License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 
 import xrpl
 import wx

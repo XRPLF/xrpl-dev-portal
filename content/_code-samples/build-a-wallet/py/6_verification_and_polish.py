@@ -1,6 +1,8 @@
 # "Build a Wallet" tutorial, step 6: Verification and Polish
 # This step adds sanity checks to the Send XRP dialog, along with some other
-# small improvements.
+# small improvements including account domain verification.
+# License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
+
 import xrpl
 import wx
 import wx.dataview
@@ -155,6 +157,12 @@ class XRPLMonitorThread(Thread):
     async def send_xrp(self, paydata):
         """
         Prepare, sign, and send an XRP payment with the provided parameters.
+        Expects a dictionary with:
+        {
+            "dtag": Destination Tag, as a string, optional
+            "to": Destination address (classic or X-address)
+            "amt": Amount of decimal XRP to send, as a string
+        }
         """
         dtag = paydata.get("dtag")
         if dtag.strip() == "":
@@ -582,8 +590,7 @@ class TWaXLFrame(wx.Frame):
         self.sxb.Enable()
         self.sxb.SetToolTip("")
 
-    @staticmethod
-    def displayable_amount(a):
+    def displayable_amount(self, a):
         """
         Convert an arbitrary amount value from the XRPL to a string to be
         displayed to the user:

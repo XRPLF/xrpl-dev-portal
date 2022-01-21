@@ -1,4 +1,6 @@
 # "Build a Wallet" tutorial, step 1: slightly more than "Hello World"
+# This step demonstrates a simple GUI and XRPL connectivity.
+# License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 
 import xrpl
 import wx

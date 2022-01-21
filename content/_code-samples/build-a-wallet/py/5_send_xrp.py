@@ -1,5 +1,7 @@
 # "Build a Wallet" tutorial, step 5: Send XRP button.
-# This step finally introduces events from the GUI to the worker thread.
+# This step allows the user to send XRP payments, with a pop-up dialog to enter
+# the relevant details.
+# License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 
 import xrpl
 import wx
@@ -98,9 +100,15 @@ class XRPLMonitorThread(Thread):
     async def send_xrp(self, paydata):
         """
         Prepare, sign, and send an XRP payment with the provided parameters.
+        Expects a dictionary with:
+        {
+            "dtag": Destination Tag, as a string, optional
+            "to": Destination address (classic or X-address)
+            "amt": Amount of decimal XRP to send, as a string
+        }
         """
         dtag = paydata.get("dtag")
-        if dtag.strip() == "":
+        if dtag and dtag.strip() == "":
             dtag = None
         if dtag is not None:
             try:
@@ -180,12 +188,22 @@ class SendXRPDialog(wx.Dialog):
         self.txt_dtag.Bind(wx.EVT_TEXT, self.on_dest_tag_edit)
         self.txt_to.Bind(wx.EVT_TEXT, self.on_to_edit)
 
+    def get_payment_data(self):
+        """
+        Construct a dictionary with the relevant payment details to pass to the
+        worker thread for making a payment. Called after the user clicks "Send".
+        """
+        return {
+            "to": self.txt_to.GetValue().strip(),
+            "dtag": self.txt_dtag.GetValue().strip(),
+            "amt": self.txt_amt.GetValue(),
+        }
+
     def on_to_edit(self, event):
         """
         When the user edits the "To" field, check that the address is well-
         formatted. If it's an X-address, fill in the destination tag and disable
-        it. Also, start a background check to confirm more details about the
-        address.
+        it.
         """
         v = self.txt_to.GetValue().strip()
 
@@ -206,17 +224,6 @@ class SendXRPDialog(wx.Dialog):
         v = re.sub(r"[^0-9]", "", v)
         self.txt_dtag.ChangeValue(v) # SetValue would generate another EVT_TEXT
         self.txt_dtag.SetInsertionPointEnd()
-
-    def get_payment_data(self):
-        """
-        Construct a dictionary with the relevant payment details to pass to the
-        worker thread for making a payment. Called after the user clicks "Send".
-        """
-        return {
-            "to": self.txt_to.GetValue().strip(),
-            "dtag": self.txt_dtag.GetValue().strip(),
-            "amt": self.txt_amt.GetValue(),
-        }
 
 
 class TWaXLFrame(wx.Frame):
@@ -432,8 +439,7 @@ class TWaXLFrame(wx.Frame):
         self.sxb.Enable()
         self.sxb.SetToolTip("")
 
-    @staticmethod
-    def displayable_amount(a):
+    def displayable_amount(self, a):
         """
         Convert an arbitrary amount value from the XRPL to a string to be
         displayed to the user:

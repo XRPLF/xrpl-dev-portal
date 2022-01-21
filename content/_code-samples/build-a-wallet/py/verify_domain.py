@@ -1,3 +1,7 @@
+# Domain verification of XRP Ledger accounts using xrp-ledger.toml file.
+# For information on this process, see:
+#   https://xrpl.org/xrp-ledger-toml.html#account-verification
+# License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 
 import requests
 import toml

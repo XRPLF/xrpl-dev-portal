@@ -1,4 +1,8 @@
 # "Build a Wallet" tutorial, step 4: Show transaction history
+# This step adds a tab that summarizes transactions the user's account has been
+# affected by recently, including transactions sent, received, or otherwise
+# impacting the user's account.
+# License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 
 import xrpl
 import wx
@@ -310,8 +314,7 @@ class TWaXLFrame(wx.Frame):
         if reserve_xrp != None:
             self.st_reserve.SetLabel(str(reserve_xrp))
 
-    @staticmethod
-    def displayable_amount(a):
+    def displayable_amount(self, a):
         """
         Convert an arbitrary amount value from the XRPL to a string to be
         displayed to the user:

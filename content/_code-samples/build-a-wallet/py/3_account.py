@@ -1,4 +1,7 @@
 # "Build a Wallet" tutorial, step 3: Take account input & show account info
+# This step demonstrates how to parse user input into account information and
+# look up that information on the XRP Ledger.
+# License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 
 import xrpl
 import wx
