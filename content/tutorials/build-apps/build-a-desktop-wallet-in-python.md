@@ -403,8 +403,113 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 **Full code for this step:** [`6_verification_and_polish.py`]({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/6_verification_and_polish.py)
 
-***TODO***
+One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
+One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](xrp-ledger-toml.html#account-verification). When an account's domain is verified, you could show it like this:
+
+![Screenshot: domain verified destination](img/python-wallet-6.png)
+
+When there are other errors, you can expose them to the user with an icon and a tooltip, which looks like this:
+
+![Screenshot: invalid address error icon with tooltip](img/python-wallet-6-err.png)
+
+The following code implements account domain verification; **save it as a new file** named `verify_domain.py`:
+
+{{ include_code("_code-samples/build-a-wallet/py/verify_domain.py", language="py") }}
+
+In your app's main file, import the `verify_account_domain` function:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="from verify_domain", end_before="class XRPLMonitorThread") }}
+
+In the `XRPLMonitorThread` class, add a new `check_destination()` method to check the destination address, as follows:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="async def check_destination", end_before="async def send_xrp") }}
+
+This code uses [`xrpl.asyncio.account.get_account_info()`](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.account.html#xrpl.asyncio.account.get_account_info) to look up the account in the ledger; unlike using the client's `request()` method, `get_account_info()` raises an exception if the account is not found.
+
+If the account _does_ exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags). Note that this is a "lsf" (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values [AccountSet transaction][] uses to configure the same settings.
+
+Finally, the code decodes the account's `Domain` field, if present, and performs domain verification using the method imported above.
+
+**Caution:** The background check takes the Send XRP dialog (`dlg`) as a parameter, since each dialog is a separate instance, but does modify the dialog directly since that might not be threadsafe. (It _only_ uses `wx.CallAfter` to pass the results of the check back to the dialog.)
+
+After this, it's time to update the `SendXRPDialog` class to make it capable of displaying these errors. You can also set a more specific upper bound for how much XRP the account can actually send. Change the constructor to take a new parameter:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="def __init__(self, parent, max_send=100000000.0)", end_before="wx.Dialog.__init__") }}
+
+Add some icon widgets to the UI, also in the `SendXRPDialog` constructor:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="# Icons to indicate", end_before="lbl_to =") }}
+
+Still in the `SendXRPDialog` constructor, add a maximum value to the line that creates the `self.txt_amt` widget:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="self.txt_amt =", end_before="self.txt_amt.SetDigits(6)") }}
+
+Don't forget to add all the new widgets to the `SendXRPDialog`'s sizer so they fit in the right places. Update the `BulkAdd` call in the constructor as follows:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="sizer.BulkAdd(((lbl_to,", end_before="sizer.Fit(self)") }}
+
+Next, refactor the `on_to_edit()` handler in the `SendXRPDialog` class to perform more checks, including the new background check on the destination address. The updated handler should be as follows:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="def on_to_edit", end_before="def on_dest_tag_edit") }}
+
+In addition to starting the background check, this handler does some checks immediately. Any check that doesn't require getting data from the network is probably fast enough to run directly in the handler; if the check requires network access, you have to run it in the worker thread instead.
+
+One of the new checks is to decode X-addresses to pull out the additional data they encode:
+
+- If the X-address includes a destination tag, show it in the destination tag field.
+- If the X-address is not intended for a test network and the app is connected to a test network (or the other way around), show an error.
+
+One tricky bit of writing handlers like this in GUI code is that you have to be ready for the handler to be called numerous times as the user inputs and erases data. For example, if you disable a field when some input is invalid, you also have to enable it if the user changes their input to be valid.
+
+The code shows the error icons when it finds errors (and hides them when it doesn't), and adds tooltips with the error message. You could, of course, display errors to the user in another way as well, such as additional pop-up dialogs or a status bar.
+
+Moving on, you also need a new method in the `SendXRPDialog` class to process the results from the background check. Add the following code:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="def update_dest_info", end_before="class TWaXLFrame") }}
+
+This code takes the dictionary passed by the `check_destination()` and uses it to update various widgets in the Send XRP dialog's GUI.
+
+You need to make a few small updates to configure the maximum send amount in the Send XRP dialog. Start by adding these lines to the `TWaXLFrame` class's constructor:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="# This account's total XRP reserve", end_before="self.build_ui()") }}
+
+Then modify the `update_account()` method of the `TWaXLFrame` to save the latest calculated balance. Modify the last few lines to look like this:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="# Display account reserve and", end_before="def enable_readwrite") }}
+
+Finally, calculate the maximum amount the user can send and provide it to the Send XRP dialog. Modify **the beginning of the `click_send_xrp()` handler** as follows:
+
+{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="xrp_bal = Decimal", end_before="dlg.CenterOnScreen()") }}
+
+The formula this code uses to calculate the maximum amount the user can send is the account's XRP balance, minus its [reserve](reserves.html) and minus the [transaction cost](transaction-cost.html). The calculation uses the `Decimal` class to avoid rounding errors, but ultimately it has to be converted down to a `float` because that's what wxPython's [`wx.SpinCtrlDouble`](https://docs.wxpython.org/wx.SpinCtrlDouble.html) accepts for minimum and maximum values. Still there is less opportunity for floating-point rounding errors to occur if the conversion happens _after_ the other calculations.
+
+Test your wallet app the same way you did in the previous steps. To test domain verification, try entering the following addresses in the "To" box of the Send XRP dialog:
+
+| Address                              | Domain       | Verified? |
+|:-------------------------------------|:-------------|:----------|
+| `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW` | `mduo13.com` | ✅ Yes    |
+| `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` | `xrpl.org`   | ❌ No     |
+| `rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe` | (Not set)    | ❌ No     |
+
+To test X-addresses, try the following addresses:
+
+| Address                                           | Destination Tag | Test Net? |
+|:--------------------------------------------------|:----------------|:----------|
+| `T7YChPFWifjCAXLEtg5N74c7fSAYsvPKxzQAET8tbZ8q3SC` | 0               | Yes       |
+| `T7YChPFWifjCAXLEtg5N74c7fSAYsvJVm6xKZ14AmjegwRM` | None            | Yes       |
+| `X7d3eHCXzwBeWrZec1yT24iZerQjYLjJrFT7A8ZMzzYWCCj` | 0               | No        |
+| `X7d3eHCXzwBeWrZec1yT24iZerQjYLeTFXz1GU9RBnWr7gZ` | None            | No        |
+
+
+## Next Steps
+
+Now that you have a functional wallet, you can take it in several new directions. The following are just a few ideas:
+
+- You could support more of the XRP Ledger's [transaction types](transaction-types.html) including [tokens](issued-currencies.html) and [cross-currency payments](cross-currency-payments.html)
+- Allow the user to trade in the [decentralized exchange](decentralized-exchange.html)
+- Add a way to request payments, such as with QR codes or URIs that open in your wallet.
+- Support better account security including [regular key pairs](cryptographic-keys.html#regular-key-pair) or [multi-signing](multi-signing.html).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

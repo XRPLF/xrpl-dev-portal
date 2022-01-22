@@ -107,8 +107,8 @@ class XRPLMonitorThread(Thread):
             "amt": Amount of decimal XRP to send, as a string
         }
         """
-        dtag = paydata.get("dtag")
-        if dtag and dtag.strip() == "":
+        dtag = paydata.get("dtag", "")
+        if dtag.strip() == "":
             dtag = None
         if dtag is not None:
             try:

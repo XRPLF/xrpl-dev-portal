@@ -1,5 +1,5 @@
 # "Build a Wallet" tutorial, step 6: Verification and Polish
-# This step adds sanity checks to the Send XRP dialog, along with some other
+# This step adds safety checks to the Send XRP dialog, along with some other
 # small improvements including account domain verification.
 # License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 
@@ -120,7 +120,6 @@ class XRPLMonitorThread(Thread):
         account_status = {
             "funded": None,
             "disallow_xrp": None,
-            "deposit_auth": None,
             "domain_verified": None,
             "domain_str": "" # the decoded domain, regardless of verification
         }
@@ -149,8 +148,6 @@ class XRPLMonitorThread(Thread):
         account_status["domain_verified"] = verified
         account_status["domain_str"] = domain
 
-        # If you want to also check Deposit Auth, here's where you would do so.
-
         # Send data back to the main thread.
         wx.CallAfter(dlg.update_dest_info, account_status)
 
@@ -164,7 +161,7 @@ class XRPLMonitorThread(Thread):
             "amt": Amount of decimal XRP to send, as a string
         }
         """
-        dtag = paydata.get("dtag")
+        dtag = paydata.get("dtag", "")
         if dtag.strip() == "":
             dtag = None
         if dtag is not None:
@@ -212,6 +209,7 @@ class AutoGridBagSizer(wx.GridBagSizer):
                 self.Add(ctrl, (x,y), flag=flags, border=5)
         self.parent.SetSizer(self)
 
+
 class SendXRPDialog(wx.Dialog):
     """
     Pop-up dialog that prompts the user for the information necessary to send a
@@ -222,7 +220,7 @@ class SendXRPDialog(wx.Dialog):
         sizer = AutoGridBagSizer(self)
         self.parent = parent
 
-        # little "X" icons to indicate a validation error
+        # Icons to indicate a validation error
         bmp_err = wx.ArtProvider.GetBitmap(wx.ART_ERROR, wx.ART_CMN_DIALOG, size=(16,16))
         self.err_to = wx.StaticBitmap(self, bitmap=bmp_err)
         self.err_dtag = wx.StaticBitmap(self, bitmap=bmp_err)
@@ -231,7 +229,7 @@ class SendXRPDialog(wx.Dialog):
         self.err_dtag.Hide()
         self.err_amt.Hide()
 
-        # ✅/❌ for domain verification
+        # Icons for domain verification
         bmp_check = wx.ArtProvider.GetBitmap(wx.ART_TICK_MARK, wx.ART_CMN_DIALOG, size=(16,16))
         self.domain_text = wx.StaticText(self, label="")
         self.domain_verified = wx.StaticBitmap(self, bitmap=bmp_check)
@@ -265,6 +263,17 @@ class SendXRPDialog(wx.Dialog):
         self.txt_dtag.Bind(wx.EVT_TEXT, self.on_dest_tag_edit)
         self.txt_to.Bind(wx.EVT_TEXT, self.on_to_edit)
 
+    def get_payment_data(self):
+        """
+        Construct a dictionary with the relevant payment details to pass to the
+        worker thread for making a payment. Called after the user clicks "Send".
+        """
+        return {
+            "to": self.txt_to.GetValue().strip(),
+            "dtag": self.txt_dtag.GetValue().strip(),
+            "amt": self.txt_amt.GetValue(),
+        }
+
     def on_to_edit(self, event):
         """
         When the user edits the "To" field, check that the address is well-
@@ -282,6 +291,8 @@ class SendXRPDialog(wx.Dialog):
 
         if xrpl.core.addresscodec.is_valid_xaddress(v):
             cl_addr, tag, is_test = xrpl.core.addresscodec.xaddress_to_classic_address(v)
+            if tag is None: # Not the same as tag = 0
+                tag = ""
             self.txt_dtag.ChangeValue(str(tag))
             self.txt_dtag.Disable()
 
@@ -320,17 +331,6 @@ class SendXRPDialog(wx.Dialog):
         self.txt_dtag.ChangeValue(v) # SetValue would generate another EVT_TEXT
         self.txt_dtag.SetInsertionPointEnd()
 
-    def get_payment_data(self):
-        """
-        Construct a dictionary with the relevant payment details to pass to the
-        worker thread for making a payment. Called after the user clicks "Send".
-        """
-        return {
-            "to": self.txt_to.GetValue().strip(),
-            "dtag": self.txt_dtag.GetValue().strip(),
-            "amt": self.txt_amt.GetValue(),
-        }
-
     def update_dest_info(self, dest_status):
         """
         Update the UI with details provided by a background job to check the
@@ -367,10 +367,14 @@ class SendXRPDialog(wx.Dialog):
             self.domain_verified.Show()
 
         if err_msg:
+            # Disabling the button is optional. These types of errors can be
+            # benign, so you could let the user "click through" them.
+            self.btn_send.Disable()
             self.err_to.SetToolTip(err_msg)
             self.err_to.Show()
         else:
             self.btn_send.Enable()
+            self.err_to.SetToolTip("")
             self.err_to.Hide()
 
 
