@@ -37,7 +37,7 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 | Field           | JSON Type | [Internal Type][] | Description                |
 |:----------------|:----------|:------------------|:---------------------------|
 | TransactionType | String    | UInt16            | NFTokenCancelOffer transaction type. The integer identifier is 28. |
-| TokenIDs        | Array     | VECTOR256         | An array of TokenID objects, each identifying the NFTokenOffer object that should be cancelled by this transaction. It is an error if an entry in this list points to an object that is not an [NFTokenOffer object][]. It is not an error if an entry in this list points to an object that does not exist. |
+| TokenOffers     | Array     | VECTOR256         | An array of TokenID objects, each identifying the NFTokenOffer object that should be cancelled by this transaction. It is an error if an entry in this list points to an object that is not an [NFTokenOffer object][]. It is not an error if an entry in this list points to an object that does not exist. |
 
 
 
