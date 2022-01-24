@@ -21,7 +21,7 @@ To complete this tutorial, you should meet the following guidelines:
 
 ## Source Code
 
-You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/).
+You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/).
 
 ## Goals
 
@@ -76,7 +76,7 @@ Under the hood, the code makes a JSON-RPC client, connects to a public Testnet s
 
 ### 2. Show Ledger Updates
 
-**Full code for this step:** [`2_threaded.py`](({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/2_threaded.py)).
+**Full code for this step:** [`2_threaded.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/2_threaded.py).
 
 You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the text displayed never changes unless you close the app and reopen it. The actual XRP Ledger is constantly making forward progress, so a more useful app would show it, something like this:
 
@@ -128,7 +128,7 @@ Since the app uses a WebSocket client instead of the JSON-RPC client now, the co
 
 ### 3. Display an Account
 
-**Full code for this step:** [`3_account.py`](({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/3_account.py))
+**Full code for this step:** [`3_account.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/3_account.py)
 
 Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the [reserve requirement](reserves.html).
 
@@ -222,7 +222,7 @@ To test your wallet app with your own test account, first go to the [Testnet Fau
 
 ### 4. Show Account's Transactions
 
-**Full code for this step:** [`4_tx_history.py`]({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/4_tx_history.py)
+**Full code for this step:** [`4_tx_history.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/4_tx_history.py)
 
 At this point, your wallet shows the account's balance getting updated, but doesn't show you anything about the actual transactions that caused the updates. So, the next step is to display the account's transaction history (and keep it updated).
 
@@ -289,7 +289,7 @@ As before, you can test your wallet app with your own test account if you use th
 
 ### 5. Send XRP
 
-**Full code for this step:** [`5_send_xrp.py`]({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/5_send_xrp.py)
+**Full code for this step:** [`5_send_xrp.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/5_send_xrp.py)
 
 Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of _sending_ transactions. For now, you can stick to just sending [direct XRP payments](direct-xrp-payments.html) because there are more complexities involved in sending [issued tokens](issued-currencies.html).
 
@@ -401,7 +401,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 ### 6. Domain Verification and Polish
 
-**Full code for this step:** [`6_verification_and_polish.py`]({{target.github_forkurl}}//tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/6_verification_and_polish.py)
+**Full code for this step:** [`6_verification_and_polish.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/6_verification_and_polish.py)
 
 One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
