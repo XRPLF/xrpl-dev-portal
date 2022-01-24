@@ -12,13 +12,16 @@ top_nav_grouping: Popular Pages
 [Reporting mode](rippled-server-modes.html) is a mode of the XRP Ledger core server specialized for serving [HTTP and WebSocket APIs](rippled-api.html).
 
 In reporting mode, the server does not connect to the peer-to-peer network. Instead, it uses gRPC to get validated data from one or more trusted servers that are connected to the P2P network. 
-It can then efficiently handle RPCs, reducing the load on rippled nodes running in P2P mode.
 
-Fig: High-level illustration of how reporting mode works
+It can then efficiently handle RPCs, reducing the load on `rippled` servers running in P2P mode.
 
-The reporting mode of rippled uses two datastores:
-The primary persistent datastore for rippled that includes transaction metadata, account states, and ledger headers. You can use NuDB or Cassandra as the primary persistent datastore.
-Postgres database to hold relational data, which is used mainly by tx and account_tx. 
+Fig.: High-level illustration of how reporting mode works
+
+The reporting mode of `rippled` uses two datastores:
+
+* The primary persistent datastore for `rippled` that includes transaction metadata, account states, and ledger headers. You can use NuDB or Cassandra as the primary persistent datastore.
+
+* PostgreSQL database to hold relational data, which is used mainly by [tx method][] and [account_tx method][]. 
 
 When a reporting mode server receives an API request, it loads the data from these data stores if possible. For requests that require data from the P2P network, the reporting mode forwards the request to a P2P server, and then passes the response back to the client.
 
@@ -30,64 +33,118 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 1. Ensure that your system meets the [system requirements](system-requirements.html).
 
-    **Note:** If you choose to use Cassandra as the database, the disk requirements for rippled will be lower as the data will not be stored on your local disk.  
+    **Note:** If you choose to use Cassandra as the database, the disk requirements for `rippled` will be lower as the data will not be stored on your local disk.  
 
-2. In order to run reporting mode, you also need to run one or more rippled nodes in P2P mode. Ensure that you have at least one rippled node running in P2P mode. 
+2. In order to run reporting mode, you also need to run one or more `rippled` servers in [P2P mode](install-rippled.html). Ensure that you have at least one `rippled` server running in P2P mode. 
 
-3. Install and configure the datastores required to run rippled in reporting mode. 
+3. Install and configure the datastores required to run `rippled` in reporting mode. 
+    
+    1. Install Postgres. 
 
-    a. Install Postgres. 
+        <!-- MULTICODE_BLOCK_START -->
 
-        brew install postgres
-        brew services start postgres
+        *Linux*
+
+        1. Download and install PostgreSQL on Linux. For instructions, refer to https://www.postgresqltutorial.com/install-postgresql-linux/.
+        
+        2. Connect to the PostgreSQL Database Server using psql, and create a user `newuser` and a database `reporting`.
+
         psql postgres
-	        CREATE ROLE newUser WITH LOGIN PASSWORD ‘password’;
-            ALTER ROLE newUser CREATEDB;
+	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
+            ALTER ROLE newuser CREATEDB;
         \q
         psql postgres -U newuser
         postgres=# create database reporting;
 
-    b. Install and configure the database to be used as the primary persistent datastore. You can choose to use Cassandra or NuDB. 
+        *Windows*
 
-        *Cassandra*: Install Cassandra and then create a keyspace for rippled, with replication. While a replication factor of 3 is recommended, when running locally, replication is not needed and you can set `replication_factor` to 1.    
+        1. Download and install PostgreSQL on Windows. For instructions, refer to https://www.postgresqltutorial.com/install-postgresql/.
+        
+        
+        2. Launch the psql program and connect to the PostgreSQL Database Server, and create a user `newuser` and a database `reporting`. 
+            psql postgres
+	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
+            ALTER ROLE newuser CREATEDB;
+        \q
+        psql postgres -U newuser
+        postgres=# create database reporting;
+
+                *macOS*
+
+        1. Download and install Postgres on macOS.  
+
+        brew install postgres
+        brew services start postgres
+
+        2. Connect to the PostgreSQL Database Server using psql and create a user `newuser` and a database `reporting`.
+
+        psql postgres
+	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
+            ALTER ROLE newuser CREATEDB;
+        \q
+        psql postgres -U newuser
+        postgres=# create database reporting;
+
+     <!-- MULTICODE_BLOCK_START -->
+
+    2. Install and configure the database to be used as the primary persistent datastore. You can choose to use Cassandra or NuDB. 
+
+        **Cassandra**: Install Cassandra and then create a keyspace for `rippled`, with replication. While a replication factor of 3 is recommended, when running locally, replication is not needed and you can set `replication_factor` to 1.    
         
             $ cqlsh [host] [port]
-            > CREATE KEYSPACE rippled WITH REPLICATION =
+            > CREATE KEYSPACE `rippled` WITH REPLICATION =
             {'class' : 'SimpleStrategy', 'replication_factor' : 1    };
 
-        *NuDB*: If you’re running rippled in reporting mode for your local network, you can choose to use NuDB instead of Cassandra as your backend database. NuDB is installed as part of your rippled build setup and does not require any additional installation steps.
+        **NuDB**: If you’re running `rippled` in reporting mode for your local network, you can choose to use NuDB instead of Cassandra as your backend database. NuDB is installed as part of your `rippled` build setup and does not require any additional installation steps.
 
-    c. On macOS, you need to manually install the Cassandra cpp driver. On all other platforms, the Cassandra driver is built as part of the `rippled` build. 
+    3. On macOS, you need to manually install the Cassandra cpp driver. On all other platforms, the Cassandra driver is built as part of the `rippled` build. 
         
         brew install cassandra-cpp-driver
 
 ### Procedure
 
-1. Build rippled for reporting mode. 
-Complete instructions to build and run rippled are available on https://xrpl.org/build-run-rippled-macos.html.
+1. Build `rippled` for reporting mode. 
 
-    a. Clone the rippled repository: 
+<!-- MULTICODE_BLOCK_START -->
+
+*Linux*
+
+Complete instructions to build and run `rippled` are available on [macOS Build Instructions](build-run-rippled-macos.html).
+
+Build `rippled` for reporting mode using the following command:
+
+    wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh
+sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug ..
+
+
+*macOS*
+
+Complete instructions to build and run `rippled` are available on [macOS Build Instructions](build-run-rippled-macos.html).
+
+    1. Clone the `rippled` repository: 
 
         git clone https://github.com/ripple/rippled.git
 
-    b. Access the repository on your local:
+    2. Access the repository on your local:
 
-        cd rippled
+        cd `rippled`
 
-    c. Create a build directory and access it:
+    3. Create a build directory and access it:
 
         mkdir my_build
         cd my_build
 
-    d. Build rippled for reporting mode: 
+    4. Build `rippled` for reporting mode: 
 
         cmake -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug ..
 
-    e. Run the build using CMake:
+    5. Run the build using CMake:
 
         cmake --build . -- -j 4
 
-2. Create a configuration file to run rippled in reporting mode. 
+<!-- MULTICODE_BLOCK_START -->
+
+2. Create a configuration file to run `rippled` in reporting mode. 
 
     Make a copy of the example config file, `rippled.cfg`, and save it as `reporting-mode.cfg` in a location that enables you to run `rippled` as a non-root user. For example:
     
@@ -97,25 +154,27 @@ Complete instructions to build and run rippled are available on https://xrpl.org
 
         cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
 
-3. Edit rippled-reporting-mode.cfg to set necessary file paths. The user you plan to run rippled as must have write permissions to all of the paths you specify here.
+3. Edit rippled-reporting-mode.cfg to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here.
 
-    a. Set the [node_db] path to the location where you want to store the ledger database.
+    1. Set the `[node_db]` path to the location where you want to store the ledger database.
 
-    b. Set the [database_path] to the location where you want to store other database data. (This includes an SQLite database with configuration data, and is typically one level above the [node_db] path field.)
+    2. Set the `[database_path]` to the location where you want to store other database data. (This includes an SQLite database with configuration data, and is typically one level above the `[node_db]` path field.)
         
-    c. Set the [debug_logfile] to a path where rippled can write logging information.
+    3. Set the `[debug_logfile]` to a path where `rippled` can write logging information.
 
-Note that these are the only configurations required for rippled to start up successfully. All other configurations are optional and can be tweaked after you have a working server.
+Note that these are the only configurations required for `rippled` to start up successfully. All other configurations are optional and can be tweaked after you have a working server.
 
-4. Edit rippled-reporting-mode.cfg to enable Reporting Mode by updating the [Reporting ] stanza in your rippled.cfg. 
+4. Edit the `rippled-reporting-mode.cfg` file to enable Reporting Mode: 
 
-    a. Uncomment the `[reporting]` stanza or add a new one:
+    1. Uncomment the `[reporting]` stanza or add a new one:
 
         [reporting]
         etl_source
         read_only=0
 
-    b. List the rippled sources (ETL sources) to extract data from:
+    2. List the `rippled` sources (ETL sources) to extract data from. These `rippled` servers must have gRPC enabled.
+    
+    NOTE: Only include servers that you trust as reporting mode does not connect to the P2P network and hence cannot verify that the data actually matches the network consensus ledger.
         
         [etl_source]
         source_grpc_port=50051
@@ -124,13 +183,13 @@ Note that these are the only configurations required for rippled to start up suc
 
 5. Configure the databases
 
-    a. Specify the Postgres DB for ledger_tx_tables:
+    1. Specify the Postgres DB for `[ledger_tx_tables]`:
 
         [ledger_tx_tables]
         conninfo = postgres://newuser:password@127.0.0.1/reporting
         use_tx_tables=1
 
-    b. Specify the database for node_db.
+    2. Specify the database for `[node_db]`.
 
     <!-- MULTICODE_BLOCK_START -->
 
@@ -154,9 +213,9 @@ Note that these are the only configurations required for rippled to start up suc
 
     <!-- MULTICODE_BLOCK_START -->
 
-6. Modify the configuration for rippled to open up ports
+6. Modify the configuration for `rippled` to open up ports.
 
-    a. Open the public websocket port:
+    1. Open the public websocket port:
 
             [port_ws_admin_local]
             port = 6006
@@ -165,18 +224,18 @@ Note that these are the only configurations required for rippled to start up suc
             protocol = ws
 
 
-    b. Open the gRPC port:
+    2. Open the gRPC port:
 
             [port_grpc]
             port = 60051
             ip = 0.0.0.0
 
 
-    c. Add a secured gateway to the IP of your reporting system:
+    3. Add a secured gateway to the IP of your reporting system:
 
             secure_gateway = 127.0.0.1
 
-7. Run rippled in reporting mode:
+7. Run `rippled` in reporting mode:
 
     ./rippled --conf /home/ubuntu/.config/ripple/rippled-reporting-example.cfg
 
@@ -284,28 +343,33 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 
 ## Frequently Asked Questions
 
-### Do I need to run more than one instance of rippled in order to use Reporting mode?
+### Do I need to run more than one instance of `rippled` in order to use Reporting mode?
 
-Yes. A rippled node running in reporting mode does not connect to the P2P network, but instead extracts validated data from one or more rippled nodes that are connected to the P2P network. In addition to the rippled node running in reporting mode, you need to run at least one other rippled node that is connected to the P2P network. 
+Yes. A `rippled` server running in reporting mode does not connect to the P2P network, but instead extracts validated data from one or more `rippled` servers that are connected to the P2P network. In addition to the `rippled` server running in reporting mode, you need to run at least one other `rippled` server that is connected to the P2P network. 
 
-### I’ve already installed rippled. Can I update the configuration file to enable reporting mode and restart rippled? 
+### I’ve already installed `rippled`. Can I update the configuration file to enable reporting mode and restart `rippled`? 
 
-Currently, you need to download the source and build rippled for reporting mode. 
+No. Currently, you need to download the source and build rippled for reporting mode. 
 There are initiatives in progress to provide packages for reporting mode.
 
 
-### To run rippled in Reporting mode, I need at least one rippled node running in P2P mode in addition to rippled in Reporting mode. Does this mean I need double the disk space? 
+### To run `rippled` in Reporting mode, I need at least one `rippled` server running in P2P mode in addition to `rippled` in Reporting mode. Does this mean I need double the disk space? 
 
-The answer depends on the location of your primary datastore. If you use Cassandra as the primary datastore, the disk space requirement to run rippled in reporting mode will be lower as the data is not stored on your local disk. The PostgreSQL server can be remote as well.
+The answer depends on the location of your primary datastore. If you use Cassandra as the primary datastore, the disk space requirement to run `rippled` in reporting mode will be lower as the data is not stored on your local disk. The PostgreSQL server can be remote as well.
 
 Lastly, the P2P mode server only needs to keep very recent history, while the reporting mode server keeps long term history.
 
-For more information on system requirements to run rippled, see https://xrpl.org/system-requirements.html. 
+For more information on system requirements to run `rippled`, see https://xrpl.org/system-requirements.html. 
 
 ### How can I confirm the validity of the data that comes from the Postgres or Cassandra database?
 
-Rippled running in Reporting mode only serves validated data from the ETL source specified in the config file. If you are accessing someone else's rippled server in P2P mode as the ETL source, you are implicitly trusting that server. If not, you need to run your own rippled node in P2P mode.
+`Rippled` running in Reporting mode only serves validated data from the ETL source specified in the config file. If you are accessing someone else's `rippled` server in P2P mode as the ETL source, you are implicitly trusting that server. If not, you need to run your own `rippled` node in P2P mode.
 
 ### Is it possible to make traditional SQL queries to the relational database rather than using the API?
 
 Technically, you *can* directly access the database if you want. However, the data is hashed as blobs and you have to decode the blobs in order to access using traditional SQL queries.
+
+<!--{# common link defs #}--> 
+{% include '_snippets/rippled-api-links.md' %} 
+{% include '_snippets/tx-type-links.md' %} 
+{% include '_snippets/rippled_versions.md' %}
