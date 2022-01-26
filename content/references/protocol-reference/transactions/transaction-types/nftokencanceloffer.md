@@ -17,7 +17,9 @@ The `NFTokenCancelOffer` transaction can be used to cancel existing token offers
 {
   	"TransactionType": "NFTokenCancelOffer",
   	"Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-  	"TokenIDs": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007"
+  	"TokenOffers": [
+      "9C92E061381C1EF37A8CDE0E8FC35188BFC30B1883825042A64309AC09F4C36D"
+    ]
 }
 ```
 
@@ -34,11 +36,12 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 
 {% include '_snippets/tx-fields-intro.md' %}
 
-| Field           | JSON Type | [Internal Type][] | Description                |
-|:----------------|:----------|:------------------|:---------------------------|
-| TransactionType | String    | UInt16            | NFTokenCancelOffer transaction type. The integer identifier is 28. |
-| TokenOffers     | Array     | VECTOR256         | An array of TokenID objects, each identifying the NFTokenOffer object that should be cancelled by this transaction. It is an error if an entry in this list points to an object that is not an [NFTokenOffer object][]. It is not an error if an entry in this list points to an object that does not exist. |
+| Field             | JSON Type | [Internal Type][] | Description              |
+|:------------------|:----------|:------------------|:-------------------------|
+| `TransactionType` | String    | UInt16            | NFTokenCancelOffer transaction type. The integer identifier is 28. |
+| `TokenOffers`     | Array     | VECTOR256         | An array of IDs of the token offers to cancel. Each entry must be a different [object ID](ledger-object-ids.html) of an [NFTokenOffer object][]; the transaction is invalid if the array contains duplicate entries. |
 
+The transaction can succeed even if one or more of the IDs in the `TokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers may have been taken already.) The transaction fails with an error if one of the IDs in points to an object that does exist, but is not a [NFTokenOffer object][].
 
 
 <!--{# common link defs #}-->
