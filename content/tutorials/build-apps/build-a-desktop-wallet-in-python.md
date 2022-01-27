@@ -36,8 +36,8 @@ The exact look and feel of the user interface depend on your computer's operatin
 - Shows how much XRP is set aside for the account's [reserve requirement](reserves.html).
 - Can send [direct XRP payments](direct-xrp-payments.html), and provides feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
-    - If the address doesn't want to receive XRP (DisallowXRP flag enabled).
-    - If the address a [verified domain name](https://xrpl.org/xrp-ledger-toml.html#account-verification) associated with it.
+    - If the address doesn't want to receive XRP ([DisallowXRP flag](become-an-xrp-ledger-gateway.html#disallow-xrp) enabled).
+    - If the address has a [verified domain name](https://xrpl.org/xrp-ledger-toml.html#account-verification) associated with it.
 
 The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or use other [payment types](payment-types.html) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
 
@@ -59,6 +59,8 @@ This installs and upgrades the following Python libraries:
 - [wxPython](https://wxpython.org/), a cross-platform graphical toolkit.
 - [Requests](https://docs.python-requests.org/), a library for easily making HTTP requests.
 - [toml](https://github.com/uiri/toml), a library for parsing TOML-formatted files.
+
+**Note:** On Windows, as of 2022-01-26, the latest wxPython is not compatible with Python 3.10. You should be able to follow this tutorial if you downgrade to the latest release of Python 3.9.
 
 The `requests` and `toml` libraries are only needed for the [domain verification in step 6](#6-domain-verification-and-polish), but you can install them now while you're installing other dependencies.
 
@@ -84,7 +86,7 @@ You may have noticed that the app in step 1 only shows the latest validated ledg
 
 If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
 
-The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that you each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, the class attributes (anything starting with `self.`) are  When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:
+The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that you each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with `self.`). When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:
 
 - For GUI to worker thread, use [`asyncio.run_coroutine_threadsafe()`](https://docs.python.org/3/library/asyncio-task.html#asyncio.run_coroutine_threadsafe).
 - For worker to GUI communications, use [`wx.CallAfter()`](https://docs.wxpython.org/wx.functions.html#wx.CallAfter).
@@ -114,6 +116,8 @@ The part that builds the GUI has been moved to a separate method, `build_ui(self
 **Tip:** In this tutorial, all the GUI code is written by hand, but you may find it easier to create powerful GUIs using a "builder" tool such as [wxGlade](http://wxglade.sourceforge.net/). Separating the GUI code from the constructor may make it easier to switch to this type of approach later.
 
 There's a new helper method, `run_bg_job()`, which runs an asynchronous function (defined with `async def`) in the worker thread. Use this method any time you want the worker thread to interact with the XRP Ledger network.
+
+***TODO: using run_bg_job() like seems to hide errors from the worker thread, for example SSL errors when connecting to testnet in watch_xrpl(). Figure out if there's a workaround for this.***
 
 Instead of a `get_validated_ledger()` method, the GUI class now has an `update_ledger()` method, which takes an object in the format of a [ledger stream message](subscribe.html#ledger-stream) and displays some of that information to the user. The worker thread calls this method using `wx.CallAfter()` whenever it gets a `ledgerClosed` event from the ledger.
 
