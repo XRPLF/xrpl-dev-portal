@@ -116,6 +116,7 @@ The XRP Ledger's consensus algorithm provides a robust alternative to proof of w
     - [Introduction to Consensus](intro-to-consensus.html)
     - [Consensus Research](consensus-research.html)
     - [Ripple Consensus Video](https://www.youtube.com/watch?v=pj1QVb1vlC0)
+    - above link dosent work 
 - **Tutorials:**
     - [Reliable Transaction Submission](reliable-transaction-submission.html)
     - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
