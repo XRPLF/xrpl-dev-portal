@@ -14,13 +14,15 @@ class XRPLMonitorThread(Thread):
     the main frame to be shown in the UI. Using a thread lets us maintain the
     responsiveness of the UI while doing work in the background.
     """
-    def __init__(self, url, gui, loop):
+    def __init__(self, url, gui):
         Thread.__init__(self, daemon=True)
         # Note: For thread safety, this thread should treat self.gui as
         # read-only; to modify the GUI, use wx.CallAfter(...)
         self.gui = gui
         self.url = url
-        self.loop = loop
+        self.loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(self.loop)
+        self.loop.set_debug(True)
 
     def run(self):
         """
@@ -28,7 +30,6 @@ class XRPLMonitorThread(Thread):
         from the XRPL, sending them to the GUI thread when necessary, and also
         handles making requests to the XRPL when the GUI prompts them.
         """
-        asyncio.set_event_loop(self.loop)
         self.loop.run_forever()
 
     async def watch_xrpl(self):
@@ -71,8 +72,7 @@ class TWaXLFrame(wx.Frame):
         self.build_ui()
 
         # Start background thread for updates from the ledger ------------------
-        self.worker_loop = asyncio.new_event_loop()
-        self.worker = XRPLMonitorThread(url, self, self.worker_loop)
+        self.worker = XRPLMonitorThread(url, self)
         self.worker.start()
         self.run_bg_job(self.worker.watch_xrpl())
 
@@ -92,7 +92,7 @@ class TWaXLFrame(wx.Frame):
         Schedules a job to run asynchronously in the XRPL worker thread.
         The job should be a Future (for example, from calling an async function)
         """
-        task = asyncio.run_coroutine_threadsafe(job, self.worker_loop)
+        task = asyncio.run_coroutine_threadsafe(job, self.worker.loop)
 
     def update_ledger(self, message):
         """

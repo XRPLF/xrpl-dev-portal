@@ -103,9 +103,11 @@ Then, the code for the monitor thread is as follows (put this in the same file a
 
 {{ include_code("_code-samples/build-a-wallet/py/2_threaded.py", language="py", start_with="class XRPLMonitorThread", end_before="class TWaXLFrame") }}
 
-This code defines a `Thread` subclass for the worker. When the thread is created, it starts an event loop, which means it's waiting for async tasks and functions to be created. The `watch_xrpl()` function is an example of a such a task (which the GUI thread starts when it's ready): connects to the XRP Ledger, then calls the [subscribe method][] to be notified whenever a new ledger is validated. It uses the immediate response _and_ all later subscription stream messages to trigger updates of the GUI.
+This code defines a `Thread` subclass for the worker. When the thread starts, it sets up an event loop, which waits for async tasks to be created and run. The code uses [asyncio's Debug Mode](https://docs.python.org/3/library/asyncio-dev.html#asyncio-debug-mode) so that the console shows any errors that occur in async tasks.
 
-**Tip:** Define worker jobs like this using `async def` instead of `def` so that you can use the `await` keyword in them; you need to use `await` to get the response to the [`AsyncWebsocketClient.request()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.clients.html#xrpl.asyncio.clients.AsyncWebsocketClient.request). Normally, you would also need to use `await` or something similar to get the response to functions defined with `async def` too; but, in this app the `run_bg_job()` helper takes care of that in a different way.
+The `watch_xrpl()` function is an example of a such a task (which the GUI thread starts when it's ready): it connects to the XRP Ledger, then calls the [subscribe method][] to be notified whenever a new ledger is validated. It uses the immediate response _and_ all later subscription stream messages to trigger updates of the GUI.
+
+**Tip:** Define worker jobs like this using `async def` instead of `def` so that you can use the `await` keyword in them; you need to use `await` to get the response to the [`AsyncWebsocketClient.request()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.clients.html#xrpl.asyncio.clients.AsyncWebsocketClient.request). Normally, you would also need to use `await` or something similar to get the response from any function you define with `async def`; but, in this app, the `run_bg_job()` helper takes care of that in a different way.
 
 Update the code for the main thread and GUI frame to look like this:
 
