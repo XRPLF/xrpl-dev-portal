@@ -69,7 +69,7 @@ Multiple reporting mode servers can share access to the same network accessible 
         psql postgres -U newuser
         postgres=# create database reporting;
 
-                *macOS*
+        *macOS*
 
         1. Download and install Postgres on macOS.  
 
