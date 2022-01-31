@@ -15,7 +15,7 @@ In reporting mode, the server does not connect to the peer-to-peer network. Inst
 
 It can then efficiently handle RPCs, reducing the load on `rippled` servers running in P2P mode.
 
-Fig.: High-level illustration of how reporting mode works
+{{ include_svg("img/reporting-mode-basic-architecture.svg", "Figure 1: Working of `rippled` in reporting mode") }}
 
 The reporting mode of `rippled` uses two datastores:
 
