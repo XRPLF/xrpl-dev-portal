@@ -338,7 +338,12 @@ class SendXRPDialog(wx.Dialog):
         destination address.
         """
         # Keep existing error message if there is one
-        err_msg = self.err_to.GetToolTip().GetTip().strip()
+        try:
+            err_msg = self.err_to.GetToolTip().GetTip().strip()
+        except RuntimeError:
+            # This method can be called after the dialog it belongs to has been
+            # closed. In that case, there's nothing to do here.
+            return
 
         if not dest_status["funded"]:
             err_msg = ("Warning: this account does not exist. The payment will "
@@ -723,9 +728,11 @@ class TWaXLFrame(wx.Frame):
         resp = dlg.ShowModal()
         if resp != wx.ID_OK:
             print("Send XRP canceled")
+            dlg.Destroy()
             return
 
         paydata = dlg.get_payment_data()
+        dlg.Destroy()
         self.run_bg_job(self.worker.send_xrp(paydata))
         notif = wx.adv.NotificationMessage(title="Sending!", message =
                 f"Sending a payment for {paydata['amt']} XRP!")

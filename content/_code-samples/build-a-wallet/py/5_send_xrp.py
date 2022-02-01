@@ -202,9 +202,7 @@ class SendXRPDialog(wx.Dialog):
 
     def on_to_edit(self, event):
         """
-        When the user edits the "To" field, check that the address is well-
-        formatted. If it's an X-address, fill in the destination tag and disable
-        it.
+        When the user edits the "To" field, check that the address is valid.
         """
         v = self.txt_to.GetValue().strip()
 
@@ -565,9 +563,11 @@ class TWaXLFrame(wx.Frame):
         resp = dlg.ShowModal()
         if resp != wx.ID_OK:
             print("Send XRP canceled")
+            dlg.Destroy()
             return
 
         paydata = dlg.get_payment_data()
+        dlg.Destroy()
         self.run_bg_job(self.worker.send_xrp(paydata))
         notif = wx.adv.NotificationMessage(title="Sending!", message =
                 f"Sending a payment for {paydata['amt']} XRP!")
