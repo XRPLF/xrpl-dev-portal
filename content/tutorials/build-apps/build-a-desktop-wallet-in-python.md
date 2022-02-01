@@ -53,6 +53,8 @@ This tutorial depends on various programming libraries. Before you get started c
 pip3 install --upgrade xrpl-py wxPython requests toml
 ```
 
+(On some systems, the command may be `pip` or you may need to use `sudo pip3` instead.)
+
 This installs and upgrades the following Python libraries:
 
 - [xrpl-py](https://xrpl-py.readthedocs.io/), a client library for the XRP Ledger. This tutorial requires **version 1.3.0 or higher**.
@@ -60,9 +62,28 @@ This installs and upgrades the following Python libraries:
 - [Requests](https://docs.python-requests.org/), a library for easily making HTTP requests.
 - [toml](https://github.com/uiri/toml), a library for parsing TOML-formatted files.
 
-**Note:** On Windows, as of 2022-01-26, the latest wxPython is not compatible with Python 3.10. You should be able to follow this tutorial if you downgrade to the latest release of Python 3.9.
-
 The `requests` and `toml` libraries are only needed for the [domain verification in step 6](#6-domain-verification-and-polish), but you can install them now while you're installing other dependencies.
+
+#### Notes for Windows Users
+
+On Windows, you can build apps using either Windows natively or by using the Windows Subsystem for Linux (WSL).
+
+On native Windows, the GUI uses native Windows controls and should run without any dependencies beyond those mentioned above.
+
+**Caution:** As of 2022-02-01, the latest wxPython is not compatible with Python 3.10 on Windows. You should be able to follow this tutorial if you downgrade to the latest release of Python 3.9.
+
+On WSL, you may need to install `libnotify-dev` as follows:
+
+```sh
+apt-get install libnotify-dev
+```
+
+If you have trouble installing wxPython on WSL, you can also try installing it this way:
+
+```sh
+python -m pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-18.04 wxPython
+```
+
 
 ### 1. Hello World
 
@@ -119,8 +140,6 @@ The part that builds the GUI has been moved to a separate method, `build_ui(self
 
 There's a new helper method, `run_bg_job()`, which runs an asynchronous function (defined with `async def`) in the worker thread. Use this method any time you want the worker thread to interact with the XRP Ledger network.
 
-***TODO: using run_bg_job() like seems to hide errors from the worker thread, for example SSL errors when connecting to testnet in watch_xrpl(). Figure out if there's a workaround for this.***
-
 Instead of a `get_validated_ledger()` method, the GUI class now has an `update_ledger()` method, which takes an object in the format of a [ledger stream message](subscribe.html#ledger-stream) and displays some of that information to the user. The worker thread calls this method using `wx.CallAfter()` whenever it gets a `ledgerClosed` event from the ledger.
 
 Finally, change the code to start the app (at the end of the file) slightly:
@@ -130,6 +149,18 @@ Finally, change the code to start the app (at the end of the file) slightly:
 Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to be use WebSocket URL to connect.
 
 **Tip:** If you [run your own `rippled` server](the-rippled-server.html#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](public-servers.html) to connect to the Mainnet or other test networks.
+
+#### Troubleshooting SSL Certificate Errors
+
+If you get an error like this, you may need to make sure your operating system's certificate authority store is updated:
+
+```text
+[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate
+```
+
+On macOS, run the [`Install Certificates.command`](https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate) for your Python version.
+
+On Windows, open Edge or Chrome and browse to <https://s1.ripple.com>, then close the page. This should be enough to update your system's certificates. (It doesn't work if you use Firefox or Safari, because those browser's don't use Windows' certificate validation APIs.)
 
 
 ### 3. Display an Account
@@ -180,11 +211,11 @@ This adds a [`wx.StaticBox`](https://docs.wxpython.org/wx.StaticBox.html) with s
 
 **Caution:** You may notice that even though the constructor for this class sees the `wallet` variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be threadsafe.
 
-Add these two new methods to the `TWaXLFrame` class:
+Add a new `prompt_for_account()` method to the `TWaXLFrame` class:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def prompt_for_account", end_before="def update_ledger") }}
 
-The `prompt_for_account()` method is the important one: the constructor calls this method to prompt the user for their address or master seed, then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
+The constructor calls this method to prompt the user for their [address](accounts.html#addresses) or [master seed](cryptographic-keys.html#seed), then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
 
 1. Create a new dialog, such as [`wx.TextEntryDialog`](https://docs.wxpython.org/wx.TextEntryDialog.html).
 2. Use `showModal()` to display it to the user and get a return code based on which button the user clicked.
@@ -217,7 +248,7 @@ Add an `update_account()` method:
 
 The worker thread calls this method to pass account details to the GUI for display.
 
-Lastly, towards the end of the file, pass the new `test_net` parameter when instantiating the `TWaXLFrame` class:
+Lastly, towards the end of the file, in the `if __name__ == "__main__":` block, update the line that instantiates the `TWaXLFrame` class to pass the new `test_net` parameter:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="frame = TWaXLFrame", end_before="frame.Show()") }}
 
