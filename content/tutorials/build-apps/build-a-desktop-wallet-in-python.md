@@ -544,6 +544,7 @@ To test X-addresses, try the following addresses:
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
 - You could support more of the XRP Ledger's [transaction types](transaction-types.html) including [tokens](issued-currencies.html) and [cross-currency payments](cross-currency-payments.html)
+    - Example code for displaying token balances and other objects: [`7_owned_objects.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/7_owned_objects.py)
 - Allow the user to trade in the [decentralized exchange](decentralized-exchange.html)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.
 - Support better account security including [regular key pairs](cryptographic-keys.html#regular-key-pair) or [multi-signing](multi-signing.html).
