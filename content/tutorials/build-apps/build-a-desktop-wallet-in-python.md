@@ -375,7 +375,7 @@ Next, add the `on_dest_tag_edit()` handler, also as a method of the `SendXRPDial
 
 In other GUI toolkits, you might be able to use a dedicated number entry control for the Destination Tag field, but with wxPython there is only a generic text entry field, so the `on_dest_tag_edit()` handler makes it behave more like a number-only control by instantly deleting any non-numeric characters the user tries to enter in the field.
 
-From here, you need to edit the `TWaXLFrame` class. First, in the `build_ui()` method, you need to add a new "Send XRP" button, and bind it to a new event handler. Add the following lines:
+From here, you need to edit the `TWaXLFrame` class. First, in the `build_ui()` method, you need to add a new "Send XRP" button, and bind it to a new event handler. Add the following lines **before the code to add things to the sizer**:
 
 {{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="# Send XRP button.", end_before="self.ledger_info =") }}
 
