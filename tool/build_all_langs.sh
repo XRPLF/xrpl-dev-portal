@@ -12,3 +12,4 @@ fi
 
 dactyl_build --vars "$dactyl_vars"
 dactyl_build -t ja -o out/ja --vars "$dactyl_vars"
+dactyl_build -t hi -o out/hi --vars "$dactyl_vars"
