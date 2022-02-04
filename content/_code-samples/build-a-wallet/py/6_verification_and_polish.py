@@ -375,7 +375,7 @@ class SendXRPDialog(wx.Dialog):
         if err_msg:
             # Disabling the button is optional. These types of errors can be
             # benign, so you could let the user "click through" them.
-            self.btn_send.Disable()
+            # self.btn_send.Disable()
             self.err_to.SetToolTip(err_msg)
             self.err_to.Show()
         else:
