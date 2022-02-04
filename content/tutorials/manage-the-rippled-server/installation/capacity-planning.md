@@ -166,9 +166,9 @@ If you want to contribute to storing ledger history but you do not have enough d
 
 ##### Amazon Web Services
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but if using Elastic Block Storage (EBS), only use either the `io1` or `io2` types, and configure them for at least 10,000 IOPS. <!-- SPELLING_IGNORE: iops, ebs, aws -->
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but do not use Elastic Block Storage (EBS). See [System Requirements](system-requirements.html). <!-- SPELLING_IGNORE: ebs, aws -->
 
-Alternately, AWS instance stores (`ephemeral` storage) provide suitable performance, but you may lose data in some circumstances, including when you start/stop an instance. This may be acceptable, since an individual XRP Ledger server can usually re-acquire lost ledger history from its peers. Configuration settings should be stored on more reliable storage.
+AWS instance stores (`ephemeral` storage) provide suitable performance, but you may lose data in some circumstances, including when you start/stop an instance. This may be acceptable, since an individual XRP Ledger server can usually re-acquire lost ledger history from its peers. Configuration settings should be stored on more permanent storage.
 
 Make sure the `path` of your `[node_db]` stanza and your `[database_path]` both point to the appropriate storage.
 
