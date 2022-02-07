@@ -44,7 +44,7 @@ jobs:
 
     - name: Push to Prod
       run: |
-        rsync -av -e "ssh $stamp xrplprod:/srv/developers/releases/"
+        rsync -av $stamp xrplprod:/srv/developers/releases/
         ssh xrplprod "rm -f /srv/developers/current && ln -s /srv/developers/releases/$stamp /srv/developers/current"
 
     - name: Clean up old deploys
