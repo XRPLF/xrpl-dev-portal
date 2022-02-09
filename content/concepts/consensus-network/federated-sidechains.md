@@ -75,7 +75,7 @@ Setting up a sidechain involves the following high-level steps:
 
 The _Sidechain Launch Kit_ is a commandline tool that simplifies setting up federated sidechains and can be used to quickly spin up a sidechain on your local machine. The launch kit also installs an interactive Sidechain Shell that enables you to interact with the sidechain.
 
-[Sidechain Launch Kit >](https://github.com/xpring-eng/sidechain-launch-kit/blob/main/README.md)
+[Sidechain Launch Kit >](https://github.com/xpring-eng/sidechain-launch-kit)
 
 
 ## See Also
