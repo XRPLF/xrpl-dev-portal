@@ -173,6 +173,13 @@ targets:
             # Fix links from untranslated NFT transaction references:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
+            # Fix links from untranslated Python wallet tutorial:
+            "subscribe.html#transaction-streams": "subscribe.html#トランザクションストリーム"
+              # cryptographic-keys.html hasn't been updated in Japanese, so this is the
+              # next-nearest equivalent of the #seed anchor:
+            "cryptographic-keys.html#seed": "cryptographic-keys.html#キーの生成"
+            "cryptographic-keys.html#regular-key-pair": "cryptographic-keys.html#レギュラーキーペア"
+
 
 pages:
 
