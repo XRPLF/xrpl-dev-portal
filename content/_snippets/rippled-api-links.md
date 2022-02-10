@@ -85,11 +85,13 @@
 [{{ledger_entry}} object]: {{ledger_entry|lower}}-object.html
   {% if target.lang == "ja" %}
 [{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}-object.html
+[{{ledger_entry}} オブジェクト]: {{ledger_entry|lower}}-object.html
   {% endif %}
 {% else %}
 [{{ledger_entry}} object]: {{ledger_entry|lower}}.html
   {% if target.lang == "ja" %}
 [{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}.html
+[{{ledger_entry}} オブジェクト]: {{ledger_entry|lower}}.html
   {% endif %}
 {% endif %}
 {% endfor %}

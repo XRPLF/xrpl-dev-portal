@@ -9,7 +9,7 @@ labels:
 
 **XRP**は、XRP Ledgerのネイティブ暗号資産です。XRP Ledgerのすべての[アカウント](accounts.html)間で相互にXRPを送金できます。アカウントは、最小限度額のXRPを[準備金](reserves.html)として保有する必要があります。XRP Ledgerアドレス間にてXRPの直接送金が可能で、ゲートウェイや流動性プロバイダーを必要としません。このため、XRPは便利なブリッジ通貨となりました。
 
-XRP Ledgerの高度機能の一部（[Escrow](escrow.html)や[Payment Channel](use-payment-channels.html)など）は、XRPでのみ使えます。オーダーブックの[オートブリッジング](https://ripple.com/dev-blog/introducing-offer-autobridging/)は、XRPを使用して、2つの発行済み通貨のオーダーブックをXRPオーダーブックにマージして、合成された一つのオーダーブックを作成することで、分散型取引所の流動性を高めます。（たとえば、オートブリッジングによりUSD:XRPオーダーとXRP:EURオーダーがマッチングされ、USD:EURオーダーブックとなります。）
+XRP Ledgerの高度機能の一部（[Escrow](escrow.html)や[Payment Channel](use-payment-channels.html)など）は、XRPでのみ使えます。オーダーブックの[オートブリッジング](autobridging.html)は、XRPを使用して、2つの発行済み通貨のオーダーブックをXRPオーダーブックにマージして、合成された一つのオーダーブックを作成することで、分散型取引所の流動性を高めます。（たとえば、オートブリッジングによりUSD:XRPオーダーとXRP:EURオーダーがマッチングされ、USD:EURオーダーブックとなります。）
 
 XRPはまた、ネットワークのスパムの防御対策としても機能します。すべてのXRP Ledgerアドレスには、XRP Ledger維持管理コストを支払うために少額のXRPが必要です。[トランザクションコスト](transaction-cost.html)と[準備金](reserves.html)は、XRP建ての中立的な手数料であり、どの当事者にも支払われません。レジャーのデータフォーマットで、XRPは[AccountRootオブジェクト](accountroot.html)に保管されます。
 

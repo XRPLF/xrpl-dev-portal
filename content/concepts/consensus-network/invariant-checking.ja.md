@@ -43,7 +43,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 
 [[ソース]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L118 "ソース")
 
-- [XRPは作成されません](#XRPは作成されません)
+- [XRPは作成されません](#xrpは作成されません)
 
 [[ソース]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L146 "ソース")
 
@@ -51,7 +51,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 
 [[ソース]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L173 "ソース")
 
-- [XRPの残高確認](#XRPの残高確認)
+- [XRPの残高確認](#xrpの残高確認)
 
 [[ソース]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L197 "ソース")
 
@@ -59,7 +59,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 
 [[ソース]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L224 "ソース")
 
-- [XRPのトラストラインはありません](#XRPのトラストラインはありません)
+- [XRPのトラストラインはありません](#xrpのトラストラインはありません)
 
 [[ソース]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L251 "ソース")
 
@@ -114,7 +114,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 ### 不正なオファーでない
 
 - **不変条件:**
-    - [オファー](offer.html#オファー)は負でない金額でなければならず、XRP同士であってはいけません。
+    - [オファー](offer.html)は負でない金額でなければならず、XRP同士であってはいけません。
 
 
 ### 0のエスクローでない
@@ -146,7 +146,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 
 - **その他:**
     - [Authorized Trust Lines](authorized-trust-lines.html)
-    - [XRPの特性](xrp.html#XRPの特性)
+    - [XRPの特性](xrp.html#xrpの特性)
     - [トランザクションの残高変化の計算](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
 
 

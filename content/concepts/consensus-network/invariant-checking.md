@@ -114,7 +114,7 @@ The XRP Ledger checks all the following invariants on each transaction:
 ### No Bad Offers
 
 - **Invariant Condition(s):**
-    - [Offers](offer.html#offer) should be for non-negative amounts and must not be XRP to XRP.
+    - [Offers](offer.html) should be for non-negative amounts and must not be XRP to XRP.
 
 
 ### No Zero Escrow

@@ -26,8 +26,6 @@ An OfferCancel transaction removes an Offer object from the XRP Ledger.
 ```
 
 {% include '_snippets/tx-fields-intro.md' %}
-<!--{# fix md highlighting_ #}-->
-
 
 | Field           | JSON Type | [Internal Type][] | Description                  |
 |:----------------|:----------|:------------------|:-----------------------------|

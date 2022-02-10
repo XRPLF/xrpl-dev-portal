@@ -20,7 +20,7 @@ msgstr ""
 
 #: template/component-footer.html.jinja:23
 msgid "Open Source."
-msgstr ""
+msgstr "オープンソース。"
 
 #: template/component-footer.html.jinja:31
 msgid "Jump to top of page"
@@ -1508,16 +1508,15 @@ msgstr ""
 
 #: template/page-xrp-overview.html.jinja:38
 msgid "About XRP"
-msgstr ""
+msgstr "XRPについて"
 
 #: template/page-xrp-overview.html.jinja:39
-#, fuzzy
 msgid "#xrp-trading"
-msgstr "取引"
+msgstr "#xrp-trading"
 
 #: template/page-xrp-overview.html.jinja:40
 msgid "XRP in Trading"
-msgstr ""
+msgstr "XRPの取引"
 
 #: template/page-xrp-overview.html.jinja:41
 msgid "#ripple"
@@ -1528,18 +1527,16 @@ msgid "Ripple vs. XRP"
 msgstr "RippleとXRPの違い"
 
 #: template/page-xrp-overview.html.jinja:43
-#, fuzzy
 msgid "#wallets"
-msgstr "ウォレット"
+msgstr "#wallets"
 
 #: template/page-xrp-overview.html.jinja:44
 msgid "XRP Wallets"
 msgstr "XRPウォレット"
 
 #: template/page-xrp-overview.html.jinja:45
-#, fuzzy
 msgid "#exchanges"
-msgstr "取引所"
+msgstr "#exchanges"
 
 #: template/page-xrp-overview.html.jinja:46
 msgid "XRP Exchanges"

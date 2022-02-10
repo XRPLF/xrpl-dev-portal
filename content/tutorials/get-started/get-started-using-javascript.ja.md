@@ -49,7 +49,7 @@ XRP Ledgerを使用する際には、XRPを[ウォレット](wallets.html)に追
 多くのXRP Ledgerプロジェクトで使用している手順をご紹介します。
 
 1. [ライブラリのインポート](#1-ライブラリのインポート)
-1. [XRP Ledgerへの接続](#2-xrp-leddgerへの接続)
+1. [XRP Ledgerへの接続](#2-xrp-ledgerへの接続)
 1. [ウォレットの作成](#3-ウォレットの作成)
 1. [XRP Ledgerの参照](#4-xrp-ledgerの参照)
 1. [イベントのListen](#5-イベントのlisten)
