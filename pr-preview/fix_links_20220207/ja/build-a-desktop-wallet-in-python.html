@@ -531,7 +531,7 @@
                     <span class="p">))</span>
                     <span class="n">wx</span><span class="o">.</span><span class="n">CallAfter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">update_account</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">"account_data"</span><span class="p">])</span>
 </code></pre></div>
-<p>The newly renamed <code>watch_xrpl_account()</code> method now takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for <a href="subscribe.html#transaction-streams">transaction stream messages</a>. When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the <a href="account_info.html">account_info method</a>. When <em>that</em> response arrives, the worker passes the account data to the GUI for display.</p>
+<p>The newly renamed <code>watch_xrpl_account()</code> method now takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for <a href="subscribe.html#トランザクションストリーム">transaction stream messages</a>. When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the <a href="account_info.html">account_info method</a>. When <em>that</em> response arrives, the worker passes the account data to the GUI for display.</p>
 <p>Still in the <code>XRPLMonitorThread</code> class, update the <code>on_connected()</code> method as follows:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""</span>
@@ -706,7 +706,7 @@
 
         <span class="k">return</span> <span class="n">classic_address</span><span class="p">,</span> <span class="n">wallet</span>
 </code></pre></div>
-<p>The constructor calls this method to prompt the user for their <a href="accounts.html#アドレス">address</a> or <a href="cryptographic-keys.html#seed">master seed</a>, then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:</p>
+<p>The constructor calls this method to prompt the user for their <a href="accounts.html#アドレス">address</a> or <a href="cryptographic-keys.html#キーの生成">master seed</a>, then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:</p>
 <ol>
 <li>Create a new instance of a dialog class, such as a <a class="external-link" href="https://docs.wxpython.org/wx.TextEntryDialog.html" target="_blank"><code>wx.TextEntryDialog</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 <li>Use <code>showModal()</code> to display it to the user and get a return code based on which button the user clicked.</li>
@@ -1524,7 +1524,7 @@
 </li>
 <li>Allow the user to trade in the <a href="decentralized-exchange.html">decentralized exchange</a></li>
 <li>Add a way to request payments, such as with QR codes or URIs that open in your wallet.</li>
-<li>Support better account security including <a href="cryptographic-keys.html#regular-key-pair">regular key pairs</a> or <a href="multi-signing.html">multi-signing</a>.</li>
+<li>Support better account security including <a href="cryptographic-keys.html#レギュラーキーペア">regular key pairs</a> or <a href="multi-signing.html">multi-signing</a>.</li>
 </ul>
 <!-- -->
 <!-- -->
