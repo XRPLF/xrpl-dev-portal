@@ -9,7 +9,7 @@ labels:
 
 **XRP** is the native cryptocurrency of the XRP Ledger. All [accounts](accounts.html) in the XRP Ledger can send XRP among one another and must hold a minimum amount of XRP as a [reserve](reserves.html). XRP can be sent directly from any XRP Ledger address to any other, without needing a gateway or liquidity provider. This helps make XRP a convenient bridge currency.
 
-Some advanced features of the XRP Ledger, such as [Escrow](escrow.html) and [Payment Channels](use-payment-channels.html), only work with XRP. Order book [auto-bridging](https://xrpl.org/blog/2014/introducing-offer-autobridging.html) uses XRP to deepen liquidity in the decentralized exchange by merging order books of two issued currencies with XRP order books to create synthetic combined order books. (For example, auto-bridging matches USD:XRP and XRP:EUR orders to augment USD:EUR order books.)
+Some advanced features of the XRP Ledger, such as [Escrow](escrow.html) and [Payment Channels](use-payment-channels.html), only work with XRP. Order book [auto-bridging](autobridging.html) uses XRP to deepen liquidity in the decentralized exchange by merging order books of two issued currencies with XRP order books to create synthetic combined order books. (For example, auto-bridging matches USD:XRP and XRP:EUR orders to augment USD:EUR order books.)
 
 XRP also serves as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to offset the costs of maintaining the XRP Ledger. The [transaction cost](transaction-cost.html) and [reserve](reserves.html) are neutral fees denominated in XRP and not paid to any party. In the ledger's data format, XRP is stored in [AccountRoot objects](accountroot.html).
 

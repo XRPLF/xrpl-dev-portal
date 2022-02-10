@@ -143,6 +143,9 @@ An issuer might issue several NFTs with the same taxon; to ensure that NFTs are 
 
 Notice that the scrambled version of the taxon is `0xBC8B858E`: the scrambled version of the taxon specified by the issuer. But the _actual_ value of the taxon is the unscrambled value.
 
+### Token Sequence
+
+The fifth section is a sequence number that increases with each `NFToken` the issuer creates. The [NFTokenMint transaction][] sets this part of the `TokenID` automatically based on the `MintedTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
 
 
 ## URI

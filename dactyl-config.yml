@@ -171,6 +171,16 @@ targets:
                                           # the updates to ledger_entry aren't translated either
             "ledger_entry.html#get-paychannel-object": "ledger_entry.html"
             "reliable-transaction-submission.html#ledger-gaps": "reliable-transaction-submission.html#レジャーのギャップ"
+            # Fix links from untranslated NFT transaction references:
+            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
+            "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
+            # Fix links from untranslated Python wallet tutorial:
+            "subscribe.html#transaction-streams": "subscribe.html#トランザクションストリーム"
+              # cryptographic-keys.html hasn't been updated in Japanese, so this is the
+              # next-nearest equivalent of the #seed anchor:
+            "cryptographic-keys.html#seed": "cryptographic-keys.html#キーの生成"
+            "cryptographic-keys.html#regular-key-pair": "cryptographic-keys.html#レギュラーキーペア"
+
 
 pages:
 
@@ -4145,9 +4155,17 @@ known_broken_links:
     - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
     - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/
     - https://www.coinbase.com/
+    - https://help.coinbase.com/
+    - https://support.uphold.com/hc/en-us/requests/new
     - https://www.forte.io/
     - https://www.kraken.com/
     - https://xrpscan.com/amendments
+    - https://trezor.io/
+    - https://www.lmax.com/
+    - https://www.etoro.com/crypto/exchange/
+    # This site often times out, but it does work and is the original.
+    - https://theworld.com/~reinhold/diceware.html
+
 
 # Style Checker Config ------------------------------------------------------ #
 
