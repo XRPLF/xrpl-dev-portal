@@ -1,36 +1,41 @@
 ---
 html: authorized-trust-lines.html
-parent: issued-currencies.html
-blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
+parent: tokens.html
+blurb: Authorized trust lines is a setting to limit who can hold a token.
 labels:
   - Tokens
   - Security
 ---
 # Authorized Trust Lines
 
-The XRP Ledger's Authorized Trust Lines feature enables a currency issuer to limit who can hold its issued (non-XRP) currencies, so that unknown XRP Ledger addresses cannot hold those currencies. The Authorized Trust Lines feature only applies to issued currencies and has no effect on XRP.
+The Authorized Trust Lines feature enables issuers to create tokens that can only be held by accounts that the issuer specifically authorizes. This feature only applies to tokens, not XRP.
 
-To use the Authorized Trust Lines feature, enable the `RequireAuth` flag on your issuing address. After doing so, your issuing address can send [TrustSet transactions][] to authorize trust lines from other addresses. While RequireAuth is enabled, other addresses can only hold funds issued by your address if the trust line to your issuing address has been authorized.
+To use the Authorized Trust Lines feature, enable the `RequireAuth` flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.
 
-The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address. The process for sending funds into the XRP Ledger with `RequireAuth` enabled looks like the following:
+You can authorize a trust line by sending a [TrustSet transaction][] from your issuing address, configuring the trust line between your account and the account to authorize. After you have authorized a trust line, you can never revoke that authorization. (You can, however, [freeze](freezes.html) that trust line if you need to.)
 
-1. An issuing gateway publishes its issuing address to customers.
-2. A customer sends a [TrustSet transaction][] to create a trust line from her XRP Ledger address to the gateway's issuing address. This indicates that she is willing to hold a specific currency issued by the gateway, up to a specific numeric limit.
-3. The gateway's issuing address sends a TrustSet transaction authorizing the customer's trust line.
+The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address.
 
-**Tip:** An issuing gateway can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. _(Added by the [TrustSetAuth amendment][].)_
+**Caution:** You can only enable `RequireAuth` if your account has no trust lines and no Offers in the XRP Ledger, so you must decide whether or not to use it _before_ you start issuing tokens.
 
-## RequireAuth Setting
+## With Stablecoin Issuing
 
-<!-- SPELLING_IGNORE: requireauth -->
+With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process of onboarding a new customer might look something like the following:
 
-The `RequireAuth` setting prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved a trust line with that counterparty for the currency in question.
+1. The customer registers with the stablecoin issuer's systems and sends proof of their identity (also known as "Know Your Customer", or KYC, information).
+2. The customer and stablecoin issuer tell each other their XRP Ledger addresses.
+3. The customer sends a [TrustSet transaction][] to create a trust line to the issuer's address, with a positive limit.
+4. The issuer sends a TrustSet transaction to authorize the customer's trust line.
 
-As a precaution, Ripple recommends that issuing gateways always enable `RequireAuth` on [operational addresses and standby addresses](issuing-and-operational-addresses.html), and then never approve any trust lines to those addresses. This prevents operational addresses and standby addresses from issuing currency in the XRP Ledger even by accident. This is a purely precautionary measure, and does not stop those addresses from transferring issued currency balances created by the issuing address, as they are intended to do.
+**Tip:** The issuer can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. _(Added by the [TrustSetAuth amendment][].)_
 
-To use the Authorized Trust Lines feature, an issuer must also enable `RequireAuth` on its issuing address. After doing so, the issuing address must [submit a `TrustSet` transaction to approve each trust line](#authorizing-trust-lines) from a customer.
+## As a Precaution
 
-**Caution:** An account can only enable `RequireAuth` if it owns no trust lines and no offers in the XRP Ledger, so you must decide whether or not to use it before you start doing business in the XRP Ledger.
+Even if you don't intend to use Authorized Trust Lines, you can enable the `RequireAuth` setting on [operational and standby accounts](issuing-and-operational-addresses.html), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is a purely precautionary measure, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
+
+
+## Technical Details
+<!--{# TODO: split these off into one or more tutorials on using authorized trust lines, preferably with both JavaScript and Python code samples. #}-->
 
 ### Enabling RequireAuth
 

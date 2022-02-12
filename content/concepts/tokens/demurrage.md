@@ -1,6 +1,6 @@
 ---
 html: demurrage.html
-parent: issued-currencies.html
+parent: tokens.html
 blurb: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
 status: removed
 ---
@@ -8,11 +8,11 @@ status: removed
 
 **Warning:** Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of XRP Ledger software.
 
-[Demurrage](http://en.wikipedia.org/wiki/Demurrage_%28currency%29) is a negative interest rate on assets held that represents the cost of holding those assets. To represent the demurrage on an issued currency in the XRP Ledger, you can track it using a custom [currency code](currency-formats.html#currency-codes) that indicates the demurrage rate. This effectively creates separate versions of the currency for each varying amount of demurrage. Client applications can support this by representing the demurraging currency code with an annual percentage rate alongside the currency code. For example: "XAU (-0.5%pa)".
+[Demurrage](http://en.wikipedia.org/wiki/Demurrage_%28currency%29) is a negative interest rate on assets held that represents the cost of holding those assets. To represent the demurrage on a token in the XRP Ledger, you can track it using a custom [currency code](currency-formats.html#currency-codes) that indicates the demurrage rate. This effectively creates separate versions of the token for each varying amount of demurrage. Client applications can support this by representing the demurraging currency code with an annual percentage rate alongside the currency code. For example: "XAU (-0.5%pa)".
 
-## Representing Demurraging Currency Amounts
+## Representing Demurraging Token Amounts
 
-Rather than continuously update all amounts in the XRP Ledger, this approach divides amounts of interest-bearing or demurraging currency into two types of amount: "ledger values" recorded in the XRP Ledger, and "display values" shown to people. The "ledger values" represent the value of the currency at a fixed point, namely the "Ripple Epoch" of midnight January 1, 2000. The "display values" represent the amount at a later point in time (usually the current time) after calculating continuous interest or demurrage from the Ripple Epoch until that time.
+Rather than continuously update all amounts in the XRP Ledger, this approach divides amounts of interest-bearing or demurraging tokens into two types of amount: "ledger values" recorded in the XRP Ledger, and "display values" shown to people. The "ledger values" represent the value of the currency at a fixed point, namely the "Ripple Epoch" of midnight January 1, 2000. The "display values" represent the amount at a later point in time (usually the current time) after calculating continuous interest or demurrage from the Ripple Epoch until that time.
 
 **Tip:** You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not reflect actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.
 
@@ -23,7 +23,7 @@ Thus, client software must apply two conversions:
 
 ### Calculating Demurrage
 
-The full formula for calculating demurrage on a currency is as follows:
+The full formula for calculating demurrage is as follows:
 
 ```
 D = A × ( e ^ (t ÷ τ) )
@@ -41,12 +41,12 @@ To convert between display amounts and ledger amounts, you can use the following
 2. Apply it to the amount to convert:
     - To convert ledger values to display values, multiply by the demurrage coefficient.
     - To convert display values to ledger values, divide by the demurrage coefficient.
-3. If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's [issued currency format](currency-formats.html#issued-currency-precision).
+3. If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's [token format](currency-formats.html#issued-currency-precision).
 
 
 ## Interest-Bearing Currency Code Format
 
-Rather than using the [standard currency code format](currency-formats.html#currency-codes), currencies that have positive interest or negative interest (demurrage) use a 160-bit currency code in the following format:
+Rather than using the [standard currency code format](currency-formats.html#currency-codes), tokens that have positive interest or negative interest (demurrage) use a 160-bit currency code in the following format:
 
 ![Demurraging Currency Code Format](img/demurrage-currency-code-format.png)
 
@@ -72,13 +72,13 @@ To calculate an e-folding time for a given rate of annual percent interest:
 
 ## Client Support
 
-To support interest-bearing and demurraging currencies, client applications must implement several features:
+To support interest-bearing and demurraging tokens, client applications must implement several features:
 
-- When displaying the amount of a demurraging currency retrieved from ledger or transaction data, the client must convert from the ledger value to the display value. (With demurrage, the display values are smaller than the ledger values.)
+- When displaying the amount of a demurraging token retrieved from ledger or transaction data, the client must convert from the ledger value to the display value. (With demurrage, the display values are smaller than the ledger values.)
 
-- When accepting input for a demurraging currency, the client must convert amounts from a display format to the ledger format. (With demurrage, the ledger values are are larger than the user input value.) The client must use the ledger value when creating payments, offers, and other types of transaction.
+- When accepting input for a demurraging token, the client must convert amounts from a display format to the ledger format. (With demurrage, the ledger values are larger than the user input value.) The client must use the ledger value when creating payments, offers, and other types of transaction.
 
-- Clients must distinguish between currencies that do and do not have interest or demurrage, and among currencies that have different rates of interest or demurrage. Clients should be able to parse the [Interest-Bearing Currency Code Format](#interest-bearing-currency-code-format) into a display such as "XAU (-0.5% pa)".
+- Clients must distinguish between tokens that do and do not have interest or demurrage, and among tokens that have different rates of interest or demurrage. Clients should be able to parse the [Interest-Bearing Currency Code Format](#interest-bearing-currency-code-format) into a display such as "XAU (-0.5% pa)".
 
 ### ripple-lib Support
 

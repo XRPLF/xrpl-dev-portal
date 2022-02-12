@@ -1,6 +1,5 @@
 ---
-html: issued-currencies-overview.html
-parent: issued-currencies.html
+parent: concepts.html
 blurb: 発行済み通貨の概要と、XRP Ledgerにおけるその特性について説明します。
 labels:
   - トークン

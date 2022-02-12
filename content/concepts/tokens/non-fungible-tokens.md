@@ -1,6 +1,6 @@
 ---
-html: nft-conceptual-overview.html
-parent: nft-concepts.html
+html: non-fungible-tokens.html
+parent: tokens.html
 blurb: Introduction to XRPL NFTs.
 filters:
  - include_code

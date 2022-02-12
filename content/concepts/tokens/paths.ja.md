@@ -1,6 +1,6 @@
 ---
 html: paths.html
-parent: issued-currencies.html
+parent: tokens.html
 blurb: 発行済み通貨の支払いは、接続されているユーザーのパスとオーダーブックを通す必要があります。
 labels:
   - 支払い
