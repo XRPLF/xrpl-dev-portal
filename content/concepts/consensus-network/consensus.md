@@ -175,7 +175,7 @@ Best practices for applications submitting transactions include:
 - **Concepts:**
     - [Introduction to Consensus](intro-to-consensus.html)
     - [Consensus Research](consensus-research.html)
-    - [The Consensus Mechanism (YouTube)](https://www.youtube.com/watch?v=k6VqEkqRTmk)
+    - [The Consensus Mechanism (YouTube)](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutorials:**
     - [Reliable Transaction Submission](reliable-transaction-submission.html)
     - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
