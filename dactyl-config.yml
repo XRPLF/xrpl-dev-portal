@@ -1655,6 +1655,12 @@ pages:
         targets:
             - ja
 
+    # TODO: translate this page & blurb
+    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
+        targets:
+            - en
+            - ja 
+
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
         targets:
             - en
@@ -1699,13 +1705,7 @@ pages:
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
         targets:
             - en
-            - ja
-
-    # TODO: translate this page & blurb
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-in-reporting-mode.md
-        targets:
-            - en
-            - ja        
+            - ja       
 
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md

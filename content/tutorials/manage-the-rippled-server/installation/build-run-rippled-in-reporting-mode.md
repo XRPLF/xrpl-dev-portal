@@ -1,13 +1,13 @@
 ---
-html: run-rippled-in-reporting-mode.html
-parent: configure-rippled.html
-blurb: Run a special operating mode of rippled that handles remote procedure calls (RPC) for validated data.
+html: build-run-rippled-in-reporting-mode.html
+parent: install-rippled.html
+blurb: Build and run a special operating mode of rippled that handles remote procedure calls (RPC) for validated data.
 labels:
   - Core Server
   - Blockchain
 top_nav_grouping: Popular Pages
 ---
-# Run rippled in Reporting Mode
+# Build and Run `rippled` in Reporting Mode
 
 [Reporting mode](rippled-server-modes.html) is a mode of the XRP Ledger core server specialized for serving [HTTP and WebSocket APIs](rippled-api.html).
 
