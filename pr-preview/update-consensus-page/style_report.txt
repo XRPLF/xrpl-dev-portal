@@ -17,12 +17,12 @@ Found 103 possible spelling errors:
   checkcashmakestrustline: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   20d: 2nd, 2d
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: avm, eom, edm
+  evm: evo, emm, eam
   permissionless: 
   federators: federator
 
@@ -30,7 +30,7 @@ Found 103 possible spelling errors:
   xrplcluster: 
 
 <Page 'NFT Conceptual Overview' (nft-conceptual-overview.html)> Unknown Words:
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   ˈfənjəbəl: 
   nftoken: 
   nftokenpage: 
@@ -38,9 +38,9 @@ Found 103 possible spelling errors:
   nftokenoffer: 
   nftokenburn: 
   0x000008: 
+  nftokencanceloffer: 
   nftokencreateoffer: 
   nftokenacceptoffer: 
-  nftokencanceloffer: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
   sologenic: 
@@ -48,16 +48,16 @@ Found 103 possible spelling errors:
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
   disallowxrp: 
   wxpython: 
-  wsl: wsd, wal, isl
+  wsl: wse, wsd, rsl
   threadsafe: 
   asyncio: 
-  guis: uis, gius, gums
+  guis: luis, gues, guvs
   wxglade: 
-  s1: t1, sg, v1
+  s1: si, st, sp
   toolkits: toolkit
   tooltip: 
-  lsf: msf, ssf, lfs
-  refactor: prefactor, refractor, redactor
+  lsf: ls, ltf, tsf
+  refactor: refractor, redactor, reactor
   tooltips: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
@@ -65,88 +65,88 @@ Found 103 possible spelling errors:
 
 <Page 'NFToken Tester Tutorial' (nftoken-tester-tutorial.html)> Unknown Words:
   nftoken: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   nftokens: 
-  ipfs: ips, ipcs, ipms
+  ipfs: ipcs, ipms, ips
   nftokenacceptoffer: 
   acceptselloffer: 
-  nftokenoffer: 
-  nftokencreateoffer: 
-  nftokencanceloffer: 
+  nftokenburn: 
   nftokenpage: 
   nftokenmint: 
-  nftokenburn: 
+  nftokencreateoffer: 
+  nftokenoffer: 
+  nftokencanceloffer: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: lapps, apps, capps
+  xapps: capps, lapps, apps
 
 <Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: nome, name, vme
+  nvme: name, nome, vme
 
 <Page 'NFToken' (nftoken.html)> Unknown Words:
   nftoken: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   nftokenpage: 
   tokenid: tokened
   trustline: 
+  lsfonlyxrp: 
   lsftransferable: 
+  lsfburnable: 
   0x0002: 
   0x0001: 
-  0x000b: 
-  lsfburnable: 
-  lsfonlyxrp: 
   0x0008: 
+  0x000b: 
   transferfee: transferee
-  1bps: mbps, bps, kbps
+  1bps: kbps, bps, mbps
   nftokenmint: 
-  ipfs: ips, ipcs, ipms
   rfc2379: 
+  ipfs: ipcs, ipms, ips
   nftokens: 
 
 <Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
   nftokenoffer: 
-  nftokens: 
   nftokenpage: 
+  nftokens: 
 
 <Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
   nftokenoffer: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
 
 <Page 'NFTokenPage' (nftokenpage.html)> Unknown Words:
   nftokenpage: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   tokenpage: 
   shamap: shama, shaman, shamal
 
 <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
   nftokenacceptoffer: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   nftoken: 
 
 <Page 'NFTokenBurn' (nftokenburn.html)> Unknown Words:
   nftokenburn: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   mintaccount: 
   mintedtokens: 
   burnedtokens: 
 
 <Page 'NFTokenCancelOffer' (nftokencanceloffer.html)> Unknown Words:
   nftokencanceloffer: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   nftokenoffer: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
   nftokencreateoffer: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   nftokenoffer: 
 
 <Page 'NFTokenMint' (nftokenmint.html)> Unknown Words:
   nftokenmint: 
-  xls: xs, ils, xis
+  xls: bls, pls, ols
   nftokenpage: 
   nftoken: 
-  ipfs: ips, ipcs, ipms
   rfc2379: 
+  ipfs: ipcs, ipms, ips
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
