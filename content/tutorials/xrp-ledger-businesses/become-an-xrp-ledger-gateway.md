@@ -17,14 +17,6 @@ labels:
 This document explains the concepts and steps necessary to become an XRP Ledger gateway. In this document, we use a fictional online currency exchange named "ACME" and its customers as examples, to show how ACME can expand its business to include being an XRP Ledger gateway.
 
 
-## Contact Information
-
-You are not on your own. Ripple wants gateways to succeed, so we are here to help. Please contact us if you need help building and growing your gateway.
-
-* Contact [partners@ripple.com](mailto:partners@ripple.com) for enterprise-class integrations, infrastructure advice, and other business development needs.
-* Contact [support@ripple.com](mailto:support@ripple.com) for technical questions, clarifications, bug reports, and feature requests.
-
-
 ## Gateways Explained
 
 {% include '_snippets/gateways-intro.md' %}
