@@ -391,7 +391,7 @@ Now you can create tokens by sending a [Payment transaction][] from the cold add
 |---|---|
 | `TransactionType` | `"Payment"` |
 | `Account` | The cold address issuing the token. |
-| `Amount` | An [issued currency amount](basic-data-types.html#specifying-currency-amounts) specifying how much of which token to create. |
+| `Amount` | An [token amount](basic-data-types.html#specifying-currency-amounts) specifying how much of which token to create. |
 | `Amount.currency` | The currency code of the token. |
 | `Amount.value` | Decimal amount of the token to issue, as a string. |
 | `Amount.issuer` | The cold address issuing the token. |

@@ -54,7 +54,7 @@ A `RippleState` object has the following fields:
 |-----------------|-----------|---------------|-------------|
 | `LedgerEntryType` | String    | UInt16 | The value `0x0072`, mapped to the string `RippleState`, indicates that this object is a RippleState object. |
 | `Flags`           | Number    | UInt32 | A bit-map of boolean options enabled for this object. |
-| `Balance`         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has issued currency to the high account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](accounts.html#special-addresses). |
+| `Balance`         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has tokens to the high account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](accounts.html#special-addresses). |
 | `LowLimit`        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | `HighLimit`       | Object    | Amount | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
 | `PreviousTxnID`   | String    | Hash256 | The identifying hash of the transaction that most recently modified this object. |
@@ -76,8 +76,8 @@ RippleState objects can have the following flag values:
 |-------------------|--------------|---------------|-----------------|---------|
 | `lsfLowReserve`   | `0x00010000` | 65536         | (None)          | This RippleState object [contributes to the low account's owner reserve](#contributing-to-the-owner-reserve). |
 | `lsfHighReserve`  | `0x00020000` | 131072        |  (None)         | This RippleState object [contributes to the high account's owner reserve](#contributing-to-the-owner-reserve). |
-| `lsfLowAuth`      | `0x00040000` | 262144        | `tfSetAuth`     | The low account has authorized the high account to hold the low account's issued currency. |
-| `lsfHighAuth`     | `0x00080000` | 524288        | `tfSetAuth`     | The high account has authorized the low account to hold the high account's issued currency. |
+| `lsfLowAuth`      | `0x00040000` | 262144        | `tfSetAuth`     | The low account has authorized the high account to hold tokens issued by the low account. |
+| `lsfHighAuth`     | `0x00080000` | 524288        | `tfSetAuth`     | The high account has authorized the low account to hold tokens issued by the high account. |
 | `lsfLowNoRipple`  | `0x00100000` | 1048576       | `tfSetNoRipple` | The low account [has disabled rippling](rippling.html) from this trust line. |
 | `lsfHighNoRipple` | `0x00200000` | 2097152       | `tfSetNoRipple` | The high account [has disabled rippling](rippling.html) from this trust line. |
 | `lsfLowFreeze`    | `0x00400000` | 4194304       | `tfSetFreeze`   | The low account has frozen the trust line, preventing the high account from transferring the asset. |

@@ -12,7 +12,7 @@ status: not_enabled
 # NFT Conceptual Overview
 {% include '_snippets/nfts-disclaimer.md' %}
 
-The XRP Ledger offers support for tokens, also known as _IOUs_ or [_issued currencies_](issued-currencies.html). Such assets are, primarily, fungible.
+The XRP Ledger offers support for [tokens](tokens.html), also known as _IOUs_. Such assets are, primarily, fungible.
 
 > Fun·gi·ble /ˈfənjəbəl/ (adj)
 >

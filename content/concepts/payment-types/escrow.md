@@ -41,7 +41,7 @@ All escrows start the same way, so **Steps 1 and 2** are the same as in the succ
 
 Escrow is designed as a feature to enable the XRP Ledger to be used in the [Interledger Protocol][] and with other smart contracts. The current version has a modest scope to avoid complexity.
 
-- Escrow only works with XRP, not issued currencies.
+- Escrow only works with XRP, not tokens.
 - Escrow requires sending at least two transactions: one to create the escrow, and one to finish or cancel it. Thus, it may not be financially sensible to escrow payments for very small amounts, because the participants must destroy the [transaction cost](transaction-cost.html) of the two transactions.
     - When using Crypto-Conditions, the [cost of the transaction to finish the escrow](#escrowfinish-transaction-cost) is higher than usual.
 - All escrows must be created with a "finish-after" time or a [crypto-condition][], or both. If the escrow does not have a finish-after time, it must have an expiration time.

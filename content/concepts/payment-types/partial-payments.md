@@ -52,14 +52,14 @@ Partial Payments have the following limitations:
 
 To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a `delivered_amount` field. This field describes the amount actually delivered, in the [same format](basic-data-types.html#specifying-currency-amounts) as the `Amount` field.
 
-For non-partial payments, the `delivered_amount` field of the transaction metadata is equal to the `Amount` field of the transaction. When a payment delivers an issued currency, the `delivered_amount` may be slightly different than the `Amount` field due to rounding.
+For non-partial payments, the `delivered_amount` field of the transaction metadata is equal to the `Amount` field of the transaction. When a payment delivers [tokens](tokens.html), the `delivered_amount` may be slightly different than the `Amount` field due to rounding.
 
 The delivered amount is **not available** for transactions that meet **both** of the following criteria:
 
 - Is a partial payment
 - Is included in a validated ledger before 2014-01-20
 
-If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only determine the actual delivered amount by reading the `AffectedNodes` in the transaction's metadata. If the transaction delivered an issued currency and the `issuer` of the `Amount` is the same account as the `Destination` address, the delivered amount may be divided among multiple `AffectedNodes` members representing trust lines to different counterparties.
+If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only determine the actual delivered amount by reading the `AffectedNodes` in the transaction's metadata. If the transaction delivered tokens and the `issuer` of the `Amount` is the same account as the `Destination` address, the delivered amount may be divided among multiple `AffectedNodes` members representing trust lines to different counterparties.
 
 You can find the `delivered_amount` field in the following places:
 

@@ -1,7 +1,7 @@
 ---
 html: paths.html
 parent: tokens.html
-blurb: Payments of issued currencies must traverse paths of connected users and order books.
+blurb: Payments of tokens must traverse paths of connected users and order books.
 labels:
   - Payments
   - Cross-Currency

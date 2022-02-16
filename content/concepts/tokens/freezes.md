@@ -35,7 +35,7 @@ Reminder: Trust lines do not hold XRP. XRP cannot be frozen.
 
 A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution uses that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)
 
-An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](issuing-and-operational-addresses.html), from sending that financial institution's issued currencies to the individual address. This type of individual freeze has no effect on offers.
+An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](issuing-and-operational-addresses.html), from sending that financial institution's tokens to the individual address. This type of individual freeze has no effect on offers.
 
 The Individual Freeze applies to a single trust line. To freeze multiple tokens with a particular counterparty, the address must enable Individual Freeze on the trust lines for each separate currency code.
 
