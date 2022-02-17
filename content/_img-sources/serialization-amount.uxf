@@ -42,7 +42,7 @@
       <w>190</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>mantissa (54 bits)</panel_attributes>
+    <panel_attributes>significant digits (54 bits)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -335,7 +335,7 @@ style=wordwrap</panel_attributes>
       <w>240</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Issued Currency Amount Format</panel_attributes>
+    <panel_attributes>Token Amount Format</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -357,7 +357,7 @@ style=wordwrap</panel_attributes>
       <w>240</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Issued Currency Code Format</panel_attributes>
+    <panel_attributes>Standard Currency Code Format</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

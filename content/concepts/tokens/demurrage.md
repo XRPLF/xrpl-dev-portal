@@ -41,7 +41,7 @@ To convert between display amounts and ledger amounts, you can use the following
 2. Apply it to the amount to convert:
     - To convert ledger values to display values, multiply by the demurrage coefficient.
     - To convert display values to ledger values, divide by the demurrage coefficient.
-3. If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's [token format](currency-formats.html#issued-currency-precision).
+3. If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's [token format](currency-formats.html#token-precision).
 
 
 ## Interest-Bearing Currency Code Format

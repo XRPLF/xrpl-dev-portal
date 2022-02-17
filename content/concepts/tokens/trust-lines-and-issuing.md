@@ -13,7 +13,7 @@ Each "trust line" is a _bidirectional_ relationship consisting of:
 
 - The identifiers for the **two [accounts](accounts.html)** that the trust line connects.
 - A single, shared **balance**, which is positive from the perspective of one account and negative from the other perspective.
-    - The account with a negative balance is generally considered the "issuer" of the tokens. However, in the [APIs](rippled-apis.html), the name `issuer` can refer to either side.
+    - The account with a negative balance is generally considered the "issuer" of the tokens. However, in the [APIs](rippled-api.html), the name `issuer` can refer to either side.
 - Various **settings** and metadata. _Each_ of the two accounts can control its own settings on the trust line.
     - Most importantly, each side sets a **limit** on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except [through that account's own actions](#going-below-the-limit).
 
@@ -43,7 +43,7 @@ In addition to the shared balance, each account has its own settings on the trus
 - The **Limit**, a number from 0 to the [maximum token amount](currency-formats.html). Payments and other accounts' actions cannot cause the trust line's balance (from this account's perspective) to go over the limit. The default is `0`.
 - **Authorized**: A true/false value used with [Authorized Trust Lines](authorized-trust-lines.html) to allow the other side to hold tokens this account issues. The default is `false`. Once set to `true`, this cannot be changed back.
 - **No Ripple**: A true/false value to control whether tokens can [ripple](rippling.html) through this trust line. The default depends on the account's "Default Ripple" setting; for new accounts, "Default Ripple" is off which means that `true` is the default for No Ripple. Usually, issuers should allow rippling and non-issuers should disable rippling unless they are using trust lines for community credit.
-- **Freeze**: A true/false value indicating whether an [individual freeze](freezes.html#individual freeze) is in effect on this trust line. The default is `false`.
+- **Freeze**: A true/false value indicating whether an [individual freeze](freezes.html#individual-freeze) is in effect on this trust line. The default is `false`.
 - **Quality In** and **Quality Out** settings, which allow the account to value tokens issued by the other account on this trust line at less (or more) than face value. For example, if a stablecoin issuer charges a 3% fee for withdrawing tokens for the equivalent off-ledger assets, you could use these settings to value those tokens at 97% of face value. The default, `0`, represents face value.
 
 

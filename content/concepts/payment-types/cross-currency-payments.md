@@ -36,7 +36,7 @@ For more information, see [Auto-Bridging](autobridging.html).
     - [Payment transaction type][Payment transaction]
     - [path_find method][]
     - [ripple_path_find method][]
-    - [Interpreting Metadata of Issued Currency Payments](look-up-transaction-results.html#issued-currency-payments)
+    - [Interpreting Metadata of Cross-Currency Payments](look-up-transaction-results.html#token-payments)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

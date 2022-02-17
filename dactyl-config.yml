@@ -180,6 +180,9 @@ targets:
               # next-nearest equivalent of the #seed anchor:
             "cryptographic-keys.html#seed": "cryptographic-keys.html#キーの生成"
             "cryptographic-keys.html#regular-key-pair": "cryptographic-keys.html#レギュラーキーペア"
+            # Fix links from untranslated common-misconceptions-about-freezes.html
+              # Not updated to have the table. The top-level of the page is pretty close.
+            "currency-formats.html#comparison": "currency-formats.html"
 
 
 pages:

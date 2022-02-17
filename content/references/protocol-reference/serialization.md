@@ -224,7 +224,7 @@ The "Amount" type is a special field type that represents an amount of currency,
 
     Tokens consist of three segments in order:
 
-    1. 64 bits indicating the amount in the [internal currency amount format](#issued-currency-amount-format). The first bit is `1` to indicate that this is not XRP.
+    1. 64 bits indicating the amount in the [token amount format](#token-amount-format). The first bit is `1` to indicate that this is not XRP.
     2. 160 bits indicating the [currency code](currency-formats.html#currency-codes). The standard API converts 3-character codes such as "USD" into 160-bit codes using the [standard currency code format](currency-formats.html#standard-currency-codes), but custom 160-bit codes are also possible.
     3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](accounts.html#address-encoding))
 
@@ -232,7 +232,7 @@ You can tell which of the two sub-types it is based on the first bit: `0` for XR
 
 The following diagram shows the serialization formats for both XRP amounts and token amounts:
 
-{{ include_svg("img/serialization-amount.svg", 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Token amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), mantissa (54 bits), currency code (160 bits), and issuer (160 bits).') }}
+{{ include_svg("img/serialization-amount.svg", 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Token amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).') }}
 
 #### Token Amount Format
 [[Source]](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
@@ -244,7 +244,7 @@ The XRP Ledger uses 64 bits to serialize the numeric amount of a (fungible) toke
 1. The first (most significant) bit for an token amount is `1` to indicate that it is not an XRP amount. (XRP amounts always have the most significant bit set to `0` to distinguish them from this format.)
 2. The sign bit indicates whether the amount is positive or negative. Unlike standard [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) integers, `1` indicates **positive** in the XRP Ledger format, and `0` indicates negative.
 3. The next 8 bits represent the exponent as an unsigned integer. The exponent indicates the scale (what power of 10 the significant digits should be multiplied by) in the range -96 to +80 (inclusive). However, when serializing, we add 97 to the exponent to make it possible to serialize as an unsigned integer. Thus, a serialized value of `1` indicates an exponent of `-96`, a serialized value of `177` indicates an exponent of 80, and so on.
-4. The remaining 54 bits represent the significant digits as an unsigned integer. When serializing, this value is normalized to the range 10<sup>15</sup> (`1000000000000000`) to 10<sup>16</sup>-1 (`9999999999999999`) inclusive, except for the special case of the value 0. In the special case for 0, the sign bit, exponent, and mantissa are all zeroes, so the 64-bit value is serialized as `0x8000000000000000000000000000000000000000`.
+4. The remaining 54 bits represent the significant digits (sometimes called a _mantissa_) as an unsigned integer. When serializing, this value is normalized to the range 10<sup>15</sup> (`1000000000000000`) to 10<sup>16</sup>-1 (`9999999999999999`) inclusive, except for the special case of the value 0. In the special case for 0, the sign bit, exponent, and significant digits are all zeroes, so the 64-bit value is serialized as `0x8000000000000000000000000000000000000000`.
 
 The numeric amount is serialized alongside the [currency code][] and issuer to form a full [token amount](#amount-fields).
 
