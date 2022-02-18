@@ -29,6 +29,9 @@
           {% set dropdownchildren = top_page.children|list %}
           {% for linkhtml in top_page.top_nav_shortcuts %}
             {% set _ = dropdownchildren.append(pages|selectattr("html", "defined_and_equalto", linkhtml)|first) %}
+            {% if _ is not defined %}
+              {% include "ERROR: Couldn't find page "+linkhtml+" from top_nav_shortcuts" %}
+            {% endif %}
           {% endfor %}
           {% for link in dropdownchildren if not link.top_nav_omit %}
             {% if link.top_nav_grouping not in printed_groupings %}
