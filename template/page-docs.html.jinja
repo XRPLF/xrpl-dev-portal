@@ -31,6 +31,9 @@
         <ul class="nav flex-column">
           {% for pg_html in currentpage.popular_pages %}
           {% set page = pages|selectattr("html", "defined_and_equalto", pg_html)|first %}
+          {% if page.html is not defined %}
+            {% include "ERROR: Couldn't find page "+pg_html+" from popular_pages" %}
+          {% endif %}
           <li class="nav-item"><a href="{% if '//' not in page.html %}{{target.prefix}}{% endif %}{{page.html}}" class="nav-link">{{page.name}}</a>
           {% endfor %}
         </ul>

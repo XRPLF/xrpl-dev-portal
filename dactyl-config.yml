@@ -381,6 +381,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
             - public-rippled-methods.html
         top_nav_hero_image: top-nav-hero-docs
@@ -389,6 +390,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
             - public-rippled-methods.html
         blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
@@ -416,6 +418,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
             - public-rippled-methods.html
         top_nav_hero_image: top-nav-hero-docs
@@ -424,6 +427,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
         blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
         filters:
@@ -946,9 +950,6 @@ pages:
     -   md: concepts/consensus-network/federated-sidechains.md
         targets:
             - en
-
-    -   md: concepts/consensus-network/federated-sidechains.ja.md
-        targets:
             - ja
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
@@ -1650,6 +1651,12 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.ja.md
         targets:
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
