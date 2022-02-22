@@ -50,7 +50,7 @@
     <img src="./img/backgrounds/cta-calculator-green.svg" class="cta cta-bottom-right">
     <div class="z-index-1 position-relative">
       <h2 class="h4 mb-10-until-sm mb-8-sm">{% trans %}How Does XRP Compare to Other Currencies?{% endtrans %}</h2>
-      <a class="btn btn-primary btn-arrow" href="assets/pdf/xrpl-sustainability-methodology-2020.pdf">Methodology</a>
+      <a class="btn btn-primary btn-arrow" href="{{currentpage.prefix}}assets/pdf/xrpl-sustainability-methodology-2020.pdf">Methodology</a>
     </div>
   </div>
 </section>
@@ -112,7 +112,7 @@
                 <div class="dot" id="kWh-btc-dot"></div>
               </div>
               <div class="num-wrapper">
-                <img src="assets/img/icons/bw-bitcoin.png" alt="BTC" class="mw-100 mt-3 invertible-img">
+                <img src="{{currentpage.prefix}}assets/img/icons/bw-bitcoin.png" alt="BTC" class="mw-100 mt-3 invertible-img">
                 <p class="h6 mt-2 mb-1">{% trans %}Bitcoin{% endtrans %}</p>
                 <h5 class="normal mb-0" id="kWh-btc"></h5>
                 <p class="text-small black-90">{% trans %}kWh{% endtrans %}</p>
@@ -124,7 +124,7 @@
                 <div class="dot" id="kWh-eth-dot"></div>
               </div>
               <div class="num-wrapper">
-                <img src="assets/img/icons/bw-ethereum.png" alt="ETH" class="mw-100 mt-3 invertible-img">
+                <img src="{{currentpage.prefix}}assets/img/icons/bw-ethereum.png" alt="ETH" class="mw-100 mt-3 invertible-img">
                 <p class="h6 mt-2 mb-1">{% trans %}Ethereum{% endtrans %}</p>
                 <h5 class="normal mb-0" id="kWh-eth"></h5>
                 <p class="text-small black-90">{% trans %}kWh{% endtrans %}</p>
@@ -136,7 +136,7 @@
                 <div class="dot" id="kWh-pap-dot"></div>
               </div>
               <div class="num-wrapper">
-                <img src="assets/img/icons/bw-cash.png" class="mw-100 mt-3 mb-2 invertible-img">
+                <img src="{{currentpage.prefix}}assets/img/icons/bw-cash.png" class="mw-100 mt-3 mb-2 invertible-img">
                 <p class="h6 mt-2 mb-1">{% trans %}Cash{% endtrans %}</p>
                 <h5 class="normal mb-0" id="kWh-pap"></h5>
                 <p class="text-small black-90">{% trans %}kWh{% endtrans %}</p>
@@ -148,7 +148,7 @@
                 <div class="dot" id="kWh-xrp-dot"></div>
               </div>
               <div class="num-wrapper">
-                <img src="assets/img/icons/xrp.png" alt="XRP" class="mw-100 mt-3 invertible-img">
+                <img src="{{currentpage.prefix}}assets/img/icons/xrp.png" alt="XRP" class="mw-100 mt-3 invertible-img">
                 <p class="h6 mt-2 mb-1">XRP</p>
                 <h5 class="normal mb-0" id="kWh-xrp"></h5>
                 <p class="text-small black-90">{% trans %}kWh{% endtrans %}</p>
@@ -160,7 +160,7 @@
                 <div class="dot" id="kWh-vsa-dot"></div>
               </div>
               <div class="num-wrapper">
-                <img src="assets/img/icons/bw-visa.png" alt="{% trans %}Visa{% endtrans %}" class="mw-100 mb-2 invertible-img" style="margin-top: 1.85rem;">
+                <img src="{{currentpage.prefix}}assets/img/icons/bw-visa.png" alt="{% trans %}Visa{% endtrans %}" class="mw-100 mb-2 invertible-img" style="margin-top: 1.85rem;">
                 <p class="h6 mt-2 mb-1">Visa</p>
                 <h5 class="normal mb-0" id="kWh-vsa"></h5>
                 <p class="text-small black-90">{% trans %}kWh{% endtrans %}</p>
@@ -172,7 +172,7 @@
                 <div class="dot" id="kWh-mst-dot"></div>
               </div>
               <div class="num-wrapper">
-                <img src="assets/img/icons/bw-mastercard.png" alt="{% trans %}Mastercard{% endtrans %}" class="mw-100 mb-1 invertible-img" style="margin-top: 1.65rem;">
+                <img src="{{currentpage.prefix}}assets/img/icons/bw-mastercard.png" alt="{% trans %}Mastercard{% endtrans %}" class="mw-100 mb-1 invertible-img" style="margin-top: 1.65rem;">
                 <p class="h6 mt-2 mb-1">{% trans %}Mastercard{% endtrans %}</p>
                 <h5 class="normal mb-0" id="kWh-mst"></h5>
                 <p class="text-small black-90">{% trans %}kWh{% endtrans %}</p>
@@ -334,14 +334,14 @@
 
 
 {% block endbody %}
-<script type="text/javascript" src="assets/js/bodymovin.min.js"></script>
-<script type="text/javascript" src="assets/js/calculator/co2-crypto.json"></script>
-<script type="text/javascript" src="assets/js/calculator/co2-cash.json"></script>
-<script type="text/javascript" src="assets/js/calculator/co2-credit.json"></script>
-<script type="text/javascript" src="assets/js/calculator/gas-crypto.json"></script>
-<script type="text/javascript" src="assets/js/calculator/gas-cash.json"></script>
-<script type="text/javascript" src="assets/js/calculator/gas-credit.json"></script>
-<script type="text/javascript" src="assets/js/calculator/carbon-calculator.js"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/bodymovin.min.js"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/calculator/co2-crypto.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/calculator/co2-cash.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/calculator/co2-credit.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/calculator/gas-crypto.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/calculator/gas-cash.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/calculator/gas-credit.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/calculator/carbon-calculator.js"></script>
 
 <script type="text/javascript">
   function co2CashAnimation(){
