@@ -216,11 +216,13 @@ The SVG file in question should be in the [`img/`](./img/) folder at the top lev
 
 The resulting SVG file is inlined directly into the Markdown file. One limitation is that you can't use it inside other Markdown structures such as bulleted lists or tables.
 
+> **Note:** The filter source code is [`tool/filter_include_svg.py`](./tool/filter_include_svg.py). This is also the reason that `lxml` is one of the dependencies for building the site.
+
 ### Making Diagrams
 
 You have to take care when creating diagrams so that the recoloring applies correctly; otherwise, some elements may be invisible (white-on-white or black-on-black, for example) when recolored for the other theme. The theme-aware diagrams code supports diagrams created using either [Umlet](https://www.umlet.com/) or [Google Draw](https://docs.google.com/drawings/) and exported as SVG. Additionally, you should follow these guidelines when making digrams:
 
 0. Create diagrams for light mode by default. Use a transparent background color.
-0. Only use colors that the theme-aware diagrams code has mappings for. The code for this, including the full list of colors, is in [`styles/_diagrams.scss`](./styles/_diagrams.scss). If needed, you can add new colors by extending the SCSS code. (Don't forget to re-export the CSS when you're done! See the [styles README](./styles/README.md))
+0. Only use colors that the theme-aware diagrams code has mappings for. The code for this, including the full list of colors, is in [`styles/_diagrams.scss`](./styles/_diagrams.scss). If needed, you can add new colors by extending the SCSS code. (Don't forget to re-export the CSS when you're done! See the [styles README](./styles/README.md).)
 0. Use actual vector shapes instead of embedded icons/images whenever possible. If you need to put text on top of an image, add a solid background to the text element and use one of the colors the theme has mappings for.
 0. Don't layer transparent elements containing text on top of elements with different background colors. Apply a background color directly to the element that contains the text.
