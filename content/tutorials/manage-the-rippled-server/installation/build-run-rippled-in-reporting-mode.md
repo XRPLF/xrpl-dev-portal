@@ -13,15 +13,15 @@ top_nav_grouping: Popular Pages
 
 In reporting mode, the server does not connect to the peer-to-peer network. Instead, it uses gRPC to get validated data from one or more trusted servers that are connected to the P2P network. 
 
-It can then efficiently handle RPCs, reducing the load on `rippled` servers running in P2P mode.
+It can then efficiently handle API calls, reducing the load on `rippled` servers running in P2P mode.
 
 {{ include_svg("img/reporting-mode-basic-architecture.svg", "Figure 1: Working of `rippled` in reporting mode") }}
 
 The reporting mode of `rippled` uses two datastores:
 
-* The primary persistent datastore for `rippled` that includes transaction metadata, account states, and ledger headers. You can use NuDB or Cassandra as the primary persistent datastore.
+* The primary persistent datastore for `rippled` that includes transaction metadata, account states, and ledger headers. You can use NuDB (included with the source) or [Cassandra](https://cassandra.apache.org/) as the primary persistent datastore. If you use Cassandra, multiple reporting mode servers can share access to data in a single Cassandra instance or cluster.
 
-* PostgreSQL database to hold relational data, which is used mainly by [tx method][] and [account_tx method][]. 
+* [PostgreSQL](https://www.postgresql.org/) database to hold relational data, which is used mainly by [tx method][] and [account_tx method][]. 
 
 When a reporting mode server receives an API request, it loads the data from these data stores if possible. For requests that require data from the P2P network, the reporting mode forwards the request to a P2P server, and then passes the response back to the client.
 
@@ -45,7 +45,7 @@ Multiple reporting mode servers can share access to the same network accessible 
 
     3. On macOS, you need to manually install the Cassandra cpp driver. On all other platforms, the Cassandra driver is built as part of the `rippled` build. 
         
-        brew install cassandra-cpp-driver
+            brew install cassandra-cpp-driver
 
 #### Install PostgreSQL
     
@@ -53,7 +53,7 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 1. Download and [install PostgreSQL on Linux](https://www.postgresqltutorial.com/install-postgresql-linux/).
         
-2. Connect to the PostgreSQL Database Server using psql, and create a user `newuser` and a database `reporting`.
+2. Connect to the PostgreSQL Database Server using `psql`, and create a user `newuser` and a database `reporting`.
 
         psql postgres
 	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
@@ -66,7 +66,7 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 1. Download and [install PostgreSQL on Windows](https://www.postgresqltutorial.com/install-postgresql/).
         
-2. Launch the psql program and connect to the PostgreSQL Database Server, and create a user `newuser` and a database `reporting`. 
+2. Launch the `psql` program and connect to the PostgreSQL Database Server, and create a user `newuser` and a database `reporting`. 
 
         psql postgres
 	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
@@ -77,12 +77,12 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 **Install PostgreSQL on macOS**
 
-1. Download and install Postgres on macOS.  
+1. Download and install PostgreSQL on macOS.  
 
         brew install postgres
         brew services start postgres
 
-2. Connect to the PostgreSQL Database Server using psql and create a user `newuser` and a database `reporting`.
+2. Connect to the PostgreSQL Database Server using `psql` and create a user `newuser` and a database `reporting`.
 
         psql postgres
 	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
@@ -95,7 +95,7 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 **Cassandra** 
 
-Install Cassandra and then create a keyspace for `rippled`, with replication. 
+Install Cassandra and then create a keyspace for `rippled`, with replication. <!-- SPELLING_IGNORE: keyspace -->
 
 While a replication factor of 3 is recommended, when running locally, replication is not needed and you can set `replication_factor` to 1.    
         
@@ -151,7 +151,7 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
     Note that these are the only configurations required for `rippled` to start up successfully. All other configurations are optional and can be tweaked after you have a working server.
 
-4. Edit the `rippled-reporting-mode.cfg` file to enable Reporting Mode: 
+4. Edit the `rippled-reporting-mode.cfg` file to enable reporting mode: 
 
     1. Uncomment the `[reporting]` stanza or add a new one:
 
@@ -330,31 +330,30 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 
 ## Frequently Asked Questions
 
-**Do I need to run more than one instance of `rippled` in order to use Reporting mode?**
+**Do I need to run more than one instance of `rippled` to use reporting mode?**
 
-Yes. A `rippled` server running in reporting mode does not connect to the P2P network, but instead extracts validated data from one or more `rippled` servers that are connected to the P2P network. In addition to the `rippled` server running in reporting mode, you need to run at least one other `rippled` server that is connected to the P2P network. 
+Yes. A `rippled` server running in reporting mode does not connect to the peer-to-peer network, but instead extracts validated data from one or more `rippled` servers that are connected to the network, so you need to run at least one P2P mode server.
 
 **I’ve already installed `rippled`. Can I update the configuration file to enable reporting mode and restart `rippled`?** 
 
-No. Currently, you need to download the source and build rippled for reporting mode. 
-There are initiatives in progress to provide packages for reporting mode.
+No. Currently, you need to download the source and build `rippled` for reporting mode. There are initiatives in progress to provide packages for reporting mode.
 
 
-**To run `rippled` in Reporting mode, I need at least one `rippled` server running in P2P mode in addition to `rippled` in Reporting mode. Does this mean I need double the disk space?** 
+**To run `rippled` in reporting mode, I need at least one `rippled` server running in P2P mode too. Does this mean I need double the disk space?** 
 
-The answer depends on the location of your primary datastore. If you use Cassandra as the primary datastore, the disk space requirement to run `rippled` in reporting mode will be lower as the data is not stored on your local disk. The PostgreSQL server can be remote as well.
+The answer depends on the location of your primary data store. If you use Cassandra as the primary data store, the reporting mode server stores much less data on its local disk. The PostgreSQL server can be remote as well. You can have multiple reporting mode servers share the same data this way.
 
 Lastly, the P2P mode server only needs to keep very recent history, while the reporting mode server keeps long term history.
 
-For more information on system requirements to run `rippled`, see https://xrpl.org/system-requirements.html. 
+For more information on system requirements to run `rippled`, see the [`rippled` system requirements](system-requirements.html). 
 
-**How can I confirm the validity of the data that comes from the Postgres or Cassandra database?**
+**How can I confirm the validity of the data that comes from the PostgreSQL or Cassandra database?**
 
-`Rippled` running in Reporting mode only serves validated data from the ETL source specified in the config file. If you are accessing someone else's `rippled` server in P2P mode as the ETL source, you are implicitly trusting that server. If not, you need to run your own `rippled` node in P2P mode.
+When `rippled` runs in reporting mode, it only serves validated data from the ETL source specified in the config file. If you are using someone else's `rippled` server in P2P mode as the ETL source, you are implicitly trusting that server. If not, you need to run your own `rippled` node in P2P mode.
 
 **Is it possible to make traditional SQL queries to the relational database rather than using the API?**
 
-Technically, you *can* directly access the database if you want. However, the data is hashed as blobs and you have to decode the blobs in order to access using traditional SQL queries.
+Technically, you *can* directly access the database if you want. However, the data is stored as binary blobs and you have to decode the blobs to access the component fields. This makes traditional SQL queries much less useful since they cannot find and filter the individual fields of the data.
 
 <!--{# common link defs #}--> 
 {% include '_snippets/rippled-api-links.md' %} 
