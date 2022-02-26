@@ -794,13 +794,7 @@ pages:
         targets:
             - ja
 
-    -   name: Decentralized Exchange
-        html: decentralized-exchange.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other.
-        targets:
-            - en
+    -   md: concepts/decentralized-exchange/decentralized-exchange.md
 
     -   name: 分散型取引所
         html: decentralized-exchange.html
