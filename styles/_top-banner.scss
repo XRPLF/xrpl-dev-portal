@@ -12,17 +12,16 @@
     line-height: 24px;
 
     @include media-breakpoint-up(md) {
-        padding: 11px 8px;
+        padding: 5px 8px;
     }
 
     .btn {
-        margin-top: -4px;
+        margin-top: 4px;
         margin-left: 8px;
-        padding: 2px 4px;
         font-size: 12px;
 
         @include media-breakpoint-up(md) {
-            padding: 8px;
+            margin-top: 2px;
             margin-left: 16px;
             font-size: 16px;
         }
@@ -31,13 +30,11 @@
     p {
         font-size: 12px;
         line-height: 20px;
-        width: 280px;
         text-align: center;
         margin: auto;
 
         @include media-breakpoint-up(md) {
             font-size: 16px;
-            line-height: 24px;
             width: initial;
         }
     }
