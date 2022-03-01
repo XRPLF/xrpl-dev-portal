@@ -17,8 +17,8 @@
 
 {% block main %}
 
-<div class="position-relative">
-  <img src="./img/backgrounds/community-magenta.svg" class="landing-bg" id="community-magenta">
+<div class="position-relative d-none-sm">
+  <img src="./img/backgrounds/events-orange.svg" id="events-orange">
 </div>
 
 <section class="py-26 text-center">
@@ -30,9 +30,7 @@
   </div>
 </section>
 
-<div class="position-relative d-none-sm">
-  <img src="./img/backgrounds/community-purple.svg" id="community-purple">
-</div>
+
 
 
 
@@ -49,21 +47,18 @@ html.light .event-card {
     
 }
 
-
  a.event-card:hover {
     color: #fff;
     transform: translateY(-16px);
     text-decoration: none;
 }
 
-
 .event-card {
     max-width: 311px; 
 
-   margin: 32px auto;
+    margin: 32px auto;
 
     transition: all 0.35s ease-out;
-
 
     position: relative;
     display: flex;
@@ -71,8 +66,6 @@ html.light .event-card {
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
-
-
     
     background-color: #232325;
     box-shadow: 0px 5px 40px #000;
@@ -80,21 +73,19 @@ html.light .event-card {
     border: 1px solid rgba(0,0,0,0.125);
     border-radius: 8px;   
 
-
-
   font-size: 16px;
   line-height: 24px; 
   color: #E0E0E1;
 }
 
 @media (min-width: 992px) {
-.event-card {
-    max-width: 347px; 
-    margin:32px;
-}
-.event-card-header {
-  height: 197px !important;
-}
+  .event-card {
+      max-width: 347px; 
+      margin:32px;
+  }
+  .event-card-header {
+    height: 197px !important;
+  }
 }
 
 
@@ -102,20 +93,20 @@ html.light .event-card {
   position: relative;
   
   height: 176px;
-      background-size: contain !important;
+  background-size: contain !important;
   width: 100%;
   border-radius: 8px 8px 0 0;
 }
 
 .event-card-title{
   position: absolute;
-    bottom: 32px;
-    padding: 0 32px;
-    color: #F5F5F7;
+  bottom: 32px;
+  padding: 0 32px;
+  color: #F5F5F7;
 
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 28px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
 }
 
 .event-card-body {
@@ -128,7 +119,7 @@ html.light .event-card {
 }
 
 .event-hero {
-color: $gray-100;
+  color: $gray-100;
   color: #F5F5F7;
 
 }
@@ -137,55 +128,160 @@ color: $gray-100;
     font-size: 24px;
     line-height: 32px;
 }
+.event-save-date {
+  color: $white:;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 26px;
+}
 .event-small-gray {
   color: $gray-400;
   color: #A2A2A4;
 }
 
+
+
+
 html.light .event-hero {
   color: $gray-900;
   color: #111112;
+}
 
+html.light .event-save-date {
+  color: $gray-900;
+  color: #111112;
+}
+
+html.light .event-small-gray {
+  color: $gray-600;
+  color: #454549;
+}
+
+#event-hero-image  {
+  height:100%;
+  background: url(./assets/img/events/event-hero1@2x.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+html.light #event-hero-image  {
+  height:100%;
+  background: url(./assets/img/events/event-hero1-light@2x.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.event-card-footer .icon::before {
+  height:24px;
+  width:24px;
+  content:"";
+  margin-right: 8px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.icon-date::before {
+  background: url(./assets/img/events/event-date.svg);
+}
+html.light .icon-date::before {
+  background: url(./assets/img/events/event-date-light.svg);
+}
+
+.icon-location::before {
+  background: url(./assets/img/events/event-location.svg);
+}
+html.light .icon-location::before {
+  background: url(./assets/img/events/event-location-light.svg);
+}
+
+.filter h6 {
+  font-size: 16px;
+}
+
+.filter span {
+      font-size: 16px;
+    font-weight: bold;
+    padding-left: 8px;
+    margin-top: -2px;
 }
 
 
-</style>
+.filter label {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #7919FF;
+  border-radius: 4px; 
+}
 
+.filter label:after {
+  content: '';
+  width: 10px;
+  height: 8px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border: 3px solid #fcfff4;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  opacity: 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.filter label:hover::after {
+  opacity: 0.8;
+}
+
+.filter input[type=checkbox] {
+  visibility: hidden;
+}
+
+.filter input[type=checkbox]:checked + label:after {
+  opacity: 1;
+}
+
+</style>
 
 
 {#  #}
 <section class="container-new py-26">
   <div class="event-hero card-grid event-hero card-grid-2xN">
-    <div class="col order-2 order-lg-1">
+    <div class="col order-2 order-lg-1 pr-2">
       <div class="d-flex flex-column-reverse">
         <h2 class="h4 h2-sm mb-8">{% trans %}Annual Summit: Apex{% endtrans %}</h2>
       </div>
       <p class="mb-4">{% trans %}Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.{% endtrans %}</p>
-      <div class="event-small-gray py-2 my-5" >
+      <div class="pt-2 mt-5 event-save-date">Save the date for Apex 2022!</div>
+      <div class="event-small-gray py-2 mb-5" >
         September 29–30, 2022<br />
         Las Vegas
       </div>
       <div class="d-lg-block">
-        <a class="btn btn-primary btn-arrow" href="#">{% trans %}Explore Apex 2022{% endtrans %}</a> 
+        <a class="btn btn-primary btn-arrow" target="_blank" href="http://apexdevsummit.com">{% trans %}Explore Apex 2022{% endtrans %}</a> 
       </div>
     </div>
-    <div class="col order-1 order-lg-2 pt-5">
-        <img src="./assets/img/events/event-hero1@2x.png" class="w-100">
+
+    <div class="col order-1 order-lg-2 pt-5 pr-2">
+        <div id="event-hero-image" src="" class=""></div>
     </div>
   </div>
 </section>
-
-
 
 {#  #}
 <section class="container-new py-26">
   <div class="event-hero card-grid card-grid-2xN">
     
-    <div class="col">
+    <div class="col pr-2">
         <img src="./assets/img/events/event-hero2@2x.png" class="w-100">
     </div>
     
-    <div class="col pt-5">
+    <div class="col pt-5 pr-2">
       <div class="d-flex flex-column-reverse">
         <h2 class="h4 h2-sm mb-8">{% trans %}Apex 2021 On-Demand{% endtrans %}</h2>
       </div>
@@ -196,8 +292,8 @@ html.light .event-hero {
         Las Vegas, Estonia
       </div>
       
-      <div class=" d-lg-block">
-        <a class="btn btn-primary btn-arrow" href="#">{% trans %}Watch Sessions On-Demand{% endtrans %}</a> 
+      <div class="d-lg-block">
+        <a class="btn btn-primary btn-arrow" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ">{% trans %}Watch Sessions On-Demand{% endtrans %}</a> 
       </div>
     </div>
     
@@ -209,38 +305,51 @@ html.light .event-hero {
 
 
 
-
-
-
 {# Upcoming Events #}
 <section class="container-new py-26" id="upcoming-events">
-  <div class="d-flex flex-column-reverse col-sm-8 p-0">
+  <div class="d-flex flex-column-reverse col-lg-6 p-0 pr-lg-5 mb-4 pb-2">
     <h3 class="h4 h2-sm">{% trans %}Check out meetups, hackathons, and other events hosted by the XRPL Community{% endtrans %}</h3>
     <h6 class="eyebrow mb-3">{% trans %}Upcoming Events{% endtrans %}</h6>
+  </div>
+
+  <div class="filter row col-12 mt-lg-5 d-flex flex-column">
+    <h6 class="mb-3">Filter By:</h6>
+    <div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="meetup" checked>
+      <label class="" for="inlineCheckbox1"></label>
+      <span class="form-check-label" for="inlineCheckbox1">Meetups</span>
+    </div>
+    
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="hackathon" checked>
+      <label class="" for="inlineCheckbox2"></label>
+      <span class="form-check-label" for="inlineCheckbox2">Hackathons</span>
+    </div>
+    </div>
   </div>
 
   {% set upcoming = [
     { "name": "XRPL Community Meetup: London",
       "id": "upcoming-xrpl-london",
       "description": "Join for an evening of programming and networking with members of the XRPL Community in London, co-organised by Peerkat - the NFT platform for creators on the XRPL.",
-      "type": "meetup",
-      "link": "#",
+      "type": "meetup-upcoming",
+      "link": "https://www.meetup.com/xrp-ledger-london-community/events/283536458/",
       "location": "IDEALondon",
       "date": "March 31, 2022",
       "imgclasses": "event-meetup-london.png"},
     { "name": "XRPL Hackathon: New Year, New NFT",
       "id": "upcoming-xrpl-hackathon-new-year",
       "description": "Build functional NFTs on the XRPL that span across a full range of use cases and showcase your project in this hackathon. Submissions have a chance to win prizes from a total prize pool of $50,000 in XRP.",
-      "type": "hackathon",
+      "type": "hackathon-upcoming",
       "link": "#",
       "location": "Virtual",
       "date": "January 31 - March 14, 2022",
       "imgclasses": "event-hack-new-year.svg"},
   ] %}
-  <div class="row row-cols-1 row-cols-lg-3 card-deck">
+  <div class="row row-cols-1 row-cols-lg-3 card-deck mt-2">
   {% for event in upcoming %}
-    <a class="event-card" href="{{event.link}}">
-    {#  no-repeat top / contain #}
+    <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.imgclasses}}); ">
         <div class="event-card-title">{{event.name}}</div>
       </div>
@@ -248,70 +357,88 @@ html.light .event-hero {
         <p>{{event.description}}</p>
       </div>
       <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2"><img src="./assets/img/events/event-location.svg" height=24 class="pr-2" />{{event.location}}</span>
-        <span class="d-flex"><img src="./assets/img/events/event-date.svg" height=24 class="pr-2" />{{event.date}}</span>
+        <span class="d-flex mb-2 icon icon-location">{{event.location}}</span>
+        <span class="d-flex icon icon-date">{{event.date}}</span>
       </div>
-      {# <div class="card-footer">&nbsp;</div> #}
     </a>
   {% endfor %}
   </div>
 </section>
 
+
+
 {# Past events #}
-<section class="container-new py-26" id="past-events">
-  <div class="d-flex flex-column-reverse col-sm-8 p-0">
+<section class="container-new pt-26" id="past-events">
+  <div class="d-flex flex-column-reverse col-lg-6 p-0 pr-lg-5 mb-4 pb-2">
     <h3 class="h4 h2-sm">{% trans %}Explore past community-hosted events{% endtrans %}</h3>
     <h6 class="eyebrow mb-3">{% trans %}Past Events{% endtrans %}</h6>
   </div>
 
+  <div class="filter row col-12 mt-lg-5 d-flex flex-column">
+    <h6 class="mb-3">Filter By:</h6>
+    <div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="meetup" checked>
+      <label class="" for="inlineCheckbox3"></label>
+      <span class="form-check-label" for="inlineCheckbox3">Meetups</span>
+    </div>
+    
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="hackathon" checked>
+      <label class="" for="inlineCheckbox4"></label>
+      <span class="form-check-label" for="inlineCheckbox4">Hackathons</span>
+    </div>
+    </div>
+  </div>
+
+
   {% set past = [
     { "name": "XRPL Hackathon 2021",      
       "description": "Explore the exciting project submissions from the fall 2021 XRPL Hackathon that focused on the NFT and Hooks smart contract functionalities on the ledger.",
-      "type": "hackathon",
-      "link": "#",
+      "type": "hackathon-past",
+      "link": "https://xrpl-hackathon-2021.devpost.com/project-gallery",
       "location": "Virtual",
       "date": "September 13–October 6, 2021",
       "imgclasses": "event-hack-2021.svg"},
     { "name": "XRPL Community Meetup: San Diego",      
       "description": "The first official Meetup hosted by the XRPL Community. Community members in Southern California gathered around a firepit and shared their experiences with the XRPL.",
-      "type": "meetup",
-      "link": "#",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-community/events/281806645/",
       "location": "San Diego, CA",
       "date": "Saturday, November 20, 2021",
       "imgclasses": "event-meetup-san-diego@2x.jpg"},
     { "name": "XRPL Community Meetup: Atlanta",      
       "description": "The inaugural Meetup in the Southeast region of the United States got community members excited to meet like-minded individuals in their area.",
-      "type": "meetup",
-      "link": "#",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-community/events/281980446/",
       "location": "Atlanta, GA",
       "date": "Saturday, November 27, 2021",
       "imgclasses": "event-meetup-alanta@2x.jpg"},
     { "name": "XRPL Community Meetup: San Francisco",      
       "description": "Community members in the Bay Area with diverse backgrounds in technology and beyond met in downtown San Francisco.",
-      "type": "meetup",
-      "link": "#",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-community/events/281806676/",
       "location": "San Francisco, CA",
       "date": "Monday, November 29, 2021",
       "imgclasses": "event-meetup-san-francisco@2x.jpg"},
     { "name": "XRPL Community Meetup: Miami",      
       "description": "One of the biggest Meetups held so far, this was the first of an ongoing series of local XRPL Community Meetup events in Miami. ",
-      "type": "meetup",
-      "link": "#",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-community/events/281829463/",
       "location": "Miami, FL ",
       "date": "Thursday, December 9, 2021",
       "imgclasses": "event-meetup-miami@2x.jpg"},
     { "name": "XRPL Community Meetup: Nashville",      
       "description": "Nashville-based members of the XRPL Community came together to network, learn, share ideas, and form new partnerships. ",
-      "type": "meetup",
-      "link": "#",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrp-ledger-nashville-community/events/282538189/",
       "location": "Nashville, TN",
       "date": "Saturday, December 18, 2021",
       "imgclasses": "event-meetup-nashville@2x.jpg"},
   ] %}
-  <div class="row row-cols-1 row-cols-lg-3 card-deck">
+  <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
   {% for event in past %}
-    <a class="event-card" href="{{event.link}}">
-    {#  no-repeat top / contain #}
+    <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.imgclasses}}); ">
         <div class="event-card-title">{{event.name}}</div>
       </div>
@@ -319,13 +446,55 @@ html.light .event-hero {
         <p>{{event.description}}</p>
       </div>
       <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2"><img src="./assets/img/events/event-location.svg" height=24 class="pr-2" />{{event.location}}</span>
-        <span class="d-flex"><img src="./assets/img/events/event-date.svg" height=24 class="pr-2" />{{event.date}}</span>
+        <span class="d-flex mb-2 icon icon-location">{{event.location}}</span>
+        <span class="d-flex icon icon-date">{{event.date}}</span>
       </div>
     </a>
   {% endfor %}
   </div>
 </section>
+
+
+
+
+<script>
+
+
+
+$('#inlineCheckbox1').change(function () {
+  if ($('#inlineCheckbox1').is(':checked')) {
+      $('.meetup-upcoming').show();
+  } else {
+    $('.meetup-upcoming').hide();
+  }
+});
+$('#inlineCheckbox2').change(function () {
+  if ($('#inlineCheckbox2').is(':checked')) {
+      $('.hackathon-upcoming').show();
+  } else {
+    $('.hackathon-upcoming').hide();
+  }
+});
+
+$('#inlineCheckbox3').change(function () {
+  if ($('#inlineCheckbox3').is(':checked')) {
+      $('.meetup-past').show();
+  } else {
+    $('.meetup-past').hide();
+  }
+});
+$('#inlineCheckbox4').change(function () {
+  if ($('#inlineCheckbox4').is(':checked')) {
+      $('.hackathon-past').show();
+  } else {
+    $('.hackathon-past').hide();
+  }
+});
+
+
+
+</script>
+
 
 {% endblock %}
 
