@@ -37,7 +37,9 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 2. In order to run reporting mode, you also need to run one or more `rippled` servers in [P2P mode](install-rippled.html). Ensure that you have at least one `rippled` server running in P2P mode. 
 
-3. Install and configure the datastores required to run `rippled` in reporting mode. 
+3. A compatible version of CMake must be installed.
+
+4. Install and configure the datastores required to run `rippled` in reporting mode. 
 
     1. Install PostgreSQL.
 
@@ -62,18 +64,6 @@ Multiple reporting mode servers can share access to the same network accessible 
         psql postgres -U newuser
         postgres=# create database reporting;
 
-**Install PostgreSQL on Windows**
-
-1. Download and [install PostgreSQL on Windows](https://www.postgresqltutorial.com/install-postgresql/).
-        
-2. Launch the `psql` program and connect to the PostgreSQL Database Server, and create a user `newuser` and a database `reporting`. 
-
-        psql postgres
-	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
-            ALTER ROLE newuser CREATEDB;
-        \q
-        psql postgres -U newuser
-        postgres=# create database reporting;
 
 **Install PostgreSQL on macOS**
 
@@ -126,7 +116,8 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
     *macOS*
 
-        cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
+        <!-- Ensure that a compatible version of CMake is installed -->
+	cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
         cmake --build build --parallel $(nproc)
 
     <!-- MULTICODE_BLOCK_END -->
