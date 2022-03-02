@@ -54,7 +54,7 @@ An account with Deposit Authorization enabled:
 - If the account has created any trust lines without the [No Ripple flag](rippling.html) enabled, or has enabled the Default Ripple flag and issued any currency, the account **can** receive the tokens of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
 - In general, an account in the XRP Ledger **cannot** receive any non-XRP currencies in the XRP Ledger as long as all of the following are true. (This rule is not specific to the DepositAuth flag.)
     - The account has not created any trust lines with a nonzero limit.
-    - The account has not issued tokens on trust lines created by others
+    - The account has not issued tokens on trust lines created by others.
     - The account has not placed any offers.
 
 The following table summarizes whether a transaction type can deposit money with DepositAuth enabled or disabled:

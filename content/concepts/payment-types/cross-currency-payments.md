@@ -21,7 +21,7 @@ By default, cross-currency payments deliver a fixed amount to their destination 
 
 ## Auto-Bridging
 
-Cross-currency payments that exchange one token for another token can automatically use XRP, when it decreases the cost of the payment, by connecting order books to deepen the pool of available liquidity. For example, a payment sending from USD to MXN automatically converts USD to XRP and then XRP to MXN if doing so is cheaper than converting USD to MXN directly.
+Cross-currency payments that exchange one token for another token can automatically use XRP to bridge the tokens, when it decreases the cost of the payment. For example, a payment sending from USD to MXN automatically converts USD to XRP and then XRP to MXN if doing so is cheaper than converting USD to MXN directly. Larger trades can use a combination of direct (USD-MXN) and auto-bridged (USD-XRP-MXN) conversions.
 
 For more information, see [Auto-Bridging](autobridging.html).
 

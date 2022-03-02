@@ -32,7 +32,7 @@ We call this process, where two addresses pay each other by adjusting the balanc
 
 Non-issuing accounts, especially liquidity providers who may hold balances from different issuers with different fees and policies, usually do not want their balances to ripple.
 
-The **No Ripple** flag is a setting on a trust line. When two trust lines both have No Ripple enabled by the same address, payments from third parties cannot "ripple" through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers using the same currency code.
+The **No Ripple** flag is a setting on a trust line. When two trust lines both have No Ripple enabled by the same address, payments from third parties cannot ripple through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers using the same currency code.
 
 An account can disable No Ripple on a single trust line, which can allow rippling through any pair that includes that trust line. The account can also enable rippling by default by enabling the [Default Ripple flag](#the-default-ripple-flag).
 
