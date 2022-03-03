@@ -39,9 +39,9 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 | Field             | JSON Type | [Internal Type][] | Description              |
 |:------------------|:----------|:------------------|:-------------------------|
 | `TransactionType` | String    | UInt16            | NFTokenCancelOffer transaction type. The integer identifier is 28. |
-| `TokenOffers`     | Array     | VECTOR256         | An array of IDs of the token offers to cancel. Each entry must be a different [object ID](ledger-object-ids.html) of an [NFTokenOffer object][]; the transaction is invalid if the array contains duplicate entries. |
+| `TokenOffers`     | Array     | VECTOR256         | An array of IDs of the `NFTokenOffer` objects to cancel (not the IDs of `NFToken` objects, but the IDs of the `NFTokenOffer` objects). Each entry must be a different [object ID](ledger-object-ids.html) of an [NFTokenOffer object][]; the transaction is invalid if the array contains duplicate entries. |
 
-The transaction can succeed even if one or more of the IDs in the `TokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers may have been taken already.) The transaction fails with an error if one of the IDs in points to an object that does exist, but is not a [NFTokenOffer object][].
+The transaction can succeed even if one or more of the IDs in the `TokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been taken.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a [NFTokenOffer object][].
 
 
 <!--{# common link defs #}-->
