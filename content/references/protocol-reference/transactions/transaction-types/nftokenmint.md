@@ -27,7 +27,7 @@ If the transaction is successful, the newly minted token is owned by the account
   "TokenTaxon": 0,
   "Flags": 2147483659,
   "Fee": 10,
-  "URI": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi",
+  "URI": "697066733a2f2f62616679626569676479727a74357366703775646d37687537367568377932366e6634646675796c71616266336f636c67747179353566627a6469",
   "Memos": [
         {
             "Memo": {
@@ -52,7 +52,7 @@ This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, 
 | `TokenTaxon` | Number | UInt32 | The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than or equal to `0x80000000` are disallowed. |
 | `Issuer` | String | AccountID | _(Optional)_ The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the `NFToken`. If provided, the issuer's [AccountRoot object][] must have the `MintAccount` field set to sender of this transaction (this transaction's `Account` field). |
 | `TransferFee` | Number | UInt16 | _(Optional)_ The value specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the [`tfTransferable` flag](#nftokenmint-flags) enabled. |
-| `URI` | String | Blob | _(Optional)_ A URI that points to the data or metadata associated with the NFT. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an [RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is NOT checked for validity, but the field is limited to a maximum length of 256 bytes.
+| `URI` | String | Blob | _(Optional)_ Up to 256 bytes of arbitrary data. (In JSON, this should be encoded as a string of hexadecimal.) This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an [RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is NOT checked for validity.
 
 
 ## NFTokenMint Flags
