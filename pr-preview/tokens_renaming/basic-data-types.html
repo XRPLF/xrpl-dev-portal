@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v6.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v7.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,12 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <div class="d-flex justify-content-center ">
+    <span><p class="mb-0">Hackathon: New Year, New NFTs! Build scalable, <br />sustainable functional NFTs with XRPL </p></span>
+    <span><a href="https://xrplnft.devpost.com/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Join</a></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -422,7 +427,7 @@
 <p class="devportal-callout note"><strong>Note:</strong> Do not rely on the default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.</p>
 <p>Reporting Mode does not record ledger data until it has been validated. If you make a request to a Reporting Mode server for the <code>current</code> or <code>closed</code> ledger, the server forwards the request to a P2P Mode server. If you request a ledger index or hash that is not validated, a Reporting Mode server responds with a <code>lgrNotFound</code> error.</p>
 <h2 id="specifying-currency-amounts">Specifying Currency Amounts<a aria-hidden="true" class="hover_anchor" href="#specifying-currency-amounts"><i class="fa fa-link"></i></a></h2>
-<p>There are two kinds of currencies in the XRP Ledger: XRP, and tokens. These two types of currencies are specified in different formats, with different precision and rounding behavior.</p>
+<p>There are two kinds of currencies in the XRP Ledger: XRP and tokens. These two types of currencies are specified in different formats, with different precision and rounding behavior.</p>
 <p>Some fields, such as the destination <code>Amount</code> of a <a href="payment.html">Payment transaction</a>, can be either type. Some fields only accept XRP specifically, such as the <code>Fee</code> field (<a href="transaction-cost.html">transaction cost</a>).</p>
 <p>XRP is specified as a string containing an integer number of "drops" of XRP, where 1 million drops equals 1 XRP. Issued currencies are instead specified as an object with fields for the decimal amount, currency code, and issuer. For example:</p>
 <ul>
