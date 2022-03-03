@@ -30,7 +30,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
 3. Install dependencies.
 
-        sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget build-essential
+        sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget build-essential doxygen
 
 4. Install CMake.
 
@@ -53,7 +53,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
       1. Download Boost 1.75.0.
 
-	      wget https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
+              wget https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
 
       2. Extract `boost_1_75_0.tar.gz`.
 
@@ -73,7 +73,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
           **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
 
-      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_75_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_75_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file (change `my_user` to your username):
 
               export BOOST_ROOT=/home/my_user/boost_1_75_0
 
