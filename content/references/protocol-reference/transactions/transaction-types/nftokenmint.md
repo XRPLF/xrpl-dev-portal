@@ -41,7 +41,7 @@ If the transaction is successful, the newly minted token is owned by the account
 ```
 
 
-This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, has set the `MintAccount` field in its `AccountRoot` to `rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B`, thereby authorizing that account to mint tokens on its behalf.
+This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, has set the `Minter` field in its `AccountRoot` to `rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B`, thereby authorizing that account to mint tokens on its behalf.
 
 
 
@@ -50,7 +50,7 @@ This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
 | `TokenTaxon` | Number | UInt32 | The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than or equal to `0xFFFF'FFFF` are disallowed. |
-| `Issuer` | String | AccountID | _(Optional)_ The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the `NFToken`. If provided, the issuer's [AccountRoot object][] must have the `MintAccount` field set to sender of this transaction (this transaction's `Account` field). |
+| `Issuer` | String | AccountID | _(Optional)_ The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the `NFToken`. If provided, the issuer's [AccountRoot object][] must have the `Minter` field set to sender of this transaction (this transaction's `Account` field). |
 | `TransferFee` | Number | UInt16 | _(Optional)_ The value specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the [`tfTransferable` flag](#nftokenmint-flags) enabled. |
 | `URI` | String | Blob | _(Optional)_ Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the [`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex) utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an [RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is NOT checked for validity.
 
@@ -76,7 +76,7 @@ If you need to specify additional information during minting (for example, detai
 - If the `TransferFee` field is not within the acceptable range (0 to 9999 inclusive) the transaction fails with `temBAD_TRANSFER_RATE`.
 - If the `URI` field is longer than 256 bytes, the transaction fails with `temMALFORMED`.
 - If the `Issuer` field refers to an account that does not exist, the transaction fails with `tecNO_ISSUER`.
-- If account referenced by the `Issuer` field has not authorized this transaction's sender (using the `MintAccount` setting) to mint `NFToken`s on their behalf, the transaction fails with `tecNO_PERMISSION`.
+- If account referenced by the `Issuer` field has not authorized this transaction's sender (using the `Minter` setting) to mint `NFToken`s on their behalf, the transaction fails with `tecNO_PERMISSION`.
 - If the owner would not meet the updated [reserve requirement](reserves.html) after minting the token, the transaction fails with `tecINSUFFICIENT_RESERVE`. Note that new `NFToken`s only increase the owner's reserve if it requires a new [NFTokenPage object][], which can each hold up to 32 NFTs.
 - If the `Issuer`'s `MintedTokens` field maxes out, the transaction fails with `tecMAX_SEQUENCE_REACHED`. This is only possible if 2<sup>32</sup>-1 `NFToken`s have been minted in total by the issuer or on their behalf.
 
