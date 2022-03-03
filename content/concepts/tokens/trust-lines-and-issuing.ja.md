@@ -1,6 +1,6 @@
 ---
 html: trust-lines-and-issuing.html
-parent: issued-currencies.html
+parent: tokens.html
 blurb: トラストラインの特性と根本原理について説明します。
 labels:
   - トークン

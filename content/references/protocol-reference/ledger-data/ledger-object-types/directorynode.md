@@ -14,7 +14,7 @@ The `DirectoryNode` object type provides a list of links to other objects in the
 There are two kinds of Directories:
 
 * **Owner directories** list other objects owned by an account, such as [`RippleState` (trust line)](ripplestate.html) or [`Offer`](offer.html) objects.
-* **Offer directories** list the offers available in the [decentralized exchange](decentralized-exchange.html). A single Offer directory contains all the offers that have the same exchange rate for the same issued currency.
+* **Offer directories** list the offers available in the [decentralized exchange](decentralized-exchange.html). A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
 
 ## Example {{currentpage.name}} JSON
 

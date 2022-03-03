@@ -1,20 +1,20 @@
 ---
 html: rippling.html
-parent: issued-currencies.html
-blurb: Rippling is automatic multi-party net settlement of issued currency balances.
+parent: tokens.html
+blurb: Rippling is automatic multi-party net settlement of token balances.
 labels:
   - Tokens
   - Cross-Currency
 ---
 # Rippling
 
-In the XRP Ledger, "rippling" describes a process of atomic net settlement between multiple connected parties who have [trust lines](trust-lines-and-issuing.html) for the same currency. Rippling is an essential part of issued currencies, because it allows users who trust the same issuer to send issued balances to each other with the issuer as a passive intermediary. In a sense, rippling is like a passive, two-way [currency exchange order](offers.html) with no limit and a 1:1 exchange rate for two currencies with the same currency code but different issuers.
+In the XRP Ledger, "rippling" describes a process of atomic net settlement between multiple connected parties who have [trust lines](trust-lines-and-issuing.html) for the same token. Rippling is essential, because it allows users who hold tokens to send those to each other with the issuer as a passive intermediary. In a sense, rippling is like a passive, two-way [exchange order](offers.html) with no limit and a 1:1 exchange rate for two tokens with the same currency code but different issuers.
 
 Rippling only occurs along the [paths](paths.html) of a payment. [Direct XRP-to-XRP payments](direct-xrp-payments.html) do not involve rippling.
 
-For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between issuers of the same currency. Thus, the [No Ripple Flag](#the-no-ripple-flag) disables rippling on incoming trust lines by default, unless the account enables rippling by default by enabling the [Default Ripple flag](#the-default-ripple-flag).
+For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between tokens with the same currency code but different issuers. The [No Ripple Flag](#the-no-ripple-flag) disables rippling by default when others open trust lines to your account, unless you enable rippling by default using the [Default Ripple flag](#the-default-ripple-flag).
 
-**Caution:** If you create a trust line to another address, you must explicitly enable the `tfSetNoRipple` flag to block rippling on your side of that trust line.
+**Caution:** When you create a trust line, you must explicitly enable the `tfSetNoRipple` flag to block rippling on your side of that trust line.
 
 ## Example of Rippling
 
@@ -32,7 +32,7 @@ We call this process, where two addresses pay each other by adjusting the balanc
 
 Non-issuing accounts, especially liquidity providers who may hold balances from different issuers with different fees and policies, usually do not want their balances to ripple.
 
-The **No Ripple** flag is a setting on a trust line. When two trust lines both have No Ripple enabled by the same address, payments from third parties cannot "ripple" through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers of the same currency.
+The **No Ripple** flag is a setting on a trust line. When two trust lines both have No Ripple enabled by the same address, payments from third parties cannot ripple through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers using the same currency code.
 
 An account can disable No Ripple on a single trust line, which can allow rippling through any pair that includes that trust line. The account can also enable rippling by default by enabling the [Default Ripple flag](#the-default-ripple-flag).
 
@@ -61,7 +61,7 @@ The No Ripple flag makes certain paths invalid, so that they cannot be used to m
 
 ## The Default Ripple Flag
 
-The **Default Ripple** flag is an account setting that enables rippling on all incoming trust lines by default. Gateways and other currency issuers MUST enable this flag for their customers to be able to send those currencies to each other.
+The **Default Ripple** flag is an account setting that enables rippling on all _incoming_ trust lines by default. Issuers MUST enable this flag for their customers to be able to send tokens to each other.
 
 The Default Ripple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the Default Ripple setting of your account, trust lines that were created before the change keep their existing No Ripple settings. You can use a [TrustSet transaction][] to change the No Ripple setting of a trust line to match your address's new default.
 

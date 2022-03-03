@@ -7,7 +7,7 @@ labels:
 ---
 # Offers
 
-In the XRP Ledger's decentralized exchange, orders to trade currency are called "Offers". Offers can trade XRP with issued currencies, or issued currencies with each other, including issued currencies with the same currency code but different issuers. (Currencies with the same code but different issuers can also sometimes be exchanged through [rippling](rippling.html).)
+In the XRP Ledger's decentralized exchange, trade orders are called "Offers". Offers can trade XRP with [tokens](tokens.html), or tokens for other tokens, including tokens with the same currency code but different issuers. (Tokens with the same code but different issuers can also sometimes be exchanged through [rippling](rippling.html).)
 
 - To create an Offer, send an [OfferCreate transaction][].
 - Offers that aren't fully filled immediately become [Offer objects](offer.html) in the ledger data. Later Offers and Payments can consume the Offer object from the ledger.
@@ -51,11 +51,11 @@ A client application can locally track the funding status of offers. To do this,
 
 ## Offers and Trust
 
-The limit values of trust lines (See [TrustSet](trustset.html)) do not affect offers. In other words, you can use an offer to acquire more than the maximum amount you trust an issuer to redeem.
+The limit values of [trust lines](trust-lines-and-issuing.html) do not affect Offers. In other words, you can use an Offer to acquire more than the maximum amount you trust an issuer to redeem.
 
 However, holding non-XRP balances still requires a trust line to the address issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](reserves.html), any offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.
 
-A trust line indicates an issuer you trust enough to accept their issued currencies as payment, within limits. Offers are explicit instructions to acquire certain issued currencies, so they are allowed to go beyond those limits.
+Trust lines limits protect you from receiving more of a token as payment than you want. Offers can go beyond those limits because they are an explicit statement of how much of the token you want.
 
 
 ## Offer Preference
@@ -78,7 +78,7 @@ If an OfferCreate transaction has an `Expiration` time that has already passed w
 ## See Also
 
 - **Concepts:**
-    - [Issued Currencies Overview](issued-currencies-overview.html)
+    - [Tokens](tokens.html)
     - [Paths](paths.html)
 - **Tutorials:**
     - [List Your Exchange on XRP Charts](list-your-exchange-on-xrp-charts.html) - for off-ledger exchanges

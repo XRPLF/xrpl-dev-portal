@@ -53,7 +53,7 @@
       <w>410</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>mantissa (54 bits)</panel_attributes>
+    <panel_attributes>significant digits (54 bits)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -157,7 +157,7 @@ style=wordwrap</panel_attributes>
       <w>650</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>Issued Currency Number Format</panel_attributes>
+    <panel_attributes>Token Number Format</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

@@ -95,8 +95,8 @@ Each member of the `books` array, if provided, is an object with the following f
 
 | `Field`      | Type    | Description                                         |
 |:-------------|:--------|:----------------------------------------------------|
-| `taker_gets` | Object  | Specification of which currency the account taking the Offer would receive, as a [currency object with no amount](currency-formats.html#specifying-currencies-without-amounts). |
-| `taker_pays` | Object  | Specification of which currency the account taking the Offer would pay, as a [currency object with no amount](currency-formats.html#specifying-currencies-without-amounts). |
+| `taker_gets` | Object  | Specification of which currency the account taking the Offer would receive, as a [currency object with no amount](currency-formats.html#specifying-without-amounts). |
+| `taker_pays` | Object  | Specification of which currency the account taking the Offer would pay, as a [currency object with no amount](currency-formats.html#specifying-without-amounts). |
 | `taker`      | String  | Unique [account address](accounts.html) to use as a perspective for viewing offers, in the XRP Ledger's [base58][] format. (This affects the funding status and fees of [Offers](offers.html).) |
 | `snapshot`   | Boolean | _(Optional)_ If `true`, return the current state of the order book once when you subscribe before sending updates. The default is `false`. |
 | `both`       | Boolean | _(Optional)_ If `true`, return both sides of the order book. The default is `false`. |

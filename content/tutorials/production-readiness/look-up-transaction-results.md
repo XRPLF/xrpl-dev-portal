@@ -193,7 +193,7 @@ Example of increasing an Account's `OwnerCount`:
 }
 ```
 
-Many transaction types create or modify [DirectoryNode objects](directorynode.html). These objects are for bookkeeping: tracking all objects owned by an account, or all Offers to exchange currency at the same exchange rate. If the transaction created new objects in the ledger, it may need to add entries to an existing DirectoryNode object, or add another DirectoryNode object to represent another page of the directory. If the transaction removed objects from the ledger, it may delete one or more DirectoryNode objects that are no longer needed.
+Many transaction types create or modify [DirectoryNode objects](directorynode.html). These objects are for bookkeeping: tracking all objects attached to an account, or all exchange Offers at the same exchange rate. If the transaction created new objects in the ledger, it may need to add entries to an existing DirectoryNode object, or add another DirectoryNode object to represent another page of the directory. If the transaction removed objects from the ledger, it may delete one or more DirectoryNode objects that are no longer needed.
 
 Example of a `CreatedNode` representing a new Offer Directory:
 
@@ -216,7 +216,7 @@ Other things to look for when processing transaction metadata depend on the tran
 
 ### Payments
 
-A [Payment transaction][] can represent a direct XRP-to-XRP transaction, a [cross-currency payment](cross-currency-payments.html), or a direct transaction in an [issued (non-XRP) currency](issued-currencies.html). Anything other than a direct XRP-to-XRP transaction can be a [partial payment](partial-payments.html), including issued currency to XRP or XRP to issued currency transactions.
+A [Payment transaction][] can represent a direct XRP-to-XRP transaction, a [cross-currency payment](cross-currency-payments.html), or a direct transaction of a fungible [token](tokens.html). Anything other than a direct XRP-to-XRP transaction can be a [partial payment](partial-payments.html), including token-to-XRP or XRP-to-token transactions.
 
 XRP amounts are tracked in the `Balance` field of `AccountRoot` objects. (XRP can also exist in [Escrow objects](escrow-object.html) and [PayChannel objects](paychannel.html), but Payment transactions cannot affect those.)
 
@@ -224,21 +224,21 @@ You should always use [the `delivered_amount` field](partial-payments.html#the-d
 
 If the payment contains a `CreatedNode` with `"LedgerEntryType": "AccountRoot"`, that means the payment [funded a new account](accounts.html#creating-accounts) in the ledger.
 
-#### Issued Currency Payments
+#### Token Payments
 
-Payments involving issued currencies are a bit more complicated.
+Payments involving tokens are a bit more complicated.
 
-All changes in issued currency balances are reflected in [RippleState objects](ripplestate.html), which represent [trust lines](trust-lines-and-issuing.html). An increase to one party's balance on a trust line is considered to decrease the counterparty's balance by equal amount; in the metadata, this is only recorded as a single change to the shared `Balance` for the RippleState object. Whether this change is recorded as an "increase" or "decrease" depends on which account has the numerically higher address.
+All changes in token balances are reflected in [RippleState objects](ripplestate.html), which represent [trust lines](trust-lines-and-issuing.html). An increase to one party's balance on a trust line is considered to decrease the counterparty's balance by equal amount; in the metadata, this is only recorded as a single change to the shared `Balance` for the RippleState object. Whether this change is recorded as an "increase" or "decrease" depends on which account has the numerically higher address.
 
 A single payment may go across a long [path](paths.html) consisting of several trust lines and order books. The process of changing the balances on several trust lines to connect parties indirectly is called [rippling](rippling.html). Depending on the `issuer` specified in the transaction's `Amount` field, it is also possible that the amount delivered may be split between several trust lines (`RippleState` accounts) connected to the destination account.
 
 **Tip:** The order that modified objects are presented in the metadata does not necessarily match the order those objects were visited while processing a payment. To better understand payment execution, it may help to reorder `AffectedNodes` members to reconstruct the paths the funds took through the ledger.
 
-Cross-currency payments consume [Offers](offer.html) in part or entirely to change between currencies with different currency codes and issuers. If a transaction shows `DeletedNode` objects for `Offer` types, that can indicate an Offer that was fully consumed, or an Offer that was found to be [expired or unfunded](offers.html#lifecycle-of-an-offer) at the time of processing. If a transaction shows a `ModifiedNode` of type `Offer`, that indicates an Offer that was partially consumed.
+Cross-currency payments consume [Offers](offer.html) in part or entirely to change between different currency codes and issuers. If a transaction shows `DeletedNode` objects for `Offer` types, that can indicate an Offer that was fully consumed, or an Offer that was found to be [expired or unfunded](offers.html#lifecycle-of-an-offer) at the time of processing. If a transaction shows a `ModifiedNode` of type `Offer`, that indicates an Offer that was partially consumed.
 
-The [`QualityIn` and `QualityOut` settings of trust lines](trustset.html) can affect how one side of a trust line values the issued currency, so that the numeric change in balances is different from how the sender values that currency. The `delivered_amount` shows how much was delivered as valued by the recipient.
+The [`QualityIn` and `QualityOut` settings of trust lines](trustset.html) can affect how one side of a trust line values the token, so that the numeric change in balances is different from how the sender values that token. The `delivered_amount` shows how much was delivered as valued by the recipient.
 
-If the amount to be sent or received is outside of the [issued currency precision](currency-formats.html#issued-currency-precision), it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. Therefore, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the issued currency. (XRP is never rounded, so this is not possible with XRP.)
+If the amount to be sent or received is outside of the [token precision](currency-formats.html#token-precision), it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. Therefore, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the token. (XRP is never rounded, so this is not possible with XRP.)
 
 Depending on the length of the [paths](paths.html), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by `rHaaans...`, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from `r9ZoLsJ...` to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb -->
 
@@ -267,7 +267,7 @@ An [OfferCreate transaction][] may or may not create an object in the ledger, de
 }
 ```
 
-A `ModifiedNode` of type `Offer` indicates an Offer that was matched and partially consumed. A single transaction can consume a large number of Offers. An Offer to trade two issued currencies might also consume Offers to trade XRP because of [auto-bridging](autobridging.html). All or part of an exchange can be auto-bridged.
+A `ModifiedNode` of type `Offer` indicates an Offer that was matched and partially consumed. A single transaction can consume a large number of Offers. An Offer to trade two tokens might also consume Offers to trade XRP because of [auto-bridging](autobridging.html). All or part of an exchange can be auto-bridged.
 
 A `DeletedNode` of type `Offer` can indicate a matching Offer that was fully consumed, an Offer that was found to be [expired or unfunded](offers.html#lifecycle-of-an-offer) at the time of processing, or an Offer that was canceled as part of placing a new Offer. You can recognize a canceled Offer because the `Account` that placed it is the sender of the transaction that deleted it.
 
@@ -303,7 +303,7 @@ Offers can create, delete, and modify both types of [DirectoryNode objects](dire
 
 An [OfferCancel transaction][] may have the code `tesSUCCESS` even if there was no Offer to delete. Look for a `DeletedNode` of type `Offer` to confirm that the transaction actually deleted an Offer. If not, the Offer may already have been removed by a previous transaction, or the OfferCancel transaction may have used the wrong sequence number in the `OfferSequence` field.
 
-If an OfferCreate transaction shows a `CreatedNode` of type `RippleState`, that indicates that [the Offer created a trust line](offers.html#offers-and-trust) to hold an issued currency received in the trade.
+If an OfferCreate transaction shows a `CreatedNode` of type `RippleState`, that indicates that [the Offer created a trust line](offers.html#offers-and-trust) to hold a token received in the trade.
 
 ### Escrows
 

@@ -54,13 +54,13 @@ The Payment transaction type is a general-purpose tool that can represent severa
 | Payment type | `Amount`  | `SendMax`  | `Paths`   | `Address` = `Destination`? | Description |
 |:-------------|:----------|:-----------|:----------|:---------------------------|:--|
 | [Direct XRP-to-XRP Payment][] | String (XRP) | Omitted | Omitted | No          | Transfers XRP directly from one account to another. Always delivers the exact amount. No fee applies other than the basic [transaction cost](transaction-cost.html). |
-| [Creating or redeeming issued currency][] | Object | Object (optional) | Optional | No | Increases or decreases the amount of a non-XRP currency or asset tracked in the XRP Ledger. [Transfer fees](transfer-fees.html) and [freezes](freezes.html) do not apply when sending and redeeming directly. |
-| [Cross-currency Payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Send issued currency from one holder to another. The `Amount` and `SendMax` cannot _both_ be XRP. These payments [ripple through](rippling.html) the issuer and can take longer [paths](paths.html) through several intermediaries if the transaction specifies a path set. [Transfer fees](transfer-fees.html) set by the issuer(s) apply to this type of transaction. These transactions consume offers in the [decentralized exchange](decentralized-exchange.html) to connect between different currencies, or possibly even between currencies with the same currency code and different issuers. |
+| [Creating or redeeming tokens][] | Object | Object (optional) | Optional | No | Increases or decreases the amount of a non-XRP currency or asset tracked in the XRP Ledger. [Transfer fees](transfer-fees.html) and [freezes](freezes.html) do not apply when sending and redeeming directly. |
+| [Cross-currency Payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Send tokens from one holder to another. The `Amount` or `SendMax` can be XRP or tokens, but they cannot both be XRP. These payments [ripple through](rippling.html) the issuer and can take longer [paths](paths.html) through several intermediaries if the transaction specifies a path set. [Transfer fees](transfer-fees.html) set by the issuer(s) apply to this type of transaction. These transactions consume offers in the [decentralized exchange](decentralized-exchange.html) to connect between different currencies, or possibly even between currencies with the same currency code and different issuers. |
 | [Partial payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Sends _up to_ a specific amount of any currency. Uses the [`tfPartialPayment` flag](#payment-flags). May include a `DeliverMin` amount specifying the minimum that the transaction must deliver to be successful; if the transaction does not specify `DeliverMin`, it can succeed by delivering _any positive amount_. |
 | Currency conversion | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](decentralized-exchange.html) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. The [Data API](data-api.html) tracks this type of transaction as an "exchange" and not a "payment". |
 
 [Direct XRP-to-XRP Payment]: direct-xrp-payments.html
-[Creating or redeeming issued currency]: issued-currencies-overview.html
+[Creating or redeeming tokens]: tokens.html
 [Cross-currency Payment]: cross-currency-payments.html
 [Partial payment]: partial-payments.html
 
@@ -69,11 +69,11 @@ The Payment transaction type is a general-purpose tool that can represent severa
 
 <!-- SPELLING_IGNORE: sendmax -->
 
-Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates a financial institution's [issuing address](issuing-and-operational-addresses.html). However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
+Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates the issuer of a token. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
 
-* There is only ever one balance for the same currency between two addresses. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming the issued currency, instead of the address that issued the currency.
-* When the `issuer` field of the destination `Amount` field matches the `Destination` address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all addresses to which the destination has extended trust lines, as well as currencies issued by the destination.
-* When the `issuer` field of the `SendMax` field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issued currencies on trust lines that other accounts have extended to the source account, and sending issued currencies the source account holds from other issuers.
+* There is only ever one balance between two addresses for the same currency code. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty, instead of the address that issued the token.
+* When the `issuer` field of the destination `Amount` field matches the `Destination` address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all addresses to which the destination has trust lines with a positive limit, as well as tokens with the same currency code issued by the destination.
+* When the `issuer` field of the `SendMax` field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new tokens on trust lines that other accounts have extended to the source account, and sending tokens the source account holds from other issuers.
 
 ## Creating Accounts
 

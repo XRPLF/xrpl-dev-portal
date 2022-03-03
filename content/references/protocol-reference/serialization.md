@@ -177,7 +177,7 @@ Transaction instructions may contain fields of any of the following types:
 | Type Name     | Type Code | Bit Length | [Length-prefixed]? | Description    |
 |:--------------|:----------|:-----------|:-------------------|----------------|
 | [AccountID][] | 8         | 160        | Yes             | The unique identifier for an [account](accounts.html). |
-| [Amount][]    | 6         | 64 or 384  | No               | An amount of XRP or issued currency. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for issued currencies. |
+| [Amount][]    | 6         | 64 or 384  | No               | An amount of XRP or tokens. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for tokens. |
 | [Blob][]      | 7         | Variable   | Yes                                 | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
 | [Hash128][]   | 4         | 128        | No                                  | A 128-bit arbitrary binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
 | [Hash160][]   | 17        | 160        | No                                  | A 160-bit arbitrary binary value. This may define a currency code or issuer. |
@@ -214,45 +214,45 @@ AccountIDs that appear as stand-alone fields (such as `Account` and `Destination
 ### Amount Fields
 [Amount]: #amount-fields
 
-The "Amount" type is a special field type that represents an amount of currency, either XRP or an issued currency. This type consists of two sub-types:
+The "Amount" type is a special field type that represents an amount of currency, either XRP or a token. This type consists of two sub-types:
 
 - **XRP**
 
     XRP is serialized as a 64-bit unsigned integer (big-endian order), except that the most significant bit is always 0 to indicate that it's XRP, and the second-most-significant bit is `1` to indicate that it is positive. Since the maximum amount of XRP (10<sup>17</sup> drops) only requires 57 bits, you can calculate XRP serialized format by taking standard 64-bit unsigned integer and performing a bitwise-OR with `0x4000000000000000`.
 
-- **Issued Currencies**
+- **Tokens**
 
-    Issued currencies consist of three segments in order:
+    Tokens consist of three segments in order:
 
-    1. 64 bits indicating the amount in the [internal currency amount format](#issued-currency-amount-format). The first bit is `1` to indicate that this is not XRP.
+    1. 64 bits indicating the amount in the [token amount format](#token-amount-format). The first bit is `1` to indicate that this is not XRP.
     2. 160 bits indicating the [currency code](currency-formats.html#currency-codes). The standard API converts 3-character codes such as "USD" into 160-bit codes using the [standard currency code format](currency-formats.html#standard-currency-codes), but custom 160-bit codes are also possible.
     3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](accounts.html#address-encoding))
 
-You can tell which of the two sub-types it is based on the first bit: `0` for XRP; `1` for issued currency.
+You can tell which of the two sub-types it is based on the first bit: `0` for XRP; `1` for tokens.
 
-The following diagram shows the serialization formats for both XRP amounts and issued currency amounts:
+The following diagram shows the serialization formats for both XRP amounts and token amounts:
 
-{{ include_svg("img/serialization-amount.svg", 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Issued currency amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), mantissa (54 bits), currency code (160 bits), and issuer (160 bits).') }}
+{{ include_svg("img/serialization-amount.svg", 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Token amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).') }}
 
-#### Issued Currency Amount Format
+#### Token Amount Format
 [[Source]](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
 
-{{ include_svg("img/currency-number-format.svg", "Issued Currency Amount Format diagram") }}
+{{ include_svg("img/currency-number-format.svg", "Token Amount Format diagram") }}
 
-The XRP Ledger uses 64 bits to serialize the numeric amount of an issued currency. (In JSON format, the numeric amount is the `value` field of a currency amount object.) In binary format, the numeric amount consists of a "not XRP" bit, a sign bit, significant digits, and an exponent, in order:
+The XRP Ledger uses 64 bits to serialize the numeric amount of a (fungible) token. (In JSON format, the numeric amount is the `value` field of a currency amount object.) In binary format, the numeric amount consists of a "not XRP" bit, a sign bit, significant digits, and an exponent, in order:
 
-1. The first (most significant) bit for an issued currency amount is `1` to indicate that it is not an XRP amount. (XRP amounts always have the most significant bit set to `0` to distinguish them from this format.)
+1. The first (most significant) bit for an token amount is `1` to indicate that it is not an XRP amount. (XRP amounts always have the most significant bit set to `0` to distinguish them from this format.)
 2. The sign bit indicates whether the amount is positive or negative. Unlike standard [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) integers, `1` indicates **positive** in the XRP Ledger format, and `0` indicates negative.
 3. The next 8 bits represent the exponent as an unsigned integer. The exponent indicates the scale (what power of 10 the significant digits should be multiplied by) in the range -96 to +80 (inclusive). However, when serializing, we add 97 to the exponent to make it possible to serialize as an unsigned integer. Thus, a serialized value of `1` indicates an exponent of `-96`, a serialized value of `177` indicates an exponent of 80, and so on.
-4. The remaining 54 bits represent the significant digits as an unsigned integer. When serializing, this value is normalized to the range 10<sup>15</sup> (`1000000000000000`) to 10<sup>16</sup>-1 (`9999999999999999`) inclusive, except for the special case of the value 0. In the special case for 0, the sign bit, exponent, and mantissa are all zeroes, so the 64-bit value is serialized as `0x8000000000000000000000000000000000000000`.
+4. The remaining 54 bits represent the significant digits (sometimes called a _mantissa_) as an unsigned integer. When serializing, this value is normalized to the range 10<sup>15</sup> (`1000000000000000`) to 10<sup>16</sup>-1 (`9999999999999999`) inclusive, except for the special case of the value 0. In the special case for 0, the sign bit, exponent, and significant digits are all zeroes, so the 64-bit value is serialized as `0x8000000000000000000000000000000000000000`.
 
-The numeric amount is serialized alongside the [currency code][] and issuer to form a full [issued currency amount](#amount-fields).
+The numeric amount is serialized alongside the [currency code][] and issuer to form a full [token amount](#amount-fields).
 
 #### Currency Codes
 
 At a protocol level, currency codes in the XRP Ledger are arbitrary 160-bit values, except the following values have special meaning:
 
-- The currency code `0x0000000000000000000000005852500000000000` is **always disallowed**. (This is the "standard format" for an issued currency with code "XRP".)
+- The currency code `0x0000000000000000000000005852500000000000` is **always disallowed**. (This is the code "XRP" in the "standard format".)
 - The currency code `0x0000000000000000000000000000000000000000` (all zeroes) is **generally disallowed**. Usually, XRP amounts are not specified with currency codes. However, this code is used to indicate XRP in rare cases where a field must specify a currency code for XRP.
 
 The [`rippled` APIs](rippled-api.html) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
@@ -262,7 +262,7 @@ The [`rippled` APIs](rippled-api.html) support a **standard format** for transla
 1. The first 8 bits must be `0x00`.
 2. The next 88 bits are reserved, and should be all `0`'s.
 3. The next 24 bits represent 3 characters of ASCII.
-    Ripple recommends using [ISO 4217](https://www.xe.com/iso4217.php) codes, or popular pseudo-ISO 4217 codes such as "BTC". However, any combination of the following characters is permitted: all uppercase and lowercase letters, digits, as well as the symbols `?`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `<`, `>`, `(`, `)`, `{`, `}`, `[`, `]`, and <code>&#124;</code>. The currency code `XRP` (all-uppercase) is reserved for XRP and cannot be used by issued currencies.
+    Ripple recommends using [ISO 4217](https://www.xe.com/iso4217.php) codes, or popular pseudo-ISO 4217 codes such as "BTC". However, any combination of the following characters is permitted: all uppercase and lowercase letters, digits, as well as the symbols `?`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `<`, `>`, `(`, `)`, `{`, `}`, `[`, `]`, and <code>&#124;</code>. The currency code `XRP` (all-uppercase) is reserved for XRP and cannot be used by tokens.
 4. The next 40 bits are reserved and should be all `0`'s.
 
 The **nonstandard format** is any 160 bits of data as long as the first 8 bits are not `0x00`.

@@ -183,6 +183,7 @@
 <!--{# Amendment links #}-->
 {% set amendment_names = [
   "Checks",
+  "CheckCashMakesTrustLine",
   "CryptoConditions",
   "CryptoConditionsSuite",
   "DeletableAccounts",
