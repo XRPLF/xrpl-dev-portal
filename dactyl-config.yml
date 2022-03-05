@@ -960,10 +960,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate this page and blurb
     -   md: concepts/consensus-network/federated-sidechains.md
         targets:
             - en
+
+    -   md: concepts/consensus-network/federated-sidechains.ja.md
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
