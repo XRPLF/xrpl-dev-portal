@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block bodyclasses %}no-sidebar{% endblock %}
-{% block mainclasses %}landing page-community{% endblock %}
+{% block mainclasses %}landing page-events{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
@@ -30,226 +30,6 @@
   </div>
 </section>
 
-
-
-
-
-
-<style>
-
-html.light .event-card {
-    color: #000;
-    background-color: #FCFCFD;
-    box-shadow: 0px 5px 20px 0px #c1c1c2;
-}
- html.light a.event-card:hover {
-    color: #000;
-    
-}
-
- a.event-card:hover {
-    color: #fff;
-    transform: translateY(-16px);
-    text-decoration: none;
-}
-
-.event-card {
-    max-width: 311px; 
-
-    margin: 32px auto;
-
-    transition: all 0.35s ease-out;
-
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-clip: border-box;
-    
-    background-color: #232325;
-    box-shadow: 0px 5px 40px #000;
-
-    border: 1px solid rgba(0,0,0,0.125);
-    border-radius: 8px;   
-
-  font-size: 16px;
-  line-height: 24px; 
-  color: #E0E0E1;
-}
-
-@media (min-width: 992px) {
-  .event-card {
-      max-width: 347px; 
-      margin:32px;
-  }
-  .event-card-header {
-    height: 197px !important;
-  }
-}
-
-
-.event-card-header {
-  position: relative;
-  
-  height: 176px;
-  background-size: contain !important;
-  width: 100%;
-  border-radius: 8px 8px 0 0;
-}
-
-.event-card-title{
-  position: absolute;
-  bottom: 32px;
-  padding: 0 32px;
-  color: #F5F5F7;
-
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 28px;
-}
-
-.event-card-body {
-  padding:32px;
-  
-}
-
-.event-card-footer {
-  padding:0 32px 32px ;
-}
-
-.event-hero {
-  color: $gray-100;
-  color: #F5F5F7;
-
-}
-.event-hero p {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
-}
-.event-save-date {
-  color: $white:;
-  color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 26px;
-}
-.event-small-gray {
-  color: $gray-400;
-  color: #A2A2A4;
-}
-
-
-
-
-html.light .event-hero {
-  color: $gray-900;
-  color: #111112;
-}
-
-html.light .event-save-date {
-  color: $gray-900;
-  color: #111112;
-}
-
-html.light .event-small-gray {
-  color: $gray-600;
-  color: #454549;
-}
-
-#event-hero-image  {
-  height:100%;
-  background: url(./assets/img/events/event-hero1@2x.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-html.light #event-hero-image  {
-  height:100%;
-  background: url(./assets/img/events/event-hero1-light@2x.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.event-card-footer .icon::before {
-  height:24px;
-  width:24px;
-  content:"";
-  margin-right: 8px;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.icon-date::before {
-  background: url(./assets/img/events/event-date.svg);
-}
-html.light .icon-date::before {
-  background: url(./assets/img/events/event-date-light.svg);
-}
-
-.icon-location::before {
-  background: url(./assets/img/events/event-location.svg);
-}
-html.light .icon-location::before {
-  background: url(./assets/img/events/event-location-light.svg);
-}
-
-.filter h6 {
-  font-size: 16px;
-}
-
-.filter span {
-      font-size: 16px;
-    font-weight: bold;
-    padding-left: 8px;
-    margin-top: -2px;
-}
-
-
-.filter label {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #7919FF;
-  border-radius: 4px; 
-}
-
-.filter label:after {
-  content: '';
-  width: 10px;
-  height: 8px;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  border: 3px solid #fcfff4;
-  border-top: none;
-  border-right: none;
-  background: transparent;
-  opacity: 0;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-
-.filter label:hover::after {
-  opacity: 0.8;
-}
-
-.filter input[type=checkbox] {
-  visibility: hidden;
-}
-
-.filter input[type=checkbox]:checked + label:after {
-  opacity: 1;
-}
-
-</style>
-
-
-{#  #}
 <section class="container-new py-26">
   <div class="event-hero card-grid event-hero card-grid-2xN">
     <div class="col order-2 order-lg-1 pr-2">
@@ -273,7 +53,6 @@ html.light .icon-location::before {
   </div>
 </section>
 
-{#  #}
 <section class="container-new py-26">
   <div class="event-hero card-grid card-grid-2xN">
     
@@ -332,7 +111,7 @@ html.light .icon-location::before {
       "link": "https://www.meetup.com/xrp-ledger-london-community/events/283536458/",
       "location": "IDEALondon",
       "date": "March 31, 2022",
-      "imgclasses": "event-meetup-london.png"},
+      "image": "event-meetup-london.png"},
     { "name": "XRPL Hackathon: New Year, New NFT",
       "id": "upcoming-xrpl-hackathon-new-year",
       "description": "Build functional NFTs on the XRPL that span across a full range of use cases and showcase your project in this hackathon. Submissions have a chance to win prizes from a total prize pool of $50,000 in XRP.",
@@ -340,12 +119,12 @@ html.light .icon-location::before {
       "link": "#",
       "location": "Virtual",
       "date": "January 31 - March 14, 2022",
-      "imgclasses": "event-hack-new-year.svg"},
+      "image": "event-hack-new-year.svg"},
   ] %}
   <div class="row row-cols-1 row-cols-lg-3 card-deck mt-2">
   {% for event in upcoming %}
     <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.imgclasses}}); ">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.image}}); ">
         <div class="event-card-title">{{event.name}}</div>
       </div>
       <div class="event-card-body">
@@ -392,47 +171,47 @@ html.light .icon-location::before {
       "link": "https://xrpl-hackathon-2021.devpost.com/project-gallery",
       "location": "Virtual",
       "date": "September 13–October 6, 2021",
-      "imgclasses": "event-hack-2021.svg"},
+      "image": "event-hack-2021.svg"},
     { "name": "XRPL Community Meetup: San Diego",      
       "description": "The first official Meetup hosted by the XRPL Community. Community members in Southern California gathered around a firepit and shared their experiences with the XRPL.",
       "type": "meetup-past",
       "link": "https://www.meetup.com/xrpl-community/events/281806645/",
       "location": "San Diego, CA",
       "date": "Saturday, November 20, 2021",
-      "imgclasses": "event-meetup-san-diego@2x.jpg"},
+      "image": "event-meetup-san-diego@2x.jpg"},
     { "name": "XRPL Community Meetup: Atlanta",      
       "description": "The inaugural Meetup in the Southeast region of the United States got community members excited to meet like-minded individuals in their area.",
       "type": "meetup-past",
       "link": "https://www.meetup.com/xrpl-community/events/281980446/",
       "location": "Atlanta, GA",
       "date": "Saturday, November 27, 2021",
-      "imgclasses": "event-meetup-alanta@2x.jpg"},
+      "image": "event-meetup-alanta@2x.jpg"},
     { "name": "XRPL Community Meetup: San Francisco",      
       "description": "Community members in the Bay Area with diverse backgrounds in technology and beyond met in downtown San Francisco.",
       "type": "meetup-past",
       "link": "https://www.meetup.com/xrpl-community/events/281806676/",
       "location": "San Francisco, CA",
       "date": "Monday, November 29, 2021",
-      "imgclasses": "event-meetup-san-francisco@2x.jpg"},
+      "image": "event-meetup-san-francisco@2x.jpg"},
     { "name": "XRPL Community Meetup: Miami",      
       "description": "One of the biggest Meetups held so far, this was the first of an ongoing series of local XRPL Community Meetup events in Miami. ",
       "type": "meetup-past",
       "link": "https://www.meetup.com/xrpl-community/events/281829463/",
       "location": "Miami, FL ",
       "date": "Thursday, December 9, 2021",
-      "imgclasses": "event-meetup-miami@2x.jpg"},
+      "image": "event-meetup-miami@2x.jpg"},
     { "name": "XRPL Community Meetup: Nashville",      
       "description": "Nashville-based members of the XRPL Community came together to network, learn, share ideas, and form new partnerships. ",
       "type": "meetup-past",
       "link": "https://www.meetup.com/xrp-ledger-nashville-community/events/282538189/",
       "location": "Nashville, TN",
       "date": "Saturday, December 18, 2021",
-      "imgclasses": "event-meetup-nashville@2x.jpg"},
+      "image": "event-meetup-nashville@2x.jpg"},
   ] %}
   <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
   {% for event in past %}
     <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.imgclasses}}); ">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.image}}); ">
         <div class="event-card-title">{{event.name}}</div>
       </div>
       <div class="event-card-body">
@@ -451,8 +230,6 @@ html.light .icon-location::before {
 
 
 <script>
-
-
 
 $('#inlineCheckbox1').change(function () {
   if ($('#inlineCheckbox1').is(':checked')) {
@@ -483,8 +260,6 @@ $('#inlineCheckbox4').change(function () {
     $('.hackathon-past').hide();
   }
 });
-
-
 
 </script>
 
