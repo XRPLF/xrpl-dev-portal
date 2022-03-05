@@ -2033,6 +2033,9 @@ pages:
     -   md: references/protocol-reference/data-types/nftoken.md
         targets:
             - en
+
+    -   md: references/protocol-reference/data-types/nftoken.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-data-formats.md
