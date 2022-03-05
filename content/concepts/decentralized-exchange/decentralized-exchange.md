@@ -14,9 +14,9 @@ The XRP Ledger's has possibly the world's oldest _decentralized exchange_ (somet
 
 ## Structure
 
-The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trade offers. A currency pair can consist of XRP and a token or two different tokens; tokens are always identified by the combination of an issuer and a currency code. Therefore, it is possible to trade between two tokens with the same currency code and different issuers, or the same issuer and different currency codes.
+The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. A currency pair can consist of XRP and a token or two different tokens; tokens are always identified by the combination of an issuer and a currency code. Therefore, it is possible to trade between two tokens with the same currency code and different issuers, or the same issuer and different currency codes.
 
-As with all changes to the XRP Ledger, you need to send a [transaction](transaction-basics.html) to make a trade. A trade in the XRP Ledger is called an [Offer](offers.html). An Offer is effectively a _limit order_ to buy or sell a specific amount of one currency (XRP or a token) for a specific amount of another. When the network executes an Offer, if there are any matching Offers for the same currency pair, they are consumed starting with the best exchange rate first.
+As with all changes to the XRP Ledger, you need to send a [transaction](transaction-basics.html) to make a trade. A trade in the XRP Ledger is called an [Offer](offers.html). An Offer is effectively a [_limit order_](https://en.wikipedia.org/wiki/Order_(exchange)#Limit_order) to buy or sell a specific amount of one currency (XRP or a token) for a specific amount of another. When the network executes an Offer, if there are any matching Offers for the same currency pair, they are consumed starting with the best exchange rate first.
 
 An Offer can be fully or partially filled; if it's not fully filled right away, it becomes a passive Offer object in the ledger for the remaining amount. Later on, other Offers or [Cross-currency payments](cross-currency-payments.html) can match and consume the Offer. Because of this, Offers can execute at better than their requested exchange rate when initially placed, or at exactly their stated exchange rate later on (aside from minor differences to account for rounding).
 
@@ -69,6 +69,6 @@ As a decentralized system, the XRP Ledger does not have any information on the a
 <!-- NOTE: There aren't really any tutorials for using the DEX. When there are, add them here. -->
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
