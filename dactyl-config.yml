@@ -1721,10 +1721,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.ja.md
+        targets:
             - ja
 
     # TODO: translate this page & blurb
