@@ -116,7 +116,6 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
     *macOS*
 
-        <!-- Ensure that a compatible version of CMake is installed -->
 	cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
         cmake --build build --parallel $(nproc)
 
