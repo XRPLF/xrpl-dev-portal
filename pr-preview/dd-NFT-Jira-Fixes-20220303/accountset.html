@@ -314,6 +314,12 @@
 <td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys. To remove the key, use an empty value.</td>
 </tr>
 <tr>
+<td align="left"><code>Minter</code></td>
+<td align="left">String</td>
+<td align="left">Blob</td>
+<td align="left"><em>(Optional)</em> Sets an alternate account that is allowed to mint NFTokens on this account's behalf using NFTokenMint's <code>Issuer</code> field.</td>
+</tr>
+<tr>
 <td align="left"><a href="#accountset-flags"><code>SetFlag</code></a></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
@@ -384,7 +390,7 @@
 <td align="left"><code>asfAuthorizedMinter</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
 <td align="left">10</td>
 <td align="left">(None)</td>
-<td align="left">Enable to allow an account to mint tokens on behalf of another account. Specify the authorized account in the <code>minter</code> field of the <a href="accountroot.html">AccountRoot</a> object.</td>
+<td align="left">Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the <code>Minter</code> field of the <a href="accountroot.html">AccountRoot</a> object. This is an experimental field to enable behavior for NFToken support.</td>
 </tr>
 <tr>
 <td align="left"><code>asfDefaultRipple</code></td>
