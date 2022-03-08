@@ -206,13 +206,15 @@ The site contains code to automatically recolor SVG diagrams for light and dark 
 
 ![Comparison of invert and theme-aware recoloring](./theme-aware-recolor.png)
 
-Theme-aware recoloring uses a single source file in SVG format for diagrams, and produces diagrams that are recolored to match the current theme (light/dark) using CSS. If the user changes their theme, the diagrams immediately change to match it. To include a theme-aware diagram in the docs, use the `include_svg` filter with syntax such as the following:
+Theme-aware recoloring uses a single source file in SVG format for diagrams, and produces diagrams that are recolored to match the current theme (light/dark) using CSS. If the user changes their theme, the diagrams immediately change to match it.
+
+To include a theme-aware diagram in the docs, use the `include_svg` filter with syntax such as the following:
 
 ```jinja
 {{ include_svg("img/anatomy-of-a-ledger-complete.svg", "Figure 1: XRP Ledger Elements") }}
 ```
 
-The SVG file in question should be in the [`img/`](./img/) folder at the top level of the repo, or a subfolder of it. The second argument is _title text_, which appears when the user hovers their mouse over the diagram, and may also be used by other software (such as screen readers) to caption the diagram.
+The SVG file in question should be in the [`img/`](./img/) folder at the top level of the repo, or a subfolder of it. The second argument is _title text_, which appears when the user hovers their mouse over the diagram, and can also be used by other software (such as screen readers) to caption the diagram.
 
 The resulting SVG file is inlined directly into the Markdown file. One limitation is that you can't use it inside other Markdown structures such as bulleted lists or tables.
 
@@ -220,9 +222,9 @@ The resulting SVG file is inlined directly into the Markdown file. One limitatio
 
 ### Making Diagrams
 
-You have to take care when creating diagrams so that the recoloring applies correctly; otherwise, some elements may be invisible (white-on-white or black-on-black, for example) when recolored for the other theme. The theme-aware diagrams code supports diagrams created using either [Umlet](https://www.umlet.com/) or [Google Draw](https://docs.google.com/drawings/) and exported as SVG. Additionally, you should follow these guidelines when making digrams:
+You have to take care when creating diagrams so that the recoloring applies correctly; otherwise, some elements might be invisible (white-on-white or black-on-black, for example) when recolored for the other theme. The theme-aware diagrams code supports diagrams created using either [Umlet](https://www.umlet.com/) or [Google Draw](https://docs.google.com/drawings/) and exported as SVG. Additionally, you should follow these guidelines when making diagrams:
 
 0. Create diagrams for light mode by default. Use a transparent background color.
-0. Only use colors that the theme-aware diagrams code has mappings for. The code for this, including the full list of colors, is in [`styles/_diagrams.scss`](./styles/_diagrams.scss). If needed, you can add new colors by extending the SCSS code. (Don't forget to re-export the CSS when you're done! See the [styles README](./styles/README.md).)
+0. Only use colors that the theme-aware diagrams code has mappings for. The code for this, including the full list of colors, is in [`styles/_diagrams.scss`](./styles/_diagrams.scss). If needed, you can add new colors by extending the SCSS code. (Don't forget to re-export the CSS when you're done. See the [styles README](./styles/README.md).)
 0. Use actual vector shapes instead of embedded icons/images whenever possible. If you need to put text on top of an image, add a solid background to the text element and use one of the colors the theme has mappings for.
 0. Don't layer transparent elements containing text on top of elements with different background colors. Apply a background color directly to the element that contains the text.
