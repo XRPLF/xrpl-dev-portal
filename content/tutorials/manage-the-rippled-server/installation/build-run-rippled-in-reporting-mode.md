@@ -37,7 +37,9 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 2. In order to run reporting mode, you also need to run one or more `rippled` servers in [P2P mode](install-rippled.html). Ensure that you have at least one `rippled` server running in P2P mode. 
 
-3. Install and configure the datastores required to run `rippled` in reporting mode. 
+3. A compatible version of CMake must be installed.
+
+4. Install and configure the datastores required to run `rippled` in reporting mode. 
 
     1. Install PostgreSQL.
 
@@ -62,18 +64,6 @@ Multiple reporting mode servers can share access to the same network accessible 
         psql postgres -U newuser
         postgres=# create database reporting;
 
-**Install PostgreSQL on Windows**
-
-1. Download and [install PostgreSQL on Windows](https://www.postgresqltutorial.com/install-postgresql/).
-        
-2. Launch the `psql` program and connect to the PostgreSQL Database Server, and create a user `newuser` and a database `reporting`. 
-
-        psql postgres
-	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
-            ALTER ROLE newuser CREATEDB;
-        \q
-        psql postgres -U newuser
-        postgres=# create database reporting;
 
 **Install PostgreSQL on macOS**
 
@@ -118,28 +108,25 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
     *Linux*
 
-        wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh
-    
-        sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug ..
+        wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
+        sudo sh cmake-3.16.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir 
+        cmake -B build -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug 
+        cmake --build build --parallel $(nproc)
 
 
     *macOS*
 
-        cmake -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug ..
-
-        cmake --build . -- -j 4
+	cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
+        cmake --build build --parallel $(nproc)
 
     <!-- MULTICODE_BLOCK_END -->
 
 2. Create a configuration file to run `rippled` in reporting mode. 
 
-    Make a copy of the example config file, `rippled.cfg`, and save it as `reporting-mode.cfg` in a location that enables you to run `rippled` as a non-root user. For example:
+    Make a copy of the example config file, `rippled-example.cfg`, and save it as `rippled-reporting-mode.cfg` in a location that enables you to run `rippled` as a non-root user. For example:
     
-        cd /etc/opt/ripple/
-
         mkdir -p $HOME/.config/ripple
-
-        cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
+        cp <RIPPLED_SOURCE>/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
 
 3. Edit rippled-reporting-mode.cfg to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here.
 
@@ -155,9 +142,9 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
     1. Uncomment the `[reporting]` stanza or add a new one:
 
-        [reporting]
-        etl_source
-        read_only=0
+            [reporting]
+            etl_source
+            read_only=0
 
     2. List the `rippled` sources (ETL sources) to extract data from. These `rippled` servers must have gRPC enabled.
     
@@ -193,7 +180,6 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
             [node_db]
             type=Cassandra
-            path=
 
             [ledger_history]
             1000000
