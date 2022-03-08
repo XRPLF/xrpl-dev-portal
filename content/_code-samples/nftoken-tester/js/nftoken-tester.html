@@ -210,14 +210,14 @@ async function cancelOffer() {
 	await client.connect()
 	console.log("Connected to Sandbox")
 
-	const tokenID = tokenOfferIndex.value
-	const tokenIDs = [tokenID]
+	const tokenOfferID = tokenOfferIndex.value
+  const tokenOffers = [tokenOfferID]
 
  // Prepare transaction -------------------------------------------------------
   const transactionBlob = {
       	"TransactionType": "NFTokenCancelOffer",
       	"Account": wallet.classicAddress,
-      	"TokenIDs": tokenIDs
+      	"TokenOffers": tokenOffers
   }
 
   // Submit signed blob --------------------------------------------------------
