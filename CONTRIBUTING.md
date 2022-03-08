@@ -26,7 +26,7 @@ The XRPL Dev Portal provides comprehensive documentation of the the XRP Ledger, 
 - [template/](template/) - Template files for building the HTML outputs.
 - [tool/](tool/) - Filters, style-checker rules, and other scripts.
 - [styles/](styles/) - Source files (SCSS) to generate the CSS files in the assets folder.
-- [`dactyl-config.yml`](dactyl-config.yml) - Main config file, which contains the metadata for all the docs. For information on our conventions, see [Config Formatting](#config-formatting).
+- [`dactyl-config.yml`](dactyl-config.yml) - Main config file, which contains the metadata for the site. For information on our conventions, see [Config Formatting](#config-formatting).
 
 ## Requirements for a Successful Pull Request
 
@@ -46,7 +46,7 @@ Dactyl requires [Python 3](https://python.org/). Install it with [pip](https://p
 
 ## Building the Site
 
-This repo uses [**Dactyl**](https://github.com/ripple/dactyl) to build HTML display versions of all the documentation. After you've done the [Dactyl Setup](#dactyl-setup), you can build the docs from the project root directory:
+This repo uses [**Dactyl**](https://github.com/ripple/dactyl) to build HTML display versions of all the documentation. After you've done the [Dactyl Setup](#dactyl-setup), you can build the site from the project root directory:
 
 ```
 dactyl_build
@@ -208,13 +208,13 @@ The site contains code to automatically recolor SVG diagrams for light and dark 
 
 Theme-aware recoloring uses a single source file in SVG format for diagrams, and produces diagrams that are recolored to match the current theme (light/dark) using CSS. If the user changes their theme, the diagrams immediately change to match it.
 
-To include a theme-aware diagram in the docs, use the `include_svg` filter with syntax such as the following:
+To include a theme-aware diagram in a document, use the `include_svg` filter with syntax such as the following:
 
 ```jinja
 {{ include_svg("img/anatomy-of-a-ledger-complete.svg", "Figure 1: XRP Ledger Elements") }}
 ```
 
-The SVG file in question should be in the [`img/`](./img/) folder at the top level of the repo, or a subfolder of it. The second argument is _title text_, which appears when the user hovers their mouse over the diagram, and can also be used by other software (such as screen readers) to caption the diagram.
+Leave empty lines before and after this syntax. The SVG file in question should be in the [`img/`](./img/) folder at the top level of the repo, or a subfolder of it. The second argument is _title text_, which appears when the user hovers their mouse over the diagram, and can also be used by other software (such as screen readers) to caption the diagram.
 
 The resulting SVG file is inlined directly into the Markdown file. One limitation is that you can't use it inside other Markdown structures such as bulleted lists or tables.
 
