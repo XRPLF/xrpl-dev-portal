@@ -11,15 +11,15 @@ Found 111 possible spelling errors:
   signerquorum: 
 
 <Page 'Tokens' (tokens.html)> Unknown Words:
+  bharath: bharata, sharath, bharat
   asheesh: hasheesh, sheesh
-  bharath: bharata, bharat, sharath
 
 <Page 'Authorized Trust Lines' (authorized-trust-lines.html)> Unknown Words:
   onboarding: 
   requireauth: 
 
 <Page 'NFT Conceptual Overview' (non-fungible-tokens.html)> Unknown Words:
-  xls: sls, xl, ils
+  xls: fls, ls, xl
   ˈfənjəbəl: 
   nftoken: 
   nftokenpage: 
@@ -27,8 +27,8 @@ Found 111 possible spelling errors:
   nftokenoffer: 
   nftokenburn: 
   0x000008: 
-  nftokencreateoffer: 
   nftokenacceptoffer: 
+  nftokencreateoffer: 
   nftokencanceloffer: 
 
 <Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)> Unknown Words:
@@ -42,12 +42,12 @@ Found 111 possible spelling errors:
   checkcashmakestrustline: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  xls: sls, xl, ils
-  20d: 2d, 2nd
+  xls: fls, ls, xl
+  20d: 2nd, 2d
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: eum, ehm, emm
+  evm: evp, evx, eve
   permissionless: 
   federators: federator
 
@@ -60,16 +60,16 @@ Found 111 possible spelling errors:
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
   disallowxrp: 
   wxpython: 
-  wsl: psl, wsw, ssl
+  wsl: wsi, wol, usl
   threadsafe: 
   asyncio: 
-  guis: suis, guvs, guid
   wxglade: 
-  s1: sg, so, sl
+  guis: gris, gues, guise
+  s1: st, sp, sg
   toolkits: toolkit
   tooltip: 
-  lsf: esf, msf, lsp
-  refactor: refractor, reactor, redactor
+  lsf: csf, lsa, lsu
+  refactor: prefactor, reactor, redactor
   tooltips: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
@@ -77,23 +77,23 @@ Found 111 possible spelling errors:
 
 <Page 'NFToken Tester Tutorial' (nftoken-tester-tutorial.html)> Unknown Words:
   nftoken: 
-  xls: sls, xl, ils
+  xls: fls, ls, xl
   nftokens: 
-  ipfs: ifs, ipms, ips
+  ipfs: ips, ipcs, ifs
   nftokenacceptoffer: 
   acceptselloffer: 
+  nftokencanceloffer: 
+  nftokenoffer: 
+  nftokenmint: 
   nftokenpage: 
   nftokencreateoffer: 
   nftokenburn: 
-  nftokenmint: 
-  nftokenoffer: 
-  nftokencanceloffer: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
   xapps: lapps, capps, apps
 
 <Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: name, nome, nme
+  nvme: nme, name, nome
 
 <Page 'Build and Run rippled in Reporting Mode' (build-run-rippled-in-reporting-mode.html)> Unknown Words:
   datastores: 
@@ -101,67 +101,67 @@ Found 111 possible spelling errors:
 
 <Page 'NFToken' (nftoken.html)> Unknown Words:
   nftoken: 
-  xls: sls, xl, ils
+  xls: fls, ls, xl
   nftokenpage: 
   tokenid: tokened
   trustline: 
-  0x0002: 
   lsfonlyxrp: 
-  0x000b: 
-  0x0001: 
-  lsfburnable: 
-  lsftransferable: 
   0x0008: 
+  0x0001: 
+  lsftransferable: 
+  0x000b: 
+  0x0002: 
+  lsfburnable: 
   transferfee: transferee
-  1bps: bps, mbps, kbps
+  1bps: kbps, mbps, bps
   nftokenmint: 
-  ipfs: ifs, ipms, ips
+  ipfs: ips, ipcs, ifs
   rfc2379: 
   nftokens: 
 
 <Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
   nftokenpage: 
-  nftokenoffer: 
   nftokens: 
+  nftokenoffer: 
 
 <Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
   nftokenoffer: 
-  xls: sls, xl, ils
+  xls: fls, ls, xl
 
 <Page 'NFTokenPage' (nftokenpage.html)> Unknown Words:
   nftokenpage: 
-  xls: sls, xl, ils
+  xls: fls, ls, xl
   tokenpage: 
-  shamap: shaman, shamar, shama
+  shamap: shaman, shamal, shama
 
 <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
   nftokenacceptoffer: 
-  xls: sls, xl, ils
+  xls: fls, ls, xl
   nftoken: 
 
 <Page 'NFTokenBurn' (nftokenburn.html)> Unknown Words:
   nftokenburn: 
-  xls: sls, xl, ils
+  xls: fls, ls, xl
   mintaccount: 
   mintedtokens: 
   burnedtokens: 
 
 <Page 'NFTokenCancelOffer' (nftokencanceloffer.html)> Unknown Words:
   nftokencanceloffer: 
-  xls: sls, xl, ils
+  xls: fls, ls, xl
   nftokenoffer: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
   nftokencreateoffer: 
-  xls: sls, xl, ils
+  xls: fls, ls, xl
   nftokenoffer: 
 
 <Page 'NFTokenMint' (nftokenmint.html)> Unknown Words:
   nftokenmint: 
-  xls: sls, xl, ils
-  nftokenpage: 
+  xls: fls, ls, xl
   nftoken: 
-  ipfs: ifs, ipms, ips
+  nftokenpage: 
+  ipfs: ips, ipcs, ifs
   rfc2379: 
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
