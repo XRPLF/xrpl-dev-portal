@@ -67,7 +67,7 @@
     ><path fill="none" d="M0.5 0.5 L260.5 0.5 L260.5 21.6094 L649 21.6094 L649 69 L0.5 69 Z" clip-path="url(#clipPath4)"
       /><path fill="none" d="M0.5 21.6094 L260.5 21.6094" clip-path="url(#clipPath4)"
       /><text x="5" font-size="14px" y="16.1094" clip-path="url(#clipPath4)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >Issued Currency Number Format</text
+      >Token Number Format</text
     ></g
     ><g font-family="sans-serif" font-size="14px" transform="translate(530,110)"
     ><text x="5" xml:space="preserve" y="18.1094" clip-path="url(#clipPath5)" stroke="none"
@@ -96,8 +96,8 @@
     /></g
     ><g transform="translate(250,50)"
     ><rect fill="none" x="0.5" width="408.5" height="28.5" y="0.5" clip-path="url(#clipPath8)"
-      /><text x="141" font-size="14px" y="18.1094" clip-path="url(#clipPath8)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >mantissa (54 bits)</text
+      /><text x="115" font-size="14px" y="18.1094" clip-path="url(#clipPath8)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      >significant digits (54 bits)</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(90,50)" stroke-opacity="0" stroke="rgb(255,255,255)"
     ><rect x="0.5" width="148.5" height="28.5" y="0.5" clip-path="url(#clipPath9)" stroke="none"

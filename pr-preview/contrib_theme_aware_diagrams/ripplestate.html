@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v6.css" rel="stylesheet" />
+    <link href="assets/css/devportal2021-v7.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,12 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <div class="d-flex justify-content-center ">
+    <span><p class="mb-0">Hackathon: New Year, New NFTs! Build scalable, <br />sustainable functional NFTs with XRPL </p></span>
+    <span><a href="https://xrplnft.devpost.com/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Join</a></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -317,7 +322,7 @@
 <td><code>Balance</code></td>
 <td>Object</td>
 <td>Amount</td>
-<td>The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has issued currency to the high account. The issuer in this is always set to the neutral value <a href="accounts.html#special-addresses">ACCOUNT_ONE</a>.</td>
+<td>The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has tokens to the high account. The issuer in this is always set to the neutral value <a href="accounts.html#special-addresses">ACCOUNT_ONE</a>.</td>
 </tr>
 <tr>
 <td><code>LowLimit</code></td>
@@ -414,14 +419,14 @@
 <td><code>0x00040000</code></td>
 <td>262144</td>
 <td><code>tfSetAuth</code></td>
-<td>The low account has authorized the high account to hold the low account's issued currency.</td>
+<td>The low account has authorized the high account to hold tokens issued by the low account.</td>
 </tr>
 <tr>
 <td><code>lsfHighAuth</code></td>
 <td><code>0x00080000</code></td>
 <td>524288</td>
 <td><code>tfSetAuth</code></td>
-<td>The high account has authorized the low account to hold the high account's issued currency.</td>
+<td>The high account has authorized the low account to hold tokens issued by the high account.</td>
 </tr>
 <tr>
 <td><code>lsfLowNoRipple</code></td>
@@ -706,14 +711,9 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
 
-        <a class="nav-link" href="issued-currencies.html">Issued Currencies</a>
+        <a class="nav-link" href="tokens.html">Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="issued-currencies-overview.html">Issued Currencies Overview</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
@@ -726,7 +726,24 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="freezes.html">Freezing Issued Currencies</a>
+    <a class="nav-link nav-leaf" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -922,23 +939,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="nft-concepts.html">Non-fungible Tokens (NFTs)</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft-conceptual-overview.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
