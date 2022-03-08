@@ -314,10 +314,10 @@
 <td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys. To remove the key, use an empty value.</td>
 </tr>
 <tr>
-<td align="left"><code>Minter</code></td>
+<td align="left"><code>Minter</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
-<td align="left"><em>(Optional)</em> Sets an alternate account that is allowed to mint NFTokens on this account's behalf using NFTokenMint's <code>Issuer</code> field.</td>
+<td align="left"><em>(Optional)</em> Sets an alternate account that is allowed to mint NFTokens on this account's behalf using NFTokenMint's <code>Issuer</code> field. This field is part of the experimental XLS-20 standard for non-fungible tokens.</td>
 </tr>
 <tr>
 <td align="left"><a href="#accountset-flags"><code>SetFlag</code></a></td>

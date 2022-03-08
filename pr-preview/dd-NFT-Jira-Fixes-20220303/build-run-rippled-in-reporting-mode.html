@@ -290,6 +290,9 @@
 <p>In order to run reporting mode, you also need to run one or more <code>rippled</code> servers in <a href="install-rippled.html">P2P mode</a>. Ensure that you have at least one <code>rippled</code> server running in P2P mode. </p>
 </li>
 <li>
+<p>A compatible version of CMake must be installed.</p>
+</li>
+<li>
 <p>Install and configure the datastores required to run <code>rippled</code> in reporting mode. </p>
 <ol>
 <li>
@@ -323,33 +326,17 @@ postgres=# create database reporting;
 </code></pre></div>
 </li>
 </ol>
-<p><strong>Install PostgreSQL on Windows</strong></p>
-<ol>
-<li>
-<p>Download and <a class="external-link" href="https://www.postgresqltutorial.com/install-postgresql/" target="_blank">install PostgreSQL on Windows <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-</li>
-<li>
-<p>Launch the <code>psql</code> program and connect to the PostgreSQL Database Server, and create a user <code>newuser</code> and a database <code>reporting</code>. </p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">psql postgres
-    CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
-    ALTER ROLE newuser CREATEDB;
-\q
-psql postgres -U newuser
-postgres=# create database reporting;
-</code></pre></div>
-</li>
-</ol>
 <p><strong>Install PostgreSQL on macOS</strong></p>
 <ol>
 <li>
 <p>Download and install PostgreSQL on macOS.  </p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">brew install postgres
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">brew install postgres
 brew services start postgres
 </code></pre></div>
 </li>
 <li>
 <p>Connect to the PostgreSQL Database Server using <code>psql</code> and create a user <code>newuser</code> and a database <code>reporting</code>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">psql postgres
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">psql postgres
     CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
     ALTER ROLE newuser CREATEDB;
 \q
@@ -362,7 +349,7 @@ postgres=# create database reporting;
 <p><strong>Cassandra</strong> </p>
 <p>Install Cassandra and then create a keyspace for <code>rippled</code>, with replication. <!-- SPELLING_IGNORE: keyspace --></p>
 <p>While a replication factor of 3 is recommended, when running locally, replication is not needed and you can set <code>replication_factor</code> to 1.    </p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">$</span><span class="w"> </span><span class="n">cqlsh</span><span class="w"> </span><span class="o">[</span><span class="n">host</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">port</span><span class="o">]</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">$</span><span class="w"> </span><span class="n">cqlsh</span><span class="w"> </span><span class="o">[</span><span class="n">host</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">port</span><span class="o">]</span><span class="w"></span>
 <span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="n">KEYSPACE</span><span class="w"> </span><span class="err">`</span><span class="n">rippled</span><span class="err">`</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">REPLICATION</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="err">{</span><span class="s1">'class'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s1">'SimpleStrategy'</span><span class="p">,</span><span class="w"> </span><span class="s1">'replication_factor'</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="err">}</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -373,27 +360,23 @@ postgres=# create database reporting;
 <ol>
 <li>
 <p>Build <code>rippled</code> for reporting mode on <a href="build-run-rippled-ubuntu.html">Ubuntu</a> or <a href="build-run-rippled-macos.html">macOS</a>.</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="linux" href="#code-0-0">Linux</a></li><li><a class="macos" href="#code-0-1">macOS</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="linux" href="#code-0-0">Linux</a></li></ul>
 
-<div class="code_sample linux" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Kitware</span><span class="o">/</span><span class="n">CMake</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mf">13.3</span><span class="o">/</span><span class="n">cmake</span><span class="o">-</span><span class="mf">3.13</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span><span class="w"></span>
-
-<span class="n">sudo</span><span class="w"> </span><span class="n">sh</span><span class="w"> </span><span class="n">cmake</span><span class="o">-</span><span class="mf">3.13</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="w"> </span><span class="o">--</span><span class="n">exclude</span><span class="o">-</span><span class="n">subdir</span><span class="w"> </span><span class="o">-</span><span class="n">Dreporting</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span><span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Debug</span><span class="w"> </span><span class="o">..</span><span class="w"></span>
+<div class="code_sample linux" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Kitware</span><span class="o">/</span><span class="n">CMake</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mf">16.3</span><span class="o">/</span><span class="n">cmake</span><span class="o">-</span><span class="mf">3.16</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">sh</span><span class="w"> </span><span class="n">cmake</span><span class="o">-</span><span class="mf">3.16</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="w"> </span><span class="o">--</span><span class="n">exclude</span><span class="o">-</span><span class="n">subdir</span><span class="w"> </span>
+<span class="n">cmake</span><span class="w"> </span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">-</span><span class="n">Dreporting</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span><span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Debug</span><span class="w"> </span>
+<span class="n">cmake</span><span class="w"> </span><span class="o">--</span><span class="n">build</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">parallel</span><span class="w"> </span><span class="o">$</span><span class="p">(</span><span class="n">nproc</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></div>
-
-<div class="code_sample macos" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">cmake -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug ..
-
-cmake --build . -- -j 4
-</code></pre></div></div>
+<p><em>macOS</em></p>
+<p>cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
+    cmake --build build --parallel $(nproc)</p>
 </div>
 </li>
 <li>
 <p>Create a configuration file to run <code>rippled</code> in reporting mode. </p>
-<p>Make a copy of the example config file, <code>rippled.cfg</code>, and save it as <code>reporting-mode.cfg</code> in a location that enables you to run <code>rippled</code> as a non-root user. For example:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">cd /etc/opt/ripple/
-
-mkdir -p $HOME/.config/ripple
-
-cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
+<p>Make a copy of the example config file, <code>rippled-example.cfg</code>, and save it as <code>rippled-reporting-mode.cfg</code> in a location that enables you to run <code>rippled</code> as a non-root user. For example:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">mkdir -p $HOME/.config/ripple
+cp &lt;RIPPLED_SOURCE&gt;/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
 </code></pre></div>
 </li>
 <li>
@@ -416,14 +399,15 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
 <ol>
 <li>
 <p>Uncomment the <code>[reporting]</code> stanza or add a new one:</p>
-<p>[reporting]
-etl_source
-read_only=0</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="k">[reporting]</span><span class="w"></span>
+<span class="na">etl_source</span><span class="w"></span>
+<span class="na">read_only</span><span class="o">=</span><span class="s">0</span><span class="w"></span>
+</code></pre></div>
 </li>
 <li>
 <p>List the <code>rippled</code> sources (ETL sources) to extract data from. These <code>rippled</code> servers must have gRPC enabled.</p>
 <p>NOTE: Only include servers that you trust as reporting mode does not connect to the P2P network and hence cannot verify that the data actually matches the network consensus ledger.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="k">[etl_source]</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="k">[etl_source]</span><span class="w"></span>
 <span class="na">source_grpc_port</span><span class="o">=</span><span class="s">50051</span><span class="w"></span>
 <span class="na">source_ws_port</span><span class="o">=</span><span class="s">6006</span><span class="w"></span>
 <span class="na">source_ip</span><span class="o">=</span><span class="s">127.0.0.1</span><span class="w"></span>
@@ -436,7 +420,7 @@ read_only=0</p>
 <ol>
 <li>
 <p>Specify the Postgres DB for <code>[ledger_tx_tables]</code>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="k">[ledger_tx_tables]</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="k">[ledger_tx_tables]</span><span class="w"></span>
 <span class="na">conninfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">postgres://newuser:password@127.0.0.1/reporting</span><span class="w"></span>
 <span class="na">use_tx_tables</span><span class="o">=</span><span class="s">1</span><span class="w"></span>
 </code></pre></div>
@@ -445,7 +429,7 @@ read_only=0</p>
 <p>Specify the database for <code>[node_db]</code>.</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="nudb" href="#code-1-0">NuDB</a></li><li><a class="cassandra" href="#code-1-1">Cassandra</a></li></ul>
 
-<div class="code_sample nudb" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="k">[node_db]</span><span class="w"></span>
+<div class="code_sample nudb" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="k">[node_db]</span><span class="w"></span>
 <span class="na">type</span><span class="o">=</span><span class="s">NuDB</span><span class="w"></span>
 <span class="na">path</span><span class="o">=</span><span class="s">/home/ubuntu/ripple/</span><span class="w"></span>
 
@@ -453,9 +437,8 @@ read_only=0</p>
 <span class="na">1000000</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample cassandra" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">[node_db]</span><span class="w"></span>
+<div class="code_sample cassandra" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="k">[node_db]</span><span class="w"></span>
 <span class="na">type</span><span class="o">=</span><span class="s">Cassandra</span><span class="w"></span>
-<span class="na">path</span><span class="o">=</span><span class="w"></span>
 
 <span class="k">[ledger_history]</span><span class="w"></span>
 <span class="na">1000000</span><span class="w"></span>
@@ -469,7 +452,7 @@ read_only=0</p>
 <ol>
 <li>
 <p>Open the public websocket port:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="k">[port_ws_admin_local]</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">[port_ws_admin_local]</span><span class="w"></span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6006</span><span class="w"></span>
 <span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
 <span class="na">admin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
@@ -478,27 +461,27 @@ read_only=0</p>
 </li>
 <li>
 <p>Open the gRPC port:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="k">[port_grpc]</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="k">[port_grpc]</span><span class="w"></span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">60051</span><span class="w"></span>
 <span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
 <p>Add a secured gateway to the IP of your reporting system:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">secure_gateway = 127.0.0.1
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">secure_gateway = 127.0.0.1
 </code></pre></div>
 </li>
 </ol>
 </li>
 <li>
 <p>Run <code>rippled</code> in reporting mode:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16">./rippled --conf /home/ubuntu/.config/ripple/rippled-reporting-example.cfg
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">./rippled --conf /home/ubuntu/.config/ripple/rippled-reporting-example.cfg
 </code></pre></div>
 </li>
 </ol>
 <h3 id="what-to-expect">What to Expect<a aria-hidden="true" class="hover_anchor" href="#what-to-expect"><i class="fa fa-link"></i></a></h3>
 <p>Here are the excerpts of what you can expect to see on your terminal.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16">Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 2021-Dec-09 21:31:52.245577 UTC JobQueue:NFO Using 10  threads
 2021-Dec-09 21:31:52.255422 UTC LedgerConsensus:NFO Consensus engine started (cookie: 17859050541656985684)
 2021-Dec-09 21:31:52.256542 UTC ReportingETL::ETLSource:NFO Using IP to connect to ETL source: 127.0.0.1:50051
