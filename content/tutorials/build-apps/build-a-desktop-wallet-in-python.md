@@ -105,9 +105,9 @@ You may have noticed that the app in step 1 only shows the latest validated ledg
 
 ![Animation: Step 2, showing ledger updates](img/python-wallet-2.gif)
 
-If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
+If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so the user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
 
-The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that you each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with `self.`). When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:
+The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with `self.`). When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:
 
 - For GUI to worker thread, use [`asyncio.run_coroutine_threadsafe()`](https://docs.python.org/3/library/asyncio-task.html#asyncio.run_coroutine_threadsafe).
 - For worker to GUI communications, use [`wx.CallAfter()`](https://docs.wxpython.org/wx.functions.html#wx.CallAfter).
@@ -242,7 +242,7 @@ This saves the ledger's current reserves settings, so that you can use them to c
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def calculate_reserve_xrp", end_before="def update_account") }}
 
-Add an `update_account()` method:
+Add an `update_account()` method to the `TWaXLFrame` class:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def update_account", end_before="if __name__") }}
 
