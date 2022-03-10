@@ -403,7 +403,7 @@ Also add a new method to the `TWaXLFrame` class to display the pending transacti
 
 {{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="def add_pending_tx", end_before="def click_send_xrp") }}
 
-This method is similar to the `add_tx_row()` method in that it processes a transaction for display and add it to the Transaction History table. The differences are that it takes one of [xrpl-py's Transaction models](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.models.transactions.html) rather than a JSON-like API response; and it handles certain columns differently because the transaction has not yet been confirmed. Importantly, it saves a reference to table row containing this transaction to the `pending_tx_rows` dictionary, so that later on when the transaction is confirmed, you can remove the table row for the pending version and replace it with the final version of the transaction.
+This method is similar to the `add_tx_row()` method in that it processes a transaction for display and adds it to the Transaction History table. The differences are that it takes one of [xrpl-py's Transaction models](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.models.transactions.html) rather than a JSON-like API response; and it handles certain columns differently because the transaction has not yet been confirmed. Importantly, it saves a reference to table row containing this transaction to the `pending_tx_rows` dictionary, so that later on when the transaction is confirmed, you can remove the table row for the pending version and replace it with the final version of the transaction.
 
 Lastly, update the `add_tx_from_sub()` method so that it finds and updates pending transactions with their final results when those transactions are confirmed. Add the following lines **right before the call to** `self.add_tx_row()`:
 
@@ -413,7 +413,10 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 1. Open the Python interpreter.
 
-        python
+        python3
+
+    **Caution:** Depending on your OS, the command may be `python` or `python3`. You want to open Python 3, not a Python 2.x version.
+
 
 2. Run the following commands in the Python interpreter:
 
@@ -450,11 +453,11 @@ When there are other errors, you can expose them to the user with an icon and a 
 
 ![Screenshot: invalid address error icon with tooltip](img/python-wallet-6-err.png)
 
-The following code implements account domain verification; **save it as a new file** named `verify_domain.py`:
+The following code implements account domain verification; **save it as a new file** named `verify_domain.py` in the same folder as your app's main file:
 
 {{ include_code("_code-samples/build-a-wallet/py/verify_domain.py", language="py") }}
 
-In your app's main file, import the `verify_account_domain` function:
+**In your app's main file,** import the `verify_account_domain` function:
 
 {{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="from verify_domain", end_before="class XRPLMonitorThread") }}
 
