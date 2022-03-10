@@ -303,11 +303,11 @@
 <td align="left"><code>TokenOffers</code></td>
 <td align="left">Array</td>
 <td align="left">VECTOR256</td>
-<td align="left">An array of IDs of the token offers to cancel. Each entry must be a different <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenoffer.html">NFTokenOffer object</a>; the transaction is invalid if the array contains duplicate entries.</td>
+<td align="left">An array of IDs of the <code>NFTokenOffer</code> objects to cancel (not the IDs of <code>NFToken</code> objects, but the IDs of the <code>NFTokenOffer</code> objects). Each entry must be a different <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenoffer.html">NFTokenOffer</a> object; the transaction is invalid if the array contains duplicate entries.</td>
 </tr>
 </tbody>
 </table>
-<p>The transaction can succeed even if one or more of the IDs in the <code>TokenOffers</code> field do not refer to objects that currently exist in the ledger. (For example, those token offers may have been taken already.) The transaction fails with an error if one of the IDs in points to an object that does exist, but is not a <a href="nftokenoffer.html">NFTokenOffer object</a>.</p>
+<p>The transaction can succeed even if one or more of the IDs in the <code>TokenOffers</code> field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been taken.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a <a href="nftokenoffer.html">NFTokenOffer</a> object.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
