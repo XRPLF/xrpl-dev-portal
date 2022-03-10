@@ -741,7 +741,7 @@ async function cancelOffer() {
 
 ```js
 	const tokenOfferID = tokenOfferIndex.value
-  const tokenOffers = [tokenOfferID]
+	const tokenOffers = [tokenOfferID]
 
       const transactionBlob = {
       	 "TransactionType": "NFTokenCancelOffer",
