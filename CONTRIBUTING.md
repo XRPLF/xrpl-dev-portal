@@ -127,6 +127,7 @@ Use the following conventions when creating a page:
 - Don't use any formatting (like _italics_ or `code font`) in the title of the page
 - When in doubt, follow [Ciro Santilli's Markdown Style Guide (Writability Profile)](https://cirosantilli.com/markdown-style-guide/).
 - Landing pages should be in subfolders and should have the same filename as the folder. For example, the landing page of the "Accounts" page group should be `accounts/accounts.md` with the HTML filename `accounts.html`. **Don't** use `index.md`.
+- Don't use tab characters for indentation in Markdown or code samples. Use **4 spaces per indent**, except in **JavaScript** code samples, which should use 2 spaces per indent.
 
 
 ## Translations
