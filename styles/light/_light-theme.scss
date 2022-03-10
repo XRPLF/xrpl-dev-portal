@@ -698,6 +698,11 @@ $placeholder-color: $gray-600;
 
 // Events page
 .page-events {
+
+  label {
+    color: $gray-900;
+  }
+
   .event-card {
       color: $black;
       background-color: $gray-050;
@@ -721,9 +726,11 @@ $placeholder-color: $gray-600;
 
   #event-hero-image {
       height: 100%;
+      min-height: 209px;
       background: url(../img/events/event-hero1-light@2x.png);
       background-size: contain;
       background-repeat: no-repeat;
+      background-position: center;
   }
 
   .icon-date::before {

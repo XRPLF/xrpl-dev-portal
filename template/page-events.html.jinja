@@ -90,15 +90,12 @@
     <h6 class="mb-3">Filter By:</h6>
     <div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="meetup" checked>
-      <label class="" for="inlineCheckbox1"></label>
-      <span class="form-check-label" for="inlineCheckbox1">Meetups</span>
+      <input value="meetup" id="meetup-upcoming" name="meetup-upcoming" type="checkbox" class="events-filter" checked />
+      <label for="meetup-upcoming">Meetups</label>
     </div>
-    
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="hackathon" checked>
-      <label class="" for="inlineCheckbox2"></label>
-      <span class="form-check-label" for="inlineCheckbox2">Hackathons</span>
+      <input value="hackathon" id="hackathon-upcoming" name="hackathon-upcoming" type="checkbox" class="events-filter" checked />
+      <label for="hackathon-upcoming">Hackathons</label>
     </div>
     </div>
   </div>
@@ -150,15 +147,12 @@
     <h6 class="mb-3">Filter By:</h6>
     <div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="meetup" checked>
-      <label class="" for="inlineCheckbox3"></label>
-      <span class="form-check-label" for="inlineCheckbox3">Meetups</span>
+      <input value="meetup" id="meetup-past" name="meetup-past" type="checkbox" class="events-filter" checked />
+      <label for="meetup-past">Meetups</label>
     </div>
-    
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="hackathon" checked>
-      <label class="" for="inlineCheckbox4"></label>
-      <span class="form-check-label" for="inlineCheckbox4">Hackathons</span>
+      <input value="hackathon" id="hackathon-past" name="hackathon-past" type="checkbox" class="events-filter" checked />
+      <label for="hackathon-past">Hackathons</label>
     </div>
     </div>
   </div>
@@ -231,35 +225,35 @@
 
 <script>
 
-$('#inlineCheckbox1').change(function () {
-  if ($('#inlineCheckbox1').is(':checked')) {
-      $('.meetup-upcoming').show();
-  } else {
-    $('.meetup-upcoming').hide();
-  }
-});
-$('#inlineCheckbox2').change(function () {
-  if ($('#inlineCheckbox2').is(':checked')) {
-      $('.hackathon-upcoming').show();
-  } else {
-    $('.hackathon-upcoming').hide();
-  }
-});
+  $('#meetup-upcoming').change(function () {
+    if ($('#meetup-upcoming').is(':checked')) {
+        $('.meetup-upcoming').show();
+    } else {
+      $('.meetup-upcoming').hide();
+    }
+  });
+  $('#hackathon-upcoming').change(function () {
+    if ($('#hackathon-upcoming').is(':checked')) {
+        $('.hackathon-upcoming').show();
+    } else {
+      $('.hackathon-upcoming').hide();
+    }
+  });
 
-$('#inlineCheckbox3').change(function () {
-  if ($('#inlineCheckbox3').is(':checked')) {
-      $('.meetup-past').show();
-  } else {
-    $('.meetup-past').hide();
-  }
-});
-$('#inlineCheckbox4').change(function () {
-  if ($('#inlineCheckbox4').is(':checked')) {
-      $('.hackathon-past').show();
-  } else {
-    $('.hackathon-past').hide();
-  }
-});
+  $('#meetup-past').change(function () {
+    if ($('#meetup-past').is(':checked')) {
+        $('.meetup-past').show();
+    } else {
+      $('.meetup-past').hide();
+    }
+  });
+  $('#hackathon-past').change(function () {
+    if ($('#hackathon-past').is(':checked')) {
+        $('.hackathon-past').show();
+    } else {
+      $('.hackathon-past').hide();
+    }
+  });
 
 </script>
 
