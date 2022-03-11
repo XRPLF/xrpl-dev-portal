@@ -35,6 +35,7 @@ jobs:
 
     - name: Run Dactyl Link Checker
       continue-on-error: true
+      id: linkcheck
       run: |
         dactyl_link_checker -o -q > linkreport.txt
 
@@ -66,3 +67,9 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         message: "${{ env.LINKREPORT }}\n\nPreview: https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/\n\n[Style Report](https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/style_report.txt)"
+
+      # Workaround for https://github.com/actions/toolkit/issues/399
+      # to mark the CI as failed if the link checker found broken links.
+    - name: Mark Failure
+      if: steps.linkcheck.outcome != steps.linkcheck.conclusion
+      run: exit 1

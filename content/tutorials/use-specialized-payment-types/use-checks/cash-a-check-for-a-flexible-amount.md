@@ -31,7 +31,7 @@ Figure out the values of the [CheckCash transaction][] fields. To cash a check f
 | `TransactionType` | String                    | The value `CheckCash` indicates this is a CheckCash transaction. |
 | `Account`         | String (Address)          | The address of the sender who is cashing the Check. (In other words, your address.) |
 | `CheckID`         | String                    | The ID of the Check object in the ledger to cash. You can get this information by looking up the metadata of the CheckCreate transaction using the [tx method][] or by looking for Checks using the [account_objects method][]. |
-| `DeliverMin`      | String or Object (Amount) | A minimum amount to receive from the Check. If you cannot receive at least this much, cashing the Check fails, leaving the Check in the ledger so you can try again. For XRP, this must be a string specifying drops of XRP. For issued currencies, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
+| `DeliverMin`      | String or Object (Amount) | A minimum amount to receive from the Check. If you cannot receive at least this much, cashing the Check fails, leaving the Check in the ledger so you can try again. For XRP, this must be a string specifying drops of XRP. For tokens, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
 
 ### Example CheckCash Preparation for a flexible amount
 
@@ -162,7 +162,7 @@ If cashing the Check failed with a `tec`-class code, look up the code in the [Fu
 | `tecNO_LINE` | The recipient doesn't have a trust line for the Check's currency. | If you want to hold this currency from this issuer, create a trust line for the specified currency and issuer with a reasonable limit using a [TrustSet transaction][], then try to cash the check again. |
 | `tecNO_PERMISSION` | The sender of the CheckCash transaction isn't the `Destination` of the Check. | Double-check the `Destination` of the Check. |
 | `tecNO_AUTH` | The issuer of the currency from the check is using [Authorized Trust Lines](authorized-trust-lines.html) but the recipient's trust line to the issuer is not approved. | Ask the issuer to authorize this trust line, then try again to cash the Check after they do. |
-| `tecPATH_PARTIAL` | The Check could not deliver enough issued currency, either due to trust line limits or because the sender does not have enough balance of the currency to send (after including the issuer's [transfer fee](transfer-fees.html), if there is one). | If the problem is the trust line limit, send a [TrustSet transaction][] to increase your limit (if desired) or lower your balance by spending some of the currency, then try to cash the Check again. If the problem is the sender's balance, wait for the sender to have more of the Check's currency, or try again to cash the Check for a lesser amount. |
+| `tecPATH_PARTIAL` | The Check could not deliver enough tokens, either due to trust line limits or because the sender does not have enough balance of the token to send (including the issuer's [transfer fee](transfer-fees.html), if there is one). | If the problem is the trust line limit, send a [TrustSet transaction][] to increase your limit (if desired) or lower your balance by spending some of the currency, then try to cash the Check again. If the problem is the sender's balance, wait for the sender to have more of the Check's currency, or try again to cash the Check for a lesser amount. |
 | `tecUNFUNDED_PAYMENT` | The Check could not deliver enough XRP. | Wait for the sender to have more XRP, or try again to cash the Check for a lesser amount. |
 
 ## {{cash_flex_n.next()}}. Confirm delivered amount
@@ -200,15 +200,15 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
         "DeliverMin" : "95000000",
         "Fee" : "10",
 
-- For issued currencies where the sender or recipient of the check is the issuer, the `RippleState` object representing the trust line between those accounts has its `Balance` adjusted in the favor of the Check's recipient.
+- For tokens where the sender or recipient of the check is the issuer, the `RippleState` object representing the trust line between those accounts has its `Balance` adjusted in the favor of the Check's recipient.
 
     <!-- {# TODO: example of single-RippleState balance changes #}-->
 
-- For issued currencies with a third-party issuer, there are changes to two `RippleState` objects, representing the trust lines connecting the sender to the issuer, and the issuer to the recipient. The `RippleState` object representing the relationship between the Check's sender and the issuer has its `Balance` changed in favor of the issuer, and the `RippleState` object representing the relationship between the issuer and the recipient has its `Balance` changed in favor of the recipient.
+- For tokens with a third-party issuer, there are changes to two `RippleState` objects, representing the trust lines connecting the sender to the issuer, and the issuer to the recipient. The `RippleState` object representing the relationship between the Check's sender and the issuer has its `Balance` changed in favor of the issuer, and the `RippleState` object representing the relationship between the issuer and the recipient has its `Balance` changed in favor of the recipient.
 
     <!--{# TODO: example of double-RippleState balance changes #}-->
 
-    - If the issued currency has a [transfer fee](transfer-fees.html), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
+    - If the token has a [transfer fee](transfer-fees.html), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
 
 <!--{# common links #}-->
 {% include '_snippets/tx-type-links.md' %}

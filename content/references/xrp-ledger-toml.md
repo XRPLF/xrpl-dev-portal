@@ -233,14 +233,14 @@ For all URLs in this section, the trailing slash is RECOMMENDED. If omitted, cli
 
 ### Currencies
 
-If you issue any assets, tokens, or currencies in the XRP Ledger, you can provide information about them in the `[[CURRENCIES]]` list. If present, the currencies list MUST BE presented as an array of tables, with each entry using the header `[[CURRENCIES]]`, including double square brackets. Each entry describes a separate issued currency or asset. For _each_ `[[CURRENCIES]]` entry, you MAY provide any of the following fields:
+If you issue any assets, tokens, or currencies in the XRP Ledger, you can provide information about them in the `[[CURRENCIES]]` list. If present, the currencies list MUST BE presented as an array of tables, with each entry using the header `[[CURRENCIES]]`, including double square brackets. Each entry describes a separate token or asset. For _each_ `[[CURRENCIES]]` entry, you MAY provide any of the following fields:
 
 | Field   | Type   | Description                                           |
 |:--------|:-------|:------------------------------------------------------|
-| `code` | String | The (case-sensitive) ticker symbol of this currency in the XRP Ledger. This can be a three-digit code, a 40-character hex code, or a custom format (for clients that know how to represent the non-standard code in the XRP Ledger). See the [Currency Code reference](currency-formats.html#currency-codes) for information on the XRP Ledger's currency code formats. |
+| `code` | String | The (case-sensitive) ticker symbol of this token in the XRP Ledger. This can be a three-digit code, a 40-character hex code, or a custom format (for clients that know how to represent the non-standard code in the XRP Ledger). See the [Currency Code reference](currency-formats.html#currency-codes) for information on the XRP Ledger's currency code formats. |
 | `display_decimals` | Number | The number of decimals that a client application should use to display amounts of this currency. |
 | `issuer` | String | The address of the XRP Ledger account where you issue this currency, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`). You SHOULD also list this address in the `[[ACCOUNTS]]` list. (Reminder: the presence of an address here is not authoritative on its own. See [Account Verification](#account-verification) for details.) |
-| `network` | String | The network chain where you issue this currency. Use `main` to explicitly specify the production XRP Ledger. If omitted, clients SHOULD assume that the currency is issued on the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
+| `network` | String | The network chain where you issue this token. Use `main` to explicitly specify the production XRP Ledger. If omitted, clients SHOULD assume that the currency is issued on the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `symbol` | String | The text symbol, such "$" or "€", that should be used with amounts of this asset or currency, if it has a symbol in the Unicode standard. |
 
 

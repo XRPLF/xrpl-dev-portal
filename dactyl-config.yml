@@ -180,6 +180,9 @@ targets:
               # next-nearest equivalent of the #seed anchor:
             "cryptographic-keys.html#seed": "cryptographic-keys.html#キーの生成"
             "cryptographic-keys.html#regular-key-pair": "cryptographic-keys.html#レギュラーキーペア"
+            # Fix links from untranslated common-misconceptions-about-freezes.html
+              # Not updated to have the table. The top-level of the page is pretty close.
+            "currency-formats.html#comparison": "currency-formats.html"
 
 
 pages:
@@ -381,6 +384,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
             - public-rippled-methods.html
         top_nav_hero_image: top-nav-hero-docs
@@ -389,6 +393,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
             - public-rippled-methods.html
         blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
@@ -416,6 +421,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
             - public-rippled-methods.html
         top_nav_hero_image: top-nav-hero-docs
@@ -424,6 +430,7 @@ pages:
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
+            - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
         blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
         filters:
@@ -692,91 +699,102 @@ pages:
         targets:
             - ja
 
-    -   name: Issued Currencies
-        html: issued-currencies.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger.
+    -   md: concepts/tokens/tokens.md
         targets:
             - en
 
-    -   name: 発行済み通貨
+    -   md: concepts/tokens/tokens.ja.md
+        targets:
+            - ja
+
+        # Redirects from old (emptyish) landing pages.
+    -   name: Tokens
         html: issued-currencies.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: Anyone can make tokens representing digital value on the XRP Ledger.
+        targets:
+            - en
+
+    -   name: トークン
+        html: issued-currencies.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
         blurb: XRP Ledgerでは、XRP以外の通貨はすべて発行済み通貨とされます。XRP Ledgerで発行済み通貨がどのように機能するか説明します。
         targets:
             - ja
 
-    -   md: concepts/issued-currencies/issued-currencies-overview.md
+    -   md: concepts/tokens/trust-lines-and-issuing.md
         targets:
             - en
 
-    -   md: concepts/issued-currencies/issued-currencies-overview.ja.md
+    -   md: concepts/tokens/trust-lines-and-issuing.ja.md
         targets:
             - ja
 
-    -   md: concepts/issued-currencies/trust-lines-and-issuing.md
+    -   md: concepts/tokens/authorized-trust-lines.md
         targets:
             - en
 
-    -   md: concepts/issued-currencies/trust-lines-and-issuing.ja.md
+    -   md: concepts/tokens/authorized-trust-lines.ja.md
         targets:
             - ja
 
-    -   md: concepts/issued-currencies/authorized-trust-lines.md
+    -   md: concepts/tokens/non-fungible-tokens.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/freezes.md
         targets:
             - en
 
-    -   md: concepts/issued-currencies/authorized-trust-lines.ja.md
+    -   md: concepts/tokens/freezes.ja.md
         targets:
             - ja
 
-    -   md: concepts/issued-currencies/freezes.md
+    -   md: concepts/tokens/common-misconceptions-about-freezes.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/rippling.md
         targets:
             - en
 
-    -   md: concepts/issued-currencies/freezes.ja.md
+    -   md: concepts/tokens/rippling.ja.md
         targets:
             - ja
 
-    -   md: concepts/issued-currencies/rippling.md
+    -   md: concepts/tokens/transfer-fees.md
         targets:
             - en
 
-    -   md: concepts/issued-currencies/rippling.ja.md
+    -   md: concepts/tokens/transfer-fees.ja.md
         targets:
             - ja
 
-    -   md: concepts/issued-currencies/transfer-fees.md
+    -   md: concepts/tokens/issuing-and-operational-addresses.md
         targets:
             - en
 
-    -   md: concepts/issued-currencies/transfer-fees.ja.md
+    -   md: concepts/tokens/issuing-and-operational-addresses.ja.md
         targets:
             - ja
 
-    -   md: concepts/issued-currencies/issuing-and-operational-addresses.md
+    -   md: concepts/tokens/paths.md
         targets:
             - en
 
-    -   md: concepts/issued-currencies/issuing-and-operational-addresses.ja.md
+    -   md: concepts/tokens/paths.ja.md
         targets:
             - ja
 
-    -   md: concepts/issued-currencies/paths.md
+    -   md: concepts/tokens/demurrage.md
         targets:
             - en
 
-    -   md: concepts/issued-currencies/paths.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/issued-currencies/demurrage.md
-        targets:
-            - en
-
-    -   md: concepts/issued-currencies/demurrage.ja.md
+    -   md: concepts/tokens/demurrage.ja.md
         targets:
             - ja
 
@@ -946,9 +964,6 @@ pages:
     -   md: concepts/consensus-network/federated-sidechains.md
         targets:
             - en
-
-    -   md: concepts/consensus-network/federated-sidechains.ja.md
-        targets:
             - ja
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
@@ -1019,19 +1034,27 @@ pages:
         targets:
             - ja
 
+        # Redirect old NFT articles
     -   name: Non-fungible Tokens (NFTs)
         html: nft-concepts.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
+        template: pagetype-redirect.html.jinja
+        redirect_url: non-fungible-tokens.html
         blurb: Explore XRPL-native support for NFTs.
+        nav_omit: true
         targets:
             - en
             - ja
 
-    -   md: concepts/nft-concepts/nft-conceptual-overview.md
+    -   name: NFT Conceptual Overview
+        html: nft-conceptual-overview.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: non-fungible-tokens.html
+        blurb: Explore XRPL-native support for NFTs.
+        nav_omit: true
         targets:
             - en
             - ja
+
 
 # Tutorials --------------------------------------------------------------------
 
@@ -1650,6 +1673,12 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.ja.md
         targets:
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md

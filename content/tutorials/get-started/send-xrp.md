@@ -412,7 +412,7 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 After completing this tutorial, you may want to try the following:
 
 - Build [Reliable transaction submission](reliable-transaction-submission.html) for production systems.
-- Consult the your [client library](client-libraries.html)'s API reference for the full range of XRP Ledger functionality. <!-- SPELLING_IGNORE: javadocs -->
+- Consult your [client library](client-libraries.html)'s API reference for the full range of XRP Ledger functionality. <!-- SPELLING_IGNORE: javadocs -->
 - Customize your [Account Settings](manage-account-settings.html).
 - Learn how [Transaction Metadata](transaction-metadata.html) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](payment-types.html) such as Escrows and Payment Channels.

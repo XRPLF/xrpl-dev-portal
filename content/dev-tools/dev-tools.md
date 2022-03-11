@@ -50,14 +50,6 @@ The following tools are maintained by the XRP Ledger community:
 
     See all [tokens issued](issued-currencies.html) in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.
 
-- **[XRP Stats](https://ledger.exposed/)**
-
-    View lists of who has the most XRP in their possession or locked up in [escrow](escrow.html).
-
-- **[XRPCharts](https://xrpcharts.ripple.com/)**
-
-    View current and historical price data for various currency pairs involving XRP, including transactions at major exchanges and on-ledger activity in the [decentralized exchange](decentralized-exchange.html).
-
 - **[XRPScan](https://xrpscan.com/)**
 
     Explore ledger activity, view [amendment voting](amendments.html) in real-time, and get account information. [API access](https://docs.xrpscan.com/) also available.

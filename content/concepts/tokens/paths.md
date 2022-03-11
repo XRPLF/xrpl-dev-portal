@@ -1,16 +1,16 @@
 ---
 html: paths.html
-parent: issued-currencies.html
-blurb: Payments of issued currencies must traverse paths of connected users and order books.
+parent: tokens.html
+blurb: Payments of tokens must traverse paths of connected users and order books.
 labels:
   - Payments
   - Cross-Currency
 ---
 # Paths
 
-In the XRP Ledger, paths define a way for [issued currency](issued-currencies-overview.html) payments to flow through intermediary steps on their way from sender to receiver. Paths enable [cross-currency payments](cross-currency-payments.html) by connecting sender and receiver through orders in the XRP Ledger's [decentralized exchange](decentralized-exchange.html). Paths also enable complex settlement of offsetting debts.
+In the XRP Ledger, paths define a way for [tokens](tokens.html) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](cross-currency-payments.html) by connecting sender and receiver through orders in the XRP Ledger's [decentralized exchange](decentralized-exchange.html). Paths also enable complex settlement of offsetting debts.
 
-A single Payment transaction in the XRP Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_, which is a collection of possible paths to take. The paths in a path set must start and end with the same currency.
+A single Payment transaction in the XRP Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_, which is a collection of possible paths to take. All paths in a path set must start with the same currency, and must also end with the same currency as each other.
 
 Since XRP can be sent directly to any address, an [XRP-to-XRP transaction](direct-xrp-payments.html) does not use any paths.
 
@@ -19,13 +19,13 @@ Since XRP can be sent directly to any address, an [XRP-to-XRP transaction](direc
 A path is made of steps that connect the sender to the receiver of the payment. Every step is either:
 
 * Rippling through another address with the same currency
-* Exchanging currency at an order book
+* Trading tokens or XRP using an order book
 
-Rippling through another address is the process of moving debt around. In the typical case, this involves reducing an issuer's obligation to one party and increasing the obligation to another party. Rippling can occur between any addresses that are connected by trust lines. See [Understanding the No Ripple Flag](rippling.html) for more examples of rippling.
+[Rippling](rippling.html) is the process of exchanging equivalent tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
 
-In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
+[Trading tokens and possibly XRP](decentralized-exchange.html) involves going to an order book and finding the best exchange rate between the assets involved for the amount being sent. The path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
 
-In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](transfer-fees.html), trust line quality, or rounding.
+In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](transfer-fees.html), trust line quality settings, or rounding.
 
 {{ include_svg("img/paths-examples.svg", "Diagram of three example paths") }}
 
@@ -50,7 +50,7 @@ By convention, several steps of a path are implied by the [fields of the Payment
 
 * The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's `Account` field.
 * If the transaction includes a `SendMax` field with an `issuer` that is not the sender of the transaction, that issuer is implied to be the second step of the path.
-    * If `issuer` of the `SendMax` _is_ the sending address, then the path starts at the sending address, and may use any of that address's trust lines in the given currency. See [special values for `SendMax` and `Amount`](payment.html#special-issuer-values-for-sendmax-and-amount) for details.
+    * If `issuer` of the `SendMax` _is_ the sending address, then the path starts at the sending address, and may use any of that address's trust lines for the given currency code. See [special values for `SendMax` and `Amount`](payment.html#special-issuer-values-for-sendmax-and-amount) for details.
 * If the `Amount` field of the transaction includes an `issuer` that is not the same as the `Destination` of the transaction, that issuer is implied to be the second-to-last step of the path.
 * Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's `Destination` field.
 
@@ -61,7 +61,7 @@ In addition to explicitly specified paths, a transaction can execute along the _
 
 The default path could be any of the following:
 
-* If the transaction is uses only one currency (regardless of issuer), then the default path assumes the payment should ripple through the addresses involved. This path only works if those addresses are connected by trust lines.
+* If the transaction uses only one token (regardless of issuer), then the default path assumes the payment should ripple through the addresses involved. This path only works if those addresses are connected by trust lines.
     * If `SendMax` is omitted, or the `issuer` of the `SendMax` is the sender, the default path needs a trust line from the sending `Account` to the `issuer` of the destination `Amount` to work.
     * If the `SendMax` and `Amount` have different `issuer` values, and neither are the sender or receiver, the default path is probably not useful because it would need to ripple across a trust line between the two issuers. Ripple (the company) typically discourages issuers from trusting one another directly.
 * For cross-currency transactions, the default path uses the order book between the source currency (as specified in the `SendMax` field) and the destination currency (as specified in the `Amount` field).

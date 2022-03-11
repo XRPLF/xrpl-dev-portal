@@ -53,20 +53,20 @@
     {% if target.lang=="ja" %}
     <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
     {% endif %}
-    <link href="{{currentpage.prefix}}assets/css/devportal2021-v6a.css" rel="stylesheet" />
+    <link href="{{currentpage.prefix}}assets/css/devportal2021-v7.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     {% if "js_editor" in currentpage.filters %}
-    <script src="assets/vendor/jshint.js"></script>
-    <script src="assets/vendor/codemirror-js-json-lint.min.js"></script>
-    <script src="assets/vendor/cm-javascript-lint.js"></script>
-    <script src="assets/js/js-editor.js"></script>
+    <script src="{{currentpage.prefix}}assets/vendor/jshint.js"></script>
+    <script src="{{currentpage.prefix}}assets/vendor/codemirror-js-json-lint.min.js"></script>
+    <script src="{{currentpage.prefix}}assets/vendor/cm-javascript-lint.js"></script>
+    <script src="{{currentpage.prefix}}assets/js/js-editor.js"></script>
     {% endif %}
 
     {% if target.light_theme_enabled %}
     <!-- Theme switch -->
-    <script src="assets/js/theme-switch.js"></script>
+    <script src="{{currentpage.prefix}}assets/js/theme-switch.js"></script>
     {% endif %}
 
     {% block head %}
