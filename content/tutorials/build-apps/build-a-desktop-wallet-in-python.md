@@ -105,9 +105,9 @@ You may have noticed that the app in step 1 only shows the latest validated ledg
 
 ![Animation: Step 2, showing ledger updates](img/python-wallet-2.gif)
 
-If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
+If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so the user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
 
-The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that you each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with `self.`). When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:
+The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with `self.`). When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:
 
 - For GUI to worker thread, use [`asyncio.run_coroutine_threadsafe()`](https://docs.python.org/3/library/asyncio-task.html#asyncio.run_coroutine_threadsafe).
 - For worker to GUI communications, use [`wx.CallAfter()`](https://docs.wxpython.org/wx.functions.html#wx.CallAfter).
@@ -242,7 +242,7 @@ This saves the ledger's current reserves settings, so that you can use them to c
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def calculate_reserve_xrp", end_before="def update_account") }}
 
-Add an `update_account()` method:
+Add an `update_account()` method to the `TWaXLFrame` class:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def update_account", end_before="if __name__") }}
 
@@ -403,7 +403,7 @@ Also add a new method to the `TWaXLFrame` class to display the pending transacti
 
 {{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="def add_pending_tx", end_before="def click_send_xrp") }}
 
-This method is similar to the `add_tx_row()` method in that it processes a transaction for display and add it to the Transaction History table. The differences are that it takes one of [xrpl-py's Transaction models](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.models.transactions.html) rather than a JSON-like API response; and it handles certain columns differently because the transaction has not yet been confirmed. Importantly, it saves a reference to table row containing this transaction to the `pending_tx_rows` dictionary, so that later on when the transaction is confirmed, you can remove the table row for the pending version and replace it with the final version of the transaction.
+This method is similar to the `add_tx_row()` method in that it processes a transaction for display and adds it to the Transaction History table. The differences are that it takes one of [xrpl-py's Transaction models](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.models.transactions.html) rather than a JSON-like API response; and it handles certain columns differently because the transaction has not yet been confirmed. Importantly, it saves a reference to table row containing this transaction to the `pending_tx_rows` dictionary, so that later on when the transaction is confirmed, you can remove the table row for the pending version and replace it with the final version of the transaction.
 
 Lastly, update the `add_tx_from_sub()` method so that it finds and updates pending transactions with their final results when those transactions are confirmed. Add the following lines **right before the call to** `self.add_tx_row()`:
 
@@ -413,7 +413,10 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 1. Open the Python interpreter.
 
-        python
+        python3
+
+    **Caution:** Depending on your OS, the command may be `python` or `python3`. You want to open Python 3, not a Python 2.x version.
+
 
 2. Run the following commands in the Python interpreter:
 
@@ -450,11 +453,11 @@ When there are other errors, you can expose them to the user with an icon and a 
 
 ![Screenshot: invalid address error icon with tooltip](img/python-wallet-6-err.png)
 
-The following code implements account domain verification; **save it as a new file** named `verify_domain.py`:
+The following code implements account domain verification; **save it as a new file** named `verify_domain.py` in the same folder as your app's main file:
 
 {{ include_code("_code-samples/build-a-wallet/py/verify_domain.py", language="py") }}
 
-In your app's main file, import the `verify_account_domain` function:
+**In your app's main file,** import the `verify_account_domain` function:
 
 {{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="from verify_domain", end_before="class XRPLMonitorThread") }}
 
