@@ -59,8 +59,8 @@ You can put any domain in your account's `Domain` field. To prove that an accoun
 
 There are several options which can be either enabled or disabled for an account. Account options are represented by different types of flags depending on the situation:
 
-* The `AccountSet` transaction type has several "AccountSet Flags" (prefixed **`asf`**) that can enable an option when passed as the `SetFlag` parameter, or disable an option when passed as the `ClearFlag` parameter.
-* The `AccountSet` transaction type has several transaction flags (prefixed **`tf`**) that can be used to enable or disable specific account options when passed in the `Flags` parameter. This style is discouraged. New account options do not have corresponding transaction (`tf`) flags.
+* The `AccountSet` transaction type has several "AccountSet Flags" (prefixed **`asf`**) that can enable an option when passed as the `SetFlag` parameter, or disable an option when passed as the `ClearFlag` parameter. Newer options have only this style of flag. You can enable up to one `asf` flag per transaction, and disable up to one `asf` flag per transaction.
+* The `AccountSet` transaction type has several transaction flags (prefixed **`tf`**) that can be used to enable or disable specific account options when passed in the `Flags` parameter. You can enable and disable a combination of settings in one transaction using multiple `tf` flags, but not all settings have `tf` flags.
 * The `AccountRoot` ledger object type has several ledger-state-flags (prefixed **`lsf`**) which represent the state of particular account options within a particular ledger. These settings apply until a transaction changes them.
 
 The preferred way to enable and disable Account Flags is using the `SetFlag` and `ClearFlag` parameters of an AccountSet transaction. AccountSet flags have names that begin with **`asf`**.
