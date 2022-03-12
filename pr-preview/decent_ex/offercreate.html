@@ -357,23 +357,80 @@
 </tbody>
 </table>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<ul>
-<li>If the transaction specifies both <code>tfImmediateOrCancel</code> and <code>tfFillOrKill</code>, the transaction fails with the result code <code>temINVALID_FLAG</code>.</li>
-<li>If the transaction specifies an <code>Expiration</code> time that has already passed, the transaction fails with the result code <code>tecEXPIRED</code>. <em>(Updated by the <a href="known-amendments.html#checks">Checks amendment</a>: previously, the transaction used the result code <code>tesSUCCESS</code> in this case. In either case, the transaction has no effect except to destroy the XRP paid as a <a href="transaction-cost.html">transaction cost</a>.)</em></li>
-<li>If the transaction specifies <code>tfFillOrKill</code>, and the full amount cannot be filled, it fails with the result code <code>tecKILLED</code>. <em>(Updated by the <a href="known-amendments.html#fix1578">fix1578 amendment</a>: previously, the transaction used the result code <code>tesSUCCESS</code> in this case. In either case, the transaction does not execute any trades.)</em></li>
-<li>If the transaction contains an <code>Expiration</code> field that is not validly formatted, the transaction failes with the result code <code>temBAD_EXPIRATION</code>.</li>
-<li>If the transaction contains an <code>OfferSequence</code> that is not validly formatted, or is higher than the transaction's own <code>Sequence</code> number, the transaction failes with the result code <code>temBAD_SEQUENCE</code>.</li>
-<li>If the Offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token, the transaction fails with <code>temBAD_OFFER</code>.</li>
-<li>If the transaction specifies a token for the same token (same issuer and currency code) the transaction fails with <code>temREDUNDANT</code>.</li>
-<li>If the transaction specifies a token with the currency code "XRP", the transaction fails with <code>temBAD_CURRENCY</code>.</li>
-<li>If the transaction specifies a token with an invalid <code>issuer</code> value, the transaction fails with <code>temBAD_ISSUER</code>.</li>
-<li>If the transaction specifies a token whose <code>issuer</code> value is not a funded account in the ledger, the transaction fails with <code>tecNO_ISSUER</code>.</li>
-<li>If the transaction involves a token on a <a href="freezes.html">frozen</a> trust line, the transaction fails with <code>tecFROZEN</code>.</li>
-<li>If the owner does not hold a positive amount of the <code>TakerGets</code> currency, the transaction fails with the result code <code>tecUNFUNDED_OFFER</code>. (Exception: if <code>TakerGets</code> specifies a token that the owner issues, the transaction can succeed.)</li>
-<li>If the transaction involves a token whose issuer uses <a href="authorized-trust-lines.html">Authorized Trust Lines</a> and the transaction would send those tokens to an unauthorized trust line, the transaction fails with either the result code <code>tecNO_LINE</code> (if the necessary trust line does not exist) or <code>tecNO_AUTH</code> (if the trust line exists but has not been authorized).</li>
-<li>If the owner does not have enough XRP to meet the reserve requirement of adding a new Offer object to the ledger, and the transaction did not convert any currency, the transaction fails with the result code <code>tecINSUF_RESERVE_OFFER</code>. (If the transaction successfully traded any amount, the transaction succeeds with the result code <code>tesSUCCESS</code>, but does not create an Offer object in the ledger.)</li>
-<li>If the owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already, the transaction fails with the result code <code>tecDIR_FULL</code>.</li>
-</ul>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>temINVALID_FLAG</code></td>
+<td align="left">Occurs if the transaction specifies both <code>tfImmediateOrCancel</code> and <code>tfFillOrKill</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>tecEXPIRED</code></td>
+<td align="left">Occurs if the transaction specifies an <code>Expiration</code> time that has already passed <em>(Updated by the <a href="known-amendments.html#depositpreauth">DepositPreauth amendment</a>: previously, the transaction used the result code <code>tesSUCCESS</code> in this case. In either case, the transaction has no effect except to destroy the XRP paid as a <a href="transaction-cost.html">transaction cost</a>.)</em></td>
+</tr>
+<tr>
+<td align="left"><code>tecKILLED</code></td>
+<td align="left">Occurs if the transaction specifies <code>tfFillOrKill</code>, and the full amount cannot be filled. <em>(Updated by the <a href="known-amendments.html#fix1578">fix1578 amendment</a>: previously, the transaction used the result code <code>tesSUCCESS</code> in this case. In either case, the transaction does not execute any trades.)</em></td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_EXPIRATION</code></td>
+<td align="left">Occurs if the transaction contains an <code>Expiration</code> field that is not validly formatted.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_SEQUENCE</code></td>
+<td align="left">Occurs if the transaction contains an <code>OfferSequence</code> that is not validly formatted, or is higher than the transaction's own <code>Sequence</code> number.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_OFFER</code></td>
+<td align="left">Occurs if the Offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token.</td>
+</tr>
+<tr>
+<td align="left"><code>temREDUNDANT</code></td>
+<td align="left">Occurs if the transaction specifies a token for the same token (same issuer and currency code).</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_CURRENCY</code></td>
+<td align="left">Occurs if the transaction specifies a token with the currency code "XRP".</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_ISSUER</code></td>
+<td align="left">Occurs if the transaction specifies a token with an invalid <code>issuer</code> value.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_ISSUER</code></td>
+<td align="left">Occurs if the transaction specifies a token whose <code>issuer</code> value is not a funded account in the ledger.</td>
+</tr>
+<tr>
+<td align="left"><code>tecFROZEN</code></td>
+<td align="left">Occurs if the transaction involves a token on a <a href="freezes.html">frozen</a> trust line (including local and global freezes).</td>
+</tr>
+<tr>
+<td align="left"><code>tecUNFUNDED_OFFER</code></td>
+<td align="left">Occurs if the owner does not hold a positive amount of the <code>TakerGets</code> currency. (Exception: if <code>TakerGets</code> specifies a token that the owner issues, the transaction can succeed.)</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_LINE</code></td>
+<td align="left">Occurs if the transaction involves a token whose issuer uses <a href="authorized-trust-lines.html">Authorized Trust Lines</a> and the necessary trust line does not exist.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_AUTH</code></td>
+<td align="left">Occurs if the transaction involves a token whose issuer uses <a href="authorized-trust-lines.html">Authorized Trust Lines</a> and the the trust line that would receive the tokens exists but has not been authorized.</td>
+</tr>
+<tr>
+<td align="left"><code>tecINSUF_RESERVE_OFFER</code></td>
+<td align="left">Occurs if the owner does not have enough XRP to meet the reserve requirement of adding a new Offer object to the ledger, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code <code>tesSUCCESS</code>, but does not create an Offer object in the ledger for the remainder.)</td>
+</tr>
+<tr>
+<td align="left"><code>tecDIR_FULL</code></td>
+<td align="left">Occurs if the owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->

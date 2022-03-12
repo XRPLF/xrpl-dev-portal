@@ -314,6 +314,12 @@
 <td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys. To remove the key, use an empty value.</td>
 </tr>
 <tr>
+<td align="left"><code>Minter</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
+<td align="left">String</td>
+<td align="left">Blob</td>
+<td align="left"><em>(Optional)</em> Sets an alternate account that is allowed to mint NFTokens on this account's behalf using NFTokenMint's <code>Issuer</code> field. This field is part of the experimental XLS-20 standard for non-fungible tokens.</td>
+</tr>
+<tr>
 <td align="left"><a href="#accountset-flags"><code>SetFlag</code></a></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
@@ -357,8 +363,8 @@
 <h2 id="accountset-flags">AccountSet Flags<a aria-hidden="true" class="hover_anchor" href="#accountset-flags"><i class="fa fa-link"></i></a></h2>
 <p>There are several options which can be either enabled or disabled for an account. Account options are represented by different types of flags depending on the situation:</p>
 <ul>
-<li>The <code>AccountSet</code> transaction type has several "AccountSet Flags" (prefixed <strong><code>asf</code></strong>) that can enable an option when passed as the <code>SetFlag</code> parameter, or disable an option when passed as the <code>ClearFlag</code> parameter.</li>
-<li>The <code>AccountSet</code> transaction type has several transaction flags (prefixed <strong><code>tf</code></strong>) that can be used to enable or disable specific account options when passed in the <code>Flags</code> parameter. This style is discouraged. New account options do not have corresponding transaction (<code>tf</code>) flags.</li>
+<li>The <code>AccountSet</code> transaction type has several "AccountSet Flags" (prefixed <strong><code>asf</code></strong>) that can enable an option when passed as the <code>SetFlag</code> parameter, or disable an option when passed as the <code>ClearFlag</code> parameter. Newer options have only this style of flag. You can enable up to one <code>asf</code> flag per transaction, and disable up to one <code>asf</code> flag per transaction.</li>
+<li>The <code>AccountSet</code> transaction type has several transaction flags (prefixed <strong><code>tf</code></strong>) that can be used to enable or disable specific account options when passed in the <code>Flags</code> parameter. You can enable and disable a combination of settings in one transaction using multiple <code>tf</code> flags, but not all settings have <code>tf</code> flags.</li>
 <li>The <code>AccountRoot</code> ledger object type has several ledger-state-flags (prefixed <strong><code>lsf</code></strong>) which represent the state of particular account options within a particular ledger. These settings apply until a transaction changes them.</li>
 </ul>
 <p>The preferred way to enable and disable Account Flags is using the <code>SetFlag</code> and <code>ClearFlag</code> parameters of an AccountSet transaction. AccountSet flags have names that begin with <strong><code>asf</code></strong>.</p>
@@ -379,6 +385,12 @@
 <td align="left">5</td>
 <td align="left">(None)</td>
 <td align="left">Track the ID of this account's most recent transaction. Required for <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code></a></td>
+</tr>
+<tr>
+<td align="left"><code>asfAuthorizedMinter</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
+<td align="left">10</td>
+<td align="left">(None)</td>
+<td align="left">Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the <code>Minter</code> field of the <a href="accountroot.html">AccountRoot</a> object. This is an experimental field to enable behavior for NFToken support.</td>
 </tr>
 <tr>
 <td align="left"><code>asfDefaultRipple</code></td>
