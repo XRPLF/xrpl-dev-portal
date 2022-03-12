@@ -36,11 +36,11 @@ When you try to place an Offer, the transaction is rejected as "unfunded" if you
 **To sell a token,** you must either:
 
 - Hold any positive amount of that token, _or_
-- be the token's issuer.
+- Be the token's issuer.
 
 However, you don't need to hold the full amount specified in the Offer. Placing an Offer does not lock up your funds, so you can place multiple Offers to sell the same tokens (or XRP), or place an Offer and hope to get enough tokens or XRP to fully fund it later.
 
-**To sell XRP,** you must hold enough XRP to meet all the [reserve requirements](reserves.html), including the reserve for the Offer object to be placed in the ledger and the trust line to hold the token you are buying. As long as you have a nonzero amount of XRP left over after setting aside the amounts for the reserves, you can place the Offer.
+**To sell XRP,** you must hold enough XRP to meet all the [reserve requirements](reserves.html), including the reserve for the Offer object to be placed in the ledger and for the trust line to hold the token you are buying. As long as you have any XRP left over after setting aside the reserve amount, you can place the Offer.
 
 When another Offer matches yours, both Offers execute to the extent that their owners' funds permit at the the time. If there are matching Offers and you run out of funds before yours is fully filled, the remainder of your Offer is canceled. An Offer can't make your balance of a token negative, unless you are the issuer of that token. (If you are the issuer, you can use Offers to issue new tokens up to the total amount specified in your Offers; tokens you issue are represented as negative balances from your perspective.)
 
@@ -77,7 +77,7 @@ The limit values of [trust lines](trust-lines-and-issuing.html) do not affect Of
 
 However, holding tokens still requires a trust line to the issuer. When an Offer is consumed, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](reserves.html), any Offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.
 
-Trust lines limits protect you from receiving more of a token as payment than you want. Offers can go beyond those limits because they are an explicit statement of how much of the token you want.
+Trust line limits protect you from receiving more of a token as payment than you want. Offers can go beyond those limits because they are an explicit statement of how much of the token you want.
 
 
 ## Offer Preference

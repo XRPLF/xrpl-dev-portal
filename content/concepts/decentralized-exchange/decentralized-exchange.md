@@ -8,9 +8,9 @@ targets:
 ---
 # Decentralized Exchange
 
-The XRP Ledger's has possibly the world's oldest _decentralized exchange_ (sometimes abbreviated "DEX"), operating continuously since the XRP Ledger's launch in 2012. The exchange allows users to buy and sell [tokens](tokens.html) for XRP or other tokens, with minimal [fees](fees.html) charged to the network itself (not paid out to any party).
+The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometimes abbreviated "DEX"), operating continuously since the XRP Ledger's launch in 2012. The exchange allows users to buy and sell [tokens](tokens.html) for XRP or other tokens, with minimal [fees](fees.html) charged to the network itself (not paid out to any party).
 
-**Caution:** Any can [issue a token](issue-a-fungible-token.html) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always pay attention to the issuer of any token you buy tokens; otherwise, you might give up something of value and receive worthless tokens in exchange.
+**Caution:** Any can [issue a token](issue-a-fungible-token.html) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.
 
 ## Structure
 
@@ -28,7 +28,7 @@ When trading two tokens, [auto-bridging](autobridging.html) improves exchange ra
 
 {{ include_svg("img/decentralized-exchange-example-trade.svg", "Diagram: Partially filled offer to buy a token for XRP.") }}
 
-The above diagram shows an example trade in the decentralized exchange. In this example, a trader named Tran places an Offer to buy 100 tokens with the currency code FOO issued by a fictional business called WayGate. (For brevity, "FOO.WayGate" refers to these tokens.) Tran specifies that he is willing to spend up to 1000 XRP for the full total. When Tran's transaction is processed, all of the following things happen:
+The above diagram shows an example trade in the decentralized exchange. In this example, a trader named Tran places an Offer to buy 100 tokens with the currency code FOO issued by a fictional business called WayGate. (For brevity, "FOO.WayGate" refers to these tokens.) Tran specifies that he is willing to spend up to 1000 XRP for the full total. When Tran's transaction is processed, the following things happen:
 
 1. The network calculates the exchange rate of Tran's Offer, by dividing the amount to buy by the amount to pay.
 0. The network finds the order book for the reverse of Tran's Offer: in this case, that means the order book for selling FOO.WayGate and buying XRP. This order book already has several existing Offers from other traders for varying amounts and exchange rates.
@@ -51,7 +51,7 @@ Because trades are only executed each time a new ledger closes (approximately ev
 
 The XRP Ledger does not natively represent concepts such as market orders, stop orders, or trading on leverage. Some of these may be possible with creative use of custom tokens and Offer properties.
 
-As a decentralized system, the XRP Ledger does not have any information on the actual people and organizations behind the [accounts](accounts.html) involved in trading. Therefore, the ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](freezes.html) and [authorized trust lines](authorized-trust-lines.html) are intended to help issuers follow these types of rules.
+As a decentralized system, the XRP Ledger does not have any information on the actual people and organizations behind the [accounts](accounts.html) involved in trading. Therefore, the ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](freezes.html) and [authorized trust lines](authorized-trust-lines.html) are intended to help issuers comply with relevant laws and regulations.
 
 ## See Also
 
