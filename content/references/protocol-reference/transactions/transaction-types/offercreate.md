@@ -55,21 +55,24 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 
 ## Error Cases
 
-- If the transaction specifies both `tfImmediateOrCancel` and `tfFillOrKill`, the transaction fails with the result code `temINVALID_FLAG`.
-- If the transaction specifies an `Expiration` time that has already passed, the transaction fails with the result code `tecEXPIRED`. _(Updated by the [Checks amendment][]: previously, the transaction used the result code `tesSUCCESS` in this case. In either case, the transaction has no effect except to destroy the XRP paid as a [transaction cost](transaction-cost.html).)_
-- If the transaction specifies `tfFillOrKill`, and the full amount cannot be filled, it fails with the result code `tecKILLED`. _(Updated by the [fix1578 amendment][]: previously, the transaction used the result code `tesSUCCESS` in this case. In either case, the transaction does not execute any trades.)_
-- If the transaction contains an `Expiration` field that is not validly formatted, the transaction failes with the result code `temBAD_EXPIRATION`.
-- If the transaction contains an `OfferSequence` that is not validly formatted, or is higher than the transaction's own `Sequence` number, the transaction failes with the result code `temBAD_SEQUENCE`.
-- If the Offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token, the transaction fails with `temBAD_OFFER`.
-- If the transaction specifies a token for the same token (same issuer and currency code) the transaction fails with `temREDUNDANT`.
-- If the transaction specifies a token with the currency code "XRP", the transaction fails with `temBAD_CURRENCY`.
-- If the transaction specifies a token with an invalid `issuer` value, the transaction fails with `temBAD_ISSUER`.
-- If the transaction specifies a token whose `issuer` value is not a funded account in the ledger, the transaction fails with `tecNO_ISSUER`.
-- If the transaction involves a token on a [frozen](freezes.html) trust line, the transaction fails with `tecFROZEN`.
-- If the owner does not hold a positive amount of the `TakerGets` currency, the transaction fails with the result code `tecUNFUNDED_OFFER`. (Exception: if `TakerGets` specifies a token that the owner issues, the transaction can succeed.)
-- If the transaction involves a token whose issuer uses [Authorized Trust Lines](authorized-trust-lines.html) and the transaction would send those tokens to an unauthorized trust line, the transaction fails with either the result code `tecNO_LINE` (if the necessary trust line does not exist) or `tecNO_AUTH` (if the trust line exists but has not been authorized).
-- If the owner does not have enough XRP to meet the reserve requirement of adding a new Offer object to the ledger, and the transaction did not convert any currency, the transaction fails with the result code `tecINSUF_RESERVE_OFFER`. (If the transaction successfully traded any amount, the transaction succeeds with the result code `tesSUCCESS`, but does not create an Offer object in the ledger.)
-- If the owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already, the transaction fails with the result code `tecDIR_FULL`.
+| Error Code               | Description                                       |
+|:-------------------------|:--------------------------------------------------|
+| `temINVALID_FLAG`        | Occurs if the transaction specifies both `tfImmediateOrCancel` and `tfFillOrKill`. |
+| `tecEXPIRED`             | Occurs if the transaction specifies an `Expiration` time that has already passed _(Updated by the [DepositPreauth amendment][]: previously, the transaction used the result code `tesSUCCESS` in this case. In either case, the transaction has no effect except to destroy the XRP paid as a [transaction cost](transaction-cost.html).)_ |
+| `tecKILLED`              | Occurs if the transaction specifies `tfFillOrKill`, and the full amount cannot be filled. _(Updated by the [fix1578 amendment][]: previously, the transaction used the result code `tesSUCCESS` in this case. In either case, the transaction does not execute any trades.)_ |
+| `temBAD_EXPIRATION`      | Occurs if the transaction contains an `Expiration` field that is not validly formatted. |
+| `temBAD_SEQUENCE`        | Occurs if the transaction contains an `OfferSequence` that is not validly formatted, or is higher than the transaction's own `Sequence` number. |
+| `temBAD_OFFER`           | Occurs if the Offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token. |
+| `temREDUNDANT`           | Occurs if the transaction specifies a token for the same token (same issuer and currency code). |
+| `temBAD_CURRENCY`        | Occurs if the transaction specifies a token with the currency code "XRP". |
+| `temBAD_ISSUER`          | Occurs if the transaction specifies a token with an invalid `issuer` value. |
+| `tecNO_ISSUER`           | Occurs if the transaction specifies a token whose `issuer` value is not a funded account in the ledger. |
+| `tecFROZEN`              | Occurs if the transaction involves a token on a [frozen](freezes.html) trust line (including local and global freezes). |
+| `tecUNFUNDED_OFFER`      | Occurs if the owner does not hold a positive amount of the `TakerGets` currency. (Exception: if `TakerGets` specifies a token that the owner issues, the transaction can succeed.) |
+| `tecNO_LINE`             | Occurs if the transaction involves a token whose issuer uses [Authorized Trust Lines](authorized-trust-lines.html) and the necessary trust line does not exist. |
+| `tecNO_AUTH`             | Occurs if the transaction involves a token whose issuer uses [Authorized Trust Lines](authorized-trust-lines.html) and the the trust line that would receive the tokens exists but has not been authorized. |
+| `tecINSUF_RESERVE_OFFER` | Occurs if the owner does not have enough XRP to meet the reserve requirement of adding a new Offer object to the ledger, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code `tesSUCCESS`, but does not create an Offer object in the ledger for the remainder.) |
+| `tecDIR_FULL`            | Occurs if the owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already. |
 
 
 
