@@ -38,14 +38,12 @@ labels:
 
 4. CMakeをインストールします。
 
-   `rippled`のバージョン1.7.0は、CMake 3.9.0以降を必要とします。このチュートリアルでは、執筆時の最新バージョンだったCMake 3.13.3を使用しました。
+   `rippled`のバージョン1.9.0は、CMake 3.16.3以降を必要とします。
 
-   CMake 3.9.0以降をすでにインストールしてある場合には、このステップはスキップできます。
+   CMake 3.16.3をインストールするには、以下を実行します。
 
-   CMake 3.13.3をインストールするには、以下を実行します。
-
-        wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh
-        sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
+        wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
+        sudo sh cmake-3.16.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
 
    `cmake --version`を使用し、正常にインストールされたことを確認します。
 
