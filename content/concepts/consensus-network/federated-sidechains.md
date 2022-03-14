@@ -22,9 +22,9 @@ Federated sidechains enable developers to launch new features and innovative app
 
 A sidechain is an independent ledger with its own consensus algorithm and transaction types and rules. Each sidechain is run by its own set of servers (including validators) and does not rely on the validators on the Mainnet for transactions on the sidechain.
 
-Each sidechain has two door accounts, one on the sidechain and one on the mainchain, that are controlled by the federators on the sidechain. The federators listen for transactions to and from both of these door accounts.
+Each _federated_ sidechain has two door accounts, one on the sidechain and one on the mainchain, that are controlled by the federators on the sidechain. The federators listen for transactions to and from both of these door accounts.
 
-The sidechain has _federators_ who jointly control the door accounts on both networks using [multi-signing](multi-signing.html) so that 80% of federators must approve a transaction. In many cases, the federators should also be the trusted validators of the sidechain.
+The _federated_ sidechain has _federators_ who jointly control the door accounts on both networks using [multi-signing](multi-signing.html) so that 80% of federators must approve a transaction. In many cases, the federators should also be the trusted validators of the sidechain.
 
 When a door account receives a transaction on either the sidechain or the mainchain, the federators create a mirror transaction on the other chain. (For example, if you send XRP _to_ the mainchain door account, the federators create a transaction on the sidechain to send XRP _from_ the sidechain door account to the intended recipient.) The federators sign the transaction and broadcast it to each other. Simultaneously, federators also listen for signed transactions from other federators and collect them.
 
@@ -37,11 +37,11 @@ Transactions within the sidechain are not visible to the servers on the mainchai
 
 _Sidechain_: An XRP Ledger sidechain is another blockchain based on XRP Ledger technology. A _federated_ sidechain provides a way to transfer assets from a mainchain to the sidechain and back. A sidechain can use an exact copy of the XRP Ledger's protocol or it can make changes, including to the [consensus algorithm](consensus.html), [transaction types](transaction-types.html), and other rules.
  
-_Federator_: A server on the sidechain that listens for triggering transactions on both the main chain and the side chain. Each federator has a signing key associated with it that is used to sign transactions. A transaction must be signed by a quorum of federators before it can be submitted. Federators are responsible for creating and signing valid response transactions, collecting signatures from other federators, and submitting transactions to the main chain and side chain.
+_Federated Sidechain_: A custom blockchain where some assets are backed by a mainchain. Proxy assets are issued in the sidechain, with the equivalent assets held by a door account on the mainchain. Sidechains have separate history, rules, and validators than the mainchain. Proxy assets on the sidechain can be sent back to the mainchain and unlocked from the control of the federators.
 
 _Mainchain_: The blockchain where assets originate and where assets are held while being used on the side chain. For most sidechains, the mainchain is the XRP Ledger Mainnet, Testnet, or Devnet.
 
-_Sidechain_: A custom blockchain where some assets are backed by a mainchain. Proxy assets are issued in the sidechain, with the equivalent assets held by a door account on the mainchain. Sidechains have separate history, rules, and validators than the mainchain. Proxy assets on the sidechain can be sent back to the mainchain and unlocked from the control of the federators.
+_Federator_: A server on the sidechain that listens for triggering transactions on both the main chain and the side chain. Each federator has a signing key associated with it that is used to sign transactions. A transaction must be signed by a quorum of federators before it can be submitted. Federators are responsible for creating and signing valid response transactions, collecting signatures from other federators, and submitting transactions to the main chain and side chain.
 
 _Door account_: An account controlled by the federators. There are two door accounts: one on the mainchain and one on the sidechain. Cross chain transactions are started by users sending assets to a door account. Mainchain to sidechain transactions cause the balance to increase on the mainchain door account and the balance to decrease on the sidechain door account. It is called a "door" because it is the mechanism to move assets from one chain to another—much like going between rooms in a house requires stepping through a door.
 
@@ -54,7 +54,7 @@ _Response transaction_: A transaction submitted by the federators in reaction to
 
 Federated Sidechains are currently available as an Engineering Preview so you can experiment and explore the potential of sidechains. You can connect sidechains to the XRP Ledger Testnet, Devnet, or Mainnet as long as [the servers](the-rippled-server.html) in the mainchain network are running version 1.8.0 or higher.
 
-**Caution:** You can connect sidechains to the XRP Ledger Mainnet to develop and test with small amounts; it is not recommended for production use cases until federated sidechains are available in a release. 
+**Caution:** You can connect sidechains to the XRP Ledger Mainnet to develop and test with small amounts; it is not recommended for production use cases until federated sidechains are available in an official release. 
 
 Setting up a sidechain involves the following high-level steps:
 
