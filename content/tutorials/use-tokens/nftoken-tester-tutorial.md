@@ -740,13 +740,13 @@ async function cancelOffer() {
 
 
 ```js
-	const tokenID = offerTokenId.value
-	const tokenIDs = [tokenID]
+	const tokenOfferID = tokenOfferIndex.value
+	const tokenOffers = [tokenOfferID]
 
       const transactionBlob = {
-      	  "TransactionType": "NFTokenCancelOffer",
+      	 "TransactionType": "NFTokenCancelOffer",
          "Account": wallet.classicAddress,
-         "TokenIDs": tokenIDs
+         "TokenOffers": tokenOffers
       }
 
 ```
