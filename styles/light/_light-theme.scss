@@ -694,3 +694,50 @@ $placeholder-color: $gray-600;
   color: $placeholder-color;
   opacity: 1;
 }
+
+
+// Events page
+.page-events {
+
+  label {
+    color: $gray-900;
+  }
+
+  .event-card {
+      color: $black;
+      background-color: $gray-050;
+      box-shadow: 0px 5px 20px 0px $gray-300;
+  }
+  a.event-card:hover {
+      color: $black;
+  }
+
+  .event-hero {
+      color: $gray-900;
+  }
+
+  .event-save-date {
+      color: $gray-900;
+  }
+
+  .event-small-gray {
+      color: $gray-600;
+  }
+
+  #event-hero-image {
+      height: 100%;
+      min-height: 209px;
+      background: url(../img/events/event-hero1-light@2x.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+
+  .icon-date::before {
+      background: url(../img/events/event-date-light.svg);
+  }
+
+  .icon-location::before {
+      background: url(../img/events/event-location-light.svg);
+  }
+}

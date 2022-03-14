@@ -282,6 +282,216 @@
   right: 0px;
 }
 
+// Events page
+.page-events {
+  #event-hero-image {
+      height: 100%;
+      min-height: 209px;
+      background: url(../img/events/event-hero1@2x.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+  #events-orange {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  .event-hero {
+      color: $gray-100;
+      p {
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 32px;
+      }
+  }
+  .event-save-date {
+      color: $white;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 26px;
+  }
+  .event-small-gray {
+      color: $gray-400;
+  }
+
+  .event-card {
+      max-width: 311px;
+      margin: 32px auto;
+      transition: all 0.35s ease-out;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-clip: border-box;
+
+      background-color: $card-bg;
+      box-shadow: 0px 5px 40px $black;
+
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 8px;
+
+      font-size: 16px;
+      line-height: 24px;
+      color: $gray-200;
+
+      .event-card-header {
+          position: relative;
+          height: 176px;
+          background-size: contain !important;
+          width: 100%;
+          border-radius: 8px 8px 0 0;
+      }
+
+      .event-card-title {
+          position: absolute;
+          bottom: 32px;
+          padding: 0 32px;
+          color: $gray-100;
+
+          font-weight: bold;
+          font-size: 20px;
+          line-height: 28px;
+      }
+
+      .event-card-body {
+          padding: 32px;
+      }
+
+      .event-card-footer {
+          padding: 0 32px 32px;
+      }
+
+      .event-card-footer .icon::before {
+          height: 24px;
+          width: 24px;
+          content: "";
+          margin-right: 8px;
+          background-size: contain;
+          background-repeat: no-repeat;
+      }
+
+      .icon-date::before {
+          background: url(../img/events/event-date.svg);
+      }
+      .icon-location::before {
+          background: url(../img/events/event-location.svg);
+      }
+  } //end event card
+
+  @media (min-width: 992px) {
+      .event-card {
+          max-width: 347px;
+          margin: 32px;
+      }
+      .event-card-header {
+          height: 197px !important;
+      }
+  }
+
+  a.event-card:hover {
+      transform: translateY(-16px);
+      text-decoration: none;
+  }
+
+
+  label {
+    margin: 0;
+    padding-left: 8px;
+    color: $white;  
+  }
+
+  .events-filter h6 {
+    font-size: 16px;
+  }
+
+  .events-filter {
+    height: 20px;
+    width: 20px;
+  }
+
+  .events-filter[type="checkbox"]::before {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+  
+    content: "";
+    background: $blue-purple-500;
+    border-radius: 4px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: $blue-purple-500;
+  }
+  
+  .events-filter[type="checkbox"]::after {
+    position: relative;
+    display: block;
+  
+    top: -20px;
+    width: 20px;
+    height: 20px;
+  
+    content: "";
+  
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $blue-purple-500;
+  }
+  
+  // .events-filter[type="checkbox"]:disabled::after {
+  //   -webkit-filter: opacity(0.4);
+  // }
+  
+  .events-filter[type="checkbox"]:checked::after {
+    background-image: url(../img/events/event-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $blue-purple-500;
+    border-radius: 4px;
+  }
+  
+  .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
+    background-image: url(../img/events/event-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $blue-purple-500;
+    border-radius: 4px;
+  }
+  
+  .events-filter[type="checkbox"]:not(:disabled):hover::after {
+    background: $blue-purple-600;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $blue-purple-600;
+    border-radius: 4px;
+  }
+  
+  .events-filter[type="checkbox"]:not(:disabled):hover::before {
+    background: $blue-purple-600;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $blue-purple-600;
+    border-radius: 4px;
+  }
+
+
+}
+
+
+
+
+
 #find-us-on-platforms .card-deck {
   .card:nth-child(1) .card-footer {
     background-image: url(../img/cards/4col-green-2.svg);

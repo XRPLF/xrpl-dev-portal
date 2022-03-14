@@ -4033,6 +4033,18 @@ pages:
             - en
             - ja
 
+    -   name: Events
+        html: events.html
+        parent: contribute.html
+        template: page-events.html.jinja
+        sidebar: disabled
+        top_nav_blurb: Join the conversation
+        blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
+        top_nav_name: Events
+        top_nav_hero_image: top-nav-hero-contribute
+        targets:
+            - en
+
     -   name: Dev Blog
         html: https://xrpl.org/blog/
         parent: contribute.html
