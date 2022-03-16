@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # NFToken
-{% include '_snippets/nfts-disclaimer.md' %}
+{% include '_snippets/nfts-disclaimer.ja.md' %}
 
 `NFToken` オブジェクトは、1つの非代替性トークン (NFT) を表します。単体では保存されず、他の NFT と共に [NFTokenPage オブジェクト][] に格納されます。
 

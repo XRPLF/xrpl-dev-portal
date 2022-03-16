@@ -8,9 +8,9 @@ labels:
 ---
 # 修正投票機能の設定
 
-バリデーターとして設定されたサーバーは、[feature method][]を使ってXRP Ledgerプロトコルの[修正案(amendments)](amendments.html)に投票することができます。(この方法には[管理者アクセス](get-started-using-http-websocket-apis.html#admin-access)が必要です).
+バリデーターとして設定されたサーバーは、[feature method][]を使ってXRP Ledgerプロトコルの[修正案(amendments)](amendments.html)に投票することができます。(この方法には[管理者アクセス](get-started-using-http-websocket-apis.html#管理者アクセス権限)が必要です).
 
-例えば、「SHAMapV2」修正案に反対票を投じるには、以下のコマンドを実行します。
+例えば、「SHAMapV2」Amendmentに反対票を投じるには、以下のコマンドを実行します。
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -39,7 +39,7 @@ labels:
 }
 ```
 
-*Commandline*
+*コマンドライン*
 
 ```sh
 rippled feature SHAMapV2 reject
@@ -47,7 +47,7 @@ rippled feature SHAMapV2 reject
 
 <!-- MULTICODE_BLOCK_END -->
 
-**注記:** 修正案の省略名は大文字と小文字が区別されます。また、修正案のIDを16進数で指定することもできますが、この場合は大文字と小文字が区別されません。
+**注記:** Amendmentの省略名は大文字と小文字が区別されます。また、AmendmentのIDを16進数で指定することもできますが、この場合は大文字と小文字が区別されません。
 
 ## 設定ファイルを使用する
 
@@ -60,7 +60,7 @@ rippled feature SHAMapV2 reject
 
 変更を有効にするには、必ずサーバーを再起動してください。
 
-**注意事項:** Any commands in the `[rpc_startup]` stanza run each time the server starts up, which can override voting settings you configured while the server was running.
+**注意事項:** `[rpc_startup]` 節にあるコマンドは、サーバが起動するたびに実行され、サーバが動作している間に構成された投票設定を上書きすることができます。
 
 ## 関連項目
 
