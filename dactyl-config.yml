@@ -960,10 +960,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate this page and blurb
     -   md: concepts/consensus-network/federated-sidechains.md
         targets:
             - en
+
+    -   md: concepts/consensus-network/federated-sidechains.ja.md
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
@@ -1721,16 +1723,20 @@ pages:
         targets:
             - ja
 
-    # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.ja.md
+        targets:
             - ja
 
-    # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.ja.md
+        targets:
             - ja
 
     # TODO: translate this page & blurb
@@ -2033,6 +2039,9 @@ pages:
     -   md: references/protocol-reference/data-types/nftoken.md
         targets:
             - en
+
+    -   md: references/protocol-reference/data-types/nftoken.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-data-formats.md
