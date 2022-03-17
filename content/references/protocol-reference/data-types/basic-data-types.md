@@ -105,13 +105,13 @@ There are two kinds of currencies in the XRP Ledger: XRP and tokens. These two t
 
 Some fields, such as the destination `Amount` of a [Payment transaction][], can be either type. Some fields only accept XRP specifically, such as the `Fee` field ([transaction cost](transaction-cost.html)).
 
-XRP is specified as a string containing an integer number of "drops" of XRP, where 1 million drops equals 1 XRP. Issued currencies are instead specified as an object with fields for the decimal amount, currency code, and issuer. For example:
+XRP is specified as a string containing an integer number of "drops" of XRP, where 1 million drops equals 1 XRP. Tokens are instead specified as an object with fields for the decimal amount, currency code, and issuer. For example:
 
 - **XRP** - To specify an `Amount` field with a value of 13.1 XRP:
 
         "Amount": "13100000"
 
-- **Issued Currency** - To specify an `Amount` field with a value of 13.1 FOO issued by or to `rf1B...`:
+- **Token** - To specify an `Amount` field with a value of 13.1 FOO issued by or to `rf1B...`:
 
         "Amount": {
             "value": "13.1",
