@@ -123,3 +123,18 @@ Most transactions are accepted into the next ledger version after they're submit
 {{ start_step("Wait") }}
 {% include '_snippets/interactive-tutorials/wait-step.md' %}
 {{ end_step() }}
+
+### {{n.next()}}. Check Metadata
+
+The [transaction metadata](transaction-metadata.html) describes the outcome of a transaction. You can use a validated transaction's metadata to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](finality-of-results.html), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
+
+- Some or all of the Offer may have been filled by matching with existing Offers in the ledger.
+- The unmatched remainder, if any, has been placed into the ledger.
+- Other bookkeeping may have occurred, such as removing expired or unfunded Offers that would have matched.
+
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
