@@ -66,4 +66,60 @@ Before you buy or sell a token, you usually want to look up what others are buyi
 
 ### {{n.next()}}. Send OfferCreate Transaction
 
-### {{n.next()}}. Wait for Confirmation
+To actually make a trade, send an [OfferCreate transaction][]. In this case, you want to buy TST using XRP, so you should set the parameters as follows:
+
+| Field | Type | Description |
+|---|---|---|
+| `TakerPays` | [Token Amount object](#specifying-currency-amounts) | How much of what currency you want to buy, in total. For this tutorial, buy some amount of **TST** issued by `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd`. |
+| `TakerGets` | [XRP, in drops][] | How much of what currency you are offering to pay in total. For this tutorial, you should offer approximately slightly over 10 XRP per TST. |
+
+{{ start_step("Send OfferCreate") }}
+<form>
+  <div class="row"><h5>TakerPays</h5></div>
+  <div class="form-group row">
+    <label for="taker-pays-currency-1" class="col-form-label col-sm-3">currency</label>
+    <div class="input-group col">
+      <input type="text" class="form-control" id="taker-pays-currency-1" value="FOO" disabled="disabled" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="taker-pays-issuer-1" class="col-form-label col-sm-3">issuer</label>
+    <div class="input-group col">
+      <input type="text" class="form-control" id="taker-pays-issuer-1" value="rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" disabled="disabled" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="taker-pays-amount-1" class="col-form-label col-sm-3">value</label>
+    <div class="input-group col">
+      <input type="number" class="form-control" id="taker-pays-amount-1" value="10" step="0.000001" min="0" max="1000" />
+    </div>
+  </div>
+  <div class="row"><h5>TakerGets</h5></div>
+  <div class="form-group row">
+    <label for="taker-gets-amount-1" class="col-form-label col-sm-3">XRP:</label>
+    <div class="input-group col">
+      <input type="number" class="form-control" value="115" id="taker-gets-amount-1"
+      aria-label="Amount of XRP, as a decimal" aria-describedby="xrp-amount-label"
+      min=".000001" max="100000000000" step="any" />
+    </div>
+  </div>
+  <div class="row"><h5>Exchange Rate</h5></div>
+  <div class="form-group row">
+    <label for="taker-gets-amount-1" class="col-form-label col-sm-3">XRP cost per 1 FOO:</label>
+    <div class="input-group col">
+      <input type="number" class="form-control" value="" id="exchange-rate-1" />
+    </div>
+  </div>
+</form>
+<button id="send-offercreate" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send OfferCreate</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="output-area"></div>
+{{ end_step() }}
+
+### {{n.next()}}. Wait for Validation
+
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
+
+{{ start_step("Wait") }}
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{{ end_step() }}
