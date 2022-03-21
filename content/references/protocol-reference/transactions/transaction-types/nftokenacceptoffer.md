@@ -80,7 +80,9 @@ If both offers are for the same asset, it is possible that the order in which fu
 
 In brokered mode, The offers referenced by `NFTokenBuyOffer` and `NFTokenSellOffer` must both specify the same `NFTokenID`; that is, both must be for the same `NFToken`.
 
+## Error Cases
 
+* If there is no entry with the given `SellOffer` or `BuyOffer` index on the ledger, the transaction fails with the result `tecOBJECT_NOT_FOUND`.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
