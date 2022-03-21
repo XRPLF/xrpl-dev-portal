@@ -4,6 +4,7 @@
 [admin command]: admin-rippled-methods.html
 [base58]: base58-encodings.html
 [common fields]: transaction-common-fields.html
+[共通フィールド]: transaction-common-fields.html
 [Currency Amount]: basic-data-types.html#specifying-currency-amounts
 [通貨額]: basic-data-types.html#通貨額の指定
 [通貨額の指定]: basic-data-types.html#通貨額の指定
