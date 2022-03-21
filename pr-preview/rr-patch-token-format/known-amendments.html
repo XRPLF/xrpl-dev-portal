@@ -429,7 +429,7 @@
 <td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D" target="_blank" title="Enabled: 2019-03-23"><img alt="Enabled: 2019-03-23" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--03--23-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="depositpreauth.html">DepositPreauth</a></td>
+<td align="left"><a href="#depositpreauth">DepositPreauth</a></td>
 <td align="left">v1.1.0</td>
 <td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927" target="_blank" title="Enabled: 2018-10-09"><img alt="Enabled: 2018-10-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--10--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
@@ -626,7 +626,6 @@
 <p>Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.</p>
 <p>The sender or the receiver can cancel a Check at any time before it is cashed. A Check can also have an expiration time, after which it cannot be cashed, and anyone can cancel it.</p>
 <p>Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash, and a new ledger object type, Check. Adds a new transaction result code, <code>tecEXPIRED</code>, which occurs when trying to create a Check whose expiration time is in the past.</p>
-<p>This amendment also changes the OfferCreate transaction to return <code>tecEXPIRED</code> when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns <code>tesSUCCESS</code> but does not create or execute an Offer.</p>
 <h2 id="cryptoconditions">CryptoConditions<a aria-hidden="true" class="hover_anchor" href="#cryptoconditions"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -774,7 +773,8 @@
 </table>
 <p>Provides users of <a href="depositauth.html">deposit authorization</a> with a way to preauthorize specific senders so those senders are allowed to send payments directly.</p>
 <p>Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, <code>deposit_authorized</code>, to query whether an account is authorized to send payments directly to another. <!-- STYLE_OVERRIDE: is authorized to --></p>
-<p>Also changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code <code>tecNO_PERMISSION</code>. With this amendment, those payments succeed as they would with Deposit Authorization disabled.</p>
+<p>Changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code <code>tecNO_PERMISSION</code>. With this amendment, those payments succeed as they would with Deposit Authorization disabled.</p>
+<p>TAlso changes the OfferCreate transaction to return <code>tecEXPIRED</code> when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns <code>tesSUCCESS</code> but does not create or execute an Offer.</p>
 <h2 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>

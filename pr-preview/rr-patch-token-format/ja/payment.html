@@ -301,7 +301,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="payment-フィールド">Payment フィールド<a aria-hidden="true" class="hover_anchor" href="#payment-フィールド"><i class="fa fa-link"></i></a></h2>
-<p>[共通フィールド][]に加えて、Paymentトランザクションは以下のフィールドを使用します。</p>
+<p><a href="transaction-common-fields.html">共通フィールド</a>に加えて、Paymentトランザクションは以下のフィールドを使用します。</p>
 <!-- -->
 <table class="table-responsive">
 <thead>
@@ -372,7 +372,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">[XRP同士の直接支払い][]</td>
+<td align="left"><a href="direct-xrp-payments.html">XRP同士の直接支払い</a></td>
 <td align="left">String (XRP)</td>
 <td align="left">省略</td>
 <td align="left">省略</td>
@@ -380,15 +380,15 @@
 <td align="left">アカウント間でへ直接XRPを送金します。常に正確な金額を送信します。基本的な<a href="transaction-cost.html">取引コスト</a>以外の手数料は適用されません。</td>
 </tr>
 <tr>
-<td align="left">[発行通貨の作成・償還][]</td>
+<td align="left"><a href="tokens.html">発行通貨の作成・償還</a></td>
 <td align="left">Object</td>
 <td align="left">Object (任意)</td>
 <td align="left">任意</td>
 <td align="left">いいえ</td>
-<td align="left">XRP Ledgerに追跡されているXRP以外の通貨や資産の量を増減させます。<a href="transfer-fees.html">送金手数料</a>と<a href="freeze.html">凍結</a>は、直接送金・換金する際には適用されません。</td>
+<td align="left">XRP Ledgerに追跡されているXRP以外の通貨や資産の量を増減させます。<a href="transfer-fees.html">送金手数料</a>と<a href="freezes.html">凍結</a>は、直接送金・換金する際には適用されません。</td>
 </tr>
 <tr>
-<td align="left">[クロスカレンシー（通貨間）決済][]</td>
+<td align="left"><a href="cross-currency-payments.html">クロスカレンシー（通貨間）決済</a></td>
 <td align="left">Object (non-XRP) / String (XRP)</td>
 <td align="left">Object (non-XRP) / String (XRP)</td>
 <td align="left">通常は必須</td>
@@ -401,7 +401,7 @@
 <td align="left">Object (non-XRP) / String (XRP)</td>
 <td align="left">通常は必須</td>
 <td align="left">いいえ</td>
-<td align="left">任意の通貨を特定の金額まで送ります。<a href="#payment-flags"><code>tfPartialPayment</code> フラグ</a>を使用します。トランザクションが成功するための最小値を指定する <code>DeliverMin</code> 値を含めることができます。トランザクションが <code>DeliverMin</code> を指定しない場合、<em>任意の正の値</em> を指定して成功させることができる。</td>
+<td align="left">任意の通貨を特定の金額まで送ります。<a href="#paymentのフラグ"><code>tfPartialPayment</code> フラグ</a>を使用します。トランザクションが成功するための最小値を指定する <code>DeliverMin</code> 値を含めることができます。トランザクションが <code>DeliverMin</code> を指定しない場合、<em>任意の正の値</em> を指定して成功させることができる。</td>
 </tr>
 <tr>
 <td align="left">通貨変換</td>

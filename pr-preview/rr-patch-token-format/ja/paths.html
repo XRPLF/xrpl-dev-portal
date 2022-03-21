@@ -296,7 +296,7 @@
 <ul>
 <li>パスの1番目のステップは、トランザクションの<code>Account</code>フィールドに定義されるとおり、トランザクションの送信者であると常に黙示されます。</li>
 <li>トランザクションに、そのトランザクションの送信者ではない<code>issuer</code>が指定されている<code>SendMax</code>フィールドが含まれている場合、そのイシュアーはパスの2番目のパスとして黙示されます。</li>
-<li><code>SendMax</code>の<code>issuer</code>が送信側アドレス <em>である</em> 場合、パスはその送信側アドレスから始まり、そのアドレスの特定の通貨のトラストラインのいずれかを使用できます。詳細は、<a href="payment.html#sendmaxおよびamountで使用する特殊なイシュアーの値">SendMaxおよびAmountの特殊な値</a>を参照してください。</li>
+<li><code>SendMax</code>の<code>issuer</code>が送信側アドレス <em>である</em> 場合、パスはその送信側アドレスから始まり、そのアドレスの特定の通貨のトラストラインのいずれかを使用できます。詳細は、<a href="payment.html#sendmaxおよびamountで使用する特殊なissuerの値">SendMaxおよびAmountの特殊な値</a>を参照してください。</li>
 <li>トランザクションの<code>Amount</code>フィールドに、トランザクションの<code>Destination</code>とは異なる<code>issuer</code>が指定されている場合、そのイシュアーはパスの最後から2番目のステップであると黙示されます。</li>
 <li>最後に、トランザクションの<code>Destination</code>フィールドに定義されるとおり、パスの最終ステップはトランザクションの受信者であることが常に黙示されます。</li>
 </ul>

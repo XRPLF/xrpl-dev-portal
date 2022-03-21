@@ -240,6 +240,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-offercreate-json">Example OfferCreate JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#offercreate-fields">OfferCreate Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#offercreate-flags">OfferCreate Flags</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
       </aside>
@@ -262,8 +263,7 @@
     <div class="content">
         <h1 id="offercreate">OfferCreate<a aria-hidden="true" class="hover_anchor" href="#offercreate"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>An OfferCreate transaction is effectively a <a class="external-link" href="http://en.wikipedia.org/wiki/limit_order" target="_blank">limit order <i aria-hidden="true" class="fa fa-external-link"></i></a>. It defines an intent to exchange currencies, and creates an <a href="offer.html">Offer object</a> if not completely fulfilled when placed. Offers can be partially fulfilled.</p>
-<p>For more information about how Offers work, see <a href="offers.html">Offers</a>.</p>
+<p>An OfferCreate transaction places an <a href="offers.html">Offer</a> in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
 <h2 id="example-offercreate-json">Example OfferCreate JSON<a aria-hidden="true" class="hover_anchor" href="#example-offercreate-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OfferCreate"</span><span class="p">,</span><span class="w"></span>
@@ -297,25 +297,25 @@
 <td align="left"><a href="offers.html#offer-expiration"><code>Expiration</code></a></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left"><em>(Optional)</em> Time after which the offer is no longer active, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>.</td>
+<td align="left"><em>(Optional)</em> Time after which the Offer is no longer active, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>.</td>
 </tr>
 <tr>
 <td align="left"><code>OfferSequence</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left"><em>(Optional)</em> An offer to delete first, specified in the same way as <a href="offercancel.html">OfferCancel</a>.</td>
+<td align="left"><em>(Optional)</em> An Offer to delete first, specified in the same way as <a href="offercancel.html">OfferCancel</a>.</td>
 </tr>
 <tr>
 <td align="left"><code>TakerGets</code></td>
 <td align="left"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
 <td align="left">Amount</td>
-<td align="left">The amount and type of currency being provided by the offer creator.</td>
+<td align="left">The amount and type of currency being sold.</td>
 </tr>
 <tr>
 <td align="left"><code>TakerPays</code></td>
 <td align="left"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
 <td align="left">Amount</td>
-<td align="left">The amount and type of currency being requested by the offer creator.</td>
+<td align="left">The amount and type of currency being bought.</td>
 </tr>
 </tbody>
 </table>
@@ -335,19 +335,19 @@
 <td align="left"><code>tfPassive</code></td>
 <td align="left"><code>0x00010000</code></td>
 <td align="left">65536</td>
-<td align="left">If enabled, the offer does not consume offers that exactly match it, and instead becomes an Offer object in the ledger. It still consumes offers that cross it.</td>
+<td align="left">If enabled, the Offer does not consume Offers that exactly match it, and instead becomes an Offer object in the ledger. It still consumes Offers that cross it.</td>
 </tr>
 <tr>
 <td align="left"><code>tfImmediateOrCancel</code></td>
 <td align="left"><code>0x00020000</code></td>
 <td align="left">131072</td>
-<td align="left">Treat the offer as an <a class="external-link" href="http://en.wikipedia.org/wiki/Immediate_or_cancel" target="_blank">Immediate or Cancel order <i aria-hidden="true" class="fa fa-external-link"></i></a>. If enabled, the offer never becomes a ledger object: it only tries to match existing offers in the ledger. If the offer cannot match any offers immediately, it executes "successfully" without trading any currency. In this case, the transaction has the <a href="transaction-results.html">result code</a> <code>tesSUCCESS</code>, but creates no <a href="offer.html">Offer objects</a> in the ledger.</td>
+<td align="left">Treat the Offer as an <a class="external-link" href="http://en.wikipedia.org/wiki/Immediate_or_cancel" target="_blank">Immediate or Cancel order <i aria-hidden="true" class="fa fa-external-link"></i></a>. The Offer never creates an <a href="offer.html">Offer object</a> in the ledger: it only trades as much as it can by consuming existing Offers at the time the transaction is processed. If no Offers match, it executes "successfully" without trading anything. In this case, the transaction still uses the <a href="transaction-results.html">result code</a> <code>tesSUCCESS</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>tfFillOrKill</code></td>
 <td align="left"><code>0x00040000</code></td>
 <td align="left">262144</td>
-<td align="left">Treat the offer as a <a class="external-link" href="http://en.wikipedia.org/wiki/Fill_or_kill" target="_blank">Fill or Kill order <i aria-hidden="true" class="fa fa-external-link"></i></a>. Only try to match existing offers in the ledger, and only do so if the entire <code>TakerPays</code> quantity can be obtained. If the <a href="known-amendments.html#fix1578">fix1578 amendment</a> is enabled and the offer cannot be executed when placed, the transaction has the <a href="transaction-results.html">result code</a> <code>tecKILLED</code>; otherwise, the transaction uses the result code <code>tesSUCCESS</code> even when it was killed without trading any currency.</td>
+<td align="left">Treat the offer as a <a class="external-link" href="http://en.wikipedia.org/wiki/Fill_or_kill" target="_blank">Fill or Kill order <i aria-hidden="true" class="fa fa-external-link"></i></a>. The Offer never creates an <a href="offer.html">Offer object</a> in the ledger, and is canceled if it cannot be fully filled at the time of execution. By default, this means that the owner must receive the full <code>TakerPays</code> amount; if the <code>tfSell</code> flag is enabled, the owner must be able to spend the entire <code>TakerGets</code> amount instead.</td>
 </tr>
 <tr>
 <td align="left"><code>tfSell</code></td>
@@ -357,10 +357,81 @@
 </tr>
 </tbody>
 </table>
-<p>The following invalid flag combination prompts a <code>temINVALID_FLAG</code> error:</p>
-<ul>
-<li><code>tfImmediateOrCancel</code> and <code>tfFillOrKill</code></li>
-</ul>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>temINVALID_FLAG</code></td>
+<td align="left">Occurs if the transaction specifies both <code>tfImmediateOrCancel</code> and <code>tfFillOrKill</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>tecEXPIRED</code></td>
+<td align="left">Occurs if the transaction specifies an <code>Expiration</code> time that has already passed <em>(Updated by the <a href="known-amendments.html#depositpreauth">DepositPreauth amendment</a>: previously, the transaction used the result code <code>tesSUCCESS</code> in this case. In either case, the transaction has no effect except to destroy the XRP paid as a <a href="transaction-cost.html">transaction cost</a>.)</em></td>
+</tr>
+<tr>
+<td align="left"><code>tecKILLED</code></td>
+<td align="left">Occurs if the transaction specifies <code>tfFillOrKill</code>, and the full amount cannot be filled. <em>(Updated by the <a href="known-amendments.html#fix1578">fix1578 amendment</a>: previously, the transaction used the result code <code>tesSUCCESS</code> in this case. In either case, the transaction does not execute any trades.)</em></td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_EXPIRATION</code></td>
+<td align="left">Occurs if the transaction contains an <code>Expiration</code> field that is not validly formatted.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_SEQUENCE</code></td>
+<td align="left">Occurs if the transaction contains an <code>OfferSequence</code> that is not validly formatted, or is higher than the transaction's own <code>Sequence</code> number.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_OFFER</code></td>
+<td align="left">Occurs if the Offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token.</td>
+</tr>
+<tr>
+<td align="left"><code>temREDUNDANT</code></td>
+<td align="left">Occurs if the transaction specifies a token for the same token (same issuer and currency code).</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_CURRENCY</code></td>
+<td align="left">Occurs if the transaction specifies a token with the currency code "XRP".</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_ISSUER</code></td>
+<td align="left">Occurs if the transaction specifies a token with an invalid <code>issuer</code> value.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_ISSUER</code></td>
+<td align="left">Occurs if the transaction specifies a token whose <code>issuer</code> value is not a funded account in the ledger.</td>
+</tr>
+<tr>
+<td align="left"><code>tecFROZEN</code></td>
+<td align="left">Occurs if the transaction involves a token on a <a href="freezes.html">frozen</a> trust line (including local and global freezes).</td>
+</tr>
+<tr>
+<td align="left"><code>tecUNFUNDED_OFFER</code></td>
+<td align="left">Occurs if the owner does not hold a positive amount of the <code>TakerGets</code> currency. (Exception: if <code>TakerGets</code> specifies a token that the owner issues, the transaction can succeed.)</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_LINE</code></td>
+<td align="left">Occurs if the transaction involves a token whose issuer uses <a href="authorized-trust-lines.html">Authorized Trust Lines</a> and the necessary trust line does not exist.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_AUTH</code></td>
+<td align="left">Occurs if the transaction involves a token whose issuer uses <a href="authorized-trust-lines.html">Authorized Trust Lines</a> and the the trust line that would receive the tokens exists but has not been authorized.</td>
+</tr>
+<tr>
+<td align="left"><code>tecINSUF_RESERVE_OFFER</code></td>
+<td align="left">Occurs if the owner does not have enough XRP to meet the reserve requirement of adding a new Offer object to the ledger, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code <code>tesSUCCESS</code>, but does not create an Offer object in the ledger for the remainder.)</td>
+</tr>
+<tr>
+<td align="left"><code>tecDIR_FULL</code></td>
+<td align="left">Occurs if the owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->
