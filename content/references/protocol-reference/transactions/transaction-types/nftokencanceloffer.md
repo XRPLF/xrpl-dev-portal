@@ -41,8 +41,11 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 | `TransactionType` | String    | UInt16            | NFTokenCancelOffer transaction type. The integer identifier is 28. |
 | `TokenOffers`     | Array     | VECTOR256         | An array of IDs of the `NFTokenOffer` objects to cancel (not the IDs of `NFToken` objects, but the IDs of the `NFTokenOffer` objects). Each entry must be a different [object ID](ledger-object-ids.html) of an [NFTokenOffer](nftokenoffer.html) object; the transaction is invalid if the array contains duplicate entries. |
 
-The transaction can succeed even if one or more of the IDs in the `TokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been taken.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a [NFTokenOffer](nftokenoffer.html) object.
+The transaction can succeed even if one or more of the IDs in the `TokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been taken.)
 
+It is important to note that if you inadvertently provide a `NFTokenID` rather than a `NFTokenOfferID`, you might receive a `tesSuccess` response. The reason is that when passed a properly formatted VECTOR256 value that is not found, the system assumes that the NFTokenOffer has already been deleted.
+
+The transaction fails with an error if one of the IDs points to an object that does exist, but is not a [NFTokenOffer](nftokenoffer.html) object.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
