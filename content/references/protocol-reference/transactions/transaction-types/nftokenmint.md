@@ -51,7 +51,7 @@ This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, 
 |:--------------|:--------------------|:------------------|:-------------------|
 | `TokenTaxon` | Number | UInt32 | The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than `0xFFFF'FFFF` are disallowed. |
 | `Issuer` | String | AccountID | _(Optional)_ The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the `NFToken`. If provided, the issuer's [AccountRoot object][] must have the `Minter` field set to sender of this transaction (this transaction's `Account` field). |
-| `TransferFee` | Number | UInt16 | _(Optional)_ The value specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the [`tfTransferable` flag](#nftokenmint-flags) enabled. |
+| `TransferFee` | Number | UInt16 | _(Optional)_ The value specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 50,000 inclusive and a value of 1 is equivalent to 1/10 of a basis point or 0.001%, allowing transfer rates between 0% and 50%. A TransferFee of 50,000 corresponds to 50%. If this field is provided, the transaction MUST have the [`tfTransferable` flag](#nftokenmint-flags) enabled. |
 | `URI` | String | Blob | _(Optional)_ Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the [`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex) utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an [RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is NOT checked for validity.
 
 
@@ -73,7 +73,7 @@ If you need to specify additional information during minting (for example, detai
 
 ## Error Cases
 
-- If the `TransferFee` field is not within the acceptable range (0 to 9999 inclusive) the transaction fails with `temBAD_TRANSFER_RATE`.
+- If the `TransferFee` field is not within the acceptable range (0 to 50,000 inclusive) the transaction fails with `temBAD_TRANSFER_RATE`.
 - If the `URI` field is longer than 256 bytes, the transaction fails with `temMALFORMED`.
 - If the `Issuer` field refers to an account that does not exist, the transaction fails with `tecNO_ISSUER`.
 - If account referenced by the `Issuer` field has not authorized this transaction's sender (using the `Minter` setting) to mint `NFToken`s on their behalf, the transaction fails with `tecNO_PERMISSION`.
