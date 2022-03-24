@@ -97,6 +97,13 @@ Use these methods to perform convenient tasks, such as ping and random number ge
 * **[`ping`](ping.html)** - Confirm connectivity with the server.
 * **[`random`](random.html)** - Generate a random number.
 
+## [NFT Methods](nft-methods.html)
+
+Use these methods to retrieve information about NFToken objects.
+
+* **[`account_nfts`](account_nfts.html)** - Retrieve a list of NFToken objects for a specified account.
+* **[`nft_buy_offers`](nft_buy_offers.html)** - Retrieve a list of buy offers for a specified NFToken object.
+* **[`nft_sell_offers`](nft_sell_offers.html)** - Retrieve a list of sell offers for a specified NFToken object.
 
 ## Deprecated Methods
 
