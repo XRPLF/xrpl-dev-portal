@@ -100,6 +100,7 @@ Use these methods to perform convenient tasks, such as ping and random number ge
 ## [NFT Methods](nft-methods.html)
 
 Use these methods to retrieve information about NFToken objects.
+{% include '_snippets/nfts-disclaimer.md' %}
 
 * **[`account_nfts`](account_nfts.html)** - Retrieve a list of NFToken objects for a specified account.
 * **[`nft_buy_offers`](nft_buy_offers.html)** - Retrieve a list of buy offers for a specified NFToken object.
