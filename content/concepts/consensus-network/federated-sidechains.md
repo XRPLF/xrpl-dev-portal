@@ -35,13 +35,11 @@ Transactions within the sidechain are not visible to the servers on the mainchai
 
 ## Terminology
 
-_Sidechain_: An XRP Ledger sidechain is another blockchain based on XRP Ledger technology. A _federated_ sidechain provides a way to transfer assets from a mainchain to the sidechain and back. A sidechain can use an exact copy of the XRP Ledger's protocol or it can make changes, including to the [consensus algorithm](consensus.html), [transaction types](transaction-types.html), and other rules.
+_Sidechain_: An XRP Ledger sidechain is another blockchain based on XRP Ledger technology. A _federated_ sidechain provides a way to transfer assets from a mainchain to the sidechain and back. A sidechain can use an exact copy of the XRP Ledger's protocol or it can make changes, including to the [consensus algorithm](consensus.html), [transaction types](transaction-types.html), and other rules. Sidechains have separate history, rules, and validators than the mainchain. Proxy assets are issued in the sidechain, with the equivalent assets held by a door account on the mainchain. Proxy assets on the sidechain can be sent back to the mainchain and unlocked from the control of the federators.
  
 _Federator_: A server on the sidechain that listens for triggering transactions on both the main chain and the side chain. Each federator has a signing key associated with it that is used to sign transactions. A transaction must be signed by a quorum of federators before it can be submitted. Federators are responsible for creating and signing valid response transactions, collecting signatures from other federators, and submitting transactions to the main chain and side chain.
 
 _Mainchain_: The blockchain where assets originate and where assets are held while being used on the side chain. For most sidechains, the mainchain is the XRP Ledger Mainnet, Testnet, or Devnet.
-
-_Sidechain_: A custom blockchain where some assets are backed by a mainchain. Proxy assets are issued in the sidechain, with the equivalent assets held by a door account on the mainchain. Sidechains have separate history, rules, and validators than the mainchain. Proxy assets on the sidechain can be sent back to the mainchain and unlocked from the control of the federators.
 
 _Door account_: An account controlled by the federators. There are two door accounts: one on the mainchain and one on the sidechain. Cross chain transactions are started by users sending assets to a door account. Mainchain to sidechain transactions cause the balance to increase on the mainchain door account and the balance to decrease on the sidechain door account. It is called a "door" because it is the mechanism to move assets from one chain to another—much like going between rooms in a house requires stepping through a door.
 
