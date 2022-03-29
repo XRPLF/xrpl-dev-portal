@@ -259,7 +259,7 @@
       "image": "event-hack-new-year.svg"},
   ] %}
   <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
-  {% for event in past %}
+  {% for event in past|reverse %}
     <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.image}}); ">
         <div class="event-card-title">{{event.name}}</div>
