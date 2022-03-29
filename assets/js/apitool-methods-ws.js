@@ -553,7 +553,7 @@ Request('account_nfts', {
   status: "not_enabled",
   body: {
     "command": "account_nfts",
-    "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+    "account": "rsuHaTvJh1bDmDoxX9QcKP7HEBSBt4XsHx",
     "ledger_index": "validated"
   }
 })
