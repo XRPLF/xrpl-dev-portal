@@ -101,6 +101,15 @@
   </div>
 
   {% set upcoming = [
+    { "name": "NYC Meetup/Hackathon XRPL Celebration",
+      "id": "upcoming-xrpl-new-york",
+      "description": "The NYC/XRP community and Dev Null Productions cordially invites you to attend our 10th meetup, being held in celebration of the on-going XRPL Hackathon, at the unique and artistic TALS studio in Midtown Manhattan.",
+      "type": "meetup-upcoming",
+      "link": "https://www.meetup.com/NYC-XRP/events/284485901/",
+      "location": "NYC, NY",
+      "date": "March 30, 2022",
+      "image": "event-meetup-new-york@2x.jpg"},
+    
     { "name": "XRPL Community Meetup: London",
       "id": "upcoming-xrpl-london",
       "description": "Join for an evening of programming and networking with members of the XRPL Community in London, co-organised by Peerkat - the NFT platform for creators on the XRPL.",
@@ -109,6 +118,53 @@
       "location": "IDEALondon",
       "date": "March 31, 2022",
       "image": "event-meetup-london.png"},
+      
+      { "name": "XRPL Community Meetup: Toronto",
+      "id": "upcoming-xrpl-toronto",
+      "description": "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!",
+      "type": "meetup-upcoming",
+      "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/",
+      "location": "Toronto",
+      "date": "March 31, 2022",
+      "image": "event-meetup-toronto@2x.jpg"},
+      
+      { "name": "XRPL Community Meetup: San Diego",
+      "id": "upcoming-xrpl-san-diego",
+      "description": "Get together with other San Diego-based members of the XRP Ledger Community to network and discuss all things XRPL! Join us for our second San Diego XRPL Meetup.",
+      "type": "meetup-upcoming",
+      "link": "https://www.meetup.com/xrp-ledger-san-diego-community/events/284663355/",
+      "location": "San Diego, CA",
+      "date": "April 1st 2022",
+      "image": "event-meetup-san-diego@2x.jpg"},
+
+      { "name": "XRPL Community Meetup: Irvine LA",
+      "id": "upcoming-xrpl-irvine",
+      "description": "Get together with other LA-based members of the XRP Ledger Community to network and discuss all things XRPL.",
+      "type": "meetup-upcoming",
+      "link": "https://www.meetup.com/xrp-ledger-la-community-meetup/events/284824635/",
+      "location": "UC Irvine, CA",
+      "date": "April 3rd 2022",
+      "image": "event-meetup-irvine@2x.jpg"},
+      
+      { "name": "XRPL Community Meetup: Miami #2",
+      "id": "upcoming-xrpl-miami-2",
+      "description": "We're excited to host our second Miami meetup for XRP Ledger community members on April 6th from 6-8pm, featuring Marco Neri, Developer Advocate at Ripple, who will join us to give a presentation on the XRP Ledger.",
+      "type": "meetup-upcoming",
+      "link": "https://www.meetup.com/xrp-ledger-miami-community/events/284463736/",
+      "location": "The LAB Miami, FL",
+      "date": "April 6th 2022",
+      "image": "event-meetup-miami@2x.jpg"},
+
+      { "name": "XRPL Community Meetup: Abu Dhabi",
+      "id": "upcoming-xrpl-abu-dhabi",
+      "description": "Get together with other Abu Dhabi-based members of the XRP Ledger Community to network and discuss all things XRPL!",
+      "type": "meetup-upcoming",
+      "link": "https://www.meetup.com/xrp-ledger-dubai-community/events/284776939/",
+      "location": "NYU Abu Dhabi, Building A6",
+      "date": "April 14th 2022",
+      "image": "event-meetup-abu-dhabi@2x.jpg"},
+
+      
   ] %}
   <div class="row row-cols-1 row-cols-lg-3 card-deck mt-2">
   {% for event in upcoming %}
@@ -203,7 +259,7 @@
       "image": "event-hack-new-year.svg"},
   ] %}
   <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
-  {% for event in past %}
+  {% for event in past|reverse %}
     <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.image}}); ">
         <div class="event-card-title">{{event.name}}</div>
