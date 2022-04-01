@@ -6,6 +6,7 @@
 if (typeof module !== "undefined") {
   // Use var here because const/let are block-scoped to the if statement.
   var xrpl = require('xrpl')
+  var BigNumber = require('bignumber.js')
 }
 
 // Connect ---------------------------------------------------------------------
@@ -15,10 +16,10 @@ async function main() {
   await client.connect()
 
   // Get credentials from the Testnet Faucet -----------------------------------
-  // console.log("Requesting address from the Testnet faucet...")
-  // const wallet = (await client.fundWallet()).wallet
-  // console.log(`Got address ${wallet.address}.`)
-  const wallet = xrpl.Wallet.fromSeed("SEED VALUE HERE") // temp for testing: don't fund every time
+  console.log("Requesting address from the Testnet faucet...")
+  const wallet = (await client.fundWallet()).wallet
+  console.log(`Got address ${wallet.address}.`)
+  //const wallet = xrpl.Wallet.fromSeed("SEED VALUE HERE") // temp for testing: don't fund every time
 
   // Define the proposed trade.
   const we_want = {
@@ -59,7 +60,7 @@ async function main() {
     console.log(`No Offers in the matching book.
                  Offer probably won't execute immediately.`)
   } else {
-    for (o of offers) {
+    for (const o of offers) {
       if (o.quality <= proposed_quality) {
         console.log(`Matching Offer found, funded with ${o.owner_funds}`)
         running_total += Number(o.owner_funds)
@@ -109,7 +110,7 @@ async function main() {
     if (!offers2) {
       console.log(`No similar Offers in the book. Ours would be the first.`)
     } else {
-      for (o of offers2) {
+      for (const o of offers2) {
         if (o.quality <= offered_quality) {
           console.log(`Existing offer found, funded with ${o.owner_funds}`)
           running_total2 += Number(o.owner_funds)
@@ -151,6 +152,79 @@ async function main() {
     console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${signed.hash}`)
   } else {
     throw `Error sending transaction: ${result}`
+  }
+
+  // Interpret metadata --------------------------------------------------------
+  for (const affnode of result.result.meta.AffectedNodes) {
+    if (affnode.hasOwnProperty("ModifiedNode")) {
+      const mn = affnode.ModifiedNode
+      if (mn.LedgerEntryType == "AccountRoot") {
+        if (mn.FinalFields.Account == wallet.address) {
+          // Found our account in the metadata
+          const final_xrp_bal = mn.FinalFields.Balance
+          const prev_xrp_bal = mn.PreviousFields.Balance
+          if (prev_xrp_bal === undefined) {
+            console.log(`Total XRP balance unchanged. This usually means the
+              transaction acquired exactly enough XRP to offset the XRP burned
+              as a transaction cost. Balance = ${xrpl.dropsToXrp(final_xrp_bal)} XRP`)
+          } else {
+            const diff_drops = BigNumber(final_xrp_bal) - BigNumber(prev_xrp_bal)
+            console.log(`Changed XRP balance by ${xrpl.dropsToXrp(diff_drops)}
+              to a new value of ${xrpl.dropsToXrp(final_xrp_bal)} XRP. (This
+              includes the net effect of burning XRP as a transaction cost.)`)
+          }
+        }
+      } else if (mn.LedgerEntryType == "RippleState") {
+        if (mn.FinalFields.HighLimit.issuer == wallet.address ||
+            mn.FinalFields.LowLimit.issuer == wallet.address) {
+          // Modified a trust line we already had
+          const we_are_low = (mn.FinalFields.LowLimit.issuer == wallet.address)
+          const currency = mn.FinalFields.Balance.currency
+          let counterparty
+          if (we_are_low) {
+            counterparty = mn.FinalFields.HighLimit.issuer
+          } else {
+            counterparty = mn.FinalFields.LowLimit.issuer
+          }
+          const final_token_bal = mn.FinalFields.Balance.value
+          const prev_token_bal = mn.PreviousFields.Balance.value
+          if (prev_token_bal === undefined) {
+            console.log(`Balance of ${currency}.${counterparty} unchanged.`)
+          } else {
+            let final_bal = BigNumber(final_token_bal)
+            let diff_tokens = final_bal - BigNumber(prev_token_bal)
+            if (!we_are_low) {
+              // RippleState objects store the balance from the low account's
+              // perspective, so if we are the high account, we negate it to get
+              // the balance from our perspective instead.
+              final_bal = -final_bal
+              diff_tokens = -diff_tokens
+            }
+            console.log(`Balance of ${currency}.${counterparty} changed by
+              ${diff_tokens} to a final value of ${final_bal}.`)
+          }
+        }
+      }
+    } else if (affnode.hasOwnProperty("CreatedNode")) {
+      const cn = affnode.CreatedNode
+      if (cn.LedgerEntryType == "Offer") {
+        console.log(`Created Offer with TakerPays=${cn.NewFields.TakerPays}
+          and TakerGets=${cn.NewFields.TakerGets}.`)
+      } else if (cn.LedgerEntryType == "RippleState") {
+        if (cn.NewFields.HighLimit.issuer == wallet.address ||
+            cn.NewFields.LowLimit.issuer == wallet.address) {
+          const we_are_low = (cn.NewFields.LowLimit.issuer == wallet.address)
+          let balance = cn.NewFields.Balance.value
+          if (!we_are_low) {
+            balance = -balance
+          }
+          console.log(`Created ${cn.NewFields.Balance.currency} trust line
+            between ${cn.NewFields.LowLimit.issuer} and
+            ${cn.NewFields.HighLimit.issuer} with starting balance
+            ${balance}.`)
+        }
+      }
+    }
   }
 
   // Check balances ------------------------------------------------------------
