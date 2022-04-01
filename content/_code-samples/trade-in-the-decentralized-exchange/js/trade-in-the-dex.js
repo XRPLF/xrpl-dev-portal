@@ -47,6 +47,10 @@ async function main() {
   // If so, how much of it? (Partial execution is possible)
   // If not, how much liquidity is above it? (How deep in the order book would
   //    other Offers have to go before ours would get taken?)
+  // Note: these estimates can be thrown off by rounding if the token issuer
+  // uses a TickSize setting other than the default (15). In that case, you
+  // can increase the TakerGets amount of your final offer just a little bit to
+  // compensate.
 
   const offers = orderbook_resp.result.offers
   const want_amt = Number(we_want.value)
@@ -138,6 +142,8 @@ async function main() {
   }
 
   const prepared = await client.autofill(offer_1)
+  console.log("Prepared transaction:", JSON.stringify(prepared, null, 2))
+  //throw "BREAK"
   const signed = wallet.sign(prepared)
   console.log("Sending OfferCreate transaction...")
   const result = await client.submitAndWait(signed.tx_blob)
