@@ -9,6 +9,20 @@ if (typeof module !== "undefined") {
   var BigNumber = require('bignumber.js')
 }
 
+/**
+ * Convert an XRPL amount, which could be a string (XRP in drops) or an object
+ * (token amount) to a string for display in one of the following formats:
+ * "123.456 XRP"
+ * "123.456 TST.rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+ */
+def amt_str(amt) {
+  if (typeof amt == "string") {
+    return `${xrpl.dropsToXrp(amt)} XRP`
+  } else {
+    return `${amt.value} ${amt.currency}.${amt.issuer}`
+  }
+}
+
 // Connect ---------------------------------------------------------------------
 async function main() {
   const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
@@ -28,10 +42,10 @@ async function main() {
     value: "25"}
 
                               // 250 TST * 10 XRP per TST * 1.15 fx cost
-  const we_spend = {currency: "XRP", value: xrpl.xrpToDrops(25*10*1.15)}
+  const we_spend = {currency: "XRP", value: xrpl.xrpToDrops(25*10*1.05)}
   // "Quality" is defined as TakerPays ÷ TakerGets. The lower the "quality"
   // number, the better the proposed exchange rate is for the taker.
-  const proposed_quality = Number(we_spend.value / we_want.value)
+  const proposed_quality = BigNumber(we_spend.value) / BigNumber(we_want.value)
 
   // Look up Offers. -----------------------------------------------------------
   // To buy TST, look up Offers where "TakerGets" is TST:
@@ -54,7 +68,7 @@ async function main() {
   // compensate.
 
   const offers = orderbook_resp.result.offers
-  const want_amt = Number(we_want.value)
+  const want_amt = BigNumber(we_want.value)
   let running_total = 0
   if (!offers) {
     console.log(`No Offers in the matching book.
@@ -63,7 +77,7 @@ async function main() {
     for (const o of offers) {
       if (o.quality <= proposed_quality) {
         console.log(`Matching Offer found, funded with ${o.owner_funds}`)
-        running_total += Number(o.owner_funds)
+        running_total += BigNumber(o.owner_funds)
         if (running_total >= want_amt) {
           console.log("Full Offer will probably fill")
           break
@@ -103,7 +117,7 @@ async function main() {
 
     // Since TakerGets/TakerPays are reversed, the quality is the inverse.
     // You could also calculate this as 1/proposed_quality.
-    const offered_quality = Number(we_want.value / we_spend.value)
+    const offered_quality = BigNumber(we_want.value) / BigNumber(we_spend.value)
 
     const offers2 = orderbook2_resp.result.offers
     let running_total2 = 0
@@ -113,7 +127,7 @@ async function main() {
       for (const o of offers2) {
         if (o.quality <= offered_quality) {
           console.log(`Existing offer found, funded with ${o.owner_funds}`)
-          running_total2 += Number(o.owner_funds)
+          running_total2 += BigNumber(o.owner_funds)
         } else {
           console.log(`Remaining orders are below where ours would be placed.`)
           break
@@ -155,86 +169,51 @@ async function main() {
   }
 
   // Interpret metadata --------------------------------------------------------
+  // In JavaScript, you can use getBalanceChanges() to help summarize all the
+  // balance changes caused by a transaction.
+  const balance_changes = xrpl.getBalanceChanges(result.result.meta)
+  console.log("Total balance changes:", JSON.stringify(balance_changes, null, 2))
+
+  let offers_affected = 0
   for (const affnode of result.result.meta.AffectedNodes) {
     if (affnode.hasOwnProperty("ModifiedNode")) {
-      const mn = affnode.ModifiedNode
-      if (mn.LedgerEntryType == "AccountRoot") {
-        if (mn.FinalFields.Account == wallet.address) {
-          // Found our account in the metadata
-          const final_xrp_bal = mn.FinalFields.Balance
-          const prev_xrp_bal = mn.PreviousFields.Balance
-          if (prev_xrp_bal === undefined) {
-            console.log(`Total XRP balance unchanged. This usually means the
-              transaction acquired exactly enough XRP to offset the XRP burned
-              as a transaction cost. Balance = ${xrpl.dropsToXrp(final_xrp_bal)} XRP`)
-          } else {
-            const diff_drops = BigNumber(final_xrp_bal) - BigNumber(prev_xrp_bal)
-            console.log(`Changed XRP balance by ${xrpl.dropsToXrp(diff_drops)}
-              to a new value of ${xrpl.dropsToXrp(final_xrp_bal)} XRP. (This
-              includes the net effect of burning XRP as a transaction cost.)`)
-          }
-        }
-      } else if (mn.LedgerEntryType == "RippleState") {
-        if (mn.FinalFields.HighLimit.issuer == wallet.address ||
-            mn.FinalFields.LowLimit.issuer == wallet.address) {
-          // Modified a trust line we already had
-          const we_are_low = (mn.FinalFields.LowLimit.issuer == wallet.address)
-          const currency = mn.FinalFields.Balance.currency
-          let counterparty
-          if (we_are_low) {
-            counterparty = mn.FinalFields.HighLimit.issuer
-          } else {
-            counterparty = mn.FinalFields.LowLimit.issuer
-          }
-          const final_token_bal = mn.FinalFields.Balance.value
-          const prev_token_bal = mn.PreviousFields.Balance.value
-          if (prev_token_bal === undefined) {
-            console.log(`Balance of ${currency}.${counterparty} unchanged.`)
-          } else {
-            let final_bal = BigNumber(final_token_bal)
-            let diff_tokens = final_bal - BigNumber(prev_token_bal)
-            if (!we_are_low) {
-              // RippleState objects store the balance from the low account's
-              // perspective, so if we are the high account, we negate it to get
-              // the balance from our perspective instead.
-              final_bal = -final_bal
-              diff_tokens = -diff_tokens
-            }
-            console.log(`Balance of ${currency}.${counterparty} changed by
-              ${diff_tokens} to a final value of ${final_bal}.`)
-          }
-        }
+      if (affnode.ModifiedNode.LedgerEntryType == "Offer") {
+        offers_affected += 1
+      }
+    } else if (affnode.hasOwnProperty("DeletedNode")) {
+      if (affnode.DeletedNode.LedgerEntryType == "Offer") {
+        offers_affected += 1
       }
     } else if (affnode.hasOwnProperty("CreatedNode")) {
-      const cn = affnode.CreatedNode
-      if (cn.LedgerEntryType == "Offer") {
-        console.log(`Created Offer with TakerPays=${cn.NewFields.TakerPays}
-          and TakerGets=${cn.NewFields.TakerGets}.`)
-      } else if (cn.LedgerEntryType == "RippleState") {
-        if (cn.NewFields.HighLimit.issuer == wallet.address ||
-            cn.NewFields.LowLimit.issuer == wallet.address) {
-          const we_are_low = (cn.NewFields.LowLimit.issuer == wallet.address)
-          let balance = cn.NewFields.Balance.value
-          if (!we_are_low) {
-            balance = -balance
-          }
-          console.log(`Created ${cn.NewFields.Balance.currency} trust line
-            between ${cn.NewFields.LowLimit.issuer} and
-            ${cn.NewFields.HighLimit.issuer} with starting balance
-            ${balance}.`)
-        }
+      if (affnode.CreatedNode.LedgerEntryType == "RippleState") {
+        console.log("Created a trust line.")
+      } else if (affnode.CreatedNode.LedgerEntryType == "Offer") {
+        const offer = affnode.CreatedNode.NewFields
+        console.log(`Created an Offer owned by ${offer.Account} with
+          TakerGets=${amt_str(offer.TakerGets)} and
+          TakerPays=${amt_str(offer.TakerPays)}.`)
       }
     }
   }
+  console.log(`Modified or removed ${offers_affected} matching Offer(s)`)
 
   // Check balances ------------------------------------------------------------
-  console.log("Getting address balances...")
+  console.log("Getting address balances as of validated ledger...")
   const balances = await client.request({
     command: "account_lines",
     account: wallet.address,
     ledger_index: "validated"
   })
-  console.log(balances.result)
+  console.log(JSON.stringify(balances.result, null, 2))
+
+  // Check Offers --------------------------------------------------------------
+  console.log(`Getting outstanding Offers from ${wallet.address} as of current ledger...`)
+  const acct_offers = await client.request({
+    command: "account_offers",
+    account: wallet.address,
+    ledger_index: "current"
+  })
+  console.log(JSON.stringify(acct_offers.result, null, 2))
 
   client.disconnect()
 } // End of main()
