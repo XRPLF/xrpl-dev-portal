@@ -66,7 +66,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    </td>
   </tr>
   <tr>
-   <td><code>TokenID</code>
+   <td><code>NFTokenID</code>
    </td>
    <td>Yes
    </td>
@@ -123,7 +123,7 @@ The `SetAccount` transaction allows the `MintAccount` field to be set or cleared
 ### MintedTokens
 
 
-The `MintedTokens` field is used to form the `TokenID` of a new object, to ensure the uniqueness of `NFToken` objects. If this field is not present, the value is 0.
+The `MintedTokens` field is used to form the `NFTokenID` of a new object, to ensure the uniqueness of `NFToken` objects. If this field is not present, the value is 0.
 
 
 ### BurnedTokens
@@ -131,7 +131,7 @@ The `MintedTokens` field is used to form the `TokenID` of a new object, to ensur
 
 The `BurnedTokens` field provides a convenient way to determine how many `NFToken` objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.
 
-An account for which the difference the number of minted and burned tokens, as stored in the `MintedTokens` and `BurnedTokens` fields respectively, is non-zero cannot be deleted.
+An account for which the difference in the number of minted and burned tokens, as stored in the `MintedTokens` and `BurnedTokens` fields respectively, is non-zero cannot be deleted.
 
 
 <!--{# common link defs #}-->
