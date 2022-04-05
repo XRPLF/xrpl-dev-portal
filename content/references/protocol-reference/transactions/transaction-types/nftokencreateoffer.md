@@ -19,7 +19,7 @@ If successful, the transaction creates a [NFTokenOffer object][]. Each offer cou
 {
   	"TransactionType": "NFTokenCreateOffer",
   	"Account": "rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX",
-  	"TokenID": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007",
+  	"NFTokenID": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007",
   	"Amount": "1000000",
   	"Flags": 1
 }
@@ -31,7 +31,7 @@ If successful, the transaction creates a [NFTokenOffer object][]. Each offer cou
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
 | `Owner`       | String              | AccountID         | _(Optional)_ Who owns the corresponding `NFToken`. If the offer is to buy a token, this field must be present and it must be different than the `Account` field (since an offer to buy a token one already holds is meaningless). If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as the `Account` (since an offer to sell a token one doesn't already hold is meaningless). |
-| `TokenID`     | String              | Hash256           | Identifies the `NFToken` object that the offer references. |
+| `NFTokenID`     | String              | Hash256           | Identifies the `NFToken` object that the offer references. |
 | `Amount`      | [Currency Amount][] | Amount            | Indicates the amount expected or offered for the corresponding `NFToken`. The amount must be non-zero, except where this is an offer to sell and the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the `Destination` field. |
 | `Expiration`  | Number              | UInt32            | _(Optional)_ Indicates the time after which the offer will no longer be valid. The value is the number of [seconds since the Ripple Epoch][]. |
 | `Destination` | String              | AccountID         | _(Optional)_ If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to accept this offer MUST fail. |
