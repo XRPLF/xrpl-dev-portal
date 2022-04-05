@@ -68,17 +68,17 @@ In brokered mode, the `NFTokenAcceptOffer` transaction fails if:
 | Field           | JSON Type        | [Internal Type][] | Description         |
 |:----------------|:-----------------|:------------------|:--------------------|
 | `TransactionType` | String | UInt16 | Transaction type `NFTokenAcceptOffer`. The integer identifier is 29. |
-| `SellOffer` | String | Hash256 | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
-| `BuyOffer` | String | Hash256 | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
-| `BrokerFee` | [Currency Amount][] | Amount | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought. If specified, the fee must be such that, prior to accounting for the transfer fee charged by the issuer, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
+| `NFTokenSellOffer` | String | Hash256 | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
+| `NFTokenBuyOffer` | String | Hash256 | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
+| `NFTokenBrokerFee` | [Currency Amount][] | Amount | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought. If specified, the fee must be such that, prior to accounting for the transfer fee charged by the issuer, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
 
-In direct mode, you must specify **either** the `SellOffer` or the `BuyOffer`. In brokered mode, you must specify **both** the `SellOffer` and the `BuyOffer`.
+In direct mode, you must specify **either** the `NFTokenSellOffer` or the `NFTokenBuyOffer`. In brokered mode, you must specify **both** the `NFTokenSellOffer` and the `NFTokenBuyOffer`.
 
-This functionality is intended to allow the `owner` of an `NFToken` to offer their token for sale to a third party broker, who may then attempt to sell the `NFToken` on for a larger amount, without the broker having to own the `NFToken` or custody funds.
+This functionality is intended to allow the `owner` of a `NFToken` to offer their token for sale to a third party broker, who may then attempt to sell the `NFToken` on for a larger amount, without the broker having to own the `NFToken` or custody funds.
 
 If both offers are for the same asset, it is possible that the order in which funds are transferred might cause a transaction that would succeed to fail due to an apparent lack of funds. To ensure deterministic transaction execution and maximize the chances of successful execution, the account attempting to buy the `NFToken` is debited first. Funds due to the broker are credited _before_ crediting the seller.
 
-In brokered mode, The offers referenced by `BuyOffer` and `SellOffer` must both specify the same `TokenID`; that is, both must be for the same `NFToken`.
+In brokered mode, The offers referenced by `NFTokenBuyOffer` and `NFTokenSellOffer` must both specify the same `NFTokenID`; that is, both must be for the same `NFToken`.
 
 
 
