@@ -22,7 +22,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
       "TransactionType": "NFTokenBurn",
       "Account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
       "Fee": 10,
-      "TokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
+      "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
 }
 ```
 
@@ -62,7 +62,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    </td>
    <td>AccountID
    </td>
-   <td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>MintAccount</code>).
+   <td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>NFTokenMinter</code>).
    </td>
   </tr>
   <tr>
@@ -84,7 +84,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
 ## Account Root Enhancements
 
 
-### MintAccount
+### NFTokenMinter
 
 
 Issuers might want to issue NFTs from their well known account, while at the same time wanting to delegate the issuance of such NFTs to a mint or other third party.
