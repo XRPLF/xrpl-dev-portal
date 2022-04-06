@@ -29,7 +29,6 @@ An existing offer, represented by an `NFTokenOffer` object, can be cancelled by:
 
 * The account that originally created the `NFTokenOffer`.
 * The account in the `Destination` field of the `NFTokenOffer`, if one is present.
-* The issuer of the token identified by the `TokenUID` field in the `NFTokenOffer` object, if the token has the `lsfIssuerCanCancelOffers` flag set.
 * Any account, if the `NFTokenOffer` specifies an expiration time and the close time of the parent ledger in which the `NFTokenCancelOffer` is included is greater than the expiration time.
 
 This transaction removes the listed `NFTokenOffer` object from the ledger, if present, and adjusts the reserve requirements accordingly. It is not an error if the `NFTokenOffer` cannot be found: if that is the case, the transaction should complete successfully.
