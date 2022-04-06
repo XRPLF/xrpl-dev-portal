@@ -241,7 +241,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenburn-json">Example NFTokenBurn JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenburn-fields">NFTokenBurn Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#account-root-enhancements">Account Root Enhancements</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#mintaccount">MintAccount</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenminter">NFTokenMinter</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#mintednftokens">MintedNFTokens</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#burnednftokens">BurnedNFTokens</a></li>
       </ul>
@@ -276,7 +276,7 @@
       "TransactionType": "NFTokenBurn",
       "Account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
       "Fee": 10,
-      "TokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
+      "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
 }
 </code></pre></div>
 <h2 id="nftokenburn-fields">NFTokenBurn Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenburn-fields"><i class="fa fa-link"></i></a></h2>
@@ -315,7 +315,7 @@
    </td>
 <td>AccountID
    </td>
-<td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>MintAccount</code>).
+<td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>NFTokenMinter</code>).
    </td>
 </tr>
 <tr>
@@ -344,7 +344,7 @@
 </tr>
 </table>
 <h2 id="account-root-enhancements">Account Root Enhancements<a aria-hidden="true" class="hover_anchor" href="#account-root-enhancements"><i class="fa fa-link"></i></a></h2>
-<h3 id="mintaccount">MintAccount<a aria-hidden="true" class="hover_anchor" href="#mintaccount"><i class="fa fa-link"></i></a></h3>
+<h3 id="nftokenminter">NFTokenMinter<a aria-hidden="true" class="hover_anchor" href="#nftokenminter"><i class="fa fa-link"></i></a></h3>
 <p>Issuers might want to issue NFTs from their well known account, while at the same time wanting to delegate the issuance of such NFTs to a mint or other third party.</p>
 <table class="table-responsive">
 <tr>
