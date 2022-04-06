@@ -104,7 +104,7 @@ Issuers might want to issue NFTs from their well known account, while at the sam
    </td>
   </tr>
   <tr>
-   <td><code>MintAccount</code>
+   <td><code>NFTokenMinter</code>
    </td>
    <td>
    </td>
@@ -112,26 +112,26 @@ Issuers might want to issue NFTs from their well known account, while at the sam
    </td>
    <td>AccountID
    </td>
-   <td>The <code>MintAccount</code> field, if set, specifies an alternate account which is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
+   <td>The <code>NFTokenMinter</code> field, if set, specifies an alternate account that is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
    </td>
   </tr>
 </table>
 
 
-The `SetAccount` transaction allows the `MintAccount` field to be set or cleared.
+The `SetAccount` transaction allows the `NFTokenMinter` field to be set or cleared.
 
-### MintedTokens
-
-
-The `MintedTokens` field is used to form the `NFTokenID` of a new object, to ensure the uniqueness of `NFToken` objects. If this field is not present, the value is 0.
+### MintedNFTokens
 
 
-### BurnedTokens
+The `MintedNFTokens` field is used to form the `NFTokenID` of a new object, to ensure the uniqueness of `NFToken` objects. If this field is not present, the value is 0.
 
 
-The `BurnedTokens` field provides a convenient way to determine how many `NFToken` objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.
+### BurnedNFTokens
 
-An account for which the difference in the number of minted and burned tokens, as stored in the `MintedTokens` and `BurnedTokens` fields respectively, is non-zero cannot be deleted.
+
+The `BurnedNFTokens` field provides a convenient way to determine how many `NFToken` objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.
+
+An account for which the difference in the number of minted and burned tokens, as stored in the `MintedNFTokens` and `BurnedNFTokens` fields respectively, is non-zero cannot be deleted.
 
 
 <!--{# common link defs #}-->
