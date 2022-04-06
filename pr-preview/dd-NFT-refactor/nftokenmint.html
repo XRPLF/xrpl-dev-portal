@@ -369,7 +369,7 @@
 <li>If the <code>Issuer</code> field refers to an account that does not exist, the transaction fails with <code>tecNO_ISSUER</code>.</li>
 <li>If account referenced by the <code>Issuer</code> field has not authorized this transaction's sender (using the <code>NFTokenMinter</code> setting) to mint <code>NFToken</code>s on their behalf, the transaction fails with <code>tecNO_PERMISSION</code>.</li>
 <li>If the owner would not meet the updated <a href="reserves.html">reserve requirement</a> after minting the token, the transaction fails with <code>tecINSUFFICIENT_RESERVE</code>. Note that new <code>NFToken</code>s only increase the owner's reserve if it requires a new <a href="nftokenpage.html">NFTokenPage object</a>, which can each hold up to 32 NFTokens.</li>
-<li>If the <code>Issuer</code>'s <code>MintedTokens</code> field maxes out, the transaction fails with <code>tecMAX_SEQUENCE_REACHED</code>. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</li>
+<li>If the <code>Issuer</code>'s <code>MintedNFTokens</code> field maxes out, the transaction fails with <code>tecMAX_SEQUENCE_REACHED</code>. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</li>
 </ul>
 <!-- -->
 <!-- -->
