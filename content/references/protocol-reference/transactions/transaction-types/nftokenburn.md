@@ -77,6 +77,18 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    <td>Identifies the <code>NFToken</code> object to be removed by the transaction.
    </td>
   </tr>
+    <tr>
+   <td><code>Owner</code>
+   </td>
+   <td>No
+   </td>
+   <td>string
+   </td>
+   <td>AccountID
+   </td>
+   <td>Identifies the owner of the NFToken with the given TokenID. Only used if that owner is different than the account signing this transaction. This is used to burn tokens with the lsfBurnable flag that have been traded.
+   </td>
+  </tr>
 </table>
 
 
