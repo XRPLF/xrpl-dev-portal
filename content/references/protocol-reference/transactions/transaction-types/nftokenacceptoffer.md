@@ -17,9 +17,9 @@ The `NFTokenAcceptOffer` transaction is used to accept offers to `buy` or `sell`
 
 ## Brokered vs. Direct Mode
 
-The mode in which the transaction operates depends on the presence of the `SellOffer` and `BuyOffer` fields of the transaction:
+The mode in which the transaction operates depends on the presence of the `NFTokenSellOffer` and `NFTokenBuyOffer` fields of the transaction:
 
-| `SellOffer` | `BuyOffer` | Mode     |
+| `NFTokenSellOffer` | `NFTokenBuyOffer` | Mode     |
 |:------------|:-----------|:---------|
 | ✔️           | ✔️          | Brokered |
 | ✔️           | X          | Direct   |
