@@ -78,7 +78,7 @@ If you need to specify additional information during minting (for example, detai
 - If the `Issuer` field refers to an account that does not exist, the transaction fails with `tecNO_ISSUER`.
 - If account referenced by the `Issuer` field has not authorized this transaction's sender (using the `NFTokenMinter` setting) to mint `NFToken`s on their behalf, the transaction fails with `tecNO_PERMISSION`.
 - If the owner would not meet the updated [reserve requirement](reserves.html) after minting the token, the transaction fails with `tecINSUFFICIENT_RESERVE`. Note that new `NFToken`s only increase the owner's reserve if it requires a new [NFTokenPage object][], which can each hold up to 32 NFTokens.
-- If the `Issuer`'s `MintedTokens` field maxes out, the transaction fails with `tecMAX_SEQUENCE_REACHED`. This is only possible if 2<sup>32</sup>-1 `NFToken`s have been minted in total by the issuer or on their behalf.
+- If the `Issuer`'s `MintedNFTokens` field maxes out, the transaction fails with `tecMAX_SEQUENCE_REACHED`. This is only possible if 2<sup>32</sup>-1 `NFToken`s have been minted in total by the issuer or on their behalf.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
