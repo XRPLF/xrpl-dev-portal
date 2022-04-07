@@ -282,7 +282,6 @@
 <ul>
 <li>The account that originally created the <code>NFTokenOffer</code>.</li>
 <li>The account in the <code>Destination</code> field of the <code>NFTokenOffer</code>, if one is present.</li>
-<li>The issuer of the token identified by the <code>TokenUID</code> field in the <code>NFTokenOffer</code> object, if the token has the <code>lsfIssuerCanCancelOffers</code> flag set.</li>
 <li>Any account, if the <code>NFTokenOffer</code> specifies an expiration time and the close time of the parent ledger in which the <code>NFTokenCancelOffer</code> is included is greater than the expiration time.</li>
 </ul>
 <p>This transaction removes the listed <code>NFTokenOffer</code> object from the ledger, if present, and adjusts the reserve requirements accordingly. It is not an error if the <code>NFTokenOffer</code> cannot be found: if that is the case, the transaction should complete successfully.</p>
