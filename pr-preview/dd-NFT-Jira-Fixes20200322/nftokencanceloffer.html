@@ -263,7 +263,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenCancelOffer"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"TokenOffers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"NFTokenOffers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="s2">"9C92E061381C1EF37A8CDE0E8FC35188BFC30B1883825042A64309AC09F4C36D"</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -295,14 +295,14 @@
 <td align="left">NFTokenCancelOffer transaction type. The integer identifier is 28.</td>
 </tr>
 <tr>
-<td align="left"><code>TokenOffers</code></td>
+<td align="left"><code>NFTokenOffers</code></td>
 <td align="left">Array</td>
 <td align="left">VECTOR256</td>
-<td align="left">An array of IDs of the <code>NFTokenOffer</code> objects to cancel (not the <code>nft_id</code> values of <code>NFToken</code> objects, but the <code>nft_offer_index</code> values of <code>NFTokenOffer</code> objects). Each entry must be a different <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenoffer.html">NFTokenOffer</a> object; the transaction is invalid if the array contains duplicate entries.</td>
+<td align="left">An array of IDs of the <code>NFTokenOffer</code> objects to cancel (not the IDs of <code>NFToken</code> objects, but the IDs of the <code>NFTokenOffer</code> objects). Each entry must be a different <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenoffer.html">NFTokenOffer</a> object; the transaction is invalid if the array contains duplicate entries.</td>
 </tr>
 </tbody>
 </table>
-<p>The transaction can succeed even if one or more of the IDs in the <code>TokenOffers</code> field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been deleted.)</p>
+<p>The transaction can succeed even if one or more of the IDs in the <code>NFTokenOffers</code> field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been deleted.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a <a href="nftokenoffer.html">NFTokenOffer</a> object.</p>
 <p>It is important to note that if you inadvertently provide a <code>nft_id</code> rather than a <code>nft_offer_index</code>, you might receive a <code>tesSuccess</code> response. The reason is that when passed a properly formatted ID value that is not found, the system assumes that the <code>NFTokenOffer</code> has already been deleted.</p>
 <p>The transaction fails with an error if one of the IDs points to an object that does exist, but is not a <a href="nftokenoffer.html">NFTokenOffer</a> object.</p>
 <!-- -->

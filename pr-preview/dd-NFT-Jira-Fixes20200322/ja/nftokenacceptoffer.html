@@ -275,12 +275,12 @@
 <li>Allow two distinct offers, one offering to buy a given <code>NFToken</code> and the other offering to sell the same <code>NFToken</code>, to be accepted in an atomic fashion. This is called <em>brokered</em> mode.</li>
 </ul>
 <h2 id="brokered-vs-direct-mode">Brokered vs. Direct Mode<a aria-hidden="true" class="hover_anchor" href="#brokered-vs-direct-mode"><i class="fa fa-link"></i></a></h2>
-<p>The mode in which the transaction operates depends on the presence of the <code>SellOffer</code> and <code>BuyOffer</code> fields of the transaction:</p>
+<p>The mode in which the transaction operates depends on the presence of the <code>NFTokenSellOffer</code> and <code>NFTokenBuyOffer</code> fields of the transaction:</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left"><code>SellOffer</code></th>
-<th align="left"><code>BuyOffer</code></th>
+<th align="left"><code>NFTokenSellOffer</code></th>
+<th align="left"><code>NFTokenBuyOffer</code></th>
 <th align="left">Mode</th>
 </tr>
 </thead>
@@ -346,29 +346,29 @@
 <td align="left">Transaction type <code>NFTokenAcceptOffer</code>. The integer identifier is 29.</td>
 </tr>
 <tr>
-<td align="left"><code>SellOffer</code></td>
+<td align="left"><code>NFTokenSellOffer</code></td>
 <td align="left">String</td>
 <td align="left">Hash256</td>
 <td align="left"><em>(Optional)</em> Identifies the <code>NFTokenOffer</code> that offers to sell the <code>NFToken</code>.</td>
 </tr>
 <tr>
-<td align="left"><code>BuyOffer</code></td>
+<td align="left"><code>NFTokenBuyOffer</code></td>
 <td align="left">String</td>
 <td align="left">Hash256</td>
 <td align="left"><em>(Optional)</em> Identifies the <code>NFTokenOffer</code> that offers to buy the <code>NFToken</code>.</td>
 </tr>
 <tr>
-<td align="left"><code>BrokerFee</code></td>
+<td align="left"><code>NFTokenBrokerFee</code></td>
 <td align="left"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
 <td align="left">Amount</td>
 <td align="left"><em>(Optional)</em> This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought. If specified, the fee must be such that, prior to accounting for the transfer fee charged by the issuer, the amount that the seller would receive is at least as much as the amount indicated in the sell offer.</td>
 </tr>
 </tbody>
 </table>
-<p>In direct mode, you must specify <strong>either</strong> the <code>SellOffer</code> or the <code>BuyOffer</code>. In brokered mode, you must specify <strong>both</strong> the <code>SellOffer</code> and the <code>BuyOffer</code>.</p>
-<p>This functionality is intended to allow the <code>owner</code> of an <code>NFToken</code> to offer their token for sale to a third party broker, who may then attempt to sell the <code>NFToken</code> on for a larger amount, without the broker having to own the <code>NFToken</code> or custody funds.</p>
+<p>In direct mode, you must specify <strong>either</strong> the <code>NFTokenSellOffer</code> or the <code>NFTokenBuyOffer</code>. In brokered mode, you must specify <strong>both</strong> the <code>NFTokenSellOffer</code> and the <code>NFTokenBuyOffer</code>.</p>
+<p>This functionality is intended to allow the <code>owner</code> of a <code>NFToken</code> to offer their token for sale to a third party broker, who may then attempt to sell the <code>NFToken</code> on for a larger amount, without the broker having to own the <code>NFToken</code> or custody funds.</p>
 <p>If both offers are for the same asset, it is possible that the order in which funds are transferred might cause a transaction that would succeed to fail due to an apparent lack of funds. To ensure deterministic transaction execution and maximize the chances of successful execution, the account attempting to buy the <code>NFToken</code> is debited first. Funds due to the broker are credited <em>before</em> crediting the seller.</p>
-<p>In brokered mode, The offers referenced by <code>BuyOffer</code> and <code>SellOffer</code> must both specify the same <code>TokenID</code>; that is, both must be for the same <code>NFToken</code>.</p>
+<p>In brokered mode, The offers referenced by <code>NFTokenBuyOffer</code> and <code>NFTokenSellOffer</code> must both specify the same <code>NFTokenID</code>; that is, both must be for the same <code>NFToken</code>.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->

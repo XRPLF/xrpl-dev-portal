@@ -272,7 +272,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenCreateOffer"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"TokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"NFTokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -296,7 +296,7 @@
 <td align="left"><em>(Optional)</em> Who owns the corresponding <code>NFToken</code>. If the offer is to buy a token, this field must be present and it must be different than the <code>Account</code> field (since an offer to buy a token one already holds is meaningless). If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as the <code>Account</code> (since an offer to sell a token one doesn't already hold is meaningless).</td>
 </tr>
 <tr>
-<td align="left"><code>TokenID</code></td>
+<td align="left"><code>NFTokenID</code></td>
 <td align="left">String</td>
 <td align="left">Hash256</td>
 <td align="left">Identifies the <code>NFToken</code> object that the offer references.</td>

@@ -241,9 +241,9 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenburn-json">Example NFTokenBurn JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenburn-fields">NFTokenBurn Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#account-root-enhancements">Account Root Enhancements</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#mintaccount">MintAccount</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#mintedtokens">MintedTokens</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#burnedtokens">BurnedTokens</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenminter">NFTokenMinter</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#mintednftokens">MintedNFTokens</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#burnednftokens">BurnedNFTokens</a></li>
       </ul>
   </div>
       </aside>
@@ -277,7 +277,7 @@
       "Account": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
       "Owner": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
       "Fee": 10,
-      "TokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
+      "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
 }
 </code></pre></div>
 <h2 id="nftokenburn-fields">NFTokenBurn Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenburn-fields"><i class="fa fa-link"></i></a></h2>
@@ -316,7 +316,7 @@
    </td>
 <td>AccountID
    </td>
-<td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>MintAccount</code>).
+<td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>NFTokenMinter</code>).
    </td>
 </tr>
 <tr>
@@ -332,7 +332,7 @@
    </td>
 </tr>
 <tr>
-<td><code>TokenID</code>
+<td><code>NFTokenID</code>
 </td>
 <td>Yes
    </td>
@@ -357,7 +357,7 @@
 </tr>
 </table>
 <h2 id="account-root-enhancements">Account Root Enhancements<a aria-hidden="true" class="hover_anchor" href="#account-root-enhancements"><i class="fa fa-link"></i></a></h2>
-<h3 id="mintaccount">MintAccount<a aria-hidden="true" class="hover_anchor" href="#mintaccount"><i class="fa fa-link"></i></a></h3>
+<h3 id="nftokenminter">NFTokenMinter<a aria-hidden="true" class="hover_anchor" href="#nftokenminter"><i class="fa fa-link"></i></a></h3>
 <p>Issuers might want to issue NFTs from their well known account, while at the same time wanting to delegate the issuance of such NFTs to a mint or other third party.</p>
 <table class="table-responsive">
 <tr>
@@ -373,7 +373,7 @@
 </td>
 </tr>
 <tr>
-<td><code>MintAccount</code>
+<td><code>NFTokenMinter</code>
 </td>
 <td>
 </td>
@@ -381,16 +381,16 @@
    </td>
 <td>AccountID
    </td>
-<td>The <code>MintAccount</code> field, if set, specifies an alternate account which is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
+<td>The <code>NFTokenMinter</code> field, if set, specifies an alternate account that is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
    </td>
 </tr>
 </table>
-<p>The <code>SetAccount</code> transaction allows the <code>MintAccount</code> field to be set or cleared.</p>
-<h3 id="mintedtokens">MintedTokens<a aria-hidden="true" class="hover_anchor" href="#mintedtokens"><i class="fa fa-link"></i></a></h3>
-<p>The <code>MintedTokens</code> field is used to form the <code>TokenID</code> of a new object, to ensure the uniqueness of <code>NFToken</code> objects. If this field is not present, the value is 0.</p>
-<h3 id="burnedtokens">BurnedTokens<a aria-hidden="true" class="hover_anchor" href="#burnedtokens"><i class="fa fa-link"></i></a></h3>
-<p>The <code>BurnedTokens</code> field provides a convenient way to determine how many <code>NFToken</code> objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.</p>
-<p>An account for which the difference the number of minted and burned tokens, as stored in the <code>MintedTokens</code> and <code>BurnedTokens</code> fields respectively, is non-zero cannot be deleted.</p>
+<p>The <code>SetAccount</code> transaction allows the <code>NFTokenMinter</code> field to be set or cleared.</p>
+<h3 id="mintednftokens">MintedNFTokens<a aria-hidden="true" class="hover_anchor" href="#mintednftokens"><i class="fa fa-link"></i></a></h3>
+<p>The <code>MintedNFTokens</code> field is used to form the <code>NFTokenID</code> of a new object, to ensure the uniqueness of <code>NFToken</code> objects. If this field is not present, the value is 0.</p>
+<h3 id="burnednftokens">BurnedNFTokens<a aria-hidden="true" class="hover_anchor" href="#burnednftokens"><i class="fa fa-link"></i></a></h3>
+<p>The <code>BurnedNFTokens</code> field provides a convenient way to determine how many <code>NFToken</code> objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.</p>
+<p>An account for which the difference in the number of minted and burned tokens, as stored in the <code>MintedNFTokens</code> and <code>BurnedNFTokens</code> fields respectively, is non-zero cannot be deleted.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->

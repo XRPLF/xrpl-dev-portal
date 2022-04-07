@@ -260,15 +260,15 @@
         <h1 id="nftokenmint">NFTokenMint<a aria-hidden="true" class="hover_anchor" href="#nftokenmint"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a>
 <em>The XLS-20 standard for NFTs <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> has a preliminary implementation that can be used in test networks, but is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release.</em></p>
-<p>The <code>NFTokenMint</code> transaction creates an non-fungible token and adds it to the relevant <a href="nftokenpage.html">NFTokenPage object</a> of the <code>Minter</code> as an <a href="nftoken.html">NFToken</a> object. A required parameter to this transaction is the <code>Token</code> field specifying the actual token. This transaction is the only opportunity the <code>Minter</code> has to specify any token fields that are defined as immutable (for example, the <code>TokenFlags</code>).</p>
-<p>If the transaction is successful, the newly minted token is owned by the account (the <code>minter</code> account) that executed the transaction. If needed, the server creates a new <code>NFTokenPage</code>  for the account and applies a reserve charge.</p>
+<p>The <code>NFTokenMint</code> transaction creates a NFToken and adds it to the relevant <a href="nftokenpage.html">NFTokenPage object</a> of the <code>NFTokenMinter</code> as a <a href="nftoken.html">NFToken</a> object. A required parameter to this transaction is the <code>Token</code> field specifying the actual token. This transaction is the only opportunity the <code>NFTokenMinter</code> has to specify any token fields that are defined as immutable (for example, the <code>Flags</code>).</p>
+<p>If the transaction is successful, the newly minted token is owned by the account (the <code>minter</code> account) that executed the transaction. If needed, the server creates a new <code>NFTokenPage</code> for the account and applies a reserve charge.</p>
 <h2 id="example-nftokenmint-json">Example NFTokenMint JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenmint-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenMint"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"TokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"NFTokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483659</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733a2f2f62616679626569676479727a74357366703775646d37687537367568377932366e6634646675796c71616266336f636c67747179353566627a6469"</span><span class="p">,</span><span class="w"></span>
@@ -283,7 +283,7 @@
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>Minter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
+<p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>NFTokenMinter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
 <h2 id="nftokenmint-fields">NFTokenMint Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenmint-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a NFTokenMint transaction uses the following fields:</p>
 <table class="table-responsive">
@@ -297,7 +297,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>TokenTaxon</code></td>
+<td align="left"><code>NFTokenTaxon</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
 <td align="left">The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than <code>0xFFFF'FFFF</code> are disallowed.</td>
@@ -306,19 +306,19 @@
 <td align="left"><code>Issuer</code></td>
 <td align="left">String</td>
 <td align="left">AccountID</td>
-<td align="left"><em>(Optional)</em> The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the <code>NFToken</code>. If provided, the issuer's <a href="accountroot.html">AccountRoot object</a> must have the <code>Minter</code> field set to sender of this transaction (this transaction's <code>Account</code> field).</td>
+<td align="left"><em>(Optional)</em> The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the <code>NFToken</code>. If provided, the issuer's <a href="accountroot.html">AccountRoot object</a> must have the <code>NFTokenMinter</code> field set to the sender of this transaction (this transaction's <code>Account</code> field).</td>
 </tr>
 <tr>
 <td align="left"><code>TransferFee</code></td>
 <td align="left">Number</td>
 <td align="left">UInt16</td>
-<td align="left"><em>(Optional)</em> The value specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 50,000 inclusive and a value of 1 is equivalent to 1/10 of a basis point or 0.001%, allowing transfer rates between 0% and 50%. A TransferFee of 50,000 corresponds to 50%. If this field is provided, the transaction MUST have the <a href="#nftokenmint-flags"><code>tfTransferable</code> flag</a> enabled.</td>
+<td align="left"><em>(Optional)</em> The value specifies the fee charged by the issuer for secondary sales of the NFToken, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the <a href="#nftokenmint-flags"><code>tfTransferable</code> flag</a> enabled.</td>
 </tr>
 <tr>
 <td align="left"><code>URI</code></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
-<td align="left"><em>(Optional)</em> Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the <a class="external-link" href="https://js.xrpl.org/modules.html#convertStringToHex" target="_blank"><code>xrpl.convertStringToHex</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an issuer-specific encoding. The URI is NOT checked for validity.</td>
+<td align="left"><em>(Optional)</em> Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the <a class="external-link" href="https://js.xrpl.org/modules.html#convertStringToHex" target="_blank"><code>xrpl.convertStringToHex</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFToken. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an issuer-specific encoding. The URI is NOT checked for validity.</td>
 </tr>
 </tbody>
 </table>
@@ -344,7 +344,7 @@
 <td align="left"><code>tfOnlyXRP</code></td>
 <td align="left"><code>0x00000002</code></td>
 <td align="left">2</td>
-<td align="left">The minted <code>NFToken</code> can only be bought or sold for XRP. This may be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies.</td>
+<td align="left">The minted <code>NFToken</code> can only be bought or sold for XRP. This can be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies.</td>
 </tr>
 <tr>
 <td align="left"><code>tfTrustLine</code></td>
@@ -364,12 +364,12 @@
 <p>If you need to specify additional information during minting (for example, details identifying a property by referencing a particular <a class="external-link" href="https://en.wikipedia.org/wiki/Plat" target="_blank">plat <i aria-hidden="true" class="fa fa-external-link"></i></a>, a vehicle by specifying a <a class="external-link" href="https://en.wikipedia.org/wiki/Vehicle_identification_number" target="_blank">VIN <i aria-hidden="true" class="fa fa-external-link"></i></a>, or other object-specific descriptions) you can use a <a href="transaction-common-fields.html#memos-field">transaction memo</a>. Memos are a part of the signed transaction and are available from historical archives, but are not stored in the ledger's state data.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>If the <code>TransferFee</code> field is not within the acceptable range (0 to 50,000 inclusive) the transaction fails with <code>temBAD_TRANSFER_RATE</code>.</li>
+<li>If the <code>TransferFee</code> field is not within the acceptable range (0 to 9999 inclusive) the transaction fails with <code>temBAD_NFTOKEN_TRANSFER_FEE</code>.</li>
 <li>If the <code>URI</code> field is longer than 256 bytes, the transaction fails with <code>temMALFORMED</code>.</li>
 <li>If the <code>Issuer</code> field refers to an account that does not exist, the transaction fails with <code>tecNO_ISSUER</code>.</li>
-<li>If account referenced by the <code>Issuer</code> field has not authorized this transaction's sender (using the <code>Minter</code> setting) to mint <code>NFToken</code>s on their behalf, the transaction fails with <code>tecNO_PERMISSION</code>.</li>
-<li>If the owner would not meet the updated <a href="reserves.html">reserve requirement</a> after minting the token, the transaction fails with <code>tecINSUFFICIENT_RESERVE</code>. Note that new <code>NFToken</code>s only increase the owner's reserve if it requires a new <a href="nftokenpage.html">NFTokenPage object</a>, which can each hold up to 32 NFTs.</li>
-<li>If the <code>Issuer</code>'s <code>MintedTokens</code> field maxes out, the transaction fails with <code>tecMAX_SEQUENCE_REACHED</code>. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</li>
+<li>If account referenced by the <code>Issuer</code> field has not authorized this transaction's sender (using the <code>NFTokenMinter</code> setting) to mint <code>NFToken</code>s on their behalf, the transaction fails with <code>tecNO_PERMISSION</code>.</li>
+<li>If the owner would not meet the updated <a href="reserves.html">reserve requirement</a> after minting the token, the transaction fails with <code>tecINSUFFICIENT_RESERVE</code>. Note that new <code>NFToken</code>s only increase the owner's reserve if it requires a new <a href="nftokenpage.html">NFTokenPage object</a>, which can each hold up to 32 NFTokens.</li>
+<li>If the <code>Issuer</code>'s <code>MintedNFTokens</code> field maxes out, the transaction fails with <code>tecMAX_SEQUENCE_REACHED</code>. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</li>
 </ul>
 <!-- -->
 <!-- -->

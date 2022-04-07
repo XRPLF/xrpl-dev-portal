@@ -283,7 +283,7 @@
 <p><a href="img/nftokentester1.png"><img alt="NFTokenTester Tutorial Window" src="img/nftokentester1.png"/></a></p>
 <h1 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h1>
 <p>To mint a <code>NFToken</code>, you need to generate Account and Secret credentials on the NFT-Devnet (<code>wss://xls20-sandbox.rippletest.net:51233</code>). Go to the <a href="xrp-testnet-faucet.html">Test XRP Faucet</a> and click <strong>Generate NFT-Devnet credentials</strong>. You can also obtain a second set of account credentials to try creating and accepting buy and sell offers.</p>
-<p>You will need a URL to the token data you want to turn into a <code>NFToken</code>. You can use your own object or this example IPFS address for testing.</p>
+<p>You need a URL to the token data you want to turn into a <code>NFToken</code>. You can use your own object or this example IPFS address for testing.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">ipfs://QmQjDvDhfHcMyUgDAxKig4AoMTtS5JrsfpiEEpFa3F9QRt
 </code></pre></div>
 <p>Open <code>nftoken-tester.html</code> in a web browser, and display the JavaScript console. For example, in Google Chrome choose <strong>View&gt; Developer&gt; JavaScript Console</strong>.</p>
@@ -324,14 +324,14 @@
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Connected to devnet"</span><span class="p">)</span>
 </code></pre></div>
 <ol start="2">
-<li>Create a <code>NFTokenMint</code> transaction using your account address and the <code>URI</code> to your token data. Note that you must convert the token <code>URI</code> to a hexadecimal value for this transaction. The <code>TokenTaxon</code> is a required field, but if you are not using the value as a custom indexing field, you can set it to 0.</li>
+<li>Create a <code>NFTokenMint</code> transaction using your account address and the <code>URI</code> to your token data. Note that you must convert the token <code>URI</code> to a hexadecimal value for this transaction. The <code>NFTokenTaxon</code> is a required field, but if you are not using the value as a custom indexing field, you can set it to 0.</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">    <span class="kd">const</span> <span class="nx">transactionBlob</span> <span class="o">=</span> <span class="p">{</span>
         <span class="nx">TransactionType</span><span class="o">:</span> <span class="s2">"NFTokenMint"</span><span class="p">,</span>
         <span class="nx">Account</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">,</span>
         <span class="nx">URI</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">convertStringToHex</span><span class="p">(</span><span class="nx">tokenUrl</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span>
         <span class="nx">Flags</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">flags</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span>
-        <span class="nx">TokenTaxon</span><span class="o">:</span> <span class="mf">0</span>
+        <span class="nx">NFTokenTaxon</span><span class="o">:</span> <span class="mf">0</span>
     <span class="p">}</span>
 </code></pre></div>
 <ol start="3">
@@ -446,7 +446,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">  <span class="kd">const</span> <span class="nx">transactionBlob</span> <span class="o">=</span> <span class="p">{</span>
       <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"NFTokenBurn"</span><span class="p">,</span>
       <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">,</span>
-      <span class="s2">"TokenID"</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span>
+      <span class="s2">"NFTokenID"</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span>
   <span class="p">}</span>
 </code></pre></div>
 <ol start="3">
@@ -484,7 +484,7 @@
 <p>To create an offer to sell a <code>NFToken</code>:</p>
 <ol>
 <li>Enter your <strong>Account</strong> and <strong>Secret</strong> in the appropriate fields.</li>
-<li>Enter the <strong>Token ID</strong> of the NFToken you want to sell.</li>
+<li>Enter the <strong>NFToken ID</strong> of the NFToken you want to sell.</li>
 <li>Set the <strong>Flags</strong> value to 1.</li>
 <li>Enter the <strong>Amount</strong>, the sale price in drops (millionths of an xrp). For example, if you enter 1000000, the sale price is 1 xrp.</li>
 <li>Click <strong>Create Sell Offer</strong>.</li>
@@ -518,7 +518,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22">  <span class="kd">const</span> <span class="nx">transactionBlob</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"NFTokenCreateOffer"</span><span class="p">,</span>
         <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">,</span>
-        <span class="s2">"TokenID"</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="s2">"NFTokenID"</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
         <span class="s2">"Amount"</span><span class="o">:</span> <span class="nx">amount</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
         <span class="s2">"Flags"</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">flags</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
   <span class="p">}</span>
@@ -536,7 +536,7 @@
     <span class="k">try</span> <span class="p">{</span>
         <span class="nx">nftSellOffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">"nft_sell_offers"</span><span class="p">,</span>
-        <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span>  
+        <span class="nx">nft_id</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span>  
       <span class="p">})</span>
       <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"No sell offers."</span><span class="p">)</span>
@@ -547,7 +547,7 @@
   <span class="k">try</span> <span class="p">{</span>
     <span class="nx">nftBuyOffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s2">"nft_buy_offers"</span><span class="p">,</span>
-    <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span> <span class="p">})</span>
+    <span class="nx">nft_id</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span> <span class="p">})</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"No buy offers."</span><span class="p">)</span>
   <span class="p">}</span>
@@ -574,7 +574,7 @@
 <ol>
 <li>Enter your <strong>Account</strong> and <strong>Secret</strong> in the appropriate fields.</li>
 <li>Set the <strong>Flags</strong> value to <code>0</code>.</li>
-<li>Enter the <strong>Token ID</strong> of the <code>NFToken</code> you want to purchase.</li>
+<li>Enter the <strong>NFToken ID</strong> of the <code>NFToken</code> you want to purchase.</li>
 <li>Enter your proposed purchase <strong>Amount</strong> in drops (millionths of an xrp).</li>
 <li>Enter the <strong>Owner</strong> account address.</li>
 <li>Click <strong>Create Buy Offer</strong>.</li>
@@ -582,7 +582,7 @@
 </ol>
 <p>The <code>createBuyOffer()</code> function steps are:</p>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 <li>Prepare a transaction blob.</li>
 <li>Submit the transaction and wait for the results.</li>
 <li>Request lists of current Sell Offers and Buy Offers.</li>
@@ -594,7 +594,7 @@
 <span class="c1">//********************************</span>
 </code></pre></div>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="k">async</span> <span class="kd">function</span> <span class="nx">createBuyOffer</span><span class="p">()</span> <span class="p">{</span>
 
@@ -610,7 +610,7 @@
         <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"NFTokenCreateOffer"</span><span class="p">,</span>
         <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">,</span>
         <span class="s2">"Owner"</span><span class="o">:</span> <span class="nx">owner</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
-        <span class="s2">"TokenID"</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="s2">"NFTokenID"</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
         <span class="s2">"Amount"</span><span class="o">:</span> <span class="nx">amount</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
         <span class="s2">"Flags"</span><span class="o">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">flags</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
   <span class="p">}</span>
@@ -628,7 +628,7 @@
     <span class="k">try</span> <span class="p">{</span>
         <span class="nx">nftSellOffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">"nft_sell_offers"</span><span class="p">,</span>
-        <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span>  
+        <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span>  
       <span class="p">})</span>
       <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"No sell offers."</span><span class="p">)</span>
@@ -639,7 +639,7 @@
   <span class="k">try</span> <span class="p">{</span>
     <span class="nx">nftBuyOffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s2">"nft_buy_offers"</span><span class="p">,</span>
-    <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span> <span class="p">})</span>
+    <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span> <span class="p">})</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"No buy offers."</span><span class="p">)</span>
   <span class="p">}</span>
@@ -665,12 +665,12 @@
 <p>To create an offer to buy a <code>NFToken</code>:</p>
 <ol>
 <li>Enter your <strong>Account</strong> and <strong>Secret</strong> in the appropriate fields.</li>
-<li>Enter the <strong>Token ID</strong> of the <code>NFToken</code> you want to list.</li>
+<li>Enter the <strong>NFToken ID</strong> of the <code>NFToken</code> you want to list.</li>
 <li>Click <strong>Get Offers</strong>.</li>
 </ol>
 <p>The <code>getOffers()</code> function steps are:</p>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 <li>Request <code>nft_sell_offers</code> and <code>nft_buy_offers</code> for your wallet account and send the results to your console log.</li>
 <li>Disconnect from the server.</li>
 </ol>
@@ -696,7 +696,7 @@
       <span class="k">try</span> <span class="p">{</span>
       <span class="nx">nftSellOffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">"nft_sell_offers"</span><span class="p">,</span>
-        <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span>  
+        <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span>  
       <span class="p">})</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"No sell offers."</span><span class="p">)</span>
@@ -707,7 +707,7 @@
     <span class="k">try</span> <span class="p">{</span>
       <span class="nx">nftBuyOffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
       <span class="nx">method</span><span class="o">:</span> <span class="s2">"nft_buy_offers"</span><span class="p">,</span>
-      <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span>
+      <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span>
       <span class="p">})</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"No buy offers."</span><span class="p">)</span>
@@ -726,13 +726,13 @@
 <p>To cancel an offer to sell or buy a <code>NFToken</code>:</p>
 <ol>
 <li>Enter your <strong>Account</strong> and <strong>Secret</strong> in the appropriate fields.</li>
-<li>Enter the <strong>Token Offer Index</strong> of the offer you want to cancel. (Labeled as <strong>Index</strong> in the responses to <code>nft_buy_offers</code>and<code>nft_sell_offers</code> requests.)</li>
+<li>Enter the <strong>NFToken Offer Index</strong> of the offer you want to cancel. (Labeled as nft_offer_index in the responses to <code>nft_buy_offers</code>and<code>nft_sell_offers</code> requests.)</li>
 <li>Click <strong>Cancel Offer</strong>.</li>
 </ol>
 <h3 id="the-canceloffer-function">The <code>cancelOffer()</code> Function<a aria-hidden="true" class="hover_anchor" href="#the-canceloffer-function"><i class="fa fa-link"></i></a></h3>
 <p>The <code>cancelOffer()</code> function steps are:</p>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 <li>Prepare a transaction blob.</li>
 <li>Submit the transaction and wait for the results.</li>
 <li>Request lists of current Sell Offers and Buy Offers.</li>
@@ -744,7 +744,7 @@
 <span class="c1">//***************************</span>
 </code></pre></div>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-39" id="codeblock-39button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-39"><span class="k">async</span> <span class="kd">function</span> <span class="nx">cancelOffer</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">secret</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
@@ -755,13 +755,13 @@
 <ol start="2">
 <li>Prepare a transaction blob. The tokenID argument requires an array rather than a single string.</li>
 </ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-40" id="codeblock-40button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-40">    <span class="kd">const</span> <span class="nx">tokenOfferID</span> <span class="o">=</span> <span class="nx">tokenOfferIndex</span><span class="p">.</span><span class="nx">value</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-40" id="codeblock-40button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-40">    <span class="kd">const</span> <span class="nx">tokenOfferID</span> <span class="o">=</span> <span class="nx">nftokenOfferIndex</span><span class="p">.</span><span class="nx">value</span>
     <span class="kd">const</span> <span class="nx">tokenOffers</span> <span class="o">=</span> <span class="p">[</span><span class="nx">tokenOfferID</span><span class="p">]</span>
 
       <span class="kd">const</span> <span class="nx">transactionBlob</span> <span class="o">=</span> <span class="p">{</span>
          <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"NFTokenCancelOffer"</span><span class="p">,</span>
          <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">,</span>
-         <span class="s2">"TokenOffers"</span><span class="o">:</span> <span class="nx">tokenOffers</span>
+         <span class="s2">"NFTokenOffers"</span><span class="o">:</span> <span class="nx">tokenOffers</span>
       <span class="p">}</span>
 </code></pre></div>
 <ol start="3">
@@ -777,7 +777,7 @@
     <span class="k">try</span> <span class="p">{</span>
         <span class="nx">nftSellOffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">"nft_sell_offers"</span><span class="p">,</span>
-        <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span>  
+        <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span>  
       <span class="p">})</span>
       <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"No sell offers."</span><span class="p">)</span>
@@ -788,7 +788,7 @@
   <span class="k">try</span> <span class="p">{</span>
     <span class="nx">nftBuyOffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s2">"nft_buy_offers"</span><span class="p">,</span>
-    <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">tokenId</span><span class="p">.</span><span class="nx">value</span> <span class="p">})</span>
+    <span class="nx">tokenid</span><span class="o">:</span> <span class="nx">nftokenId</span><span class="p">.</span><span class="nx">value</span> <span class="p">})</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"No buy offers."</span><span class="p">)</span>
   <span class="p">}</span>
@@ -816,12 +816,12 @@
 <p>To accept a sell offer:</p>
 <ol>
 <li>Enter your <strong>Account</strong> and <strong>Secret</strong> in the appropriate fields.</li>
-<li>Enter the <strong>Token Offer Index</strong> of the offer you want to accept. (Labeled as <strong>Index</strong> in the responses to <code>nft_sell_offers</code> requests.)</li>
+<li>Enter the <strong>Token Offer Index</strong> of the offer you want to accept. (Labeled as <code>nft_offer_index</code> in the responses to <code>nft_sell_offers</code> requests.)</li>
 <li>Click <strong>Accept Sell Offer</strong>.</li>
 </ol>
 <p>The <code>acceptSellOffer()</code> function steps are:</p>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 <li>Prepare a transaction blob.</li>
 <li>Submit the transaction and wait for the results.</li>
 <li>Display the results in your console log.</li>
@@ -832,7 +832,7 @@
 <span class="c1">//***************************</span>
 </code></pre></div>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-46" id="codeblock-46button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-46"><span class="k">async</span> <span class="kd">function</span> <span class="nx">acceptSellOffer</span><span class="p">()</span> <span class="p">{</span>
 
@@ -847,7 +847,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-47" id="codeblock-47button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-47">  <span class="kd">const</span> <span class="nx">transactionBlob</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"NFTokenAcceptOffer"</span><span class="p">,</span>
         <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">,</span>
-        <span class="s2">"SellOffer"</span><span class="o">:</span> <span class="nx">tokenOfferIndex</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="s2">"SellOffer"</span><span class="o">:</span> <span class="nx">nftokenOfferIndex</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
   <span class="p">}</span>
 </code></pre></div>
 <ol start="3">
@@ -880,12 +880,12 @@
 <p>To accept a buy offer:</p>
 <ol>
 <li>Enter your <strong>Account</strong> and <strong>Secret</strong> in the appropriate fields.</li>
-<li>Enter the <strong>Token Offer Index</strong> of the offer you want to accept. (Labeled as <strong>Index</strong> in the responses to <code>nft_sell_offers</code> requests.)</li>
+<li>Enter the <strong>NFToken Offer Index</strong> of the offer you want to accept. (Labeled as <code>nft_offer_index</code> in the responses to <code>nft_sell_offers</code> requests.)</li>
 <li>Click <strong>Accept Buy Offer</strong>.</li>
 </ol>
 <p>The <code>acceptBuyOffer()</code> function steps are:</p>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 <li>Prepare a transaction blob.</li>
 <li>Submit the transaction and wait for the results.</li>
 <li>Display the results in your console log.</li>
@@ -898,7 +898,7 @@
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">acceptBuyOffer</span><span class="p">()</span> <span class="p">{</span>
 </code></pre></div>
 <ol>
-<li>Connect to the devnet server.</li>
+<li>Connect to the nft-devnet server.</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-52" id="codeblock-52button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-52">  <span class="kd">const</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">secret</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
   <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="p">)</span>
@@ -911,7 +911,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-53" id="codeblock-53button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-53">  <span class="kd">const</span> <span class="nx">transactionBlob</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"NFTokenAcceptOffer"</span><span class="p">,</span>
         <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">,</span>
-        <span class="s2">"BuyOffer"</span><span class="o">:</span> <span class="nx">tokenOfferIndex</span><span class="p">.</span><span class="nx">value</span>
+        <span class="s2">"BuyOffer"</span><span class="o">:</span> <span class="nx">nftokenOfferIndex</span><span class="p">.</span><span class="nx">value</span>
   <span class="p">}</span>
 </code></pre></div>
 <ol start="3">
@@ -972,7 +972,7 @@
     <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"secret"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"40"</span> <span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>Token URL<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken URL<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"tokenUrl"</span>  
 <span class="na">value </span><span class="o">=</span> <span class="s">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;</span>
     <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
@@ -982,16 +982,16 @@
     <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"flags"</span> <span class="na">value</span><span class="o">=</span><span class="s">"1"</span> <span class="na">size</span><span class="o">=</span><span class="s">"10"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>Token ID<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"tokenId"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken ID<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nftokenId"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>Amount<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"amount"</span> <span class="na">value</span><span class="o">=</span><span class="s">"1000000"</span> <span class="na">size</span><span class="o">=</span><span class="s">"20"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>Token Offer Index<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"tokenOfferIndex"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken Offer Index<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nftokenOfferIndex"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>Owner<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
