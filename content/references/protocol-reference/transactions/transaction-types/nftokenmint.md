@@ -10,9 +10,9 @@ status: not_enabled
 [[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp)
 {% include '_snippets/nfts-disclaimer.md' %}
 
-The `NFTokenMint` transaction creates an non-fungible token and adds it to the relevant [NFTokenPage object][] of the `Minter` as an [NFToken][] object. A required parameter to this transaction is the `Token` field specifying the actual token. This transaction is the only opportunity the `Minter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
+The `NFTokenMint` transaction creates a NFToken and adds it to the relevant [NFTokenPage object][] of the `NFTokenMinter` as a [NFToken][] object. A required parameter to this transaction is the `Token` field specifying the actual token. This transaction is the only opportunity the `NFTokenMinter` has to specify any token fields that are defined as immutable (for example, the `Flags`).
 
-If the transaction is successful, the newly minted token is owned by the account (the `minter` account) that executed the transaction. If needed, the server creates a new `NFTokenPage`  for the account and applies a reserve charge.
+If the transaction is successful, the newly minted token is owned by the account (the `minter` account) that executed the transaction. If needed, the server creates a new `NFTokenPage` for the account and applies a reserve charge.
 
 
 ## Example {{currentpage.name}} JSON
@@ -24,7 +24,7 @@ If the transaction is successful, the newly minted token is owned by the account
   "Account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
   "Issuer": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
   "TransferFee": 314,
-  "TokenTaxon": 0,
+  "NFTokenTaxon": 0,
   "Flags": 2147483659,
   "Fee": 10,
   "URI": "697066733a2f2f62616679626569676479727a74357366703775646d37687537367568377932366e6634646675796c71616266336f636c67747179353566627a6469",
@@ -41,7 +41,7 @@ If the transaction is successful, the newly minted token is owned by the account
 ```
 
 
-This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, has set the `Minter` field in its `AccountRoot` to `rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B`, thereby authorizing that account to mint tokens on its behalf.
+This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, has set the `NFTokenMinter` field in its `AccountRoot` to `rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B`, thereby authorizing that account to mint tokens on its behalf.
 
 
 
@@ -49,10 +49,10 @@ This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, 
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
-| `TokenTaxon` | Number | UInt32 | The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than `0xFFFF'FFFF` are disallowed. |
-| `Issuer` | String | AccountID | _(Optional)_ The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the `NFToken`. If provided, the issuer's [AccountRoot object][] must have the `Minter` field set to sender of this transaction (this transaction's `Account` field). |
-| `TransferFee` | Number | UInt16 | _(Optional)_ The value specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 50,000 inclusive and a value of 1 is equivalent to 1/10 of a basis point or 0.001%, allowing transfer rates between 0% and 50%. A TransferFee of 50,000 corresponds to 50%. If this field is provided, the transaction MUST have the [`tfTransferable` flag](#nftokenmint-flags) enabled. |
-| `URI` | String | Blob | _(Optional)_ Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the [`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex) utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an [RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is NOT checked for validity.
+| `NFTokenTaxon` | Number | UInt32 | The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than `0xFFFF'FFFF` are disallowed. |
+| `Issuer` | String | AccountID | _(Optional)_ The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the `NFToken`. If provided, the issuer's [AccountRoot object][] must have the `NFTokenMinter` field set to the sender of this transaction (this transaction's `Account` field). |
+| `TransferFee` | Number | UInt16 | _(Optional)_ The value specifies the fee charged by the issuer for secondary sales of the NFToken, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the [`tfTransferable` flag](#nftokenmint-flags) enabled. |
+| `URI` | String | Blob | _(Optional)_ Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the [`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex) utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFToken. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an [RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is NOT checked for validity.|
 
 
 ## NFTokenMint Flags
@@ -62,7 +62,7 @@ Transactions of the NFTokenMint type support additional values in the [`Flags` f
 | Flag Name     | Hex Value    | Decimal Value | Description                   |
 |:--------------|:-------------|:--------------|:------------------------------|
 | `tfBurnable` | `0x00000001` | 1 | Allow the issuer (or an entity authorized by the issuer) to destroy the minted `NFToken`. (The `NFToken`'s owner can _always_ do so.) |
-| `tfOnlyXRP` | `0x00000002` | 2 | The minted `NFToken` can only be bought or sold for XRP. This may be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies. |
+| `tfOnlyXRP` | `0x00000002` | 2 | The minted `NFToken` can only be bought or sold for XRP. This can be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies. |
 | `tfTrustLine` | `0x00000004` | 4 | Automatically create [trust lines](trust-lines-and-issuing.html) from the issuer to hold transfer fees received from transferring the minted `NFToken`. |
 | `tfTransferable` | `0x00000008` | 8 | The minted `NFToken` can be transferred to others. If this flag is _not_ enabled, the token can still be transferred _from_ or _to_ the issuer. |
 
@@ -73,12 +73,12 @@ If you need to specify additional information during minting (for example, detai
 
 ## Error Cases
 
-- If the `TransferFee` field is not within the acceptable range (0 to 50,000 inclusive) the transaction fails with `temBAD_TRANSFER_RATE`.
+- If the `TransferFee` field is not within the acceptable range (0 to 9999 inclusive) the transaction fails with `temBAD_NFTOKEN_TRANSFER_FEE`.
 - If the `URI` field is longer than 256 bytes, the transaction fails with `temMALFORMED`.
 - If the `Issuer` field refers to an account that does not exist, the transaction fails with `tecNO_ISSUER`.
-- If account referenced by the `Issuer` field has not authorized this transaction's sender (using the `Minter` setting) to mint `NFToken`s on their behalf, the transaction fails with `tecNO_PERMISSION`.
-- If the owner would not meet the updated [reserve requirement](reserves.html) after minting the token, the transaction fails with `tecINSUFFICIENT_RESERVE`. Note that new `NFToken`s only increase the owner's reserve if it requires a new [NFTokenPage object][], which can each hold up to 32 NFTs.
-- If the `Issuer`'s `MintedTokens` field maxes out, the transaction fails with `tecMAX_SEQUENCE_REACHED`. This is only possible if 2<sup>32</sup>-1 `NFToken`s have been minted in total by the issuer or on their behalf.
+- If account referenced by the `Issuer` field has not authorized this transaction's sender (using the `NFTokenMinter` setting) to mint `NFToken`s on their behalf, the transaction fails with `tecNO_PERMISSION`.
+- If the owner would not meet the updated [reserve requirement](reserves.html) after minting the token, the transaction fails with `tecINSUFFICIENT_RESERVE`. Note that new `NFToken`s only increase the owner's reserve if it requires a new [NFTokenPage object][], which can each hold up to 32 NFTokens.
+- If the `Issuer`'s `MintedNFTokens` field maxes out, the transaction fails with `tecMAX_SEQUENCE_REACHED`. This is only possible if 2<sup>32</sup>-1 `NFToken`s have been minted in total by the issuer or on their behalf.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

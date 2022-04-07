@@ -10,7 +10,7 @@ targets:
 
 The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometimes abbreviated "DEX"), operating continuously since the XRP Ledger's launch in 2012. The exchange allows users to buy and sell [tokens](tokens.html) for XRP or other tokens, with minimal [fees](fees.html) charged to the network itself (not paid out to any party).
 
-**Caution:** Any can [issue a token](issue-a-fungible-token.html) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.
+**Caution:** Anyone can [issue a token](issue-a-fungible-token.html) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.
 
 ## Structure
 

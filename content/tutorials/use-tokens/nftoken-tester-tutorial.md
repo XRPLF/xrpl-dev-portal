@@ -19,7 +19,7 @@ This example builds a JavaScript test harness where you can create NFTokens and 
 
 To mint a `NFToken`, you need to generate Account and Secret credentials on the NFT-Devnet (`wss://xls20-sandbox.rippletest.net:51233`). Go to the [Test XRP Faucet](xrp-testnet-faucet.html) and click **Generate NFT-Devnet credentials**. You can also obtain a second set of account credentials to try creating and accepting buy and sell offers.
 
-You will need a URL to the token data you want to turn into a `NFToken`. You can use your own object or this example IPFS address for testing.
+You need a URL to the token data you want to turn into a `NFToken`. You can use your own object or this example IPFS address for testing.
 
 
 ```
@@ -84,7 +84,7 @@ async function mintToken() {
 
 
 
-2. Create a `NFTokenMint` transaction using your account address and the `URI` to your token data. Note that you must convert the token `URI` to a hexadecimal value for this transaction. The `TokenTaxon` is a required field, but if you are not using the value as a custom indexing field, you can set it to 0.
+2. Create a `NFTokenMint` transaction using your account address and the `URI` to your token data. Note that you must convert the token `URI` to a hexadecimal value for this transaction. The `NFTokenTaxon` is a required field, but if you are not using the value as a custom indexing field, you can set it to 0.
 
 
 ```js
@@ -93,7 +93,7 @@ async function mintToken() {
 		Account: wallet.classicAddress,
 		URI: xrpl.convertStringToHex(tokenUrl.value),
 		Flags: parseInt(flags.value),
-		TokenTaxon: 0
+		NFTokenTaxon: 0
 	}
 
 ```
@@ -283,7 +283,7 @@ async function burnToken() {
   const transactionBlob = {
       "TransactionType": "NFTokenBurn",
       "Account": wallet.classicAddress,
-      "TokenID": tokenId.value
+      "NFTokenID": nftokenId.value
   }
 
 ```
@@ -348,7 +348,7 @@ To create an offer to sell a `NFToken`:
 
 
 1. Enter your **Account** and **Secret** in the appropriate fields.
-2. Enter the **Token ID** of the NFToken you want to sell.
+2. Enter the **NFToken ID** of the NFToken you want to sell.
 3. Set the **Flags** value to 1.
 4. Enter the **Amount**, the sale price in drops (millionths of an xrp). For example, if you enter 1000000, the sale price is 1 xrp.
 5. Click **Create Sell Offer**.
@@ -395,7 +395,7 @@ async function createSellOffer() {
   const transactionBlob = {
       	"TransactionType": "NFTokenCreateOffer",
       	"Account": wallet.classicAddress,
-      	"TokenID": tokenId.value,
+      	"NFTokenID": nftokenId.value,
       	"Amount": amount.value,
       	"Flags": parseInt(flags.value)
   }
@@ -422,7 +422,7 @@ async function createSellOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value  
+		nft_id: nftokenId.value  
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -433,7 +433,7 @@ async function createSellOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	nft_id: nftokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -477,7 +477,7 @@ To create an offer to buy a `NFToken`:
 
 1. Enter your **Account** and **Secret** in the appropriate fields.
 2. Set the **Flags** value to `0`.
-3. Enter the **Token ID** of the `NFToken` you want to purchase.
+3. Enter the **NFToken ID** of the `NFToken` you want to purchase.
 4. Enter your proposed purchase **Amount** in drops (millionths of an xrp).
 5. Enter the **Owner** account address.
 6. Click **Create Buy Offer**.
@@ -487,7 +487,7 @@ The `createBuyOffer()` function steps are:
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 2. Prepare a transaction blob.
 3. Submit the transaction and wait for the results.
 4. Request lists of current Sell Offers and Buy Offers.
@@ -504,7 +504,7 @@ The `createBuyOffer()` function steps are:
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 
 
 ```js
@@ -527,7 +527,7 @@ async function createBuyOffer() {
       	"TransactionType": "NFTokenCreateOffer",
       	"Account": wallet.classicAddress,
       	"Owner": owner.value,
-      	"TokenID": tokenId.value,
+      	"NFTokenID": nftokenId.value,
       	"Amount": amount.value,
       	"Flags": parseInt(flags.value)
   }
@@ -554,7 +554,7 @@ async function createBuyOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value  
+		tokenid: nftokenId.value  
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -565,7 +565,7 @@ async function createBuyOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	tokenid: nftokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -608,14 +608,14 @@ To create an offer to buy a `NFToken`:
 
 
 1. Enter your **Account** and **Secret** in the appropriate fields.
-2. Enter the **Token ID** of the `NFToken` you want to list.
+2. Enter the **NFToken ID** of the `NFToken` you want to list.
 3. Click **Get Offers**.
 
 The `getOffers()` function steps are:
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 2. Request `nft_sell_offers` and `nft_buy_offers` for your wallet account and send the results to your console log.
 3. Disconnect from the server.
 
@@ -653,7 +653,7 @@ async function getOffers() {
       try {
 	  nftSellOffers = await client.request({
 	    method: "nft_sell_offers",
-	    tokenid: tokenId.value  
+	    tokenid: nftokenId.value  
 	  })
 	} catch (err) {
 	  console.log("No sell offers.")
@@ -664,7 +664,7 @@ async function getOffers() {
     try {
       nftBuyOffers = await client.request({
   	  method: "nft_buy_offers",
-	  tokenid: tokenId.value
+	  tokenid: nftokenId.value
       })
     } catch (err) {
       console.log("No buy offers.")
@@ -695,7 +695,7 @@ To cancel an offer to sell or buy a `NFToken`:
 
 
 1. Enter your **Account** and **Secret** in the appropriate fields.
-2. Enter the **Token Offer Index** of the offer you want to cancel. (Labeled as **Index** in the responses to `nft_buy_offers `and` nft_sell_offers` requests.)
+2. Enter the **NFToken Offer Index** of the offer you want to cancel. (Labeled as nft_offer_index in the responses to `nft_buy_offers `and` nft_sell_offers` requests.)
 3. Click **Cancel Offer**.
 
 
@@ -705,7 +705,7 @@ The `cancelOffer()` function steps are:
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 2. Prepare a transaction blob.
 3. Submit the transaction and wait for the results.
 4. Request lists of current Sell Offers and Buy Offers.
@@ -722,7 +722,7 @@ The `cancelOffer()` function steps are:
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 
 
 ```js
@@ -740,13 +740,13 @@ async function cancelOffer() {
 
 
 ```js
-	const tokenOfferID = tokenOfferIndex.value
+	const tokenOfferID = nftokenOfferIndex.value
 	const tokenOffers = [tokenOfferID]
 
       const transactionBlob = {
       	 "TransactionType": "NFTokenCancelOffer",
          "Account": wallet.classicAddress,
-         "TokenOffers": tokenOffers
+         "NFTokenOffers": tokenOffers
       }
 
 ```
@@ -772,7 +772,7 @@ async function cancelOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value  
+		tokenid: nftokenId.value  
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -783,7 +783,7 @@ async function cancelOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	tokenid: nftokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -831,14 +831,14 @@ To accept a sell offer:
 
 
 1. Enter your **Account** and **Secret** in the appropriate fields.
-2. Enter the **Token Offer Index** of the offer you want to accept. (Labeled as **Index** in the responses to `nft_sell_offers` requests.)
+2. Enter the **Token Offer Index** of the offer you want to accept. (Labeled as `nft_offer_index` in the responses to `nft_sell_offers` requests.)
 3. Click **Accept Sell Offer**.
 
 The `acceptSellOffer()` function steps are:
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 2. Prepare a transaction blob.
 3. Submit the transaction and wait for the results.
 4. Display the results in your console log.
@@ -854,7 +854,7 @@ The `acceptSellOffer()` function steps are:
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 
 
 ```js
@@ -875,7 +875,7 @@ async function acceptSellOffer() {
   const transactionBlob = {
       	"TransactionType": "NFTokenAcceptOffer",
       	"Account": wallet.classicAddress,
-      	"SellOffer": tokenOfferIndex.value,
+      	"SellOffer": nftokenOfferIndex.value,
   }
 ```
 
@@ -927,14 +927,14 @@ To accept a buy offer:
 
 
 1. Enter your **Account** and **Secret** in the appropriate fields.
-2. Enter the **Token Offer Index** of the offer you want to accept. (Labeled as **Index** in the responses to `nft_sell_offers` requests.)
+2. Enter the **NFToken Offer Index** of the offer you want to accept. (Labeled as `nft_offer_index` in the responses to `nft_sell_offers` requests.)
 3. Click **Accept Buy Offer**.
 
 The `acceptBuyOffer()` function steps are:
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 2. Prepare a transaction blob.
 3. Submit the transaction and wait for the results.
 4. Display the results in your console log.
@@ -952,7 +952,7 @@ async function acceptBuyOffer() {
 
 
 
-1. Connect to the devnet server.
+1. Connect to the nft-devnet server.
 
 
 ```js
@@ -971,7 +971,7 @@ async function acceptBuyOffer() {
   const transactionBlob = {
       	"TransactionType": "NFTokenAcceptOffer",
       	"Account": wallet.classicAddress,
-      	"BuyOffer": tokenOfferIndex.value
+      	"BuyOffer": nftokenOfferIndex.value
   }
 ```
 
@@ -1051,7 +1051,7 @@ The remainder of the test harness file creates a standard HTML form with 9 butto
     <td><input type="text" id="secret" value="" size="40" /></td>
   </tr>
   <tr>
-    <td align="right">Token URL</td>
+    <td align="right">NFToken URL</td>
     <td><input type="text" id="tokenUrl"  
 value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
     </td>
@@ -1061,16 +1061,16 @@ value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" siz
     <td><input type="text" id="flags" value="1" size="10"/></td>
   </tr>
   <tr>
-    <td align="right">Token ID</td>
-    <td><input type="text" id="tokenId" value="" size="80"/></td>
+    <td align="right">NFToken ID</td>
+    <td><input type="text" id="nftokenId" value="" size="80"/></td>
   </tr>
   <tr>
     <td align="right">Amount</td>
     <td><input type="text" id="amount" value="1000000" size="20"/></td>
   </tr>
   <tr>
-    <td align="right">Token Offer Index</td>
-    <td><input type="text" id="tokenOfferIndex" value="" size="80"/></td>
+    <td align="right">NFToken Offer Index</td>
+    <td><input type="text" id="nftokenOfferIndex" value="" size="80"/></td>
   </tr>
   <tr>
     <td align="right">Owner</td>

@@ -23,7 +23,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
       "Account": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
       "Owner": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
       "Fee": 10,
-      "TokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
+      "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
 }
 ```
 
@@ -63,7 +63,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    </td>
    <td>AccountID
    </td>
-   <td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>MintAccount</code>).
+   <td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>NFTokenMinter</code>).
    </td>
   </tr>
   <tr>
@@ -79,7 +79,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    </td>
   </tr>
   <tr>
-   <td><code>TokenID</code>
+   <td><code>NFTokenID</code>
    </td>
    <td>Yes
    </td>
@@ -90,6 +90,18 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    <td>Identifies the <code>NFToken</code> object to be removed by the transaction.
    </td>
   </tr>
+    <tr>
+   <td><code>Owner</code>
+   </td>
+   <td>No
+   </td>
+   <td>string
+   </td>
+   <td>AccountID
+   </td>
+   <td>Identifies the owner of the NFToken with the given TokenID. Only used if that owner is different than the account signing this transaction. This is used to burn tokens with the lsfBurnable flag that have been traded.
+   </td>
+  </tr>
 </table>
 
 
@@ -97,7 +109,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
 ## Account Root Enhancements
 
 
-### MintAccount
+### NFTokenMinter
 
 
 Issuers might want to issue NFTs from their well known account, while at the same time wanting to delegate the issuance of such NFTs to a mint or other third party.
@@ -117,7 +129,7 @@ Issuers might want to issue NFTs from their well known account, while at the sam
    </td>
   </tr>
   <tr>
-   <td><code>MintAccount</code>
+   <td><code>NFTokenMinter</code>
    </td>
    <td>
    </td>
@@ -125,26 +137,26 @@ Issuers might want to issue NFTs from their well known account, while at the sam
    </td>
    <td>AccountID
    </td>
-   <td>The <code>MintAccount</code> field, if set, specifies an alternate account which is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
+   <td>The <code>NFTokenMinter</code> field, if set, specifies an alternate account that is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
    </td>
   </tr>
 </table>
 
 
-The `SetAccount` transaction allows the `MintAccount` field to be set or cleared.
+The `SetAccount` transaction allows the `NFTokenMinter` field to be set or cleared.
 
-### MintedTokens
-
-
-The `MintedTokens` field is used to form the `TokenID` of a new object, to ensure the uniqueness of `NFToken` objects. If this field is not present, the value is 0.
+### MintedNFTokens
 
 
-### BurnedTokens
+The `MintedNFTokens` field is used to form the `NFTokenID` of a new object, to ensure the uniqueness of `NFToken` objects. If this field is not present, the value is 0.
 
 
-The `BurnedTokens` field provides a convenient way to determine how many `NFToken` objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.
+### BurnedNFTokens
 
-An account for which the difference the number of minted and burned tokens, as stored in the `MintedTokens` and `BurnedTokens` fields respectively, is non-zero cannot be deleted.
+
+The `BurnedNFTokens` field provides a convenient way to determine how many `NFToken` objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.
+
+An account for which the difference in the number of minted and burned tokens, as stored in the `MintedNFTokens` and `BurnedNFTokens` fields respectively, is non-zero cannot be deleted.
 
 
 <!--{# common link defs #}-->
