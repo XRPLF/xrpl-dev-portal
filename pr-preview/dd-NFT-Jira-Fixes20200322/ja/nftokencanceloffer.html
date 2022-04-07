@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v2.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,12 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Wave 3 of the XRPL Grants program is open!</p></span>
-    <span><a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Apply</a></span>
-  </div>
-</div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -312,12 +307,12 @@
 <td align="left"><code>TokenOffers</code></td>
 <td align="left">Array</td>
 <td align="left">VECTOR256</td>
-<td align="left">An array of IDs of the <code>NFTokenOffer</code> objects to cancel (not the IDs of <code>NFToken</code> objects, but the IDs of the <code>NFTokenOffer</code> objects). Each entry must be a different <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenoffer.html">NFTokenOffer</a> object; the transaction is invalid if the array contains duplicate entries.</td>
+<td align="left">An array of IDs of the <code>NFTokenOffer</code> objects to cancel (not the <code>nft_id</code> values of <code>NFToken</code> objects, but the <code>nft_offer_index</code> values of <code>NFTokenOffer</code> objects). Each entry must be a different <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenoffer.html">NFTokenOffer</a> object; the transaction is invalid if the array contains duplicate entries.</td>
 </tr>
 </tbody>
 </table>
-<p>The transaction can succeed even if one or more of the IDs in the <code>TokenOffers</code> field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been taken.)</p>
-<p>It is important to note that if you inadvertently provide a <code>NFTokenID</code> rather than a <code>NFTokenOfferID</code>, you might receive a <code>tesSuccess</code> response. The reason is that when passed a properly formatted VECTOR256 value that is not found, the system assumes that the NFTokenOffer has already been deleted.</p>
+<p>The transaction can succeed even if one or more of the IDs in the <code>TokenOffers</code> field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been deleted.)</p>
+<p>It is important to note that if you inadvertently provide a <code>nft_id</code> rather than a <code>nft_offer_index</code>, you might receive a <code>tesSuccess</code> response. The reason is that when passed a properly formatted ID value that is not found, the system assumes that the <code>NFTokenOffer</code> has already been deleted.</p>
 <p>The transaction fails with an error if one of the IDs points to an object that does exist, but is not a <a href="nftokenoffer.html">NFTokenOffer</a> object.</p>
 <!-- -->
 <!-- -->

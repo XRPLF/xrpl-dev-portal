@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v2.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,12 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Wave 3 of the XRPL Grants program is open!</p></span>
-    <span><a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Apply</a></span>
-  </div>
-</div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -276,13 +271,13 @@
 <p>When 80% of the federators have signed the transaction, they submit it to the sidechain or mainchain as appropriate. This way, assets that the mainchain door account holds can be allocated to others on the sidechain, and assets that sidechain door account receives can be sent to others on the mainchain.</p>
 <p>Transactions within the sidechain are not visible to the servers on the mainchain. </p>
 <h2 id="terminology">Terminology<a aria-hidden="true" class="hover_anchor" href="#terminology"><i class="fa fa-link"></i></a></h2>
-<p><em>Sidechain</em>: An XRP Ledger sidechain is another blockchain based on XRP Ledger technology. A <em>federated</em> sidechain provides a way to transfer assets from a mainchain to the sidechain and back. A sidechain can use an exact copy of the XRP Ledger's protocol or it can make changes, including to the <a href="consensus.html">consensus algorithm</a>, <a href="transaction-types.html">transaction types</a>, and other rules.</p>
-<p><em>Federator</em>: A server on the sidechain that listens for triggering transactions on both the main chain and the side chain. Each federator has a signing key associated with it that is used to sign transactions. A transaction must be signed by a quorum of federators before it can be submitted. Federators are responsible for creating and signing valid response transactions, collecting signatures from other federators, and submitting transactions to the main chain and side chain.</p>
-<p><em>Mainchain</em>: The blockchain where assets originate and where assets are held while being used on the side chain. For most sidechains, the mainchain is the XRP Ledger Mainnet, Testnet, or Devnet.</p>
-<p><em>Sidechain</em>: A custom blockchain where some assets are backed by a mainchain. Proxy assets are issued in the sidechain, with the equivalent assets held by a door account on the mainchain. Sidechains have separate history, rules, and validators than the mainchain. Proxy assets on the sidechain can be sent back to the mainchain and unlocked from the control of the federators.</p>
+<p>Below is an alphabetical list of terms and their definitions.</p>
 <p><em>Door account</em>: An account controlled by the federators. There are two door accounts: one on the mainchain and one on the sidechain. Cross chain transactions are started by users sending assets to a door account. Mainchain to sidechain transactions cause the balance to increase on the mainchain door account and the balance to decrease on the sidechain door account. It is called a "door" because it is the mechanism to move assets from one chain to another—much like going between rooms in a house requires stepping through a door.</p>
-<p><em>Triggering transaction</em>: A transaction that causes the federators to start the process of signing and submitting a new response transaction. For example, sending XRP to the mainchain's door account is a triggering transaction that causes the federators to submit a new transaction on the sidechain.</p>
+<p><em>Federator</em>: A server on the sidechain that listens for triggering transactions on both the mainchain and the sidechain. Each federator has a signing key associated with it that is used to sign transactions. A transaction must be signed by a quorum of federators before it can be submitted. Federators are responsible for creating and signing valid response transactions, collecting signatures from other federators, and submitting transactions to the mainchain and sidechain.</p>
+<p><em>Mainchain</em>: The blockchain where assets originate and where assets are held while being used on the sidechain. For most sidechains, the mainchain is the XRP Ledger Mainnet, Testnet, or Devnet.</p>
 <p><em>Response transaction</em>: A transaction submitted by the federators in reaction to a triggering transaction. In most cases, the response transaction occurs on the opposite chain as the triggering transaction. However, there are some exceptions for handling failed transactions.</p>
+<p><em>Sidechain</em>: An XRP Ledger sidechain is another blockchain based on XRP Ledger technology. A <em>federated</em> sidechain provides a way to transfer assets from a mainchain to the sidechain and back. A sidechain can use an exact copy of the XRP Ledger's protocol or it can make changes, including to the <a href="consensus.html">consensus algorithm</a>, <a href="transaction-types.html">transaction types</a>, and other rules. Sidechains have separate history, rules, and validators than the mainchain. Proxy assets are issued in the sidechain, with the equivalent assets held by a door account on the mainchain. Proxy assets on the sidechain can be sent back to the mainchain and unlocked from the control of the federators.</p>
+<p><em>Triggering transaction</em>: A transaction that causes the federators to start the process of signing and submitting a new response transaction. For example, sending XRP to the mainchain's door account is a triggering transaction that causes the federators to submit a new transaction on the sidechain.</p>
 <h2 id="how-to-set-up-a-federated-sidechain">How to Set Up a Federated Sidechain<a aria-hidden="true" class="hover_anchor" href="#how-to-set-up-a-federated-sidechain"><i class="fa fa-link"></i></a></h2>
 <p>Federated Sidechains are currently available as an Engineering Preview so you can experiment and explore the potential of sidechains. You can connect sidechains to the XRP Ledger Testnet, Devnet, or Mainnet as long as <a href="the-rippled-server.html">the servers</a> in the mainchain network are running version 1.8.0 or higher.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> You can connect sidechains to the XRP Ledger Mainnet to develop and test with small amounts; it is not recommended for production use cases until federated sidechains are available in a release. </p>
