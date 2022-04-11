@@ -73,12 +73,10 @@ If you need to specify additional information during minting (for example, detai
 
 ## Issuing on behalf of another account
 
-If you want to issue an NFT for another account there's two things you'll need to do:
+If you want to issue an NFT for another account there are two things you must do. Given that *Account A* is your account and *Account B* is the account for which you want to mint a NFToken:
 
-Account A = your account, Account B = the account you're minting for.
-
-1. You'll need to set the `NFTokenMinter` account setting on Account B to be Account A. (This says that Account B trusts Account A to create NFTs on their behalf)
-2. When you mint the NFT, you'll need to set the `Issuer` field to Account B.
+1. Set the `NFTokenMinter` account setting on *Account B* to be *Account A*. (This says that *Account B* trusts *Account A* to create NFTs on their behalf.)
+2. When you mint the NFToken, set the `Issuer` field to Account B.
 
 ### Example of NFTokenMint with an issuer
 ```json
