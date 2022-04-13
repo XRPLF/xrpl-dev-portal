@@ -3,8 +3,11 @@ html: create-trustline-send-currency.html
 parent: xrpl-quickstart.html
 blurb: Quickstart step 2, create TrustLines and send currency.
 labels:
+  - Cross-Currency
+  - Payments
   - Quickstart
   - Tokens
+
 ---
 
 # 2. Create TrustLine and Send Currency
