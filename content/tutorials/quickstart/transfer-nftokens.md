@@ -5,7 +5,7 @@ blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and
 labels:
   - Quickstart
   - Tokens
-  - NFTokens
+  - Non-fungible Tokens, NFTs
 ---
 
 # 4. Transfer NFTokens
