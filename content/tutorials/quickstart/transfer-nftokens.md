@@ -1,6 +1,6 @@
 ---
-html: xrpl-quickstart.html
-parent: quickstart.html
+html: transfer-nftokens.html
+parent: xrpl-quickstart.html
 blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens.
 labels:
   - Quickstart
