@@ -84,7 +84,7 @@ To get started, create a new folder on your local disk and install the JavaScrip
 
 # Code Walkthrough
 
-You can download the archived sample code files at  [Code Samples: quickstart.zip](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js) in the source repository for this website.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip) in the source repository for this website.
 
 
 
