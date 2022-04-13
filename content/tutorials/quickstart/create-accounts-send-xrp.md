@@ -1,10 +1,12 @@
 ---
 html: create-accounts-send-xrp.html
-parent: quickstart.html
+parent: xrpl-quickstart.html
 blurb: Module 1, create two accounts and transfer XRP between them.
 labels:
+  - Accounts
   - Quickstart
-  - Send XRP
+  - Transaction Sending
+  - XRP
 ---
 
 1. Create Accounts and Send XRP
