@@ -11,8 +11,6 @@ labels:
   - Tokens
   - XRP
 ---
-
-
 # XRPL Quickstart
 
 The XRP Ledger (XRPL)  is a robust, secure, customizable service. You can create your own interface to try out the capabilities and support your specific business needs.
