@@ -242,8 +242,8 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#1-create-accounts-and-send-xrp">1. Create Accounts and Send XRP</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#usage">Usage</a></li>
-        <li class="nav-item level-1"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#code-walkthrough">Code Walkthrough</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ripplex-1-send-xrpjs">ripplex-1-send-xrp.js</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#getnet">getNet()</a></li>
@@ -279,6 +279,11 @@
 </ol>
 <p>When you create an account, you receive a public/private key pair offline. It does not appear on the ledger until it is funded with XRP. This example shows how to create an account for Testnet, but not how to create an account that you can use on Mainnet.</p>
 <p><img alt="Token Test Harness" src="img/quickstart2.png"/></p>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
+<p>To get started, create a new folder on your local disk and install the JavaScript library using <code>npm</code>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">    npm install xrpl
+</code></pre></div>
+<p>Download and expand the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive.</p>
 <h2 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h2>
 <p>To get test accounts:</p>
 <ol>
@@ -309,10 +314,6 @@
 <li>Click <strong>Send XRP&gt;</strong> to transfer XRP from the standby account to the operational account, or <strong>&lt;Send XRP</strong> to transfer XRP from the operational account to the standby account<strong>.</strong></li>
 </ol>
 <p><img alt="Transferred XRP" src="img/quickstart4.png"/></p>
-<h1 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h1>
-<p>To get started, create a new folder on your local disk and install the JavaScript library using <code>npm</code>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">    npm install xrpl
-</code></pre></div>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> in the source repository for this website.</p>
 <h2 id="ripplex-1-send-xrpjs">ripplex-1-send-xrp.js<a aria-hidden="true" class="hover_anchor" href="#ripplex-1-send-xrpjs"><i class="fa fa-link"></i></a></h2>
