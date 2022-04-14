@@ -9,7 +9,8 @@ labels:
   - XRP
 ---
 
-1. Create Accounts and Send XRP
+# 1. Create Accounts and Send XRP
+
 This example shows how to:
 
 
