@@ -27,6 +27,19 @@ When you create an account, you receive a public/private key pair offline. It do
 
 
 
+
+## Prerequisites
+
+To get started, create a new folder on your local disk and install the JavaScript library using `npm`.
+
+
+```
+    npm install xrpl
+```
+
+
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip) archive.
+
 ## Usage
 
 To get test accounts:
@@ -71,17 +84,6 @@ To transfer XRP between accounts:
 
 
 ![Transferred XRP](img/quickstart4.png)
-
-
-
-# Prerequisites
-
-To get started, create a new folder on your local disk and install the JavaScript library using `npm`.
-
-
-```
-    npm install xrpl
-```
 
 
 
