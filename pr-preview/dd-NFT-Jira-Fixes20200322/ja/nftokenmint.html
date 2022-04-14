@@ -242,6 +242,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenmint-fields">NFTokenMint Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenmint-flags">NFTokenMint Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#embedding-additional-information">Embedding additional information</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#issuing-on-behalf-of-another-account">Issuing on behalf of another account</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#example-of-nftokenmint-with-an-issuer">Example of NFTokenMint with an issuer</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
@@ -278,9 +280,9 @@
 <span class="w">  </span><span class="nt">"Issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"NFTokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483659</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733a2f2f62616679626569676479727a74357366703775646d37687537367568377932366e6634646675796c71616266336f636c67747179353566627a6469"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -327,7 +329,7 @@
 <td align="left"><code>URI</code></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
-<td align="left"><em>(Optional)</em> Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the <a class="external-link" href="https://js.xrpl.org/modules.html#convertStringToHex" target="_blank"><code>xrpl.convertStringToHex</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFToken. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an issuer-specific encoding. The URI is NOT checked for validity.</td>
+<td align="left"><em>(Optional)</em> Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. The hex must be capitalized, not lowercase. You can use the <a class="external-link" href="https://js.xrpl.org/modules.html#convertStringToHex" target="_blank"><code>xrpl.convertStringToHex</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFToken. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an issuer-specific encoding. The URI is NOT checked for validity.</td>
 </tr>
 </tbody>
 </table>
@@ -371,6 +373,34 @@
 </table>
 <h2 id="embedding-additional-information">Embedding additional information<a aria-hidden="true" class="hover_anchor" href="#embedding-additional-information"><i class="fa fa-link"></i></a></h2>
 <p>If you need to specify additional information during minting (for example, details identifying a property by referencing a particular <a class="external-link" href="https://en.wikipedia.org/wiki/Plat" target="_blank">plat <i aria-hidden="true" class="fa fa-external-link"></i></a>, a vehicle by specifying a <a class="external-link" href="https://en.wikipedia.org/wiki/Vehicle_identification_number" target="_blank">VIN <i aria-hidden="true" class="fa fa-external-link"></i></a>, or other object-specific descriptions) you can use a <a href="transaction-common-fields.html#memosフィールド">transaction memo</a>. Memos are a part of the signed transaction and are available from historical archives, but are not stored in the ledger's state data.</p>
+<h2 id="issuing-on-behalf-of-another-account">Issuing on behalf of another account<a aria-hidden="true" class="hover_anchor" href="#issuing-on-behalf-of-another-account"><i class="fa fa-link"></i></a></h2>
+<p>If you want to issue an NFT for another account there are two things you must do. Given that <em>Account A</em> is your account and <em>Account B</em> is the account for which you want to mint a NFToken:</p>
+<ol>
+<li>Set the <code>NFTokenMinter</code> account setting on <em>Account B</em> to be <em>Account A</em>. (This says that <em>Account B</em> trusts <em>Account A</em> to create NFTs on their behalf.)</li>
+<li>When you mint the NFToken, set the <code>Issuer</code> field to Account B.</li>
+</ol>
+<h3 id="example-of-nftokenmint-with-an-issuer">Example of NFTokenMint with an issuer<a aria-hidden="true" class="hover_anchor" href="#example-of-nftokenmint-with-an-issuer"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenMint"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"NFTokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">"MemoType"</span><span class="p">:</span><span class="w"></span>
+<span class="w">                  </span><span class="s2">"687474703A2F2F6578616D706C652E636F6D2F6D656D6F2F67656E65726963"</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72656E74"</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>NFTokenMinter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>If the <code>TransferFee</code> field is not within the acceptable range (0 to 9999 inclusive) the transaction fails with <code>temBAD_NFTOKEN_TRANSFER_FEE</code>.</li>
