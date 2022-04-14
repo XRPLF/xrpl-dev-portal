@@ -23,7 +23,7 @@ When you create an account, you receive a public/private key pair offline. It do
 
 
 
-![Token Test Harness](img/quickstart2.png "Token Test Harness")
+![Token Test Harness](img/quickstart2.png)
 
 
 
@@ -41,7 +41,7 @@ To get test accounts:
 
 
 
-![Standby and Operational Accounts](img/quickstart3.png "Standby and Operational Accounts")
+![Standby and Operational Accounts](img/quickstart3.png)
 
 
 NOTE: The accounts in the test harness work on _Testnet_ and _Devnet_, but not on _NFT-Devnet_. To create accounts that can mint and trade NFTs:
@@ -70,7 +70,7 @@ To transfer XRP between accounts:
 
 
 
-![Transferred XRP](img/quickstart4.png "Transferred XRP")
+![Transferred XRP](img/quickstart4.png)
 
 
 
