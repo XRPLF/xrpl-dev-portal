@@ -8,9 +8,6 @@ labels:
   - Transaction Sending
   - XRP
 ---
-
-
-
 # 1. Create Accounts and Send XRP
 
 
