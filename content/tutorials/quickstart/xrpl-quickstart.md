@@ -30,20 +30,33 @@ Typically, the example functions for interacting with the XRPL involve four step
 3. Get the state of accounts and tokens on the XRPL using requests.
 4. Disconnect from the XRPL.
 
-Each lesson shows you how to build the Token Test Harness one section at a time. Each module lets you try out meaningful interactions with the test ledger, with complete JavaScript and HTML code samples and a code walkthrough. There is also a link to the complete source code for each section that can be modified with a text editor and run in a browser. If you just cannot wait, you can jump to lesson 4, [Transfer NFTokens](transfer-nftokens.html), and try out the complete test harness right away.
+Each lesson shows you how to build the Token Test Harness one section at a time. Each module lets you try out meaningful interactions with the test ledger, with complete JavaScript and HTML code samples and a code walkthrough. There is also a link to the complete source code for each section that can be modified with a text editor and run in a browser. If you just cannot wait, you can follow the prerequisites below, then jump to lesson 4, [Transfer NFTokens](transfer-nftokens.html), and try out the complete test harness right away.
 
 Not all of the capabilities of the API are represented in this quickstart tutorial. This example is not intended for production or secure payment use, but to introduce you to the API used to implement features and explore the capabilities of XRPL.
 
-Much of this is “brute force” code that sacrifices conciseness for readability. We anticipate that the applications you build greatly improve upon these examples. Your feedback and contributions are most welcome.
+Much of this is “brute force” code that sacrifices conciseness for readability. Each example builds on the previous step, adding a new JavaScript file and the supporting UI. We anticipate that the applications you build greatly improve upon these examples. Your feedback and contributions are most welcome.
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip) archive to try each of the samples in your own browser.
-
+In this quickstart, you can:
 
 1. [Create Accounts and Send XRP](create-accounts-send-xrp.html)
 2. [Create TrustLine and Send Currency](create-trustline-send-currency.html).
 3. [Mint and Burn NFTokens](mint-and-burn-nftokens.html).
 4. [Transfer NFTokens](transfer-nftokens.html).
 
+
+## Prerequisites
+
+To get started, create a new folder on your local disk and install the JavaScript library using `npm`.
+
+
+```
+    npm install xrpl
+```
+
+
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip) archive.
+
+---
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
