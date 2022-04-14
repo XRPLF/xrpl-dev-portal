@@ -251,6 +251,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#xrpl-quickstart">XRPL Quickstart</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
       </ul>
   </div>
       </aside>
@@ -280,16 +281,22 @@
 <li>Get the state of accounts and tokens on the XRPL using requests.</li>
 <li>Disconnect from the XRPL.</li>
 </ol>
-<p>Each lesson shows you how to build the Token Test Harness one section at a time. Each module lets you try out meaningful interactions with the test ledger, with complete JavaScript and HTML code samples and a code walkthrough. There is also a link to the complete source code for each section that can be modified with a text editor and run in a browser. If you just cannot wait, you can jump to lesson 4, <a href="transfer-nftokens.html">Transfer NFTokens</a>, and try out the complete test harness right away.</p>
+<p>Each lesson shows you how to build the Token Test Harness one section at a time. Each module lets you try out meaningful interactions with the test ledger, with complete JavaScript and HTML code samples and a code walkthrough. There is also a link to the complete source code for each section that can be modified with a text editor and run in a browser. If you just cannot wait, you can follow the prerequisites below, then jump to lesson 4, <a href="transfer-nftokens.html">Transfer NFTokens</a>, and try out the complete test harness right away.</p>
 <p>Not all of the capabilities of the API are represented in this quickstart tutorial. This example is not intended for production or secure payment use, but to introduce you to the API used to implement features and explore the capabilities of XRPL.</p>
-<p>Much of this is “brute force” code that sacrifices conciseness for readability. We anticipate that the applications you build greatly improve upon these examples. Your feedback and contributions are most welcome.</p>
-<p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
+<p>Much of this is “brute force” code that sacrifices conciseness for readability. Each example builds on the previous step, adding a new JavaScript file and the supporting UI. We anticipate that the applications you build greatly improve upon these examples. Your feedback and contributions are most welcome.</p>
+<p>In this quickstart, you can:</p>
 <ol>
 <li><a href="create-accounts-send-xrp.html">Create Accounts and Send XRP</a></li>
 <li><a href="create-trustline-send-currency.html">Create TrustLine and Send Currency</a>.</li>
 <li><a href="mint-and-burn-nftokens.html">Mint and Burn NFTokens</a>.</li>
 <li><a href="transfer-nftokens.html">Transfer NFTokens</a>.</li>
 </ol>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
+<p>To get started, create a new folder on your local disk and install the JavaScript library using <code>npm</code>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">    npm install xrpl
+</code></pre></div>
+<p>Download and expand the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive.</p>
+<hr/>
 <table class="table-responsive">
 <thead>
 <tr>
