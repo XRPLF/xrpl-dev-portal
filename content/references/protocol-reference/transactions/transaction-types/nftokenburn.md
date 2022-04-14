@@ -20,7 +20,8 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
 ```
 {
       "TransactionType": "NFTokenBurn",
-      "Account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "Account": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
+      "Owner": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
       "Fee": 10,
       "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
 }
@@ -63,6 +64,18 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
    <td>AccountID
    </td>
    <td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>NFTokenMinter</code>).
+   </td>
+  </tr>
+  <tr>
+   <td><code>Owner</code>
+   </td>
+   <td>No
+   </td>
+   <td>string
+   </td>
+   <td>AccountID
+   </td>
+   <td>The account that owns the NFToken to be destroyed. This field is required when an issuer burns a NFToken minted using the `tfBurnable` flag that is owned by another account.
    </td>
   </tr>
   <tr>
