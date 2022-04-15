@@ -35,7 +35,7 @@ Open the Token Test Harness and get accounts:
 
 
 
-1. Open 2.create-trustline-send-currency.html in a browser.
+1. Open `2.create-trustline-send-currency.html` in a browser.
 2. Get test accounts.
     1. If you have existing account seeds
         1. Paste account seeds in the **Seeds** field.

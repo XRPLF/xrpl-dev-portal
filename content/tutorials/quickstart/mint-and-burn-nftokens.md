@@ -32,7 +32,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 
 
-1. Open 3.mint-nfts.html in a browser.
+1. Open `3.mint-nfts.html` in a browser.
 2. Get test accounts.
     1. If you have existing NFT-Devnet account seeds
         1. Paste account seeds in the **Seeds** field.
