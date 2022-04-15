@@ -377,7 +377,7 @@
 // ****************** Create Sell Offer ******************
 // *******************************************************
 </code></pre></div>
-<p>Connect to the XRPL and get the wallet accounts.</p>
+<p>Connect to the ledger and get the wallet accounts.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="w">      </span><span class="n">async</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">createSellOffer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
@@ -440,7 +440,7 @@
           (await client.getXrpBalance(standby_wallet.address))
         document.getElementById('standbyResultField').value = results
 </code></pre></div>
-<p>Disconnect from the XRPL.</p>
+<p>Disconnect from the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">        <span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
         <span class="o">//</span> <span class="k">End</span> <span class="nv">of</span> <span class="nv">createSellOffer</span><span class="ss">()</span>
       }
@@ -453,7 +453,7 @@
 
       async function createBuyOffer() {
 </code></pre></div>
-<p>Get the account wallets and connect to the XRPL.</p>
+<p>Get the account wallets and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"></span>
@@ -509,7 +509,7 @@
           JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
         document.getElementById('standbyResultField').value = results
 </code></pre></div>
-<p>Disconnect from the XRPL.</p>
+<p>Disconnect from the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">        <span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
         <span class="o">//</span> <span class="k">End</span> <span class="nv">of</span> <span class="nv">operationalCreateBuyOffer</span><span class="ss">()</span>
       }
@@ -521,7 +521,7 @@
 
       async function cancelOffer() {    
 </code></pre></div>
-<p>Get the standby wallet and connect to the XRPL.</p>
+<p>Get the standby wallet and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="p">)</span><span class="w"></span>
 <span class="w">          </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span><span class="w"></span>
@@ -575,7 +575,7 @@
           JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
         document.getElementById('standbyResultField').value = results
 </code></pre></div>
-<p>Disconnect from the XRPL.</p>
+<p>Disconnect from the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26">        <span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
         <span class="o">//</span> <span class="k">End</span> <span class="nv">of</span> <span class="nv">cancelOffer</span><span class="ss">()</span>
       }
@@ -588,7 +588,7 @@
 
       async function getOffers() {
 </code></pre></div>
-<p>Get the standby account wallet and connect to the XRPL.</p>
+<p>Get the standby account wallet and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">net</span><span class="p">)</span><span class="w"></span>
@@ -625,7 +625,7 @@
         results += JSON.stringify(nftBuyOffers,null,2)    
         document.getElementById('standbyResultField').value = results
 </code></pre></div>
-<p>Disconnect from the XRPL.</p>
+<p>Disconnect from the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-31" id="codeblock-31button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-31">        <span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
         <span class="o">//</span> <span class="k">End</span> <span class="nv">of</span> <span class="nv">getOffers</span><span class="ss">()</span>
       }
@@ -638,7 +638,7 @@
 
       async function acceptSellOffer() {
 </code></pre></div>
-<p>Get the account wallets and connect to the XRPL.</p>
+<p>Get the account wallets and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"></span>
@@ -681,7 +681,7 @@
 
         document.getElementById('standbyResultField').value = results
 </code></pre></div>
-<p>Disconnect from the XRPL.</p>
+<p>Disconnect from the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-39" id="codeblock-39button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-39">        <span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
       <span class="o">//</span> <span class="k">End</span> <span class="nv">of</span> <span class="nv">acceptSellOffer</span><span class="ss">()</span>
       }
@@ -694,7 +694,7 @@
 
       async function acceptBuyOffer() {
 </code></pre></div>
-<p>Get the account wallets and connect to the XRPL.</p>
+<p>Get the account wallets and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-41" id="codeblock-41button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-41"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"></span>
@@ -736,7 +736,7 @@
           (await client.getXrpBalance(standby_wallet.address))
         document.getElementById('standbyResultField').value = results
 </code></pre></div>
-<p>Disconnect from the XRPL.</p>
+<p>Disconnect from the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-47" id="codeblock-47button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-47">        <span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
         <span class="o">//</span> <span class="k">End</span> <span class="nv">of</span> <span class="nv">acceptBuyOffer</span><span class="ss">()</span>
       }

@@ -317,7 +317,7 @@
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> in the source repository for this website.</p>
 <h2 id="ripplex-1-send-xrpjs">ripplex-1-send-xrp.js<a aria-hidden="true" class="hover_anchor" href="#ripplex-1-send-xrpjs"><i class="fa fa-link"></i></a></h2>
-<p>This example can be used with any XRPL ledger. Currently, there are <em>Testnet</em> and <em>Devnet,</em> with the experimental <em>NFT-Devnet</em> server with support for NFTs. You can update the code to choose different or additional XRPL ledgers.</p>
+<p>This example can be used with any XRP Ledger network. Currently, there are <em>Testnet</em> and <em>Devnet,</em> with the experimental <em>NFT-Devnet</em> server with support for NFTs. You can update the code to choose different or additional XRP Ledger networks.</p>
 <h3 id="getnet">getNet()<a aria-hidden="true" class="hover_anchor" href="#getnet"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">// ******************************************************
 // ************* Get the Preferred Network **************
@@ -424,7 +424,7 @@
 <p>Parse the <strong>seeds</strong> field.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seeds</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-<p>Get the standby_wallet based on the seed in the first line. Get the operational_wallet based on the seed in the second line.</p>
+<p>Get the <code>standby_wallet</code> based on the seed in the first line. Get the <code>operational_wallet</code> based on the seed in the second line.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"></span>
 </code></pre></div>
@@ -448,7 +448,7 @@
         document.getElementById('operationalBalanceField').value = 
           (await client.getXrpBalance(operational_wallet.address))
 </code></pre></div>
-<p>Disconnect from the XRP ledger.</p>
+<p>Disconnect from the XRP Ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21">       <span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
 
 
@@ -512,7 +512,7 @@
       } <span class="o">//</span> <span class="k">End</span> <span class="nv">of</span> <span class="nv">sendXRP</span><span class="ss">()</span>
 </code></pre></div>
 <h3 id="reciprocal-transactions">Reciprocal Transactions<a aria-hidden="true" class="hover_anchor" href="#reciprocal-transactions"><i class="fa fa-link"></i></a></h3>
-<p>For each of the transactions, there is an accompanying reciprocal  transaction, with the prefix <em>oP,</em> for the operational account. See the corresponding function for the standby account for code commentary.</p>
+<p>For each of the transactions, there is an accompanying reciprocal transaction, with the prefix <em>oP,</em> for the operational account. See the corresponding function for the standby account for code commentary.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="o">//</span><span class="w"> </span><span class="o">**********************************************************************</span><span class="w"></span>
 <span class="o">//</span><span class="w"> </span><span class="o">******</span><span class="w"> </span><span class="n">Reciprocal</span><span class="w"> </span><span class="n">Transactions</span><span class="w"> </span><span class="o">****************************************</span><span class="w"></span>
 <span class="o">//</span><span class="w"> </span><span class="o">**********************************************************************</span><span class="w"></span>
