@@ -42,7 +42,7 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 
 The transaction can succeed even if one or more of the IDs in the `NFTokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been deleted.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a [NFTokenOffer](nftokenoffer.html) object.
 
-It is important to note that if you inadvertently provide a `nft_id` rather than a `nft_offer_index`, you might receive a `tesSuccess` response. The reason is that when passed a properly formatted ID value that is not found, the system assumes that the `NFTokenOffer` has already been deleted.
+It is important to note that if you inadvertently provide a `nft_id` rather than a `nft_offer_index`, you might receive a `tesSUCCESS` response. The reason is that when passed a properly formatted ID value that is not found, the system assumes that the `NFTokenOffer` has already been deleted.
 
 The transaction fails with an error if one of the IDs points to an object that does exist, but is not a [NFTokenOffer](nftokenoffer.html) object.
 
