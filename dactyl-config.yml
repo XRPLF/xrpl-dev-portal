@@ -1072,6 +1072,31 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/quickstart/xrpl-quickstart.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/quickstart/create-accounts-send-xrp.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/quickstart/create-trustline-send-currency.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/quickstart/mint-and-burn-nftokens.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/quickstart/transfer-nftokens.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started.md
         targets:
             - en
