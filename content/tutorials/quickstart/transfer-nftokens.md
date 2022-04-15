@@ -171,7 +171,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 ```
 
 
-Connect to the XRPL and get the wallet accounts.
+Connect to the ledger and get the wallet accounts.
 
 
 ```
@@ -285,7 +285,7 @@ Get the current XRP balances for the operational and standby accounts.
 ```
 
 
-Disconnect from the XRPL.
+Disconnect from the ledger.
 
 
 ```
@@ -311,7 +311,7 @@ Disconnect from the XRPL.
 ```
 
 
-Get the account wallets and connect to the XRPL.
+Get the account wallets and connect to the ledger.
 
 
 ```
@@ -407,7 +407,7 @@ Report the results of the transaction.
 ```
 
 
-Disconnect from the XRPL.
+Disconnect from the ledger.
 
 
 ```
@@ -430,7 +430,7 @@ Disconnect from the XRPL.
 ```
 
 
-Get the standby wallet and connect to the XRPL.
+Get the standby wallet and connect to the ledger.
 
 
 ```
@@ -523,7 +523,7 @@ Report the transaction results.
 ```
 
 
-Disconnect from the XRPL.
+Disconnect from the ledger.
 
 
 ```
@@ -547,7 +547,7 @@ Disconnect from the XRPL.
 ```
 
 
-Get the standby account wallet and connect to the XRPL.
+Get the standby account wallet and connect to the ledger.
 
 
 ```
@@ -599,7 +599,7 @@ Request the list of buy offers for the token.
 ```
 
 
-Disconnect from the XRPL.
+Disconnect from the ledger.
 
 
 ```
@@ -625,7 +625,7 @@ Disconnect from the XRPL.
 ```
 
 
-Get the account wallets and connect to the XRPL.
+Get the account wallets and connect to the ledger.
 
 
 ```
@@ -704,7 +704,7 @@ Report the transaction results.
 ```
 
 
-Disconnect from the XRPL.
+Disconnect from the ledger.
 
 
 ```
@@ -728,7 +728,7 @@ Disconnect from the XRPL.
 ```
 
 
-Get the account wallets and connect to the XRPL.
+Get the account wallets and connect to the ledger.
 
 
 ```
@@ -800,7 +800,7 @@ Request the XRP balance for both accounts.
 ```
 
 
-Disconnect from the XRPL.
+Disconnect from the ledger.
 
 
 ```
