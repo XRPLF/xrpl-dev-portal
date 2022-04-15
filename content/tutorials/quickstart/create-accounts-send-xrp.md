@@ -95,7 +95,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## ripplex-1-send-xrp.js
 
-This example can be used with any XRPL ledger. Currently, there are _Testnet_ and _Devnet,_ with the experimental _NFT-Devnet_ server with support for NFTs. You can update the code to choose different or additional XRPL ledgers.
+This example can be used with any XRP Ledger network. Currently, there are _Testnet_ and _Devnet,_ with the experimental _NFT-Devnet_ server with support for NFTs. You can update the code to choose different or additional XRP Ledger networks.
 
 
 ### getNet()
@@ -299,7 +299,7 @@ Parse the **seeds** field.
 ```
 
 
-Get the standby_wallet based on the seed in the first line. Get the operational_wallet based on the seed in the second line.
+Get the `standby_wallet` based on the seed in the first line. Get the `operational_wallet` based on the seed in the second line.
 
 
 ```
@@ -342,7 +342,7 @@ Populate the fields for the standby and operational accounts.
 ```
 
 
-Disconnect from the XRP ledger.
+Disconnect from the XRP Ledger.
 
 
 ```
@@ -455,7 +455,7 @@ Request the balance changes caused by the transaction and report the results.
 
 ### Reciprocal Transactions
 
-For each of the transactions, there is an accompanying reciprocal  transaction, with the prefix _oP,_ for the operational account. See the corresponding function for the standby account for code commentary.
+For each of the transactions, there is an accompanying reciprocal transaction, with the prefix _oP,_ for the operational account. See the corresponding function for the standby account for code commentary.
 
 
 ```
