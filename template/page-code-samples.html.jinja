@@ -6,18 +6,14 @@
 {% block main %}
 <div class="">
 
-{# <div class="position-relative">
-    <img src="./img/backgrounds/xrpl-overview-purple.svg" class="landing-bg" id="xrpl-overview-purple">
-  </div> #}
-
 <section class="py-26">
   <div class="col-lg-8 mx-auto text-lg-center">
     <div class="d-flex flex-column-reverse">
-      
+
       <h1 class="mb-0">{% trans %}Solutions to Accelerate Development{% endtrans %}</h1>
       <h6 class="eyebrow mb-3">{% trans %}Code Samples{% endtrans %}</h6>
     </div>
-    <a class="mt-12 btn btn-primary btn-arrow" href="#">Submit Code Samples</a>
+{#    <a class="mt-12 btn btn-primary btn-arrow" href="#">Submit Code Samples</a> #}
   </div>
 </section>
 
@@ -30,22 +26,8 @@
     <h6 class="eyebrow mb-3">{% trans %}Explore Code Samples{% endtrans %}</h6>
     <h3 class="h4 h2-sm">{% trans %}Browse sample code for building common use cases on the XRP Ledger{% endtrans %}</h3>
   </div>
- 
+
   <div class="row col-12  card-deck mt-10" id="code-samples-deck">
-
-
-    {# {% set code_samples = [
-      { "href": "https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/checks",
-        "title":  _("Checks Tutorials"),
-        "langs": [
-          "js",
-          "json-rpc",
-          "websocket",
-          "cli"
-        ],
-        "description":  _("Create, cash, and cancel Checks for exact or flexible amounts.")
-      },
-    ] %} #}
 
     {% set code_samples = all_code_samples() %}
 
@@ -58,7 +40,7 @@
       "http": "assets/img/logos/globe.svg",
     } %}
 
-  <div class="row col-md-12 px-0">
+  <div class="row col-md-12 px-0" id="code_samples_list">
     {% for card in code_samples %}
       <a class="card cardtest col-12 col-lg-5 {% for lang in card.langs %} lang_{{lang}} {% endfor %} " href="{{target.github_forkurl}}/tree/{{target.github_branch}}/{{card.href}}">
         <div class="card-header">
@@ -70,41 +52,35 @@
           <h4 class="card-title h5">{{card.title}}</h4>
           <p class="card-text">{{card.description}}</p>
         </div>
-        <div class="card-footer">
-          {# <span class="label label-accounts" href="label-accounts.html" title="Pages relating to accounts in the XRP Ledger.">Smart Transactor</span> #}
-        </div>
+        <div class="card-footer">&nbsp;</div>
       </a>
     {% endfor %}
     </div>
   </div>
 </section>
 
-{# container #}
-{# col-lg-12 mx-auto #}
-<section class="py-26  code-contribute">
-  <div class=" ">
-    
+<section class="container-new py-26">
+  <div>
+
     <div class="d-flex flex-column">
       <h3 class="h4 h2-sm pb-4">{% trans %}Contribute Code Samples{% endtrans %}</h3>
       <h6 class="eyebrow mb-20">{% trans %}Help the XRPL community by submitting your<br> own code samples{% endtrans %}</h6>
     </div>
 
     <div class="row pl-4">
-      <div class=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_1"><span class="dot"></span><h5 class="pb-4 pt-md-5">Fork and clone</h5><p class="pb-4">Fork the xrpl-dev-portal repo. Using git, clone the fork to your computer.</p></div>
-      <div class=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_2"><span class="dot"></span><h5 class="pb-4 pt-md-5">Add to folder</h5><p class="pb-4">Add your sample code to the content/_code-samples folder. Be sure to include a README.md that summarizes what it does and anything else people should know about it.</p></div>
+      <div class=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_1"><span class="dot"></span><h5 class="pb-4 pt-md-5">Fork and clone</h5><p class="pb-4">Fork the <a href="{{target.github_forkurl}}">xrpl-dev-portal repo</a>. Using git, clone the fork to your computer.</p></div>
+      <div class=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_2"><span class="dot"></span><h5 class="pb-4 pt-md-5">Add to folder</h5><p class="pb-4">Add your sample code to the <code>content/_code-samples/</code> folder. Be sure to include a <code>README.md</code> that summarizes what it does and anything else people should know about it.</p></div>
       <div class=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_3"><span class="dot"></span><h5 class="pb-4 pt-md-5">Commit and push</h5><p class="pb-4">Commit your changes and push them to your fork on GitHub.</p></div>
       <div class=" col-lg-3 pl-4 pl-lg-0 pr-2 contribute  dot contribute_4 mb-4"><span class="dot"></span><h5 class="pb-4 pt-md-5">Open a pull request</h5><p class="pb-0 mb-0">Open a pull request to the original repo. Maintainers will review your submission and suggest changes if necessary. If the code sample is helpful, it’ll be merged and added to XRPL.org!</p></div>
     </div>
 
-    <a class="mt-12 btn btn-primary btn-arrow" href="#">Submit Code Samples</a>
+    {#<a class="mt-12 btn btn-primary btn-arrow" href="#">Submit Code Samples</a>#}
 
   </div>
 </section>
 
-
 </div>
 {% endblock %}
-
 
 
 {% block analytics %}
@@ -117,3 +93,36 @@
     })
     </script>
 {% endblock analytics %}
+
+
+{% block bottom_left_sidebar %}
+{% set lang_text = {
+      "cli": "CLI",
+      "go": "go",
+      "java": "Java",
+      "js": "JavaScript",
+      "py": "Python",
+      "http": "HTTP",
+    } %}
+
+<div class="p-2 mt-30">
+    <form >
+    <p>Code Language</p>
+        <div>
+            <input type="radio" name="langs" id="input_all" value="All" checked> <label for="input_all">All</label>
+        </div>
+        {% for lang in all_langs %}
+            <div class="single_lang">
+                <input type="radio" name="langs" id="input_{{lang}}" value="{{lang}}">
+                <label for="input_{{lang}}">{{lang_text[lang]}}</label>
+            </div>
+        {% endfor %}
+    </form>
+</div>
+
+<br><br>
+{% endblock %}
+
+{% block endbody %}
+<script type="application/javascript" src="{{currentpage.prefix}}assets/js/code-samples.js"></script>
+{% endblock %}
