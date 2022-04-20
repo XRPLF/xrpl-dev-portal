@@ -1,7 +1,7 @@
 -------------
 Spell Checker
 -------------
-Found 146 possible spelling errors:
+Found 155 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
@@ -11,15 +11,15 @@ Found 146 possible spelling errors:
   signerquorum: 
 
 <Page 'Tokens' (tokens.html)> Unknown Words:
-  asheesh: sheesh, hasheesh
-  bharath: bharata, sharath, bharat
+  asheesh: hasheesh, sheesh
+  bharath: sharath, bharata, bharat
 
 <Page 'Authorized Trust Lines' (authorized-trust-lines.html)> Unknown Words:
   onboarding: 
   requireauth: 
 
 <Page 'NFT Conceptual Overview' (non-fungible-tokens.html)> Unknown Words:
-  xls: dls, nls, als
+  xls: mls, tls, xns
   ˈfənjəbəl: 
   nftoken: 
   nftokenpage: 
@@ -27,9 +27,20 @@ Found 146 possible spelling errors:
   nftokenoffer: 
   nftokenburn: 
   0x000008: 
-  nftokencanceloffer: 
   nftokencreateoffer: 
+  nftokencanceloffer: 
   nftokenacceptoffer: 
+
+<Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)> Unknown Words:
+  nftokens: 
+  xls: mls, tls, xns
+  nftokencreateoffer: 
+  nftoken: 
+  nftokenid: 
+  nftokenacceptoffer: 
+  nftokenoffer: 
+  opensea: 
+  workflows: workflow
 
 <Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)> Unknown Words:
   mccaleb: 
@@ -40,16 +51,16 @@ Found 146 possible spelling errors:
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   checkcashmakestrustline: 
-  talso: talmo, talos, tacso
+  talso: tasso, talco, tacso
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  xls: dls, nls, als
+  xls: mls, tls, xns
   20d: 2nd, 2d
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
   permissionless: 
-  evm: avm, eum, edm
+  evm: eam, esm, vem
   federators: federator
 
 <Page 'Ledger History' (ledger-history.html)> Unknown Words:
@@ -61,7 +72,7 @@ Found 146 possible spelling errors:
 
 <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)> Unknown Words:
   quickstart: 
-  getnet: setnet, genet
+  getnet: genet, setnet
   getaccount: 
   xrptodrops: 
   trustline: 
@@ -77,7 +88,7 @@ Found 146 possible spelling errors:
 
 <Page '3. Mint and Burn NFTokens' (mint-and-burn-nftokens.html)> Unknown Words:
   nftokens: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   quickstart: 
   nftoken: 
   ripplex3: ripplex
@@ -86,7 +97,7 @@ Found 146 possible spelling errors:
 
 <Page '4. Transfer NFTokens' (transfer-nftokens.html)> Unknown Words:
   nftokens: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   quickstart: 
   nftoken: 
 
@@ -96,16 +107,16 @@ Found 146 possible spelling errors:
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
   disallowxrp: 
   wxpython: 
-  wsl: wol, esl, wsw
+  wsl: isl, rsl, wcl
   threadsafe: 
   asyncio: 
-  guis: suis, huis, duis
+  guis: suis, guids, gurs
   wxglade: 
-  s1: sn, sm, t1
+  s1: sg, sn, a1
   toolkits: toolkit
   tooltip: 
-  lsf: nsf, lsm, ldf
-  refactor: prefactor, reactor, refractor
+  lsf: ldf, lse, lsu
+  refactor: reactor, prefactor, refractor
   tooltips: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
@@ -113,23 +124,23 @@ Found 146 possible spelling errors:
 
 <Page 'NFToken Tester Tutorial' (nftoken-tester-tutorial.html)> Unknown Words:
   nftoken: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   nftokens: 
-  ipfs: ipcs, ifs, ipms
+  ipfs: ifs, ipms, ips
   nftokenacceptoffer: 
   acceptselloffer: 
-  nftokencanceloffer: 
-  nftokenburn: 
-  nftokenpage: 
-  nftokenoffer: 
   nftokencreateoffer: 
+  nftokenpage: 
+  nftokencanceloffer: 
   nftokenmint: 
+  nftokenburn: 
+  nftokenoffer: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: capps, lapps, apps
+  xapps: apps, capps, lapps
 
 <Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: nome, name, vme
+  nvme: vme, nome, nme
 
 <Page 'Build and Run rippled in Reporting Mode' (build-run-rippled-in-reporting-mode.html)> Unknown Words:
   datastores: 
@@ -137,78 +148,78 @@ Found 146 possible spelling errors:
 
 <Page 'NFToken' (nftoken.html)> Unknown Words:
   nftoken: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   nftokenpage: 
   tokenid: tokened
   trustline: 
-  lsfburnable: 
-  lsfonlyxrp: 
-  0x0002: 
-  lsftransferable: 
-  0x0001: 
-  0x0008: 
   0x000b: 
+  lsfonlyxrp: 
+  0x0008: 
+  0x0002: 
+  0x0001: 
+  lsftransferable: 
+  lsfburnable: 
   transferfee: transferee
-  1bps: bps, kbps, mbps
+  1bps: kbps, bps, mbps
   nftokenmint: 
+  ipfs: ifs, ipms, ips
   rfc2379: 
-  ipfs: ipcs, ifs, ipms
   nftokens: 
 
 <Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
-  nftokenoffer: 
   nftokens: 
+  nftokenoffer: 
   nftokenpage: 
 
 <Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
   nftokenoffer: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
 
 <Page 'NFTokenPage' (nftokenpage.html)> Unknown Words:
   nftokenpage: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   tokenpage: 
-  shamap: shamal, shaman, shama
+  shamap: shama, shamas, shamal
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  xls: dls, nls, als
   nftokens: 
+  xls: mls, tls, xns
   nftokenmint: 
   nftoken: 
 
 <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
   nftokenacceptoffer: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   nftoken: 
 
 <Page 'NFTokenBurn' (nftokenburn.html)> Unknown Words:
   nftokenburn: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   nftoken: 
-  lsfburnable: 
-  tokenid: tokened
   tfburnable: 
+  tokenid: tokened
+  lsfburnable: 
   nftokenminter: 
   mintednftokens: 
   burnednftokens: 
 
 <Page 'NFTokenCancelOffer' (nftokencanceloffer.html)> Unknown Words:
   nftokencanceloffer: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   nftokenoffer: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
   nftokencreateoffer: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   nftokenoffer: 
 
 <Page 'NFTokenMint' (nftokenmint.html)> Unknown Words:
   nftokenmint: 
-  xls: dls, nls, als
+  xls: mls, tls, xns
   nftoken: 
   nftokenpage: 
+  ipfs: ifs, ipms, ips
   rfc2379: 
-  ipfs: ipcs, ifs, ipms
   nftokens: 
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
@@ -221,7 +232,7 @@ Found 146 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 287 discouraged words/phrases:
+Found 292 discouraged words/phrases:
 Page: <Page 'Multi-Signing' (multi-signing.html)>
    Discouraged word: vice (3 instances); suggest 'instead of, versus' instead.
 Page: <Page 'Ledgers' (ledgers.html)>
@@ -238,6 +249,8 @@ Page: <Page 'NFT Conceptual Overview' (non-fungible-tokens.html)>
    Discouraged word: purchase (2 instances); suggest 'buy' instead.
    Discouraged word: just (1 instances); suggest '(omit)' instead.
    Discouraged word: enumerate (1 instances); suggest 'count' instead.
+Page: <Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)>
+   Discouraged word: purchase (5 instances); suggest 'buy' instead.
 Page: <Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)>
    Discouraged word: just (1 instances); suggest '(omit)' instead.
 Page: <Page 'Issuing and Operational Addresses' (issuing-and-operational-addresses.html)>
@@ -490,13 +503,13 @@ Page: <Page 'Dev Tools' (dev-tools.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 57.2 (Fairly Difficult)
+  Flesch Reading Ease Score: 57.3 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.6
   Gunning FOG Index: Grade level 9.3
-  Automated Readability Index: Grade level 11.1
+  Automated Readability Index: Grade level 11.0
   Coleman-Liau Index: Grade level 11.7
-  Linsear Write Formula: Grade level 8.8
+  Linsear Write Formula: Grade level 8.7
 
 
 Most difficult pages by Flesch Reading Ease:
@@ -533,7 +546,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 55
   Words: 757
-  Characters: 4,711
+  Characters: 4,710
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
