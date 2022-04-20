@@ -874,5 +874,4 @@ Update the form to support the new functions.
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| 1. [Create Accounts and Send XRP](create-accounts-send-xrp.html) | 3. [Mint and Burn NFTokens](mint-and-burn-nftokens.html) |
-
+| [← 1. Create Accounts and Send XRP >](create-accounts-send-xrp.html) | [3. Mint and Burn NFTokens → >](mint-and-burn-nftokens.html) |

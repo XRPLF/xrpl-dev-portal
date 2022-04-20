@@ -58,4 +58,4 @@ Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-p
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-|               | 1. [Create Accounts and Send XRP](create-accounts-send-xrp.html) |
+|               | [1. Create Accounts and Send XRP → >](create-accounts-send-xrp.html) |
