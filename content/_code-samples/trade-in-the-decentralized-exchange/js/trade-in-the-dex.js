@@ -1,5 +1,5 @@
-// Stand-alone code sample for the "issue a token" tutorial:
-// https://xrpl.org/issue-a-fungible-token.html
+// Stand-alone code sample for "trade in the decentralized exchange" tutorial:
+// https://xrpl.org/trade-in-the-decentralized-exchange.html
 
 // Dependencies for Node.js.
 // In browsers, use <script> tags as in the example demo.html.
@@ -7,20 +7,6 @@ if (typeof module !== "undefined") {
   // Use var here because const/let are block-scoped to the if statement.
   var xrpl = require('xrpl')
   var BigNumber = require('bignumber.js')
-}
-
-/**
- * Convert an XRPL amount, which could be a string (XRP in drops) or an object
- * (token amount) to a string for display in one of the following formats:
- * "123.456 XRP"
- * "123.456 TST.rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
- */
-def amt_str(amt) {
-  if (typeof amt == "string") {
-    return `${xrpl.dropsToXrp(amt)} XRP`
-  } else {
-    return `${amt.value} ${amt.currency}.${amt.issuer}`
-  }
 }
 
 // Connect ---------------------------------------------------------------------
@@ -33,18 +19,27 @@ async function main() {
   console.log("Requesting address from the Testnet faucet...")
   const wallet = (await client.fundWallet()).wallet
   console.log(`Got address ${wallet.address}.`)
-  //const wallet = xrpl.Wallet.fromSeed("SEED VALUE HERE") // temp for testing: don't fund every time
+  // To use existing credentials, you can load them from a seed value, for
+  // example using an environment variable as follows:
+  // const wallet = xrpl.Wallet.fromSeed(process.env['MY_SEED'])
 
-  // Define the proposed trade.
+  // Define the proposed trade. ------------------------------------------------
+  // Technically you don't need to specify the amounts (in the "value" field)
+  // to look up order books using book_offers, but for this tutorial we reuse
+  // these variables to construct the actual Offer later.
   const we_want = {
     currency: "TST",
     issuer: "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
-    value: "25"}
-
-                              // 250 TST * 10 XRP per TST * 1.15 fx cost
-  const we_spend = {currency: "XRP", value: xrpl.xrpToDrops(25*10*1.05)}
+    value: "25"
+  }
+  const we_spend = {
+    currency: "XRP",
+    value: xrpl.xrpToDrops(25*10*1.15) // 25 TST * 10 XRP per TST * 15% fx cost
+  }
   // "Quality" is defined as TakerPays ÷ TakerGets. The lower the "quality"
   // number, the better the proposed exchange rate is for the taker.
+  // The quality is rounded to a number of significant digits based on the
+  // issuer's TickSize value (or the lesser of the two for token-token trades.)
   const proposed_quality = BigNumber(we_spend.value) / BigNumber(we_want.value)
 
   // Look up Offers. -----------------------------------------------------------
@@ -69,7 +64,7 @@ async function main() {
 
   const offers = orderbook_resp.result.offers
   const want_amt = BigNumber(we_want.value)
-  let running_total = 0
+  let running_total = BigNumber(0)
   if (!offers) {
     console.log(`No Offers in the matching book.
                  Offer probably won't execute immediately.`)
@@ -77,7 +72,7 @@ async function main() {
     for (const o of offers) {
       if (o.quality <= proposed_quality) {
         console.log(`Matching Offer found, funded with ${o.owner_funds}`)
-        running_total += BigNumber(o.owner_funds)
+        running_total = running_total.plus(BigNumber(o.owner_funds))
         if (running_total >= want_amt) {
           console.log("Full Offer will probably fill")
           break
@@ -96,7 +91,7 @@ async function main() {
     }
   }
 
-  if (running_total = 0) {
+  if (running_total == 0) {
     // If part of the Offer was expected to cross, then the rest would be placed
     // at the top of the order book. If none did, then there might be other
     // Offers going the same direction as ours already on the books with an
@@ -127,7 +122,7 @@ async function main() {
       for (const o of offers2) {
         if (o.quality <= offered_quality) {
           console.log(`Existing offer found, funded with ${o.owner_funds}`)
-          running_total2 += BigNumber(o.owner_funds)
+          running_total2 = running_total2.plus(BigNumber(o.owner_funds))
         } else {
           console.log(`Remaining orders are below where ours would be placed.`)
           break
@@ -141,14 +136,12 @@ async function main() {
     }
   }
 
-
-  // Depending on your use case, you may want to present options to the user
-  // here with estimates of the cost to buy (or proceeds from selling) the
-  // assets involved. For this tutorial, we already know that TST is pegged to
-  // XRP at a rate of approximately 10:1 plus spread, so we can use a
-  // hard-coded TakerGets amount.
-
   // Send OfferCreate transaction ----------------------------------------------
+
+  // For this tutorial, we already know that TST is pegged to
+  // XRP at a rate of approximately 10:1 plus spread, so we use
+  // hard-coded TakerGets and TakerPays amounts.
+
   const offer_1 = {
     "TransactionType": "OfferCreate",
     "Account": wallet.address,
@@ -158,7 +151,6 @@ async function main() {
 
   const prepared = await client.autofill(offer_1)
   console.log("Prepared transaction:", JSON.stringify(prepared, null, 2))
-  //throw "BREAK"
   const signed = wallet.sign(prepared)
   console.log("Sending OfferCreate transaction...")
   const result = await client.submitAndWait(signed.tx_blob)
@@ -168,20 +160,33 @@ async function main() {
     throw `Error sending transaction: ${result}`
   }
 
-  // Interpret metadata --------------------------------------------------------
+  // Check metadata ------------------------------------------------------------
   // In JavaScript, you can use getBalanceChanges() to help summarize all the
   // balance changes caused by a transaction.
   const balance_changes = xrpl.getBalanceChanges(result.result.meta)
   console.log("Total balance changes:", JSON.stringify(balance_changes, null, 2))
 
+  // Helper to convert an XRPL amount to a string for display
+  function amt_str(amt) {
+    if (typeof amt == "string") {
+      return `${xrpl.dropsToXrp(amt)} XRP`
+    } else {
+      return `${amt.value} ${amt.currency}.${amt.issuer}`
+    }
+  }
+
   let offers_affected = 0
   for (const affnode of result.result.meta.AffectedNodes) {
     if (affnode.hasOwnProperty("ModifiedNode")) {
       if (affnode.ModifiedNode.LedgerEntryType == "Offer") {
+        // Usually a ModifiedNode of type Offer indicates a previous Offer that
+        // was partially consumed by this one.
         offers_affected += 1
       }
     } else if (affnode.hasOwnProperty("DeletedNode")) {
       if (affnode.DeletedNode.LedgerEntryType == "Offer") {
+        // The removed Offer may have been fully consumed, or it may have been
+        // found to be expired or unfunded.
         offers_affected += 1
       }
     } else if (affnode.hasOwnProperty("CreatedNode")) {
@@ -203,15 +208,16 @@ async function main() {
     command: "account_lines",
     account: wallet.address,
     ledger_index: "validated"
+    // You could also use ledger_index: "current" to get pending data
   })
   console.log(JSON.stringify(balances.result, null, 2))
 
   // Check Offers --------------------------------------------------------------
-  console.log(`Getting outstanding Offers from ${wallet.address} as of current ledger...`)
+  console.log(`Getting outstanding Offers from ${wallet.address} as of validated ledger...`)
   const acct_offers = await client.request({
     command: "account_offers",
     account: wallet.address,
-    ledger_index: "current"
+    ledger_index: "validated"
   })
   console.log(JSON.stringify(acct_offers.result, null, 2))
 
