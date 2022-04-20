@@ -12,7 +12,7 @@ status: not_enabled
 # Trading NFTokens on the XRP Ledger
 {% include '_snippets/nfts-disclaimer.md' %}
 
-You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `NFTokens` by offering to buy or sell `NFTokens`, or accepting offers from other accounts. You can even give away `NFTokens` by offering to sell them at a price of 0.  All offers are created using the [NFTokenCreateOffer]() transaction.
+You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `NFTokens` by offering to buy or sell `NFTokens`, or accepting offers from other accounts. You can even give away `NFTokens` by offering to sell them at a price of 0.  All offers are created using the [NFTokenCreateOffer transaction]() transaction.
 
 
 ## Sell Offers
@@ -20,12 +20,12 @@ You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `
 
 ### Create a Sell Offer
 
-As the owner of a [NFToken](), you can create a sell offer using a `NFTokenCreateOffer` transaction with a _Flags_ setting of _1_. You provide the _NFTokenID_ and the _Amount_ you are willing to accept in payment. You can optionally specify an _Expiration_ date, after which the offer is no longer valid, and a _Destination_ account, which is the only account that is allowed to purchase the `NFToken`.
+As the owner of a [NFToken object](), you can create a sell offer using a `NFTokenCreateOffer` transaction with a _Flags_ setting of _1_. You provide the _NFTokenID_ and the _Amount_ you are willing to accept in payment. You can optionally specify an _Expiration_ date, after which the offer is no longer valid, and a _Destination_ account, which is the only account that is allowed to purchase the `NFToken`.
 
 
 ### Accept a Sell Offer
 
-To purchase a `NFToken` that is offered for sale, you use a [NFTokenAcceptOffer]() transaction. You provide the owner account and specify the `nft_offer_index` of the [NFTokenOffer]() you choose to accept.
+To purchase a `NFToken` that is offered for sale, you use a [NFTokenAcceptOffer transaction]() transaction. You provide the owner account and specify the `nft_offer_index` of the [NFTokenOffer object]() you choose to accept.
 
 
 ## Buy Offers
@@ -38,7 +38,7 @@ Any account can offer to buy a `NFToken` on the XRP Ledger. You can create a buy
 
 ### Accept a Buy Offer
 
-Use the [NFTokenAcceptOffer]() transaction to transfer a `NFToken`. Provide the `nft_offer_index` and the owner account to complete the transaction.
+Use the [NFTokenAcceptOffer transaction]() transaction to transfer a `NFToken`. Provide the `nft_offer_index` and the owner account to complete the transaction.
 
 
 ## Trading Modes
