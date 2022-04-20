@@ -12,7 +12,7 @@ status: not_enabled
 # Trading NFTokens on the XRP Ledger
 {% include '_snippets/nfts-disclaimer.md' %}
 
-You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `NFTokens` by offering to buy or sell `NFTokens`, or accepting offers from other accounts. You can even give away `NFTokens` by offering to sell them at a price of 0.  All offers are created using the [NFTokenCreateOffer transaction]() transaction.
+You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `NFTokens` by offering to buy or sell `NFTokens`, or accepting offers from other accounts. You can even give away `NFTokens` by offering to sell them at a price of 0.  All offers are created using the [NFTokenCreateOffer transaction][] transaction.
 
 
 ## Sell Offers
@@ -20,12 +20,12 @@ You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `
 
 ### Create a Sell Offer
 
-As the owner of a [NFToken object](), you can create a sell offer using a `NFTokenCreateOffer` transaction with a _Flags_ setting of _1_. You provide the _NFTokenID_ and the _Amount_ you are willing to accept in payment. You can optionally specify an _Expiration_ date, after which the offer is no longer valid, and a _Destination_ account, which is the only account that is allowed to purchase the `NFToken`.
+As the owner of a [NFToken object][], you can create a sell offer using a `NFTokenCreateOffer` transaction with a _Flags_ setting of _1_. You provide the _NFTokenID_ and the _Amount_ you are willing to accept in payment. You can optionally specify an _Expiration_ date, after which the offer is no longer valid, and a _Destination_ account, which is the only account that is allowed to purchase the `NFToken`.
 
 
 ### Accept a Sell Offer
 
-To purchase a `NFToken` that is offered for sale, you use a [NFTokenAcceptOffer transaction]() transaction. You provide the owner account and specify the `nft_offer_index` of the [NFTokenOffer object]() you choose to accept.
+To purchase a `NFToken` that is offered for sale, you use a [NFTokenAcceptOffer transaction][] transaction. You provide the owner account and specify the `nft_offer_index` of the [NFTokenOffer object][] you choose to accept.
 
 
 ## Buy Offers
@@ -38,7 +38,7 @@ Any account can offer to buy a `NFToken` on the XRP Ledger. You can create a buy
 
 ### Accept a Buy Offer
 
-Use the [NFTokenAcceptOffer transaction]() transaction to transfer a `NFToken`. Provide the `nft_offer_index` and the owner account to complete the transaction.
+Use the [NFTokenAcceptOffer transaction][] transaction to transfer a `NFToken`. Provide the `nft_offer_index` and the owner account to complete the transaction.
 
 
 ## Trading Modes
@@ -70,13 +70,13 @@ Using a broker offers several advantages. For example:
 In the most straightforward workflow, a creator mints a new `NFToken`. The creator initiates a sell offer, entering the minimum acceptable sale price and setting the broker as the destination. Potential buyers make bids for the NFToken, setting the broker as the destination for the bid. The broker selects a winning bid and completes the transaction, taking a broker’s fee. The broker then cancels any remaining buy offers for the `NFToken`.
 
 
-![Brokered Mode without Reserve](img/nft-brokered-mode-without-reserve.png)
+![Brokered Mode with Reserve](img/nft-brokered-mode-with-reserve.png)
 
 
 Another potential workflow would give the creator more control over the sale. In this workflow, the creator mints a new `NFToken`. Bidders create their offers, setting the broker as the destination. The broker selects the winning bid, subtracts their broker fee, and uses `NFTokenCreateOffer` to request that the creator sign off on the offer. The creator signs the requested offer, setting the broker as the destination. The broker completes the sale using `NFTokenAcceptOffer`, retaining the broker fee. The broker cancels any remaining bids for the `NFToken` using `NFTokenCancelOffer`.
 
 
-![Brokered Mode with Reserve](img/nft-brokered-mode-with-reserve.png)
+![Brokered Mode without Reserve](img/nft-brokered-mode-without-reserve.png)
 
 
 The same workflows can be used when an owner resells a `NFToken` created by another account.
