@@ -288,9 +288,9 @@
 </ul>
 <h3 id="brokered-sale-workflows">Brokered Sale Workflows<a aria-hidden="true" class="hover_anchor" href="#brokered-sale-workflows"><i class="fa fa-link"></i></a></h3>
 <p>In the most straightforward workflow, a creator mints a new <code>NFToken</code>. The creator initiates a sell offer, entering the minimum acceptable sale price and setting the broker as the destination. Potential buyers make bids for the <code>NFToken</code>, setting the broker as the destination for the bid. The broker selects a winning bid and completes the transaction, taking a broker’s fee. The broker then cancels any remaining buy offers for the <code>NFToken</code>.</p>
-<p><img alt="Brokered Mode with Reserve" src="img/nft-brokered_mode_with_reserve.png"/></p>
+<p><img alt="Brokered Mode with Reserve" src="img/nft-brokered-mode-with-reserve.png"/></p>
 <p>Another potential workflow would give the creator more control over the sale. In this workflow, the creator mints a new <code>NFToken</code>. Bidders create their offers, setting the broker as the destination. The broker selects the winning bid, subtracts their broker fee, and uses <code>NFTokenCreateOffer</code> to request that the creator sign off on the offer. The creator signs the requested offer, setting the broker as the destination. The broker completes the sale using <code>NFTokenAcceptOffer</code>, retaining the broker fee. The broker cancels any remaining bids for the <code>NFToken</code> using <code>NFTokenCancelOffer</code>.</p>
-<p><img alt="Brokered Mode without Reserve" src="img/nft-brokered_mode_without_reserve.png"/></p>
+<p><img alt="Brokered Mode without Reserve" src="img/nft-brokered-mode-without-reserve.png"/></p>
 <p>The same workflows can be used when an owner resells a <code>NFToken</code> created by another account.</p>
     </div>
   </article>
