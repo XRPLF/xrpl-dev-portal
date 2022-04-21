@@ -279,7 +279,7 @@
 <p>To purchase a <code>NFToken</code> that is offered for sale, you use a <code>NFTokenAcceptOffer</code> transaction. You provide the owner account and specify the <code>nft_offer_index</code> of the <code>NFTokenOffer</code> object you choose to accept.</p>
 <h2 id="buy-offers">Buy Offers<a aria-hidden="true" class="hover_anchor" href="#buy-offers"><i class="fa fa-link"></i></a></h2>
 <h3 id="create-a-buy-offer">Create a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-buy-offer"><i class="fa fa-link"></i></a></h3>
-<p>Any account can offer to buy a <code>NFToken</code> on the XRP Ledger. You can create a buy offer using <code>NFTokenCreateOffer</code> with a <em>Flags</em> setting of <em>null</em>. You provide the <em>Owner</em> account, <em>NFTokenID</em>, and the <em>Amount</em> of your offer.</p>
+<p>Any account can offer to buy a <code>NFToken</code>. You can create a buy offer using [NFTokenCreateOffer][] <em>without</em> the <code>tfSellToken</code> flag. You provide the <code>Owner</code> account, <code>NFTokenID</code>, and the <code>Amount</code> of your offer.</p>
 <h3 id="accept-a-buy-offer">Accept a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#accept-a-buy-offer"><i class="fa fa-link"></i></a></h3>
 <p>Use the <code>NFTokenAcceptOffer</code> transaction to transfer a <code>NFToken</code>. Provide the <code>nft_offer_index</code> and the owner account to complete the transaction.</p>
 <h2 id="trading-modes">Trading Modes<a aria-hidden="true" class="hover_anchor" href="#trading-modes"><i class="fa fa-link"></i></a></h2>
