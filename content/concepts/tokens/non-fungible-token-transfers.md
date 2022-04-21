@@ -20,7 +20,7 @@ You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `
 
 ### Create a Sell Offer
 
-As the owner of a `NFToken object`, you can create a sell offer using a `NFTokenCreateOffer` transaction with a _Flags_ setting of _1_. You provide the _NFTokenID_ and the _Amount_ you are willing to accept in payment. You can optionally specify an _Expiration_ date, after which the offer is no longer valid, and a _Destination_ account, which is the only account that is allowed to purchase the `NFToken`.
+As the owner of a `NFToken` object, you can create a sell offer using a [NFTokenCreateOffer transaction][] with the `tfSellToken` flag. You provide the `NFTokenID` and the `Amount` you are willing to accept in payment. You can optionally specify an `Expiration` date, after which the offer is no longer valid, and a `Destination` account, which is the only account that is allowed to purchase the `NFToken`.
 
 
 ### Accept a Sell Offer
