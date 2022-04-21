@@ -33,7 +33,7 @@ To purchase a `NFToken` that is offered for sale, you use a `NFTokenAcceptOffer`
 
 ### Create a Buy Offer
 
-Any account can offer to buy a `NFToken` on the XRP Ledger. You can create a buy offer using `NFTokenCreateOffer` with a _Flags_ setting of _null_. You provide the _Owner_ account, _NFTokenID_, and the _Amount_ of your offer.
+Any account can offer to buy a `NFToken`. You can create a buy offer using [NFTokenCreateOffer][] _without_ the `tfSellToken` flag. You provide the `Owner` account, `NFTokenID`, and the `Amount` of your offer.
 
 
 ### Accept a Buy Offer
