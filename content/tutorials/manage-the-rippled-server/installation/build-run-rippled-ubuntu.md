@@ -43,6 +43,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
     Use `cmake --version` to verify that the installation worked.
 
 5. Compile Boost.
+
     Version 1.9.0 of `rippled` requires the Boost library and is compatible with Boost versions 1.71.0 to 1.77.0. The Ubuntu 18.04 (or 20.04) software repositories don't have a compatible Boost version, so you must compile it yourself. The following examples use Boost 1.75.0.
 
     If you have previously built Boost 1.75.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
