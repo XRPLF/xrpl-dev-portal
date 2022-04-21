@@ -79,6 +79,7 @@ Another potential workflow would give the creator more control over the sale. In
 
 The same workflows can be used when an owner resells a `NFToken` created by another account.
 
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
