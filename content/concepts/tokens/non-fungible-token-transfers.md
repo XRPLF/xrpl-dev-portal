@@ -12,7 +12,7 @@ status: not_enabled
 # Trading NFTokens on the XRP Ledger
 {% include '_snippets/nfts-disclaimer.md' %}
 
-You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `NFTokens` by offering to buy or sell `NFTokens`, or accepting offers from other accounts. You can even give away `NFTokens` by offering to sell them at a price of 0.  All offers are created using the `NFTokenCreateOffer` transaction.
+You can transfer NFTokens between accounts on the XRP Ledger. You can transfer `NFTokens` by offering to buy or sell `NFTokens`, or accepting offers from other accounts. You can even give away `NFTokens` by offering to sell them at a price of 0.  All offers are created using [NFTokenCreateOffer transactions][].
 
 
 ## Sell Offers
