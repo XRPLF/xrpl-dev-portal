@@ -10,7 +10,7 @@ labels:
 ---
 # Trade in the Decentralized Exchange
 
-This tutorial demonstrates how you can buy and sell tokens in the [decentralized exchange](decentralized-exchange.html).
+This tutorial demonstrates how you can buy and sell tokens in the [decentralized exchange](decentralized-exchange.html) (DEX).
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ For this tutorial, click the following button to connect:
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](parallel-networks.html) using the following interface:
+To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](parallel-networks.html) using the following interface:
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
