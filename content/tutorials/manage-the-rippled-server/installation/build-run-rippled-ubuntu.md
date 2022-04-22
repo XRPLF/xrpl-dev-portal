@@ -34,20 +34,17 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
 4. Install CMake.
 
-    Version 1.8.1 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3.
+    Version 1.9.0 of `rippled` requires CMake 3.16.3 or higher.
+    To install CMake 3.16.3:
 
-    If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
-
-    To install CMake 3.13.3:
-
-        wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh
-        sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
+        wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
+        sudo sh cmake-3.16.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
 
     Use `cmake --version` to verify that the installation worked.
 
 5. Compile Boost.
 
-    Version 1.8.1 of `rippled` requires the Boost library and is compatible with Boost versions 1.70.0 to 1.75.0. The Ubuntu 18.04 (or 20.04) software repositories don't have a compatible Boost version, so you must compile it yourself. The following examples use Boost 1.75.0.
+    Version 1.9.0 of `rippled` requires the Boost library and is compatible with Boost versions 1.71.0 to 1.77.0. The Ubuntu 18.04 (or 20.04) software repositories don't have a compatible Boost version, so you must compile it yourself. The following examples use Boost 1.75.0.
 
     If you have previously built Boost 1.75.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 

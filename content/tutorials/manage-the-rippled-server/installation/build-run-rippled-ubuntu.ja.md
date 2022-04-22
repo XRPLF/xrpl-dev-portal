@@ -38,21 +38,18 @@ labels:
 
 4. CMakeをインストールします。
 
-   `rippled`のバージョン1.7.0は、CMake 3.9.0以降を必要とします。このチュートリアルでは、執筆時の最新バージョンだったCMake 3.13.3を使用しました。
+   `rippled`のバージョン1.9.0は、CMake 3.16.3以降を必要とします。
 
-   CMake 3.9.0以降をすでにインストールしてある場合には、このステップはスキップできます。
+   CMake 3.16.3をインストールするには、以下を実行します。
 
-   CMake 3.13.3をインストールするには、以下を実行します。
-
-        wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh
-        sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
+        wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
+        sudo sh cmake-3.16.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
 
    `cmake --version`を使用し、正常にインストールされたことを確認します。
 
 5. Boostをコンパイルします。
 
-   `rippled`のバージョン1.7.2は、Boostバージョン1.70.0ライブラリを必要とします、Boostバージョン1.70.0から1.75.0と互換性があります。 Ubuntu 18.04（または20.04）ソフトウェアリポジトリに互換性なBoostバージョンがないため、自分でコンパイルする必要があります。（次の例では、執筆時点の最新バージョンであるBoost 1.75.0を使用しています。）
-
+    `rippled`のバージョン1.9.0は、Boostライブラリを必要とします、Boostバージョン1.71.0から1.77.0と互換性があります。 Ubuntu 18.04（または20.04）ソフトウェアリポジトリに互換性なBoostバージョンがないため、自分でコンパイルする必要があります。（次の例では、執筆時点の最新バージョンであるBoost 1.75.0を使用しています。）
    以前に`rippled`用にBoost 1.75.0をインストールしていて、`BOOST_ROOT`環境変数を構成した場合には、このステップはスキップできます。
 
    1. Boost 1.75.0をダウンロードします。
