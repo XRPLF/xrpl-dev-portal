@@ -715,7 +715,7 @@
 }
 
 .page-community {
-  @each $platform in "github", "twitch", "stack-overflow", "twitter" {
+  @each $platform in "github", "twitch", "stack-overflow", "twitter", "discord", "youtube", "devto" {
     #platform-#{$platform} {
       content: url("../img/logos/#{$platform}.svg")
     }

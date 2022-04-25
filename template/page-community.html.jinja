@@ -17,38 +17,17 @@
 
 {% block main %}
 
-<div class="position-relative">
-  <img src="./img/backgrounds/community-magenta.svg" class="landing-bg" id="community-magenta">
-</div>
 
 <section class="py-26 text-center">
   <div class="col-lg-5 mx-auto text-center">
     <div class="d-flex flex-column-reverse">
-      <h1 class="mb-0">{% trans %}Participate in the XRPL Community{% endtrans %}</h1>
-      <h6 class="eyebrow mb-3">{% trans %}Join and Contribute{% endtrans %}</h6>
+      <h1 class="mb-0">{% trans %}A Global Community of Builders and Innovators{% endtrans %}</h1>
+      <h6 class="eyebrow mb-3">{% trans %}The XRPL Community{% endtrans %}</h6>
     </div>
   </div>
 </section>
 
-<div class="position-relative d-none-sm">
-  <img src="./img/backgrounds/community-purple.svg" id="community-purple">
-</div>
-
-
-<section class="container-new py-26" id="run-a-network-node">
-  <div class="d-flex flex-column-reverse col-sm-8 p-0">
-    <h3 class="h4 h2-sm">{% trans %}Run an XRP Ledger Network Node{% endtrans %}</h3>
-    <h6 class="eyebrow mb-3">{% trans %}Contribute to Consensus{% endtrans %}</h6>
-  </div>
-  {% set curated_cards = [
-    "the-rippled-server.html",
-    "install-rippled.html",
-    "run-rippled-as-a-validator.html",
-    "troubleshoot-the-rippled-server.html"
-  ] %}
-  {% include 'component-curated-cards.html.jinja' %}
-</section><!--/#run-a-network-node-->
-
+<!-- Join conversation -->
 <section class="container-new py-26" id="find-us-on-platforms">
   <div class="d-flex flex-column-reverse col-sm-8 p-0">
     <h3 class="h4 h2-sm">{% trans %}Find us on the platforms below{% endtrans %}</h3>
@@ -56,6 +35,17 @@
   </div>
 
   {% set platforms = [
+    { "name": "Twitter",
+      "id": "twitter",
+      "link": "https://twitter.com/XRPLF/"},
+    { "name": "Discord",
+      "id": "discord",
+      "link": "",
+      "imgclasses": "invertible-img"},
+    { "name": "YouTube",
+      "id": "youtube",
+      "link": "#",
+      "imgclasses": "invertible-img"},
     { "name": "GitHub",
       "id": "github",
       "link": "https://github.com/XRPLF/xrpl-dev-portal",
@@ -66,9 +56,10 @@
     { "name": "Stack Overflow",
       "id": "stack-overflow",
       "link": "https://stackoverflow.com/questions/tagged/xrp"},
-    { "name": "Twitter",
-      "id": "twitter",
-      "link": "https://twitter.com/XRPLF/"},
+    { "name": "Dev.to",
+      "id": "devto",
+      "link": "",
+      "imgclasses": "invertible-img"},
   ] %}
   <div class="row row-cols-2 row-cols-lg-4 card-deck">
   {% for plat in platforms %}
@@ -82,6 +73,179 @@
   {% endfor %}
   </div>
 </section>
+
+
+<!-- TEMP -->
+<style>
+
+  .text-cards a {
+    width: 50%;
+  }
+  .text-cards a:hover {
+    text-decoration: none;
+  }
+  
+  .text-cards h6::before {
+    margin-top: 0;
+    height: unset;
+  }
+  
+</style>
+
+<!-- Contribute -->
+<section class="container-new py-26" id="run-a-network-node">
+  <div class="card-grid card-grid-2xN">
+    <div class="col pr-2">
+        <img src="./assets/img/community/temp_community_xrp_ledger@2x.png" class="w-100">
+    </div>
+    
+    <div class="col pt-5 pr-2">
+      <div class="d-flex flex-column-reverse mb-lg-4 pl-0 ">
+        <h2 class="h4 h2-sm">{% trans %}Run an XRP Ledger network node{% endtrans %}</h2>
+        <h6 class="eyebrow mb-3">{% trans %}Contribute to Consensus{% endtrans %}</h6>
+      </div>
+      <!-- Grid -->
+      <div class="d-flex align-content-stretch flex-wrap flex-column flex-md-row text-cards ">
+        <a class="" href="#">
+          <div class="">
+            <h6 class="h6">About the Server -></h6>
+            <p class="">rippled is the core peer-to-peer server that manages the XRP Ledger.</p>
+          </div>
+        </a>
+        <a class="" href="#">
+          <div class="">
+            <h6 class="h6">Become a Validator -></h6>
+            <p class="">Join the Unique Node List (UNL) to contribute to consensus on XRPL.</p>
+          </div>
+        </a>
+        <a class="" href="#">
+          <div class="">
+            <h6 class="h6">Install & Configure -></h6>
+            <p class="">Install, run, and update the rippled server.</p>
+          </div>
+        </a>
+        <a class="" href="#">
+          <div class="">
+            <h6 class="h6">Troubleshooting -></h6>
+            <p class="">Troubleshoot any issues you’re having with the rippled server.</p>
+          </div>
+        </a>
+      </div>
+
+    </div>    
+  </div>
+</section>
+
+
+<!-- Grants -->
+<section class="container-new py-26">
+  <div class="card-grid card-grid-2xN">
+    <div class="col  pr-2">
+      <div class="d-flex flex-column-reverse">
+        <h2 class="h4 h2-sm">{% trans %}Apply for funding for your next XRPL project{% endtrans %}</h2>
+        <h6 class="eyebrow mb-3">{% trans %}XRPL Grants{% endtrans %}</h6>
+      </div>
+      <p class="mb-4">{% trans %}The XRPL Grants program funds select open-source projects that help the growing XRP Ledger community. Wave 3 of XRPL Grants with the theme “Contributing to Open Source” is now open!{% endtrans %}</p>
+      <img src="./assets/img/community/temp_community_grants_logos@2x.png" class="w-100">
+
+      <div class="d-lg-block mt-4">
+        <a class="btn btn-primary btn-arrow" target="_blank" href="http://apexdevsummit.com">{% trans %}Apply for a Grant{% endtrans %}</a> 
+      </div>
+    </div>
+
+    <div class="col order-1 order-lg-2 pt-5 pr-2">
+      <img src="./assets/img/community/temp_community_stats@2x.png" class="w-100">
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Events -->
+<section class="container-new py-26">
+  <div class="event-hero card-grid card-grid-2xN">
+    
+    <div class="col pr-2">
+        <img src="./assets/img/community/temp_community_types_of_events@2x.png" class="w-100">
+    </div>
+    
+    <div class="col pt-5 pr-2">
+      <div class="d-flex flex-column-reverse mb-lg-4 pl-0 ">
+        <h2 class="h4 h2-sm">{% trans %}Check out global events hosted by the XRPL community {% endtrans %}</h2>
+        <h6 class="eyebrow mb-3">{% trans %}XRPL Events{% endtrans %}</h6>
+      </div>
+      <p class="mb-4">{% trans %}Meet the XRPL community at meetups, hackathons, conferences like Apex, and more, across global regions.{% endtrans %}</p>      
+      <div class="d-lg-block">
+        <a class="btn btn-primary btn-arrow" target="_blank" href="/events.html">{% trans %}View All Events{% endtrans %}</a> 
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+<!-- Dev spotlight -->
+<section class="container-new py-26">
+  <div class="d-flex flex-column-reverse col-xl-6 mb-lg-4 pl-0 ">
+    <h2 class="h4 h2-sm">{% trans %}Watch community members tell their stories of building on XRPL {% endtrans %}</h2>
+    <h6 class="eyebrow mb-3">{% trans %}Developer Spotlights{% endtrans %}</h6>
+  </div>
+
+  <div class="row row-cols-1 row-cols-lg-3 d-flex justify-content-between w-100 mx-0 mx-md-n3 mt-md-5">
+      <div class="px-md-3 pt-5 pt-md-0">
+        <a href="#" class="btn1" data-url="https://www.youtube.com/embed/k6VqEkqRTmk?rel=0&amp;showinfo=0&amp;autoplay=1">
+          <img src="./assets/img/overview/video_explainer_consensus@2x.png" id="xrpl-overview-video-consensus" class="w-100 video-image">
+        </a>
+        <div class="mt-2">
+          <h4 class="video-title mt-3 mb-0">{% trans %}Company Name{% endtrans %}</h4>
+        </div>
+      </div>
+      <div class="px-md-3 pt-5 pt-md-0">
+        <a href="#" class="btn1" data-url="https://www.youtube.com/embed/JjaVDXPqnbA?rel=0&amp;showinfo=0&amp;autoplay=1">
+          <img src="./assets/img/overview/video_explainer_nodes@2x.png" id="xrpl-overview-video-nodes" class="w-100 video-image">
+        </a>
+        <div class="mt-2">
+          <h4 class="video-title mt-3 mb-0">{% trans %}Company Name{% endtrans %}</h4>
+        </div>
+      </div>
+      <div class="px-md-3 pt-5 pt-md-0">
+        <a href="#" class="btn1" data-url="https://www.youtube.com/embed/WsmldDNGQ9s?rel=0&amp;showinfo=0&amp;autoplay=1">
+          <img src="./assets/img/overview/video_explainer_sustainability@2x.png" id="xrpl-overview-video-sustainability" class="w-100 video-image">
+        </a>
+        <div class="mt-2">
+          <h4 class="video-title mt-3 mb-0">{% trans %}Company Name{% endtrans %}</h4>
+        </div>
+      </div>
+  </div>
+  <div class="pt-5 w-100">
+    <a class="btn btn-primary btn-arrow" target="_blank" href="https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg">{% trans %}Watch Full Series on YouTube{% endtrans %}</a>
+  </div>
+</section>
+
+
+<!-- Careers -->
+<section class="container-new py-26">
+  <div class="event-hero card-grid card-grid-2xN">
+    
+    <div class="col pr-2">
+      <img src="./assets/img/community/temp_community_open_roles@2x.png" class="w-100">
+    </div>
+    
+    <div class="col pt-5 pr-2">
+      <div class="d-flex flex-column-reverse mb-lg-4 pl-0 ">
+        <h2 class="h4 h2-sm">{% trans %}Discover your next career opportunity with XRPL{% endtrans %}</h2>
+        <h6 class="eyebrow mb-3">{% trans %}XRPL Careers{% endtrans %}</h6>
+      </div>
+      <p class="mb-4">{% trans %}Teams across the XRPL community are looking for talented individuals to help build their next innovation.{% endtrans %}</p>
+      <div class="d-lg-block">
+        <a class="btn btn-primary btn-arrow" target="_blank" href="/events.html">{% trans %}View Open Roles{% endtrans %}</a> 
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
 <section class="container-new py-26">
   <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
     <img src="./img/backgrounds/cta-community-purple.svg" class="d-none-sm cta cta-top-left">
