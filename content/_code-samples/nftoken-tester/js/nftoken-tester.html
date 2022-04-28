@@ -118,7 +118,7 @@ async function createSellOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value
+		nft_id:tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -129,7 +129,7 @@ async function createSellOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	nft_id:tokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -172,7 +172,7 @@ async function createBuyOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value
+		nft_id: tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -183,7 +183,7 @@ async function createBuyOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	nft_id: tokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -229,7 +229,7 @@ async function cancelOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value
+		nft_id:tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -240,7 +240,7 @@ async function cancelOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	nft_id:tokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -267,11 +267,12 @@ async function getOffers() {
 	await client.connect()
 	console.log("Connected to Sandbox")
     console.log("***Sell Offers***")
+    
     let nftSellOffers
       try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value
+		nft_id: tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -282,7 +283,7 @@ async function getOffers() {
     try {
       nftBuyOffers = await client.request({
   	  method: "nft_buy_offers",
-	  tokenid: tokenId.value })
+	  nft_id:tokenId.value })
     } catch (err) {
       console.log("No buy offers.")
   }
