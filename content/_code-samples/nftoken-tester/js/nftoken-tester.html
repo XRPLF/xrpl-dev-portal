@@ -1,6 +1,6 @@
 <html>
 <head>
-<script src='https://unpkg.com/xrpl@2.1.0-beta.1'></script>
+<script src='https://unpkg.com/xrpl@2.2.1/build/xrpl-latest-min.js'></script>
 <script>
 if (typeof module !== "undefined") var xrpl = require('xrpl')
 
@@ -22,7 +22,7 @@ async function mintToken() {
 		Account: wallet.classicAddress,
 		URI: xrpl.convertStringToHex(tokenUrl.value),
 		Flags: parseInt(flags.value),
-		TokenTaxon: 0 //Required, but if you have no use for it, set to zero.
+		NFTokenTaxon: 0 //Required, but if you have no use for it, set to zero.
 	}
 	// Submit signed blob --------------------------------------------------------
 	const tx = await client.submitAndWait(transactionBlob,{wallet})
@@ -71,7 +71,7 @@ async function burnToken() {
   const transactionBlob = {
       "TransactionType": "NFTokenBurn",
       "Account": wallet.classicAddress,
-      "TokenID": tokenId.value
+      "NFTokenID": tokenId.value
   }
 
   // Submit signed blob --------------------------------------------------------
@@ -103,7 +103,7 @@ async function createSellOffer() {
   const transactionBlob = {
       	"TransactionType": "NFTokenCreateOffer",
       	"Account": wallet.classicAddress,
-      	"TokenID": tokenId.value,
+      	"NFTokenID": tokenId.value,
       	"Amount": amount.value,
       	"Flags": parseInt(flags.value)
   }
@@ -118,7 +118,7 @@ async function createSellOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value
+		nft_id:tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -129,7 +129,7 @@ async function createSellOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	nft_id:tokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -159,7 +159,7 @@ async function createBuyOffer() {
       	"TransactionType": "NFTokenCreateOffer",
       	"Account": wallet.classicAddress,
       	"Owner": owner.value,
-      	"TokenID": tokenId.value,
+      	"NFTokenID": tokenId.value,
       	"Amount": amount.value,
       	"Flags": parseInt(flags.value)
   }
@@ -172,7 +172,7 @@ async function createBuyOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value
+		nft_id: tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -183,7 +183,7 @@ async function createBuyOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	nft_id: tokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -217,7 +217,7 @@ async function cancelOffer() {
   const transactionBlob = {
       	"TransactionType": "NFTokenCancelOffer",
       	"Account": wallet.classicAddress,
-      	"TokenOffers": tokenOffers
+      	"NFTokenOffers": tokenOffers
   }
 
   // Submit signed blob --------------------------------------------------------
@@ -229,7 +229,7 @@ async function cancelOffer() {
     try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value
+		nft_id:tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -240,7 +240,7 @@ async function cancelOffer() {
   try {
     nftBuyOffers = await client.request({
 	method: "nft_buy_offers",
-	tokenid: tokenId.value })
+	nft_id:tokenId.value })
   } catch (err) {
     console.log("No buy offers.")
   }
@@ -267,11 +267,12 @@ async function getOffers() {
 	await client.connect()
 	console.log("Connected to Sandbox")
     console.log("***Sell Offers***")
+    
     let nftSellOffers
       try {
 	    nftSellOffers = await client.request({
 		method: "nft_sell_offers",
-		tokenid: tokenId.value
+		nft_id: tokenId.value
 	  })
 	  } catch (err) {
 	    console.log("No sell offers.")
@@ -282,7 +283,7 @@ async function getOffers() {
     try {
       nftBuyOffers = await client.request({
   	  method: "nft_buy_offers",
-	  tokenid: tokenId.value })
+	  nft_id:tokenId.value })
     } catch (err) {
       console.log("No buy offers.")
   }
@@ -305,7 +306,7 @@ async function acceptSellOffer() {
   const transactionBlob = {
       	"TransactionType": "NFTokenAcceptOffer",
       	"Account": wallet.classicAddress,
-      	"SellOffer": tokenOfferIndex.value,
+      	"NFTokenSellOffer": tokenOfferIndex.value,
   }
   // Submit signed blob --------------------------------------------------------
   const tx = await client.submitAndWait(transactionBlob,{wallet})
@@ -338,7 +339,7 @@ async function acceptBuyOffer() {
   const transactionBlob = {
       	"TransactionType": "NFTokenAcceptOffer",
       	"Account": wallet.classicAddress,
-      	"BuyOffer": tokenOfferIndex.value
+      	"NFTokenBuyOffer": tokenOfferIndex.value
   }
   // Submit signed blob --------------------------------------------------------
   const tx = await client.submitAndWait(transactionBlob,{wallet})
