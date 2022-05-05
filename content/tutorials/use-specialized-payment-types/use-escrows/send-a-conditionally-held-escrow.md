@@ -35,6 +35,20 @@ console.log('Fulfillment:', fulfillment)
 // (Random hexadecimal, 78 chars in length)
 ```
 
+Example Python code for a random fulfillment and condition:
+``` py
+from cryptoconditions import PreimageSha256
+
+secret = b"Python is awesome" # modify this if you want to change the output
+# scret must be bytes format
+
+fufill = PreimageSha256(preimage=secret)
+
+print("Condition", str.upper(fufill.condition_binary.hex()))
+
+print("Fulfillment", str.upper(fufill.serialize_binary().hex()))
+```
+
 Save the condition and the fulfillment for later. Be sure to keep the fulfillment secret until you want to finish executing the held payment. Anyone who knows the fulfillment can finish the escrow, releasing the held funds to their intended destination.
 
 
