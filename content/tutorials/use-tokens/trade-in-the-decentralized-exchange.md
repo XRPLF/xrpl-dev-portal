@@ -30,7 +30,7 @@ This tutorial demonstrates how to buy a fungible token in the decentralized exch
 
 | Currency Code | Issuer | Notes |
 |---|---|---|
-| TST | rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens for  |
+| TST | rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens.  |
 
 
 ### {{n.next()}}. Connect to Network
@@ -57,7 +57,7 @@ To transact on the XRP Ledger, you need an address, a secret key, and some XRP. 
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html). The following code shows how to instantiate a class with the wallet instance:
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html). The following code shows how to create a Wallet instance to use your keys:
 
 <!-- MULTICODE_BLOCK_START -->
 

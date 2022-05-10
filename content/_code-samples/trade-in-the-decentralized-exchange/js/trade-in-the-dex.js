@@ -34,7 +34,8 @@ async function main() {
   }
   const we_spend = {
     currency: "XRP",
-    value: xrpl.xrpToDrops(25*10*1.15) // 25 TST * 10 XRP per TST * 15% fx cost
+           // 25 TST * 10 XRP per TST * 15% financial exchange (FX) cost
+    value: xrpl.xrpToDrops(25*10*1.15)
   }
   // "Quality" is defined as TakerPays ÷ TakerGets. The lower the "quality"
   // number, the better the proposed exchange rate is for the taker.
@@ -57,10 +58,9 @@ async function main() {
   // If so, how much of it? (Partial execution is possible)
   // If not, how much liquidity is above it? (How deep in the order book would
   //    other Offers have to go before ours would get taken?)
-  // Note: these estimates can be thrown off by rounding if the token issuer
+  // Note: These estimates can be thrown off by rounding if the token issuer
   // uses a TickSize setting other than the default (15). In that case, you
-  // can increase the TakerGets amount of your final offer just a little bit to
-  // compensate.
+  // can increase the TakerGets amount of your final Offer to compensate.
 
   const offers = orderbook_resp.result.offers
   const want_amt = BigNumber(we_want.value)
@@ -71,7 +71,8 @@ async function main() {
   } else {
     for (const o of offers) {
       if (o.quality <= proposed_quality) {
-        console.log(`Matching Offer found, funded with ${o.owner_funds}`)
+        console.log(`Matching Offer found, funded with ${o.owner_funds}
+            ${we_want.currency}`)
         running_total = running_total.plus(BigNumber(o.owner_funds))
         if (running_total >= want_amt) {
           console.log("Full Offer will probably fill")
@@ -84,10 +85,11 @@ async function main() {
         break
       }
     }
-    console.log(`Total matched: ${Math.min(running_total, want_amt)}`)
+    console.log(`Total matched:
+          ${Math.min(running_total, want_amt)} ${we_want.currency}`)
     if (running_total > 0 && running_total < want_amt) {
-      console.log(`Remaining ${want_amt - running_total} would probably be
-                   placed on top of the order book.`)
+      console.log(`Remaining ${want_amt - running_total} ${we_want.currency}
+            would probably be placed on top of the order book.`)
     }
   }
 
@@ -115,23 +117,27 @@ async function main() {
     const offered_quality = BigNumber(we_want.value) / BigNumber(we_spend.value)
 
     const offers2 = orderbook2_resp.result.offers
+    let tally_currency = we_spend.currency
+    if (tally_currency == "XRP") { tally_currency = "drops of XRP" }
     let running_total2 = 0
     if (!offers2) {
       console.log(`No similar Offers in the book. Ours would be the first.`)
     } else {
       for (const o of offers2) {
         if (o.quality <= offered_quality) {
-          console.log(`Existing offer found, funded with ${o.owner_funds}`)
+          console.log(`Existing offer found, funded with
+                ${o.owner_funds} ${tally_currency}`)
           running_total2 = running_total2.plus(BigNumber(o.owner_funds))
         } else {
           console.log(`Remaining orders are below where ours would be placed.`)
           break
         }
       }
-      console.log(`Our Offer would be placed below at least ${running_total2} ${we_spend.currency}`)
+      console.log(`Our Offer would be placed below at least
+            ${running_total2} ${tally_currency}`)
       if (running_total > 0 && running_total < want_amt) {
-        console.log(`Remaining ${want_amt - running_total} will probably be
-                     placed on top of the order book.`)
+        console.log(`Remaining ${want_amt - running_total} ${tally_currency}
+              will probably be placed on top of the order book.`)
       }
     }
   }
@@ -155,7 +161,8 @@ async function main() {
   console.log("Sending OfferCreate transaction...")
   const result = await client.submitAndWait(signed.tx_blob)
   if (result.result.meta.TransactionResult == "tesSUCCESS") {
-    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${signed.hash}`)
+    console.log(`Transaction succeeded:
+          https://testnet.xrpl.org/transactions/${signed.hash}`)
   } else {
     throw `Error sending transaction: ${result}`
   }
@@ -164,7 +171,7 @@ async function main() {
   // In JavaScript, you can use getBalanceChanges() to help summarize all the
   // balance changes caused by a transaction.
   const balance_changes = xrpl.getBalanceChanges(result.result.meta)
-  console.log("Total balance changes:", JSON.stringify(balance_changes, null, 2))
+  console.log("Total balance changes:", JSON.stringify(balance_changes, null,2))
 
   // Helper to convert an XRPL amount to a string for display
   function amt_str(amt) {

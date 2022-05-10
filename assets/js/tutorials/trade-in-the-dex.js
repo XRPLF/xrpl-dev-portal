@@ -68,7 +68,8 @@ $("#look-up-offers").click( async (event) => {
     for (const o of offers) {
       if (o.quality <= proposed_quality) {
         block.find(".output-area").append(
-            `<p>Matching Offer found, funded with ${o.owner_funds}</p>`)
+            `<p>Matching Offer found, funded with
+            ${o.owner_funds} ${we_want.currency}</p>`)
         running_total = running_total.plus(BigNumber(o.owner_funds))
         if (running_total >= want_amt) {
           block.find(".output-area").append("<p>Full Offer will probably fill.</p>")
@@ -81,22 +82,24 @@ $("#look-up-offers").click( async (event) => {
         break
       }
     }
-    block.find(".output-area").append(`<p>Total matched: ${Math.min(running_total, want_amt)}</p>`)
+    block.find(".output-area").append(`<p>Total matched:
+          ${Math.min(running_total, want_amt)} ${we_want.currency}</p>`)
     if (running_total > 0 && running_total < want_amt) {
-      block.find(".output-area").append(`<p>Remaining ${want_amt - running_total} would probably be
-                   placed on top of the order book.</p>`)
+      block.find(".output-area").append(`<p>Remaining
+            ${want_amt - running_total} ${we_want.currency} would probably be
+            placed on top of the order book.</p>`)
     }
   }
 
   if (running_total == 0) {
-    // If part of the Offer was expected to cross, then the rest would be placed
-    // at the top of the order book. If none did, then there might be other
-    // Offers going the same direction as ours already on the books with an
-    // equal or better rate. This code counts how much liquidity is likely to be
-    // above ours.
+    // If the Offer would be partly filled, then the rest would be placed
+    // at the top of the order book. If no part is filled, then there might be
+    // other Offers going the same direction as ours already on the books with
+    // an equal or better rate. This code counts how much liquidity is likely to
+    // be above ours.
 
-    // Unlike above, this time we check for Offers going the same direction as
-    // ours, so TakerGets and TakerPays are reversed from the previous
+    // Unlike above, this looks for Offers going the same direction as the
+    // proposed Offer, so TakerGets and TakerPays are reversed from the previous
     // book_offers request.
     let orderbook2_resp
     try {
@@ -120,23 +123,30 @@ $("#look-up-offers").click( async (event) => {
     const offered_quality = BigNumber(we_want.value) / BigNumber(we_spend.value)
 
     const offers2 = orderbook2_resp.result.offers
+    let tally_currency = we_spend.currency
+    if (tally_currency == "XRP") { tally_currency = "drops of XRP" }
     let running_total2 = BigNumber(0)
     if (!offers2) {
-      block.find(".output-area").append(`<p>No similar Offers in the book. Ours would be the first.</p>`)
+      block.find(".output-area").append(`<p>No similar Offers in the book.
+          Ours would be the first.</p>`)
     } else {
       for (const o of offers2) {
         if (o.quality <= offered_quality) {
-          block.find(".output-area").append(`<p>Existing offer found, funded with ${o.owner_funds}</p>`)
+          block.find(".output-area").append(`<p>Existing offer found, funded
+                with ${o.owner_funds} ${tally_currency}</p>`)
           running_total2 = running_total2.plus(BigNumber(o.owner_funds))
         } else {
-          block.find(".output-area").append(`<p>Remaining orders are below where ours would be placed.</p>`)
+          block.find(".output-area").append(`<p>Remaining orders are below where
+                ours would be placed.</p>`)
           break
         }
       }
-      block.find(".output-area").append(`<p>Our Offer would be placed below at least ${running_total2} ${we_spend.currency}</p>`)
+      block.find(".output-area").append(`<p>Our Offer would be placed below at
+            least ${running_total2} ${tally_currency}</p>`)
       if (running_total > 0 && running_total < want_amt) {
-        block.find(".output-area").append(`<p>Remaining ${want_amt - running_total} will probably be
-                     placed on top of the order book.</p>`)
+        block.find(".output-area").append(`<p>Remaining
+              ${want_amt - running_total} ${tally_currency} will probably be
+              placed on top of the order book.</p>`)
       }
     }
   }

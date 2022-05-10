@@ -1,4 +1,4 @@
-// In browsers, add the following <script> tags the HTML to load dependencies
+// In browsers, add the following <script> tags to the HTML to load dependencies
 // instead of using require():
 // <script src="https://unpkg.com/xrpl@2.2.0/build/xrpl-latest-min.js"></script>
 // <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
