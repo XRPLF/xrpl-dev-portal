@@ -1,6 +1,6 @@
 # Get Started
 
-Introductory code samples showing how to connect to the XRP Ledger and query it for data.
+Connect to the XRP Ledger and query it for data.
 
 For more context, see the Get Started tutorial for your preferred language:
 

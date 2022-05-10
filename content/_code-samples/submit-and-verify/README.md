@@ -1,6 +1,6 @@
 # Submit and Verify
 
-Example code to submit a signed transaction blob and wait until it has a final result.
+Submit a signed transaction blob and wait until it has a final result.
 
 - [submit-and-verify.js](js/submit-and-verify.js): ripple-lib 1.x version.
 - [submit-and-verify2.js](js/submit-and-verify2.js): xrpl.js 2.x version. Unlike the submitAndWait() method built into xrpl.js, this checks the server's available history and returns a different code when the transaction's status is unknowable with the server's available history versus if the transaction was _definitely_ not confirmed by consensus.
