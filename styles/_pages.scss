@@ -494,15 +494,27 @@
 
 #find-us-on-platforms .card-deck {
   .card:nth-child(1) .card-footer {
-    background-image: url(../img/cards/4col-green-2.svg);
+    background-image: url(../img/cards/4col-light-blue-3.svg);
   }
   .card:nth-child(2) .card-footer {
-    background-image: url(../img/cards/4col-light-blue-3.svg);
+    background-image: url(../img/cards/3col-purple-blue.svg);
   }
   .card:nth-child(3) .card-footer {
     background-image: url(../img/cards/4col-magenta-3.svg);
   }
   .card:nth-child(4) .card-footer {
+    background-image: url(../img/cards/4col-green-2.svg);
+  }
+  .card:nth-child(5) .card-footer {
+    background-image: url(../img/cards/4col-blue-green.svg);
+  }
+  .card:nth-child(6) .card-footer {
+    background-image: url(../img/cards/4col-orange.svg);
+  }
+  .card:nth-child(7) .card-footer {
+    background-image: url(../img/cards/4col-yellow-2.svg);
+  }
+  .card:nth-child(8) .card-footer {
     background-image: url(../img/cards/4col-orange-2.svg);
   }
 }
