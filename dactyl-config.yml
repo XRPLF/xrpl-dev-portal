@@ -65,7 +65,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.0.0.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.2.0.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -1512,6 +1512,12 @@ pages:
 
         # TODO: translate
     -   md: tutorials/use-tokens/issue-a-fungible-token.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/use-tokens/trade-in-the-decentralized-exchange.md
         targets:
             - en
             - ja
