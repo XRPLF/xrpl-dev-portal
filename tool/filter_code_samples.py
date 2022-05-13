@@ -35,7 +35,15 @@ def to_title_case(s):
 
 # def all_langs():
 langs = []
-    
+
+def sortfunc(cs):
+    """
+    Sort code samples alphabetically by title except with "Intro" fields first
+    """
+    if "Intro" in cs["title"] or "Quickstart" in cs["title"]:
+        return " "+cs["title"]
+    else:
+        return cs["title"]
 
 def all_code_samples():
     cses = []
@@ -56,9 +64,9 @@ def all_code_samples():
             "langs": sorted(list(set(["http" if d in ("websocket", "json-rpc") else d for d in dirnames]))),
         }
 
-        # add unique names to list for sorting. 
-        for d in dirnames: 
-            lang = "http" if d in ("websocket", "json-rpc") else d 
+        # add unique names to list for sorting.
+        for d in dirnames:
+            lang = "http" if d in ("websocket", "json-rpc") else d
             if lang not in langs:
                 langs.append(lang)
 
@@ -84,8 +92,7 @@ def all_code_samples():
         cs["href"] = dirpath
         cses.append(cs)
 
-    # Current sort value: alphabetical by title.
-    return sorted(cses, key=lambda x: x["title"])
+    return sorted(cses, key=sortfunc)
 
 export = {
     "all_code_samples": all_code_samples,
