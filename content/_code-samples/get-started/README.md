@@ -1,4 +1,4 @@
-# Get Started
+# Introductory Code Samples
 
 Connect to the XRP Ledger and query it for data.
 
