@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v2.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,12 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Wave 3 of the XRPL Grants program is open!</p></span>
-    <span><a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Apply</a></span>
-  </div>
-</div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -327,26 +322,26 @@
 <p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, <strong>do not</strong> use the same addresses on Testnet/Devnet and Mainnet.</p>
 <p>When you're <a href="production-readiness.html">building production-ready software</a>, you should use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
 <h3 id="2-connect-to-the-network">2. Connect to the Network<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-the-network"><i class="fa fa-link"></i></a></h3>
-<p>You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a>:</p>
+<p>You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server with a supported <a href="client-libraries.html">client library</a>:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="python" href="#code-0-1">Python</a></li><li><a class="java" href="#code-0-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
-<span class="c1">// const xrpl = require('xrpl')</span>
+<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span><span class="w"></span>
+<span class="c1">// const xrpl = require('xrpl')</span><span class="w"></span>
 
-<span class="c1">// Wrap code in an async function so we can use await</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// Wrap code in an async function so we can use await</span><span class="w"></span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="c1">// Define the network client</span>
-  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+<span class="w">  </span><span class="c1">// Define the network client</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span><span class="w"></span>
 
-  <span class="c1">// ... custom code goes here</span>
+<span class="w">  </span><span class="c1">// ... custom code goes here</span><span class="w"></span>
 
-  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="nx">main</span><span class="p">()</span>
+<span class="nx">main</span><span class="p">()</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1"># Connect ----------------------------------------------------------------------</span>
@@ -355,12 +350,12 @@
 <span class="n">client</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Construct a network client ----------------------------------------------</span>
-    <span class="n">HttpUrl</span> <span class="n">rippledUrl</span> <span class="o">=</span> <span class="n">HttpUrl</span>
-      <span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span>
-    <span class="n">XrplClient</span> <span class="n">xrplClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
-    <span class="c1">// Get the current network fee</span>
-    <span class="n">FeeResult</span> <span class="n">feeResult</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">fee</span><span class="p">();</span>
+<div class="code_sample java" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Construct a network client ----------------------------------------------</span><span class="w"></span>
+<span class="w">    </span><span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Get the current network fee</span><span class="w"></span>
+<span class="w">    </span><span class="n">FeeResult</span><span class="w"> </span><span class="n">feeResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">fee</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></div>
 </div>
 <p class="devportal-callout note"><strong>Note:</strong> The JavaScript code samples in this tutorial use the <a class="external-link" href="https://javascript.info/async-await" target="_blank"><code>async</code>/<code>await</code> pattern <i aria-hidden="true" class="fa fa-external-link"></i></a>. Since <code>await</code> needs to be used from within an <code>async</code> function, the remaining code samples are written to continue inside the <code>main()</code> function started here. You can also use Promise methods <code>.then()</code> and <code>.catch()</code> instead of <code>async</code>/<code>await</code> if you prefer.</p>
@@ -430,28 +425,28 @@
 <p>The following code sample shows how to send an <a href="accountset.html">AccountSet transaction</a> to enable the recommended cold address settings:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="python" href="#code-1-1">Python</a></li><li><a class="java" href="#code-1-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// Configure issuer (cold address) settings ----------------------------------</span>
-  <span class="kd">const</span> <span class="nx">cold_settings_tx</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-    <span class="s2">"TransferRate"</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-    <span class="s2">"TickSize"</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
-    <span class="s2">"Domain"</span><span class="o">:</span> <span class="s2">"6578616D706C652E636F6D"</span><span class="p">,</span> <span class="c1">// "example.com"</span>
-    <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfDefaultRipple</span><span class="p">,</span>
-    <span class="c1">// Using tf flags, we can enable more flags in one transaction</span>
-    <span class="s2">"Flags"</span><span class="o">:</span> <span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfDisallowXRP</span> <span class="o">|</span>
-             <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfRequireDestTag</span><span class="p">)</span>
-  <span class="p">}</span>
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// Configure issuer (cold address) settings ----------------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cold_settings_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"TransferRate"</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"TickSize"</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Domain"</span><span class="o">:</span><span class="w"> </span><span class="s2">"6578616D706C652E636F6D"</span><span class="p">,</span><span class="w"> </span><span class="c1">// "example.com"</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"SetFlag"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfDefaultRipple</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Using tf flags, we can enable more flags in one transaction</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Flags"</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfDisallowXRP</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">             </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfRequireDestTag</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">cst_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">cold_settings_tx</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">cst_signed</span> <span class="o">=</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">cst_prepared</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sending cold address AccountSet transaction..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">cst_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">cst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">cst_result</span><span class="si">}</span><span class="sb">`</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">cold_settings_tx</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">cst_prepared</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sending cold address AccountSet transaction..."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">cst_result</span><span class="si">}</span><span class="sb">`</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1"># Configure issuer (cold address) settings -------------------------------------</span>
@@ -472,34 +467,34 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1">// Configure issuer settings -----------------------------------------------</span>
-    <span class="n">UnsignedInteger</span> <span class="n">coldWalletSequence</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span>
-      <span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-        <span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">)</span>
-        <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-        <span class="p">.</span><span class="na">build</span><span class="p">()</span>
-    <span class="p">).</span><span class="na">accountData</span><span class="p">().</span><span class="na">sequence</span><span class="p">();</span>
+<div class="code_sample java" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1">// Configure issuer settings -----------------------------------------------</span><span class="w"></span>
+<span class="w">    </span><span class="n">UnsignedInteger</span><span class="w"> </span><span class="n">coldWalletSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">).</span><span class="na">accountData</span><span class="p">().</span><span class="na">sequence</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">AccountSet</span> <span class="n">setDefaultRipple</span> <span class="o">=</span> <span class="n">AccountSet</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-      <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">minimumFee</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">coldWalletSequence</span><span class="p">)</span>
-      <span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">setFlag</span><span class="p">(</span><span class="n">AccountSet</span><span class="p">.</span><span class="na">AccountSetFlag</span><span class="p">.</span><span class="na">DEFAULT_RIPPLE</span><span class="p">)</span>
-      <span class="p">.</span><span class="na">lastLedgerSequence</span><span class="p">(</span><span class="n">computeLastLedgerSequence</span><span class="p">(</span><span class="n">xrplClient</span><span class="p">))</span>
-      <span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">    </span><span class="n">AccountSet</span><span class="w"> </span><span class="n">setDefaultRipple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountSet</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">minimumFee</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">coldWalletSequence</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">setFlag</span><span class="p">(</span><span class="n">AccountSet</span><span class="p">.</span><span class="na">AccountSetFlag</span><span class="p">.</span><span class="na">DEFAULT_RIPPLE</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">lastLedgerSequence</span><span class="p">(</span><span class="n">computeLastLedgerSequence</span><span class="p">(</span><span class="n">xrplClient</span><span class="p">))</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">PrivateKey</span> <span class="n">coldWalletPrivateKey</span> <span class="o">=</span> <span class="n">PrivateKey</span><span class="p">.</span><span class="na">fromBase16EncodedPrivateKey</span><span class="p">(</span>
-      <span class="n">coldWallet</span><span class="p">.</span><span class="na">privateKey</span><span class="p">().</span><span class="na">get</span><span class="p">()</span>
-    <span class="p">);</span>
-    <span class="n">SignatureService</span> <span class="n">coldWalletSignatureService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleKeySignatureService</span><span class="p">(</span><span class="n">coldWalletPrivateKey</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PrivateKey</span><span class="w"> </span><span class="n">coldWalletPrivateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PrivateKey</span><span class="p">.</span><span class="na">fromBase16EncodedPrivateKey</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">coldWallet</span><span class="p">.</span><span class="na">privateKey</span><span class="p">().</span><span class="na">get</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">SignatureService</span><span class="w"> </span><span class="n">coldWalletSignatureService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SingleKeySignatureService</span><span class="p">(</span><span class="n">coldWalletPrivateKey</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">AccountSet</span><span class="o">&gt;</span> <span class="n">signedSetDefaultRipple</span> <span class="o">=</span> <span class="n">coldWalletSignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span>
-      <span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span>
-      <span class="n">setDefaultRipple</span>
-    <span class="p">);</span>
+<span class="w">    </span><span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">AccountSet</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedSetDefaultRipple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coldWalletSignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">setDefaultRipple</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">submitAndWaitForValidation</span><span class="p">(</span><span class="n">signedSetDefaultRipple</span><span class="p">,</span> <span class="n">xrplClient</span><span class="p">);</span>
+<span class="w">    </span><span class="n">submitAndWaitForValidation</span><span class="p">(</span><span class="n">signedSetDefaultRipple</span><span class="p">,</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></div>
 </div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="3" data-totalsteps="11" id="interactive-configure_issuer">
@@ -644,28 +639,28 @@
 <p>The following code sample shows how to send an <a href="accountset.html">AccountSet transaction</a> to enable the recommended hot address settings:</p>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="python" href="#code-2-1">Python</a></li><li><a class="java" href="#code-2-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Configure hot address settings --------------------------------------------</span>
+<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Configure hot address settings --------------------------------------------</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">hot_settings_tx</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-    <span class="s2">"Domain"</span><span class="o">:</span> <span class="s2">"6578616D706C652E636F6D"</span><span class="p">,</span> <span class="c1">// "example.com"</span>
-    <span class="c1">// enable Require Auth so we can't use trust lines that users</span>
-    <span class="c1">// make to the hot address, even by accident:</span>
-    <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfRequireAuth</span><span class="p">,</span>
-    <span class="s2">"Flags"</span><span class="o">:</span> <span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfDisallowXRP</span> <span class="o">|</span>
-              <span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfRequireDestTag</span><span class="p">)</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hot_settings_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Domain"</span><span class="o">:</span><span class="w"> </span><span class="s2">"6578616D706C652E636F6D"</span><span class="p">,</span><span class="w"> </span><span class="c1">// "example.com"</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// enable Require Auth so we can't use trust lines that users</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// make to the hot address, even by accident:</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"SetFlag"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfRequireAuth</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Flags"</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfDisallowXRP</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">              </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetTfFlags</span><span class="p">.</span><span class="nx">tfRequireDestTag</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">hst_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">hot_settings_tx</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">hst_signed</span> <span class="o">=</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">hst_prepared</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sending hot address AccountSet transaction..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">hst_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">hst_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">hst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">hst_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">hst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hst_prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">hot_settings_tx</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hst_signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">hst_prepared</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sending hot address AccountSet transaction..."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hst_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">hst_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">hst_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">hst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1"># Configure hot address settings -----------------------------------------------</span>
@@ -683,34 +678,34 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">// Configure hot address settings ------------------------------------------</span>
-    <span class="n">UnsignedInteger</span> <span class="n">hotWalletSequence</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span>
-      <span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-        <span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">)</span>
-        <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-        <span class="p">.</span><span class="na">build</span><span class="p">()</span>
-    <span class="p">).</span><span class="na">accountData</span><span class="p">().</span><span class="na">sequence</span><span class="p">();</span>
+<div class="code_sample java" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">// Configure hot address settings ------------------------------------------</span><span class="w"></span>
+<span class="w">    </span><span class="n">UnsignedInteger</span><span class="w"> </span><span class="n">hotWalletSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">).</span><span class="na">accountData</span><span class="p">().</span><span class="na">sequence</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">AccountSet</span> <span class="n">setRequireAuth</span> <span class="o">=</span> <span class="n">AccountSet</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-      <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">minimumFee</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">hotWalletSequence</span><span class="p">)</span>
-      <span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">setFlag</span><span class="p">(</span><span class="n">AccountSet</span><span class="p">.</span><span class="na">AccountSetFlag</span><span class="p">.</span><span class="na">REQUIRE_AUTH</span><span class="p">)</span>
-      <span class="p">.</span><span class="na">lastLedgerSequence</span><span class="p">(</span><span class="n">computeLastLedgerSequence</span><span class="p">(</span><span class="n">xrplClient</span><span class="p">))</span>
-      <span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">    </span><span class="n">AccountSet</span><span class="w"> </span><span class="n">setRequireAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountSet</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">minimumFee</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">hotWalletSequence</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">setFlag</span><span class="p">(</span><span class="n">AccountSet</span><span class="p">.</span><span class="na">AccountSetFlag</span><span class="p">.</span><span class="na">REQUIRE_AUTH</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">lastLedgerSequence</span><span class="p">(</span><span class="n">computeLastLedgerSequence</span><span class="p">(</span><span class="n">xrplClient</span><span class="p">))</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">PrivateKey</span> <span class="n">hotWalletPrivateKey</span> <span class="o">=</span> <span class="n">PrivateKey</span><span class="p">.</span><span class="na">fromBase16EncodedPrivateKey</span><span class="p">(</span>
-      <span class="n">hotWallet</span><span class="p">.</span><span class="na">privateKey</span><span class="p">().</span><span class="na">get</span><span class="p">()</span>
-    <span class="p">);</span>
-    <span class="n">SignatureService</span> <span class="n">hotWalletSignatureService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleKeySignatureService</span><span class="p">(</span><span class="n">hotWalletPrivateKey</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PrivateKey</span><span class="w"> </span><span class="n">hotWalletPrivateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PrivateKey</span><span class="p">.</span><span class="na">fromBase16EncodedPrivateKey</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">hotWallet</span><span class="p">.</span><span class="na">privateKey</span><span class="p">().</span><span class="na">get</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">SignatureService</span><span class="w"> </span><span class="n">hotWalletSignatureService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SingleKeySignatureService</span><span class="p">(</span><span class="n">hotWalletPrivateKey</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">AccountSet</span><span class="o">&gt;</span> <span class="n">signedSetRequireAuth</span> <span class="o">=</span> <span class="n">hotWalletSignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span>
-      <span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span>
-      <span class="n">setRequireAuth</span>
-    <span class="p">);</span>
+<span class="w">    </span><span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">AccountSet</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedSetRequireAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hotWalletSignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">setRequireAuth</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">submitAndWaitForValidation</span><span class="p">(</span><span class="n">signedSetRequireAuth</span><span class="p">,</span> <span class="n">xrplClient</span><span class="p">);</span>
+<span class="w">    </span><span class="n">submitAndWaitForValidation</span><span class="p">(</span><span class="n">signedSetRequireAuth</span><span class="p">,</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></div>
 </div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="5" data-totalsteps="11" id="interactive-configure_hot_address">
@@ -840,27 +835,27 @@
 <p>The following code sample shows how to send a <a href="trustset.html">TrustSet transaction</a> from the hot address, trusting the issuing address for a limit of 1 billion FOO:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="python" href="#code-3-1">Python</a></li><li><a class="java" href="#code-3-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1">// Create trust line from hot to cold address --------------------------------</span>
-  <span class="kd">const</span> <span class="nx">currency_code</span> <span class="o">=</span> <span class="s2">"FOO"</span>
-  <span class="kd">const</span> <span class="nx">trust_set_tx</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"TrustSet"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-    <span class="s2">"LimitAmount"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"currency"</span><span class="o">:</span> <span class="nx">currency_code</span><span class="p">,</span>
-      <span class="s2">"issuer"</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-      <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"10000000000"</span> <span class="c1">// Large limit, arbitrarily chosen</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1">// Create trust line from hot to cold address --------------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">currency_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"FOO"</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">trust_set_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"TrustSet"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"LimitAmount"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"currency"</span><span class="o">:</span><span class="w"> </span><span class="nx">currency_code</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"issuer"</span><span class="o">:</span><span class="w"> </span><span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"value"</span><span class="o">:</span><span class="w"> </span><span class="s2">"10000000000"</span><span class="w"> </span><span class="c1">// Large limit, arbitrarily chosen</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">ts_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">trust_set_tx</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">ts_signed</span> <span class="o">=</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">ts_prepared</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Creating trust line from hot address to issuer..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">ts_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">ts_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">ts_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">ts_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">ts_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ts_prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">trust_set_tx</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ts_signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">ts_prepared</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Creating trust line from hot address to issuer..."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ts_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">ts_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ts_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">ts_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">ts_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1"># Create trust line from hot to cold address -----------------------------------</span>
@@ -883,26 +878,26 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="c1">// Create trust line -------------------------------------------------------</span>
-    <span class="n">String</span> <span class="n">currencyCode</span> <span class="o">=</span> <span class="s">"FOO"</span><span class="p">;</span>
-    <span class="n">ImmutableTrustSet</span> <span class="n">trustSet</span> <span class="o">=</span> <span class="n">TrustSet</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-      <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">openLedgerFee</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">hotWalletSequence</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">ONE</span><span class="p">))</span>
-      <span class="p">.</span><span class="na">limitAmount</span><span class="p">(</span><span class="n">IssuedCurrencyAmount</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-        <span class="p">.</span><span class="na">currency</span><span class="p">(</span><span class="n">currencyCode</span><span class="p">)</span>
-        <span class="p">.</span><span class="na">issuer</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-        <span class="p">.</span><span class="na">value</span><span class="p">(</span><span class="s">"10000000000"</span><span class="p">)</span>
-        <span class="p">.</span><span class="na">build</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<div class="code_sample java" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="c1">// Create trust line -------------------------------------------------------</span><span class="w"></span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">currencyCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"FOO"</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">ImmutableTrustSet</span><span class="w"> </span><span class="n">trustSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrustSet</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">openLedgerFee</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">hotWalletSequence</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">ONE</span><span class="p">))</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">limitAmount</span><span class="p">(</span><span class="n">IssuedCurrencyAmount</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">currency</span><span class="p">(</span><span class="n">currencyCode</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">issuer</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">value</span><span class="p">(</span><span class="s">"10000000000"</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">TrustSet</span><span class="o">&gt;</span> <span class="n">signedTrustSet</span> <span class="o">=</span> <span class="n">hotWalletSignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span>
-      <span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span>
-      <span class="n">trustSet</span>
-    <span class="p">);</span>
+<span class="w">    </span><span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">TrustSet</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedTrustSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hotWalletSignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">trustSet</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">submitAndWaitForValidation</span><span class="p">(</span><span class="n">signedTrustSet</span><span class="p">,</span> <span class="n">xrplClient</span><span class="p">);</span>
+<span class="w">    </span><span class="n">submitAndWaitForValidation</span><span class="p">(</span><span class="n">signedTrustSet</span><span class="p">,</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></div>
 </div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="7" data-totalsteps="11" id="interactive-make_trust_line">
@@ -1033,30 +1028,30 @@
 <p>The following code sample shows how to send a <a href="payment.html">Payment transaction</a> to issue 88 FOO from the cold address to the hot address:</p>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li><li><a class="java" href="#code-4-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="c1">// Send token ----------------------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">issue_quantity</span> <span class="o">=</span> <span class="s2">"3840"</span>
-  <span class="kd">const</span> <span class="nx">send_token_tx</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-    <span class="s2">"Amount"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"currency"</span><span class="o">:</span> <span class="nx">currency_code</span><span class="p">,</span>
-      <span class="s2">"value"</span><span class="o">:</span> <span class="nx">issue_quantity</span><span class="p">,</span>
-      <span class="s2">"issuer"</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span>
-    <span class="p">},</span>
-    <span class="s2">"Destination"</span><span class="o">:</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-    <span class="s2">"DestinationTag"</span><span class="o">:</span> <span class="mf">1</span> <span class="c1">// Needed since we enabled Require Destination Tags</span>
-                        <span class="c1">// on the hot account earlier.</span>
-  <span class="p">}</span>
+<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="c1">// Send token ----------------------------------------------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">issue_quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3840"</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">send_token_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Amount"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"currency"</span><span class="o">:</span><span class="w"> </span><span class="nx">currency_code</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"value"</span><span class="o">:</span><span class="w"> </span><span class="nx">issue_quantity</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"issuer"</span><span class="o">:</span><span class="w"> </span><span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Destination"</span><span class="o">:</span><span class="w"> </span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"DestinationTag"</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="c1">// Needed since we enabled Require Destination Tags</span><span class="w"></span>
+<span class="w">                        </span><span class="c1">// on the hot account earlier.</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">pay_prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">send_token_tx</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">pay_signed</span> <span class="o">=</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">pay_prepared</span><span class="p">)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Sending </span><span class="si">${</span><span class="nx">issue_quantity</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">currency_code</span><span class="si">}</span><span class="sb"> to </span><span class="si">${</span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">...`</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">pay_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">pay_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">pay_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">pay_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">pay_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pay_prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">send_token_tx</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pay_signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">pay_prepared</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Sending </span><span class="si">${</span><span class="nx">issue_quantity</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">currency_code</span><span class="si">}</span><span class="sb"> to </span><span class="si">${</span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">...`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pay_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">pay_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">pay_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Transaction succeeded: https://testnet.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">pay_signed</span><span class="p">.</span><span class="nx">hash</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">pay_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="si">}</span><span class="sb">`</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1"># Send token -------------------------------------------------------------------</span>
@@ -1080,26 +1075,26 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1">// Send token --------------------------------------------------------------</span>
-    <span class="n">Payment</span> <span class="n">payment</span> <span class="o">=</span> <span class="n">Payment</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-      <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">openLedgerFee</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">coldWalletSequence</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">ONE</span><span class="p">))</span>
-      <span class="p">.</span><span class="na">destination</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">amount</span><span class="p">(</span><span class="n">IssuedCurrencyAmount</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-        <span class="p">.</span><span class="na">issuer</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-        <span class="p">.</span><span class="na">currency</span><span class="p">(</span><span class="n">currencyCode</span><span class="p">)</span>
-        <span class="p">.</span><span class="na">value</span><span class="p">(</span><span class="s">"3840"</span><span class="p">)</span>
-        <span class="p">.</span><span class="na">build</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span>
-      <span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<div class="code_sample java" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1">// Send token --------------------------------------------------------------</span><span class="w"></span>
+<span class="w">    </span><span class="n">Payment</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Payment</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">openLedgerFee</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">coldWalletSequence</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">ONE</span><span class="p">))</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">destination</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">amount</span><span class="p">(</span><span class="n">IssuedCurrencyAmount</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">issuer</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">currency</span><span class="p">(</span><span class="n">currencyCode</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">value</span><span class="p">(</span><span class="s">"3840"</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">coldWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span> <span class="n">signedPayment</span> <span class="o">=</span> <span class="n">coldWalletSignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span>
-      <span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span>
-      <span class="n">payment</span>
-    <span class="p">);</span>
+<span class="w">    </span><span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coldWalletSignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">payment</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">submitAndWaitForValidation</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">,</span> <span class="n">xrplClient</span><span class="p">);</span>
+<span class="w">    </span><span class="n">submitAndWaitForValidation</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">,</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></div>
 </div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="9" data-totalsteps="11" id="interactive-send_token">
@@ -1176,26 +1171,26 @@
 <p>The following code sample shows how to use both methods:</p>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li><li><a class="python" href="#code-5-1">Python</a></li><li><a class="java" href="#code-5-2">Java</a></li></ul>
 
-<div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Check balances ------------------------------------------------------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Getting hot address balances..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">hot_balances</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-    <span class="nx">command</span><span class="o">:</span> <span class="s2">"account_lines"</span><span class="p">,</span>
-    <span class="nx">account</span><span class="o">:</span> <span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-    <span class="nx">ledger_index</span><span class="o">:</span> <span class="s2">"validated"</span>
-  <span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hot_balances</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
+<div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Check balances ------------------------------------------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Getting hot address balances..."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hot_balances</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s2">"account_lines"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">account</span><span class="o">:</span><span class="w"> </span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ledger_index</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hot_balances</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span><span class="w"></span>
 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Getting cold address balances..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">cold_balances</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-    <span class="nx">command</span><span class="o">:</span> <span class="s2">"gateway_balances"</span><span class="p">,</span>
-    <span class="nx">account</span><span class="o">:</span> <span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-    <span class="nx">ledger_index</span><span class="o">:</span> <span class="s2">"validated"</span><span class="p">,</span>
-    <span class="nx">hotwallet</span><span class="o">:</span> <span class="p">[</span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">]</span>
-  <span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">cold_balances</span><span class="p">.</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Getting cold address balances..."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cold_balances</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s2">"gateway_balances"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">account</span><span class="o">:</span><span class="w"> </span><span class="nx">cold_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ledger_index</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">hotwallet</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">hot_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">cold_balances</span><span class="p">.</span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">))</span><span class="w"></span>
 
-  <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1"># Check balances ---------------------------------------------------------------</span>
@@ -1215,15 +1210,15 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1">// Check balances ----------------------------------------------------------</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">TrustLine</span><span class="o">&gt;</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">xrplClient</span><span class="p">.</span><span class="na">accountLines</span><span class="p">(</span>
-      <span class="n">AccountLinesRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-        <span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
-        <span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
-        <span class="p">.</span><span class="na">build</span><span class="p">()</span>
-    <span class="p">).</span><span class="na">lines</span><span class="p">();</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hot wallet TrustLines: "</span> <span class="o">+</span> <span class="n">lines</span><span class="p">);</span>
-  <span class="p">}</span>
+<div class="code_sample java" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1">// Check balances ----------------------------------------------------------</span><span class="w"></span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TrustLine</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountLines</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">AccountLinesRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">hotWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">).</span><span class="na">lines</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hot wallet TrustLines: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lines</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 </div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="11" data-totalsteps="11" id="interactive-confirm_balances">
@@ -1475,7 +1470,19 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1711,9 +1718,41 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -1756,11 +1795,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1773,11 +1812,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -1800,11 +1839,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1852,19 +1891,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_1" aria-expanded="false" aria-controls="tree_nav_group_3_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1897,11 +1936,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_2" aria-expanded="false" aria-controls="tree_nav_group_3_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1914,11 +1953,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_3" aria-expanded="false" aria-controls="tree_nav_group_3_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1960,14 +1999,19 @@
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="true" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="true" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_6">
+    <nav class="nav flex-column show " id="tree_nav_group_3_7">
       
   <div class="nav-item active">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1997,11 +2041,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -2024,19 +2068,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_1" aria-expanded="false" aria-controls="tree_nav_group_3_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -2100,11 +2144,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_2" aria-expanded="false" aria-controls="tree_nav_group_3_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -2167,11 +2211,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_3" aria-expanded="false" aria-controls="tree_nav_group_3_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -2219,11 +2263,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_4" aria-expanded="false" aria-controls="tree_nav_group_3_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -2246,11 +2290,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_5" aria-expanded="false" aria-controls="tree_nav_group_3_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -3556,7 +3600,7 @@ $(document).ready(() => {
 </script>
 
 <!-- ripple-lib & prerequisites -->
-<script type="application/javascript" src="assets/js/xrpl-2.0.0.min.js"></script>
+<script type="application/javascript" src="assets/js/xrpl-2.2.0.min.js"></script>
 
 <!-- Helper for interactive tutorials -->
 <script type="application/javascript" src="/ja/assets/js/interactive-tutorial.js"></script>

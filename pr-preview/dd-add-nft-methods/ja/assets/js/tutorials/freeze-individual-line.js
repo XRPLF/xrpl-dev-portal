@@ -77,7 +77,7 @@ $(document).ready(() => {
         "peer": peer.address,
         "ledger_index": "validated"
       })
-    } catch(e) {
+    } catch(err) {
       show_error(block, err)
     }
 

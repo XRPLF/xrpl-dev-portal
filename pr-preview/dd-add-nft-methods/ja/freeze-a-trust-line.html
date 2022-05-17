@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v2.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,12 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Wave 3 of the XRPL Grants program is open!</p></span>
-    <span><a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Apply</a></span>
-  </div>
-</div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -322,23 +317,23 @@
 <p>You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a>:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="websocket" href="#code-0-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
-<span class="c1">// const xrpl = require('xrpl')</span>
+<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span><span class="w"></span>
+<span class="c1">// const xrpl = require('xrpl')</span><span class="w"></span>
 
-<span class="c1">// Wrap code in an async function so we can use await</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// Wrap code in an async function so we can use await</span><span class="w"></span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="c1">// Define the network client</span>
-  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+<span class="w">  </span><span class="c1">// Define the network client</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span><span class="w"></span>
 
-  <span class="c1">// ... custom code goes here</span>
+<span class="w">  </span><span class="c1">// ... custom code goes here</span><span class="w"></span>
 
-  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="nx">main</span><span class="p">()</span>
+<span class="nx">main</span><span class="p">()</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="ss">(</span><span class="k">Connect</span> <span class="nv">to</span> <span class="nv">wss</span>:<span class="o">//</span> <span class="nv">URL</span> <span class="nv">of</span> <span class="nv">an</span> <span class="nv">XRP</span> <span class="nv">Ledger</span> <span class="nv">server</span> <span class="nv">using</span> <span class="nv">your</span> <span class="nv">preferred</span> <span class="nv">client</span>.<span class="ss">)</span>
@@ -371,36 +366,36 @@
 <p>There can be multiple <a href="trust-lines-and-issuing.html">trust lines</a> between two accounts, each for a different currency. If you suspect a particular account is behaving maliciously, you may want to freeze all the trust lines between your accounts, one at a time. Use the <a href="account_lines.html">account_lines method</a> with a pair of accounts to find all trust lines between those accounts, then choose a trust line to freeze from among the results. For example:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="websocket" href="#code-1-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Look up current trust lines -----------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span>
-  <span class="kd">const</span> <span class="nx">address_to_freeze</span> <span class="o">=</span> <span class="s1">'rhPuJPcd9kcSRCGHWudV3tjUuTvvysi6sv'</span>
-  <span class="kd">const</span> <span class="nx">currency_to_freeze</span> <span class="o">=</span> <span class="s1">'FOO'</span>
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Look up current trust lines -----------------------------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">issuing_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">address_to_freeze</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'rhPuJPcd9kcSRCGHWudV3tjUuTvvysi6sv'</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">currency_to_freeze</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'FOO'</span><span class="w"></span>
 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Looking up'</span><span class="p">,</span> <span class="nx">currency_to_freeze</span><span class="p">,</span> <span class="s1">'trust line from'</span><span class="p">,</span>
-              <span class="nx">issuing_address</span><span class="p">,</span> <span class="s1">'to'</span><span class="p">,</span> <span class="nx">address_to_freeze</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">account_lines</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"account_lines"</span><span class="p">,</span>
-    <span class="s2">"account"</span><span class="o">:</span> <span class="nx">issuing_address</span><span class="p">,</span>
-    <span class="s2">"peer"</span><span class="o">:</span> <span class="nx">address_to_freeze</span><span class="p">,</span>
-    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
-  <span class="p">})</span>
-  <span class="kd">const</span> <span class="nx">trustlines</span> <span class="o">=</span> <span class="nx">account_lines</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">lines</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Found lines:"</span><span class="p">,</span> <span class="nx">trustlines</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Looking up'</span><span class="p">,</span><span class="w"> </span><span class="nx">currency_to_freeze</span><span class="p">,</span><span class="w"> </span><span class="s1">'trust line from'</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nx">issuing_address</span><span class="p">,</span><span class="w"> </span><span class="s1">'to'</span><span class="p">,</span><span class="w"> </span><span class="nx">address_to_freeze</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">account_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"account_lines"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"account"</span><span class="o">:</span><span class="w"> </span><span class="nx">issuing_address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"peer"</span><span class="o">:</span><span class="w"> </span><span class="nx">address_to_freeze</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">trustlines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">account_lines</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">lines</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Found lines:"</span><span class="p">,</span><span class="w"> </span><span class="nx">trustlines</span><span class="p">)</span><span class="w"></span>
 
-  <span class="c1">// Find the trust line for our currency_to_freeze ----------------------------</span>
-  <span class="kd">let</span> <span class="nx">trustline</span> <span class="o">=</span> <span class="kc">null</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">trustlines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">trustlines</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">currency</span> <span class="o">===</span> <span class="nx">currency_to_freeze</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">trustline</span> <span class="o">=</span> <span class="nx">trustlines</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-      <span class="k">break</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="c1">// Find the trust line for our currency_to_freeze ----------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">trustline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">trustlines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="nx">trustlines</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">currency</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">currency_to_freeze</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">trustline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">trustlines</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">trustline</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Couldn't find a </span><span class="si">${</span><span class="nx">currency_to_freeze</span><span class="si">}</span><span class="sb"> trustline between</span>
-<span class="sb">                  </span><span class="si">${</span><span class="nx">issuing_address</span><span class="si">}</span><span class="sb"> and </span><span class="si">${</span><span class="nx">address_to_freeze</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-    <span class="k">return</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">trustline</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Couldn't find a </span><span class="si">${</span><span class="nx">currency_to_freeze</span><span class="si">}</span><span class="sb"> trustline between</span>
+<span class="sb">                  </span><span class="si">${</span><span class="nx">issuing_address</span><span class="si">}</span><span class="sb"> and </span><span class="si">${</span><span class="nx">address_to_freeze</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="err">Example</span><span class="w"> </span><span class="err">Reques</span><span class="kc">t</span><span class="p">:</span><span class="w"></span>
@@ -413,7 +408,7 @@
 <span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="err">//</span><span class="w"> </span><span class="err">Example</span><span class="w"> </span><span class="err">Respo</span><span class="kc">nse</span><span class="p">:</span><span class="w"></span>
+<span class="c1">// Example Response:</span><span class="w"></span>
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_look_up_trust_lines"</span><span class="p">,</span><span class="w"></span>
@@ -506,54 +501,54 @@
 <p>As always, to send a transaction, you <em>prepare</em> it by filling in all the necessary fields, <em>sign</em> it with your cryptographic keys, and <em>submit</em> it to the network. For example:</p>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="websocket" href="#code-2-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Send a TrustSet transaction to set an individual freeze -------------------</span>
-  <span class="c1">// Construct a TrustSet, preserving our existing limit value</span>
-  <span class="kd">const</span> <span class="nx">trust_set</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s1">'TrustSet'</span><span class="p">,</span>
-    <span class="s2">"Account"</span><span class="o">:</span> <span class="nx">issuing_address</span><span class="p">,</span>
-    <span class="s2">"LimitAmount"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"value"</span><span class="o">:</span> <span class="nx">trustline</span><span class="p">.</span><span class="nx">limit</span><span class="p">,</span>
-      <span class="s2">"currency"</span><span class="o">:</span> <span class="nx">trustline</span><span class="p">.</span><span class="nx">currency</span><span class="p">,</span>
-      <span class="s2">"issuer"</span><span class="o">:</span> <span class="nx">trustline</span><span class="p">.</span><span class="nx">account</span>
-    <span class="p">},</span>
-    <span class="s2">"Flags"</span><span class="o">:</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">TrustSetFlags</span><span class="p">.</span><span class="nx">tfSetFreeze</span>
-  <span class="p">}</span>
+<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Send a TrustSet transaction to set an individual freeze -------------------</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Construct a TrustSet, preserving our existing limit value</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">trust_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s1">'TrustSet'</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">issuing_address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"LimitAmount"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"value"</span><span class="o">:</span><span class="w"> </span><span class="nx">trustline</span><span class="p">.</span><span class="nx">limit</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"currency"</span><span class="o">:</span><span class="w"> </span><span class="nx">trustline</span><span class="p">.</span><span class="nx">currency</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"issuer"</span><span class="o">:</span><span class="w"> </span><span class="nx">trustline</span><span class="p">.</span><span class="nx">account</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"Flags"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">TrustSetFlags</span><span class="p">.</span><span class="nx">tfSetFreeze</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="c1">// Best practice for JavaScript users: use validate(tx_json) to confirm</span>
-  <span class="c1">// that a transaction is well-formed or throw ValidationError if it isn't.</span>
-  <span class="nx">xrpl</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="nx">trust_set</span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// Best practice for JavaScript users: use validate(tx_json) to confirm</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// that a transaction is well-formed or throw ValidationError if it isn't.</span><span class="w"></span>
+<span class="w">  </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="nx">trust_set</span><span class="p">)</span><span class="w"></span>
 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting TrustSet tx:'</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">trust_set</span><span class="p">,</span> <span class="p">{</span> <span class="nx">wallet</span><span class="o">:</span> <span class="nx">wallet</span> <span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting TrustSet tx:'</span><span class="p">,</span><span class="w"> </span><span class="nx">trust_set</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">trust_set</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">wallet</span><span class="o">:</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span><span class="w"></span>
 
-  <span class="c1">// Confirm trust line status -------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">account_lines_2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"account_lines"</span><span class="p">,</span>
-    <span class="s2">"account"</span><span class="o">:</span> <span class="nx">issuing_address</span><span class="p">,</span>
-    <span class="s2">"peer"</span><span class="o">:</span> <span class="nx">address_to_freeze</span><span class="p">,</span>
-    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
-  <span class="p">})</span>
-  <span class="kd">const</span> <span class="nx">trustlines_2</span> <span class="o">=</span> <span class="nx">account_lines_2</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">lines</span>
+<span class="w">  </span><span class="c1">// Confirm trust line status -------------------------------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">account_lines_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"account_lines"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"account"</span><span class="o">:</span><span class="w"> </span><span class="nx">issuing_address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"peer"</span><span class="o">:</span><span class="w"> </span><span class="nx">address_to_freeze</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">trustlines_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">account_lines_2</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">lines</span><span class="w"></span>
 
-  <span class="kd">let</span> <span class="nx">line</span> <span class="o">=</span> <span class="kc">null</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">trustlines_2</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">trustlines_2</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">currency</span> <span class="o">===</span> <span class="nx">currency_to_freeze</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">line</span> <span class="o">=</span> <span class="nx">trustlines_2</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Status of </span><span class="si">${</span><span class="nx">currency_to_freeze</span><span class="si">}</span><span class="sb"> line between</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">trustlines_2</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="nx">trustlines_2</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">currency</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">currency_to_freeze</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">trustlines_2</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Status of </span><span class="si">${</span><span class="nx">currency_to_freeze</span><span class="si">}</span><span class="sb"> line between</span>
 <span class="sb">          </span><span class="si">${</span><span class="nx">issuing_address</span><span class="si">}</span><span class="sb"> and </span><span class="si">${</span><span class="nx">address_to_freeze</span><span class="si">}</span><span class="sb">:</span>
-<span class="sb">          </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">line</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">freeze</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`✅ Line is frozen.`</span><span class="p">)</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`❌ Line is NOT FROZEN.`</span><span class="p">)</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">line</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Couldn't find a </span><span class="si">${</span><span class="nx">CURRENCY_TO_FREEZE</span><span class="si">}</span><span class="sb"> line between</span>
-<span class="sb">        </span><span class="si">${</span><span class="nx">issuing_address</span><span class="si">}</span><span class="sb"> and </span><span class="si">${</span><span class="nx">address_to_freeze</span><span class="si">}</span><span class="sb">.`</span><span class="p">)</span>
-  <span class="p">}</span>
+<span class="sb">          </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">line</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">freeze</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`✅ Line is frozen.`</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`❌ Line is NOT FROZEN.`</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">line</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Couldn't find a </span><span class="si">${</span><span class="nx">CURRENCY_TO_FREEZE</span><span class="si">}</span><span class="sb"> line between</span>
+<span class="sb">        </span><span class="si">${</span><span class="nx">issuing_address</span><span class="si">}</span><span class="sb"> and </span><span class="si">${</span><span class="nx">address_to_freeze</span><span class="si">}</span><span class="sb">.`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span><span class="w"></span>
@@ -648,33 +643,33 @@
 <p>In the response, the field <code>"freeze": true</code> indicates that the account from the request has enabled an Individual Freeze on that trust line. The field <code>"freeze_peer": true</code> indicates that the counterparty (<code>peer</code>) from the request has frozen the trust line. For example:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="websocket" href="#code-3-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Confirm trust line status -------------------------------------------------</span>
-  <span class="kd">const</span> <span class="nx">account_lines_2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"account_lines"</span><span class="p">,</span>
-    <span class="s2">"account"</span><span class="o">:</span> <span class="nx">issuing_address</span><span class="p">,</span>
-    <span class="s2">"peer"</span><span class="o">:</span> <span class="nx">address_to_freeze</span><span class="p">,</span>
-    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
-  <span class="p">})</span>
-  <span class="kd">const</span> <span class="nx">trustlines_2</span> <span class="o">=</span> <span class="nx">account_lines_2</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">lines</span>
+<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Confirm trust line status -------------------------------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">account_lines_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"account_lines"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"account"</span><span class="o">:</span><span class="w"> </span><span class="nx">issuing_address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"peer"</span><span class="o">:</span><span class="w"> </span><span class="nx">address_to_freeze</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">trustlines_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">account_lines_2</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">lines</span><span class="w"></span>
 
-  <span class="kd">let</span> <span class="nx">line</span> <span class="o">=</span> <span class="kc">null</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">trustlines_2</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">trustlines_2</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">currency</span> <span class="o">===</span> <span class="nx">currency_to_freeze</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">line</span> <span class="o">=</span> <span class="nx">trustlines_2</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Status of </span><span class="si">${</span><span class="nx">currency_to_freeze</span><span class="si">}</span><span class="sb"> line between</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">trustlines_2</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="nx">trustlines_2</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">currency</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">currency_to_freeze</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">trustlines_2</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Status of </span><span class="si">${</span><span class="nx">currency_to_freeze</span><span class="si">}</span><span class="sb"> line between</span>
 <span class="sb">          </span><span class="si">${</span><span class="nx">issuing_address</span><span class="si">}</span><span class="sb"> and </span><span class="si">${</span><span class="nx">address_to_freeze</span><span class="si">}</span><span class="sb">:</span>
-<span class="sb">          </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">line</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">freeze</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`✅ Line is frozen.`</span><span class="p">)</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`❌ Line is NOT FROZEN.`</span><span class="p">)</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">line</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Couldn't find a </span><span class="si">${</span><span class="nx">CURRENCY_TO_FREEZE</span><span class="si">}</span><span class="sb"> line between</span>
-<span class="sb">        </span><span class="si">${</span><span class="nx">issuing_address</span><span class="si">}</span><span class="sb"> and </span><span class="si">${</span><span class="nx">address_to_freeze</span><span class="si">}</span><span class="sb">.`</span><span class="p">)</span>
-  <span class="p">}</span>
+<span class="sb">          </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">line</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">freeze</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`✅ Line is frozen.`</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`❌ Line is NOT FROZEN.`</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">line</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Couldn't find a </span><span class="si">${</span><span class="nx">CURRENCY_TO_FREEZE</span><span class="si">}</span><span class="sb"> line between</span>
+<span class="sb">        </span><span class="si">${</span><span class="nx">issuing_address</span><span class="si">}</span><span class="sb"> and </span><span class="si">${</span><span class="nx">address_to_freeze</span><span class="si">}</span><span class="sb">.`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="err">Example</span><span class="w"> </span><span class="err">Reques</span><span class="kc">t</span><span class="p">:</span><span class="w"></span>
@@ -775,17 +770,17 @@
 <p>As always, to send a transaction, you <em>prepare</em> it by filling in all the necessary fields, <em>sign</em> it with your cryptographic keys, and <em>submit</em> it to the network. For example:</p>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="websocket" href="#code-4-1">WebSocket</a></li></ul>
 
-<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">// Clear the individual freeze -----------------------------------------------</span>
-  <span class="c1">// We're reusing our TrustSet transaction from earlier with a different flag.</span>
-  <span class="nx">trust_set</span><span class="p">.</span><span class="nx">Flags</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">TrustSetFlags</span><span class="p">.</span><span class="nx">tfClearFreeze</span>
+<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">// Clear the individual freeze -----------------------------------------------</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// We're reusing our TrustSet transaction from earlier with a different flag.</span><span class="w"></span>
+<span class="w">  </span><span class="nx">trust_set</span><span class="p">.</span><span class="nx">Flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">TrustSetFlags</span><span class="p">.</span><span class="nx">tfClearFreeze</span><span class="w"></span>
 
-  <span class="c1">// Submit a TrustSet transaction to clear an individual freeze ---------------</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting TrustSet tx:'</span><span class="p">,</span> <span class="nx">trust_set</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">trust_set</span><span class="p">,</span> <span class="p">{</span> <span class="nx">wallet</span><span class="o">:</span> <span class="nx">wallet</span> <span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span> <span class="nx">result2</span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// Submit a TrustSet transaction to clear an individual freeze ---------------</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting TrustSet tx:'</span><span class="p">,</span><span class="w"> </span><span class="nx">trust_set</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">trust_set</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">wallet</span><span class="o">:</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span><span class="w"> </span><span class="nx">result2</span><span class="p">)</span><span class="w"></span>
 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Finished submitting. Now disconnecting."</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Finished submitting. Now disconnecting."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span><span class="w"></span>
@@ -1100,7 +1095,19 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1336,9 +1343,41 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -1381,11 +1420,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1398,11 +1437,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -1425,11 +1464,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1477,19 +1516,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_1" aria-expanded="false" aria-controls="tree_nav_group_3_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1522,11 +1561,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_2" aria-expanded="false" aria-controls="tree_nav_group_3_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1539,11 +1578,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_3" aria-expanded="false" aria-controls="tree_nav_group_3_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1585,14 +1624,19 @@
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="true" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="true" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_6">
+    <nav class="nav flex-column show " id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1622,11 +1666,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1649,19 +1693,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_1" aria-expanded="false" aria-controls="tree_nav_group_3_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1725,11 +1769,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_2" aria-expanded="false" aria-controls="tree_nav_group_3_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1792,11 +1836,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_3" aria-expanded="false" aria-controls="tree_nav_group_3_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1844,11 +1888,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_4" aria-expanded="false" aria-controls="tree_nav_group_3_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1871,11 +1915,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_5" aria-expanded="false" aria-controls="tree_nav_group_3_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -3181,7 +3225,7 @@ $(document).ready(() => {
 </script>
 
 <!-- ripple-lib & prerequisites -->
-<script type="application/javascript" src="assets/js/xrpl-2.0.0.min.js"></script>
+<script type="application/javascript" src="assets/js/xrpl-2.2.0.min.js"></script>
 
 <!-- Helper for interactive tutorials -->
 <script type="application/javascript" src="/ja/assets/js/interactive-tutorial.js"></script>

@@ -544,3 +544,38 @@ Request('random', {
     "command": "random"
   }
 })
+
+Request("NFT Methods")
+
+Request('account_nfts', {
+  description: "Retrieves NFTs owned by an account.",
+  link: "account_nfts.html",
+  status: "not_enabled",
+  body: {
+    "command": "account_nfts",
+    "account": "rsuHaTvJh1bDmDoxX9QcKP7HEBSBt4XsHx",
+    "ledger_index": "validated"
+  }
+})
+
+Request('nft_buy_offers', {
+  description: "Retrieves offers to buy a given NFT.",
+  link: "nft_buy_offers.html",
+  status: "not_enabled",
+  body: {
+    "command": "nft_buy_offers",
+    "tokenid": "00090000D0B007439B080E9B05BF62403911301A7B1F0CFAA048C0A200000007",
+    "ledger_index": "validated"
+  }
+})
+
+Request('nft_sell_offers', {
+  description: "Retrieves offers to sell a given NFT.",
+  link: "nft_sell_offers.html",
+  status: "not_enabled",
+  body: {
+    "command": "nft_sell_offers",
+    "tokenid": "00090000D0B007439B080E9B05BF62403911301A7B1F0CFAA048C0A200000007",
+    "ledger_index": "validated"
+  }
+})

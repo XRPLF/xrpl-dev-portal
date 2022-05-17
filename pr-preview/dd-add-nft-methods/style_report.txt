@@ -1,7 +1,7 @@
 -------------
 Spell Checker
 -------------
-Found 118 possible spelling errors:
+Found 154 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
@@ -11,15 +11,15 @@ Found 118 possible spelling errors:
   signerweight: 
 
 <Page 'Tokens' (tokens.html)> Unknown Words:
-  bharath: bharat, sharath, bharata
   asheesh: hasheesh, sheesh
+  bharath: bharat, bharata, sharath
 
 <Page 'Authorized Trust Lines' (authorized-trust-lines.html)> Unknown Words:
   onboarding: 
   requireauth: 
 
 <Page 'NFT Conceptual Overview' (non-fungible-tokens.html)> Unknown Words:
-  xls: fls, bls, ils
+  xls: cls, xis, els
   ˈfənjəbəl: 
   nftoken: 
   nftokenpage: 
@@ -28,8 +28,15 @@ Found 118 possible spelling errors:
   nftokenburn: 
   0x000008: 
   nftokencanceloffer: 
-  nftokenacceptoffer: 
   nftokencreateoffer: 
+  nftokenacceptoffer: 
+
+<Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)> Unknown Words:
+  nftokens: 
+  xls: cls, xis, els
+  nftokencreateoffer: 
+  opensea: 
+  workflows: workflow
 
 <Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)> Unknown Words:
   mccaleb: 
@@ -40,20 +47,55 @@ Found 118 possible spelling errors:
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   checkcashmakestrustline: 
-  talso: also, talao, tasso
+  talso: tacso, talos, talio
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
+  xls: cls, xis, els
   20d: 2d, 2nd
-  xls: fls, bls, ils
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: vm, elm, evx
+  evm: vm, evx, ehm
   permissionless: 
   federators: federator
 
 <Page 'Ledger History' (ledger-history.html)> Unknown Words:
   xrplcluster: 
+
+<Page 'XRPL Quickstart' (xrpl-quickstart.html)> Unknown Words:
+  quickstart: 
+  nftokens: 
+
+<Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)> Unknown Words:
+  quickstart: 
+  getnet: setnet, genet
+  getaccount: 
+  xrptodrops: 
+  trustline: 
+
+<Page '2. Create TrustLine and Send Currency' (create-trustline-send-currency.html)> Unknown Words:
+  trustline: 
+  quickstart: 
+  ripplex2: ripplex
+  checkbox: 
+  rippledefault: 
+  autofill: 
+  nftokens: 
+
+<Page '3. Mint and Burn NFTokens' (mint-and-burn-nftokens.html)> Unknown Words:
+  nftokens: 
+  xls: cls, xis, els
+  quickstart: 
+  nftoken: 
+  ripplex3: ripplex
+  tokentaxon: 
+  trustline: 
+
+<Page '4. Transfer NFTokens' (transfer-nftokens.html)> Unknown Words:
+  nftokens: 
+  xls: cls, xis, els
+  quickstart: 
+  nftoken: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
   sologenic: 
@@ -61,40 +103,43 @@ Found 118 possible spelling errors:
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
   disallowxrp: 
   wxpython: 
-  wsl: wsj, isl, wil
+  wsl: qsl, wse, wsp
   threadsafe: 
   asyncio: 
-  guis: puis, guin, gues
+  guis: guise, gues, guib
   wxglade: 
-  s1: s., sh, sc
+  s1: sc, sx, so
   toolkits: toolkit
   tooltip: 
-  lsf: laf, csf, isf
-  refactor: reactor, refractor, prefactor
+  lsf: fsf, ltf, osf
+  refactor: redactor, refractor, prefactor
   tooltips: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
   autofilling: 
 
+<Page 'Trade in the Decentralized Exchange' (trade-in-the-decentralized-exchange.html)> Unknown Words:
+  rp9jpyp5kyvfrb6zirghagw5u8sgamu4bd: 
+
 <Page 'NFToken Tester Tutorial' (nftoken-tester-tutorial.html)> Unknown Words:
   nftoken: 
-  xls: fls, bls, ils
+  xls: cls, xis, els
   nftokens: 
-  ipfs: ips, ipcs, ifs
+  ipfs: ipcs, ifs, ipms
   nftokenacceptoffer: 
   acceptselloffer: 
-  nftokenburn: 
-  nftokencanceloffer: 
-  nftokenpage: 
-  nftokenoffer: 
   nftokenmint: 
+  nftokencanceloffer: 
   nftokencreateoffer: 
+  nftokenburn: 
+  nftokenoffer: 
+  nftokenpage: 
 
 <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  xapps: capps, lapps, apps
+  xapps: capps, apps, lapps
 
 <Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: nome, nme, name
+  nvme: vme, name, nome
 
 <Page 'Build and Run rippled in Reporting Mode' (build-run-rippled-in-reporting-mode.html)> Unknown Words:
   datastores: 
@@ -102,82 +147,87 @@ Found 118 possible spelling errors:
 
 <Page 'NFToken' (nftoken.html)> Unknown Words:
   nftoken: 
-  xls: fls, bls, ils
+  xls: cls, xis, els
   nftokenpage: 
   tokenid: tokened
   trustline: 
+  0x0001: 
   0x0002: 
+  0x000b: 
+  lsfonlyxrp: 
+  lsfburnable: 
   lsftransferable: 
   0x0008: 
-  lsfonlyxrp: 
-  0x000b: 
-  0x0001: 
-  lsfburnable: 
   transferfee: transferee
   1bps: mbps, bps, kbps
   nftokenmint: 
   rfc2379: 
-  ipfs: ips, ipcs, ifs
+  ipfs: ipcs, ifs, ipms
   nftokens: 
 
 <Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
+  nftokenoffer: 
   nftokenpage: 
   nftokens: 
-  nftokenoffer: 
 
 <Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
   nftokenoffer: 
-  xls: fls, bls, ils
+  xls: cls, xis, els
 
 <Page 'NFTokenPage' (nftokenpage.html)> Unknown Words:
   nftokenpage: 
-  xls: fls, bls, ils
+  xls: cls, xis, els
   tokenpage: 
-  shamap: shamas, shamal, shama
+  shamap: shamal, shama, shaman
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokens: 
   nftokenmint: 
-  xls: fls, bls, ils
+  xls: cls, xis, els
   nftoken: 
 
 <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
   nftokenacceptoffer: 
-  xls: fls, bls, ils
+  xls: cls, xis, els
   nftoken: 
 
 <Page 'NFTokenBurn' (nftokenburn.html)> Unknown Words:
   nftokenburn: 
-  xls: fls, bls, ils
-  mintaccount: 
-  mintedtokens: 
-  burnedtokens: 
+  xls: cls, xis, els
+  lsfburnable: 
+  tfburnable: 
+  tokenid: tokened
+  nftoken: 
+  nftokenminter: 
+  mintednftokens: 
+  burnednftokens: 
 
 <Page 'NFTokenCancelOffer' (nftokencanceloffer.html)> Unknown Words:
   nftokencanceloffer: 
-  xls: fls, bls, ils
+  xls: cls, xis, els
   nftokenoffer: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
   nftokencreateoffer: 
-  xls: fls, bls, ils
+  xls: cls, xis, els
   nftokenoffer: 
 
 <Page 'NFTokenMint' (nftokenmint.html)> Unknown Words:
   nftokenmint: 
-  xls: fls, bls, ils
-  nftokenpage: 
+  xls: cls, xis, els
   nftoken: 
+  nftokenpage: 
   rfc2379: 
-  ipfs: ips, ipcs, ifs
+  ipfs: ipcs, ifs, ipms
+  nftokens: 
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
   lastledgersequence: 
 
 <Page 'Public rippled Methods' (public-rippled-methods.html)> Unknown Words:
+  xls: cls, xis, els
   nftoken: 
-  xls: fls, bls, ils
 
 <Page 'node_to_shard' (node_to_shard.html)> Unknown Words:
   node_to_shard: 
@@ -185,7 +235,7 @@ Found 118 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 278 discouraged words/phrases:
+Found 295 discouraged words/phrases:
 Page: <Page 'Multi-Signing' (multi-signing.html)>
    Discouraged word: vice (3 instances); suggest 'instead of, versus' instead.
 Page: <Page 'Ledgers' (ledgers.html)>
@@ -202,6 +252,8 @@ Page: <Page 'NFT Conceptual Overview' (non-fungible-tokens.html)>
    Discouraged word: purchase (2 instances); suggest 'buy' instead.
    Discouraged word: just (1 instances); suggest '(omit)' instead.
    Discouraged word: enumerate (1 instances); suggest 'count' instead.
+Page: <Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)>
+   Discouraged word: purchase (5 instances); suggest 'buy' instead.
 Page: <Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)>
    Discouraged word: just (1 instances); suggest '(omit)' instead.
 Page: <Page 'Issuing and Operational Addresses' (issuing-and-operational-addresses.html)>
@@ -243,6 +295,16 @@ Page: <Page 'Peer Protocol' (peer-protocol.html)>
    Discouraged word: eliminate (1 instances); suggest 'cut, drop, end' instead.
 Page: <Page 'Transaction Censorship Detection' (transaction-censorship-detection.html)>
    Discouraged word: impacted (1 instances); suggest 'affected, changed' instead.
+Page: <Page 'XRPL Quickstart' (xrpl-quickstart.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+   Discouraged word: anticipate (1 instances); suggest 'expect' instead.
+Page: <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)>
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+Page: <Page '3. Mint and Burn NFTokens' (mint-and-burn-nftokens.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+Page: <Page '4. Transfer NFTokens' (transfer-nftokens.html)>
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
 Page: <Page 'Get Started Using Python' (get-started-using-python.html)>
    Discouraged word: simple (3 instances); suggest '(omit)' instead.
    Discouraged word: easy (2 instances); suggest '(omit)' instead.
@@ -317,9 +379,12 @@ Page: <Page 'Issue a Fungible Token' (issue-a-fungible-token.html)>
    Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
    Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
    Discouraged word: purchase (1 instances); suggest 'buy' instead.
+Page: <Page 'Trade in the Decentralized Exchange' (trade-in-the-decentralized-exchange.html)>
+   Discouraged word: encounter (1 instances); suggest 'meet' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
 Page: <Page 'NFToken Tester Tutorial' (nftoken-tester-tutorial.html)>
    Discouraged word: frequently (1 instances); suggest 'often' instead.
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
    Discouraged word: purchase (5 instances); suggest 'buy' instead.
    Discouraged word: remainder (1 instances); suggest 'rest' instead.
    Discouraged word: initiate (1 instances); suggest 'start' instead.
@@ -445,13 +510,13 @@ Page: <Page 'Dev Tools' (dev-tools.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 57.0 (Fairly Difficult)
-  Dale-Chall Readability Score: 8.0 (average 11th or 12-grade student)
+  Flesch Reading Ease Score: 57.3 (Fairly Difficult)
+  Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.6
   Gunning FOG Index: Grade level 9.3
-  Automated Readability Index: Grade level 11.1
+  Automated Readability Index: Grade level 11.0
   Coleman-Liau Index: Grade level 11.7
-  Linsear Write Formula: Grade level 8.8
+  Linsear Write Formula: Grade level 8.7
 
 
 Most difficult pages by Flesch Reading Ease:
@@ -487,8 +552,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 762
-  Characters: 4,741
+  Words: 759
+  Characters: 4,717
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

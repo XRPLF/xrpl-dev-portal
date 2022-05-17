@@ -41,6 +41,7 @@ https://xrpl.org/issued-currencies.html
 https://xrpl.org/trust-lines-and-issuing.html
 https://xrpl.org/authorized-trust-lines.html
 https://xrpl.org/non-fungible-tokens.html
+https://xrpl.org/non-fungible-token-transfers.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html
@@ -78,6 +79,11 @@ https://xrpl.org/transaction-censorship-detection.html
 https://xrpl.org/nft-concepts.html
 https://xrpl.org/nft-conceptual-overview.html
 https://xrpl.org/tutorials.html
+https://xrpl.org/xrpl-quickstart.html
+https://xrpl.org/create-accounts-send-xrp.html
+https://xrpl.org/create-trustline-send-currency.html
+https://xrpl.org/mint-and-burn-nftokens.html
+https://xrpl.org/transfer-nftokens.html
 https://xrpl.org/get-started.html
 https://xrpl.org/public-servers.html
 https://xrpl.org/get-started-using-python.html
@@ -125,6 +131,7 @@ https://xrpl.org/look-up-checks-by-sender.html
 https://xrpl.org/look-up-checks-by-recipient.html
 https://xrpl.org/use-tokens.html
 https://xrpl.org/issue-a-fungible-token.html
+https://xrpl.org/trade-in-the-decentralized-exchange.html
 https://xrpl.org/nftoken-tester-tutorial.html
 https://xrpl.org/enable-no-freeze.html
 https://xrpl.org/enact-global-freeze.html

@@ -51,7 +51,11 @@ function generate_table_of_contents() {
     if (req.slug === null) {
         commandlist.append("<li class='separator'>"+req.name+"</li>");
     } else {
-        commandlist.append("<li class='method'><a href='#"+req.slug+"'>"+req.name+"</a></li>");
+        let status_label = ""
+        if (req.status == "not_enabled") {
+          status_label = '<span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> '
+        }
+        commandlist.append("<li class='method'><a href='#"+req.slug+"'>"+status_label+req.name+"</a></li>");
     }
   });
 }
@@ -284,7 +288,7 @@ const update_curl = function(event) {
   $("#curl-box-1").text(curl_syntax)
 }
 
-function load_from_permalink(params) {
+function server_from_params(params) {
   const server = params.get("server")
   if (server) {
     const server_checkbox = $("input[value='"+server+"']")
@@ -293,7 +297,9 @@ function load_from_permalink(params) {
       // relies on connect_socket() being run shortly thereafter
     }
   }
+}
 
+function req_from_params(params) {
   let req_body = params.get("req")
   let cmd_name = ""
   if (req_body) {
@@ -336,10 +342,14 @@ $(document).ready(function() {
         // default instead.
         select_request()
       }
-    } else if (search_params.has("server") || search_params.has("req")) {
-      load_from_permalink(search_params)
+    } else if (search_params.has("req")) {
+      req_from_params(search_params)
     } else {
-      select_request();
+      select_request()
+    }
+
+    if (search_params.has("server")) {
+      server_from_params(search_params)
     }
 
     connect_socket()
