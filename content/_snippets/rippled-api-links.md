@@ -216,6 +216,7 @@
   "MultiSign",
   "MultiSignReserve",
   "NegativeUNL",
+  "NonFungibleTokensV1",
   "OwnerPaysFee",
   "PayChan",
   "RequireFullyCanonicalSig",

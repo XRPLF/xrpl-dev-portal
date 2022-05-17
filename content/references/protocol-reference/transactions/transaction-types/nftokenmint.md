@@ -106,12 +106,18 @@ This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, 
 
 ## Error Cases
 
-- If the `TransferFee` field is not within the acceptable range (0 to 9999 inclusive) the transaction fails with `temBAD_NFTOKEN_TRANSFER_FEE`.
-- If the `URI` field is longer than 256 bytes, the transaction fails with `temMALFORMED`.
-- If the `Issuer` field refers to an account that does not exist, the transaction fails with `tecNO_ISSUER`.
-- If account referenced by the `Issuer` field has not authorized this transaction's sender (using the `NFTokenMinter` setting) to mint `NFToken`s on their behalf, the transaction fails with `tecNO_PERMISSION`.
-- If the owner would not meet the updated [reserve requirement](reserves.html) after minting the token, the transaction fails with `tecINSUFFICIENT_RESERVE`. Note that new `NFToken`s only increase the owner's reserve if it requires a new [NFTokenPage object][], which can each hold up to 32 NFTokens.
-- If the `Issuer`'s `MintedNFTokens` field maxes out, the transaction fails with `tecMAX_SEQUENCE_REACHED`. This is only possible if 2<sup>32</sup>-1 `NFToken`s have been minted in total by the issuer or on their behalf.
+In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+
+| Error Code                    | Description                                  |
+|:------------------------------|:---------------------------------------------|
+| `temDISABLED`                 | The [NonFungibleTokensV1 amendment][] is not enabled. |
+| `temBAD_NFTOKEN_TRANSFER_FEE` | The `TransferFee` is not within the acceptable range. |
+| `temMALFORMED`                | The transaction was not validly specified. For example, the `URI` field is longer than 256 bytes. |
+| `tecNO_ISSUER`                | The `Issuer` refers to an account that does not exist in the ledger. |
+| `tecNO_PERMISSION`            | The account referenced by the `Issuer` field has not authorized this transaction's sender (using the `NFTokenMinter` setting) to mint on their behalf. |
+| `tecINSUFFICIENT_RESERVE`     | The owner would not meet the updated [reserve requirement](reserves.html) after minting the token. Note that new `NFToken`s only increase the owner's reserve if it requires a new [NFTokenPage object][], which can each hold up to 32 NFTs. |
+| `tecMAX_SEQUENCE_REACHED`     | The `Issuer`'s `MintedNFTokens` field is already at its maximum. This is only possible if 2<sup>32</sup>-1 `NFToken`s have been minted in total by the issuer or on their behalf. |
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
