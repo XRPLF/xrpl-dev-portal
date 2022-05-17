@@ -87,7 +87,7 @@ Each member of the `validators` array has the following fields:
 #### Example Decoded Blob
 
 ```json
-{% include '_code-samples/vl/vl-blob.json' %}
+{% include '_api-examples/vl/vl-blob.json' %}
 ```
 
 ## Example
@@ -115,7 +115,7 @@ Response:
 ```json
 200 OK
 
-{% include '_code-samples/vl/vl.json' %}
+{% include '_api-examples/vl/vl.json' %}
 ```
 
 

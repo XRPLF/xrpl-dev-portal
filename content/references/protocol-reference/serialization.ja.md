@@ -45,13 +45,13 @@ curated_anchors:
 **JSON:**
 
 ```json
-{% include '_code-samples/tx-serialization/test-cases/tx1.json' %}
+{% include '_code-samples/tx-serialization/py/test-cases/tx1.json' %}
 ```
 
 **バイナリ（16進数として表現）:**
 
 ```text
-{% include '_code-samples/tx-serialization/test-cases/tx1-binary.txt' %}
+{% include '_code-samples/tx-serialization/py/test-cases/tx1-binary.txt' %}
 ```
 
 ## サンプルコード
@@ -60,7 +60,7 @@ curated_anchors:
 
 - C++: [`rippled`コードベース](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp)
 - JavaScript: [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/)パッケージ
-- Python 3: [このリポジトリのコードサンプルセクション]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/serialize.py)
+- Python 3: [このリポジトリのコードサンプルセクション]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/)
 
 これらのすべての実装には、一般利用が可能なオープンソースライセンスが提供されているので、学習のためにドキュメントと合わせて使用するだけでなく、必要に応じてコードをインポート、使用、または変更することができます。
 
