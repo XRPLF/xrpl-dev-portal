@@ -23,7 +23,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
   "TransactionType": "NFTokenBurn",
   "Account": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
   "Owner": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-  "Fee": 10,
+  "Fee": "10",
   "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
 }
 ```
@@ -33,7 +33,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
 | Field             | JSON Type | [Internal Type][] | Description              |
 |:------------------|:----------|:------------------|:-------------------------|
 | `NFTokenID`       | String    | Hash256           | The `NFToken` to be removed by this transaction. |
-| `Owner`           | String    | AccountID         | The owner of the `NFToken` to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the `lsfBurnable` flag enabled. |
+| `Owner`           | String    | AccountID         | _(Optional)_ The owner of the `NFToken` to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the `lsfBurnable` flag enabled. |
 
 
 ## Error Cases
