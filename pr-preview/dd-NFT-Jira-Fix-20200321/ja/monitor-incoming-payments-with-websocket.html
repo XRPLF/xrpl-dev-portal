@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v2.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,12 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Wave 3 of the XRPL Grants program is open!</p></span>
-    <span><a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Apply</a></span>
-  </div>
-</div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,6 +146,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -297,27 +293,27 @@ function writeToConsole(console_selector, message) {
 <h2 id="1-xrp-ledgerへの接続">1. XRP Ledgerへの接続<a aria-hidden="true" class="hover_anchor" href="#1-xrp-ledgerへの接続"><i class="fa fa-link"></i></a></h2>
 <p>着信ペイメントを監視する最初のステップとして、XRP Ledger、つまり<code>rippled</code>サーバーに接続します。</p>
 <p>以下のJavaScriptコードでは、Rippleの公開サーバーのクラスターの1つに接続します。その後、コンソールにメッセージを記録し、<a href="ping.html">pingメソッド</a>を使用して要求を送信します。次に、サーバー側からのメッセージを受信するときに、ハンドラーを設定してコンソールに再度メッセージを記録します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kd">const</span> <span class="nx">socket</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">)</span>
-<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'open'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// This callback runs when the connection is open</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Connected!"</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">command</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"on_open_ping_1"</span><span class="p">,</span>
-    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"ping"</span>
-  <span class="p">}</span>
-  <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">command</span><span class="p">))</span>
-<span class="p">})</span>
-<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Got message from server:'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
-<span class="p">})</span>
-<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// Use this event to detect when you have become disconnected</span>
-  <span class="c1">// and respond appropriately.</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected...'</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">)</span><span class="w"></span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'open'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// This callback runs when the connection is open</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Connected!"</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"id"</span><span class="o">:</span><span class="w"> </span><span class="s2">"on_open_ping_1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ping"</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">command</span><span class="p">))</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Got message from server:'</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Use this event to detect when you have become disconnected</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// and respond appropriately.</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected...'</span><span class="p">)</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
 </code></pre></div>
 <p>上記の例では、<a href="xrp-test-net-faucet.html">Test Net</a>上にあるRippleの公開APIサーバーの1つに対して、安全な接続（<code>wss://</code>）を開きます。代わりにデフォルトの構成を使用してローカルで運用している<code>rippled</code>サーバーに接続するには、最初の行に以下を使用して、ローカルのポート<strong>6006</strong>で <em>安全ではない</em> 接続（<code>ws://</code>）を開きます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span> <span class="nx">socket</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'ws://localhost:6006'</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'ws://localhost:6006'</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> デフォルトでは、ローカル<code>rippled</code>サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる<a href="public-rippled-methods.html">パブリックメソッド</a>以外に、すべての<a href="admin-rippled-methods.html">管理メソッド</a>と、<a href="server_info.html">server_info</a>などの一部の応答に含まれる管理者専用データを利用できます。</p>
 <p>例:</p>
@@ -383,62 +379,62 @@ $("#connect-socket-button").click((event) => {
 </ul>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> <a class="external-link" href="https://js.xrpl.org/" target="_blank">JavaScript向けxrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a>は、デフォルトでこのステップに対応しています。すべての非同期API要求はPromiseを使用して応答を提供します。また<a class="external-link" href="https://js.xrpl.org/classes/Client.html#on" target="_blank"><code>.on(event, callback)</code>メソッド <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して、ストリームをリッスンできます。</p>
 <p>以下のJavaScriptコードでは、API要求を便利な非同期<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" target="_blank">Promise <i aria-hidden="true" class="fa fa-external-link"></i></a>に変換するヘルパー関数を定義し、他のタイプのメッセージをグローバルハンドラーにマップするインターフェイスを設定します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kd">const</span> <span class="nx">AWAITING</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="kd">const</span> <span class="nx">handleResponse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Got response event without ID:"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
-    <span class="k">return</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">AWAITING</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nx">AWAITING</span><span class="p">[</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Response to un-awaited request w/ ID "</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kd">const</span><span class="w"> </span><span class="nx">AWAITING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">handleResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Got response event without ID:"</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">AWAITING</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">AWAITING</span><span class="p">[</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Response to un-awaited request w/ ID "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">let</span> <span class="nx">autoid_n</span> <span class="o">=</span> <span class="mf">0</span>
-<span class="kd">function</span> <span class="nx">api_request</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nx">options</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="s2">"autoid_"</span> <span class="o">+</span> <span class="p">(</span><span class="nx">autoid_n</span><span class="o">++</span><span class="p">)</span>
-  <span class="p">}</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">autoid_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="w"></span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">api_request</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"autoid_"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">autoid_n</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="kd">let</span> <span class="nx">resolveHolder</span><span class="p">;</span>
-  <span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="c1">// Save the resolve func to be called by the handleResponse function later</span>
-    <span class="nx">resolveHolder</span> <span class="o">=</span> <span class="nx">resolve</span>
-    <span class="k">try</span> <span class="p">{</span>
-      <span class="c1">// Use the socket opened in the previous example...</span>
-      <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span>
-    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-  <span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">resolve</span> <span class="o">=</span> <span class="nx">resolveHolder</span><span class="p">;</span>
-  <span class="k">return</span> <span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">resolveHolder</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Save the resolve func to be called by the handleResponse function later</span><span class="w"></span>
+<span class="w">    </span><span class="nx">resolveHolder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resolve</span><span class="w"></span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Use the socket opened in the previous example...</span><span class="w"></span>
+<span class="w">      </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">resolve</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resolveHolder</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">const</span> <span class="nx">WS_HANDLERS</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"response"</span><span class="o">:</span> <span class="nx">handleResponse</span>
-  <span class="c1">// Fill this out with your handlers in the following format:</span>
-  <span class="c1">// "type": function(event) { /* handle event of this type */ }</span>
-<span class="p">}</span>
-<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">parsed_data</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">WS_HANDLERS</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">parsed_data</span><span class="p">.</span><span class="nx">type</span><span class="p">))</span> <span class="p">{</span>
-    <span class="c1">// Call the mapped handler</span>
-    <span class="nx">WS_HANDLERS</span><span class="p">[</span><span class="nx">parsed_data</span><span class="p">.</span><span class="nx">type</span><span class="p">](</span><span class="nx">parsed_data</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Unhandled message from server"</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">})</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">WS_HANDLERS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"response"</span><span class="o">:</span><span class="w"> </span><span class="nx">handleResponse</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Fill this out with your handlers in the following format:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// "type": function(event) { /* handle event of this type */ }</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">parsed_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">WS_HANDLERS</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">parsed_data</span><span class="p">.</span><span class="nx">type</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Call the mapped handler</span><span class="w"></span>
+<span class="w">    </span><span class="nx">WS_HANDLERS</span><span class="p">[</span><span class="nx">parsed_data</span><span class="p">.</span><span class="nx">type</span><span class="p">](</span><span class="nx">parsed_data</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Unhandled message from server"</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
 
-<span class="c1">// Demonstrate api_request functionality</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">pingpong</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Ping..."</span><span class="p">)</span>
-  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api_request</span><span class="p">({</span><span class="nx">command</span><span class="o">:</span> <span class="s2">"ping"</span><span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Pong!"</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">pingpong</span><span class="p">()</span>
+<span class="c1">// Demonstrate api_request functionality</span><span class="w"></span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">pingpong</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Ping..."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api_request</span><span class="p">({</span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s2">"ping"</span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Pong!"</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="nx">pingpong</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <div class="interactive-block" data-stepnumber="2" data-totalsteps="4" id="interactive-dispatch_messages">
 <div class="interactive-block-inner">
@@ -519,27 +515,27 @@ $("#dispatch_ping").click((event) => {
 <p>トランザクションがアカウントに影響を及ぼすたびに即座に通知を取得するには、<a href="subscribe.html">subscribeメソッド</a>を使用してアカウントをサブスクライブします。実際には、このアカウントはあなた自身のアカウントでなくてもかまいません。すべてのトランザクションは公開されているため、任意のアカウントで、または複数のアカウントでもサブスクライブできます。</p>
 <p>1つ以上のアカウントをサブスクライブした場合、指定したアカウントのいずれかに何らかの影響を及ぼす各検証済みトランザクションについて、<code>"type": "transaction"</code>が含まれるメッセージがサーバーから送信されます。これを確認するには、トランザクションメッセージで<code>"validated": true</code>を探します。</p>
 <p>以下のコードサンプルは、Test Net Faucetの送信側アドレスをサブスクライブします。このコードサンプルでは、前のステップのディスパッチャーにハンドラーを追加することで、該当する各トランザクションのメッセージを記録します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="k">async</span> <span class="kd">function</span> <span class="nx">do_subscribe</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">sub_response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api_request</span><span class="p">({</span>
-    <span class="nx">command</span><span class="o">:</span><span class="s2">"subscribe"</span><span class="p">,</span>
-    <span class="nx">accounts</span><span class="o">:</span> <span class="p">[</span><span class="s2">"rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"</span><span class="p">]</span>
-  <span class="p">})</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">sub_response</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="s2">"success"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully subscribed!"</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error subscribing: "</span><span class="p">,</span> <span class="nx">sub_response</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="nx">do_subscribe</span><span class="p">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">do_subscribe</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sub_response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api_request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">command</span><span class="o">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">accounts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sub_response</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"success"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully subscribed!"</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error subscribing: "</span><span class="p">,</span><span class="w"> </span><span class="nx">sub_response</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="nx">do_subscribe</span><span class="p">()</span><span class="w"></span>
 
-<span class="kd">const</span> <span class="nx">log_tx</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span> <span class="o">+</span> <span class="s2">" transaction sent by "</span> <span class="o">+</span>
-              <span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">Account</span> <span class="o">+</span>
-              <span class="s2">"\n  Result: "</span> <span class="o">+</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">+</span>
-              <span class="s2">" in ledger "</span> <span class="o">+</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">ledger_index</span> <span class="o">+</span>
-              <span class="s2">"\n  Validated? "</span> <span class="o">+</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">validated</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">WS_HANDLERS</span><span class="p">[</span><span class="s2">"transaction"</span><span class="p">]</span> <span class="o">=</span> <span class="nx">log_tx</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">log_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" transaction sent by "</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">              </span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">              </span><span class="s2">"\n  Result: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">              </span><span class="s2">" in ledger "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">ledger_index</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">              </span><span class="s2">"\n  Validated? "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">validated</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="nx">WS_HANDLERS</span><span class="p">[</span><span class="s2">"transaction"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">log_tx</span><span class="w"></span>
 </code></pre></div>
 <p>以下の例では、別のウィンドウまたは別のデバイスで<a href="tx-sender.html">Transaction Sender</a>を開くことと、サブスクライブしているアドレスへのトランザクションの送信を試みます。</p>
 <div class="interactive-block" data-stepnumber="3" data-totalsteps="4" id="interactive-subscribe">
@@ -626,82 +622,82 @@ WS_HANDLERS["transaction"] = log_tx
 </li>
 </ul>
 <p>以下のサンプルコードは、上に示したすべてのトランザクションのタイプのトランザクションメタデータを確認し、アカウントが受け取ったXRPの金額をレポートします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="kd">function</span> <span class="nx">CountXRPDifference</span><span class="p">(</span><span class="nx">affected_nodes</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// Helper to find an account in an AffectedNodes array and see how much</span>
-  <span class="c1">// its balance changed, if at all. Fortunately, each account appears at most</span>
-  <span class="c1">// once in the AffectedNodes array, so we can return as soon as we find it.</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="kd">function</span><span class="w"> </span><span class="nx">CountXRPDifference</span><span class="p">(</span><span class="nx">affected_nodes</span><span class="p">,</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Helper to find an account in an AffectedNodes array and see how much</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// its balance changed, if at all. Fortunately, each account appears at most</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// once in the AffectedNodes array, so we can return as soon as we find it.</span><span class="w"></span>
 
-  <span class="c1">// Note: this reports the net balance change. If the address is the sender,</span>
-  <span class="c1">// the transaction cost is deducted and combined with XRP sent/received</span>
+<span class="w">  </span><span class="c1">// Note: this reports the net balance change. If the address is the sender,</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// the transaction cost is deducted and combined with XRP sent/received</span><span class="w"></span>
 
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">affected_nodes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">((</span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"ModifiedNode"</span><span class="p">)))</span> <span class="p">{</span>
-      <span class="c1">// modifies an existing ledger entry</span>
-      <span class="kd">let</span> <span class="nx">ledger_entry</span> <span class="o">=</span> <span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">ModifiedNode</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">LedgerEntryType</span> <span class="o">===</span> <span class="s2">"AccountRoot"</span> <span class="o">&amp;&amp;</span>
-          <span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">FinalFields</span><span class="p">.</span><span class="nx">Account</span> <span class="o">===</span> <span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">PreviousFields</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"Balance"</span><span class="p">))</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"XRP balance did not change."</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="c1">// Balance is in PreviousFields, so it changed. Time for</span>
-        <span class="c1">// high-precision math!</span>
-        <span class="kd">const</span> <span class="nx">old_balance</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">PreviousFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span>
-        <span class="kd">const</span> <span class="nx">new_balance</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">FinalFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span>
-        <span class="kd">const</span> <span class="nx">diff_in_drops</span> <span class="o">=</span> <span class="nx">new_balance</span><span class="p">.</span><span class="nx">minus</span><span class="p">(</span><span class="nx">old_balance</span><span class="p">)</span>
-        <span class="kd">const</span> <span class="nx">xrp_amount</span> <span class="o">=</span> <span class="nx">diff_in_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">gte</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span> <span class="o">+</span> <span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" XRP."</span><span class="p">)</span>
-          <span class="k">return</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Spent "</span> <span class="o">+</span> <span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">abs</span><span class="p">().</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" XRP."</span><span class="p">)</span>
-          <span class="k">return</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"CreatedNode"</span><span class="p">)))</span> <span class="p">{</span>
-      <span class="c1">// created a ledger entry. maybe the account just got funded?</span>
-      <span class="kd">let</span> <span class="nx">ledger_entry</span> <span class="o">=</span> <span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">CreatedNode</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">LedgerEntryType</span> <span class="o">===</span> <span class="s2">"AccountRoot"</span> <span class="o">&amp;&amp;</span>
-          <span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">NewFields</span><span class="p">.</span><span class="nx">Account</span> <span class="o">===</span> <span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">balance_drops</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">NewFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span>
-        <span class="kd">const</span> <span class="nx">xrp_amount</span> <span class="o">=</span> <span class="nx">balance_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span> <span class="o">+</span> <span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" XRP (account funded)."</span><span class="p">)</span>
-        <span class="k">return</span>
-      <span class="p">}</span>
-    <span class="p">}</span> <span class="c1">// accounts cannot be deleted at this time, so we ignore DeletedNode</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">affected_nodes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"ModifiedNode"</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// modifies an existing ledger entry</span><span class="w"></span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">ledger_entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">ModifiedNode</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">LedgerEntryType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">FinalFields</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">PreviousFields</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"Balance"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"XRP balance did not change."</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Balance is in PreviousFields, so it changed. Time for</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// high-precision math!</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">old_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">PreviousFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">new_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">FinalFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">diff_in_drops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">new_balance</span><span class="p">.</span><span class="nx">minus</span><span class="p">(</span><span class="nx">old_balance</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">diff_in_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">gte</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" XRP."</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="k">return</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Spent "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">abs</span><span class="p">().</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" XRP."</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="k">return</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"CreatedNode"</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// created a ledger entry. maybe the account just got funded?</span><span class="w"></span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">ledger_entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">CreatedNode</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">LedgerEntryType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">NewFields</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">balance_drops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">NewFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">balance_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" XRP (account funded)."</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// accounts cannot be deleted at this time, so we ignore DeletedNode</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Did not find address in affected nodes."</span><span class="p">)</span>
-  <span class="k">return</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Did not find address in affected nodes."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">function</span> <span class="nx">CountXRPReceived</span><span class="p">(</span><span class="nx">tx</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span> <span class="o">!==</span> <span class="s2">"tesSUCCESS"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction failed."</span><span class="p">)</span>
-    <span class="k">return</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span> <span class="o">===</span> <span class="s2">"Payment"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">Destination</span> <span class="o">!==</span> <span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Not the destination of this payment."</span><span class="p">)</span>
-      <span class="k">return</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="ow">typeof</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span> <span class="o">===</span> <span class="s2">"string"</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">amount_in_drops</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Big</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span><span class="p">)</span>
-      <span class="kd">const</span> <span class="nx">xrp_amount</span> <span class="o">=</span> <span class="nx">amount_in_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span> <span class="o">+</span> <span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" XRP."</span><span class="p">)</span>
-      <span class="k">return</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received non-XRP currency."</span><span class="p">)</span>
-      <span class="k">return</span>
-    <span class="p">}</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="s2">"PaymentChannelClaim"</span><span class="p">,</span> <span class="s2">"PaymentChannelFund"</span><span class="p">,</span> <span class="s2">"OfferCreate"</span><span class="p">,</span>
-          <span class="s2">"CheckCash"</span><span class="p">,</span> <span class="s2">"EscrowFinish"</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span>
-          <span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nx">CountXRPDifference</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">AffectedNodes</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Not a currency-delivering transaction type ("</span> <span class="o">+</span>
-                <span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span> <span class="o">+</span> <span class="s2">")."</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">CountXRPReceived</span><span class="p">(</span><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction failed."</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">Destination</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Not the destination of this payment."</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"string"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">amount_in_drops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Big</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">amount_in_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" XRP."</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received non-XRP currency."</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">([</span><span class="s2">"PaymentChannelClaim"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PaymentChannelFund"</span><span class="p">,</span><span class="w"> </span><span class="s2">"OfferCreate"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">"CheckCash"</span><span class="p">,</span><span class="w"> </span><span class="s2">"EscrowFinish"</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">CountXRPDifference</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">AffectedNodes</span><span class="p">,</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Not a currency-delivering transaction type ("</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                </span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">")."</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <div class="interactive-block" data-stepnumber="4" data-totalsteps="4" id="interactive-read_payments">
 <div class="interactive-block-inner">
@@ -825,7 +821,7 @@ $("#tx_read").click((event) => {
 
 <span class="c1">// Connect to the XRPL Ledger using websocket and subscribe to an account</span><span class="w"></span>
 <span class="c1">// translation from the JavaScript example to Go</span><span class="w"></span>
-<span class="c1">// https://developers.ripple.com/monitor-incoming-payments-with-websocket.html</span><span class="w"></span>
+<span class="c1">// https://xrpl.org/monitor-incoming-payments-with-websocket.html</span><span class="w"></span>
 <span class="c1">// This example uses the Gorilla websocket library to create a websocket client</span><span class="w"></span>
 <span class="c1">// install: go get github.com/gorilla/websocket</span><span class="w"></span>
 
@@ -1160,7 +1156,19 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1392,13 +1400,45 @@ $("#tx_read").click((event) => {
 
     <nav class="nav flex-column show " id="tree_nav_group_3">
       
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="true" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="true" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_1">
+    <nav class="nav flex-column show " id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -1441,11 +1481,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1458,11 +1498,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -1485,11 +1525,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1537,19 +1577,19 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_1" aria-expanded="false" aria-controls="tree_nav_group_3_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1582,11 +1622,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_2" aria-expanded="false" aria-controls="tree_nav_group_3_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1599,11 +1639,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_3" aria-expanded="false" aria-controls="tree_nav_group_3_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1645,14 +1685,19 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1682,11 +1727,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1709,19 +1754,19 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_1" aria-expanded="false" aria-controls="tree_nav_group_3_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1785,11 +1830,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_2" aria-expanded="false" aria-controls="tree_nav_group_3_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1852,11 +1897,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_3" aria-expanded="false" aria-controls="tree_nav_group_3_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1904,11 +1949,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_4" aria-expanded="false" aria-controls="tree_nav_group_3_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1931,11 +1976,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_5" aria-expanded="false" aria-controls="tree_nav_group_3_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -3109,12 +3154,17 @@ $("#tx_read").click((event) => {
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -3180,6 +3230,7 @@ $("#tx_read").click((event) => {
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->

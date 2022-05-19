@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v2.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,12 +88,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Wave 3 of the XRPL Grants program is open!</p></span>
-    <span><a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Apply</a></span>
-  </div>
-</div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -147,6 +142,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -241,6 +237,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenmint-fields">NFTokenMint Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenmint-flags">NFTokenMint Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#embedding-additional-information">Embedding additional information</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#issuing-on-behalf-of-another-account">Issuing on behalf of another account</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#example-of-nftokenmint-with-an-issuer">Example of NFTokenMint with an issuer</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
@@ -265,18 +263,18 @@
         <h1 id="nftokenmint">NFTokenMint<a aria-hidden="true" class="hover_anchor" href="#nftokenmint"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a>
 <em>The XLS-20 standard for NFTs <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> has a preliminary implementation that can be used in test networks, but is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release.</em></p>
-<p>The <code>NFTokenMint</code> transaction creates an non-fungible token and adds it to the relevant <a href="nftokenpage.html">NFTokenPage object</a> of the <code>Minter</code> as an <a href="nftoken.html">NFToken</a> object. A required parameter to this transaction is the <code>Token</code> field specifying the actual token. This transaction is the only opportunity the <code>Minter</code> has to specify any token fields that are defined as immutable (for example, the <code>TokenFlags</code>).</p>
-<p>If the transaction is successful, the newly minted token is owned by the account (the <code>minter</code> account) that executed the transaction. If needed, the server creates a new <code>NFTokenPage</code>  for the account and applies a reserve charge.</p>
+<p>The <code>NFTokenMint</code> transaction creates a non-fungible token and adds it to the relevant <a href="nftokenpage.html">NFTokenPage object</a> of the <code>NFTokenMinter</code> as an <a href="nftoken.html">NFToken</a> object. A required parameter to this transaction is the <code>Token</code> field specifying the actual token. This transaction is the only opportunity the <code>NFTokenMinter</code> has to specify any token fields that are defined as immutable (for example, the <code>TokenFlags</code>).</p>
+<p>If the transaction is successful, the newly minted token is owned by the account (the <code>minter</code> account) that executed the transaction. If needed, the server creates a new <code>NFTokenPage</code> for the account and applies a reserve charge.</p>
 <h2 id="example-nftokenmint-json">Example NFTokenMint JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenmint-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenMint"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"TokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483659</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733a2f2f62616679626569676479727a74357366703775646d37687537367568377932366e6634646675796c71616266336f636c67747179353566627a6469"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"NFTokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -288,7 +286,7 @@
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>Minter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
+<p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>NFTokenMinter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
 <h2 id="nftokenmint-fields">NFTokenMint Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenmint-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a NFTokenMint transaction uses the following fields:</p>
 <table class="table-responsive">
@@ -302,7 +300,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>TokenTaxon</code></td>
+<td align="left"><code>NFTokenTaxon</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
 <td align="left">The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than <code>0xFFFF'FFFF</code> are disallowed.</td>
@@ -311,13 +309,13 @@
 <td align="left"><code>Issuer</code></td>
 <td align="left">String</td>
 <td align="left">AccountID</td>
-<td align="left"><em>(Optional)</em> The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the <code>NFToken</code>. If provided, the issuer's <a href="accountroot.html">AccountRoot object</a> must have the <code>Minter</code> field set to sender of this transaction (this transaction's <code>Account</code> field).</td>
+<td align="left"><em>(Optional)</em> The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the <code>NFToken</code>. If provided, the issuer's <a href="accountroot.html">AccountRoot object</a> must have the <code>NFTokenMinter</code> field set to the sender of this transaction (this transaction's <code>Account</code> field).</td>
 </tr>
 <tr>
 <td align="left"><code>TransferFee</code></td>
 <td align="left">Number</td>
 <td align="left">UInt16</td>
-<td align="left"><em>(Optional)</em> The value specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the <a href="#nftokenmint-flags"><code>tfTransferable</code> flag</a> enabled.</td>
+<td align="left"><em>(Optional)</em> The value specifies the fee charged by the issuer for secondary sales of the <code>NFToken</code>, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the <a href="#nftokenmint-flags"><code>tfTransferable</code> flag</a> enabled.</td>
 </tr>
 <tr>
 <td align="left"><code>URI</code></td>
@@ -327,6 +325,7 @@
 </tr>
 </tbody>
 </table>
+<p class="devportal-callout note"><strong>Note:</strong> The xrpl.js client library throws an error if you try to sign a transaction with the <code>URI</code> field in lowercase hexadecimal. This is a <a class="external-link" href="https://github.com/XRPLF/xrpl.js/issues/2004" target="_blank">bug <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="nftokenmint-flags">NFTokenMint Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenmint-flags"><i class="fa fa-link"></i></a></h2>
 <p>Transactions of the NFTokenMint type support additional values in the <a href="transaction-common-fields.html#flags-field"><code>Flags</code> field</a>, as follows:</p>
 <table class="table-responsive">
@@ -349,7 +348,7 @@
 <td align="left"><code>tfOnlyXRP</code></td>
 <td align="left"><code>0x00000002</code></td>
 <td align="left">2</td>
-<td align="left">The minted <code>NFToken</code> can only be bought or sold for XRP. This may be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies.</td>
+<td align="left">The minted <code>NFToken</code> can only be bought or sold for XRP. This can be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies.</td>
 </tr>
 <tr>
 <td align="left"><code>tfTrustLine</code></td>
@@ -367,15 +366,74 @@
 </table>
 <h2 id="embedding-additional-information">Embedding additional information<a aria-hidden="true" class="hover_anchor" href="#embedding-additional-information"><i class="fa fa-link"></i></a></h2>
 <p>If you need to specify additional information during minting (for example, details identifying a property by referencing a particular <a class="external-link" href="https://en.wikipedia.org/wiki/Plat" target="_blank">plat <i aria-hidden="true" class="fa fa-external-link"></i></a>, a vehicle by specifying a <a class="external-link" href="https://en.wikipedia.org/wiki/Vehicle_identification_number" target="_blank">VIN <i aria-hidden="true" class="fa fa-external-link"></i></a>, or other object-specific descriptions) you can use a <a href="transaction-common-fields.html#memos-field">transaction memo</a>. Memos are a part of the signed transaction and are available from historical archives, but are not stored in the ledger's state data.</p>
+<h2 id="issuing-on-behalf-of-another-account">Issuing on behalf of another account<a aria-hidden="true" class="hover_anchor" href="#issuing-on-behalf-of-another-account"><i class="fa fa-link"></i></a></h2>
+<p>If you want to issue an NFT for another account there are two things you must do. Given that <em>Account A</em> is your account and <em>Account B</em> is the account for which you want to mint a NFToken:</p>
+<ol>
+<li>Set the <code>NFTokenMinter</code> account setting on <em>Account B</em> to be <em>Account A</em>. (This says that <em>Account B</em> trusts <em>Account A</em> to create NFTs on their behalf.)</li>
+<li>When you mint the NFToken, set the <code>Issuer</code> field to Account B.</li>
+</ol>
+<h3 id="example-of-nftokenmint-with-an-issuer">Example of NFTokenMint with an issuer<a aria-hidden="true" class="hover_anchor" href="#example-of-nftokenmint-with-an-issuer"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenMint"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"NFTokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">"MemoType"</span><span class="p">:</span><span class="w"></span>
+<span class="w">                  </span><span class="s2">"687474703A2F2F6578616D706C652E636F6D2F6D656D6F2F67656E65726963"</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72656E74"</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>NFTokenMinter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<ul>
-<li>If the <code>TransferFee</code> field is not within the acceptable range (0 to 9999 inclusive) the transaction fails with <code>temBAD_TRANSFER_RATE</code>.</li>
-<li>If the <code>URI</code> field is longer than 256 bytes, the transaction fails with <code>temMALFORMED</code>.</li>
-<li>If the <code>Issuer</code> field refers to an account that does not exist, the transaction fails with <code>tecNO_ISSUER</code>.</li>
-<li>If account referenced by the <code>Issuer</code> field has not authorized this transaction's sender (using the <code>Minter</code> setting) to mint <code>NFToken</code>s on their behalf, the transaction fails with <code>tecNO_PERMISSION</code>.</li>
-<li>If the owner would not meet the updated <a href="reserves.html">reserve requirement</a> after minting the token, the transaction fails with <code>tecINSUFFICIENT_RESERVE</code>. Note that new <code>NFToken</code>s only increase the owner's reserve if it requires a new <a href="nftokenpage.html">NFTokenPage object</a>, which can each hold up to 32 NFTs.</li>
-<li>If the <code>Issuer</code>'s <code>MintedTokens</code> field maxes out, the transaction fails with <code>tecMAX_SEQUENCE_REACHED</code>. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</li>
-</ul>
+<p>In addition to errors that can occur for all transactions, NFTokenMint transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>temDISABLED</code></td>
+<td align="left">The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> is not enabled.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_NFTOKEN_TRANSFER_FEE</code></td>
+<td align="left">The <code>TransferFee</code> is not within the acceptable range.</td>
+</tr>
+<tr>
+<td align="left"><code>temMALFORMED</code></td>
+<td align="left">The transaction was not validly specified. For example, the <code>URI</code> field is longer than 256 bytes.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_ISSUER</code></td>
+<td align="left">The <code>Issuer</code> refers to an account that does not exist in the ledger.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_PERMISSION</code></td>
+<td align="left">The account referenced by the <code>Issuer</code> field has not authorized this transaction's sender (using the <code>NFTokenMinter</code> setting) to mint on their behalf.</td>
+</tr>
+<tr>
+<td align="left"><code>tecINSUFFICIENT_RESERVE</code></td>
+<td align="left">The owner would not meet the updated <a href="reserves.html">reserve requirement</a> after minting the token. Note that new <code>NFToken</code>s only increase the owner's reserve if it requires a new <a href="nftokenpage.html">NFTokenPage object</a>, which can each hold up to 32 NFTs.</td>
+</tr>
+<tr>
+<td align="left"><code>tecMAX_SEQUENCE_REACHED</code></td>
+<td align="left">The <code>Issuer</code>'s <code>MintedNFTokens</code> field is already at its maximum. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -595,7 +653,19 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -831,9 +901,41 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
-        <a class="nav-link" href="get-started.html">Get Started</a>
+        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="get-started.html">Get Started</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -876,11 +978,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -893,11 +995,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -920,11 +1022,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -972,19 +1074,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1017,11 +1119,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1034,11 +1136,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1080,14 +1182,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1117,11 +1224,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1144,19 +1251,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_1" aria-expanded="false" aria-controls="tree_nav_group_2_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1220,11 +1327,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_2" aria-expanded="false" aria-controls="tree_nav_group_2_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1287,11 +1394,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_3" aria-expanded="false" aria-controls="tree_nav_group_2_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1339,11 +1446,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_4" aria-expanded="false" aria-controls="tree_nav_group_2_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1366,11 +1473,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_5" aria-expanded="false" aria-controls="tree_nav_group_2_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -2544,12 +2651,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2615,6 +2727,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->

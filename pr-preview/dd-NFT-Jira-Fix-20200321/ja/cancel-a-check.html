@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v2.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,12 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Wave 3 of the XRPL Grants program is open!</p></span>
-    <span><a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Apply</a></span>
-  </div>
-</div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,6 +146,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -330,47 +326,47 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample ripplelib1.x" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span>
-<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<div class="code_sample ripplelib1.x" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="s1">'use strict'</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span><span class="w"></span>
 
-<span class="c1">// This example connects to a public Test Net server</span>
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
+<span class="c1">// This example connects to a public Test Net server</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span><span class="w"></span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s1">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za'</span>
-  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1">// Allow up to 60 ledger versions (~5 min) instead of the default 3 versions</span>
-    <span class="c1">// before this transaction fails permanently.</span>
-    <span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span> <span class="mf">60</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareCheckCancel</span><span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">"checkID"</span><span class="o">:</span> <span class="s2">"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2"</span>
-  <span class="p">},</span> <span class="nx">options</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za'</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Allow up to 60 ledger versions (~5 min) instead of the default 3 versions</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// before this transaction fails permanently.</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">prepareCheckCancel</span><span class="p">(</span><span class="nx">sender</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"checkID"</span><span class="o">:</span><span class="w"> </span><span class="s2">"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2"</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span><span class="w"></span>
 
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">prepared</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"txJSON:"</span><span class="p">,</span> <span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">prepared</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"txJSON:"</span><span class="p">,</span><span class="w"> </span><span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">// Disconnect and return</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-  <span class="p">})</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+<span class="c1">// Disconnect and return</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span><span class="w"></span>
 
 
-<span class="c1">// Example output:</span>
-<span class="c1">//</span>
-<span class="c1">// Connected</span>
-<span class="c1">// txJSON: {"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",</span>
-<span class="c1">//   "TransactionType":"CheckCancel",</span>
-<span class="c1">//   "CheckID":"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2",</span>
-<span class="c1">//   "Flags":2147483648,</span>
-<span class="c1">//   "LastLedgerSequence":8004884,</span>
-<span class="c1">//   "Fee":"12",</span>
-<span class="c1">//   "Sequence":7}</span>
-<span class="c1">// Disconnected</span>
+<span class="c1">// Example output:</span><span class="w"></span>
+<span class="c1">//</span><span class="w"></span>
+<span class="c1">// Connected</span><span class="w"></span>
+<span class="c1">// txJSON: {"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",</span><span class="w"></span>
+<span class="c1">//   "TransactionType":"CheckCancel",</span><span class="w"></span>
+<span class="c1">//   "CheckID":"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2",</span><span class="w"></span>
+<span class="c1">//   "Flags":2147483648,</span><span class="w"></span>
+<span class="c1">//   "LastLedgerSequence":8004884,</span><span class="w"></span>
+<span class="c1">//   "Fee":"12",</span><span class="w"></span>
+<span class="c1">//   "Sequence":7}</span><span class="w"></span>
+<span class="c1">// Disconnected</span><span class="w"></span>
 </code></pre></div></div>
 </div>
 <h2 id="2checkcancelトランザクションの署名">2.CheckCancelトランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#2checkcancelトランザクションの署名"><i class="fa fa-link"></i></a></h2>
@@ -379,21 +375,21 @@
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-1-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-1-1">コマンドライン</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="s1">'use strict'</span>
-<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<div class="code_sample ripplelib1.x" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="s1">'use strict'</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span><span class="w"></span>
 
-<span class="c1">// Can sign offline if the txJSON has all required fields</span>
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RippleAPI</span><span class="p">()</span>
+<span class="c1">// Can sign offline if the txJSON has all required fields</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="p">()</span><span class="w"></span>
 
-<span class="kd">const</span> <span class="nx">txJSON</span> <span class="o">=</span> <span class="s1">'{"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za","TransactionType":"CheckCancel","CheckID":"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2","Flags":2147483648,"LastLedgerSequence":8004884,"Fee":"12","Sequence":7}'</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">txJSON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za","TransactionType":"CheckCancel","CheckID":"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2","Flags":2147483648,"LastLedgerSequence":8004884,"Fee":"12","Sequence":7}'</span><span class="w"></span>
 
-<span class="c1">// Be careful where you store your real secret.</span>
-<span class="kd">const</span> <span class="nx">secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span>
+<span class="c1">// Be careful where you store your real secret.</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'s████████████████████████████'</span><span class="w"></span>
 
-<span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">secret</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">txJSON</span><span class="p">,</span><span class="w"> </span><span class="nx">secret</span><span class="p">)</span><span class="w"></span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx_blob is:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx hash is:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx_blob is:"</span><span class="p">,</span><span class="w"> </span><span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx hash is:"</span><span class="p">,</span><span class="w"> </span><span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample コマンドライン" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">rippled sign s████████████████████████████ <span class="s1">'{</span>
@@ -439,27 +435,27 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 <h3 id="要求の例-1">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例-1"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-3-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-3-1">コマンドライン</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="s1">'use strict'</span>
-<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<div class="code_sample ripplelib1.x" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="s1">'use strict'</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span><span class="w"></span>
 
-<span class="c1">// This example connects to a public Test Net server</span>
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
+<span class="c1">// This example connects to a public Test Net server</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span><span class="w"></span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">tx_blob</span> <span class="o">=</span> <span class="s2">"12001222800000002400000007201B007A251450182E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C268400000000000000C732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB4007446304402205D77451B0D7BCDA1FE5B98763C5B3B2837453371FE93C2B86157C44B1867AE36022003800273848BC2F8E1C6EC7EE4B0CB2425A888AE80E586886C306C796B25678B8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF"</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tx_blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"12001222800000002400000007201B007A251450182E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C268400000000000000C732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB4007446304402205D77451B0D7BCDA1FE5B98763C5B3B2837453371FE93C2B86157C44B1867AE36022003800273848BC2F8E1C6EC7EE4B0CB2425A888AE80E586886C306C796B25678B8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF"</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx_blob</span><span class="p">)</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Preliminary transaction result:"</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">resultCode</span><span class="p">)</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Preliminary transaction result:"</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">resultCode</span><span class="p">)</span><span class="w"></span>
 
-<span class="c1">// Disconnect and return</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-  <span class="p">})</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+<span class="c1">// Disconnect and return</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample コマンドライン" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">rippled submit 12001222800000002400000003501849647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB068400000000000000C7321022C53CD19049F32F31848DD3B3BE5CEF6A2DD1EFDA7971AB3FA49B1BAF12AEF78744630440220615F9D19FA182F08530CD978A4C216C8676D0BA9EDB53A620AC909AA0EF0FE7E02203A09CC34C3DB85CCCB3137E78081F8F2B441FB0A3B9E40901F312D3CBA0A67A181147990EC5D1D8DF69E070A968D4B186986FDF06ED0
@@ -468,9 +464,9 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 <h3 id="応答の例-1">応答の例<a aria-hidden="true" class="hover_anchor" href="#応答の例-1"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-4-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-4-1">コマンドライン</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="nx">Connected</span>
-<span class="nx">Preliminary</span> <span class="nx">transaction</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">tesSUCCESS</span>
-<span class="nx">Disconnected</span>
+<div class="code_sample ripplelib1.x" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="nx">Connected</span><span class="w"></span>
+<span class="nx">Preliminary</span><span class="w"> </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="nx">tesSUCCESS</span><span class="w"></span>
+<span class="nx">Disconnected</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample コマンドライン" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</span><span class="w"></span>
@@ -507,27 +503,27 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 <h3 id="要求の例-2">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例-2"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-5-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-5-1">コマンドライン</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="s1">'use strict'</span>
-<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<div class="code_sample ripplelib1.x" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="s1">'use strict'</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span><span class="w"></span>
 
-<span class="c1">// This example connects to a public Test Net server</span>
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
+<span class="c1">// This example connects to a public Test Net server</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span><span class="w"></span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">tx_hash</span> <span class="o">=</span> <span class="s2">"54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215"</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tx_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215"</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="nx">tx_hash</span><span class="p">)</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Final transaction result:"</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="nx">tx_hash</span><span class="p">)</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Final transaction result:"</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w"></span>
 
-<span class="c1">// Disconnect and return</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-  <span class="p">})</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+<span class="c1">// Disconnect and return</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample コマンドライン" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">rippled tx 414558223CA8595916BB1FEF238B3BB601B7C0E52659292251CE613E6B4370F9
@@ -869,7 +865,19 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1105,9 +1113,41 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -1150,11 +1190,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1167,11 +1207,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -1194,11 +1234,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1246,19 +1286,19 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="true" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="true" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_5">
+    <nav class="nav flex-column show " id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_1" aria-expanded="false" aria-controls="tree_nav_group_3_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1291,11 +1331,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_2" aria-expanded="false" aria-controls="tree_nav_group_3_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1308,11 +1348,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_5_3" aria-expanded="true" aria-controls="tree_nav_group_3_5_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="true" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_5_3">
+    <nav class="nav flex-column show " id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1354,14 +1394,19 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1391,11 +1436,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1418,19 +1463,19 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_1" aria-expanded="false" aria-controls="tree_nav_group_3_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1494,11 +1539,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_2" aria-expanded="false" aria-controls="tree_nav_group_3_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1561,11 +1606,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_3" aria-expanded="false" aria-controls="tree_nav_group_3_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1613,11 +1658,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_4" aria-expanded="false" aria-controls="tree_nav_group_3_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1640,11 +1685,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_5" aria-expanded="false" aria-controls="tree_nav_group_3_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -2818,12 +2863,17 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2889,6 +2939,7 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->

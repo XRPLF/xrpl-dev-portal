@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v2.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,12 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Wave 3 of the XRPL Grants program is open!</p></span>
-    <span><a href="https://xrplgrants.org/?utm_medium=referral&utm_source=xrpl&utm_campaign=banner" class=" btn btn-outline-secondary" target="_blank">Apply</a></span>
-  </div>
-</div>
+<!---->
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,6 +146,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -313,28 +309,28 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">npm install xrpl
 </code></pre></div>
 <p>その後、ライブラリをインポートします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="kd">const</span> <span class="nx">xrpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"xrpl"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"xrpl"</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="2-xrp-ledgerへの接続">2. XRP Ledgerへの接続<a aria-hidden="true" class="hover_anchor" href="#2-xrp-ledgerへの接続"><i class="fa fa-link"></i></a></h3>
 <p>参照や取引を行うには、XRP Ledgerへの接続を確立する必要があります。<code>xrpl.js</code>でこれを行うには、<code>Client</code>クラスのインスタンスを作成し、<code>connect()</code>メソッドを使用します。</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> <code>xrpl.js</code> の多くのネットワーク関数は、<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promises <i aria-hidden="true" class="fa fa-external-link"></i></a>を使って非同期に値を返します。ここで紹介するコードサンプルでは、<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank"><code>async/await</code> パターン <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して、Promises の実際の結果を待ちます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
-<span class="c1">// const xrpl = require('xrpl')</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span><span class="w"></span>
+<span class="c1">// const xrpl = require('xrpl')</span><span class="w"></span>
 
-<span class="c1">// Wrap code in an async function so we can use await</span>
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// Wrap code in an async function so we can use await</span><span class="w"></span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="c1">// Define the network client</span>
-  <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span>
-  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+<span class="w">  </span><span class="c1">// Define the network client</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span><span class="w"></span>
 
-  <span class="c1">// ... custom code goes here</span>
+<span class="w">  </span><span class="c1">// ... custom code goes here</span><span class="w"></span>
 
-  <span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="nx">main</span><span class="p">()</span>
+<span class="nx">main</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h4 id="xrp-ledger-メインネットへの接続">XRP Ledger メインネットへの接続<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger-メインネットへの接続"><i class="fa fa-link"></i></a></h4>
 <p>前節のサンプルコードでは、利用可能な<a href="parallel-networks.html">並列ネットワーク</a>の1つであるTestnetに接続する方法を紹介しました。本番環境に移行するには、XRP Ledger Mainnetに接続する必要があります。それには2つの方法があります。</p>
@@ -357,37 +353,37 @@
 </ul>
 <h3 id="3-ウォレットの作成">3. ウォレットの作成<a aria-hidden="true" class="hover_anchor" href="#3-ウォレットの作成"><i class="fa fa-link"></i></a></h3>
 <p><code>xrpl.js</code> ライブラリには、XRP Ledgerアカウントのキーとアドレスを扱うための "Wallet "クラスが用意されています。Testnetでは、次のようにして新しいウォレットに資金を供給することができます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Create a wallet and fund it with the Testnet faucet:</span>
-  <span class="kd">const</span> <span class="nx">fund_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()</span>
-  <span class="kd">const</span> <span class="nx">test_wallet</span> <span class="o">=</span> <span class="nx">fund_result</span><span class="p">.</span><span class="nx">wallet</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fund_result</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Create a wallet and fund it with the Testnet faucet:</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fund_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">test_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fund_result</span><span class="p">.</span><span class="nx">wallet</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fund_result</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>キーを生成するだけであれば、次のように新しいWalletインスタンスを作成することができます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="kd">const</span> <span class="nx">test_wallet</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">generate</span><span class="p">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="kd">const</span><span class="w"> </span><span class="nx">test_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">generate</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>また、<a href="base58-encodings.html">base58</a>でエンコードされたシードをすでに持っている場合は、次のようにしてそのシードからWalletをインスタンス化することができます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="kd">const</span> <span class="nx">test_wallet</span> <span class="o">=</span> <span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">)</span> <span class="c1">// テスト用シークレット、本番環境では使用しないでください</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="kd">const</span><span class="w"> </span><span class="nx">test_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">)</span><span class="w"> </span><span class="c1">// テスト用シークレット、本番環境では使用しないでください</span><span class="w"></span>
 </code></pre></div>
 <h3 id="4-xrp-ledgerの参照">4. XRP Ledgerの参照<a aria-hidden="true" class="hover_anchor" href="#4-xrp-ledgerの参照"><i class="fa fa-link"></i></a></h3>
 <p>クライアントの<code>request()</code>メソッドを使って、XRP Ledgerの<a class="external-link" href="https://xrpl.org/request-formatting.html" target="_blank">WebSocket API <i aria-hidden="true" class="fa fa-external-link"></i></a>にアクセスします。例えば、以下のようになります。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1">// Get info from the ledger about the address we just funded</span>
-  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"account_info"</span><span class="p">,</span>
-    <span class="s2">"account"</span><span class="o">:</span> <span class="nx">test_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
-  <span class="p">})</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1">// Get info from the ledger about the address we just funded</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"account_info"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"account"</span><span class="o">:</span><span class="w"> </span><span class="nx">test_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="5-イベントのlisten">5. イベントのListen<a aria-hidden="true" class="hover_anchor" href="#5-イベントのlisten"><i class="fa fa-link"></i></a></h3>
 <p>XRP Ledgerの<a href="intro-to-consensus.html">コンセンサス プロセス</a>が新しい<a href="ledgers.html">レジャーバージョン</a>を生成したときなど、<code>xrpl.js</code>ではさまざまなタイプのイベントのハンドラを設定することができます。そのためには、まず<a href="subscribe.html">subscribeメソッド</a>を呼び出して欲しいイベントの種類を取得し、クライアントの<code>on(eventType, callback)</code>メソッドを使ってイベントハンドラをアタッチします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="c1">// Listen to ledger close events</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-    <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"subscribe"</span><span class="p">,</span>
-    <span class="s2">"streams"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"ledger"</span><span class="p">]</span>
-  <span class="p">})</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"ledgerClosed"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">ledger</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ledger #</span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_index</span><span class="si">}</span><span class="sb"> validated with </span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">txn_count</span><span class="si">}</span><span class="sb"> transactions!`</span><span class="p">)</span>
-  <span class="p">})</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="c1">// Listen to ledger close events</span><span class="w"></span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"streams"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ledger"</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"ledgerClosed"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">ledger</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ledger #</span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_index</span><span class="si">}</span><span class="sb"> validated with </span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">txn_count</span><span class="si">}</span><span class="sb"> transactions!`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
 <h2 id="作り続けましょう">作り続けましょう<a aria-hidden="true" class="hover_anchor" href="#作り続けましょう"><i class="fa fa-link"></i></a></h2>
 <p>これで、<code>xrpl.js</code>を使って、XRP Ledgerに接続したり、ウォレットを生成したり、アカウントの情報を調べたりする方法がわかりました。
@@ -643,7 +639,19 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -875,13 +883,45 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_3">
       
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="true" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="true" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_1">
+    <nav class="nav flex-column show " id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -924,11 +964,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -941,11 +981,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -968,11 +1008,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1020,19 +1060,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_1" aria-expanded="false" aria-controls="tree_nav_group_3_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1065,11 +1105,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_2" aria-expanded="false" aria-controls="tree_nav_group_3_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1082,11 +1122,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_3" aria-expanded="false" aria-controls="tree_nav_group_3_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1128,14 +1168,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1165,11 +1210,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1192,19 +1237,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_1" aria-expanded="false" aria-controls="tree_nav_group_3_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1268,11 +1313,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_2" aria-expanded="false" aria-controls="tree_nav_group_3_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1335,11 +1380,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_3" aria-expanded="false" aria-controls="tree_nav_group_3_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1387,11 +1432,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_4" aria-expanded="false" aria-controls="tree_nav_group_3_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1414,11 +1459,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_5" aria-expanded="false" aria-controls="tree_nav_group_3_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -2592,12 +2637,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2663,6 +2713,7 @@
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
