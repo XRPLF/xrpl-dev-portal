@@ -183,6 +183,8 @@ targets:
             # Fix links from untranslated common-misconceptions-about-freezes.html
               # Not updated to have the table. The top-level of the page is pretty close.
             "currency-formats.html#comparison": "currency-formats.html"
+            # Fix links from untranslated NFToken tx refs to translated NFToken page
+            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
 
 
 pages:
