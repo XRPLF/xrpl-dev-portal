@@ -29,7 +29,7 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
 
 ### トランザクションの署名
 
-{% include '_snippets/tutorial-sign-step.md' %}
+{% include '_snippets/tutorial-sign-step.ja.md' %}
 <!--{#_ #}-->
 
 要求フィールドに以下の値を指定します。

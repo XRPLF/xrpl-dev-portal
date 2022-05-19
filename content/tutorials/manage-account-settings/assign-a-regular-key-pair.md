@@ -22,49 +22,24 @@ This tutorial walks through the steps required to assign a regular key pair to y
 
 ## 1. Generate a Key Pair
 
-Use the [wallet_propose method][] to generate the key pair that you'll assign to your account as a regular key pair.
+Generate a key pair that you'll assign to your account as a regular key pair.
 
-### Request Format
+This key pair is the same data type as a master key pair, so you can generate it the same way: you can use the client library of your choice or use the [wallet_propose method][] of a server you operate. This might look as follows:
 
-An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
 
-*WebSocket*
+_WebSocket_
 
 ```json
+// Request:
+
 {
   "command": "wallet_propose"
 }
-```
 
-*JSON-RPC*
+// Response:
 
-```json
-{
-  "method": "wallet_propose"
-}
-```
-
-*Commandline*
-
-```sh
-#Syntax: wallet_propose
-rippled wallet_propose
-```
-
-<!-- MULTICODE_BLOCK_END -->
-
-
-### Response Format
-
-An example of a successful response:
-
-<!-- MULTICODE_BLOCK_START -->
-
-*WebSocket*
-
-```json
 {
   "result": {
     "account_id": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
@@ -80,9 +55,17 @@ An example of a successful response:
 }
 ```
 
-*JSON-RPC*
+_JSON-RPC_
 
 ```json
+// Request:
+
+{
+  "method": "wallet_propose"
+}
+
+// Response:
+
 {
     "result": {
         "account_id": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
@@ -97,9 +80,11 @@ An example of a successful response:
 }
 ```
 
-*Commandline*
+_Commandline_
 
-```json
+```sh
+$ rippled wallet_propose
+
 {
    "result" : {
       "account_id" : "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
@@ -114,9 +99,34 @@ An example of a successful response:
 }
 ```
 
+_Python_
+
+```py
+keypair = xrpl.wallet.Wallet.create()
+print("seed:", keypair.seed)
+print("classic address:", keypair.classic_address)
+```
+
+_JavaScript_
+
+```js
+const keypair = new xrpl.Wallet()
+console.log("seed:", keypair.seed)
+console.log("classic address:", keypair.classicAddress)
+```
+
+_Java_
+
+```java
+WalletFactory walletFactory = DefaultWalletFactory.getInstance();
+Wallet keypair = walletFactory.randomWallet(true).wallet();
+System.out.println(keypair);
+System.out.println(keypair.privateKey().get());
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
-In the next step, you'll use the `account_id` from this response to assign the key pair as a regular key pair to your account. Also, save the `master_seed` value somewhere securely. (Everything else, you can forget about.)
+In the next step, you'll use the address from this response (`account_id` in the API response) to assign the key pair as a regular key pair to your account. Also, save the seed value from this key pair (`master_seed` in the API response) somewhere securely; you'll use that key to sign transactions later. (Everything else, you can forget about.)
 
 
 ## 2. Assign the Key Pair to Your Account as a Regular Key Pair
