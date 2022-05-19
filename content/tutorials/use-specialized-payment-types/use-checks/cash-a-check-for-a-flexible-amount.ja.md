@@ -60,7 +60,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ## {{cash_flex_n.next()}}.CheckCashトランザクションの署名
 
-{% include '_snippets/tutorial-sign-step.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### 要求の例
 
