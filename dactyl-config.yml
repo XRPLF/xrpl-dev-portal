@@ -4101,7 +4101,7 @@ pages:
             - en
 
     -   name: XRPL Jobs
-        html: http://jobs.xrpl.org/
+        html: https://jobs.xrpl.org/
         parent: contribute.html
         blurb: Discover Your Next Career Opportunity.
         targets:
