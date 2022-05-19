@@ -6,6 +6,7 @@ filters:
   - interactive_steps
   - include_code
 labels:
+  - Decentralized Exchange
   - Tokens
 ---
 # Trade in the Decentralized Exchange
@@ -21,6 +22,12 @@ This tutorial demonstrates how you can buy and sell tokens in the [decentralized
 This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
+
+## Example Code
+
+Complete sample code for all of the steps of this tutorial is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
+
+- See [Code Samples: Trade in the Decentralized Exchange](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/trade-in-the-decentralized-exchange/) in the source repository for this website.
 
 
 ## Steps
