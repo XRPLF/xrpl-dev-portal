@@ -14,9 +14,12 @@ labels:
 
 | 名前                            | 導入済み | ステータス                              |
 |:--------------------------------|:-----------|:------------------------------------|
-| [CheckCashMakesTrustLine][]     | v1.8.0     | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [ExpandedSignerList][]          | v1.9.1     | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixNFTokenDirV1][]             | v1.9.1     | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [NonFungibleTokensV1][]         | v1.9.0     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
+| [CheckCashMakesTrustLine][]     | v1.8.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
 | [NegativeUNL][]                 | v1.7.3     | [有効: 2021/11/21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
 | [fixRmSmallIncreasedQOffers][]  | v1.7.2     | [有効: 2021/11/18](https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7 "BADGE_GREEN") |
 | [TicketBatch][]                 | v1.7.0     | [有効: 2021/11/18](https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36 "BADGE_GREEN") |
@@ -185,6 +188,21 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 [SusPay](#suspay)および[CryptoConditions](#cryptoconditions) Amendmentを置き換えます。
 
 XRP Ledger内のEscrowにXRPの「停止された支払い」機能を提供します。これには[Interledger Protocol Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02)のサポートが含まれます。停止された支払い用のレジャーオブジェクトタイプと、停止された支払いを作成、実行、取り消すためのトランザクションタイプを新規作成します。
+
+
+## ExpandedSignerList
+[ExpandedSignerList]: #expandedsignerlist
+
+| Amendment ID                                                     | ステータス |
+|:-----------------------------------------------------------------|:---------|
+| B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 | 開発中 |
+
+<!-- TODO: translate description -->
+This amendment expands the maximum signer list size allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
+
+Without this amendment, the maximum signer list size is 8 signers, and each signer has exactly two fields, `Account` and `SignerWeight`.
+
+With this amendment, the maximum [SignerList object][] size is 32 entries. Additionally, each `SignerEntry` object can contain an optional 256-bit `WalletLocator` field containing arbitrary data. This amendment changes the [SignerListSet transaction][] accordingly.
 
 ## FeeEscalation
 [FeeEscalation]: #feeescalation
@@ -402,6 +420,19 @@ Checksトランザクションがアカウントのメタデータに影響を�
 
 この修正を有効にした場合、SetRegularKeyトランザクションはレギュラーキーがマスターキーに一致するよう設定できないため、そのようなトランザクションでは、トランザクションコードが`temBAD_REGKEY`になります。また、この修正により、署名検証コードが変更されるため、レギュラーキーがマスターキーに一致するよう_すでに_設定しているアカウントは、そのキーペアを使用して正常にトランザクションを送信できます。
 
+
+## fixNFTokenDirV1
+[fixNFTokenDirV1]: #fixnftokendirv1
+
+| Amendment ID                                                     | ステータス |
+|:-----------------------------------------------------------------|:---------|
+| 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 | 開発中 |
+
+<!-- TODO: translate description -->
+This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` an `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
+
+This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.
+
 ## fixPayChanRecipientOwnerDir
 [fixPayChanRecipientOwnerDir]: #fixpaychanrecipientownerdir
 
@@ -445,7 +476,7 @@ With this amendment, payments and trades can remove these types of Offers the sa
 ## fixSTAmountCanonicalize
 [fixSTAmountCanonicalize]: #fixstamountcanonicalize
 
-| Amendment ID                                                     | ステータス    |
+| Amendment ID                                                     | ステータス  |
 |:-----------------------------------------------------------------|:----------|
 | 452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB | 有効 |
 
@@ -572,7 +603,37 @@ XRP Ledgerアカウントが[マルチ署名](multi-signing.html) SignerListを�
 | B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 有効 |
 
 <!-- TODO: translate amendment description -->
-Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the liveness of the network during periods of network instability.
+Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
+
+
+## NonFungibleTokensV1
+[NonFungibleTokensV1]: #nonfungibletokensv1
+
+| Amendment ID                                                     | ステータス |
+|:-----------------------------------------------------------------|:---------|
+| 3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87 | 開発中 |
+
+<!-- TODO: translate description -->
+Adds native support for non-fungible tokens. Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
+
+**Warning:** There is a known issue with this amendment that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. The [fixNFTokenDirV1][] amendment fixes these issues and should be enabled first to avoid problems.
+
+This amendment adds 5 new transaction types:
+
+- [NFTokenAcceptOffer][]
+- [NFTokenBurn][]
+- [NFTokenCancelOffer][]
+- [NFTokenCreateOffer][]
+- [NFTokenMint][]
+
+It also adds 2 new ledger object types:
+
+- [NFTokenOffer object][]
+- [NFTokenPage object][]
+
+Additionally, it modifies the [AccountRoot object][] type to add 3 new optional fields: `MintedNFTokens`, `BurnedNFTokens`, and `NFTokenMinter`.
+
+It also modifies the [AccountSet transaction][] type to allow you to set the `NFTokenMinter` field.
 
 
 ## OwnerPaysFee
