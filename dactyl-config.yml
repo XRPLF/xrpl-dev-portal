@@ -2730,6 +2730,12 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_nfts.md
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.md
         targets:
             - en
@@ -2913,6 +2919,18 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.ja.md
         targets:
+            - ja
+
+        # TODO: translate
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/nft_buy_offers.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/nft_sell_offers.md
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md
