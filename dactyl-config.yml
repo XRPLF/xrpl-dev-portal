@@ -4259,6 +4259,8 @@ known_broken_links:
     - https://trezor.io/
     - https://www.lmax.com/
     - https://www.etoro.com/crypto/exchange/
+    - https://xrplnft.devpost.com/
+    - https://xrpl-hackathon-2021.devpost.com/project-gallery
     # This site often times out, but it does work and is the original.
     - https://theworld.com/~reinhold/diceware.html
 
