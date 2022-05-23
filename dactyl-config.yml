@@ -4100,6 +4100,14 @@ pages:
         targets:
             - en
 
+    -   name: XRPL Jobs
+        html: https://jobs.xrpl.org/
+        parent: contribute.html
+        blurb: Discover Your Next Career Opportunity.
+        targets:
+            - en
+            - ja
+
     -   name: Dev Blog
         html: https://xrpl.org/blog/
         parent: contribute.html
