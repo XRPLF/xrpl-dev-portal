@@ -6,7 +6,7 @@ labels:
   - Payment Channels
 ---
 # account_channels
-[[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
 _(Added by the [PayChan amendment][]. [New in: rippled 0.33.0][])_
 
@@ -23,8 +23,8 @@ An example of the request format:
 {
   "id": 1,
   "command": "account_channels",
-  "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-  "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
   "ledger_index": "validated"
 }
 ```
@@ -35,8 +35,8 @@ An example of the request format:
 {
     "method": "account_channels",
     "params": [{
-        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
         "ledger_index": "validated"
     }]
 }
@@ -46,8 +46,10 @@ An example of the request format:
 
 ```bash
 #Syntax: account_channels <account> [<destination_account>] [<ledger>]
-rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
+rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTKHSANinZseWnPcX validated
 ```
+
+[Try it! >](websocket-api-tool.html#account_channels)
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -72,29 +74,27 @@ An example of a successful response:
 
 ```json
 {
-  "id": 2,
-  "status": "success",
-  "type": "response",
+  "id": 1,
   "result": {
-    "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "channels": [
       {
-        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-        "amount": "100000000",
-        "balance": "1000000",
-        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "destination_tag": 20170428,
-        "expiration": 547073182,
-        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-        "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-        "settle_delay": 86400
+        "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "amount": "1000",
+        "balance": "0",
+        "channel_id": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "public_key": "aBR7mdD75Ycs8DRhMgQ4EMUEmBArF8SEh1hfjrT2V9DQTLNbJVqw",
+        "public_key_hex": "03CFD18E689434F032A4E84C63E2A3A6472D684EAF4FD52CA67742F3E24BAE81B2",
+        "settle_delay": 60
       }
     ],
-    "ledger_hash": "F168208EECDAA57DDAC32780CDD8330FA3E89F0E84D27A9052AA2F88681EBD08",
-    "ledger_index": 37230642,
+    "ledger_hash": "1EDBBA3C793863366DF5B31C2174B6B5E6DF6DB89A7212B86838489148E2A581",
+    "ledger_index": 71766314,
     "validated": true
-  }
+  },
+  "status": "success",
+  "type": "response"
 }
 ```
 
@@ -104,24 +104,25 @@ An example of a successful response:
 200 OK
 
 {
-    "result": {
-        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-        "channels": [{
-            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "amount": "100000000",
-            "balance": "0",
-            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "destination_tag": 20170428,
-            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-            "settle_delay": 86400
-        }],
-        "ledger_hash": "B9D3D80EDF4083A06B2D51202E0BFB63C46FC0985E015D06767C21A62853BF6D",
-        "ledger_index": 37230600,
-        "status": "success",
-        "validated": true
-    }
+  "result": {
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "channels": [
+      {
+        "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "amount": "1000",
+        "balance": "0",
+        "channel_id": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "public_key": "aBR7mdD75Ycs8DRhMgQ4EMUEmBArF8SEh1hfjrT2V9DQTLNbJVqw",
+        "public_key_hex": "03CFD18E689434F032A4E84C63E2A3A6472D684EAF4FD52CA67742F3E24BAE81B2",
+        "settle_delay": 60
+      }
+    ],
+    "ledger_hash": "27F530E5C93ED5C13994812787C1ED073C822BAEC7597964608F2C049C2ACD2D",
+    "ledger_index": 71766343,
+    "status": "success",
+    "validated": true
+  }
 }
 ```
 
@@ -131,24 +132,25 @@ An example of a successful response:
 200 OK
 
 {
-    "result": {
-        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-        "channels": [{
-            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "amount": "100000000",
-            "balance": "0",
-            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "destination_tag": 20170428,
-            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-            "settle_delay": 86400
-        }],
-        "ledger_hash": "B9D3D80EDF4083A06B2D51202E0BFB63C46FC0985E015D06767C21A62853BF6D",
-        "ledger_index": 37230600,
-        "status": "success",
-        "validated": true
-    }
+  "result": {
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "channels": [
+      {
+        "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "amount": "1000",
+        "balance": "0",
+        "channel_id": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "public_key": "aBR7mdD75Ycs8DRhMgQ4EMUEmBArF8SEh1hfjrT2V9DQTLNbJVqw",
+        "public_key_hex": "03CFD18E689434F032A4E84C63E2A3A6472D684EAF4FD52CA67742F3E24BAE81B2",
+        "settle_delay": 60
+      }
+    ],
+    "ledger_hash": "27F530E5C93ED5C13994812787C1ED073C822BAEC7597964608F2C049C2ACD2D",
+    "ledger_index": 71766343,
+    "status": "success",
+    "validated": true
+  }
 }
 ```
 
