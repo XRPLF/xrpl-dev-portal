@@ -142,9 +142,9 @@ An `NFTokenPage` object can have the following required and optional fields:
 
 `NFTokenPage` identifiers are constructed so as to specifically allow for the adoption of a more efficient paging structure, ideally suited for `NFTokens`.
 
-The identifier of an `NFTokenPage` is derived by concatenating the 160-bit `AccountID` of the owner of the page, followed by a 96 bit value that indicates whether a particular `TokenID` can be contained in this page.
+The identifier of an `NFTokenPage` is derived by concatenating the 160-bit `AccountID` of the owner of the page, followed by a 96 bit value that indicates whether a particular `NFTokenID` can be contained in this page.
 
-More specifically, and assuming that the function `low96(x)` returns the low 96 bits of a 256-bit value, an NFT with `TokenID` `A` can be included in a page with `NFTokenPageID` `B` if and only if `low96(A) >= low96(B)`.
+More specifically, and assuming that the function `low96(x)` returns the low 96 bits of a 256-bit value, an NFT with `NFTokenID` `A` can be included in a page with `NFTokenPageID` `B` if and only if `low96(A) >= low96(B)`.
 
 For example, applying the `low96` function to the NFT described before, which had an ID of `000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65` the function `low96` would return `42540EE208C3098E00000D65`.
 
@@ -153,7 +153,7 @@ This curious construct exploits the structure of the SHAMap to allow for efficie
 
 ### Searching for an `NFToken` object
 
-To search for a specific `NFToken`, compute the `NFTokenPageID` using the account of the owner and the `TokenID` of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an `NFTokenPage`, the `NFToken` is not held by the given account.
+To search for a specific `NFToken`, compute the `NFTokenPageID` using the account of the owner and the `NFTokenID` of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an `NFTokenPage`, the `NFToken` is not held by the given account.
 
 
 ### Adding an `NFToken` object
