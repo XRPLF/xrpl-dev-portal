@@ -388,6 +388,12 @@
 <td align="left">UInt16</td>
 <td align="left">この署名者による署名の重み。マルチ署名は、付与された署名の重みの合計がSignerListの<code>SignerQuorum</code>値を超えている場合にのみ有効となります。</td>
 </tr>
+<tr>
+<td align="left"><code>WalletLocator</code></td>
+<td align="left">文字列</td>
+<td align="left">Hash256</td>
+<td align="left">（省略可）Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. Requires the <a href="known-amendments.html#expandedsignerlist">ExpandedSignerList amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>. <!-- TODO: translate --></td>
+</tr>
 </tbody>
 </table>
 <p>マルチ署名済みトランザクションを処理する際に、サーバーはトランザクション実行時にレジャーに関する<code>Account</code>値を間接参照します。アドレスが資金供給のある<a href="accountroot.html">AccountRootオブジェクト</a>に対応して <em>いない</em> 場合、そのアドレスに関連付けられているマスターシークレットによってのみ有効な署名を生成できます。アカウントがレジャーに <em>確かに</em> 存在している場合は、アカウントの状態により異なります。アカウントにレギュラーキーが設定されている場合はレギュラーキーを使用できます。アカウントのマスターキーが無効化されていない場合に限り、アカウントのマスターキーを使用できます。マルチ署名を別のマルチ署名の一部として使用することはできません。</p>

@@ -310,7 +310,7 @@
 <td align="left"><code>SignerEntries</code></td>
 <td align="left">Array</td>
 <td align="left">Array</td>
-<td align="left">(Omitted when deleting) Array of <a href="signerlist.html#signer-entry-object"><code>SignerEntry</code> objects</a>, indicating the addresses and weights of signers in this list. This signer list must have at least 1 member and no more than 8 members. No address may appear more than once in the list, nor may the <code>Account</code> submitting the transaction appear in the list.</td>
+<td align="left">(Omitted when deleting) Array of <a href="signerlist.html#signer-entry-object"><code>SignerEntry</code> objects</a>, indicating the addresses and weights of signers in this list. This signer list must have at least 1 member and no more than 8 members. If the <a href="known-amendments.html#expandedsignerlist">ExpandedSignerList amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is enabled, the list can have up to 32 members. No address may appear more than once in the list, nor may the <code>Account</code> submitting the transaction appear in the list.</td>
 </tr>
 </tbody>
 </table>

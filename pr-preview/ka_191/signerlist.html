@@ -382,6 +382,12 @@
 <td align="left">UInt16</td>
 <td align="left">The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the signer list's <code>SignerQuorum</code> value.</td>
 </tr>
+<tr>
+<td align="left"><code>WalletLocator</code></td>
+<td align="left">String</td>
+<td align="left">Hash256</td>
+<td align="left"><em>(Optional)</em> Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. Requires the <a href="known-amendments.html#expandedsignerlist">ExpandedSignerList amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.</td>
+</tr>
 </tbody>
 </table>
 <p>When processing a multi-signed transaction, the server looks up the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="accountroot.html">AccountRoot object</a>, then only the <a href="cryptographic-keys.html">master private key</a> associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.</p>

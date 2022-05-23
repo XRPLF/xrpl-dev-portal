@@ -400,7 +400,7 @@
 <p>XRP Ledgerのアドレスは、<a href="base58-encodings.html">base58</a><em>形式のディクショナリ</em><code>rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz</code>を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイププレフィクス」（「バージョンプレフィクス」とも呼ばれます）を付けます。タイププレフィクスによりアドレスは通常、base58形式の異なる文字で始まります。</p>
 <p>次の図は、キーとアドレスの関係を示しています。</p>
 <p><a href="img/address-encoding.ja.png"><img alt="マスター公開鍵 + プレフィクスの種類 → アカウントID + チェックサム → アドレス" src="img/address-encoding.ja.png"/></a></p>
-<p>公開鍵からXRP Ledgerアドレスを計算する式は次のとおりです。コード例全体については、<a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/encode_address.js" target="_blank"><code>encode_address.js</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、<a href="cryptographic-keys.html#鍵導出">鍵の導出</a>を参照してください。</p>
+<p>公開鍵からXRP Ledgerアドレスを計算する式は次のとおりです。コード例全体については、<a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/js/encode_address.js" target="_blank"><code>encode_address.js</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、<a href="cryptographic-keys.html#鍵導出">鍵の導出</a>を参照してください。</p>
 <ol>
 <li>
 <p>次の必須アルゴリズムをインポートします。SHA-256、RIPEMD160、base58。base58のディクショナリーを設定します。</p>
