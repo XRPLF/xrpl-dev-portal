@@ -19,7 +19,7 @@ This example shows how to:
 2. Retrieve the accounts from seed values.
 3. Transfer XRP between accounts.
 
-When you create an account, you receive a public/private key pair offline. It does not appear on the ledger until it is funded with XRP. This example shows how to create an account for Testnet, but not how to create an account that you can use on Mainnet.
+When you create an account, you receive a public/private key pair offline. It does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.
 
 
 
@@ -47,7 +47,7 @@ To get test accounts:
 
 
 1. Open `1.get-accounts-send-xrp.html` in a browser
-2. Choose **Testnet** or **Devnet**.
+2. Choose **NFT-Devnet**, **Testnet**, or **Devnet**.
 3. Click **Get New Standby Account**.
 4. Click **Get New Operational Account.**
 5. Copy and paste the **Seeds** field in a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
@@ -56,22 +56,6 @@ To get test accounts:
 
 ![Standby and Operational Accounts](img/quickstart3.png)
 
-
-NOTE: The accounts in the test harness work on _Testnet_ and _Devnet_, but not on _NFT-Devnet_. To create accounts that can mint and trade NFTs:
-
-
-
-1. Visit the [XRP Testnet Faucet](https://xrpl.org/xrp-testnet-faucet.html) page.
-2. Click **Generate NFT-Devnet credentials**.
-3. Copy the account **Secret**.
-4. Paste the secret in a persistent location, such as a notepad, and press return.
-5. Click **Generate NFT-Devnet credentials** to create a second account.
-6. Copy the account **Secret**.
-7. Paste the secret in the persistent location.
-8. Copy both secrets, separated by a return.
-9. Paste them in the **Account** **Seeds** field.
-10. Click **Get Accounts from Seeds**.
-
 You can transfer XRP between your new accounts. Each account has its own fields and buttons.
 
 To transfer XRP between accounts:
@@ -79,7 +63,8 @@ To transfer XRP between accounts:
 
 
 1. Enter the **Amount** of XRP to send.
-2. Click **Send XRP>** to transfer XRP from the standby account to the operational account, or **&lt;Send XRP** to transfer XRP from the operational account to the standby account**.**
+2. Enter the **Destination** account (for example, copy and paste the Operational **Account Field** to the Standby **Destination** field).
+3. Click **Send XRP>** to transfer XRP from the standby account to the operational account, or **&lt;Send XRP** to transfer XRP from the operational account to the standby account**.**
 
 
 
@@ -95,7 +80,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## ripplex-1-send-xrp.js
 
-This example can be used with any XRP Ledger network. Currently, there are _Testnet_ and _Devnet,_ with the experimental _NFT-Devnet_ server with support for NFTs. You can update the code to choose different or additional XRP Ledger networks.
+This example can be used with any XRP Ledger network. Currently, there are _Testnet_ and _Devnet,_ with the experimental _NFT-Devnet_ server with support for NFTokens. You can update the code to choose different or additional XRP Ledger networks.
 
 
 ### getNet()
@@ -116,9 +101,9 @@ This function uses brute force `if` statements to discover the selected network 
 ```
         let net
           if (document.getElementById("xls").checked) net = "wss://xls20-sandbox.rippletest.net:51233"
-           if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233"
-           if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233"
-           return net
+          if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233"
+          if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233"
+          return net
         } // End of getNet()
 ```
 
@@ -243,7 +228,7 @@ Otherwise, populate the operational account fields.
 ```
 
 
-Insert the seed values for both accounts as they are created to the **Seeds** field as a convenience. You can copy the values and store them offline, then paste them into the **Seeds** field to retrieve the accounts with the `getAccountsFromSeeds()` function.
+Insert the seed values for both accounts as they are created to the **Seeds** field as a convenience. You can copy the values and store them offline. when you reload this form or another in this tutorial, copy and paste them into the **Seeds** field to retrieve the accounts with the `getAccountsFromSeeds()` function.
 
 
 ```
@@ -289,7 +274,7 @@ Connect to the selected network.
 ```
 
 
-Parse the **seeds** field.
+Parse the **Seeds** field.
 
 
 ```
@@ -396,7 +381,7 @@ Connect to your selected ledger.
 ```
 
 
-Prepare the transaction. This is a Payment transaction from the standby wallet to the operational wallet. You could add a **Destination** field to send to any account: this hardcoded example is for convenience in this tutorial. 
+Prepare the transaction. This is a Payment transaction from the standby wallet to the operational wallet.
 
 The _Payment_ transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the xrpToDrops utility to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).
 
@@ -406,7 +391,7 @@ The _Payment_ transaction expects the XRP to be expressed in drops, or 1/million
           "TransactionType": "Payment",
           "Account": standby_wallet.address,
           "Amount": xrpl.xrpToDrops(sendAmount),
-          "Destination": operational_wallet.address
+          "Destination": standbyDestinationField.value
         })
 
 
@@ -499,7 +484,7 @@ For each of the transactions, there is an accompanying reciprocal transaction, w
           "TransactionType": "Payment",
           "Account": operational_wallet.address,
           "Amount": xrpl.xrpToDrops(operationalAmountField.value),
-          "Destination": standby_wallet.address
+          "Destination": operationalDestinationField.value
         })
 
 
@@ -539,18 +524,24 @@ Create a standard HTML form to send transactions and requests, then display the 
 <html>
   <head>
     <title>Token Test Harness</title>
-    <script src='https://unpkg.com/xrpl@2.1.1'></script>
+    <script src='https://unpkg.com/xrpl@2.2.3'></script>
     <script src='ripplex1-send-xrp.js'></script>
     <script>
       if (typeof module !== "undefined") {
         const xrpl = require('xrpl')
       }
+
     </script>
   </head>
+  
+<!-- ************************************************************** -->
+<!-- ********************** The Form ****************************** -->
+<!-- ************************************************************** -->
+
   <body>
     <h1>Token Test Harness</h1>
     <form id="theForm">
-      Choose your network:  
+      Choose your ledger instance:  
       <input type="radio" id="xls" name="server"
         value="wss://xls20-sandbox.rippletest.net:51233" checked>
       <label for="xls20">XLS20-NFT</label>
@@ -627,6 +618,15 @@ Create a standard HTML form to send transactions and requests, then display the 
                       </td>
                       <td>
                         <input type="text" id="standbyAmountField" size="40" value="100"></input>
+                        <br>
+                      </td>
+                    </tr>
+                   <tr>
+                      <td align="right">
+                        Destination
+                      </td>
+                      <td>
+                        <input type="text" id="standbyDestinationField" size="40" value="100"></input>
                         <br>
                       </td>
                     </tr>
@@ -713,6 +713,15 @@ Create a standard HTML form to send transactions and requests, then display the 
                             </td>
                             <td>
                               <input type="text" id="operationalAmountField" size="40" value="100"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Destination
+                            </td>
+                            <td>
+                              <input type="text" id="operationalDestinationField" size="40" value="100"></input>
                               <br>
                             </td>
                           </tr>
