@@ -16,8 +16,8 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 |:--------------------------------|:-----------|:------------------------------|
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [ExpandedSignerList][]          | v1.9.1-rc1 | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixNFTokenDirV1][]             | v1.9.1-rc1 | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [ExpandedSignerList][]          | v1.9.1     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
+| [fixNFTokenDirV1][]             | v1.9.1     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1][]         | v1.9.0     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
 | [CheckCashMakesTrustLine][]     | v1.8.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
 | [NegativeUNL][]                 | v1.7.3     | [Enabled: 2021-11-21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
@@ -230,7 +230,7 @@ Provides "suspended payments" for XRP for escrow within the XRP Ledger, includin
 | Amendment | ExpandedSignerList |
 |:----------|:-----------|
 | Amendment ID | B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 |
-| Status | In Development |
+| Status | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -525,7 +525,7 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 | Amendment | fixNFTokenDirV1 |
 |:----------|:-----------|
 | Amendment ID | 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 |
-| Status | In Development |
+| Status | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 

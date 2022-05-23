@@ -16,8 +16,8 @@ labels:
 |:--------------------------------|:-----------|:------------------------------------|
 | [CryptoConditionsSuite][]       | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [ExpandedSignerList][]          | v1.9.1     | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [fixNFTokenDirV1][]             | v1.9.1     | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [ExpandedSignerList][]          | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
+| [fixNFTokenDirV1][]             | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1][]         | v1.9.0     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
 | [CheckCashMakesTrustLine][]     | v1.8.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
 | [NegativeUNL][]                 | v1.7.3     | [有効: 2021/11/21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
@@ -195,7 +195,7 @@ XRP Ledger内のEscrowにXRPの「停止された支払い」機能を提供し�
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 | 開発中 |
+| B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 | 投票中 |
 
 <!-- TODO: translate description -->
 This amendment expands the maximum signer list size allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
@@ -426,7 +426,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 | 開発中 |
+| 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 | 投票中 |
 
 <!-- TODO: translate description -->
 This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` an `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
