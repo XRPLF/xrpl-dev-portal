@@ -156,7 +156,7 @@ To cancel a buy or sell offer that you have created:
 
 
 
-# Code Walkthrough 
+# Code Walkthrough
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try each of the samples in your own browser.
 
@@ -208,7 +208,7 @@ Define the transaction. The _Flags_ value of 1 indicates that this transaction i
 
 Submit the transaction and wait for the results.
 
-        
+
 
 
 ```
@@ -216,7 +216,7 @@ Submit the transaction and wait for the results.
 ```
 
 
-      
+
 
 
 ```
@@ -266,9 +266,9 @@ Report the results of the transaction.
 
 
 ```
-        results += '\n\nTransaction result:\n' + 
+        results += '\n\nTransaction result:\n' +
           JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-        results += '\n\nBalance changes:\n' + 
+        results += '\n\nBalance changes:\n' +
           JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
 ```
 
@@ -277,9 +277,9 @@ Get the current XRP balances for the operational and standby accounts.
 
 
 ```
-        document.getElementById('operationalBalanceField').value = 
+        document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(operational_wallet.address))
-        document.getElementById('standbyBalanceField').value = 
+        document.getElementById('standbyBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
         document.getElementById('standbyResultField').value = results
 ```
@@ -395,13 +395,13 @@ Request the list of buy offers for the token.
 
 Report the results of the transaction.
 
-      
+
 
 
 ```
         results += "\n\nTransaction result:\n" +
           JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-        results += "\n\nBalance changes:\n" + 
+        results += "\n\nBalance changes:\n" +
           JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
         document.getElementById('standbyResultField').value = results
 ```
@@ -517,7 +517,7 @@ Report the transaction results.
 
         results += "\nTransaction result:\n" +
           JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-        results += "\nBalance changes:\n" + 
+        results += "\nBalance changes:\n" +
           JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
         document.getElementById('standbyResultField').value = results
 ```
@@ -680,9 +680,9 @@ Get the balances for both accounts.
 
 
 ```
-        document.getElementById('standbyBalanceField').value = 
+        document.getElementById('standbyBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
-        document.getElementById('operationalBalanceField').value = 
+        document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(operational_wallet.address))
 ```
 
@@ -781,7 +781,7 @@ Report the transaction result.
 
 
 ```
-        result += "\n\nTransaction result:\n" + 
+        result += "\n\nTransaction result:\n" +
             JSON.stringify(tx.result.meta.TransactionResult, null, 2)
         result += "\nBalance changes:\n" +
             JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
@@ -792,9 +792,9 @@ Request the XRP balance for both accounts.
 
 
 ```
-        document.getElementById('operationalBalanceField').value = 
+        document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(operational_wallet.address))
-        document.getElementById('standbyBalanceField').value = 
+        document.getElementById('standbyBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
         document.getElementById('standbyResultField').value = results
 ```
@@ -875,13 +875,13 @@ These functions duplicate the functions of the standby account for the operation
 
 
         // Check transaction results -------------------------------------------------
-        results += '\n\nTransaction result:\n' + 
+        results += '\n\nTransaction result:\n' +
           JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-        results += '\n\nBalance changes:\n' + 
+        results += '\n\nBalance changes:\n' +
           JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-        document.getElementById('operationalBalanceField').value = 
+        document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(operational_wallet.address))
-        document.getElementById('standbyBalanceField').value = 
+        document.getElementById('standbyBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
         document.getElementById('operationalResultField').value = results
 
@@ -902,7 +902,7 @@ These functions duplicate the functions of the standby account for the operation
         const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
           let net = getNet()
           const client = new xrpl.Client(net)
-          let results = 'Connecting to ' + net + '...' 
+          let results = 'Connecting to ' + net + '...'
           document.getElementById('operationalResultField').value = results
         await client.connect()
         results += '\nConnected. Creating buy offer...'
@@ -950,7 +950,7 @@ These functions duplicate the functions of the standby account for the operation
 
 
         // Check transaction results -------------------------------------------------
-        results +="\n\nTransaction result:\n" + 
+        results +="\n\nTransaction result:\n" +
           JSON.stringify(tx.result.meta.TransactionResult, null, 2)
         results += "\n\nBalance changes:\n" +
           JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
@@ -1017,7 +1017,7 @@ These functions duplicate the functions of the standby account for the operation
 
         results += "\nTransaction result:\n" +
           JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-        results += "\nBalance changes:\n" + 
+        results += "\nBalance changes:\n" +
           JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
         document.getElementById('operationalResultField').value = results
 
@@ -1101,7 +1101,7 @@ These functions duplicate the functions of the standby account for the operation
               "SellOffer": operationalTokenOfferIndexField.value,
         }
         // Submit transaction --------------------------------------------------------
-        const tx = await client.submitAndWait(transactionBlob,{wallet: operational_wallet}) 
+        const tx = await client.submitAndWait(transactionBlob,{wallet: operational_wallet})
         const nfts = await client.request({
         method: "account_nfts",
         account: operational_wallet.classicAddress  
@@ -1113,9 +1113,9 @@ These functions duplicate the functions of the standby account for the operation
 
 
 
-        document.getElementById('standbyBalanceField').value = 
+        document.getElementById('standbyBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
-        document.getElementById('operationalBalanceField').value = 
+        document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(operational_wallet.address))
 
 
@@ -1156,7 +1156,7 @@ These functions duplicate the functions of the standby account for the operation
               "BuyOffer": operationalTokenOfferIndexField.value
         }
         // Submit transaction --------------------------------------------------------
-        const tx = await client.submitAndWait(transactionBlob,{wallet: operational_wallet}) 
+        const tx = await client.submitAndWait(transactionBlob,{wallet: operational_wallet})
         const nfts = await client.request({
         method: "account_nfts",
         account: operational_wallet.classicAddress  
@@ -1165,13 +1165,13 @@ These functions duplicate the functions of the standby account for the operation
         document.getElementById('operationalResultField').value = results
 
         // Check transaction results -------------------------------------------------
-        result += "\n\nTransaction result:\n" + 
+        result += "\n\nTransaction result:\n" +
             JSON.stringify(tx.result.meta.TransactionResult, null, 2)
         result += "\nBalance changes:\n" +
             JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-        document.getElementById('operationalBalanceField').value = 
+        document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(operational_wallet.address))
-        document.getElementById('operationalBalanceField').value = 
+        document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
         document.getElementById('operationalResultField').value = results
         client.disconnect()
@@ -1512,3 +1512,8 @@ Update the form with fields and buttons to support the new functions.
 | Previous                                                 | Next  |
 | :---                                                     |  ---: |
 | [← 3. Mint and Burn NFTokens >](mint-and-burn-nftokens.html) |       |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
