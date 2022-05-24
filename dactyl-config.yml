@@ -185,6 +185,8 @@ targets:
             "currency-formats.html#comparison": "currency-formats.html"
             # Fix links from untranslated NFToken tx refs to translated NFToken page
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
+            "nftoken.html#taxon": "nftoken.html#分類群"
+            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
 
 
 pages:

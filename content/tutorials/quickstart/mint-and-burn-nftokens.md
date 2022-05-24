@@ -193,7 +193,7 @@ Report the results.
 ```
           results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
           results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
-          document.getElementById('standbyBalanceField').value = 
+          document.getElementById('standbyBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
           document.getElementById('operationalBalanceField').value = results    
 ```
@@ -268,7 +268,7 @@ Disconnect from the ledger.
 
 
 
-### Burn Token 
+### Burn Token
 
 
 ```
@@ -295,7 +295,7 @@ Connect to the ledger and get the account wallets.
 ```
 
 
-Define the transaction. 
+Define the transaction.
 
 
 ```
@@ -334,7 +334,7 @@ Report the results.
           results += '\nBalance changes: ' +
               JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
           document.getElementById('standbyResultField').value = results
-          document.getElementById('standbyBalanceField').value = 
+          document.getElementById('standbyBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
         results += '\nNFTs: \n' + JSON.stringify(nfts,null,2)
           document.getElementById('standbyResultField').value = results
@@ -366,7 +366,7 @@ Report the results.
           document.getElementById('operationalResultField').value = results
 
 
-        // Note that you must convert the token URL to a hexadecimal 
+        // Note that you must convert the token URL to a hexadecimal
         // value for this transaction.
         // ------------------------------------------------------------------------
         const transactionBlob = {
@@ -378,7 +378,7 @@ Report the results.
         }
 
 
-        // ------------------- Submit transaction and wait for results 
+        // ------------------- Submit transaction and wait for results
         const tx = await client.submitAndWait(transactionBlob, { wallet: operational_wallet} )
         const nfts = await client.request({
           method: "account_nfts",
@@ -389,7 +389,7 @@ Report the results.
         // ------------------------------------------------------- Report results
           results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
           results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
-          document.getElementById('operationalBalanceField').value = 
+          document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(operational_wallet.address))
           document.getElementById('operationalResultField').value = results    
 
@@ -457,7 +457,7 @@ Report the results.
           results += '\nBalance changes: ' +
               JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
           document.getElementById('operationalResultField').value = results
-          document.getElementById('operationalBalanceField').value = 
+          document.getElementById('operationalBalanceField').value =
           (await client.getXrpBalance(operational_wallet.address))
         results += '\nNFTs: \n' + JSON.stringify(nfts,null,2)
           document.getElementById('operationalResultField').value = results
@@ -777,3 +777,8 @@ Bold text in the following indicates changes to the form that support the new fu
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
 | [← 2. Create TrustLine and Send Currency >](create-trustline-send-currency.html) | [4. Transfer NFTokens → >](transfer-nftokens.html) |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

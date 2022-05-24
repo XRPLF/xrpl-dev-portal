@@ -1,19 +1,22 @@
 ---
 html: nft_buy_offers.html
-parent: nft-methods.html
+parent: path-and-order-book-methods.html
 blurb: Get a list of all buy offers for a NFToken.
 labels:
   - Non-fungible Tokens, NFTs, NFTokens
+status: not_enabled
 ---
 # nft_buy_offers
 [[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/rpc/handlers/NFTOffers.cpp "Source")
 
-The `nft_buy_offers` method returns a list of buy offers for a `NFToken` object.
+The `nft_buy_offers` method returns a list of buy offers for a given [NFToken][] object.
 
 {% include '_snippets/nfts-disclaimer.md' %}
 
 ## Request Format
 An example of the request format:
+
+{% include '_snippets/no-cli-syntax.md' %}
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -41,7 +44,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#nft_sell_offers)
+[Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Fxls20-sandbox.rippletest.net%3A51233%2F#nft_buy_offers)
 
 The request includes the following parameters:
 
