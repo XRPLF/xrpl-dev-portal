@@ -44,7 +44,7 @@ Although XRPL was initially developed for payment use cases, both the ledger and
 
 All nodes ensure that transactions meet protocol requirements, and are therefore “valid.” The service that validators uniquely provide is administratively grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending. <!-- STYLE_OVERRIDE: therefore -->
 
-See [Consensus](consensus.html) and the [Ripple Labs Tech Talk: Understanding Consensus](https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/) for more information about the consensus process.
+See [Consensus](consensus.html) for more information about the consensus process.
 
 
 #### How much does it cost to run a validator?
