@@ -230,6 +230,12 @@ Get the standby and operational wallets.
         const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
         const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
 ```
+Capture the currency code from the standby currency field.
+
+```
+        const currency_code = standbyCurrencyField.value
+
+```
 
 
 Define the transaction, capturing the currency code and (limit) amount from the form fields.
@@ -542,7 +548,8 @@ For each of the transactions, there is an accompanying reciprocal transaction, w
         document.getElementById('operationalResultField').value = results
         const ts_result = await client.submitAndWait(ts_signed.tx_blob)
         if (ts_result.result.meta.TransactionResult == "tesSUCCESS") {
-          results += '\nTrustline established between account \n' + standby_wallet.address + ' \n and account\n' + operationalDestinationField.value + '.'
+          results += '\nTrustline established between account \n' + standby_wallet.address + ' \n and account\n' +
+            operationalDestinationField.value + '.'
           document.getElementById('operationalResultField').value = results
         } else {
           results += '\nTrustLine failed. See JavaScript console for details.'
@@ -585,7 +592,7 @@ For each of the transactions, there is an accompanying reciprocal transaction, w
             "value": issue_quantity,
             "issuer": operational_wallet.address
           },
-          "Destination": operationalDestination.value
+          "Destination": operationalDestinationField.value
         }
 
 
@@ -606,9 +613,8 @@ For each of the transactions, there is an accompanying reciprocal transaction, w
               (await client.getXrpBalance(standby_wallet.address))
         document.getElementById('operationalBalanceField').value = 
               (await client.getXrpBalance(operational_wallet.address))
-        client.disconnect()
         getBalances()
-
+        client.disconnect()
 
       } // end of oPsendCurrency()
 ```
@@ -849,7 +855,7 @@ Update the form to support the new functions.
                               Destination
                             </td>
                             <td>
-                              <input type="text" id="operationalDestinationField" size="40" value="100"></input>
+                              <input type="text" id="operationalDestinationField" size="40"></input>
                               <br>
                             </td>
                           </tr>
