@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -142,6 +142,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -176,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -234,10 +236,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenburn">NFTokenBurn</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenburn-json">Example NFTokenBurn JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenburn-fields">NFTokenBurn Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#account-root-enhancements">Account Root Enhancements</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenminter">NFTokenMinter</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#mintednftokens">MintedNFTokens</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#burnednftokens">BurnedNFTokens</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
       </aside>
@@ -259,129 +258,69 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="nftokenburn">NFTokenBurn<a aria-hidden="true" class="hover_anchor" href="#nftokenburn"><i class="fa fa-link"></i></a></h1>
-<p><em>The XLS-20 standard for NFTs <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> has a preliminary implementation that can be used in test networks, but is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release.</em></p>
+<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
 <p>The <code>NFTokenBurn</code> transaction is used to remove a <code>NFToken</code> object from the <code>NFTokenPage</code> in which it is being held, effectively removing the token from the ledger (<em>burning</em> it).</p>
+<p>The sender of this transaction must be the owner of the <code>NFToken</code> to burn; or, if the <code>NFToken</code> has the <code>lsfBurnable</code> flag enabled, can be the issuer or the issuer's authorized <code>NFTokenMinter</code> account instead.</p>
 <p>If this operation succeeds, the corresponding <code>NFToken</code> is removed. If this operation empties the <code>NFTokenPage</code> holding the <code>NFToken</code> or results in consolidation, thus removing a <code>NFTokenPage</code>, the owner’s reserve requirement is reduced by one.</p>
 <h2 id="example-nftokenburn-json">Example NFTokenBurn JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenburn-json"><i class="fa fa-link"></i></a></h2>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
-      "TransactionType": "NFTokenBurn",
-      "Account": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
-      "Owner": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      "Fee": 10,
-      "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
-}
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenBurn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"NFTokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="nftokenburn-fields">NFTokenBurn Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenburn-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a NFTokenBurn transaction uses the following fields:</p>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Field Name</strong>
-</td>
-<td><strong>Required?</strong>
-</td>
-<td><strong>JSON Type</strong>
-</td>
-<td><strong>Internal Type</strong>
-</td>
-<td><strong>Description</strong>
-</td>
+<th align="left">Field</th>
+<th align="left">JSON Type</th>
+<th align="left"><a href="serialization.html">Internal Type</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>NFTokenID</code></td>
+<td align="left">String</td>
+<td align="left">Hash256</td>
+<td align="left">The <code>NFToken</code> to be removed by this transaction.</td>
 </tr>
 <tr>
-<td><code>TransactionType</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>UInt16
-   </td>
-<td>The <code>NFTokenBurn</code> transaction type.  The integer value is <code>26</code>.
-   </td>
+<td align="left"><code>Owner</code></td>
+<td align="left">String</td>
+<td align="left">AccountID</td>
+<td align="left"><em>(Optional)</em> The owner of the <code>NFToken</code> to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the <code>lsfBurnable</code> flag enabled.</td>
 </tr>
-<tr>
-<td><code>Account</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>AccountID
-   </td>
-<td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>NFTokenMinter</code>).
-   </td>
-</tr>
-<tr>
-<td><code>Owner</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>AccountID
-   </td>
-<td>The account that owns the NFToken to be destroyed. This field is required when an issuer burns a NFToken minted using the `tfBurnable` flag that is owned by another account.
-   </td>
-</tr>
-<tr>
-<td><code>NFTokenID</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>Hash256
-   </td>
-<td>Identifies the <code>NFToken</code> object to be removed by the transaction.
-   </td>
-</tr>
-<tr>
-<td><code>Owner</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>AccountID
-   </td>
-<td>Identifies the owner of the NFToken with the given TokenID. Only used if that owner is different than the account signing this transaction. This is used to burn tokens with the lsfBurnable flag that have been traded.
-   </td>
-</tr>
+</tbody>
 </table>
-<h2 id="account-root-enhancements">Account Root Enhancements<a aria-hidden="true" class="hover_anchor" href="#account-root-enhancements"><i class="fa fa-link"></i></a></h2>
-<h3 id="nftokenminter">NFTokenMinter<a aria-hidden="true" class="hover_anchor" href="#nftokenminter"><i class="fa fa-link"></i></a></h3>
-<p>Issuers might want to issue NFTs from their well known account, while at the same time wanting to delegate the issuance of such NFTs to a mint or other third party.</p>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
+<p>In addition to errors that can occur for all transactions, NFTokenBurn transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Field Name</strong>
-</td>
-<td><strong>Required?</strong>
-</td>
-<td><strong>JSON Type</strong>
-</td>
-<td><strong>Internal Type</strong>
-</td>
-<td><strong>Description</strong>
-</td>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>temDISABLED</code></td>
+<td align="left">The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> is not enabled.</td>
 </tr>
 <tr>
-<td><code>NFTokenMinter</code>
-</td>
-<td>
-</td>
-<td>string
-   </td>
-<td>AccountID
-   </td>
-<td>The <code>NFTokenMinter</code> field, if set, specifies an alternate account that is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
-   </td>
+<td align="left"><code>tecNO_ENTRY</code></td>
+<td align="left">The specified <code>TokenID</code> was not found.</td>
 </tr>
+<tr>
+<td align="left"><code>tecNO_PERMISSION</code></td>
+<td align="left">The account does not have permission to burn the token.</td>
+</tr>
+</tbody>
 </table>
-<p>The <code>SetAccount</code> transaction allows the <code>NFTokenMinter</code> field to be set or cleared.</p>
-<h3 id="mintednftokens">MintedNFTokens<a aria-hidden="true" class="hover_anchor" href="#mintednftokens"><i class="fa fa-link"></i></a></h3>
-<p>The <code>MintedNFTokens</code> field is used to form the <code>NFTokenID</code> of a new object, to ensure the uniqueness of <code>NFToken</code> objects. If this field is not present, the value is 0.</p>
-<h3 id="burnednftokens">BurnedNFTokens<a aria-hidden="true" class="hover_anchor" href="#burnednftokens"><i class="fa fa-link"></i></a></h3>
-<p>The <code>BurnedNFTokens</code> field provides a convenient way to determine how many <code>NFToken</code> objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.</p>
-<p>An account for which the difference in the number of minted and burned tokens, as stored in the <code>MintedNFTokens</code> and <code>BurnedNFTokens</code> fields respectively, is non-zero cannot be deleted.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1989,6 +1928,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
   </div>
 
@@ -2106,6 +2050,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2599,12 +2553,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2670,6 +2629,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -2680,6 +2640,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

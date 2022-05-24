@@ -271,6 +271,7 @@ https://xrpl.org/account_channels.html
 https://xrpl.org/account_currencies.html
 https://xrpl.org/account_info.html
 https://xrpl.org/account_lines.html
+https://xrpl.org/account_nfts.html
 https://xrpl.org/account_objects.html
 https://xrpl.org/account_offers.html
 https://xrpl.org/account_tx.html
@@ -291,6 +292,8 @@ https://xrpl.org/tx_history.html
 https://xrpl.org/path-and-order-book-methods.html
 https://xrpl.org/book_offers.html
 https://xrpl.org/deposit_authorized.html
+https://xrpl.org/nft_buy_offers.html
+https://xrpl.org/nft_sell_offers.html
 https://xrpl.org/path_find.html
 https://xrpl.org/ripple_path_find.html
 https://xrpl.org/payment-channel-methods.html
@@ -375,6 +378,7 @@ https://xrpl.org/run-a-rippled-validator.html
 https://xrpl.org/list-xrp-in-your-exchange.html
 https://xrpl.org/contribute-code-to-rippled.html
 https://xrpl.org/contribute-code-to-ripple-lib.html
+https://xrpl.org/code-samples.html
 https://xrpl.org/dev-tools.html
 https://xrpl.org/dev-tools-dev-tools.html
 https://xrpl.org/xrp-ledger-rpc-tool.html

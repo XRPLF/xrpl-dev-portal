@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -146,6 +146,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -182,6 +183,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -369,8 +371,8 @@
 </code></pre></div></div>
 </div>
 <h2 id="2checkcancelトランザクションの署名">2.CheckCancelトランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#2checkcancelトランザクションの署名"><i class="fa fa-link"></i></a></h2>
-<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
-<p>In all cases, note the signed transaction's identifying hash for later. <!--#{ fix md highlighting_ #}--></p>
+<p>トランザクションに署名する最も安全な方法は、<a href="client-libraries.html">クライアントライブラリ</a>を使用してローカルで署名することです。<a href="sign.html">signメソッド</a>を使用してトランザクションに署名することもできますが、その場合は信頼できる暗号化された接続を使用するか、ローカル接続を使用して、自分が管理しているサーバーに対してのみに行うようにしてください。</p>
+<p>いずれの場合も、後のために、署名したトランザクションの識別用ハッシュを書き留めておいてください。 <!--#{ fix md highlighting_ #}--></p>
 <h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-1-0">ripple-lib 1.x</a></li><li><a class="コマンドライン" href="#code-1-1">コマンドライン</a></li></ul>
 
@@ -2252,6 +2254,11 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_objects.html">account_objects</a>
   </div>
 
@@ -2369,6 +2376,16 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2862,12 +2879,17 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2933,6 +2955,7 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
@@ -2942,6 +2965,7 @@ tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

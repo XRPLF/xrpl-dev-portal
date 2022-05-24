@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -146,6 +146,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -182,6 +183,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -244,6 +246,8 @@
         <li class="nav-item level-3"><a class="nav-link" href="#direct-mode">Direct Mode</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#brokered-mode">Brokered Mode</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fields">Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenacceptoffer-fields">NFTokenAcceptOffer Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
       </aside>
@@ -268,7 +272,7 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nftokenacceptoffer">NFTokenAcceptOffer<a aria-hidden="true" class="hover_anchor" href="#nftokenacceptoffer"><i class="fa fa-link"></i></a></h1>
-<p><em>The XLS-20 standard for NFTs <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> has a preliminary implementation that can be used in test networks, but is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release.</em></p>
+<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
 <p>The <code>NFTokenAcceptOffer</code> transaction is used to accept offers to <code>buy</code> or <code>sell</code> an <code>NFToken</code>. It can either:</p>
 <ul>
 <li>Allow one offer to be accepted. This is called <em>direct</em> mode.</li>
@@ -329,6 +333,8 @@
 <li>Either offer (<code>buy</code> or <code>sell</code>) specifies an <code>expiration</code> time and the close time field of the parent of the ledger in which the transaction would be included has already passed.</li>
 </ul>
 <h2 id="fields">Fields<a aria-hidden="true" class="hover_anchor" href="#fields"><i class="fa fa-link"></i></a></h2>
+<h2 id="nftokenacceptoffer-fields">NFTokenAcceptOffer Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenacceptoffer-fields"><i class="fa fa-link"></i></a></h2>
+<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a NFTokenAcceptOffer transaction uses the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -339,12 +345,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td align="left"><code>TransactionType</code></td>
-<td align="left">String</td>
-<td align="left">UInt16</td>
-<td align="left">Transaction type <code>NFTokenAcceptOffer</code>. The integer identifier is 29.</td>
-</tr>
 <tr>
 <td align="left"><code>NFTokenSellOffer</code></td>
 <td align="left">String</td>
@@ -361,14 +361,66 @@
 <td align="left"><code>NFTokenBrokerFee</code></td>
 <td align="left"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
 <td align="left">Amount</td>
-<td align="left"><em>(Optional)</em> This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought. If specified, the fee must be such that, prior to accounting for the transfer fee charged by the issuer, the amount that the seller would receive is at least as much as the amount indicated in the sell offer.</td>
+<td align="left"><em>(Optional)</em> This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the <code>NFToken</code> being bought. If specified, the fee must be such that, prior to accounting for the transfer fee charged by the issuer, the amount that the seller would receive is at least as much as the amount indicated in the sell offer.</td>
 </tr>
 </tbody>
 </table>
-<p>In direct mode, you must specify <strong>either</strong> the <code>NFTokenSellOffer</code> or the <code>NFTokenBuyOffer</code>. In brokered mode, you must specify <strong>both</strong> the <code>NFTokenSellOffer</code> and the <code>NFTokenBuyOffer</code>.</p>
-<p>This functionality is intended to allow the <code>owner</code> of a <code>NFToken</code> to offer their token for sale to a third party broker, who may then attempt to sell the <code>NFToken</code> on for a larger amount, without the broker having to own the <code>NFToken</code> or custody funds.</p>
+<p>In direct mode, you must specify <strong>either</strong> the <code>NFTokenSellOffer</code> or the <code>NFTokenBuyOffer</code> field. In brokered mode, you must specify <strong>both</strong> fields.</p>
+<p>This functionality is intended to allow the owner of an <code>NFToken</code> to offer their token for sale to a third party broker, who may then attempt to sell the <code>NFToken</code> on for a larger amount, without the broker having to own the <code>NFToken</code> or custody funds.</p>
 <p>If both offers are for the same asset, it is possible that the order in which funds are transferred might cause a transaction that would succeed to fail due to an apparent lack of funds. To ensure deterministic transaction execution and maximize the chances of successful execution, the account attempting to buy the <code>NFToken</code> is debited first. Funds due to the broker are credited <em>before</em> crediting the seller.</p>
-<p>In brokered mode, The offers referenced by <code>NFTokenBuyOffer</code> and <code>NFTokenSellOffer</code> must both specify the same <code>NFTokenID</code>; that is, both must be for the same <code>NFToken</code>.</p>
+<p>In brokered mode, the offers referenced by <code>NFTokenBuyOffer</code> and <code>NFTokenSellOffer</code> must both specify the same <code>NFTokenID</code>; that is, both must be for the same <code>NFToken</code>.</p>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
+<p>In addition to errors that can occur for all transactions, NFTokenAcceptOffer transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>temDISABLED</code></td>
+<td align="left">The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> is not enabled.</td>
+</tr>
+<tr>
+<td align="left"><code>temMALFORMED</code></td>
+<td align="left">The transaction was not validly formatted. For example, it specified neither <code>NFTokenSellOffer</code> nor <code>NFTokenBuyOffer</code>, or it specified a negative <code>NFTokenBrokerFee</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>tecCANT_ACCEPT_OWN_NFTOKEN_OFFER</code></td>
+<td align="left">The buyer and seller are the same account.</td>
+</tr>
+<tr>
+<td align="left"><code>tecEXPIRED</code></td>
+<td align="left">An offer specified in the transaction has already expired.</td>
+</tr>
+<tr>
+<td align="left"><code>tecINSUFFICIENT_FUNDS</code></td>
+<td align="left">The buyer does not have the full amount they are offering. If the buy amount is specified in XRP, this could be because of the <a href="reserves.html">reserve requirement</a>. If the buy amount is a token, it could be because the token is <a href="freezes.html">frozen</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>tecINSUFFICIENT_PAYMENT</code></td>
+<td align="left">In brokered mode, the buy amount offered is not high enough to pay the <code>BrokerFee</code> <em>and</em> the sell cost of the <code>NFToken</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>tecOBJECT_NOT_FOUND</code></td>
+<td align="left">One of the offers specified in the transaction does not exist in the ledger.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNFTOKEN_BUY_SELL_MISMATCH</code></td>
+<td align="left">In brokered mode, the two offers are not a valid match. For example, the seller is asking more than the buyer is offering, the buy and sell offer are denominated in different assets, or the seller specified a destination that is not the buyer or the broker.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNFTOKEN_OFFER_TYPE_MISMATCH</code></td>
+<td align="left">The object identified by the <code>NFTokenBuyOffer</code> is not actually a buy offer, or the object identified by the <code>NFTokenSellOffer</code> is not actually a sell offer.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_PERMISSION</code></td>
+<td align="left">The seller does not own the <code>NFToken</code> being sold; or the matching offer specifies a different <code>Destination</code> account than the account accepting the offer.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1981,6 +2033,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_objects.html">account_objects</a>
   </div>
 
@@ -2098,6 +2155,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2591,12 +2658,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2662,6 +2734,7 @@
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
@@ -2671,6 +2744,7 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

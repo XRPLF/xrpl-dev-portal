@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -146,6 +146,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -182,6 +183,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -267,7 +269,7 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nftokenoffer">NFTokenOffer<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer"><i class="fa fa-link"></i></a></h1>
-<p><em>The XLS-20 standard for NFTs <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> has a preliminary implementation that can be used in test networks, but is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release.</em></p>
+<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
 <p>Tokens that have the <code>lsfTransferable</code> flag set can be transferred among participants using offers. The <code>NFTokenOffer</code> object represents an offer to buy, sell or transfer an <code>NFToken</code> object. The owner of a <code>NFToken</code> can use <code>NFTokenCreateOffer</code> to start a transaction.</p>
 <h3 id="nftokenofferid-format"><code>NFTokenOfferID</code> Format<a aria-hidden="true" class="hover_anchor" href="#nftokenofferid-format"><i class="fa fa-link"></i></a></h3>
 <p>The unique ID (<code>NFTokenOfferID</code>) of the <code>NFTokenOffer</code> object is the result of the following values concatenated in order:</p>
@@ -2083,6 +2085,11 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_objects.html">account_objects</a>
   </div>
 
@@ -2200,6 +2207,16 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2693,12 +2710,17 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2764,6 +2786,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
@@ -2773,6 +2796,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

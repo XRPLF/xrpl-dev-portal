@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -142,6 +142,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -176,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -271,7 +273,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="3-mint-and-burn-nftokens">3. Mint and Burn NFTokens<a aria-hidden="true" class="hover_anchor" href="#3-mint-and-burn-nftokens"><i class="fa fa-link"></i></a></h1>
-<p><em>The XLS-20 standard for NFTs <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> has a preliminary implementation that can be used in test networks, but is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release.</em></p>
+<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
 <p>This example shows how to:</p>
 <ol>
 <li>Mint new Non-fungible Tokens (NFTokens).</li>
@@ -280,7 +282,7 @@
 </ol>
 <p><img alt="Test harness with mint NFToken fields" src="img/quickstart13.png"/></p>
 <h1 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h1>
-<p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try the sample in your own browser.</p>
+<p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try the sample in your own browser.</p>
 <h2 id="get-accounts">Get Accounts<a aria-hidden="true" class="hover_anchor" href="#get-accounts"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>Open <code>3.mint-nfts.html</code> in a browser.</li>
@@ -327,7 +329,7 @@
 </ol>
 <p><img alt="Burn NFTokens" src="img/quickstart17.png"/></p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
-<p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to examine the code samples.</p>
+<p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to examine the code samples.</p>
 <h2 id="ripplex3-mint-nftsjs">ripplex3-mint-nfts.js<a aria-hidden="true" class="hover_anchor" href="#ripplex3-mint-nftsjs"><i class="fa fa-link"></i></a></h2>
 <h3 id="mint-token">Mint Token<a aria-hidden="true" class="hover_anchor" href="#mint-token"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">// *******************************************************
@@ -371,7 +373,7 @@
 <p>Report the results.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">          results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
           results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
-          document.getElementById('standbyBalanceField').value = 
+          document.getElementById('standbyBalanceField').value =
           (await client.getXrpBalance(standby_wallet.address))
           document.getElementById('operationalBalanceField').value = results    
 </code></pre></div>
@@ -427,7 +429,7 @@
 <span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'</span><span class="se">\n</span><span class="s1">Connected. Burning NFToken...'</span><span class="w"></span>
 <span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
 </code></pre></div>
-<p>Define the transaction. </p>
+<p>Define the transaction.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">transactionBlob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="s2">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenBurn"</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="s2">"Account"</span><span class="p">:</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">classicAddress</span><span class="p">,</span><span class="w"></span>
@@ -448,7 +450,7 @@
           <span class="nv">results</span> <span class="o">+=</span> <span class="s1">'</span><span class="se">\n</span><span class="s">Balance changes: </span><span class="s1">'</span> <span class="o">+</span>
               <span class="nv">JSON</span>.<span class="nv">stringify</span><span class="ss">(</span><span class="nv">xrpl</span>.<span class="nv">getBalanceChanges</span><span class="ss">(</span><span class="nv">tx</span>.<span class="nb">result</span>.<span class="nv">meta</span><span class="ss">)</span>, <span class="nv">null</span>, <span class="mi">2</span><span class="ss">)</span>
           <span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'</span><span class="s">standbyResultField</span><span class="s1">'</span><span class="ss">)</span>.<span class="nv">value</span> <span class="o">=</span> <span class="nv">results</span>
-          <span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'</span><span class="s">standbyBalanceField</span><span class="s1">'</span><span class="ss">)</span>.<span class="nv">value</span> <span class="o">=</span> 
+          <span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'</span><span class="s">standbyBalanceField</span><span class="s1">'</span><span class="ss">)</span>.<span class="nv">value</span> <span class="o">=</span>
           <span class="ss">(</span><span class="nv">await</span> <span class="nv">client</span>.<span class="nv">getXrpBalance</span><span class="ss">(</span><span class="nv">standby_wallet</span>.<span class="nv">address</span><span class="ss">))</span>
         <span class="nv">results</span> <span class="o">+=</span> <span class="s1">'</span><span class="se">\n</span><span class="s">NFTs: </span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="nv">JSON</span>.<span class="nv">stringify</span><span class="ss">(</span><span class="nv">nfts</span>,<span class="nv">null</span>,<span class="mi">2</span><span class="ss">)</span>
           <span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'</span><span class="s">standbyResultField</span><span class="s1">'</span><span class="ss">)</span>.<span class="nv">value</span> <span class="o">=</span> <span class="nv">results</span>
@@ -474,7 +476,7 @@
 <span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
 
 
-<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">Note</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="nb">convert</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="n">URL</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">hexadecimal</span><span class="w"> </span>
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">Note</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="nb">convert</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="n">URL</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">hexadecimal</span><span class="w"></span>
 <span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">transaction</span><span class="o">.</span><span class="w"></span>
 <span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="o">------------------------------------------------------------------------</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">transactionBlob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -486,7 +488,7 @@
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 
 
-<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="o">-------------------</span><span class="w"> </span><span class="n">Submit</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">results</span><span class="w"> </span>
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="o">-------------------</span><span class="w"> </span><span class="n">Submit</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">submitAndWait</span><span class="p">(</span><span class="n">transactionBlob</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">wallet</span><span class="p">:</span><span class="w"> </span><span class="n">operational_wallet</span><span class="p">}</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">nfts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">({</span><span class="w"></span>
 <span class="w">          </span><span class="n">method</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_nfts"</span><span class="p">,</span><span class="w"></span>
@@ -497,7 +499,7 @@
 <span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="o">-------------------------------------------------------</span><span class="w"> </span><span class="n">Report</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
 <span class="w">          </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Transaction result: '</span><span class="o">+</span><span class="w"> </span><span class="n">tx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">TransactionResult</span><span class="w"></span>
 <span class="w">          </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">nfts: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">nfts</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
-<span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalBalanceField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalBalanceField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">          </span><span class="p">(</span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">getXrpBalance</span><span class="p">(</span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">))</span><span class="w"></span>
 <span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w">    </span>
 
@@ -565,7 +567,7 @@
 <span class="w">          </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'</span><span class="se">\n</span><span class="s1">Balance changes: '</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
 <span class="w">              </span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">xrpl</span><span class="o">.</span><span class="n">getBalanceChanges</span><span class="p">(</span><span class="n">tx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">meta</span><span class="p">),</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
 <span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
-<span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalBalanceField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalBalanceField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">          </span><span class="p">(</span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">getXrpBalance</span><span class="p">(</span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">))</span><span class="w"></span>
 <span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'</span><span class="se">\n</span><span class="s1">NFTs: </span><span class="se">\n</span><span class="s1">'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">nfts</span><span class="p">,</span><span class="nb nb-Type">null</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
 <span class="w">          </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
@@ -886,6 +888,13 @@
 </tr>
 </tbody>
 </table>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -2486,6 +2495,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
   </div>
 
@@ -2603,6 +2617,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -3096,12 +3120,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -3167,6 +3196,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -3177,6 +3207,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

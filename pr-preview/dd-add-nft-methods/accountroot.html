@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -142,6 +142,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -176,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -347,6 +349,12 @@
 <td align="left"><em>(Optional)</em> The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code> transaction field</a>. To enable it, send an <a href="accountset.html#accountset-flags">AccountSet transaction with the <code>asfAccountTxnID</code> flag enabled</a>.</td>
 </tr>
 <tr>
+<td align="left"><code>BurnedNFTokens</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left"><em>(Optional)</em> How many total of this account's issued <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> have been burned. This number is always equal or less than <code>MintedNFTokens</code>.</td>
+</tr>
+<tr>
 <td align="left"><code>Domain</code></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
@@ -363,6 +371,18 @@
 <td align="left">String</td>
 <td align="left">Blob</td>
 <td align="left"><em>(Optional)</em> A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys.</td>
+</tr>
+<tr>
+<td align="left"><code>MintedNFTokens</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left"><em>(Optional)</em> How many total <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> have been minted by and on behalf of this account.</td>
+</tr>
+<tr>
+<td align="left"><code>NFTokenMinter</code></td>
+<td align="left">String</td>
+<td align="left">AccountID</td>
+<td align="left"><em>(Optional)</em> Another account that is authorized to mint <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> on behalf of this account.</td>
 </tr>
 <tr>
 <td align="left"><code>RegularKey</code></td>
@@ -2094,6 +2114,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
   </div>
 
@@ -2211,6 +2236,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2704,12 +2739,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2775,6 +2815,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -2785,6 +2826,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

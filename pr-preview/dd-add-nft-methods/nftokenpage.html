@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -142,6 +142,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -176,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -261,7 +263,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="nftokenpage">NFTokenPage<a aria-hidden="true" class="hover_anchor" href="#nftokenpage"><i class="fa fa-link"></i></a></h1>
-<p><em>The XLS-20 standard for NFTs <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> has a preliminary implementation that can be used in test networks, but is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release.</em></p>
+<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
 <p>The <code>NFTokenPage</code> object represents a collection of <code>NFToken</code> objects owned by the same account. An account can have multiple <code>NFTokenPage</code> ledger objects, which form a doubly-linked list (DLL).</p>
 <h2 id="example-nftokenpage-json">Example NFTokenPage JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenpage-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
@@ -377,12 +379,12 @@
 </table>
 <h3 id="tokenpage-id-format">TokenPage ID Format<a aria-hidden="true" class="hover_anchor" href="#tokenpage-id-format"><i class="fa fa-link"></i></a></h3>
 <p><code>NFTokenPage</code> identifiers are constructed so as to specifically allow for the adoption of a more efficient paging structure, ideally suited for <code>NFTokens</code>.</p>
-<p>The identifier of an <code>NFTokenPage</code> is derived by concatenating the 160-bit <code>AccountID</code> of the owner of the page, followed by a 96 bit value that indicates whether a particular <code>TokenID</code> can be contained in this page.</p>
-<p>More specifically, and assuming that the function <code>low96(x)</code> returns the low 96 bits of a 256-bit value, an NFT with <code>TokenID</code> <code>A</code> can be included in a page with <code>NFTokenPageID</code> <code>B</code> if and only if <code>low96(A) &gt;= low96(B)</code>.</p>
+<p>The identifier of an <code>NFTokenPage</code> is derived by concatenating the 160-bit <code>AccountID</code> of the owner of the page, followed by a 96 bit value that indicates whether a particular <code>NFTokenID</code> can be contained in this page.</p>
+<p>More specifically, and assuming that the function <code>low96(x)</code> returns the low 96 bits of a 256-bit value, an NFT with <code>NFTokenID</code> <code>A</code> can be included in a page with <code>NFTokenPageID</code> <code>B</code> if and only if <code>low96(A) &gt;= low96(B)</code>.</p>
 <p>For example, applying the <code>low96</code> function to the NFT described before, which had an ID of <code>000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65</code> the function <code>low96</code> would return <code>42540EE208C3098E00000D65</code>.</p>
 <p>This curious construct exploits the structure of the SHAMap to allow for efficient lookups of individual <code>NFToken</code> objects without requiring iteration of the doubly-linked list of <code>NFTokenPages</code>.</p>
 <h3 id="searching-for-an-nftoken-object">Searching for an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#searching-for-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>To search for a specific <code>NFToken</code>, compute the <code>NFTokenPageID</code> using the account of the owner and the <code>TokenID</code> of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, the <code>NFToken</code> is not held by the given account.</p>
+<p>To search for a specific <code>NFToken</code>, compute the <code>NFTokenPageID</code> using the account of the owner and the <code>NFTokenID</code> of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, the <code>NFToken</code> is not held by the given account.</p>
 <h3 id="adding-an-nftoken-object">Adding an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#adding-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
 <p>You add an <code>NFToken</code> object by finding the <code>NFTokenPage</code> it should be in (using the same technique as searching for an <code>NFToken</code> object) and adding it to that page. If the page overflows after you add the <code>NFToken</code>, find the <code>next</code> and <code>previous</code> pages (if any) and balance those three pages, inserting a new page as needed.</p>
 <h3 id="removing-an-nftoken-object">Removing an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#removing-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
@@ -2056,6 +2058,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
   </div>
 
@@ -2173,6 +2180,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2666,12 +2683,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2737,6 +2759,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -2747,6 +2770,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

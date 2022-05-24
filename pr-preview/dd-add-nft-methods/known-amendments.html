@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v4.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -142,6 +142,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -176,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -241,6 +243,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#enforceinvariants">EnforceInvariants</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#escrow">Escrow</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#expandedsignerlist">ExpandedSignerList</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#feeescalation">FeeEscalation</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fix1201">fix1201</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fix1368">fix1368</a></li>
@@ -258,6 +261,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixcheckthreading">fixCheckThreading</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
@@ -271,6 +275,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#multisign">MultiSign</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ownerpaysfee">OwnerPaysFee</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#paychan">PayChan</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></li>
@@ -314,11 +319,6 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
-<td align="left">v1.8.0</td>
-<td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
 <td align="left"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
 <td align="left">TBD</td>
 <td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
@@ -327,6 +327,26 @@
 <td align="left"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
 <td align="left">TBD</td>
 <td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#expandedsignerlist">ExpandedSignerList</a></td>
+<td align="left">v1.9.1</td>
+<td align="left"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.1.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fixnftokendirv1">fixNFTokenDirV1</a></td>
+<td align="left">v1.9.1</td>
+<td align="left"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.1.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></td>
+<td align="left">v1.9.0</td>
+<td align="left"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.0.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
+<td align="left">v1.8.0</td>
+<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.8.1.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#negativeunl">NegativeUNL</a></td>
@@ -836,6 +856,36 @@
 </table>
 <p>Replaces the <a href="#suspay">SusPay</a> and <a href="#cryptoconditions">CryptoConditions</a> amendments.</p>
 <p>Provides "suspended payments" for XRP for escrow within the XRP Ledger, including support for <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank">Interledger Protocol Crypto-Conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>. Creates a new ledger object type for suspended payments and new transaction types to create, execute, and cancel suspended payments.</p>
+<h2 id="expandedsignerlist">ExpandedSignerList<a aria-hidden="true" class="hover_anchor" href="#expandedsignerlist"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Amendment</th>
+<th align="left">ExpandedSignerList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Amendment ID</td>
+<td align="left">B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">Open for Voting</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">No</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).</p>
+<p>Without this amendment, the maximum signer list size is 8 entries, and each entry has exactly two fields, <code>Account</code> and <code>SignerWeight</code>.</p>
+<p>With this amendment, the maximum <a href="signerlist.html">SignerList object</a> size is 32 entries. Additionally, each <code>SignerEntry</code> object can contain an optional 256-bit (32-byte) <code>WalletLocator</code> field containing arbitrary data. This amendment changes the <a href="signerlistset.html">SignerListSet transaction</a> accordingly.</p>
 <h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1351,6 +1401,35 @@
 <p>Fixes a bug where accounts can set their regular key pair to match their master key pair, but cannot send transactions signed by the key if the master key is disabled.</p>
 <p>Without this fix, a user can unintentionally "black hole" their account by setting the regular key to match the master key, then disabling the master key. The network rejects transactions signed with the both-master-and-regular key pair because the code interprets them as being signed with the disabled master key before it recognizes that they are signed by the currently-enabled regular key.</p>
 <p>With this amendment enabled, a SetRegularKey transaction cannot set the regular key to match the master key; such a transaction results in the transaction code <code>temBAD_REGKEY</code>. Additionally, this amendment changes the signature verification code so that accounts which <em>already</em> have their regular key set to match their master key can send transactions successfully using the key pair.</p>
+<h2 id="fixnftokendirv1">fixNFTokenDirV1<a aria-hidden="true" class="hover_anchor" href="#fixnftokendirv1"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Amendment</th>
+<th align="left">fixNFTokenDirV1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Amendment ID</td>
+<td align="left">0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">Open for Voting</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">No</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> an <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
+<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.</p>
 <h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1739,6 +1818,50 @@ the latest ledger that the validator considers to be fully validated. The consen
 </tbody>
 </table>
 <p>Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.</p>
+<h2 id="nonfungibletokensv1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Amendment</th>
+<th align="left">NonFungibleTokensV1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Amendment ID</td>
+<td align="left">3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87</td>
+</tr>
+<tr>
+<td align="left">Status</td>
+<td align="left">Open for Voting</td>
+</tr>
+<tr>
+<td align="left">Default Vote (Latest stable release)</td>
+<td align="left">No</td>
+</tr>
+<tr>
+<td align="left">Pre-amendment functionality retired?</td>
+<td align="left">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adds native support for non-fungible tokens. Standards Draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20d <i aria-hidden="true" class="fa fa-external-link"></i></a>. <!-- SPELLING_IGNORE: xls, 20d --></p>
+<p class="devportal-callout warning"><strong>Warning:</strong> There is a known issue with this amendment that can cause <code>tecINVARIANT_FAILED</code> errors to appear in the ledger. The <a href="#fixnftokendirv1">fixNFTokenDirV1</a> amendment fixes these issues and should be enabled before the NonFungibleTokensV1 amendment to avoid problems.</p>
+<p>This amendment adds 5 new transaction types:</p>
+<ul>
+<li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
+<li><a href="nftokenburn.html">NFTokenBurn</a></li>
+<li><a href="nftokencanceloffer.html">NFTokenCancelOffer</a></li>
+<li><a href="nftokencreateoffer.html">NFTokenCreateOffer</a></li>
+<li><a href="nftokenmint.html">NFTokenMint</a></li>
+</ul>
+<p>It also adds 2 new ledger object types:</p>
+<ul>
+<li><a href="nftokenoffer.html">NFTokenOffer object</a></li>
+<li><a href="nftokenpage.html">NFTokenPage object</a></li>
+</ul>
+<p>Additionally, it modifies the <a href="accountroot.html">AccountRoot object</a> type to add 3 new optional fields: <code>MintedNFTokens</code>, <code>BurnedNFTokens</code>, and <code>NFTokenMinter</code>.</p>
+<p>It also modifies the <a href="accountset.html">AccountSet transaction</a> type to allow you to set the <code>NFTokenMinter</code> field.</p>
 <h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -3626,6 +3749,11 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
   </div>
 
@@ -3743,6 +3871,16 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -4236,12 +4374,17 @@ the latest ledger that the validator considers to be fully validated. The consen
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -4307,6 +4450,7 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -4317,6 +4461,7 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
