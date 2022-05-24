@@ -53,7 +53,8 @@ To create a trustline between accounts:
 
 3. Enter a [currency code](https://www.iban.com/currency-codes) in the **Currency** field.
 4. Enter the maximum transfer limit in the **Amount** field.
-5. Click **Create Trustline**.
+5. Enter the destination account value in the **Destination** field.
+6. Click **Create Trustline**.
 
 
 
@@ -68,7 +69,9 @@ To transfer an issued currency token, once you have created a TrustLine:
 
 
 1. Enter the **Amount**.
-2. Click **Send Currency**.
+2. Enter the **Destination**.
+3. Enter the **Currency** type.
+4. Click **Send Currency**.
 
 
 
@@ -235,7 +238,7 @@ Define the transaction, capturing the currency code and (limit) amount from the 
 ```
         const trustSet_tx = {
           "TransactionType": "TrustSet",
-          "Account": operational_wallet.address,
+          "Account": standbyDestinationField.value,
           "LimitAmount": {
             "currency": standbyCurrencyField.value,
             "issuer": standby_wallet.address,
@@ -341,7 +344,7 @@ Get the account wallets.
             "value": issue_quantity,
             "issuer": standby_wallet.address
           },
-          "Destination": operational_wallet.address
+          "Destination": standbyDestinationField.value
         }
 ```
 
@@ -359,7 +362,7 @@ Sign the transaction.
 
 ```
         const pay_signed = standby_wallet.sign(pay_prepared)
-        results += 'Sending ${issue_quantity} ${currency_code} to ${operational_wallet.address}...'
+        results += 'Sending ${issue_quantity} ${currency_code} to ' + standbyDestinationField.value + '...'
         document.getElementById('standbyResultField').value = results
 ```
 
@@ -526,7 +529,7 @@ For each of the transactions, there is an accompanying reciprocal transaction, w
         const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
         const trustSet_tx = {
           "TransactionType": "TrustSet",
-          "Account": standby_wallet.address,
+          "Account": operationalDestinationField.value,
           "LimitAmount": {
             "currency": operationalCurrencyField.value,
             "issuer": operational_wallet.address,
@@ -535,11 +538,11 @@ For each of the transactions, there is an accompanying reciprocal transaction, w
         }
         const ts_prepared = await client.autofill(trustSet_tx)
         const ts_signed = standby_wallet.sign(ts_prepared)
-        results += '\nCreating trust line from standby account to operational account...'
+        results += '\nCreating trust line from operational account to ' + operationalDestinationField.value + ' account...'
         document.getElementById('operationalResultField').value = results
         const ts_result = await client.submitAndWait(ts_signed.tx_blob)
         if (ts_result.result.meta.TransactionResult == "tesSUCCESS") {
-          results += '\nTrustline established between account \n' + standby_wallet.address + ' \n and account\n' + operational_wallet.address + '.'
+          results += '\nTrustline established between account \n' + standby_wallet.address + ' \n and account\n' + operationalDestinationField.value + '.'
           document.getElementById('operationalResultField').value = results
         } else {
           results += '\nTrustLine failed. See JavaScript console for details.'
@@ -582,13 +585,13 @@ For each of the transactions, there is an accompanying reciprocal transaction, w
             "value": issue_quantity,
             "issuer": operational_wallet.address
           },
-          "Destination": standby_wallet.address
+          "Destination": operationalDestination.value
         }
 
 
         const pay_prepared = await client.autofill(send_token_tx)
         const pay_signed = operational_wallet.sign(pay_prepared)
-        results += 'Sending ${issue_quantity} ${currency_code} to ${standby_wallet.address}...'
+        results += 'Sending ${issue_quantity} ${currency_code} to ' + operationalDestinationField.value + '...'
         document.getElementById('operationalResultField').value = results
         const pay_result = await client.submitAndWait(pay_signed.tx_blob)
         if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
@@ -621,7 +624,7 @@ Update the form to support the new functions.
 <html>
   <head>
     <title>Token Test Harness</title>
-    <script src='https://unpkg.com/xrpl@2.1.1'></script>
+    <script src='https://unpkg.com/xrpl@2.2.3'></script>
     <script src='ripplex1-send-xrp.js'></script>
     <script src='ripplex2-send-currency.js'></script>
     <script>
@@ -630,8 +633,7 @@ Update the form to support the new functions.
       }
     </script>
   </head>
-
-
+  
 <!-- ************************************************************** -->
 <!-- ********************** The Form ****************************** -->
 <!-- ************************************************************** -->
@@ -716,6 +718,15 @@ Update the form to support the new functions.
                       </td>
                       <td>
                         <input type="text" id="standbyAmountField" size="40" value="100"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Destination
+                      </td>
+                      <td>
+                        <input type="text" id="standbyDestinationField" size="40" value="100"></input>
                         <br>
                       </td>
                     </tr>
@@ -835,7 +846,18 @@ Update the form to support the new functions.
                           </tr>
                           <tr>
                             <td align="right">
-                              <input type="checkbox" id="operationalDefault" checked="true"/>
+                              Destination
+                            </td>
+                            <td>
+                              <input type="text" id="operationalDestinationField" size="40" value="100"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                            </td>
+                            <td align="right">
+                            <input type="checkbox" id="operationalDefault" checked="true"/>
                               <label for="operationalDefault">Allow Rippling</label>
                               <button type="button" onClick="configureAccount('operational',document.querySelector('#operationalDefault').checked)">Configure Account</button>
                             </td>
