@@ -142,7 +142,7 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
   - [シード定義](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/Seed.h)
   - [汎用キー & Ed25519鍵導出](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
   - [secp256k1鍵導出](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-- Python 3: [このリポジトリのコードサンプルセクション]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/key_derivation.py)。
+- Python 3: [このリポジトリのコードサンプルセクション]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/py/key_derivation.py)。
 - JavaScript: [`ripple-keypairs`](https://github.com/ripple/ripple-keypairs/)パッケージ。
 
 ### Ed25519鍵導出

@@ -73,6 +73,7 @@ _（[MultiSign Amendment][]が必要です。）_
 |:---------------|:----------|:--------------|:--------------------------------|
 | `Account`      | 文字列    | AccountID     | 署名がマルチ署名に提供されるXRP Ledgerアドレス。レジャーの資金供給のあるアドレスである必要はありません。 |
 | `SignerWeight` | 数値    | UInt16        | この署名者による署名の重み。マルチ署名は、付与された署名の重みの合計がSignerListの`SignerQuorum`値を超えている場合にのみ有効となります。 |
+| `WalletLocator` | 文字列    | Hash256       | （省略可）Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. Requires the [ExpandedSignerList amendment][] :not_enabled:. <!-- TODO: translate --> |
 
 マルチ署名済みトランザクションを処理する際に、サーバーはトランザクション実行時にレジャーに関する`Account`値を間接参照します。アドレスが資金供給のある[AccountRootオブジェクト](accountroot.html)に対応して _いない_ 場合、そのアドレスに関連付けられているマスターシークレットによってのみ有効な署名を生成できます。アカウントがレジャーに _確かに_ 存在している場合は、アカウントの状態により異なります。アカウントにレギュラーキーが設定されている場合はレギュラーキーを使用できます。アカウントのマスターキーが無効化されていない場合に限り、アカウントのマスターキーを使用できます。マルチ署名を別のマルチ署名の一部として使用することはできません。
 
