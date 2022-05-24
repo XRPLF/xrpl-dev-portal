@@ -183,6 +183,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -272,7 +273,7 @@
         <h1 id="nftokenmint">NFTokenMint<a aria-hidden="true" class="hover_anchor" href="#nftokenmint"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a>
 <em>The XLS-20 standard for NFTs <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> has a preliminary implementation that can be used in test networks, but is not yet available as an <a href="amendments.html">amendment</a> to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release.</em></p>
-<p>The <code>NFTokenMint</code> transaction creates a NFToken and adds it to the relevant <a href="nftokenpage.html">NFTokenPage object</a> of the <code>NFTokenMinter</code> as a <a href="nftoken.html">NFToken</a> object. A required parameter to this transaction is the <code>Token</code> field specifying the actual token. This transaction is the only opportunity the <code>NFTokenMinter</code> has to specify any token fields that are defined as immutable (for example, the <code>Flags</code>).</p>
+<p>The <code>NFTokenMint</code> transaction creates a non-fungible token and adds it to the relevant <a href="nftokenpage.html">NFTokenPage object</a> of the <code>NFTokenMinter</code> as an <a href="nftoken.html">NFToken</a> object. A required parameter to this transaction is the <code>Token</code> field specifying the actual token. This transaction is the only opportunity the <code>NFTokenMinter</code> has to specify any token fields that are defined as immutable (for example, the <code>TokenFlags</code>).</p>
 <p>If the transaction is successful, the newly minted token is owned by the account (the <code>minter</code> account) that executed the transaction. If needed, the server creates a new <code>NFTokenPage</code> for the account and applies a reserve charge.</p>
 <h2 id="example-nftokenmint-json">Example NFTokenMint JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenmint-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
@@ -282,7 +283,7 @@
 <span class="w">  </span><span class="nt">"TransferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"NFTokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
@@ -324,16 +325,17 @@
 <td align="left"><code>TransferFee</code></td>
 <td align="left">Number</td>
 <td align="left">UInt16</td>
-<td align="left"><em>(Optional)</em> The value specifies the fee charged by the issuer for secondary sales of the NFToken, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the <a href="#nftokenmint-flags"><code>tfTransferable</code> flag</a> enabled.</td>
+<td align="left"><em>(Optional)</em> The value specifies the fee charged by the issuer for secondary sales of the <code>NFToken</code>, if such sales are allowed. Valid values for this field are between 0 and 9999 inclusive, allowing transfer rates of between 0.00% and 99.99% in increments of 0.01. If this field is provided, the transaction MUST have the <a href="#nftokenmint-flags"><code>tfTransferable</code> flag</a> enabled.</td>
 </tr>
 <tr>
 <td align="left"><code>URI</code></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
-<td align="left"><em>(Optional)</em> Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. The hex must be capitalized, not lowercase. You can use the <a class="external-link" href="https://js.xrpl.org/modules.html#convertStringToHex" target="_blank"><code>xrpl.convertStringToHex</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFToken. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an issuer-specific encoding. The URI is NOT checked for validity.</td>
+<td align="left"><em>(Optional)</em> Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the <a class="external-link" href="https://js.xrpl.org/modules.html#convertStringToHex" target="_blank"><code>xrpl.convertStringToHex</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an issuer-specific encoding. The URI is NOT checked for validity.</td>
 </tr>
 </tbody>
 </table>
+<p class="devportal-callout note"><strong>Note:</strong> The xrpl.js client library throws an error if you try to sign a transaction with the <code>URI</code> field in lowercase hexadecimal. This is a <a class="external-link" href="https://github.com/XRPLF/xrpl.js/issues/2004" target="_blank">bug <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="nftokenmint-flags">NFTokenMint Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenmint-flags"><i class="fa fa-link"></i></a></h2>
 <p>Transactions of the NFTokenMint type support additional values in the <a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code> field</a>, as follows:</p>
 <table class="table-responsive">
@@ -388,7 +390,7 @@
 <span class="w">  </span><span class="nt">"TransferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"NFTokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
@@ -403,14 +405,45 @@
 </code></pre></div>
 <p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>NFTokenMinter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<ul>
-<li>If the <code>TransferFee</code> field is not within the acceptable range (0 to 9999 inclusive) the transaction fails with <code>temBAD_NFTOKEN_TRANSFER_FEE</code>.</li>
-<li>If the <code>URI</code> field is longer than 256 bytes, the transaction fails with <code>temMALFORMED</code>.</li>
-<li>If the <code>Issuer</code> field refers to an account that does not exist, the transaction fails with <code>tecNO_ISSUER</code>.</li>
-<li>If account referenced by the <code>Issuer</code> field has not authorized this transaction's sender (using the <code>NFTokenMinter</code> setting) to mint <code>NFToken</code>s on their behalf, the transaction fails with <code>tecNO_PERMISSION</code>.</li>
-<li>If the owner would not meet the updated <a href="reserves.html">reserve requirement</a> after minting the token, the transaction fails with <code>tecINSUFFICIENT_RESERVE</code>. Note that new <code>NFToken</code>s only increase the owner's reserve if it requires a new <a href="nftokenpage.html">NFTokenPage object</a>, which can each hold up to 32 NFTokens.</li>
-<li>If the <code>Issuer</code>'s <code>MintedNFTokens</code> field maxes out, the transaction fails with <code>tecMAX_SEQUENCE_REACHED</code>. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</li>
-</ul>
+<p>In addition to errors that can occur for all transactions, NFTokenMint transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>temDISABLED</code></td>
+<td align="left">The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> is not enabled.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_NFTOKEN_TRANSFER_FEE</code></td>
+<td align="left">The <code>TransferFee</code> is not within the acceptable range.</td>
+</tr>
+<tr>
+<td align="left"><code>temMALFORMED</code></td>
+<td align="left">The transaction was not validly specified. For example, the <code>URI</code> field is longer than 256 bytes.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_ISSUER</code></td>
+<td align="left">The <code>Issuer</code> refers to an account that does not exist in the ledger.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_PERMISSION</code></td>
+<td align="left">The account referenced by the <code>Issuer</code> field has not authorized this transaction's sender (using the <code>NFTokenMinter</code> setting) to mint on their behalf.</td>
+</tr>
+<tr>
+<td align="left"><code>tecINSUFFICIENT_RESERVE</code></td>
+<td align="left">The owner would not meet the updated <a href="reserves.html">reserve requirement</a> after minting the token. Note that new <code>NFToken</code>s only increase the owner's reserve if it requires a new <a href="nftokenpage.html">NFTokenPage object</a>, which can each hold up to 32 NFTs.</td>
+</tr>
+<tr>
+<td align="left"><code>tecMAX_SEQUENCE_REACHED</code></td>
+<td align="left">The <code>Issuer</code>'s <code>MintedNFTokens</code> field is already at its maximum. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -2719,6 +2752,7 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

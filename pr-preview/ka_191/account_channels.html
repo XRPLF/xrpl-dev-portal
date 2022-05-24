@@ -177,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -257,7 +258,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="account_channels">account_channels<a aria-hidden="true" class="hover_anchor" href="#account_channels"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Added by the <a href="known-amendments.html#paychan">PayChan amendment</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>)</em></p>
 <p>The <code>account_channels</code> method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
@@ -267,8 +268,8 @@
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_channels"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
@@ -276,16 +277,17 @@
 <div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_channels"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
 <span class="w">    </span><span class="p">}]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_channels &lt;account&gt; [&lt;destination_account&gt;] [&lt;ledger&gt;]</span>
-rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
+rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTKHSANinZseWnPcX validated
 </code></pre></div></div>
+<p><a class="btn btn-primary" href="websocket-api-tool.html#account_channels">Try it!</a></p>
 </div>
 <p>The request includes the following parameters:</p>
 <table class="table-responsive">
@@ -334,77 +336,77 @@ rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFY
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"channels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"destination_tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">20170428</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="mi">547073182</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"public_key_hex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"settle_delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aBR7mdD75Ycs8DRhMgQ4EMUEmBArF8SEh1hfjrT2V9DQTLNbJVqw"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"public_key_hex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03CFD18E689434F032A4E84C63E2A3A6472D684EAF4FD52CA67742F3E24BAE81B2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"settle_delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F168208EECDAA57DDAC32780CDD8330FA3E89F0E84D27A9052AA2F88681EBD08"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">37230642</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1EDBBA3C793863366DF5B31C2174B6B5E6DF6DB89A7212B86838489148E2A581"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">71766314</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w"></span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"channels"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"destination_tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">20170428</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"public_key_hex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"settle_delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w"></span>
-<span class="w">        </span><span class="p">}],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B9D3D80EDF4083A06B2D51202E0BFB63C46FC0985E015D06767C21A62853BF6D"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">37230600</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"channels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aBR7mdD75Ycs8DRhMgQ4EMUEmBArF8SEh1hfjrT2V9DQTLNbJVqw"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"public_key_hex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03CFD18E689434F032A4E84C63E2A3A6472D684EAF4FD52CA67742F3E24BAE81B2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"settle_delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27F530E5C93ED5C13994812787C1ED073C822BAEC7597964608F2C049C2ACD2D"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">71766343</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w"></span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"channels"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"destination_tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">20170428</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"public_key_hex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"settle_delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w"></span>
-<span class="w">        </span><span class="p">}],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B9D3D80EDF4083A06B2D51202E0BFB63C46FC0985E015D06767C21A62853BF6D"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">37230600</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"channels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"destination_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aBR7mdD75Ycs8DRhMgQ4EMUEmBArF8SEh1hfjrT2V9DQTLNbJVqw"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"public_key_hex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03CFD18E689434F032A4E84C63E2A3A6472D684EAF4FD52CA67742F3E24BAE81B2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"settle_delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27F530E5C93ED5C13994812787C1ED073C822BAEC7597964608F2C049C2ACD2D"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">71766343</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 </div>
@@ -2837,6 +2839,7 @@ rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFY
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

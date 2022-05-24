@@ -177,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -236,6 +237,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-nftokencreateoffer-json">Example NFTokenCreateOffer JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokencreateoffer-fields">NFTokenCreateOffer Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokencreateoffer-flags">NFTokenCreateOffer Flags</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
       </aside>
@@ -330,6 +332,70 @@
 <td align="left"><code>0x00000001</code></td>
 <td align="left"><code>1</code></td>
 <td align="left">If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
+<p>In addition to errors that can occur for all transactions, NFTokenCreateOffer transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>temDISABLED</code></td>
+<td align="left">The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> is not enabled.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_AMOUNT</code></td>
+<td align="left">The <code>Amount</code> field is not valid. For example, the amount was zero for a buy offer, or the amount is denominated in fungible tokens but the <code>NFToken</code> has the <a href="nftoken.html#nftoken-flags"><code>lsfOnlyXRP</code> flag</a> enabled.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_EXPIRATION</code></td>
+<td align="left">The specified <code>Expiration</code> time is invalid (for example, <code>0</code>).</td>
+</tr>
+<tr>
+<td align="left"><code>tecDIR_FULL</code></td>
+<td align="left">The sender already owns too many objects in the ledger, or there are already too many offers to buy or sell this token.</td>
+</tr>
+<tr>
+<td align="left"><code>tecEXPIRED</code></td>
+<td align="left">The specified <code>Expiration</code> time has already passed.</td>
+</tr>
+<tr>
+<td align="left"><code>tecFROZEN</code></td>
+<td align="left">The <code>Amount</code> is denominated in fungible tokens, but one of the trust lines that would receive tokens from this offer is <a href="freezes.html">frozen</a>. This could be the seller's trust line or the <code>NFToken</code>'s issuer's trust line (if the <code>NFToken</code> has a transfer fee).</td>
+</tr>
+<tr>
+<td align="left"><code>tecINSUFFICIENT_RESERVE</code></td>
+<td align="left">The sender does not have enough XRP to meet the <a href="reserves.html">reserve requirement</a> after placing this offer.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_DST</code></td>
+<td align="left">The account specified in the <code>Destination</code> field does not exist in the ledger.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_ENTRY</code></td>
+<td align="left">The <code>NFToken</code> is not owned by the expected account.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_ISSUER</code></td>
+<td align="left">The issuer specified in the <code>Amount</code> field does not exist.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_LINE</code></td>
+<td align="left">The <code>Amount</code> field is denominated in fungible tokens, but the <code>NFToken</code>'s issuer does not have a trust line for those tokens and the <code>NFToken</code> does not have the <a href="nftoken.html#nftoken-flags"><code>lsfTrustLine</code> flag</a> enabled.</td>
+</tr>
+<tr>
+<td align="left"><code>tecUNFUNDED_OFFER</code></td>
+<td align="left">For a buy offer, the sender does have the funds specified in the <code>Amount</code> field available. If the <code>Amount</code> is XRP, this could be due to the reserve requirement; if the <code>Amount</code> is denominated in fungible tokens, this could be because they are <a href="freezes.html">frozen</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>tefNFTOKEN_IS_NOT_TRANSFERABLE</code></td>
+<td align="left">The <code>NFToken</code> has the <a href="nftoken.html#nftoken-flags"><code>lsfTransferable</code> flag</a> disabled and this transaction would not transfer the <code>NFToken</code> to or from the issuer.</td>
 </tr>
 </tbody>
 </table>
@@ -2637,6 +2703,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

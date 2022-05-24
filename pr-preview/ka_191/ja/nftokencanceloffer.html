@@ -183,6 +183,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -243,6 +244,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-nftokencanceloffer-json">Example NFTokenCancelOffer JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#permissions">Permissions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokencanceloffer-fields">NFTokenCancelOffer Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
       </aside>
@@ -299,13 +301,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>TransactionType</code></td>
-<td align="left">String</td>
-<td align="left">UInt16</td>
-<td align="left">NFTokenCancelOffer transaction type. The integer identifier is 28.</td>
-</tr>
-<tr>
-<td align="left"><code>NFTokenOffers</code></td>
+<td align="left"><code>TokenOffers</code></td>
 <td align="left">Array</td>
 <td align="left">VECTOR256</td>
 <td align="left">An array of IDs of the <code>NFTokenOffer</code> objects to cancel (not the IDs of <code>NFToken</code> objects, but the IDs of the <code>NFTokenOffer</code> objects). Each entry must be a different <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenoffer.html">NFTokenOffer</a> object; the transaction is invalid if the array contains duplicate entries.</td>
@@ -315,6 +311,30 @@
 <p>The transaction can succeed even if one or more of the IDs in the <code>NFTokenOffers</code> field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been deleted.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a <a href="nftokenoffer.html">NFTokenOffer</a> object.</p>
 <p>It is important to note that if you inadvertently provide a <code>nft_id</code> rather than a <code>nft_offer_index</code>, you might receive a <code>tesSUCCESS</code> response. The reason is that when passed a properly formatted ID value that is not found, the system assumes that the <code>NFTokenOffer</code> has already been deleted.</p>
 <p>The transaction fails with an error if one of the IDs points to an object that does exist, but is not a <a href="nftokenoffer.html">NFTokenOffer</a> object.</p>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
+<p>In addition to errors that can occur for all transactions, NFTokenCancelOffer transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>temDISABLED</code></td>
+<td align="left">The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> is not enabled.</td>
+</tr>
+<tr>
+<td align="left"><code>temMALFORMED</code></td>
+<td align="left">The transaction was not validly formatted. For example, the <code>TokenOffers</code> array was empty or contained more than the maximum number of offers that can be canceled at one time.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_PERMISSION</code></td>
+<td align="left">At least one of the IDs in the <code>TokenOffers</code> field refers to an object that cannot be canceled. For example, the sender of this transaction is not the owner or <code>Destination</code> of the offer, or the object was not an <code>NFTokenOffer</code> type object.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -2623,6 +2643,7 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

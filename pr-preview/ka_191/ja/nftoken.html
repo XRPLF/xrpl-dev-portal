@@ -183,6 +183,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -362,7 +363,7 @@
 <p><img alt="連番" src="img/nftokene.png" title="連番"/></p>
 <p>スクランブルされた分類群は <code>0xBC8B858E</code> であることに注意してください。発行者が指定したスクランブルされた分類群のバージョンです。しかし、 <em>実際の</em> 分類群の値はスクランブルされていない値です。</p>
 <h3 id="トークン連番">トークン連番<a aria-hidden="true" class="hover_anchor" href="#トークン連番"><i class="fa fa-link"></i></a></h3>
-<p>5番目のセクションは、発行者が <code>NFToken</code> を作成するたびに増加するシーケンス番号です。<a href="nftokenmint.html">NFTokenMint トランザクション</a> では <code>TokenID</code> のこの部分を <code>Issuer</code> アカウントの <code>MintedTokens</code> フィールドを基に自動的に設定します。発行者の <a href="accountroot.html">AccountRoot オブジェクト</a> が <code>MintedTokens</code> フィールドを持っていない場合、そのフィールドは値 0 と見なされます。</p>
+<p>5番目のセクションは、発行者が <code>NFToken</code> を作成するたびに増加するシーケンス番号です。<a href="nftokenmint.html">NFTokenMint トランザクション</a> では <code>NFTokenID</code> のこの部分を <code>Issuer</code> アカウントの <code>MintedTokens</code> フィールドを基に自動的に設定します。発行者の <a href="accountroot.html">AccountRoot オブジェクト</a> が <code>MintedTokens</code> フィールドを持っていない場合、そのフィールドは値 0 と見なされます。</p>
 <h2 id="uri">URI<a aria-hidden="true" class="hover_anchor" href="#uri"><i class="fa fa-link"></i></a></h2>
 <p>URIフィールドは、<code>NFToken</code>に関連するデータおよび/またはメタデータを指します。このフィールドはHTTPやHTTPSのURLである必要はありません。IPFS URIや紐づくリンク、RFC2379 <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">"data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a> としてエンコードされた即値、あるいは不透明な発行者固有のエンコーディングである可能性もあります。URIの有効性はチェックされませんが、フィールドの長さは最大256バイトに制限されます。</p>
 <p>この方式の欠点は、値が不変であるため、発行者がデータを永続的に保持する必要があることです。</p>
@@ -375,7 +376,7 @@
 <p>TXTレコードのフォーマットは以下の通りです。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{tokenid}"
 </code></pre></div>
-<p>情報を問い合わせようとしたときに、文字列 <code>{tokenid}</code> を要求されたトークンの <code>TokenID</code> (64バイトの16進文字列) に置き換えてください。</p>
+<p>情報を問い合わせようとしたときに、文字列 <code>{tokenid}</code> を要求されたトークンの <code>NFTokenID</code> (64バイトの16進文字列) に置き換えてください。</p>
 <p>実装では、<code>TXT</code>レコードの存在を確認し、存在すればそれらのクエリ文字列を使用する必要があります。文字列が存在しない場合、実装はデフォルトの URL を使用するように試みるべきです。ドメインが <em>example.com</em> であると仮定すると、デフォルトのURLは次のようになります。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">https://example.com/.well-known/xrpl-nft/{tokenid}
 </code></pre></div>
@@ -2688,6 +2689,7 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

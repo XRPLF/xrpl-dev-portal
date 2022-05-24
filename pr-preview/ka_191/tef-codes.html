@@ -177,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -320,6 +321,10 @@
 <tr>
 <td align="left"><code>tefMAX_LEDGER</code></td>
 <td align="left">The transaction included a <a href="reliable-transaction-submission.html#lastledgersequence"><code>LastLedgerSequence</code></a> parameter, but the current ledger's sequence number is already higher than the specified value.</td>
+</tr>
+<tr>
+<td align="left"><code>tefNFTOKEN_IS_NOT_TRANSFERABLE</code></td>
+<td align="left">The transaction attempted to send a <a href="non-fungible-tokens.html">non-fungible token</a> to another account, but the <code>NFToken</code> has the <code>lsfTransferable</code> flag disabled and the transfer would not be to or from the issuer. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a>. <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
 </tr>
 <tr>
 <td align="left"><code>tefNO_AUTH_REQUIRED</code></td>
@@ -2651,6 +2656,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

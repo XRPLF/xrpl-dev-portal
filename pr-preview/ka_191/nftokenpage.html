@@ -177,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -378,12 +379,12 @@
 </table>
 <h3 id="tokenpage-id-format">TokenPage ID Format<a aria-hidden="true" class="hover_anchor" href="#tokenpage-id-format"><i class="fa fa-link"></i></a></h3>
 <p><code>NFTokenPage</code> identifiers are constructed so as to specifically allow for the adoption of a more efficient paging structure, ideally suited for <code>NFTokens</code>.</p>
-<p>The identifier of an <code>NFTokenPage</code> is derived by concatenating the 160-bit <code>AccountID</code> of the owner of the page, followed by a 96 bit value that indicates whether a particular <code>TokenID</code> can be contained in this page.</p>
-<p>More specifically, and assuming that the function <code>low96(x)</code> returns the low 96 bits of a 256-bit value, an NFT with <code>TokenID</code> <code>A</code> can be included in a page with <code>NFTokenPageID</code> <code>B</code> if and only if <code>low96(A) &gt;= low96(B)</code>.</p>
+<p>The identifier of an <code>NFTokenPage</code> is derived by concatenating the 160-bit <code>AccountID</code> of the owner of the page, followed by a 96 bit value that indicates whether a particular <code>NFTokenID</code> can be contained in this page.</p>
+<p>More specifically, and assuming that the function <code>low96(x)</code> returns the low 96 bits of a 256-bit value, an NFT with <code>NFTokenID</code> <code>A</code> can be included in a page with <code>NFTokenPageID</code> <code>B</code> if and only if <code>low96(A) &gt;= low96(B)</code>.</p>
 <p>For example, applying the <code>low96</code> function to the NFT described before, which had an ID of <code>000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65</code> the function <code>low96</code> would return <code>42540EE208C3098E00000D65</code>.</p>
 <p>This curious construct exploits the structure of the SHAMap to allow for efficient lookups of individual <code>NFToken</code> objects without requiring iteration of the doubly-linked list of <code>NFTokenPages</code>.</p>
 <h3 id="searching-for-an-nftoken-object">Searching for an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#searching-for-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>To search for a specific <code>NFToken</code>, compute the <code>NFTokenPageID</code> using the account of the owner and the <code>TokenID</code> of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, the <code>NFToken</code> is not held by the given account.</p>
+<p>To search for a specific <code>NFToken</code>, compute the <code>NFTokenPageID</code> using the account of the owner and the <code>NFTokenID</code> of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, the <code>NFToken</code> is not held by the given account.</p>
 <h3 id="adding-an-nftoken-object">Adding an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#adding-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
 <p>You add an <code>NFToken</code> object by finding the <code>NFTokenPage</code> it should be in (using the same technique as searching for an <code>NFToken</code> object) and adding it to that page. If the page overflows after you add the <code>NFToken</code>, find the <code>next</code> and <code>previous</code> pages (if any) and balance those three pages, inserting a new page as needed.</p>
 <h3 id="removing-an-nftoken-object">Removing an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#removing-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
@@ -2754,6 +2755,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

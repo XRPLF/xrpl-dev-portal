@@ -177,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -882,9 +883,9 @@
 </tr>
 </tbody>
 </table>
-<p>This amendment expands the maximum signer list size allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).</p>
-<p>Without this amendment, the maximum signer list size is 8 signers, and each signer has exactly two fields, <code>Account</code> and <code>SignerWeight</code>.</p>
-<p>With this amendment, the maximum <a href="signerlist.html">SignerList object</a> size is 32 entries. Additionally, each <code>SignerEntry</code> object can contain an optional 256-bit <code>WalletLocator</code> field containing arbitrary data. This amendment changes the <a href="signerlistset.html">SignerListSet transaction</a> accordingly.</p>
+<p>This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).</p>
+<p>Without this amendment, the maximum signer list size is 8 entries, and each entry has exactly two fields, <code>Account</code> and <code>SignerWeight</code>.</p>
+<p>With this amendment, the maximum <a href="signerlist.html">SignerList object</a> size is 32 entries. Additionally, each <code>SignerEntry</code> object can contain an optional 256-bit (32-byte) <code>WalletLocator</code> field containing arbitrary data. This amendment changes the <a href="signerlistset.html">SignerListSet transaction</a> accordingly.</p>
 <h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1845,7 +1846,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 </tbody>
 </table>
 <p>Adds native support for non-fungible tokens. Standards Draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20d <i aria-hidden="true" class="fa fa-external-link"></i></a>. <!-- SPELLING_IGNORE: xls, 20d --></p>
-<p class="devportal-callout warning"><strong>Warning:</strong> There is a known issue with this amendment that can cause <code>tecINVARIANT_FAILED</code> errors to appear in the ledger. The <a href="#fixnftokendirv1">fixNFTokenDirV1</a> amendment fixes these issues and should be enabled first to avoid problems.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> There is a known issue with this amendment that can cause <code>tecINVARIANT_FAILED</code> errors to appear in the ledger. The <a href="#fixnftokendirv1">fixNFTokenDirV1</a> amendment fixes these issues and should be enabled before the NonFungibleTokensV1 amendment to avoid problems.</p>
 <p>This amendment adds 5 new transaction types:</p>
 <ul>
 <li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
@@ -4445,6 +4446,7 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

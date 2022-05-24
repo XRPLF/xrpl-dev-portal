@@ -177,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -356,7 +357,7 @@
 <p><img alt="Dumb Sequential" src="img/nftokene.png" title="Dumb Sequential"/></p>
 <p>Notice that the scrambled version of the taxon is <code>0xBC8B858E</code>: the scrambled version of the taxon specified by the issuer. But the <em>actual</em> value of the taxon is the unscrambled value.</p>
 <h3 id="token-sequence">Token Sequence<a aria-hidden="true" class="hover_anchor" href="#token-sequence"><i class="fa fa-link"></i></a></h3>
-<p>The fifth section is a sequence number that increases with each <code>NFToken</code> the issuer creates. The <a href="nftokenmint.html">NFTokenMint transaction</a> sets this part of the <code>TokenID</code> automatically based on the <code>MintedTokens</code> field of the <code>Issuer</code> account. If the issuer's <a href="accountroot.html">AccountRoot object</a> does not have a <code>MintedTokens</code> field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.</p>
+<p>The fifth section is a sequence number that increases with each <code>NFToken</code> the issuer creates. The <a href="nftokenmint.html">NFTokenMint transaction</a> sets this part of the <code>NFTokenID</code> automatically based on the <code>MintedTokens</code> field of the <code>Issuer</code> account. If the issuer's <a href="accountroot.html">AccountRoot object</a> does not have a <code>MintedTokens</code> field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.</p>
 <h2 id="uri">URI<a aria-hidden="true" class="hover_anchor" href="#uri"><i class="fa fa-link"></i></a></h2>
 <p>The URI field points to the data and/or metadata associated with the <code>NFToken</code>. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">"data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an opaque issuer-specific encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.</p>
 <p>One drawback of using this method is that the value is immutable, so it commits the issuer to hosting the data in perpetuity.</p>
@@ -369,7 +370,7 @@
 <p>The format for a text record is as follows.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{tokenid}"
 </code></pre></div>
-<p>Replace the string <code>{tokenid}</code> with the requested token’s <code>TokenID</code> as a 64-byte hex string when you attempt to query information.</p>
+<p>Replace the string <code>{tokenid}</code> with the requested token’s <code>NFTokenID</code> as a 64-byte hex string when you attempt to query information.</p>
 <p>Your implementation should check for the presence of <code>TXT</code> records and use those query strings if present. If no string is present, implementations should attempt to use a default URL. Assuming the domain is <em>example.com</em>, the default URL would be:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">https://example.com/.well-known/xrpl-nft/{tokenid}
 </code></pre></div>
@@ -2678,6 +2679,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

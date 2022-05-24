@@ -177,6 +177,7 @@
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -311,7 +312,7 @@
 <td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys. To remove the key, use an empty value.</td>
 </tr>
 <tr>
-<td align="left"><code>Minter</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
+<td align="left"><code>NFTokenMinter</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
 <td align="left"><em>(Optional)</em> Sets an alternate account that is allowed to mint NFTokens on this account's behalf using NFTokenMint's <code>Issuer</code> field. This field is part of the experimental XLS-20 standard for non-fungible tokens.</td>
@@ -384,10 +385,10 @@
 <td align="left">Track the ID of this account's most recent transaction. Required for <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code></a></td>
 </tr>
 <tr>
-<td align="left"><code>asfAuthorizedMinter</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
+<td align="left"><code>asfAuthorizedNFTokenMinter</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
 <td align="left">10</td>
 <td align="left">(None)</td>
-<td align="left">Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the <code>Minter</code> field of the <a href="accountroot.html">AccountRoot</a> object. This is an experimental field to enable behavior for NFToken support.</td>
+<td align="left">Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the <code>NFTokenMinter</code> field of the <a href="accountroot.html">AccountRoot</a> object. This is an experimental field to enable behavior for NFToken support.</td>
 </tr>
 <tr>
 <td align="left"><code>asfDefaultRipple</code></td>
@@ -2802,6 +2803,7 @@
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
