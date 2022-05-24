@@ -198,7 +198,7 @@ XRP Ledger内のEscrowにXRPの「停止された支払い」機能を提供し�
 | B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 | 投票中 |
 
 <!-- TODO: translate description -->
-This amendment expands the maximum signer list size allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
+This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
 
 Without this amendment, the maximum signer list size is 8 signers, and each signer has exactly two fields, `Account` and `SignerWeight`.
 
@@ -616,7 +616,7 @@ Implements a "Negative UNL" system, where the network can track which validators
 <!-- TODO: translate description -->
 Adds native support for non-fungible tokens. Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
 
-**Warning:** There is a known issue with this amendment that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. The [fixNFTokenDirV1][] amendment fixes these issues and should be enabled first to avoid problems.
+**Warning:** There is a known issue with this amendment that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. The [fixNFTokenDirV1][] amendment fixes these issues and should be enabled before the NonFungibleTokensV1 amendment to avoid problems.
 
 This amendment adds 5 new transaction types:
 

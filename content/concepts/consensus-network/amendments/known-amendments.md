@@ -234,11 +234,11 @@ Provides "suspended payments" for XRP for escrow within the XRP Ledger, includin
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment expands the maximum signer list size allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
+This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
 
-Without this amendment, the maximum signer list size is 8 signers, and each signer has exactly two fields, `Account` and `SignerWeight`.
+Without this amendment, the maximum signer list size is 8 entries, and each entry has exactly two fields, `Account` and `SignerWeight`.
 
-With this amendment, the maximum [SignerList object][] size is 32 entries. Additionally, each `SignerEntry` object can contain an optional 256-bit `WalletLocator` field containing arbitrary data. This amendment changes the [SignerListSet transaction][] accordingly.
+With this amendment, the maximum [SignerList object][] size is 32 entries. Additionally, each `SignerEntry` object can contain an optional 256-bit (32-byte) `WalletLocator` field containing arbitrary data. This amendment changes the [SignerListSet transaction][] accordingly.
 
 
 ## FeeEscalation
@@ -753,7 +753,7 @@ Implements a "Negative UNL" system, where the network can track which validators
 
 Adds native support for non-fungible tokens. Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
 
-**Warning:** There is a known issue with this amendment that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. The [fixNFTokenDirV1][] amendment fixes these issues and should be enabled first to avoid problems.
+**Warning:** There is a known issue with this amendment that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. The [fixNFTokenDirV1][] amendment fixes these issues and should be enabled before the NonFungibleTokensV1 amendment to avoid problems.
 
 This amendment adds 5 new transaction types:
 
