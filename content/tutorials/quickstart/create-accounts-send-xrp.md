@@ -64,7 +64,7 @@ To transfer XRP between accounts:
 
 1. Enter the **Amount** of XRP to send.
 2. Enter the **Destination** account (for example, copy and paste the Operational **Account Field** to the Standby **Destination** field).
-3. Click **Send XRP>** to transfer XRP from the standby account to the operational account, or **&lt;Send XRP** to transfer XRP from the operational account to the standby account**.**
+3. Click **Send XRP>** to transfer XRP from the standby account to the operational account, or **&lt;Send XRP** to transfer XRP from the operational account to the standby account.
 
 
 
