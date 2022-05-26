@@ -1306,19 +1306,18 @@ Update the form with fields and buttons to support the new functions.
                       <td align="right">Owner</td>
                       <td><input type="text" id="standbyOwnerField" value="" size="80"/></td>
                     </tr>
-				    <tr>
-					  <td align="right">Destination</td>
-					  <td><input type="text" id="standbyDestinationField" value="" size="80"/></td>
-				    </tr>
-				    <tr>
-					  <td align="right">Expiration</td>
-					  <td><input type="text" id="standbyExpirationField" value="" size="80"/></td>
-				    </tr>
-				    <tr>
-				  	  <td align="right">Transfer Fee</td>
-					  <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
-				    </tr>
-
+                    <tr>
+                      <td align="right">Destination</td>
+                      <td><input type="text" id="standbyDestinationField" value="" size="80"/></td>
+                    </tr>
+                    <tr>
+                      <td align="right">Expiration</td>
+                      <td><input type="text" id="standbyExpirationField" value="" size="80"/></td>
+                    </tr>
+                    <tr>
+                      <td align="right">Transfer Fee</td>
+                      <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
+                    </tr>
                   </table>
                   <p align="left">
                     <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
@@ -1492,18 +1491,18 @@ Update the form with fields and buttons to support the new functions.
                             <td align="right">Owner</td>
                             <td><input type="text" id="operationalOwnerField" value="" size="80"/></td>
                           </tr>
-							<tr>
-							  <td align="right">Destination</td>
-							  <td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
-							</tr>
-							<tr>
-							  <td align="right">Expiration</td>
-							  <td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
-							</tr>
-							<tr>
-							  <td align="right">Transfer Fee</td>
-							  <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
-							</tr>
+                          <tr>
+                            <td align="right">Destination</td>
+                            <td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
+                          </tr>
+                          <tr>
+                            <td align="right">Expiration</td>
+                            <td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
+                          </tr>
+                          <tr>
+                            <td align="right">Transfer Fee</td>
+                            <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
+                          </tr>
                         </table>
                         <p align="right">
                           <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
