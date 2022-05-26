@@ -656,6 +656,14 @@ pre code {
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/lightmode/4col-light-green.svg);
     }
+    
+  }
+  #run-a-network-node .text-cards a {
+    color: $black;
+  }
+  
+  #xrpl-events .text-light {
+    color: $black !important;
   }
 }
 

@@ -540,9 +540,6 @@
 // }
 
 
-
-
-
 }
 
 
@@ -750,6 +747,42 @@
       background-image: url(../img/cards/4col-light-green.svg);
     }
   }
+
+  #run-a-network-node .text-cards {
+    grid-gap: 40px;
+
+    h6::before {
+      margin-top: 0;
+      height: unset;
+    }
+
+    a {
+      font-size: 1.25rem;
+      line-height: 26px;
+      color: #fff;
+      font-weight: bold;
+
+      &:hover { 
+        text-decoration: none;
+        background: none !important;
+      }
+    }
+
+    .btn-arrow::after {
+      display: inline-block;
+      content: url(../img/icons/arrow-right-purple.svg);
+      vertical-align: middle;
+      padding-left: 8px;
+      -webkit-transition: transform 0.3s ease-out;
+      -moz-transition: transform 0.3s ease-out;
+      -ms-transition: transform 0.3s ease-out;
+      -o-transition: transform 0.3s ease-out;
+      transition: transform 0.3s ease-out;
+    }
+
+  }
+
+
 }
 
 .page-community {
