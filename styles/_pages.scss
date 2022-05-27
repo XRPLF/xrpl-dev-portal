@@ -733,6 +733,51 @@
 
 .page-docs-index,
 .page-community {
+
+  #community-heading {
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
+    padding-left: 1rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 5rem;
+      padding-bottom: 15rem;
+      padding-left: 0;
+    }
+    // Floating images
+    .parallax {
+      position: absolute;
+      -webkit-transition: all 0.1s ease;
+      -moz-transition: all 0.1s ease;
+      -ms-transition: all 0.1s ease;
+      -o-transition: all 0.1s ease;
+      transition: all 0.1s ease;
+    }
+  
+    .one {
+      top: 160px;
+      left: 0%;
+    }
+    .two {
+      top: 439px;
+      left: 22%;
+    }
+    .three {
+      top: 517px;
+      left: 52%;
+    }
+    .four {
+      top: 322px;
+      left: 71%;
+    }
+    .five {
+      top: 120px;
+      right: 0%;
+    }
+
+
+
+  }
+
   #run-a-network-node .card-deck {
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/4col-yellow-2.svg);
@@ -748,38 +793,71 @@
     }
   }
 
-  #run-a-network-node .text-cards {
-    grid-gap: 40px;
+  #run-a-network-node {
+    padding-bottom: 5rem;
 
-    h6::before {
-      margin-top: 0;
-      height: unset;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
     }
 
-    a {
-      font-size: 1.25rem;
-      line-height: 26px;
-      color: #fff;
-      font-weight: bold;
 
-      &:hover { 
-        text-decoration: none;
-        background: none !important;
+    .text-cards {
+      grid-gap: 40px;
+
+      h6::before {
+        margin-top: 0;
+        height: unset;
+      }
+
+      a {
+        font-size: 1.25rem;
+        line-height: 26px;
+        color: #fff;
+        font-weight: bold;
+
+        &:hover { 
+          text-decoration: none;
+          background: none !important;
+        }
+      }
+
+      .btn-arrow::after {
+        display: inline-block;
+        content: url(../img/icons/arrow-right-purple.svg);
+        vertical-align: middle;
+        padding-left: 8px;
+        -webkit-transition: transform 0.3s ease-out;
+        -moz-transition: transform 0.3s ease-out;
+        -ms-transition: transform 0.3s ease-out;
+        -o-transition: transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
       }
     }
+  }
 
-    .btn-arrow::after {
-      display: inline-block;
-      content: url(../img/icons/arrow-right-purple.svg);
-      vertical-align: middle;
-      padding-left: 8px;
-      -webkit-transition: transform 0.3s ease-out;
-      -moz-transition: transform 0.3s ease-out;
-      -ms-transition: transform 0.3s ease-out;
-      -o-transition: transform 0.3s ease-out;
-      transition: transform 0.3s ease-out;
+  #xrpl-grants {
+    padding-bottom: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
     }
+  }
 
+  #xrpl-events {
+    padding-bottom: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
+    }
+  }
+
+  #xrpl-careers {
+    padding-bottom: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
+    }
   }
 
 
