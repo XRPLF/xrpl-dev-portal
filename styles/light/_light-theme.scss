@@ -665,6 +665,17 @@ pre code {
   #xrpl-events .text-light {
     color: $black !important;
   }
+
+  // #networkNode {
+  //   filter: invert(100%) brightness(0.8);
+  // }
+
+  #xrplGrantsDark,
+  #xrplGrantsDark-small,
+  #careersDark,
+  #careersDark-small {
+    filter: invert(100%) brightness(0.8);
+  }
 }
 
 #find-us-on-platforms .card-deck {

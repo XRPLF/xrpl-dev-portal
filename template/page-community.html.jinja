@@ -264,12 +264,14 @@
 {% block endbody %}
 <script type="text/javascript" src="{{currentpage.prefix}}assets/js/bodymovin.min.js"></script>
 
-<!-- contribute -->
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/network-node-dark.json"></script>
+<!-- Light version for network node looks ok for both light/dark.-->
+<!-- Dark version for other two and using filter invert and adjust brightness for light mode -->
+<!-- <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/network-node-dark.json"></script> -->
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/network-node-light.json"></script>
 <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/XRPL-grants-dark.json"></script>
+<!-- <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/XRPL-grants-light.json"></script> -->
 <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/careers-dark.json"></script>
-
-
+<!-- <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/careers-light.json"></script> -->
 
 <script type="text/javascript">
   function networkNodeAnimation(){
@@ -278,7 +280,7 @@
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      animationData: networkNodeDark
+      animationData: networkNodeLight
     });
   };
   
@@ -288,7 +290,7 @@
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      animationData: networkNodeDark
+      animationData: networkNodeLight
     });
   };
 
