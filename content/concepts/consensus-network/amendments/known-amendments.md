@@ -924,6 +924,18 @@ Allows pre-authorization of accounting relationships (zero-balance trust lines) 
 With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](trustset.html#trustset-flags) can create a new [`RippleState` ledger object](ripplestate.html) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](ripplestate.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](accountroot.html#accountroot-flags) by sending an [AccountSet transaction](accountset.html) with the [`asfRequireAuth` flag enabled](accountset.html#accountset-flags).
 
 
+## NonFungibleTokensV1
+
+| Amendment | NFTSuport |
+|:----------|:-----------|
+| Amendment ID | 3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87 |
+| Status | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Introduces native support for Non-fungible tokens. The `NFTokenMint` transaction creates `NFToken` objects that are recorded on `NFTokenPage` objects. The `NFTokenCreateOffer` transaction creates `NFTokenOffer` objects that are available for transfer to another account via the `NFTokenAcceptOffer` transaction. Token owners have the option of destroying their `NFToken` objects with the `NFTokenBurn` transaction. See the full specification at [0020 XLS-20d Non-Fungible Token Support](https://github.com/XRPLF/XRPL-Standards/issues/16).
+
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
