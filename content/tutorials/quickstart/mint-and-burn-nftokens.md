@@ -21,7 +21,7 @@ This example shows how to:
 3. Delete (Burn) a NFToken.
 
 
-![Test harness with mint NFToken fields](img/quickstart13.png)
+![Test harness with mint NFToken fields](img/quickstart8.png)
 
 
 
@@ -44,15 +44,13 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 
 
-![Get accounts](img/quickstart14.png)
+![Get accounts](img/quickstart9.png)
 
 
 
 ## Mint a NFToken
 
 To mint a non-fungible token object:
-
-
 
 1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFToken object can be transferred to another account. Otherwise, the NFToken object can only be transferred back to the issuing account. See [NFToken Mint](https://xrpl.org/nftokenmint.html#:~:text=Example%20NFTokenMint%20JSON-,NFTokenMint%20Fields,-NFTokenMint%20Flags) for information about all of the available flags for minting NFTokens.
 2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFToken object. You can use the sample URI provided if you do not have one of your own.
@@ -61,7 +59,7 @@ To mint a non-fungible token object:
 
 
 
-![Mint NFToken fields](img/quickstart15.png)
+![Mint NFToken fields](img/quickstart10.png)
 
 
 ## Get Tokens
@@ -70,7 +68,7 @@ Click **Get Tokens** to get a list of NFTokens owned by the account.
 
 
 
-![Get NFTokens](img/quickstart16.png)
+![Get NFTokens](img/quickstart11.png)
 
 
 
@@ -87,7 +85,7 @@ To permanently destroy a NFToken:
 
 
 
-![Burn NFTokens](img/quickstart17.png)
+![Burn NFTokens](img/quickstart12.png)
 
 
 
