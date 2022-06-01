@@ -59,7 +59,7 @@ To create a NFToken sell offer:
 
 1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
 2. Set the **Flags** field to _1_.
-3. Enter the **Token ID** of the NFToken you want to sell.
+3. Enter the **NFToken ID** of the NFToken you want to sell.
 4. Optionally, enter a number of days until **Expiration**.
 5. Click **Create Sell Offer**.
 
@@ -79,7 +79,7 @@ To accept an available sell offer:
 
 
 
-1. Enter the **Token Offer Index** (labeled as _nft_offer_index_ in the token offer results. This is not the same as the _nft_id_).
+1. Enter the **NFToken Offer Index** (labeled as _nft_offer_index_ in the token offer results. This is not the same as the _nft_id_).
 2. Click **Accept Sell Offer**.
 
 
@@ -97,7 +97,7 @@ To create an offer to buy a NFToken:
 
 
 1. Enter the **Amount** of your offer.
-2. Enter the **Token ID**.
+2. Enter the **NFToken ID**.
 3. Enter the owner’s account string in the **Owner** field.
 4. Optionally enter the number of days until **Expiration**.
 5. Click **Create Buy Offer**.
@@ -114,7 +114,7 @@ To accept an offer to buy a NFToken:
 
 
 
-1. Enter the **Token Offer ID** (the _nft_offer_index_ of the token buy offer).
+1. Enter the **NFToken Offer Index** (the _nft_offer_index_ of the token buy offer).
 3. Click **Accept Buy Offer**.
 
 
@@ -141,7 +141,7 @@ To cancel a buy or sell offer that you have created:
 
 
 
-1. Enter the **Token Offer ID**.
+1. Enter the **NFToken Offer Index**.
 2. Click **Cancel Offer**.
 
 
