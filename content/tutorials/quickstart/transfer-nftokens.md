@@ -561,11 +561,10 @@ Disconnect from the ledger.
 async function getOffers() {
 ```
 
-Get the standby account wallet and connect to the ledger.
+Connect to the ledger.
 
 
 ```
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '...'
