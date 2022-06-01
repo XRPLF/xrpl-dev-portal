@@ -1264,7 +1264,7 @@ Update the form with fields and buttons to support the new functions.
                         Amount
                       </td>
                       <td>
-                        <input type="text" id="standbyAmountField" size="40" value="100"></input>
+                        <input type="text" id="standbyAmountField" size="40"></input>
                         <br>
                       </td>
                     </tr>
@@ -1448,7 +1448,7 @@ Update the form with fields and buttons to support the new functions.
                               Amount
                             </td>
                             <td>
-                              <input type="text" id="operationalAmountField" size="40" value="100"></input>
+                              <input type="text" id="operationalAmountField" size="40"></input>
                               <br>
                             </td>
                           </tr>
