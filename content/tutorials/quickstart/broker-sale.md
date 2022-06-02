@@ -184,7 +184,7 @@ Prepare the transaction. The difference between a brokered sale and a direct sal
     "Account": broker_wallet.classicAddress,
     "NFTokenSellOffer": brokerTokenSellOfferIndexField.value,
     "NFTokenBuyOffer": brokerTokenBuyOfferIndexField.value,
-    "Fee": brokerBrokerFeeField.value
+    "NFTokenBrokerFee": brokerBrokerFeeField.value
   }
 ```
   
