@@ -85,7 +85,7 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFToken Offer Index** field.
 2. Click **Cancel Offer**.
 
-![Brokered Sale](img/quickstart27.png)
+![Cancel Offer](img/quickstart27.png)
 
 # Code Walkthrough
 
