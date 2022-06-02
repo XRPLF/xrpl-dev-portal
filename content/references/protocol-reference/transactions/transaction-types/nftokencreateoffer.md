@@ -46,6 +46,25 @@ Transactions of the NFTokenCreateOffer type support additional values in the [`F
 | `tfSellToken` | `0x00000001` | `1`           | If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer. |
 
 
+## Error Cases
+
+In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+
+| Error Code                       | Description                               |
+|:---------------------------------|:------------------------------------------|
+| `temDISABLED`                    | The [NonFungibleTokensV1 amendment][] is not enabled. |
+| `temBAD_AMOUNT`                  | The `Amount` field is not valid. For example, the amount was zero for a buy offer, or the amount is denominated in fungible tokens but the `NFToken` has the [`lsfOnlyXRP` flag](nftoken.html#nftoken-flags) enabled. |
+| `temBAD_EXPIRATION`              | The specified `Expiration` time is invalid (for example, `0`). |
+| `tecDIR_FULL`                    | The sender already owns too many objects in the ledger, or there are already too many offers to buy or sell this token. |
+| `tecEXPIRED`                     | The specified `Expiration` time has already passed. |
+| `tecFROZEN`                      | The `Amount` is denominated in fungible tokens, but one of the trust lines that would receive tokens from this offer is [frozen](freezes.html). This could be the seller's trust line or the `NFToken`'s issuer's trust line (if the `NFToken` has a transfer fee). |
+| `tecINSUFFICIENT_RESERVE`        | The sender does not have enough XRP to meet the [reserve requirement](reserves.html) after placing this offer. |
+| `tecNO_DST`                      | The account specified in the `Destination` field does not exist in the ledger. |
+| `tecNO_ENTRY`                    | The `NFToken` is not owned by the expected account. |
+| `tecNO_ISSUER`                   | The issuer specified in the `Amount` field does not exist. |
+| `tecNO_LINE`                     | The `Amount` field is denominated in fungible tokens, but the `NFToken`'s issuer does not have a trust line for those tokens and the `NFToken` does not have the [`lsfTrustLine` flag](nftoken.html#nftoken-flags) enabled. |
+| `tecUNFUNDED_OFFER`              | For a buy offer, the sender does have the funds specified in the `Amount` field available. If the `Amount` is XRP, this could be due to the reserve requirement; if the `Amount` is denominated in fungible tokens, this could be because they are [frozen](freezes.html). |
+| `tefNFTOKEN_IS_NOT_TRANSFERABLE` | The `NFToken` has the [`lsfTransferable` flag](nftoken.html#nftoken-flags) disabled and this transaction would not transfer the `NFToken` to or from the issuer. |
 
 
 

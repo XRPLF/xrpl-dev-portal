@@ -269,7 +269,7 @@ Disconnect from the ledger.
 
 
 
-### Burn Token 
+### Burn Token
 
 
 ```
@@ -295,7 +295,7 @@ Connect to the ledger and get the account wallets.
 ```
 
 
-Define the transaction. 
+Define the transaction.
 
 
 ```
@@ -787,3 +787,8 @@ Bold text in the following indicates changes to the form that support the new fu
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
 | [← 2. Create TrustLine and Send Currency >](create-trustline-send-currency.html) | [4. Transfer NFTokens → >](transfer-nftokens.html) |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

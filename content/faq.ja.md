@@ -20,7 +20,7 @@ name: よくある質問
 
 バリデータは、トランザクションがプロトコル要件を満たしていて、結果として「有効」であるかどうかを判断します。バリデータが提供する独自の機能は、順序付けされた単位にトランザクションをグループ化し、二重支払いを防ぐことを目的としてその順序に同意することです。
 
-コンセンサスプロセスの詳細は、[コンセンサス](consensus.html)と[Ripple Labs Tech Talk: Understanding Consensus](https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/)を参照してください。
+コンセンサスプロセスの詳細は、[コンセンサス](consensus.html)を参照してください。
 
 
 #### バリデータの実行にはいくらかかりますか?

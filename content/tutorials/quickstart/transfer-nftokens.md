@@ -150,7 +150,7 @@ To cancel a buy or sell offer that you have created:
 
 
 
-# Code Walkthrough 
+# Code Walkthrough
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try each of the samples in your own browser.
 
@@ -227,7 +227,7 @@ If the Destination field is not empty, append it to the transaction. When the de
 
 Submit the transaction and wait for the results.
 
-        
+
 
 
 ```
@@ -235,7 +235,7 @@ Submit the transaction and wait for the results.
 ```
 
 
-      
+
 
 
 ```
@@ -415,7 +415,7 @@ Request the list of buy offers for the token.
 
 Report the results of the transaction.
 
-      
+
 
 ```
   results += "\n\nTransaction result:\n" +
@@ -893,6 +893,7 @@ async function oPcreateSellOffer() {
   client.disconnect()
 }  // End of oPcreateSellOffer()
 
+
 // *******************************************************
 // ************** Operational Create Buy Offer ***********
 // *******************************************************
@@ -966,6 +967,7 @@ async function oPcreateBuyOffer() {
 
   client.disconnect()
 }// End of oPcreateBuyOffer()
+
 
 // *******************************************************
 // ************* Operational Cancel Offer ****************
@@ -1110,6 +1112,7 @@ async function oPacceptSellOffer() {
   client.disconnect()
 }// End of acceptSellOffer()
 
+
 // *******************************************************
 // ********* Operational Accept Buy Offer ****************
 // *******************************************************
@@ -1151,6 +1154,7 @@ async function oPacceptBuyOffer() {
   document.getElementById('operationalResultField').value = results
   client.disconnect()
 }// End of acceptBuyOffer()
+
 ```
 
 
@@ -1531,3 +1535,7 @@ Update the form with fields and buttons to support the new functions.
 | :---                                                     |  ---: |
 | [← 3. Mint and Burn NFTokens >](mint-and-burn-nftokens.html) | [5. Broker a NFToken Sale → >](broker-sale.html) |
 
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

@@ -145,7 +145,7 @@ Notice that the scrambled version of the taxon is `0xBC8B858E`: the scrambled ve
 
 ### Token Sequence
 
-The fifth section is a sequence number that increases with each `NFToken` the issuer creates. The [NFTokenMint transaction][] sets this part of the `TokenID` automatically based on the `MintedTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
+The fifth section is a sequence number that increases with each `NFToken` the issuer creates. The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
 
 
 ## URI
@@ -176,7 +176,7 @@ xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{tok
 ```
 
 
-Replace the string `{tokenid}` with the requested token’s `TokenID` as a 64-byte hex string when you attempt to query information.
+Replace the string `{tokenid}` with the requested token’s `NFTokenID` as a 64-byte hex string when you attempt to query information.
 
 Your implementation should check for the presence of `TXT` records and use those query strings if present. If no string is present, implementations should attempt to use a default URL. Assuming the domain is _example.com_, the default URL would be:
 

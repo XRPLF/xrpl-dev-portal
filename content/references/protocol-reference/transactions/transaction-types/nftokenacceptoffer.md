@@ -20,10 +20,10 @@ The `NFTokenAcceptOffer` transaction is used to accept offers to `buy` or `sell`
 The mode in which the transaction operates depends on the presence of the `NFTokenSellOffer` and `NFTokenBuyOffer` fields of the transaction:
 
 | `NFTokenSellOffer` | `NFTokenBuyOffer` | Mode     |
-|:------------|:-----------|:---------|
-| ✔️           | ✔️          | Brokered |
-| ✔️           | X          | Direct   |
-| X           | ✔️          | Direct   |
+|:-------------------|:------------------|:---------|
+| ✔️                  | ✔️                 | Brokered |
+| ✔️                  | X                 | Direct   |
+| X                  | ✔️                 | Direct   |
 
 
 If neither of those fields is specified, the transaction is malformed and produces a `tem` class error.
@@ -64,22 +64,38 @@ In brokered mode, the `NFTokenAcceptOffer` transaction fails if:
 
 ## Fields
 
+{% include '_snippets/tx-fields-intro.md' %}
 
-| Field           | JSON Type        | [Internal Type][] | Description         |
-|:----------------|:-----------------|:------------------|:--------------------|
-| `TransactionType` | String | UInt16 | Transaction type `NFTokenAcceptOffer`. The integer identifier is 29. |
-| `NFTokenSellOffer` | String | Hash256 | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
-| `NFTokenBuyOffer` | String | Hash256 | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
-| `NFTokenBrokerFee` | [Currency Amount][] | Amount | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought. If specified, the fee must be such that, prior to accounting for the transfer fee charged by the issuer, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
+| Field              | JSON Type           | [Internal Type][] | Description   |
+|:-------------------|:--------------------|:------------------|:--------------|
+| `NFTokenSellOffer` | String              | Hash256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
+| `NFTokenBuyOffer`  | String              | Hash256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
+| `NFTokenBrokerFee` | [Currency Amount][] | Amount            | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the `NFToken` being bought. If specified, the fee must be such that, prior to accounting for the transfer fee charged by the issuer, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
 
-In direct mode, you must specify **either** the `NFTokenSellOffer` or the `NFTokenBuyOffer`. In brokered mode, you must specify **both** the `NFTokenSellOffer` and the `NFTokenBuyOffer`.
+In direct mode, you must specify **either** the `NFTokenSellOffer` or the `NFTokenBuyOffer` field. In brokered mode, you must specify **both** fields.
 
-This functionality is intended to allow the `owner` of a `NFToken` to offer their token for sale to a third party broker, who may then attempt to sell the `NFToken` on for a larger amount, without the broker having to own the `NFToken` or custody funds.
+This functionality is intended to allow the owner of an `NFToken` to offer their token for sale to a third party broker, who may then attempt to sell the `NFToken` on for a larger amount, without the broker having to own the `NFToken` or custody funds.
 
 If both offers are for the same asset, it is possible that the order in which funds are transferred might cause a transaction that would succeed to fail due to an apparent lack of funds. To ensure deterministic transaction execution and maximize the chances of successful execution, the account attempting to buy the `NFToken` is debited first. Funds due to the broker are credited _before_ crediting the seller.
 
-In brokered mode, The offers referenced by `NFTokenBuyOffer` and `NFTokenSellOffer` must both specify the same `NFTokenID`; that is, both must be for the same `NFToken`.
+In brokered mode, the offers referenced by `NFTokenBuyOffer` and `NFTokenSellOffer` must both specify the same `NFTokenID`; that is, both must be for the same `NFToken`.
 
+## Error Cases
+
+In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+
+| Error Code                         | Description                             |
+|:-----------------------------------|:----------------------------------------|
+| `temDISABLED`                      | The [NonFungibleTokensV1 amendment][] is not enabled. |
+| `temMALFORMED`                     | The transaction was not validly formatted. For example, it specified neither `NFTokenSellOffer` nor `NFTokenBuyOffer`, or it specified a negative `NFTokenBrokerFee`. |
+| `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | The buyer and seller are the same account. |
+| `tecEXPIRED`                       | An offer specified in the transaction has already expired. |
+| `tecINSUFFICIENT_FUNDS`            | The buyer does not have the full amount they are offering. If the buy amount is specified in XRP, this could be because of the [reserve requirement](reserves.html). If the buy amount is a token, it could be because the token is [frozen](freezes.html). |
+| `tecINSUFFICIENT_PAYMENT`          | In brokered mode, the buy amount offered is not high enough to pay the `BrokerFee` _and_ the sell cost of the `NFToken`. |
+| `tecOBJECT_NOT_FOUND`              | One of the offers specified in the transaction does not exist in the ledger. |
+| `tecNFTOKEN_BUY_SELL_MISMATCH`     | In brokered mode, the two offers are not a valid match. For example, the seller is asking more than the buyer is offering, the buy and sell offer are denominated in different assets, or the seller specified a destination that is not the buyer or the broker. |
+| `tecNFTOKEN_OFFER_TYPE_MISMATCH`   | The object identified by the `NFTokenBuyOffer` is not actually a buy offer, or the object identified by the `NFTokenSellOffer` is not actually a sell offer. |
+| `tecNO_PERMISSION`                 | The seller does not own the `NFToken` being sold; or the matching offer specifies a different `Destination` account than the account accepting the offer. |
 
 
 <!--{# common link defs #}-->

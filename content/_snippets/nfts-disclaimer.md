@@ -1,1 +1,1 @@
-_The XLS-20 standard for NFTs :not_enabled: has a preliminary implementation that can be used in test networks, but is not yet available as an [amendment](amendments.html) to the XRP Ledger protocol. An amendment may be included in a future XRP Ledger release._
+_Non-fungible token functionality is part of the [NonFungibleTokensV1 amendment][] :not_enabled: to the XRP Ledger protocol. You can use these functions on the [NFT-Devnet](parallel-networks.html) now, but they are not yet available on the production Mainnet._
