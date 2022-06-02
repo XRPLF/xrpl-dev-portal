@@ -1529,4 +1529,5 @@ Update the form with fields and buttons to support the new functions.
 
 | Previous                                                 | Next  |
 | :---                                                     |  ---: |
-| [← 3. Mint and Burn NFTokens >](mint-and-burn-nftokens.html) |       |
+| [← 3. Mint and Burn NFTokens >](mint-and-burn-nftokens.html) | [5. Broker a NFToken Sale → >](broker-sale.html) |
+
