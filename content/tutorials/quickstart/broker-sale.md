@@ -16,6 +16,7 @@ Earlier examples showed how to make buy and sell offers directly between two acc
 # Usage
 
 This example shows how to:
+
 1. Create a brokered sell offer.
 2. Get a list of offers for the brokered item.
 3. Broker a sale between two different accounts.
