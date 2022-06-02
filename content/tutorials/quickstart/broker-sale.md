@@ -20,6 +20,8 @@ This example shows how to:
 2. Get a list of offers for the brokered item.
 3. Broker a sale between two different accounts.
 
+![Quickstart form with Broker Account](img/quickstart21.png)
+
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try each of the samples in your own browser.
 
 ## Get Accounts
@@ -35,28 +37,36 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         2. Click **Get New Operational Account**.
         3. Click **Get New Broker Account**
 
+![Quickstart form with Account Information](img/quickstart22.png)
 
 ## Prepare a Brokered Transaction
 
 1. Use the Standby account to create a NFToken Sell Offer with the Broker account as the destination.
 	1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
 	2. Set the **Flags** field to _1_.
-	3. Enter the **Token ID** of the NFToken you want to sell.
+	3. Enter the **NFToken ID** of the NFToken you want to sell.
 	4. Optionally, enter a number of days until **Expiration**.
 	5. Enter the Broker account number as the **Destination**.
 	6. Click **Create Sell Offer**.
 
+
+![Sell Offer with Destination](img/quickstart23.png)
+
 2. Use the Operational account to create a NFToken Buy Offer.
 	1. Enter the **Amount** of your offer.
-	2. Enter the **Token ID**.
+	2. Enter the **NFToken ID**.
 	3. Enter the owner’s account string in the **Owner** field.
 	4. Optionally enter the number of days until **Expiration**.
 	5. Click **Create Buy Offer**.
+
+![Buy Offer](img/quickstart24.png)
 
 ## Get Offers
 
 1. Enter the **NFToken ID**.
 2. Click **Get Offers**.
+
+![Get Offers](img/quickstart25.png)
 
 ## Broker the Sale
 
@@ -65,13 +75,17 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 3. Enter a **Broker Fee**, in drops.
 4. Click **Broker Sale**.
 
+![Brokered Sale](img/quickstart26.png)
+
+
 ## Cancel Offer
 
-After accepting a buy offer, a best practice for the broker is to cancel all other offers, if possible. Use **Get Offers** to get the full list of buy offers. To cancel an offer:
+After accepting a buy offer, a best practice for the broker is to cancel all other offers, if the broker has permissions to do so. Use **Get Offers** to get the full list of buy offers. To cancel an offer:
 
 1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFToken Offer Index** field.
 2. Click **Cancel Offer**.
 
+![Brokered Sale](img/quickstart27.png)
 
 # Code Walkthrough
 
