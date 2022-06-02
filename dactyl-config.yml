@@ -1102,6 +1102,11 @@ pages:
             - en
             - ja
 
+    -   md: tutorials/quickstart/broker-sale.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started.md
         targets:
             - en
