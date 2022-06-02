@@ -63,7 +63,7 @@ Checkを取り消す例を以下に示します。
 
 ## {{cancel_n.next()}}.CheckCancelトランザクションの署名
 
-{% include '_snippets/tutorial-sign-step.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### 要求の例
 

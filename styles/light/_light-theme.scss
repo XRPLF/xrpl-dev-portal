@@ -340,6 +340,19 @@ aside .active > a:hover {
   background-color: $light-standout-bg;
   box-shadow: $light-box-shadow;
 }
+#code-samples-deck {
+  .card {
+    box-shadow: $light-box-shadow;
+  }
+  .card-header {
+    border-bottom: none;
+    background-color: $light-standout-bg;
+  }
+  .card-footer {
+    background-color: $light-standout-bg;
+  }
+}
+
 
 // FAQ
 .page-faq,

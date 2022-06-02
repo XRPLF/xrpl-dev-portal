@@ -15,25 +15,45 @@ XRP Ledger escrows require PREIMAGE-SHA-256 [crypto-conditions][]. To calculate 
 - Use a cryptographically secure source of randomness to generate at least 32 random bytes.
 - Follow Interledger Protocol's [PSK specification](https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md) and use an HMAC-SHA-256 of the ILP packet as the fulfillment. <!-- SPELLING_IGNORE: psk -->
 
-Example JavaScript code for a random fulfillment and condition:
+Example code for a random fulfillment and condition:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
 
 ```js
 const cc = require('five-bells-condition')
 const crypto = require('crypto')
 
 const preimageData = crypto.randomBytes(32)
-const myFulfillment = new cc.PreimageSha256()
-myFulfillment.setPreimage(preimageData)
+const fulfillment = new cc.PreimageSha256()
+fulfillment.setPreimage(preimageData)
 
-const condition = myFulfillment.getConditionBinary().toString('hex').toUpperCase()
+const condition = fulfillment.getConditionBinary().toString('hex').toUpperCase()
 console.log('Condition:', condition)
-// (Random hexadecimal, 72 chars in length)
 
-// keep secret until you want to finish executing the held payment:
-const fulfillment = myFulfillment.serializeBinary().toString('hex').toUpperCase()
-console.log('Fulfillment:', fulfillment)
-// (Random hexadecimal, 78 chars in length)
+// Keep secret until you want to finish the escrow
+const fulfillment_hex = fulfillment.serializeBinary().toString('hex').toUpperCase()
+console.log('Fulfillment:', fulfillment_hex)
 ```
+
+_Python_
+
+```py
+from os import urandom
+from cryptoconditions import PreimageSha256
+
+secret = urandom(32)
+
+fulfillment = PreimageSha256(preimage=secret)
+
+print("Condition", fulfillment.condition_binary.hex().upper())
+
+# Keep secret until you want to finish the escrow
+print("Fulfillment", fulfillment.serialize_binary().hex().upper())
+```
+
+<!-- MULTICODE_BLOCK_END -->
 
 Save the condition and the fulfillment for later. Be sure to keep the fulfillment secret until you want to finish executing the held payment. Anyone who knows the fulfillment can finish the escrow, releasing the held funds to their intended destination.
 

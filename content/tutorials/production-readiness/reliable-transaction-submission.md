@@ -319,7 +319,7 @@ Request:
                "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
                 "Sequence": 4,
                 "LastLedgerSequence": 10268600,
-                "Fee": 10000,
+                "Fee": "10000",
                 "Amount": {
                     "currency": "FOO",
                     "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",

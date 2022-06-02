@@ -20,6 +20,7 @@ An account in the XRP Ledger represents a holder of XRP and a sender of transact
 * **[`account_currencies`](account_currencies.html)** - Get a list of currencies an account can send or receive.
 * **[`account_info`](account_info.html)** - Get basic data about an account.
 * **[`account_lines`](account_lines.html)** - Get info about an account's trust lines.
+* **[`account_nfts`](account_nfts.html)** :not_enabled: - Get a list of non-fungible tokens owned by an account.
 * **[`account_objects`](account_objects.html)** - Get all ledger objects owned by an account.
 * **[`account_offers`](account_offers.html)** - Get info about an account's currency exchange offers.
 * **[`account_tx`](account_tx.html)** - Get info about an account's transactions.
@@ -50,7 +51,7 @@ Transactions are the only thing that can modify the shared state of the XRP Ledg
 
 By default, the following methods are [admin-only](admin-rippled-methods.html). They can be used as public methods if the server admin has [enabled public signing](enable-public-signing.html).
 
-* **[`sign`](sign.html)** - Cryptographically sign a transaction. 
+* **[`sign`](sign.html)** - Cryptographically sign a transaction.
 * **[`sign_for`](sign_for.html)** - Contribute to a multi-signature.
 
 
@@ -60,6 +61,8 @@ Paths define a way for payments to flow through intermediary steps on their way 
 
 * **[`book_offers`](book_offers.html)** - Get info about offers to exchange two currencies.
 * **[`deposit_authorized`](deposit_authorized.html)** - Look up whether one account is authorized to send payments directly to another.
+* **[`nft_buy_offers`](nft_buy_offers.html)** :not_enabled: - Retrieve a list of buy offers for a specified NFToken object.
+* **[`nft_sell_offers`](nft_sell_offers.html)** :not_enabled: - Retrieve a list of sell offers for a specified NFToken object.
 * **[`path_find`](path_find.html)** - Find a path for a payment between two accounts and receive updates.
 * **[`ripple_path_find`](ripple_path_find.html)** - Find a path for payment between two accounts, once.
 

@@ -68,7 +68,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 ## {{send_n.next()}}.CheckCreateトランザクションへの署名
 
-{% include '_snippets/tutorial-sign-step.md' %}
+{% include '_snippets/tutorial-sign-step.ja.md' %}
 <!--{#_ #}-->
 
 ### 要求の例

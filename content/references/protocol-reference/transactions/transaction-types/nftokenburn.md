@@ -11,153 +11,40 @@ status: not_enabled
 
 The `NFTokenBurn` transaction is used to remove a `NFToken` object from the `NFTokenPage` in which it is being held, effectively removing the token from the ledger (_burning_ it).
 
+The sender of this transaction must be the owner of the `NFToken` to burn; or, if the `NFToken` has the `lsfBurnable` flag enabled, can be the issuer or the issuer's authorized `NFTokenMinter` account instead.
+
 If this operation succeeds, the corresponding `NFToken` is removed. If this operation empties the `NFTokenPage` holding the `NFToken` or results in consolidation, thus removing a `NFTokenPage`, the owner’s reserve requirement is reduced by one.
 
 
 ## Example {{currentpage.name}} JSON
 
-
-```
+```json
 {
-      "TransactionType": "NFTokenBurn",
-      "Account": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
-      "Owner": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      "Fee": 10,
-      "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
+  "TransactionType": "NFTokenBurn",
+  "Account": "rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2",
+  "Owner": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  "Fee": "10",
+  "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
 }
 ```
 
 {% include '_snippets/tx-fields-intro.md' %}
 
-<table>
-  <tr>
-   <td><strong>Field Name</strong>
-   </td>
-   <td><strong>Required?</strong>
-   </td>
-   <td><strong>JSON Type</strong>
-   </td>
-   <td><strong>Internal Type</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><code>TransactionType</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>UInt16
-   </td>
-   <td>The <code>NFTokenBurn</code> transaction type.  The integer value is <code>26</code>.
-   </td>
-  </tr>
-  <tr>
-   <td><code>Account</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>AccountID
-   </td>
-   <td>The <code>AccountID</code> that submitted this transaction. The account must be either the present <code>owner</code> of the token or, if the <code>lsfBurnable</code> flag is set in the <code>NFToken</code>, the <code>issuer</code> account or an account authorized by the issuer,  (that is, the <code>NFTokenMinter</code>).
-   </td>
-  </tr>
-  <tr>
-   <td><code>Owner</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>AccountID
-   </td>
-   <td>The account that owns the NFToken to be destroyed. This field is required when an issuer burns a NFToken minted using the `tfBurnable` flag that is owned by another account.
-   </td>
-  </tr>
-  <tr>
-   <td><code>NFTokenID</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>Hash256
-   </td>
-   <td>Identifies the <code>NFToken</code> object to be removed by the transaction.
-   </td>
-  </tr>
-    <tr>
-   <td><code>Owner</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>AccountID
-   </td>
-   <td>Identifies the owner of the NFToken with the given TokenID. Only used if that owner is different than the account signing this transaction. This is used to burn tokens with the lsfBurnable flag that have been traded.
-   </td>
-  </tr>
-</table>
+| Field             | JSON Type | [Internal Type][] | Description              |
+|:------------------|:----------|:------------------|:-------------------------|
+| `NFTokenID`       | String    | Hash256           | The `NFToken` to be removed by this transaction. |
+| `Owner`           | String    | AccountID         | _(Optional)_ The owner of the `NFToken` to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the `lsfBurnable` flag enabled. |
 
 
+## Error Cases
 
-## Account Root Enhancements
+In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
 
-
-### NFTokenMinter
-
-
-Issuers might want to issue NFTs from their well known account, while at the same time wanting to delegate the issuance of such NFTs to a mint or other third party.
-
-
-<table>
-  <tr>
-   <td><strong>Field Name</strong>
-   </td>
-   <td><strong>Required?</strong>
-   </td>
-   <td><strong>JSON Type</strong>
-   </td>
-   <td><strong>Internal Type</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><code>NFTokenMinter</code>
-   </td>
-   <td>
-   </td>
-   <td>string
-   </td>
-   <td>AccountID
-   </td>
-   <td>The <code>NFTokenMinter</code> field, if set, specifies an alternate account that is allowed to execute the <code>NFTokenMint</code> and <code>NFTokenBurn</code> operations on behalf of the account.
-   </td>
-  </tr>
-</table>
-
-
-The `SetAccount` transaction allows the `NFTokenMinter` field to be set or cleared.
-
-### MintedNFTokens
-
-
-The `MintedNFTokens` field is used to form the `NFTokenID` of a new object, to ensure the uniqueness of `NFToken` objects. If this field is not present, the value is 0.
-
-
-### BurnedNFTokens
-
-
-The `BurnedNFTokens` field provides a convenient way to determine how many `NFToken` objects issued by an account are still active (that is, not burned). If this field is not present the value 0 is assumed. The field is decremented whenever a token issued by this account is burned.
-
-An account for which the difference in the number of minted and burned tokens, as stored in the `MintedNFTokens` and `BurnedNFTokens` fields respectively, is non-zero cannot be deleted.
-
+| Error Code         | Description                                             |
+|:-------------------|:--------------------------------------------------------|
+| `temDISABLED`      | The [NonFungibleTokensV1 amendment][] is not enabled. |
+| `tecNO_ENTRY`      | The specified `TokenID` was not found.                  |
+| `tecNO_PERMISSION` | The account does not have permission to burn the token. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

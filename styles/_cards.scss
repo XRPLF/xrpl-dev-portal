@@ -1,6 +1,108 @@
 .card, .cta-card, .q-wrapper {
   box-shadow: $dropdown-box-shadow;
 }
+#code-samples-deck  {
+  .card {
+    box-shadow: none;
+    margin: 0 2rem 5rem 2rem;
+  }
+  .card-header {
+    border-bottom: none;
+    background-color: unset;
+  }
+  .card-footer {
+    background-color: unset;
+    font-size: initial;
+  }
+
+  .card-deck .card a{
+    margin: 0 2.5rem 5rem 2.5rem;
+  }
+}
+
+.code-contribute {
+  @include media-breakpoint-up(lg) {
+  width: 75vw;
+  position: relative;
+  left: 20%;
+  right: 20%;
+  margin-left: -30vw;
+  margin-right: -30vw;
+  }
+}
+
+.contribute {
+  &::before {
+    content:"";
+    display: block;
+    height:2px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+  
+  .dot {
+    height: 16px;
+    width: 16px;
+    background-color: #111112;
+    border-radius: 50%;
+    border: 3px solid #FBFF4C;
+    display: inline-block;
+    position: absolute;
+    top: -7px;
+    left: -6px;
+  }
+
+  @include media-breakpoint-down(md) {
+    &::before {
+      left: 0;
+      // transform: rotate(90deg);
+      height: 100%;
+      width: 2px;
+      top: 15px;
+    }
+    .dot {
+      top: 5px;
+      left: -6px;
+    }
+  }
+}
+
+.contribute_1 {
+  &::before {
+    background: -webkit-linear-gradient(left, rgba(254, 255, 1, 1), rgba(255, 45, 154, 1) );
+  }
+  .dot {
+    border-color: #FBFF4C;
+  }
+}
+.contribute_2 {
+  &::before {
+    background: -webkit-linear-gradient(left,  rgba(255, 45, 154, 1), rgba(226, 76, 255, 1));
+  }
+  .dot {
+    border-color: #FF198B;
+  }
+}
+.contribute_3 {
+  &::before {
+    background: -webkit-linear-gradient(left, rgba(226, 76, 255, 1),rgba(154, 82, 255, 1)    );
+  } 
+  .dot {
+    border-color: #C000E5;
+  }
+}
+.contribute_4 {
+  &::before {
+    background: -webkit-linear-gradient(left, rgba(154, 82, 255, 1),rgba(154, 82, 255, 1)    );
+  }
+  .dot {
+    border-color: #9A52FF;
+  }
+}
+
+
+
 
 .card-body > p,
 .card-body > p:not(:last-child) {
@@ -33,6 +135,8 @@ a.card:hover h3 {
     display: inline-block; // fix sizing in Chrome
   }
   margin-bottom: 0.75rem;
+  margin-left: -15px;
+  border: 2px solid #232325;
 }
 
 .card-deck {

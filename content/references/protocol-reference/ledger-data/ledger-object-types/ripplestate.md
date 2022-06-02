@@ -54,7 +54,7 @@ A `RippleState` object has the following fields:
 |-----------------|-----------|---------------|-------------|
 | `LedgerEntryType` | String    | UInt16 | The value `0x0072`, mapped to the string `RippleState`, indicates that this object is a RippleState object. |
 | `Flags`           | Number    | UInt32 | A bit-map of boolean options enabled for this object. |
-| `Balance`         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has tokens to the high account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](accounts.html#special-addresses). |
+| `Balance`         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the high account holds tokens issued by the low account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](accounts.html#special-addresses). |
 | `LowLimit`        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | `HighLimit`       | Object    | Amount | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
 | `PreviousTxnID`   | String    | Hash256 | The identifying hash of the transaction that most recently modified this object. |
