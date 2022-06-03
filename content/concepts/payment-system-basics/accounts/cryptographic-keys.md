@@ -97,9 +97,9 @@ Keeping your master key pair offline means not putting the secret information (p
 
 **Only** the master key pair can authorize transactions to do certain things:
 
-- Send an account's very first transaction, because accounts cannot be initialized with
+- Send an account's very first transaction, because accounts cannot be initialized with another way of [authorizing transactions](transaction-basics.html#authorizing-transactions).
 
-- Disable the master key pair. (You must set up at least one other method of [authorizing transactions](transaction-basics.html#authorizing-transactions) first.)
+- Disable the master key pair.
 
 - Permanently give up the ability to [freeze](freezes.html#no-freeze).
 
