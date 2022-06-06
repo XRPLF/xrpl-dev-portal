@@ -7,7 +7,7 @@ labels:
 ---
 # UbuntuまたはDebian Linuxへのインストール
 
-このページでは、[`apt`](https://ubuntu.com/server/docs)ユーティリティを使用して、**Ubuntu Linux 16.04以降**または**Debian 9（Stretch）** に`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
+このページでは、[`apt`](https://ubuntu.com/server/docs)ユーティリティを使用して、**Ubuntu Linux 18.04以降**または**Debian 10** に`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
 
 以下の手順では、Rippleによってコンパイルされたバイナリーをインストールします。
 
@@ -21,11 +21,11 @@ labels:
 
 1. リポジトリを更新します。
 
-        $ sudo apt -y update
+        sudo apt -y update
 
 2. ユーティリティをインストールします。
 
-        $ sudo apt -y install apt-transport-https ca-certificates wget gnupg
+        sudo apt -y install apt-transport-https ca-certificates wget gnupg
 
 3. Rippleのパッケージ署名用のGPGキーを、信頼できるキーのリストに追加します。
 
@@ -49,7 +49,7 @@ labels:
 
 5. 使用しているオペレーティングシステムのバージョンに対応する適切なRippleリポジトリを追加します。
 
-        $ echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
+        echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
             sudo tee -a /etc/apt/sources.list.d/ripple.list
 
    上記の例は、**Ubuntu 20.04 Focal Fossa**に適切です。その他のオペレーティングシステムについては、`focal`という単語を次のいずれかに置き換えます。
@@ -67,23 +67,23 @@ labels:
 
 6. Rippleリポジトリを取得します。
 
-        $ sudo apt -y update
+        sudo apt -y update
 
 7. `rippled`ソフトウェアパッケージをインストールします。
 
-        $ sudo apt -y install rippled
+        sudo apt -y install rippled
 
 8. `rippled`サービスのステータスをチェックします。
 
-        $ systemctl status rippled.service
+        systemctl status rippled.service
 
    `rippled`サービスが自動的に開始します。開始しない場合は、手動で開始できます。
 
-        $ sudo systemctl start rippled.service
+        sudo systemctl start rippled.service
 
    起動時に自動で起動するようにするには、以下の手順に従います。
 
-        $ sudo systemctl enable rippled.service
+        sudo systemctl enable rippled.service
 
 
 
