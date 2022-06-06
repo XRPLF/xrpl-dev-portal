@@ -7,7 +7,7 @@ labels:
 ---
 # Install on Ubuntu or Debian Linux
 
-This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 18.04 or higher** or **Debian 9 or higher**, using the [`apt`](https://ubuntu.com/server/docs) utility.
+This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 18.04 or higher** or **Debian 10 or higher**, using the [`apt`](https://ubuntu.com/server/docs) utility.
 
 These instructions install a binary that has been compiled by Ripple.
 
@@ -29,34 +29,36 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 3. Add Ripple's package-signing GPG key to your list of trusted keys:
 
-        wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | \
-          sudo apt-key add -
+        sudo mkdir /usr/local/share/keyrings/
+        wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor > ripple-key.gpg
+        sudo mv ripple-key.gpg /usr/local/share/keyrings
+
 
 4. Check the fingerprint of the newly-added key:
 
-        apt-key finger
+        gpg /usr/local/share/keyrings
 
     The output should include an entry for Ripple such as the following:
 
+        gpg: WARNING: no command supplied.  Trying to guess what you mean ...
         pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
-              C001 0EC2 05B3 5A33 10DC 90DE 395F 97FF CCAF D9A2
-        uid           [ unknown] TechOps Team at Ripple <techops+rippled@ripple.com>
+            C0010EC205B35A3310DC90DE395F97FFCCAFD9A2
+        uid           TechOps Team at Ripple <techops+rippled@ripple.com>
         sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
 
-    In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)
+
+    In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the third line, starting with `C001`.)
 
 4. Add the appropriate Ripple repository for your operating system version:
 
-        echo "deb https://repos.ripple.com/repos/rippled-deb focal stable" | \
+        echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
             sudo tee -a /etc/apt/sources.list.d/ripple.list
 
     The above example is appropriate for **Ubuntu 20.04 Focal Fossa**. For other operating systems, replace the word `focal` with one of the following:
 
     - `bionic` for **Ubuntu 18.04 Bionic Beaver**
-    - `xenial` for **Ubuntu 16.04 Xenial Xerus** (Not recommended) <!-- SPELLING_IGNORE: xenial, xerus -->
-    - `stretch` for **Debian 9 Stretch**
     - `buster` for **Debian 10 Buster**
-    <!--{# - `bullseye` for **Debian 11 Bullseye** is not available yet #}-->
+    - `bullseye` for **Debian 11 Bullseye**
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
 
