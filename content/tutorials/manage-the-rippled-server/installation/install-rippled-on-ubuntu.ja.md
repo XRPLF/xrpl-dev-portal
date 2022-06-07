@@ -35,7 +35,7 @@ labels:
 
 4. 追加したキーのフィンガープリントを確認します。
 
-        gpg /usr/local/share/keyrings
+        gpg /usr/local/share/keyrings/ripple-key.gpg
 
    出力に、次のようなRipple用のエントリーが含まれています。
 

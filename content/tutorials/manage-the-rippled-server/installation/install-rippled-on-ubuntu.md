@@ -36,7 +36,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 4. Check the fingerprint of the newly-added key:
 
-        gpg /usr/local/share/keyrings
+        gpg /usr/local/share/keyrings/ripple-key.gpg
 
     The output should include an entry for Ripple such as the following:
 
