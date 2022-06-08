@@ -270,6 +270,31 @@
   right: -4px;
 }
 
+// Ambassadors
+.page-ambassadors {
+
+  .ambassador-quote {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  // Bootstrap 4 does not have width sizing for breakpoints. 
+  // TEMP. might not need. 
+  .half-on-large {
+    width: 100%;
+  }
+
+  @media (min-width: 992px) {
+    .half-on-large {
+      width: 50%;
+    }
+  }
+
+
+
+}
+
 // Community Page
 #community-magenta {
   position: absolute;
