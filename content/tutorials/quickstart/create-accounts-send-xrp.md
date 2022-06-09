@@ -748,4 +748,4 @@ Create a standard HTML form to send transactions and requests, then display the 
 
 | Previous                                | Next                                                                          |
 | :---                                    |                                                                          ---: |
-| [← XRPL Quickstart >](xrpl-quickstart.html) | [2. Create TrustLine and Send Currency → >](create-trustline-send-currency.html) |
+| [← XRPL Quickstart >](xrpl-quickstart.html) | [2. Create Trust Line and Send Currency → >](create-trustline-send-currency.html) |
