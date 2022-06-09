@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>2. Create TrustLine and Send Currency - XRPL.org (日本語)</title>
+    <title>2. Create Trust Line and Send Currency - XRPL.org (日本語)</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="2. Create TrustLine and Send Currency | XRPL.org (日本語)">
+    <meta property="og:title" content="2. Create Trust Line and Send Currency | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/create-trustline-send-currency.html" />
     <meta property="og:description" content="Quickstart step 2, create TrustLines and send currency." />
     <meta name="description" content="Quickstart step 2, create TrustLines and send currency." />
@@ -252,14 +252,14 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#2-create-trustline-and-send-currency">2. Create TrustLine and Send Currency</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#2-create-trust-line-and-send-currency">2. Create Trust Line and Send Currency</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#usage">Usage</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#create-trustline">Create TrustLine</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#send-an-issued-currency-token">Send an Issued Currency Token</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#code-walkthrough">Code Walkthrough</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ripplex2-send-currencyjs">ripplex2-send-currency.js</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#configure-account">Configure Account</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-trustline-1">Create TrustLine</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#create-trust-line">Create Trust Line</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#send-issued-currency">Send Issued Currency</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-balances">Get Balances</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#reciprocal-transactions">Reciprocal Transactions</a></li>
@@ -278,19 +278,19 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tutorials.html">チュートリアル</a></li>
     <li class="active breadcrumb-item"><a href="/ja/xrpl-quickstart.html">XRPL Quickstart</a></li>
-    <li class="active breadcrumb-item">2. Create TrustLine and Send Currency</li>
+    <li class="active breadcrumb-item">2. Create Trust Line and Send Currency</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
       <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="2-create-trustline-and-send-currency">2. Create TrustLine and Send Currency<a aria-hidden="true" class="hover_anchor" href="#2-create-trustline-and-send-currency"><i class="fa fa-link"></i></a></h1>
+        <h1 id="2-create-trust-line-and-send-currency">2. Create Trust Line and Send Currency<a aria-hidden="true" class="hover_anchor" href="#2-create-trust-line-and-send-currency"><i class="fa fa-link"></i></a></h1>
 <p>This example shows how to:</p>
 <ol>
 <li>Configure accounts to allow transfer of funds to third party accounts.</li>
 <li>Set a currency type for transactions.</li>
-<li>Create a TrustLine between the standby account and the operational account.</li>
+<li>Create a trust line between the standby account and the operational account.</li>
 <li>Send issued currency between accounts.</li>
 <li>Display account balances for all currencies.</li>
 </ol>
@@ -324,7 +324,7 @@
 </ol>
 <p><img alt="Trustline results" src="img/quickstart6.png"/></p>
 <h2 id="send-an-issued-currency-token">Send an Issued Currency Token<a aria-hidden="true" class="hover_anchor" href="#send-an-issued-currency-token"><i class="fa fa-link"></i></a></h2>
-<p>To transfer an issued currency token, once you have created a TrustLine:</p>
+<p>To transfer an issued currency token, once you have created a trust line:</p>
 <ol>
 <li>Enter the <strong>Amount</strong>.</li>
 <li>Enter the <strong>Destination</strong>.</li>
@@ -403,8 +403,8 @@
         client.disconnect()
       } // End of configureAccount()
 </code></pre></div>
-<h3 id="create-trustline-1">Create TrustLine<a aria-hidden="true" class="hover_anchor" href="#create-trustline-1"><i class="fa fa-link"></i></a></h3>
-<p>A TrustLine enables two accounts to trade a defined currency up to a set limit. This gives the participants assurance that any exchanges are between known entities at agreed upon maximum amounts.</p>
+<h3 id="create-trust-line">Create Trust Line<a aria-hidden="true" class="hover_anchor" href="#create-trust-line"><i class="fa fa-link"></i></a></h3>
+<p>A trust line enables two accounts to trade a defined currency up to a set limit. This gives the participants assurance that any exchanges are between known entities at agreed upon maximum amounts.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="o">//</span><span class="w"> </span><span class="o">*******************************************************</span><span class="w"></span>
 <span class="o">//</span><span class="w"> </span><span class="o">*****************</span><span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">TrustLine</span><span class="w"> </span><span class="o">********************</span><span class="w"></span>
 <span class="o">//</span><span class="w"> </span><span class="o">*******************************************************</span><span class="w"></span>
@@ -464,7 +464,7 @@
       } //End of createTrustline()
 </code></pre></div>
 <h3 id="send-issued-currency">Send Issued Currency<a aria-hidden="true" class="hover_anchor" href="#send-issued-currency"><i class="fa fa-link"></i></a></h3>
-<p>Once you have created a TrustLine from an account to your own, you can send issued currency tokens to that account, up to the established limit.</p>
+<p>Once you have created a trust line from an account to your own, you can send issued currency tokens to that account, up to the established limit.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="o">//</span> <span class="o">*******************************************************</span>
 <span class="o">//</span> <span class="o">***************</span> <span class="k">Send</span> <span class="nv">Issued</span> <span class="nv">Currency</span> <span class="o">******************</span>
 <span class="o">//</span> <span class="o">*******************************************************</span>
@@ -1456,7 +1456,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
   </div>
 
       
