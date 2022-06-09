@@ -273,6 +273,17 @@
 // Ambassadors
 .page-ambassadors {
 
+  #carouselSlidesOnly{
+    height: 392px;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 992px) {
+    #carouselSlidesOnly{
+      height: 320px;
+      margin-bottom: 104px;
+    }
+  }
+
   .ambassador-quote {
     font-weight: 400;
     font-size: 32px;
