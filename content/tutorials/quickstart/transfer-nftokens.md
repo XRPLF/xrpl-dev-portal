@@ -828,7 +828,8 @@ async function oPcreateSellOffer() {
   document.getElementById('operationalResultField').value = results
 
   //------------------------------------- Prepare Expiration Date
-  var expirationDate = null
+
+   var expirationDate = null
   if (operationalExpirationField.value !="") {
     var days = document.getElementById('operationalExpirationField').value
     var secondsInDay = 86400
@@ -836,7 +837,7 @@ async function oPcreateSellOffer() {
     var currentTimestamp = (new Date() / 1000) - rippleEpoch
     expirationDate = parseInt(Math.floor(currentTimestamp + (days*secondsInDay)))
   }
-  // Prepare transaction -------------------------------------------------------
+ // Prepare transaction -------------------------------------------------------
   let transactionBlob = {
       "TransactionType": "NFTokenCreateOffer",
       "Account": operational_wallet.classicAddress,
