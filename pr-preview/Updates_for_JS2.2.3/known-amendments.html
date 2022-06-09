@@ -286,7 +286,6 @@
         <li class="nav-item level-2"><a class="nav-link" href="#tickets">Tickets</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ticksize">TickSize</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1-1">NonFungibleTokensV1</a></li>
       </ul>
   </div>
       </aside>
@@ -2143,34 +2142,6 @@ the latest ledger that the validator considers to be fully validated. The consen
 </table>
 <p>Allows pre-authorization of accounting relationships (zero-balance trust lines) when using <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
 <p>With this amendment enabled, a <code>TrustSet</code> transaction with <a href="trustset.html#trustset-flags"><code>tfSetfAuth</code> enabled</a> can create a new <a href="ripplestate.html"><code>RippleState</code> ledger object</a> even if it keeps all the other values of the <code>RippleState</code> node in their default state. The new <code>RippleState</code> node has the <a href="ripplestate.html#ripplestate-flags"><code>lsfLowAuth</code> or <code>lsfHighAuth</code> flag</a> enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled <a href="accountroot.html#accountroot-flags"><code>lsfRequireAuth</code></a> by sending an <a href="accountset.html">AccountSet transaction</a> with the <a href="accountset.html#accountset-flags"><code>asfRequireAuth</code> flag enabled</a>.</p>
-<h2 id="nonfungibletokensv1-1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1-1"><i class="fa fa-link"></i></a></h2>
-<table class="table-responsive">
-<thead>
-<tr>
-<th align="left">Amendment</th>
-<th align="left">NFTSuport</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Amendment ID</td>
-<td align="left">3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87</td>
-</tr>
-<tr>
-<td align="left">Status</td>
-<td align="left">In Development</td>
-</tr>
-<tr>
-<td align="left">Default Vote (Latest stable release)</td>
-<td align="left">No</td>
-</tr>
-<tr>
-<td align="left">Pre-amendment functionality retired?</td>
-<td align="left">No</td>
-</tr>
-</tbody>
-</table>
-<p>Introduces native support for Non-fungible tokens. The <code>NFTokenMint</code> transaction creates <code>NFToken</code> objects that are recorded on <code>NFTokenPage</code> objects. The <code>NFTokenCreateOffer</code> transaction creates <code>NFTokenOffer</code> objects that are available for transfer to another account via the <code>NFTokenAcceptOffer</code> transaction. Token owners have the option of destroying their <code>NFToken</code> objects with the <code>NFTokenBurn</code> transaction. See the full specification at <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/16" target="_blank">0020 XLS-20d Non-Fungible Token Support <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
