@@ -37,7 +37,7 @@ Much of this is “brute force” code that sacrifices conciseness for readabili
 In this quickstart, you can:
 
 1. [Create Accounts and Send XRP](create-accounts-send-xrp.html)
-2. [Create TrustLine and Send Currency](create-trustline-send-currency.html).
+2. [Create Trust Line and Send Currency](create-trustline-send-currency.html).
 3. [Mint and Burn NFTokens](mint-and-burn-nftokens.html).
 4. [Transfer NFTokens](transfer-nftokens.html).
 
