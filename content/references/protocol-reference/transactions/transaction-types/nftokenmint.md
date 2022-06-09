@@ -56,6 +56,7 @@ This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, 
 **Note:** The xrpl.js client library throws an error if you try to sign a transaction with the `URI` field in lowercase hexadecimal. This is a [bug](https://github.com/XRPLF/xrpl.js/issues/2004).
 
 
+
 ## NFTokenMint Flags
 
 Transactions of the NFTokenMint type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
