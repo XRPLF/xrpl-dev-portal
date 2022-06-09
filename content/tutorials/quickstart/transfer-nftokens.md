@@ -338,13 +338,13 @@ Get the account wallets and connect to the ledger.
 Prepare the expiration date, if present.
 
 ```
+  //------------------------------------- Prepare Expiration Date
   var expirationDate = null
   if (standbyExpirationField.value !="") {
     var days = document.getElementById('standbyExpirationField').value
-    var secondsInDay = 86400
-    var rippleEpoch = 946684800
-    var currentTimestamp = (new Date() / 1000) - rippleEpoch
-    expirationDate = parseInt(Math.floor(currentTimestamp + (days*secondsInDay)))
+    let d = new Date()
+    d.setDate(d.getDate() + parseInt(days))
+    var expirationDate = xrpl.isoTimeToRippleTime(d)
   }
 ```
 
@@ -829,14 +829,14 @@ async function oPcreateSellOffer() {
 
   //------------------------------------- Prepare Expiration Date
 
-   var expirationDate = null
+  var expirationDate = null
   if (operationalExpirationField.value !="") {
     var days = document.getElementById('operationalExpirationField').value
-    var secondsInDay = 86400
-    var rippleEpoch = 946684800
-    var currentTimestamp = (new Date() / 1000) - rippleEpoch
-    expirationDate = parseInt(Math.floor(currentTimestamp + (days*secondsInDay)))
+    let d = new Date()
+    d.setDate(d.getDate() + parseInt(days))
+    var expirationDate = xrpl.isoTimeToRippleTime(d)
   }
+
  // Prepare transaction -------------------------------------------------------
   let transactionBlob = {
       "TransactionType": "NFTokenCreateOffer",
@@ -912,12 +912,11 @@ async function oPcreateBuyOffer() {
 
   //------------------------------------- Prepare Expiration Date
   var expirationDate = null
-  if (standbyExpirationField.value !="") {
+  if (operationalExpirationField.value !="") {
     var days = document.getElementById('operationalExpirationField').value
-    var secondsInDay = 86400
-    var rippleEpoch = 946684800
-    var currentTimestamp = (new Date() / 1000) - rippleEpoch
-    expirationDate = parseInt(Math.floor(currentTimestamp + (days*secondsInDay)))
+    let d = new Date()
+    d.setDate(d.getDate() + parseInt(days))
+    var expirationDate = xrpl.isoTimeToRippleTime(d)
   }
 
   // Prepare transaction -------------------------------------------------------
