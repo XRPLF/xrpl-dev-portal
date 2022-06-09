@@ -785,7 +785,7 @@ Bold text in the following indicates changes to the form that support the new fu
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← 2. Create TrustLine and Send Currency >](create-trustline-send-currency.html) | [4. Transfer NFTokens → >](transfer-nftokens.html) |
+| [← 2. Create Trust Line and Send Currency >](create-trustline-send-currency.html) | [4. Transfer NFTokens → >](transfer-nftokens.html) |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
