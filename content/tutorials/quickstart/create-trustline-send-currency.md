@@ -10,7 +10,7 @@ labels:
 
 ---
 
-# 2. Create TrustLine and Send Currency
+# 2. Create Trust Line and Send Currency
 
 This example shows how to:
 
@@ -18,7 +18,7 @@ This example shows how to:
 
 1. Configure accounts to allow transfer of funds to third party accounts.
 2. Set a currency type for transactions.
-3. Create a TrustLine between the standby account and the operational account.
+3. Create a trust line between the standby account and the operational account.
 4. Send issued currency between accounts.
 5. Display account balances for all currencies.
 
@@ -64,7 +64,7 @@ To create a trustline between accounts:
 
 ## Send an Issued Currency Token
 
-To transfer an issued currency token, once you have created a TrustLine:
+To transfer an issued currency token, once you have created a trust line:
 
 
 
@@ -197,9 +197,9 @@ Report the result.
 
 
 
-### Create TrustLine
+### Create Trust Line
 
-A TrustLine enables two accounts to trade a defined currency up to a set limit. This gives the participants assurance that any exchanges are between known entities at agreed upon maximum amounts.
+A trust line enables two accounts to trade a defined currency up to a set limit. This gives the participants assurance that any exchanges are between known entities at agreed upon maximum amounts.
 
 
 ```
@@ -299,7 +299,7 @@ Report the results.
 
 ### Send Issued Currency
 
-Once you have created a TrustLine from an account to your own, you can send issued currency tokens to that account, up to the established limit.
+Once you have created a trust line from an account to your own, you can send issued currency tokens to that account, up to the established limit.
 
 
 ```
