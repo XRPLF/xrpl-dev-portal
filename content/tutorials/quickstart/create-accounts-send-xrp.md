@@ -228,7 +228,7 @@ Otherwise, populate the operational account fields.
 ```
 
 
-Insert the seed values for both accounts as they are created to the **Seeds** field as a convenience. You can copy the values and store them offline. when you reload this form or another in this tutorial, copy and paste them into the **Seeds** field to retrieve the accounts with the `getAccountsFromSeeds()` function.
+Insert the seed values for both accounts as they are created to the **Seeds** field as a convenience. You can copy the values and store them offline. When you reload this form or another in this tutorial, copy and paste them into the **Seeds** field to retrieve the accounts with the `getAccountsFromSeeds()` function.
 
 
 ```
