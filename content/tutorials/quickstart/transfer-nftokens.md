@@ -188,10 +188,9 @@ Compute the Expiration Date, if present. The expiration date represents the numb
   var expirationDate = null
   if (standbyExpirationField.value !="") {
     var days = document.getElementById('standbyExpirationField').value
-    var secondsInDay = 86400
-    var rippleEpoch = 946684800
-    var currentTimestamp = (new Date() / 1000) - rippleEpoch
-    expirationDate = parseInt(Math.floor(currentTimestamp + (days*secondsInDay)))
+    let d = new Date()
+    d.setDate(d.getDate() + parseInt(days))
+    var expirationDate = xrpl.isoTimeToRippleTime(d)
   }
 ```
 
