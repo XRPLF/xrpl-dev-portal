@@ -5,8 +5,7 @@ blurb: Quickstart step 3, mint and burn NFTokens.
 labels:
   - Quickstart
   - Tokens
-  - Non-fungible tokens
-  - NFTs
+  - Non-fungible tokens, NFTs
 ---
 
 # 3. Mint and Burn NFTokens
