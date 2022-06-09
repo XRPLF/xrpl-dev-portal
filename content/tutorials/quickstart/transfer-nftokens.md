@@ -181,7 +181,7 @@ async function createSellOffer() {
   document.getElementById('standbyResultField').value = results
 ```
 
-Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the expirationDate variable to the converted date in Ripple time (the number of seconds since the Ripple Epoch). 
+Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the expirationDate variable to the converted date in Ripple time. 
 
 ```
   //------------------------------------- Prepare Expiration Date
