@@ -93,25 +93,19 @@
       </div>
 
       <div class="pt-2 pt-lg-5 card-grid card-grid-2xN text-cards">
+        {% set curated_links = [
+          "the-rippled-server.html",
+          "run-rippled-as-a-validator.html",
+          "install-rippled.html",
+          "troubleshoot-the-rippled-server.html"
+        ] %}
+        {% for cc in curated_links %}
+        {% set page = pages|selectattr("html", "defined_and_equalto", cc)|first %}
         <div class="text-card">
-          <a class="btn-arrow" href="/the-rippled-server.html">About the Server</a>
-          <p class="mt-3 mb-0">rippled is the core peer-to-peer server that manages the XRP Ledger.</p>
+          <a class="btn-arrow" href="{{currentpage.prefix}}{{page.html}}">{% if page.top_nav_name is defined %}{{page.top_nav_name}}{% else %}{{page.name}}{% endif %}</a>
+          <p class="mt-3 mb-0">{{page.blurb}}</p>
         </div>
-    
-        <div class="text-card">
-          <a class="btn-arrow" href="/run-rippled-as-a-validator.html">Become a Validator </a>
-          <p class="mt-3 mb-0">Join the Unique Node List (UNL) to contribute to consensus on XRPL.</p>
-        </div>
-      
-        <div class="text-card">
-          <a class="btn-arrow" href="/install-rippled.html">Install & Configure</a>
-          <p class="mt-3 mb-0">Install, run, and update the rippled server.</p>
-        </div>
-      
-        <div class="text-card">
-          <a class="btn-arrow" href="/troubleshoot-the-rippled-server.html">Troubleshooting</a>
-          <p class="mt-3 mb-0">Troubleshoot any issues you’re having with the rippled server.</p>
-        </div>
+        {% endfor %}
       </div>
 
     </div>    
@@ -262,12 +256,9 @@
 
 <!-- Light version for network node looks ok for both light/dark.-->
 <!-- Dark version for other two and using filter invert and adjust brightness for light mode -->
-<!-- <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/network-node-dark.json"></script> -->
 <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/network-node-light.json"></script>
 <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/XRPL-grants-dark.json"></script>
-<!-- <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/XRPL-grants-light.json"></script> -->
 <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/careers-dark.json"></script>
-<!-- <script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/careers-light.json"></script> -->
 
 <script type="text/javascript">
   function networkNodeAnimation(){

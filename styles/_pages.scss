@@ -497,7 +497,7 @@
     background-image: url(../img/cards/4col-light-blue-3.svg);
   }
   .card:nth-child(2) .card-footer {
-    background-image: url(../img/cards/3col-purple-blue.svg);
+    background-image: url(../img/cards/4col-purple-blue-2.svg);
   }
   .card:nth-child(3) .card-footer {
     background-image: url(../img/cards/4col-magenta-3.svg);
@@ -519,26 +519,9 @@
   }
 
 
-.card {
-  margin-bottom: 2.5rem;
-}
-
-// @include media-breakpoint-down(md) {
-//   margin-top: 2rem;
-
-//   .card-body {
-//     padding: 1rem;
-//   }
-//   &.row-cols-1 .card {
-//     margin: .75rem .75rem (4 * $card-deck-margin) .75rem;
-//     max-width: calc(100% - 1.5rem);
-//   }
-//   &.row-cols-2 .card {
-//     margin: .75rem;
-//     max-width: calc(50% - 1.5rem);
-//   }
-// }
-
+  .card {
+    margin-bottom: 2.5rem;
+  }
 
 }
 
