@@ -4083,7 +4083,7 @@ pages:
 
 
 # "Community" tab --------------------------------------------------------------
-    -   name: Contribute
+    -   name: Contribute to the XRPL Community
         html: contribute.html
         parent: index.html
         template: page-community.html.jinja

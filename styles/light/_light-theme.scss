@@ -378,6 +378,9 @@ aside .active > a:hover {
   #platform-stack-overflow {
     content: url("../img/logos/lightmode/stack-overflow.svg");
   }
+  #platform-discord {
+    content: url("../img/logos/lightmode/discord.svg");
+  }
 }
 
 // Status labels
@@ -669,6 +672,21 @@ pre code {
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/lightmode/4col-light-green.svg);
     }
+    
+  }
+  #run-a-network-node .text-cards a {
+    color: $black;
+  }
+  
+  #xrpl-events .text-light {
+    color: $black !important;
+  }
+
+  #xrplGrantsDark,
+  #xrplGrantsDark-small,
+  #careersDark,
+  #careersDark-small {
+    filter: invert(100%) brightness(0.8);
   }
 }
 
