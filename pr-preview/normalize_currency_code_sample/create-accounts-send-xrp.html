@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v4.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v5.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -168,10 +168,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
@@ -279,7 +279,7 @@
 <li>Retrieve the accounts from seed values.</li>
 <li>Transfer XRP between accounts.</li>
 </ol>
-<p>When you create an account, you receive a public/private key pair offline. It does not appear on the ledger until it is funded with XRP. This example shows how to create an account for Testnet, but not how to create an account that you can use on Mainnet.</p>
+<p>When you create an account, you receive a public/private key pair offline. It does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.</p>
 <p><img alt="Token Test Harness" src="img/quickstart2.png"/></p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To get started, create a new folder on your local disk and install the JavaScript library using <code>npm</code>.</p>
@@ -290,36 +290,24 @@
 <p>To get test accounts:</p>
 <ol>
 <li>Open <code>1.get-accounts-send-xrp.html</code> in a browser</li>
-<li>Choose <strong>Testnet</strong> or <strong>Devnet</strong>.</li>
+<li>Choose <strong>NFT-Devnet</strong>, <strong>Testnet</strong>, or <strong>Devnet</strong>.</li>
 <li>Click <strong>Get New Standby Account</strong>.</li>
 <li>Click <strong>Get New Operational Account.</strong></li>
 <li>Copy and paste the <strong>Seeds</strong> field in a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.</li>
 </ol>
 <p><img alt="Standby and Operational Accounts" src="img/quickstart3.png"/></p>
-<p>NOTE: The accounts in the test harness work on <em>Testnet</em> and <em>Devnet</em>, but not on <em>NFT-Devnet</em>. To create accounts that can mint and trade NFTs:</p>
-<ol>
-<li>Visit the <a class="external-link" href="https://xrpl.org/xrp-testnet-faucet.html" target="_blank">XRP Testnet Faucet <i aria-hidden="true" class="fa fa-external-link"></i></a> page.</li>
-<li>Click <strong>Generate NFT-Devnet credentials</strong>.</li>
-<li>Copy the account <strong>Secret</strong>.</li>
-<li>Paste the secret in a persistent location, such as a notepad, and press return.</li>
-<li>Click <strong>Generate NFT-Devnet credentials</strong> to create a second account.</li>
-<li>Copy the account <strong>Secret</strong>.</li>
-<li>Paste the secret in the persistent location.</li>
-<li>Copy both secrets, separated by a return.</li>
-<li>Paste them in the <strong>Account</strong> <strong>Seeds</strong> field.</li>
-<li>Click <strong>Get Accounts from Seeds</strong>.</li>
-</ol>
 <p>You can transfer XRP between your new accounts. Each account has its own fields and buttons.</p>
 <p>To transfer XRP between accounts:</p>
 <ol>
 <li>Enter the <strong>Amount</strong> of XRP to send.</li>
-<li>Click <strong>Send XRP&gt;</strong> to transfer XRP from the standby account to the operational account, or <strong>&lt;Send XRP</strong> to transfer XRP from the operational account to the standby account<strong>.</strong></li>
+<li>Enter the <strong>Destination</strong> account (for example, copy and paste the Operational <strong>Account Field</strong> to the Standby <strong>Destination</strong> field).</li>
+<li>Click <strong>Send XRP&gt;</strong> to transfer XRP from the standby account to the operational account, or <strong>&lt;Send XRP</strong> to transfer XRP from the operational account to the standby account.</li>
 </ol>
 <p><img alt="Transferred XRP" src="img/quickstart4.png"/></p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> in the source repository for this website.</p>
 <h2 id="ripplex-1-send-xrpjs">ripplex-1-send-xrp.js<a aria-hidden="true" class="hover_anchor" href="#ripplex-1-send-xrpjs"><i class="fa fa-link"></i></a></h2>
-<p>This example can be used with any XRP Ledger network. Currently, there are <em>Testnet</em> and <em>Devnet,</em> with the experimental <em>NFT-Devnet</em> server with support for NFTs. You can update the code to choose different or additional XRP Ledger networks.</p>
+<p>This example can be used with any XRP Ledger network. Currently, there are <em>Testnet</em> and <em>Devnet,</em> with the experimental <em>NFT-Devnet</em> server with support for NFTokens. You can update the code to choose different or additional XRP Ledger networks.</p>
 <h3 id="getnet">getNet()<a aria-hidden="true" class="hover_anchor" href="#getnet"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">// ******************************************************
 // ************* Get the Preferred Network **************
@@ -330,9 +318,9 @@
 <p>This function uses brute force <code>if</code> statements to discover the selected network instance and return the URI.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">        <span class="nv">let</span> <span class="nv">net</span>
           <span class="k">if</span> <span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"</span><span class="s">xls</span><span class="s2">"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span> <span class="nv">net</span> <span class="o">=</span> <span class="s2">"</span><span class="s">wss://xls20-sandbox.rippletest.net:51233</span><span class="s2">"</span>
-           <span class="k">if</span> <span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"</span><span class="s">tn</span><span class="s2">"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span> <span class="nv">net</span> <span class="o">=</span> <span class="s2">"</span><span class="s">wss://s.altnet.rippletest.net:51233</span><span class="s2">"</span>
-           <span class="k">if</span> <span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"</span><span class="s">dn</span><span class="s2">"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span> <span class="nv">net</span> <span class="o">=</span> <span class="s2">"</span><span class="s">wss://s.devnet.rippletest.net:51233</span><span class="s2">"</span>
-           <span class="k">return</span> <span class="nv">net</span>
+          <span class="k">if</span> <span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"</span><span class="s">tn</span><span class="s2">"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span> <span class="nv">net</span> <span class="o">=</span> <span class="s2">"</span><span class="s">wss://s.altnet.rippletest.net:51233</span><span class="s2">"</span>
+          <span class="k">if</span> <span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"</span><span class="s">dn</span><span class="s2">"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span> <span class="nv">net</span> <span class="o">=</span> <span class="s2">"</span><span class="s">wss://s.devnet.rippletest.net:51233</span><span class="s2">"</span>
+          <span class="k">return</span> <span class="nv">net</span>
         } <span class="o">//</span> <span class="k">End</span> <span class="nv">of</span> <span class="nv">getNet</span><span class="ss">()</span>
 </code></pre></div>
 <h3 id="getaccounttype">getAccount(type)<a aria-hidden="true" class="hover_anchor" href="#getaccounttype"><i class="fa fa-link"></i></a></h3>
@@ -400,7 +388,7 @@
           <span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'</span><span class="s">operationalResultField</span><span class="s1">'</span><span class="ss">)</span>.<span class="nv">value</span> <span class="o">=</span> <span class="nv">results</span>
         }
 </code></pre></div>
-<p>Insert the seed values for both accounts as they are created to the <strong>Seeds</strong> field as a convenience. You can copy the values and store them offline, then paste them into the <strong>Seeds</strong> field to retrieve the accounts with the <code>getAccountsFromSeeds()</code> function.</p>
+<p>Insert the seed values for both accounts as they are created to the <strong>Seeds</strong> field as a convenience. You can copy the values and store them offline. When you reload this form or another in this tutorial, copy and paste them into the <strong>Seeds</strong> field to retrieve the accounts with the <code>getAccountsFromSeeds()</code> function.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">        document.getElementById('seeds').value = standbySeedField.value + '\n' + operationalSeedField.value
 </code></pre></div>
 <p>Disconnect from the XRP ledger. </p>
@@ -423,7 +411,7 @@
 <span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'</span><span class="se">\n</span><span class="s1">Connected, finding wallets.</span><span class="se">\n</span><span class="s1">'</span><span class="w"></span>
 <span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
 </code></pre></div>
-<p>Parse the <strong>seeds</strong> field.</p>
+<p>Parse the <strong>Seeds</strong> field.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seeds</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>Get the <code>standby_wallet</code> based on the seed in the first line. Get the <code>operational_wallet</code> based on the seed in the second line.</p>
@@ -484,13 +472,13 @@
 <span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">standby_wallet.address: = "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">address</span><span class="w"></span>
 <span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
 </code></pre></div>
-<p>Prepare the transaction. This is a Payment transaction from the standby wallet to the operational wallet. You could add a <strong>Destination</strong> field to send to any account: this hardcoded example is for convenience in this tutorial. </p>
+<p>Prepare the transaction. This is a Payment transaction from the standby wallet to the operational wallet.</p>
 <p>The <em>Payment</em> transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the xrpToDrops utility to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">autofill</span><span class="p">({</span><span class="w"></span>
 <span class="w">          </span><span class="s2">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w"></span>
 <span class="w">          </span><span class="s2">"Account"</span><span class="p">:</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span><span class="w"></span>
 <span class="w">          </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">xrpToDrops</span><span class="p">(</span><span class="n">sendAmount</span><span class="p">),</span><span class="w"></span>
-<span class="w">          </span><span class="s2">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">address</span><span class="w"></span>
+<span class="w">          </span><span class="s2">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="n">standbyDestinationField</span><span class="o">.</span><span class="n">value</span><span class="w"></span>
 <span class="w">        </span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
 <p>Sign the prepared transaction.</p>
@@ -555,7 +543,7 @@
 <span class="w">          </span><span class="s2">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w"></span>
 <span class="w">          </span><span class="s2">"Account"</span><span class="p">:</span><span class="w"> </span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span><span class="w"></span>
 <span class="w">          </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">xrpToDrops</span><span class="p">(</span><span class="n">operationalAmountField</span><span class="o">.</span><span class="n">value</span><span class="p">),</span><span class="w"></span>
-<span class="w">          </span><span class="s2">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">address</span><span class="w"></span>
+<span class="w">          </span><span class="s2">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="n">operationalDestinationField</span><span class="o">.</span><span class="n">value</span><span class="w"></span>
 <span class="w">        </span><span class="p">})</span><span class="w"></span>
 
 
@@ -588,18 +576,24 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Token</span><span class="w"> </span><span class="n">Test</span><span class="w"> </span><span class="n">Harness</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">script</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="err">'</span><span class="n">https</span><span class="o">:</span><span class="c1">//unpkg.com/xrpl@2.1.1'&gt;&lt;/script&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">script</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="err">'</span><span class="n">https</span><span class="o">:</span><span class="c1">//unpkg.com/xrpl@2.2.3'&gt;&lt;/script&gt;</span>
 <span class="w">    </span><span class="o">&lt;</span><span class="n">script</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="err">'</span><span class="n">ripplex1</span><span class="o">-</span><span class="n">send</span><span class="o">-</span><span class="n">xrp</span><span class="p">.</span><span class="n">js</span><span class="err">'</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">typeof</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s">"undefined"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">require</span><span class="p">(</span><span class="err">'</span><span class="n">xrpl</span><span class="err">'</span><span class="p">)</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
+
 <span class="w">    </span><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span><span class="w"></span>
+
+<span class="o">&lt;!--</span><span class="w"> </span><span class="o">**************************************************************</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"></span>
+<span class="o">&lt;!--</span><span class="w"> </span><span class="o">**********************</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">Form</span><span class="w"> </span><span class="o">******************************</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"></span>
+<span class="o">&lt;!--</span><span class="w"> </span><span class="o">**************************************************************</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"></span>
+
 <span class="w">  </span><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Token</span><span class="w"> </span><span class="n">Test</span><span class="w"> </span><span class="n">Harness</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="o">&lt;</span><span class="n">form</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"theForm"</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">      </span><span class="n">Choose</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">network</span><span class="o">:</span><span class="w">  </span>
+<span class="w">      </span><span class="n">Choose</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">ledger</span><span class="w"> </span><span class="n">instance</span><span class="o">:</span><span class="w">  </span>
 <span class="w">      </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"radio"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"xls"</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">"server"</span><span class="w"></span>
 <span class="w">        </span><span class="n">value</span><span class="o">=</span><span class="s">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="w"> </span><span class="n">checked</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&lt;</span><span class="n">label</span><span class="w"> </span><span class="k">for</span><span class="o">=</span><span class="s">"xls20"</span><span class="o">&gt;</span><span class="n">XLS20</span><span class="o">-</span><span class="n">NFT</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span><span class="w"></span>
@@ -676,6 +670,15 @@
 <span class="w">                      </span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                      </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                        </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"text"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"standbyAmountField"</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="s">"40"</span><span class="w"> </span><span class="n">value</span><span class="o">=</span><span class="s">"100"</span><span class="o">&gt;&lt;/</span><span class="n">input</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                        </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                      </span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                   </span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                      </span><span class="o">&lt;</span><span class="n">td</span><span class="w"> </span><span class="n">align</span><span class="o">=</span><span class="s">"right"</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                        </span><span class="n">Destination</span><span class="w"></span>
+<span class="w">                      </span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                      </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                        </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"text"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"standbyDestinationField"</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="s">"40"</span><span class="w"> </span><span class="n">value</span><span class="o">=</span><span class="s">"100"</span><span class="o">&gt;&lt;/</span><span class="n">input</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                        </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                      </span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                    </span><span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span><span class="w"></span>
@@ -765,6 +768,15 @@
 <span class="w">                              </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                            </span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                          </span><span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                          </span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                            </span><span class="o">&lt;</span><span class="n">td</span><span class="w"> </span><span class="n">align</span><span class="o">=</span><span class="s">"right"</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                              </span><span class="n">Destination</span><span class="w"></span>
+<span class="w">                            </span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                            </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                              </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"text"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"operationalDestinationField"</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="s">"40"</span><span class="w"> </span><span class="n">value</span><span class="o">=</span><span class="s">"100"</span><span class="o">&gt;&lt;/</span><span class="n">input</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                              </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                            </span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                          </span><span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                        </span><span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                        </span><span class="o">&lt;</span><span class="n">p</span><span class="w"> </span><span class="n">align</span><span class="o">=</span><span class="s">"right"</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">                          </span><span class="o">&lt;</span><span class="n">textarea</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"operationalResultField"</span><span class="w"> </span><span class="n">cols</span><span class="o">=</span><span class="s">"80"</span><span class="w"> </span><span class="n">rows</span><span class="o">=</span><span class="s">"20"</span><span class="w"> </span><span class="o">&gt;&lt;/</span><span class="n">textarea</span><span class="o">&gt;</span><span class="w"></span>
@@ -795,7 +807,7 @@
 <tbody>
 <tr>
 <td align="left"><a class="btn btn-primary" href="xrpl-quickstart.html">← XRPL Quickstart</a></td>
-<td align="right"><a class="btn btn-primary" href="create-trustline-send-currency.html">2. Create TrustLine and Send Currency →</a></td>
+<td align="right"><a class="btn btn-primary" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency →</a></td>
 </tr>
 </tbody>
 </table>
@@ -1269,7 +1281,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
   </div>
 
       
@@ -1280,6 +1292,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
   </div>
 
     </nav>
@@ -3108,7 +3125,7 @@
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>

@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v4.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v5.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -266,7 +266,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="ubuntuまたはdebian-linuxへのインストール">UbuntuまたはDebian Linuxへのインストール<a aria-hidden="true" class="hover_anchor" href="#ubuntuまたはdebian-linuxへのインストール"><i class="fa fa-link"></i></a></h1>
-<p>このページでは、<a class="external-link" href="https://ubuntu.com/server/docs" target="_blank"><code>apt</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>ユーティリティを使用して、<strong>Ubuntu Linux 16.04以降</strong>または<strong>Debian 9（Stretch）</strong> に<code>rippled</code>の安定した最新バージョンをインストールする場合の推奨手順を説明します。</p>
+<p>このページでは、<a class="external-link" href="https://ubuntu.com/server/docs" target="_blank"><code>apt</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>ユーティリティを使用して、<strong>Ubuntu Linux 18.04以降</strong>または<strong>Debian 10</strong> に<code>rippled</code>の安定した最新バージョンをインストールする場合の推奨手順を説明します。</p>
 <p>以下の手順では、Rippleによってコンパイルされたバイナリーをインストールします。</p>
 <h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>をインストールする前に、<a href="system-requirements.html">システム要件</a>を満たす必要があります。</p>
@@ -274,44 +274,46 @@
 <ol>
 <li>
 <p>リポジトリを更新します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">$ sudo apt -y update
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">sudo apt -y update
 </code></pre></div>
 </li>
 <li>
 <p>ユーティリティをインストールします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">$ sudo apt -y install apt-transport-https ca-certificates wget gnupg
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">sudo apt -y install apt-transport-https ca-certificates wget gnupg
 </code></pre></div>
 </li>
 <li>
 <p>Rippleのパッケージ署名用のGPGキーを、信頼できるキーのリストに追加します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">$ wget -q -O - <span class="s2">"https://repos.ripple.com/repos/api/gpg/key/public"</span> <span class="p">|</span> <span class="se">\</span>
-  sudo apt-key add -
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">sudo mkdir /usr/local/share/keyrings/
+wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor &gt; ripple-key.gpg
+sudo mv ripple-key.gpg /usr/local/share/keyrings
 </code></pre></div>
 </li>
 <li>
 <p>追加したキーのフィンガープリントを確認します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">$ apt-key finger
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">gpg /usr/local/share/keyrings/ripple-key.gpg
 </code></pre></div>
 </li>
 </ol>
 <p>出力に、次のようなRipple用のエントリーが含まれています。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">    </span><span class="n">pub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">SC</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span><span class="w"></span>
-<span class="w">          </span><span class="n">C001</span><span class="w"> </span><span class="mi">0</span><span class="n">EC2</span><span class="w"> </span><span class="mi">05</span><span class="n">B3</span><span class="w"> </span><span class="mi">5</span><span class="n">A33</span><span class="w"> </span><span class="mi">10</span><span class="n">DC</span><span class="w"> </span><span class="mi">90</span><span class="n">DE</span><span class="w"> </span><span class="mi">395</span><span class="n">F</span><span class="w"> </span><span class="mi">97</span><span class="n">FF</span><span class="w"> </span><span class="n">CCAF</span><span class="w"> </span><span class="n">D9A2</span><span class="w"></span>
-<span class="w">    </span><span class="n">uid</span><span class="w">           </span><span class="o">[</span><span class="n"> unknown</span><span class="o">]</span><span class="w"> </span><span class="n">TechOps</span><span class="w"> </span><span class="n">Team</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">Ripple</span><span class="w"> </span><span class="o">&lt;</span><span class="n">techops</span><span class="o">+</span><span class="n">rippled</span><span class="nv">@ripple</span><span class="p">.</span><span class="n">com</span><span class="o">&gt;</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">    </span><span class="nl">gpg</span><span class="p">:</span><span class="w"> </span><span class="nl">WARNING</span><span class="p">:</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">supplied</span><span class="p">.</span><span class="w">  </span><span class="n">Trying</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">guess</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="n">pub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">SC</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span><span class="w"></span>
+<span class="w">        </span><span class="n">C0010EC205B35A3310DC90DE395F97FFCCAFD9A2</span><span class="w"></span>
+<span class="w">    </span><span class="n">uid</span><span class="w">           </span><span class="n">TechOps</span><span class="w"> </span><span class="n">Team</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">Ripple</span><span class="w"> </span><span class="o">&lt;</span><span class="n">techops</span><span class="o">+</span><span class="n">rippled</span><span class="nv">@ripple</span><span class="p">.</span><span class="n">com</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="n">sub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">E</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span><span class="w"></span>
 </code></pre></div>
-<p>特に、フィンガープリントが一致することを確認してください。（上記の例では、フィンガープリントは2行目の<code>C001</code>で始まる部分です。）</p>
+<p>特に、フィンガープリントが一致することを確認してください。（上記の例では、フィンガープリントは三行目の<code>C001</code>で始まる部分です。）</p>
 <ol start="5">
-<li>使用しているオペレーティングシステムのバージョンに対応する適切なRippleリポジトリを追加します。<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">$ <span class="nb">echo</span> <span class="s2">"deb https://repos.ripple.com/repos/rippled-deb bionic stable"</span> <span class="p">|</span> <span class="se">\</span>
+<li>使用しているオペレーティングシステムのバージョンに対応する適切なRippleリポジトリを追加します。<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
     sudo tee -a /etc/apt/sources.list.d/ripple.list
 </code></pre></div>
 </li>
 </ol>
-<p>上記の例は、<strong>Ubuntu 18.04 Bionic Beaver</strong>に適切です。その他のオペレーティングシステムについては、<code>bionic</code>という単語を次のいずれかに置き換えます。</p>
-<ul>
-<li><strong>Ubuntu 16.04 Xenial Xerus</strong>の場合は<code>xenial</code></li>
-<li><strong>Debian 9 Stretch</strong>の場合は<code>stretch</code></li>
-</ul>
+<p>上記の例は、<strong>Ubuntu 20.04 Focal Fossa</strong>に適切です。その他のオペレーティングシステムについては、<code>focal</code>という単語を次のいずれかに置き換えます。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="o">-</span><span class="w"> </span><span class="n n-Quoted">`bionic`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">**</span><span class="n">Ubuntu</span><span class="w"> </span><span class="mf">18.04</span><span class="w"> </span><span class="n">Bionic</span><span class="w"> </span><span class="n">Beaver</span><span class="o">**</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="n n-Quoted">`buster`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">**</span><span class="n">Debian</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">Buster</span><span class="o">**</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="n n-Quoted">`bullseye`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">**</span><span class="n">Debian</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="n">Bullseye</span><span class="o">**</span><span class="w"></span>
+</code></pre></div>
 <p><code>rippled</code>の開発バージョンまたはプレリリースバージョンにアクセスするには、<code>stable</code>ではなく次のいずれかを使用します。</p>
 <ul>
 <li><code>unstable</code> - プレインストールビルド（<a class="external-link" href="https://github.com/ripple/rippled/tree/release" target="_blank"><code>release</code>ブランチ <i aria-hidden="true" class="fa fa-external-link"></i></a>）</li>
@@ -321,31 +323,31 @@
 <ol start="6">
 <li>
 <p>Rippleリポジトリを取得します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">$ sudo apt -y update
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">sudo apt -y update
 </code></pre></div>
 </li>
 <li>
 <p><code>rippled</code>ソフトウェアパッケージをインストールします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">$ sudo apt -y install rippled
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">sudo apt -y install rippled
 </code></pre></div>
 </li>
 <li>
 <p><code>rippled</code>サービスのステータスをチェックします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">$ systemctl status rippled.service
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">systemctl status rippled.service
 </code></pre></div>
 </li>
 </ol>
 <p><code>rippled</code>サービスが自動的に開始します。開始しない場合は、手動で開始できます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">    $ sudo systemctl start rippled.service
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">    sudo systemctl start rippled.service
 </code></pre></div>
 <p>起動時に自動で起動するようにするには、以下の手順に従います。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">    $ sudo systemctl enable rippled.service
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">    sudo systemctl enable rippled.service
 </code></pre></div>
 <h2 id="次のステップ">次のステップ<a aria-hidden="true" class="hover_anchor" href="#次のステップ"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>が残りのネットワークと同期されるまでには数分かかることがあります。その間、レジャーがない旨を知らせる警告が出力されます。</p>
 <p><code>rippled</code>ログメッセージの詳細は、<a href="understanding-log-messages.html">ログメッセージについて</a>を参照してください。</p>
 <p><code>rippled</code>が残りのネットワークと同期されたら、ストック<code>rippled</code>サーバーが完全に機能するようになります。このサーバーを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。<code>rippled</code>サーバーがネットワークと同期されているかどうかを判別するには、<a href="rippled-server-states.html"><code>rippled</code>サーバーの状況</a>を使用します。<a href="get-started-using-http-websocket-apis.html#コマンドライン"><code>rippled</code>のコマンドラインインターフェイス</a>を使用すれば、これを迅速にテストできます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">$ /opt/ripple/bin/rippled server_info
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">$ /opt/ripple/bin/rippled server_info
 </code></pre></div>
 <p>rippled APIを使用した<code>rippled</code>サーバーとの通信について詳しくは、<a href="rippled-api.html">rippled API reference</a>を参照してください。</p>
 <p>ストック<code>rippled</code>サーバーを実行できたら、次に検証サーバーとして実行してみましょう。検証サーバーについて、そして検証サーバーを実行する理由については、<a href="run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>を参照してください。</p>
@@ -862,7 +864,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
   </div>
 
       
@@ -873,6 +875,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker a NFToken Sale</a>
   </div>
 
     </nav>

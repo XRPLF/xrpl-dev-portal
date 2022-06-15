@@ -84,6 +84,7 @@ https://xrpl.org/create-accounts-send-xrp.html
 https://xrpl.org/create-trustline-send-currency.html
 https://xrpl.org/mint-and-burn-nftokens.html
 https://xrpl.org/transfer-nftokens.html
+https://xrpl.org/broker-sale.html
 https://xrpl.org/get-started.html
 https://xrpl.org/public-servers.html
 https://xrpl.org/get-started-using-python.html

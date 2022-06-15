@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v4.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v5.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -168,10 +168,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
@@ -260,7 +260,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="install-on-ubuntu-or-debian-linux">Install on Ubuntu or Debian Linux<a aria-hidden="true" class="hover_anchor" href="#install-on-ubuntu-or-debian-linux"><i class="fa fa-link"></i></a></h1>
-<p>This page describes the recommended instructions for installing the latest stable version of <code>rippled</code> on <strong>Ubuntu Linux 18.04 or higher</strong> or <strong>Debian 9 or higher</strong>, using the <a class="external-link" href="https://ubuntu.com/server/docs" target="_blank"><code>apt</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility.</p>
+<p>This page describes the recommended instructions for installing the latest stable version of <code>rippled</code> on <strong>Ubuntu Linux 18.04 or higher</strong> or <strong>Debian 10 or higher</strong>, using the <a class="external-link" href="https://ubuntu.com/server/docs" target="_blank"><code>apt</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility.</p>
 <p>These instructions install a binary that has been compiled by Ripple.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>Before you install <code>rippled</code>, you must meet the <a href="system-requirements.html">System Requirements</a>.</p>
@@ -278,34 +278,34 @@
 </li>
 <li>
 <p>Add Ripple's package-signing GPG key to your list of trusted keys:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | \
-  sudo apt-key add -
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">sudo mkdir /usr/local/share/keyrings/
+wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor &gt; ripple-key.gpg
+sudo mv ripple-key.gpg /usr/local/share/keyrings
 </code></pre></div>
 </li>
 <li>
 <p>Check the fingerprint of the newly-added key:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">apt-key finger
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">gpg /usr/local/share/keyrings/ripple-key.gpg
 </code></pre></div>
 <p>The output should include an entry for Ripple such as the following:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="n">pub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">SC</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span><span class="w"></span>
-<span class="w">      </span><span class="n">C001</span><span class="w"> </span><span class="mi">0</span><span class="n">EC2</span><span class="w"> </span><span class="mi">05</span><span class="n">B3</span><span class="w"> </span><span class="mi">5</span><span class="n">A33</span><span class="w"> </span><span class="mi">10</span><span class="n">DC</span><span class="w"> </span><span class="mi">90</span><span class="n">DE</span><span class="w"> </span><span class="mi">395</span><span class="n">F</span><span class="w"> </span><span class="mi">97</span><span class="n">FF</span><span class="w"> </span><span class="n">CCAF</span><span class="w"> </span><span class="n">D9A2</span><span class="w"></span>
-<span class="n">uid</span><span class="w">           </span><span class="o">[</span><span class="n"> unknown</span><span class="o">]</span><span class="w"> </span><span class="n">TechOps</span><span class="w"> </span><span class="n">Team</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">Ripple</span><span class="w"> </span><span class="o">&lt;</span><span class="n">techops</span><span class="o">+</span><span class="n">rippled</span><span class="nv">@ripple</span><span class="p">.</span><span class="n">com</span><span class="o">&gt;</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="nl">gpg</span><span class="p">:</span><span class="w"> </span><span class="nl">WARNING</span><span class="p">:</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">supplied</span><span class="p">.</span><span class="w">  </span><span class="n">Trying</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">guess</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+<span class="n">pub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">SC</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">C0010EC205B35A3310DC90DE395F97FFCCAFD9A2</span><span class="w"></span>
+<span class="n">uid</span><span class="w">           </span><span class="n">TechOps</span><span class="w"> </span><span class="n">Team</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">Ripple</span><span class="w"> </span><span class="o">&lt;</span><span class="n">techops</span><span class="o">+</span><span class="n">rippled</span><span class="nv">@ripple</span><span class="p">.</span><span class="n">com</span><span class="o">&gt;</span><span class="w"></span>
 <span class="n">sub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">E</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span><span class="w"></span>
 </code></pre></div>
-<p>In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with <code>C001</code>.)</p>
+<p>In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the third line, starting with <code>C001</code>.)</p>
 </li>
 <li>
 <p>Add the appropriate Ripple repository for your operating system version:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">echo "deb https://repos.ripple.com/repos/rippled-deb focal stable" | \
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
     sudo tee -a /etc/apt/sources.list.d/ripple.list
 </code></pre></div>
 <p>The above example is appropriate for <strong>Ubuntu 20.04 Focal Fossa</strong>. For other operating systems, replace the word <code>focal</code> with one of the following:</p>
 <ul>
 <li><code>bionic</code> for <strong>Ubuntu 18.04 Bionic Beaver</strong></li>
-<li><code>xenial</code> for <strong>Ubuntu 16.04 Xenial Xerus</strong> (Not recommended) <!-- SPELLING_IGNORE: xenial, xerus --></li>
-<li><code>stretch</code> for <strong>Debian 9 Stretch</strong></li>
-<li><code>buster</code> for <strong>Debian 10 Buster</strong>
-<!-- --></li>
+<li><code>buster</code> for <strong>Debian 10 Buster</strong></li>
+<li><code>bullseye</code> for <strong>Debian 11 Bullseye</strong></li>
 </ul>
 <p>If you want access to development or pre-release versions of <code>rippled</code>, use one of the following instead of <code>stable</code>:</p>
 <ul>
@@ -863,7 +863,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create TrustLine and Send Currency</a>
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
   </div>
 
       
@@ -874,6 +874,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
   </div>
 
     </nav>
@@ -2702,7 +2707,7 @@
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
