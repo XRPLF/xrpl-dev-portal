@@ -10,19 +10,6 @@
 // This code is intended for use with Node.js.
 ////////////////////////////////////////////////////////////////////////////////
 
-function convertDemurrageToUTF8(demurrageCode) {
-
-    let bytes = Buffer.from(demurrageCode, "hex")
-    let code = String.fromCharCode(bytes[1]) + String.fromCharCode(bytes[2]) + String.fromCharCode(bytes[3]);
-    let interest_start = (bytes[4] << 24) + (bytes[5] << 16) + (bytes[6] <<  8) + (bytes[7]);
-    let interest_period = bytes.readDoubleBE(8);
-    const year_seconds = 31536000; // By convention, the XRP Ledger's interest/demurrage rules use a fixed number of seconds per year (31536000), which is not adjusted for leap days or leap seconds
-    let interest_after_year = Math.pow(Math.E, (interest_start+year_seconds - interest_start) / interest_period)
-    let interest = (interest_after_year * 100) - 100;
-
-    return(`${code} (${interest}% pa)`)
-}
-
 function normalizeCurrencyCode(currencyCode, maxLength = 20) {
     if(!currencyCode) return "";
 
@@ -54,6 +41,25 @@ function normalizeCurrencyCode(currencyCode, maxLength = 20) {
     }
     return "";
 }
+
+function convertDemurrageToUTF8(demurrageCode) {
+
+    let bytes = Buffer.from(demurrageCode, "hex")
+    let code = String.fromCharCode(bytes[1]) + String.fromCharCode(bytes[2]) + String.fromCharCode(bytes[3]);
+    let interest_start = (bytes[4] << 24) + (bytes[5] << 16) + (bytes[6] <<  8) + (bytes[7]);
+    let interest_period = bytes.readDoubleBE(8);
+    const year_seconds = 31536000; // By convention, the XRP Ledger's interest/demurrage rules use a fixed number of seconds per year (31536000), which is not adjusted for leap days or leap seconds
+    let interest_after_year = Math.pow(Math.E, (interest_start+year_seconds - interest_start) / interest_period)
+    let interest = (interest_after_year * 100) - 100;
+
+    return(`${code} (${interest}% pa)`)
+}
+
+console.log("Standard 3-character code (should be 'USD')")
+console.log(normalizeCurrencyCode("USD"))
+
+console.log("Currency code that decodes to XRP, case-insensitive (should be empty string)")
+console.log(normalizeCurrencyCode("xRp"))
 
 console.log("Demurrage code (should be 'XAU (-0.5% pa)')...")
 console.log(normalizeCurrencyCode("0158415500000000C1F76FF6ECB0BAC600000000"))
