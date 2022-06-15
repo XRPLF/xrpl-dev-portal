@@ -754,3 +754,27 @@ $placeholder-color: $gray-600;
       background: url(../img/events/event-location-light.svg);
   }
 }
+
+
+.page-ambassadors {
+
+
+  #benefits-list {
+    @each $benefits in "benefits-01", "benefits-02", "benefits-03", "benefits-04", "benefits-05", "benefits-06" {
+      ##{$benefits} {
+        content: url("../img/ambassadors/lightmode/#{$benefits}.svg");
+      }
+    }
+  }
+
+  #eligibility-list {
+    @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03", "eligibility-04", "eligibility-05" {
+      ##{$eligibility} {
+        content: url("../img/ambassadors/lightmode/#{$eligibility}.svg");
+      }
+    }
+  }
+
+ 
+
+}

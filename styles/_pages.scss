@@ -273,15 +273,21 @@
 // Ambassadors
 .page-ambassadors {
 
-
-  // .numbers {
-  //   height: 64px
-  // }
-  // @media (min-width: 992px) {
-  //   .numbers {
-  //     height: 80px
-  //   }
-  // }
+    #benefits-list {
+      @each $benefits in "benefits-01", "benefits-02", "benefits-03", "benefits-04", "benefits-05", "benefits-06" {
+        ##{$benefits} {
+          content: url("../img/ambassadors/#{$benefits}.svg");
+        }
+      }
+    }
+  
+    #eligibility-list {
+      @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03", "eligibility-04", "eligibility-05" {
+        ##{$eligibility} {
+          content: url("../img/ambassadors/#{$eligibility}.svg");
+        }
+      }
+    }
 
 // Button has link out arrow.
   .btn {
@@ -328,20 +334,6 @@
     font-size: 32px;
     line-height: 38px;
   }
-
-  // Bootstrap 4 does not have width sizing for breakpoints. 
-  // TEMP. might not need. 
-  .half-on-large {
-    width: 100%;
-  }
-
-  @media (min-width: 992px) {
-    .half-on-large {
-      width: 50%;
-    }
-  }
-
-
 
 }
 
