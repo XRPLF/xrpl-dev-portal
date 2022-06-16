@@ -561,17 +561,35 @@
 
 #find-us-on-platforms .card-deck {
   .card:nth-child(1) .card-footer {
-    background-image: url(../img/cards/4col-green-2.svg);
+    background-image: url(../img/cards/4col-light-blue-3.svg);
   }
   .card:nth-child(2) .card-footer {
-    background-image: url(../img/cards/4col-light-blue-3.svg);
+    background-image: url(../img/cards/4col-purple-blue-2.svg);
   }
   .card:nth-child(3) .card-footer {
     background-image: url(../img/cards/4col-magenta-3.svg);
   }
   .card:nth-child(4) .card-footer {
+    background-image: url(../img/cards/4col-green-2.svg);
+  }
+  .card:nth-child(5) .card-footer {
+    background-image: url(../img/cards/4col-orange-yellow-2.svg);
+  }
+  .card:nth-child(6) .card-footer {
+    background-image: url(../img/cards/4col-blue-purple.svg);
+  }
+  .card:nth-child(7) .card-footer {
+    background-image: url(../img/cards/4col-yellow-2.svg);
+  }
+  .card:nth-child(8) .card-footer {
     background-image: url(../img/cards/4col-orange-2.svg);
   }
+
+
+  .card {
+    margin-bottom: 2.5rem;
+  }
+
 }
 
 
@@ -765,6 +783,54 @@
 
 .page-docs-index,
 .page-community {
+
+  #community-heading {
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
+    padding-left: 1rem;
+    @include media-breakpoint-up(lg) {
+      padding-top: 5rem;
+      padding-bottom: 15rem;
+      padding-left: 0;
+    }
+    @include media-breakpoint-up(xl) {
+      padding-bottom: 25rem;
+    }
+    // Floating images
+    .parallax {
+      position: absolute;
+      -webkit-transition: all 0.1s ease;
+      -moz-transition: all 0.1s ease;
+      -ms-transition: all 0.1s ease;
+      -o-transition: all 0.1s ease;
+      transition: all 0.1s ease;
+    }
+  
+    .one {
+      top: 160px;
+      left: 0%;
+    }
+    .two {
+      top: 439px;
+      left: 22%;
+    }
+    .three {
+      top: 517px;
+      left: 52%;
+    }
+    .four {
+      top: 322px;
+      left: 71%;
+    }
+    .five {
+      top: 120px;
+      right: 0%;
+    }
+
+
+
+  }
+
   #run-a-network-node .card-deck {
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/4col-yellow-2.svg);
@@ -779,10 +845,79 @@
       background-image: url(../img/cards/4col-light-green.svg);
     }
   }
+
+  #run-a-network-node {
+    padding-bottom: 5rem;
+
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
+    }
+
+
+    .text-cards {
+      grid-gap: 40px;
+
+      h6::before {
+        margin-top: 0;
+        height: unset;
+      }
+
+      a {
+        font-size: 1.25rem;
+        line-height: 26px;
+        color: #fff;
+        font-weight: bold;
+
+        &:hover { 
+          text-decoration: none;
+          background: none !important;
+        }
+      }
+
+      .btn-arrow::after {
+        display: inline-block;
+        content: url(../img/icons/arrow-right-purple.svg);
+        vertical-align: middle;
+        padding-left: 8px;
+        -webkit-transition: transform 0.3s ease-out;
+        -moz-transition: transform 0.3s ease-out;
+        -ms-transition: transform 0.3s ease-out;
+        -o-transition: transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
+      }
+    }
+  }
+
+  #xrpl-grants {
+    padding-bottom: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
+    }
+  }
+
+  #xrpl-events {
+    padding-bottom: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
+    }
+  }
+
+  #xrpl-careers {
+    padding-bottom: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
+    }
+  }
+
+
 }
 
 .page-community {
-  @each $platform in "github", "twitch", "stack-overflow", "twitter" {
+  @each $platform in "github", "twitch", "stack-overflow", "twitter", "discord", "youtube", "devto" {
     #platform-#{$platform} {
       content: url("../img/logos/#{$platform}.svg")
     }

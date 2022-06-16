@@ -7,7 +7,7 @@ labels:
 ---
 # UbuntuまたはDebian Linuxへのインストール
 
-このページでは、[`apt`](https://ubuntu.com/server/docs)ユーティリティを使用して、**Ubuntu Linux 16.04以降**または**Debian 9（Stretch）** に`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
+このページでは、[`apt`](https://ubuntu.com/server/docs)ユーティリティを使用して、**Ubuntu Linux 18.04以降**または**Debian 10** に`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。
 
 以下の手順では、Rippleによってコンパイルされたバイナリーをインストールします。
 
@@ -21,39 +21,42 @@ labels:
 
 1. リポジトリを更新します。
 
-        $ sudo apt -y update
+        sudo apt -y update
 
 2. ユーティリティをインストールします。
 
-        $ sudo apt -y install apt-transport-https ca-certificates wget gnupg
+        sudo apt -y install apt-transport-https ca-certificates wget gnupg
 
 3. Rippleのパッケージ署名用のGPGキーを、信頼できるキーのリストに追加します。
 
-        $ wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | \
-          sudo apt-key add -
+        sudo mkdir /usr/local/share/keyrings/
+        wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor > ripple-key.gpg
+        sudo mv ripple-key.gpg /usr/local/share/keyrings
 
 4. 追加したキーのフィンガープリントを確認します。
 
-        $ apt-key finger
+        gpg /usr/local/share/keyrings/ripple-key.gpg
 
    出力に、次のようなRipple用のエントリーが含まれています。
 
+        gpg: WARNING: no command supplied.  Trying to guess what you mean ...
         pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
-              C001 0EC2 05B3 5A33 10DC 90DE 395F 97FF CCAF D9A2
-        uid           [ unknown] TechOps Team at Ripple <techops+rippled@ripple.com>
+            C0010EC205B35A3310DC90DE395F97FFCCAFD9A2
+        uid           TechOps Team at Ripple <techops+rippled@ripple.com>
         sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
 
-   特に、フィンガープリントが一致することを確認してください。（上記の例では、フィンガープリントは2行目の`C001`で始まる部分です。）
+   特に、フィンガープリントが一致することを確認してください。（上記の例では、フィンガープリントは三行目の`C001`で始まる部分です。）
 
 5. 使用しているオペレーティングシステムのバージョンに対応する適切なRippleリポジトリを追加します。
 
-        $ echo "deb https://repos.ripple.com/repos/rippled-deb bionic stable" | \
+        echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
             sudo tee -a /etc/apt/sources.list.d/ripple.list
 
-   上記の例は、**Ubuntu 18.04 Bionic Beaver**に適切です。その他のオペレーティングシステムについては、`bionic`という単語を次のいずれかに置き換えます。
+   上記の例は、**Ubuntu 20.04 Focal Fossa**に適切です。その他のオペレーティングシステムについては、`focal`という単語を次のいずれかに置き換えます。
 
-   - **Ubuntu 16.04 Xenial Xerus**の場合は`xenial`
-   - **Debian 9 Stretch**の場合は`stretch`
+    - `bionic` for **Ubuntu 18.04 Bionic Beaver**
+    - `buster` for **Debian 10 Buster**
+    - `bullseye` for **Debian 11 Bullseye**
 
    `rippled`の開発バージョンまたはプレリリースバージョンにアクセスするには、`stable`ではなく次のいずれかを使用します。
 
@@ -64,23 +67,23 @@ labels:
 
 6. Rippleリポジトリを取得します。
 
-        $ sudo apt -y update
+        sudo apt -y update
 
 7. `rippled`ソフトウェアパッケージをインストールします。
 
-        $ sudo apt -y install rippled
+        sudo apt -y install rippled
 
 8. `rippled`サービスのステータスをチェックします。
 
-        $ systemctl status rippled.service
+        systemctl status rippled.service
 
    `rippled`サービスが自動的に開始します。開始しない場合は、手動で開始できます。
 
-        $ sudo systemctl start rippled.service
+        sudo systemctl start rippled.service
 
    起動時に自動で起動するようにするには、以下の手順に従います。
 
-        $ sudo systemctl enable rippled.service
+        sudo systemctl enable rippled.service
 
 
 
