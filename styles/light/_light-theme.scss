@@ -775,8 +775,6 @@ $placeholder-color: $gray-600;
 
 
 .page-ambassadors {
-
-
   #benefits-list {
     @each $benefits in "benefits-01", "benefits-02", "benefits-03", "benefits-04", "benefits-05", "benefits-06" {
       ##{$benefits} {
@@ -792,7 +790,4 @@ $placeholder-color: $gray-600;
       }
     }
   }
-
- 
-
 }

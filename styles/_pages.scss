@@ -351,13 +351,6 @@
     }
   }
 
-
-  h6 {
-    font-size: 1.25rem;
-  }
-
-
-
 // Sliding Quotes
   #carouselSlidesOnly{
     height: 392px;
@@ -370,24 +363,15 @@
     }
   }
 
-  .ambassador-quote {
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 38px;
+  h6 {
+    font-size: 1.25rem;
   }
-
-
 // Arrow links after text
   .btn-arrow::after {
     display: inline-block;
     content: url(../img/icons/arrow-right-purple.svg);
     vertical-align: middle;
     padding-left: 8px;
-
-    -webkit-transition: transform 0.3s ease-out;
-    -moz-transition: transform 0.3s ease-out;
-    -ms-transition: transform 0.3s ease-out;
-    -o-transition: transform 0.3s ease-out;
     transition: transform 0.3s ease-out;
   }
 
@@ -399,10 +383,6 @@
 
   .btn-arrow:hover::after {
     background-position: left 4px bottom 4px;
-    -webkit-transform: translateX(4px);
-    -moz-transform: translateX(4px);
-    -ms-transform: translateX(4px);
-    -o-transform: translateX(4px);
     transform: translateX(4px);
   }
 
