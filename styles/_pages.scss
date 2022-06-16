@@ -317,6 +317,47 @@
   }
 
 
+  #container-scroll {
+    height:160px; 
+    position:relative; 
+    overflow:hidden;
+    margin-top: 80px;
+    margin-bottom: 64px;
+  }
+  
+  .photobanner {
+    position:absolute; 
+    top:0px; 
+    left:0px; 
+    overflow:hidden; 
+    white-space: nowrap;
+    animation: bannermove 40s linear infinite;
+  }
+
+  .photobanner-bottom {
+    top:112px; 
+  }
+  
+  .photobanner img {    
+    margin: 0 0.5em 
+  }
+  
+  @keyframes bannermove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+  }
+
+
+  h6 {
+    font-size: 1.25rem;
+  }
+
+
+
 // Sliding Quotes
   #carouselSlidesOnly{
     height: 392px;
@@ -334,6 +375,37 @@
     font-size: 32px;
     line-height: 38px;
   }
+
+
+// Arrow links after text
+  .btn-arrow::after {
+    display: inline-block;
+    content: url(../img/icons/arrow-right-purple.svg);
+    vertical-align: middle;
+    padding-left: 8px;
+
+    -webkit-transition: transform 0.3s ease-out;
+    -moz-transition: transform 0.3s ease-out;
+    -ms-transition: transform 0.3s ease-out;
+    -o-transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+  }
+
+  .btn-arrow:hover {
+    text-decoration: none;
+    background: none !important;
+    border: none;
+  }
+
+  .btn-arrow:hover::after {
+    background-position: left 4px bottom 4px;
+    -webkit-transform: translateX(4px);
+    -moz-transform: translateX(4px);
+    -ms-transform: translateX(4px);
+    -o-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+
 
 }
 
