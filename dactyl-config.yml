@@ -4127,6 +4127,14 @@ pages:
         targets:
             - en
 
+    -   name: Ambassadors
+        html: ambassadors.html
+        parent: contribute.html
+        template: page-ambassadors.html.jinja
+        sidebar: disabled
+        targets:
+            - en        
+
     -   name: XRPL Jobs
         html: https://jobs.xrpl.org/
         parent: contribute.html

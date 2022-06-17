@@ -4,7 +4,7 @@
     background-position: center;
     background-color: #7919FF;
     background-size: cover;
-    padding: 2px 8px;
+    padding: 2px 50px;
     color: #fff;
     text-align: center;
     font-size: 16px;
@@ -28,9 +28,9 @@
     }
 
     p {
-        padding-top: 10px;
+        padding-top: 5px;
         font-size: 12px;
-        line-height: 20px;
+        line-height: 15px;
         text-align: center;
         margin: auto;
 
@@ -38,6 +38,7 @@
             padding-top: 8px;
             font-size: 16px;
             width: initial;
+            line-height: 20px;
         }
     }
 }

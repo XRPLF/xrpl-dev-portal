@@ -270,6 +270,124 @@
   right: -4px;
 }
 
+// Ambassadors
+.page-ambassadors {
+
+    #benefits-list {
+      @each $benefits in "benefits-01", "benefits-02", "benefits-03", "benefits-04", "benefits-05", "benefits-06" {
+        ##{$benefits} {
+          content: url("../img/ambassadors/#{$benefits}.svg");
+        }
+      }
+    }
+  
+    #eligibility-list {
+      @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03", "eligibility-04", "eligibility-05" {
+        ##{$eligibility} {
+          content: url("../img/ambassadors/#{$eligibility}.svg");
+        }
+      }
+    }
+
+// Button has link out arrow.
+  .btn {
+    padding: .75rem;
+  }
+
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
+  }
+
+
+  #container-scroll {
+    height:160px; 
+    position:relative; 
+    overflow:hidden;
+    margin-top: 80px;
+    margin-bottom: 64px;
+  }
+  
+  .photobanner {
+    position:absolute; 
+    top:0px; 
+    left:0px; 
+    overflow:hidden; 
+    white-space: nowrap;
+    animation: bannermove 40s linear infinite;
+  }
+
+  .photobanner-bottom {
+    top:112px; 
+  }
+  
+  .photobanner img {    
+    margin: 0 0.5em 
+  }
+  
+  @keyframes bannermove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+  }
+
+// Sliding Quotes
+  #carouselSlidesOnly{
+    height: 392px;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 992px) {
+    #carouselSlidesOnly{
+      height: 320px;
+      margin-bottom: 104px;
+    }
+  }
+
+  h6 {
+    font-size: 1.25rem;
+  }
+// Arrow links after text
+  .btn-arrow::after {
+    display: inline-block;
+    content: url(../img/icons/arrow-right-purple.svg);
+    vertical-align: middle;
+    padding-left: 8px;
+    transition: transform 0.3s ease-out;
+  }
+
+  .btn-arrow:hover {
+    text-decoration: none;
+    background: none !important;
+    border: none;
+  }
+
+  .btn-arrow:hover::after {
+    background-position: left 4px bottom 4px;
+    transform: translateX(4px);
+  }
+
+}
+
 // Community Page
 #community-magenta {
   position: absolute;

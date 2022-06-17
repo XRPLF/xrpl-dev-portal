@@ -320,6 +320,14 @@
     padding-bottom: 2.5rem;
   }
 }
+.pt-26 {
+  padding-top: 2.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      padding-top: 6.5rem;
+    }
+  }
+}
 .pb-26 {
   padding-bottom: 6.5rem;
   &-until-sm {
