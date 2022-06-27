@@ -84,7 +84,9 @@ Before you install Clio, you must meet the following requirements.
 
         sudo apt -y install rippled
 
-7. A Clio server needs to access a `rippled` server to run succesfully. To enable communication between the servers, the config files of Clio and `rippled` need to share the following information. Run `./clio_server config.json` and update the config files as described:
+7. Run `./clio_server config.json`.
+
+8. A Clio server needs to access a `rippled` server to run succesfully. To enable communication between the servers, the config files of Clio and `rippled` need to share the following information.
 
     1. Update the Clio server's config file with the following information:
         
@@ -113,9 +115,11 @@ Before you install Clio, you must meet the following requirements.
                     "port":51233
                 }
 
+9. Start the `rippled` and Clio servers. 
 
-8. 
-
+    Clio waits for `rippled` to sync before extracting ledgers. If you are starting the servers for the first time, 
+    
+    If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time.
 
 
 <!--_ -->
