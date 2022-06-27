@@ -84,23 +84,37 @@ Before you install Clio, you must meet the following requirements.
 
         sudo apt -y install rippled
 
-7. Check the status of the Clio service:
+7. A Clio server needs to access a `rippled` server to run succesfully. To enable communication between the servers, the config files of Clio and `rippled` need to share the following information. Run `./clio_server config.json` and update the config files as described:
 
-        systemctl status rippled.service
+    1. Update the Clio server's config file with the following information:
+        
+        * The IP of `rippled` server.
+        * The port on which `rippled` is accepting unencrypted WebSocket connections.
+        * The port on which `rippled` is handling gRPC requests.
 
-    The `rippled` service should start automatically. If not, you can start it manually:
+                    "etl_sources":
+                    [
+                        {
+                            "ip":"127.0.0.1",
+                            "ws_port":"6006",
+                            "grpc_port":"50051"
+                        }
+                    ]
 
-        sudo systemctl start rippled.service
+        **Note** You can use multiple `rippled` servers as a data source by add more entries to the `etl_sources` section. Clio will load balance requests across the servers specified in the list. As long as one `rippled` server is up and synced, Clio will continue to extract validated ledgers.
 
-    To configure it to start automatically on boot:
+    2. Update the `rippled` server's config file with the following information:
+        
+        * Open a port to accept unencrypted websocket connections. 
+        * Open a port to handle gRPC requests and specify the IP(s) of Clio server(s) in the `secure_gateway` entry.
 
-        sudo systemctl enable rippled.service
+                "server":{
+                    "ip":"0.0.0.0",
+                    "port":51233
+                }
 
-8. Optional: allow `rippled` to bind to privileged ports.
 
-    This allows you to serve incoming API requests on port 80 or 443. (If you want to do so, you must also update the config file's port settings.)
-
-        sudo setcap 'cap_net_bind_service=+ep' /opt/ripple/bin/rippled
+8. 
 
 
 
@@ -121,3 +135,46 @@ Before you install Clio, you must meet the following requirements.
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
+
+{
+    "database":
+    {
+        "type":"cassandra",
+        "cassandra":
+        {
+            "contact_points":"127.0.0.1",
+            "port":9042,
+            "keyspace":"clio",
+            "replication_factor":1,
+            "table_prefix":"",
+            "max_requests_outstanding":25000,
+            "threads":8
+        }
+    },
+    "etl_sources":
+    [
+        {
+            "ip":"127.0.0.1",
+            "ws_port":"6006",
+            "grpc_port":"50051"
+        }
+    ],
+    "dos_guard":
+    {
+        "whitelist":["127.0.0.1"]
+    },
+    "server":{
+        "ip":"0.0.0.0",
+        "port":51233
+    },
+    "log_level":"debug",
+    "log_to_console": true,
+    "log_to_file": true,
+    "log_directory":"./clio_log",
+    "log_rotation_size": 2048,
+    "log_directory_max_size": 51200,
+    "log_rotation_hour_interval": 12,
+    "online_delete":0,
+    "extractor_threads":8,
+    "read_only":false
+}
