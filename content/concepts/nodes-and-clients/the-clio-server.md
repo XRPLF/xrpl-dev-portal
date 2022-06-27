@@ -38,23 +38,7 @@ When a Clio server receives an API request, it looks up data from these data sto
 
 - **References:**
     - [Commandline Usage Reference](commandline-usage.html) - Detailed information on command-line options for all `rippled` server modes and Clio nodes.
-    - [server_info][] - 
-    - [ledger][] - Manually advance the ledger in stand-alone mode.
+    - [server_info][clio-server-info.html] - API method to retrieve the status of the Clio server.
 - **Tutorials:**
     - [Build and Run a Clio node](build-run-clio-node.html)
     - [Install Clio server on Ubuntu](install-clio-on-ubuntu.html)
-
-# TBD
-
-Run the following commands to install Clio:
-
-```sh
-sudo apt-get update && sudo apt-get install -y wget gnupg2
-wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | sudo apt-key add -
-echo "deb https://repos.ripple.com/repos/rippled-deb-test-mirror focal unstable" | sudo tee /etc/apt/sources.list.d/clio.list
-sudo apt-get update && sudo apt install clio
-```
-
-For more information about running Clio, check out the [README in the Clio project repository](https://github.com/XRPLF/clio).
-
-To report an issue, provide feedback, or propose a new idea, please [open an issue](https://github.com/XRPLF/clio/issues).
