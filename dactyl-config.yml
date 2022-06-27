@@ -332,22 +332,16 @@ pages:
             - ja
 
     -   name: XRPL Foundation
-        html: xrpl-foundation.html
-        template: page-xrpl-foundation.html.jinja
+        html: https://foundation.xrpl.org/
         parent: xrp-ledger-overview.html
         top_nav_grouping: About
-        blurb: Learn more about the XRPL Foundation, dedicated to advancing the development and use of the XRPL.
-        sidebar: disabled
         targets:
             - en
 
     -   name: XRPL財団
-        html: xrpl-foundation.html
-        template: page-xrpl-foundation.html.jinja
+        html: https://foundation.xrpl.org/
         parent: xrp-ledger-overview.html
         top_nav_grouping: About
-        blurb: XRPLの開発と利用を促進するためのXRPL財団についてはこちらをご覧ください。
-        sidebar: disabled
         targets:
             - ja
 
