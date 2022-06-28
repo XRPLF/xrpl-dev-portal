@@ -137,7 +137,3 @@ Before you install Clio, you must meet the following requirements.
 
 - **Concepts:**
     - [The Clio Server](the-clio-server.html)
-- **Tutorials:**
-    - [Build and Run Clio Server](build-run-clio-ubuntu.html)
-- **References:**
-    - [rippled and Clio API Reference](rippled-api.html)

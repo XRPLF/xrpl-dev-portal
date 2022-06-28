@@ -4,7 +4,7 @@ parent: concepts.html
 template: pagetype-category.html.jinja
 blurb: Clio is an XRP Ledger API server optimized for WebSocket or HTTP API calls.
 ---
-# Clio - the XRP Ledger API Server
+# The Clio Server
 
 Clio is an XRP Ledger API server optimized for WebSocket or HTTP API calls for validated ledger data. 
 
@@ -40,9 +40,5 @@ When a Clio server receives an API request, it looks up data from these data sto
 
 ## See Also
 
-- **References:**
-    - [Commandline Usage Reference](commandline-usage.html) - Detailed information on command-line options for all `rippled` server modes and Clio nodes.
-    - [server_info][clio-server-info.html] - API method to retrieve the status of the Clio server.
 - **Tutorials:**
-    - [Build and Run a Clio node](build-run-clio-node.html)
     - [Install Clio server on Ubuntu](install-clio-on-ubuntu.html)

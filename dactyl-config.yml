@@ -2033,6 +2033,7 @@ pages:
             - en
 
     -   md: tutorials/manage-the-clio-server/install-clio-on-ubuntu.md
+        parent: manage-the-clio-server.html
         targets:
             - en
 
