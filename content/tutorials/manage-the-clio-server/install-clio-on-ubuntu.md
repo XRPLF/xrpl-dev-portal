@@ -86,7 +86,7 @@ Before you install Clio, you must meet the following requirements.
 
 7. Run `./clio_server config.json`.
 
-8. A Clio server needs to access a `rippled` server to run succesfully. To enable communication between the servers, the config files of Clio and `rippled` need to share the following information.
+8. A Clio server needs to access a `rippled` server to run succesfully. To enable communication between the servers, the config files of Clio and `rippled` need to share the following information. 
 
     1. Update the Clio server's config file with the following information:
         
@@ -105,15 +105,23 @@ Before you install Clio, you must meet the following requirements.
 
         **Note** You can use multiple `rippled` servers as a data source by add more entries to the `etl_sources` section. Clio will load balance requests across the servers specified in the list. As long as one `rippled` server is up and synced, Clio will continue to extract validated ledgers.
 
+        The [example-config](https://github.com/XRPLF/clio/blob/develop/example-config.json) file accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.
+
     2. Update the `rippled` server's config file with the following information:
         
         * Open a port to accept unencrypted websocket connections. 
+
+                [port_ws_public]
+                port = 6005
+                ip = 0.0.0.0
+                protocol = ws
+
         * Open a port to handle gRPC requests and specify the IP(s) of Clio server(s) in the `secure_gateway` entry.
 
-                "server":{
-                    "ip":"0.0.0.0",
-                    "port":51233
-                }
+                [port_grpc]
+                port = 50051
+                ip = 0.0.0.0
+                secure_gateway = <clio_ip_address>
 
 9. Start the `rippled` and Clio servers. 
 
@@ -133,52 +141,3 @@ Before you install Clio, you must meet the following requirements.
     - [Build and Run Clio Server](build-run-clio-ubuntu.html)
 - **References:**
     - [rippled and Clio API Reference](rippled-api.html)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
-
-{
-    "database":
-    {
-        "type":"cassandra",
-        "cassandra":
-        {
-            "contact_points":"127.0.0.1",
-            "port":9042,
-            "keyspace":"clio",
-            "replication_factor":1,
-            "table_prefix":"",
-            "max_requests_outstanding":25000,
-            "threads":8
-        }
-    },
-    "etl_sources":
-    [
-        {
-            "ip":"127.0.0.1",
-            "ws_port":"6006",
-            "grpc_port":"50051"
-        }
-    ],
-    "dos_guard":
-    {
-        "whitelist":["127.0.0.1"]
-    },
-    "server":{
-        "ip":"0.0.0.0",
-        "port":51233
-    },
-    "log_level":"debug",
-    "log_to_console": true,
-    "log_to_file": true,
-    "log_directory":"./clio_log",
-    "log_rotation_size": 2048,
-    "log_directory_max_size": 51200,
-    "log_rotation_hour_interval": 12,
-    "online_delete":0,
-    "extractor_threads":8,
-    "read_only":false
-}

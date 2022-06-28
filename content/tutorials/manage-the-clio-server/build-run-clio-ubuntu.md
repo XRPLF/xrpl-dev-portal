@@ -1,9 +1,7 @@
 ---
-html: build-run-rippled-ubuntu.html
-parent: install-rippled.html
-blurb: Compile rippled yourself on Ubuntu Linux.
-labels:
-  - Core Server
+html: build-run-clio-ubuntu.html
+parent: install-clio.html
+blurb: Compile Clio yourself on Ubuntu Linux.
 ---
 # Build and Run rippled on Ubuntu
 

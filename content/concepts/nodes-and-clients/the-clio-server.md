@@ -18,12 +18,16 @@ While Clio offers the complete `rippled` API, by default, it only returns valida
 
 ## Why Should I Run a Clio Server?
 
-There are two main reasons to run a Clio server: lower latency for API requests and lower memory usage.  
+There are lots of reasons you might want to run your own Clio server, but most of them can be summarized as: reduced load on `rippled` server(s) connected to the P2P network, lower memory usage and storage overhead, easier horizontal scaling, and higher throughput for API requests.   
 
-A Clio server does not connect to the peer-to-peer network. Instead, it uses gRPC to get validated data from one or more trusted servers that are connected to the P2P network and stores it in a persistent data store. As a result, a Clio server handles requests more efficiently with a lower latency and reduces the load on `rippled` servers running in P2P mode.
+* Reduced load on `rippled` server(s) - A Clio server does not connect to the peer-to-peer network. It uses gRPC to get validated data from one or more trusted `rippled` servers that are connected to the P2P network. Thus, a Clio server handles requests more efficiently and reduces the load on `rippled` servers running in P2P mode.
 
+* Lower memory usage and storage overhead - Clio uses Cassandra as the backend database and stores data in a space efficient format, using up to 4 times less space than `rippled`. 
 
-By using Cassandra or ScyllaDB as the database, the disk requirements for a Clio server are lower as the data is not stored on your local disk.
+* Easier horizontal scaling - Multiple Clio servers can share access to the same dataset, thus enabling you to build a highly available cluster of Clio servers. 
+
+* Higher throughput for API requests - A Clio server extracts validated data from one or more trusted `rippled` servers and stores this data efficiently. Thus, handling API calls efficiently, resulting in a higher throughput and in some cases, lower latency as well. 
+
 
 ## How does a Clio Server Work?
 

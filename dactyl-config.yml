@@ -1039,6 +1039,16 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/nodes-and-clients/the-clio-server.md
+        targets:
+            - en
+
+    -   name: The Clio Server
+        html: the-clio-server.html
+        parent: concepts.html
+        template: pagetype-category.html.jinja
+        blurb: Clio is an XRP Ledger API server optimized for WebSocket or HTTP API calls.
+
         # Redirect old NFT articles
     -   name: Non-fungible Tokens (NFTs)
         html: nft-concepts.html
@@ -2014,6 +2024,17 @@ pages:
         targets:
             - ja
 
+    -   name: Manage the Clio Server
+        html: manage-the-clio-server.html
+        parent: tutorials.html
+        blurb: Install, configure, and manage the Clio server.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   md: tutorials/manage-the-clio-server/install-clio-on-ubuntu.md
+        targets:
+            - en
 
 
 # References -------------------------------------------------------------------
