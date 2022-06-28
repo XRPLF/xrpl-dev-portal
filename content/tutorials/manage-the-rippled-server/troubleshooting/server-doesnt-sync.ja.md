@@ -7,7 +7,7 @@ labels:
 ---
 # rippledサーバーが同期しない
 
-このページでは、[`rippled`サーバー](the-rippled-server.html)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](rippled-server-states.html)のままになっている場合の原因について説明します。（サーバーが起動中または起動直後にクラッシュした場合は、[サーバーが起動しない](server-wont-start.html)を参照してください。）
+このページでは、[`rippled`サーバー](xrpl-servers.html)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](rippled-server-states.html)のままになっている場合の原因について説明します。（サーバーが起動中または起動直後にクラッシュした場合は、[サーバーが起動しない](server-wont-start.html)を参照してください。）
 
 以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](install-rippled.html)されていることを前提としています。
 
@@ -97,7 +97,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [ピアプロトコル](peer-protocol.html)
     - [技術に関するよくある質問](technical-faq.html)
 - **チュートリアル:**

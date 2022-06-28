@@ -11,7 +11,7 @@ showcase_icon: assets/img/logos/globe.svg
 ---
 # Get Started Using HTTP / WebSocket APIs
 
-If you don't have or don't want to use a [client library](client-libraries.html) in your preferred programming language, you can access the XRP Ledger directly through the APIs of its core server software, [`rippled`](the-rippled-server.html). The server provides APIs over JSON-RPC and WebSocket protocols. If you don't [run your own instance of `rippled`](install-rippled.html) you can still use a [public server][public servers].
+If you don't have or don't want to use a [client library](client-libraries.html) in your preferred programming language, you can access the XRP Ledger directly through the APIs of its core server software, [`rippled`](xrpl-servers.html). The server provides APIs over JSON-RPC and WebSocket protocols. If you don't [run your own instance of `rippled`](install-rippled.html) you can still use a [public server][public servers].
 
 **Tip:** You can dive right into the API with the [**WebSocket API Tool**](websocket-api-tool.html), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to watch the progress of the ledger live.
 

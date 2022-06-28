@@ -162,7 +162,7 @@ To use the script:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Amendments](amendments.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html)

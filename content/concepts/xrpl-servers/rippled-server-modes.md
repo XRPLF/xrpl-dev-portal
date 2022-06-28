@@ -1,6 +1,6 @@
 ---
 html: rippled-server-modes.html
-parent: the-rippled-server.html
+parent: xrpl-servers.html
 blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
 labels:
   - Core Server
@@ -36,7 +36,7 @@ P2P Mode servers connect to [Mainnet](parallel-networks.html) by default.
 
 ### API Servers
 
-All P2P Mode servers provide [APIs](rippled-api.html) for purposes like submitting transactions, checking balances and settings, and administering the server. If you query the XRP Ledger for data or submit transactions for business use, it can be useful to [run your own server](the-rippled-server.html#reasons-to-run-your-own-server).
+All P2P Mode servers provide [APIs](rippled-api.html) for purposes like submitting transactions, checking balances and settings, and administering the server. If you query the XRP Ledger for data or submit transactions for business use, it can be useful to [run your own server](xrpl-servers.html#reasons-to-run-your-own-server).
 
 #### Full History Servers
 

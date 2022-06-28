@@ -32,7 +32,7 @@ By default, a new genesis ledger has no [amendments](amendments.html) enabled. I
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
         - [`rippled` Server Modes](rippled-server-modes.html)
     - [Parallel Networks](parallel-networks.html)
     - [Amendments](amendments.html)

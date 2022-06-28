@@ -51,7 +51,7 @@ _Triggering transaction_: A transaction that causes the federators to start the 
 
 ## How to Set Up a Federated Sidechain
 
-Federated Sidechains are currently available as an Engineering Preview so you can experiment and explore the potential of sidechains. You can connect sidechains to the XRP Ledger Testnet, Devnet, or Mainnet as long as [the servers](the-rippled-server.html) in the mainchain network are running version 1.8.0 or higher.
+Federated Sidechains are currently available as an Engineering Preview so you can experiment and explore the potential of sidechains. You can connect sidechains to the XRP Ledger Testnet, Devnet, or Mainnet as long as [the servers](xrpl-servers.html) in the mainchain network are running version 1.8.0 or higher.
 
 **Caution:** You can connect sidechains to the XRP Ledger Mainnet to develop and test with small amounts; it is not recommended for production use cases until federated sidechains are available in a release. 
 

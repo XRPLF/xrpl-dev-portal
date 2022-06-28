@@ -7,7 +7,7 @@ labels:
 ---
 # Build and Run rippled on Ubuntu
 
-[`rippled`](the-rippled-server.html) is the reference implementation of an XRP Ledger peer-to-peer server. This server can connect to a network of peers, relay cryptographically signed transactions, and maintain a local copy of the complete shared global ledger. Use these instructions to build a `rippled` executable from source. These instructions were tested on Ubuntu 18.04 LTS.
+[`rippled`](xrpl-servers.html) is the reference implementation of an XRP Ledger peer-to-peer server. This server can connect to a network of peers, relay cryptographically signed transactions, and maintain a local copy of the complete shared global ledger. Use these instructions to build a `rippled` executable from source. These instructions were tested on Ubuntu 18.04 LTS.
 
 For information about building for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
 
@@ -212,7 +212,7 @@ Watchdog: Launching child 1
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Configure rippled](configure-rippled.html)

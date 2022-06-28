@@ -1,6 +1,6 @@
 ---
 html: clustering.html
-parent: the-rippled-server.html
+parent: xrpl-servers.html
 blurb: Run rippled servers in a cluster to share the load of cryptography between them.
 labels:
   - Core Server

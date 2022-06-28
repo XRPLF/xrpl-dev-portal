@@ -42,7 +42,7 @@ A `rippled` server relies on maintaining accurate time. It is recommended that t
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html) - More information on the recommended specifications and planning for production needs

@@ -104,7 +104,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Configure rippled](configure-rippled.html)

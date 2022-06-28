@@ -176,7 +176,7 @@ To migrate your transaction database to a larger page size, perform the followin
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Ledger History](ledger-history.html)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.html)

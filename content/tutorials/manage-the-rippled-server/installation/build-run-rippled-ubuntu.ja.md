@@ -217,7 +217,7 @@ Watchdog: Launching child 1
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [コンセンサスについて](intro-to-consensus.html)
 - **チュートリアル:**
     - [rippledの構成](configure-rippled.html)

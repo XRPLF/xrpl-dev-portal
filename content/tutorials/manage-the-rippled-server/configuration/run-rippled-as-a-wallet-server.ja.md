@@ -45,7 +45,7 @@ labels:
 - **コンセプト:**
     - [XRP Ledgerの概要](xrp-ledger-overview.html)
     - [コンセンサスネットワーク](consensus-network.html)
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
 - **チュートリアル:**
     - [rippledサーバーのクラスター化](cluster-rippled-servers.html)
     - [`rippled`のインストール](install-rippled.html)

@@ -38,7 +38,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [コンセンサスについて](intro-to-consensus.html)
 - **チュートリアル:**
     - [容量の計画](capacity-planning.html) - 本番環境向けの推奨仕様および計画についての詳細情報

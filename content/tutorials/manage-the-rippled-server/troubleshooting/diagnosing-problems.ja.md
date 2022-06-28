@@ -119,7 +119,7 @@ rippled server_info
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [Amendment](amendments.html)
 - **チュートリアル:**
     - [容量の計画](capacity-planning.html)

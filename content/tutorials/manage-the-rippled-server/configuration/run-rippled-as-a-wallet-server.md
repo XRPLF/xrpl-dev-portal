@@ -45,7 +45,7 @@ For more information, see [Troubleshooting `rippled`](troubleshoot-the-rippled-s
 - **Concepts:**
     - [XRP Ledger Overview](xrp-ledger-overview.html)
     - [Consensus Network](consensus-network.html)
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
 - **Tutorials:**
     - [Cluster rippled Servers](cluster-rippled-servers.html)
     - [Install `rippled`](install-rippled.html)

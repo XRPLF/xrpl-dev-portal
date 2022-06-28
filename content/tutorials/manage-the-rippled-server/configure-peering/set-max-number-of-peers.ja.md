@@ -39,7 +39,7 @@ labels:
 
 - **コンセプト:**
   - [ピアプロトコル](peer-protocol.html)
-  - [`rippled`サーバー](the-rippled-server.html)
+  - [`rippled`サーバー](xrpl-servers.html)
 - **チュートリアル:**
   - [容量の計画](capacity-planning.html)
   - [`rippled`サーバーのトラブルシューティング](troubleshoot-the-rippled-server.html)

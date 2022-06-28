@@ -32,7 +32,7 @@ To set up automatic updates, complete the following steps:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html)

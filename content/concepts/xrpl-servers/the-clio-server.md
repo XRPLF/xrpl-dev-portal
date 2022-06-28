@@ -1,12 +1,11 @@
 ---
 html: the-clio-server.html
-parent: concepts.html
-template: pagetype-category.html.jinja
-blurb: Clio is an XRP Ledger API server optimized for WebSocket or HTTP API calls.
+parent: xrpl-servers.html
+blurb: Clio is an XRP Ledger server optimized for API calls.
 ---
 # The Clio Server
 
-Clio is an XRP Ledger API server optimized for WebSocket or HTTP API calls for validated ledger data. 
+Clio is an XRP Ledger API server optimized for WebSocket or HTTP API calls for validated ledger data.
 
 A Clio server does not connect to the peer-to-peer network. Instead, it extracts data from a specified `rippled` server which is connected to the P2P network. By handling API calls efficiently, Clio servers can help reduce the load on `rippled` servers running in P2P mode.
 
@@ -22,18 +21,18 @@ There are lots of reasons you might want to run your own Clio server, but most o
 
 * Reduced load on `rippled` server(s) - A Clio server does not connect to the peer-to-peer network. It uses gRPC to get validated data from one or more trusted `rippled` servers that are connected to the P2P network. Thus, a Clio server handles requests more efficiently and reduces the load on `rippled` servers running in P2P mode.
 
-* Lower memory usage and storage overhead - Clio uses Cassandra as the backend database and stores data in a space efficient format, using up to 4 times less space than `rippled`. 
+* Lower memory usage and storage overhead - Clio uses Cassandra as the backend database and stores data in a space efficient format, using up to 4 times less space than `rippled`.
 
-* Easier horizontal scaling - Multiple Clio servers can share access to the same dataset, thus enabling you to build a highly available cluster of Clio servers. 
+* Easier horizontal scaling - Multiple Clio servers can share access to the same dataset, thus enabling you to build a highly available cluster of Clio servers.
 
-* Higher throughput for API requests - A Clio server extracts validated data from one or more trusted `rippled` servers and stores this data efficiently. Thus, handling API calls efficiently, resulting in a higher throughput and in some cases, lower latency as well. 
+* Higher throughput for API requests - A Clio server extracts validated data from one or more trusted `rippled` servers and stores this data efficiently. Thus, handling API calls efficiently, resulting in a higher throughput and in some cases, lower latency as well.
 
 
 ## How does a Clio Server Work?
 
 {{ include_svg("img/clio-basic-architecture.svg", "Figure 1: How does a Clio server work?") }}
 
-A Clio server stores validated ledger data such as transaction metadata, account states, and ledger headers in a persistent datastore. 
+A Clio server stores validated ledger data such as transaction metadata, account states, and ledger headers in a persistent datastore.
 
 When a Clio server receives an API request, it looks up data from these data stores. For requests that require data from the P2P network, the Clio server forwards the request to a P2P server, and then passes the response back to the client.
 

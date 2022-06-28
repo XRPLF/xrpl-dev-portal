@@ -1,6 +1,6 @@
 ---
 html: clustering.html
-parent: the-rippled-server.html
+parent: xrpl-servers.html
 blurb: 暗号処理の負荷を分散させるためにクラスターでrippledサーバーを運用できます。
 labels:
   - コアサーバー

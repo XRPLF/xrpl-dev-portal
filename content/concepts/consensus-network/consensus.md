@@ -62,7 +62,7 @@ Important: Some [`rippled` APIs](rippled-api.html) provide provisional results, 
 
 ## The XRP Ledger Protocol – Consensus and Validation
 
-The peer-to-peer XRP Ledger network consists of many independent XRP Ledger servers (typically running [`rippled`](the-rippled-server.html)) that accept and process transactions. Client applications sign and send transactions to XRP Ledger servers, which relay these candidate transactions throughout the network for processing. Examples of client applications include mobile and web wallets, gateways to financial institutions, and electronic trading platforms.
+The peer-to-peer XRP Ledger network consists of many independent XRP Ledger servers (typically running [`rippled`](xrpl-servers.html)) that accept and process transactions. Client applications sign and send transactions to XRP Ledger servers, which relay these candidate transactions throughout the network for processing. Examples of client applications include mobile and web wallets, gateways to financial institutions, and electronic trading platforms.
 
 {{ include_svg("img/xrp-ledger-network.svg", "Figure 4: Participants in the XRP Ledger Protocol") }}
 

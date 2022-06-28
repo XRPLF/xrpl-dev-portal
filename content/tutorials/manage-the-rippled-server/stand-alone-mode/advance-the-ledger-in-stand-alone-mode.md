@@ -21,7 +21,7 @@ Whenever `rippled` closes a ledger, it reorders the transactions according to a 
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
         - [`rippled` Server Modes](rippled-server-modes.html)
     - [Introduction to Consensus](intro-to-consensus.html)
     - [Amendments](amendments.html)

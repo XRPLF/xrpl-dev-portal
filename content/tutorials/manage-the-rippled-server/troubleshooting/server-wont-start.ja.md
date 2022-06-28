@@ -7,7 +7,7 @@ labels:
 ---
 # rippledサーバーが起動しない
 
-このページでは、[`rippled`サーバー](the-rippled-server.html)が起動しない際に考えられる原因とその修正方法を説明します。
+このページでは、[`rippled`サーバー](xrpl-servers.html)が起動しない際に考えられる原因とその修正方法を説明します。
 
 以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](install-rippled.html)されていることを前提としています。
 
@@ -205,7 +205,7 @@ ShardStore:ERR Unsupported shard store type: RocksDB
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [技術に関するよくある質問](technical-faq.html)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.html)

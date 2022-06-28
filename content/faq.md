@@ -155,4 +155,4 @@ Ripple is also one of several entities who publish recommended UNL settings and 
 
 #### Does the XRP Ledger distinguish between the codebase for validation and the one for user software?
 
-Yes. There are several [XRP Ledger client libraries](client-libraries.html) which are intended for user software developers. These libraries have different codebases and repositories from the [core XRP Ledger server](the-rippled-server.html) which powers the network and validates transactions.
+Yes. There are several [XRP Ledger client libraries](client-libraries.html) which are intended for user software developers. These libraries have different codebases and repositories from the [core XRP Ledger server](xrpl-servers.html) which powers the network and validates transactions.

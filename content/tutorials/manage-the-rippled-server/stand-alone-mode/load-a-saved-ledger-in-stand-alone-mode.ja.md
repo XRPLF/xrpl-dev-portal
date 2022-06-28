@@ -72,7 +72,7 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
       - [`rippled`サーバーのモード](rippled-server-modes.html)
     - [コンセンサスについて](intro-to-consensus.html)
     - [Amendment](amendments.html)

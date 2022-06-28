@@ -1,6 +1,6 @@
 ---
 html: peer-protocol.html
-parent: the-rippled-server.html
+parent: xrpl-servers.html
 blurb: ピアプロトコルは、rippledサーバーが互いに通信する言語を指定します。
 labels:
   - コアサーバー

@@ -1,6 +1,6 @@
 ---
 html: transaction-censorship-detection.html
-parent: the-rippled-server.html
+parent: xrpl-servers.html
 blurb: XRP Ledgerでは取引検閲の自動検知機能がすべてのrippledサーバーで有効になっています。
 labels:
   - ブロックチェーン

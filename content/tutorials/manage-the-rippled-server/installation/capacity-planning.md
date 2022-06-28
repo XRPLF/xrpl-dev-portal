@@ -197,7 +197,7 @@ You can save bandwidth by [enabling compression on peer-to-peer communications](
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Configure rippled](configure-rippled.html)

@@ -146,7 +146,7 @@ targets:
             # Fix link from untranslated manifest.html:
             "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポーティングモード"
             # Fix links for untranslated get-started-using-python.html:
-            "the-rippled-server.html#reasons-to-run-your-own-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
+            "xrpl-servers.html#reasons-to-run-your-own-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
             "cryptographic-keys.html#key-components": "cryptographic-keys.html#キーの生成"
             "accounts.html#addresses": "accounts.html#アドレス"
             "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
@@ -971,83 +971,89 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/the-rippled-server/the-rippled-server.md
+    -   md: concepts/xrpl-servers/xrpl-servers.md
         targets:
             - en
 
     -   name: rippledサーバー
-        html: the-rippled-server.html
+        html: xrpl-servers.html
         parent: concepts.html
         template: pagetype-category.html.jinja
         blurb: rippledは、XRP Ledgerを管理するコアのピアツーピアサーバーです。このセクションではコンセプトについて説明します。XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学ぶことができます。
         targets:
             - ja
 
-    -   md: concepts/the-rippled-server/rippled-server-modes.md
+    -   md: concepts/xrpl-servers/rippled-server-modes.md
         targets:
             - en
 
-    -   md: concepts/the-rippled-server/rippled-server-modes.ja.md
+    -   md: concepts/xrpl-servers/rippled-server-modes.ja.md
         targets:
             - ja
 
-    -   md: concepts/the-rippled-server/clustering.md
+    -   md: concepts/xrpl-servers/clustering.md
         targets:
             - en
 
-    -   md: concepts/the-rippled-server/clustering.ja.md
+    -   md: concepts/xrpl-servers/clustering.ja.md
         targets:
             - ja
 
-    -   md: concepts/the-rippled-server/ledger-history/ledger-history.md
+    -   md: concepts/xrpl-servers/ledger-history/ledger-history.md
         targets:
             - en
 
-    -   md: concepts/the-rippled-server/ledger-history/ledger-history.ja.md
+    -   md: concepts/xrpl-servers/ledger-history/ledger-history.ja.md
         targets:
             - ja
 
-    -   md: concepts/the-rippled-server/ledger-history/online-deletion.md
+    -   md: concepts/xrpl-servers/ledger-history/online-deletion.md
         targets:
             - en
 
-    -   md: concepts/the-rippled-server/ledger-history/online-deletion.ja.md
+    -   md: concepts/xrpl-servers/ledger-history/online-deletion.ja.md
         targets:
             - ja
 
-    -   md: concepts/the-rippled-server/ledger-history/history-sharding.md
+    -   md: concepts/xrpl-servers/ledger-history/history-sharding.md
         targets:
             - en
 
-    -   md: concepts/the-rippled-server/ledger-history/history-sharding.ja.md
+    -   md: concepts/xrpl-servers/ledger-history/history-sharding.ja.md
         targets:
             - ja
 
-    -   md: concepts/the-rippled-server/peer-protocol.md
+    -   md: concepts/xrpl-servers/peer-protocol.md
         targets:
             - en
 
-    -   md: concepts/the-rippled-server/peer-protocol.ja.md
+    -   md: concepts/xrpl-servers/peer-protocol.ja.md
         targets:
             - ja
 
-    -   md: concepts/the-rippled-server/transaction-censorship-detection.md
+    -   md: concepts/xrpl-servers/transaction-censorship-detection.md
         targets:
             - en
 
-    -   md: concepts/the-rippled-server/transaction-censorship-detection.ja.md
+    -   md: concepts/xrpl-servers/transaction-censorship-detection.ja.md
         targets:
             - ja
 
-    -   md: concepts/nodes-and-clients/the-clio-server.md
+    -   md: concepts/xrpl-servers/the-clio-server.md
         targets:
             - en
+            - ja
 
-    -   name: The Clio Server
-        html: the-clio-server.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: Clio is an XRP Ledger API server optimized for WebSocket or HTTP API calls.
+    # Redirect old "the-rippled-server.html"
+    -   name: The rippled Server
+        html: the-rippled-server.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrpl-servers.html
+        blurb: Learn about the core servers that power the XRP Ledger.
+        nav_omit: true
+        targets:
+            - en
+            - ja
 
         # Redirect old NFT articles
     -   name: Non-fungible Tokens (NFTs)
@@ -4155,7 +4161,7 @@ pages:
         template: page-ambassadors.html.jinja
         sidebar: disabled
         targets:
-            - en        
+            - en
 
     -   name: XRPL Jobs
         html: https://jobs.xrpl.org/

@@ -7,7 +7,7 @@ labels:
 ---
 # macOSでのrippledの構築と実行
 
-[`rippled`](the-rippled-server.html)の本番環境にmacOSプラットフォームを使用することは推奨されていません。本番環境には、最高レベルの品質管理とテストを経た、[Ubuntuプラットフォーム](install-rippled-on-ubuntu-with-alien.html)のご使用をご検討ください。
+[`rippled`](xrpl-servers.html)の本番環境にmacOSプラットフォームを使用することは推奨されていません。本番環境には、最高レベルの品質管理とテストを経た、[Ubuntuプラットフォーム](install-rippled-on-ubuntu-with-alien.html)のご使用をご検討ください。
 
 しかしながら、macOSは多くの開発やテストの作業に適しています。`rippled`は、10.15.7 CatalinaまでのmacOSでテスト済みです。
 
@@ -177,7 +177,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [コンセンサスについて](intro-to-consensus.html)
 - **チュートリアル:**
     - [Ubuntu Linuxでrippledをインストール](install-rippled-on-ubuntu.html)（本番環境用の、Ubuntu上の事前構築済みバイナリーをインストール）

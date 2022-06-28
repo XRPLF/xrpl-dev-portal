@@ -11,7 +11,7 @@ showcase_icon: assets/img/logos/globe.svg
 ---
 # HTTP / WebSocket APIの使用開始
 
-XRP Ledgerのコアサーバーソフトウェアは[`rippled`](the-rippled-server.html)です。XRP Ledgerでの開発に進むには、`rippled`サーバーのAPIにアクセスします。
+XRP Ledgerのコアサーバーソフトウェアは[`rippled`](xrpl-servers.html)です。XRP Ledgerでの開発に進むには、`rippled`サーバーのAPIにアクセスします。
 
 APIにアクセスする最も簡単な方法は、[**WebSocket API Tool**](websocket-api-tool.html)を使用するか、[XRP Ledger Explorer](https://livenet.xrpl.org/)を使用してレジャーの進行状況をその場で確認することです。
 
