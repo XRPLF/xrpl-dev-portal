@@ -1,6 +1,6 @@
 ---
 html: admin-rippled-methods.html
-parent: rippled-api.html
+parent: http-websocket-apis.html
 blurb: これらの管理APIメソッドを使用してrippledサーバーを管理します。
 labels:
   - コアサーバー

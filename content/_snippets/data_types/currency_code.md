@@ -1,4 +1,4 @@
-The [HTTP / WebSocket APIs](rippled-api.html) support two formats of currency code:
+The [HTTP / WebSocket APIs](http-websocket-apis.html) support two formats of currency code:
 
 - **[Standard Currency Codes](currency-formats.html#standard-currency-codes):** As a 3-character string such as `"EUR"` or `"USD"`.
 - **[Nonstandard Currency Codes](currency-formats.html#nonstandard-currency-codes):** As a 160-bit hexadecimal string, such as `"0158415500000000C1F76FF6ECB0BAC600000000"`. This is uncommon.

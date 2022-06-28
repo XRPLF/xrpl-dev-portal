@@ -168,7 +168,7 @@ To use the script:
     - [Capacity Planning](capacity-planning.html)
     - [Configure rippled](configure-rippled.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [log_level method][]
         - [server_info method][]

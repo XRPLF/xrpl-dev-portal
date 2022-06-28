@@ -105,7 +105,7 @@ You can use the [deposit_authorized method][] to see if an account is authorized
 
 - The [DepositPreauth transaction][] reference.
 - The [DepositPreauth ledger object type](depositpreauth-object.html).
-- The [deposit_authorized method][] of the [`rippled` API](rippled-api.html).
+- The [deposit_authorized method][] of the [`rippled` API](http-websocket-apis.html).
 - The [Authorized Trust Lines](authorized-trust-lines.html) feature (`RequireAuth` flag) limits which counterparties can hold non-XRP currencies issued by an account.
 - The `DisallowXRP` flag indicates that an account should not receive XRP. This is a softer protection than Deposit Authorization, and is not enforced by the XRP Ledger. (Client applications should honor this flag or at least warn about it.)
 - The `RequireDest` flag indicates that an account can only receive currency amounts if the sending transaction specifies a [Destination Tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags). This protects users from forgetting to indicate the purpose of a payment, but does not protect recipients from unknown senders, who can make up arbitrary destination tags.

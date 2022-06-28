@@ -233,5 +233,5 @@ HTTP Status:200 OK
   - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
   - [rippledサーバーの管理](manage-the-rippled-server.html)
 - **リファレンス:**
-  - [rippled APIリファレンス](rippled-api.html)
+  - [rippled APIリファレンス](http-websocket-apis.html)
   - [Ripple Data API v2](data-api.html)

@@ -16,7 +16,7 @@ The `rippled` server software can run in several modes depending on its configur
 - [**Reporting mode**](#reporting-mode) - A specialized mode for serving API requests from a relational database. It does not participate in the peer-to-peer network, so you need to run a P2P Mode server and connect the reporting mode server using a trusted gRPC connection. [New in: rippled 1.7.0][]
 - [**Stand-alone mode**](#stand-alone-mode) - An offline mode for testing. Does not connect to the peer-to-peer network or use consensus.
 
-You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](rippled-api.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
+You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](http-websocket-apis.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
 
 For information on the commands to run `rippled` in each of these modes, see the [Commandline Reference](commandline-usage.html).
 
@@ -36,7 +36,7 @@ P2P Mode servers connect to [Mainnet](parallel-networks.html) by default.
 
 ### API Servers
 
-All P2P Mode servers provide [APIs](rippled-api.html) for purposes like submitting transactions, checking balances and settings, and administering the server. If you query the XRP Ledger for data or submit transactions for business use, it can be useful to [run your own server](xrpl-servers.html#reasons-to-run-your-own-server).
+All P2P Mode servers provide [APIs](http-websocket-apis.html) for purposes like submitting transactions, checking balances and settings, and administering the server. If you query the XRP Ledger for data or submit transactions for business use, it can be useful to [run your own server](xrpl-servers.html#reasons-to-run-your-own-server).
 
 #### Full History Servers
 
@@ -72,7 +72,7 @@ For more information about running a validator, see [Run `rippled` as a Validato
 
 Reporting mode is specialized mode for serving API requests more efficiently. In this mode, the server gets the latest validated ledger data over [gRPC](https://xrpl.org/configure-grpc.html) from a separate `rippled` server running in P2P Mode, then loads that data into a relational database ([PostgreSQL](https://www.postgresql.org/)). The reporting mode server does not directly participate in the peer-to-peer network, though it can forward requests such as transaction submission to the P2P Mode server it uses.
 
-Multiple reporting mode servers can share access to a PostgreSQL database and [Apache Cassandra](https://cassandra.apache.org/) cluster to serve a large amount of history without each server needing a redundant copy of all the data. Reporting mode servers provide this data through the same [`rippled` APIs](rippled-api.html) with some slight changes to accommodate for the differences in how they store the underlying data.
+Multiple reporting mode servers can share access to a PostgreSQL database and [Apache Cassandra](https://cassandra.apache.org/) cluster to serve a large amount of history without each server needing a redundant copy of all the data. Reporting mode servers provide this data through the same [`rippled` APIs](http-websocket-apis.html) with some slight changes to accommodate for the differences in how they store the underlying data.
 
 Most notably, reporting mode servers do not report pending, non-validated ledger data or transactions. This limitation is relevant to certain use cases that rely on rapid access to in-flux data, such as performing arbitrage in the [decentralized exchange](decentralized-exchange.html).
 

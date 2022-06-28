@@ -7,7 +7,7 @@ blurb: Use these libraries to access the XRP Ledger from your programming langua
 
 These client libraries simplify some of the common work of accessing and processing XRP Ledger data, and present it in a form that matches with the native conventions of their respective programming languages.
 
-For other programming languages, you can access the XRP Ledger through the [HTTP APIs](rippled-api.html).
+For other programming languages, you can access the XRP Ledger through the [HTTP APIs](http-websocket-apis.html).
 
 | Language | Library Name | Get Started | API Reference | Source Code |
 |----------|--------------|-------------|---------------|-------------|

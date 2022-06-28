@@ -73,8 +73,8 @@ You can find the `delivered_amount` field in the following places:
 | ripple-lib v1.x | `getTransaction` method | `outcome.deliveredAmount` |
 | ripple-lib v1.x | `getTransactions` method | array members' `outcome.deliveredAmount` |
 
-[WebSocket]: rippled-api.html
-[JSON-RPC / WebSocket]: rippled-api.html
+[WebSocket]: http-websocket-apis.html
+[JSON-RPC / WebSocket]: http-websocket-apis.html
 
 ## Partial Payments Exploit
 

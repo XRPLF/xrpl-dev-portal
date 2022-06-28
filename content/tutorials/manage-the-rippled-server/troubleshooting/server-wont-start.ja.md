@@ -211,7 +211,7 @@ ShardStore:ERR Unsupported shard store type: RocksDB
     - [ログメッセージについて](understanding-log-messages.html)
     - [容量の計画](capacity-planning.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

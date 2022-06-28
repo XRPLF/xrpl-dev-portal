@@ -1,6 +1,6 @@
 ---
 html: admin-rippled-methods.html
-parent: rippled-api.html
+parent: http-websocket-apis.html
 blurb: Administer a rippled server with these admin API methods.
 labels:
   - Core Server

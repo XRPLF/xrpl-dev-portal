@@ -100,7 +100,7 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
   - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
   - [rippled APIの使用開始](get-started-using-http-websocket-apis.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

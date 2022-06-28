@@ -104,7 +104,7 @@ HTTPステータスコード200 OKが返されるその他のエラーの場合�
 
 すべてのメソッドは、以下のいずれかの値の`error`コードを返す可能性があります。
 
-* `unknownCmd` - 要求に、`rippled`サーバーが認識する[コマンド](rippled-api.html)が含まれていません。
+* `unknownCmd` - 要求に、`rippled`サーバーが認識する[コマンド](http-websocket-apis.html)が含まれていません。
 * `jsonInvalid` -（WebSocketのみ）要求は適切なJSONオブジェクトではありません。
   * この場合JSON-RPCは、代わりに400 Bad Request HTTPエラーを返します。
 * `missingCommand` -（WebSocketのみ）要求に`command`フィールドが指定されていませんでした。

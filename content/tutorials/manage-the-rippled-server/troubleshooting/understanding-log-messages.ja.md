@@ -224,7 +224,7 @@ NetworkOPs:WRN We are not running on the consensus ledger
     - [問題の診断](diagnosing-problems.html)
     - [容量の計画](capacity-planning.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

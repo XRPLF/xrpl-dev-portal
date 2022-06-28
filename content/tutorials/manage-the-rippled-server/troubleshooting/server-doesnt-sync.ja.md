@@ -104,7 +104,7 @@ labels:
     - [ログメッセージについて](understanding-log-messages.html)
     - [容量の計画](capacity-planning.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [peersメソッド][]
       - [server_infoメソッド][]
       - [validator_list_sitesメソッド][]

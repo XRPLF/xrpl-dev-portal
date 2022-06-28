@@ -19,4 +19,4 @@ XRPのユースケース、メリット、最新情報についての詳細は�
 
 一番最初のレジャーにて1000億XRPが発行され、これ以上新しいXRPは作成できません。XRPは、[トランザクションコスト](transaction-cost.html)によって消却されるか、またはキーの所有者がいないアドレスに送金すると失われることがあります。このため、XRPは本質的にはやや[デフレ通貨](https://en.wikipedia.org/wiki/Deflation)です。XRPがなくなることを心配する必要はありません。現時点の消却のペースでは、すべてのXRPが消却されるまでに約7万年かかります。またXRPの総供給量の変化に伴い、XRPの[価格と手数料が調整される可能性があります](fee-voting.html)。
 
-技術的には、XRPは0.000001 XRPの単位まで正確に計算され、「Drop」と呼ばれます。[`rippled`API](rippled-api.html)では、XRPの量は常にXRPのdrop単位で指定する必要があります。たとえば1 XRPは`1000000` dropと表されます。詳細については、[通貨フォーマットのリファレンス](currency-formats.html)を参照してください。
+技術的には、XRPは0.000001 XRPの単位まで正確に計算され、「Drop」と呼ばれます。[`rippled`API](http-websocket-apis.html)では、XRPの量は常にXRPのdrop単位で指定する必要があります。たとえば1 XRPは`1000000` dropと表されます。詳細については、[通貨フォーマットのリファレンス](currency-formats.html)を参照してください。

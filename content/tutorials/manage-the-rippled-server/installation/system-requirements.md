@@ -49,7 +49,7 @@ A `rippled` server relies on maintaining accurate time. It is recommended that t
     - [Install `rippled`](install-rippled.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 

@@ -33,7 +33,7 @@ XRP Ledgerプロトコルは、ネットワークのすべてのサーバーで�
 
 ### トランザクションのタイムライン
 
-XRP Ledgerには、[HTTP / WebSocket API](rippled-api.html)や[クライアントライブラリ](client-libraries.html)など、トランザクションを送信するためのAPIがいくつかあります。使用するAPIにかかわらず、トランザクションは以下のようにレジャーに適用されます。
+XRP Ledgerには、[HTTP / WebSocket API](http-websocket-apis.html)や[クライアントライブラリ](client-libraries.html)など、トランザクションを送信するためのAPIがいくつかあります。使用するAPIにかかわらず、トランザクションは以下のようにレジャーに適用されます。
 
 1. アカウント所有者は、トランザクションを作成して署名します。
 2. 所有者は、トランザクション候補として、そのトランザクションをネットワークに送信します。
@@ -183,7 +183,7 @@ For each persisted transaction without validated result:
 
 アプリケーションでのこれらのアクションの実行方法は、アプリケーションが使用するAPIによって異なります。アプリケーションでは、以下のインターフェイスを使用できます。
 
-1. [HTTP / WebSocket API](rippled-api.html)
+1. [HTTP / WebSocket API](http-websocket-apis.html)
 2. [クライアントライブラリ](client-libraries.html)
 3. 任意の数の他のソフトウェアAPI
 

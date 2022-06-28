@@ -9,7 +9,7 @@ labels:
 ---
 # Monitor Incoming Payments with WebSocket
 
-This tutorial shows how to monitor for incoming [payments](payment-types.html) using the [WebSocket `rippled` API](rippled-api.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
+This tutorial shows how to monitor for incoming [payments](payment-types.html) using the [WebSocket `rippled` API](http-websocket-apis.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
 
 WebSocket follows a model where the client and server establish one connection, then send messages both ways through the same connection, which remains open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.[¹](#footnote-1)<a id="from-footnote-1"></a>
 

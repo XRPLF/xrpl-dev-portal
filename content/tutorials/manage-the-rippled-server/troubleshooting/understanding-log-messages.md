@@ -344,7 +344,7 @@ NetworkOPs:WRN We are not running on the consensus ledger
     - [Diagnosing Problems](diagnosing-problems.html)
     - [Capacity Planning](capacity-planning.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 

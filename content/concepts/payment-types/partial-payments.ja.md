@@ -73,8 +73,8 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 | ripple-lib v1.x | `getTransaction` メソッド | `outcome.deliveredAmount` |
 | ripple-lib v1.x | `getTransactions` メソッド | 配列メンバーの `outcome.deliveredAmount` |
 
-[WebSocket]: rippled-api.html
-[JSON-RPC / WebSocket]: rippled-api.html
+[WebSocket]: http-websocket-apis.html
+[JSON-RPC / WebSocket]: http-websocket-apis.html
 
 ## Partial Paymentの悪用
 

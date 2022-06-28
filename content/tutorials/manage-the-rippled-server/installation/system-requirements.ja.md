@@ -45,7 +45,7 @@ labels:
     - [`rippled`のインストール](install-rippled.html)
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

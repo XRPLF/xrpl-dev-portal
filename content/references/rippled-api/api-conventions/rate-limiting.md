@@ -60,7 +60,7 @@ The usage rate drops off exponentially over time, so a client that does not make
     - [Getting Started with XRP Ledger APIs](get-started-using-http-websocket-apis.html)
     - [Troubleshooting rippled](troubleshoot-the-rippled-server.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [Error Formatting](error-formatting.html)
 
 <!--{# common link defs #}-->

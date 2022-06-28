@@ -28,11 +28,11 @@ The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliab
 
 Every instance of `rippled` syncs to the same network (unless it's configured to follow a [parallel network such as a test net](parallel-networks.html)) and has access to all communications across the network. Every `rippled` server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with a slice of recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more [ledger history](ledger-history.html) and to participate in the consensus process as a [validator](rippled-server-modes.html#validators).
 
-This server exposes [`rippled` APIs](rippled-api.html) for users to look up data, administer the server, and submit transactions.
+This server exposes [`rippled` APIs](http-websocket-apis.html) for users to look up data, administer the server, and submit transactions.
 
 ### Programming Libraries
 
-[Programming libraries](client-libraries.html) are not strictly required to access XRP Ledger data, since you can use HTTP or WebSocket to connect to the [`rippled` APIs](rippled-api.html) directly. Libraries simplify some of the common work of accessing the `rippled` APIs, and convert the data into forms that are easier to understand and program with in the programming language of the library.
+[Programming libraries](client-libraries.html) are not strictly required to access XRP Ledger data, since you can use HTTP or WebSocket to connect to the [`rippled` APIs](http-websocket-apis.html) directly. Libraries simplify some of the common work of accessing the `rippled` APIs, and convert the data into forms that are easier to understand and program with in the programming language of the library.
 
 [xrpl.js for JavaScript](get-started-using-javascript.html) (formerly called "ripple-lib") is the longest-standing, most well-supported library for accessing the XRP Ledger. Many [middleware services](#middleware) use programming libraries like this internally.
 

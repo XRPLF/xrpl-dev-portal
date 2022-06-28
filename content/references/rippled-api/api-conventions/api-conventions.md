@@ -1,6 +1,6 @@
 ---
 html: api-conventions.html
-parent: rippled-api.html
+parent: http-websocket-apis.html
 blurb: Common conventions used across the XRP Ledger's HTTP APIs.
 template: pagetype-category.html.jinja
 ---

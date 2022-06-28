@@ -40,7 +40,7 @@ Linuxでは、`rippled`が1回限りの`cron`構成を使用して最新バー�
     - [容量の計画](capacity-planning.html)
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

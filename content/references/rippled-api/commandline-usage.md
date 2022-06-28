@@ -1,6 +1,6 @@
 ---
 html: commandline-usage.html
-parent: rippled-api.html
+parent: http-websocket-apis.html
 blurb: Commandline usage options for the rippled server.
 curated_anchors:
   - name: Available Modes
@@ -97,7 +97,7 @@ rippled [OPTIONS] -- {COMMAND} {COMMAND_PARAMETERS}
 
 In client mode, the `rippled` executable acts as a client to another `rippled` service. (The service may be the same executable running in a separate process locally, or it could be a `rippled` server on another server.)
 
-To run in client mode, provide the [commandline syntax](request-formatting.html#commandline-format) for one of the [`rippled` API](rippled-api.html) methods.
+To run in client mode, provide the [commandline syntax](request-formatting.html#commandline-format) for one of the [`rippled` API](http-websocket-apis.html) methods.
 
 In addition to the individual command syntax, client mode accepts the [Generic Options](#generic-options) and the following options:
 

@@ -11,7 +11,7 @@ You can use the [`rippled` commandline interface](get-started-using-http-websock
 
 If the `server_state` in the response is `full` or `proposing`, then your server is fully synced to the network. Otherwise, you may need to wait longer. Fresh servers usually sync within 15 minutes; servers that already have [ledger history](ledger-history.html) stored can take longer.
 
-After your server has synchronized with the rest of the network, you have a fully functional XRP Ledger peer-to-peer server that you can use to submit transactions or get API access to the XRP Ledger. See [Client Libraries](client-libraries.html) or [HTTP / WebSocket APIs](rippled-api.html) for different ways to communicate with the server.
+After your server has synchronized with the rest of the network, you have a fully functional XRP Ledger peer-to-peer server that you can use to submit transactions or get API access to the XRP Ledger. See [Client Libraries](client-libraries.html) or [HTTP / WebSocket APIs](http-websocket-apis.html) for different ways to communicate with the server.
 
 If you use the XRP Ledger for your business or you just want to contribute to the stability of the network, you should run one server as a validator. For information about validating servers and why you might want to run one, see [Run rippled as a Validator](run-rippled-as-a-validator.html).
 

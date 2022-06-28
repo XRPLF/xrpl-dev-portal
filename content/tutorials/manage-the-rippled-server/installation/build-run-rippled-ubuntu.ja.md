@@ -204,7 +204,7 @@ Watchdog: Launching child 1
 
 * これでストック`rippled`サーバーを実行できたので、次に検証サーバーとして実行してみましょう。検証サーバーの詳細について、そして検証サーバーを実行する理由については、[rippledのセットアップチュートリアル](install-rippled.html)を参照してください。
 
-* `rippled` APIを使用して`rippled`サーバーと通信する方法については、[`rippled` APIリファレンス](rippled-api.html)を参照してください。
+* `rippled` APIを使用して`rippled`サーバーと通信する方法については、[`rippled` APIリファレンス](http-websocket-apis.html)を参照してください。
 
 * 開発のベストプラクティスとして、`rippled` `.deb`パッケージをビルドすることをお勧めします。CMakeビルドのdebパッケージターゲットを使用して、ソースツリーから直接`deb`パッケージをビルドできます。ビルドマシンには[Dockerをインストール](https://docs.docker.com/install/#supported-platforms)している必要があります。このプロセスを完了するのに1時間以上かかる場合があります。`deb`パッケージをビルドするには、以下の手順に従います。
 
@@ -224,7 +224,7 @@ Watchdog: Launching child 1
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
     - [rippled APIの使用開始](get-started-using-http-websocket-apis.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

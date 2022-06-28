@@ -119,7 +119,7 @@ All methods can potentially return any of the following values for the `error` c
 - `noCurrent` - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
 - `noNetwork` - The server is having trouble connecting to the rest of the XRP Ledger peer-to-peer network (and is not running in stand-alone mode).
 - `tooBusy` - The server is under too much load to do this command right now. Generally not returned if you are connected as an admin.
-- `unknownCmd` - The request does not contain a [command](rippled-api.html) that the `rippled` server recognizes.
+- `unknownCmd` - The request does not contain a [command](http-websocket-apis.html) that the `rippled` server recognizes.
 - `wsTextRequired` - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. <!-- SPELLING_IGNORE: opcode -->
 
 

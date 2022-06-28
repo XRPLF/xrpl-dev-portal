@@ -2638,7 +2638,7 @@ pages:
     # HTTP / Websocket APIs ----------------------------------------------------
 
     -   name: HTTP / WebSocket APIs
-        html: rippled-api.html
+        html: http-websocket-apis.html
         parent: references.html
         template: pagetype-category.html.jinja
         blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
@@ -2646,11 +2646,22 @@ pages:
             - en
 
     -   name: HTTP / WebSocket API リファレンス
-        html: rippled-api.html
+        html: http-websocket-apis.html
         parent: references.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerを管理するコアのピアツーピアサーバーであるrippledと直接通信します。
         targets:
+            - ja
+
+        # Redirect old rippled-api.html
+    -   name: HTTP / WebSocket APIs
+        html: rippled-api.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: http-websocket-apis.html
+        nav_omit: true
+        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/api-conventions/api-conventions.md
@@ -3441,7 +3452,7 @@ pages:
     # TODO: translate title & blurb
     -   name: Peer Port Methods
         html: peer-port-methods.html
-        parent: rippled-api.html
+        parent: http-websocket-apis.html
         template: pagetype-category.html.jinja
         blurb: Special API method for sharing network topology and status metrics.
         targets:

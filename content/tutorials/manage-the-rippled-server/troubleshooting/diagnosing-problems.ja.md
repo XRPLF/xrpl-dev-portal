@@ -125,7 +125,7 @@ rippled server_info
     - [容量の計画](capacity-planning.html)
     - [rippledの構成](configure-rippled.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [log_levelメソッド][]
       - [server_infoメソッド][]

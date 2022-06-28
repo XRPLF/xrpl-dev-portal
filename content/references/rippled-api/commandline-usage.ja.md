@@ -1,6 +1,6 @@
 ---
 html: commandline-usage.html
-parent: rippled-api.html
+parent: http-websocket-apis.html
 blurb: rippledサーバーのコマンドライン使用オプションです。
 curated_anchors:
   - name: 使用できるモード
@@ -98,7 +98,7 @@ rippled [OPTIONS] -- {COMMAND} {COMMAND_PARAMETERS}
 
 クライアントモードでは、`rippled`実行可能ファイルが別の`rippled`サービスのクライアントとして動作します。（サービスは別のプロセスでローカルに実行されている同じ実行可能ファイルである場合や、別のサーバー上の`rippled`サーバーである場合があります。）
 
-クライアントモードで実行するには、いずれかの[`rippled` API](rippled-api.html)メソッドの[コマンドライン構文](request-formatting.html#コマンドライン形式)を指定します。
+クライアントモードで実行するには、いずれかの[`rippled` API](http-websocket-apis.html)メソッドの[コマンドライン構文](request-formatting.html#コマンドライン形式)を指定します。
 
 クライアントモードは、個別のコマンド構文の他に、[汎用オプション](#汎用オプション)と以下のオプションに対応します。
 

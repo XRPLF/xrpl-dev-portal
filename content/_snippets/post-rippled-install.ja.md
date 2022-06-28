@@ -11,7 +11,7 @@
     $ /opt/ripple/bin/rippled server_info
 {% endif %}
 
-rippled APIを使用した`rippled`サーバーとの通信について詳しくは、[rippled API reference](rippled-api.html)を参照してください。
+rippled APIを使用した`rippled`サーバーとの通信について詳しくは、[rippled API reference](http-websocket-apis.html)を参照してください。
 
 ストック`rippled`サーバーを実行できたら、次に検証サーバーとして実行してみましょう。検証サーバーについて、そして検証サーバーを実行する理由については、[バリデータとしてのrippledの実行](run-rippled-as-a-validator.html)を参照してください。
 
