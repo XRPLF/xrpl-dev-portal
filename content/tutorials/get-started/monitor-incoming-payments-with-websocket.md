@@ -69,7 +69,7 @@ The above example opens a secure connection (`wss://`) to one of Ripple's public
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](admin-rippled-methods.html) and admin-only data in some responses such as [server_info][server_info method], in addition to the [public methods](public-rippled-methods.html) that are available when you connect to public servers over the internet.
+**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](admin-api-methods.html) and admin-only data in some responses such as [server_info][server_info method], in addition to the [public methods](public-api-methods.html) that are available when you connect to public servers over the internet.
 
 Example:
 

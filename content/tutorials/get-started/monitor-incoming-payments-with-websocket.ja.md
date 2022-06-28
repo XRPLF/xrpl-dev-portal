@@ -71,7 +71,7 @@ socket.addEventListener('close', (event) => {
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](public-rippled-methods.html)以外に、すべての[管理メソッド](admin-rippled-methods.html)と、[server_info][server_infoメソッド]などの一部の応答に含まれる管理者専用データを利用できます。
+**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](public-api-methods.html)以外に、すべての[管理メソッド](admin-api-methods.html)と、[server_info][server_infoメソッド]などの一部の応答に含まれる管理者専用データを利用できます。
 
 例:
 

@@ -163,7 +163,7 @@ XRP Ledgerの[コンセンサス プロセス](intro-to-consensus.html)が新し
     - [XRPの送信](send-xrp.html)
 - **References:**
     - [`xrpl.js` リファレンス](https://js.xrpl.org/)
-    - [Public API Methods](public-rippled-methods.html)
+    - [Public API Methods](public-api-methods.html)
     - [API規約](api-conventions.html)
         - [base58 エンコード](base58-encodings.html)
     - [トランザクションフォーマット](transaction-formats.html)

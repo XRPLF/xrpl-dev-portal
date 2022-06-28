@@ -390,7 +390,7 @@ pages:
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
-            - public-rippled-methods.html
+            - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
@@ -399,7 +399,7 @@ pages:
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
-            - public-rippled-methods.html
+            - public-api-methods.html
         blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
         top_nav_blurb: Dive into XRP Ledger technology and start integrating.
         filters:
@@ -427,7 +427,7 @@ pages:
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
-            - public-rippled-methods.html
+            - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
@@ -2042,6 +2042,7 @@ pages:
         parent: manage-the-clio-server.html
         targets:
             - en
+            - ja
 
 
 # References -------------------------------------------------------------------
@@ -2664,73 +2665,83 @@ pages:
             - en
             - ja
 
-    -   md: references/rippled-api/api-conventions/api-conventions.md
+    -   md: references/http-websocket-apis/api-conventions/api-conventions.md
         targets:
             - en
 
-    -   md: references/rippled-api/api-conventions/api-conventions.ja.md
+    -   md: references/http-websocket-apis/api-conventions/api-conventions.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/api-conventions/request-formatting.md
+    -   md: references/http-websocket-apis/api-conventions/request-formatting.md
         targets:
             - en
 
-    -   md: references/rippled-api/api-conventions/request-formatting.ja.md
+    -   md: references/http-websocket-apis/api-conventions/request-formatting.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/api-conventions/response-formatting.md
+    -   md: references/http-websocket-apis/api-conventions/response-formatting.md
         targets:
             - en
 
-    -   md: references/rippled-api/api-conventions/response-formatting.ja.md
+    -   md: references/http-websocket-apis/api-conventions/response-formatting.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/api-conventions/error-formatting.md
+    -   md: references/http-websocket-apis/api-conventions/error-formatting.md
         targets:
             - en
 
-    -   md: references/rippled-api/api-conventions/error-formatting.ja.md
+    -   md: references/http-websocket-apis/api-conventions/error-formatting.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/api-conventions/markers-and-pagination.md
+    -   md: references/http-websocket-apis/api-conventions/markers-and-pagination.md
         targets:
             - en
 
-    -   md: references/rippled-api/api-conventions/markers-and-pagination.ja.md
+    -   md: references/http-websocket-apis/api-conventions/markers-and-pagination.ja.md
         targets:
             - ja
 
     # TODO: translate page & blurb
-    -   md: references/rippled-api/api-conventions/rate-limiting.md
+    -   md: references/http-websocket-apis/api-conventions/rate-limiting.md
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/api-conventions/rippled-server-states.md
+    -   md: references/http-websocket-apis/api-conventions/rippled-server-states.md
         targets:
             - en
 
-    -   md: references/rippled-api/api-conventions/rippled-server-states.ja.md
+    -   md: references/http-websocket-apis/api-conventions/rippled-server-states.ja.md
         targets:
             - ja
 
 # rippled Public Methods
 
-    -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.md
+    -   md: references/http-websocket-apis/public-api-methods/public-api-methods.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/public-api-methods.ja.md
         targets:
+            - ja
+
+        # redirect old public-rippled-methods.html
+    -   name: Public API Methods
+        html: public-rippled-methods.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: public-api-methods.html
+        blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
+        targets:
+            - en
             - ja
 
     -   name: Account Methods
         html: account-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         template: pagetype-category.html.jinja
         blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info.
         targets:
@@ -2738,93 +2749,93 @@ pages:
 
     -   name: Account Methods
         html: account-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerのアカウントとは、XRPの保有者とトランザクションの送信者を意味します。以下のメソッドを使用して、アカウント情報を処理します。
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_channels.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.ja.md
         targets:
             - ja
 
         # TODO: translate
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_nfts.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_tx.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_tx.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/noripple_check.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/noripple_check.ja.md
         targets:
             - ja
 
     -   name: Ledger Methods
         html: ledger-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info.
         template: pagetype-category.html.jinja
         targets:
@@ -2832,56 +2843,56 @@ pages:
 
     -   name: Ledger Methods
         html: ledger-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: レジャーバージョンには、ヘッダー、トランザクションツリー、状態ツリーが含まれ、さらにその中にアカウント設定、トラストライン、残高、トランザクション、その他のデータが含まれます。以下のメソッドを使用して、レジャー情報を取得します。
         template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md
         targets:
             - en
 
         # TODO: update the translation of this page
-    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.ja.md
         targets:
             - ja
 
     -   name: Transaction Methods
         html: transaction-methods.html # watch for clashes w/ this filename
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         template: pagetype-category.html.jinja
         blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions. #TODO:translate
         targets:
@@ -2889,55 +2900,55 @@ pages:
 
     -   name: Transaction Methods
         html: transaction-methods.html # watch for clashes w/ this filename
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         template: pagetype-category.html.jinja
         blurb: トランザクションだけが、XRP Ledgerの共有されている状態を変更できます。XRP Ledgerに対するすべてのビジネスはトランザクションの形態をとります。以下のメソッドを使用して、トランザクションを処理します。
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/submit.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/tx.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/tx.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.ja.md
         targets:
             - ja
 
     -   name: Path and Order Book Methods
         html: path-and-order-book-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
         template: pagetype-category.html.jinja
         targets:
@@ -2945,84 +2956,84 @@ pages:
 
     -   name: Path and Order Book Methods
         html: path-and-order-book-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: パスは、支払いが送信者から受信者に届くまでに中間ステップでたどる道筋を定義します。パスは、送信者と受信者をオーダーブックを介してつなぐことで、複数通貨間の支払いを可能にします。パスと他のオーダーブックに関しては、以下のメソッドを使用します。
         template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.md
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.md
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.ja.md
         targets:
-            - ja
-
-        # TODO: translate
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/nft_buy_offers.md
-        targets:
-            - en
             - ja
 
         # TODO: translate
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/nft_sell_offers.md
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.md
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.ja.md
         targets:
             - ja
 
     -   name: Payment Channel Methods
         html: payment-channel-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels. #TODO:translate
         template: pagetype-category.html.jinja
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.md
+    -   md: references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.md
+    -   md: references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.ja.md
         targets:
             - ja
 
     -   name: Subscription Methods
         html: subscription-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. WebSocket API only. #TODO:translate
         template: pagetype-category.html.jinja
         targets:
@@ -3030,31 +3041,31 @@ pages:
 
     -   name: Subscription Methods
         html: subscription-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: 以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。
         template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.md
+    -   md: references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.md
+    -   md: references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.ja.md
         targets:
             - ja
 
     -   name: Server Info Methods
         html: server-info-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: Use these methods to retrieve information about the current state of the rippled server.
         template: pagetype-category.html.jinja
         targets:
@@ -3062,86 +3073,97 @@ pages:
 
     -   name: Server Info Methods
         html: server-info-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: 以下のメソッドを使用して、rippledサーバーの現在の状態についての情報を取得します。
         template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/fee.ja.md
         targets:
             - ja
 
         # TODO: translate
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/manifest.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.ja.md
         targets:
             - ja
 
     -   name: Utility Methods
         html: utility-methods.html
-        parent: public-rippled-methods.html
+        parent: public-api-methods.html
         blurb: Use these methods to perform convenient tasks, such as ping and random number generation.
         template: pagetype-category.html.jinja
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/utility-methods/json.md
+    -   md: references/http-websocket-apis/public-api-methods/utility-methods/json.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/utility-methods/json.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/utility-methods/json.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.md
+    -   md: references/http-websocket-apis/public-api-methods/utility-methods/ping.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/utility-methods/ping.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/public-rippled-methods/utility-methods/random.md
+    -   md: references/http-websocket-apis/public-api-methods/utility-methods/random.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/utility-methods/random.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/utility-methods/random.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
+    -   md: references/http-websocket-apis/admin-api-methods/admin-api-methods.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/admin-api-methods.ja.md
         targets:
+            - ja
+
+        # Redirect old admin-rippled.methods.html
+    -   name: Admin API Methods
+        html: admin-rippled-methods.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: admin-api-methods.html
+        nav_omit: true
+        blurb: Administer a rippled server with these admin API methods.
+        targets:
+            - en
             - ja
 
     -   name: Key Generation Methods
         html: key-generation-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: Use these methods to generate and manage keys.
         template: pagetype-category.html.jinja
         targets:
@@ -3149,31 +3171,31 @@ pages:
 
     -   name: キー生成のメソッド
         html: key-generation-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: キーを生成および管理するには、以下のメソッドを使用します。
         template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.md
+    -   md: references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.md
+    -   md: references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.ja.md
         targets:
             - ja
 
     -   name: Logging and Data Management Methods
         html: logging-and-data-management-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: Use these methods to manage log levels and other data, such as ledgers.
         template: pagetype-category.html.jinja
         targets:
@@ -3181,69 +3203,69 @@ pages:
 
     -   name: ログとデータ管理のメソッド
         html: logging-and-data-management-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: Use these methods to manage log levels and other data, such as ledgers. #TODO: translate
         template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/node_to_shard.md
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md
         targets:
             - en
             - ja
@@ -3251,65 +3273,65 @@ pages:
         #TODO: translate title and blurb
     -   name: Server Control Methods
         html: server-control-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: Use these methods to manage the rippled server.
         template: pagetype-category.html.jinja
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.md
+    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.md
+    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/stop.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.md
+    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.ja.md
         targets:
             - ja
 
     -   name: Signing Methods
         html: signing-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: Use these methods to work with transactions. #TODO:translate
         template: pagetype-category.html.jinja
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/signing-methods/sign.md
+    -   md: references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/signing-methods/sign.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/signing-methods/sign.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/signing-methods/sign_for.md
+    -   md: references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/signing-methods/sign_for.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.ja.md
         targets:
             - ja
 
     -   name: Peer Management Methods
         html: peer-management-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: Use these methods to manage your server's peer-to-peer connections.
         template: pagetype-category.html.jinja
         targets:
@@ -3317,55 +3339,55 @@ pages:
 
     -   name: ピア管理のメソッド
         html: peer-management-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: サーバーのピアツーピア接続を管理するにはこれらのメソッドを使用します。
         template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.ja.md
         targets:
             - ja
 
     -   name: Status and Debugging Methods
         html: status-and-debugging-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: Use these methods to check the status of the network and server.
         template: pagetype-category.html.jinja
         targets:
@@ -3373,79 +3395,79 @@ pages:
 
     -   name: ステータスとデバッグのメソッド
         html: status-and-debugging-methods.html
-        parent: admin-rippled-methods.html
+        parent: admin-api-methods.html
         blurb: ネットワークとサーバーのステータスを確認するには、以下のメソッドを使用します。
         template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.ja.md
         targets:
             - ja
 
         # TODO: translate
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_info.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.ja.md
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/commandline-usage.md
+    -   md: references/http-websocket-apis/commandline-usage.md
         targets:
             - en
 
-    -   md: references/rippled-api/commandline-usage.ja.md
+    -   md: references/http-websocket-apis/commandline-usage.ja.md
         targets:
             - ja
 
@@ -3460,24 +3482,24 @@ pages:
             - ja
 
     # TODO: translate page & blurb
-    -   md: references/rippled-api/peer-port-methods/health-check.md
+    -   md: references/http-websocket-apis/peer-port-methods/health-check.md
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
+    -   md: references/http-websocket-apis/peer-port-methods/peer-crawler.md
         targets:
             - en
 
     # TODO: translate page (currently only the blurb is translated)
-    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
+    -   md: references/http-websocket-apis/peer-port-methods/peer-crawler.md
         blurb: ネットワークトポロジーとステータスメトリックを共有するための特殊なAPIメソッドです。
         untranslated_warning: true
         targets:
             - ja
 
     # TODO: translate page & blurb
-    -   md: references/rippled-api/peer-port-methods/validator-list.md
+    -   md: references/http-websocket-apis/peer-port-methods/validator-list.md
         targets:
             - en
             - ja

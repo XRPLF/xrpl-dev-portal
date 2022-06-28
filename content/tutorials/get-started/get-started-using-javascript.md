@@ -162,7 +162,7 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, generate a 
     - [Send XRP](send-xrp.html)
 - **References:**
     - [`xrpl.js` Reference](https://js.xrpl.org/)
-    - [Public API Methods](public-rippled-methods.html)
+    - [Public API Methods](public-api-methods.html)
     - [API Conventions](api-conventions.html)
         - [base58 Encodings](base58-encodings.html)
     - [Transaction Formats](transaction-formats.html)
