@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>server_info - XRPL.org</title>
+    <title>server_info (rippled) - XRPL.org</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="server_info | XRPL.org">
+    <meta property="og:title" content="server_info (rippled) | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/server_info.html" />
     <meta property="og:description" content="Retrieve status of the server in human-readable format." />
     <meta name="description" content="Retrieve status of the server in human-readable format." />
@@ -239,7 +239,7 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#server_info">server_info</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#server_info-rippled">server_info (rippled)</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
@@ -259,13 +259,13 @@
     <li class="active breadcrumb-item"><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a></li>
     <li class="active breadcrumb-item"><a href="public-api-methods.html">Public API Methods</a></li>
     <li class="active breadcrumb-item"><a href="server-info-methods.html">Server Info Methods</a></li>
-    <li class="active breadcrumb-item">server_info</li>
+    <li class="active breadcrumb-item">server_info (rippled)</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="server_info">server_info<a aria-hidden="true" class="hover_anchor" href="#server_info"><i class="fa fa-link"></i></a></h1>
+        <h1 id="server_info-rippled">server_info (rippled)<a aria-hidden="true" class="hover_anchor" href="#server_info-rippled"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>server_info</code> command asks the server for a human-readable version of various information about the <code>rippled</code> server being queried.</p>
+<p>The <code>server_info</code> command asks the server for a human-readable version of various information about <a href="xrpl-servers.html">the <code>rippled</code> server</a> being queried. For <a href="the-clio-server.html">Clio servers</a>, see <a href="clio-server_info.html"><code>server_info</code> (Clio)</a> instead.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
@@ -2535,7 +2535,12 @@ rippled server_info
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clio-server_info.html">server_info (Clio)</a>
   </div>
 
       
