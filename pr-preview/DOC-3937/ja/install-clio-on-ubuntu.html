@@ -352,7 +352,7 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <p>Install the Clio software package. There are two options:</p>
 <ul>
 <li>
-<p>To run <code>rippled</code> on the same machine, install the <code>clio</code> package, which sets up both:</p>
+<p>To run <code>rippled</code> on the same machine, install the <code>clio</code> package, which sets up both servers:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">sudo apt -y install clio
 </code></pre></div>
 </li>
@@ -364,16 +364,11 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 </ul>
 </li>
 <li>
-<p>Run the Clio setup script.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">./clio_server config.json
-</code></pre></div>
-</li>
-<li>
-<p>A Clio server needs to access a <code>rippled</code> server. To enable communication between the servers, the config files of Clio and <code>rippled</code> need to share the following information.</p>
+<p>If you are running <code>rippled</code> on a separate machine, modify your Clio config file to point to it. You can skip this step if you used the <code>clio</code> package to install both on the same machine.</p>
 <ol>
 <li>
-<p>Update the Clio server's config file with the connection information for the <code>rippled</code> server:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">"etl_sources":
+<p>Edit the Clio server's config file to modify the connection information for the <code>rippled</code> server. The package installs this file at <code>/etc/clio/etc/config.json</code>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">"etl_sources":
 [
     {
         "ip":"127.0.0.1",
@@ -392,11 +387,11 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <p>The <a class="external-link" href="https://github.com/XRPLF/clio/blob/develop/example-config.json" target="_blank">example config file <i aria-hidden="true" class="fa fa-external-link"></i></a> accesses the <code>rippled</code> server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.</p>
 </li>
 <li>
-<p>Update the <code>rippled</code> server's config file with the following information:</p>
+<p>Update the <code>rippled</code> server's config file to allow the Clio server to connect to it. The package installs this file at <code>/etc/opt/ripple/rippled.cfg</code>.</p>
 <ul>
 <li>
-<p>Open a port to accept unencrypted websocket connections.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="k">[port_ws_public]</span><span class="w"></span>
+<p>Open a port to accept unencrypted WebSocket connections.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">[port_ws_public]</span><span class="w"></span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6005</span><span class="w"></span>
 <span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span><span class="w"></span>
 <span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ws</span><span class="w"></span>
@@ -404,7 +399,7 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 </li>
 <li>
 <p>Open a port to handle gRPC requests and specify the IP(s) of Clio server(s) in the <code>secure_gateway</code> entry.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="k">[port_grpc]</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="k">[port_grpc]</span><span class="w"></span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">50051</span><span class="w"></span>
 <span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span><span class="w"></span>
 <span class="na">secure_gateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
@@ -416,7 +411,15 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 </ol>
 </li>
 <li>
+<p>Enable and start the Clio systemd service.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">sudo systemctl enable clio
+</code></pre></div>
+</li>
+<li>
 <p>Start the <code>rippled</code> and Clio servers.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">sudo systemctl start rippled
+sudo systemctl start clio
+</code></pre></div>
 <p>If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time. If you are starting both servers for the first time, it can take even longer because Clio waits for <code>rippled</code> to sync before extracting ledgers.</p>
 </li>
 </ol>
