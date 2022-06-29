@@ -1,5 +1,5 @@
 ---
-html: clio-server_info.html
+html: server_info-clio.html
 parent: server-info-methods.html
 blurb: Retrieve status of the Clio server in human-readable format.
 labels:
