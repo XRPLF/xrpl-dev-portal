@@ -11,9 +11,9 @@ A Clio server does not connect to the peer-to-peer network. Instead, it extracts
 
 Clio stores validated historical ledger and transaction data in a space efficient format, using up to 4 times less space than `rippled`.  Clio uses Cassandra or ScyllaDB, allowing for scalable read throughput. Multiple Clio servers can share access to the same dataset, thereby enabling you to build a highly available cluster of Clio servers without the need for redundant data storage or computation.  
 
-Clio requires access to a `rippled` server and the `rippled` need not be running on the same machine as Clio.
+Clio requires access to a `rippled` server, which can run on the same machine as Clio or separately.
 
-While Clio offers the complete `rippled` API, by default, it only returns validated data. For any requests that require access to the P2P network, Clio automatically forwards the request to the `rippled` server on the P2P network and passes the response back to the requestor.  
+While Clio offers the complete [HTTP / WebSocket APIs](http-websocket-apis.html), by default, it only returns validated data. For any requests that require access to the P2P network, Clio automatically forwards the request to the `rippled` server on the P2P network and passes the response back.  
 
 ## Why Should I Run a Clio Server?
 
@@ -21,7 +21,7 @@ There are lots of reasons you might want to run your own Clio server, but most o
 
 * Reduced load on `rippled` server(s) - A Clio server does not connect to the peer-to-peer network. It uses gRPC to get validated data from one or more trusted `rippled` servers that are connected to the P2P network. Thus, a Clio server handles requests more efficiently and reduces the load on `rippled` servers running in P2P mode.
 
-* Lower memory usage and storage overhead - Clio uses Cassandra as the backend database and stores data in a space efficient format, using up to 4 times less space than `rippled`.
+* Lower memory usage and storage overhead - Clio uses Cassandra as a database and stores data in a space efficient format, using up to 4 times less space than `rippled`.
 
 * Easier horizontal scaling - Multiple Clio servers can share access to the same dataset, thus enabling you to build a highly available cluster of Clio servers.
 
@@ -39,5 +39,6 @@ When a Clio server receives an API request, it looks up data from these data sto
 
 ## See Also
 
+- [Clio source code](https://github.com/XRPLF/clio)
 - **Tutorials:**
     - [Install Clio server on Ubuntu](install-clio-on-ubuntu.html)

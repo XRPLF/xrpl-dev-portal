@@ -1,6 +1,6 @@
 ---
 html: install-clio-on-ubuntu.html
-parent: install-clio.html
+parent: manage-the-clio-server.html
 blurb: Install a precompiled Clio binary on Ubuntu Linux.
 labels:
   - Clio Server
@@ -9,31 +9,31 @@ labels:
 
 This page describes the recommended instructions for installing the latest stable version of Clio on **Ubuntu Linux 20.04 or higher** using the [`apt`](https://ubuntu.com/server/docs) utility.
 
-These instructions install a binary that has been compiled by Ripple.
+These instructions install a binary that has been compiled by Ripple. For instructions on how to build Clio from source, see the [Clio source code repository](https://github.com/XRPLF/clio).
 
 
 ## Prerequisites
 
 Before you install Clio, you must meet the following requirements.
 
-1. Ensure that your system meets the [system requirements](system-requirements.html).
+- Ensure that your system meets the [system requirements](system-requirements.html).
 
-    **Note:** Clio uses Cassandra as the database and the disk requirements for Clio are lower than the requirements for `rippled` as the data will not be stored on your local disk.  
+    **Note:** Clio has the same system requirements as the `rippled` server, except Clio needs less disk space to store the same amount of ledger history.
 
-2.  A compatible version of CMake must be installed. Clio requires C++20 and Boost 1.75.0 or higher.
+-  You need compatible versions of CMake and Boost. Clio requires C++20 and Boost 1.75.0 or higher.
 
-3. Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the installation instructions, or run Cassandra on a Docker container using the following commands.
+- Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the [Cassandra installation instructions](https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html), or run Cassandra on a Docker container using one of the following commands.
 
-    1.  If you choose to persist Clio data, run Cassandra in a Docker container and specify an empty directory to store Clio data: 
-            
+    -  If you choose to persist Clio data, run Cassandra in a Docker container and specify an empty directory to store Clio data:
+
             docker run --rm -it --network=host --name cassandra  -v $PWD/cassandra_data:/var/lib/
             cassandra cassandra:4.0.4
 
-    2. If you do not wish to persist Clio data, run the following command:
+    - If you do not wish to persist Clio data, run the following command:
 
-            docker run --rm -it --network=host --name cassandra cassandra:4.0.4 
+            docker run --rm -it --network=host --name cassandra cassandra:4.0.4
 
-5. In order to run Clio, you also need to run one or more `rippled` servers in [P2P mode](install-rippled.html). The `rippled` servers can either be local or remote. Ensure that you have at least one `rippled` server running in P2P mode.
+- You need gRPC access to one or more `rippled` servers in [P2P mode](install-rippled.html). The `rippled` servers can either be local or remote, but you must trust them. The most reliable way to do this is to [install `rippled` yourself](install-rippled.html).
 
 
 ## Installation Steps
@@ -41,6 +41,8 @@ Before you install Clio, you must meet the following requirements.
 1. Update repositories:
 
         sudo apt -y update
+
+    **Tip:** If you have already installed an up-to-date version of `rippled` on the same machine, you can skip the following steps for adding Ripple's package repository and signing key, which are the same as in the `rippled` install process. Resume from step 5, "Fetch the Ripple repository."
 
 2. Install utilities:
 
@@ -51,7 +53,6 @@ Before you install Clio, you must meet the following requirements.
         sudo mkdir /usr/local/share/keyrings/
         wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor > ripple-key.gpg
         sudo mv ripple-key.gpg /usr/local/share/keyrings
-
 
 4. Check the fingerprint of the newly-added key:
 
@@ -73,43 +74,52 @@ Before you install Clio, you must meet the following requirements.
         echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
             sudo tee -a /etc/apt/sources.list.d/ripple.list
 
-    The above example is appropriate for **Ubuntu 20.04 Focal Fossa**. 
-
+    The above example is appropriate for **Ubuntu 20.04 Focal Fossa**.
 
 5. Fetch the Ripple repository.
 
         sudo apt -y update
 
-6. Install the Clio software package:
+6. Install the Clio software package. There are two options:
 
-        sudo apt -y install rippled
+    - To run `rippled` on the same machine, install the `clio` package, which sets up both:
 
-7. Run `./clio_server config.json`.
+            sudo apt -y install clio
 
-8. A Clio server needs to access a `rippled` server to run succesfully. To enable communication between the servers, the config files of Clio and `rippled` need to share the following information. 
+    - To run Clio on a separate machine from `rippled`, install the `clio-server` package, which sets up Clio only:
 
-    1. Update the Clio server's config file with the following information:
-        
-        * The IP of `rippled` server.
-        * The port on which `rippled` is accepting unencrypted WebSocket connections.
-        * The port on which `rippled` is handling gRPC requests.
+            sudo apt -y install clio-server
 
-                    "etl_sources":
-                    [
-                        {
-                            "ip":"127.0.0.1",
-                            "ws_port":"6006",
-                            "grpc_port":"50051"
-                        }
-                    ]
+7. Run the Clio setup script.
 
-        **Note** You can use multiple `rippled` servers as a data source by add more entries to the `etl_sources` section. Clio will load balance requests across the servers specified in the list. As long as one `rippled` server is up and synced, Clio will continue to extract validated ledgers.
+        ./clio_server config.json
 
-        The [example-config](https://github.com/XRPLF/clio/blob/develop/example-config.json) file accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.
+8. A Clio server needs to access a `rippled` server. To enable communication between the servers, the config files of Clio and `rippled` need to share the following information.
+
+    1. Update the Clio server's config file with the connection information for the `rippled` server:
+
+            "etl_sources":
+            [
+                {
+                    "ip":"127.0.0.1",
+                    "ws_port":"6006",
+                    "grpc_port":"50051"
+                }
+            ]
+
+        This includes:
+
+        - The IP of `rippled` server.
+        - The port where `rippled` accepts unencrypted WebSocket connections.
+        - The port where `rippled` accepts gRPC requests.
+
+        **Note** You can use multiple `rippled` servers as a data source by add more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `rippled` servers is synced.
+
+        The [example config file](https://github.com/XRPLF/clio/blob/develop/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.
 
     2. Update the `rippled` server's config file with the following information:
-        
-        * Open a port to accept unencrypted websocket connections. 
+
+        * Open a port to accept unencrypted websocket connections.
 
                 [port_ws_public]
                 port = 6005
@@ -121,16 +131,16 @@ Before you install Clio, you must meet the following requirements.
                 [port_grpc]
                 port = 50051
                 ip = 0.0.0.0
-                secure_gateway = <clio_ip_address>
+                secure_gateway = 127.0.0.1
 
-9. Start the `rippled` and Clio servers. 
+            **Tip:** If you are not running Clio on the same machine as `rippled`, change the `secure_gateway` in the example stanza to use the IP address of the Clio server.
 
-    Clio waits for `rippled` to sync before extracting ledgers. If you are starting the servers for the first time, 
+9. Start the `rippled` and Clio servers.
+
+    If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time. If you are starting both servers for the first time, it can take even longer because Clio waits for `rippled` to sync before extracting ledgers.
+
     
-    If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time.
 
-
-<!--_ -->
 
 
 ## See Also
