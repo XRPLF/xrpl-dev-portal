@@ -82,7 +82,7 @@ Before you install Clio, you must meet the following requirements.
 
 6. Install the Clio software package. There are two options:
 
-    - To run `rippled` on the same machine, install the `clio` package, which sets up both:
+    - To run `rippled` on the same machine, install the `clio` package, which sets up both servers:
 
             sudo apt -y install clio
 
@@ -90,13 +90,11 @@ Before you install Clio, you must meet the following requirements.
 
             sudo apt -y install clio-server
 
-7. Run the Clio setup script.
+7. If you are running `rippled` on a separate machine, modify your Clio config file to point to it. You can skip this step if you used the `clio` package to install both on the same machine.
 
-        ./clio_server config.json
 
-8. A Clio server needs to access a `rippled` server. To enable communication between the servers, the config files of Clio and `rippled` need to share the following information.
 
-    1. Update the Clio server's config file with the connection information for the `rippled` server:
+    1. Edit the Clio server's config file to modify the connection information for the `rippled` server. The package installs this file at `/etc/clio/etc/config.json`.
 
             "etl_sources":
             [
@@ -117,9 +115,9 @@ Before you install Clio, you must meet the following requirements.
 
         The [example config file](https://github.com/XRPLF/clio/blob/develop/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.
 
-    2. Update the `rippled` server's config file with the following information:
+    2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/rippled.cfg`.
 
-        * Open a port to accept unencrypted websocket connections.
+        * Open a port to accept unencrypted WebSocket connections.
 
                 [port_ws_public]
                 port = 6005
@@ -135,11 +133,18 @@ Before you install Clio, you must meet the following requirements.
 
             **Tip:** If you are not running Clio on the same machine as `rippled`, change the `secure_gateway` in the example stanza to use the IP address of the Clio server.
 
+8. Enable and start the Clio systemd service.
+
+        sudo systemctl enable clio
+
 9. Start the `rippled` and Clio servers.
+
+        sudo systemctl start rippled
+        sudo systemctl start clio
 
     If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time. If you are starting both servers for the first time, it can take even longer because Clio waits for `rippled` to sync before extracting ledgers.
 
-    
+
 
 
 
