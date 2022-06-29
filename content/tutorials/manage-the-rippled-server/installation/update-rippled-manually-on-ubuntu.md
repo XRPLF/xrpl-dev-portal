@@ -41,13 +41,13 @@ To update manually, complete the following steps:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [`rippled` v1.3.x Migration Instructions](rippled-1-3-migration-instructions.html) <!-- Note: remove when versions older than v1.3 are basically extinct -->
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 

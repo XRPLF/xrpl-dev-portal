@@ -171,11 +171,11 @@ By convention, a page's the HTML filename (`html` field) should be the same acro
 Example of English and Japanese entries for the `server_info` method page:
 
 ```yaml
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
         targets:
             - ja
 ```

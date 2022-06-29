@@ -133,7 +133,7 @@ languages:
 以下の例に、`server_info`メソッドページの英語の項目と日本語の項目を示します。
 
 ```yaml
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
         html: server_info.html
         funnel: Docs
         doc_type: References
@@ -144,7 +144,7 @@ languages:
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.ja.md
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
         html: server_info.html
         funnel: Docs
         doc_type: References

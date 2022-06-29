@@ -8,7 +8,7 @@ labels:
 ---
 # Payment Channelの使用
 
-Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的な[Payment Channel](payment-channels.html)の使用方法を、ローカル`rippled`サーバーの[JSON-RPC API](rippled-api.html)を使用する例を使って説明します。
+Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的な[Payment Channel](payment-channels.html)の使用方法を、ローカル`rippled`サーバーの[JSON-RPC API](http-websocket-apis.html)を使用する例を使って説明します。
 
 このチュートリアルを進めるにあたって[資金供給されているXRP Ledgerアカウント](accounts.html)を所有するユーザーが2名いれば理想的です。ただし、2つのXRP Ledgerアドレスを管理する1名のユーザーとしてこのチュートリアルを進めることもできます。
 

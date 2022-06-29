@@ -39,7 +39,7 @@ To change the maximum number of peers your server allows, complete the following
 
 - **Concepts:**
     - [Peer Protocol](peer-protocol.html)
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html)
     - [Troubleshoot the `rippled` Server](troubleshoot-the-rippled-server.html)

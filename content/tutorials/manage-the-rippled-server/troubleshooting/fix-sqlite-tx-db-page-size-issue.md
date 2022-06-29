@@ -176,13 +176,13 @@ To migrate your transaction database to a larger page size, perform the followin
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Ledger History](ledger-history.html)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.html)
     - [Configure Full History](configure-full-history.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 

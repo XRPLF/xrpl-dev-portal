@@ -162,13 +162,13 @@ To use the script:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Amendments](amendments.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html)
     - [Configure rippled](configure-rippled.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [log_level method][]
         - [server_info method][]

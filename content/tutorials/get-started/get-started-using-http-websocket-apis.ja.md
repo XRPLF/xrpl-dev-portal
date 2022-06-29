@@ -11,7 +11,7 @@ showcase_icon: assets/img/logos/globe.svg
 ---
 # HTTP / WebSocket APIの使用開始
 
-XRP Ledgerのコアサーバーソフトウェアは[`rippled`](the-rippled-server.html)です。XRP Ledgerでの開発に進むには、`rippled`サーバーのAPIにアクセスします。
+XRP Ledgerのコアサーバーソフトウェアは[`rippled`](xrpl-servers.html)です。XRP Ledgerでの開発に進むには、`rippled`サーバーのAPIにアクセスします。
 
 APIにアクセスする最も簡単な方法は、[**WebSocket API Tool**](websocket-api-tool.html)を使用するか、[XRP Ledger Explorer](https://livenet.xrpl.org/)を使用してレジャーの進行状況をその場で確認することです。
 
@@ -35,7 +35,7 @@ Rippleは、XRP Ledgerコミュニティ向けにいくつかの公開サーバ�
 
 ## 管理者アクセス権限
 
-`rippled`サーバーの[管理メソッド](admin-rippled-methods.html)を使用するには、次のように行います。この場合、サーバーのバインド用として設定したIPアドレスとポートを使用する必要があります（例えば`127.0.0.1:54321`）。また、管理機能にアクセスするには、構成ファイルで管理用としてマークされているポートおよびIPアドレスから接続しなければなりません。
+`rippled`サーバーの[管理メソッド](admin-api-methods.html)を使用するには、次のように行います。この場合、サーバーのバインド用として設定したIPアドレスとポートを使用する必要があります（例えば`127.0.0.1:54321`）。また、管理機能にアクセスするには、構成ファイルで管理用としてマークされているポートおよびIPアドレスから接続しなければなりません。
 
 [構成ファイルの例](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
 
@@ -233,5 +233,5 @@ HTTP Status:200 OK
   - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
   - [rippledサーバーの管理](manage-the-rippled-server.html)
 - **リファレンス:**
-  - [rippled APIリファレンス](rippled-api.html)
+  - [rippled APIリファレンス](http-websocket-apis.html)
   - [Ripple Data API v2](data-api.html)

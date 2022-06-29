@@ -104,14 +104,14 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Configure rippled](configure-rippled.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
     - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 

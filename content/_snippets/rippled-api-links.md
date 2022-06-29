@@ -1,7 +1,7 @@
 <!--{# Links within the dev portal #}-->
 [Address]: basic-data-types.html#addresses
 [アドレス]: basic-data-types.html#アドレス
-[admin command]: admin-rippled-methods.html
+[admin command]: admin-api-methods.html
 [base58]: base58-encodings.html
 [common fields]: transaction-common-fields.html
 [共通フィールド]: transaction-common-fields.html

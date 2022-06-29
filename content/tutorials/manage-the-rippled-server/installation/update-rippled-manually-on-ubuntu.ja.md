@@ -36,13 +36,13 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [コンセンサスについて](intro-to-consensus.html)
 - **チュートリアル:**
     - [`rippled` v1.3.xへの移行手順](rippled-1-3-migration-instructions.html) <!-- Note: remove when versions older than v1.3 are basically extinct -->
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

@@ -7,7 +7,7 @@ labels:
 ---
 # Configure gRPC
 
-The `rippled` server has an experimental [gRPC API](https://grpc.io/). Currently, this API provides a subset of the full [`rippled` API](rippled-api.html). You can enable the gRPC API on your server with a new configuration stanza. [New in: rippled 1.5.0][]
+The `rippled` server has an experimental [gRPC API](https://grpc.io/). Currently, this API provides a subset of the full [`rippled` API](http-websocket-apis.html). You can enable the gRPC API on your server with a new configuration stanza. [New in: rippled 1.5.0][]
 
 **Caution:** gRPC support in `rippled` v1.5.0 is experimental. Configuration settings and API formats are likely to have breaking changes in forthcoming versions.
 
@@ -52,7 +52,7 @@ To enable gRPC on your server, complete the following steps:
     - [Reliable Transaction Submission](reliable-transaction-submission.html)
     - [Manage the rippled Server](manage-the-rippled-server.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
     - [Ripple Data API v2](data-api.html)
 
 <!--{# common link defs #}-->

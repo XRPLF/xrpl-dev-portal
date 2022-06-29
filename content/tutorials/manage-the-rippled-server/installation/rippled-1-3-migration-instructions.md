@@ -94,14 +94,14 @@ The `rippled` v1.3 package includes an updated auto-update script that works on 
 
 - **[`rippled` v1.3.1 Release Notes](https://github.com/ripple/rippled/releases/1.3.1)**
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Update Automatically on Linux](update-rippled-automatically-on-linux.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
     - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 

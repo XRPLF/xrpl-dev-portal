@@ -7,7 +7,7 @@ labels:
 ---
 # Understanding Log Messages
 
-The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](the-rippled-server.html) debug log and how to interpret them.
+The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](xrpl-servers.html) debug log and how to interpret them.
 
 This is an important step in [Diagnosing Problems](diagnosing-problems.html) with `rippled`.
 
@@ -338,13 +338,13 @@ NetworkOPs:WRN We are not running on the consensus ledger
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Technical FAQ](technical-faq.html)
 - **Tutorials:**
     - [Diagnosing Problems](diagnosing-problems.html)
     - [Capacity Planning](capacity-planning.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 

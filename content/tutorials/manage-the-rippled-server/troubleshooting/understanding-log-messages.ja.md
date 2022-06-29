@@ -7,7 +7,7 @@ labels:
 ---
 # ログメッセージについて
 
-以下のセクションでは、[`rippled`サーバー](the-rippled-server.html)のデバッグログに出力される最も一般的なログメッセージタイプとその解釈を説明します。
+以下のセクションでは、[`rippled`サーバー](xrpl-servers.html)のデバッグログに出力される最も一般的なログメッセージタイプとその解釈を説明します。
 
 これは、`rippled`の[問題を診断する](diagnosing-problems.html)上で重要なステップです。
 
@@ -218,13 +218,13 @@ NetworkOPs:WRN We are not running on the consensus ledger
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [技術に関するよくある質問](technical-faq.html)
 - **チュートリアル:**
     - [問題の診断](diagnosing-problems.html)
     - [容量の計画](capacity-planning.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

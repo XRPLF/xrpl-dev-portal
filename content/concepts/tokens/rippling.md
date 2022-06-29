@@ -82,7 +82,7 @@ To enable the No Ripple flag, send a [TrustSet transaction][] with the `tfSetNoR
 
 In the case of two accounts that mutually trust each other, the No Ripple flag is tracked separately for each account.
 
-Using the [HTTP / WebSocket APIs](rippled-api.html) or your preferred [client library](client-libraries.html), look up trust lines with the [account_lines method][]. For each trust line, the `no_ripple` field shows whether the current address has enabled the No Ripple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the No Ripple flag.
+Using the [HTTP / WebSocket APIs](http-websocket-apis.html) or your preferred [client library](client-libraries.html), look up trust lines with the [account_lines method][]. For each trust line, the `no_ripple` field shows whether the current address has enabled the No Ripple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the No Ripple flag.
 
 ## See Also
 

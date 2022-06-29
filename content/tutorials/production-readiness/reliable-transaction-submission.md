@@ -36,7 +36,7 @@ If a power or network outage occurs, applications face more challenges finding t
 
 ### Transaction Timeline
 
-When you submit a transaction to the XRP Ledger, regardless of whether you used [HTTP API](rippled-api.html), a [client library](client-libraries.html), or some other app, process of applying the transaction to the ledger is the same. That process goes like this:
+When you submit a transaction to the XRP Ledger, regardless of whether you used [HTTP API](http-websocket-apis.html), a [client library](client-libraries.html), or some other app, process of applying the transaction to the ledger is the same. That process goes like this:
 
 1. An account owner creates and signs a transaction.
 2. The owner submits the transaction to the network as a candidate transaction.
@@ -68,7 +68,7 @@ Each validated ledger has a canonical order in which transactions apply. This or
 
 Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger.  You should specify the `LastLedgerSequence` parameter on every transaction.  Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.
 
-Applications using the [HTTP / WebSocket APIs](rippled-api.html) should explicitly specify a `LastLedgerSequence` when submitting transactions. Some [client libraries](client-libraries.html) can also [auto-fill](transaction-common-fields.html#auto-fillable-fields) a reasonable value for `LastLedgerSequence`; the details vary by library.
+Applications using the [HTTP / WebSocket APIs](http-websocket-apis.html) should explicitly specify a `LastLedgerSequence` when submitting transactions. Some [client libraries](client-libraries.html) can also [auto-fill](transaction-common-fields.html#auto-fillable-fields) a reasonable value for `LastLedgerSequence`; the details vary by library.
 
 
 
@@ -198,7 +198,7 @@ To implement the transaction submission and verification best practices, applica
 
 How the application does these actions depends on the API the application uses.  An application may use any of the following interfaces:
 
-- The [HTTP / WebSocket APIs](rippled-api.html) provided directly by XRP Ledger servers
+- The [HTTP / WebSocket APIs](http-websocket-apis.html) provided directly by XRP Ledger servers
 - A [client library](client-libraries.html)
 - Other middleware or APIs layered on top of the above APIs
 

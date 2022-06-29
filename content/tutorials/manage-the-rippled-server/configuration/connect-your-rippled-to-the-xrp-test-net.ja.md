@@ -9,7 +9,7 @@ labels:
 ---
 # XRPL Altnetへのrippledの接続
 
-Rippleは[代替となるテスト用および開発用ネットワーク](parallel-networks.html)を作成しており、開発者が最新のXRP Ledgerの非本番バージョン（Testnet）でアプリケーションをテストしたり、最新のベータバージョン（Devnet）で機能をテストして実験したりできるようにしています。 **これらのネットワークで使用する資金は実際の資金ではなく、テスト専用の資金です。** TestnetまたはDevnetの[`rippled`サーバー](the-rippled-server.html)に接続できます。
+Rippleは[代替となるテスト用および開発用ネットワーク](parallel-networks.html)を作成しており、開発者が最新のXRP Ledgerの非本番バージョン（Testnet）でアプリケーションをテストしたり、最新のベータバージョン（Devnet）で機能をテストして実験したりできるようにしています。 **これらのネットワークで使用する資金は実際の資金ではなく、テスト専用の資金です。** TestnetまたはDevnetの[`rippled`サーバー](xrpl-servers.html)に接続できます。
 
 **注記:** XRP TestnetとDevnetのレジャーと残高は定期的にリセットされます。
 

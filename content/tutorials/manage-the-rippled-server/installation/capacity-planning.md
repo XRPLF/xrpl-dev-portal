@@ -10,7 +10,7 @@ labels:
 
 This document describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of an XRP Ledger server.
 
-The load on an XRP Ledger server varies based on multiple factors. One is the activity in the network. The total size of data in the shared ledger and the total volume of transactions being sent vary based on organic factors throughout the global XRP Ledger community. Another factor is API usage; different types of [API calls](rippled-api.html) put different load on the server. The performance characteristics can be very different between servers that provide a public API, provide a private API to specific integration software, or provide no API at all.
+The load on an XRP Ledger server varies based on multiple factors. One is the activity in the network. The total size of data in the shared ledger and the total volume of transactions being sent vary based on organic factors throughout the global XRP Ledger community. Another factor is API usage; different types of [API calls](http-websocket-apis.html) put different load on the server. The performance characteristics can be very different between servers that provide a public API, provide a private API to specific integration software, or provide no API at all.
 
 You should consider these factors to ensure that your server has the capacity to handle XRP Ledger network activity today and in the future.
 
@@ -197,14 +197,14 @@ You can save bandwidth by [enabling compression on peer-to-peer communications](
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Configure rippled](configure-rippled.html)
         - [Configure Online Deletion](configure-online-deletion.html) - Adjust how many historical ledger versions your server should keep at a time.
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [logrotate method][] - Closes and reopens the server's debug log so you can rotate it with standard tools.
         - [server_info method][] - General information about the server including sync status and how many historical ledger versions it has available on disk.

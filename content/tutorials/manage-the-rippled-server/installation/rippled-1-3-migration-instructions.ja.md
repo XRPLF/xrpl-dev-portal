@@ -93,14 +93,14 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
 
 - **[`rippled` v1.3.1リリースノート](https://github.com/ripple/rippled/releases/1.3.1)**
 - **コンセプト:**
-  - [`rippled`サーバー](the-rippled-server.html)
+  - [`rippled`サーバー](xrpl-servers.html)
   - [コンセンサスについて](intro-to-consensus.html)
 - **チュートリアル:**
   - [Linuxでの自動更新](update-rippled-automatically-on-linux.html)
   - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
   - [rippled APIの使用開始](get-started-using-http-websocket-apis.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [server_infoメソッド][]
 

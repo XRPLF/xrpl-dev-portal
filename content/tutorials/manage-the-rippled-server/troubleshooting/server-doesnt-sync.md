@@ -7,7 +7,7 @@ labels:
 ---
 # rippled Server Doesn't Sync
 
-This page explains possible reasons [a `rippled` server](the-rippled-server.html) may start successfully, but get stuck in a ["connected" state](rippled-server-states.html) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.html) instead.)
+This page explains possible reasons [a `rippled` server](xrpl-servers.html) may start successfully, but get stuck in a ["connected" state](rippled-server-states.html) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.html) instead.)
 
 These instructions assume you have [installed `rippled`](install-rippled.html) on a supported platform.
 
@@ -101,14 +101,14 @@ As a test, you can temporarily change the paths to your server's databases as lo
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Peer Protocol](peer-protocol.html)
     - [Technical FAQ](technical-faq.html)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.html)
     - [Capacity Planning](capacity-planning.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [peers method][]
         - [server_info method][]
         - [validator_list_sites method][]

@@ -7,7 +7,7 @@ labels:
 ---
 # Build and Run rippled on macOS
 
-The macOS platform is not recommended for [`rippled`](the-rippled-server.html) production use. For production, consider using the [Ubuntu platform](install-rippled-on-ubuntu-with-alien.html), which has received the highest level of quality assurance and testing.
+The macOS platform is not recommended for [`rippled`](xrpl-servers.html) production use. For production, consider using the [Ubuntu platform](install-rippled-on-ubuntu-with-alien.html), which has received the highest level of quality assurance and testing.
 
 That said, macOS is suitable for many development and testing tasks. `rippled` has been tested for use with macOS up to 10.15.7 Catalina.
 
@@ -191,7 +191,7 @@ For information about `rippled` log messages, see [Understanding Log Messages](u
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](the-rippled-server.html)
+    - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu.html) - Install a pre-built binary on Ubuntu for production use
@@ -199,7 +199,7 @@ For information about `rippled` log messages, see [Understanding Log Messages](u
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
     - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
-    - [rippled API Reference](rippled-api.html)
+    - [rippled API Reference](http-websocket-apis.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 

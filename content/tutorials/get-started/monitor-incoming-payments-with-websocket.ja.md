@@ -9,7 +9,7 @@ labels:
 ---
 # WebSocketを使用した着信ペイメントの監視
 
-このチュートリアルでは、[WebSocket `rippled` API](rippled-api.html)を使用して、着信[ペイメント](payment-types.html)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
+このチュートリアルでは、[WebSocket `rippled` API](http-websocket-apis.html)を使用して、着信[ペイメント](payment-types.html)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
 
 WebSocketは、クライアントとサーバーが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、要求ごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
 
@@ -71,7 +71,7 @@ socket.addEventListener('close', (event) => {
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](public-rippled-methods.html)以外に、すべての[管理メソッド](admin-rippled-methods.html)と、[server_info][server_infoメソッド]などの一部の応答に含まれる管理者専用データを利用できます。
+**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](public-api-methods.html)以外に、すべての[管理メソッド](admin-api-methods.html)と、[server_info][server_infoメソッド]などの一部の応答に含まれる管理者専用データを利用できます。
 
 例:
 

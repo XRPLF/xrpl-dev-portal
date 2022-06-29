@@ -46,7 +46,7 @@ The XRP Ledger contains a [decentralized asset exchange](decentralized-exchange.
 
 Currency traders who hold a gateway's issued currencies can provide liquidity to other popular currencies, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of holding a variety of currencies. However, a gateway _may_ still want to provide liquidity to XRP or other popular currencies at a baseline rate, especially when the gateway is new to the exchange. If you do provide liquidity, **use a different address for trading than your issuing address.**
 
-Liquidity providers can use the [HTTP / WebSocket APIs](rippled-api.html), [client libraries](client-libraries.html), or another application to access the distributed exchange. It may also help client applications to surface information about your gateway to clients if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
+Liquidity providers can use the [HTTP / WebSocket APIs](http-websocket-apis.html), [client libraries](client-libraries.html), or another application to access the distributed exchange. It may also help client applications to surface information about your gateway to clients if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
 
 
 
@@ -379,7 +379,7 @@ For the gateway's own security as well as the stability of the network, each gat
 
 There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:
 
-* [`rippled`](rippled-api.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core XRP Ledger functionality.
+* [`rippled`](http-websocket-apis.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core XRP Ledger functionality.
 * [Client Libraries](client-libraries.html) are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.
 * Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available.
 

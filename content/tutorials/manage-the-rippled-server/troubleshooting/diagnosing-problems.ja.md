@@ -119,13 +119,13 @@ rippled server_info
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](the-rippled-server.html)
+    - [`rippled`サーバー](xrpl-servers.html)
     - [Amendment](amendments.html)
 - **チュートリアル:**
     - [容量の計画](capacity-planning.html)
     - [rippledの構成](configure-rippled.html)
 - **リファレンス:**
-    - [rippled APIリファレンス](rippled-api.html)
+    - [rippled APIリファレンス](http-websocket-apis.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)
       - [log_levelメソッド][]
       - [server_infoメソッド][]
