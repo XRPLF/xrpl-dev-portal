@@ -258,8 +258,8 @@
 <p>Clio is an XRP Ledger API server optimized for WebSocket or HTTP API calls for validated ledger data.</p>
 <p>A Clio server does not connect to the peer-to-peer network. Instead, it extracts data from a specified <code>rippled</code> server which is connected to the P2P network. By handling API calls efficiently, Clio servers can help reduce the load on <code>rippled</code> servers running in P2P mode.</p>
 <p>Clio stores validated historical ledger and transaction data in a space efficient format, using up to 4 times less space than <code>rippled</code>.  Clio uses Cassandra or ScyllaDB, allowing for scalable read throughput. Multiple Clio servers can share access to the same dataset, thereby enabling you to build a highly available cluster of Clio servers without the need for redundant data storage or computation.  </p>
-<p>Clio requires access to a <code>rippled</code> server and the <code>rippled</code> need not be running on the same machine as Clio.</p>
-<p>While Clio offers the complete <code>rippled</code> API, by default, it only returns validated data. For any requests that require access to the P2P network, Clio automatically forwards the request to the <code>rippled</code> server on the P2P network and passes the response back to the requestor.  </p>
+<p>Clio requires access to a <code>rippled</code> server, which can run on the same machine as Clio or separately.</p>
+<p>While Clio offers the complete <a href="http-websocket-apis.html">HTTP / WebSocket APIs</a>, by default, it only returns validated data. For any requests that require access to the P2P network, Clio automatically forwards the request to the <code>rippled</code> server on the P2P network and passes the response back.  </p>
 <h2 id="why-should-i-run-a-clio-server">Why Should I Run a Clio Server?<a aria-hidden="true" class="hover_anchor" href="#why-should-i-run-a-clio-server"><i class="fa fa-link"></i></a></h2>
 <p>There are lots of reasons you might want to run your own Clio server, but most of them can be summarized as: reduced load on <code>rippled</code> server(s) connected to the P2P network, lower memory usage and storage overhead, easier horizontal scaling, and higher throughput for API requests.   </p>
 <ul>
@@ -267,7 +267,7 @@
 <p>Reduced load on <code>rippled</code> server(s) - A Clio server does not connect to the peer-to-peer network. It uses gRPC to get validated data from one or more trusted <code>rippled</code> servers that are connected to the P2P network. Thus, a Clio server handles requests more efficiently and reduces the load on <code>rippled</code> servers running in P2P mode.</p>
 </li>
 <li>
-<p>Lower memory usage and storage overhead - Clio uses Cassandra as the backend database and stores data in a space efficient format, using up to 4 times less space than <code>rippled</code>.</p>
+<p>Lower memory usage and storage overhead - Clio uses Cassandra as a database and stores data in a space efficient format, using up to 4 times less space than <code>rippled</code>.</p>
 </li>
 <li>
 <p>Easier horizontal scaling - Multiple Clio servers can share access to the same dataset, thus enabling you to build a highly available cluster of Clio servers.</p>
@@ -282,6 +282,7 @@
 <p>When a Clio server receives an API request, it looks up data from these data stores. For requests that require data from the P2P network, the Clio server forwards the request to a P2P server, and then passes the response back to the client.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
+<li><a class="external-link" href="https://github.com/XRPLF/clio" target="_blank">Clio source code <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><strong>Tutorials:</strong><ul>
 <li><a href="install-clio-on-ubuntu.html">Install Clio server on Ubuntu</a></li>
 </ul>

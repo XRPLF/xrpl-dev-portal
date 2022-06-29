@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>指示による削除の設定 - XRPL.org (日本語)</title>
+    <title>Manage the Clio Server - XRPL.org (日本語)</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="指示による削除の設定 | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/configure-advisory-deletion.html" />
-    <meta property="og:description" content="指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。" />
-    <meta name="description" content="指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。" />
+    <meta property="og:title" content="Manage the Clio Server | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/manage-the-clio-server.html" />
+    <meta property="og:description" content="Install, configure, and manage the Clio server." />
+    <meta name="description" content="Install, configure, and manage the Clio server." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
 
-    <link rel="alternate" href="https://xrpl.org/configure-advisory-deletion.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/configure-advisory-deletion.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/configure-advisory-deletion.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/manage-the-clio-server.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/manage-the-clio-server.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/manage-the-clio-server.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -41,10 +41,10 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       "event": "page_info",
-      "page_type": "Document",
+      "page_type": "Hub Page",
       "page_group": "Docs",
       "page_funnel": "Tutorials",
-      "page_labels": ['コアサーバー', 'データ保持']
+      "page_labels": []
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -64,21 +64,6 @@
     <!-- Theme switch -->
     <script src="/ja/assets/js/theme-switch.js"></script>
 
-
-
-    <!-- expandable code samples -->
-    <script src="/ja/assets/js/expandcode.js"></script>
-    <!-- multi-code selection tabs -->
-    <script src="/ja/assets/js/multicodetab.js"></script>
-    <!-- copy code button -->
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".multicode").minitabs();
-            make_code_expandable();
-            new ClipboardJS('.clipboard-btn');
-        });
-    </script>
 
 
 </head>
@@ -226,37 +211,10 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
-  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
-    Page Toolbar
-    <span class="chevron"><span></span><span></span></span>
-  </a>
-  <div id="page-toc-wrapper" class="collapse d-lg-block">
-<div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/DOC-3937/content/tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1426" target="_blank" class="btn btn-primary github-edit">Edit page</a>
-</div><!-- /.github-edit --><div class="labels-wrap">
-  <ul class="list-inline">
-    <li class="list-inline-item">
-      <a href="/ja/label-rippled.html" class="label label-コアサーバー">コアサーバー</a>
-    </li>
-    <li class="list-inline-item">
-      <a href="/ja/label-data-retention.html" class="label label-データ保持">データ保持</a>
-    </li>
-  </ul>
-</div><!--/.labels-wrap-->
-    <div class="toc-header">
-      <h4>目次</h4>
-    </div>
-    <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#指示による削除の設定">指示による削除の設定</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#前提条件">前提条件</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#設定手順">設定手順</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#トラブルシューティング">トラブルシューティング</a></li>
-      </ul>
-  </div>
       </aside>
 
       <!-- main column -->
-      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+      <main class="main col-md-7 col-lg-6 order-md-3  landing landing-children padded-main" role="main" id="main_content_body">
 <nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
@@ -264,128 +222,22 @@
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tutorials.html">チュートリアル</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/configure-rippled.html">rippledの設定</a></li>
-    <li class="active breadcrumb-item">指示による削除の設定</li>
+    <li class="active breadcrumb-item">Manage the Clio Server</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="content">
-        <h1 id="指示による削除の設定">指示による削除の設定<a aria-hidden="true" class="hover_anchor" href="#指示による削除の設定"><i class="fa fa-link"></i></a></h1>
-<p>デフォルトの構成ファイルは、新しいレジャーバージョンが利用可能になると<code>rippled</code>が古いXRP Ledgerの履歴を自動的に削除するように設定されています。サーバーがピーク時にハードウェアリソースの大部分を使用する場合は、オフピーク時に実行するようスケジュールされたコマンドからの指示があった場合にのみ、レジャーを削除するようにサーバーを設定できます。これにより、オンライン削除がサーバーのパフォーマンスに及ぼす影響はほとんどなくなります。</p>
-<h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
-<p>このチュートリアルでは、ご使用のサーバーが以下の条件を満たしていることを前提としています。</p>
-<ul>
-<li>
-<p>サポートされているオペレーティングシステムを使用している。Ubuntu Linux、Red Hat Enterprise Linux（RHEL）、CentOS</p>
-</li>
-<li>
-<p><code>rippled</code>サーバーがすでに<a href="install-rippled.html">インストール</a>されており、<a href="online-deletion.html">オンライン削除</a>が有効になっている。</p>
-<p>デフォルトの構成ファイルは、レジャーバージョンが2000個を超えるとオンライン削除を実行するよう設定されています。</p>
-</li>
-<li>
-<p><code>cron</code>デーモンがインストールされており、実行されている。</p>
-<p>Ubuntu Linuxではデフォルトで<code>cron</code>デーモンが実行されます。</p>
-<p>RHELまたはCentOSでは、以下の<code>cronie</code>パッケージをインストールできます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">$ sudo yum install cronie
-</code></pre></div>
-</li>
-<li>
-<p>選択した量の履歴をレジャーストアーに保管するのに十分なディスク容量がサーバーにある。</p>
-<p>各種設定で必要なストレージの容量についての詳細は、<a href="capacity-planning.html">容量計画</a>を参照してください。指示による削除が有効な場合、削除が実行されるまでにサーバーに蓄積可能な履歴の最大数は、<code>online_delete</code>設定で設定したレジャーバージョン数と、オンライン削除の指示の間隔を<strong>加算</strong>したものに相当します。</p>
-</li>
-<li>
-<p>サーバーの使用率が最も低い時間帯を把握している。</p>
-</li>
-</ul>
-<h2 id="設定手順">設定手順<a aria-hidden="true" class="hover_anchor" href="#設定手順"><i class="fa fa-link"></i></a></h2>
-<p>日次スケジュールで指示による削除は以下の手順で設定します。</p>
-<ol>
-<li>
-<p><code>rippled</code>の構成ファイルの<code>[node_db]</code>スタンザで<code>advisory_delete</code>を有効にします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">[node_db]</span><span class="w"></span>
-<span class="c1"># Other settings unchanged ...</span><span class="w"></span>
-<span class="na">online_delete</span><span class="o">=</span><span class="s">2000</span><span class="w"></span>
-<span class="na">advisory_delete</span><span class="o">=</span><span class="s">1</span><span class="w"></span>
-</code></pre></div>
-<ul>
-<li>指示された場合にのみオンライン削除を実行するには、<code>advisory_delete</code>を<code>1</code>に設定します。（<code>0</code>に設定すると、新しいレジャーバージョンが使用可能になると自動的にオンライン削除が実行されます。）</li>
-<li><code>online_delete</code>を、オンライン削除の実行後に維持するレジャーバージョンの最小数に設定します。オンライン削除が実行されるまでに蓄積される履歴は、この値よりも多くなります。</li>
-</ul>
-<p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.<!--_ --></p>
-</li>
-<li>
-<p>サーバーに対してオンライン削除を指示する<a href="can_delete.html">can_deleteメソッド</a>の実行をテストします。</p>
-<p>このコマンドの実行には<a href="get-started-using-http-websocket-apis.html#コマンドライン"><code>rippled</code>コマンドラインインターフェイス</a>を使用できます。例:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">$ rippled --conf<span class="o">=</span>/etc/opt/ripple/rippled.cfg can_delete now
-</code></pre></div>
-<p>応答は、サーバーがそのレジャーストアーから削除するレジャーインデックスの最大値を示します。たとえば、以下のメッセージはレジャーインデックス43633667以下のレジャーバージョンを削除できることを示します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">{
-  "result": {
-    "can_delete": 43633667,
-    "status": "success"
-  }
-}
-</code></pre></div>
-<p>サーバー内の <em>新しい</em> 検証済みレジャーバージョンの数が、<code>online_delete</code>の設定以上となった場合にのみ、レジャーバージョンが削除されます。</p>
-</li>
-<li>
-<p>前のステップでテストした<code>can_delete</code>メソッドを、予定した時刻に実行するように<code>cron</code>デーモンを設定します。</p>
-<p><code>cron</code> 設定を編集します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">$ crontab -e
-</code></pre></div>
-<p>以下の例では、サーバー時刻で毎日1:05 AMにサーバーが削除を実行するように設定されています。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="mf">5</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rippled</span><span class="w"> </span><span class="o">--</span><span class="n">conf</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ripple</span><span class="o">/</span><span class="n">rippled</span><span class="mf">.</span><span class="n">cfg</span><span class="w"> </span><span class="n">can_delete</span><span class="w"> </span><span class="n">now</span><span class="w"></span>
-</code></pre></div>
-<p>サーバーで設定されているタイムゾーンに基づいてコマンドが実行されるようにスケジュールしてください。</p>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong><code>advisory_delete</code>を無効にしている場合は、<code>cron</code>ジョブをオンラインで実行するようにスケジュールする必要はありません。この場合、サーバーの最も古いレジャーバージョンと現行の検証済みレジャーバージョンの差が<code>online_delete</code>の値以上である場合に、<code>rippled</code>によりオンライン削除が実行されます。</p>
-</li>
-<li>
-<p><code>rippled</code>サービスを起動（または再起動）します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">$ sudo systemctl restart rippled
-</code></pre></div>
-</li>
-<li>
-<p><a href="server_info.html">server_infoメソッド</a>を使用してサーバーの<code>complete_ledgers</code>範囲を定期的に調べ、レジャーがスケジュール通りに削除されていることを確認します。</p>
-<p>オンライン削除の実行後には<code>complete_ledgers</code>の最小レジャーインデックスが増加します。</p>
-<p>サーバーの使用率の状況と、一度に削除する履歴の量によっては、削除が完了するまでに数分間かかることがあります。</p>
-</li>
-</ol>
-<h2 id="トラブルシューティング">トラブルシューティング<a aria-hidden="true" class="hover_anchor" href="#トラブルシューティング"><i class="fa fa-link"></i></a></h2>
-<p>オンライン削除の設定後にオンライン削除が実行されていないようである場合は、以下を試してください。</p>
-<ul>
-<li><code>cron</code>ジョブを設定したユーザーに、コマンドラインクライアントとして<code>rippled</code>サーバーを実行できる権限があることを確認します。</li>
-<li>cronジョブの構文とこのジョブの実行予定時刻を確認します。</li>
-<li><code>rippled</code>実行可能ファイルが<code>cron</code>設定で指定したパスで使用可能であることを確認します。必要に応じて実行可能ファイルの絶対パス（<code>/opt/ripple/bin/rippled</code>など）を指定します。</li>
-<li><code>rippled</code>ログで、<code>SHAMapStore::WRN</code>で始まるメッセージを調べます。このメッセージが出力されている場合、サーバーがネットワークと同期していない状態になったために<a href="online-deletion.html#オンライン削除の中断">オンライン削除が中断されている</a>可能性があります。</li>
-</ul>
-<!-- -->
-<!-- -->
-<!-- API object types -->
-<!-- -->
-<!-- -->
-<!-- -->
-<!-- rippled release notes links -->
-    </div>
-  </article>
-<!-- Feedback Widget -->
-<!-- <script src="/ja/assets/vendor/feedback-widget.js"></script> -->
-<!-- <div id="feedback-content"></div> -->
-<script>
-  // // Options
-  // const options = {
-  //   analyticsConfig: [
-  //     // { name: 'ga', id: 'UA-45576805-2' },
-  //     // { name: 'gtm', id: 'GTM-THHW334' },
-  //   ],
-  //   analyticsName: 'Feedback Widget Tracker',
-  //   theme: 'xrpl',
-  //   currentPath: window.location.pathname,
-  //   parentElement: '#feedback-content',
-  // };
-  // 
-  // // Init WidgetClass
-  // const r = new WidgetClass(options);
-</script>      </main>
+</nav><!--/.breadcrumbs-wrap-->  <section class="pt-3 p-md-3">
+    <article class="content">
+      <h1 id="main-page-header">Manage the Clio Server</h1>
+<p class="blurb">Install, configure, and manage the Clio server.</p>
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a><p class="blurb child-blurb">Install a precompiled Clio binary on Ubuntu Linux.</p></li>
+
+  </ul>
+</div>    </article>
+  </section>
+      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
@@ -1188,13 +1040,13 @@
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="true" aria-controls="tree_nav_group_3_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
@@ -1264,13 +1116,13 @@
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="true" aria-controls="tree_nav_group_3_9_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_9_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1302,7 +1154,7 @@
   </div>
 
       
-  <div class="nav-item active">
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/configure-advisory-deletion.html">指示による削除の設定</a>
   </div>
 
@@ -1456,13 +1308,13 @@
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="true" aria-controls="tree_nav_group_3_10"></a>
 
         <a class="nav-link" href="/ja/manage-the-clio-server.html">Manage the Clio Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+    <nav class="nav flex-column show " id="tree_nav_group_3_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>

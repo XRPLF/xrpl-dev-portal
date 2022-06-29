@@ -264,22 +264,22 @@
     <div class="content">
         <h1 id="install-clio-on-ubuntu-linux">Install Clio on Ubuntu Linux<a aria-hidden="true" class="hover_anchor" href="#install-clio-on-ubuntu-linux"><i class="fa fa-link"></i></a></h1>
 <p>This page describes the recommended instructions for installing the latest stable version of Clio on <strong>Ubuntu Linux 20.04 or higher</strong> using the <a class="external-link" href="https://ubuntu.com/server/docs" target="_blank"><code>apt</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility.</p>
-<p>These instructions install a binary that has been compiled by Ripple.</p>
+<p>These instructions install a binary that has been compiled by Ripple. For instructions on how to build Clio from source, see the <a class="external-link" href="https://github.com/XRPLF/clio" target="_blank">Clio source code repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>Before you install Clio, you must meet the following requirements.</p>
-<ol>
+<ul>
 <li>
 <p>Ensure that your system meets the <a href="system-requirements.html">system requirements</a>.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Clio uses Cassandra as the database and the disk requirements for Clio are lower than the requirements for <code>rippled</code> as the data will not be stored on your local disk.  </p>
+<p class="devportal-callout note"><strong>Note:</strong> Clio has the same system requirements as the <code>rippled</code> server, except Clio needs less disk space to store the same amount of ledger history.</p>
 </li>
 <li>
-<p>A compatible version of CMake must be installed. Clio requires C++20 and Boost 1.75.0 or higher.</p>
+<p>You need compatible versions of CMake and Boost. Clio requires C++20 and Boost 1.75.0 or higher.</p>
 </li>
 <li>
-<p>Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the installation instructions, or run Cassandra on a Docker container using the following commands.</p>
-<ol>
+<p>Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the <a class="external-link" href="https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html" target="_blank">Cassandra installation instructions <i aria-hidden="true" class="fa fa-external-link"></i></a>, or run Cassandra on a Docker container using one of the following commands.</p>
+<ul>
 <li>
-<p>If you choose to persist Clio data, run Cassandra in a Docker container and specify an empty directory to store Clio data: </p>
+<p>If you choose to persist Clio data, run Cassandra in a Docker container and specify an empty directory to store Clio data:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">it</span><span class="w"> </span><span class="o">--</span><span class="n">network</span><span class="o">=</span><span class="n">host</span><span class="w"> </span><span class="o">--</span><span class="n">name</span><span class="w"> </span><span class="n">cassandra</span><span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">$</span><span class="n">PWD</span><span class="o">/</span><span class="n">cassandra_data</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="w"></span>
 <span class="n">cassandra</span><span class="w"> </span><span class="n">cassandra</span><span class="p">:</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span><span class="w"></span>
 </code></pre></div>
@@ -289,18 +289,19 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">docker run --rm -it --network=host --name cassandra cassandra:4.0.4
 </code></pre></div>
 </li>
-</ol>
+</ul>
 </li>
 <li>
-<p>In order to run Clio, you also need to run one or more <code>rippled</code> servers in <a href="install-rippled.html">P2P mode</a>. The <code>rippled</code> servers can either be local or remote. Ensure that you have at least one <code>rippled</code> server running in P2P mode.</p>
+<p>You need gRPC access to one or more <code>rippled</code> servers in <a href="install-rippled.html">P2P mode</a>. The <code>rippled</code> servers can either be local or remote, but you must trust them. The most reliable way to do this is to <a href="install-rippled.html">install <code>rippled</code> yourself</a>.</p>
 </li>
-</ol>
+</ul>
 <h2 id="installation-steps">Installation Steps<a aria-hidden="true" class="hover_anchor" href="#installation-steps"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>
 <p>Update repositories:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">sudo apt -y update
 </code></pre></div>
+<p class="devportal-callout tip"><strong>Tip:</strong> If you have already installed an up-to-date version of <code>rippled</code> on the same machine, you can skip the following steps for adding Ripple's package repository and signing key, which are the same as in the <code>rippled</code> install process. Resume from step 5, "Fetch the Ripple repository."</p>
 </li>
 <li>
 <p>Install utilities:</p>
@@ -332,7 +333,7 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
     sudo tee -a /etc/apt/sources.list.d/ripple.list
 </code></pre></div>
-<p>The above example is appropriate for <strong>Ubuntu 20.04 Focal Fossa</strong>. </p>
+<p>The above example is appropriate for <strong>Ubuntu 20.04 Focal Fossa</strong>.</p>
 </li>
 <li>
 <p>Fetch the Ripple repository.</p>
@@ -340,41 +341,54 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 </code></pre></div>
 </li>
 <li>
-<p>Install the Clio software package:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">sudo apt -y install rippled
+<p>Install the Clio software package. There are two options:</p>
+<ul>
+<li>
+<p>To run <code>rippled</code> on the same machine, install the <code>clio</code> package, which sets up both:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">sudo apt -y install clio
 </code></pre></div>
 </li>
 <li>
-<p>Run <code>./clio_server config.json</code>.</p>
-</li>
-<li>
-<p>A Clio server needs to access a <code>rippled</code> server to run succesfully. To enable communication between the servers, the config files of Clio and <code>rippled</code> need to share the following information. </p>
-<ol>
-<li>
-<p>Update the Clio server's config file with the following information:</p>
-<ul>
-<li>The IP of <code>rippled</code> server.</li>
-<li>The port on which <code>rippled</code> is accepting unencrypted WebSocket connections.</li>
-<li>The port on which <code>rippled</code> is handling gRPC requests.<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">    "etl_sources":
-    [
-        {
-            "ip":"127.0.0.1",
-            "ws_port":"6006",
-            "grpc_port":"50051"
-        }
-    ]
+<p>To run Clio on a separate machine from <code>rippled</code>, install the <code>clio-server</code> package, which sets up Clio only:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">sudo apt -y install clio-server
 </code></pre></div>
 </li>
 </ul>
-<p class="devportal-callout note"><strong>Note</strong> You can use multiple <code>rippled</code> servers as a data source by add more entries to the <code>etl_sources</code> section. Clio will load balance requests across the servers specified in the list. As long as one <code>rippled</code> server is up and synced, Clio will continue to extract validated ledgers.</p>
-<p>The <a class="external-link" href="https://github.com/XRPLF/clio/blob/develop/example-config.json" target="_blank">example-config <i aria-hidden="true" class="fa fa-external-link"></i></a> file accesses the <code>rippled</code> server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.</p>
+</li>
+<li>
+<p>Run the Clio setup script.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">./clio_server config.json
+</code></pre></div>
+</li>
+<li>
+<p>A Clio server needs to access a <code>rippled</code> server. To enable communication between the servers, the config files of Clio and <code>rippled</code> need to share the following information.</p>
+<ol>
+<li>
+<p>Update the Clio server's config file with the connection information for the <code>rippled</code> server:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">"etl_sources":
+[
+    {
+        "ip":"127.0.0.1",
+        "ws_port":"6006",
+        "grpc_port":"50051"
+    }
+]
+</code></pre></div>
+<p>This includes:</p>
+<ul>
+<li>The IP of <code>rippled</code> server.</li>
+<li>The port where <code>rippled</code> accepts unencrypted WebSocket connections.</li>
+<li>The port where <code>rippled</code> accepts gRPC requests.</li>
+</ul>
+<p class="devportal-callout note"><strong>Note</strong> You can use multiple <code>rippled</code> servers as a data source by add more entries to the <code>etl_sources</code> section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the <code>rippled</code> servers is synced.</p>
+<p>The <a class="external-link" href="https://github.com/XRPLF/clio/blob/develop/example-config.json" target="_blank">example config file <i aria-hidden="true" class="fa fa-external-link"></i></a> accesses the <code>rippled</code> server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.</p>
 </li>
 <li>
 <p>Update the <code>rippled</code> server's config file with the following information:</p>
 <ul>
 <li>
-<p>Open a port to accept unencrypted websocket connections. </p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="k">[port_ws_public]</span><span class="w"></span>
+<p>Open a port to accept unencrypted websocket connections.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="k">[port_ws_public]</span><span class="w"></span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6005</span><span class="w"></span>
 <span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span><span class="w"></span>
 <span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ws</span><span class="w"></span>
@@ -382,23 +396,22 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 </li>
 <li>
 <p>Open a port to handle gRPC requests and specify the IP(s) of Clio server(s) in the <code>secure_gateway</code> entry.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">[port_grpc]</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="k">[port_grpc]</span><span class="w"></span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">50051</span><span class="w"></span>
 <span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span><span class="w"></span>
-<span class="na">secure_gateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;clio_ip_address&gt;</span><span class="w"></span>
+<span class="na">secure_gateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
 </code></pre></div>
+<p class="devportal-callout tip"><strong>Tip:</strong> If you are not running Clio on the same machine as <code>rippled</code>, change the <code>secure_gateway</code> in the example stanza to use the IP address of the Clio server.</p>
 </li>
 </ul>
 </li>
 </ol>
 </li>
 <li>
-<p>Start the <code>rippled</code> and Clio servers. </p>
-<p>Clio waits for <code>rippled</code> to sync before extracting ledgers. If you are starting the servers for the first time, </p>
-<p>If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time.</p>
+<p>Start the <code>rippled</code> and Clio servers.</p>
+<p>If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time. If you are starting both servers for the first time, it can take even longer because Clio waits for <code>rippled</code> to sync before extracting ledgers.</p>
 </li>
 </ol>
-<!--_ -->
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
