@@ -94,7 +94,7 @@ Before you install Clio, you must meet the following requirements.
 
 
 
-    1. Edit the Clio server's config file to modify the connection information for the `rippled` server. The package installs this file at `/etc/clio/etc/config.json`.
+    1. Edit the Clio server's config file to modify the connection information for the `rippled` server. The package installs this file at `/opt/clio/etc/config.json`.
 
             "etl_sources":
             [

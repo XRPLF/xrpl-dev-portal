@@ -8,7 +8,7 @@ labels:
 # server_info (rippled)
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
 
-The `server_info` command asks the server for a human-readable version of various information about [the `rippled` server](xrpl-servers.html) being queried. For [Clio servers](the-clio-server.html), see [`server_info` (Clio)](clio-server_info.html) instead.
+The `server_info` command asks the server for a human-readable version of various information about [the `rippled` server](xrpl-servers.html) being queried. For [Clio servers](the-clio-server.html), see [`server_info` (Clio)](server_info-clio.html) instead.
 
 ## Request Format
 An example of the request format:
