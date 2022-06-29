@@ -1,14 +1,14 @@
 ---
-html: clio-server-info.html
-parent: clio-methods.html
+html: clio-server_info.html
+parent: server-info-methods.html
 blurb: Retrieve status of the Clio server in human-readable format.
 labels:
   - Core Server
 ---
-# server_info
+# server_info (Clio)
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/ServerInfo.cpp "Source")
 
-The `server_info` command asks the Clio server for a human-readable version of various information about the Clio server being queried.
+The `server_info` command asks the [Clio server](the-clio-server.html) for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](server_info.html) instead.
 
 ## Request Format
 An example of the request format:

@@ -3101,6 +3101,12 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/clio-server_info.md
+        targets:
+            - en
+            - ja
+
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
         targets:
             - en
