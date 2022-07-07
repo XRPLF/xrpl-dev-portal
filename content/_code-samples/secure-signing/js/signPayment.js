@@ -4,7 +4,8 @@ const xrpl = require('xrpl')
 // Load seed value from an environment variable:
 const my_wallet = xrpl.Wallet.fromSeed(process.env['MY_SEED'])
 
-// For offline signing, you need to know your address's next Sequence number
+// For offline signing, you need to know your address's next Sequence number alternatively one could use a ticket 
+// in place of the sequence number, this is useful when you need multiple signatures.
 let my_seq = 21404872
 
 // Provide *all* required fields before signing a transaction
