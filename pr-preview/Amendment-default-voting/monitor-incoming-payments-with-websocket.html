@@ -90,8 +90,8 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Apply now to the Fall 2022 XRP Ledger Campus Ambassador program</p></span>
-    <span><a href="/ambassadors.html" class="btn btn-outline-secondary">Apply</a></span>
+    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -123,7 +123,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -165,7 +165,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -268,7 +268,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="monitor-incoming-payments-with-websocket">Monitor Incoming Payments with WebSocket<a aria-hidden="true" class="hover_anchor" href="#monitor-incoming-payments-with-websocket"><i class="fa fa-link"></i></a></h1>
-<p>This tutorial shows how to monitor for incoming <a href="payment-types.html">payments</a> using the <a href="rippled-api.html">WebSocket <code>rippled</code> API</a>. Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.</p>
+<p>This tutorial shows how to monitor for incoming <a href="payment-types.html">payments</a> using the <a href="http-websocket-apis.html">WebSocket <code>rippled</code> API</a>. Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.</p>
 <p>WebSocket follows a model where the client and server establish one connection, then send messages both ways through the same connection, which remains open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.<a href="#footnote-1">¹</a><a id="from-footnote-1"></a></p>
 <p class="devportal-callout tip"><strong>Tip:</strong> The examples in this page use JavaScript so that the examples can run natively in a web browser. If you are developing in JavaScript, you can also use the <a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.js library for JavaScript <i aria-hidden="true" class="fa fa-external-link"></i></a> to simplify some tasks. This tutorial shows how to monitor for transactions <em>without</em> using a xrpl.js so that you can translate the steps to other programming languages that don't have a native XRP Ledger client library.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
@@ -314,7 +314,7 @@ function writeToConsole(console_selector, message) {
 <p>The above example opens a secure connection (<code>wss://</code>) to one of Ripple's public API servers on the <a href="xrp-test-net-faucet.html">Test Net</a>. To connect to a locally-running <code>rippled</code> server with the default configuration instead, open an <em>unsecured</em> connection (<code>ws://</code>) on port <strong>6006</strong> locally, using the following first line:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'ws://localhost:6006'</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p class="devportal-callout tip"><strong>Tip:</strong> By default, connecting to a local <code>rippled</code> server gives you access to the full set of <a href="admin-rippled-methods.html">admin methods</a> and admin-only data in some responses such as <a href="server_info.html">server_info</a>, in addition to the <a href="public-rippled-methods.html">public methods</a> that are available when you connect to public servers over the internet.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> By default, connecting to a local <code>rippled</code> server gives you access to the full set of <a href="admin-api-methods.html">admin methods</a> and admin-only data in some responses such as <a href="server_info.html">server_info</a>, in addition to the <a href="public-api-methods.html">public methods</a> that are available when you connect to public servers over the internet.</p>
 <p>Example:</p>
 <div class="interactive-block" data-stepnumber="1" data-totalsteps="4" id="interactive-connect">
 <div class="interactive-block-inner">
@@ -1336,7 +1336,7 @@ $("#tx_read").click((event) => {
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1379,6 +1379,11 @@ $("#tx_read").click((event) => {
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
   </div>
 
     </nav>
@@ -2022,6 +2027,23 @@ $("#tx_read").click((event) => {
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -2464,7 +2486,7 @@ $("#tx_read").click((event) => {
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -2514,7 +2536,7 @@ $("#tx_read").click((event) => {
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2759,7 +2781,12 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info (Clio)</a>
   </div>
 
       
@@ -2807,7 +2834,7 @@ $("#tx_read").click((event) => {
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -3235,7 +3262,7 @@ $("#tx_read").click((event) => {
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->

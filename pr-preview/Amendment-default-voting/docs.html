@@ -73,8 +73,8 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Apply now to the Fall 2022 XRP Ledger Campus Ambassador program</p></span>
-    <span><a href="/ambassadors.html" class="btn btn-outline-secondary">Apply</a></span>
+    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -106,7 +106,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -148,7 +148,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -236,7 +236,7 @@
           <li class="nav-item"><a href="run-rippled-as-a-validator.html" class="nav-link">Run rippled as a Validator</a>
           <li class="nav-item"><a href="build-run-rippled-in-reporting-mode.html" class="nav-link">Build and Run rippled in Reporting Mode</a>
           <li class="nav-item"><a href="intro-to-consensus.html" class="nav-link">Introduction to Consensus</a>
-          <li class="nav-item"><a href="public-rippled-methods.html" class="nav-link">Public rippled Methods</a>
+          <li class="nav-item"><a href="public-api-methods.html" class="nav-link">Public API Methods</a>
         </ul>
       </div><!--/#popular-topics-->
 
@@ -446,8 +446,8 @@
 <div class="row row-cols-1 row-cols-lg-4 card-deck">
   <a class="card" href="the-rippled-server.html">
     <div class="card-body">
-      <h4 class="card-title h5">About the Server</h4>
-      <p class="card-text">rippled is the core peer-to-peer server that manages the XRP Ledger.</p>
+      <h4 class="card-title h5">The rippled Server</h4>
+      <p class="card-text">Learn about the core servers that power the XRP Ledger.</p>
     </div>
     <div class="card-footer">&nbsp;</div>
   </a>
@@ -617,7 +617,7 @@
       <li class="level-2"><a href="federated-sidechains.html">Federated Sidechains</a></li>
         
 
-      <li class="level-1"><a href="the-rippled-server.html">The rippled Server</a></li>
+      <li class="level-1"><a href="xrpl-servers.html">XRP Ledger Servers</a></li>
               <li class="level-2"><a href="rippled-server-modes.html">rippled Server Modes</a></li>
         
       <li class="level-2"><a href="clustering.html">Clustering</a></li>
@@ -631,6 +631,8 @@
       <li class="level-2"><a href="peer-protocol.html">Peer Protocol</a></li>
         
       <li class="level-2"><a href="transaction-censorship-detection.html">Transaction Censorship Detection</a></li>
+        
+      <li class="level-2"><a href="the-clio-server.html">The Clio Server</a></li>
         
 
 
@@ -845,6 +847,10 @@
         
 
 
+      <li class="level-1"><a href="manage-the-clio-server.html">Manage the Clio Server</a></li>
+              <li class="level-2"><a href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a></li>
+        
+
 
   </ul>
 </div>    </div>
@@ -997,7 +1003,7 @@
       <li class="level-2"><a href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library</a></li>
         
 
-      <li class="level-1"><a href="rippled-api.html">HTTP / WebSocket APIs</a></li>
+      <li class="level-1"><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a></li>
               <li class="level-2"><a href="api-conventions.html">API Conventions</a></li>
               <li class="level-3"><a href="request-formatting.html">Request Formatting</a></li>
         
@@ -1012,7 +1018,7 @@
       <li class="level-3"><a href="rippled-server-states.html">rippled Server States</a></li>
         
 
-      <li class="level-2"><a href="public-rippled-methods.html">Public rippled Methods</a></li>
+      <li class="level-2"><a href="public-api-methods.html">Public API Methods</a></li>
               <li class="level-3"><a href="account-methods.html">Account Methods</a></li>
               <li class="level-4"><a href="account_channels.html">account_channels</a></li>
         
@@ -1090,7 +1096,9 @@
         
       <li class="level-4"><a href="manifest.html">manifest</a></li>
         
-      <li class="level-4"><a href="server_info.html">server_info</a></li>
+      <li class="level-4"><a href="server_info.html">server_info (rippled)</a></li>
+        
+      <li class="level-4"><a href="server_info-clio.html">server_info (Clio)</a></li>
         
       <li class="level-4"><a href="server_state.html">server_state</a></li>
         
@@ -1104,7 +1112,7 @@
         
 
 
-      <li class="level-2"><a href="admin-rippled-methods.html">Admin rippled Methods</a></li>
+      <li class="level-2"><a href="admin-api-methods.html">Admin API Methods</a></li>
               <li class="level-3"><a href="key-generation-methods.html">Key Generation Methods</a></li>
               <li class="level-4"><a href="validation_create.html">validation_create</a></li>
         
@@ -1241,7 +1249,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->

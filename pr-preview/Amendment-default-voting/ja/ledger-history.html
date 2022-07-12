@@ -91,8 +91,8 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Apply now to the Fall 2022 XRP Ledger Campus Ambassador program</p></span>
-    <span><a href="/ambassadors.html" class="btn btn-outline-secondary">Apply</a></span>
+    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -124,7 +124,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="/ja/xrpl-foundation.html">XRPL財団</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -172,7 +172,7 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="/ja/public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -232,7 +232,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/Amendment-default-voting/content/concepts/the-rippled-server/ledger-history/ledger-history.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1423" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/Amendment-default-voting/content/concepts/xrpl-servers/ledger-history/ledger-history.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1423" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -270,13 +270,13 @@
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/the-rippled-server.html">rippledサーバー</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/xrpl-servers.html">rippledサーバー</a></li>
     <li class="active breadcrumb-item">レジャー履歴</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="レジャー履歴">レジャー履歴<a aria-hidden="true" class="hover_anchor" href="#レジャー履歴"><i class="fa fa-link"></i></a></h1>
-<p><a href="intro-to-consensus.html">コンセンサスプロセス</a>により、<a href="ledgers.html">検証済みレジャーバージョン</a>のチェーンが作成されます。各バージョンは、以前のバージョンに<a href="transaction-basics.html">トランザクション</a>のセットを適用して生成されます。各<a href="the-rippled-server.html"><code>rippled</code>サーバー</a>には、レジャーバージョンとトランザクション履歴がローカルに保管されます。サーバーに保管されるトランザクション履歴の量は、サーバーがオンラインであった期間と、サーバーが取得し、保持する履歴量の設定に応じて異なります。</p>
+<p><a href="intro-to-consensus.html">コンセンサスプロセス</a>により、<a href="ledgers.html">検証済みレジャーバージョン</a>のチェーンが作成されます。各バージョンは、以前のバージョンに<a href="transaction-basics.html">トランザクション</a>のセットを適用して生成されます。各<a href="xrpl-servers.html"><code>rippled</code>サーバー</a>には、レジャーバージョンとトランザクション履歴がローカルに保管されます。サーバーに保管されるトランザクション履歴の量は、サーバーがオンラインであった期間と、サーバーが取得し、保持する履歴量の設定に応じて異なります。</p>
 <p>ピアツーピアのXRP Ledgerネットワーク内のサーバーは、コンセンサスプロセスの一環としてトランザクションやその他のデータを相互に共有します。各サーバーは個別に新しいレジャーバージョンを作成し、その結果を信頼できるバリデータと比較して、整合性を維持します。（信頼できるバリデータのコンセンサスがサーバーの結果と一致しない場合は、サーバーがピアから必要なデータを取得して整合性を維持します。）サーバーはピアから古いデータをダウンロードして、利用可能な履歴のギャップを埋めることができます。レジャーはデータの暗号<a href="basic-data-types.html#ハッシュ">ハッシュ</a>を使用した構造となっているため、すべてのサーバーがデータの整合性の検証を行えます。</p>
 <h2 id="データベース">データベース<a aria-hidden="true" class="hover_anchor" href="#データベース"><i class="fa fa-link"></i></a></h2>
 <p>サーバーはレジャーの状態データとトランザクションを <em>レジャーストアー</em> と呼ばれるkey-valueストアで保持します。また、<code>rippled</code>にはいくつかのSQLiteデータベースファイルが維持されているので、トランザクション履歴などへより柔軟にアクセスし、特定の設定変更を追跡できます。</p>
@@ -706,7 +706,7 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="true" aria-controls="tree_nav_group_2_7"></a>
 
-        <a class="nav-link" href="/ja/the-rippled-server.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_2_7">
       
@@ -749,6 +749,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">取引検閲の検知</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
   </div>
 
     </nav>
@@ -1392,6 +1397,23 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+
+        <a class="nav-link" href="/ja/manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1834,7 +1856,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
 
-        <a class="nav-link" href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+        <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
@@ -1884,7 +1906,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
-        <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+        <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
@@ -2129,7 +2151,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info (Clio)</a>
   </div>
 
       
@@ -2177,7 +2204,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
 
-        <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+        <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
       
@@ -2605,7 +2632,7 @@
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
           </ul>
         </div><!--/.col -->
 

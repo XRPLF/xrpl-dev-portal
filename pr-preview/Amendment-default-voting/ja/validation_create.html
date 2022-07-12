@@ -91,8 +91,8 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Apply now to the Fall 2022 XRP Ledger Campus Ambassador program</p></span>
-    <span><a href="/ambassadors.html" class="btn btn-outline-secondary">Apply</a></span>
+    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -124,7 +124,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="/ja/xrpl-foundation.html">XRPL財団</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -172,7 +172,7 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="/ja/public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -232,7 +232,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/Amendment-default-voting/content/references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1423" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/Amendment-default-voting/content/references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1423" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -264,8 +264,8 @@
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/admin-rippled-methods.html">管理rippledメソッド</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/admin-api-methods.html">管理APIメソッド</a></li>
     <li class="active breadcrumb-item"><a href="/ja/key-generation-methods.html">キー生成のメソッド</a></li>
     <li class="active breadcrumb-item">validation_create</li>
   </ul>
@@ -274,7 +274,7 @@
         <h1 id="validation_create">validation_create<a aria-hidden="true" class="hover_anchor" href="#validation_create"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>validation_create</code>コマンドキーを使用して、<a href="peer-protocol.html#ノードキーペア"><code>rippled</code>サーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵</a>を生成します。<a href="wallet_propose.html">wallet_proposeメソッド</a>と同様に、このメソッドでは適切なフォーマットで一連のキーが単に生成されるだけです。XRP Ledgerのデータやサーバー構成は変更されません。</p>
-<p><em><code>validation_create</code>メソッドは、権限のないユーザーは実行できない<a href="admin-rippled-methods.html">管理メソッド</a>です。</em></p>
+<p><em><code>validation_create</code>メソッドは、権限のないユーザーは実行できない<a href="admin-api-methods.html">管理メソッド</a>です。</em></p>
 <p>サーバーを設定することにより、生成されたキーペアを検証の署名（検証キーペア）に使用するか、または通常のピアツーピア通信の署名（<a href="peer-protocol.html#ノードキーペア">ノードキーペア</a>）に使用するかを指定できます。</p>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong>　堅牢なバリデータを設定するには、<code>validator-keys</code>ツール（<code>rippled</code> RPMに付属）を使用してバリデータトークン（ローテーション可能）とオフラインマスターキーを生成してください。詳細は、<a href="run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化">rippledサーバーで検証を有効化</a>を参照してください。</p>
 <h3 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h3>
@@ -785,7 +785,7 @@ rippled validation_create <span class="s2">"BAWL MAN JADE MOON DOVE GEM SON NOW 
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
-        <a class="nav-link" href="/ja/the-rippled-server.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
@@ -828,6 +828,11 @@ rippled validation_create <span class="s2">"BAWL MAN JADE MOON DOVE GEM SON NOW 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">取引検閲の検知</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
   </div>
 
     </nav>
@@ -1471,6 +1476,23 @@ rippled validation_create <span class="s2">"BAWL MAN JADE MOON DOVE GEM SON NOW 
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+
+        <a class="nav-link" href="/ja/manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1913,7 +1935,7 @@ rippled validation_create <span class="s2">"BAWL MAN JADE MOON DOVE GEM SON NOW 
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="true" aria-controls="tree_nav_group_4_3"></a>
 
-        <a class="nav-link" href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+        <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_4_3">
       
@@ -1963,7 +1985,7 @@ rippled validation_create <span class="s2">"BAWL MAN JADE MOON DOVE GEM SON NOW 
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
-        <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+        <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
@@ -2208,7 +2230,12 @@ rippled validation_create <span class="s2">"BAWL MAN JADE MOON DOVE GEM SON NOW 
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info (Clio)</a>
   </div>
 
       
@@ -2256,7 +2283,7 @@ rippled validation_create <span class="s2">"BAWL MAN JADE MOON DOVE GEM SON NOW 
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="true" aria-controls="tree_nav_group_4_3_3"></a>
 
-        <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+        <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_4_3_3">
       
@@ -2684,7 +2711,7 @@ rippled validation_create <span class="s2">"BAWL MAN JADE MOON DOVE GEM SON NOW 
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
           </ul>
         </div><!--/.col -->
 

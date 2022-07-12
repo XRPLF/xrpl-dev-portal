@@ -90,8 +90,8 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Apply now to the Fall 2022 XRP Ledger Campus Ambassador program</p></span>
-    <span><a href="/ambassadors.html" class="btn btn-outline-secondary">Apply</a></span>
+    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -123,7 +123,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -165,7 +165,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -298,7 +298,7 @@
 <p>You can, optionally, use a passphrase or some other input as a way of choosing a seed or private key. This is less secure than choosing the seed or private key completely at random, but there are some rare cases where you want to do this. (For example, in 2018 "XRPuzzler" gave away XRP to the first person <a class="external-link" href="https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/" target="_blank">to solve a puzzle <i aria-hidden="true" class="fa fa-external-link"></i></a>; he used the puzzle's solution as the passphrase to an account holding the prize XRP.)  <!-- SPELLING_IGNORE: xrpuzzler --></p>
 <p>The passphrase is secret information, so you must protect it very carefully. Anyone who knows an address's passphrase has effectively full control over the address.</p>
 <h3 id="seed">Seed<a aria-hidden="true" class="hover_anchor" href="#seed"><i class="fa fa-link"></i></a></h3>
-<p>A <em>seed</em> value is a compact value that is used to <a href="#key-derivation">derive</a> the actual private and public keys for an account. In a <a href="wallet_propose.html">wallet_propose method</a> response, the <code>master_key</code>, <code>master_seed</code>, and <code>master_seed_hex</code> all represent the same seed value, in various formats. Any of these formats can be used to <a href="transaction-basics.html#signing-and-submitting-transactions">sign transactions</a> in the <a href="rippled-api.html"><code>rippled</code> APIs</a> and some <a href="software-ecosystem.html">other XRP Ledger software</a>. Despite being prefixed with <code>master_</code>, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.</p>
+<p>A <em>seed</em> value is a compact value that is used to <a href="#key-derivation">derive</a> the actual private and public keys for an account. In a <a href="wallet_propose.html">wallet_propose method</a> response, the <code>master_key</code>, <code>master_seed</code>, and <code>master_seed_hex</code> all represent the same seed value, in various formats. Any of these formats can be used to <a href="transaction-basics.html#signing-and-submitting-transactions">sign transactions</a> in the <a href="http-websocket-apis.html"><code>rippled</code> APIs</a> and some <a href="software-ecosystem.html">other XRP Ledger software</a>. Despite being prefixed with <code>master_</code>, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.</p>
 <p>The seed value is secret information, so you must protect it very carefully. Anyone who has knows an address's seed value has effectively full control over that address.</p>
 <h3 id="private-key">Private Key<a aria-hidden="true" class="hover_anchor" href="#private-key"><i class="fa fa-link"></i></a></h3>
 <p>The <em>private key</em> is the value that is used to create a digital signature. Most XRP Ledger software does not explicitly show the private key, and <a href="#key-derivation">derives the private key</a> from the seed value when necessary. It is technically possible to save the private key instead of the seed and use that to sign transactions directly, but this usage is rare.</p>
@@ -911,7 +911,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -954,6 +954,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
   </div>
 
     </nav>
@@ -1597,6 +1602,23 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -2039,7 +2061,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -2089,7 +2111,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2334,7 +2356,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info (Clio)</a>
   </div>
 
       
@@ -2382,7 +2409,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -2810,7 +2837,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->

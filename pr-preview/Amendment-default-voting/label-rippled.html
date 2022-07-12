@@ -74,8 +74,8 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Apply now to the Fall 2022 XRP Ledger Campus Ambassador program</p></span>
-    <span><a href="/ambassadors.html" class="btn btn-outline-secondary">Apply</a></span>
+    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -107,7 +107,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -149,7 +149,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -230,22 +230,17 @@
             <p class="blurb child-blurb">Get an overview of what XRP Ledger software is out there and how it fits together.</p>
           </li>
           <li class="level-1">
-            <span class="pg-category">Concepts</span>
-            <a href="the-rippled-server.html">The rippled Server</a>
-            <p class="blurb child-blurb">rippled is the core peer-to-peer server that manages the XRP Ledger.</p>
-          </li>
-          <li class="level-1">
-            <span class="pg-category">The rippled Server</span>
+            <span class="pg-category">XRP Ledger Servers</span>
             <a href="rippled-server-modes.html">rippled Server Modes</a>
             <p class="blurb child-blurb">Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.</p>
           </li>
           <li class="level-1">
-            <span class="pg-category">The rippled Server</span>
+            <span class="pg-category">XRP Ledger Servers</span>
             <a href="clustering.html">Clustering</a>
             <p class="blurb child-blurb">Run rippled servers in a cluster to share the load of cryptography between them.</p>
           </li>
           <li class="level-1">
-            <span class="pg-category">The rippled Server</span>
+            <span class="pg-category">XRP Ledger Servers</span>
             <a href="ledger-history.html">Ledger History</a>
             <p class="blurb child-blurb">rippled servers store a variable amount of transaction and state history locally.</p>
           </li>
@@ -260,7 +255,7 @@
             <p class="blurb child-blurb">History sharding divides the work of keeping historical ledger data among rippled servers.</p>
           </li>
           <li class="level-1">
-            <span class="pg-category">The rippled Server</span>
+            <span class="pg-category">XRP Ledger Servers</span>
             <a href="peer-protocol.html">Peer Protocol</a>
             <p class="blurb child-blurb">The peer protocol specifies the language rippled servers speak to each other.</p>
           </li>
@@ -481,13 +476,18 @@
           </li>
           <li class="level-1">
             <span class="pg-category">HTTP / WebSocket APIs</span>
-            <a href="public-rippled-methods.html">Public rippled Methods</a>
+            <a href="public-api-methods.html">Public API Methods</a>
             <p class="blurb child-blurb">Get data from the XRP Ledger and submit transactions using these public API methods.</p>
           </li>
           <li class="level-1">
             <span class="pg-category">Server Info Methods</span>
-            <a href="server_info.html">server_info</a>
+            <a href="server_info.html">server_info (rippled)</a>
             <p class="blurb child-blurb">Retrieve status of the server in human-readable format.</p>
+          </li>
+          <li class="level-1">
+            <span class="pg-category">Server Info Methods</span>
+            <a href="server_info-clio.html">server_info (Clio)</a>
+            <p class="blurb child-blurb">Retrieve status of the Clio server in human-readable format.</p>
           </li>
           <li class="level-1">
             <span class="pg-category">Server Info Methods</span>
@@ -511,8 +511,8 @@
           </li>
           <li class="level-1">
             <span class="pg-category">HTTP / WebSocket APIs</span>
-            <a href="admin-rippled-methods.html">Admin rippled Methods</a>
-            <p class="blurb child-blurb">Administer a rippled server with these admin API methods.</p>
+            <a href="admin-api-methods.html">Admin API Methods</a>
+            <p class="blurb child-blurb">Administer an XRP Ledger server with these API methods.</p>
           </li>
           <li class="level-1">
             <span class="pg-category">Key Generation Methods</span>
@@ -991,7 +991,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1034,6 +1034,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
   </div>
 
     </nav>
@@ -1677,6 +1682,23 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -2119,7 +2141,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -2169,7 +2191,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2414,7 +2436,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info (Clio)</a>
   </div>
 
       
@@ -2462,7 +2489,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -2890,7 +2917,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->

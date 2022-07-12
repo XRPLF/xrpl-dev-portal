@@ -91,8 +91,8 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Apply now to the Fall 2022 XRP Ledger Campus Ambassador program</p></span>
-    <span><a href="/ambassadors.html" class="btn btn-outline-secondary">Apply</a></span>
+    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -124,7 +124,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="/ja/xrpl-foundation.html">XRPL財団</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -172,7 +172,7 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="/ja/public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -281,11 +281,11 @@
 </li>
 </ul>
 <h3 id="rippled-コアサーバー">rippled: コアサーバー<a aria-hidden="true" class="hover_anchor" href="#rippled-コアサーバー"><i class="fa fa-link"></i></a></h3>
-<p>XRP Ledgerの中心であるピアツーピアネットワークは、コンセンサスとトランザクションプロセスのルールを実行するために、信頼性が高く、効率のよいサーバーを必要とします。Rippleでは、このサーバーソフトウェアのリファレンス実装である<a href="the-rippled-server.html"><strong><code>rippled</code></strong></a>（発音は「リップルディー」）を管理および公開しています。このサーバーは、<a class="external-link" href="https://github.com/ripple/rippled/blob/develop/LICENSE.md" target="_blank">一般利用が可能なオープンソースライセンス <i aria-hidden="true" class="fa fa-external-link"></i></a>の下で使用できるため、誰でもこのサーバーの自身のインスタンスを検証し、変更することができます。また、いくつかの制限の下でそれを再公開することができます。</p>
+<p>XRP Ledgerの中心であるピアツーピアネットワークは、コンセンサスとトランザクションプロセスのルールを実行するために、信頼性が高く、効率のよいサーバーを必要とします。Rippleでは、このサーバーソフトウェアのリファレンス実装である<a href="xrpl-servers.html"><strong><code>rippled</code></strong></a>（発音は「リップルディー」）を管理および公開しています。このサーバーは、<a class="external-link" href="https://github.com/ripple/rippled/blob/develop/LICENSE.md" target="_blank">一般利用が可能なオープンソースライセンス <i aria-hidden="true" class="fa fa-external-link"></i></a>の下で使用できるため、誰でもこのサーバーの自身のインスタンスを検証し、変更することができます。また、いくつかの制限の下でそれを再公開することができます。</p>
 <p><code>rippled</code>の各インスタンスは、（<a href="parallel-networks.html">Test Netなどの並列ネットワーク</a>に従うように構成されていない限り）同じネットワークに同期され、ネットワーク全体のあらゆる通信にアクセスできます。ネットワーク上の各<code>rippled</code>サーバーは、最近のトランザクションの一部と、それらのトランザクションで行われた変更の記録とともに、XRP Ledger全体の最新の状態データの完全なコピーを保持します。また、各サーバーは各トランザクションを単独で処理すると同時に、そのトランザクションの結果が残りのネットワークに一致するか検証します。サーバーは、より多くの<a href="ledger-history.html">レジャー履歴</a>を保持したり、<a href="rippled-server-modes.html#バリデータを運用する理由">バリデータ</a>としてコンセンサスプロセスに参加するように構成することができます。</p>
-<p>このサーバーは、データの検索、サーバーの管理、トランザクションの送信を行うための<a href="rippled-api.html"><code>rippled</code> API</a>をユーザーに公開します。</p>
+<p>このサーバーは、データの検索、サーバーの管理、トランザクションの送信を行うための<a href="http-websocket-apis.html"><code>rippled</code> API</a>をユーザーに公開します。</p>
 <h3 id="プログラミングライブラリー">プログラミングライブラリー<a aria-hidden="true" class="hover_anchor" href="#プログラミングライブラリー"><i class="fa fa-link"></i></a></h3>
-<p>プログラミングライブラリーは、XRP Ledgerデータにアクセスするために必ずしも必要なわけではありません。HTTPまたはWebSocketを使用すれば、<a href="rippled-api.html"><code>rippled</code> API</a>に直接接続できるためです。ライブラリーは、<code>rippled</code> APIにアクセスする際の一般的な作業の一部を簡素化し、データをライブラリー内のプログラミング言語で理解しやすく、かつプログラミングしやすい形式に変換します。</p>
+<p>プログラミングライブラリーは、XRP Ledgerデータにアクセスするために必ずしも必要なわけではありません。HTTPまたはWebSocketを使用すれば、<a href="http-websocket-apis.html"><code>rippled</code> API</a>に直接接続できるためです。ライブラリーは、<code>rippled</code> APIにアクセスする際の一般的な作業の一部を簡素化し、データをライブラリー内のプログラミング言語で理解しやすく、かつプログラミングしやすい形式に変換します。</p>
 <p><a href="get-started-using-javascript.html">JavaScript用のxrpl.js</a>は、長年にわたって使用され、かつ十分なサポートがある、XRP Ledgerにアクセスするためのライブラリーです。多くの<a href="#ミドルウェア">ミドルウェアサービス</a>が、このような<a href="client-libraries.html">プログラミングライブラリー</a>を内部で使用しています。</p>
 <h3 id="ミドルウェア">ミドルウェア<a aria-hidden="true" class="hover_anchor" href="#ミドルウェア"><i class="fa fa-link"></i></a></h3>
 <p>ミドルウェアサービスは、一方ではXRP Ledger APIを利用し、もう一方では独自のAPIを提供するプログラムです。抽象化層を提供して、いくつかの一般的な機能をサービスとして提供することで上位のアプリケーションを容易に構築できるようにします。</p>
@@ -708,7 +708,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
-        <a class="nav-link" href="/ja/the-rippled-server.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
@@ -751,6 +751,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">取引検閲の検知</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
   </div>
 
     </nav>
@@ -1394,6 +1399,23 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+
+        <a class="nav-link" href="/ja/manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1836,7 +1858,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
 
-        <a class="nav-link" href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+        <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
@@ -1886,7 +1908,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
-        <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+        <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
@@ -2131,7 +2153,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info (Clio)</a>
   </div>
 
       
@@ -2179,7 +2206,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
 
-        <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+        <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
       
@@ -2607,7 +2634,7 @@
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
           </ul>
         </div><!--/.col -->
 

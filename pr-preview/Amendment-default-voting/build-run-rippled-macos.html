@@ -90,8 +90,8 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Apply now to the Fall 2022 XRP Ledger Campus Ambassador program</p></span>
-    <span><a href="/ambassadors.html" class="btn btn-outline-secondary">Apply</a></span>
+    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -123,7 +123,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -165,7 +165,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -264,7 +264,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="build-and-run-rippled-on-macos">Build and Run rippled on macOS<a aria-hidden="true" class="hover_anchor" href="#build-and-run-rippled-on-macos"><i class="fa fa-link"></i></a></h1>
-<p>The macOS platform is not recommended for <a href="the-rippled-server.html"><code>rippled</code></a> production use. For production, consider using the <a href="install-rippled-on-ubuntu-with-alien.html">Ubuntu platform</a>, which has received the highest level of quality assurance and testing.</p>
+<p>The macOS platform is not recommended for <a href="xrpl-servers.html"><code>rippled</code></a> production use. For production, consider using the <a href="install-rippled-on-ubuntu-with-alien.html">Ubuntu platform</a>, which has received the highest level of quality assurance and testing.</p>
 <p>That said, macOS is suitable for many development and testing tasks. <code>rippled</code> has been tested for use with macOS up to 10.15.7 Catalina.</p>
 <p>For development purposes, run <code>rippled</code> as a non-admin user, not using <code>sudo</code>.</p>
 <ol>
@@ -467,7 +467,7 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20">./rippled server_info
 </code></pre></div>
 <p>If the <code>server_state</code> in the response is <code>full</code> or <code>proposing</code>, then your server is fully synced to the network. Otherwise, you may need to wait longer. Fresh servers usually sync within 15 minutes; servers that already have <a href="ledger-history.html">ledger history</a> stored can take longer.</p>
-<p>After your server has synchronized with the rest of the network, you have a fully functional XRP Ledger peer-to-peer server that you can use to submit transactions or get API access to the XRP Ledger. See <a href="client-libraries.html">Client Libraries</a> or <a href="rippled-api.html">HTTP / WebSocket APIs</a> for different ways to communicate with the server.</p>
+<p>After your server has synchronized with the rest of the network, you have a fully functional XRP Ledger peer-to-peer server that you can use to submit transactions or get API access to the XRP Ledger. See <a href="client-libraries.html">Client Libraries</a> or <a href="http-websocket-apis.html">HTTP / WebSocket APIs</a> for different ways to communicate with the server.</p>
 <p>If you use the XRP Ledger for your business or you just want to contribute to the stability of the network, you should run one server as a validator. For information about validating servers and why you might want to run one, see <a href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>.</p>
 <p>Having trouble getting your server started? See <a href="server-wont-start.html">rippled Server Won't Start</a>.</p>
 <h3 id="additional-configuration">Additional Configuration<a aria-hidden="true" class="hover_anchor" href="#additional-configuration"><i class="fa fa-link"></i></a></h3>
@@ -487,7 +487,7 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
-<li><a href="the-rippled-server.html">The <code>rippled</code> Server</a></li>
+<li><a href="xrpl-servers.html">The <code>rippled</code> Server</a></li>
 <li><a href="intro-to-consensus.html">Introduction to Consensus</a></li>
 </ul>
 </li>
@@ -499,7 +499,7 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 </ul>
 </li>
 <li><strong>References:</strong><ul>
-<li><a href="rippled-api.html">rippled API Reference</a><ul>
+<li><a href="http-websocket-apis.html">rippled API Reference</a><ul>
 <li><a href="commandline-usage.html"><code>rippled</code> Commandline Usage</a></li>
 <li><a href="server_info.html">server_info method</a></li>
 </ul>
@@ -908,7 +908,7 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -951,6 +951,11 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
   </div>
 
     </nav>
@@ -1594,6 +1599,23 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -2036,7 +2058,7 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -2086,7 +2108,7 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2331,7 +2353,12 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info (Clio)</a>
   </div>
 
       
@@ -2379,7 +2406,7 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -2807,7 +2834,7 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
