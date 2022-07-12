@@ -37,7 +37,7 @@ By convention, an amendment's ID should be the SHA-512Half hash of the amendment
 
 ## Amendment Process
 
-Every 256th ledger is called a "flag" ledger. The process of approving an amendment starts in the ledger version immediately before the flag ledger. When `rippled` validator servers send validation messages for that ledger, those servers also submit votes in favor of specific amendments. If a validator does not vote in favor of an amendment, the server uses a default vote which is defined in the source code. ([Fee Voting](fee-voting.html) also occurs around flag ledgers.) [Updated in: rippled 1.8.1][]
+Every 256th ledger is called a "flag" ledger. The process of approving an amendment starts in the ledger version immediately before the flag ledger. When `rippled` validator servers send validation messages for that ledger, those servers also submit votes in favor of specific amendments. If a validator does not vote in favor of an amendment, that is the same as voting against the amendment. However, the `rippled` reference implementation has a default vote for each known amendment, which determines how a validator votes on any amendment for which that validator does not have an explicit configuration. ([Fee Voting](fee-voting.html) also occurs around flag ledgers.) [Updated in: rippled 1.8.1][]
 
 The flag ledger itself has no special contents. However, during that time, the servers look at the votes of the validators they trust, and decide whether to insert an [`EnableAmendment` pseudo-transaction](enableamendment.html) into the following ledger. The flags of an EnableAmendment pseudo-transaction show what the server thinks happened:
 
