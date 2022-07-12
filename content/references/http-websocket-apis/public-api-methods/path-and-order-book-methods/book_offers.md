@@ -47,7 +47,7 @@ An example of the request format:
             },
             "taker_pays": {
                 "currency": "USD",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
             },
             "limit": 10
         }
