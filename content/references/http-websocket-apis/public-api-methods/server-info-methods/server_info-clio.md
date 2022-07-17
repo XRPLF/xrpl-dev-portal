@@ -39,7 +39,7 @@ An example of the request format:
 
 ```sh
 #Syntax: server_info
-rippled server_info
+clio server_info
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -58,63 +58,202 @@ An example of a successful response:
 
 ```json
 {
-  "id": 1,
-  "result": {
-    "info": {
-      "build_version": "1.7.2",
-      "complete_ledgers": "64572720-65887227",
-      "hostid": "LARD",
-      "io_latency_ms": 1,
-      "jq_trans_overflow": "0",
-      "last_close": {
-        "converge_time_s": 3.004,
-        "proposers": 41
-      },
-      "load_factor": 512.578125,
-      "load_factor_server": 1,
-      "peer_disconnects": "365016",
-      "peer_disconnects_resources": "336",
-      "peers": 211,
-      "pubkey_node": "n9MozjnGB3tpULewtTsVtuudg5JqYFyV3QFdAtVLzJaxHcBaxuXD",
-      "server_state": "full",
-      "server_state_duration_us": "3589068181859",
-      "state_accounting": {
-        "connected": {
-          "duration_us": "301410595",
-          "transitions": 2
+    "result": {
+        "info": {
+            "complete_ledgers": "19499132-19977628",
+            "counters": {
+                "rpc": {
+                    "account_objects": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "991"
+                    },
+                    "account_tx": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "91633"
+                    },
+                    "account_lines": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "4915159"
+                    },
+                    "submit_multisigned": {
+                        "started": "2",
+                        "finished": "2",
+                        "errored": "0",
+                        "forwarded": "2",
+                        "duration_us": "4823"
+                    },
+                    "ledger_entry": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "17806"
+                    },
+                    "server_info": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "2375580"
+                    },
+                    "account_info": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "5",
+                        "duration_us": "9256"
+                    },
+                    "account_currencies": {
+                        "started": "4",
+                        "finished": "4",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "517302"
+                    },
+                    "noripple_check": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "2218"
+                    },
+                    "tx": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "562"
+                    },
+                    "gateway_balances": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "1395156"
+                    },
+                    "channel_authorize": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "2017"
+                    },
+                    "manifest": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "1707"
+                    },
+                    "subscribe": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "116"
+                    },
+                    "random": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "111"
+                    },
+                    "ledger_data": {
+                        "started": "14",
+                        "finished": "3",
+                        "errored": "11",
+                        "forwarded": "0",
+                        "duration_us": "6179145"
+                    },
+                    "ripple_path_find": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "1409563"
+                    },
+                    "account_channels": {
+                        "started": "14",
+                        "finished": "14",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "1062692"
+                    },
+                    "submit": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "6",
+                        "duration_us": "11383"
+                    },
+                    "transaction_entry": {
+                        "started": "8",
+                        "finished": "5",
+                        "errored": "3",
+                        "forwarded": "0",
+                        "duration_us": "494131"
+                    }
+                },
+                "subscriptions": {
+                    "ledger": 0,
+                    "transactions": 0,
+                    "transactions_proposed": 0,
+                    "manifests": 2,
+                    "validations": 2,
+                    "account": 0,
+                    "accounts_proposed": 0,
+                    "books": 0
+                }
+            },
+            "load_factor": 1,
+            "clio_version": "0.3.0-b2",
+            "validation_quorum": 8,
+            "rippled_version": "1.9.1-rc1",
+            "validated_ledger": {
+                "age": 4,
+                "hash": "4CD25FB70D45646EE5822E76E58B66D39D5AE6BA0F70491FA803DA0DA218F434",
+                "seq": 19977628,
+                "base_fee_xrp": 1E-5,
+                "reserve_base_xrp": 1E1,
+                "reserve_inc_xrp": 2E0
+            }
         },
-        "disconnected": {
-          "duration_us": "1207534",
-          "transitions": 2
+        "cache": {
+            "size": 8812733,
+            "is_full": true,
+            "latest_ledger_seq": 19977629
         },
-        "full": {
-          "duration_us": "3589270527034",
-          "transitions": 2
+        "etl": {
+            "etl_sources": [
+                {
+                    "validated_range": "19405538-19977629",
+                    "is_connected": "1",
+                    "ip": "52.36.182.38",
+                    "ws_port": "6005",
+                    "grpc_port": "50051",
+                    "last_msg_age_seconds": "0"
+                }
+            ],
+            "is_writer": true,
+            "read_only": false,
+            "last_publish_age_seconds": "2"
         },
-        "syncing": {
-          "duration_us": "6182323",
-          "transitions": 2
-        },
-        "tracking": {
-          "duration_us": "43",
-          "transitions": 2
-        }
-      },
-      "time": "2021-Aug-24 20:46:22.194299 UTC",
-      "uptime": 3589579,
-      "validated_ledger": {
-        "age": 3,
-        "base_fee_xrp": 0.00001,
-        "hash": "F00F0E590242702B895BE378B6A6D365C094A047CFC8B11DD323D16F81CC67A5",
-        "reserve_base_xrp": 20,
-        "reserve_inc_xrp": 5,
-        "seq": 65887227
-      },
-      "validation_quorum": 33
+        "validated": true,
+        "status": "success",
+        "warnings": [
+            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+        ]
     }
-  },
-  "status": "success",
-  "type": "response"
 }
 ```
 
@@ -124,60 +263,202 @@ An example of a successful response:
 200 OK
 
 {
-  "result": {
-    "info": {
-      "build_version": "1.7.2",
-      "complete_ledgers": "64735538-65886965",
-      "hostid": "TOLL",
-      "io_latency_ms": 1,
-      "jq_trans_overflow": "3",
-      "last_close": {
-        "converge_time_s": 3,
-        "proposers": 41
-      },
-      "load_factor": 1,
-      "peer_disconnects": "467400",
-      "peer_disconnects_resources": "16316",
-      "peers": 85,
-      "pubkey_node": "n9Mdk7abYaVvded5zic9oDEY3NULv9RmeJ9Z5hgjXX1ycZqAGhTn",
-      "server_state": "full",
-      "server_state_duration_us": "627203282776",
-      "state_accounting": {
-        "connected": {
-          "duration_us": "600242389",
-          "transitions": 40
+    "result": {
+        "info": {
+            "complete_ledgers": "19499132-19977628",
+            "counters": {
+                "rpc": {
+                    "account_objects": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "991"
+                    },
+                    "account_tx": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "91633"
+                    },
+                    "account_lines": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "4915159"
+                    },
+                    "submit_multisigned": {
+                        "started": "2",
+                        "finished": "2",
+                        "errored": "0",
+                        "forwarded": "2",
+                        "duration_us": "4823"
+                    },
+                    "ledger_entry": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "17806"
+                    },
+                    "server_info": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "2375580"
+                    },
+                    "account_info": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "5",
+                        "duration_us": "9256"
+                    },
+                    "account_currencies": {
+                        "started": "4",
+                        "finished": "4",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "517302"
+                    },
+                    "noripple_check": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "2218"
+                    },
+                    "tx": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "562"
+                    },
+                    "gateway_balances": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "1395156"
+                    },
+                    "channel_authorize": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "2017"
+                    },
+                    "manifest": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "1707"
+                    },
+                    "subscribe": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "116"
+                    },
+                    "random": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "111"
+                    },
+                    "ledger_data": {
+                        "started": "14",
+                        "finished": "3",
+                        "errored": "11",
+                        "forwarded": "0",
+                        "duration_us": "6179145"
+                    },
+                    "ripple_path_find": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "1409563"
+                    },
+                    "account_channels": {
+                        "started": "14",
+                        "finished": "14",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "1062692"
+                    },
+                    "submit": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "6",
+                        "duration_us": "11383"
+                    },
+                    "transaction_entry": {
+                        "started": "8",
+                        "finished": "5",
+                        "errored": "3",
+                        "forwarded": "0",
+                        "duration_us": "494131"
+                    }
+                },
+                "subscriptions": {
+                    "ledger": 0,
+                    "transactions": 0,
+                    "transactions_proposed": 0,
+                    "manifests": 2,
+                    "validations": 2,
+                    "account": 0,
+                    "accounts_proposed": 0,
+                    "books": 0
+                }
+            },
+            "load_factor": 1,
+            "clio_version": "0.3.0-b2",
+            "validation_quorum": 8,
+            "rippled_version": "1.9.1-rc1",
+            "validated_ledger": {
+                "age": 4,
+                "hash": "4CD25FB70D45646EE5822E76E58B66D39D5AE6BA0F70491FA803DA0DA218F434",
+                "seq": 19977628,
+                "base_fee_xrp": 1E-5,
+                "reserve_base_xrp": 1E1,
+                "reserve_inc_xrp": 2E0
+            }
         },
-        "disconnected": {
-          "duration_us": "112927",
-          "transitions": 1
+        "cache": {
+            "size": 8812733,
+            "is_full": true,
+            "latest_ledger_seq": 19977629
         },
-        "full": {
-          "duration_us": "3591757226163",
-          "transitions": 46
+        "etl": {
+            "etl_sources": [
+                {
+                    "validated_range": "19405538-19977629",
+                    "is_connected": "1",
+                    "ip": "52.36.182.38",
+                    "ws_port": "6005",
+                    "grpc_port": "50051",
+                    "last_msg_age_seconds": "0"
+                }
+            ],
+            "is_writer": true,
+            "read_only": false,
+            "last_publish_age_seconds": "2"
         },
-        "syncing": {
-          "duration_us": "5304456",
-          "transitions": 7
-        },
-        "tracking": {
-          "duration_us": "13989631",
-          "transitions": 46
-        }
-      },
-      "time": "2021-Aug-24 20:29:53.291350 UTC",
-      "uptime": 3592376,
-      "validated_ledger": {
-        "age": 2,
-        "base_fee_xrp": 0.00001,
-        "hash": "B79D223A27F4EC214C9BA85665B12EE76C1EE2CB887BBCBAFB6484355C43FEFA",
-        "reserve_base_xrp": 20,
-        "reserve_inc_xrp": 5,
-        "seq": 65886965
-      },
-      "validation_quorum": 33
-    },
-    "status": "success"
-  }
+        "validated": true,
+        "status": "success",
+        "warnings": [
+            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+        ]
+    }
 }
 ```
 
@@ -188,60 +469,202 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Mar-24 01:28:22.288484766 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
-  "result": {
-    "info": {
-      "build_version": "1.7.2",
-      "complete_ledgers": "64735538-65886965",
-      "hostid": "TOLL",
-      "io_latency_ms": 1,
-      "jq_trans_overflow": "3",
-      "last_close": {
-        "converge_time_s": 3,
-        "proposers": 41
-      },
-      "load_factor": 1,
-      "peer_disconnects": "467400",
-      "peer_disconnects_resources": "16316",
-      "peers": 85,
-      "pubkey_node": "n9Mdk7abYaVvded5zic9oDEY3NULv9RmeJ9Z5hgjXX1ycZqAGhTn",
-      "server_state": "full",
-      "server_state_duration_us": "627203282776",
-      "state_accounting": {
-        "connected": {
-          "duration_us": "600242389",
-          "transitions": 40
+    "result": {
+        "info": {
+            "complete_ledgers": "19499132-19977628",
+            "counters": {
+                "rpc": {
+                    "account_objects": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "991"
+                    },
+                    "account_tx": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "91633"
+                    },
+                    "account_lines": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "4915159"
+                    },
+                    "submit_multisigned": {
+                        "started": "2",
+                        "finished": "2",
+                        "errored": "0",
+                        "forwarded": "2",
+                        "duration_us": "4823"
+                    },
+                    "ledger_entry": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "17806"
+                    },
+                    "server_info": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "2375580"
+                    },
+                    "account_info": {
+                        "started": "5",
+                        "finished": "5",
+                        "errored": "0",
+                        "forwarded": "5",
+                        "duration_us": "9256"
+                    },
+                    "account_currencies": {
+                        "started": "4",
+                        "finished": "4",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "517302"
+                    },
+                    "noripple_check": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "2218"
+                    },
+                    "tx": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "562"
+                    },
+                    "gateway_balances": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "1395156"
+                    },
+                    "channel_authorize": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "2017"
+                    },
+                    "manifest": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "1707"
+                    },
+                    "subscribe": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "116"
+                    },
+                    "random": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "111"
+                    },
+                    "ledger_data": {
+                        "started": "14",
+                        "finished": "3",
+                        "errored": "11",
+                        "forwarded": "0",
+                        "duration_us": "6179145"
+                    },
+                    "ripple_path_find": {
+                        "started": "1",
+                        "finished": "1",
+                        "errored": "0",
+                        "forwarded": "1",
+                        "duration_us": "1409563"
+                    },
+                    "account_channels": {
+                        "started": "14",
+                        "finished": "14",
+                        "errored": "0",
+                        "forwarded": "0",
+                        "duration_us": "1062692"
+                    },
+                    "submit": {
+                        "started": "6",
+                        "finished": "6",
+                        "errored": "0",
+                        "forwarded": "6",
+                        "duration_us": "11383"
+                    },
+                    "transaction_entry": {
+                        "started": "8",
+                        "finished": "5",
+                        "errored": "3",
+                        "forwarded": "0",
+                        "duration_us": "494131"
+                    }
+                },
+                "subscriptions": {
+                    "ledger": 0,
+                    "transactions": 0,
+                    "transactions_proposed": 0,
+                    "manifests": 2,
+                    "validations": 2,
+                    "account": 0,
+                    "accounts_proposed": 0,
+                    "books": 0
+                }
+            },
+            "load_factor": 1,
+            "clio_version": "0.3.0-b2",
+            "validation_quorum": 8,
+            "rippled_version": "1.9.1-rc1",
+            "validated_ledger": {
+                "age": 4,
+                "hash": "4CD25FB70D45646EE5822E76E58B66D39D5AE6BA0F70491FA803DA0DA218F434",
+                "seq": 19977628,
+                "base_fee_xrp": 1E-5,
+                "reserve_base_xrp": 1E1,
+                "reserve_inc_xrp": 2E0
+            }
         },
-        "disconnected": {
-          "duration_us": "112927",
-          "transitions": 1
+        "cache": {
+            "size": 8812733,
+            "is_full": true,
+            "latest_ledger_seq": 19977629
         },
-        "full": {
-          "duration_us": "3591757226163",
-          "transitions": 46
+        "etl": {
+            "etl_sources": [
+                {
+                    "validated_range": "19405538-19977629",
+                    "is_connected": "1",
+                    "ip": "52.36.182.38",
+                    "ws_port": "6005",
+                    "grpc_port": "50051",
+                    "last_msg_age_seconds": "0"
+                }
+            ],
+            "is_writer": true,
+            "read_only": false,
+            "last_publish_age_seconds": "2"
         },
-        "syncing": {
-          "duration_us": "5304456",
-          "transitions": 7
-        },
-        "tracking": {
-          "duration_us": "13989631",
-          "transitions": 46
-        }
-      },
-      "time": "2021-Aug-24 20:29:53.291350 UTC",
-      "uptime": 3592376,
-      "validated_ledger": {
-        "age": 2,
-        "base_fee_xrp": 0.00001,
-        "hash": "B79D223A27F4EC214C9BA85665B12EE76C1EE2CB887BBCBAFB6484355C43FEFA",
-        "reserve_base_xrp": 20,
-        "reserve_inc_xrp": 5,
-        "seq": 65886965
-      },
-      "validation_quorum": 33
-    },
-    "status": "success"
-  }
+        "validated": true,
+        "status": "success",
+        "warnings": [
+            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+        ]
+    }
 }
 ```
 
@@ -253,36 +676,26 @@ The `info` object may have some arrangement of the following fields:
 
 | `Field`                             | Type            | Description          |
 |:------------------------------------|:----------------|:---------------------|
-| `amendment_blocked`                 | Boolean         | _(May be omitted)_ If `true`, this server is [amendment blocked](amendments.html#amendment-blocked). If the server is not amendment blocked, the response omits this field. [New in: rippled 0.80.0][] |
-| `build_version`                     | String          | The version number of the running `rippled` version. |
-| `closed_ledger`                     | Object          | _(May be omitted)_ Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. The member fields are the same as the `validated_ledger` field. |
 | `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
-| `hostid`                            | String          | On an admin request, returns the hostname of the server running the `rippled` instance; otherwise, returns a single [RFC-1751][] word based on the [node public key](peer-protocol.html#node-key-pair). |
-| `io_latency_ms`                     | Number          | Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
-| `jq_trans_overflow`                 | String - Number | The number of times (since starting up) that this server has had over 250 transactions waiting to be processed at once. A large number here may mean that your server is unable to handle the transaction load of the XRP Ledger network. For detailed recommendations of future-proof server specifications, see [Capacity Planning](capacity-planning.html). [New in: rippled 0.90.0][] |
-| `last_close`                        | Object          | Information about the last time the server closed a ledger, including the amount of time it took to reach a consensus and the number of trusted validators participating. |
-| `last_close.converge_time_s`          | Number          | The amount of time it took to reach a consensus on the most recently validated ledger version, in seconds. |
-| `last_close.proposers`              | Number          | How many trusted validators the server considered (including itself, if configured as a validator) in the consensus process for the most recently validated ledger version. |
-| `load`                              | Object          | _(Admin only)_ Detailed information about the current load state of the server. |
-| `load.job_types`                    | Array           | _(Admin only)_ Information about the rate of different types of jobs the server is doing and how much time it spends on each. |
-| `load.threads`                      | Number          | _(Admin only)_ The number of threads in the server's main job pool. |
+| `rpc`                               | Object array    |   |
+| `rpc.*.started`                     | Number          |   |
+| `rpc.*.finished`                    | Number          |   |
+| `rpc.*.errored`                     | Number          |   |
+| `rpc.*.forwarded`                   | Number          |   |
+| `rpc.*.duration_us`                 | Number          | The number of microseconds taken to process the request. | 
+| `subscriptions`                     | Object          |   |
+| `subscriptions.ledger`              |                 |   |
+| `subscriptions.transactions`        |                 |   |
+| `subscriptions.transactions_proposed` |               |   |
+| `subscriptions.manifests`           |                 |   |
+| `subscriptions.validations`         |                 |   |
+| `subscriptions.account`             |                 |   |
+| `subscriptions.accounts_proposed`   |                 |   |
+| `subscriptions.books`               |                 |   |
 | `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost) and the overall network's load factor. [Updated in: rippled 0.33.0][] |
-| `load_factor_local`                 | Number          | _(May be omitted)_ Current multiplier to the [transaction cost][] based on load to this server. |
-| `load_factor_net`                   | Number          | _(May be omitted)_ Current multiplier to the [transaction cost][] being used by the rest of the network (estimated from other servers' reported load values). |
-| `load_factor_cluster`               | Number          | _(May be omitted)_ Current multiplier to the [transaction cost][] based on load to servers in [this cluster](clustering.html). |
-| `load_factor_fee_escalation`        | Number          | _(May be omitted)_ The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger. [New in: rippled 0.32.0][] |
-| `load_factor_fee_queue`             | Number          | _(May be omitted)_ The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full. [New in: rippled 0.32.0][] |
-| `load_factor_server`                | Number          | _(May be omitted)_ The load factor the server is enforcing, not including the [open ledger cost](transaction-cost.html#open-ledger-cost). [New in: rippled 0.33.0][] |
-| `peers`                             | Number          | How many other `rippled` servers this one is currently connected to. |
-| `pubkey_node`                       | String          | Public key used to verify this server for peer-to-peer communications. This [_node key pair_](peer-protocol.html#node-key-pair) is automatically generated by the server the first time it starts up. (If deleted, the server can create a new pair of keys.) You can set a persistent value in the config file using the `[node_seed]` config option, which is useful for [clustering](clustering.html). |
-| `pubkey_validator`                  | String          | _(Admin only)_ Public key used by this node to sign ledger validations. This _validation key pair_ is derived from the `[validator_token]` or `[validation_seed]` config field. |
-| `server_state`                      | String          | A string indicating to what extent the server is participating in the network. See [Possible Server States](rippled-server-states.html) for more details. |
-| `server_state_duration_us`          | Number          | The number of consecutive microseconds the server has been in the current state. [New in: rippled 1.2.0][] |
-| `state_accounting`                  | Object          | A map of various [server states](rippled-server-states.html) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. [New in: rippled 0.30.1][] |
-| `state_accounting.*.duration_us`    | String          | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) [New in: rippled 0.30.1][] |
-| `state_accounting.*.transitions`    | Number          | The number of times the server has changed into this state. [New in: rippled 0.30.1][] |
-| `time`                              | String          | The current time in UTC, according to the server's clock. [Updated in: rippled 1.5.0][] |
-| `uptime`                            | Number          | Number of consecutive seconds that the server has been operational. [New in: rippled 0.30.1][] |
+| `clio_version`                      | String          |  The version number of the running `Clio` server.  |
+| `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
+| `rippled_version`                   | String          |  The version number of the running `rippled` server that the `Clio` server is connected to. |
 | `validated_ledger`                  | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validated_ledger.age`              | Number          | The time since the ledger was closed, in seconds. |
 | `validated_ledger.base_fee_xrp`     | Number          | Base fee, in XRP. This may be represented in scientific notation such as `1e-05` for 0.00001. |
@@ -290,10 +703,25 @@ The `info` object may have some arrangement of the following fields:
 | `validated_ledger.reserve_base_xrp` | Number          | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
 | `validated_ledger.reserve_inc_xrp`  | Number          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. |
 | `validated_ledger.seq`              | Number          | The [ledger index][] of the latest validated ledger. |
-| `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list will expire, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. [Updated in: rippled 1.5.0][] |
+| `cache`                             | Object          |  Data retrieved from the `rippled` server is stored in efficiently in the `cache` object. Thus resulting in a higher throughput and sometimes lower latency for Clio API requests. |
+| `cache.size`                        | Number          |  Size of the `cache` object containing the validated ledger data retrieved from P2P `rippled` server. |
+| `cache.is_full`                     | Boolean         | This is true if the cache is full or not empty. |
+| `cache.latest_ledger_seq`           | Number          | The [ledger index][] of the latest validated ledger stored in the cache. |
+| `etl`                               | Object          | The `rippled` sources (ETL sources) that the Clio server is connected to. |
+| `etl.etl_sources`                   | Object Array    | List the `rippled` sources (ETL sources) that the Clio server is connected to and extracts data from. |
+| `etl.etl_sources.validated_range`   | String          | The validated ledger range retrieved by the P2P `rippled` server. |
+| `etl.etl_sources.is_connected`      | Boolean         |  |
+| `etl.etl_sources.ip`                | Number          |  |
+| `etl.etl_sources.ws_port`           | Number          |  |
+| `etl.etl_sources.grpc_port`         | Number          | The gRPC connection port of the P2P `rippled` server that hte Clio server is connected to.  |
+| `etl.etl_sources.last_msg_age_seconds` | Number       |  |
+| `etl.is_writer`                     | Boolean         |  |
+| `etl.read_only`                     | Boolean         |  |
+| `etl.last_publish_age_seconds`      | Number          |  |
+| `validated`                         | Boolean         |  When true, this indicates that the response uses a ledger version that has been validated by consensus. In Clio, this is mostly true by default as Clio stores and returns validated ledger data. If a request was forwarded to `rippled` and the server returns current data, a missing or false value indicates that this ledger's data is not final. |
+| `status`                            | String          |  Returns the status of the API request: `success` when the request completes successfully. |
 
-**Note:** If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.
 
 ## Possible Errors
 

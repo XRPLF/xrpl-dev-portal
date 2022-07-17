@@ -2855,6 +2855,11 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger-clio.md
+        targets:
+            - en
+
     -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
         targets:
             - en
