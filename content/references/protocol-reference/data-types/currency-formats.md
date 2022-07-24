@@ -74,7 +74,7 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 
 ### Specifying Without Amounts
 
-If you are specifying a token without an amount (typically for defining an order book in the [decentralized exchange](decentralized-exchange.html)) you should specify it a a currency object, but omit the `value` field.
+If you are specifying a token without an amount (typically for defining an order book in the [decentralized exchange](decentralized-exchange.html)) you should specify it as a currency object, but omit the `value` field.
 
 If you are specifying XRP without an amount (typically for defining an order book) you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
 
