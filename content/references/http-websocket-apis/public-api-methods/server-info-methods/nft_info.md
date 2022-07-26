@@ -1,11 +1,168 @@
 ---
 html: nft_info.html
 parent: server-info-methods.html
-blurb: Retrieve status of the NFT server in human-readable format.
+blurb: Retrieve status of the specified NFT in human-readable format.
 labels:
-  - Core Server
+  - Non-fungible Tokens, NFTs
 ---
-# nft_info (rippled)
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
+# nft_info
+[[Source]](https://github.com/XRPLF/clio/tree/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers "Source")
 
-The `server_info` command asks the server for a human-readable version of various information about [the `rippled` server](xrpl-servers.html) being queried. For [Clio servers](the-clio-server.html), see [`server_info` (Clio)](server_info-clio.html) instead.
+The `nft_info` command asks the Clio server for a human-readable version of information about [the NFT](non-fungible-tokens.html) being queried. 
+
+## Request Format
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": 1,
+  "command": "nft_info",
+  "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
+  "ledger_index": "current"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+    "method": "nft_info",
+    "params": [
+      {
+          "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
+          "ledger_index": "current"
+      }
+    ]
+}
+```
+
+*Commandline*
+
+```sh
+#Syntax: server_info
+clio nft_info 0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C current
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](websocket-api-tool.html#nft_info)
+
+The request contains the following parameters:
+
+| `Field`        | Type                       | Description                    |
+|:---------------|:---------------------------|:-------------------------------|
+| `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) | 
+
+## Response Format
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+  "result": {
+    "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
+    "ledger_index": 2436210,
+    "owner": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "is_burned": false,
+    "flags": 0,
+    "transfer_fee": 0,
+    "issuer": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "nft_taxon": 0,
+    "nft_sequence": 12,
+    "uri": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi",
+    "validated": true,
+    "status": "success",
+    "warnings": [
+      "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request",
+      "This server may be out of date"
+    ]
+  }
+```
+
+*JSON-RPC*
+
+```json
+{
+  "result": {
+    "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
+    "ledger_index": 2436210,
+    "owner": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "is_burned": false,
+    "flags": 0,
+    "transfer_fee": 0,
+    "issuer": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "nft_taxon": 0,
+    "nft_sequence": 12,
+    "uri": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi",
+    "validated": true,
+    "status": "success",
+    "warnings": [
+      "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request",
+      "This server may be out of date"
+    ]
+  }
+}
+```
+
+*Commandline*
+
+```json
+{
+  "result": {
+    "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
+    "ledger_index": 2436210,
+    "owner": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "is_burned": false,
+    "flags": 0,
+    "transfer_fee": 0,
+    "issuer": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "nft_taxon": 0,
+    "nft_sequence": 12,
+    "uri": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi",
+    "validated": true,
+    "status": "success",
+    "warnings": [
+      "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request",
+      "This server may be out of date"
+    ]
+  }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format][], with a successful result containing an `info` object as its only field.
+
+The `info` object may have some arrangement of the following fields:
+
+| `Field`                             | Type            | Description          |
+|:------------------------------------|:----------------|:---------------------|
+| `nft_id`                            | String          | A unique identifier for the non-fungible token (NFT). |
+| `ledger_index`                      | Integer         | _(Omitted if `ledger_current_index` is provided instead)_ The [ledger index][] of the most recent ledger version where this NFT's state was changed. For example, when the NFT was minted, its ownership changed, or it was burned. The information returned contains whatever happened most recently compared to the input ledger index. |
+| `owner`                             | String          | The account ID which denotes the owner of this NFT at the above ledger index. |
+| `is_burned`                         | Boolean         | Returns `true` if this NFT is burned at this ledger, `false` otherwise. |
+| `flags `                            | Integer         | The flag set of this NFT. |
+| `transfer_fee`                      | Integer         | The transfer fee of this NFT. |
+| `issuer`                            | String          | The account ID which denotes the issuer of this NFT. |
+| `nft_taxon`                         | Integer         | The NFT’s taxon. |
+|  `nft_sequence`                     | Integer         | The NFT’s sequence number. |
+| `uri`                               | String          | _(Omitted if the NFT is burned at this ledger.)_. This field is NULL if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT.
+
+
+## Possible Errors
+
+* Any of the [universal error types][].
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
