@@ -80,7 +80,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `ripple
 
 6. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
 
-        git clone https://github.com/ripple/rippled.git
+        git clone https://github.com/xrplf/rippled.git
         cd rippled
         git checkout master
 
