@@ -13,22 +13,27 @@ The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared glo
 
 To have an account, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send that address enough XRP to meet the reserve requirement.
 
-The current minimum reserve requirement is **10 XRP**. (This is the cost of an address that owns no other objects in the ledger.) Each new [account](accounts.html) must set aside this much XRP. Some of this XRP can be recovered by [deleting the account](accounts.html#deletion-of-accounts).
+The reserve requirement changes from time to time due to the [Fee Voting](fee-voting.html) process, where validators can agree to new reserve settings. On [Mainnet](parallel-networks.html), the current minimum reserve requirement is **10 XRP**. (This is the cost of an address that owns no other objects in the ledger.) Each new [account](accounts.html) must set aside this much XRP. Some of this XRP can be recovered by [deleting the account](accounts.html#deletion-of-accounts).
 
-The [Fee Voting](fee-voting.html) process can change the reserve requirement if enough validators agree to new reserve settings.
-
+To determine the current minimum reserve requirement, use the [`server_info` command](server_info.html) and take `validated_ledger.reserve_base_xrp`.
 
 ## Base Reserve and Owner Reserve
 
-The reserve requirement is divided into two parts:
+The reserve requirement is has two parts:
 
-* The **Base Reserve** is a minimum amount of XRP that is required for each address in the ledger. Currently, this is 10 XRP (`10000000` [drops](xrp.html#xrp-properties)).
-* The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 2 XRP (`2000000` [drops](xrp.html#xrp-properties)) per item.
+* The **Base Reserve** is a minimum amount of XRP that is required for each address in the ledger.
+* The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger.
 
 
 ### Owner Reserves
 
-Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.
+Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. Each object increases the reserve requirement by the Owner Reserve. On Mainnet, this is currently 2 XRP (`2000000` [drops](xrp.html#xrp-properties)) per item.
+
+When objects are removed from the ledger, they no longer count against their owner's reserve requirement.
+
+To retrieve the number of objects an account owns in the ledger, use the [`account_info` command](account_info.html) and take `account_data.OwnerCount`. `OwnerCount` is one of the fields of the [`AccountRoot` object](https://xrpl.org/accountroot.html). To determine the current Owner Reserve, use the [`server_info` command](server_info.html) and take `validated_ledger.reserve_inc_xrp`.
+
+To determine an address's Owner Reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`. Adding the Base Reserve then yields the account's current reserve requirement. [Here is a demonstration](build-a-desktop-wallet-in-python.html#codeblock-17) of this calculation in Python.
 
 - [Offers](offer.html) are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an [OfferCancel transaction][], or by sending an [OfferCreate transaction][] that contains an `OfferSequence` parameter.
 - [Trust lines](ripplestate.html) are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See [Contributing to the Owner Reserve](ripplestate.html#contributing-to-the-owner-reserve) for details.
