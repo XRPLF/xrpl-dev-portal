@@ -31,9 +31,9 @@ Many objects in the ledger are owned by a particular address, and count toward t
 
 When objects are removed from the ledger, they no longer count against their owner's reserve requirement.
 
-To retrieve the number of objects an account owns in the ledger, use the [`account_info` command](account_info.html) and take `account_data.OwnerCount`. `OwnerCount` is one of the fields of the [`AccountRoot` object](https://xrpl.org/accountroot.html). To determine the current Owner Reserve, use the [`server_info` command](server_info.html) and take `validated_ledger.reserve_inc_xrp`.
+To retrieve the number of objects an account owns in the ledger, use the [account_info method][] and take `account_data.OwnerCount`. `OwnerCount` is one of the fields of the [`AccountRoot` object](accountroot.html). To look up reserve settings, use the [server_info method][]: the `validated_ledger.reserve_inc_xrp` is the owner reserve and the `validated_ledger.reserve_base_xrp` is the base reserve, both in decimal XRP. To get the values in integer drops of XRP instead, use the [server_state method][].
 
-To determine an address's Owner Reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`. Adding the Base Reserve then yields the account's current reserve requirement. [Here is a demonstration](build-a-desktop-wallet-in-python.html#codeblock-17) of this calculation in Python.
+To calculate an address's Owner Reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](build-a-desktop-wallet-in-python.html#codeblock-17) of this calculation in Python.
 
 - [Offers](offer.html) are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an [OfferCancel transaction][], or by sending an [OfferCreate transaction][] that contains an `OfferSequence` parameter.
 - [Trust lines](ripplestate.html) are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See [Contributing to the Owner Reserve](ripplestate.html#contributing-to-the-owner-reserve) for details.
