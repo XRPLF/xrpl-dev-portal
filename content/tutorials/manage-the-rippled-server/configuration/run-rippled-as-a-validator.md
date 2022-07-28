@@ -44,6 +44,8 @@ Strive to have your validator always embody the following properties. Being a go
 
     A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes timely, make sure your validator meets the recommended [system requirements](system-requirements.html), which include a fast internet connection.
 
+Due to the need for consistent performance, it is not recommended to submit new transactions to, or query data from, a validator. A validator should be dedicated to participating in consensus.
+
 - **Identified**
 
     A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
