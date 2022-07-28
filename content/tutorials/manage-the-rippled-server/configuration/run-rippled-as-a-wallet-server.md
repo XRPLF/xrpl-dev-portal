@@ -18,22 +18,13 @@ A wallet server does all of the following:
 
 - Maintains a local copy of the complete shared global [ledger](ledgers.html)
 
-- Participates in the [consensus process](consensus.html) as a validator
+
+In order to participate in the [consensus process](consensus.html) as a validator, [run rippled as a validator](run-rippled-as-a-validator.html) instead.
 
 
-## 1. Install `rippled`
+## Install and run `rippled`
 
 For more information, see [Install `rippled`](install-rippled.html).
-
-## 2. Enable validation on your wallet server
-
-For more information, see [Enable validation on your `rippled` server](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).
-
-**Warning:** Validators should not be accessible to the public. Do not allow public WebSocket access to your wallet server or any other form of public access.
-
-## 3. Provide domain verification
-
-For more information, see [Provide domain verification](run-rippled-as-a-validator.html#6-provide-domain-verification).
 
 ## Troubleshooting
 
