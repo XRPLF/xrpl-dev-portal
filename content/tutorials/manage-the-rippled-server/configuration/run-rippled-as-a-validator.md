@@ -20,15 +20,17 @@ A [`rippled` server](xrpl-servers.html) running in [validator mode](rippled-serv
 
 What makes a validator _different_ is that it also issues validation messages, which are sets of candidate transactions for evaluation by the XRP Ledger network during the [consensus process](consensus-principles-and-rules.html#how-consensus-works).
 
-It's important to understand that merely issuing validation messages does not automatically give your validator a say in the consensus process. Other servers ignore your validation messages unless they add your validator to their Unique Node List (UNL). If your validator is included in a UNL, it is a _trusted_ validator and its proposals are considered in the consensus process by the servers that trust it.
+Issuing validation messages does not automatically give your validator a say in the consensus process, so the system is not vulnerable to a [Sybil attack](https://en.wikipedia.org/wiki/Sybil_attack). Other servers ignore your validation messages unless they add your validator to their Unique Node List (UNL). If your validator is included in a UNL, it is a _trusted_ validator and its proposals are considered in the consensus process by the servers that trust it.
 
 Even if your validator isn't a _trusted_ validator, it stills plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.
+
+**Warning:** Validators should not be accessible to the public. Do not allow public WebSocket access to your validator server or any other form of public access.
 
 
 
 ## 1. Understand the traits of a good validator
 
-Strive to have your validator always embody the following properties. Being a good validator helps `rippled` server operators and validator list publishers, such as [https://vl.ripple.com](https://vl.ripple.com) and [https://vl.xrplf.org](https://vl.xrplf.org), to trust your validator before adding it to their UNLs.
+Strive to have your validator always embody the following properties. Being a good validator helps `rippled` server operators and validator list publishers (such as https://vl.coil.com, https://vl.ripple.com, and https://vl.xrplf.org), to trust your validator before adding it to their UNLs.
 
 - **Available**
 
@@ -36,7 +38,7 @@ Strive to have your validator always embody the following properties. Being a go
 
 - **In agreement**
 
-    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/ripple/rippled/tree/master) without modifications. [Watch `rippled` releases](https://github.com/ripple/rippled/releases) to be notified of new releases.
+    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/XRPLF/rippled/tree/release) without modifications. [Watch `rippled` releases](https://github.com/XRPLF/rippled/releases) and subscribe to the [Google Group](https://groups.google.com/g/ripple-server) to be notified of new releases.
 
 - **Issuing timely votes**
 
@@ -46,7 +48,7 @@ Strive to have your validator always embody the following properties. Being a go
 
     A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
 
-It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt).
+It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt).
 
 
 
@@ -58,9 +60,9 @@ For more information, see [Install `rippled`](install-rippled.html).
 
 ## 3. Enable validation on your `rippled` server
 
-Enabling validation on your `rippled` server means providing a validator token in your server's `rippled.cfg` file. Ripple recommends using the `validator-keys` tool (included in `rippled` packages) to securely generate and manage your validator keys and tokens.
+Enabling validation on your `rippled` server means providing a validator token in your server's `rippled.cfg` file. You can use the `validator-keys` tool (included in `rippled` packages) to securely generate and manage your validator keys and tokens.
 
-In a location **not** on your validator:
+In a secure location **not** on your validator:
 
 1. Manually build and run the `validator-keys` tool, if you don't already have it installed via a `rippled` RPM.
 
