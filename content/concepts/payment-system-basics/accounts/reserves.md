@@ -19,7 +19,7 @@ To determine the current minimum reserve requirement, use the [`server_info` com
 
 ## Base Reserve and Owner Reserve
 
-The reserve requirement is has two parts:
+The reserve requirement has two parts:
 
 * The **Base Reserve** is a minimum amount of XRP that is required for each address in the ledger.
 * The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger.
@@ -68,6 +68,7 @@ The XRP Ledger has a mechanism to adjust the reserve requirements. Such adjustme
 - [AccountRoot Object][]
 - [Fee Voting](fee-voting.html)
 - [SetFee pseudo-transaction][]
+- [Tutorial: Calculate and display the reserve requirement (Python)](build-a-desktop-wallet-in-python.html#3-display-an-account)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
