@@ -287,10 +287,11 @@
 </li>
 </ul>
 <p>What makes a validator <em>different</em> is that it also issues validation messages, which are sets of candidate transactions for evaluation by the XRP Ledger network during the <a href="consensus-principles-and-rules.html#how-consensus-works">consensus process</a>.</p>
-<p>It's important to understand that merely issuing validation messages does not automatically give your validator a say in the consensus process. Other servers ignore your validation messages unless they add your validator to their Unique Node List (UNL). If your validator is included in a UNL, it is a <em>trusted</em> validator and its proposals are considered in the consensus process by the servers that trust it.</p>
+<p>Issuing validation messages does not automatically give your validator a say in the consensus process, so the system is not vulnerable to a <a class="external-link" href="https://en.wikipedia.org/wiki/Sybil_attack" target="_blank">Sybil attack <i aria-hidden="true" class="fa fa-external-link"></i></a>. Other servers ignore your validation messages unless they add your validator to their Unique Node List (UNL). If your validator is included in a UNL, it is a <em>trusted</em> validator and its proposals are considered in the consensus process by the servers that trust it.</p>
 <p>Even if your validator isn't a <em>trusted</em> validator, it stills plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> Validators should not be accessible to the public. Do not allow public WebSocket access to your validator server or any other form of public access.</p>
 <h2 id="1-understand-the-traits-of-a-good-validator">1. Understand the traits of a good validator<a aria-hidden="true" class="hover_anchor" href="#1-understand-the-traits-of-a-good-validator"><i class="fa fa-link"></i></a></h2>
-<p>Strive to have your validator always embody the following properties. Being a good validator helps <code>rippled</code> server operators and validator list publishers, such as <a class="external-link" href="https://vl.ripple.com" target="_blank">https://vl.ripple.com <i aria-hidden="true" class="fa fa-external-link"></i></a> and <a class="external-link" href="https://vl.xrplf.org" target="_blank">https://vl.xrplf.org <i aria-hidden="true" class="fa fa-external-link"></i></a>, to trust your validator before adding it to their UNLs.</p>
+<p>Strive to have your validator always embody the following properties. Being a good validator helps <code>rippled</code> server operators and validator list publishers (such as https://vl.coil.com, https://vl.ripple.com, and https://vl.xrplf.org), to trust your validator before adding it to their UNLs.</p>
 <ul>
 <li>
 <p><strong>Available</strong></p>
@@ -298,7 +299,7 @@
 </li>
 <li>
 <p><strong>In agreement</strong></p>
-<p>A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the <a class="external-link" href="https://github.com/ripple/rippled/tree/master" target="_blank">latest <code>rippled</code> release <i aria-hidden="true" class="fa fa-external-link"></i></a> without modifications. <a class="external-link" href="https://github.com/ripple/rippled/releases" target="_blank">Watch <code>rippled</code> releases <i aria-hidden="true" class="fa fa-external-link"></i></a> to be notified of new releases.</p>
+<p>A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the <a class="external-link" href="https://github.com/XRPLF/rippled/tree/release" target="_blank">latest <code>rippled</code> release <i aria-hidden="true" class="fa fa-external-link"></i></a> without modifications. <a class="external-link" href="https://github.com/XRPLF/rippled/releases" target="_blank">Watch <code>rippled</code> releases <i aria-hidden="true" class="fa fa-external-link"></i></a> and subscribe to the <a class="external-link" href="https://groups.google.com/g/ripple-server" target="_blank">Google Group <i aria-hidden="true" class="fa fa-external-link"></i></a> to be notified of new releases.</p>
 </li>
 <li>
 <p><strong>Issuing timely votes</strong></p>
@@ -309,12 +310,12 @@
 <p>A good validator has a clearly identified owner. Providing <a href="#6-provide-domain-verification">domain verification</a> is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.</p>
 </li>
 </ul>
-<p>It is strongly recommended that operators use the list providers that are present in this <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt" target="_blank">example file <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>It is strongly recommended that operators use the list providers that are present in this <a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt" target="_blank">example file <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="2-install-a-rippled-server">2. Install a <code>rippled</code> server<a aria-hidden="true" class="hover_anchor" href="#2-install-a-rippled-server"><i class="fa fa-link"></i></a></h2>
 <p>For more information, see <a href="install-rippled.html">Install <code>rippled</code></a>.</p>
 <h2 id="3-enable-validation-on-your-rippled-server">3. Enable validation on your <code>rippled</code> server<a aria-hidden="true" class="hover_anchor" href="#3-enable-validation-on-your-rippled-server"><i class="fa fa-link"></i></a></h2>
-<p>Enabling validation on your <code>rippled</code> server means providing a validator token in your server's <code>rippled.cfg</code> file. Ripple recommends using the <code>validator-keys</code> tool (included in <code>rippled</code> packages) to securely generate and manage your validator keys and tokens.</p>
-<p>In a location <strong>not</strong> on your validator:</p>
+<p>Enabling validation on your <code>rippled</code> server means providing a validator token in your server's <code>rippled.cfg</code> file. You can use the <code>validator-keys</code> tool (included in <code>rippled</code> packages) to securely generate and manage your validator keys and tokens.</p>
+<p>In a secure location <strong>not</strong> on your validator:</p>
 <ol>
 <li>
 <p>Manually build and run the <code>validator-keys</code> tool, if you don't already have it installed via a <code>rippled</code> RPM.</p>
