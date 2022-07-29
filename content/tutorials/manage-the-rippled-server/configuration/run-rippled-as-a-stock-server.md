@@ -1,16 +1,16 @@
 ---
-html: run-rippled-as-a-wallet-server.html
+html: run-rippled-as-a-stock-server.html
 parent: configure-rippled.html
 blurb: A multipurpose configuration for anyone integrating XRP.
 labels:
   - Core Server
 ---
-# Run rippled as a Wallet Server
+# Run rippled as a Stock Server
 
-A wallet server is a multipurpose configuration for `rippled`. With a wallet server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](software-ecosystem.html) to integrate with XRP.
+A stock server is a multipurpose configuration for `rippled`. With a stock server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](software-ecosystem.html) to integrate with XRP. It is also a server that you can use to connect a wallet with the XRPL.
 
 
-A wallet server does all of the following:
+A stock server does all of the following:
 
 - Connects to a [network of peers](consensus-network.html)
 
