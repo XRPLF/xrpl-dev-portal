@@ -41,13 +41,13 @@ To support XRP, Alpha Exchange must:
 
 See also:
 
-* [Gateway Compliance](become-an-xrp-ledger-gateway.html#gateway-compliance) — Gateways and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
+* [Compliance Guidelines](become-an-xrp-ledger-gateway.html#compliance-guidelines) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
 
 * [Requirements for Sending to XRP Ledger](become-an-xrp-ledger-gateway.html#requirements-for-sending-to-xrp-ledger)
 
 * [Requirements for Receiving from XRP Ledger](become-an-xrp-ledger-gateway.html#requirements-for-receiving-from-xrp-ledger)
 
-* [Gateway Precautions](become-an-xrp-ledger-gateway.html#precautions)
+* [Precautions](become-an-xrp-ledger-gateway.html#precautions)
 
 ### Partial Payments
 
@@ -79,9 +79,9 @@ To follow Ripple's recommended best practices, Alpha Exchange should create at l
 
     * If the regular key or signer list are compromised, the exchange can regain control of the cold wallet. However, some of a malicious actor's actions cannot easily be undone: <!-- STYLE_OVERRIDE: easily -->
 
-        * The malicious actor could issue currency in the XRP Ledger by using the cold wallet, but that currency should not be valued by anyone (unless the exchange explicitly stated it was also a gateway).
+        * The malicious actor could issue tokens in the XRP Ledger by using the cold wallet, but those tokens should not be valued by anyone (unless the exchange is also a token issuer).
 
-        * If a malicious actor sets the `asfRequireAuth` flag for the account, that cannot be unset, although this only relates to issuing currency and should not affect an exchange that is not also a gateway. Any other settings a malicious actor changes with a master key can be reverted.
+        * If a malicious actor enables the [Authorized Trust Lines](authorized-trust-lines.html) setting for the account, that cannot be unset, although this only relates to issuing tokens and should not affect an exchange that is not also an issuer. Any other settings a malicious actor changes with a master key can be reverted.
 
 * One or more [_hot wallets_](issuing-and-operational-addresses.html#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
 
