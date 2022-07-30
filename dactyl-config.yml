@@ -228,6 +228,15 @@ pages:
             - en
             - ja
 
+    # Redirect for rename from 'wallet server' to 'stock server'
+    -   name: Run rippled as a Stock Server
+        html: run-rippled-as-a-wallet-server.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: run-rippled-as-a-stock-server.html
+        targets:
+            - en
+
     -   name: Use Cases & Featured Projects
         template: page-uses.html.jinja
         html: uses.html
