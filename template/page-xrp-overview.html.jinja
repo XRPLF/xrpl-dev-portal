@@ -154,24 +154,6 @@
         <h5 class="longform mb-10">{% trans %}Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.{% endtrans %}</h5>
         <ul class="nav nav-grid-lg cols-of-4" id="wallets">
           <li class="nav-item nav-grid-head">
-            <h6 class="fs-4-5">{% trans %}Hardware Wallets{% endtrans %}</h6>
-          </li>
-          {% set hardwallets = [
-            { "href": "https://www.ledger.com/",
-              "id": "wallet-ledger",
-              "alt": _("Ledger"),
-              "imgclasses": "invertible-img" },
-            { "href": "https://trezor.io/",
-              "id": "wallet-trezor",
-              "alt": _("Trezor"),
-              "imgclasses": "invertible-img"},
-          ] %}
-          {% for wallet in hardwallets %}
-          <li class="nav-item">
-            <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100 {% if wallet.imgclasses %}{{wallet.imgclasses}}{% endif %}" id="{{wallet.id}}" alt="{{wallet.alt}}" /></a>
-          </li>
-          {% endfor %}
-          <li class="nav-item nav-grid-head">
             <h6 class="fs-4-5">{% trans %}Software Wallets{% endtrans %}</h6>
           </li>
           {% set softwallets = [
@@ -187,6 +169,24 @@
               "imgclasses": "invertible-img" },
           ] %}
           {% for wallet in softwallets %}
+          <li class="nav-item">
+            <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100 {% if wallet.imgclasses %}{{wallet.imgclasses}}{% endif %}" id="{{wallet.id}}" alt="{{wallet.alt}}" /></a>
+          </li>
+          {% endfor %}
+          <li class="nav-item nav-grid-head">
+            <h6 class="fs-4-5">{% trans %}Hardware Wallets{% endtrans %}</h6>
+          </li>
+          {% set hardwallets = [
+            { "href": "https://www.ledger.com/",
+              "id": "wallet-ledger",
+              "alt": _("Ledger"),
+              "imgclasses": "invertible-img" },
+            { "href": "https://trezor.io/",
+              "id": "wallet-trezor",
+              "alt": _("Trezor"),
+              "imgclasses": "invertible-img"},
+          ] %}
+          {% for wallet in hardwallets %}
           <li class="nav-item">
             <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100 {% if wallet.imgclasses %}{{wallet.imgclasses}}{% endif %}" id="{{wallet.id}}" alt="{{wallet.alt}}" /></a>
           </li>
