@@ -236,6 +236,7 @@ pages:
         redirect_url: run-rippled-as-a-stock-server.html
         targets:
             - en
+            - ja
 
     -   name: Use Cases & Featured Projects
         template: page-uses.html.jinja
