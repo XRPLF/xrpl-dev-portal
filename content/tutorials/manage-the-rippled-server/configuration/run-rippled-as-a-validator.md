@@ -44,7 +44,7 @@ Strive to have your validator always embody the following properties. Being a go
 
     A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes timely, make sure your validator meets the recommended [system requirements](system-requirements.html), which include a fast internet connection.
 
-Due to the need for consistent performance, it is not recommended to submit new transactions to, or query data from, a validator. A validator should be dedicated to participating in consensus.
+    It is possible to submit new transactions and query data using a validator, but heavy loads of API queries may make the validator less reliable at keeping up with consensus. If your API needs are light enough, then you can use a server for both purposes. Ideally, a validator should be dedicated to participating in consensus.
 
 - **Identified**
 
