@@ -236,7 +236,9 @@ pages:
         redirect_url: run-rippled-as-a-stock-server.html
         targets:
             - en
-            - ja
+        # This redirect needs to be added to the Japanese target *after*
+        # renaming the original file in that target and translating the changes
+        #    - ja
 
     -   name: Use Cases & Featured Projects
         template: page-uses.html.jinja
@@ -1786,7 +1788,7 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
+    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-stock-server.md
         targets:
             - en
 
