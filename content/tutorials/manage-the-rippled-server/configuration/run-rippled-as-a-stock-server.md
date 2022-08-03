@@ -24,7 +24,9 @@ To participate in the [consensus process](consensus.html) as a validator, [run r
 
 ## Install and run `rippled`
 
-For more information, see [Install `rippled`](install-rippled.html).
+The default package installation installs a stock server with a small amount of transaction history. For installation steps, see [Install `rippled`](install-rippled.html).
+
+After installation, you can adjust how much history your server stores at a time. For steps on how to do this, see [Configure Online Deletion](configure-online-deletion.html).
 
 ## Troubleshooting
 
