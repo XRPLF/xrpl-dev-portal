@@ -19,7 +19,7 @@ A stock server does all of the following:
 - Maintains a local copy of the complete shared global [ledger](ledgers.html)
 
 
-In order to participate in the [consensus process](consensus.html) as a validator, [run rippled as a validator](run-rippled-as-a-validator.html) instead.
+To participate in the [consensus process](consensus.html) as a validator, [run rippled as a validator](run-rippled-as-a-validator.html) instead.
 
 
 ## Install and run `rippled`
