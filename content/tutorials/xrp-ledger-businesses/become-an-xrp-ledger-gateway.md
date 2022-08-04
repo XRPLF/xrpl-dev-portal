@@ -51,7 +51,7 @@ Main article: [XRP](xrp.html).
 
 The XRP Ledger contains a [decentralized asset exchange](decentralized-exchange.html), where any user can place and fulfill bids to exchange XRP and tokens in any combination. [Cross-currency payments](cross-currency-payments.html) use the decentralized exchange to exchange currencies atomically when the transaction is executed. In this way, users who trade in the decentralized exchange provide the liquidity that makes cross-currency payments possible.
 
-Traders who hold a issuer's tokens can provide liquidity to other popular currencies, without the issuer needing to float a large reserve in various destination currencies. The issuer also does not need to take on the risk of holding a variety of different tokens and assets. However, a issuer _may_ still want to provide liquidity to XRP or other popular tokens at a baseline rate, especially when their token is new to the exchange. If you do provide liquidity, **use a different address for trading than your issuing address.**
+Traders who hold an issuer's tokens can provide liquidity to other popular currencies, without the issuer needing to float a large reserve in various destination currencies. The issuer also does not need to take on the risk of holding a variety of different tokens and assets. However, an issuer _may_ still want to provide liquidity to XRP or other popular tokens at a baseline rate, especially when their token is new to the exchange. If you do provide liquidity, **use a different address for trading than your issuing address.**
 
 Liquidity providers can use the [HTTP / WebSocket APIs](http-websocket-apis.html), [client libraries](client-libraries.html), or another application to access the distributed exchange. It may also help client applications to display information about your business if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
 
@@ -348,7 +348,7 @@ For more information, see [Authorized Trust Lines](authorized-trust-lines.html).
 
 Similarly, *Source Tags* indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to bounce the payment. When you bounce an incoming payment, use the Source Tag from the incoming payment as the Destination Tag of the outgoing (bounce) payment.
 
-You can generate a destination tag on-demand when a customer intends to send money to you. For greater customer privacy, you should consider that destination tag valid only for a payment with the expected amount, and bounce any other transactions that reuse the same destination tag.
+You can generate a destination tag on-demand when a customer intends to send money to you. For greater customer privacy, you should consider that destination tag valid only for that payment with the expected amount, and bounce or ignore any other transactions that reuse the same destination tag.
 
 [Enable the Require Destination Tag setting](require-destination-tags.html) on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should be credited when they send payments to you.
 
