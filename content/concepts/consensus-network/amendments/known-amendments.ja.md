@@ -16,6 +16,8 @@ labels:
 |:--------------------------------|:-----------|:------------------------------------|
 | [CryptoConditionsSuite][]       | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixNFTokenNegOffer][]          | v1.9.2     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
+| [NonFungibleTokensV1_1][]       | v1.9.2     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
 | [ExpandedSignerList][]          | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [fixNFTokenDirV1][]             | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1][]         | v1.9.0     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
@@ -433,6 +435,20 @@ This amendment fixes an off-by-one error that occurred in some corner cases when
 
 This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.
 
+
+## fixNFTokenNegOffer
+[fixNFTokenNegOffer]: #fixnftokennegoffer
+
+| Amendment ID                                                     | ステータス |
+|:-----------------------------------------------------------------|:---------|
+| 36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6 | 投票中 |
+
+<!-- TODO: translate description -->
+This amendment fixes a bug in the [NonFungibleTokensV1][] amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell an NFT for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.
+
+This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. To avoid bugs, all the NFT-related amendments should be enabled together using [NonFungibleTokensV1_1][].
+
+
 ## fixPayChanRecipientOwnerDir
 [fixPayChanRecipientOwnerDir]: #fixpaychanrecipientownerdir
 
@@ -634,6 +650,25 @@ It also adds 2 new ledger object types:
 Additionally, it modifies the [AccountRoot object][] type to add 3 new optional fields: `MintedNFTokens`, `BurnedNFTokens`, and `NFTokenMinter`.
 
 It also modifies the [AccountSet transaction][] type to allow you to set the `NFTokenMinter` field.
+
+
+## NonFungibleTokensV1_1
+[NonFungibleTokensV1_1]: #nonfungibletokensv1_1
+
+| Amendment ID                                                     | ステータス |
+|:-----------------------------------------------------------------|:---------|
+| 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 | 投票中 |
+
+<!-- TODO: translate description -->
+This amendment's only effect is to enable three other amendments at the same time:
+
+- [NonFungibleTokensV1][]
+- [fixNFTokenNegOffer][]
+- [fixNFTokenDirV1][]
+
+This ensures that the base NFT functionality and the related fixes all become enabled together, with no chance for the buggy functionality to become enabled without the fixes and no delay needed in between.
+
+Validators who wish to enable Non-Fungible Tokens (NFTs) on the XRP Ledger should vote in favor of this amendment and not the others.
 
 
 ## OwnerPaysFee
