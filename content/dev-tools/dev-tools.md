@@ -42,10 +42,6 @@ The following tools are maintained by the XRP Ledger community:
 
     Explore public ledger data including accounts' transaction history and known names.
 
-- **[Ledger Stream](https://ledger-stream-beta.xrplf.org/)**
-
-    Watch the [consensus process](consensus.html) occur in real time.
-
 - **[Token List](https://xumm.community/tokens)**
 
     See all [tokens issued](issued-currencies.html) in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.
