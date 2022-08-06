@@ -1,6 +1,6 @@
 .top-banner {
     height: 46px;
-    background: url(../img/backgrounds/bg-apex-banner-2.svg);
+    background: url(../img/backgrounds/bg-apex-banner-2.gif);
     background-position: center;
     background-size: cover;
     padding: 2px 0;
@@ -12,13 +12,13 @@
 
     @include media-breakpoint-up(md) {
         padding: 5px 8px;
-        background: url(../img/backgrounds/bg-apex-banner-2-md.svg);
+        background: url(../img/backgrounds/bg-apex-banner-2-md.gif);
         background-position: center;
         background-size: cover;
     }
 
     @include media-breakpoint-up(xl) {
-        background: url(../img/backgrounds/bg-apex-banner-2-lg.svg);
+        background: url(../img/backgrounds/bg-apex-banner-2-lg.gif);
         background-position: center;
         background-size: cover;
     }
@@ -104,30 +104,14 @@ $banner-top-offset: 146px;
 
 html.light {
     .top-banner {
-        color: #111112;
-
-        background: url(../img/backgrounds/lightmode/bg-apex-banner-2.svg);
-        background-position: center;
-        background-size: cover;
-
-        @include media-breakpoint-up(md) {
-            background: url(../img/backgrounds/lightmode/bg-apex-banner-2-md.svg);
-            background-position: center;
-            background-size: cover;
-        }
-    
-        @include media-breakpoint-up(xl) {
-            background: url(../img/backgrounds/lightmode/bg-apex-banner-2-lg.svg);
-            background-position: center;
-            background-size: cover;
-        }
 
         .btn-outline-secondary {
-            color: #111112;
+            color: #fff;
+            border-color: #fff;
             &:not(:disabled):not(.disabled):hover {
-                color: #fff;
-                background-color: #111112;
-                border-color: #111112;
+                color: #111112;
+                background-color: #fff;
+                border-color: #fff;
             }
         }
 
