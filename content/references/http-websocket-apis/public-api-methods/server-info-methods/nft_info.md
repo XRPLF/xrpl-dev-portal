@@ -6,7 +6,7 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 # nft_info
-[[Source]](https://github.com/XRPLF/clio/tree/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers "Source")
+[[Source]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp "Source")
 
 The `nft_info` command asks the Clio server for a human-readable version of information about [the NFT](non-fungible-tokens.html) being queried. 
 
@@ -149,7 +149,7 @@ The `info` object may have some arrangement of the following fields:
 | `nft_id`                            | String          | A unique identifier for the non-fungible token (NFT). |
 | `ledger_index`                      | Integer         | _(Omitted if `ledger_current_index` is provided instead)_ The [ledger index][] of the most recent ledger version where this NFT's state was changed. For example, when the NFT was minted, its ownership changed, or it was burned. The information returned contains whatever happened most recently compared to the input ledger index. |
 | `owner`                             | String          | The account ID which denotes the owner of this NFT at the above ledger index. |
-| `is_burned`                         | Boolean         | Returns `true` if this NFT is burned at this ledger, `false` otherwise. |
+| `is_burned`                         | Boolean         | When `true` i.e., NFT is burned at this ledger, this field returns the URI of the NFT if available or NULL if the URI is unavailable. Returns `false` if the NFT is not burned at this ledger. |
 | `flags `                            | Integer         | The flag set of this NFT. |
 | `transfer_fee`                      | Integer         | The transfer fee of this NFT. |
 | `issuer`                            | String          | The account ID which denotes the issuer of this NFT. |
