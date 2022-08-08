@@ -35,13 +35,6 @@ An example of the request format:
 }
 ```
 
-*Commandline*
-
-```sh
-#Syntax: server_info
-clio server_info
-```
-
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#server_info)
@@ -677,13 +670,13 @@ The `info` object may have some arrangement of the following fields:
 | `Field`                             | Type            | Description          |
 |:------------------------------------|:----------------|:---------------------|
 | `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
-| `rpc`                               | Object array    |   |
-| `rpc.*.started`                     | Number          |   |
-| `rpc.*.finished`                    | Number          |   |
-| `rpc.*.errored`                     | Number          |   |
-| `rpc.*.forwarded`                   | Number          |   |
-| `rpc.*.duration_us`                 | Number          | The number of microseconds taken to process the request. | 
-| `subscriptions`                     | Object          |   |
+| `rpc`                               | Object array    | Stats on each RPC handled by the Clip server since startup. |
+| `rpc.*.started`                     | Number          | Number of RPCs of this type that the Clio server has started processing since startup. |
+| `rpc.*.finished`                    | Number          | Number of RPCs of this type that the Clio server has finished processing since startup. |
+| `rpc.*.errored`                     | Number          | Number of RPCs of this type that have resulted in some sort of error since startup.  |
+| `rpc.*.forwarded`                   | Number          | Number of RPCs of this type that the Clio server has forwarded to a `rippled` P2P server since startup. |
+| `rpc.*.duration_us`                 | Number          | The total number of microseconds spent processing RPCs of this type since startup. | 
+| `subscriptions`                     | Object          | Number of current subscribers for each stream type.  |
 | `subscriptions.ledger`              |                 |   |
 | `subscriptions.transactions`        |                 |   |
 | `subscriptions.transactions_proposed` |               |   |
@@ -694,7 +687,7 @@ The `info` object may have some arrangement of the following fields:
 | `subscriptions.books`               |                 |   |
 | `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost) and the overall network's load factor. [Updated in: rippled 0.33.0][] |
 | `clio_version`                      | String          |  The version number of the running `Clio` server.  |
-| `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
+| `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from `rippled`. |
 | `rippled_version`                   | String          |  The version number of the running `rippled` server that the `Clio` server is connected to. |
 | `validated_ledger`                  | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validated_ledger.age`              | Number          | The time since the ledger was closed, in seconds. |
@@ -704,22 +697,22 @@ The `info` object may have some arrangement of the following fields:
 | `validated_ledger.reserve_inc_xrp`  | Number          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. |
 | `validated_ledger.seq`              | Number          | The [ledger index][] of the latest validated ledger. |
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list will expire, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. [Updated in: rippled 1.5.0][] |
-| `cache`                             | Object          |  Data retrieved from the `rippled` server is stored in efficiently in the `cache` object. Thus resulting in a higher throughput and sometimes lower latency for Clio API requests. |
-| `cache.size`                        | Number          |  Size of the `cache` object containing the validated ledger data retrieved from P2P `rippled` server. |
-| `cache.is_full`                     | Boolean         | This is true if the cache is full or not empty. |
+| `cache`                             | Object          | Information on Clio's state data cache. |
+| `cache.size`                        | Number          | Number of state data objects currently in the cache. |
+| `cache.is_full`                     | Boolean         | True if cache contains all state data for a specific ledger, false otherwise. Some RPCs, such as book_offers, process much faster when the cache is full. |
 | `cache.latest_ledger_seq`           | Number          | The [ledger index][] of the latest validated ledger stored in the cache. |
 | `etl`                               | Object          | The `rippled` sources (ETL sources) that the Clio server is connected to. |
 | `etl.etl_sources`                   | Object Array    | List the `rippled` sources (ETL sources) that the Clio server is connected to and extracts data from. |
 | `etl.etl_sources.validated_range`   | String          | The validated ledger range retrieved by the P2P `rippled` server. |
-| `etl.etl_sources.is_connected`      | Boolean         |  |
-| `etl.etl_sources.ip`                | Number          |  |
-| `etl.etl_sources.ws_port`           | Number          |  |
-| `etl.etl_sources.grpc_port`         | Number          | The gRPC connection port of the P2P `rippled` server that hte Clio server is connected to.  |
-| `etl.etl_sources.last_msg_age_seconds` | Number       |  |
-| `etl.is_writer`                     | Boolean         |  |
-| `etl.read_only`                     | Boolean         |  |
-| `etl.last_publish_age_seconds`      | Number          |  |
-| `validated`                         | Boolean         |  When true, this indicates that the response uses a ledger version that has been validated by consensus. In Clio, this is mostly true by default as Clio stores and returns validated ledger data. If a request was forwarded to `rippled` and the server returns current data, a missing or false value indicates that this ledger's data is not final. |
+| `etl.etl_sources.is_connected`      | Boolean         | True if Clio is connected to this source via websocket, false otherwise. A value of false here could indicate a networking issue, or that `rippled` is not running, amongst other things. |
+| `etl.etl_sources.ip`                | Number          | IP of the `rippled` server. |
+| `etl.etl_sources.ws_port`           | Number          | Websocket port of the `rippled` server. |
+| `etl.etl_sources.grpc_port`         | Number          | The gRPC connection port of the P2P `rippled` server that the Clio server is connected to. |
+| `etl.etl_sources.last_msg_age_seconds` | Number       | Total seconds that have elapsed since Clio last heard anything from `rippled`. This should not be higher than 8. |
+| `etl.is_writer`                     | Boolean         | True if this Clio server is currently writing data to the database, false otherwise. |
+| `etl.read_only`                     | Boolean         | True if this Clio server is configured in read-only mode, false otherwise. |
+| `etl.last_publish_age_seconds`      | Number          | Time in seconds that have elapsed since this Clio server last published a ledger. This should not be more than 8. |
+| `validated`                         | Boolean         |  When true, this indicates that the response uses a ledger version that has been validated by consensus. In Clio, this is always true as Clio stores and returns validated ledger data. If a request was forwarded to `rippled` and the server returns current data, a missing or false value indicates that this ledger's data is not final. |
 | `status`                            | String          |  Returns the status of the API request: `success` when the request completes successfully. |
 
 

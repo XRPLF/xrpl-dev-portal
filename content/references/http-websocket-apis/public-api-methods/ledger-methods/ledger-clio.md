@@ -73,14 +73,12 @@ The request can contain the following parameters:
 |:---------------|:---------------------------|:-------------------------------|
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]). |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `full`         | Boolean                    | _(Optional)_ **Admin required** If `true`, return full information on the entire ledger. Ignored if you did not specify a ledger version. Defaults to `false`. (Equivalent to enabling `transactions`, `accounts`, and `expand`.) **Caution:** This is a very large amount of data -- on the order of several hundred megabytes! |
-| `accounts`     | Boolean                    | _(Optional)_ **Admin required.** If `true`, return information on accounts in the ledger. Ignored if you did not specify a ledger version. Defaults to `false`. **Caution:** This returns a very large amount of data! |
 | `transactions` | Boolean                    | _(Optional)_ If `true`, return information on transactions in the specified ledger version. Defaults to `false`. Ignored if you did not specify a ledger version. |
 | `expand`       | Boolean                    | _(Optional)_ Provide full JSON-formatted information for transaction/account information instead of only hashes. Defaults to `false`. Ignored unless you request transactions, accounts, or both. |
 | `owner_funds`  | Boolean                    | _(Optional)_ If `true`, include `owner_funds` field in the metadata of OfferCreate transactions in the response. Defaults to `false`. Ignored unless transactions are included and `expand` is true. |
 | `binary`       | Boolean                    | _(Optional)_ If `true`, and `transactions` and `expand` are both also `true`, return transaction information in binary format (hexadecimal string) instead of JSON format. [New in: rippled 0.28.0][] |
 | `queue`        | Boolean                    | _(Optional)_ If `true`, and the command is requesting the `current` ledger, includes an array of [queued transactions](transaction-cost.html#queued-transactions) in the results.
-| `diff`         | Boolean                    | _(Optional)_ If `true`, returns all objects that were added, modified, or deleted as part of applicable transactions in the specified ledger.
+| `diff`         | Boolean                    | _(Optional)_ If `true`, returns all objects that were added, modified, or deleted as part of applying transactions in the specified ledger.
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -251,7 +249,7 @@ If the request specified `"diff: true`, the response has an object `diff`. The f
 | `Field`       | Value  | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
 | `object_id` | String | The object identifier. |
-| `Hashes` | Array | Array of hashes that were added, modified, or deleted as part of applying transactions in the ledger. |
+| `Hashes` | Object or Hex String | Depending on whether the request set `binary` to true or false, this field returns the contents of the object that was created, the new value of an object that was modified, or an empty string if the object was deleted. |
 
 ### Response When `diff` is `true`
 
