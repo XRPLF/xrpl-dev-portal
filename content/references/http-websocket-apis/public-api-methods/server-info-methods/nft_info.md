@@ -21,8 +21,7 @@ An example of the request format:
 {
   "id": 1,
   "command": "nft_info",
-  "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
-  "ledger_index": "current"
+  "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"
 }
 ```
 
@@ -33,18 +32,10 @@ An example of the request format:
     "method": "nft_info",
     "params": [
       {
-          "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
-          "ledger_index": "current"
+          "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"
       }
     ]
 }
-```
-
-*Commandline*
-
-```sh
-#Syntax: server_info
-clio nft_info 0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C current
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -56,8 +47,8 @@ The request contains the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) | 
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. If you do not specify this field, it defaults to `validated`. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. If you do not specify this field, it defaults to `validated`. Do not specify the `ledger_index` as `closed` or `current`. Specifying `current` forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers][]) | 
 
 ## Response Format
 
@@ -113,31 +104,6 @@ An example of a successful response:
 }
 ```
 
-*Commandline*
-
-```json
-{
-  "result": {
-    "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
-    "ledger_index": 2436210,
-    "owner": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
-    "is_burned": false,
-    "flags": 0,
-    "transfer_fee": 0,
-    "issuer": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
-    "nft_taxon": 0,
-    "nft_sequence": 12,
-    "uri": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi",
-    "validated": true,
-    "status": "success",
-    "warnings": [
-      "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request",
-      "This server may be out of date"
-    ]
-  }
-}
-```
-
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with a successful result containing an `info` object as its only field.
@@ -147,15 +113,15 @@ The `info` object may have some arrangement of the following fields:
 | `Field`                             | Type            | Description          |
 |:------------------------------------|:----------------|:---------------------|
 | `nft_id`                            | String          | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index`                      | Integer         | _(Omitted if `ledger_current_index` is provided instead)_ The [ledger index][] of the most recent ledger version where this NFT's state was changed. For example, when the NFT was minted, its ownership changed, or it was burned. The information returned contains whatever happened most recently compared to the input ledger index. |
+| `ledger_index`                      | Integer         | The [ledger index][] of the most recent ledger version where the state of this NFT was modified, as in the NFT was minted(created), changed ownership (traded), or burned (destroyed). The information returned contains whatever happened most recently compared to the requested ledger. |
 | `owner`                             | String          | The account ID which denotes the owner of this NFT at the above ledger index. |
-| `is_burned`                         | Boolean         | When `true` i.e., NFT is burned at this ledger, this field returns the URI of the NFT if available or NULL if the URI is unavailable. Returns `false` if the NFT is not burned at this ledger. |
+| `is_burned`                         | Boolean         | Returns `true` if the NFT is burned at this ledger, or `false` otherwise. |
 | `flags `                            | Integer         | The flag set of this NFT. |
-| `transfer_fee`                      | Integer         | The transfer fee of this NFT. |
+| `transfer_fee`                      | Integer         | The transfer fee of this NFT. See [NFTokenMint Fields](nftokenmint.html#nftokenmint-fields) for more information on transfer fees. |
 | `issuer`                            | String          | The account ID which denotes the issuer of this NFT. |
 | `nft_taxon`                         | Integer         | The NFT’s taxon. |
-|  `nft_sequence`                     | Integer         | The NFT’s sequence number. |
-| `uri`                               | String          | _(Omitted if the NFT is burned at this ledger.)_. This field is NULL if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT.
+| `nft_sequence`                     | Integer         | The NFT’s sequence number. |
+| `uri`                               | String          | _(Omitted if the NFT is burned at this ledger.)_. This field is NULL if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request `nft_info` for this token, specifying the `ledger_index` as the one previous to the index where this token was burned ({ledger_index-where-token-was-burned} - 1). |
 
 
 ## Possible Errors
