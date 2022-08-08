@@ -367,8 +367,8 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="specifying-without-amounts">Specifying Without Amounts<a aria-hidden="true" class="hover_anchor" href="#specifying-without-amounts"><i class="fa fa-link"></i></a></h3>
-<p>If you are specifying a token without an amount (typically for defining an order book in the <a href="decentralized-exchange.html">decentralized exchange</a>) you should specify it a a currency object, but omit the <code>value</code> field.</p>
-<p>If you are specifying XRP without an amount (typically for defining an order book) you should specify it as a JSON object with <em>only</em> a <code>currency</code> field. Never include an <code>issuer</code> field for XRP.</p>
+<p>If you are specifying a token without an amount (typically for defining an order book in the <a href="decentralized-exchange.html">decentralized exchange</a>) you should specify it as a currency object, but omit the <code>value</code> field.</p>
+<p>If you are specifying XRP without an amount (typically for defining an order book), you should specify it as a JSON object with <em>only</em> a <code>currency</code> field. Never include an <code>issuer</code> field for XRP.</p>
 <h2 id="string-numbers">String Numbers<a aria-hidden="true" class="hover_anchor" href="#string-numbers"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledger APIs generally use strings, rather than native JSON numbers, to represent numeric amounts of currency for both <a href="xrp.html">XRP</a> and <a href="tokens.html">tokens</a>. This protects against a loss of precision when using JSON parsers, which may automatically try to represent all JSON numbers in a floating-point format. Within the String value, the numbers are serialized in the same way as native JSON numbers:</p>
 <ul>
@@ -1215,7 +1215,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1313,7 +1313,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       

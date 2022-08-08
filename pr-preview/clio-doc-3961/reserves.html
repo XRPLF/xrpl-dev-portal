@@ -270,16 +270,19 @@
         <h1 id="reserves">Reserves<a aria-hidden="true" class="hover_anchor" href="#reserves"><i class="fa fa-link"></i></a></h1>
 <p>The XRP Ledger applies <em>reserve requirements</em>, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM.</p>
 <p>To have an account, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send that address enough XRP to meet the reserve requirement.</p>
-<p>The current minimum reserve requirement is <strong>10 XRP</strong>. (This is the cost of an address that owns no other objects in the ledger.) Each new <a href="accounts.html">account</a> must set aside this much XRP. Some of this XRP can be recovered by <a href="accounts.html#deletion-of-accounts">deleting the account</a>.</p>
-<p>The <a href="fee-voting.html">Fee Voting</a> process can change the reserve requirement if enough validators agree to new reserve settings.</p>
+<p>The reserve requirement changes from time to time due to the <a href="fee-voting.html">Fee Voting</a> process, where validators can agree to new reserve settings. On <a href="parallel-networks.html">Mainnet</a>, the current minimum reserve requirement is <strong>10 XRP</strong>. (This is the cost of an address that owns no other objects in the ledger.) Each new <a href="accounts.html">account</a> must set aside this much XRP. Some of this XRP can be recovered by <a href="accounts.html#deletion-of-accounts">deleting the account</a>.</p>
+<p>To determine the current minimum reserve requirement, use the <a href="server_info.html"><code>server_info</code> command</a> and take <code>validated_ledger.reserve_base_xrp</code>.</p>
 <h2 id="base-reserve-and-owner-reserve">Base Reserve and Owner Reserve<a aria-hidden="true" class="hover_anchor" href="#base-reserve-and-owner-reserve"><i class="fa fa-link"></i></a></h2>
-<p>The reserve requirement is divided into two parts:</p>
+<p>The reserve requirement has two parts:</p>
 <ul>
-<li>The <strong>Base Reserve</strong> is a minimum amount of XRP that is required for each address in the ledger. Currently, this is 10 XRP (<code>10000000</code> <a href="xrp.html#xrp-properties">drops</a>).</li>
-<li>The <strong>Owner Reserve</strong> is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 2 XRP (<code>2000000</code> <a href="xrp.html#xrp-properties">drops</a>) per item.</li>
+<li>The <strong>Base Reserve</strong> is a minimum amount of XRP that is required for each address in the ledger.</li>
+<li>The <strong>Owner Reserve</strong> is an increase to the reserve requirement for each object that the address owns in the ledger.</li>
 </ul>
 <h3 id="owner-reserves">Owner Reserves<a aria-hidden="true" class="hover_anchor" href="#owner-reserves"><i class="fa fa-link"></i></a></h3>
-<p>Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
+<p>Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. Each object increases the reserve requirement by the Owner Reserve. On Mainnet, this is currently 2 XRP (<code>2000000</code> <a href="xrp.html#xrp-properties">drops</a>) per item.</p>
+<p>When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
+<p>To retrieve the number of objects an account owns in the ledger, use the <a href="account_info.html">account_info method</a> and take <code>account_data.OwnerCount</code>. <code>OwnerCount</code> is one of the fields of the <a href="accountroot.html"><code>AccountRoot</code> object</a>. To look up reserve settings, use the <a href="server_info.html">server_info method</a>: the <code>validated_ledger.reserve_inc_xrp</code> is the owner reserve and the <code>validated_ledger.reserve_base_xrp</code> is the base reserve, both in decimal XRP. To get the values in integer drops of XRP instead, use the <a href="server_state.html">server_state method</a>.</p>
+<p>To calculate an address's Owner Reserve requirement, multiply <code>OwnerCount</code> by <code>reserve_inc_xrp</code>, then add <code>reserve_base_xrp</code>. <a href="build-a-desktop-wallet-in-python.html#codeblock-17">Here is a demonstration</a> of this calculation in Python.</p>
 <ul>
 <li><a href="offer.html">Offers</a> are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an <a href="offercancel.html">OfferCancel transaction</a>, or by sending an <a href="offercreate.html">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
 <li><a href="ripplestate.html">Trust lines</a> are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See <a href="ripplestate.html#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
@@ -303,6 +306,7 @@
 <li><a href="accountroot.html">AccountRoot Object</a></li>
 <li><a href="fee-voting.html">Fee Voting</a></li>
 <li><a href="setfee.html">SetFee pseudo-transaction</a></li>
+<li><a href="build-a-desktop-wallet-in-python.html#3-display-an-account">Tutorial: Calculate and display the reserve requirement (Python)</a></li>
 </ul>
 <!-- -->
 <!-- -->
@@ -1121,7 +1125,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1219,7 +1223,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       

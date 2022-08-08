@@ -314,7 +314,7 @@
 <p>See also:</p>
 <ul>
 <li>
-<p><a href="become-an-xrp-ledger-gateway.html#gateway-compliance">Gateway Compliance</a> — Gateways and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.</p>
+<p><a href="become-an-xrp-ledger-gateway.html#compliance-guidelines">Compliance Guidelines</a> — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.</p>
 </li>
 <li>
 <p><a href="become-an-xrp-ledger-gateway.html#requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger</a></p>
@@ -323,7 +323,7 @@
 <p><a href="become-an-xrp-ledger-gateway.html#requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger</a></p>
 </li>
 <li>
-<p><a href="become-an-xrp-ledger-gateway.html#precautions">Gateway Precautions</a></p>
+<p><a href="become-an-xrp-ledger-gateway.html#precautions">Precautions</a></p>
 </li>
 </ul>
 <h3 id="partial-payments">Partial Payments<a aria-hidden="true" class="hover_anchor" href="#partial-payments"><i class="fa fa-link"></i></a></h3>
@@ -353,10 +353,10 @@
 <p>If the regular key or signer list are compromised, the exchange can regain control of the cold wallet. However, some of a malicious actor's actions cannot easily be undone: <!-- STYLE_OVERRIDE: easily --></p>
 <ul>
 <li>
-<p>The malicious actor could issue currency in the XRP Ledger by using the cold wallet, but that currency should not be valued by anyone (unless the exchange explicitly stated it was also a gateway).</p>
+<p>The malicious actor could issue tokens in the XRP Ledger by using the cold wallet, but those tokens should not be valued by anyone (unless the exchange is also a token issuer).</p>
 </li>
 <li>
-<p>If a malicious actor sets the <code>asfRequireAuth</code> flag for the account, that cannot be unset, although this only relates to issuing currency and should not affect an exchange that is not also a gateway. Any other settings a malicious actor changes with a master key can be reverted.</p>
+<p>If a malicious actor enables the <a href="authorized-trust-lines.html">Authorized Trust Lines</a> setting for the account, that cannot be unset, although this only relates to issuing tokens and should not affect an exchange that is not also an issuer. Any other settings a malicious actor changes with a master key can be reverted.</p>
 </li>
 </ul>
 </li>
@@ -1701,7 +1701,7 @@ Off-Ledger Balances</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1799,7 +1799,7 @@ Off-Ledger Balances</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       

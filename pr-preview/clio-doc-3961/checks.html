@@ -290,7 +290,7 @@
 <p>Traditional paper checks allow people to transfer funds without immediately exchanging physical currency. XRP Ledger Checks allow people to exchange funds asynchronously using a process that is familiar to and accepted by the banking industry.</p>
 <p>XRP Ledger Checks also solve a problem that is unique to the XRP Ledger: they allow users to reject unwanted payments or accept only part of a payment. This is useful for institutions that need to be careful about accepting payments for compliance reasons.</p>
 <h3 id="use-case-payment-authorization">Use Case: Payment Authorization<a aria-hidden="true" class="hover_anchor" href="#use-case-payment-authorization"><i class="fa fa-link"></i></a></h3>
-<p><strong>Problem:</strong> To comply with regulations like <a href="become-an-xrp-ledger-gateway.html#gateway-compliance">BSA, KYC, AML, and CFT</a>, financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to know the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, tokens) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant cost and time delays to these institutions' compliance departments, including potential fines or penalties. <!-- SPELLING_IGNORE: cft --></p>
+<p><strong>Problem:</strong> To comply with regulations like <a href="become-an-xrp-ledger-gateway.html#compliance-guidelines">BSA, KYC, AML, and CFT</a>, financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to know the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, tokens) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant cost and time delays to these institutions' compliance departments, including potential fines or penalties. <!-- SPELLING_IGNORE: cft --></p>
 <p><strong>Solution:</strong> Institutions can enable <a href="depositauth.html">Deposit Authorization</a> on their XRP Ledger accounts by <a href="accountset.html">setting the <code>asfDepositAuth</code> flag in an <code>AccountSet</code> transaction</a>. This makes the account unable to receive Payment transactions. Accounts with Deposit Authorization enabled can only receive funds through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.</p>
 <h2 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h2>
 <p>Checks typically have the lifecycle described below.</p>
@@ -1162,7 +1162,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1260,7 +1260,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       

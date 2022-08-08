@@ -91,7 +91,7 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><p class="mb-0">XRPL上のネイティブAMMの提案を読む</p></span>
     <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
@@ -203,7 +203,7 @@
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
           <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索を閉じる</span></label>
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
@@ -232,7 +232,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/clio-doc-3961/content/concepts/consensus-network/amendments/known-amendments.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1440" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/clio-doc-3961/content/concepts/consensus-network/amendments/known-amendments.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1440" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -273,6 +273,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#fixcheckthreading">fixCheckThreading</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
@@ -287,6 +288,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ownerpaysfee">OwnerPaysFee</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#paychan">PayChan</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></li>
@@ -338,6 +340,16 @@
 <td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
 <td style="text-align: left;">未定</td>
 <td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></td>
+<td style="text-align: left;">v1.9.2</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.2.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></td>
+<td style="text-align: left;">v1.9.2</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.2.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#expandedsignerlist">ExpandedSignerList</a></td>
@@ -1110,6 +1122,24 @@
 <!-- TODO: translate description -->
 <p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> an <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
 <p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.</p>
+<h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6</td>
+<td style="text-align: left;">投票中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate description -->
+<p>This amendment fixes a bug in the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell an NFT for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.</p>
+<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, all the NFT-related amendments should be enabled together using <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
 <h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1385,6 +1415,30 @@ the latest ledger that the validator considers to be fully validated. The consen
 </ul>
 <p>Additionally, it modifies the <a href="accountroot.html">AccountRoot object</a> type to add 3 new optional fields: <code>MintedNFTokens</code>, <code>BurnedNFTokens</code>, and <code>NFTokenMinter</code>.</p>
 <p>It also modifies the <a href="accountset.html">AccountSet transaction</a> type to allow you to set the <code>NFTokenMinter</code> field.</p>
+<h2 id="nonfungibletokensv1_1">NonFungibleTokensV1_1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1_1"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627</td>
+<td style="text-align: left;">投票中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate description -->
+<p>This amendment's only effect is to enable three other amendments at the same time:</p>
+<ul>
+<li><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
+<li><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
+<li><a href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
+</ul>
+<p>This ensures that the base NFT functionality and the related fixes all become enabled together, with no chance for the buggy functionality to become enabled without the fixes and no delay needed in between.</p>
+<p>Validators who wish to enable Non-Fungible Tokens (NFTs) on the XRP Ledger should vote in favor of this amendment and not the others.</p>
 <h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -2381,7 +2435,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>

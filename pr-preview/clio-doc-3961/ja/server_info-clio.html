@@ -91,7 +91,7 @@
 
 <div class="top-banner fixed-top">
   <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">Read the proposal for a native AMM on XRPL</p></span>
+    <span><p class="mb-0">XRPL上のネイティブAMMの提案を読む</p></span>
     <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
   </div>
 </div>
@@ -203,7 +203,7 @@
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
           <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索を閉じる</span></label>
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
@@ -232,7 +232,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/clio-doc-3961/content/references/http-websocket-apis/public-api-methods/server-info-methods/server_info-clio.md?pr=/XRPLF/xrpl-dev-portal/pull/1440" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/clio-doc-3961/content/references/http-websocket-apis/public-api-methods/server-info-methods/server_info-clio.md?pr=/XRPLF/xrpl-dev-portal/pull/1440" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -269,7 +269,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="server_info-clio">server_info (Clio)<a aria-hidden="true" class="hover_anchor" href="#server_info-clio"><i class="fa fa-link"></i></a></h1>
@@ -277,7 +277,7 @@
 <p>The <code>server_info</code> command asks the <a href="the-clio-server.html">Clio server</a> for a human-readable version of various information about the Clio server being queried. For <code>rippled</code> servers, see <a href="server_info.html"><code>server_info</code> (<code>rippled</code>)</a> instead.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
@@ -292,10 +292,6 @@
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
-
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: server_info</span>
-clio server_info
-</code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#server_info">Try it!</a></p>
 <p>The request does not take any parameters.</p>
@@ -303,7 +299,7 @@ clio server_info
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">"complete_ledgers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19499132-19977628"</span><span class="p">,</span><span class="w"></span>
@@ -503,7 +499,7 @@ clio server_info
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w"></span>
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -705,7 +701,7 @@ clio server_info
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</span><span class="w"></span>
+<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</span><span class="w"></span>
 <span class="mi">2020-</span><span class="err">Mar</span><span class="mi">-24</span><span class="w"> </span><span class="mi">01</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mf">22.288484766</span><span class="w"> </span><span class="err">UTC</span><span class="w"> </span><span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span><span class="w"> </span><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span><span class="w"></span>
 
 <span class="p">{</span><span class="w"></span>
@@ -927,37 +923,37 @@ clio server_info
 <tr>
 <td style="text-align: left;"><code>rpc</code></td>
 <td style="text-align: left;">Object array</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Stats on each RPC handled by the Clip server since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.started</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Number of RPCs of this type that the Clio server has started processing since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.finished</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Number of RPCs of this type that the Clio server has finished processing since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.errored</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Number of RPCs of this type that have resulted in some sort of error since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.forwarded</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Number of RPCs of this type that the Clio server has forwarded to a <code>rippled</code> P2P server since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.duration_us</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">The number of microseconds taken to process the request.</td>
+<td style="text-align: left;">The total number of microseconds spent processing RPCs of this type since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>subscriptions</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Number of current subscribers for each stream type.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>subscriptions.ledger</code></td>
@@ -1012,7 +1008,7 @@ clio server_info
 <tr>
 <td style="text-align: left;"><code>validation_quorum</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations.</td>
+<td style="text-align: left;">Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from <code>rippled</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rippled_version</code></td>
@@ -1062,17 +1058,17 @@ clio server_info
 <tr>
 <td style="text-align: left;"><code>cache</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">Data retrieved from the <code>rippled</code> server is stored in efficiently in the <code>cache</code> object. Thus resulting in a higher throughput and sometimes lower latency for Clio API requests.</td>
+<td style="text-align: left;">Information on Clio's state data cache.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>cache.size</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Size of the <code>cache</code> object containing the validated ledger data retrieved from P2P <code>rippled</code> server.</td>
+<td style="text-align: left;">Number of state data objects currently in the cache.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>cache.is_full</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">This is true if the cache is full or not empty.</td>
+<td style="text-align: left;">True if cache contains all state data for a specific ledger, false otherwise. Some RPCs, such as book_offers, process much faster when the cache is full.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>cache.latest_ledger_seq</code></td>
@@ -1097,47 +1093,47 @@ clio server_info
 <tr>
 <td style="text-align: left;"><code>etl.etl_sources.is_connected</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">True if Clio is connected to this source via websocket, false otherwise. A value of false here could indicate a networking issue, or that <code>rippled</code> is not running, amongst other things.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>etl.etl_sources.ip</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">IP of the <code>rippled</code> server.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>etl.etl_sources.ws_port</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Websocket port of the <code>rippled</code> server.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>etl.etl_sources.grpc_port</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">The gRPC connection port of the P2P <code>rippled</code> server that hte Clio server is connected to.</td>
+<td style="text-align: left;">The gRPC connection port of the P2P <code>rippled</code> server that the Clio server is connected to.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>etl.etl_sources.last_msg_age_seconds</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Total seconds that have elapsed since Clio last heard anything from <code>rippled</code>. This should not be higher than 8.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>etl.is_writer</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">True if this Clio server is currently writing data to the database, false otherwise.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>etl.read_only</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">True if this Clio server is configured in read-only mode, false otherwise.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>etl.last_publish_age_seconds</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Time in seconds that have elapsed since this Clio server last published a ledger. This should not be more than 8.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">When true, this indicates that the response uses a ledger version that has been validated by consensus. In Clio, this is mostly true by default as Clio stores and returns validated ledger data. If a request was forwarded to <code>rippled</code> and the server returns current data, a missing or false value indicates that this ledger's data is not final.</td>
+<td style="text-align: left;">When true, this indicates that the response uses a ledger version that has been validated by consensus. In Clio, this is always true as Clio stores and returns validated ledger data. If a request was forwarded to <code>rippled</code> and the server returns current data, a missing or false value indicates that this ledger's data is not final.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>status</code></td>
@@ -1972,7 +1968,7 @@ clio server_info
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>

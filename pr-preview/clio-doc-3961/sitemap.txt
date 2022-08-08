@@ -1,6 +1,7 @@
 https://xrpl.org/index.html
 https://xrpl.org/xrp-ledger-overview.html
 https://xrpl.org/overview.html
+https://xrpl.org/run-rippled-as-a-wallet-server.html
 https://xrpl.org/uses.html
 https://xrpl.org/history.html
 https://xrpl.org/xrp-overview.html
@@ -159,7 +160,7 @@ https://xrpl.org/capacity-planning.html
 https://xrpl.org/rippled-1-3-migration-instructions.html
 https://xrpl.org/configure-rippled.html
 https://xrpl.org/run-rippled-as-a-validator.html
-https://xrpl.org/run-rippled-as-a-wallet-server.html
+https://xrpl.org/run-rippled-as-a-stock-server.html
 https://xrpl.org/configure-amendment-voting.html
 https://xrpl.org/configure-statsd.html
 https://xrpl.org/connect-your-rippled-to-the-xrp-test-net.html

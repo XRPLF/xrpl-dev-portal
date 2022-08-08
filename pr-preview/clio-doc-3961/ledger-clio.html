@@ -330,16 +330,6 @@ clio ledger
 <td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>full</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> <strong>Admin required</strong> If <code>true</code>, return full information on the entire ledger. Ignored if you did not specify a ledger version. Defaults to <code>false</code>. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) <strong>Caution:</strong> This is a very large amount of data -- on the order of several hundred megabytes!</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>accounts</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> <strong>Admin required.</strong> If <code>true</code>, return information on accounts in the ledger. Ignored if you did not specify a ledger version. Defaults to <code>false</code>. <strong>Caution:</strong> This returns a very large amount of data!</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>transactions</code></td>
 <td style="text-align: left;">Boolean</td>
 <td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return information on transactions in the specified ledger version. Defaults to <code>false</code>. Ignored if you did not specify a ledger version.</td>
@@ -367,7 +357,7 @@ clio ledger
 <tr>
 <td style="text-align: left;"><code>diff</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, returns all objects that were added, modified, or deleted as part of applicable transactions in the specified ledger.</td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, returns all objects that were added, modified, or deleted as part of applying transactions in the specified ledger.</td>
 </tr>
 </tbody>
 </table>
@@ -678,8 +668,8 @@ clio ledger
 </tr>
 <tr>
 <td style="text-align: left;"><code>Hashes</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">Array of hashes that were added, modified, or deleted as part of applying transactions in the ledger.</td>
+<td style="text-align: left;">Object or Hex String</td>
+<td style="text-align: left;">Depending on whether the request set <code>binary</code> to true or false, this field returns the contents of the object that was created, the new value of an object that was modified, or an empty string if the object was deleted.</td>
 </tr>
 </tbody>
 </table>
@@ -1811,7 +1801,7 @@ clio ledger
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1909,7 +1899,7 @@ clio ledger
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       

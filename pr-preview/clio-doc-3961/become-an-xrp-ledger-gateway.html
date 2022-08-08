@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Become an XRP Ledger Gateway - XRPL.org</title>
+    <title>Become a Stablecoin Issuer - XRPL.org</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Become an XRP Ledger Gateway | XRPL.org">
+    <meta property="og:title" content="Become a Stablecoin Issuer | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/become-an-xrp-ledger-gateway.html" />
-    <meta property="og:description" content="Gateways are the businesses that link the XRP Ledger to the rest of the world. This tutorial demonstrates how an existing online financial institution can expand to act as a gateway in the the XRP Ledger." />
-    <meta name="description" content="Gateways are the businesses that link the XRP Ledger to the rest of the world. This tutorial demonstrates how an existing online financial institution can expand to act as a gateway in the the XRP Ledger." />
+    <meta property="og:description" content="Stablecoin issuers link tokens in the XRP Ledger to assets in the outside world." />
+    <meta name="description" content="Stablecoin issuers link tokens in the XRP Ledger to assets in the outside world." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -242,16 +242,16 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#become-an-xrp-ledger-gateway">Become an XRP Ledger Gateway</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#gateways-explained">Gateways Explained</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#trust-lines-and-issued-currencies">Trust Lines and Issued Currencies</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#become-a-stablecoin-issuer">Become a Stablecoin Issuer</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#token-issuers-explained">Token Issuers Explained</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#trust-lines-and-tokens">Trust Lines and Tokens</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#xrp">XRP</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#liquidity-and-currency-exchange">Liquidity and Currency Exchange</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#suggested-business-practices">Suggested Business Practices</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#hot-and-cold-wallets">Hot and Cold Wallets</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fees-and-revenue-sources">Fees and Revenue Sources</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#choosing-fee-rates">Choosing Fee Rates</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#gateway-compliance">Gateway Compliance</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#compliance-guidelines">Compliance Guidelines</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#know-your-customer-kyc">Know Your Customer (KYC)</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#anti-money-laundering-aml-and-combating-the-financing-of-terrorism-cft">Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT)</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#source-of-funds">Source of Funds</a></li>
@@ -262,12 +262,12 @@
         <li class="nav-item level-3"><a class="nav-link" href="#guidance-on-virtual-currency-and-money-service-business">Guidance on Virtual Currency and Money Service Business</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#xrp-ledger-integration">XRP Ledger Integration</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#before-integration">Before Integration</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sending-from-gateway-to-the-xrp-ledger">Sending from Gateway to the XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#sending-into-the-xrp-ledger">Sending into the XRP Ledger</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sending-from-xrp-ledger-to-gateway">Sending from XRP Ledger to Gateway</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#sending-from-xrp-ledger">Sending from XRP Ledger</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#precautions">Precautions</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#trading-on-ripple">Trading on Ripple</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#trading-on-the-xrp-ledger">Trading on the XRP Ledger</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#freeze">Freeze</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#authorized-trust-lines">Authorized Trust Lines</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#source-and-destination-tags">Source and Destination Tags</a></li>
@@ -279,7 +279,6 @@
         <li class="nav-item level-2"><a class="nav-link" href="#default-ripple">Default Ripple</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#disallow-xrp">Disallow XRP</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#require-auth">Require Auth</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#enabling-require-auth">Enabling Require Auth</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#authorizing-trust-lines">Authorizing Trust Lines</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#robustly-monitoring-for-payments">Robustly Monitoring for Payments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#transfer-fees">Transfer Fees</a></li>
@@ -303,44 +302,45 @@
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
     <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
     <li class="active breadcrumb-item"><a href="xrp-ledger-businesses.html">XRP Ledger Businesses</a></li>
-    <li class="active breadcrumb-item">Become an XRP Ledger Gateway</li>
+    <li class="active breadcrumb-item">Become a Stablecoin Issuer</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="become-an-xrp-ledger-gateway">Become an XRP Ledger Gateway<a aria-hidden="true" class="hover_anchor" href="#become-an-xrp-ledger-gateway"><i class="fa fa-link"></i></a></h1>
-<p><strong>Gateways</strong> are the businesses that link the XRP Ledger to the rest of the world. An existing online financial institution can expand to act as a gateway in the the XRP Ledger. By becoming an XRP Ledger gateway, a financial services business can gain several advantages:</p>
+        <h1 id="become-a-stablecoin-issuer">Become a Stablecoin Issuer<a aria-hidden="true" class="hover_anchor" href="#become-a-stablecoin-issuer"><i class="fa fa-link"></i></a></h1>
+<p><strong>Stablecoin issuers</strong> are businesses that link <a href="tokens.html">tokens</a> in the XRP Ledger to assets in the outside world. An existing online financial institution can expand to issue a stablecoin in the the XRP Ledger. By doing so, the business can gain several advantages:</p>
 <ul>
 <li>By enabling its customers to send and receive value in the XRP Ledger, the business increases its value proposition to customers.</li>
 <li>By accepting payments from the XRP Ledger, the business increases the number of ways that customers can fund accounts at its business, even internationally.</li>
 <li>The business can use XRP Ledger-related services as a new source of revenue.</li>
 </ul>
-<p>This document explains the concepts and steps necessary to become an XRP Ledger gateway. In this document, we use a fictional online currency exchange named "ACME" and its customers as examples, to show how ACME can expand its business to include being an XRP Ledger gateway.</p>
-<h2 id="gateways-explained">Gateways Explained<a aria-hidden="true" class="hover_anchor" href="#gateways-explained"><i class="fa fa-link"></i></a></h2>
-<p>Gateways are businesses that provide a way for money and other forms of value to move in and out of the XRP Ledger. There are three major models that gateways can follow, with different purposes and modes of operation.</p>
+<p>This guide explains the concepts and steps necessary to issue a stablecoin in the XRP Ledger, using a fictional online currency exchange named "ACME" and its customers as examples.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Stablecoin issuers on the XRP Ledger were formerly called "gateways".</p>
+<h2 id="token-issuers-explained">Token Issuers Explained<a aria-hidden="true" class="hover_anchor" href="#token-issuers-explained"><i class="fa fa-link"></i></a></h2>
+<p>There are several related business models that provide a way for money and other forms of value to move in and out of the XRP Ledger. Most of these business models fall into one of the following categories:</p>
 <ul>
-<li>An <strong>Issuing Gateway</strong> receives money (or other assets of value) outside of the XRP Ledger, and issues currency in the XRP Ledger. This provides a direct way for customers to get money in and out of the XRP Ledger. All currencies in the XRP Ledger, except for XRP, are tied to a specific issuing gateway.</li>
-<li>A <strong>Private Exchange</strong> holds XRP and lets its customers buy and sell that XRP in its own system. Most cryptocurrencies rely on private exchanges to provide a market for the cryptocurrency, but the XRP Ledger has a currency exchange built into the protocol itself.</li>
-<li><strong>Merchants</strong> accept payment within the XRP Ledger in exchange for goods and services in the outside world. Currently, Ripple (the company) does not provide support for merchant operations using the XRP Ledger.</li>
+<li>A <strong>Token Issuer</strong> receives money (or other assets of value) outside of the XRP Ledger, and issues tokens in the XRP Ledger representing those assets. This provides a direct way for customers to get money in and out of the XRP Ledger. All currencies in the XRP Ledger, except for XRP, are tokens tied to a specific issuer.</li>
+<li>A <strong>Private Exchange</strong> holds XRP and lets its customers buy and sell that XRP in its own system. Most cryptocurrencies rely on private exchanges to provide a market for the cryptocurrency, but the XRP Ledger has <a href="decentralized-exchange.html">a currency exchange built into the protocol itself</a>.</li>
+<li><strong>Merchants</strong> accept payment within the XRP Ledger in exchange for goods and services in the outside world.</li>
 </ul>
-<!--_ -->
-<p>This guide focuses on running an <strong>issuing gateway</strong>.</p>
-<h3 id="trust-lines-and-issued-currencies">Trust Lines and Issued Currencies<a aria-hidden="true" class="hover_anchor" href="#trust-lines-and-issued-currencies"><i class="fa fa-link"></i></a></h3>
-<p>All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as <em>issued currencies</em>, which are digital balances that represent currency or assets of value held by an issuer. The XRP Ledger has a system of directional accounting relationships, called <em>trust lines</em>, to make sure that users only hold issued currencies from counterparties they trust.</p>
+<p>This guide focuses on running a <strong>token issuer</strong>.</p>
+<h3 id="trust-lines-and-tokens">Trust Lines and Tokens<a aria-hidden="true" class="hover_anchor" href="#trust-lines-and-tokens"><i class="fa fa-link"></i></a></h3>
+<p>All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as <em>tokens</em>, which are tied to a specific issuer who defines their meaning. The XRP Ledger has a system of directional accounting relationships, called <em>trust lines</em>, to make sure that users can only hold and receive the tokens they want.</p>
+<p>Tokens issued that are backed by balances in some outside system are sometimes called <em>stablecoins</em>. This includes tokens backed by fiat currency in a bank account, by cryptocurrencies on another blockchain, or other types of assets and forms of value. The term "stablecoin" comes from the idea that the exchange rate between the token and the asset it represents should be "stable" at 1:1 (minus fees).</p>
 <p>Main article: <a href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>.</p>
 <h3 id="xrp">XRP<a aria-hidden="true" class="hover_anchor" href="#xrp"><i class="fa fa-link"></i></a></h3>
-<p><a href="xrp.html"><strong>XRP</strong></a> is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the <a href="xrp-overview.html">XRP Overview</a>.</p>
-<p>Issuing gateways do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the <a href="reserves.html">reserve requirements</a> and pay the <a href="transaction-cost.html">cost of sending transactions</a> through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy gateway.</p>
+<p><a href="xrp.html"><strong>XRP</strong></a> is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other. This helps make XRP a convenient bridge currency. For more information on XRP, see the <a href="xrp-overview.html">XRP Overview</a>.</p>
+<p>Token issuers do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the <a href="reserves.html">reserve requirements</a> and pay the <a href="transaction-cost.html">cost of sending transactions</a> through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy issuer.</p>
 <p>Main article: <a href="xrp.html">XRP</a>.</p>
 <h3 id="liquidity-and-currency-exchange">Liquidity and Currency Exchange<a aria-hidden="true" class="hover_anchor" href="#liquidity-and-currency-exchange"><i class="fa fa-link"></i></a></h3>
-<p>The XRP Ledger contains a <a href="decentralized-exchange.html">decentralized asset exchange</a>, where any user can place and fulfill bids to exchange XRP and issued currencies in any combination. <a href="cross-currency-payments.html">Cross-currency payments</a> use the decentralized exchange to convert currency atomically when the transaction is executed. In this way, users who choose make offers in the decentralized exchange provide the liquidity that makes it possible to trade issued currencies.</p>
-<p>Currency traders who hold a gateway's issued currencies can provide liquidity to other popular currencies, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of holding a variety of currencies. However, a gateway <em>may</em> still want to provide liquidity to XRP or other popular currencies at a baseline rate, especially when the gateway is new to the exchange. If you do provide liquidity, <strong>use a different address for trading than your issuing address.</strong></p>
-<p>Liquidity providers can use the <a href="http-websocket-apis.html">HTTP / WebSocket APIs</a>, <a href="client-libraries.html">client libraries</a>, or another application to access the distributed exchange. It may also help client applications to surface information about your gateway to clients if you provide an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>.</p>
+<p>The XRP Ledger contains a <a href="decentralized-exchange.html">decentralized asset exchange</a>, where any user can place and fulfill bids to exchange XRP and tokens in any combination. <a href="cross-currency-payments.html">Cross-currency payments</a> use the decentralized exchange to exchange currencies atomically when the transaction is executed. In this way, users who trade in the decentralized exchange provide the liquidity that makes cross-currency payments possible.</p>
+<p>Traders who hold an issuer's tokens can provide liquidity to other popular currencies, without the issuer needing to float a large reserve in various destination currencies. The issuer also does not need to take on the risk of holding a variety of different tokens and assets. However, an issuer <em>may</em> still want to provide liquidity to XRP or other popular tokens at a baseline rate, especially when their token is new to the exchange. If you do provide liquidity, <strong>use a different address for trading than your issuing address.</strong></p>
+<p>Liquidity providers can use the <a href="http-websocket-apis.html">HTTP / WebSocket APIs</a>, <a href="client-libraries.html">client libraries</a>, or another application to access the distributed exchange. It may also help client applications to display information about your business if you provide an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>.</p>
 <h2 id="suggested-business-practices">Suggested Business Practices<a aria-hidden="true" class="hover_anchor" href="#suggested-business-practices"><i class="fa fa-link"></i></a></h2>
-<p>The value of a gateway's issued currency in the XRP Ledger comes directly from the trust that customers can redeem the issued balance from the gateway when needed. We recommend the following precautions to reduce the risk of business interruptions:</p>
+<p>The value of a stablecoin issuer's tokens in the XRP Ledger comes directly from the trust that customers can redeem the tokens when needed. To reduce the risk of business interruptions, you should follow these best practices:</p>
 <ul>
 <li>Use separate <a href="issuing-and-operational-addresses.html">Issuing and Operational Addresses</a> to limit your risk profile on the network.</li>
 <li>Follow anti-money-laundering regulations for your jurisdiction, such as the <a class="external-link" href="http://en.wikipedia.org/wiki/Bank_Secrecy_Act" target="_blank">Bank Secrecy Act <i aria-hidden="true" class="fa fa-external-link"></i></a>. This usually includes requirements to collect <a class="external-link" href="http://en.wikipedia.org/wiki/Know_your_customer" target="_blank">"Know-Your-Customer" (KYC) information <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
-<li>Read and stay up-to-date with <a href="#gateway-bulletins">Gateway Bulletins</a>, which provide news and suggestions for XRP Ledger gateways.</li>
+<li>Complete the XRP Ledger Foundation's <a class="external-link" href="https://foundation.xrpl.org/token-assessment-framework/" target="_blank">token issuer self-assessment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 <li>Publicize all your policies and fees.</li>
 </ul>
 <h3 id="hot-and-cold-wallets">Hot and Cold Wallets<a aria-hidden="true" class="hover_anchor" href="#hot-and-cold-wallets"><i class="fa fa-link"></i></a></h3>
@@ -353,18 +353,18 @@
 <!-- -->
 <p>Main article: <a href="issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></p>
 <h2 id="fees-and-revenue-sources">Fees and Revenue Sources<a aria-hidden="true" class="hover_anchor" href="#fees-and-revenue-sources"><i class="fa fa-link"></i></a></h2>
-<p>There are several ways in which a gateway can seek to profit from XRP Ledger integration. These can include:</p>
+<p>There are several ways in which an issuer can seek to profit from XRP Ledger integration. These can include:</p>
 <ul>
-<li>Withdrawal and Deposit fees. Gateways typically charge a small fee (such as 1%) for the service of adding or removing money from the XRP Ledger. You have the power to determine the rate you credit people when they move money onto and off of the XRP Ledger through your gateway.</li>
-<li>Transfer fees. You can set a percentage fee to charge automatically when customers send each other issued currencies created by your issuing address. This amount is debited from the XRP Ledger, decreasing your obligation each time your issued currencies change hands. See <a href="#transfer-fees">Transfer Fees</a> for details.</li>
+<li>Withdrawal and Deposit fees. Issuers typically charge a small fee (such as 1%) for the service of adding or removing money from the XRP Ledger. You have the power to determine the rate you credit people when they move money onto and off of the XRP Ledger through your tokens.</li>
+<li>Transfer fees. You can set a percentage fee to charge automatically when customers send each other tokens that you issued. This amount is debited from the XRP Ledger, decreasing your obligation each time your tokens change hands. See <a href="#transfer-fees">Transfer Fees</a> for details.</li>
 <li>Indirect revenue from value added. XRP Ledger integration can provide valuable functionality for your customers that distinguishes your business from your competitors.</li>
 <li>Interest on XRP Ledger-backed funds. You can keep the collateral for the funds you issue in XRP Ledger in a bank account that earns interest. Make sure you can always access enough funds to service customer withdrawals.</li>
-<li><a href="#liquidity-and-currency-exchange">Financial Exchange</a>. A gateway can also make offers to buy and sell its issued currencies for other issued currencies in the XRP Ledger, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)</li>
+<li><a href="#liquidity-and-currency-exchange">Financial Exchange</a>. You also make offers to buy and sell your tokens in the XRP Ledger's decentralized exchange, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)</li>
 </ul>
 <h3 id="choosing-fee-rates">Choosing Fee Rates<a aria-hidden="true" class="hover_anchor" href="#choosing-fee-rates"><i class="fa fa-link"></i></a></h3>
-<p>Fees imposed by gateways are optional. Higher fees earn more revenue when a gateway's services are used. On the other hand, high fees discourage customers from using your services. Consider the fees that are charged by other gateways, especially ones issuing similar currencies, as well as traditional payment systems outside of the XRP Ledger, such as wire fees. Choosing the right fee structure is a matter of balancing your pricing with what the market is willing to pay.</p>
-<h2 id="gateway-compliance">Gateway Compliance<a aria-hidden="true" class="hover_anchor" href="#gateway-compliance"><i class="fa fa-link"></i></a></h2>
-<p>Gateways are responsible for complying with local regulations and reporting to the appropriate agencies. Regulations vary by country and state, but may include the reporting and compliance requirements described in the following sections.</p>
+<p>Fees on tokens are optional. Higher fees earn more revenue when those tokens are used. On the other hand, high fees discourage customers from using your services. Consider the fees that are charged by other issuers, especially others with tokens backed by the same type of assets, as well as traditional payment systems outside of the XRP Ledger, such as wire fees. Choosing the right fee structure is a matter of balancing your pricing with what the market is willing to pay.</p>
+<h2 id="compliance-guidelines">Compliance Guidelines<a aria-hidden="true" class="hover_anchor" href="#compliance-guidelines"><i class="fa fa-link"></i></a></h2>
+<p>Token issuers are responsible for complying with local regulations and reporting to the appropriate agencies. Regulations vary by country and state, but may include the reporting and compliance requirements described in the following sections. Before issuing a token, you should seek professional legal advice on the requirements for your jurisdiction and use case. The following resources may be useful background reading.</p>
 <h3 id="know-your-customer-kyc">Know Your Customer (KYC)<a aria-hidden="true" class="hover_anchor" href="#know-your-customer-kyc"><i class="fa fa-link"></i></a></h3>
 <p>Know Your Customer (KYC) refers to due diligence activities conducted by a financial institution to determine and verify the identity of its customers to prevent use of the institution for criminal activity. Criminal activity in financial terms may include money laundering, terrorist financing, financial fraud, and identity theft. Customers may be individuals, intermediaries, or businesses.</p>
 <p>The KYC process generally aims to:</p>
@@ -383,7 +383,7 @@
 <p>See also:</p>
 <ul>
 <li>
-<p><a class="external-link" href="https://bsaaml.ffiec.gov/manual/RegulatoryRequirements/01" target="_blank">Customer Identification Program (USA FFIEC) <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://bsaaml.ffiec.gov/manual/Introduction/01" target="_blank">(USA) Bank Secrecy Act / Anti-Money Laundering Examination Manual <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 <li>
 <p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">The Non-US Standard on KYC set by the Financial Action Task Force (FATF) <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
@@ -503,8 +503,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="sending-from-gateway-to-the-xrp-ledger">Sending from Gateway to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#sending-from-gateway-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
-<p>XRP Ledger payments can automatically bridge between currencies, but an issuing gateway normally only sends single-currency payments that go directly to customers. This means debiting a customer's current balance in your system, and then sending the equivalent amount of issued currencies in the XRP Ledger to the customer's XRP Ledger address.</p>
+<h2 id="sending-into-the-xrp-ledger">Sending into the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#sending-into-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledger payments can automatically bridge between currencies, but an issuer normally only sends single-currency payments that go directly to customers. This means debiting a customer's current balance in your system, and then sending the equivalent amount of tokens in the XRP Ledger to the customer's XRP Ledger address.</p>
 <p>An example flow for a payment into the XRP Ledger:</p>
 <ol>
 <li>Alice asks to send €3 of her ACME balance into the XRP Ledger.</li>
@@ -520,14 +520,14 @@
 <h3 id="requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#requirements-for-sending-to-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>There are several prerequisites that ACME must meet for this to happen:</p>
 <ul>
-<li>ACME sets aside money that is issued in the XRP Ledger. ACME can query the XRP Ledger to see who holds its issued currencies at any time. There are several ways ACME may do this:<ul>
+<li>ACME sets aside money that is issued in the XRP Ledger. ACME can query the XRP Ledger to see who holds its tokens at any time. There are several ways ACME may do this:<ul>
 <li>ACME may create a XRP Ledger collateral account in ACME's system of record.</li>
 <li>ACME can store the funds allocated to the XRP Ledger in a separate bank account.</li>
-<li>If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the gateway is solvent.</li>
+<li>If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the issuer is solvent.</li>
 </ul>
 </li>
-<li>ACME must control an address in the XRP Ledger. Ripple's best practices recommend using a separate issuing address and operational address. See <a href="issuing-and-operational-addresses.html">Issuing and Operational Addresses</a> for details.<ul>
-<li>ACME must enable the <a href="#default-ripple">Default Ripple Flag</a> on its issuing address for customers to send and receive its issued currencies.</li>
+<li>ACME should control two separate XRP Ledger addresses. See <a href="issuing-and-operational-addresses.html">Issuing and Operational Addresses</a> for details.<ul>
+<li>ACME must enable the <a href="#default-ripple">Default Ripple Flag</a> on its issuing address for customers to send and receive its tokens.</li>
 </ul>
 </li>
 <li>Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.<ul>
@@ -540,14 +540,14 @@
 </li>
 </ul>
 <p>See <a href="#sending-payments-to-customers">Sending Payments to Customers</a> for an example of how to send payments into the XRP Ledger.</p>
-<h2 id="sending-from-xrp-ledger-to-gateway">Sending from XRP Ledger to Gateway<a aria-hidden="true" class="hover_anchor" href="#sending-from-xrp-ledger-to-gateway"><i class="fa fa-link"></i></a></h2>
-<p>A payment out of the XRP Ledger means the Gateway receives a payment in the XRP Ledger, and credits a user in the gateway's system of record.</p>
+<h2 id="sending-from-xrp-ledger">Sending from XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#sending-from-xrp-ledger"><i class="fa fa-link"></i></a></h2>
+<p>A payment out of the XRP Ledger means the issuer receives a payment in the XRP Ledger, and credits a user in the issuer's system of record.</p>
 <p>An example flow of a payment out of the XRP Ledger:</p>
 <ol>
 <li>Bob sends an XRP Ledger transaction of €1 to ACME's issuing address.</li>
 <li>In ACME's system of record, ACME credits Bob's balance €1.</li>
 </ol>
-<p>Payments going from the XRP Ledger to a gateway can be single-currency or cross-currency payments. The gateway's issuing address can only receive issued currencies it created (or XRP).</p>
+<p>Payments going from the XRP Ledger to an issuer can be single-currency or cross-currency payments. An issuing address can only receive payments in XRP or in tokens that it previously issued.</p>
 <h3 id="requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#requirements-for-receiving-from-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>In addition to the <a href="#requirements-for-sending-to-xrp-ledger">requirements for sending into the XRP Ledger</a>, there are several prerequisites that ACME must meet to process payments coming from the XRP Ledger:</p>
 <ul>
@@ -559,12 +559,12 @@
 </li>
 </ul>
 <h2 id="precautions">Precautions<a aria-hidden="true" class="hover_anchor" href="#precautions"><i class="fa fa-link"></i></a></h2>
-<p>Processing payments to and from the XRP Ledger naturally comes with some risks, so a gateway should be sure to take care in implementing these processes. We recommend the following precautions:</p>
+<p>Processing payments to and from the XRP Ledger naturally comes with some risks, so an issuer should be sure to take care in implementing these processes. We recommend the following precautions:</p>
 <ul>
-<li>Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving issued currencies in the XRP Ledger.</li>
+<li>Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving tokens in the XRP Ledger.</li>
 <li>When sending into the XRP Ledger, specify the issuing address as the issuer of the currency. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.</li>
 <li>Before sending a payment into the XRP Ledger, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any <a href="#transfer-fees">transfer fee</a> you have set.</li>
-<li>Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.</li>
+<li>Before processing a payment out of the XRP Ledger, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.</li>
 <li>Follow the guidelines for <a href="#reliable-transaction-submission">reliable transaction submission</a> when sending XRP Ledger transactions.</li>
 <li><a href="#robustly-monitoring-for-payments">Robustly monitor for incoming payments</a>, and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a <a href="partial-payments.html">partial payment</a>.</li>
 <li>Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.</li>
@@ -576,13 +576,13 @@
 </li>
 <li>Monitor for suspicious or abusive behavior. For example, a user could repeatedly send funds into and out of the XRP Ledger, as a denial of service attack that effectively empties an operational address's balance. Suspend customers whose addresses are involved in suspicious behavior by not processing their XRP Ledger payments.</li>
 </ul>
-<h2 id="trading-on-ripple">Trading on Ripple<a aria-hidden="true" class="hover_anchor" href="#trading-on-ripple"><i class="fa fa-link"></i></a></h2>
-<p>After the issued currencies have been created in the XRP Ledger, they can be freely transferred and traded by XRP Ledger users. There are several consequences of this situation:</p>
+<h2 id="trading-on-the-xrp-ledger">Trading on the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#trading-on-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
+<p>After the tokens have been created in the XRP Ledger, they can be freely transferred and traded by XRP Ledger users. There are several consequences of this situation:</p>
 <ul>
-<li>Anyone can buy/sell EUR.ACME on Ripple. If ACME issues multiple currencies on Ripple, a separate trust line is necessary for each.<ul>
+<li>Anyone can buy/sell EUR.ACME on the XRP Ledger. If ACME issues multiple tokens, a separate trust line is necessary for each.<ul>
 <li>This includes XRP Ledger users who do not have an account in ACME Exchange's systems. To withdraw the funds successfully from ACME, users still have to register with ACME.</li>
 <li>Optionally, ACME uses the <a href="#authorized-trust-lines">Authorized Trust Lines</a> feature to limit who can hold EUR.ACME in the XRP Ledger.</li>
-<li>If ACME determines that a customer has acted in bad faith, ACME can <a href="#freeze">Freeze</a> that user's accounting relationships to ACME in the XRP Ledger, so that the user can no longer trade in the gateway's issued currencies.</li>
+<li>If ACME determines that a customer has acted in bad faith, ACME can <a href="#freeze">Freeze</a> that user's accounting relationships to ACME in the XRP Ledger, so that the user can no longer trade in the issuer's tokens.</li>
 </ul>
 </li>
 <li>XRP Ledger users trading and sending EUR.ACME to one another requires no intervention by ACME.</li>
@@ -591,24 +591,24 @@
 <p>The following diagram depicts an XRP Ledger payment sending 2 EUR.ACME from Alice to Charlie. ACME can query the XRP Ledger to see updates to its balances any time after the transaction has occurred:</p>
 <p><img alt="Diagram: Alice's sends 2 EUR.ACME from her trust line to Charlie's" src="img/e2g-03.png"/></p>
 <h2 id="freeze">Freeze<a aria-hidden="true" class="hover_anchor" href="#freeze"><i class="fa fa-link"></i></a></h2>
-<p>A gateway can freeze accounting relationships in the XRP Ledger to meet regulatory requirements:</p>
+<p>An issuer can freeze accounting relationships in the XRP Ledger to meet regulatory requirements:</p>
 <ul>
-<li>Gateways can freeze individual accounting relationships, in case a customer address shows suspicious activity or violates a gateway's terms of use.</li>
-<li>Gateways can freeze all accounting relationships to their issuing address, in case of a major security compromise or for migrating to a new issuing address.</li>
-<li>Furthermore, gateways can permanently opt out of their ability to freeze accounting relationships. This allows a gateway to assure its customers that it will continue to provide "physical-money-like" services. <!-- STYLE_OVERRIDE: will --></li>
+<li>Issuers can freeze individual accounting relationships, in case a customer address shows suspicious activity or violates a issuer's terms of use.</li>
+<li>Issuers can freeze all tokens they issue, in case of a major security compromise or for migrating to a new issuing address.</li>
+<li>Furthermore, issuers can permanently opt out of their ability to freeze accounting relationships. This allows an issuer to assure its customers that it will continue to provide "physical-money-like" services. <!-- STYLE_OVERRIDE: will --></li>
 </ul>
 <p>For more information, see the <a href="freezes.html">Freeze article</a>.</p>
 <h2 id="authorized-trust-lines">Authorized Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorized-trust-lines"><i class="fa fa-link"></i></a></h2>
-<p>The XRP Ledger's Authorized Trust Lines feature (formerly called "Authorized Accounts") enables a gateway to limit who can hold that gateway's issued currencies, so that unknown XRP Ledger addresses cannot hold the currency the gateway issues. Ripple feels this is <em>not necessary</em> in most cases, since gateways have full control over the process of redeeming XRP Ledger balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)</p>
+<p>The XRP Ledger's Authorized Trust Lines feature (formerly called "Authorized Accounts") enables an issuer to limit who can hold that issuer's tokens, so that unknown XRP Ledger addresses cannot hold the tokens.</p>
 <p>For more information, see <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
 <h2 id="source-and-destination-tags">Source and Destination Tags<a aria-hidden="true" class="hover_anchor" href="#source-and-destination-tags"><i class="fa fa-link"></i></a></h2>
-<p><em>Destination Tags</em> are a feature of XRP Ledger payments can be used to indicate the beneficiary or destination for a payment. For example, an XRP Ledger payment to a gateway may include a destination tag to indicate which customer should be credited for the payment. A gateway should keep a mapping of destination tags to accounts in the gateway's system of record.</p>
+<p><em>Destination Tags</em> are a feature of XRP Ledger payments can be used to indicate the beneficiary or destination for a payment. For example, an XRP Ledger payment to an issuer may include a destination tag to indicate which customer should be credited for the payment. An issuer should keep a mapping of destination tags to accounts in the issuer's system of record.</p>
 <p>Similarly, <em>Source Tags</em> indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to bounce the payment. When you bounce an incoming payment, use the Source Tag from the incoming payment as the Destination Tag of the outgoing (bounce) payment.</p>
-<p>Ripple recommends making a user interface to generate a destination tag on-demand when a customer intends to send money to the gateway. You should consider that destination tag valid only for a payment with the expected amount. Later, bounce any other transactions that reuse the same destination tag.</p>
-<p><a href="require-destination-tags.html">Enable the <code>RequireDest</code> flag</a> on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should go when they send XRP Ledger payments to your gateway.</p>
+<p>You can generate a destination tag on-demand when a customer intends to send money to you. For greater customer privacy, you should consider that destination tag valid only for that payment with the expected amount, and bounce or ignore any other transactions that reuse the same destination tag.</p>
+<p><a href="require-destination-tags.html">Enable the Require Destination Tag setting</a> on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should be credited when they send payments to you.</p>
 <p>For more information, see <a href="source-and-destination-tags.html">Source and Destination Tags</a>.</p>
 <h2 id="gateway-bulletins">Gateway Bulletins<a aria-hidden="true" class="hover_anchor" href="#gateway-bulletins"><i class="fa fa-link"></i></a></h2>
-<p>Historically, Ripple (the company) issued gateway bulletins to introduce new features or discuss topics related to compliance and risk. Gateway Bulletins are listed here in reverse chronological order.</p>
+<p>Historically, Ripple (the company) published gateway bulletins to introduce new XRP Ledger features or discuss topics related to compliance and risk for issuers. Gateway Bulletins are listed here in reverse chronological order.</p>
 <ul>
 <li>May 13, 2015 - <a href="assets/pdf/GB-2015-06.pdf">GB-2015-06 Gateway Bulletin: Corrections to Autobridging (PDF)</a> <!-- SPELLING_IGNORE: autobridging --></li>
 <li>April 17, 2015 - <a href="assets/pdf/GB-2015-05.pdf">GB-2015-05 Historical Ledger Query Migration</a></li>
@@ -627,11 +627,11 @@
 </ul>
 <h1 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h1>
 <h2 id="infrastructure">Infrastructure<a aria-hidden="true" class="hover_anchor" href="#infrastructure"><i class="fa fa-link"></i></a></h2>
-<p>For the gateway's own security as well as the stability of the network, each gateway should run its own <code>rippled</code> servers including one <a href="rippled-server-modes.html#validators">validator</a>.</p>
+<p>For your own security as well as the stability of the network, each XRP Ledger business should <a href="install-rippled.html">run its own XRP Ledger servers</a> including one <a href="rippled-server-modes.html#validators">validator</a>.</p>
 <h3 id="apis-and-middleware">APIs and Middleware<a aria-hidden="true" class="hover_anchor" href="#apis-and-middleware"><i class="fa fa-link"></i></a></h3>
 <p>There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:</p>
 <ul>
-<li><a href="http-websocket-apis.html"><code>rippled</code></a> provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core XRP Ledger functionality.</li>
+<li><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a> can be used as a low-level interface to all core XRP Ledger functionality.</li>
 <li><a href="client-libraries.html">Client Libraries</a> are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.</li>
 <li>Other tools such as <a class="external-link" href="https://xumm.readme.io/docs/xapps" target="_blank">xApps <i aria-hidden="true" class="fa fa-external-link"></i></a> are also available.</li>
 </ul>
@@ -639,225 +639,51 @@
 <p>Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. <strong>Never</strong> send your secret key to a server run by someone else. Either use your own <code>rippled</code> server, or sign the transactions locally before sending them to a <code>rippled</code> server.</p>
 <p>The examples in this document show API methods that include a secret key. This is only safe if you control <code>rippled</code> server yourself, <em>and</em> you connect to it over a connection that is secure from outside listeners. For instructions and examples of other secure configurations, see <a href="set-up-secure-signing.html">Set Up Secure Signing</a>.</p>
 <h2 id="default-ripple">Default Ripple<a aria-hidden="true" class="hover_anchor" href="#default-ripple"><i class="fa fa-link"></i></a></h2>
-<p>The Default Ripple flag controls whether the balances in an accounting relationship <a href="rippling.html">allowed to ripple</a> by default. Rippling is what allows customers to trade issued currencies, so a gateway must allow rippling on all the accounting relationships to its issuing address.</p>
-<p>Before asking customers to create accounting relationships to its issuing address, a gateway should enable the Default Ripple flag on that address. Otherwise, the gateway must individually disable the No Ripple flag for each accounting relationship that other addresses have created.</p>
-<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an AccountSet transaction to enable the Default Ripple flag:</p>
-<p>Request:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="err">POST</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//localhost:8088/</span><span class="w"></span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"SetFlag"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
-<!-- -->
-<p>Response:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"engine_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"engine_result_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"engine_result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The transaction was applied. Only final in a validated ledger."</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"tx_blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1200032200000000240000003E202100000008684000000000003A98732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D8F2DEF27DE313E3F0D1E189BF5AC8879F591045950E2A33787C3051169038C80220728A548F188F882EA40A416CCAF2AC52F3ED679563BBE1BAC014BB9E773A333581144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"SetFlag"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3045022100D8F2DEF27DE313E3F0D1E189BF5AC8879F591045950E2A33787C3051169038C80220728A548F188F882EA40A416CCAF2AC52F3ED679563BBE1BAC014BB9E773A3335"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"665B27B64CE658704FFD326A4FE2F5F5B5E67EACA61DE08258A59D35B883E1D5"</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p>To confirm that an address has Default Ripple enabled, look up the address using the <a href="account_info.html">account_info method</a>, specifying a validated ledger version. Use <a class="external-link" href="https://en.wikipedia.org/wiki/Bitwise_operation#AND" target="_blank">a bitwise-AND operator <i aria-hidden="true" class="fa fa-external-link"></i></a> to compare the <code>Flags</code> field with <code>0x00800000</code> (the <a href="accountroot.html#accountroot-flags">ledger flag <code>lsfDefaultRipple</code></a>). If the result of the bitwise-AND operation is nonzero, then the address has Default Ripple enabled.</p>
+<p>The Default Ripple flag controls whether the balances on a trust line are <a href="rippling.html">allowed to ripple</a> by default. Rippling is what allows customers to send and trade tokens among themselves, so an issuer MUST allow rippling on all the trust lines to its issuing address.</p>
+<p>Before asking customers to create trust lines to its issuing address, an issuer should enable the Default Ripple flag on that address. Otherwise, the issuer must individually disable the No Ripple flag for each trust line that other addresses have created.</p>
+<p>For examples of how to configure this setting, see the <a href="issue-a-fungible-token.html">Issue a Fungible Token tutorial</a>.</p>
 <h2 id="disallow-xrp">Disallow XRP<a aria-hidden="true" class="hover_anchor" href="#disallow-xrp"><i class="fa fa-link"></i></a></h2>
-<p>The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments, if your gateway does not trade XRP. The Disallow XRP flag is not strictly enforced, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default.</p>
-<p>An issuing gateway that does not trade XRP should enable the Disallow XRP flag on the gateway's issuing and operational addresses. A private exchange that trades in XRP should only enable the Disallow XRP flag on addresses that are not expected to receive XRP.</p>
-<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an AccountSet transaction to enable the Disallow XRP flag:</p>
-<p>Request:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="err">POST</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//localhost:8088/</span><span class="w"></span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"SetFlag"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
-<!-- -->
-<p>Response:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"engine_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"engine_result_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"engine_result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The transaction was applied. Only final in a validated ledger."</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"tx_blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12000322000000002400000164202100000003684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100C2E38177E92C3998EB2C22978595784BC4CABCF7D57DE71FCF6CF162FB683A1D02205942D42C440D860B4CF7BB0DF77E4F2C529695854835B2F76DC2D09644FCBB2D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">356</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"SetFlag"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3045022100C2E38177E92C3998EB2C22978595784BC4CABCF7D57DE71FCF6CF162FB683A1D02205942D42C440D860B4CF7BB0DF77E4F2C529695854835B2F76DC2D09644FCBB2D"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"096A89DA55A6A1C8C9EE1BCD15A8CADCC52E6D2591393F680243ECEB93161B33"</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<p>The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments from addresses that aren't intended to receive and hold XRP. The Disallow XRP flag is not strictly enforced, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default.</p>
+<p>You should enable the Disallow XRP flag on your issuing and operational addresses unless you also use those addresses for XRP transactions. If you use the same addresses for withdrawals or deposits of XRP, you should leave this flag disabled.</p>
+<p>For examples of how to configure this setting, see the <a href="issue-a-fungible-token.html">Issue a Fungible Token tutorial</a>.</p>
 <h2 id="require-auth">Require Auth<a aria-hidden="true" class="hover_anchor" href="#require-auth"><i class="fa fa-link"></i></a></h2>
 <p>The Require Auth setting prevents all counterparties from holding balances issued by an address unless the address has specifically approved an accounting relationship with that counterparty. For more information, see <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
-<h3 id="enabling-require-auth">Enabling Require Auth<a aria-hidden="true" class="hover_anchor" href="#enabling-require-auth"><i class="fa fa-link"></i></a></h3>
-<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an AccountSet transaction to enable the Require Auth flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)</p>
-<p>Request:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">POST</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//localhost:5005/</span><span class="w"></span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"SetFlag"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
-<!-- -->
 <h3 id="authorizing-trust-lines">Authorizing Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorizing-trust-lines"><i class="fa fa-link"></i></a></h3>
 <p>If you are using the <a href="authorized-trust-lines.html">Authorized Trust Lines</a> feature, customers cannot hold balances you issue unless you first authorize their accounting relationships to you in the XRP Ledger.</p>
 <p>To authorize an accounting relationship, submit a TrustSet transaction from your issuing address, with the user to trust as the <code>issuer</code> of the <code>LimitAmount</code>. Leave the <code>value</code> (the amount to trust them for) as <strong>0</strong>, and enable the <a href="trustset.html#trustset-flags"><code>tfSetfAuth</code> flag</a> for the transaction.</p>
-<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send a TrustSet transaction authorizing the customer address <code>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</code> to hold USD issued by the address <code>rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW</code>:</p>
-<p>Request:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">POST</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//localhost:8088/</span><span class="w"></span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TrustSet"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"LimitAmount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
-<!-- -->
 <h2 id="robustly-monitoring-for-payments">Robustly Monitoring for Payments<a aria-hidden="true" class="hover_anchor" href="#robustly-monitoring-for-payments"><i class="fa fa-link"></i></a></h2>
-<p>To robustly check for incoming payments, gateways should do the following:</p>
+<p>To robustly check for incoming payments, issuers should do the following:</p>
 <ul>
 <li>Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.</li>
 <li>Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code <code>tesSUCCESS</code> can change non-XRP balances. Only transactions from a validated ledger are final.</li>
-<li><a class="external-link" href="https://ripple.com/files/GB-2014-06.pdf" target="_blank" title="Partial Payment Flag Gateway Bulletin">Look out for Partial Payments <i aria-hidden="true" class="fa fa-external-link"></i></a>. Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.<ul>
-<li>In <code>rippled</code>, check the transaction for a <code>meta.delivered_amount</code> field. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> address.</li>
+<li>Look out for <a href="partial-payments.html">Partial Payments</a>. Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.<ul>
+<li>Check the transaction for a <a href="partial-payments.html#the-delivered_amount-field"><code>delivered_amount</code> field</a>. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> address.</li>
 <li>In xrpl.js, you can use the <a class="external-link" href="https://js.xrpl.org/modules.html#getBalanceChanges" target="_blank"><code>xrpl.getBalanceChanges()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.</li>
 </ul>
 </li>
-<li>Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero <a href="#transfer-fees">transfer fee</a>, then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's issued currencies. See <a href="#transfer-fees">Transfer Fees</a> for more information.</li>
+<li>Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero <a href="#transfer-fees">transfer fee</a>, then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's tokens. See <a href="#transfer-fees">Transfer Fees</a> for more information.</li>
 </ul>
-<p>To make things simpler for your customers, we recommend accepting payments to either operational addresses and issuing addresses.</p>
+<p>To make things simpler for your customers, we recommend accepting payments to both your operational address and your issuing addresses.</p>
 <p>As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.</p>
 <ul>
 <li>Use the <a href="gateway_balances.html">gateway_balances method</a> to check your balances.</li>
-<li>If you have a <a href="#transfer-fees">Transfer Fee</a> set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your issued currencies among themselves.</li>
+<li>If you have a <a href="#transfer-fees">Transfer Fee</a> set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your tokens among themselves.</li>
 </ul>
+<p>For more details on how to read the details of incoming transactions, see <a href="look-up-transaction-results.html">Look Up Transaction Results</a>.</p>
 <h2 id="transfer-fees">Transfer Fees<a aria-hidden="true" class="hover_anchor" href="#transfer-fees"><i class="fa fa-link"></i></a></h2>
-<p>The <code>TransferRate</code> setting defines a fee to charge for transferring issued currencies from one XRP Ledger address to another. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
-<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an AccountSet transaction for the issuing address <code>rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW</code>, setting the <code>TransferRate</code> to charge a fee of 0.5%.</p>
-<p>Request:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"TransferRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1005000000</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p>Response:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">{
-    "result": {
-        "engine_result": "tesSUCCESS",
-        "engine_result_code": 0,
-        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-        "status": "success",
-        "tx_blob": "1200032200000000240000000F2B3BE71540684000000000002710732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF74473045022100AAFC3360BE151299523A93F445D5F6EB58AF5A4F8586C8B7818D6C6069660B40022022F46BCDA8FEE256AEB0BA2E92947EF4571F92354AB703E3E6D77FEF7ECBF64E8114204288D2E47F8EF6C99BCC457966320D12409711",
-        "tx_json": {
-            "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-            "Fee": "10000",
-            "Flags": 0,
-            "Sequence": 15,
-            "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-            "TransactionType": "AccountSet",
-            "TransferRate": 1005000000,
-            "TxnSignature": "3045022100AAFC3360BE151299523A93F445D5F6EB58AF5A4F8586C8B7818D6C6069660B40022022F46BCDA8FEE256AEB0BA2E92947EF4571F92354AB703E3E6D77FEF7ECBF64E",
-            "hash": "24360352FBF5597F313E5985C1766BB4A0D277CE63219AC0C0D81014C1E663BB"
-        }
-    }
-}
-</code></pre></div>
+<p>The <code>TransferRate</code> setting defines a fee to charge for transferring tokens from one XRP Ledger address to another. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
+<p>For examples of how to configure this setting, see the <a href="issue-a-fungible-token.html">Issue a Fungible Token tutorial</a>.</p>
 <h3 id="transfer-fees-with-operational-and-standby-addresses">Transfer Fees with Operational and Standby Addresses<a aria-hidden="true" class="hover_anchor" href="#transfer-fees-with-operational-and-standby-addresses"><i class="fa fa-link"></i></a></h3>
-<p>All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending issued currency. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.</p>
+<p>All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending tokens. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.</p>
 <p>Set the <a href="payment.html"><code>SendMax</code> transaction parameter</a> higher than the destination <code>Amount</code> parameter by a percentage based on the <code>TransferRate</code> setting.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Transfer fees do not apply when sending issued currencies directly to the issuing address. The issuing address must always accept its issued currencies at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Transfer fees do not apply when sending tokens directly to the issuing address. The issuing address must always accept its tokens at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.</p>
 <p>For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. (The issuing address's total obligations in the XRP Ledger decrease by 0.05 EUR.ACME.) When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address <em>and</em> the transfer fee, giving the customer €5,05 in ACME's systems.</p>
 <h2 id="sending-payments-to-customers">Sending Payments to Customers<a aria-hidden="true" class="hover_anchor" href="#sending-payments-to-customers"><i class="fa fa-link"></i></a></h2>
 <p>When you build an automated system to send payments into the XRP Ledger for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.</p>
 <p>One common pitfall is performing pathfinding before sending sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the <a href="paths.html#default-paths">default paths</a> can deliver the currency as intended.</p>
 <p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send a payment from the operational address <code>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</code> to the customer address <code>raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n</code>, sending and delivering funds issued by the issuing address <code>rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW</code>.</p>
 <p>Request:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">{
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
     "method": "submit",
     "params": [{
         "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
@@ -882,7 +708,7 @@
 </code></pre></div>
 <p><em>Reminder: Don't send your secret to a server you do not control.</em></p>
 <p>Response:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">{
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">{
     "result": {
         "engine_result": "tesSUCCESS",
         "engine_result_code": 0,
@@ -916,12 +742,12 @@
 <p>In particular, note the following features of the <a href="payment.html">Payment transaction</a>:</p>
 <ul>
 <li>No <code>Paths</code> field. The payment only succeeds if it can use a <a href="paths.html#default-paths">default path</a>, which is preferable. Using less direct paths can become much more expensive.</li>
-<li>The <code>issuer</code> of both the <code>SendMax</code> and the <code>Amount</code> is the issuing address. This ensures that the transaction sends and delivers issued currencies from the issuing address, and not from some other gateway.</li>
+<li>The <code>issuer</code> of both the <code>SendMax</code> and the <code>Amount</code> is the issuing address. This ensures that the transaction sends and delivers tokens from the intended issuer, and not from another issuer using the same currency code.</li>
 <li>The <code>value</code> of the <code>SendMax</code> amount is slightly higher than the destination <code>Amount</code>, to compensate for the <a href="#transfer-fees">transfer fee</a>. In this case, the transfer fee is 0.5%, so the <code>SendMax</code> amount is exactly 1.005 times the destination <code>Amount</code>.</li>
 </ul>
 <h2 id="bouncing-payments">Bouncing Payments<a aria-hidden="true" class="hover_anchor" href="#bouncing-payments"><i class="fa fa-link"></i></a></h2>
 <p>When one of your addresses receives a payment whose purpose is unclear, we recommend that you try to return the money to its sender. While this is more work than pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically.</p>
-<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) The <a class="external-link" href="https://ripple.com/files/GB-2014-06.pdf" target="_blank">Partial Payment Flag Gateway Bulletin (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a> explains how to avoid a common problem.</p>
+<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) Malicious users can take advantage of a naive integration by sending <a href="partial-payments.html#partial-payments-exploit">partial payments</a>.</p>
 <p>Second, you should send bounced payments as Partial Payments. Since third parties can manipulate the cost of pathways between addresses, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the XRP Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from either an operational address or a standby address.</p>
 <p>To send a Partial Payment, enable the <a href="payment.html#payment-flags"><code>tfPartialPayment</code> flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field. You should use the <code>SourceTag</code> value from the incoming payment as the <code>DestinationTag</code> value for the return payment.</p>
 <p>To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again.</p>
@@ -939,12 +765,12 @@
 </ul>
 <p>For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
 <h2 id="xrp-ledgertoml-file">xrp-ledger.toml File<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgertoml-file"><i class="fa fa-link"></i></a></h2>
-<p>You can publish information about what currencies your gateway issues, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.</p>
+<p>You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.</p>
 <!-- STYLE_OVERRIDE: gateway, gateways -->
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
-<li><a href="issued-currencies.html">Issued Currencies</a></li>
+<li><a href="tokens.html">Tokens</a></li>
 <li><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
 <li><a href="source-and-destination-tags.html">Source and Destination Tags</a></li>
 </ul>
@@ -952,6 +778,10 @@
 <li><strong>Tutorials:</strong><ul>
 <li><a href="install-rippled.html">Install <code>rippled</code></a></li>
 <li><a href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
+<li><a href="issue-a-fungible-token.html">Issue a Fungible Token</a></li>
+<li><a href="enable-no-freeze.html">Enable No Freeze</a></li>
+<li><a href="freeze-a-trust-line.html">Freeze a Trust Line</a></li>
+<li><a href="enact-global-freeze.html">Enact Global Freeze</a></li>
 </ul>
 </li>
 <li><strong>References:</strong><ul>
@@ -1781,7 +1611,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1879,7 +1709,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       
