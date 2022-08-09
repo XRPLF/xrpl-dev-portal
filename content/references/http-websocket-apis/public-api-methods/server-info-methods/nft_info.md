@@ -8,7 +8,7 @@ labels:
 # nft_info
 [[Source]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp "Source")
 
-The `nft_info` command asks the Clio server for a human-readable version of information about [the NFT](non-fungible-tokens.html) being queried. 
+The `nft_info` command asks the Clio server for a human-readable version of information about the [NFT](non-fungible-tokens.html) being queried. 
 
 ## Request Format
 An example of the request format:
@@ -48,7 +48,7 @@ The request contains the following parameters:
 |:---------------|:---------------------------|:-------------------------------|
 | `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. If you do not specify this field, it defaults to `validated`. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. If you do not specify this field, it defaults to `validated`. Do not specify the `ledger_index` as `closed` or `current`. Specifying `current` forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers][]) | 
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. If you do not specify this field, it defaults to `validated`. Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers][]) | 
 
 ## Response Format
 
@@ -106,15 +106,13 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format][], with a successful result containing an `info` object as its only field.
-
-The `info` object may have some arrangement of the following fields:
+The response follows the [standard format][], with a successful result containing an `nft_info` response object with some arrangement of the following fields:
 
 | `Field`                             | Type            | Description          |
 |:------------------------------------|:----------------|:---------------------|
 | `nft_id`                            | String          | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index`                      | Integer         | The [ledger index][] of the most recent ledger version where the state of this NFT was modified, as in the NFT was minted(created), changed ownership (traded), or burned (destroyed). The information returned contains whatever happened most recently compared to the requested ledger. |
-| `owner`                             | String          | The account ID which denotes the owner of this NFT at the above ledger index. |
+| `ledger_index`                      | Integer         | The [ledger index][] of the most recent ledger version where the state of this NFT was modified, as in the NFT was minted (created), changed ownership (traded), or burned (destroyed). The information returned contains whatever happened most recently compared to the requested ledger. |
+| `owner`                             | String          | The account ID of this NFT's owner at this ledger index. |
 | `is_burned`                         | Boolean         | Returns `true` if the NFT is burned at this ledger, or `false` otherwise. |
 | `flags `                            | Integer         | The flag set of this NFT. |
 | `transfer_fee`                      | Integer         | The transfer fee of this NFT. See [NFTokenMint Fields](nftokenmint.html#nftokenmint-fields) for more information on transfer fees. |
