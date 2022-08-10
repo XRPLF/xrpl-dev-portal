@@ -3113,6 +3113,18 @@ pages:
         targets:
             - ja
 
+    -   name: Tokenization Methods
+        html: tokenization-methods.html
+        parent: public-api-methods.html
+        blurb: Use these methods to retrieve information about NFTs.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   md: references/http-websocket-apis/public-api-methods/tokenization-methods/nft_info.md
+        targets:
+            - en
+
     -   name: Utility Methods
         html: utility-methods.html
         parent: public-api-methods.html
