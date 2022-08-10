@@ -92,12 +92,11 @@ Use these methods to retrieve information about the current state of the `ripple
 * **[`server_state`](server_state.html)** - Retrieve status of the server in machine-readable format.
 - **[`manifest`](manifest.html)** - Retrieve the latest ephemeral public key information about a known validator.
 
-## [Tokenization Methods](tokenization-methods.html)
+## [Clio Methods](clio-methods.html)
 
-Use this method to retrieve information about NFTs.
+Use these methods to retrieve information using Clio server APIs.
 
-* **[`nft_info`](nft_info.html)** - Retrieve informatiomn about the specified NFT.
-
+* **[`nft_info`](nft_info.html)** - Retrieve information about the specified NFT.
 
 ## [Utility Methods](utility-methods.html)
 

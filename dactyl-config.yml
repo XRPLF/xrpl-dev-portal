@@ -3113,15 +3113,15 @@ pages:
         targets:
             - ja
 
-    -   name: Tokenization Methods
-        html: tokenization-methods.html
+    -   name: Clio Server Methods
+        html: clio-methods.html
         parent: public-api-methods.html
-        blurb: Use these methods to retrieve information about NFTs.
+        blurb: Use these methods to retrieve information using Clio server APIs.
         template: pagetype-category.html.jinja
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/tokenization-methods/nft_info.md
+    -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
         targets:
             - en
 
