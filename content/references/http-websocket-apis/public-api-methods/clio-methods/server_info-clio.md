@@ -8,7 +8,8 @@ labels:
 # server_info
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/ServerInfo.cpp "Source")
 
-The `server_info` command asks the [Clio server](the-clio-server.html) for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](server_info.html) instead.
+The `server_info` command asks the [Clio server](the-clio-server.html) for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](server_info.html) instead. [New in: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
+
 
 ## Request Format
 An example of the request format:

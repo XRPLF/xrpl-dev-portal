@@ -8,7 +8,7 @@ labels:
 # ledger
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/Ledger.cpp "Source")
 
-The `ledger` command retrieves information about the public [ledger](ledgers.html). 
+The `ledger` command retrieves information about the public [ledger](ledgers.html). [New in: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
 
 Note that the Clio server returns validated ledger data by default.
 
