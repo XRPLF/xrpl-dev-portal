@@ -2597,6 +2597,9 @@ pages:
     -   md: references/client-libraries.md
         targets:
             - en
+
+    -   md: references/client-libraries.ja.md
+        targets:
             - ja
 
         # Redirect old ripple-lib docs.
@@ -2622,6 +2625,9 @@ pages:
     -   md: references/xrpljs2-migration-guide.md
         targets:
             - en
+
+    -   md: references/xrpljs2-migration-guide.md.md
+        targets:
             - ja
 
     -   name: Python Client Library
@@ -3287,6 +3293,9 @@ pages:
     -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md
         targets:
             - en
+            
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.ja.md
+        targets:
             - ja
 
         #TODO: translate title and blurb
@@ -3527,6 +3536,9 @@ pages:
     -   md: references/xrp-api.md
         targets:
             - en
+
+    -   md: references/xrp-api.ja.md
+        targets:
             - ja
 
         # Deprecation warnings for old Data API docs
