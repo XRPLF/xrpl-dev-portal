@@ -1,6 +1,6 @@
 ---
 html: ledger-clio.html # Watch carefully for clashes w/ this filename
-parent: ledger-methods.html
+parent: clio-methods.html
 blurb: Get info about a ledger version.
 labels:
   - Blockchain
