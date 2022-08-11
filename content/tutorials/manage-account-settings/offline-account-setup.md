@@ -147,7 +147,7 @@ On the offline machine, prepare and sign transactions for configuring your accou
 - [Require destination tags](require-destination-tags.html) so that users can't send you payments without tagging the reason they sent it or the customer it's intended for.
 - [Set Up Multi-Signing](set-up-multi-signing.html) for a higher bar of account security.
 - [Enable DepositAuth](depositauth.html) so you can only receive payments you've explicitly accepted or from parties you've pre-approved.
-- [Require Auth](become-an-xrp-ledger-gateway.html#enabling-require-auth) so that users can't open [trust lines](trust-lines-and-issuing.html) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or [token](tokens.html) features, you may want to do this as a precaution.
+- [Require Auth](authorized-trust-lines.html#enabling-requireauth) so that users can't open [trust lines](trust-lines-and-issuing.html) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or [token](tokens.html) features, you may want to do this as a precaution.
 - [Token Issuers](become-an-xrp-ledger-gateway.html) may have additional setup, such as:
     - [Set a Transfer Fee](become-an-xrp-ledger-gateway.html#transfer-fees) for users transferring your tokens.
     - [Disallow XRP payments](become-an-xrp-ledger-gateway.html#disallow-xrp) if you plan to use this address for tokens only.

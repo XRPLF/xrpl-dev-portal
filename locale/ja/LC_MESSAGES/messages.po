@@ -28,18 +28,18 @@ msgstr "このページの先頭へ"
 
 #: template/component-github-edit.html.jinja:26
 msgid "Edit page"
-msgstr ""
+msgstr "ページを編集"
 
 #: template/component-top-nav.html.jinja:3
 msgid "Read the proposal for a native AMM on XRPL"
-msgstr ""
+msgstr "XRPL上のネイティブAMMの提案を読む"
 
 # Tooltip on the button to close the search box
 #: template/component-top-nav.html.jinja:75 template/page-404.html.jinja:11
 #: template/page-docs.html.jinja:18
 #, fuzzy
 msgid "Search"
-msgstr "検索を閉じる"
+msgstr "検索"
 
 #: template/component-top-nav.html.jinja:76
 msgid "Search site..."
@@ -47,7 +47,7 @@ msgstr "サイトを検索"
 
 #: template/page-404.html.jinja:12 template/page-docs.html.jinja:19
 msgid "Search for articles, training, and code samples..."
-msgstr ""
+msgstr "記事、トレーニング、コードサンプルを検索..."
 
 #: template/page-ambassadors.html.jinja:27
 msgid "Become an XRP Ledger Campus Ambassador"
@@ -335,59 +335,59 @@ msgstr "キロワット時"
 #: template/page-calculator.html.jinja:287
 #, fuzzy
 msgid "CO<sub>2</sub> Emissions"
-msgstr "CO<sub>2</sub>排出量*"
+msgstr "CO<sub>2</sub>排出量"
 
 #: template/page-calculator.html.jinja:323
 msgid "Paper Currency"
-msgstr ""
+msgstr "紙幣"
 
 #: template/page-code-samples.html.jinja:13
 msgid "Start Building with Example Code"
-msgstr ""
+msgstr "コードサンプルで構築する"
 
 #: template/page-code-samples.html.jinja:14
 msgid "Code Samples"
-msgstr ""
+msgstr "コードサンプル"
 
 #: template/page-code-samples.html.jinja:26
 msgid "Browse sample code for building common use cases on the XRP Ledger"
-msgstr ""
+msgstr "XRP Ledger上で一般的なユースケースを構築するためのコードサンプルを見ることができます"
 
 #: template/page-code-samples.html.jinja:65
 msgid "Contribute Code Samples"
-msgstr ""
+msgstr "コードサンプルへの貢献"
 
 #: template/page-code-samples.html.jinja:66
 msgid "Help the XRPL community by submitting your<br> own code samples"
-msgstr ""
+msgstr "コードサンプルを投稿して、XRPLコミュニティに貢献しましょう"
 
 #: template/page-community.html.jinja:33
 msgid "A Global Community of Builders and Innovators"
-msgstr ""
+msgstr "開発者とイノベーターのグローバルなコミュニティ"
 
 #: template/page-community.html.jinja:34
 msgid "The XRPL Community"
-msgstr ""
+msgstr "XRPL コミュニティ"
 
 #: template/page-community.html.jinja:42
 msgid "Find the community on the platforms below"
-msgstr ""
+msgstr "以下のプラットフォームでコミュニティにアクセスできます。"
 
 #: template/page-community.html.jinja:43
 msgid "Join the Conversation"
-msgstr ""
+msgstr "参加する"
 
 #: template/page-community.html.jinja:87 template/page-docs.html.jinja:79
 msgid "Run an XRP Ledger network node"
-msgstr ""
+msgstr "XRP Ledgerのネットワークノードを実行する"
 
 #: template/page-community.html.jinja:88
 msgid "Contribute to Consensus"
-msgstr ""
+msgstr "コンセンサスへの貢献"
 
 #: template/page-community.html.jinja:121
 msgid "Apply for funding for your next XRPL project"
-msgstr ""
+msgstr "将来のXRPLプロジェクトのための資金調達に応募する"
 
 #: template/page-community.html.jinja:122
 #: template/page-xrpl-overview.html.jinja:169
@@ -399,23 +399,25 @@ msgid ""
 "The XRPL Grants program funds select open-source projects that contribute"
 " to the growing XRP Ledger community."
 msgstr ""
+"XRPL Grantsプログラムは、拡大を続ける XRP Ledger "
+"コミュニティに貢献する厳選されたオープンソースプロジェクトに資金を提供します。"
 
 #: template/page-community.html.jinja:128
 #: template/page-community.html.jinja:148
 msgid "Learn More"
-msgstr ""
+msgstr "もっと知る"
 
 #: template/page-community.html.jinja:134
 msgid "Awarded in a single grant"
-msgstr ""
+msgstr "1回のGrantでの助成金"
 
 #: template/page-community.html.jinja:138
 msgid "Distributed to grant recipients"
-msgstr ""
+msgstr "助成対象者への配布"
 
 #: template/page-community.html.jinja:142
 msgid "Open-source projects funded "
-msgstr ""
+msgstr "オープンソースプロジェクトへの資金提供"
 
 #: template/page-community.html.jinja:164
 #: template/page-community.html.jinja:189
@@ -434,41 +436,41 @@ msgstr ""
 
 #: template/page-community.html.jinja:179
 msgid "Check out global events across the XRPL community"
-msgstr ""
+msgstr "XRPLコミュニティで開催されるグローバルなイベントをチェック"
 
 #: template/page-community.html.jinja:180
 msgid "XRPL Events"
-msgstr ""
+msgstr "XRPLイベント"
 
 #: template/page-community.html.jinja:182
 msgid ""
 "Meet the XRPL community at meetups, hackathons, conferences, and more "
 "across global regions."
-msgstr ""
+msgstr "世界各地でのミートアップ、ハッカソン、カンファレンスなどでXRPLコミュニティと出会えます。"
 
 #: template/page-community.html.jinja:202
 #, fuzzy
 msgid "View All Events"
-msgstr "#wallets"
+msgstr "全てのイベントを見る"
 
 #: template/page-community.html.jinja:220
 msgid "Discover your next career opportunity in the XRPL community"
-msgstr ""
+msgstr "XRPLコミュニティであなたの次のキャリアを見つけましょう"
 
 #: template/page-community.html.jinja:221
 #, fuzzy
 msgid "XRPL Careers"
-msgstr "利用例を見る"
+msgstr "XRPLキャリア"
 
 #: template/page-community.html.jinja:223
 msgid ""
 "Teams across the XRPL community are looking for talented individuals to "
 "help build their next innovation."
-msgstr ""
+msgstr "XRPLコミュニティの各チームは、次のイノベーションの構築に貢献する優秀な人材を求めています。"
 
 #: template/page-community.html.jinja:229
 msgid "View Open Roles"
-msgstr ""
+msgstr "募集職種を見る"
 
 #: template/page-community.html.jinja:243
 #, fuzzy
@@ -477,7 +479,7 @@ msgstr "XRPとXRP Ledgerのあらゆるものを提供する、コミュニテ�
 
 #: template/page-community.html.jinja:244
 msgid "Contribute to XRPL.org"
-msgstr ""
+msgstr "XRPL.orgに貢献する"
 
 #: template/page-community.html.jinja:246
 #, fuzzy
@@ -486,39 +488,41 @@ msgid ""
 " created as an XRPL community resource and is meant to be a living, "
 "breathing source of truth for XRP Ledger resources. This portal is open-"
 "source and anyone can suggest changes."
-msgstr "このウェブサイトはコミュニティのために作成されました。XRPリソースに関する生きた情報をお届けします。"
+msgstr ""
+"XRPL.orgへの貢献に関心をお持ちいただき、ありがとうございます。このウェブサイトはXRPLコミュニティのリソースとして作成され、XRP "
+"Ledgerのリソースの信頼できる生きた情報源となることを目的としています。このポータルはオープンソースであり、誰でも変更を提案することができます。"
 
 #: template/page-community.html.jinja:247
 msgid "Read Contributor Guidelines"
-msgstr ""
+msgstr "コントリビュータガイドラインを読む"
 
 #: template/page-docs.html.jinja:11
 msgid "What Would You Like to Learn?"
-msgstr ""
+msgstr "何を学びたいですか？"
 
 #: template/page-docs.html.jinja:12
 msgid "XRP Ledger Documentation"
-msgstr ""
+msgstr "XRP Ledger ドキュメント"
 
 #: template/page-docs.html.jinja:30
 msgid "Browse By Popular Topics"
-msgstr ""
+msgstr "人気のあるトピックから探す"
 
 #: template/page-docs.html.jinja:43
 msgid "Browse By Label"
-msgstr ""
+msgstr "ラベルから探す"
 
 #: template/page-docs.html.jinja:51
 msgid "Software and SDKs"
-msgstr ""
+msgstr "ソフトウェアとSDK"
 
 #: template/page-docs.html.jinja:52
 msgid "Start Developing"
-msgstr ""
+msgstr "開発を始める"
 
 #: template/page-docs.html.jinja:68
 msgid "Article types"
-msgstr ""
+msgstr "記事の種類"
 
 #: template/page-docs.html.jinja:69
 msgid "Dive In"
@@ -526,16 +530,16 @@ msgstr ""
 
 #: template/page-docs.html.jinja:80
 msgid "Participate in the Network"
-msgstr ""
+msgstr "ネットワークに参加する"
 
 #: template/page-docs.html.jinja:93 template/page-uses.html.jinja:46
 #, fuzzy
 msgid "NFTs"
-msgstr "メリット"
+msgstr "NFT"
 
 #: template/page-docs.html.jinja:94
 msgid "Hot Topic"
-msgstr ""
+msgstr "ホットな話題"
 
 #: template/page-docs.html.jinja:98
 msgid ""
@@ -543,6 +547,8 @@ msgid ""
 "href=\"impact.html\">large carbon footprint</a>? Read more about issuing "
 "NFTs on the XRP Ledger:"
 msgstr ""
+"非代替性トークンに興味はあるが、<a href=\"impact.html\">二酸化炭素排出量<a/>が気になる？XRP "
+"LedgerでのNFTの発行について、詳しくはこちらをご覧ください。"
 
 #: template/page-docs.html.jinja:112
 #, fuzzy
@@ -551,7 +557,7 @@ msgstr "全ドキュメントの目次"
 
 #: template/page-docs.html.jinja:113
 msgid "See Everything"
-msgstr ""
+msgstr "全てを見る"
 
 #: template/page-events.html.jinja:27
 msgid "Find the XRPL Community Around the World"
@@ -575,7 +581,7 @@ msgstr ""
 #: template/page-events.html.jinja:46
 #, fuzzy
 msgid "Explore Apex"
-msgstr "利用例を見る"
+msgstr ""
 
 #: template/page-events.html.jinja:65
 msgid "Apex 2021 On-Demand"
@@ -624,16 +630,16 @@ msgid ""
 msgstr ""
 "XRP Ledger Dev "
 "Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a"
-" href=\"https://github.com/ripple/xrpl-dev-"
+" href=\"https://github.com/XRPLF/xrpl-dev-"
 "portal/blob/master/CONTRIBUTING.md\">ぜひ貢献をお願いいたします</a>"
 
 #: template/page-history.html.jinja:28
 msgid "Provide a Better Alternative to Bitcoin"
-msgstr ""
+msgstr "Bitcoinに代わる選択肢"
 
 #: template/page-history.html.jinja:29
 msgid "XRPL's Origin"
-msgstr ""
+msgstr "XRPLの原点"
 
 #: template/page-history.html.jinja:36
 #, fuzzy
@@ -659,7 +665,7 @@ msgstr ""
 msgid ""
 "The XRPL founders gifted 80 billion XRP, the platform’s native currency, "
 "to the company. Ripple has since put the majority in escrow."
-msgstr ""
+msgstr "XRPLの創設者は、プラットフォームのネイティブ通貨である800億XRPを同社に贈与しました。その後、リップル社はその大半をエスクローに預けています。"
 
 #: template/page-history.html.jinja:54
 msgid "2011 XRP Ledger Development"
@@ -674,6 +680,11 @@ msgid ""
 "href=\"https://bitcointalk.org/index.php?topic=10193.0\" "
 "target=\"_blank\">May 2011 forum post: “Bitcoin without mining”</a>)."
 msgstr ""
+"2011年初頭、David Schwartz、Jed McCaleb、Arthur "
+"Brittの3人の開発者は、Bitcoinに魅了されながらも、Bitcoinに潜む問題を考えていました彼らは、より持続可能な価値の送信システムを作ろうとしました。（このアイデアは、<a"
+" href=\"https://bitcointalk.org/index.php?topic=10193.0\" "
+"target=\"_blank\">2011年5月のフォーラムへの投稿「Bitcoin without "
+"mining」</a>で概説されています）。"
 
 #: template/page-history.html.jinja:60
 #, fuzzy, python-format
@@ -687,9 +698,9 @@ msgid ""
 "50% of the mining power. That risk persists with Bitcoin (and Ethereum) "
 "today as mining power has consolidated in China."
 msgstr ""
-"莫大なエネルギー消費量とスケーラビリティの問題が将来的にBitcoinを悩ませるだろうという最初の気付きには先見の明があったことが実証されました（2019年には、<a"
-" href=\"carbon-"
-"calculator.html\">Bitcoinのマイニングに使用されたエネルギー量</a>はポルトガルの国全体のエネルギー消費量を上回ったと推定されています）。また、3人は当初から、もしいずれかのマイナー（または共謀したマイナー集団）がマイニングパワーの50&#37;以上を獲得した場合、深刻な問題が発生するであろうと考えていました。Bitcoin（とEthereum）のマイニングパワーは中国に集中しているため、現在もなおそのリスクを抱えています。"
+"莫大なエネルギー消費量とスケーラビリティの問題が将来的にBitcoinを悩ませるだろうという最初の気付きには先見の明があったことが実証されました。（2019年には、<a"
+" "
+"href=\"carbon-\"\"calculator.html\">Bitcoinのマイニングに使用されたエネルギー量</a>はポルトガルの国全体のエネルギー消費量を上回ったと推定されています）。また、3人は当初から、もしいずれかのマイナー（または共謀したマイナー集団）がマイニングパワーの50&#37;以上を獲得した場合、深刻な問題が発生するであろうと考えていました。Bitcoin（とEthereum）のマイニングパワーは中国に集中しているため、現在もなおそのリスクを抱えています。"
 
 #: template/page-history.html.jinja:68
 msgid "XRPL Launches its Native Currency, XRP"
@@ -707,6 +718,9 @@ msgid ""
 "RTXP), the network (Ripple network), and the digital asset (known as "
 "“ripples”)."
 msgstr ""
+"3人の開発者は、このようなBitcoinの基本的な限界を改善した分散型台帳を構築する作業を続け、当初そのコードを「Ripple」と命名しました。この台帳には、Bitcoin（BTC）と同じ命名規則に従って、当初は「ripples」（通貨コードとしてはXRP）と呼ばれるデジタル資産が含まれていました。当時、Rippleはオープンソースプロジェクト、独自のコンセンサスレジャー（Ripple"
+" Consensus Ledger）、トランザクションプロトコル（Ripple Transaction "
+"Protocol、RTXP）、ネットワーク（Ripple network）、デジタルアセット（「ripples」と呼称）を表す名称でした。"
 
 #: template/page-history.html.jinja:74
 #, fuzzy
@@ -755,7 +769,7 @@ msgid ""
 "used to overthrow the existing financial system. He believed that "
 "history’s most transformative innovations have always relied on the great"
 " ideas that came before them—not displacing them."
-msgstr ""
+msgstr "OpenCoinはその初期から、世界の金融システムに革命を起こすことを目標としていました。Bitcoinの初期の賛同者の多くが革命的な理想を抱いていたにもかかわらず、Larsenはブロックチェーン技術が既存の金融システムを転覆させるために使用さわれるべきではないと考えていました。彼は、歴史上最も革新的なイノベーションは、常にその前に現れた偉大なアイデアに依存しており、それらを置き換えるものではないと信じていました。"
 
 #: template/page-history.html.jinja:91
 #, fuzzy
@@ -781,7 +795,7 @@ msgstr ""
 
 #: template/page-history.html.jinja:100
 msgid "XRPL Foundation Launched"
-msgstr ""
+msgstr "XRPL財団の創設"
 
 #: template/page-history.html.jinja:103
 msgid ""
@@ -793,6 +807,11 @@ msgid ""
 " to fund the Foundation’s work in service of the growing number of "
 "developers and other community members building on the XRP Ledger."
 msgstr ""
+"2020年9月24日に<a "
+"href=\"https://xrplf.org/assets/XRP_Foundation_Release_24Sep2020.pdf\" "
+"target=\"_blank\">設立</a>されたXRPL財団は、分散化されたXRP "
+"Ledgerの開発と採用を加速させることをミッションとする独立した非営利団体です。財団は、XRP Ledger "
+"を構築する開発者やその他のコミュニティメンバーの増加に対応するための財団の活動資金として、Coil、Ripple、Gatehubから650万ドルを超える初期寄付金の提供を受けています。"
 
 #: template/page-home.html.jinja:27
 msgid "Community<br class=\"until-sm\"/> Powered Utility"
@@ -804,17 +823,17 @@ msgstr ""
 
 #: template/page-home.html.jinja:30
 msgid "Start Building"
-msgstr ""
+msgstr "始める"
 
 #: template/page-home.html.jinja:41
 msgid "The XRP Ledger: A Scalable, Sustainable Blockchain"
-msgstr ""
+msgstr "XRP Ledger: スケーラブルで持続可能なブロックチェーン"
 
 #: template/page-home.html.jinja:42
 msgid ""
 "The XRP Ledger (XRPL) is a decentralized, public blockchain led by a "
 "global developer community."
-msgstr ""
+msgstr "XRP Ledger（XRPL）は、グローバルな開発者コミュニティが主導する、分散型のパブリックブロックチェーンです"
 
 #: template/page-home.html.jinja:43
 msgid ""
@@ -823,38 +842,40 @@ msgid ""
 "with a strong open-source foundation for executing on the most demanding "
 "projects—without hurting the environment."
 msgstr ""
+"XRP "
+"Ledgerは、高速で、エネルギー効率に優れ、信頼性が高いブロックチェーンです。開発の手軽さ、低い取引コスト、知識豊富なコミュニティにより、開発者は高度なプロジェクトを実行するための強力なオープンソースの基盤を、環境への負担をかけることなく利用できます。"
 
 #: template/page-home.html.jinja:49
 msgid "Why developers choose the XRP Ledger"
-msgstr ""
+msgstr "開発者がXRP Ledgerを選択する理由"
 
 #: template/page-home.html.jinja:50
 msgid "Discover Benefits"
-msgstr ""
+msgstr "メリットを見つける"
 
 #: template/page-home.html.jinja:55
 msgid "Public and Decentralized Structure"
-msgstr ""
+msgstr "パブリック＆分散型の仕組み"
 
 #: template/page-home.html.jinja:56
 msgid "Open source, open to anyone to build on, maintained by the community"
-msgstr ""
+msgstr "オープンソースで、誰でも構築でき、コミュニティによって維持されています"
 
 #: template/page-home.html.jinja:58
 msgid "Streamlined <br class='until-sm'/>Development"
-msgstr ""
+msgstr "効率的な開発"
 
 #: template/page-home.html.jinja:59
 msgid "Tools and documentation that speed development and reduce time to market"
-msgstr ""
+msgstr "開発のスピードアップと市場投入までの時間短縮を実現するツールとドキュメントがあります"
 
 #: template/page-home.html.jinja:61
 msgid "High <br class='until-sm'/>Performance"
-msgstr ""
+msgstr "高性能"
 
 #: template/page-home.html.jinja:62
 msgid "Capable of settling thousands of transactions in seconds"
-msgstr ""
+msgstr "数千件のトランザクションを数秒で決済することが可能です"
 
 #: template/page-home.html.jinja:64
 #, fuzzy
@@ -865,7 +886,7 @@ msgstr "低価格"
 msgid ""
 "At fractions of a penny per transaction, costs are inexpensive enough to "
 "enable a wide variety of use cases"
-msgstr ""
+msgstr "1トランザクションあたり少額のコストで、さまざまなユースケースを実現できます"
 
 #: template/page-home.html.jinja:67
 #, fuzzy
@@ -876,35 +897,35 @@ msgstr "XRPコミュニティ"
 msgid ""
 "Developers, validators, users, and businesses make the XRP Ledger better "
 "every day"
-msgstr ""
+msgstr "開発者、バリデータ、ユーザー、そして企業によって、XRP Ledgerは日々進化しています"
 
 #: template/page-home.html.jinja:70
 msgid "Proven Reliability"
-msgstr ""
+msgstr "確かな信頼性"
 
 #: template/page-home.html.jinja:71
 msgid "8+ years of consistent performance over more than 63 million ledgers"
-msgstr ""
+msgstr "8年以上、6,300万件以上のレジャーで安定したパフォーマンスを実現しています"
 
 #: template/page-home.html.jinja:85
 msgid ""
 "Activate the power of the XRP Ledger and find the building blocks for "
 "your next innovation"
-msgstr ""
+msgstr "XRP Ledgerの性能を発揮する、次のイノベーションのための要素を見つけよう"
 
 #: template/page-home.html.jinja:86
 msgid "Explore Advanced Features"
-msgstr ""
+msgstr "高度な機能を探る"
 
 #: template/page-home.html.jinja:91
 msgid "Decentralized Exchange"
-msgstr ""
+msgstr "分散型取引所"
 
 #: template/page-home.html.jinja:92
 msgid ""
 "A high-performance decentralized peer-to-peer multi-currency exchange "
 "built directly into the blockchain"
-msgstr ""
+msgstr "ブロックチェーンに直接組み込まれた高性能な分散型P2P多通貨取引所"
 
 #: template/page-home.html.jinja:94
 #, fuzzy
@@ -915,113 +936,113 @@ msgstr "国際送金"
 msgid ""
 "Atomically settle multi-hop payments that cross currency or national "
 "boundaries with ease"
-msgstr ""
+msgstr "通貨や国境を越えたマルチホップ決済を瞬時に行うことが可能です"
 
 #: template/page-home.html.jinja:97
 msgid "Payment <br class='until-sm'/>Channels"
-msgstr ""
+msgstr "決済チャネル"
 
 #: template/page-home.html.jinja:98
 msgid "Batched micropayments with unlimited speed, secured with XRP"
-msgstr ""
+msgstr "XRPを利用した無制限のスピードでの小額決済が可能です"
 
 #: template/page-home.html.jinja:100
 msgid "Multi-Signing"
-msgstr ""
+msgstr "マルチシグ"
 
 #: template/page-home.html.jinja:101
 msgid "Flexible options for custody and security of on-ledger accounts"
-msgstr ""
+msgstr "オンレジャーアカウントの保管とセキュリティのための柔軟なオプションがあります"
 
 #: template/page-home.html.jinja:103
 msgid "Tokens"
-msgstr ""
+msgstr "トークン"
 
 #: template/page-home.html.jinja:104
 msgid ""
 "All currencies other than XRP can be represented in the XRP Ledger as "
 "tokens, sometimes called “IOUs”"
-msgstr ""
+msgstr "XRP以外のすべてトークンは、\"IOU\"と呼ばれることもある発行済み通貨としてXRP Ledgerで表示されます"
 
 #: template/page-home.html.jinja:121
 msgid "Choose a path to start building on the XRPL"
-msgstr ""
+msgstr "XRPL上で開発をスタートする方法を選びましょう"
 
 #: template/page-home.html.jinja:122
 msgid "Get Started"
-msgstr "始める"
+msgstr "始めましょう"
 
 #: template/page-home.html.jinja:127
 msgid "Quickstart"
-msgstr ""
+msgstr "クイックスタート"
 
 #: template/page-home.html.jinja:128
 msgid "Access everything you need to get started working with the XRPL"
-msgstr ""
+msgstr "XRPLを使うためのあらゆる情報にアクセスできます"
 
 #: template/page-home.html.jinja:130
 msgid "Guided Tutorials"
-msgstr ""
+msgstr "ガイド付きチュートリアル"
 
 #: template/page-home.html.jinja:131
 msgid "Follow step-by-step guides for frequent tasks"
-msgstr ""
+msgstr "ステップバイステップのガイドを使って頻出の作業をサポートします"
 
 #: template/page-home.html.jinja:133
 msgid "XRPL Fundamentals"
-msgstr ""
+msgstr "XRPLの基礎知識"
 
 #: template/page-home.html.jinja:134
 msgid "Read about the XRPL’s foundational concepts"
-msgstr ""
+msgstr "XRPLの基本概念について学びましょう"
 
 #: template/page-home.html.jinja:136
 msgid "Choose a Language"
-msgstr ""
+msgstr "言語の選択"
 
 #: template/page-home.html.jinja:137
 msgid ""
 "Find tools, documentation, and sample code in Python, Java, Javascript, "
 "or use HTTP APIs"
-msgstr ""
+msgstr "Python、Java、Javascriptのツール、ドキュメント、サンプルコードを検索したり、HTTP APIを使用することができます"
 
 #: template/page-home.html.jinja:139
 msgid "Get Inspired"
-msgstr ""
+msgstr "インスピレーションを得る"
 
 #: template/page-home.html.jinja:140
 msgid "See what your peers have built on the XRPL"
-msgstr ""
+msgstr "他のユーザーがXRPLで構築したものを見てみましょう"
 
 #: template/page-home.html.jinja:159
 msgid "Our Shared Vision for XRPL’s Future"
-msgstr ""
+msgstr "XRPLの未来に対する私たちの共有のビジョン"
 
 #: template/page-home.html.jinja:160
 msgid ""
 "Together, we're building the greenest infrastructure to drive blockchain "
 "innovation that doesn't sacrifice utility or performance, to bring the "
 "developer community's vision to life."
-msgstr ""
+msgstr "私たちは、開発者コミュニティのビジョンを実現するために、実用性や性能を犠牲にすることなく、ブロックチェーンのイノベーションを推進する最も環境に配慮したインフラストラクチャを共に構築しています"
 
 #: template/page-home.html.jinja:168
 msgid ""
 "Explore what the community is building to enable new features and use "
 "cases on XRPL"
-msgstr ""
+msgstr "XRPLの新機能やユースケースを実現するために、コミュニティがどのような機能を構築しているのかを探ります"
 
 #: template/page-home.html.jinja:169
 msgid "Preview New Features"
-msgstr ""
+msgstr "新機能のプレビュー"
 
 #: template/page-home.html.jinja:173 template/page-home.html.jinja:177
 #: template/page-home.html.jinja:181
 msgid "In Development"
-msgstr ""
+msgstr "開発中"
 
 #: template/page-home.html.jinja:174
 msgid "Smart Contracts"
-msgstr ""
+msgstr "スマートコントラクト"
 
 #: template/page-home.html.jinja:175
 msgid ""
@@ -1030,10 +1051,13 @@ msgid ""
 "target='_blank'>hooks amendment and public testnet</a> that enable smart "
 "contract functionality."
 msgstr ""
+"HooksはXRPLのために特別に設計された小さくて効率的なWebAssemblyモジュールです。スマートコントラクトの機能を実現する<a "
+"href='https://hooks-testnet.xrpl-labs.com/' "
+"target='_blank'>Hooksの修正案と公開テストネット</a>をチェックしてみてください。"
 
 #: template/page-home.html.jinja:178
 msgid "Non-Fungible Tokens"
-msgstr ""
+msgstr "非代替性トークン"
 
 #: template/page-home.html.jinja:179
 msgid ""
@@ -1041,10 +1065,12 @@ msgid ""
 "XRPL ideally suited for building an ecosystem for NFTs. Explore <a "
 "href='docs.html#docs-hot-topic'>proposed standards</a> for issuing NFTs."
 msgstr ""
+"手数料の低減、取引の高速化、カスタムトークンの機能性により、XRPLはNFTのエコシステム構築に理想的なものとなっています。NFT発行のための<a"
+" href='docs.html#docs-hot-topic'>提案されている標準規格</a>を参照してください。"
 
 #: template/page-home.html.jinja:182
 msgid "Sidechains"
-msgstr ""
+msgstr "サイドチェーン"
 
 #: template/page-home.html.jinja:183
 msgid ""
@@ -1053,6 +1079,9 @@ msgid ""
 "href='https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-"
 "xrp-ledger-2o7o' target='_blank'>the vision of sidechains</a>."
 msgstr ""
+"XRPLの実績あるブロックチェーン技術をベースに、カスタムサイドチェーンを拡張、実験、特化させます。詳しくは<a "
+"href='https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-"
+"xrp-ledger-2o7o' target='_blank'>サイドチェーンのビジョン</a>。"
 
 #: template/page-home.html.jinja:201
 #, fuzzy
@@ -1061,17 +1090,17 @@ msgstr "XRPL.org: コミュニティのために、コミュニティの力で"
 
 #: template/page-home.html.jinja:202
 msgid "Get Involved"
-msgstr ""
+msgstr "参加する"
 
 #: template/page-home.html.jinja:204
 msgid ""
 "XRPL.org is a community-driven resource by and for developers who build "
 "on the XRP Ledger (XRPL)."
-msgstr ""
+msgstr "XRPL.orgはXRP Ledger（XRPL）上に構築する開発者による、開発者のためのコミュニティ主導のリソースです。"
 
 #: template/page-home.html.jinja:205
 msgid "Join the Community"
-msgstr ""
+msgstr "コミュニティに参加"
 
 #: template/page-impact.html.jinja:28
 msgid "Faster, Cheaper, Green Money"
@@ -1126,6 +1155,8 @@ msgid ""
 "international transactions. Because of the unprecedented efficiency it "
 "offers, they’re able to bring down costs and improve services."
 msgstr ""
+"XRPとXRP "
+"Ledgerがそれを変えています。このテクノロジーは、国際取引の流動性を調達するために、世界中の金融機関に採用されています。前例のない効率性を実現しているため、コストを下げ、サービスを向上させることができるのです"
 
 #: template/page-impact.html.jinja:52
 #, fuzzy
@@ -1163,7 +1194,7 @@ msgstr "利用が広がるなか、この技術が将来的にも環境の観点
 
 #: template/page-impact.html.jinja:66
 msgid "Projected BTC, ETH and XRP Transactions in USD"
-msgstr ""
+msgstr "BTC、ETH、XRPの米ドル建て取引額の予測"
 
 #: template/page-impact.html.jinja:69
 msgid "2025"
@@ -1213,6 +1244,8 @@ msgid ""
 "scalable and energy-efficient. But the XRP Ledger is also increasingly "
 "popular for innovative blockchain use cases, like NFTs and DeFi."
 msgstr ""
+"XRPはグローバルな決済に最適なように設計されており、高速で安価、スケーラブルでエネルギー効率に優れています。それだけでなく、XRP "
+"Ledgerは、NFTやDeFiのような革新的なブロックチェーンのユースケースでもますます人気が高まっています。"
 
 #: template/page-impact.html.jinja:102
 #, fuzzy
@@ -1240,6 +1273,8 @@ msgid ""
 "mechanism that consumes negligible energy and all XRP currency is already"
 " in circulation."
 msgstr ""
+"XRP "
+"Ledgerは消費エネルギーがごくわずかで、全てのXRP通貨が既に発行されており、独自の「コンセンサス」メカニズムを通じてトランザクションを処理します。"
 
 #: template/page-impact.html.jinja:112
 msgid ""
@@ -3442,5 +3477,8 @@ msgstr "目次"
 #~ "XRPL's transaction processing rules, enforced"
 #~ " by the consensus protocol, control "
 #~ "the release of the XRP."
+#~ msgstr ""
+
+#~ msgid "二酸化炭素計算について見る"
 #~ msgstr ""
 

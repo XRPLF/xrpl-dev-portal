@@ -59,7 +59,7 @@ This installs and upgrades the following Python libraries:
 
 - [xrpl-py](https://xrpl-py.readthedocs.io/), a client library for the XRP Ledger. This tutorial requires **version 1.3.0 or higher**.
 - [wxPython](https://wxpython.org/), a cross-platform graphical toolkit.
-- [Requests](https://docs.python-requests.org/), a library for easily making HTTP requests.
+- [Requests](https://requests.readthedocs.io/), a library for easily making HTTP requests.
 - [toml](https://github.com/uiri/toml), a library for parsing TOML-formatted files.
 
 The `requests` and `toml` libraries are only needed for the [domain verification in step 6](#6-domain-verification-and-polish), but you can install them now while you're installing other dependencies.
