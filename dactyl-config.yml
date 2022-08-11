@@ -3128,6 +3128,20 @@ pages:
         targets:
             - ja
 
+    -   name: Clio Server Methods
+        html: clio-methods.html
+        parent: public-api-methods.html
+        blurb: Use these methods to retrieve information using Clio server APIs.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
+        targets:
+            - en
+            - ja
+
     -   name: Utility Methods
         html: utility-methods.html
         parent: public-api-methods.html
