@@ -289,7 +289,7 @@
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nft_info"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
@@ -297,7 +297,7 @@
 <span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nft_info"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -336,47 +336,60 @@
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span><span class="w"> </span>
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2436210</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"is_burned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">270</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG9gdNygQ6npA9JvDFWBoeXbiUcTYJnEnk"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"is_burned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"transfer_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHVokeuSnjPjz718qdb47bGXBBHNMP3KDQ"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"nft_taxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"nft_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">"This server may be out of date"</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">"nft_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This server may be out of date"</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2436210</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">269</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG9gdNygQ6npA9JvDFWBoeXbiUcTYJnEnk"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"is_burned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"transfer_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHVokeuSnjPjz718qdb47bGXBBHNMP3KDQ"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"nft_taxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"nft_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xrpl.org"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">"This server may be out of date"</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This server may be out of date"</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 </div>
