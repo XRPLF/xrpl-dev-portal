@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Subscription Methods - XRPL.org (日本語)</title>
+    <title>Clio Server Methods - XRPL.org (日本語)</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Subscription Methods | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/subscription-methods.html" />
-    <meta property="og:description" content="以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。" />
-    <meta name="description" content="以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。" />
+    <meta property="og:title" content="Clio Server Methods | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/clio-methods.html" />
+    <meta property="og:description" content="Use these methods to retrieve information using Clio server APIs." />
+    <meta name="description" content="Use these methods to retrieve information using Clio server APIs." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
 
-    <link rel="alternate" href="https://xrpl.org/subscription-methods.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/subscription-methods.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/subscription-methods.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/clio-methods.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/clio-methods.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/clio-methods.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -232,18 +232,17 @@
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/public-api-methods.html">rippledのパブリックメソッド</a></li>
-    <li class="active breadcrumb-item">Subscription Methods</li>
+    <li class="active breadcrumb-item">Clio Server Methods</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <section class="pt-3 p-md-3">
     <article class="content">
-      <h1 id="main-page-header">Subscription Methods</h1>
-<p class="blurb">以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。</p>
+      <h1 id="main-page-header">Clio Server Methods</h1>
+<p class="blurb">Use these methods to retrieve information using Clio server APIs.</p>
 
 
 <div class="children-display">
   <ul>
-          <li class="level-1"><a href="/ja/subscribe.html">subscribe</a><p class="blurb child-blurb">特定のイベントが発生した場合に、定期的に通知するようサーバーに要求します。</p></li>
-      <li class="level-1"><a href="/ja/unsubscribe.html">unsubscribe</a><p class="blurb child-blurb">特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。</p></li>
+          <li class="level-1"><a href="/ja/nft_info.html">nft_info</a><p class="blurb child-blurb">Retrieve information about the specified NFT using Clio server's `nft_info` API.</p></li>
 
   </ul>
 </div>    </article>
@@ -2031,13 +2030,13 @@
   </div>
 
       
-  <div class="nav-item active">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="true" aria-controls="tree_nav_group_4_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
 
         <a class="nav-link" href="/ja/subscription-methods.html">Subscription Methods</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
@@ -2090,13 +2089,13 @@
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="true" aria-controls="tree_nav_group_4_3_2_8"></a>
 
         <a class="nav-link" href="/ja/clio-methods.html">Clio Server Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+    <nav class="nav flex-column show " id="tree_nav_group_4_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft_info.html">nft_info</a>

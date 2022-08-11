@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Subscription Methods - XRPL.org (日本語)</title>
+    <title>nft_info - XRPL.org (日本語)</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Subscription Methods | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/subscription-methods.html" />
-    <meta property="og:description" content="以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。" />
-    <meta name="description" content="以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。" />
+    <meta property="og:title" content="nft_info | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/nft_info.html" />
+    <meta property="og:description" content="Retrieve information about the specified NFT using Clio server&#39;s `nft_info` API." />
+    <meta name="description" content="Retrieve information about the specified NFT using Clio server&#39;s `nft_info` API." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
 
-    <link rel="alternate" href="https://xrpl.org/subscription-methods.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/subscription-methods.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/subscription-methods.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/nft_info.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/nft_info.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/nft_info.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -41,10 +41,10 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       "event": "page_info",
-      "page_type": "Hub Page",
+      "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": []
+      "page_labels": ['Non-fungible Tokens, NFTs']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -64,6 +64,21 @@
     <!-- Theme switch -->
     <script src="/ja/assets/js/theme-switch.js"></script>
 
+
+
+    <!-- expandable code samples -->
+    <script src="/ja/assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="/ja/assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
 
 
 </head>
@@ -219,10 +234,34 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/TOK-72/content/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md?pr=/XRPLF/xrpl-dev-portal/pull/1461" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <a href="/ja/label-nfts.html" class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</a>
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>目次</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#nft_info">nft_info</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+      </ul>
+  </div>
       </aside>
 
       <!-- main column -->
-      <main class="main col-md-7 col-lg-6 order-md-3  landing landing-children padded-main" role="main" id="main_content_body">
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
 <nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
@@ -232,23 +271,209 @@
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/public-api-methods.html">rippledのパブリックメソッド</a></li>
-    <li class="active breadcrumb-item">Subscription Methods</li>
+    <li class="active breadcrumb-item"><a href="/ja/clio-methods.html">Clio Server Methods</a></li>
+    <li class="active breadcrumb-item">nft_info</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <section class="pt-3 p-md-3">
-    <article class="content">
-      <h1 id="main-page-header">Subscription Methods</h1>
-<p class="blurb">以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。</p>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+    </div><!--/.devportal-callout-->
+    <div class="content">
+        <h1 id="nft_info">nft_info<a aria-hidden="true" class="hover_anchor" href="#nft_info"><i class="fa fa-link"></i></a></h1>
+<p><a class="external-link" href="https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>nft_info</code> command asks the Clio server for information about the <a href="non-fungible-tokens.html">NFT</a> being queried. </p>
+<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 
+<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nft_info"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
 
-<div class="children-display">
-  <ul>
-          <li class="level-1"><a href="/ja/subscribe.html">subscribe</a><p class="blurb child-blurb">特定のイベントが発生した場合に、定期的に通知するようサーバーに要求します。</p></li>
-      <li class="level-1"><a href="/ja/unsubscribe.html">unsubscribe</a><p class="blurb child-blurb">特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。</p></li>
+<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nft_info"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+</div>
+<!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
+[Try it! >](websocket-api-tool.html#nft_info)-->
+<p>The request contains the following parameters:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>nft_id</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">A unique identifier for the non-fungible token (NFT).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_hash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. If you do not specify this field, it defaults to <code>validated</code>. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_index</code></td>
+<td style="text-align: left;">String or Unsigned Integer</td>
+<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. If you do not specify this field, it defaults to <code>validated</code>. Do not specify the <code>ledger_index</code> as <code>closed</code> or <code>current</code>; doing so forwards the request to the P2P <code>rippled</code> server and the <code>nft_info</code> API is not available on <code>rippled</code>. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
-  </ul>
-</div>    </article>
-  </section>
-      </main>
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2436210</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"is_burned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"transfer_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_taxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"This server may be out of date"</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2436210</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"is_burned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"transfer_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_taxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"nft_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"This server may be out of date"</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+</div>
+<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing an <code>nft_info</code> response object with some arrangement of the following fields:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>nft_id</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">A unique identifier for the non-fungible token (NFT).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_index</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the most recent ledger version where the state of this NFT was modified, as in the NFT was minted (created), changed ownership (traded), or burned (destroyed). The information returned contains whatever happened most recently compared to the requested ledger.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>owner</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The account ID of this NFT's owner at this ledger index.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>is_burned</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">Returns <code>true</code> if the NFT is burned at this ledger, or <code>false</code> otherwise.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flags</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The flag set of this NFT.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transfer_fee</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The transfer fee of this NFT. See <a href="nftokenmint.html#nftokenmint-fields">NFTokenMint Fields</a> for more information on transfer fees.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>issuer</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The account ID which denotes the issuer of this NFT.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nft_taxon</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The NFT’s taxon.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nft_sequence</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The NFT’s sequence number.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>uri</code></td>
+<td style="text-align: left;">String or <code>null</code></td>
+<td style="text-align: left;"><em>(Omitted if the NFT is burned at this ledger.)</em>. This field is <code>null</code> if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request <code>nft_info</code> for this token, specifying the <code>ledger_index</code> as the one previous to the index where this token was burned ({ledger_index-where-token-was-burned} - 1).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li>Any of the <a href="error-formatting.html#汎用エラー">universal error types</a>.</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<!-- <script src="/ja/assets/vendor/feedback-widget.js"></script> -->
+<!-- <div id="feedback-content"></div> -->
+<script>
+  // // Options
+  // const options = {
+  //   analyticsConfig: [
+  //     // { name: 'ga', id: 'UA-45576805-2' },
+  //     // { name: 'gtm', id: 'GTM-THHW334' },
+  //   ],
+  //   analyticsName: 'Feedback Widget Tracker',
+  //   theme: 'xrpl',
+  //   currentPath: window.location.pathname,
+  //   parentElement: '#feedback-content',
+  // };
+  // 
+  // // Init WidgetClass
+  // const r = new WidgetClass(options);
+</script>      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
@@ -2031,13 +2256,13 @@
   </div>
 
       
-  <div class="nav-item active">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="true" aria-controls="tree_nav_group_4_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
 
         <a class="nav-link" href="/ja/subscription-methods.html">Subscription Methods</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
@@ -2090,15 +2315,15 @@
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active-parent">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="true" aria-controls="tree_nav_group_4_3_2_8"></a>
 
         <a class="nav-link" href="/ja/clio-methods.html">Clio Server Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+    <nav class="nav flex-column show " id="tree_nav_group_4_3_2_8">
       
-  <div class="nav-item ">
+  <div class="nav-item active">
     <a class="nav-link nav-leaf" href="/ja/nft_info.html">nft_info</a>
   </div>
 
