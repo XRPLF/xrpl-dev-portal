@@ -270,6 +270,52 @@
   right: -4px;
 }
 
+.page-funding {
+
+  .funding-list {
+    @each $funding in "funding-01", "funding-02", "funding-03", "funding-04" {
+      ##{$funding} {
+        content: url("../img/funding/#{$funding}.svg");
+      }
+    }
+  }
+
+  #funding-orange {
+    position: absolute;
+    top: 132px;
+    left: -4px;
+  }
+
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
+  }
+
+// even out height on large
+  @media (min-width: 992px) {
+    .funding-box{
+      min-height: 200px;
+    }
+  }
+}
+
 // Ambassadors
 .page-ambassadors {
 
