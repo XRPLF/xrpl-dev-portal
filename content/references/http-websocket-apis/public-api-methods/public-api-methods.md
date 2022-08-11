@@ -96,7 +96,9 @@ Use these methods to retrieve information about the current state of the `ripple
 
 Use these methods to retrieve information using Clio server APIs.
 
-* **[`nft_info`](nft_info.html)** - Retrieve information about the specified NFT.
+* **[`server_info`](server_info-clio.html)** - Retrieve status of the Clio server.
+* **[`ledger`](ledger-clio.html)** - Get info about a ledger version using Clio server's `ledger` API.
+* **[`nft_info`](nft_info.html)** - Retrieve information about the specified NFT using Clio server's `nft_info` API.
 
 ## [Utility Methods](utility-methods.html)
 
