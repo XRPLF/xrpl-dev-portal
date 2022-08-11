@@ -2870,11 +2870,6 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
-    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger-clio.md
-        targets:
-            - en
-
     -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
         targets:
             - en
@@ -3119,12 +3114,6 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
-    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info-clio.md
-        targets:
-            - en
-            - ja
-
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
         targets:
             - en
@@ -3133,6 +3122,7 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
     -   name: Clio Server Methods
         html: clio-methods.html
         parent: public-api-methods.html
@@ -3142,6 +3132,19 @@ pages:
             - en
             - ja
 
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info-clio.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger-clio.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
         targets:
             - en
