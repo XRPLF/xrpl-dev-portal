@@ -5,7 +5,7 @@ blurb: Retrieve status of the Clio server in human-readable format.
 labels:
   - Core Server
 ---
-# server_info (Clio)
+# server_info
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/ServerInfo.cpp "Source")
 
 The `server_info` command asks the [Clio server](the-clio-server.html) for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](server_info.html) instead.
