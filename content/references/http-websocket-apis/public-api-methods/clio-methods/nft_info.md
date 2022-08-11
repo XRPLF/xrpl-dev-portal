@@ -21,7 +21,7 @@ An example of the request format:
 {
   "id": 1,
   "command": "nft_info",
-  "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"
+  "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
 }
 ```
 
@@ -32,7 +32,7 @@ An example of the request format:
     "method": "nft_info",
     "params": [
       {
-          "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C"
+          "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
       }
     ]
 }
@@ -60,26 +60,33 @@ An example of a successful response:
 *WebSocket*
 
 ```json
-{ 
+{
+  "id": 1,
   "result": {
-    "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
-    "ledger_index": 2436210,
-    "owner": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
-    "is_burned": false,
-    "flags": 0,
+    "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000",
+    "ledger_index": 270,
+    "owner": "rG9gdNygQ6npA9JvDFWBoeXbiUcTYJnEnk",
+    "is_burned": true,
+    "flags": 8,
     "transfer_fee": 0,
-    "issuer": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "issuer": "rHVokeuSnjPjz718qdb47bGXBBHNMP3KDQ",
     "nft_taxon": 0,
-    "nft_sequence": 12,
-    "uri": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi",
-    "validated": true,
-    "status": "success",
-    "warnings": [
-      "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request",
-      "This server may be out of date"
-    ]
-  }
-}  
+    "nft_sequence": 0,
+    "validated": true
+  },
+  "status": "success",
+  "type": "response",
+  "warnings": [
+    {
+      "id": 2001,
+      "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"
+    },
+    {
+      "id": 2002,
+      "message": "This server may be out of date"
+    }
+  ]
+}
 ```
 
 *JSON-RPC*
@@ -87,23 +94,29 @@ An example of a successful response:
 ```json
 {
   "result": {
-    "nft_id": "0000000025CC40A6A240DB42512BA22826B903A785EE2FA512C5D5A70000000C",
-    "ledger_index": 2436210,
-    "owner": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000",
+    "ledger_index": 269,
+    "owner": "rG9gdNygQ6npA9JvDFWBoeXbiUcTYJnEnk",
     "is_burned": false,
-    "flags": 0,
+    "flags": 8,
     "transfer_fee": 0,
-    "issuer": "rhSigFwZ9UnbiKbpaco8aSQUsNFXJVz51W",
+    "issuer": "rHVokeuSnjPjz718qdb47bGXBBHNMP3KDQ",
     "nft_taxon": 0,
-    "nft_sequence": 12,
-    "uri": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi",
+    "nft_sequence": 0,
+    "uri": "https://xrpl.org",
     "validated": true,
-    "status": "success",
-    "warnings": [
-      "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request",
-      "This server may be out of date"
-    ]
-  }
+    "status": "success"
+  },
+  "warnings": [
+    {
+      "id": 2001,
+      "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+    },
+    {
+      "id": 2002,
+      "message": "This server may be out of date"
+    }
+  ]
 }
 ```
 
