@@ -37,7 +37,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#server_info)
+<!-- [Try it! >](websocket-api-tool.html#server_info) -->
 
 The request does not take any parameters.
 
@@ -51,6 +51,7 @@ An example of a successful response:
 
 ```json
 {
+    "id": 1,
     "result": {
         "info": {
             "complete_ledgers": "19499132-19977628",
@@ -241,12 +242,20 @@ An example of a successful response:
             "read_only": false,
             "last_publish_age_seconds": "2"
         },
-        "validated": true,
-        "status": "success",
-        "warnings": [
-            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
-        ]
-    }
+        "validated": true
+    },
+    "status": "success",
+    "type": "response",
+    "warnings": [
+        {
+            "id": 2001,
+            "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"
+        },
+        {
+            "id": 2002,
+            "message": "This server may be out of date"
+        }
+    ]
 }
 ```
 
@@ -447,217 +456,19 @@ An example of a successful response:
             "last_publish_age_seconds": "2"
         },
         "validated": true,
-        "status": "success",
-        "warnings": [
-            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
-        ]
-    }
-}
-```
-
-*Commandline*
-
-```json
-Loading: "/etc/opt/ripple/rippled.cfg"
-2020-Mar-24 01:28:22.288484766 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
-
-{
-    "result": {
-        "info": {
-            "complete_ledgers": "19499132-19977628",
-            "counters": {
-                "rpc": {
-                    "account_objects": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "991"
-                    },
-                    "account_tx": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "91633"
-                    },
-                    "account_lines": {
-                        "started": "5",
-                        "finished": "5",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "4915159"
-                    },
-                    "submit_multisigned": {
-                        "started": "2",
-                        "finished": "2",
-                        "errored": "0",
-                        "forwarded": "2",
-                        "duration_us": "4823"
-                    },
-                    "ledger_entry": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "17806"
-                    },
-                    "server_info": {
-                        "started": "5",
-                        "finished": "5",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "2375580"
-                    },
-                    "account_info": {
-                        "started": "5",
-                        "finished": "5",
-                        "errored": "0",
-                        "forwarded": "5",
-                        "duration_us": "9256"
-                    },
-                    "account_currencies": {
-                        "started": "4",
-                        "finished": "4",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "517302"
-                    },
-                    "noripple_check": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "1",
-                        "duration_us": "2218"
-                    },
-                    "tx": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "562"
-                    },
-                    "gateway_balances": {
-                        "started": "6",
-                        "finished": "6",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "1395156"
-                    },
-                    "channel_authorize": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "1",
-                        "duration_us": "2017"
-                    },
-                    "manifest": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "1",
-                        "duration_us": "1707"
-                    },
-                    "subscribe": {
-                        "started": "6",
-                        "finished": "6",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "116"
-                    },
-                    "random": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "111"
-                    },
-                    "ledger_data": {
-                        "started": "14",
-                        "finished": "3",
-                        "errored": "11",
-                        "forwarded": "0",
-                        "duration_us": "6179145"
-                    },
-                    "ripple_path_find": {
-                        "started": "1",
-                        "finished": "1",
-                        "errored": "0",
-                        "forwarded": "1",
-                        "duration_us": "1409563"
-                    },
-                    "account_channels": {
-                        "started": "14",
-                        "finished": "14",
-                        "errored": "0",
-                        "forwarded": "0",
-                        "duration_us": "1062692"
-                    },
-                    "submit": {
-                        "started": "6",
-                        "finished": "6",
-                        "errored": "0",
-                        "forwarded": "6",
-                        "duration_us": "11383"
-                    },
-                    "transaction_entry": {
-                        "started": "8",
-                        "finished": "5",
-                        "errored": "3",
-                        "forwarded": "0",
-                        "duration_us": "494131"
-                    }
-                },
-                "subscriptions": {
-                    "ledger": 0,
-                    "transactions": 0,
-                    "transactions_proposed": 0,
-                    "manifests": 2,
-                    "validations": 2,
-                    "account": 0,
-                    "accounts_proposed": 0,
-                    "books": 0
-                }
-            },
-            "load_factor": 1,
-            "clio_version": "0.3.0-b2",
-            "validation_quorum": 8,
-            "rippled_version": "1.9.1-rc1",
-            "validated_ledger": {
-                "age": 4,
-                "hash": "4CD25FB70D45646EE5822E76E58B66D39D5AE6BA0F70491FA803DA0DA218F434",
-                "seq": 19977628,
-                "base_fee_xrp": 1E-5,
-                "reserve_base_xrp": 1E1,
-                "reserve_inc_xrp": 2E0
-            }
+    },
+    "status": "success",
+    "type": "response",
+    "warnings": [
+        {
+            "id": 2001,
+            "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"
         },
-        "cache": {
-            "size": 8812733,
-            "is_full": true,
-            "latest_ledger_seq": 19977629
-        },
-        "etl": {
-            "etl_sources": [
-                {
-                    "validated_range": "19405538-19977629",
-                    "is_connected": "1",
-                    "ip": "52.36.182.38",
-                    "ws_port": "6005",
-                    "grpc_port": "50051",
-                    "last_msg_age_seconds": "0"
-                }
-            ],
-            "is_writer": true,
-            "read_only": false,
-            "last_publish_age_seconds": "2"
-        },
-        "validated": true,
-        "status": "success",
-        "warnings": [
-            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
-        ]
-    }
+        {
+            "id": 2002,
+            "message": "This server may be out of date"
+        }
+    ]
 }
 ```
 

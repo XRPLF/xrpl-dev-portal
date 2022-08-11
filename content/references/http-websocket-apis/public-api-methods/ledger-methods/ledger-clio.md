@@ -53,19 +53,9 @@ An example of the request format:
 }
 ```
 
-*Commandline*
-
-```
-#Syntax: ledger ledger_index|ledger_hash [full|tx|diff]
-# "full" is equivalent to "full": true
-# "tx" is equivalent to "transactions": true
-# "diff" is equivalent to "diff": true
-clio ledger
-```
-
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger)
+<!-- [Try it! >](websocket-api-tool.html#ledger) -->
 
 The request can contain the following parameters:
 
@@ -92,6 +82,7 @@ An example of a successful response:
 
 ```json
 {
+    "id": 1,
     "result": {
         "ledger": {
             "accepted": true,
@@ -113,12 +104,20 @@ An example of a successful response:
         },
         "ledger_hash": "D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85",
         "ledger_index": 19977716,
-        "validated": true,
-        "status": "success",
-        "warnings": [
-            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
-        ]
-    }
+        "validated": true
+    },
+    "status": "success",
+    "type": "response",
+    "warnings": [
+        {
+            "id": 2001,
+            "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"
+        },
+        {
+            "id": 2002,
+            "message": "This server may be out of date"
+        }
+    ]
 }
 ```
 
@@ -149,49 +148,20 @@ An example of a successful response:
         },
         "ledger_hash": "D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85",
         "ledger_index": 19977716,
-        "validated": true,
-        "status": "success",
-        "warnings": [
-            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
-        ]
-    }
-}
-```
-
-*Commandline*
-
-```json
-Loading: "/etc/opt/ripple/rippled.cfg"
-2020-Mar-24 01:42:42.622264591 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
-
-{
-    "result": {
-        "ledger": {
-            "accepted": true,
-            "account_hash": "10EFE192F59B3DE2A2BE5BCE2CA5DC83D066105696FCFC24C055359AAEBD6941",
-            "close_flags": 0,
-            "close_time": 711134782,
-            "close_time_human": "2022-Jul-14 17:26:22.000000000 UTC",
-            "close_time_resolution": 10,
-            "closed": true,
-            "hash": "D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85",
-            "ledger_hash": "D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85",
-            "ledger_index": "19977716",
-            "parent_close_time": 711134781,
-            "parent_hash": "D6DE54039FE5A22D86CD522F1A9B7794E487B74D9B6B8CBDE23F240F434B6749",
-            "seqNum": "19977716",
-            "totalCoins": "99987079398940307",
-            "total_coins": "99987079398940307",
-            "transaction_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        "validated": true
+    },
+     "status": "success",
+    "type": "response",
+    "warnings": [
+        {
+            "id": 2001,
+            "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"
         },
-        "ledger_hash": "D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85",
-        "ledger_index": 19977716,
-        "validated": true,
-        "status": "success",
-        "warnings": [
-            "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
-        ]
-    }
+        {
+            "id": 2002,
+            "message": "This server may be out of date"
+        }
+    ]
 }
 ```
 
