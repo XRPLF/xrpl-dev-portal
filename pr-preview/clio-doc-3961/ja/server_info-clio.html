@@ -90,10 +90,18 @@
   <!-- End Google Tag Manager (noscript) -->
 
 <div class="top-banner fixed-top">
-  <div class="d-flex justify-content-center ">
-    <span><p class="mb-0">XRPL上のネイティブAMMの提案を読む</p></span>
-    <span><a href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank" class="btn btn-outline-secondary">Review</a></span>
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
   </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
@@ -293,13 +301,14 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 </div>
-<p><a class="btn btn-primary" href="websocket-api-tool.html#server_info">Try it!</a></p>
+<!-- [Try it! >](websocket-api-tool.html#server_info) -->
 <p>The request does not take any parameters.</p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">"complete_ledgers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19499132-19977628"</span><span class="p">,</span><span class="w"></span>
@@ -490,12 +499,20 @@
 <span class="w">            </span><span class="nt">"read_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">"last_publish_age_seconds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w"></span>
 <span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This server may be out of date"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
@@ -693,214 +710,19 @@
 <span class="w">            </span><span class="nt">"last_publish_age_seconds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w"></span>
 <span class="w">        </span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></div>
-
-<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</span><span class="w"></span>
-<span class="mi">2020-</span><span class="err">Mar</span><span class="mi">-24</span><span class="w"> </span><span class="mi">01</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mf">22.288484766</span><span class="w"> </span><span class="err">UTC</span><span class="w"> </span><span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span><span class="w"> </span><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span><span class="w"></span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"complete_ledgers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19499132-19977628"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"counters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"rpc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"account_objects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"991"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"account_tx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91633"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"account_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4915159"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"submit_multisigned"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4823"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"ledger_entry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17806"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"server_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2375580"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"account_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9256"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"account_currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"517302"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"noripple_check"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2218"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"tx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"562"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"gateway_balances"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1395156"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"channel_authorize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1707"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"subscribe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"116"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"random"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"ledger_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6179145"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"ripple_path_find"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1409563"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"account_channels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1062692"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"submit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11383"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"transaction_entry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"finished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"errored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"forwarded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"494131"</span><span class="w"></span>
-<span class="w">                    </span><span class="p">}</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"transactions_proposed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"manifests"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"validations"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"accounts_proposed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"books"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"load_factor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"clio_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3.0-b2"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"validation_quorum"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"rippled_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.9.1-rc1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"validated_ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4CD25FB70D45646EE5822E76E58B66D39D5AE6BA0F70491FA803DA0DA218F434"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">19977628</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"base_fee_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1E-5</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"reserve_base_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1E1</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"reserve_inc_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">2E0</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"</span><span class="w"></span>
 <span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"cache"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">8812733</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"is_full"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"latest_ledger_seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">19977629</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"etl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"etl_sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"validated_range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19405538-19977629"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"is_connected"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.36.182.38"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"ws_port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6005"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"grpc_port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50051"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"last_msg_age_seconds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"is_writer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"read_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"last_publish_age_seconds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This server may be out of date"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 </div>
