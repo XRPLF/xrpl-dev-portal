@@ -8,7 +8,7 @@ labels:
 # nft_info
 [[Source]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp "Source")
 
-The `nft_info` command asks the Clio server for information about the [NFT](non-fungible-tokens.html) being queried. 
+The `nft_info` command asks the Clio server for information about the [NFT](non-fungible-tokens.html) being queried. [New in: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
 
 ## Request Format
 An example of the request format:
