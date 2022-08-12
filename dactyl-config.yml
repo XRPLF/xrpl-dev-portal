@@ -3114,18 +3114,40 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
-    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info-clio.md
-        targets:
-            - en
-            - ja
-
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
         targets:
             - en
 
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.ja.md
         targets:
+            - ja
+
+        # TODO: translate
+    -   name: Clio Server Methods
+        html: clio-methods.html
+        parent: public-api-methods.html
+        blurb: Use these methods to retrieve information using Clio server APIs.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
+        targets:
+            - en
             - ja
 
     -   name: Utility Methods
