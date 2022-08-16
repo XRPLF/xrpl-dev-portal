@@ -482,6 +482,7 @@ The `info` object may have some arrangement of the following fields:
 | `Field`                             | Type            | Description          |
 |:------------------------------------|:----------------|:---------------------|
 | `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
+| `counters`                          | Object          | This is present only if the client connects to the `Clio` server over `localhost`.
 | `rpc`                               | Object array    | Stats on each RPC handled by the Clip server since startup. |
 | `rpc.*.started`                     | Number          | Number of RPCs of this type that the Clio server has started processing since startup. |
 | `rpc.*.finished`                    | Number          | Number of RPCs of this type that the Clio server has finished processing since startup. |
@@ -499,21 +500,21 @@ The `info` object may have some arrangement of the following fields:
 | `subscriptions.books`               |                 |   |
 | `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost) and the overall network's load factor. [Updated in: rippled 0.33.0][] |
 | `clio_version`                      | String          |  The version number of the running `Clio` server.  |
-| `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from `rippled`. |
-| `rippled_version`                   | String          |  The version number of the running `rippled` server that the `Clio` server is connected to. |
+| `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from `rippled`. This field may be omitted from the response if the `Clio` server is unable to connect to `rippled` for some reason. |
+| `rippled_version`                   | String          |  The version number of the running `rippled` server that the `Clio` server is connected to. This field may be omitted from the response if the `Clio` server is unable to connect to `rippled` for some reason. |
 | `validated_ledger`                  | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validated_ledger.age`              | Number          | The time since the ledger was closed, in seconds. |
 | `validated_ledger.base_fee_xrp`     | Number          | Base fee, in XRP. This may be represented in scientific notation such as `1e-05` for 0.00001. |
 | `validated_ledger.hash`             | String          | Unique hash for the ledger, as hexadecimal. |
-| `validated_ledger.reserve_base_xrp` | Number          | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
-| `validated_ledger.reserve_inc_xrp`  | Number          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. |
+| `validated_ledger.reserve_base_xrp` | Number          | Minimum amount of XRP (not drops) necessary for every account to keep in reserve. This may be represented in scientific notation such as `1e-05` for 0.00001. |
+| `validated_ledger.reserve_inc_xrp`  | Number          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. This may be represented in scientific notation such as `1e-05` for 0.00001. |
 | `validated_ledger.seq`              | Number          | The [ledger index][] of the latest validated ledger. |
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list will expire, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. [Updated in: rippled 1.5.0][] |
 | `cache`                             | Object          | Information on Clio's state data cache. |
 | `cache.size`                        | Number          | Number of state data objects currently in the cache. |
 | `cache.is_full`                     | Boolean         | True if cache contains all state data for a specific ledger, false otherwise. Some RPCs, such as book_offers, process much faster when the cache is full. |
 | `cache.latest_ledger_seq`           | Number          | The [ledger index][] of the latest validated ledger stored in the cache. |
-| `etl`                               | Object          | The `rippled` sources (ETL sources) that the Clio server is connected to. |
+| `etl`                               | Object          | The `rippled` sources (ETL sources) that the Clio server is connected to. This is present only if the client connects to the `Clio` server over `localhost`. |
 | `etl.etl_sources`                   | Object Array    | List the `rippled` sources (ETL sources) that the Clio server is connected to and extracts data from. |
 | `etl.etl_sources.validated_range`   | String          | The validated ledger range retrieved by the P2P `rippled` server. |
 | `etl.etl_sources.is_connected`      | Boolean         | True if Clio is connected to this source via websocket, false otherwise. A value of false here could indicate a networking issue, or that `rippled` is not running, amongst other things. |
