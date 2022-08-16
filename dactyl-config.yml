@@ -194,7 +194,11 @@ targets:
             # Fix links from untranslated become-an-xrp-ledger-gateway.htm:
             "partial-payments.html#the-delivered_amount-field": "partial-payments.html#delivered_amountフィールド"
             "partial-payments.html#partial-payments-exploit": "partial-payments.html#partial-paymentの悪用"
-
+            # Fix links from untranslated ledger-clio.html
+            "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
+            "transaction-cost.html#fee-levels": "transaction-cost.html#手数料レベル"
+            "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
+            "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
 
 pages:
 
