@@ -825,7 +825,7 @@
 <tr>
 <td style="text-align: left;"><code>rpc</code></td>
 <td style="text-align: left;">Object array</td>
-<td style="text-align: left;">Stats on each RPC handled by the Clip server since startup.</td>
+<td style="text-align: left;">Stats on each RPC handled by the Clip server since startup. Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.started</code></td>
@@ -855,7 +855,7 @@
 <tr>
 <td style="text-align: left;"><code>subscriptions</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">Number of current subscribers for each stream type.</td>
+<td style="text-align: left;">Number of current subscribers for each stream type.  Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>subscriptions.ledger</code></td>
