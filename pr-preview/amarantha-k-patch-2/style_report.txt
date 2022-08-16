@@ -1,7 +1,7 @@
 -------------
 Spell Checker
 -------------
-Found 189 possible spelling errors:
+Found 190 possible spelling errors:
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
@@ -12,8 +12,8 @@ Found 189 possible spelling errors:
   expandedsignerlist: 
 
 <Page 'Tokens' (tokens.html)> Unknown Words:
-  asheesh: hasheesh, sheesh
-  bharath: sharath, bharata, bharat
+  bharath: bharat, sharath, bharata
+  asheesh: sheesh, hasheesh
 
 <Page 'Authorized Trust Lines' (authorized-trust-lines.html)> Unknown Words:
   onboarding: 
@@ -28,9 +28,9 @@ Found 189 possible spelling errors:
   nftokenoffer: 
   nftokenburn: 
   0x000008: 
+  nftokencreateoffer: 
   nftokenacceptoffer: 
   nftokencanceloffer: 
-  nftokencreateoffer: 
 
 <Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)> Unknown Words:
   nftokens: 
@@ -47,29 +47,29 @@ Found 189 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  expandedsignerlist: 
   checkcashmakestrustline: 
-  fixnftokendirv1: 
+  expandedsignerlist: 
   nonfungibletokensv1: 
   fixnftokennegoffer: 
-  talso: talos, tasso, talco
+  fixnftokendirv1: 
+  nonfungibletokensv1_1: 
+  talso: tasso, talco, talio
+  nftokencreateoffer: 
+  nftokenmint: 
   nftokenacceptoffer: 
   nftokenburn: 
   nftokencanceloffer: 
-  nftokencreateoffer: 
-  nftokenmint: 
   nftokenpage: 
   nftokenoffer: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  20d: 2d, 2nd
-  xls: mls, sls, nls
+  20d: 2nd, 2d
+  xls: ls, mls, xl
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
   permissionless: 
-  evm: eam, eem, evx
+  evm: eva, eve, ehm
   federators: federator
 
 <Page 'Ledger History' (ledger-history.html)> Unknown Words:
@@ -87,7 +87,7 @@ Found 189 possible spelling errors:
 <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)> Unknown Words:
   quickstart: 
   nftokens: 
-  getnet: genet, setnet
+  getnet: setnet, genet
   getaccount: 
   xrptodrops: 
 
@@ -128,16 +128,16 @@ Found 189 possible spelling errors:
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
   disallowxrp: 
   wxpython: 
-  wsl: qsl, wsi, wl
+  wsl: usl, wsp, psl
   threadsafe: 
   asyncio: 
-  guis: gruis, tuis, gois
   wxglade: 
-  s1: sy, s, sr
+  guis: guvs, gurs, gius
+  s1: sg, su, sx
   toolkits: toolkit
   tooltip: 
-  lsf: losf, lsa, csf
-  refactor: reactor, redactor, refractor
+  lsf: lsi, lmf, lsv
+  refactor: refractor, reactor, prefactor
   tooltips: 
 
 <Page 'Use Tickets' (use-tickets.html)> Unknown Words:
@@ -153,18 +153,18 @@ Found 189 possible spelling errors:
   ipfs: ipcs, ipms, ips
   nftokenacceptoffer: 
   acceptselloffer: 
-  nftokenmint: 
   nftokenpage: 
-  nftokencreateoffer: 
-  nftokenoffer: 
   nftokenburn: 
   nftokencanceloffer: 
+  nftokencreateoffer: 
+  nftokenoffer: 
+  nftokenmint: 
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Unknown Words:
   xapps: lapps, apps, capps
 
 <Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: name, nme, nome
+  nvme: vme, nme, nome
 
 <Page 'Build and Run rippled in Reporting Mode' (build-run-rippled-in-reporting-mode.html)> Unknown Words:
   datastores: 
@@ -176,24 +176,24 @@ Found 189 possible spelling errors:
   nftokenpage: 
   tokenid: tokened
   trustline: 
-  lsfonlyxrp: 
+  0x0008: 
   lsfburnable: 
-  0x000b: 
   0x0002: 
   lsftransferable: 
+  lsfonlyxrp: 
   0x0001: 
-  0x0008: 
+  0x000b: 
   transferfee: transferee
   1bps: kbps, bps, mbps
   nftokenmint: 
-  ipfs: ipcs, ipms, ips
   rfc2379: 
+  ipfs: ipcs, ipms, ips
   nftokens: 
 
 <Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
   nftokenpage: 
-  nftokens: 
   nftokenoffer: 
+  nftokens: 
 
 <Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
   nftokenoffer: 
@@ -203,15 +203,15 @@ Found 189 possible spelling errors:
   nftokenpage: 
   nonfungibletokensv1: 
   tokenpage: 
-  shamap: shamal, shamas, shama
+  shamap: shamal, shama, shamas
 
 <Page 'SignerList' (signerlist.html)> Unknown Words:
   expandedsignerlist: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenmint: 
+  xls: ls, mls, xl
   nftokens: 
-  xls: mls, sls, nls
   nftoken: 
 
 <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
@@ -237,8 +237,8 @@ Found 189 possible spelling errors:
   nonfungibletokensv1: 
   nftokenpage: 
   nftoken: 
-  ipfs: ipcs, ipms, ips
   rfc2379: 
+  ipfs: ipcs, ipms, ips
 
 <Page 'SignerListSet' (signerlistset.html)> Unknown Words:
   expandedsignerlist: 
@@ -270,18 +270,19 @@ Found 189 possible spelling errors:
   nft_buy_offers: 
   nftoken: 
   nonfungibletokensv1: 
-  _the: fthe, athe, ethe
+  _the: tthe, ithe, athe
   nftokenoffer: 
 
 <Page 'nft_sell_offers' (nft_sell_offers.html)> Unknown Words:
   nft_sell_offers: 
   nonfungibletokensv1: 
   nftoken: 
-  _the: fthe, athe, ethe
+  _the: tthe, ithe, athe
   nftokenoffer: 
 
 <Page 'server_info' (server_info-clio.html)> Unknown Words:
-  rpcs: apcs, recs, pcs
+  localhost: 
+  rpcs: recs, rics, rocs
 
 <Page 'nft_info' (nft_info.html)> Unknown Words:
   nft_info: 
@@ -622,7 +623,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 56
   Words: 758
-  Characters: 4,717
+  Characters: 4,718
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
