@@ -540,7 +540,7 @@
 <tr>
 <td style="text-align: left;"><code>ledger.transactions</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="basic-data-types.html#hashes">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
+<td style="text-align: left;">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="basic-data-types.html#ハッシュ">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
@@ -588,7 +588,7 @@
 <tr>
 <td style="text-align: left;"><code>tx</code></td>
 <td style="text-align: left;">String or Object</td>
-<td style="text-align: left;">By default, this is a String containing the <a href="basic-data-types.html#hashes">identifying hash</a> of the transaction. If transactions are expanded in binary format, this is an object whose only field is <code>tx_blob</code>, containing the binary form of the transaction as a decimal string. If transactions are expanded in JSON format, this is an object containing the <a href="transaction-formats.html">transaction object</a> including the transaction's identifying hash in the <code>hash</code> field.</td>
+<td style="text-align: left;">By default, this is a String containing the <a href="basic-data-types.html#ハッシュ">identifying hash</a> of the transaction. If transactions are expanded in binary format, this is an object whose only field is <code>tx_blob</code>, containing the binary form of the transaction as a decimal string. If transactions are expanded in JSON format, this is an object containing the <a href="transaction-formats.html">transaction object</a> including the transaction's identifying hash in the <code>hash</code> field.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>retries_remaining</code></td>
@@ -618,7 +618,7 @@
 <tr>
 <td style="text-align: left;"><code>fee_level</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in <a href="transaction-cost.html#fee-levels">fee levels</a>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in <a href="transaction-cost.html#手数料レベル">fee levels</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>max_spend_drops</code></td>
@@ -627,7 +627,7 @@
 </tr>
 </tbody>
 </table>
-<p>If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="offercreate.html">OfferCreate transaction</a>. The purpose of this field is to make it easier to track the <a href="offers.html#lifecycle-of-an-offer">funding status of offers</a> with each new validated ledger. This field is defined slightly differently than the version of this field in <a href="subscribe.html#order-book-streams">Order Book subscription streams</a>:</p>
+<p>If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="offercreate.html">OfferCreate transaction</a>. The purpose of this field is to make it easier to track the <a href="offers.html#オファーのライフサイクル">funding status of offers</a> with each new validated ledger. This field is defined slightly differently than the version of this field in <a href="subscribe.html#オーダーブックストリーム">Order Book subscription streams</a>:</p>
 <table class="table-responsive">
 <thead>
 <tr>
