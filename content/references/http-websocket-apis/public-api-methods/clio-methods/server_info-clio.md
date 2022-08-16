@@ -568,13 +568,13 @@ The `info` object may have some arrangement of the following fields:
 |:------------------------------------|:----------------|:---------------------|
 | `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
 | `counters`                          | Object          | This is present only if the client connects to the `Clio` server over `localhost`.
-| `rpc`                               | Object array    | Stats on each RPC handled by the Clip server since startup. |
+| `rpc`                               | Object array    | Stats on each RPC handled by the Clip server since startup. Since this is nested within the `counters` object, this is also present only if the client connects to the `Clio` server over `localhost`. |
 | `rpc.*.started`                     | Number          | Number of RPCs of this type that the Clio server has started processing since startup. |
 | `rpc.*.finished`                    | Number          | Number of RPCs of this type that the Clio server has finished processing since startup. |
 | `rpc.*.errored`                     | Number          | Number of RPCs of this type that have resulted in some sort of error since startup.  |
 | `rpc.*.forwarded`                   | Number          | Number of RPCs of this type that the Clio server has forwarded to a `rippled` P2P server since startup. |
 | `rpc.*.duration_us`                 | Number          | The total number of microseconds spent processing RPCs of this type since startup. | 
-| `subscriptions`                     | Object          | Number of current subscribers for each stream type.  |
+| `subscriptions`                     | Object          | Number of current subscribers for each stream type.  Since this is nested within the `counters` object, this is also present only if the client connects to the `Clio` server over `localhost`. |
 | `subscriptions.ledger`              |                 |   |
 | `subscriptions.transactions`        |                 |   |
 | `subscriptions.transactions_proposed` |               |   |
