@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +131,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -142,6 +155,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -159,7 +173,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -167,15 +181,17 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -219,7 +235,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/references/protocol-reference/serialization.md?pr=/XRPLF/xrpl-dev-portal/pull/1381" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/references/protocol-reference/serialization.md?pr=/XRPLF/xrpl-dev-portal/pull/1468" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -273,7 +289,7 @@
     <div class="content">
         <h1 id="serialization-format">Serialization Format<a aria-hidden="true" class="hover_anchor" href="#serialization-format"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the <a href="peer-protocol.html">peer-to-peer communications between servers</a>. The <a href="rippled-api.html"><code>rippled</code> APIs</a> typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.</p>
+<p>This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the <a href="peer-protocol.html">peer-to-peer communications between servers</a>. The <a href="http-websocket-apis.html"><code>rippled</code> APIs</a> typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.</p>
 <p>The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:</p>
 <ol>
 <li>
@@ -326,7 +342,7 @@
 <ul>
 <li>In C++ <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp" target="_blank">in the <code>rippled</code> code base <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 <li>In JavaScript in the <a class="external-link" href="https://github.com/ripple/ripple-binary-codec/" target="_blank"><code>ripple-binary-codec</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> package.</li>
-<li>In Python 3 in <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/amarantha-k-patch-2/content/_code-samples/tx-serialization/serialize.py" target="_blank">this repository's code samples section <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
+<li>In Python 3 in <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/amarantha-k-patch-2/content/_code-samples/tx-serialization/" target="_blank">this repository's code samples section <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 </ul>
 <p>Additionally, many <a href="client-libraries.html">client libraries</a> provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.</p>
 <h2 id="internal-format">Internal Format<a aria-hidden="true" class="hover_anchor" href="#internal-format"><i class="fa fa-link"></i></a></h2>
@@ -339,30 +355,30 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Field</th>
-<th align="left">Contents</th>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Contents</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>TYPES</code></td>
-<td align="left">Map of data types to their <a href="#type-codes">"type code"</a> for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the <a href="#type-list">Type List</a> for details of how to serialize each type.</td>
+<td style="text-align: left;"><code>TYPES</code></td>
+<td style="text-align: left;">Map of data types to their <a href="#type-codes">"type code"</a> for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the <a href="#type-list">Type List</a> for details of how to serialize each type.</td>
 </tr>
 <tr>
-<td align="left"><code>LEDGER_ENTRY_TYPES</code></td>
-<td align="left">Map of <a href="ledger-object-types.html">ledger objects</a> to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' <a href="transaction-metadata.html">metadata</a>.</td>
+<td style="text-align: left;"><code>LEDGER_ENTRY_TYPES</code></td>
+<td style="text-align: left;">Map of <a href="ledger-object-types.html">ledger objects</a> to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' <a href="transaction-metadata.html">metadata</a>.</td>
 </tr>
 <tr>
-<td align="left"><code>FIELDS</code></td>
-<td align="left">A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See the "Field properties" table below for definitions of those fields.)</td>
+<td style="text-align: left;"><code>FIELDS</code></td>
+<td style="text-align: left;">A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See the "Field properties" table below for definitions of those fields.)</td>
 </tr>
 <tr>
-<td align="left"><code>TRANSACTION_RESULTS</code></td>
-<td align="left">Map of <a href="transaction-results.html">transaction result codes</a> to their numeric values. Result types not included in ledgers have negative values; <code>tesSUCCESS</code> has numeric value 0; <a href="tec-codes.html"><code>tec</code>-class codes</a> represent failures that are included in ledgers.</td>
+<td style="text-align: left;"><code>TRANSACTION_RESULTS</code></td>
+<td style="text-align: left;">Map of <a href="transaction-results.html">transaction result codes</a> to their numeric values. Result types not included in ledgers have negative values; <code>tesSUCCESS</code> has numeric value 0; <a href="tec-codes.html"><code>tec</code>-class codes</a> represent failures that are included in ledgers.</td>
 </tr>
 <tr>
-<td align="left"><code>TRANSACTION_TYPES</code></td>
-<td align="left">Map of all <a href="transaction-types.html">transaction types</a> to their numeric values.</td>
+<td style="text-align: left;"><code>TRANSACTION_TYPES</code></td>
+<td style="text-align: left;">Map of all <a href="transaction-types.html">transaction types</a> to their numeric values.</td>
 </tr>
 </tbody>
 </table>
@@ -371,36 +387,36 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Field</th>
-<th align="left">Type</th>
-<th align="left">Contents</th>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Contents</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>nth</code></td>
-<td align="left">Number</td>
-<td align="left">The <a href="#field-codes">field code</a> of this field, for use in constructing its <a href="#field-ids">Field ID</a> and ordering it with other fields of the same data type.</td>
+<td style="text-align: left;"><code>nth</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">The <a href="#field-codes">field code</a> of this field, for use in constructing its <a href="#field-ids">Field ID</a> and ordering it with other fields of the same data type.</td>
 </tr>
 <tr>
-<td align="left"><code>isVLEncoded</code></td>
-<td align="left">Boolean</td>
-<td align="left">If <code>true</code>, this field is <a href="#length-prefixing">length-prefixed</a>.</td>
+<td style="text-align: left;"><code>isVLEncoded</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">If <code>true</code>, this field is <a href="#length-prefixing">length-prefixed</a>.</td>
 </tr>
 <tr>
-<td align="left"><code>isSerialized</code></td>
-<td align="left">Boolean</td>
-<td align="left">If <code>true</code>, this field should be encoded into serialized binary data. When this field is <code>false</code>, the field is typically reconstructed on demand rather than stored.</td>
+<td style="text-align: left;"><code>isSerialized</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">If <code>true</code>, this field should be encoded into serialized binary data. When this field is <code>false</code>, the field is typically reconstructed on demand rather than stored.</td>
 </tr>
 <tr>
-<td align="left"><code>isSigningField</code></td>
-<td align="left">Boolean</td>
-<td align="left">If <code>true</code> this field should be serialized when preparing a transaction for signing. If <code>false</code>, this field should be omitted from the data to be signed. (It may not be part of transactions at all.)</td>
+<td style="text-align: left;"><code>isSigningField</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">If <code>true</code> this field should be serialized when preparing a transaction for signing. If <code>false</code>, this field should be omitted from the data to be signed. (It may not be part of transactions at all.)</td>
 </tr>
 <tr>
-<td align="left"><code>type</code></td>
-<td align="left">String</td>
-<td align="left">The internal data type of this field. This maps to a key in the <code>TYPES</code> map, which gives the <a href="#type-codes">type code</a> for this field.</td>
+<td style="text-align: left;"><code>type</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The internal data type of this field. This maps to a key in the <code>TYPES</code> map, which gives the <a href="#type-codes">type code</a> for this field.</td>
 </tr>
 </tbody>
 </table>
@@ -411,21 +427,21 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left"></th>
-<th align="left">Type Code &lt; 16</th>
-<th align="left">Type Code &gt;= 16</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Type Code &lt; 16</th>
+<th style="text-align: left;">Type Code &gt;= 16</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><strong>Field Code &lt; 16</strong></td>
-<td align="left"><img alt="1 byte: high 4 bits define type; low 4 bits define field." src="img/field-id-common-type-common-field.png"/></td>
-<td align="left"><img alt="2 bytes: low 4 bits of the first byte define field; next byte defines type." src="img/field-id-uncommon-type-common-field.png"/></td>
+<td style="text-align: left;"><strong>Field Code &lt; 16</strong></td>
+<td style="text-align: left;"><img alt="1 byte: high 4 bits define type; low 4 bits define field." src="img/field-id-common-type-common-field.png"/></td>
+<td style="text-align: left;"><img alt="2 bytes: low 4 bits of the first byte define field; next byte defines type." src="img/field-id-uncommon-type-common-field.png"/></td>
 </tr>
 <tr>
-<td align="left"><strong>Field Code &gt;= 16</strong></td>
-<td align="left"><img alt="2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field" src="img/field-id-common-type-uncommon-field.png"/></td>
-<td align="left"><img alt="3 bytes: first byte is 0x00, second byte defines type; third byte defines field" src="img/field-id-uncommon-type-uncommon-field.png"/></td>
+<td style="text-align: left;"><strong>Field Code &gt;= 16</strong></td>
+<td style="text-align: left;"><img alt="2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field" src="img/field-id-common-type-uncommon-field.png"/></td>
+<td style="text-align: left;"><img alt="3 bytes: first byte is 0x00, second byte defines type; third byte defines field" src="img/field-id-uncommon-type-uncommon-field.png"/></td>
 </tr>
 </tbody>
 </table>
@@ -433,21 +449,21 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left"></th>
-<th align="left">High 4 bits are nonzero</th>
-<th align="left">High 4 bits are zero</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">High 4 bits are nonzero</th>
+<th style="text-align: left;">High 4 bits are zero</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><strong>Low 4 bits are nonzero</strong></td>
-<td align="left">1 byte: high 4 bits define type; low 4 bits define field.</td>
-<td align="left">2 bytes: low 4 bits of the first byte define field; next byte defines type</td>
+<td style="text-align: left;"><strong>Low 4 bits are nonzero</strong></td>
+<td style="text-align: left;">1 byte: high 4 bits define type; low 4 bits define field.</td>
+<td style="text-align: left;">2 bytes: low 4 bits of the first byte define field; next byte defines type</td>
 </tr>
 <tr>
-<td align="left"><strong>Low 4 bits are zero</strong></td>
-<td align="left">2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field</td>
-<td align="left">3 bytes: first byte is <code>0x00</code>, second byte defines type; third byte defines field</td>
+<td style="text-align: left;"><strong>Low 4 bits are zero</strong></td>
+<td style="text-align: left;">2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field</td>
+<td style="text-align: left;">3 bytes: first byte is <code>0x00</code>, second byte defines type; third byte defines field</td>
 </tr>
 </tbody>
 </table>
@@ -495,96 +511,96 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Type Name</th>
-<th align="left">Type Code</th>
-<th align="left">Bit Length</th>
-<th align="left"><a href="#length-prefixing">Length-prefixed</a>?</th>
+<th style="text-align: left;">Type Name</th>
+<th style="text-align: left;">Type Code</th>
+<th style="text-align: left;">Bit Length</th>
+<th style="text-align: left;"><a href="#length-prefixing">Length-prefixed</a>?</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><a href="#accountid-fields">AccountID</a></td>
-<td align="left">8</td>
-<td align="left">160</td>
-<td align="left">Yes</td>
+<td style="text-align: left;"><a href="#accountid-fields">AccountID</a></td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">160</td>
+<td style="text-align: left;">Yes</td>
 <td>The unique identifier for an <a href="accounts.html">account</a>.</td>
 </tr>
 <tr>
-<td align="left"><a href="#amount-fields">Amount</a></td>
-<td align="left">6</td>
-<td align="left">64 or 384</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#amount-fields">Amount</a></td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">64 or 384</td>
+<td style="text-align: left;">No</td>
 <td>An amount of XRP or tokens. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for tokens.</td>
 </tr>
 <tr>
-<td align="left"><a href="#blob-fields">Blob</a></td>
-<td align="left">7</td>
-<td align="left">Variable</td>
-<td align="left">Yes</td>
+<td style="text-align: left;"><a href="#blob-fields">Blob</a></td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">Variable</td>
+<td style="text-align: left;">Yes</td>
 <td>Arbitrary binary data. One important such field is <code>TxnSignature</code>, the signature that authorizes a transaction.</td>
 </tr>
 <tr>
-<td align="left"><a href="#hash-fields">Hash128</a></td>
-<td align="left">4</td>
-<td align="left">128</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#hash-fields">Hash128</a></td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">128</td>
+<td style="text-align: left;">No</td>
 <td>A 128-bit arbitrary binary value. The only such field is <code>EmailHash</code>, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a <a class="external-link" href="https://www.gravatar.com/" target="_blank">Gravatar <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
 </tr>
 <tr>
-<td align="left"><a href="#hash-fields">Hash160</a></td>
-<td align="left">17</td>
-<td align="left">160</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#hash-fields">Hash160</a></td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">160</td>
+<td style="text-align: left;">No</td>
 <td>A 160-bit arbitrary binary value. This may define a currency code or issuer.</td>
 </tr>
 <tr>
-<td align="left"><a href="#hash-fields">Hash256</a></td>
-<td align="left">5</td>
-<td align="left">256</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#hash-fields">Hash256</a></td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">256</td>
+<td style="text-align: left;">No</td>
 <td>A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object.</td>
 </tr>
 <tr>
-<td align="left"><a href="#pathset-fields">PathSet</a></td>
-<td align="left">18</td>
-<td align="left">Variable</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#pathset-fields">PathSet</a></td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">Variable</td>
+<td style="text-align: left;">No</td>
 <td>A set of possible <a href="paths.html">payment paths</a> for a <a href="cross-currency-payments.html">cross-currency payment</a>.</td>
 </tr>
 <tr>
-<td align="left"><a href="#array-fields">STArray</a></td>
-<td align="left">15</td>
-<td align="left">Variable</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#array-fields">STArray</a></td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">Variable</td>
+<td style="text-align: left;">No</td>
 <td>An array containing a variable number of members, which can be different types depending on the field. Two cases of this include <a href="transaction-common-fields.html#memos-field">memos</a> and lists of signers used in <a href="multi-signing.html">multi-signing</a>.</td>
 </tr>
 <tr>
-<td align="left"><a href="#object-fields">STObject</a></td>
-<td align="left">14</td>
-<td align="left">Variable</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#object-fields">STObject</a></td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">Variable</td>
+<td style="text-align: left;">No</td>
 <td>An object containing one or more nested fields.</td>
 </tr>
 <tr>
-<td align="left"><a href="#uint-fields">UInt8</a></td>
-<td align="left">16</td>
-<td align="left">8</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#uint-fields">UInt8</a></td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">No</td>
 <td>An 8-bit unsigned integer.</td>
 </tr>
 <tr>
-<td align="left"><a href="#uint-fields">UInt16</a></td>
-<td align="left">1</td>
-<td align="left">16</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#uint-fields">UInt16</a></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">No</td>
 <td>A 16-bit unsigned integer. The <code>TransactionType</code> is a special case of this type, with specific strings mapping to integer values.</td>
 </tr>
 <tr>
-<td align="left"><a href="#uint-fields">UInt32</a></td>
-<td align="left">2</td>
-<td align="left">32</td>
-<td align="left">No</td>
+<td style="text-align: left;"><a href="#uint-fields">UInt32</a></td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">No</td>
 <td>A 32-bit unsigned integer. The <code>Flags</code> and <code>Sequence</code> fields on all transactions are examples of this type.</td>
 </tr>
 </tbody>
@@ -593,48 +609,48 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Type Name</th>
-<th align="left">Type Code</th>
-<th align="left"><a href="#length-prefixing">Length-prefixed</a>?</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Type Name</th>
+<th style="text-align: left;">Type Code</th>
+<th style="text-align: left;"><a href="#length-prefixing">Length-prefixed</a>?</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Transaction</td>
-<td align="left">10001</td>
-<td align="left">No</td>
-<td align="left">A "high-level" type containing an entire <a href="transaction-formats.html">transaction</a>.</td>
+<td style="text-align: left;">Transaction</td>
+<td style="text-align: left;">10001</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A "high-level" type containing an entire <a href="transaction-formats.html">transaction</a>.</td>
 </tr>
 <tr>
-<td align="left">LedgerEntry</td>
-<td align="left">10002</td>
-<td align="left">No</td>
-<td align="left">A "high-level" type containing an entire <a href="ledger-object-types.html">ledger object</a>.</td>
+<td style="text-align: left;">LedgerEntry</td>
+<td style="text-align: left;">10002</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A "high-level" type containing an entire <a href="ledger-object-types.html">ledger object</a>.</td>
 </tr>
 <tr>
-<td align="left">Validation</td>
-<td align="left">10003</td>
-<td align="left">No</td>
-<td align="left">A "high-level" type used in peer-to-peer communications to represent a validation vote in the <a href="consensus.html">consensus process</a>.</td>
+<td style="text-align: left;">Validation</td>
+<td style="text-align: left;">10003</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A "high-level" type used in peer-to-peer communications to represent a validation vote in the <a href="consensus.html">consensus process</a>.</td>
 </tr>
 <tr>
-<td align="left">Metadata</td>
-<td align="left">10004</td>
-<td align="left">No</td>
-<td align="left">A "high-level" type containing <a href="transaction-metadata.html">metadata for one transaction</a>.</td>
+<td style="text-align: left;">Metadata</td>
+<td style="text-align: left;">10004</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A "high-level" type containing <a href="transaction-metadata.html">metadata for one transaction</a>.</td>
 </tr>
 <tr>
-<td align="left"><a href="#uint-fields">UInt64</a></td>
-<td align="left">3</td>
-<td align="left">No</td>
-<td align="left">A 64-bit unsigned integer. This type does not appear in transaction instructions, but several ledger objects use fields of this type.</td>
+<td style="text-align: left;"><a href="#uint-fields">UInt64</a></td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A 64-bit unsigned integer. This type does not appear in transaction instructions, but several ledger objects use fields of this type.</td>
 </tr>
 <tr>
-<td align="left">Vector256</td>
-<td align="left">19</td>
-<td align="left">Yes</td>
-<td align="left">This type does not appear in transaction instructions, but the <a href="amendments-object.html">Amendments ledger object</a>'s <code>Amendments</code> field uses this to represent which <a href="amendments.html">amendments</a> are currently enabled.</td>
+<td style="text-align: left;">Vector256</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">This type does not appear in transaction instructions, but the <a href="amendments-object.html">Amendments ledger object</a>'s <code>Amendments</code> field uses this to represent which <a href="amendments.html">amendments</a> are currently enabled.</td>
 </tr>
 </tbody>
 </table>
@@ -678,7 +694,7 @@
 <li>The currency code <code>0x0000000000000000000000005852500000000000</code> is <strong>always disallowed</strong>. (This is the code "XRP" in the "standard format".)</li>
 <li>The currency code <code>0x0000000000000000000000000000000000000000</code> (all zeroes) is <strong>generally disallowed</strong>. Usually, XRP amounts are not specified with currency codes. However, this code is used to indicate XRP in rare cases where a field must specify a currency code for XRP.</li>
 </ul>
-<p>The <a href="rippled-api.html"><code>rippled</code> APIs</a> support a <strong>standard format</strong> for translating three-character ASCII codes to 160-bit hex values as follows:</p>
+<p>The <a href="http-websocket-apis.html"><code>rippled</code> APIs</a> support a <strong>standard format</strong> for translating three-character ASCII codes to 160-bit hex values as follows:</p>
 <figure><a href="img/currency-code-format.svg" title="Standard Currency Code Format"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="10 20 660 290" width="660" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/currency-code-format.svg__genericDefs"></defs><g><defs id="img/currency-code-format.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath2"><path d="M0 0 L0 30 L600 30 L600 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath3"><path d="M0 0 L0 70 L620 70 L620 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath4"><path d="M0 0 L0 40 L130 40 L130 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath5"><path d="M0 0 L0 30 L150 30 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath6"><path d="M0 0 L0 30 L180 30 L180 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath7"><path d="M0 0 L0 30 L220 30 L220 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath8"><path d="M0 0 L0 60 L200 60 L200 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath9"><path d="M0 0 L0 30 L20 30 L20 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath10"><path d="M0 0 L0 60 L40 60 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.svg__clipPath11"><path d="M0 0 L0 60 L60 60 L60 0 Z"></path></clippath></defs><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(40,250)"><rect clip-path="url(#img/currency-code-format.svg__clipPath2)" height="28.5" stroke="none" width="598.5" x="0.5" y="0.5"></rect></g><g transform="translate(40,250)"><rect clip-path="url(#img/currency-code-format.svg__clipPath2)" fill="none" height="28.5" width="598.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="51" xml:space="preserve" y="18.1094">0x00000000000000000000000000000000000000000 (160 bits of 0's)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(30,220)"><path clip-path="url(#img/currency-code-format.svg__clipPath3)" d="M0.5 0.5 L248.5 0.5 L248.5 21.6094 L619 21.6094 L619 69 L0.5 69 Z" stroke="none"></path></g><g transform="translate(30,220)"><path clip-path="url(#img/currency-code-format.svg__clipPath3)" d="M0.5 0.5 L248.5 0.5 L248.5 21.6094 L619 21.6094 L619 69 L0.5 69 Z" fill="none"></path><path clip-path="url(#img/currency-code-format.svg__clipPath3)" d="M0.5 21.6094 L248.5 21.6094" fill="none"></path><text clip-path="url(#img/currency-code-format.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="16.1094">Special Case XRP Currency Code</text></g><g font-family="sans-serif" font-size="14px" transform="translate(330,110)"><text clip-path="url(#img/currency-code-format.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">3 chars of ASCII</text><text clip-path="url(#img/currency-code-format.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="34.2188">(can't be "XRP")</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(30,40)"><path clip-path="url(#img/currency-code-format.svg__clipPath3)" d="M0.5 0.5 L248.5 0.5 L248.5 21.6094 L619 21.6094 L619 69 L0.5 69 Z" stroke="none"></path></g><g transform="translate(30,40)"><path clip-path="url(#img/currency-code-format.svg__clipPath3)" d="M0.5 0.5 L248.5 0.5 L248.5 21.6094 L619 21.6094 L619 69 L0.5 69 Z" fill="none"></path><path clip-path="url(#img/currency-code-format.svg__clipPath3)" d="M0.5 21.6094 L248.5 21.6094" fill="none"></path><text clip-path="url(#img/currency-code-format.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="16.1094">Issued Currency Code Format</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(300,70)"><rect clip-path="url(#img/currency-code-format.svg__clipPath5)" height="28.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(300,70)"><rect clip-path="url(#img/currency-code-format.svg__clipPath5)" fill="none" height="28.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="12" xml:space="preserve" y="18.1094">ISO code (24 bits)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(460,70)"><rect clip-path="url(#img/currency-code-format.svg__clipPath6)" height="28.5" stroke="none" width="178.5" x="0.5" y="0.5"></rect></g><g transform="translate(460,70)"><rect clip-path="url(#img/currency-code-format.svg__clipPath6)" fill="none" height="28.5" width="178.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="25" xml:space="preserve" y="18.1094">Reserved (40 bits)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(70,70)"><rect clip-path="url(#img/currency-code-format.svg__clipPath7)" height="28.5" stroke="none" width="218.5" x="0.5" y="0.5"></rect></g><g transform="translate(70,70)"><rect clip-path="url(#img/currency-code-format.svg__clipPath7)" fill="none" height="28.5" width="218.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.svg__clipPath7)" font-family="sans-serif" font-size="14px" stroke="none" x="45" xml:space="preserve" y="18.1094">Reserved (88 bits)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(80,120)"><text clip-path="url(#img/currency-code-format.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="18.1094">Type code (8 bits)</text><text clip-path="url(#img/currency-code-format.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="34.2188">0x00 for ISO 4217 or </text><text clip-path="url(#img/currency-code-format.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="50.3281">pseudo-ISO currency</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(40,70)"><rect clip-path="url(#img/currency-code-format.svg__clipPath9)" height="28.5" stroke="none" width="18.5" x="0.5" y="0.5"></rect></g><g transform="translate(40,70)"><rect clip-path="url(#img/currency-code-format.svg__clipPath9)" fill="none" height="28.5" width="18.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="1" xml:space="preserve" y="18.1094">00</text></g><g transform="translate(310,90)"><path clip-path="url(#img/currency-code-format.svg__clipPath10)" d="M10.5 11.5 L10.5 40.5" fill="none"></path><path clip-path="url(#img/currency-code-format.svg__clipPath10)" d="M10.5 40.5 L20.5 40.5" fill="none"></path><path clip-path="url(#img/currency-code-format.svg__clipPath10)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-code-format.svg__clipPath10)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g><g transform="translate(40,90)"><path clip-path="url(#img/currency-code-format.svg__clipPath11)" d="M10.5 11.5 L10.5 40.5" fill="none"></path><path clip-path="url(#img/currency-code-format.svg__clipPath11)" d="M10.5 40.5 L40.5 40.5" fill="none"></path><path clip-path="url(#img/currency-code-format.svg__clipPath11)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-code-format.svg__clipPath11)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g></g></svg></a></figure>
 <ol>
 <li>The first 8 bits must be <code>0x00</code>.</li>
@@ -717,34 +733,34 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Type Flag</th>
-<th align="left">Field Present</th>
-<th align="left">Field Type</th>
-<th align="left">Bit Size</th>
-<th align="left">Order</th>
+<th style="text-align: left;">Type Flag</th>
+<th style="text-align: left;">Field Present</th>
+<th style="text-align: left;">Field Type</th>
+<th style="text-align: left;">Bit Size</th>
+<th style="text-align: left;">Order</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>0x01</code></td>
-<td align="left"><code>account</code></td>
-<td align="left"><a href="#accountid-fields">AccountID</a></td>
-<td align="left">160 bits</td>
-<td align="left">1st</td>
+<td style="text-align: left;"><code>0x01</code></td>
+<td style="text-align: left;"><code>account</code></td>
+<td style="text-align: left;"><a href="#accountid-fields">AccountID</a></td>
+<td style="text-align: left;">160 bits</td>
+<td style="text-align: left;">1st</td>
 </tr>
 <tr>
-<td align="left"><code>0x10</code></td>
-<td align="left"><code>currency</code></td>
-<td align="left"><a href="currency-formats.html#currency-codes">Currency Code</a></td>
-<td align="left">160 bits</td>
-<td align="left">2nd</td>
+<td style="text-align: left;"><code>0x10</code></td>
+<td style="text-align: left;"><code>currency</code></td>
+<td style="text-align: left;"><a href="currency-formats.html#currency-codes">Currency Code</a></td>
+<td style="text-align: left;">160 bits</td>
+<td style="text-align: left;">2nd</td>
 </tr>
 <tr>
-<td align="left"><code>0x20</code></td>
-<td align="left"><code>issuer</code></td>
-<td align="left"><a href="#accountid-fields">AccountID</a></td>
-<td align="left">160 bits</td>
-<td align="left">3rd</td>
+<td style="text-align: left;"><code>0x20</code></td>
+<td style="text-align: left;"><code>issuer</code></td>
+<td style="text-align: left;"><a href="#accountid-fields">AccountID</a></td>
+<td style="text-align: left;">160 bits</td>
+<td style="text-align: left;">3rd</td>
 </tr>
 </tbody>
 </table>
@@ -977,7 +993,19 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1147,7 +1175,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1192,6 +1220,11 @@
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1213,9 +1246,46 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
-        <a class="nav-link" href="get-started.html">Get Started</a>
+        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="get-started.html">Get Started</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -1258,11 +1328,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1275,11 +1345,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -1302,11 +1372,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1354,19 +1424,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1399,11 +1469,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1416,11 +1486,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1462,14 +1532,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1499,11 +1574,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1516,7 +1591,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1526,19 +1601,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_1" aria-expanded="false" aria-controls="tree_nav_group_2_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1602,11 +1677,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_2" aria-expanded="false" aria-controls="tree_nav_group_2_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1614,7 +1689,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       
@@ -1669,11 +1744,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_3" aria-expanded="false" aria-controls="tree_nav_group_2_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1721,11 +1796,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_4" aria-expanded="false" aria-controls="tree_nav_group_2_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1748,11 +1823,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_5" aria-expanded="false" aria-controls="tree_nav_group_2_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -1785,6 +1860,23 @@
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
     </nav>
@@ -2233,7 +2325,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -2283,7 +2375,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2312,6 +2404,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2437,6 +2534,16 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
   </div>
 
@@ -2513,7 +2620,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -2530,9 +2637,36 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2561,7 +2695,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -2926,12 +3060,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2984,7 +3123,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
@@ -2997,6 +3136,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -3004,9 +3144,11 @@
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

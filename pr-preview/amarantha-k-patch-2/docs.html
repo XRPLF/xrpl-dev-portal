@@ -53,7 +53,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -71,7 +71,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,7 +114,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -125,6 +138,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -142,7 +156,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -150,15 +164,17 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -228,7 +244,7 @@
           <li class="nav-item"><a href="run-rippled-as-a-validator.html" class="nav-link">Run rippled as a Validator</a>
           <li class="nav-item"><a href="build-run-rippled-in-reporting-mode.html" class="nav-link">Build and Run rippled in Reporting Mode</a>
           <li class="nav-item"><a href="intro-to-consensus.html" class="nav-link">Introduction to Consensus</a>
-          <li class="nav-item"><a href="public-rippled-methods.html" class="nav-link">Public rippled Methods</a>
+          <li class="nav-item"><a href="public-api-methods.html" class="nav-link">Public API Methods</a>
         </ul>
       </div><!--/#popular-topics-->
 
@@ -238,13 +254,13 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-accounts" href="label-accounts.html" title="Pages relating to accounts in the XRP Ledger.">
         Accounts
-          <span class="badge badge-pill">21</span>
+          <span class="badge badge-pill">24</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-blockchain" href="label-blockchain.html" title="Pages about how the XRP Ledger functions as a blockchain.">
         Blockchain
-          <span class="badge badge-pill">45</span>
+          <span class="badge badge-pill">46</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -262,7 +278,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-cross-currency" href="label-cross-currency.html" title="Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.">
         Cross-Currency
-          <span class="badge badge-pill">7</span>
+          <span class="badge badge-pill">9</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -274,7 +290,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-decentralized-exchange" href="label-decentralized-exchange.html" title="Pages about the Decentralized Exchange built into the XRP Ledger.">
         Decentralized Exchange
-          <span class="badge badge-pill">9</span>
+          <span class="badge badge-pill">10</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -298,7 +314,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-non-fungible-tokens-nfts" href="label-nfts.html" title="Pages about non-fungible tokens.">
         Non-fungible Tokens, NFTs
-          <span class="badge badge-pill">8</span>
+          <span class="badge badge-pill">13</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -310,7 +326,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-payments" href="label-payments.html" title="About sending payments (of XRP or tokens) in the XRP Ledger.">
         Payments
-          <span class="badge badge-pill">18</span>
+          <span class="badge badge-pill">20</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -328,19 +344,19 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-tokens" href="label-tokens.html" title="Pages about issuing tokens in the XRP Ledger.">
         Tokens
-          <span class="badge badge-pill">24</span>
+          <span class="badge badge-pill">29</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-transaction-sending" href="label-transaction-sending.html" title="Pages about sending transactions in the XRP Ledger.">
         Transaction Sending
-          <span class="badge badge-pill">25</span>
+          <span class="badge badge-pill">26</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-xrp" href="label-xrp.html" title="Pages about XRP, the native digital asset built into the XRP Ledger.">
         XRP
-          <span class="badge badge-pill">9</span>
+          <span class="badge badge-pill">12</span>
         </a>
       </li>
 </ul>      </div><!--/#browse-by-label-->
@@ -413,6 +429,13 @@
     </div>
     <div class="card-footer">&nbsp;</div>
   </a>
+  <a class="card" href="code-samples.html">
+    <div class="card-body">
+      <h4 class="card-title h5">Code Samples</h4>
+      <p class="card-text">Browse sample code for building common use cases on the XRP Ledger.</p>
+    </div>
+    <div class="card-footer">&nbsp;</div>
+  </a>
   <a class="card" href="dev-tools.html">
     <div class="card-body">
       <h4 class="card-title h5">Dev Tools</h4>
@@ -431,8 +454,8 @@
 <div class="row row-cols-1 row-cols-lg-4 card-deck">
   <a class="card" href="the-rippled-server.html">
     <div class="card-body">
-      <h4 class="card-title h5">About the Server</h4>
-      <p class="card-text">rippled is the core peer-to-peer server that manages the XRP Ledger.</p>
+      <h4 class="card-title h5">The rippled Server</h4>
+      <p class="card-text">Learn about the core servers that power the XRP Ledger.</p>
     </div>
     <div class="card-footer">&nbsp;</div>
   </a>
@@ -546,7 +569,9 @@
       <li class="level-2"><a href="authorized-trust-lines.html">Authorized Trust Lines</a></li>
         
       <li class="level-2"><a href="non-fungible-tokens.html">NFT Conceptual Overview</a></li>
+              <li class="level-3"><a href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a></li>
         
+
       <li class="level-2"><a href="freezes.html">Freezing Tokens</a></li>
               <li class="level-3"><a href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a></li>
         
@@ -600,7 +625,7 @@
       <li class="level-2"><a href="federated-sidechains.html">Federated Sidechains</a></li>
         
 
-      <li class="level-1"><a href="the-rippled-server.html">The rippled Server</a></li>
+      <li class="level-1"><a href="xrpl-servers.html">XRP Ledger Servers</a></li>
               <li class="level-2"><a href="rippled-server-modes.html">rippled Server Modes</a></li>
         
       <li class="level-2"><a href="clustering.html">Clustering</a></li>
@@ -615,6 +640,8 @@
         
       <li class="level-2"><a href="transaction-censorship-detection.html">Transaction Censorship Detection</a></li>
         
+      <li class="level-2"><a href="the-clio-server.html">The Clio Server</a></li>
+        
 
 
   </ul>
@@ -626,7 +653,19 @@
 
 <div class="children-display">
   <ul>
-          <li class="level-1"><a href="get-started.html">Get Started</a></li>
+          <li class="level-1"><a href="xrpl-quickstart.html">XRPL Quickstart</a></li>
+              <li class="level-2"><a href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a></li>
+        
+      <li class="level-2"><a href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a></li>
+        
+      <li class="level-2"><a href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a></li>
+        
+      <li class="level-2"><a href="transfer-nftokens.html">4. Transfer NFTokens</a></li>
+        
+      <li class="level-2"><a href="broker-sale.html">Broker a NFToken Sale</a></li>
+        
+
+      <li class="level-1"><a href="get-started.html">Get Started</a></li>
               <li class="level-2"><a href="public-servers.html">Public Servers</a></li>
         
       <li class="level-2"><a href="get-started-using-python.html">Get Started Using Python</a></li>
@@ -707,6 +746,8 @@
       <li class="level-1"><a href="use-tokens.html">Use Tokens</a></li>
               <li class="level-2"><a href="issue-a-fungible-token.html">Issue a Fungible Token</a></li>
         
+      <li class="level-2"><a href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a></li>
+        
       <li class="level-2"><a href="nftoken-tester-tutorial.html">NFToken Tester Tutorial</a></li>
         
       <li class="level-2"><a href="enable-no-freeze.html">Enable No Freeze</a></li>
@@ -721,7 +762,7 @@
         
       <li class="level-2"><a href="list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts</a></li>
         
-      <li class="level-2"><a href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a></li>
+      <li class="level-2"><a href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a></li>
         
 
       <li class="level-1"><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
@@ -752,7 +793,7 @@
       <li class="level-2"><a href="configure-rippled.html">Configure rippled</a></li>
               <li class="level-3"><a href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
         
-      <li class="level-3"><a href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+      <li class="level-3"><a href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a></li>
         
       <li class="level-3"><a href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
         
@@ -813,6 +854,10 @@
       <li class="level-3"><a href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
         
 
+
+      <li class="level-1"><a href="manage-the-clio-server.html">Manage the Clio Server</a></li>
+              <li class="level-2"><a href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a></li>
+        
 
 
   </ul>
@@ -966,7 +1011,7 @@
       <li class="level-2"><a href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library</a></li>
         
 
-      <li class="level-1"><a href="rippled-api.html">HTTP / WebSocket APIs</a></li>
+      <li class="level-1"><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a></li>
               <li class="level-2"><a href="api-conventions.html">API Conventions</a></li>
               <li class="level-3"><a href="request-formatting.html">Request Formatting</a></li>
         
@@ -981,7 +1026,7 @@
       <li class="level-3"><a href="rippled-server-states.html">rippled Server States</a></li>
         
 
-      <li class="level-2"><a href="public-rippled-methods.html">Public rippled Methods</a></li>
+      <li class="level-2"><a href="public-api-methods.html">Public API Methods</a></li>
               <li class="level-3"><a href="account-methods.html">Account Methods</a></li>
               <li class="level-4"><a href="account_channels.html">account_channels</a></li>
         
@@ -990,6 +1035,8 @@
       <li class="level-4"><a href="account_info.html">account_info</a></li>
         
       <li class="level-4"><a href="account_lines.html">account_lines</a></li>
+        
+      <li class="level-4"><a href="account_nfts.html">account_nfts</a></li>
         
       <li class="level-4"><a href="account_objects.html">account_objects</a></li>
         
@@ -1031,6 +1078,10 @@
         
       <li class="level-4"><a href="deposit_authorized.html">deposit_authorized</a></li>
         
+      <li class="level-4"><a href="nft_buy_offers.html">nft_buy_offers</a></li>
+        
+      <li class="level-4"><a href="nft_sell_offers.html">nft_sell_offers</a></li>
+        
       <li class="level-4"><a href="path_find.html">path_find</a></li>
         
       <li class="level-4"><a href="ripple_path_find.html">ripple_path_find</a></li>
@@ -1053,9 +1104,17 @@
         
       <li class="level-4"><a href="manifest.html">manifest</a></li>
         
-      <li class="level-4"><a href="server_info.html">server_info</a></li>
+      <li class="level-4"><a href="server_info.html">server_info (rippled)</a></li>
         
       <li class="level-4"><a href="server_state.html">server_state</a></li>
+        
+
+      <li class="level-3"><a href="clio-methods.html">Clio Server Methods</a></li>
+              <li class="level-4"><a href="server_info-clio.html">server_info</a></li>
+        
+      <li class="level-4"><a href="ledger-clio.html">ledger</a></li>
+        
+      <li class="level-4"><a href="nft_info.html">nft_info</a></li>
         
 
       <li class="level-3"><a href="utility-methods.html">Utility Methods</a></li>
@@ -1067,7 +1126,7 @@
         
 
 
-      <li class="level-2"><a href="admin-rippled-methods.html">Admin rippled Methods</a></li>
+      <li class="level-2"><a href="admin-api-methods.html">Admin API Methods</a></li>
               <li class="level-3"><a href="key-generation-methods.html">Key Generation Methods</a></li>
               <li class="level-4"><a href="validation_create.html">validation_create</a></li>
         
@@ -1154,6 +1213,16 @@
   </ul>
 </div>    </div>
     <div class="col-md-6 mt-20">
+      <a href="code-samples.html"><h5 class="mb-3">Code Samples</h5></a>
+
+
+
+<div class="children-display">
+  <ul>
+    
+  </ul>
+</div>    </div>
+    <div class="col-md-6 mt-20">
       <a href="dev-tools.html"><h5 class="mb-3">Dev Tools</h5></a>
 
 
@@ -1194,7 +1263,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
@@ -1207,6 +1276,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -1214,9 +1284,11 @@
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

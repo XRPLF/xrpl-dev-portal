@@ -54,7 +54,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -79,7 +79,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,7 +122,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="/ja/xrpl-foundation.html">XRPL財団</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -136,6 +149,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -156,7 +170,7 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="/ja/public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -172,6 +186,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -186,7 +201,7 @@
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
           <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索を閉じる</span></label>
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
@@ -269,7 +284,7 @@
               <tr>
                   <td>持続可能性</td>
                   <td>Environmentally sustainable (negligible energy consumption)</td>
-                <td>世界のエネルギー消費量の0.3&#37;を占める</td>
+                <td>0.3% of global energy consumption</td>
               </tr>
             </tbody>
           </table>
@@ -342,18 +357,6 @@
             <h6 class="fs-4-5">ハードウェアウォレット:</h6>
           </li>
           <li class="nav-item">
-            <a class="nav-link external-link" href="https://www.ledger.com/" target="_blank"><img class="mw-100 invertible-img" id="wallet-ledger" alt="XRP Ledger" /></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link external-link" href="https://www.secalot.com/" target="_blank"><img class="mw-100 " id="wallet-secalot" alt="Secalot" /></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link external-link" href="https://trezor.io/" target="_blank"><img class="mw-100 invertible-img" id="wallet-trezor" alt="Trezor" /></a>
-          </li>
-          <li class="nav-item nav-grid-head">
-            <h6 class="fs-4-5">ハードウェアウォレット:</h6>
-          </li>
-          <li class="nav-item">
             <a class="nav-link external-link" href="https://xumm.app/" target="_blank"><img class="mw-100 " id="wallet-xumm" alt="Xumm" /></a>
           </li>
           <li class="nav-item">
@@ -361,6 +364,15 @@
           </li>
           <li class="nav-item">
             <a class="nav-link external-link" href="https://gatehub.net/" target="_blank"><img class="mw-100 invertible-img" id="wallet-gatehub" alt="Gatehub" /></a>
+          </li>
+          <li class="nav-item nav-grid-head">
+            <h6 class="fs-4-5">ハードウェアウォレット:</h6>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link external-link" href="https://www.ledger.com/" target="_blank"><img class="mw-100 invertible-img" id="wallet-ledger" alt="XRP Ledger" /></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link external-link" href="https://trezor.io/" target="_blank"><img class="mw-100 invertible-img" id="wallet-trezor" alt="Trezor" /></a>
           </li>
         </ul>
           <p class="fs-3 mt-10">免責事項: この情報はインターネット上の他の情報源から取得したものです。XRPL.orgは、いかなる取引所の支持、推奨も、取引所やデジタル資産の購入および販売に関するいかなる表明も一般的には行いません。サードパーティやサードパーティ技術を利用する前に、ご自身でデューデリジェンスを実施することをお勧めします。コンプライアンス、データセキュリティ、プライバシー慣習はプロバイダーによって大きく異なる場合があります。</p>
@@ -447,7 +459,7 @@
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -460,6 +472,7 @@
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
@@ -469,6 +482,7 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

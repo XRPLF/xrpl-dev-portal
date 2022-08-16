@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +131,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -142,6 +155,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -159,7 +173,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -167,15 +181,17 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -219,7 +235,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/references/protocol-reference/transactions/transaction-results/tem-codes.md?pr=/XRPLF/xrpl-dev-portal/pull/1381" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/references/protocol-reference/transactions/transaction-results/tem-codes.md?pr=/XRPLF/xrpl-dev-portal/pull/1468" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -258,150 +274,154 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Code</th>
-<th align="left">Explanation</th>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Explanation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>temBAD_AMOUNT</code></td>
-<td align="left">An amount specified by the transaction (for example the destination <code>Amount</code> or <code>SendMax</code> values of a <a href="payment.html">Payment</a>) was invalid, possibly because it was a negative number.</td>
+<td style="text-align: left;"><code>temBAD_AMOUNT</code></td>
+<td style="text-align: left;">An amount specified by the transaction (for example the destination <code>Amount</code> or <code>SendMax</code> values of a <a href="payment.html">Payment</a>) was invalid, possibly because it was a negative number.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_AUTH_MASTER</code></td>
-<td align="left">The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a <a href="cryptographic-keys.html">Regular Key</a> set.</td>
+<td style="text-align: left;"><code>temBAD_AUTH_MASTER</code></td>
+<td style="text-align: left;">The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a <a href="cryptographic-keys.html">Regular Key</a> set.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_CURRENCY</code></td>
-<td align="left">The transaction improperly specified a currency field. See <a href="basic-data-types.html#specifying-currency-amounts">Specifying Currency Amounts</a> for the correct format.</td>
+<td style="text-align: left;"><code>temBAD_CURRENCY</code></td>
+<td style="text-align: left;">The transaction improperly specified a currency field. See <a href="basic-data-types.html#specifying-currency-amounts">Specifying Currency Amounts</a> for the correct format.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_EXPIRATION</code></td>
-<td align="left">The transaction improperly specified an expiration value, for example as part of an <a href="offercreate.html">OfferCreate transaction</a>. Alternatively, the transaction did not specify a required expiration value, for example as part of an <a href="escrowcreate.html">EscrowCreate transaction</a>.</td>
+<td style="text-align: left;"><code>temBAD_EXPIRATION</code></td>
+<td style="text-align: left;">The transaction improperly specified an expiration value, for example as part of an <a href="offercreate.html">OfferCreate transaction</a>. Alternatively, the transaction did not specify a required expiration value, for example as part of an <a href="escrowcreate.html">EscrowCreate transaction</a>.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_FEE</code></td>
-<td align="left">The transaction improperly specified its <code>Fee</code> value, for example by listing a non-XRP currency or some negative amount of XRP.</td>
+<td style="text-align: left;"><code>temBAD_FEE</code></td>
+<td style="text-align: left;">The transaction improperly specified its <code>Fee</code> value, for example by listing a non-XRP currency or some negative amount of XRP.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_ISSUER</code></td>
-<td align="left">The transaction improperly specified the <code>issuer</code> field of some currency included in the request.</td>
+<td style="text-align: left;"><code>temBAD_ISSUER</code></td>
+<td style="text-align: left;">The transaction improperly specified the <code>issuer</code> field of some currency included in the request.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_LIMIT</code></td>
-<td align="left">The <a href="trustset.html">TrustSet transaction</a> improperly specified the <code>LimitAmount</code> value of a trust line.</td>
+<td style="text-align: left;"><code>temBAD_LIMIT</code></td>
+<td style="text-align: left;">The <a href="trustset.html">TrustSet transaction</a> improperly specified the <code>LimitAmount</code> value of a trust line.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_OFFER</code></td>
-<td align="left">The <a href="offercreate.html">OfferCreate transaction</a> specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount.</td>
+<td style="text-align: left;"><code>temBAD_NFTOKEN_TRANSFER_FEE</code></td>
+<td style="text-align: left;">The <a href="nftokenmint.html">NFTokenMint transaction</a> improperly specified the <code>TransferFee</code> field of the transaction. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a>. <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_PATH</code></td>
-<td align="left">The <a href="payment.html">Payment transaction</a> specifies one or more <a href="paths.html">Paths</a> improperly, for example including an issuer for XRP, or specifying an account differently.</td>
+<td style="text-align: left;"><code>temBAD_OFFER</code></td>
+<td style="text-align: left;">The <a href="offercreate.html">OfferCreate transaction</a> specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_PATH_LOOP</code></td>
-<td align="left">One of the <a href="paths.html">Paths</a> in the <a href="payment.html">Payment transaction</a> was flagged as a loop, so it cannot be processed in a bounded amount of time.</td>
+<td style="text-align: left;"><code>temBAD_PATH</code></td>
+<td style="text-align: left;">The <a href="payment.html">Payment transaction</a> specifies one or more <a href="paths.html">Paths</a> improperly, for example including an issuer for XRP, or specifying an account differently.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SEND_XRP_LIMIT</code></td>
-<td align="left">The <a href="payment.html">Payment transaction</a> used the <a href="payment.html#limit-quality"><code>tfLimitQuality</code> flag</a> in a direct XRP-to-XRP payment, even though XRP-to-XRP payments do not involve any conversions.</td>
+<td style="text-align: left;"><code>temBAD_PATH_LOOP</code></td>
+<td style="text-align: left;">One of the <a href="paths.html">Paths</a> in the <a href="payment.html">Payment transaction</a> was flagged as a loop, so it cannot be processed in a bounded amount of time.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SEND_XRP_MAX</code></td>
-<td align="left">The <a href="payment.html">Payment transaction</a> included a <code>SendMax</code> field in a direct XRP-to-XRP payment, even though sending XRP should never require <code>SendMax</code>. (XRP is only valid in <code>SendMax</code> if the destination <code>Amount</code> is not XRP.)</td>
+<td style="text-align: left;"><code>temBAD_SEND_XRP_LIMIT</code></td>
+<td style="text-align: left;">The <a href="payment.html">Payment transaction</a> used the <a href="payment.html#limit-quality"><code>tfLimitQuality</code> flag</a> in a direct XRP-to-XRP payment, even though XRP-to-XRP payments do not involve any conversions.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SEND_XRP_NO_DIRECT</code></td>
-<td align="left">The <a href="payment.html">Payment transaction</a> used the <a href="payment.html#payment-flags"><code>tfNoDirectRipple</code> flag</a> for a direct XRP-to-XRP payment, even though XRP-to-XRP payments are always direct.</td>
+<td style="text-align: left;"><code>temBAD_SEND_XRP_MAX</code></td>
+<td style="text-align: left;">The <a href="payment.html">Payment transaction</a> included a <code>SendMax</code> field in a direct XRP-to-XRP payment, even though sending XRP should never require <code>SendMax</code>. (XRP is only valid in <code>SendMax</code> if the destination <code>Amount</code> is not XRP.)</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SEND_XRP_PARTIAL</code></td>
-<td align="left">The <a href="payment.html">Payment transaction</a> used the <a href="partial-payments.html"><code>tfPartialPayment</code> flag</a> for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount.</td>
+<td style="text-align: left;"><code>temBAD_SEND_XRP_NO_DIRECT</code></td>
+<td style="text-align: left;">The <a href="payment.html">Payment transaction</a> used the <a href="payment.html#payment-flags"><code>tfNoDirectRipple</code> flag</a> for a direct XRP-to-XRP payment, even though XRP-to-XRP payments are always direct.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SEND_XRP_PATHS</code></td>
-<td align="left">The <a href="payment.html">Payment transaction</a> included <code>Paths</code> while sending XRP, even though XRP-to-XRP payments should always be direct.</td>
+<td style="text-align: left;"><code>temBAD_SEND_XRP_PARTIAL</code></td>
+<td style="text-align: left;">The <a href="payment.html">Payment transaction</a> used the <a href="partial-payments.html"><code>tfPartialPayment</code> flag</a> for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SEQUENCE</code></td>
-<td align="left">The transaction is references a sequence number that is higher than its own <code>Sequence</code> number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it.</td>
+<td style="text-align: left;"><code>temBAD_SEND_XRP_PATHS</code></td>
+<td style="text-align: left;">The <a href="payment.html">Payment transaction</a> included <code>Paths</code> while sending XRP, even though XRP-to-XRP payments should always be direct.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SIGNATURE</code></td>
-<td align="left">The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See <a href="tec-codes.html"><code>tecNO_PERMISSION</code></a> for the case where the signature is properly formed, but not authorized for this account.)</td>
+<td style="text-align: left;"><code>temBAD_SEQUENCE</code></td>
+<td style="text-align: left;">The transaction is references a sequence number that is higher than its own <code>Sequence</code> number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SRC_ACCOUNT</code></td>
-<td align="left">The <code>Account</code> on whose behalf this transaction is being sent (the "source account") is not a properly-formed <a href="accounts.html">account</a> address.</td>
+<td style="text-align: left;"><code>temBAD_SIGNATURE</code></td>
+<td style="text-align: left;">The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See <a href="tec-codes.html"><code>tecNO_PERMISSION</code></a> for the case where the signature is properly formed, but not authorized for this account.)</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_TRANSFER_RATE</code></td>
-<td align="left">The <a href="accountset.html#transferrate"><code>TransferRate</code> field of an AccountSet transaction</a> is not properly formatted or out of the acceptable range.</td>
+<td style="text-align: left;"><code>temBAD_SRC_ACCOUNT</code></td>
+<td style="text-align: left;">The <code>Account</code> on whose behalf this transaction is being sent (the "source account") is not a properly-formed <a href="accounts.html">account</a> address.</td>
 </tr>
 <tr>
-<td align="left"><code>temCANNOT_PREAUTH_SELF</code></td>
-<td align="left">The sender of the <a href="depositpreauth.html">DepositPreauth transaction</a> was also specified as the account to preauthorize. You cannot preauthorize yourself.</td>
+<td style="text-align: left;"><code>temBAD_TRANSFER_RATE</code></td>
+<td style="text-align: left;">The <a href="accountset.html#transferrate"><code>TransferRate</code> field of an AccountSet transaction</a> is not properly formatted or out of the acceptable range.</td>
 </tr>
 <tr>
-<td align="left"><code>temDST_IS_SRC</code></td>
-<td align="left">The transaction improperly specified a destination address as the <code>Account</code> sending the transaction. This includes trust lines (where the destination address is the <code>issuer</code> field of <code>LimitAmount</code>) and payment channels (where the destination address is the <code>Destination</code> field).</td>
+<td style="text-align: left;"><code>temCANNOT_PREAUTH_SELF</code></td>
+<td style="text-align: left;">The sender of the <a href="depositpreauth.html">DepositPreauth transaction</a> was also specified as the account to preauthorize. You cannot preauthorize yourself.</td>
 </tr>
 <tr>
-<td align="left"><code>temDST_NEEDED</code></td>
-<td align="left">The transaction improperly omitted a destination. This could be the <code>Destination</code> field of a <a href="payment.html">Payment transaction</a>, or the <code>issuer</code> sub-field of the <code>LimitAmount</code> field fo a <code>TrustSet</code> transaction.</td>
+<td style="text-align: left;"><code>temDST_IS_SRC</code></td>
+<td style="text-align: left;">The transaction improperly specified a destination address as the <code>Account</code> sending the transaction. This includes trust lines (where the destination address is the <code>issuer</code> field of <code>LimitAmount</code>) and payment channels (where the destination address is the <code>Destination</code> field).</td>
 </tr>
 <tr>
-<td align="left"><code>temINVALID</code></td>
-<td align="left">The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction.</td>
+<td style="text-align: left;"><code>temDST_NEEDED</code></td>
+<td style="text-align: left;">The transaction improperly omitted a destination. This could be the <code>Destination</code> field of a <a href="payment.html">Payment transaction</a>, or the <code>issuer</code> sub-field of the <code>LimitAmount</code> field fo a <code>TrustSet</code> transaction.</td>
 </tr>
 <tr>
-<td align="left"><code>temINVALID_COUNT</code></td>
-<td align="left">The transaction includes a <code>TicketCount</code> field, but the number of Tickets specified is invalid.</td>
+<td style="text-align: left;"><code>temINVALID</code></td>
+<td style="text-align: left;">The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction.</td>
 </tr>
 <tr>
-<td align="left"><code>temINVALID_FLAG</code></td>
-<td align="left">The transaction includes a <a href="transaction-common-fields.html#flags-field">Flag</a> that does not exist, or includes a contradictory combination of flags.</td>
+<td style="text-align: left;"><code>temINVALID_COUNT</code></td>
+<td style="text-align: left;">The transaction includes a <code>TicketCount</code> field, but the number of Tickets specified is invalid.</td>
 </tr>
 <tr>
-<td align="left"><code>temMALFORMED</code></td>
-<td align="left">Unspecified problem with the format of the transaction.</td>
+<td style="text-align: left;"><code>temINVALID_FLAG</code></td>
+<td style="text-align: left;">The transaction includes a <a href="transaction-common-fields.html#flags-field">Flag</a> that does not exist, or includes a contradictory combination of flags.</td>
 </tr>
 <tr>
-<td align="left"><code>temREDUNDANT</code></td>
-<td align="left">The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer.</td>
+<td style="text-align: left;"><code>temMALFORMED</code></td>
+<td style="text-align: left;">Unspecified problem with the format of the transaction.</td>
 </tr>
 <tr>
-<td align="left"><code>temREDUNDANT_SEND_MAX</code></td>
-<td align="left"><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="Removed in: rippled 0.28.0"><img alt="Removed in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%200.28.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>temREDUNDANT</code></td>
+<td style="text-align: left;">The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer.</td>
 </tr>
 <tr>
-<td align="left"><code>temRIPPLE_EMPTY</code></td>
-<td align="left">The <a href="payment.html">Payment transaction</a> includes an empty <code>Paths</code> field, but paths are necessary to complete this payment.</td>
+<td style="text-align: left;"><code>temREDUNDANT_SEND_MAX</code></td>
+<td style="text-align: left;"><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="Removed in: rippled 0.28.0"><img alt="Removed in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%200.28.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_WEIGHT</code></td>
-<td align="left">The <a href="signerlistset.html">SignerListSet transaction</a> includes a <code>SignerWeight</code> that is invalid, for example a zero or negative value.</td>
+<td style="text-align: left;"><code>temRIPPLE_EMPTY</code></td>
+<td style="text-align: left;">The <a href="payment.html">Payment transaction</a> includes an empty <code>Paths</code> field, but paths are necessary to complete this payment.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_SIGNER</code></td>
-<td align="left">The <a href="signerlistset.html">SignerListSet transaction</a> includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member.</td>
+<td style="text-align: left;"><code>temBAD_WEIGHT</code></td>
+<td style="text-align: left;">The <a href="signerlistset.html">SignerListSet transaction</a> includes a <code>SignerWeight</code> that is invalid, for example a zero or negative value.</td>
 </tr>
 <tr>
-<td align="left"><code>temBAD_QUORUM</code></td>
-<td align="left">The <a href="signerlistset.html">SignerListSet transaction</a> has an invalid <code>SignerQuorum</code> value. Either the value is not greater than zero, or it is more than the sum of all signers in the list.</td>
+<td style="text-align: left;"><code>temBAD_SIGNER</code></td>
+<td style="text-align: left;">The <a href="signerlistset.html">SignerListSet transaction</a> includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member.</td>
 </tr>
 <tr>
-<td align="left"><code>temUNCERTAIN</code></td>
-<td align="left">Used internally only. This code should never be returned.</td>
+<td style="text-align: left;"><code>temBAD_QUORUM</code></td>
+<td style="text-align: left;">The <a href="signerlistset.html">SignerListSet transaction</a> has an invalid <code>SignerQuorum</code> value. Either the value is not greater than zero, or it is more than the sum of all signers in the list.</td>
 </tr>
 <tr>
-<td align="left"><code>temUNKNOWN</code></td>
-<td align="left">Used internally only. This code should never be returned.</td>
+<td style="text-align: left;"><code>temUNCERTAIN</code></td>
+<td style="text-align: left;">Used internally only. This code should never be returned.</td>
 </tr>
 <tr>
-<td align="left"><code>temDISABLED</code></td>
-<td align="left">The transaction requires logic that is disabled. Typically this means you are trying to use an <a href="amendments.html">amendment</a> that is not enabled for the current ledger.</td>
+<td style="text-align: left;"><code>temUNKNOWN</code></td>
+<td style="text-align: left;">Used internally only. This code should never be returned.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temDISABLED</code></td>
+<td style="text-align: left;">The transaction requires logic that is disabled. Typically this means you are trying to use an <a href="amendments.html">amendment</a> that is not enabled for the current ledger.</td>
 </tr>
 </tbody>
 </table>
@@ -624,7 +644,19 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -794,7 +826,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -839,6 +871,11 @@
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
     </nav>
 
   </div>
@@ -860,9 +897,46 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
-        <a class="nav-link" href="get-started.html">Get Started</a>
+        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="get-started.html">Get Started</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -905,11 +979,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -922,11 +996,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -949,11 +1023,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1001,19 +1075,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1046,11 +1120,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1063,11 +1137,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1109,14 +1183,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1146,11 +1225,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1163,7 +1242,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1173,19 +1252,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_1" aria-expanded="false" aria-controls="tree_nav_group_2_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1249,11 +1328,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_2" aria-expanded="false" aria-controls="tree_nav_group_2_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1261,7 +1340,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       
@@ -1316,11 +1395,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_3" aria-expanded="false" aria-controls="tree_nav_group_2_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1368,11 +1447,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_4" aria-expanded="false" aria-controls="tree_nav_group_2_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1395,11 +1474,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_5" aria-expanded="false" aria-controls="tree_nav_group_2_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -1432,6 +1511,23 @@
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
     </nav>
@@ -1880,7 +1976,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -1930,7 +2026,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -1959,6 +2055,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2084,6 +2185,16 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
   </div>
 
@@ -2160,7 +2271,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -2177,9 +2288,36 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2208,7 +2346,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -2573,12 +2711,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2631,7 +2774,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
@@ -2644,6 +2787,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -2651,9 +2795,11 @@
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>server_info - XRPL.org (日本語)</title>
+    <title>server_info (rippled) - XRPL.org (日本語)</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="server_info | XRPL.org (日本語)">
+    <meta property="og:title" content="server_info (rippled) | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/server_info.html" />
     <meta property="og:description" content="rippledサーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。" />
     <meta name="description" content="rippledサーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。" />
@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,7 +89,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,7 +132,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="/ja/xrpl-foundation.html">XRPL財団</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -146,6 +159,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -166,7 +180,7 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="/ja/public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -182,6 +196,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -196,7 +211,7 @@
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
           <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索を閉じる</span></label>
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
@@ -225,7 +240,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/references/rippled-api/public-rippled-methods/server-info-methods/server_info.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1381" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1468" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -237,7 +252,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#server_info">server_info</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#server_info-rippled">server_info (rippled)</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#要求フォーマット">要求フォーマット</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#応答フォーマット">応答フォーマット</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#考えられるエラー">考えられるエラー</a></li>
@@ -254,14 +269,14 @@
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/public-api-methods.html">rippledのパブリックメソッド</a></li>
     <li class="active breadcrumb-item"><a href="/ja/server-info-methods.html">Server Info Methods</a></li>
-    <li class="active breadcrumb-item">server_info</li>
+    <li class="active breadcrumb-item">server_info (rippled)</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="server_info">server_info<a aria-hidden="true" class="hover_anchor" href="#server_info"><i class="fa fa-link"></i></a></h1>
+        <h1 id="server_info-rippled">server_info (rippled)<a aria-hidden="true" class="hover_anchor" href="#server_info-rippled"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>server_info</code>コマンドは、問い合わせ中の<code>rippled</code>サーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
@@ -519,186 +534,186 @@ rippled server_info
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left"><code>Field</code></th>
-<th align="left">型</th>
-<th align="left">説明</th>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>amendment_blocked</code></td>
-<td align="left">ブール値</td>
-<td align="left"><em>（省略される場合があります）</em><code>true</code>の場合、このサーバーは<a href="amendments.html#amendment-blocked">Amendment blocked</a>の状態です。サーバーがAmendment blockedの状態でない場合、このフィールドは応答から省略されます。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.80.0" target="_blank" title="新規: rippled 0.80.0"><img alt="新規: rippled 0.80.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>amendment_blocked</code></td>
+<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;"><em>（省略される場合があります）</em><code>true</code>の場合、このサーバーは<a href="amendments.html#amendment-blocked">Amendment blocked</a>の状態です。サーバーがAmendment blockedの状態でない場合、このフィールドは応答から省略されます。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.80.0" target="_blank" title="新規: rippled 0.80.0"><img alt="新規: rippled 0.80.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>build_version</code></td>
-<td align="left">文字列</td>
-<td align="left">実行中の<code>rippled</code>バージョンのバージョン番号。</td>
+<td style="text-align: left;"><code>build_version</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">実行中の<code>rippled</code>バージョンのバージョン番号。</td>
 </tr>
 <tr>
-<td align="left"><code>closed_ledger</code></td>
-<td align="left">オブジェクト</td>
-<td align="left">（省略される場合があります）コンセンサスによってまだ検証されていない、最も最近更新を閉鎖したレジャーについての情報。最新の検証済みレジャーが使用可能な場合、このフィールドは応答で省略され、代わりに<code>validated_ledger</code>が含まれます。メンバーフィールドは<code>validated_ledger</code>フィールドと同じです。</td>
+<td style="text-align: left;"><code>closed_ledger</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">（省略される場合があります）コンセンサスによってまだ検証されていない、最も最近更新を閉鎖したレジャーについての情報。最新の検証済みレジャーが使用可能な場合、このフィールドは応答で省略され、代わりに<code>validated_ledger</code>が含まれます。メンバーフィールドは<code>validated_ledger</code>フィールドと同じです。</td>
 </tr>
 <tr>
-<td align="left"><code>complete_ledgers</code></td>
-<td align="left">文字列</td>
-<td align="left">ローカル<code>rippled</code>がデータベース内に有するレジャーのバージョンのシーケンス番号の範囲を示す表現。例えば、<code>24900901-24900984,24901116-24901158</code>のように、互いに素なシーケンスの場合があります。サーバーに完全なレジャーがない場合（例えば、ネットワークとの同期を始めたばかりの場合）、文字列<code>empty</code>になります。</td>
+<td style="text-align: left;"><code>complete_ledgers</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">ローカル<code>rippled</code>がデータベース内に有するレジャーのバージョンのシーケンス番号の範囲を示す表現。例えば、<code>24900901-24900984,24901116-24901158</code>のように、互いに素なシーケンスの場合があります。サーバーに完全なレジャーがない場合（例えば、ネットワークとの同期を始めたばかりの場合）、文字列<code>empty</code>になります。</td>
 </tr>
 <tr>
-<td align="left"><code>hostid</code></td>
-<td align="left">文字列</td>
-<td align="left">admin要求の場合、<code>rippled</code>インスタンスを実行するサーバーのホスト名が返されます。それ以外の要求の場合、一意の4文字の単語が返されます。</td>
+<td style="text-align: left;"><code>hostid</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">admin要求の場合、<code>rippled</code>インスタンスを実行するサーバーのホスト名が返されます。それ以外の要求の場合、一意の4文字の単語が返されます。</td>
 </tr>
 <tr>
-<td align="left"><code>io_latency_ms</code></td>
-<td align="left">数値</td>
-<td align="left">I/O処理の待ち時間（ミリ秒単位）。この数値がそれほど低くない場合、<code>rippled</code>サーバーは深刻な負荷の問題を抱えている可能性があります。</td>
+<td style="text-align: left;"><code>io_latency_ms</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">I/O処理の待ち時間（ミリ秒単位）。この数値がそれほど低くない場合、<code>rippled</code>サーバーは深刻な負荷の問題を抱えている可能性があります。</td>
 </tr>
 <tr>
-<td align="left"><code>last_close</code></td>
-<td align="left">オブジェクト</td>
-<td align="left">サーバーが最後にレジャーを閉鎖したときの情報。これには、コンセンサスの取得に要した時間や、参加した信頼できるバリデータ（検証者）の数が含まれます。</td>
+<td style="text-align: left;"><code>last_close</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">サーバーが最後にレジャーを閉鎖したときの情報。これには、コンセンサスの取得に要した時間や、参加した信頼できるバリデータ（検証者）の数が含まれます。</td>
 </tr>
 <tr>
-<td align="left"><code>load</code></td>
-<td align="left">オブジェクト</td>
-<td align="left"><em>（管理者のみ）</em> サーバーの現在の負荷状態についての詳細な情報。</td>
+<td style="text-align: left;"><code>load</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> サーバーの現在の負荷状態についての詳細な情報。</td>
 </tr>
 <tr>
-<td align="left"><code>load.job_types</code></td>
-<td align="left">配列</td>
-<td align="left"><em>（管理者のみ）</em> サーバーが実行している各種ジョブのレートや、各ジョブにかかる時間についての情報。</td>
+<td style="text-align: left;"><code>load.job_types</code></td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> サーバーが実行している各種ジョブのレートや、各ジョブにかかる時間についての情報。</td>
 </tr>
 <tr>
-<td align="left"><code>load.threads</code></td>
-<td align="left">数値</td>
-<td align="left"><em>（管理者のみ）</em> サーバーの主要なジョブプール内のスレッドの数。</td>
+<td style="text-align: left;"><code>load.threads</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> サーバーの主要なジョブプール内のスレッドの数。</td>
 </tr>
 <tr>
-<td align="left"><code>load_factor</code></td>
-<td align="left">数値</td>
-<td align="left">サーバーが現在施行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数<code>1000</code>でリファレンストランザクションコストがXRP 10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、<a href="transaction-cost.html#ローカル負荷コスト">個々のサーバーの負荷係数</a>の最高値、クラスターの負荷係数、<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>、ネットワーク全体の負荷係数によって決まります。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="更新: rippled 0.33.0"><img alt="更新: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>load_factor</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">サーバーが現在施行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数<code>1000</code>でリファレンストランザクションコストがXRP 10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、<a href="transaction-cost.html#ローカル負荷コスト">個々のサーバーの負荷係数</a>の最高値、クラスターの負荷係数、<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>、ネットワーク全体の負荷係数によって決まります。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="更新: rippled 0.33.0"><img alt="更新: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>load_factor_local</code></td>
-<td align="left">数値</td>
-<td align="left">（省略される場合があります）このサーバーに対する負荷に基づく、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
+<td style="text-align: left;"><code>load_factor_local</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">（省略される場合があります）このサーバーに対する負荷に基づく、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
 </tr>
 <tr>
-<td align="left"><code>load_factor_net</code></td>
-<td align="left">数値</td>
-<td align="left">（省略される場合があります）ネットワークのその他の部分で使用されている、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数（他のサーバーから報告された負荷値から推定します）。</td>
+<td style="text-align: left;"><code>load_factor_net</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">（省略される場合があります）ネットワークのその他の部分で使用されている、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数（他のサーバーから報告された負荷値から推定します）。</td>
 </tr>
 <tr>
-<td align="left"><code>load_factor_cluster</code></td>
-<td align="left">数値</td>
-<td align="left">（省略される場合があります）<a href="clustering.html">このクラスター</a>内のサーバーに対する負荷に基づく、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
+<td style="text-align: left;"><code>load_factor_cluster</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">（省略される場合があります）<a href="clustering.html">このクラスター</a>内のサーバーに対する負荷に基づく、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
 </tr>
 <tr>
-<td align="left"><code>load_factor_fee_escalation</code></td>
-<td align="left">数値</td>
-<td align="left">（省略される場合があります）オープンレジャーに入るために取引が支払う必要がある<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>load_factor_fee_escalation</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">（省略される場合があります）オープンレジャーに入るために取引が支払う必要がある<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>load_factor_fee_queue</code></td>
-<td align="left">数値</td>
-<td align="left">（省略される場合があります）キューが一杯になっている場合に、キューに入るために取引が支払う必要がある<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>load_factor_fee_queue</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">（省略される場合があります）キューが一杯になっている場合に、キューに入るために取引が支払う必要がある<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>load_factor_server</code></td>
-<td align="left">数値</td>
-<td align="left">（省略される場合があります）サーバーが実施中の負荷係数。<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>は含まれません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>load_factor_server</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">（省略される場合があります）サーバーが実施中の負荷係数。<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>は含まれません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>peers</code></td>
-<td align="left">数値</td>
-<td align="left">このサーバーが現在接続している、他の<code>rippled</code>サーバーの数。</td>
+<td style="text-align: left;"><code>peers</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このサーバーが現在接続している、他の<code>rippled</code>サーバーの数。</td>
 </tr>
 <tr>
-<td align="left"><code>pubkey_node</code></td>
-<td align="left">文字列</td>
-<td align="left">ピアツーピア通信の中でこのサーバーを検証するために使用する公開鍵。この_ノードのキーペア_は、サーバーを初めて起動すると自動的に生成されます。（削除された場合、サーバーは新たなキーペアを作成できます。）構成ファイルにて<code>[node_seed]</code>設定オプションを使用すると、永続値を設定できます。これは<a href="clustering.html">クラスター化</a>に便利です。</td>
+<td style="text-align: left;"><code>pubkey_node</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">ピアツーピア通信の中でこのサーバーを検証するために使用する公開鍵。この_ノードのキーペア_は、サーバーを初めて起動すると自動的に生成されます。（削除された場合、サーバーは新たなキーペアを作成できます。）構成ファイルにて<code>[node_seed]</code>設定オプションを使用すると、永続値を設定できます。これは<a href="clustering.html">クラスター化</a>に便利です。</td>
 </tr>
 <tr>
-<td align="left"><code>pubkey_validator</code></td>
-<td align="left">文字列</td>
-<td align="left"><em>（管理者のみ）</em> このノードがレジャーの検証の署名に使用する公開鍵。この_検証キーペア_は、<code>[validator_token]</code>または<code>[validation_seed]</code>設定フィールドにて生成されます。</td>
+<td style="text-align: left;"><code>pubkey_validator</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> このノードがレジャーの検証の署名に使用する公開鍵。この_検証キーペア_は、<code>[validator_token]</code>または<code>[validation_seed]</code>設定フィールドにて生成されます。</td>
 </tr>
 <tr>
-<td align="left"><code>server_state</code></td>
-<td align="left">文字列</td>
-<td align="left">サーバーのネットワークへの参加の度合いを示す文字列。詳細は、<a href="rippled-server-states.html">考えられるサーバーの状態</a>を参照してください。</td>
+<td style="text-align: left;"><code>server_state</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">サーバーのネットワークへの参加の度合いを示す文字列。詳細は、<a href="rippled-server-states.html">考えられるサーバーの状態</a>を参照してください。</td>
 </tr>
 <tr>
-<td align="left"><code>server_state_duration_us</code></td>
-<td align="left">数値</td>
-<td align="left">サーバーが現在の状態になってから経過したマイクロ秒数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="新規: rippled 1.2.0"><img alt="新規: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>server_state_duration_us</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">サーバーが現在の状態になってから経過したマイクロ秒数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="新規: rippled 1.2.0"><img alt="新規: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>state_accounting</code></td>
-<td align="left">オブジェクト</td>
-<td align="left">各種<a href="rippled-server-states.html">サーバー状態</a>のマップと、サーバーが各状態に費やした時間についての情報。これは、サーバーのネットワーク接続について長期的な健全性を追跡するのに便利です。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>state_accounting</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">各種<a href="rippled-server-states.html">サーバー状態</a>のマップと、サーバーが各状態に費やした時間についての情報。これは、サーバーのネットワーク接続について長期的な健全性を追跡するのに便利です。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>state_accounting.*.duration_us</code></td>
-<td align="left">文字列</td>
-<td align="left">サーバーがこの状態になってから費やしたマイクロ秒数。（サーバーが別の状態に移行するたびに更新されます。）<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>state_accounting.*.duration_us</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">サーバーがこの状態になってから費やしたマイクロ秒数。（サーバーが別の状態に移行するたびに更新されます。）<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>state_accounting.*.transitions</code></td>
-<td align="left">数値</td>
-<td align="left">サーバーがこの状態に移行した回数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>state_accounting.*.transitions</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">サーバーがこの状態に移行した回数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>uptime</code></td>
-<td align="left">数値</td>
-<td align="left">サーバーが連続して稼働している秒数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>uptime</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">サーバーが連続して稼働している秒数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>validated_ledger</code></td>
-<td align="left">オブジェクト</td>
-<td align="left">（省略される場合があります）完全に検証された最新のレジャーについての情報。最新の検証済みレジャーが使用できない場合、このフィールドは応答にて省略され、代わりに<code>closed_ledger</code>が含まれます。</td>
+<td style="text-align: left;"><code>validated_ledger</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">（省略される場合があります）完全に検証された最新のレジャーについての情報。最新の検証済みレジャーが使用できない場合、このフィールドは応答にて省略され、代わりに<code>closed_ledger</code>が含まれます。</td>
 </tr>
 <tr>
-<td align="left"><code>validated_ledger.age</code></td>
-<td align="left">数値</td>
-<td align="left">レジャーの閉鎖以降の秒数。</td>
+<td style="text-align: left;"><code>validated_ledger.age</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">レジャーの閉鎖以降の秒数。</td>
 </tr>
 <tr>
-<td align="left"><code>validated_ledger.base_fee_xrp</code></td>
-<td align="left">数値</td>
-<td align="left">XRP単位の基本手数料。0.00005の場合は、<code>1e-05</code>などの科学的記数法で表すことができます。</td>
+<td style="text-align: left;"><code>validated_ledger.base_fee_xrp</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">XRP単位の基本手数料。0.00005の場合は、<code>1e-05</code>などの科学的記数法で表すことができます。</td>
 </tr>
 <tr>
-<td align="left"><code>validated_ledger.hash</code></td>
-<td align="left">文字列</td>
-<td align="left">16進数で表された、レジャーの一意のハッシュ</td>
+<td style="text-align: left;"><code>validated_ledger.hash</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">16進数で表された、レジャーの一意のハッシュ</td>
 </tr>
 <tr>
-<td align="left"><code>validated_ledger.reserve_base_xrp</code></td>
-<td align="left">符号なし整数</td>
-<td align="left">すべてのアカウントで準備金として保有しておく必要があるXRPの最少額（drop数ではありません）</td>
+<td style="text-align: left;"><code>validated_ledger.reserve_base_xrp</code></td>
+<td style="text-align: left;">符号なし整数</td>
+<td style="text-align: left;">すべてのアカウントで準備金として保有しておく必要があるXRPの最少額（drop数ではありません）</td>
 </tr>
 <tr>
-<td align="left"><code>validated_ledger.reserve_inc_xrp</code></td>
-<td align="left">符号なし整数</td>
-<td align="left">アカウントがレジャー内に保有するオブジェクトごとのアカウント準備金に追加するXRP額（drop数ではありません）</td>
+<td style="text-align: left;"><code>validated_ledger.reserve_inc_xrp</code></td>
+<td style="text-align: left;">符号なし整数</td>
+<td style="text-align: left;">アカウントがレジャー内に保有するオブジェクトごとのアカウント準備金に追加するXRP額（drop数ではありません）</td>
 </tr>
 <tr>
-<td align="left"><code>validated_ledger.seq</code></td>
-<td align="left">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
-<td align="left">最新の検証済みレジャーのレジャーインデックス</td>
+<td style="text-align: left;"><code>validated_ledger.seq</code></td>
+<td style="text-align: left;">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
+<td style="text-align: left;">最新の検証済みレジャーのレジャーインデックス</td>
 </tr>
 <tr>
-<td align="left"><code>validation_quorum</code></td>
-<td align="left">数値</td>
-<td align="left">レジャーバージョンの検証に、最低限必要となる信頼できる検証の数。場合によっては、サーバーがさらに検証を要求する場合があります。</td>
+<td style="text-align: left;"><code>validation_quorum</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">レジャーバージョンの検証に、最低限必要となる信頼できる検証の数。場合によっては、サーバーがさらに検証を要求する場合があります。</td>
 </tr>
 <tr>
-<td align="left"><code>validator_list_expires</code></td>
-<td align="left">文字列</td>
-<td align="left"><em>（管理者のみ）</em> 現在のバリデータリストの有効期限が切れるタイミングを人間が読み取れる時間でを表示、または、サーバーが発行済みのバリデータリストをロードしていない場合は文字列<code>unknown</code>、サーバーが静的なバリデータリストを使用する場合は文字列<code>never</code>のいずれかを表示します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.80.1" target="_blank" title="新規: rippled 0.80.1"><img alt="新規: rippled 0.80.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>validator_list_expires</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> 現在のバリデータリストの有効期限が切れるタイミングを人間が読み取れる時間でを表示、または、サーバーが発行済みのバリデータリストをロードしていない場合は文字列<code>unknown</code>、サーバーが静的なバリデータリストを使用する場合は文字列<code>never</code>のいずれかを表示します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.80.1" target="_blank" title="新規: rippled 0.80.1"><img alt="新規: rippled 0.80.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -930,7 +945,19 @@ rippled server_info
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1100,7 +1127,7 @@ rippled server_info
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
-        <a class="nav-link" href="/ja/the-rippled-server.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
@@ -1145,6 +1172,11 @@ rippled server_info
     <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">取引検閲の検知</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1166,9 +1198,46 @@ rippled server_info
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -1211,11 +1280,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1228,11 +1297,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -1255,11 +1324,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1307,19 +1376,19 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_1" aria-expanded="false" aria-controls="tree_nav_group_3_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1352,11 +1421,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_2" aria-expanded="false" aria-controls="tree_nav_group_3_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1369,11 +1438,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_3" aria-expanded="false" aria-controls="tree_nav_group_3_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1415,14 +1484,19 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1452,11 +1526,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1469,7 +1543,7 @@ rippled server_info
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1479,19 +1553,19 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_1" aria-expanded="false" aria-controls="tree_nav_group_3_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1555,11 +1629,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_2" aria-expanded="false" aria-controls="tree_nav_group_3_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1622,11 +1696,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_3" aria-expanded="false" aria-controls="tree_nav_group_3_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1674,11 +1748,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_4" aria-expanded="false" aria-controls="tree_nav_group_3_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1701,11 +1775,11 @@ rippled server_info
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_5" aria-expanded="false" aria-controls="tree_nav_group_3_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -1738,6 +1812,23 @@ rippled server_info
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+
+        <a class="nav-link" href="/ja/manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
     </nav>
@@ -2186,7 +2277,7 @@ rippled server_info
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="true" aria-controls="tree_nav_group_4_3"></a>
 
-        <a class="nav-link" href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+        <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_4_3">
       
@@ -2236,7 +2327,7 @@ rippled server_info
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="true" aria-controls="tree_nav_group_4_3_2"></a>
 
-        <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+        <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_4_3_2">
       
@@ -2265,6 +2356,11 @@ rippled server_info
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2390,6 +2486,16 @@ rippled server_info
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/path_find.html">path_find</a>
   </div>
 
@@ -2466,7 +2572,7 @@ rippled server_info
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -2483,9 +2589,36 @@ rippled server_info
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
 
-        <a class="nav-link" href="/ja/utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="/ja/clio-methods.html">Clio Server Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_9"></a>
+
+        <a class="nav-link" href="/ja/utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
@@ -2514,7 +2647,7 @@ rippled server_info
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
 
-        <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+        <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
       
@@ -2879,12 +3012,17 @@ rippled server_info
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2937,7 +3075,7 @@ rippled server_info
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2950,6 +3088,7 @@ rippled server_info
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
@@ -2959,6 +3098,7 @@ rippled server_info
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

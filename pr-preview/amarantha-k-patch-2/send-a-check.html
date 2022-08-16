@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +131,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -142,6 +155,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -159,7 +173,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -167,15 +181,17 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -219,7 +235,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/tutorials/use-specialized-payment-types/use-checks/send-a-check.md?pr=/XRPLF/xrpl-dev-portal/pull/1381" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/tutorials/use-specialized-payment-types/use-checks/send-a-check.md?pr=/XRPLF/xrpl-dev-portal/pull/1468" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -285,31 +301,31 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Field</th>
-<th align="left">Value</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>TransactionType</code></td>
-<td align="left">String</td>
-<td align="left">Use the string <code>CheckCreate</code> here.</td>
+<td style="text-align: left;"><code>TransactionType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Use the string <code>CheckCreate</code> here.</td>
 </tr>
 <tr>
-<td align="left"><code>Account</code></td>
-<td align="left">String (Address)</td>
-<td align="left">The address of the sender who is creating the Check. (In other words, your address.)</td>
+<td style="text-align: left;"><code>Account</code></td>
+<td style="text-align: left;">String (Address)</td>
+<td style="text-align: left;">The address of the sender who is creating the Check. (In other words, your address.)</td>
 </tr>
 <tr>
-<td align="left"><code>Destination</code></td>
-<td align="left">String (Address)</td>
-<td align="left">The address of the intended recipient who can cash the Check.</td>
+<td style="text-align: left;"><code>Destination</code></td>
+<td style="text-align: left;">String (Address)</td>
+<td style="text-align: left;">The address of the intended recipient who can cash the Check.</td>
 </tr>
 <tr>
-<td align="left"><code>SendMax</code></td>
-<td align="left">String or Object (Amount)</td>
-<td align="left">The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For tokens, use an object with <code>currency</code>, <code>issuer</code>, and <code>value</code> fields. See <a href="basic-data-types.html#specifying-currency-amounts">Specifying Currency Amounts</a> for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a <a href="transfer-fees.html">transfer fee</a>, remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the <code>SendMax</code> to 102 CAD from that issuer.)</td>
+<td style="text-align: left;"><code>SendMax</code></td>
+<td style="text-align: left;">String or Object (Amount)</td>
+<td style="text-align: left;">The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For tokens, use an object with <code>currency</code>, <code>issuer</code>, and <code>value</code> fields. See <a href="basic-data-types.html#specifying-currency-amounts">Specifying Currency Amounts</a> for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a <a href="transfer-fees.html">transfer fee</a>, remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the <code>SendMax</code> to 102 CAD from that issuer.)</td>
 </tr>
 </tbody>
 </table>
@@ -317,53 +333,53 @@
 <p>The following example shows a prepared Check from BoxSend SG (<code>rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za</code>) to Grand Payments (<code>rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis</code>) for 100 XRP. As additional (optional) metadata, BoxSend SG adds the ID of the invoice from Grand Payments so Grand Payments knows which invoice this Check is intended to pay.</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-0-0">ripple-lib 1.x</a></li><li><a class="jsonrpcwebsocketorcommandline" href="#code-0-1">JSON-RPC, WebSocket, or Commandline</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="s1">'use strict'</span>
-<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<div class="code_sample ripplelib1.x" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="s1">'use strict'</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span><span class="w"></span>
 
-<span class="c1">// This example connects to a public Test Net server</span>
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
+<span class="c1">// This example connects to a public Test Net server</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span><span class="w"></span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s1">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za'</span>
-  <span class="kd">const</span> <span class="nx">receiver</span> <span class="o">=</span> <span class="s1">'rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis'</span>
-  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1">// Allow up to 60 ledger versions (~5 min) instead of the default 3 versions</span>
-    <span class="c1">// before this transaction fails permanently.</span>
-    <span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span> <span class="mf">60</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareCheckCreate</span><span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">"destination"</span><span class="o">:</span> <span class="nx">receiver</span><span class="p">,</span>
-    <span class="s2">"sendMax"</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">"currency"</span><span class="o">:</span> <span class="s2">"XRP"</span><span class="p">,</span>
-      <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"100"</span> <span class="c1">// RippleAPI uses decimal XRP, not integer drops</span>
-    <span class="p">},</span>
-    <span class="s2">"invoiceID"</span><span class="o">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span>
-  <span class="p">},</span> <span class="nx">options</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za'</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">receiver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis'</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Allow up to 60 ledger versions (~5 min) instead of the default 3 versions</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// before this transaction fails permanently.</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">prepareCheckCreate</span><span class="p">(</span><span class="nx">sender</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"destination"</span><span class="o">:</span><span class="w"> </span><span class="nx">receiver</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"sendMax"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"currency"</span><span class="o">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">"value"</span><span class="o">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w"> </span><span class="c1">// RippleAPI uses decimal XRP, not integer drops</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"invoiceID"</span><span class="o">:</span><span class="w"> </span><span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span><span class="w"></span>
 
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">prepared</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"txJSON:"</span><span class="p">,</span> <span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">prepared</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"txJSON:"</span><span class="p">,</span><span class="w"> </span><span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">// Disconnect and return</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-  <span class="p">})</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+<span class="c1">// Disconnect and return</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span><span class="w"></span>
 
 
-<span class="c1">// Example output:</span>
-<span class="c1">//</span>
-<span class="c1">// Connected</span>
-<span class="c1">// txJSON: {"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",</span>
-<span class="c1">//  "TransactionType":"CheckCreate",</span>
-<span class="c1">//  "Destination":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",</span>
-<span class="c1">//  "SendMax":"100000000",</span>
-<span class="c1">//  "Flags":2147483648,</span>
-<span class="c1">//  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",</span>
-<span class="c1">//  "LastLedgerSequence":7835917,"Fee":"12","Sequence":2}</span>
-<span class="c1">// Disconnected</span>
+<span class="c1">// Example output:</span><span class="w"></span>
+<span class="c1">//</span><span class="w"></span>
+<span class="c1">// Connected</span><span class="w"></span>
+<span class="c1">// txJSON: {"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",</span><span class="w"></span>
+<span class="c1">//  "TransactionType":"CheckCreate",</span><span class="w"></span>
+<span class="c1">//  "Destination":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",</span><span class="w"></span>
+<span class="c1">//  "SendMax":"100000000",</span><span class="w"></span>
+<span class="c1">//  "Flags":2147483648,</span><span class="w"></span>
+<span class="c1">//  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",</span><span class="w"></span>
+<span class="c1">//  "LastLedgerSequence":7835917,"Fee":"12","Sequence":2}</span><span class="w"></span>
+<span class="c1">// Disconnected</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpcwebsocketorcommandline" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
@@ -376,34 +392,34 @@
 </code></pre></div></div>
 </div>
 <h2 id="2-sign-the-checkcreate-transaction">2. Sign the CheckCreate transaction<a aria-hidden="true" class="hover_anchor" href="#2-sign-the-checkcreate-transaction"><i class="fa fa-link"></i></a></h2>
-<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
+<p>The most secure way to sign a transaction is to <a href="set-up-secure-signing.html#local-signing-example">sign locally with a client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <h3 id="example-request">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-1-0">ripple-lib 1.x</a></li><li><a class="websocket" href="#code-1-1">WebSocket</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="s1">'use strict'</span>
-<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<div class="code_sample ripplelib1.x" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="s1">'use strict'</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span><span class="w"></span>
 
-<span class="c1">// Can sign offline if the txJSON has all required fields</span>
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RippleAPI</span><span class="p">()</span>
+<span class="c1">// Can sign offline if the txJSON has all required fields</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="p">()</span><span class="w"></span>
 
-<span class="kd">const</span> <span class="nx">txJSON</span> <span class="o">=</span> <span class="s1">'{"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za", \</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">txJSON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za", \</span>
 <span class="s1">  "TransactionType":"CheckCreate", \</span>
 <span class="s1">  "Destination":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis", \</span>
 <span class="s1">  "SendMax":"100000000", \</span>
 <span class="s1">  "Flags":2147483648, \</span>
 <span class="s1">  "LastLedgerSequence":7835923, \</span>
 <span class="s1">  "Fee":"12", \</span>
-<span class="s1">  "Sequence":2}'</span>
+<span class="s1">  "Sequence":2}'</span><span class="w"></span>
 
-<span class="c1">// Be careful where you store your real secret.</span>
-<span class="kd">const</span> <span class="nx">secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span>
+<span class="c1">// Be careful where you store your real secret.</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'s████████████████████████████'</span><span class="w"></span>
 
-<span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">secret</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">txJSON</span><span class="p">,</span><span class="w"> </span><span class="nx">secret</span><span class="p">)</span><span class="w"></span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx_blob is:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx hash is:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx_blob is:"</span><span class="p">,</span><span class="w"> </span><span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx hash is:"</span><span class="p">,</span><span class="w"> </span><span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span><span class="w"></span>
@@ -437,8 +453,8 @@
 <h4 id="example-response">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response"><i class="fa fa-link"></i></a></h4>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-2-0">ripple-lib 1.x</a></li><li><a class="websocket" href="#code-2-1">WebSocket</a></li><li><a class="commandline" href="#code-2-2">Commandline</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="nx">tx_blob</span> <span class="nx">is</span><span class="o">:</span> <span class="mf">12001022800000002400000002201</span><span class="nx">B0077911368400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400744630440220181FE2F945EBEE632966D5FB03114611E3047ACD155AA1BDB9DF8545C7A2431502201E873A4B0D177AB250AF790CE80621E16F141506CF507586038FC4A8E95887358114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39</span>
-<span class="nx">tx</span> <span class="nx">hash</span> <span class="nx">is</span><span class="o">:</span> <span class="nx">C0B27D20669BAB837B3CDF4B8148B988F17CE1EF8EDF48C806AE9BF69E16F441</span>
+<div class="code_sample ripplelib1.x" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="nx">tx_blob</span><span class="w"> </span><span class="nx">is</span><span class="o">:</span><span class="w"> </span><span class="mf">12001022800000002400000002201</span><span class="nx">B0077911368400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400744630440220181FE2F945EBEE632966D5FB03114611E3047ACD155AA1BDB9DF8545C7A2431502201E873A4B0D177AB250AF790CE80621E16F141506CF507586038FC4A8E95887358114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39</span><span class="w"></span>
+<span class="nx">tx</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="nx">is</span><span class="o">:</span><span class="w"> </span><span class="nx">C0B27D20669BAB837B3CDF4B8148B988F17CE1EF8EDF48C806AE9BF69E16F441</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span><span class="w"></span>
@@ -498,32 +514,32 @@
 <h3 id="example-request-1">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request-1"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-3-0">ripple-lib 1.x</a></li><li><a class="websocket" href="#code-3-1">WebSocket</a></li><li><a class="commandline" href="#code-3-2">Commandline</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="s1">'use strict'</span>
-<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<div class="code_sample ripplelib1.x" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="s1">'use strict'</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span><span class="w"></span>
 
-<span class="c1">// This example connects to a public Test Net server</span>
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
-<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
+<span class="c1">// This example connects to a public Test Net server</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span><span class="w"></span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span><span class="w"></span>
 
-  <span class="kd">const</span> <span class="nx">tx_blob</span> <span class="o">=</span> <span class="s2">"12001022800000002400000002201B0077911368400000000000000"</span><span class="o">+</span>
-    <span class="s2">"C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6"</span><span class="o">+</span>
-    <span class="s2">"CFCF2E359045FF4BB400744630440220181FE2F945EBEE632966D5FB03114611E3047"</span><span class="o">+</span>
-    <span class="s2">"ACD155AA1BDB9DF8545C7A2431502201E873A4B0D177AB250AF790CE80621E16F1415"</span><span class="o">+</span>
-    <span class="s2">"06CF507586038FC4A8E95887358114735FF88E5269C80CD7F7AF10530DAB840BBF6FD"</span><span class="o">+</span>
-    <span class="s2">"F8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39"</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tx_blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"12001022800000002400000002201B0077911368400000000000000"</span><span class="o">+</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6"</span><span class="o">+</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"CFCF2E359045FF4BB400744630440220181FE2F945EBEE632966D5FB03114611E3047"</span><span class="o">+</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"ACD155AA1BDB9DF8545C7A2431502201E873A4B0D177AB250AF790CE80621E16F1415"</span><span class="o">+</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"06CF507586038FC4A8E95887358114735FF88E5269C80CD7F7AF10530DAB840BBF6FD"</span><span class="o">+</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"F8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39"</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx_blob</span><span class="p">)</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Preliminary transaction result:"</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">resultCode</span><span class="p">)</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Preliminary transaction result:"</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">resultCode</span><span class="p">)</span><span class="w"></span>
 
-<span class="c1">// Disconnect and return</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-  <span class="p">})</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+<span class="c1">// Disconnect and return</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span><span class="w"></span>
@@ -539,9 +555,9 @@
 <h3 id="example-response-1">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response-1"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="ripplelib1.x" href="#code-4-0">ripple-lib 1.x</a></li><li><a class="websocket" href="#code-4-1">WebSocket</a></li><li><a class="commandline" href="#code-4-2">Commandline</a></li></ul>
 
-<div class="code_sample ripplelib1.x" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="nx">Connected</span>
-<span class="nx">Preliminary</span> <span class="nx">transaction</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">tesSUCCESS</span>
-<span class="nx">Disconnected</span>
+<div class="code_sample ripplelib1.x" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="nx">Connected</span><span class="w"></span>
+<span class="nx">Preliminary</span><span class="w"> </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="nx">tesSUCCESS</span><span class="w"></span>
+<span class="nx">Disconnected</span><span class="w"></span>
 </code></pre></div></div>
 
 <div class="code_sample websocket" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="p">{</span><span class="w"></span>
@@ -1074,7 +1090,19 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1244,7 +1272,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1289,6 +1317,11 @@
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1310,9 +1343,46 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
-        <a class="nav-link" href="get-started.html">Get Started</a>
+        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="get-started.html">Get Started</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -1355,11 +1425,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1372,11 +1442,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -1399,11 +1469,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1451,19 +1521,19 @@
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="true" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="true" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_2_5">
+    <nav class="nav flex-column show " id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1496,11 +1566,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1513,11 +1583,11 @@
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="true" aria-controls="tree_nav_group_2_5_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="true" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_2_5_3">
+    <nav class="nav flex-column show " id="tree_nav_group_2_6_3">
       
   <div class="nav-item active">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1559,14 +1629,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1596,11 +1671,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1613,7 +1688,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1623,19 +1698,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_1" aria-expanded="false" aria-controls="tree_nav_group_2_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1699,11 +1774,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_2" aria-expanded="false" aria-controls="tree_nav_group_2_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1711,7 +1786,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       
@@ -1766,11 +1841,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_3" aria-expanded="false" aria-controls="tree_nav_group_2_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1818,11 +1893,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_4" aria-expanded="false" aria-controls="tree_nav_group_2_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1845,11 +1920,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_5" aria-expanded="false" aria-controls="tree_nav_group_2_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -1882,6 +1957,23 @@
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
     </nav>
@@ -2330,7 +2422,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -2380,7 +2472,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2409,6 +2501,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2534,6 +2631,16 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
   </div>
 
@@ -2610,7 +2717,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -2627,9 +2734,36 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2658,7 +2792,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -3023,12 +3157,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -3081,7 +3220,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
@@ -3094,6 +3233,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -3101,9 +3241,11 @@
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

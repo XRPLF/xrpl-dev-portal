@@ -53,7 +53,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -78,7 +78,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +121,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -132,6 +145,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -149,7 +163,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -157,15 +171,17 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item active" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -285,88 +301,16 @@
   </div>
 
   <div class="row row-cols-1 row-cols-lg-3 card-deck mt-2">
-    <a class="event-card meetup-upcoming" href="https://www.meetup.com/NYC-XRP/events/284485901/" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-new-york@2x.jpg); ">
-        <div class="event-card-title">NYC Meetup/Hackathon XRPL Celebration</div>
+    <a class="event-card hackathon-upcoming" href="https://xrplimpact.devpost.com/" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-hack-impact@2x.png); ">
+        <div class="event-card-title">XRPL Hackathon: Creating Real World Impact</div>
       </div>
       <div class="event-card-body">
-        <p>The NYC/XRP community and Dev Null Productions cordially invites you to attend our 10th meetup, being held in celebration of the on-going XRPL Hackathon, at the unique and artistic TALS studio in Midtown Manhattan.</p>
+        <p>Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger</p>
       </div>
       <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">NYC, NY</span>
-        <span class="d-flex icon icon-date">March 30, 2022</span>
-      </div>
-    </a>
-    <a class="event-card meetup-upcoming" href="https://www.meetup.com/xrp-ledger-london-community/events/283536458/" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-london.png); ">
-        <div class="event-card-title">XRPL Community Meetup: London</div>
-      </div>
-      <div class="event-card-body">
-        <p>Join for an evening of programming and networking with members of the XRPL Community in London, co-organised by Peerkat - the NFT platform for creators on the XRPL.</p>
-      </div>
-      <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">IDEALondon</span>
-        <span class="d-flex icon icon-date">March 31, 2022</span>
-      </div>
-    </a>
-    <a class="event-card meetup-upcoming" href="https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-toronto@2x.jpg); ">
-        <div class="event-card-title">XRPL Community Meetup: Toronto</div>
-      </div>
-      <div class="event-card-body">
-        <p>Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!</p>
-      </div>
-      <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">Toronto</span>
-        <span class="d-flex icon icon-date">March 31, 2022</span>
-      </div>
-    </a>
-    <a class="event-card meetup-upcoming" href="https://www.meetup.com/xrp-ledger-san-diego-community/events/284663355/" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-san-diego@2x.jpg); ">
-        <div class="event-card-title">XRPL Community Meetup: San Diego</div>
-      </div>
-      <div class="event-card-body">
-        <p>Get together with other San Diego-based members of the XRP Ledger Community to network and discuss all things XRPL! Join us for our second San Diego XRPL Meetup.</p>
-      </div>
-      <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">San Diego, CA</span>
-        <span class="d-flex icon icon-date">April 1st 2022</span>
-      </div>
-    </a>
-    <a class="event-card meetup-upcoming" href="https://www.meetup.com/xrp-ledger-la-community-meetup/events/284824635/" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-irvine@2x.jpg); ">
-        <div class="event-card-title">XRPL Community Meetup: Irvine LA</div>
-      </div>
-      <div class="event-card-body">
-        <p>Get together with other LA-based members of the XRP Ledger Community to network and discuss all things XRPL.</p>
-      </div>
-      <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">UC Irvine, CA</span>
-        <span class="d-flex icon icon-date">April 3rd 2022</span>
-      </div>
-    </a>
-    <a class="event-card meetup-upcoming" href="https://www.meetup.com/xrp-ledger-miami-community/events/284463736/" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-miami@2x.jpg); ">
-        <div class="event-card-title">XRPL Community Meetup: Miami #2</div>
-      </div>
-      <div class="event-card-body">
-        <p>We're excited to host our second Miami meetup for XRP Ledger community members on April 6th from 6-8pm, featuring Marco Neri, Developer Advocate at Ripple, who will join us to give a presentation on the XRP Ledger.</p>
-      </div>
-      <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">The LAB Miami, FL</span>
-        <span class="d-flex icon icon-date">April 6th 2022</span>
-      </div>
-    </a>
-    <a class="event-card meetup-upcoming" href="https://www.meetup.com/xrp-ledger-dubai-community/events/284776939/" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-abu-dhabi@2x.jpg); ">
-        <div class="event-card-title">XRPL Community Meetup: Abu Dhabi</div>
-      </div>
-      <div class="event-card-body">
-        <p>Get together with other Abu Dhabi-based members of the XRP Ledger Community to network and discuss all things XRPL!</p>
-      </div>
-      <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">NYU Abu Dhabi, Building A6</span>
-        <span class="d-flex icon icon-date">April 14th 2022</span>
+        <span class="d-flex mb-2 icon icon-location">Virtual</span>
+        <span class="d-flex icon icon-date">May 26 - July 11</span>
       </div>
     </a>
   </div>
@@ -394,6 +338,78 @@
 
 
   <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
+    <a class="event-card meetup-past" href="https://www.meetup.com/xrp-ledger-miami-community/events/284463736/" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-miami@2x.jpg); ">
+        <div class="event-card-title">XRPL Community Meetup: Miami #2</div>
+      </div>
+      <div class="event-card-body">
+        <p>We're excited to host our second Miami meetup for XRP Ledger community members on April 6th from 6-8pm, featuring Marco Neri, Developer Advocate at Ripple, who will join us to give a presentation on the XRP Ledger.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="d-flex mb-2 icon icon-location">The LAB Miami, FL</span>
+        <span class="d-flex icon icon-date">April 6th 2022</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://www.meetup.com/xrp-ledger-la-community-meetup/events/284824635/" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-irvine@2x.jpg); ">
+        <div class="event-card-title">XRPL Community Meetup: Irvine LA</div>
+      </div>
+      <div class="event-card-body">
+        <p>Get together with other LA-based members of the XRP Ledger Community to network and discuss all things XRPL.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="d-flex mb-2 icon icon-location">UC Irvine, CA</span>
+        <span class="d-flex icon icon-date">April 3rd 2022</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://www.meetup.com/xrp-ledger-san-diego-community/events/284663355/" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-san-diego@2x.jpg); ">
+        <div class="event-card-title">XRPL Community Meetup: San Diego</div>
+      </div>
+      <div class="event-card-body">
+        <p>Get together with other San Diego-based members of the XRP Ledger Community to network and discuss all things XRPL! Join us for our second San Diego XRPL Meetup.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="d-flex mb-2 icon icon-location">San Diego, CA</span>
+        <span class="d-flex icon icon-date">April 1st 2022</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-toronto@2x.jpg); ">
+        <div class="event-card-title">XRPL Community Meetup: Toronto</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="d-flex mb-2 icon icon-location">Toronto</span>
+        <span class="d-flex icon icon-date">March 31, 2022</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://www.meetup.com/xrp-ledger-london-community/events/283536458/" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-london.png); ">
+        <div class="event-card-title">XRPL Community Meetup: London</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join for an evening of programming and networking with members of the XRPL Community in London, co-organised by Peerkat - the NFT platform for creators on the XRPL.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="d-flex mb-2 icon icon-location">IDEALondon</span>
+        <span class="d-flex icon icon-date">March 31, 2022</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://www.meetup.com/NYC-XRP/events/284485901/" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-new-york@2x.jpg); ">
+        <div class="event-card-title">NYC Meetup/Hackathon XRPL Celebration</div>
+      </div>
+      <div class="event-card-body">
+        <p>The NYC/XRP community and Dev Null Productions cordially invites you to attend our 10th meetup, being held in celebration of the on-going XRPL Hackathon, at the unique and artistic TALS studio in Midtown Manhattan.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="d-flex mb-2 icon icon-location">NYC, NY</span>
+        <span class="d-flex icon icon-date">March 30, 2022</span>
+      </div>
+    </a>
     <a class="event-card meetup-past" href="https://xrplnft.devpost.com/" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-hack-new-year.svg); ">
         <div class="event-card-title">XRPL Hackathon: New Year, New NFT</div>
@@ -536,7 +552,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
@@ -549,6 +565,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -556,9 +573,11 @@
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

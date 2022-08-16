@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +131,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -142,6 +155,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -159,7 +173,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -167,15 +181,17 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -219,7 +235,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/references/rippled-api/commandline-usage.md?pr=/XRPLF/xrpl-dev-portal/pull/1381" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/references/http-websocket-apis/commandline-usage.md?pr=/XRPLF/xrpl-dev-portal/pull/1468" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -254,7 +270,7 @@
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
-    <li class="active breadcrumb-item"><a href="rippled-api.html">HTTP / WebSocket APIs</a></li>
+    <li class="active breadcrumb-item"><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a></li>
     <li class="active breadcrumb-item">rippled Commandline Usage Reference</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
@@ -278,14 +294,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Option</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>--conf {FILE}</code></td>
-<td align="left">Use <code>{FILE}</code> as the config file instead of looking for config files in the default locations. If not specified, <code>rippled</code> first checks the local working directory for a <code>rippled.cfg</code> file. On Linux, if that file is not found, <code>rippled</code> next checks for <code>$XDG_CONFIG_HOME/ripple/ripple.cfg</code>. (Typically, <code>$XDG_CONFIG_HOME</code> maps to <code>$HOME/.config</code>.)</td>
+<td style="text-align: left;"><code>--conf {FILE}</code></td>
+<td style="text-align: left;">Use <code>{FILE}</code> as the config file instead of looking for config files in the default locations. If not specified, <code>rippled</code> first checks the local working directory for a <code>rippled.cfg</code> file. On Linux, if that file is not found, <code>rippled</code> next checks for <code>$XDG_CONFIG_HOME/ripple/ripple.cfg</code>. (Typically, <code>$XDG_CONFIG_HOME</code> maps to <code>$HOME/.config</code>.)</td>
 </tr>
 </tbody>
 </table>
@@ -294,26 +310,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Option</th>
-<th align="left">Short Version</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Short Version</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>--debug</code></td>
-<td align="left"></td>
-<td align="left"><strong>DEPRECATED</strong> Enables trace-level debugging (alias for <code>--verbose</code>). Use the <a href="log_level.html">log_level method</a> instead.</td>
+<td style="text-align: left;"><code>--debug</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Enables trace-level debugging (alias for <code>--verbose</code>). Use the <a href="log_level.html">log_level method</a> instead.</td>
 </tr>
 <tr>
-<td align="left"><code>--silent</code></td>
-<td align="left"></td>
-<td align="left">Don't write logs to standard out and standard error during startup. Recommended when starting <code>rippled</code> as a systemd unit to reduce redundant logging.</td>
+<td style="text-align: left;"><code>--silent</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Don't write logs to standard out and standard error during startup. Recommended when starting <code>rippled</code> as a systemd unit to reduce redundant logging.</td>
 </tr>
 <tr>
-<td align="left"><code>--verbose</code></td>
-<td align="left"><code>-v</code></td>
-<td align="left"><strong>DEPRECATED</strong> Enables trace-level debugging. Use the <a href="log_level.html">log_level method</a> instead.</td>
+<td style="text-align: left;"><code>--verbose</code></td>
+<td style="text-align: left;"><code>-v</code></td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Enables trace-level debugging. Use the <a href="log_level.html">log_level method</a> instead.</td>
 </tr>
 </tbody>
 </table>
@@ -324,30 +340,30 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Option</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>--fg</code></td>
-<td align="left">Run the daemon as a single process in the foreground. Otherwise, <code>rippled</code> forks a second process for the daemon while the first process runs as a monitor.</td>
+<td style="text-align: left;"><code>--fg</code></td>
+<td style="text-align: left;">Run the daemon as a single process in the foreground. Otherwise, <code>rippled</code> forks a second process for the daemon while the first process runs as a monitor.</td>
 </tr>
 <tr>
-<td align="left"><code>--import</code></td>
-<td align="left">Before fully starting, import ledger data from another <code>rippled</code> server's ledger store. Requires a valid <code>[import_db]</code> stanza in the config file.</td>
+<td style="text-align: left;"><code>--import</code></td>
+<td style="text-align: left;">Before fully starting, import ledger data from another <code>rippled</code> server's ledger store. Requires a valid <code>[import_db]</code> stanza in the config file.</td>
 </tr>
 <tr>
-<td align="left"><code>--net</code></td>
-<td align="left"><strong>DEPRECATED</strong> Intended for debugging: do not build a local ledger until one can be obtained from the network.</td>
+<td style="text-align: left;"><code>--net</code></td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Intended for debugging: do not build a local ledger until one can be obtained from the network.</td>
 </tr>
 <tr>
-<td align="left"><code>--nodetoshard</code></td>
-<td align="left">Before fully starting, copy any complete <a href="history-sharding.html">history shards</a> from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!-- --></td>
+<td style="text-align: left;"><code>--nodetoshard</code></td>
+<td style="text-align: left;">Before fully starting, copy any complete <a href="history-sharding.html">history shards</a> from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!-- --></td>
 </tr>
 <tr>
-<td align="left"><code>--quorum {QUORUM}</code></td>
-<td align="left">This option is intended for starting <a href="parallel-networks.html">test networks</a>. Override the minimum quorum for validation by requiring an agreement of <code>{QUORUM}</code> trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. <strong>Warning:</strong> If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration.</td>
+<td style="text-align: left;"><code>--quorum {QUORUM}</code></td>
+<td style="text-align: left;">This option is intended for starting <a href="parallel-networks.html">test networks</a>. Override the minimum quorum for validation by requiring an agreement of <code>{QUORUM}</code> trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. <strong>Warning:</strong> If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration.</td>
 </tr>
 </tbody>
 </table>
@@ -362,34 +378,34 @@ rippled -a <span class="o">[</span>OPTIONS<span class="o">]</span>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Option</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>--ledger {LEDGER}</code></td>
-<td align="left">Load the ledger version identified by <code>{LEDGER}</code> (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store.</td>
+<td style="text-align: left;"><code>--ledger {LEDGER}</code></td>
+<td style="text-align: left;">Load the ledger version identified by <code>{LEDGER}</code> (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store.</td>
 </tr>
 <tr>
-<td align="left"><code>--ledgerfile {FILE}</code></td>
-<td align="left">Load the ledger version from the specified <code>{FILE}</code>, which must contain a complete ledger in JSON format. For an example of such a file, see the provided <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/amarantha-k-patch-2/content/_code-samples/rippled-cli/ledger-file.json" target="_blank"><code>ledger-file.json</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
+<td style="text-align: left;"><code>--ledgerfile {FILE}</code></td>
+<td style="text-align: left;">Load the ledger version from the specified <code>{FILE}</code>, which must contain a complete ledger in JSON format. For an example of such a file, see the provided <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/amarantha-k-patch-2/content/_api-examples/rippled-cli/ledger-file.json" target="_blank"><code>ledger-file.json</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
 </tr>
 <tr>
-<td align="left"><code>--load</code></td>
-<td align="left"><strong>DEPRECATED</strong> Intended for debugging. Only load the initial ledger from the ledger store on disk.</td>
+<td style="text-align: left;"><code>--load</code></td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Intended for debugging. Only load the initial ledger from the ledger store on disk.</td>
 </tr>
 <tr>
-<td align="left"><code>--replay</code></td>
-<td align="left">Intended for debugging. Use with <code>--ledger</code> to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic.</td>
+<td style="text-align: left;"><code>--replay</code></td>
+<td style="text-align: left;">Intended for debugging. Use with <code>--ledger</code> to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic.</td>
 </tr>
 <tr>
-<td align="left"><code>--start</code></td>
-<td align="left">Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. The functionality of those amendments is therefore available starting from the second ledger, rather than going through the full two-week <a href="amendments.html">Amendment Process</a>.</td>
+<td style="text-align: left;"><code>--start</code></td>
+<td style="text-align: left;">Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. The functionality of those amendments is therefore available starting from the second ledger, rather than going through the full two-week <a href="amendments.html">Amendment Process</a>.</td>
 </tr>
 <tr>
-<td align="left"><code>--valid</code></td>
-<td align="left"><strong>DEPRECATED</strong> Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network.</td>
+<td style="text-align: left;"><code>--valid</code></td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network.</td>
 </tr>
 </tbody>
 </table>
@@ -397,27 +413,27 @@ rippled -a <span class="o">[</span>OPTIONS<span class="o">]</span>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">rippled <span class="o">[</span>OPTIONS<span class="o">]</span> -- <span class="o">{</span>COMMAND<span class="o">}</span> <span class="o">{</span>COMMAND_PARAMETERS<span class="o">}</span>
 </code></pre></div>
 <p>In client mode, the <code>rippled</code> executable acts as a client to another <code>rippled</code> service. (The service may be the same executable running in a separate process locally, or it could be a <code>rippled</code> server on another server.)</p>
-<p>To run in client mode, provide the <a href="request-formatting.html#commandline-format">commandline syntax</a> for one of the <a href="rippled-api.html"><code>rippled</code> API</a> methods.</p>
+<p>To run in client mode, provide the <a href="request-formatting.html#commandline-format">commandline syntax</a> for one of the <a href="http-websocket-apis.html"><code>rippled</code> API</a> methods.</p>
 <p>In addition to the individual command syntax, client mode accepts the <a href="#generic-options">Generic Options</a> and the following options:</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Option</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>--rpc</code></td>
-<td align="left">Explicitly specify that the server should run in client mode. Not required.</td>
+<td style="text-align: left;"><code>--rpc</code></td>
+<td style="text-align: left;">Explicitly specify that the server should run in client mode. Not required.</td>
 </tr>
 <tr>
-<td align="left"><code>--rpc_ip {IP_ADDRESS}</code></td>
-<td align="left">Connect to the <code>rippled</code> server at the specified IP Address, optionally including a port number.</td>
+<td style="text-align: left;"><code>--rpc_ip {IP_ADDRESS}</code></td>
+<td style="text-align: left;">Connect to the <code>rippled</code> server at the specified IP Address, optionally including a port number.</td>
 </tr>
 <tr>
-<td align="left"><code>--rpc_port {PORT}</code></td>
-<td align="left"><strong>DEPRECATED</strong> Connect to the <code>rippled</code> server on the specified port. Specify the port alongside the IP address using <code>--rpc_ip</code> instead.</td>
+<td style="text-align: left;"><code>--rpc_port {PORT}</code></td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Connect to the <code>rippled</code> server on the specified port. Specify the port alongside the IP address using <code>--rpc_ip</code> instead.</td>
 </tr>
 </tbody>
 </table>
@@ -440,31 +456,31 @@ rippled -u <span class="o">[</span>OPTIONS<span class="o">]</span>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Option</th>
-<th align="left">Short Version</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Short Version</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>--unittest-ipv6</code></td>
-<td align="left"></td>
-<td align="left">Use <a class="external-link" href="https://en.wikipedia.org/wiki/IPv6" target="_blank">IPv6 <i aria-hidden="true" class="fa fa-external-link"></i></a> to connect to the local server when running unit tests. If not provided, unit tests use IPv4 instead. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>--unittest-ipv6</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Use <a class="external-link" href="https://en.wikipedia.org/wiki/IPv6" target="_blank">IPv6 <i aria-hidden="true" class="fa fa-external-link"></i></a> to connect to the local server when running unit tests. If not provided, unit tests use IPv4 instead. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><code>--unittest-jobs {NUMBER_OF_JOBS}</code></td>
-<td align="left"></td>
-<td align="left">Use the specified number of processes to run unit tests. This can finish running tests faster on multi-core systems. The <code>{NUMBER_OF_JOBS}</code> should be a positive integer indicating the number of processes to use.</td>
+<td style="text-align: left;"><code>--unittest-jobs {NUMBER_OF_JOBS}</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Use the specified number of processes to run unit tests. This can finish running tests faster on multi-core systems. The <code>{NUMBER_OF_JOBS}</code> should be a positive integer indicating the number of processes to use.</td>
 </tr>
 <tr>
-<td align="left"><code>--unittest-log</code></td>
-<td align="left"></td>
-<td align="left">Allow unit tests to write to logs even if <code>--quiet</code> is specified. (No effect otherwise.)</td>
+<td style="text-align: left;"><code>--unittest-log</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Allow unit tests to write to logs even if <code>--quiet</code> is specified. (No effect otherwise.)</td>
 </tr>
 <tr>
-<td align="left"><code>--quiet</code></td>
-<td align="left"><code>-q</code></td>
-<td align="left">Print fewer diagnostic messages when running unit tests.</td>
+<td style="text-align: left;"><code>--quiet</code></td>
+<td style="text-align: left;"><code>-q</code></td>
+<td style="text-align: left;">Print fewer diagnostic messages when running unit tests.</td>
 </tr>
 </tbody>
 </table>
@@ -490,14 +506,14 @@ Longest suite times:
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Option</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>--unittest-arg {ARG}</code></td>
-<td align="left">Provide the argument <code>{ARG}</code> to the unit test(s) currently being run. Each unit test that accepts arguments defines its own argument format.</td>
+<td style="text-align: left;"><code>--unittest-arg {ARG}</code></td>
+<td style="text-align: left;">Provide the argument <code>{ARG}</code> to the unit test(s) currently being run. Each unit test that accepts arguments defines its own argument format.</td>
 </tr>
 </tbody>
 </table>
@@ -720,7 +736,19 @@ Longest suite times:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -890,7 +918,7 @@ Longest suite times:
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -935,6 +963,11 @@ Longest suite times:
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
     </nav>
 
   </div>
@@ -956,9 +989,46 @@ Longest suite times:
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
-        <a class="nav-link" href="get-started.html">Get Started</a>
+        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="get-started.html">Get Started</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -1001,11 +1071,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1018,11 +1088,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -1045,11 +1115,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1097,19 +1167,19 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1142,11 +1212,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1159,11 +1229,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1205,14 +1275,19 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1242,11 +1317,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1259,7 +1334,7 @@ Longest suite times:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1269,19 +1344,19 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_1" aria-expanded="false" aria-controls="tree_nav_group_2_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1345,11 +1420,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_2" aria-expanded="false" aria-controls="tree_nav_group_2_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1357,7 +1432,7 @@ Longest suite times:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       
@@ -1412,11 +1487,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_3" aria-expanded="false" aria-controls="tree_nav_group_2_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1464,11 +1539,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_4" aria-expanded="false" aria-controls="tree_nav_group_2_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1491,11 +1566,11 @@ Longest suite times:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_5" aria-expanded="false" aria-controls="tree_nav_group_2_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -1528,6 +1603,23 @@ Longest suite times:
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
     </nav>
@@ -1976,7 +2068,7 @@ Longest suite times:
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="true" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_3_3">
       
@@ -2026,7 +2118,7 @@ Longest suite times:
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2055,6 +2147,11 @@ Longest suite times:
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2180,6 +2277,16 @@ Longest suite times:
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
   </div>
 
@@ -2256,7 +2363,7 @@ Longest suite times:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -2273,9 +2380,36 @@ Longest suite times:
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2304,7 +2438,7 @@ Longest suite times:
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -2669,12 +2803,17 @@ Longest suite times:
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2727,7 +2866,7 @@ Longest suite times:
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
@@ -2740,6 +2879,7 @@ Longest suite times:
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -2747,9 +2887,11 @@ Longest suite times:
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

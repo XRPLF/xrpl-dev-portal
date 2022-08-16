@@ -54,7 +54,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -79,7 +79,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,7 +122,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="/ja/xrpl-foundation.html">XRPL財団</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -136,6 +149,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -156,7 +170,7 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="/ja/public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -172,6 +186,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -186,7 +201,7 @@
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
           <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索を閉じる</span></label>
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
@@ -242,8 +257,8 @@
   <section class="container-new py-26">
     <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
       <h2 class="h4 h2-sm mb-8">経済的機会の創出</h2>
-      <h5 class="longform mb-10">世界中の<a href="https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf">2億7,200万人を超える移民</a>にとって、国際送金は高額なコストがかかり、信頼性が低くて複雑なのが現状です。</h5>
-      <p class="mb-6">XRP and the XRP Ledger are changing that. The technology has been adopted by financial institutions around the world to source liquidity for international transactions. Because of the unprecedented efficiency it offers, they’re able to bring down costs and improve services.</p>
+      <h5 class="longform mb-10">For more than <a href="https://publications.iom.int/system/files/pdf/wmr_2020.pdf" target="_blank">272 million migrants</a> worldwide, sending and receiving money across borders is expensive, unreliable and complex.</h5>
+      <p class="mb-6">XRPとXRP Ledgerがそれを変えています。このテクノロジーは、国際取引の流動性を調達するために、世界中の金融機関に採用されています。前例のない効率性を実現しているため、コストを下げ、サービスを向上させることができるのです</p>
       <p class="mb-0">つまり、安心かつ安全な国際送金を求める何億人もの人々が、かつてないほどの低コストと高い信頼性で送金できるようになるということです。</p>
     </div>
   </section>
@@ -258,7 +273,7 @@
       </div>
       <div class="col ls-none mb-16-sm">
         <div class="col-md-8 mx-auto pl-0-sm pr-0-sm">
-          <h6 class="mb-10-until-sm mb-8-sm">Projected BTC, ETH and XRP Transactions in USD</h6>
+          <h6 class="mb-10-until-sm mb-8-sm">BTC、ETH、XRPの米ドル建て取引額の予測</h6>
           <div class="mb-10">
             <div class="d-flex align-items-baseline mb-3">
               <h5 class="mb-0">2025</h5>
@@ -291,7 +306,7 @@
       <h2 class="h4 h2-sm mb-8">どのデジタルアセットも似たようなものでしょうか?</h2>
       <h5 class="longform mb-10">デジタルアセットにはそれぞれ独自の強みがあり、現代のさまざまな用途に適しています。</h5>
       <p class="mb-6">Bitcoinは価値の貯蔵場所として広く認識されており、Ethereum（ETH）はスマートコントラクトでの使用に適しています。</p>
-      <p class="mb-6">XRP was designed to be optimal for global payments—it’s fast, cheap, scalable and energy-efficient. But the XRP Ledger is also increasingly popular for innovative blockchain use cases, like NFTs and DeFi.</p>
+      <p class="mb-6">XRPはグローバルな決済に最適なように設計されており、高速で安価、スケーラブルでエネルギー効率に優れています。それだけでなく、XRP Ledgerは、NFTやDeFiのような革新的なブロックチェーンのユースケースでもますます人気が高まっています。</p>
       <p class="mb-6">また、送金に最適なこの特徴は、環境にもよい効果をもたらします。XRPは本質的に環境にやさしいデジタルアセットです。</p>
     </div>
   </section>
@@ -301,7 +316,7 @@
     <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
       <h2 class="h4 h2-sm mb-8">XRPとXRP Ledgerはなぜ環境にやさしいのでしょうか?</h2>
       <h5 class="longform mb-10">デジタル通貨でも物理的な通貨でも、現在利用されているほとんどの通貨は環境にやさしくありません。地球に長期的な影響を及ぼす可能性があり、深刻な結果が解消されないおそれがあります。</h5>
-      <p class="mb-6">The XRP Ledger processes transactions through a unique “consensus” mechanism that consumes negligible energy and all XRP currency is already in circulation.</p>
+      <p class="mb-6">XRP Ledgerは消費エネルギーがごくわずかで、全てのXRP通貨が既に発行されており、独自の「コンセンサス」メカニズムを通じてトランザクションを処理します。</p>
       <p class="mb-6">現金も相当の二酸化炭素排出量があります。その環境への影響は、エネルギー消費量だけでなく、廃棄による富栄養化、光化学オゾンの発生、温室効果ガスの排出など、さまざまな要素がかかわってきます。</p>
       <p class="mb-6">Bitcoinなど他のデジタルアセットは、取引の確認と新規コインの創出に、XRPとは異なる技術を使用しています。この「プルーフオブワーク」アルゴリズムでは「マイニング」が必要です。マイニングとは、取引の検証を行うために驚くほどのエネルギーを集中的に使用するプロセスです。その年間のエネルギー消費量は国全体の消費量を上回ります。</p>
       <p class="mb-10">XRPを幅広く採用すれば、この無駄を抑制して、私たちの地球と国際経済の持続可能な未来を実現できます。      </p>
@@ -327,7 +342,7 @@
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -340,6 +355,7 @@
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
@@ -349,6 +365,7 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

@@ -54,7 +54,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -72,7 +72,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,7 +115,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="/ja/xrpl-foundation.html">XRPL財団</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -129,6 +142,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -149,7 +163,7 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="/ja/public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -165,6 +179,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -179,7 +194,7 @@
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
           <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索を閉じる</span></label>
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
@@ -207,15 +222,15 @@
   <section class="py-26 text-center">
     <div class="col-xl-4 col-lg-6 mx-auto text-center">
       <div class="d-flex flex-column-reverse w-100">
-        <h1 class="mb-18">What Would You Like to Learn?</h1>
-        <h6 class="eyebrow mb-3">XRP Ledger Documentation</h6>
+        <h1 class="mb-18">何を学びたいですか？</h1>
+        <h6 class="eyebrow mb-3">XRP Ledger ドキュメント</h6>
       </div>
       <div class="center-search search">
         <form role="search">
           <div class="form-group">
             <div class="input-group">
-              <label class="input-group-prepend" for="docsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索を閉じる</span></label>
-              <input id="docsearchbox" type="text" class="form-control searchinput" placeholder="Search for articles, training, and code samples...">
+              <label class="input-group-prepend" for="docsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
+              <input id="docsearchbox" type="text" class="form-control searchinput" placeholder="記事、トレーニング、コードサンプルを検索...">
             </div><!--/.form-group-->
           </div>
         </form>
@@ -226,7 +241,7 @@
   <section class="container-new mb-50-until-sm" id="docs-browse-by">
     <div class="row">
       <div class="col-lg-6 mb-10" id="popular-topics">
-        <h2 class="h4">Browse By Popular Topics</h2>
+        <h2 class="h4">人気のあるトピックから探す</h2>
         <ul class="nav flex-column">
           <li class="nav-item"><a href="/ja/send-xrp.html" class="nav-link">XRPの送金</a>
           <li class="nav-item"><a href="/ja/reserves.html" class="nav-link">準備金</a>
@@ -238,7 +253,7 @@
       </div><!--/#popular-topics-->
 
       <div class="col-lg-6" id="browse-by-label">
-        <h2 class="h4">Browse By Label</h2>
+        <h2 class="h4">ラベルから探す</h2>
 <ul class="tag-cloud list-inline">
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-アカウント" href="/ja/label-accounts.html" title="XRP Ledgerのアカウントに関するページ。">
@@ -303,7 +318,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-non-fungible-tokens-nfts" href="/ja/label-nfts.html" title="Pages about non-fungible tokens.">
         Non-fungible Tokens, NFTs
-          <span class="badge badge-pill">8</span>
+          <span class="badge badge-pill">13</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -345,7 +360,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-xrp" href="/ja/label-xrp.html" title="XRP Ledgerのネイティブ暗号資産「XRP」に関するページ。">
         XRP
-          <span class="badge badge-pill">9</span>
+          <span class="badge badge-pill">12</span>
         </a>
       </li>
 </ul>      </div><!--/#browse-by-label-->
@@ -354,8 +369,8 @@
 
   <section class="container-new mb-50-until-sm" id="software-and-sdks">
     <div class="d-flex flex-column-reverse w-100">
-      <h2 class="h4">Software and SDKs</h2>
-      <h6 class="eyebrow mb-3">Start Developing</h6>
+      <h2 class="h4">ソフトウェアとSDK</h2>
+      <h6 class="eyebrow mb-3">開発を始める</h6>
     </div>
 
 
@@ -392,7 +407,7 @@
 
   <section class="container-new mb-50-until-sm" id="doc-types">
     <div class="d-flex flex-column-reverse w-100">
-      <h2 class="h4">Article types</h2>
+      <h2 class="h4">記事の種類</h2>
       <h6 class="eyebrow mb-3">Dive In</h6>
     </div>
 
@@ -418,6 +433,13 @@
     </div>
     <div class="card-footer">&nbsp;</div>
   </a>
+  <a class="card" href="/ja/code-samples.html">
+    <div class="card-body">
+      <h4 class="card-title h5">Code Samples</h4>
+      <p class="card-text">Browse sample code for building common use cases on the XRP Ledger.</p>
+    </div>
+    <div class="card-footer">&nbsp;</div>
+  </a>
   <a class="card" href="/ja/dev-tools.html">
     <div class="card-body">
       <h4 class="card-title h5">開発者用ツール</h4>
@@ -429,15 +451,15 @@
 
   <section class="container-new mb-50-until-sm" id="run-a-network-node">
     <div class="d-flex flex-column-reverse w-100">
-      <h2 class="h4">Run an XRP Ledger network node</h2>
-      <h6 class="eyebrow mb-3">Participate in the Network</h6>
+      <h2 class="h4">XRP Ledgerのネットワークノードを実行する</h2>
+      <h6 class="eyebrow mb-3">ネットワークに参加する</h6>
     </div>
 
 <div class="row row-cols-1 row-cols-lg-4 card-deck">
   <a class="card" href="/ja/the-rippled-server.html">
     <div class="card-body">
-      <h4 class="card-title h5">rippledサーバー</h4>
-      <p class="card-text">rippledは、XRP Ledgerを管理するコアのピアツーピアサーバーです。このセクションではコンセプトについて説明します。XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学ぶことができます。</p>
+      <h4 class="card-title h5">The rippled Server</h4>
+      <p class="card-text">Learn about the core servers that power the XRP Ledger.</p>
     </div>
     <div class="card-footer">&nbsp;</div>
   </a>
@@ -466,12 +488,12 @@
 
 <section class="container-new mb-50-until-sm" id="docs-hot-topic">
   <div class="d-flex flex-column-reverse w-100">
-    <h2 class="h4">メリット</h2>
-    <h6 class="eyebrow mb-3">Hot Topic</h6>
+    <h2 class="h4">NFT</h2>
+    <h6 class="eyebrow mb-3">ホットな話題</h6>
   </div>
   <div class="row">
     <div class="col-lg-6">
-      <p class="longform">Interested in non-fungible tokens, but concerned about their <a href="impact.html">large carbon footprint</a>? Read more about issuing NFTs on the XRP Ledger:</p>
+      <p class="longform">非代替性トークンに興味はあるが、<a href="impact.html">二酸化炭素排出量<a/>が気になる？XRP LedgerでのNFTの発行について、詳しくはこちらをご覧ください。</p>
     </div>
     <div class="col-lg-6">
       <ul class="nav flex-column">
@@ -486,7 +508,7 @@
 <section class="container-new mb-50-until-sm doc-index">
   <div class="d-flex flex-column-reverse w-100">
     <h2 id="full-doc-index" class="h4">全ドキュメントの目次</h2>
-    <h6 class="eyebrow mb-3">See Everything</h6>
+    <h6 class="eyebrow mb-3">全てを見る</h6>
   </div>
 
   <div class="row">
@@ -551,7 +573,9 @@
       <li class="level-2"><a href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a></li>
         
       <li class="level-2"><a href="/ja/non-fungible-tokens.html">NFT Conceptual Overview</a></li>
+              <li class="level-3"><a href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a></li>
         
+
       <li class="level-2"><a href="/ja/freezes.html">発行済み通貨の凍結</a></li>
               <li class="level-3"><a href="/ja/common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a></li>
         
@@ -605,7 +629,7 @@
       <li class="level-2"><a href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a></li>
         
 
-      <li class="level-1"><a href="/ja/the-rippled-server.html">rippledサーバー</a></li>
+      <li class="level-1"><a href="/ja/xrpl-servers.html">rippledサーバー</a></li>
               <li class="level-2"><a href="/ja/rippled-server-modes.html">rippledサーバーのモード</a></li>
         
       <li class="level-2"><a href="/ja/clustering.html">クラスター化</a></li>
@@ -620,6 +644,8 @@
         
       <li class="level-2"><a href="/ja/transaction-censorship-detection.html">取引検閲の検知</a></li>
         
+      <li class="level-2"><a href="/ja/the-clio-server.html">The Clio Server</a></li>
+        
 
 
   </ul>
@@ -631,7 +657,19 @@
 
 <div class="children-display">
   <ul>
-          <li class="level-1"><a href="/ja/get-started.html">始めましょう</a></li>
+          <li class="level-1"><a href="/ja/xrpl-quickstart.html">XRPL Quickstart</a></li>
+              <li class="level-2"><a href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a></li>
+        
+      <li class="level-2"><a href="/ja/create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a></li>
+        
+      <li class="level-2"><a href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a></li>
+        
+      <li class="level-2"><a href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a></li>
+        
+      <li class="level-2"><a href="/ja/broker-sale.html">Broker a NFToken Sale</a></li>
+        
+
+      <li class="level-1"><a href="/ja/get-started.html">始めましょう</a></li>
               <li class="level-2"><a href="/ja/public-servers.html">公開サーバー</a></li>
         
       <li class="level-2"><a href="/ja/get-started-using-python.html">Get Started Using Python</a></li>
@@ -712,6 +750,8 @@
       <li class="level-1"><a href="/ja/use-tokens.html">Use Tokens</a></li>
               <li class="level-2"><a href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a></li>
         
+      <li class="level-2"><a href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a></li>
+        
       <li class="level-2"><a href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial</a></li>
         
       <li class="level-2"><a href="/ja/enable-no-freeze.html">Enable No Freeze</a></li>
@@ -726,7 +766,7 @@
         
       <li class="level-2"><a href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録</a></li>
         
-      <li class="level-2"><a href="/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a></li>
+      <li class="level-2"><a href="/ja/become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a></li>
         
 
       <li class="level-1"><a href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a></li>
@@ -818,6 +858,10 @@
       <li class="level-3"><a href="/ja/fix-sqlite-tx-db-page-size-issue.html">SQLiteトランザクションデータベースのページサイズの問題の解決</a></li>
         
 
+
+      <li class="level-1"><a href="/ja/manage-the-clio-server.html">Manage the Clio Server</a></li>
+              <li class="level-2"><a href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a></li>
+        
 
 
   </ul>
@@ -971,7 +1015,7 @@
       <li class="level-2"><a href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library</a></li>
         
 
-      <li class="level-1"><a href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a></li>
+      <li class="level-1"><a href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a></li>
               <li class="level-2"><a href="/ja/api-conventions.html">APIの規則</a></li>
               <li class="level-3"><a href="/ja/request-formatting.html">要求フォーマット</a></li>
         
@@ -986,7 +1030,7 @@
       <li class="level-3"><a href="/ja/rippled-server-states.html">rippledサーバーの状態</a></li>
         
 
-      <li class="level-2"><a href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a></li>
+      <li class="level-2"><a href="/ja/public-api-methods.html">rippledのパブリックメソッド</a></li>
               <li class="level-3"><a href="/ja/account-methods.html">Account Methods</a></li>
               <li class="level-4"><a href="/ja/account_channels.html">account_channels</a></li>
         
@@ -995,6 +1039,8 @@
       <li class="level-4"><a href="/ja/account_info.html">account_info</a></li>
         
       <li class="level-4"><a href="/ja/account_lines.html">account_lines</a></li>
+        
+      <li class="level-4"><a href="/ja/account_nfts.html">account_nfts</a></li>
         
       <li class="level-4"><a href="/ja/account_objects.html">account_objects</a></li>
         
@@ -1036,6 +1082,10 @@
         
       <li class="level-4"><a href="/ja/deposit_authorized.html">deposit_authorized</a></li>
         
+      <li class="level-4"><a href="/ja/nft_buy_offers.html">nft_buy_offers</a></li>
+        
+      <li class="level-4"><a href="/ja/nft_sell_offers.html">nft_sell_offers</a></li>
+        
       <li class="level-4"><a href="/ja/path_find.html">path_find</a></li>
         
       <li class="level-4"><a href="/ja/ripple_path_find.html">ripple_path_find</a></li>
@@ -1058,9 +1108,17 @@
         
       <li class="level-4"><a href="/ja/manifest.html">manifest</a></li>
         
-      <li class="level-4"><a href="/ja/server_info.html">server_info</a></li>
+      <li class="level-4"><a href="/ja/server_info.html">server_info (rippled)</a></li>
         
       <li class="level-4"><a href="/ja/server_state.html">server_state</a></li>
+        
+
+      <li class="level-3"><a href="/ja/clio-methods.html">Clio Server Methods</a></li>
+              <li class="level-4"><a href="/ja/server_info-clio.html">server_info</a></li>
+        
+      <li class="level-4"><a href="/ja/ledger-clio.html">ledger</a></li>
+        
+      <li class="level-4"><a href="/ja/nft_info.html">nft_info</a></li>
         
 
       <li class="level-3"><a href="/ja/utility-methods.html">Utility Methods</a></li>
@@ -1072,7 +1130,7 @@
         
 
 
-      <li class="level-2"><a href="/ja/admin-rippled-methods.html">管理rippledメソッド</a></li>
+      <li class="level-2"><a href="/ja/admin-api-methods.html">管理APIメソッド</a></li>
               <li class="level-3"><a href="/ja/key-generation-methods.html">キー生成のメソッド</a></li>
               <li class="level-4"><a href="/ja/validation_create.html">validation_create</a></li>
         
@@ -1159,6 +1217,16 @@
   </ul>
 </div>    </div>
     <div class="col-md-6 mt-20">
+      <a href="/ja/code-samples.html"><h5 class="mb-3">Code Samples</h5></a>
+
+
+
+<div class="children-display">
+  <ul>
+    
+  </ul>
+</div>    </div>
+    <div class="col-md-6 mt-20">
       <a href="/ja/dev-tools.html"><h5 class="mb-3">開発者用ツール</h5></a>
 
 
@@ -1199,7 +1267,7 @@
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -1212,6 +1280,7 @@
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
@@ -1221,6 +1290,7 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

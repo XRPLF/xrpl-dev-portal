@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,7 +88,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +131,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -142,6 +155,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -159,7 +173,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -167,15 +181,17 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -219,7 +235,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/tutorials/manage-account-settings/assign-a-regular-key-pair.md?pr=/XRPLF/xrpl-dev-portal/pull/1381" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/tutorials/manage-account-settings/assign-a-regular-key-pair.md?pr=/XRPLF/xrpl-dev-portal/pull/1468" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -236,8 +252,6 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#assign-a-regular-key-pair">Assign a Regular Key Pair</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#1-generate-a-key-pair">1. Generate a Key Pair</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#response-format">Response Format</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#2-assign-the-key-pair-to-your-account-as-a-regular-key-pair">2. Assign the Key Pair to Your Account as a Regular Key Pair</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#sign-your-transaction">Sign Your Transaction</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#submit-your-transaction">Submit Your Transaction</a></li>
@@ -274,30 +288,19 @@
 <li><a href="#see-also">Explore next steps</a></li>
 </ol>
 <h2 id="1-generate-a-key-pair">1. Generate a Key Pair<a aria-hidden="true" class="hover_anchor" href="#1-generate-a-key-pair"><i class="fa fa-link"></i></a></h2>
-<p>Use the <a href="wallet_propose.html">wallet_propose method</a> to generate the key pair that you'll assign to your account as a regular key pair.</p>
-<h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
-<p>An example of the request format:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
+<p>Generate a key pair that you'll assign to your account as a regular key pair.</p>
+<p>This key pair is the same data type as a master key pair, so you can generate it the same way: you can use the client library of your choice or use the <a href="wallet_propose.html">wallet_propose method</a> of a server you operate. This might look as follows:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li><li><a class="python" href="#code-0-3">Python</a></li><li><a class="javascript" href="#code-0-4">JavaScript</a></li><li><a class="java" href="#code-0-5">Java</a></li></ul>
 
-<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// Request:</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet_propose"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet_propose"</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></div>
+<span class="c1">// Response:</span><span class="w"></span>
 
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: wallet_propose</span>
-rippled wallet_propose
-</code></pre></div></div>
-</div>
-<h3 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h3>
-<p>An example of a successful response:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
-
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"key_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w"></span>
@@ -312,7 +315,15 @@ rippled wallet_propose
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1">// Request:</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet_propose"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Response:</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"key_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w"></span>
@@ -326,57 +337,75 @@ rippled wallet_propose
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"account_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"key_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"secp256k1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"master_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"KNEW BENT LYNN LED GAD BEN KENT SHAM HOBO RINK WALT ALLY"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"master_seed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"sh8i92YRnEjJy3fpFkL8txQSCVo79"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"master_seed_hex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"966C0F68643EFBA50D58D191D4CA8AA7"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"public_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"aBRNH5wUurfhZcoyR6nRwDSa95gMBkovBJ8V4cp1C1pM28H7EPL1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"public_key_hex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w"></span>
-<span class="w">   </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">$ rippled wallet_propose
+
+<span class="o">{</span>
+   <span class="s2">"result"</span> : <span class="o">{</span>
+      <span class="s2">"account_id"</span> : <span class="s2">"rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"</span>,
+      <span class="s2">"key_type"</span> : <span class="s2">"secp256k1"</span>,
+      <span class="s2">"master_key"</span> : <span class="s2">"KNEW BENT LYNN LED GAD BEN KENT SHAM HOBO RINK WALT ALLY"</span>,
+      <span class="s2">"master_seed"</span> : <span class="s2">"sh8i92YRnEjJy3fpFkL8txQSCVo79"</span>,
+      <span class="s2">"master_seed_hex"</span> : <span class="s2">"966C0F68643EFBA50D58D191D4CA8AA7"</span>,
+      <span class="s2">"public_key"</span> : <span class="s2">"aBRNH5wUurfhZcoyR6nRwDSa95gMBkovBJ8V4cp1C1pM28H7EPL1"</span>,
+      <span class="s2">"public_key_hex"</span> : <span class="s2">"03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E"</span>,
+      <span class="s2">"status"</span> : <span class="s2">"success"</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-0-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="n">keypair</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"seed:"</span><span class="p">,</span> <span class="n">keypair</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"classic address:"</span><span class="p">,</span> <span class="n">keypair</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample javascript" id="code-0-4" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="kd">const</span><span class="w"> </span><span class="nx">keypair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">()</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"seed:"</span><span class="p">,</span><span class="w"> </span><span class="nx">keypair</span><span class="p">.</span><span class="nx">seed</span><span class="p">)</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"classic address:"</span><span class="p">,</span><span class="w"> </span><span class="nx">keypair</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-0-5" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="n">WalletFactory</span><span class="w"> </span><span class="n">walletFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span><span class="w"></span>
+<span class="n">Wallet</span><span class="w"> </span><span class="n">keypair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletFactory</span><span class="p">.</span><span class="na">randomWallet</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="na">wallet</span><span class="p">();</span><span class="w"></span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">keypair</span><span class="p">);</span><span class="w"></span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">keypair</span><span class="p">.</span><span class="na">privateKey</span><span class="p">().</span><span class="na">get</span><span class="p">());</span><span class="w"></span>
 </code></pre></div></div>
 </div>
-<p>In the next step, you'll use the <code>account_id</code> from this response to assign the key pair as a regular key pair to your account. Also, save the <code>master_seed</code> value somewhere securely. (Everything else, you can forget about.)</p>
+<p>In the next step, you'll use the address from this response (<code>account_id</code> in the API response) to assign the key pair as a regular key pair to your account. Also, save the seed value from this key pair (<code>master_seed</code> in the API response) somewhere securely; you'll use that key to sign transactions later. (Everything else, you can forget about.)</p>
 <h2 id="2-assign-the-key-pair-to-your-account-as-a-regular-key-pair">2. Assign the Key Pair to Your Account as a Regular Key Pair<a aria-hidden="true" class="hover_anchor" href="#2-assign-the-key-pair-to-your-account-as-a-regular-key-pair"><i class="fa fa-link"></i></a></h2>
 <p>Use a <a href="setregularkey.html">SetRegularKey transaction</a> to assign the key pair you generated in step 1 to your account as a regular key pair.</p>
 <p>When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are <a href="set-up-secure-signing.html">several ways of securely signing transactions</a>, but this tutorial uses a local <code>rippled</code> server.</p>
 <p>When you send subsequent SetRegularKey transactions, you can sign using the existing regular private key to replace or <a href="change-or-remove-a-regular-key-pair.html">remove itself</a>. Note that you should still not submit your regular private key across the network.</p>
 <h3 id="sign-your-transaction">Sign Your Transaction<a aria-hidden="true" class="hover_anchor" href="#sign-your-transaction"><i class="fa fa-link"></i></a></h3>
-<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
+<p>The most secure way to sign a transaction is to <a href="set-up-secure-signing.html#local-signing-example">sign locally with a client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <p>Populate the request fields with the following values:</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Request Field</th>
-<th align="left">Value</th>
+<th style="text-align: left;">Request Field</th>
+<th style="text-align: left;">Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>Account</code></td>
-<td align="left">The address of your account.</td>
+<td style="text-align: left;"><code>Account</code></td>
+<td style="text-align: left;">The address of your account.</td>
 </tr>
 <tr>
-<td align="left"><code>RegularKey</code></td>
-<td align="left"><code>account_id</code> generated in step 1.</td>
+<td style="text-align: left;"><code>RegularKey</code></td>
+<td style="text-align: left;"><code>account_id</code> generated in step 1.</td>
 </tr>
 <tr>
-<td align="left"><code>secret</code></td>
-<td align="left"><code>master_key</code>, <code>master_seed</code>, or <code>master_seed_hex</code> (master private key) for your account.</td>
+<td style="text-align: left;"><code>secret</code></td>
+<td style="text-align: left;"><code>master_key</code>, <code>master_seed</code>, or <code>master_seed_hex</code> (master private key) for your account.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="request-format-1">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-1"><i class="fa fa-link"></i></a></h4>
+<h4 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h4>
 <p>An example of the request format:</p>
-<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="websocket" href="#code-2-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-2-1">JSON-RPC</a></li><li><a class="commandline" href="#code-2-2">Commandline</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sign"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SetRegularKey"</span><span class="p">,</span><span class="w"></span>
@@ -387,7 +416,7 @@ rippled wallet_propose
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sign"</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="p">{</span><span class="w"></span>
@@ -402,15 +431,15 @@ rippled wallet_propose
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">#Syntax: sign secret tx_json</span>
+<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">#Syntax: sign secret tx_json</span>
 rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93", "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"}'</span>
 </code></pre></div></div>
 </div>
-<h4 id="response-format-1">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-1"><i class="fa fa-link"></i></a></h4>
+<h4 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h4>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="websocket" href="#code-3-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-3-1">JSON-RPC</a></li><li><a class="commandline" href="#code-3-2">Commandline</a></li></ul>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="websocket" href="#code-2-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-2-1">JSON-RPC</a></li><li><a class="commandline" href="#code-2-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"tx_blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -430,7 +459,7 @@ rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType":
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"tx_blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1200052280000000240000000768400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402201453CA3D4D17F0EE3828B9E3D6ACF65327F5D4FC2BA30953CACF6CBCB4145E3502202F2154BED1D7462CAC1E3DBB31864E48C3BA0B3133ACA5E37EC54F0D0C339E2D8114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540"</span><span class="p">,</span><span class="w"></span>
@@ -449,7 +478,7 @@ rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType":
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="p">{</span><span class="w"></span>
+<div class="code_sample commandline" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"tx_blob"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1200052280000000240000000768400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402201453CA3D4D17F0EE3828B9E3D6ACF65327F5D4FC2BA30953CACF6CBCB4145E3502202F2154BED1D7462CAC1E3DBB31864E48C3BA0B3133ACA5E37EC54F0D0C339E2D8114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540"</span><span class="p">,</span><span class="w"></span>
@@ -472,17 +501,17 @@ rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType":
 <p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
 <h3 id="submit-your-transaction">Submit Your Transaction<a aria-hidden="true" class="hover_anchor" href="#submit-your-transaction"><i class="fa fa-link"></i></a></h3>
 <p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="submit.html">submit method</a>.</p>
-<h4 id="request-format-2">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-2"><i class="fa fa-link"></i></a></h4>
+<h4 id="request-format-1">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-1"><i class="fa fa-link"></i></a></h4>
 <p>An example of the request format:</p>
-<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="websocket" href="#code-4-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-4-1">JSON-RPC</a></li><li><a class="commandline" href="#code-4-2">Commandline</a></li></ul>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="websocket" href="#code-3-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-3-1">JSON-RPC</a></li><li><a class="commandline" href="#code-3-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"tx_blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="p">{</span><span class="w"></span>
@@ -492,15 +521,15 @@ rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType":
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1">#Syntax: submit tx_blob</span>
+<div class="code_sample commandline" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1">#Syntax: submit tx_blob</span>
 rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540
 </code></pre></div></div>
 </div>
-<h4 id="response-format-2">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-2"><i class="fa fa-link"></i></a></h4>
+<h4 id="response-format-1">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-1"><i class="fa fa-link"></i></a></h4>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="websocket" href="#code-5-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-5-1">JSON-RPC</a></li><li><a class="commandline" href="#code-5-2">Commandline</a></li></ul>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="websocket" href="#code-4-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-4-1">JSON-RPC</a></li><li><a class="commandline" href="#code-4-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"engine_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"engine_result_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
@@ -523,7 +552,7 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">       </span><span class="nt">"engine_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w"></span>
 <span class="w">       </span><span class="nt">"engine_result_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
@@ -545,7 +574,7 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="p">{</span><span class="w"></span>
+<div class="code_sample commandline" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"engine_result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"engine_result_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
@@ -572,33 +601,33 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 <p>At this point, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. <strong>To avoid losing control of your account,</strong> it is important that you test your regular key before you take any additional steps such as <a href="disable-master-key-pair.html">disabling the master key pair</a>. If you make a mistake and lose access to your account, no one can restore it for you.</p>
 <p>To verify that your account has the regular key pair set correctly, submit an <a href="accountset.html">AccountSet transaction</a> from your account, signing it with the regular private key you assigned to your account in step 2. As in step 1, this tutorial uses a local <code>rippled</code> server as a <a href="set-up-secure-signing.html">way of securely signing transactions</a>.</p>
 <h3 id="sign-your-transaction-1">Sign Your Transaction<a aria-hidden="true" class="hover_anchor" href="#sign-your-transaction-1"><i class="fa fa-link"></i></a></h3>
-<p>The most secure way to sign a transaction is to do it locally with a <a href="client-libraries.html">client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
+<p>The most secure way to sign a transaction is to <a href="set-up-secure-signing.html#local-signing-example">sign locally with a client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
 <p>Populate the request fields with the following values:</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Request Field</th>
-<th align="left">Value</th>
+<th style="text-align: left;">Request Field</th>
+<th style="text-align: left;">Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>Account</code></td>
-<td align="left">The address of your account.</td>
+<td style="text-align: left;"><code>Account</code></td>
+<td style="text-align: left;">The address of your account.</td>
 </tr>
 <tr>
-<td align="left"><code>secret</code></td>
-<td align="left"><code>master_key</code>, <code>master_seed</code>, or <code>master_seed_hex</code> (regular private key) generated in step 1 and assigned to your account in step 2.</td>
+<td style="text-align: left;"><code>secret</code></td>
+<td style="text-align: left;"><code>master_key</code>, <code>master_seed</code>, or <code>master_seed_hex</code> (regular private key) generated in step 1 and assigned to your account in step 2.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="request-format-3">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-3"><i class="fa fa-link"></i></a></h4>
+<h4 id="request-format-2">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-2"><i class="fa fa-link"></i></a></h4>
 <p>Here's an example of the request format. Note that the request does not include any <code>AccountSet</code> options. This means that a successful transaction has no effect other than to confirm that the regular key pair is set correctly for your account (and to destroy the transaction cost).</p>
-<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="websocket" href="#code-6-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-6-1">JSON-RPC</a></li><li><a class="commandline" href="#code-6-2">Commandline</a></li></ul>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="websocket" href="#code-5-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-5-1">JSON-RPC</a></li><li><a class="commandline" href="#code-5-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sign"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w"></span>
@@ -608,7 +637,7 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sign"</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="p">{</span><span class="w"></span>
@@ -622,15 +651,15 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-6-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="c1">#Syntax: sign secret tx_json</span>
+<div class="code_sample commandline" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="c1">#Syntax: sign secret tx_json</span>
 rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType": "AccountSet", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'</span>
 </code></pre></div></div>
 </div>
-<h4 id="response-format-3">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-3"><i class="fa fa-link"></i></a></h4>
+<h4 id="response-format-2">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-2"><i class="fa fa-link"></i></a></h4>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-7"><ul class="codetabs"><li><a class="websocket" href="#code-7-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-7-1">JSON-RPC</a></li><li><a class="commandline" href="#code-7-2">Commandline</a></li></ul>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="websocket" href="#code-6-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-6-1">JSON-RPC</a></li><li><a class="commandline" href="#code-6-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"tx_blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -649,7 +678,7 @@ rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType":
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"tx_blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"</span><span class="p">,</span><span class="w"></span>
@@ -667,7 +696,7 @@ rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType":
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-7-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="p">{</span><span class="w"></span>
+<div class="code_sample commandline" id="code-6-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"tx_blob"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"</span><span class="p">,</span><span class="w"></span>
@@ -689,17 +718,17 @@ rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType":
 <p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
 <h3 id="submit-your-transaction-1">Submit Your Transaction<a aria-hidden="true" class="hover_anchor" href="#submit-your-transaction-1"><i class="fa fa-link"></i></a></h3>
 <p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="submit.html">submit method</a>.</p>
-<h4 id="request-format-4">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-4"><i class="fa fa-link"></i></a></h4>
+<h4 id="request-format-3">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-3"><i class="fa fa-link"></i></a></h4>
 <p>An example of the request format:</p>
-<div class="multicode" id="code-8"><ul class="codetabs"><li><a class="websocket" href="#code-8-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-8-1">JSON-RPC</a></li><li><a class="commandline" href="#code-8-2">Commandline</a></li></ul>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a class="websocket" href="#code-7-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-7-1">JSON-RPC</a></li><li><a class="commandline" href="#code-7-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-8-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"tx_blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-8-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"submit"</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">      </span><span class="p">{</span><span class="w"></span>
@@ -709,15 +738,15 @@ rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType":
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-8-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="c1">#Syntax: submit tx_blob</span>
+<div class="code_sample commandline" id="code-7-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="c1">#Syntax: submit tx_blob</span>
 rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E
 </code></pre></div></div>
 </div>
-<h4 id="response-format-4">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-4"><i class="fa fa-link"></i></a></h4>
+<h4 id="response-format-3">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-3"><i class="fa fa-link"></i></a></h4>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-9"><ul class="codetabs"><li><a class="websocket" href="#code-9-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-9-1">JSON-RPC</a></li><li><a class="commandline" href="#code-9-2">Commandline</a></li></ul>
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a class="websocket" href="#code-8-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-8-1">JSON-RPC</a></li><li><a class="commandline" href="#code-8-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-9-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-8-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"engine_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"engine_result_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
@@ -739,7 +768,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-9-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="p">{</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-8-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"engine_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"engine_result_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
@@ -760,7 +789,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-9-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="p">{</span><span class="w"></span>
+<div class="code_sample commandline" id="code-8-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"engine_result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">"engine_result_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
@@ -1029,7 +1058,19 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1199,7 +1240,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1244,6 +1285,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1265,9 +1311,46 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
-        <a class="nav-link" href="get-started.html">Get Started</a>
+        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="get-started.html">Get Started</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -1310,11 +1393,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1327,11 +1410,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -1354,11 +1437,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="true" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="true" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_2_4">
+    <nav class="nav flex-column show " id="tree_nav_group_2_5">
       
   <div class="nav-item active">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1406,19 +1489,19 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1451,11 +1534,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1468,11 +1551,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1514,14 +1597,19 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1551,11 +1639,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1568,7 +1656,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1578,19 +1666,19 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_1" aria-expanded="false" aria-controls="tree_nav_group_2_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1654,11 +1742,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_2" aria-expanded="false" aria-controls="tree_nav_group_2_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1666,7 +1754,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       
@@ -1721,11 +1809,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_3" aria-expanded="false" aria-controls="tree_nav_group_2_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1773,11 +1861,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_4" aria-expanded="false" aria-controls="tree_nav_group_2_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1800,11 +1888,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8_5" aria-expanded="false" aria-controls="tree_nav_group_2_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -1837,6 +1925,23 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
     </nav>
@@ -2285,7 +2390,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -2335,7 +2440,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2364,6 +2469,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2489,6 +2599,16 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
   </div>
 
@@ -2565,7 +2685,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -2582,9 +2702,36 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2613,7 +2760,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -2978,12 +3125,17 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -3036,7 +3188,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
@@ -3049,6 +3201,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -3056,9 +3209,11 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

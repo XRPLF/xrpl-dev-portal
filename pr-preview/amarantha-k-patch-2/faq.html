@@ -53,7 +53,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -75,7 +75,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,7 +118,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item active" href="faq.html">FAQ</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -129,6 +142,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -146,7 +160,7 @@
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -154,15 +168,17 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -222,7 +238,7 @@
 </div></div><h2 id="validators-and-unique-node-lists">Validators and Unique Node Lists<a aria-hidden="true" class="hover_anchor" href="#validators-and-unique-node-lists"><i class="fa fa-link"></i></a></h2>
 <div class="q-wrapper"><h4 id="what-service-do-transaction-validators-provide"><a aria-controls="a5" aria-expanded="false" class="expander collapsed" data-target="#a5" data-toggle="collapse" href="#what-service-do-transaction-validators-provide">What service do transaction validators provide?<span class="chevron"><span></span><span></span></span></a></h4><div aria-labelledby="a5" class="answer-wrapper collapse" id="a5">
 <p>All nodes ensure that transactions meet protocol requirements, and are therefore “valid.” The service that validators uniquely provide is administratively grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending. <!-- STYLE_OVERRIDE: therefore --></p>
-<p>See <a href="consensus.html">Consensus</a> and the <a class="external-link" href="https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/" target="_blank">Ripple Labs Tech Talk: Understanding Consensus <i aria-hidden="true" class="fa fa-external-link"></i></a> for more information about the consensus process.</p>
+<p>See <a href="consensus.html">Consensus</a> for more information about the consensus process.</p>
 </div></div><div class="q-wrapper"><h4 id="how-much-does-it-cost-to-run-a-validator"><a aria-controls="a6" aria-expanded="false" class="expander collapsed" data-target="#a6" data-toggle="collapse" href="#how-much-does-it-cost-to-run-a-validator">How much does it cost to run a validator?<span class="chevron"><span></span><span></span></span></a></h4><div aria-labelledby="a6" class="answer-wrapper collapse" id="a6">
 <p>Running a validator does not require any fees or XRP. It is comparable in cost to running an email server in terms of its electricity use.</p>
 </div></div><div class="q-wrapper"><h4 id="what-are-unique-node-lists-unls"><a aria-controls="a7" aria-expanded="false" class="expander collapsed" data-target="#a7" data-toggle="collapse" href="#what-are-unique-node-lists-unls">What are Unique Node Lists (UNLs)?<span class="chevron"><span></span><span></span></span></a></h4><div aria-labelledby="a7" class="answer-wrapper collapse" id="a7">
@@ -269,7 +285,7 @@
 </div></div><div class="q-wrapper"><h4 id="does-ripple-offer-a-secure-method-to-download-their-software"><a aria-controls="a19" aria-expanded="false" class="expander collapsed" data-target="#a19" data-toggle="collapse" href="#does-ripple-offer-a-secure-method-to-download-their-software">Does Ripple offer a secure method to download their software?<span class="chevron"><span></span><span></span></span></a></h4><div aria-labelledby="a19" class="answer-wrapper collapse" id="a19">
 <p><code>rippled</code> source code is available at <a class="external-link" href="https://github.com/ripple/rippled" target="_blank">https://github.com/ripple/rippled <i aria-hidden="true" class="fa fa-external-link"></i></a>, where the tip of the <code>master</code>, <code>release</code> and <code>develop</code> branches always contains a version-setting commit signed by a <code>rippled</code> developer. Ripple also publishes pre-built binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published. <!-- STYLE_OVERRIDE: evident --></p>
 </div></div><div class="q-wrapper"><h4 id="does-the-xrp-ledger-distinguish-between-the-codebase-for-validation-and-the-one-for-user-software"><a aria-controls="a20" aria-expanded="false" class="expander collapsed" data-target="#a20" data-toggle="collapse" href="#does-the-xrp-ledger-distinguish-between-the-codebase-for-validation-and-the-one-for-user-software">Does the XRP Ledger distinguish between the codebase for validation and the one for user software?<span class="chevron"><span></span><span></span></span></a></h4><div aria-labelledby="a20" class="answer-wrapper collapse" id="a20">
-<p>Yes. There are several <a href="client-libraries.html">XRP Ledger client libraries</a> which are intended for user software developers. These libraries have different codebases and repositories from the <a href="the-rippled-server.html">core XRP Ledger server</a> which powers the network and validates transactions.</p></div></div>
+<p>Yes. There are several <a href="client-libraries.html">XRP Ledger client libraries</a> which are intended for user software developers. These libraries have different codebases and repositories from the <a href="xrpl-servers.html">core XRP Ledger server</a> which powers the network and validates transactions.</p></div></div>
       </div>
     </div>
   </article>
@@ -290,7 +306,7 @@
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
           </ul>
         </div><!--/.col -->
@@ -303,6 +319,7 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
@@ -310,9 +327,11 @@
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>

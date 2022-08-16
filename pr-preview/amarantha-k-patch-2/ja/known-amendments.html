@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v3.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v6.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,7 +89,20 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top">
+  <!-- mobile -->
+  <div class="justify-content-center d-md-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL</p></span>
+    <span><p class="mb-0"> Developer Summit <a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></p></span>
+  </div>
+  <!-- tablet and up -->
+  <div class="d-md-flex justify-content-center d-none">
+    <span><p class="mb-0">Registration is live for Apex: The XRPL Developer Summit</p></span>
+    <span><a href="https://www.apexdevsummit.com/" target="_blank" class="btn btn-outline-secondary">Register Now</a></span>
+  </div>
+  
+
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,7 +132,7 @@
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="/ja/xrpl-foundation.html">XRPL財団</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -146,6 +159,7 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -166,7 +180,7 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="/ja/public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -182,6 +196,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
@@ -196,7 +211,7 @@
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
           <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索を閉じる</span></label>
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
@@ -225,7 +240,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/concepts/consensus-network/amendments/known-amendments.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1381" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amarantha-k-patch-2/content/concepts/consensus-network/amendments/known-amendments.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1468" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -247,6 +262,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#enforceinvariants">EnforceInvariants</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#escrow">Escrow</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#expandedsignerlist">ExpandedSignerList</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#feeescalation">FeeEscalation</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fix1201">fix1201</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fix1368">fix1368</a></li>
@@ -264,6 +280,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixcheckthreading">fixCheckThreading</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
@@ -277,6 +295,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#multisign">MultiSign</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ownerpaysfee">OwnerPaysFee</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#paychan">PayChan</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></li>
@@ -313,256 +333,281 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">名前</th>
-<th align="left">導入済み</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">名前</th>
+<th style="text-align: left;">導入済み</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
-<td align="left">v1.8.0</td>
-<td align="left"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
+<td style="text-align: left;">未定</td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
-<td align="left">未定</td>
-<td align="left"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
+<td style="text-align: left;">未定</td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
-<td align="left">未定</td>
-<td align="left"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></td>
+<td style="text-align: left;">v1.9.2</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.2.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#negativeunl">NegativeUNL</a></td>
-<td align="left">v1.7.3</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA" target="_blank" title="有効: 2021/11/21"><img alt="有効: 2021/11/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></td>
+<td style="text-align: left;">v1.9.2</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.2.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></td>
-<td align="left">v1.7.2</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7" target="_blank" title="有効: 2021/11/18"><img alt="有効: 2021/11/18" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#expandedsignerlist">ExpandedSignerList</a></td>
+<td style="text-align: left;">v1.9.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.1.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#ticketbatch">TicketBatch</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36" target="_blank" title="有効: 2021/11/18"><img alt="有効: 2021/11/18" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixnftokendirv1">fixNFTokenDirV1</a></td>
+<td style="text-align: left;">v1.9.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.1.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532" target="_blank" title="有効: 2021/11/11"><img alt="有効: 2021/11/11" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></td>
+<td style="text-align: left;">v1.9.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.0.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flowsortstrands">FlowSortStrands</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1" target="_blank" title="有効: 2021/11/11"><img alt="有効: 2021/11/11" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
+<td style="text-align: left;">v1.8.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.8.1.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1781">fix1781</a></td>
-<td align="left">v1.6.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB" target="_blank" title="有効: 2021/04/08"><img alt="有効: 2021/04/08" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/04/08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#negativeunl">NegativeUNL</a></td>
+<td style="text-align: left;">v1.7.3</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA" target="_blank" title="有効: 2021/11/21"><img alt="有効: 2021/11/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></td>
-<td align="left">v1.6.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF" target="_blank" title="有効: 2021/04/08"><img alt="有効: 2021/04/08" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/04/08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></td>
+<td style="text-align: left;">v1.7.2</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7" target="_blank" title="有効: 2021/11/18"><img alt="有効: 2021/11/18" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#hardenedvalidations">HardenedValidations</a></td>
-<td align="left">v1.6.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF" target="_blank" title="有効: 2021/04/08"><img alt="有効: 2021/04/08" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/04/08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#ticketbatch">TicketBatch</a></td>
+<td style="text-align: left;">v1.7.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36" target="_blank" title="有効: 2021/11/18"><img alt="有効: 2021/11/18" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flowcross">FlowCross</a></td>
-<td align="left">v0.70.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F" target="_blank" title="有効: 2020/08/04"><img alt="有効: 2020/08/04" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/08/04-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></td>
+<td style="text-align: left;">v1.7.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532" target="_blank" title="有効: 2021/11/11"><img alt="有効: 2021/11/11" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixqualityupperbound">fixQualityUpperBound</a></td>
-<td align="left">v1.5.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E" target="_blank" title="有効: 2020/07/09"><img alt="有効: 2020/07/09" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/07/09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#flowsortstrands">FlowSortStrands</a></td>
+<td style="text-align: left;">v1.7.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1" target="_blank" title="有効: 2021/11/11"><img alt="有効: 2021/11/11" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/11/11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></td>
-<td align="left">v1.5.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3" target="_blank" title="有効: 2020/07/03"><img alt="有効: 2020/07/03" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/07/03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1781">fix1781</a></td>
+<td style="text-align: left;">v1.6.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB" target="_blank" title="有効: 2021/04/08"><img alt="有効: 2021/04/08" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/04/08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#checks">Checks</a></td>
-<td align="left">v0.90.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6" target="_blank" title="有効: 2020/06/18"><img alt="有効: 2020/06/18" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/06/18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></td>
+<td style="text-align: left;">v1.6.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF" target="_blank" title="有効: 2021/04/08"><img alt="有効: 2021/04/08" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/04/08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#deletableaccounts">DeletableAccounts</a></td>
-<td align="left">v1.4.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE" target="_blank" title="有効: 2020/05/08"><img alt="有効: 2020/05/08" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/05/08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#hardenedvalidations">HardenedValidations</a></td>
+<td style="text-align: left;">v1.6.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF" target="_blank" title="有効: 2021/04/08"><img alt="有効: 2021/04/08" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2021/04/08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixcheckthreading">fixCheckThreading</a></td>
-<td align="left">v1.4.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A" target="_blank" title="有効: 2020/05/01"><img alt="有効: 2020/05/01" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/05/01-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#flowcross">FlowCross</a></td>
+<td style="text-align: left;">v0.70.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F" target="_blank" title="有効: 2020/08/04"><img alt="有効: 2020/08/04" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/08/04-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></td>
-<td align="left">v1.4.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09" target="_blank" title="有効: 2020/05/01"><img alt="有効: 2020/05/01" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/05/01-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixqualityupperbound">fixQualityUpperBound</a></td>
+<td style="text-align: left;">v1.5.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E" target="_blank" title="有効: 2020/07/09"><img alt="有効: 2020/07/09" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/07/09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></td>
-<td align="left">v1.3.1</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20" target="_blank" title="有効: 2019/10/02"><img alt="有効: 2019/10/02" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2019/10/02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></td>
+<td style="text-align: left;">v1.5.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3" target="_blank" title="有効: 2020/07/03"><img alt="有効: 2020/07/03" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/07/03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#multisignreserve">MultiSignReserve</a></td>
-<td align="left">v1.2.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB" target="_blank" title="有効: 2019/04/17"><img alt="有効: 2019/04/17" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2019/04/17-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#checks">Checks</a></td>
+<td style="text-align: left;">v0.90.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6" target="_blank" title="有効: 2020/06/18"><img alt="有効: 2020/06/18" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/06/18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></td>
-<td align="left">v1.2.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF" target="_blank" title="有効: 2019/04/02"><img alt="有効: 2019/04/02" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2019/04/02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#deletableaccounts">DeletableAccounts</a></td>
+<td style="text-align: left;">v1.4.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE" target="_blank" title="有効: 2020/05/08"><img alt="有効: 2020/05/08" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/05/08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1578">fix1578</a></td>
-<td align="left">v1.2.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D" target="_blank" title="有効: 2019/03/23"><img alt="有効: 2019/03/23" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2019/03/23-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixcheckthreading">fixCheckThreading</a></td>
+<td style="text-align: left;">v1.4.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A" target="_blank" title="有効: 2020/05/01"><img alt="有効: 2020/05/01" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/05/01-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="depositpreauth.html">DepositPreauth</a></td>
-<td align="left">v1.1.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927" target="_blank" title="有効: 2018/10/09"><img alt="有効: 2018/10/09" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/10/09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></td>
+<td style="text-align: left;">v1.4.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09" target="_blank" title="有効: 2020/05/01"><img alt="有効: 2020/05/01" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2020/05/01-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1515">fix1515</a></td>
-<td align="left">v1.1.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF" target="_blank" title="有効: 2018/10/09"><img alt="有効: 2018/10/09" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/10/09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></td>
+<td style="text-align: left;">v1.3.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20" target="_blank" title="有効: 2019/10/02"><img alt="有効: 2019/10/02" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2019/10/02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1543">fix1543</a></td>
-<td align="left">v1.0.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6" target="_blank" title="有効: 2018/06/21"><img alt="有効: 2018/06/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/06/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#multisignreserve">MultiSignReserve</a></td>
+<td style="text-align: left;">v1.2.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB" target="_blank" title="有効: 2019/04/17"><img alt="有効: 2019/04/17" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2019/04/17-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1623">fix1623</a></td>
-<td align="left">v1.0.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB" target="_blank" title="有効: 2018/06/20"><img alt="有効: 2018/06/20" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/06/20-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></td>
+<td style="text-align: left;">v1.2.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF" target="_blank" title="有効: 2019/04/02"><img alt="有効: 2019/04/02" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2019/04/02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1571">fix1571</a></td>
-<td align="left">v1.0.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC" target="_blank" title="有効: 2018/06/19"><img alt="有効: 2018/06/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/06/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1578">fix1578</a></td>
+<td style="text-align: left;">v1.2.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D" target="_blank" title="有効: 2019/03/23"><img alt="有効: 2019/03/23" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2019/03/23-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#depositauth">DepositAuth</a></td>
-<td align="left">v0.90.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25" target="_blank" title="有効: 2018/04/06"><img alt="有効: 2018/04/06" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/04/06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="depositpreauth.html">DepositPreauth</a></td>
+<td style="text-align: left;">v1.1.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927" target="_blank" title="有効: 2018/10/09"><img alt="有効: 2018/10/09" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/10/09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1513">fix1513</a></td>
-<td align="left">v0.90.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B" target="_blank" title="有効: 2018/04/06"><img alt="有効: 2018/04/06" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/04/06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1515">fix1515</a></td>
+<td style="text-align: left;">v1.1.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF" target="_blank" title="有効: 2018/10/09"><img alt="有効: 2018/10/09" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/10/09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1201">fix1201</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1543">fix1543</a></td>
+<td style="text-align: left;">v1.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6" target="_blank" title="有効: 2018/06/21"><img alt="有効: 2018/06/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/06/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1512">fix1512</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1623">fix1623</a></td>
+<td style="text-align: left;">v1.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB" target="_blank" title="有効: 2018/06/20"><img alt="有効: 2018/06/20" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/06/20-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1523">fix1523</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1571">fix1571</a></td>
+<td style="text-align: left;">v1.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC" target="_blank" title="有効: 2018/06/19"><img alt="有効: 2018/06/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/06/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1528">fix1528</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#depositauth">DepositAuth</a></td>
+<td style="text-align: left;">v0.90.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25" target="_blank" title="有効: 2018/04/06"><img alt="有効: 2018/04/06" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/04/06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#sorteddirectories">SortedDirectories</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1513">fix1513</a></td>
+<td style="text-align: left;">v0.90.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B" target="_blank" title="有効: 2018/04/06"><img alt="有効: 2018/04/06" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2018/04/06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#enforceinvariants">EnforceInvariants</a></td>
-<td align="left">v0.70.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6" target="_blank" title="有効: 2017/07/07"><img alt="有効: 2017/07/07" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/07/07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1201">fix1201</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1373">fix1373</a></td>
-<td align="left">v0.70.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399" target="_blank" title="有効: 2017/07/07"><img alt="有効: 2017/07/07" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/07/07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1512">fix1512</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#escrow">Escrow</a></td>
-<td align="left">v0.60.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515" target="_blank" title="有効: 2017/03/31"><img alt="有効: 2017/03/31" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/03/31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1523">fix1523</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1368">fix1368</a></td>
-<td align="left">v0.60.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F" target="_blank" title="有効: 2017/03/31"><img alt="有効: 2017/03/31" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/03/31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1528">fix1528</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#paychan">PayChan</a></td>
-<td align="left">v0.33.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E" target="_blank" title="有効: 2017/03/31"><img alt="有効: 2017/03/31" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/03/31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#sorteddirectories">SortedDirectories</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29" target="_blank" title="有効: 2017/11/14"><img alt="有効: 2017/11/14" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/11/14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#ticksize">TickSize</a></td>
-<td align="left">v0.50.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E" target="_blank" title="有効: 2017/02/21"><img alt="有効: 2017/02/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/02/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#enforceinvariants">EnforceInvariants</a></td>
+<td style="text-align: left;">v0.70.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6" target="_blank" title="有効: 2017/07/07"><img alt="有効: 2017/07/07" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/07/07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#cryptoconditions">CryptoConditions</a></td>
-<td align="left">v0.50.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15" target="_blank" title="有効: 2017/01/03"><img alt="有効: 2017/01/03" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/01/03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1373">fix1373</a></td>
+<td style="text-align: left;">v0.70.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399" target="_blank" title="有効: 2017/07/07"><img alt="有効: 2017/07/07" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/07/07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flow">Flow</a></td>
-<td align="left">v0.33.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC" target="_blank" title="有効: 2016/10/21"><img alt="有効: 2016/10/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/10/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#escrow">Escrow</a></td>
+<td style="text-align: left;">v0.60.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515" target="_blank" title="有効: 2017/03/31"><img alt="有効: 2017/03/31" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/03/31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#trustsetauth">TrustSetAuth</a></td>
-<td align="left">v0.30.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF" target="_blank" title="有効: 2016/07/19"><img alt="有効: 2016/07/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/07/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1368">fix1368</a></td>
+<td style="text-align: left;">v0.60.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F" target="_blank" title="有効: 2017/03/31"><img alt="有効: 2017/03/31" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/03/31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#multisign">MultiSign</a></td>
-<td align="left">v0.31.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7" target="_blank" title="有効: 2016/06/27"><img alt="有効: 2016/06/27" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/06/27-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#paychan">PayChan</a></td>
+<td style="text-align: left;">v0.33.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E" target="_blank" title="有効: 2017/03/31"><img alt="有効: 2017/03/31" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/03/31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#feeescalation">FeeEscalation</a></td>
-<td align="left">v0.31.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="有効: 2016/05/19"><img alt="有効: 2016/05/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/05/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#ticksize">TickSize</a></td>
+<td style="text-align: left;">v0.50.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E" target="_blank" title="有効: 2017/02/21"><img alt="有効: 2017/02/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/02/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#tickets">Tickets</a></td>
-<td align="left">v0.30.1</td>
-<td align="left"><a title="禁止: v0.90.0で削除"><img alt="禁止: v0.90.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.90.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/></a></td>
+<td style="text-align: left;"><a href="#cryptoconditions">CryptoConditions</a></td>
+<td style="text-align: left;">v0.50.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15" target="_blank" title="有効: 2017/01/03"><img alt="有効: 2017/01/03" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2017/01/03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#shamapv2">SHAMapV2</a></td>
-<td align="left">v0.32.1</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2019/rippled-1.4.0.html" target="_blank" title="禁止: v1.4.0で削除"><img alt="禁止: v1.4.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v1.4.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#flow">Flow</a></td>
+<td style="text-align: left;">v0.33.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC" target="_blank" title="有効: 2016/10/21"><img alt="有効: 2016/10/21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/10/21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flowv2">FlowV2</a></td>
-<td align="left">v0.32.1</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank" title="禁止: v0.33.0で削除"><img alt="禁止: v0.33.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.33.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#trustsetauth">TrustSetAuth</a></td>
+<td style="text-align: left;">v0.30.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF" target="_blank" title="有効: 2016/07/19"><img alt="有効: 2016/07/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/07/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#suspay">SusPay</a></td>
-<td align="left">v0.31.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" target="_blank" title="禁止: v0.60.0で削除"><img alt="禁止: v0.60.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.60.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#multisign">MultiSign</a></td>
+<td style="text-align: left;">v0.31.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7" target="_blank" title="有効: 2016/06/27"><img alt="有効: 2016/06/27" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/06/27-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#feeescalation">FeeEscalation</a></td>
+<td style="text-align: left;">v0.31.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="有効: 2016/05/19"><img alt="有効: 2016/05/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/05/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#tickets">Tickets</a></td>
+<td style="text-align: left;">v0.30.1</td>
+<td style="text-align: left;"><a title="禁止: v0.90.0で削除"><img alt="禁止: v0.90.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.90.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#shamapv2">SHAMapV2</a></td>
+<td style="text-align: left;">v0.32.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2019/rippled-1.4.0.html" target="_blank" title="禁止: v1.4.0で削除"><img alt="禁止: v1.4.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v1.4.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#flowv2">FlowV2</a></td>
+<td style="text-align: left;">v0.32.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank" title="禁止: v0.33.0で削除"><img alt="禁止: v0.33.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.33.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#suspay">SusPay</a></td>
+<td style="text-align: left;">v0.31.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" target="_blank" title="禁止: v0.60.0で削除"><img alt="禁止: v0.60.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.60.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -571,14 +616,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F</td>
-<td align="left">開発中</td>
+<td style="text-align: left;">98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F</td>
+<td style="text-align: left;">開発中</td>
 </tr>
 </tbody>
 </table>
@@ -589,14 +634,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1</td>
-<td align="left">有効</td>
+<td style="text-align: left;">157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -608,14 +653,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
-<td align="left">有効</td>
+<td style="text-align: left;">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -624,14 +669,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90</td>
-<td align="left">開発中</td>
+<td style="text-align: left;">86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90</td>
+<td style="text-align: left;">開発中</td>
 </tr>
 </tbody>
 </table>
@@ -641,14 +686,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9</td>
-<td align="left">有効</td>
+<td style="text-align: left;">30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -659,14 +704,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064</td>
-<td align="left">有効</td>
+<td style="text-align: left;">F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -678,14 +723,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194</td>
-<td align="left">有効</td>
+<td style="text-align: left;">3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -696,14 +741,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
-<td align="left">有効</td>
+<td style="text-align: left;">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -721,31 +766,50 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
-<td align="left">有効</td>
+<td style="text-align: left;">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
 <p><a href="#suspay">SusPay</a>および<a href="#cryptoconditions">CryptoConditions</a> Amendmentを置き換えます。</p>
 <p>XRP Ledger内のEscrowにXRPの「停止された支払い」機能を提供します。これには<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank">Interledger Protocol Crypto-Conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>のサポートが含まれます。停止された支払い用のレジャーオブジェクトタイプと、停止された支払いを作成、実行、取り消すためのトランザクションタイプを新規作成します。</p>
-<h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
+<h2 id="expandedsignerlist">ExpandedSignerList<a aria-hidden="true" class="hover_anchor" href="#expandedsignerlist"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</td>
-<td align="left">有効</td>
+<td style="text-align: left;">B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856</td>
+<td style="text-align: left;">投票中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate description -->
+<p>This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).</p>
+<p>Without this amendment, the maximum signer list size is 8 signers, and each signer has exactly two fields, <code>Account</code> and <code>SignerWeight</code>.</p>
+<p>With this amendment, the maximum <a href="signerlist.html">SignerList object</a> size is 32 entries. Additionally, each <code>SignerEntry</code> object can contain an optional 256-bit <code>WalletLocator</code> field containing arbitrary data. This amendment changes the <a href="signerlistset.html">SignerListSet transaction</a> accordingly.</p>
+<h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -762,14 +826,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD</td>
-<td align="left">有効</td>
+<td style="text-align: left;">B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -779,14 +843,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA</td>
-<td align="left">有効</td>
+<td style="text-align: left;">E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -795,14 +859,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC</td>
-<td align="left">有効</td>
+<td style="text-align: left;">42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -812,14 +876,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1</td>
-<td align="left">有効</td>
+<td style="text-align: left;">6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -829,14 +893,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172</td>
-<td align="left">有効</td>
+<td style="text-align: left;">67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -846,14 +910,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE</td>
-<td align="left">有効</td>
+<td style="text-align: left;">5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -865,14 +929,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D</td>
-<td align="left">有効</td>
+<td style="text-align: left;">B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -882,14 +946,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454</td>
-<td align="left">有効</td>
+<td style="text-align: left;">1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -899,14 +963,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2</td>
-<td align="left">有効</td>
+<td style="text-align: left;">CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -921,14 +985,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C</td>
-<td align="left">有効</td>
+<td style="text-align: left;">7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -941,14 +1005,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288</td>
-<td align="left">有効</td>
+<td style="text-align: left;">FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -961,14 +1025,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F</td>
-<td align="left">有効</td>
+<td style="text-align: left;">58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -980,14 +1044,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E</td>
-<td align="left">有効</td>
+<td style="text-align: left;">25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -999,14 +1063,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068</td>
-<td align="left">有効</td>
+<td style="text-align: left;">4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1017,14 +1081,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4</td>
-<td align="left">有効</td>
+<td style="text-align: left;">8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1034,32 +1098,68 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37</td>
-<td align="left">有効</td>
+<td style="text-align: left;">C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
 <p>アカウントのレギュラーキーペアがマスターキーペアと一致するように設定できるものの、マスターキーが無効になった場合に、そのキーによって署名されたトランザクションを送信できなくなるバグを修正します。</p>
 <p>この修正を適用しない場合、ユーザーは、レギュラーキーがマスターキーと一致するように設定し、その後マスターキーを無効にすることで、意図せずアカウントを「ブラックホール」にしてしまうおそれがあります。ネットワークは、マスターキーペアとレギュラーキーペアの両方で署名されたトランザクションを拒否します。コードは、トランザクションが現在有効なレギュラーキーで署名されていると認識する前に、無効なマスターキーで署名されていると解釈するためです。</p>
 <p>この修正を有効にした場合、SetRegularKeyトランザクションはレギュラーキーがマスターキーに一致するよう設定できないため、そのようなトランザクションでは、トランザクションコードが<code>temBAD_REGKEY</code>になります。また、この修正により、署名検証コードが変更されるため、レギュラーキーがマスターキーに一致するよう_すでに_設定しているアカウントは、そのキーペアを使用して正常にトランザクションを送信できます。</p>
-<h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
+<h2 id="fixnftokendirv1">fixNFTokenDirV1<a aria-hidden="true" class="hover_anchor" href="#fixnftokendirv1"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8</td>
-<td align="left">有効</td>
+<td style="text-align: left;">0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3</td>
+<td style="text-align: left;">投票中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate description -->
+<p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> an <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
+<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.</p>
+<h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6</td>
+<td style="text-align: left;">投票中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate description -->
+<p>This amendment fixes a bug in the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell an NFT for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.</p>
+<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, all the NFT-related amendments should be enabled together using <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1069,14 +1169,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953</td>
-<td align="left">有効</td>
+<td style="text-align: left;">89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1087,14 +1187,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2</td>
-<td align="left">有効</td>
+<td style="text-align: left;">B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1106,14 +1206,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB</td>
-<td align="left">有効</td>
+<td style="text-align: left;">452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1123,14 +1223,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561</td>
-<td align="left">有効</td>
+<td style="text-align: left;">2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1141,14 +1241,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
-<td align="left">有効</td>
+<td style="text-align: left;">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1158,14 +1258,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC</td>
-<td align="left">有効</td>
+<td style="text-align: left;">3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1179,14 +1279,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422</td>
-<td align="left">有効</td>
+<td style="text-align: left;">AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1197,14 +1297,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
-<td align="left">禁止</td>
+<td style="text-align: left;">5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
+<td style="text-align: left;">禁止</td>
 </tr>
 </tbody>
 </table>
@@ -1213,14 +1313,14 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88</td>
-<td align="left">有効</td>
+<td style="text-align: left;">1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1231,14 +1331,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</td>
-<td align="left">有効</td>
+<td style="text-align: left;">4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1259,14 +1359,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D</td>
-<td align="left">有効</td>
+<td style="text-align: left;">586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1277,31 +1377,88 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076</td>
-<td align="left">有効</td>
+<td style="text-align: left;">B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
 <!-- TODO: translate amendment description -->
-<p>Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the liveness of the network during periods of network instability.</p>
-<h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
+<p>Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.</p>
+<h2 id="nonfungibletokensv1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871</td>
-<td align="left">開発中</td>
+<td style="text-align: left;">3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate description -->
+<p>Adds native support for non-fungible tokens. Standards Draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20d <i aria-hidden="true" class="fa fa-external-link"></i></a>. <!-- SPELLING_IGNORE: xls, 20d --></p>
+<p class="devportal-callout warning"><strong>Warning:</strong> There is a known issue with this amendment that can cause <code>tecINVARIANT_FAILED</code> errors to appear in the ledger. The <a href="#fixnftokendirv1">fixNFTokenDirV1</a> amendment fixes these issues and should be enabled before the NonFungibleTokensV1 amendment to avoid problems.</p>
+<p>This amendment adds 5 new transaction types:</p>
+<ul>
+<li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
+<li><a href="nftokenburn.html">NFTokenBurn</a></li>
+<li><a href="nftokencanceloffer.html">NFTokenCancelOffer</a></li>
+<li><a href="nftokencreateoffer.html">NFTokenCreateOffer</a></li>
+<li><a href="nftokenmint.html">NFTokenMint</a></li>
+</ul>
+<p>It also adds 2 new ledger object types:</p>
+<ul>
+<li><a href="nftokenoffer.html">NFTokenOffer object</a></li>
+<li><a href="nftokenpage.html">NFTokenPage object</a></li>
+</ul>
+<p>Additionally, it modifies the <a href="accountroot.html">AccountRoot object</a> type to add 3 new optional fields: <code>MintedNFTokens</code>, <code>BurnedNFTokens</code>, and <code>NFTokenMinter</code>.</p>
+<p>It also modifies the <a href="accountset.html">AccountSet transaction</a> type to allow you to set the <code>NFTokenMinter</code> field.</p>
+<h2 id="nonfungibletokensv1_1">NonFungibleTokensV1_1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1_1"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627</td>
+<td style="text-align: left;">投票中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate description -->
+<p>This amendment's only effect is to enable three other amendments at the same time:</p>
+<ul>
+<li><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
+<li><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
+<li><a href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
+</ul>
+<p>This ensures that the base NFT functionality and the related fixes all become enabled together, with no chance for the buggy functionality to become enabled without the fixes and no delay needed in between.</p>
+<p>Validators who wish to enable Non-Fungible Tokens (NFTs) on the XRP Ledger should vote in favor of this amendment and not the others.</p>
+<h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871</td>
+<td style="text-align: left;">開発中</td>
 </tr>
 </tbody>
 </table>
@@ -1312,14 +1469,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</td>
-<td align="left">有効</td>
+<td style="text-align: left;">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1330,14 +1487,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC</td>
-<td align="left">有効</td>
+<td style="text-align: left;">00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1350,14 +1507,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3</td>
-<td align="left">禁止</td>
+<td style="text-align: left;">C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3</td>
+<td style="text-align: left;">禁止</td>
 </tr>
 </tbody>
 </table>
@@ -1367,14 +1524,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E</td>
-<td align="left">有効</td>
+<td style="text-align: left;">CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1384,14 +1541,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
-<td align="left">禁止</td>
+<td style="text-align: left;">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
+<td style="text-align: left;">禁止</td>
 </tr>
 </tbody>
 </table>
@@ -1400,14 +1557,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C</td>
-<td align="left">有効</td>
+<td style="text-align: left;">955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1418,14 +1575,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490</td>
-<td align="left">禁止</td>
+<td style="text-align: left;">C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490</td>
+<td style="text-align: left;">禁止</td>
 </tr>
 </tbody>
 </table>
@@ -1434,14 +1591,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
-<td align="left">有効</td>
+<td style="text-align: left;">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1451,14 +1608,14 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">ステータス</th>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
-<td align="left">有効</td>
+<td style="text-align: left;">6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1688,7 +1845,19 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1858,7 +2027,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
-        <a class="nav-link" href="/ja/the-rippled-server.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
@@ -1903,6 +2072,11 @@ the latest ledger that the validator considers to be fully validated. The consen
     <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">取引検閲の検知</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1924,9 +2098,46 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -1969,11 +2180,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1986,11 +2197,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -2013,11 +2224,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -2065,19 +2276,19 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_1" aria-expanded="false" aria-controls="tree_nav_group_3_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -2110,11 +2321,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_2" aria-expanded="false" aria-controls="tree_nav_group_3_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -2127,11 +2338,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_3" aria-expanded="false" aria-controls="tree_nav_group_3_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -2173,14 +2384,19 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -2210,11 +2426,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -2227,7 +2443,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -2237,19 +2453,19 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_1" aria-expanded="false" aria-controls="tree_nav_group_3_8_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -2313,11 +2529,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_2" aria-expanded="false" aria-controls="tree_nav_group_3_8_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -2380,11 +2596,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_3" aria-expanded="false" aria-controls="tree_nav_group_3_8_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -2432,11 +2648,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_4" aria-expanded="false" aria-controls="tree_nav_group_3_8_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -2459,11 +2675,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8_5" aria-expanded="false" aria-controls="tree_nav_group_3_8_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -2496,6 +2712,23 @@ the latest ledger that the validator considers to be fully validated. The consen
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+
+        <a class="nav-link" href="/ja/manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
     </nav>
@@ -2944,7 +3177,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
 
-        <a class="nav-link" href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+        <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
@@ -2994,7 +3227,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
-        <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+        <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
@@ -3023,6 +3256,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -3148,6 +3386,16 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/path_find.html">path_find</a>
   </div>
 
@@ -3224,7 +3472,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -3241,9 +3489,36 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
 
-        <a class="nav-link" href="/ja/utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="/ja/clio-methods.html">Clio Server Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_9"></a>
+
+        <a class="nav-link" href="/ja/utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
@@ -3272,7 +3547,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
 
-        <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+        <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
       
@@ -3637,12 +3912,17 @@ the latest ledger that the validator considers to be fully validated. The consen
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -3695,7 +3975,7 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3708,6 +3988,7 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
           </ul>
         </div><!--/.col -->
@@ -3717,6 +3998,7 @@ the latest ledger that the validator considers to be fully validated. The consen
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
