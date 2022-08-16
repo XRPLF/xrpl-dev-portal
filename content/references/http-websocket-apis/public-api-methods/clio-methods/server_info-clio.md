@@ -44,7 +44,9 @@ The request does not take any parameters.
 
 ## Response Format
 
-An example of a successful response:
+When a client connects to the `Clio` server over `localhost`, the response includes the `counters` and `etl` objects. These objects are omitted from the response when the client is not located on the same server, and hence does not connect over `localhost`.  
+
+An example of a successful response when client connects over localhost:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -468,6 +470,89 @@ An example of a successful response:
         {
             "id": 2002,
             "message": "This server may be out of date"
+        }
+    ]
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+An example of a successful response when client does not connect over localhost:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+    "id": 1,
+    "result": {
+        "info": {
+            "complete_ledgers":"32570-73737719",
+            "load_factor":1,
+            "clio_version":"1.0.2",
+            "validation_quorum":28,
+            "rippled_version":"1.9.1",
+            "validated_ledger": {
+                "age":7,
+                "hash":"4ECDEAF9E6F8B37EFDE297953168AAB42DEED1082A565639EBB2D29E047341B4",
+                "seq":73737719,
+                "base_fee_xrp":1E-5,
+                "reserve_base_xrp":1E1,
+                "reserve_inc_xrp":2E0
+            },
+            "cache": {
+                "size":15258947,
+                "is_full":true,
+                "latest_ledger_seq":73737719
+            }
+        },
+        "validated":true,
+        "status":"success"
+    },
+    "warnings": [
+        {
+            "id":2001,
+            "message":"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+        }
+    ]
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+    "result": {
+        "info": {
+            "complete_ledgers":"32570-73737719",
+            "load_factor":1,
+            "clio_version":"1.0.2",
+            "validation_quorum":28,
+            "rippled_version":"1.9.1",
+            "validated_ledger": {
+                "age":7,
+                "hash":"4ECDEAF9E6F8B37EFDE297953168AAB42DEED1082A565639EBB2D29E047341B4",
+                "seq":73737719,
+                "base_fee_xrp":1E-5,
+                "reserve_base_xrp":1E1,
+                "reserve_inc_xrp":2E0
+            },
+            "cache": {
+                "size":15258947,
+                "is_full":true,
+                "latest_ledger_seq":73737719
+            }
+        },
+        "validated":true,
+        "status":"success"
+    },
+    "warnings": [
+        {
+            "id":2001,
+            "message":"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
         }
     ]
 }
