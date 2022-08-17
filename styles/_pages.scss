@@ -964,6 +964,13 @@
     }
   }
 
+  #xrpl-design-assets {
+    padding-bottom: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 208px;
+    }
+  }
 
 }
 
