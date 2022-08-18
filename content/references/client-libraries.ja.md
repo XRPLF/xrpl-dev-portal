@@ -11,10 +11,10 @@ blurb: これらのライブラリを使用して、お好みのプログラミ�
 
 | 言語 | ライブラリ名 | Get Started | APIリファレンス | ソースコード |
 |----------|--------------|-------------|---------------|-------------|
-| **Python**   | `xrpl-py`      | [Get Started Using Python](get-started-using-python.html) | [API Reference](https://xrpl-py.readthedocs.io/) | [Repo](https://github.com/XRPLF/xrpl-py) |
-| **JavaScript** / **TypeScript** | `xrpl.js` | [Get Started](get-started-using-javascript.html) |  [API Reference](https://js.xrpl.org/) | [Repo](https://github.com/XRPLF/xrpl.js) |
-| **C++**      | `rippled` Signing Library | [Get Started](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library) |  | (Part of [`rippled`](https://github.com/ripple/rippled/)) |
-| **Java** | `xrpl4j` | [Get Started Using Java](get-started-using-java.html) | [API Reference](https://javadoc.io/doc/org.xrpl/)  | [Repo](https://github.com/XRPLF/xrpl4j) |
-| **Ruby** | `xrbp` | | [API Reference](https://www.rubydoc.info/gems/xrbp) | [Repo](https://github.com/DevNullProd/xrbp) |
+| **Python**   | `xrpl-py`      | [Pythonを使ってみよう](get-started-using-python.html) | [API リファレンス](https://xrpl-py.readthedocs.io/) | [リポジトリ](https://github.com/XRPLF/xrpl-py) |
+| **JavaScript** / **TypeScript** | `xrpl.js` | [JavaScriptを使ってみよう](get-started-using-javascript.html) |  [API リファレンス](https://js.xrpl.org/) | [リポジトリ](https://github.com/XRPLF/xrpl.js) |
+| **C++**      | `rippled` 署名ライブラリ | [署名ライブラリを使ってみよう](https://github.com/XRPLF/rippled/tree/develop/Builds/linux#signing-library) |  | ([`rippled`](https://github.com/XRPLF/rippled/))の一部 |
+| **Java** | `xrpl4j` | [Javaを使ってみよう](get-started-using-java.html) | [API リファレンス](https://javadoc.io/doc/org.xrpl/)  | [リポジトリ](https://github.com/XRPLF/xrpl4j) |
+| **Ruby** | `xrbp` | | [API リファレンス](https://www.rubydoc.info/gems/xrbp) | [リポジトリ](https://github.com/DevNullProd/xrbp) |
 
 **ヒント:** ここに掲載されていないクライアントライブラリを追加するには、[このページの変更を提案]({{target.github_forkurl}}/edit/{{target.github_branch}}/content/{{currentpage.md}})してください！

@@ -2626,7 +2626,7 @@ pages:
         targets:
             - en
 
-    -   md: references/xrpljs2-migration-guide.md.md
+    -   md: references/xrpljs2-migration-guide.ja.md
         targets:
             - ja
 
