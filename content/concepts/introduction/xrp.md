@@ -1,4 +1,4 @@
----
+xrpl-dev-portal/content/concepts/introduction/xrp.md---
 html: xrp.html
 parent: introduction.html
 blurb: Learn about the uses and properties of XRP, the digital asset for payments.
