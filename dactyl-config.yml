@@ -103,6 +103,8 @@ targets:
             "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ"
             "trustset.html#trustset-flags": "trustset.html#trustsetのフラグ"
             "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
+            "partial-payments.html#the-delivered_amount-field": "partial-payments.html#delivered_amountフィールド"
+            "partial-payments.html#partial-payments-exploit": "partial-payments.html#partial-paymentの悪用"
                                 # nearest approximation. this translation is also out of date
             "rippled-server-modes.html#validators": "rippled-server-modes.html#バリデータを運用する理由"
             # Fix links from untranslated open-a-payment-channel-to-enable-an-inter-exchange-network.html
@@ -115,11 +117,8 @@ targets:
             "use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount": "use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します"
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
             "reserves.html#owner-reserves": "reserves.html#所有者準備金"
-            # Fix links from untranslated disable-master-key-pair.html.
-            "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
+            # Fix links from untranslated issue-a-fungible-token.html:
             "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
-            "set-up-secure-signing.html#use-a-dedicated-signing-device": "set-up-secure-signing.html#専用の署名デバイスを使用する"
-            "set-up-secure-signing.html#run-rippled-locally": "set-up-secure-signing.html#ローカルでrippledを実行する"
             # Fix links from untranslated validator-list.html
             "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
             "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
@@ -133,16 +132,11 @@ targets:
             "transaction-metadata.html#affectednodes": "transaction-metadata.html"
             # Fix link from untranslated peer-crawler.html:
             "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
-            # Fix links from untranslated invariant-checking.html
-            "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
-            "xrp.html#xrp-properties": "xrp.html#xrpの特性"
             # Fix links from untranslated health-check.html:
             "rippled-server-modes.html#stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
             "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
             # Fix link from untranslated negativeunl.html and ledgers.html:
             "consensus.html#validation": "consensus.html#検証"
-            # Fix link from untranslated tickets.html:
-            "consensus.html#calculate-and-share-validations": "consensus.html#検証の計算と共有"
             # Fix link from untranslated manifest.html:
             "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポーティングモード"
             # Fix links for untranslated get-started-using-python.html:
@@ -154,27 +148,25 @@ targets:
             "transaction-cost.html#current-transaction-cost": "transaction-cost.html#現在のトランザクションコスト"
             "ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
             "account_info.html#response-format": "account_info.html#応答フォーマット"
-            # Fix link from untranslated public-servers.html:
-            "ledger-history.html#full-history": "ledger-history.html#すべての履歴"
-            # Fix link from untranslated amendment-voting.html and rate-limiting.html:
+            # Fix link from untranslated rate-limiting.html:
             "get-started-using-http-websocket-apis.html#admin-access": "get-started-using-http-websocket-apis.html#管理者アクセス権限"
             # Fix links from untranslated issue-a-fungible-token.html
             "xrp-ledger-toml.html#account-verification": "xrp-ledger-toml.html#アカウント検証"
             "offers.html#offers-and-trust": "offers.html#オファーとトラスト"
             "authorized-trust-lines.html#authorizing-trust-lines": "authorized-trust-lines.html#トラストラインの承認"
             # Fix links from untranslated freeze tutorials:
+            "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
             "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
             "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
-            # Fix links from untranslated xrpl.js 2.0 migration guide:
-            "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
-            "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
                                           # the updates to ledger_entry aren't translated either
             "ledger_entry.html#get-paychannel-object": "ledger_entry.html"
             "reliable-transaction-submission.html#ledger-gaps": "reliable-transaction-submission.html#レジャーのギャップ"
             # Fix links from untranslated NFT transaction references:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
-            # Fix links from untranslated Python wallet tutorial:
+            "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
+            # Fix links from untranslated build-a-desktop-wallet-in-python.html:
+            "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
             "subscribe.html#transaction-streams": "subscribe.html#トランザクションストリーム"
               # cryptographic-keys.html hasn't been updated in Japanese, so this is the
               # next-nearest equivalent of the #seed anchor:
@@ -191,14 +183,12 @@ targets:
             "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
             "transaction-cost.html#local-load-cost": "transaction-cost.html#ローカル負荷コスト"
             "transaction-cost.html#open-ledger-cost": "transaction-cost.html#オープンレジャーコスト"
-            # Fix links from untranslated become-an-xrp-ledger-gateway.htm:
-            "partial-payments.html#the-delivered_amount-field": "partial-payments.html#delivered_amountフィールド"
-            "partial-payments.html#partial-payments-exploit": "partial-payments.html#partial-paymentの悪用"
             # Fix links from untranslated ledger-clio.html
             "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
             "transaction-cost.html#fee-levels": "transaction-cost.html#手数料レベル"
             "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
+            "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
 
 pages:
 
@@ -557,6 +547,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation based on latest English version
     -   md: concepts/payment-system-basics/accounts/cryptographic-keys.ja.md
         targets:
             - ja
@@ -1004,6 +995,7 @@ pages:
         targets:
             - en
 
+        # TODO: Update this translation for the latest English version
     -   md: concepts/xrpl-servers/rippled-server-modes.ja.md
         targets:
             - ja
@@ -1799,6 +1791,7 @@ pages:
         targets:
             - en
 
+        # TODO: update this translation and rename the file like in the English version
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.ja.md
         targets:
             - ja
@@ -2117,6 +2110,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation to add a table like in the English version
     -   md: references/protocol-reference/data-types/currency-formats.ja.md
         targets:
             - ja
@@ -2575,6 +2569,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation to latest English version
     -   md: references/protocol-reference/transactions/transaction-metadata.ja.md
         targets:
             - ja
@@ -2601,6 +2596,9 @@ pages:
     -   md: references/client-libraries.md
         targets:
             - en
+
+    -   md: references/client-libraries.ja.md
+        targets:
             - ja
 
         # Redirect old ripple-lib docs.
@@ -2626,6 +2624,9 @@ pages:
     -   md: references/xrpljs2-migration-guide.md
         targets:
             - en
+
+    -   md: references/xrpljs2-migration-guide.ja.md
+        targets:
             - ja
 
     -   name: Python Client Library
@@ -3313,6 +3314,9 @@ pages:
     -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md
         targets:
             - en
+
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.ja.md
+        targets:
             - ja
 
         #TODO: translate title and blurb
@@ -3553,6 +3557,9 @@ pages:
     -   md: references/xrp-api.md
         targets:
             - en
+
+    -   md: references/xrp-api.ja.md
+        targets:
             - ja
 
         # Deprecation warnings for old Data API docs
