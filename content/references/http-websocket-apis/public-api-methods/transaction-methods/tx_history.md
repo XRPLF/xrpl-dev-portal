@@ -47,8 +47,6 @@ rippled tx_history 0
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#tx_history)
-
 The request includes the following parameters:
 
 | `Field` | Type             | Description                          |
