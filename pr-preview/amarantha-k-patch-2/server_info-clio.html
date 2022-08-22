@@ -811,12 +811,12 @@
 <tr>
 <td style="text-align: left;"><code>counters</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">This is present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Stats on API calls handled since server startup. This is present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc</code></td>
-<td style="text-align: left;">Object array</td>
-<td style="text-align: left;">Stats on each RPC handled by the Clip server since startup. Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Stats on each API call handled by the Clio server since startup. Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.started</code></td>
@@ -846,7 +846,7 @@
 <tr>
 <td style="text-align: left;"><code>subscriptions</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">Number of current subscribers for each stream type.  Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Number of current subscribers for each stream type.  Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>subscriptions.ledger</code></td>
@@ -901,12 +901,12 @@
 <tr>
 <td style="text-align: left;"><code>validation_quorum</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from <code>rippled</code>. This field may be omitted from the response if the <code>Clio</code> server is unable to connect to <code>rippled</code> for some reason.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from <code>rippled</code>. This field may be omitted from the response if the <code>Clio</code> server is unable to connect to <code>rippled</code> for some reason.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rippled_version</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The version number of the running <code>rippled</code> server that the <code>Clio</code> server is connected to. This field may be omitted from the response if the <code>Clio</code> server is unable to connect to <code>rippled</code> for some reason.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The version number of the running <code>rippled</code> server that the <code>Clio</code> server is connected to. This field may be omitted from the response if the <code>Clio</code> server is unable to connect to <code>rippled</code> for some reason.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_ledger</code></td>
