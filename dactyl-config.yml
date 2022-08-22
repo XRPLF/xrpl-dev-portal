@@ -188,6 +188,7 @@ targets:
             "transaction-cost.html#fee-levels": "transaction-cost.html#手数料レベル"
             "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
+            "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
 
 pages:
 
