@@ -567,14 +567,14 @@ The `info` object may have some arrangement of the following fields:
 | `Field`                             | Type            | Description          |
 |:------------------------------------|:----------------|:---------------------|
 | `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
-| `counters`                          | Object          | This is present only if the client connects to the `Clio` server over `localhost`.
-| `rpc`                               | Object array    | Stats on each RPC handled by the Clip server since startup. Since this is nested within the `counters` object, this is also present only if the client connects to the `Clio` server over `localhost`. |
+| `counters`                          | Object          | _(May be omitted)_ Stats on API calls handled since server startup. This is present only if the client connects to the `Clio` server over `localhost`.
+| `rpc`                               | Object          | _(May be omitted)_ Stats on each API call handled by the Clio server since startup. Since this is nested within the `counters` object, this is also present only if the client connects to the `Clio` server over `localhost`. |
 | `rpc.*.started`                     | Number          | Number of RPCs of this type that the Clio server has started processing since startup. |
 | `rpc.*.finished`                    | Number          | Number of RPCs of this type that the Clio server has finished processing since startup. |
 | `rpc.*.errored`                     | Number          | Number of RPCs of this type that have resulted in some sort of error since startup.  |
 | `rpc.*.forwarded`                   | Number          | Number of RPCs of this type that the Clio server has forwarded to a `rippled` P2P server since startup. |
 | `rpc.*.duration_us`                 | Number          | The total number of microseconds spent processing RPCs of this type since startup. | 
-| `subscriptions`                     | Object          | Number of current subscribers for each stream type.  Since this is nested within the `counters` object, this is also present only if the client connects to the `Clio` server over `localhost`. |
+| `subscriptions`                     | Object          | _(May be omitted)_ Number of current subscribers for each stream type.  Since this is nested within the `counters` object, this is also present only if the client connects to the `Clio` server over `localhost`. |
 | `subscriptions.ledger`              |                 |   |
 | `subscriptions.transactions`        |                 |   |
 | `subscriptions.transactions_proposed` |               |   |
@@ -584,9 +584,9 @@ The `info` object may have some arrangement of the following fields:
 | `subscriptions.accounts_proposed`   |                 |   |
 | `subscriptions.books`               |                 |   |
 | `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost) and the overall network's load factor. [Updated in: rippled 0.33.0][] |
-| `clio_version`                      | String          |  The version number of the running `Clio` server.  |
-| `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from `rippled`. This field may be omitted from the response if the `Clio` server is unable to connect to `rippled` for some reason. |
-| `rippled_version`                   | String          |  The version number of the running `rippled` server that the `Clio` server is connected to. This field may be omitted from the response if the `Clio` server is unable to connect to `rippled` for some reason. |
+| `clio_version`                      | String          | The version number of the running `Clio` server.  |
+| `validation_quorum`                 | Number          | _(May be omitted)_ Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from `rippled`. This field may be omitted from the response if the `Clio` server is unable to connect to `rippled` for some reason. |
+| `rippled_version`                   | String          | _(May be omitted)_ The version number of the running `rippled` server that the `Clio` server is connected to. This field may be omitted from the response if the `Clio` server is unable to connect to `rippled` for some reason. |
 | `validated_ledger`                  | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validated_ledger.age`              | Number          | The time since the ledger was closed, in seconds. |
 | `validated_ledger.base_fee_xrp`     | Number          | Base fee, in XRP. This may be represented in scientific notation such as `1e-05` for 0.00001. |
