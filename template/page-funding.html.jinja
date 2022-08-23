@@ -31,7 +31,7 @@
 </section>
 
 <section class="container-new py-26">
-    <div class="p-0 col-lg-6 mx-lg-auto">
+    <div class="p-0 col-lg-6 mx-lg-auto" style="max-width: 520px;">
         <div class="d-flex flex-column-reverse">
             <h1 class="mb-0 h4 h2-sm">{% trans %}Explore funding opportunities for developers and teams{% endtrans %}</h1>
             <h6 class="eyebrow mb-3">{% trans %}Funding Overview{% endtrans %}</h6>
@@ -45,7 +45,7 @@
     <!-- flex. Col for mobile. Row for large. on large align content to the center  -->
     <div class="d-flex flex-column flex-lg-row align-items-lg-center">
 
-        <div class="order-1 order-lg-2 mb-4 pb-3 mb-lg-0 pb-lg-0 col-lg-6 px-0">
+        <div class="order-1 order-lg-2 mb-4 pb-3 mb-lg-0 pb-lg-0 col-lg-6 px-0"  style="max-width: 520px;">
             <div class="d-flex flex-column-reverse p-lg-3">
                 <h3 class="h4 h2-sm">{% trans %}XRPL Hackathons{% endtrans %}</h3>
                 <h6 class="eyebrow mb-3">{% trans %}Join an Event{% endtrans %}</h6>
@@ -77,7 +77,7 @@
                         </div>
                     </div>
 
-                    <div class="px-lg-3 pb-3 pt-5">
+                    <div class="px-lg-3 pb-3 pt-lg-5">
                         <img id="funding-03">
                         <div class=" pt-3">
                             <h6 class="mb-3">Level</h6>
@@ -100,10 +100,12 @@
                 <div class="col-12 col-lg-6 p-0 d-none d-lg-block">
 
                     <div class="px-lg-3 pb-3 pt-5 mt-5">
-                        <img id="funding-02">
-                        <div class=" pt-3">
-                            <h6 class="mb-3">Required</h6>
-                            <p class="">Some coding experience</p>
+                        <div class="pt-1 mt-3">
+                            <img id="funding-02">
+                            <div class=" pt-3">
+                                <h6 class="mb-3">Required</h6>
+                                <p class="">Some coding experience</p>
+                            </div>
                         </div>
                     </div>
 
@@ -136,11 +138,15 @@
                 <h3 class="h4 h2-sm">{% trans %}XRPL Grants{% endtrans %}</h3>
                 <h6 class="eyebrow mb-3">{% trans %}Fund Your Project{% endtrans %}</h6>
             </div>
-            <p class="py-lg-3 mb-2 longform">{% trans %}Developer grants for projects that contribute to the growing XRP Ledger community.{% endtrans %}</p>
+            <p class="py-lg-3 mb-2 longform" style="max-width: 520px;">{% trans %}Developer grants for projects that contribute to the growing XRP Ledger community.{% endtrans %}</p>
+
+            <div class="mt-4 pt-3" style="max-width: 520px;">
+                <span class="h6" style="font-size: 1rem;">Past awardees include:</span>
+                <div class="mb-4 py-3" id="xrplGrantsDark"></div>
+            </div>
+
 
             <div class="d-none d-lg-block py-lg-3">
-                <span class="h6">Past awardees include:</span>
-                <div class="mb-4 py-3" id="xrplGrantsDark"></div>
                 <a class="btn btn-primary btn-arrow btn-arrow-out" target="_blank" href="https://xrplgrants.org/">{% trans %}Visit XRPL Grants{% endtrans %}</a>
             </div>
         </div>
@@ -165,7 +171,7 @@
                             <p class="">Coding experience <span style="color: #7919FF;">&bull;</span> Github repository <span style="color: #7919FF;">&bull;</span> Project narrative/description <span style="color: #7919FF;">&bull;</span> At least one developer on the core team  <span style="color: #7919FF;">&bull;</span> Budget and milestones</p>
                         </div>
                     </div>
-                    <div class="px-lg-3 pb-3 pt-5">
+                    <div class="px-lg-3 pb-3 pt-lg-5">
                         <img id="funding-03">
                         <div class=" pt-3">
                             <h6 class="mb-3">Level</h6>
@@ -186,10 +192,12 @@
                 <!-- Show on large -->
                 <div class="col-12 col-lg-6 p-0 d-none d-lg-block">
                     <div class="px-lg-3 pb-3 pt-5 mt-5">
-                        <img id="funding-02">
-                        <div class=" pt-3">
-                            <h6 class="mb-3">Required</h6>
-                            <p class="">Coding experience <span style="color: #7919FF;">&bull;</span> Github repository <span style="color: #7919FF;">&bull;</span> Project narrative/description <span style="color: #7919FF;">&bull;</span> At least one developer on the core team  <span style="color: #7919FF;">&bull;</span> Budget and milestones</p>
+                        <div class="pt-1 mt-3">
+                            <img id="funding-02">
+                            <div class=" pt-3">
+                                <h6 class="mb-3">Required</h6>
+                                <p class="">Coding experience <span style="color: #7919FF;">&bull;</span> Github repository <span style="color: #7919FF;">&bull;</span> Project narrative/description <span style="color: #7919FF;">&bull;</span> At least one developer on the core team  <span style="color: #7919FF;">&bull;</span> Budget and milestones</p>
+                            </div>
                         </div>
                     </div>
                     <div class="px-lg-3 pb-3 pt-5">
@@ -205,8 +213,8 @@
         </div>
 
         <div class="d-lg-none order-3 mt-4 pt-3">
-            <span class="h6">Past awardees include:</span>
-            <div class="mb-4 py-3" id="xrplGrantsDark-small"></div>
+            <!-- <span class="h6">Past awardees include:</span>
+            <div class="mb-4 py-3" id="xrplGrantsDark-small"></div> -->
             <a class="btn btn-primary btn-arrow btn-arrow-out" target="_blank" href="https://xrplgrants.org/">{% trans %}Visit XRPL Grants{% endtrans %}</a>
         </div>
     </div>
@@ -218,7 +226,7 @@
 </div>
 
 <section class="container-new py-26">
-    <div class="p-0 col-lg-6 mx-lg-auto">
+    <div class="p-0 col-lg-6 mx-lg-auto" style="max-width: 520px;">
         <div class="d-flex flex-column-reverse">
             <h1 class="mb-0 h4">{% trans %}XRPL Bounties{% endtrans %}</h1>
             <h6 class="eyebrow mb-3">{% trans %}Go Deep{% endtrans %}</h6>
@@ -227,8 +235,8 @@
 
         <div class="row m-0 funding-list pt-2 mt-2 pt-lg-2 mt-lg-5"> 
             <!-- funding list -->
-            <div class="col-12 col-lg-6 p-0">
-                <div class="px-lg-3 pb-3  mb-lg-5 funding-box">
+            <div class="col-12 col-lg-6 p-0 pr-lg-4">
+                <div class="pb-3  mb-lg-5 funding-box">
                     <img id="funding-01">
                     <div class="pt-3">
                         <h6 class="mb-3">Best for</h6>
@@ -236,7 +244,7 @@
                     </div>
                 </div>
                 <!-- Hide on large -->
-                <div class="px-lg-3 pb-3 d-lg-none">
+                <div class="pb-3 d-lg-none">
                     <img id="funding-02">
                     <div class=" pt-3">
                         <h6 class="mb-3">Required</h6>
@@ -244,7 +252,7 @@
                     </div>
                 </div>
 
-                <div class="px-lg-3 pb-3">
+                <div class="pb-3">
                     <img id="funding-03">
                     <div class=" pt-3">
                         <h6 class="mb-3">Level</h6>
@@ -294,11 +302,11 @@
       <img src="./img/backgrounds/cta-funding-orange.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
         <div class="d-flex flex-column-reverse">
-          <h2 class="h4 mb-10-until-sm mb-8-sm">{% trans %}Are you an independent creator?{% endtrans %}</h2>
-          <h5 class="eyebrow mb-3">{% trans %}Ripple’s Creator Fund{% endtrans %}</h5>
+          <h2 class="h4 h2-sm mb-10-until-sm mb-8-sm">{% trans %}Are you an independent creator?{% endtrans %}</h2>
+          <h6 class="eyebrow mb-3">{% trans %}Ripple’s Creator Fund{% endtrans %}</h6>
         </div>
         <p class="mb-10">{% trans %}If you’re a creator looking to mint NFTs on the XRP Ledger and do not have technical experience, check out Ripple’s Creator Fund.{% endtrans %}</p>
-        <a class="btn btn-primary btn-arrow-out" href="#" target="_blank">{% trans %}Learn More{% endtrans %}</a>
+        <a class="btn btn-primary btn-arrow-out" href="https://ripple.com/creatorfund/" target="_blank">{% trans %}Learn More{% endtrans %}</a>
       </div>
     </div>
 </section>
