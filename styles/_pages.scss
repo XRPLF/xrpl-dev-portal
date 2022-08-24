@@ -1300,16 +1300,17 @@
     background-color: #111112;
     border-top: none;
     border-left: none;
-    border-right:none;
+    border-right: none;
     border-bottom-color: #454549;
+    z-index: 10;
   }
   .nav-link.active {
     border-bottom-color: #9a52ff;
     color: #ffffff;
     font-weight: bold;
   }
-  .nav-tabs{
-    border-bottom: 1px solid #454549
+  .nav-tabs {
+    border-bottom: 1px solid #454549;
   }
   .btn {
     padding: 0.75rem;
@@ -1336,5 +1337,9 @@
   .btn-arrow-out:hover::after {
     background-position: left 4px bottom 4px;
   }
-
+  .nav-tabs {
+    @include media-breakpoint-up(md) {
+      position: sticky;
+    }
+  }
 }

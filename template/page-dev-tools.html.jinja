@@ -19,29 +19,22 @@
   </section>
 
 
+  
   <section class="py-10">
-      <script>
-        $(document).ready(function(){
-          $("#myTab button").click((e)=>{
-            $(this).tab("show");
-        })
-        
-        });
-      </script>
     <div class="mx-auto text-lg-left">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <ul class="nav nav-tabs pb-15" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active dev-tools-tab" id="explorers-tab" data-bs-toggle="tab" data-bs-target="#explorers" role="tab" aria-controls="explorers" aria-selected="true" >Explorers</button>
+          <button class="nav-link active dev-tools-tab" id="explorers-tab" data-toggle="tab" data-target="#explorers" role="tab" aria-controls="explorers" aria-selected="true" >Explorers</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link  dev-tools-tab" id="api-access-tab" data-bs-toggle="tab" data-bs-target="#api-access" role="tab" aria-controls="api-access"  aria-selected="false">API Access</button>
+          <button class="nav-link  dev-tools-tab" id="api-access-tab" data-toggle="tab" data-target="#api-access" role="tab" aria-controls="api-access"  aria-selected="false">API Access</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link  dev-tools-tab" id="other-tab" data-bs-toggle="tab" data-bs-target="#other" role="tab" aria-controls="other"  aria-selected="false"> Other</button>
+          <button class="nav-link  dev-tools-tab" id="other-tab" data-toggle="tab" data-target="#other" role="tab" aria-controls="other"  aria-selected="false"> Other</button>
         </li>
       </ul>
-      <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="explorers" role="tabpanel" aria-labelledby="explorers-tab">
+      <div class="tab-content pt-20" id="myTabContent">
+          <div class="tab-pane show active" id="explorers" role="tabpanel" aria-labelledby="explorers-tab">
             {% set exploerers_tools =[
                 {
                   "id": "xrp-explorer",
@@ -84,42 +77,42 @@
                 {% endfor %}
               </div>
           </div>
-          <div class="tab-pane fade" id="api-access" role="tabpanel" aria-labelledby="api-access-tab">
+          <div class="tab-pane" id="api-access" role="tabpanel" aria-labelledby="api-access-tab">
             {% set api_access_tools = [
                 {
                   "id": "websocket",
                   "title": "WebSocket Tool",
                   "description":
                     "Send sample requests and get responses from the rippled API. ",
-                  "href": "",
+                  "href": "websocket-api-tool.html",
                 },
                 {
                   "id": "rpc",
                   "title": "RPC Tool",
                   "description":
                     "Print raw information about an XRP Ledger account, transaction, or ledger.",
-                  "href": "",
+                  "href": "xrp-ledger-rpc-tool.html",
                 },
                 {
                   "id": "technical-explorer",
                   "title": "Technical Explorer",
                   "description":
                     "Browse API objects from the ledger with real-time updates. ",
-                  "href": "",
+                  "href": "https://explorer.xrplf.org/",
                 },
                 {
                   "id": "faucets",
                   "title": "Faucets",
                   "description":
                     "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
-                  "href": "",
+                  "href": "xrp-testnet-faucet.html",
                 },
                 {
                   "id": "trasaction-sender",
                   "title": "Transaction Sender",
                   "description":
                     "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
-                  "href": "",
+                  "href": "tx-sender.html",
                 },
               ]%}
               <div class="row row-cols-1 row-cols-lg-3 card-deck">
@@ -134,34 +127,34 @@
               {% endfor %}
               </div>
           </div>
-          <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+          <div class="tab-pane" id="other" role="tabpanel" aria-labelledby="other-tab">
             {% set other = [
               {
                 "id": "domain",
                 "title": "Domain Verification Checker",
                 "description": "Verify your validator's domain.",
-                "href": "",
+                "href": "validator-domain-verifier.html",
               },
               {
                 "id":"xrp-ledger",
                 "title": "xrp-ledger.toml Checker",
                 "description":
                   "Verify that your xrp-ledger.toml file is set up properly.",
-                "href": "",
+                "href": "xrp-ledger-toml-checker.html",
               },
               {
                 "id": "binary-visualizer",
                 "title": "Binary Visualizer",
                 "description":
                   "Parse the XRP Ledger's native binary format with a visual representation breaking down the raw structure into its parts.",
-                "href": "",
+                "href": "https://richardah.github.io/xrpl-binary-visualizer/",
               },
               {
                 "id": "token-metadata-lookup",
                 "title": "Token Metadata Lookup",
                 "description":
                   "Query known information about any token issued on the XRP Ledger.",
-                "href": "",
+                "href": "https://xrplmeta.org/",
               },
             ]%}
             <div class="row row-cols-1 row-cols-lg-3 card-deck">
@@ -193,7 +186,5 @@
     </div>
   </section>
 
-<script src="jquery.min.js" type="text/javascript"></script>
-<link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<script src="bootstrap.min.js" type="text/javascript"></script>
+
 {% endblock %}
