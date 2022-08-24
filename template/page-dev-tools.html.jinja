@@ -65,6 +65,7 @@
                   "href": "https://xumm.community/tokens",
                 },
               ] %}
+               <h4> Explorers</h4>
               <div class="row row-cols-1 row-cols-lg-3 card-deck">
               {% for card in exploerers_tools%}
                 <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
@@ -78,6 +79,7 @@
               </div>
           </div>
           <div class="tab-pane" id="api-access" role="tabpanel" aria-labelledby="api-access-tab">
+          <h4> API Access</h4>
             {% set api_access_tools = [
                 {
                   "id": "websocket",
@@ -128,6 +130,7 @@
               </div>
           </div>
           <div class="tab-pane" id="other" role="tabpanel" aria-labelledby="other-tab">
+            <h4> Other</h4>
             {% set other = [
               {
                 "id": "domain",

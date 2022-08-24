@@ -832,6 +832,13 @@
   }
 }
 
+
+.page-docs {
+  &::before {
+    background-image: url(../img/backgrounds/bg-docs.png);
+  }
+}
+
 .page-docs-index,
 .page-community {
   #community-heading {
@@ -1302,7 +1309,27 @@
     border-left: none;
     border-right: none;
     border-bottom-color: #454549;
-    z-index: 10;
+  }
+
+  @media (max-width: 767.98px) {
+    .nav-tabs{
+      display: flex;
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+      position:sticky;
+      justify-content: space-between;
+    }
+    .nav-item {
+      display: inline-flex;
+      width: auto;
+      list-style: outside none none;
+    }
+    .nav-link{
+      display: inline-flex;
+      width: auto;
+      padding: 1em 1em;
+    }
   }
   .nav-link.active {
     border-bottom-color: #9a52ff;

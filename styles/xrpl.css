@@ -15275,12 +15275,13 @@ aside {
 }
 @media (max-width: 767.98px) {
   .page-dev-tools .nav-tabs {
-    display: inline-flex;
+    display: flex;
     list-style: none;
     margin-left: 0;
     padding-left: 0;
     position: -webkit-sticky;
     position: sticky;
+    justify-content: space-between;
   }
   .page-dev-tools .nav-item {
     display: inline-flex;
@@ -15290,6 +15291,7 @@ aside {
   .page-dev-tools .nav-link {
     display: inline-flex;
     width: auto;
+    padding: 1em 1em;
   }
 }
 .page-dev-tools .nav-link.active {
