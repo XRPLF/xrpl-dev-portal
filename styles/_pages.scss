@@ -31,7 +31,9 @@
   }
 
   #benefits-list {
-    @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
+    @each $benefit in "public", "streamlined", "performance", "low-cost",
+      "community", "reliability"
+    {
       ##{$benefit} {
         content: url("../img/icons/#{$benefit}.svg");
       }
@@ -39,7 +41,8 @@
   }
 
   #advanced-features {
-    $feature-cards: ["pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2"];
+    $feature-cards: [ "pink-purple", "neutral-blue", "light-green", "orange",
+      "purple-blue-2" ];
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
         background-image: url("../img/cards/3col-#{nth($feature-cards, $i)}.svg");
@@ -48,7 +51,8 @@
   }
 
   #get-started {
-    $gs-cards: ["orange-yellow", "magenta-orange", "purple-blue-green", "light-blue", "green-blue"];
+    $gs-cards: [ "orange-yellow", "magenta-orange", "purple-blue-green",
+      "light-blue", "green-blue" ];
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
         background-image: url("../img/cards/3col-#{nth($gs-cards, $i)}.svg");
@@ -56,7 +60,6 @@
     }
   }
 }
-
 
 .cta {
   position: absolute;
@@ -74,7 +77,7 @@
 .landing-bg {
   opacity: 0.6;
   @include media-breakpoint-up(md) {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
 
@@ -92,7 +95,7 @@
     background-position-y: top;
     opacity: 0.6;
     @include media-breakpoint-up(md) {
-      opacity: 1.0;
+      opacity: 1;
     }
   }
 }
@@ -120,7 +123,9 @@
 
 #top-exchanges {
   // Vector logos
-  @each $exchange in "bitstamp", "kraken", "cex-io", "liquid", "lmax", "bitfinex", "etoro" {
+  @each $exchange in "bitstamp", "kraken", "cex-io", "liquid", "lmax",
+    "bitfinex", "etoro"
+  {
     #exch-#{$exchange} {
       content: url("../img/exchanges/#{$exchange}.svg");
     }
@@ -170,24 +175,29 @@
   &::before {
     background-image: url(../img/backgrounds/use-cases-blue.svg);
   }
-  @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
+  @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins",
+    "nft", "defi", "cbdc"
+  {
     ##{$usecase} {
       content: url("../img/icons/#{$usecase}.svg");
     }
   }
 
-  @each $company,$card-graphic in (
-    "bitgo": "magenta-3",
-    "bitpay": "blue-green",
-    "coil": "purple-blue",
-    "exodus": "green",
-    "forte": "light-blue-2",
-    "gatehub": "orange-3",
-    "ripple": "blue-light-blue",
-    "towo": "purple",
-    "xrpl-labs": "magenta-2",
-    "xrplorer": "green-purple"
-  ) {
+  @each $company,
+    $card-graphic
+      in (
+        "bitgo": "magenta-3",
+        "bitpay": "blue-green",
+        "coil": "purple-blue",
+        "exodus": "green",
+        "forte": "light-blue-2",
+        "gatehub": "orange-3",
+        "ripple": "blue-light-blue",
+        "towo": "purple",
+        "xrpl-labs": "magenta-2",
+        "xrplorer": "green-purple"
+      )
+  {
     ##{$company} {
       .card-footer {
         background-image: url("../img/cards/3col-#{$card-graphic}.svg");
@@ -272,26 +282,29 @@
 
 // Ambassadors
 .page-ambassadors {
-
-    #benefits-list {
-      @each $benefits in "benefits-01", "benefits-02", "benefits-03", "benefits-04", "benefits-05", "benefits-06" {
-        ##{$benefits} {
-          content: url("../img/ambassadors/#{$benefits}.svg");
-        }
+  #benefits-list {
+    @each $benefits in "benefits-01", "benefits-02", "benefits-03",
+      "benefits-04", "benefits-05", "benefits-06"
+    {
+      ##{$benefits} {
+        content: url("../img/ambassadors/#{$benefits}.svg");
       }
     }
-  
-    #eligibility-list {
-      @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03", "eligibility-04", "eligibility-05" {
-        ##{$eligibility} {
-          content: url("../img/ambassadors/#{$eligibility}.svg");
-        }
+  }
+
+  #eligibility-list {
+    @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03",
+      "eligibility-04", "eligibility-05"
+    {
+      ##{$eligibility} {
+        content: url("../img/ambassadors/#{$eligibility}.svg");
       }
     }
+  }
 
-// Button has link out arrow.
+  // Button has link out arrow.
   .btn {
-    padding: .75rem;
+    padding: 0.75rem;
   }
 
   @media (max-width: 767.98px) {
@@ -316,48 +329,47 @@
     background-position: left 4px bottom 4px;
   }
 
-
   #container-scroll {
-    height:160px; 
-    position:relative; 
-    overflow:hidden;
+    height: 160px;
+    position: relative;
+    overflow: hidden;
     margin-top: 80px;
     margin-bottom: 64px;
   }
-  
+
   .photobanner {
-    position:absolute; 
-    top:0px; 
-    left:0px; 
-    overflow:hidden; 
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
     white-space: nowrap;
     animation: bannermove 40s linear infinite;
   }
 
   .photobanner-bottom {
-    top:112px; 
+    top: 112px;
   }
-  
-  .photobanner img {    
-    margin: 0 0.5em 
+
+  .photobanner img {
+    margin: 0 0.5em;
   }
-  
+
   @keyframes bannermove {
     0% {
-        transform: translate(0, 0);
+      transform: translate(0, 0);
     }
     100% {
-        transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
     }
   }
 
-// Sliding Quotes
-  #carouselSlidesOnly{
+  // Sliding Quotes
+  #carouselSlidesOnly {
     height: 392px;
     margin-bottom: 40px;
   }
   @media (min-width: 992px) {
-    #carouselSlidesOnly{
+    #carouselSlidesOnly {
       height: 320px;
       margin-bottom: 104px;
     }
@@ -366,7 +378,7 @@
   h6 {
     font-size: 1.25rem;
   }
-// Arrow links after text
+  // Arrow links after text
   .btn-arrow::after {
     display: inline-block;
     content: url(../img/icons/arrow-right-purple.svg);
@@ -385,7 +397,6 @@
     background-position: left 4px bottom 4px;
     transform: translateX(4px);
   }
-
 }
 
 // Community Page
@@ -403,12 +414,12 @@
 // Events page
 .page-events {
   #event-hero-image {
-      height: 100%;
-      min-height: 209px;
-      background: url(../img/events/event-hero1@2x.png);
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+    height: 100%;
+    min-height: 209px;
+    background: url(../img/events/event-hero1@2x.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   #events-orange {
     position: absolute;
@@ -417,108 +428,107 @@
   }
 
   .event-hero {
-      color: $gray-100;
-      p {
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 32px;
-      }
+    color: $gray-100;
+    p {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
   .event-save-date {
-      color: $white;
-      font-weight: bold;
-      font-size: 20px;
-      line-height: 26px;
+    color: $white;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
   }
   .event-small-gray {
-      color: $gray-400;
+    color: $gray-400;
   }
 
   .event-card {
-      max-width: 311px;
-      margin: 32px auto;
-      transition: all 0.35s ease-out;
+    max-width: 311px;
+    margin: 32px auto;
+    transition: all 0.35s ease-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+
+    background-color: $card-bg;
+    box-shadow: 0px 5px 40px $black;
+
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 8px;
+
+    font-size: 16px;
+    line-height: 24px;
+    color: $gray-200;
+
+    .event-card-header {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      word-wrap: break-word;
-      background-clip: border-box;
+      height: 176px;
+      background-size: contain !important;
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+    }
 
-      background-color: $card-bg;
-      box-shadow: 0px 5px 40px $black;
+    .event-card-title {
+      position: absolute;
+      bottom: 32px;
+      padding: 0 32px;
+      color: $gray-100;
 
-      border: 1px solid rgba(0, 0, 0, 0.125);
-      border-radius: 8px;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 28px;
+    }
 
-      font-size: 16px;
-      line-height: 24px;
-      color: $gray-200;
+    .event-card-body {
+      padding: 32px;
+    }
 
-      .event-card-header {
-          position: relative;
-          height: 176px;
-          background-size: contain !important;
-          width: 100%;
-          border-radius: 8px 8px 0 0;
-      }
+    .event-card-footer {
+      padding: 0 32px 32px;
+    }
 
-      .event-card-title {
-          position: absolute;
-          bottom: 32px;
-          padding: 0 32px;
-          color: $gray-100;
+    .event-card-footer .icon::before {
+      height: 24px;
+      width: 24px;
+      content: "";
+      margin-right: 8px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
 
-          font-weight: bold;
-          font-size: 20px;
-          line-height: 28px;
-      }
-
-      .event-card-body {
-          padding: 32px;
-      }
-
-      .event-card-footer {
-          padding: 0 32px 32px;
-      }
-
-      .event-card-footer .icon::before {
-          height: 24px;
-          width: 24px;
-          content: "";
-          margin-right: 8px;
-          background-size: contain;
-          background-repeat: no-repeat;
-      }
-
-      .icon-date::before {
-          background: url(../img/events/event-date.svg);
-      }
-      .icon-location::before {
-          background: url(../img/events/event-location.svg);
-      }
+    .icon-date::before {
+      background: url(../img/events/event-date.svg);
+    }
+    .icon-location::before {
+      background: url(../img/events/event-location.svg);
+    }
   } //end event card
 
   @media (min-width: 992px) {
-      .event-card {
-          max-width: 347px;
-          margin: 32px;
-      }
-      .event-card-header {
-          height: 197px !important;
-      }
+    .event-card {
+      max-width: 347px;
+      margin: 32px;
+    }
+    .event-card-header {
+      height: 197px !important;
+    }
   }
 
   a.event-card:hover {
-      transform: translateY(-16px);
-      text-decoration: none;
+    transform: translateY(-16px);
+    text-decoration: none;
   }
-
 
   label {
     margin: 0;
     padding-left: 8px;
-    color: $white;  
+    color: $white;
   }
 
   .events-filter h6 {
@@ -535,7 +545,7 @@
     display: block;
     width: 20px;
     height: 20px;
-  
+
     content: "";
     background: $blue-purple-500;
     border-radius: 4px;
@@ -544,17 +554,17 @@
     border-style: solid;
     border-color: $blue-purple-500;
   }
-  
+
   .events-filter[type="checkbox"]::after {
     position: relative;
     display: block;
-  
+
     top: -20px;
     width: 20px;
     height: 20px;
-  
+
     content: "";
-  
+
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 4px;
@@ -562,11 +572,11 @@
     border-style: solid;
     border-color: $blue-purple-500;
   }
-  
+
   // .events-filter[type="checkbox"]:disabled::after {
   //   -webkit-filter: opacity(0.4);
   // }
-  
+
   .events-filter[type="checkbox"]:checked::after {
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
@@ -576,7 +586,7 @@
     border-color: $blue-purple-500;
     border-radius: 4px;
   }
-  
+
   .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
@@ -586,7 +596,7 @@
     border-color: $blue-purple-500;
     border-radius: 4px;
   }
-  
+
   .events-filter[type="checkbox"]:not(:disabled):hover::after {
     background: $blue-purple-600;
     border-width: 1px;
@@ -594,7 +604,7 @@
     border-color: $blue-purple-600;
     border-radius: 4px;
   }
-  
+
   .events-filter[type="checkbox"]:not(:disabled):hover::before {
     background: $blue-purple-600;
     border-width: 1px;
@@ -602,13 +612,7 @@
     border-color: $blue-purple-600;
     border-radius: 4px;
   }
-
-
 }
-
-
-
-
 
 #find-us-on-platforms .card-deck {
   .card:nth-child(1) .card-footer {
@@ -636,13 +640,10 @@
     background-image: url(../img/cards/4col-orange-2.svg);
   }
 
-
   .card {
     margin-bottom: 2.5rem;
   }
-
 }
-
 
 .page-faq {
   &::before {
@@ -761,7 +762,6 @@
         right: 2rem;
       }
     }
-
   }
 }
 
@@ -773,12 +773,12 @@
   .center-search {
     .input-group-text {
       height: 56px;
-      padding: .75rem .75rem .75rem 1rem;
+      padding: 0.75rem 0.75rem 0.75rem 1rem;
       line-height: 2rem;
     }
     .ds-input {
       height: 56px;
-      padding: .75rem 1rem .75rem .5rem;
+      padding: 0.75rem 1rem 0.75rem 0.5rem;
     }
   }
 
@@ -834,7 +834,6 @@
 
 .page-docs-index,
 .page-community {
-
   #community-heading {
     padding-top: 2.5rem;
     padding-bottom: 5rem;
@@ -856,7 +855,7 @@
       -o-transition: all 0.1s ease;
       transition: all 0.1s ease;
     }
-  
+
     .one {
       top: 160px;
       left: 0%;
@@ -877,9 +876,6 @@
       top: 120px;
       right: 0%;
     }
-
-
-
   }
 
   #run-a-network-node .card-deck {
@@ -905,7 +901,6 @@
       padding-bottom: 104px;
     }
 
-
     .text-cards {
       grid-gap: 40px;
 
@@ -920,7 +915,7 @@
         color: #fff;
         font-weight: bold;
 
-        &:hover { 
+        &:hover {
           text-decoration: none;
           background: none !important;
         }
@@ -963,14 +958,14 @@
       padding-bottom: 104px;
     }
   }
-
-
 }
 
 .page-community {
-  @each $platform in "github", "twitch", "stack-overflow", "twitter", "discord", "youtube", "devto" {
+  @each $platform in "github", "twitch", "stack-overflow", "twitter", "discord",
+    "youtube", "devto"
+  {
     #platform-#{$platform} {
-      content: url("../img/logos/#{$platform}.svg")
+      content: url("../img/logos/#{$platform}.svg");
     }
   }
 }
@@ -1003,9 +998,7 @@
   }
 }
 
-
 .page-calculator {
-
   .calculator-section-description {
     max-width: 458px;
   }
@@ -1014,7 +1007,7 @@
     margin-right: 1px;
   }
   #data-selector li a {
-    background: #22252B;
+    background: #22252b;
     padding: 0.5rem 1.3rem;
     color: $white;
     white-space: nowrap;
@@ -1049,7 +1042,7 @@
       margin-bottom: 32px;
     }
     @include media-breakpoint-down(xs) {
-      display: block
+      display: block;
     }
   }
 
@@ -1124,7 +1117,7 @@
       width: 100%;
     }
   }
-  @include media-breakpoint-up(xl){
+  @include media-breakpoint-up(xl) {
     #data-selector li:first-child a {
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
@@ -1152,8 +1145,12 @@
     margin-right: -1px;
   }
   @keyframes fadeIn {
-    0% { opacity: 0 }
-    100% { opacity: 1 }
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
   .dot {
     height: 2px;
@@ -1167,10 +1164,10 @@
     transform-origin: center center;
   }
   #kWh-btc-dot {
-    background-color: #FF671A;
+    background-color: #ff671a;
   }
   #kWh-eth-dot {
-    background-color: #4F5664;
+    background-color: #4f5664;
   }
   #kWh-xrp-dot {
     background-color: $primary;
@@ -1187,7 +1184,7 @@
 
   .dash:before {
     // content: url(../img/icons/dash-line.png);
-    content: '|';
+    content: "|";
     font-size: 7px;
     font-weight: bold;
     color: $gray-500;
@@ -1196,23 +1193,22 @@
     margin-left: 13px;
   }
 
-
-  input[type=range] {
+  input[type="range"] {
     -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
     width: 100%; /* Specific width is required for Firefox. */
     background: transparent; /* Otherwise white in Chrome */
     z-index: 2;
   }
 
-  input[type=range]::-webkit-slider-thumb {
+  input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
   }
 
-  input[type=range]:focus {
+  input[type="range"]:focus {
     outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
   }
 
-  input[type=range]::-ms-track {
+  input[type="range"]::-ms-track {
     width: 100%;
     cursor: pointer;
 
@@ -1272,4 +1268,73 @@
   input[type="range"]::-ms-fill-upper {
     background-color: $gray-500;
   }
+}
+
+.page-dev-tools {
+  @each $tool,
+    $card-graphic
+      in (
+        "xrp-explorer": "1-col-orange",
+        "bithomp-explorer": "2-col-light-blue",
+        "xrpscan": "3-col-pink",
+        "token-list": "4-col-pink2",
+        "websocket": "1-col-purple2",
+        "rpc": "2-col-green",
+        "technical-explorer": "3-col-purple-blue",
+        "faucets": "4-col-pink2",
+        "trasaction-sender": "5-col-light-blue2",
+        "domain": "1-col-green-purple",
+        "xrp-ledger": "2-col-dark-blue",
+        "binary-visualizer": "3-col-purple-blue",
+        "token-metadata-lookup": "4-col-pink-purple"
+      )
+  {
+    ##{$tool} {
+      .card-footer {
+        background-image: url("../img/cards/#{$card-graphic}.svg");
+      }
+    }
+  }
+  .nav-link {
+    color: #a2a2a4;
+    background-color: #111112;
+    border-top: none;
+    border-left: none;
+    border-right:none;
+    border-bottom-color: #454549;
+  }
+  .nav-link.active {
+    border-bottom-color: #9a52ff;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  .nav-tabs{
+    border-bottom: 1px solid #454549
+  }
+  .btn {
+    padding: 0.75rem;
+  }
+
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
+  }
+
 }

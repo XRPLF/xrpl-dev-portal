@@ -1,0 +1,199 @@
+{% extends "base.html.jinja" %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}page-dev-tools{% endblock %}
+
+{% block main %}
+
+<div class="">
+  <section class="py-20">
+    <div class="mx-auto text-lg-left">
+      <div class="d-flex flex-column-reverse">
+        <p class="mb-0">
+          Use the developer tools to test, explore, and validate XRP Ledger
+          API requests and behavior.
+        </p>
+        <h3 class="eyebrow mb-3"> Dev Tools</h3>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="py-10">
+      <script>
+        $(document).ready(function(){
+          $("#myTab button").click((e)=>{
+            $(this).tab("show");
+        })
+        
+        });
+      </script>
+    <div class="mx-auto text-lg-left">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active dev-tools-tab" id="explorers-tab" data-bs-toggle="tab" data-bs-target="#explorers" role="tab" aria-controls="explorers" aria-selected="true" >Explorers</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link  dev-tools-tab" id="api-access-tab" data-bs-toggle="tab" data-bs-target="#api-access" role="tab" aria-controls="api-access"  aria-selected="false">API Access</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link  dev-tools-tab" id="other-tab" data-bs-toggle="tab" data-bs-target="#other" role="tab" aria-controls="other"  aria-selected="false"> Other</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="explorers" role="tabpanel" aria-labelledby="explorers-tab">
+            {% set exploerers_tools =[
+                {
+                  "id": "xrp-explorer",
+                  "title": "XRPL Explorer",
+                  "description":
+                    "View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.",
+                  "href": "https://livenet.xrpl.org",
+                },
+                {
+                  "id": "bithomp-explorer",
+                  "title": "Bithomp Explorer",
+                  "description":
+                    "Explore public ledger data including accounts' transaction history and known names.",
+                  "href": "https://bithomp.com/",
+                },
+                {
+                  "id": "xrpscan",
+                  "title": "XRPScan",
+                  "description":
+                    "Explore ledger activity, view amendment voting in real-time, and get account information. API access is also available.",
+                  "href": "https://xrpscan.com/",
+                },
+                {
+                  "id": "token-list",
+                  "title": "Token List",
+                  "description":
+                    "See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.",
+                  "href": "https://xumm.community/tokens",
+                },
+              ] %}
+              <div class="row row-cols-1 row-cols-lg-3 card-deck">
+              {% for card in exploerers_tools%}
+                <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
+                  <div class="card-body">
+                    <h4 class="card-title h5">{{card.title}}</h4>
+                    <p class="card-text">{{card.description}}</p>
+                  </div>
+                  <div class="card-footer">&nbsp;</div>
+                </a>
+                {% endfor %}
+              </div>
+          </div>
+          <div class="tab-pane fade" id="api-access" role="tabpanel" aria-labelledby="api-access-tab">
+            {% set api_access_tools = [
+                {
+                  "id": "websocket",
+                  "title": "WebSocket Tool",
+                  "description":
+                    "Send sample requests and get responses from the rippled API. ",
+                  "href": "",
+                },
+                {
+                  "id": "rpc",
+                  "title": "RPC Tool",
+                  "description":
+                    "Print raw information about an XRP Ledger account, transaction, or ledger.",
+                  "href": "",
+                },
+                {
+                  "id": "technical-explorer",
+                  "title": "Technical Explorer",
+                  "description":
+                    "Browse API objects from the ledger with real-time updates. ",
+                  "href": "",
+                },
+                {
+                  "id": "faucets",
+                  "title": "Faucets",
+                  "description":
+                    "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
+                  "href": "",
+                },
+                {
+                  "id": "trasaction-sender",
+                  "title": "Transaction Sender",
+                  "description":
+                    "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
+                  "href": "",
+                },
+              ]%}
+              <div class="row row-cols-1 row-cols-lg-3 card-deck">
+              {% for card in api_access_tools %}
+                <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
+                  <div class="card-body">
+                    <h4 class="card-title h5">{{card.title}}</h4>
+                    <p class="card-text">{{card.description}}</p>
+                  </div>
+                  <div class="card-footer">&nbsp;</div>
+                </a>
+              {% endfor %}
+              </div>
+          </div>
+          <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+            {% set other = [
+              {
+                "id": "domain",
+                "title": "Domain Verification Checker",
+                "description": "Verify your validator's domain.",
+                "href": "",
+              },
+              {
+                "id":"xrp-ledger",
+                "title": "xrp-ledger.toml Checker",
+                "description":
+                  "Verify that your xrp-ledger.toml file is set up properly.",
+                "href": "",
+              },
+              {
+                "id": "binary-visualizer",
+                "title": "Binary Visualizer",
+                "description":
+                  "Parse the XRP Ledger's native binary format with a visual representation breaking down the raw structure into its parts.",
+                "href": "",
+              },
+              {
+                "id": "token-metadata-lookup",
+                "title": "Token Metadata Lookup",
+                "description":
+                  "Query known information about any token issued on the XRP Ledger.",
+                "href": "",
+              },
+            ]%}
+            <div class="row row-cols-1 row-cols-lg-3 card-deck">
+            {% for card in other %}
+              <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
+                <div class="card-body">
+                  <h4 class="card-title h5">{{card.title}}</h4>
+                  <p class="card-text">{{card.description}}</p>
+                </div>
+                <div class="card-footer">&nbsp;</div>
+              </a>
+            {% endfor %}
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="container-new py-10 px-0">
+    <div class="col-lg-12 p-6-sm p-10-until-sm br-8 cta-card">
+      <img src="./img/backgrounds/cta-home-purple.svg" class="d-none-sm cta cta-top-left">
+      <img src="./img/backgrounds/cta-home-green.svg" class="cta cta-bottom-right">
+      <div class="z-index-1 position-relative">
+        <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}Have an Idea For a Tool?{% endtrans %}</h2>
+        <p class="mb-10">{% trans %}Contribute to the XRP Ledger community by submitting your idea for a tool or open a pull request if you've developed a tool.{% endtrans %}</p>
+        <a class="btn btn-primary btn-arrow-out" href="overview.html">Open a pull Request</a>
+      </div>
+    </div>
+  </section>
+
+<script src="jquery.min.js" type="text/javascript"></script>
+<link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<script src="bootstrap.min.js" type="text/javascript"></script>
+{% endblock %}
