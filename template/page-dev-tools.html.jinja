@@ -10,10 +10,10 @@
     <div class="mx-auto text-lg-left">
       <div class="d-flex flex-column-reverse">
         <p class="mb-0">
-          Use the developer tools to test, explore, and validate XRP Ledger
-          API requests and behavior.
+          {% trans %}Use the developer tools to test, explore, and validate XRP Ledger
+          API requests and behavior. {% endtrans %}
         </p>
-        <h3 class="eyebrow mb-3"> Dev Tools</h3>
+        <h3 class="eyebrow mb-3"> {% trans %} Dev Tools  {% endtrans %}</h3>
       </div>
     </div>
   </section>
@@ -65,7 +65,7 @@
                   "href": "https://xumm.community/tokens",
                 },
               ] %}
-               <h4> Explorers</h4>
+               <h4> {% trans %} Explorers  {% endtrans %}</h4>
               <div class="row row-cols-1 row-cols-lg-3 card-deck">
               {% for card in exploerers_tools%}
                 <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
@@ -79,7 +79,7 @@
               </div>
           </div>
           <div class="tab-pane" id="api-access" role="tabpanel" aria-labelledby="api-access-tab">
-          <h4> API Access</h4>
+          <h4> {% trans %} API Access {% endtrans %}</h4>
             {% set api_access_tools = [
                 {
                   "id": "websocket",
@@ -130,7 +130,7 @@
               </div>
           </div>
           <div class="tab-pane" id="other" role="tabpanel" aria-labelledby="other-tab">
-            <h4> Other</h4>
+            <h4>  {% trans %} Other {% endtrans %}</h4>
             {% set other = [
               {
                 "id": "domain",

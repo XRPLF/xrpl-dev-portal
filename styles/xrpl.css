@@ -15523,9 +15523,8 @@ aside {
 
 .top-banner {
   height: 46px;
-  background: url(../img/backgrounds/bg-apex-banner.svg);
+  background: url(../img/backgrounds/bg-apex-banner-2.png);
   background-position: center;
-  background-color: #7919FF;
   background-size: cover;
   padding: 2px 0;
   color: #fff;
@@ -15537,33 +15536,52 @@ aside {
 @media (min-width: 768px) {
   .top-banner {
     padding: 5px 8px;
+    background: url(../img/backgrounds/bg-apex-banner-2-md.png);
+    background-position: center;
+    background-size: cover;
+  }
+}
+@media (min-width: 1200px) {
+  .top-banner {
+    background: url(../img/backgrounds/bg-apex-banner-2-lg.png);
+    background-position: center;
+    background-size: cover;
   }
 }
 .top-banner .btn {
-  margin-top: 4px;
-  margin-left: 8px;
+  margin-left: 4px;
   font-size: 12px;
+  color: #fff;
+  padding: 2px 4px;
+  border: 1px solid #fff;
+  border-radius: 2px;
 }
 @media (min-width: 768px) {
   .top-banner .btn {
-    margin-top: 2px;
+    margin-top: 6px;
     margin-left: 16px;
     font-size: 16px;
+    padding: 4px 8px;
+    border: 1.5px solid #fff;
+    border-radius: 4px;
   }
 }
+.top-banner .btn-outline-secondary:not(:disabled):not(.disabled):hover {
+  color: #111112;
+  background-color: #fff;
+}
 .top-banner p {
-  padding-top: 15px;
   font-size: 12px;
-  line-height: 15px;
+  line-height: 20px;
   text-align: center;
   margin: auto;
 }
 @media (min-width: 768px) {
   .top-banner p {
-    padding-top: 10px;
+    padding-top: 7px;
     font-size: 16px;
     width: initial;
-    line-height: 20px;
+    line-height: 24px;
   }
 }
 
@@ -15607,13 +15625,13 @@ body {
 }
 
 html.light .top-banner .btn-outline-secondary {
-  color: #E0E0E1;
-  border-color: #E0E0E1;
+  color: #fff;
+  border-color: #fff;
 }
 html.light .top-banner .btn-outline-secondary:not(:disabled):not(.disabled):hover {
   color: #111112;
-  background-color: #E0E0E1;
-  border-color: #E0E0E1;
+  background-color: #fff;
+  border-color: #fff;
 }
 
 .page-calculator #calculator-mobile-toggle.show {
