@@ -1,4 +1,4 @@
-Using an MATIC-orbit/XRP bridge token allows ripple to interact with orbs which already has access to banks/central banks/ core systems through it's paykey protocol which I have been working with since getgems on telegram. For this I am asking to be recognized as a winner. If not there will be.a new meaning for .hack
+Using an MATIC-orbit/XRP bridge token allows ripple to interact with orbs+MATIC which now has access to banks/central banks/ core systems through ORBS paykey protocol which I have been working with since early developement. For this I am asking to be recognized as a winner. If not there will be.a new meaning for .hack. This is a threat.
 
 
 
