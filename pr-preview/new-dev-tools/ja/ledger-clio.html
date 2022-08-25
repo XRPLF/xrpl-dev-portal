@@ -83,7 +83,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal" sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -160,7 +160,9 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
+          </div><!--./col-->
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -540,7 +542,7 @@
 <tr>
 <td style="text-align: left;"><code>ledger.transactions</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="basic-data-types.html#hashes">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
+<td style="text-align: left;">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="basic-data-types.html#ハッシュ">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
@@ -588,7 +590,7 @@
 <tr>
 <td style="text-align: left;"><code>tx</code></td>
 <td style="text-align: left;">String or Object</td>
-<td style="text-align: left;">By default, this is a String containing the <a href="basic-data-types.html#hashes">identifying hash</a> of the transaction. If transactions are expanded in binary format, this is an object whose only field is <code>tx_blob</code>, containing the binary form of the transaction as a decimal string. If transactions are expanded in JSON format, this is an object containing the <a href="transaction-formats.html">transaction object</a> including the transaction's identifying hash in the <code>hash</code> field.</td>
+<td style="text-align: left;">By default, this is a String containing the <a href="basic-data-types.html#ハッシュ">identifying hash</a> of the transaction. If transactions are expanded in binary format, this is an object whose only field is <code>tx_blob</code>, containing the binary form of the transaction as a decimal string. If transactions are expanded in JSON format, this is an object containing the <a href="transaction-formats.html">transaction object</a> including the transaction's identifying hash in the <code>hash</code> field.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>retries_remaining</code></td>
@@ -608,7 +610,7 @@
 <tr>
 <td style="text-align: left;"><code>auth_change</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(May be omitted)</em> Whether this transaction changes this address's <a href="transaction-basics.html#トランザクションの承認">ways of authorizing transactions</a>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Whether this transaction changes this address's <a href="transaction-basics.html#トランザクションの識別">ways of authorizing transactions</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>fee</code></td>
@@ -618,7 +620,7 @@
 <tr>
 <td style="text-align: left;"><code>fee_level</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in <a href="transaction-cost.html#fee-levels">fee levels</a>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in <a href="transaction-cost.html#手数料レベル">fee levels</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>max_spend_drops</code></td>
@@ -627,7 +629,7 @@
 </tr>
 </tbody>
 </table>
-<p>If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="offercreate.html">OfferCreate transaction</a>. The purpose of this field is to make it easier to track the <a href="offers.html#lifecycle-of-an-offer">funding status of offers</a> with each new validated ledger. This field is defined slightly differently than the version of this field in <a href="subscribe.html#order-book-streams">Order Book subscription streams</a>:</p>
+<p>If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="offercreate.html">OfferCreate transaction</a>. The purpose of this field is to make it easier to track the <a href="offers.html#オファーのライフサイクル">funding status of offers</a> with each new validated ledger. This field is defined slightly differently than the version of this field in <a href="subscribe.html#オーダーブックストリーム">Order Book subscription streams</a>:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -3276,7 +3278,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
-        <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
+        <a class="nav-link" href="/ja/dev-tools.html">Dev Tools</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
@@ -3345,7 +3347,7 @@
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
-            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
+            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
 
