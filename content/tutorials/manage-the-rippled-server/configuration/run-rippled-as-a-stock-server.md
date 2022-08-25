@@ -1,16 +1,16 @@
 ---
-html: run-rippled-as-a-wallet-server.html
+html: run-rippled-as-a-stock-server.html
 parent: configure-rippled.html
 blurb: A multipurpose configuration for anyone integrating XRP.
 labels:
   - Core Server
 ---
-# Run rippled as a Wallet Server
+# Run rippled as a Stock Server
 
-A wallet server is a multipurpose configuration for `rippled`. With a wallet server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](software-ecosystem.html) to integrate with XRP.
+A stock server is a multipurpose configuration for `rippled`. With a stock server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](software-ecosystem.html) to integrate with XRP. It is also a server that you can use to connect a wallet with the XRPL.
 
 
-A wallet server does all of the following:
+A stock server does all of the following:
 
 - Connects to a [network of peers](consensus-network.html)
 
@@ -18,22 +18,15 @@ A wallet server does all of the following:
 
 - Maintains a local copy of the complete shared global [ledger](ledgers.html)
 
-- Participates in the [consensus process](consensus.html) as a validator
+
+To participate in the [consensus process](consensus.html) as a validator, [run rippled as a validator](run-rippled-as-a-validator.html) instead.
 
 
-## 1. Install `rippled`
+## Install and run `rippled`
 
-For more information, see [Install `rippled`](install-rippled.html).
+The default package installation installs a stock server with a small amount of transaction history. For installation steps, see [Install `rippled`](install-rippled.html).
 
-## 2. Enable validation on your wallet server
-
-For more information, see [Enable validation on your `rippled` server](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).
-
-**Warning:** Validators should not be accessible to the public. Do not allow public WebSocket access to your wallet server or any other form of public access.
-
-## 3. Provide domain verification
-
-For more information, see [Provide domain verification](run-rippled-as-a-validator.html#6-provide-domain-verification).
+After installation, you can adjust how much history your server stores at a time. For steps on how to do this, see [Configure Online Deletion](configure-online-deletion.html).
 
 ## Troubleshooting
 

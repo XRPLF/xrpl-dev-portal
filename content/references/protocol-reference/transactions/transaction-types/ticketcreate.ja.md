@@ -11,7 +11,7 @@ labels:
 
 _([TicketBatch amendment][]が必要です)_
 
-TicketCreateトランザクションは、1つまたは複数の[シーケンス番号][sequence numbers]を[Tickets](ticket.html)として確保します。
+TicketCreateトランザクションは、1つまたは複数の[シーケンス番号](basic-data-types.html#アカウントシーケンス)を[Tickets](ticket.html)として確保します。
 
 ## {{currentpage.name}}JSONの例
 

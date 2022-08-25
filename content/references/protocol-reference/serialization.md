@@ -59,7 +59,7 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 The serialization processes described here are implemented in multiple places and programming languages:
 
 - In C++ [in the `rippled` code base](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp).
-- In JavaScript in the [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/) package.
+- In JavaScript in the [`ripple-binary-codec`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-binary-codec) package.
 - In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/).
 
 Additionally, many [client libraries](client-libraries.html) provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.
@@ -76,7 +76,7 @@ For example, the `Flags` [common transaction field](transaction-common-fields.ht
 
 The following JSON file defines the important constants you need for serializing XRP Ledger data to its binary format and deserializing it from binary:
 
-**<https://github.com/ripple/ripple-binary-codec/blob/master/src/enums/definitions.json>**
+**<https://github.com/XRPLF/xrpl.js/blob/main/packages/ripple-binary-codec/src/enums/definitions.json>**
 
 The following table defines the top-level fields from the definitions file:
 
@@ -241,7 +241,7 @@ The following diagram shows the serialization formats for both XRP amounts and t
 
 The XRP Ledger uses 64 bits to serialize the numeric amount of a (fungible) token. (In JSON format, the numeric amount is the `value` field of a currency amount object.) In binary format, the numeric amount consists of a "not XRP" bit, a sign bit, significant digits, and an exponent, in order:
 
-1. The first (most significant) bit for an token amount is `1` to indicate that it is not an XRP amount. (XRP amounts always have the most significant bit set to `0` to distinguish them from this format.)
+1. The first (most significant) bit for a token amount is `1` to indicate that it is not an XRP amount. (XRP amounts always have the most significant bit set to `0` to distinguish them from this format.)
 2. The sign bit indicates whether the amount is positive or negative. Unlike standard [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) integers, `1` indicates **positive** in the XRP Ledger format, and `0` indicates negative.
 3. The next 8 bits represent the exponent as an unsigned integer. The exponent indicates the scale (what power of 10 the significant digits should be multiplied by) in the range -96 to +80 (inclusive). However, when serializing, we add 97 to the exponent to make it possible to serialize as an unsigned integer. Thus, a serialized value of `1` indicates an exponent of `-96`, a serialized value of `177` indicates an exponent of 80, and so on.
 4. The remaining 54 bits represent the significant digits (sometimes called a _mantissa_) as an unsigned integer. When serializing, this value is normalized to the range 10<sup>15</sup> (`1000000000000000`) to 10<sup>16</sup>-1 (`9999999999999999`) inclusive, except for the special case of the value 0. In the special case for 0, the sign bit, exponent, and significant digits are all zeroes, so the 64-bit value is serialized as `0x8000000000000000000000000000000000000000`.
@@ -338,7 +338,7 @@ Some combinations are invalid; see [Path Specifications](paths.html#path-specifi
 
 The AccountIDs in the `account` and `issuer` fields are presented _without_ a length prefix. When the `currency` is XRP, the currency code is represented as 160 bits of zeroes.
 
-Each step is followed directly by the next step of the path. As described above, last step of a path is followed by either `0xff` (if another path follows) or `0x00` (if this ends the last path).
+Each step is followed directly by the next step of the path. As described above, the last step of a path is followed by either `0xff` (if another path follows) or `0x00` (if this ends the last path).
 
 The following example shows the serialization format for a PathSet:
 

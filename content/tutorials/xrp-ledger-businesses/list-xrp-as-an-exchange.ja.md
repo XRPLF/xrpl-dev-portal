@@ -41,7 +41,7 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 関連項目:
 
-* [ゲートウェイコンプライアンス](become-an-xrp-ledger-gateway.html#gateway-compliance) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
+* [ゲートウェイコンプライアンス](become-an-xrp-ledger-gateway.html#compliance-guidelines) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
 
 * [Requirements for Sending to XRP Ledger](become-an-xrp-ledger-gateway.html#requirements-for-sending-to-xrp-ledger)
 
