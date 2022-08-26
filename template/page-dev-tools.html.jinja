@@ -5,15 +5,15 @@
 
 {% block main %}
 
-<div class="">
+<div>
   <section class="py-20">
     <div class="mx-auto text-lg-left">
       <div class="d-flex flex-column-reverse">
         <p class="mb-0">
           {% trans %}Use the developer tools to test, explore, and validate XRP Ledger
-          API requests and behavior. {% endtrans %}
+          API requests and behavior.{% endtrans %}
         </p>
-        <h3 class="eyebrow mb-3"> {% trans %} Dev Tools  {% endtrans %}</h3>
+        <h3 class="eyebrow mb-3"> {% trans %}Dev Tools{% endtrans %}</h3>
       </div>
     </div>
   </section>
@@ -22,25 +22,27 @@
   
   <section class="py-10">
     <div class="mx-auto text-lg-left">
-      <ul class="nav nav-tabs pb-15" id="myTab" role="tablist">
+    <div className="sticky"> 
+      <ul class="nav nav-tabs pb-15" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active dev-tools-tab" id="explorers-tab" data-toggle="tab" data-target="#explorers" role="tab" aria-controls="explorers" aria-selected="true" >Explorers</button>
+          <button class="nav-link active dev-tools-tab" id="explorers-tab" data-toggle="tab" data-target="#explorers" role="tab" aria-controls="explorers" aria-selected="true" >{% trans %}Explorers{% endtrans %}</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link  dev-tools-tab" id="api-access-tab" data-toggle="tab" data-target="#api-access" role="tab" aria-controls="api-access"  aria-selected="false">API Access</button>
+          <button class="nav-link  dev-tools-tab" id="api-access-tab" data-toggle="tab" data-target="#api-access" role="tab" aria-controls="api-access"  aria-selected="false">{% trans %}API Access{% endtrans %}</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link  dev-tools-tab" id="other-tab" data-toggle="tab" data-target="#other" role="tab" aria-controls="other"  aria-selected="false"> Other</button>
+          <button class="nav-link  dev-tools-tab" id="other-tab" data-toggle="tab" data-target="#other" role="tab" aria-controls="other"  aria-selected="false">{% trans %}Other{% endtrans %}</button>
         </li>
       </ul>
-      <div class="tab-content pt-20" id="myTabContent">
+      </div>
+      <div class="tab-content pt-20">
           <div class="tab-pane show active" id="explorers" role="tabpanel" aria-labelledby="explorers-tab">
-            {% set exploerers_tools =[
+            {% set explorers_tools =[
                 {
                   "id": "xrp-explorer",
                   "title": "XRPL Explorer",
                   "description":
-                    "View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.",
+                    "View validations of new ledger versions in real-time, or chart the location of servers in the XRP Ledger.",
                   "href": "https://livenet.xrpl.org",
                 },
                 {
@@ -65,9 +67,9 @@
                   "href": "https://xumm.community/tokens",
                 },
               ] %}
-               <h4> {% trans %} Explorers  {% endtrans %}</h4>
+               <h4> {% trans %}Explorers{% endtrans %}</h4>
               <div class="row row-cols-1 row-cols-lg-3 card-deck">
-              {% for card in exploerers_tools%}
+              {% for card in explorers_tools%}
                 <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
                   <div class="card-body">
                     <h4 class="card-title h5">{{card.title}}</h4>
@@ -79,7 +81,7 @@
               </div>
           </div>
           <div class="tab-pane" id="api-access" role="tabpanel" aria-labelledby="api-access-tab">
-          <h4> {% trans %} API Access {% endtrans %}</h4>
+          <h4> {% trans %}API Access{% endtrans %}</h4>
             {% set api_access_tools = [
                 {
                   "id": "websocket",
@@ -130,7 +132,7 @@
               </div>
           </div>
           <div class="tab-pane" id="other" role="tabpanel" aria-labelledby="other-tab">
-            <h4>  {% trans %} Other {% endtrans %}</h4>
+            <h4>  {% trans %}Other{% endtrans %}</h4>
             {% set other = [
               {
                 "id": "domain",
@@ -184,7 +186,7 @@
       <div class="z-index-1 position-relative">
         <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}Have an Idea For a Tool?{% endtrans %}</h2>
         <p class="mb-10">{% trans %}Contribute to the XRP Ledger community by submitting your idea for a tool or open a pull request if you've developed a tool.{% endtrans %}</p>
-        <a class="btn btn-primary btn-arrow-out" href="https://github.com/XRPLF/xrpl-dev-portal/">Open a pull Request</a>
+        <a class="btn btn-primary btn-arrow-out" href="https://github.com/XRPLF/xrpl-dev-portal/">{% trans %}Open a pull Request{% endtrans %}</a>
       </div>
     </div>
   </section>
