@@ -46,7 +46,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v6.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v7.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -58,7 +58,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal" sidebar-primary lang-ja no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -222,14 +222,14 @@
     <li class="active breadcrumb-item">Dev Tools</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->
-<div class="">
+<div>
   <section class="py-20">
     <div class="mx-auto text-lg-left">
       <div class="d-flex flex-column-reverse">
         <p class="mb-0">
 Use the developer tools to test, explore, and validate XRP Ledger
-          API requests and behavior.         </p>
-        <h3 class="eyebrow mb-3">  Dev Tools  </h3>
+          API requests and behavior.        </p>
+        <h3 class="eyebrow mb-3"> Dev Tools</h3>
       </div>
     </div>
   </section>
@@ -238,7 +238,8 @@ Use the developer tools to test, explore, and validate XRP Ledger
   
   <section class="py-10">
     <div class="mx-auto text-lg-left">
-      <ul class="nav nav-tabs pb-15" id="myTab" role="tablist">
+    <div className="sticky"> 
+      <ul class="nav nav-tabs pb-15" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active dev-tools-tab" id="explorers-tab" data-toggle="tab" data-target="#explorers" role="tab" aria-controls="explorers" aria-selected="true" >Explorers</button>
         </li>
@@ -246,17 +247,18 @@ Use the developer tools to test, explore, and validate XRP Ledger
           <button class="nav-link  dev-tools-tab" id="api-access-tab" data-toggle="tab" data-target="#api-access" role="tab" aria-controls="api-access"  aria-selected="false">API Access</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link  dev-tools-tab" id="other-tab" data-toggle="tab" data-target="#other" role="tab" aria-controls="other"  aria-selected="false"> Other</button>
+          <button class="nav-link  dev-tools-tab" id="other-tab" data-toggle="tab" data-target="#other" role="tab" aria-controls="other"  aria-selected="false">Other</button>
         </li>
       </ul>
-      <div class="tab-content pt-20" id="myTabContent">
+      </div>
+      <div class="tab-content pt-20">
           <div class="tab-pane show active" id="explorers" role="tabpanel" aria-labelledby="explorers-tab">
-               <h4>  Explorers  </h4>
+               <h4> Explorers</h4>
               <div class="row row-cols-1 row-cols-lg-3 card-deck">
                 <a class="card" href="https://livenet.xrpl.org" target="_blank" id="xrp-explorer">
                   <div class="card-body">
                     <h4 class="card-title h5">XRPL Explorer</h4>
-                    <p class="card-text">View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.</p>
+                    <p class="card-text">View validations of new ledger versions in real-time, or chart the location of servers in the XRP Ledger.</p>
                   </div>
                   <div class="card-footer">&nbsp;</div>
                 </a>
@@ -284,7 +286,7 @@ Use the developer tools to test, explore, and validate XRP Ledger
               </div>
           </div>
           <div class="tab-pane" id="api-access" role="tabpanel" aria-labelledby="api-access-tab">
-          <h4>  API Access </h4>
+          <h4> API Access</h4>
               <div class="row row-cols-1 row-cols-lg-3 card-deck">
                 <a class="card" href="websocket-api-tool.html" target="_blank" id="websocket">
                   <div class="card-body">
@@ -324,7 +326,7 @@ Use the developer tools to test, explore, and validate XRP Ledger
               </div>
           </div>
           <div class="tab-pane" id="other" role="tabpanel" aria-labelledby="other-tab">
-            <h4>   Other </h4>
+            <h4>  Other</h4>
             <div class="row row-cols-1 row-cols-lg-3 card-deck">
               <a class="card" href="validator-domain-verifier.html" target="_blank" id="domain">
                 <div class="card-body">
