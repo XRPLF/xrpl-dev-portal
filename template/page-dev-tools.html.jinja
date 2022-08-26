@@ -19,7 +19,7 @@
   </section>
 
 
-  
+
   <section class="py-10">
     <div class="mx-auto text-lg-left">
     <div className="sticky"> 
@@ -44,6 +44,7 @@
                   "description":
                     "View validations of new ledger versions in real-time, or chart the location of servers in the XRP Ledger.",
                   "href": "https://livenet.xrpl.org",
+                  "img": "img/dev-tools/explorer.png"
                 },
                 {
                   "id": "bithomp-explorer",
@@ -51,6 +52,7 @@
                   "description":
                     "Explore public ledger data including accounts' transaction history and known names.",
                   "href": "https://bithomp.com/",
+                  "img": "img/dev-tools/bithomp.png"
                 },
                 {
                   "id": "xrpscan",
@@ -58,6 +60,7 @@
                   "description":
                     "Explore ledger activity, view amendment voting in real-time, and get account information. API access is also available.",
                   "href": "https://xrpscan.com/",
+                  "img": "img/dev-tools/xrpscan.png"
                 },
                 {
                   "id": "token-list",
@@ -65,12 +68,14 @@
                   "description":
                     "See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.",
                   "href": "https://xumm.community/tokens",
+                  "img": "img/dev-tools/tokenlist.png"
                 },
               ] %}
                <h4> {% trans %}Explorers{% endtrans %}</h4>
               <div class="row row-cols-1 row-cols-lg-3 card-deck">
               {% for card in explorers_tools%}
                 <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
+                  {% if card.img %}<img src="{{card.img}}" alt="{{card.title}} Screenshot" />{% endif %}
                   <div class="card-body">
                     <h4 class="card-title h5">{{card.title}}</h4>
                     <p class="card-text">{{card.description}}</p>
@@ -89,6 +94,7 @@
                   "description":
                     "Send sample requests and get responses from the rippled API. ",
                   "href": "websocket-api-tool.html",
+                  "img": "img/dev-tools/websocket-tool.png"
                 },
                 {
                   "id": "rpc",
@@ -96,6 +102,7 @@
                   "description":
                     "Print raw information about an XRP Ledger account, transaction, or ledger.",
                   "href": "xrp-ledger-rpc-tool.html",
+                  "img": "img/dev-tools/rpc-tool.png"
                 },
                 {
                   "id": "technical-explorer",
@@ -103,6 +110,7 @@
                   "description":
                     "Browse API objects from the ledger with real-time updates. ",
                   "href": "https://explorer.xrplf.org/",
+                  "img": "img/dev-tools/technical-explorer.png"
                 },
                 {
                   "id": "faucets",
@@ -110,6 +118,7 @@
                   "description":
                     "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
                   "href": "xrp-testnet-faucet.html",
+                  "img": "img/dev-tools/faucets.png"
                 },
                 {
                   "id": "trasaction-sender",
@@ -117,11 +126,13 @@
                   "description":
                     "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
                   "href": "tx-sender.html",
+                  "img": "img/dev-tools/transaction-sender.png"
                 },
               ]%}
               <div class="row row-cols-1 row-cols-lg-3 card-deck">
               {% for card in api_access_tools %}
                 <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
+                  {% if card.img %}<img src="{{card.img}}" alt="{{card.title}} Screenshot" />{% endif %}
                   <div class="card-body">
                     <h4 class="card-title h5">{{card.title}}</h4>
                     <p class="card-text">{{card.description}}</p>
@@ -139,6 +150,7 @@
                 "title": "Domain Verification Checker",
                 "description": "Verify your validator's domain.",
                 "href": "validator-domain-verifier.html",
+                "img": "img/dev-tools/domain-checker.png"
               },
               {
                 "id":"xrp-ledger",
@@ -146,6 +158,7 @@
                 "description":
                   "Verify that your xrp-ledger.toml file is set up properly.",
                 "href": "xrp-ledger-toml-checker.html",
+                "img": "img/dev-tools/toml-checker.png"
               },
               {
                 "id": "binary-visualizer",
@@ -153,6 +166,7 @@
                 "description":
                   "Parse the XRP Ledger's native binary format with a visual representation breaking down the raw structure into its parts.",
                 "href": "https://richardah.github.io/xrpl-binary-visualizer/",
+                "img": "img/dev-tools/binary-visualizer.png"
               },
               {
                 "id": "token-metadata-lookup",
@@ -160,11 +174,13 @@
                 "description":
                   "Query known information about any token issued on the XRP Ledger.",
                 "href": "https://xrplmeta.org/",
+                "img": "img/dev-tools/token-metadata.png"
               },
             ]%}
             <div class="row row-cols-1 row-cols-lg-3 card-deck">
             {% for card in other %}
               <a class="card" href="{{card.href}}" target="_blank" id="{{card.id}}">
+                {% if card.img %}<img src="{{card.img}}" alt="{{card.title}} Screenshot" />{% endif %}
                 <div class="card-body">
                   <h4 class="card-title h5">{{card.title}}</h4>
                   <p class="card-text">{{card.description}}</p>
