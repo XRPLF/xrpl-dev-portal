@@ -4090,7 +4090,7 @@ pages:
             - ja
 
 # Dev Tools --------------------------------------------------------------------
-    -   name: Dev Tools # Redirect page for old broken URL
+    -   name: Dev Tools
         html: dev-tools.html
         template: page-dev-tools.html.jinja
         parent: docs.html
