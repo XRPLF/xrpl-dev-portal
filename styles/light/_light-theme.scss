@@ -802,8 +802,7 @@ $placeholder-color: $gray-600;
     }
   }
 
-  #xrplGrantsDark,
-  #xrplGrantsDark-small {
+  #xrplGrantsDark {
     filter: invert(100%) brightness(0.8);
   }
 }
