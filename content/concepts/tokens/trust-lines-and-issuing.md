@@ -27,7 +27,7 @@ Any account can unilaterally "trust" another account to issue a token by sending
 Trust lines can be implicitly created by some transactions, such as when you buy a token in the [decentralized exchange](decentralized-exchange.html). In this case, the trust line uses entirely default settings.
 
 
-## Going Below the Limit
+## Going Above the Limit
 
 There are three cases where you can hold a balance that is _greater_ than your limit on that trust line:
 
