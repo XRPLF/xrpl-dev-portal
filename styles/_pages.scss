@@ -1307,12 +1307,12 @@
     }
   }
   .nav-link {
-    color: #a2a2a4;
-    background-color: #111112;
+    color: $gray-400;
+    background-color: $gray-900;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom-color: #454549;
+    border-bottom-color: $gray-600;
   }
 
   @media (max-width: 767.98px) {
@@ -1335,12 +1335,12 @@
     }
   }
   .nav-link.active {
-    border-bottom-color: #9a52ff;
-    color: #ffffff;
+    border-bottom-color: $blue-purple-400;
+    color: $white;
     font-weight: bold;
   }
   .nav-tabs {
-    border-bottom: 1px solid #454549;
+    border-bottom: 1px solid $gray-600;
   }
   .btn {
     padding: 0.75rem;
@@ -1370,15 +1370,15 @@
 html.light {
   .page-dev-tools {
     .nav-link {
-      background-color: #f5f5f7;
+      background-color: $gray-100;
     }
     .nav-link.active {
-      border-bottom-color: #9a52ff;
-      color: #000;
+      border-bottom-color: $blue-purple-400;
+      color: $black;
       font-weight: bold;
     }
     .nav-link {
-      color: #000;
+      color: $black;
     }
     #trasaction-sender  .card-footer{
       background-image: url("../img/cards/3-col-light-blue-2.svg");
