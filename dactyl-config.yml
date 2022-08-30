@@ -4090,20 +4090,13 @@ pages:
             - ja
 
 # Dev Tools --------------------------------------------------------------------
-
-    -   md: dev-tools/dev-tools.md
+    -   name: Dev Tools
         html: dev-tools.html
+        template: page-dev-tools.html.jinja
         parent: docs.html
-        top_nav_grouping: Online Tools
-        blurb: Use these web-based tools to interact with the ledger and test your software.
+        sidebar: left_only
         targets:
             - en
-
-    -   md: dev-tools/dev-tools.ja.md
-        html: dev-tools.html
-        parent: docs.html
-        top_nav_grouping: Online Tools
-        targets:
             - ja
 
     -   name: Dev Tools # Redirect page for old broken URL
