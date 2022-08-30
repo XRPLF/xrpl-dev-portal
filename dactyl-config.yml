@@ -4255,6 +4255,7 @@ pages:
         sidebar: disabled
         targets:
             - en
+            - ja
 
     -   name: XRPL Jobs
         html: https://jobs.xrpl.org/
