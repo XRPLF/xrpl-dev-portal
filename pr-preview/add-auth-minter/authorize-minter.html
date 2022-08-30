@@ -260,7 +260,7 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#assign-an-authorized-minter">Assign an Authorized Minter</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#usage">Usage</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#authorize-a-minter">Authorize a Minter</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#get-accounts">Get Accounts</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#authorize-an-account-to-create-nftokens">Authorize an Account to Create NFTokens</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#mint-a-nftoken-for-another-account">Mint a NFToken for Another Account</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#create-a-sell-offer">Create a Sell Offer</a></li>
@@ -298,7 +298,7 @@
 <p><a href="img/quickstart28.png"><img alt="Token Test Harness" src="img/quickstart28.png"/></a></p>
 <h1 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try the sample in your own browser.</p>
-<h2 id="authorize-a-minter">Authorize a Minter<a aria-hidden="true" class="hover_anchor" href="#authorize-a-minter"><i class="fa fa-link"></i></a></h2>
+<h2 id="get-accounts">Get Accounts<a aria-hidden="true" class="hover_anchor" href="#get-accounts"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>Open <code>6.authorized-minter.html</code> in a browser.</li>
 <li>Get test accounts.<ol>
@@ -386,8 +386,8 @@
 <p>Set <code>NFTokenMinter</code> to the account number of the authorized minter.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="w">    </span><span class="s2">"NFTokenMinter"</span><span class="o">:</span><span class="w"> </span><span class="nx">standbyMinterField</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span><span class="w"></span>
 </code></pre></div>
-<p>Set flag 10, which is <code>asfAuthorizedNFTokenMinter</code>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">    </span><span class="s2">"SetFlag"</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="w"></span>
+<p>Set the <code>asfAuthorizedNFTokenMinter</code> flag (the numeric value is <em>10</em>).</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">    </span><span class="s2">"SetFlag"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfAuthorizedNFTokenMinter</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Report progress.</p>
@@ -494,7 +494,7 @@
 <span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"NFTokenMinter"</span><span class="o">:</span><span class="w"> </span><span class="nx">operationalMinterField</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">"SetFlag"</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"SetFlag"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">AccountSetAsfFlags</span><span class="p">.</span><span class="nx">asfAuthorizedNFTokenMinter</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span>
 <span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\n Set Minter.'</span><span class="w"> </span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
