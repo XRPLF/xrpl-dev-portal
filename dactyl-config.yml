@@ -1135,6 +1135,10 @@ pages:
         targets:
             - en
             - ja
+    -   md: tutorials/quickstart/authorize-minter.md
+        targets:
+            - en
+            - ja
 
     -   md: tutorials/get-started/get-started.md
         targets:
