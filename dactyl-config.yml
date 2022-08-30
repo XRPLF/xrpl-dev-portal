@@ -1138,7 +1138,7 @@ pages:
     -   md: tutorials/quickstart/authorize-minter.md
         targets:
             - en
-            - ja
+            - ja 
 
     -   md: tutorials/get-started/get-started.md
         targets:

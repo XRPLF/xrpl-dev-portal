@@ -1,4 +1,15 @@
-# Assign an Authorized Minter
+---
+html: authorize-minter.html
+parent: xrpl-quickstart.html
+blurb: Authorize another account to mint tokens on your behalf.
+labels:
+  - Accounts
+  - Quickstart
+  - NFTokens
+  - XRP
+---
+
+# Assign an Authorized Minter 
 
 You can assign another account permission to mint NFTokens for you.
 
@@ -7,7 +18,7 @@ This example shows how to:
 1. Authorize an account to create NFTokens for your account.
 2. Mint a NFToken for another account, when authorized.
 
-[![Token Test Harness](../../img/quickstart28.png)](../../img/quickstart28.png)
+[![Token Test Harness](img/quickstart28.png)](img/quickstart28.png)
 
 # Usage
 
@@ -32,7 +43,7 @@ To authorize another account to create NFTokens for your account:
 2. Paste the **Operational Account** value in the **Authorized Minter** field.
 3. Click **Set Minter**.
 
-[![Authorized Minter](../../img/quickstart29.png)](../../img/quickstart29.png)
+[![Authorized Minter](img/quickstart29.png)](img/quickstart29.png)
 
 ## Mint a NFToken for Another Account
 
@@ -46,7 +57,7 @@ To mint a non-fungible token for another account:
 4. Copy the **Standby Account** value.
 5. Paste the **Standby Account** value in the Operational account **Issuer** field.
 6. Click the Operational account **Mint Other** button.
-[![Minted NFToken for Another Account](../../img/quickstart30.png)](../../img/quickstart30.png)
+[![Minted NFToken for Another Account](img/quickstart30.png)](img/quickstart30.png)
 
 Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the purchase price separately.
 
@@ -62,7 +73,7 @@ To create a NFToken sell offer:
 
 The important piece of information in the response is the Token Offer Index, labeled as _nft_offer_index,_ which is used to accept the sell offer.
 
-[![NFToken Sell Offer](../../img/quickstart31.png)](../../img/quickstart31.png)
+[![NFToken Sell Offer](img/quickstart31.png)](img/quickstart31.png)
 
 ## Accept Sell Offer
 
@@ -75,7 +86,7 @@ To accept an available sell offer:
 2. Click **Accept Sell Offer**.
 
 When you examine the results field, you'll find that the Issuer account is credited 25 XRP. The Buyer account is debited the 100 XRP purchase price plus 12 drops as the transaction fee. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
-[![Transaction Results](../../img/quickstart32.png)](../../img/quickstart32.png)
+[![Transaction Results](img/quickstart32.png)](img/quickstart32.png)
 
 # Code Walkthrough
 
@@ -745,5 +756,7 @@ Update the form with fields and buttons to support the new functions.
 </html>
 ```
 
-
+| Previous      | Next                                                             |
+| :---          |                                                             ---: |
+| [← Broker a NFToken Sale >](broker-sale.html)  |  |
 
