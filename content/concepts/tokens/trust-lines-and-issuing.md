@@ -15,7 +15,7 @@ Each "trust line" is a _bidirectional_ relationship consisting of:
 - A single, shared **balance**, which is positive from the perspective of one account and negative from the other perspective.
     - The account with a negative balance is generally considered the "issuer" of the tokens. However, in the [APIs](http-websocket-apis.html), the name `issuer` can refer to either side.
 - Various **settings** and metadata. _Each_ of the two accounts can control its own settings on the trust line.
-    - Most importantly, each side sets a **limit** on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except [through that account's own actions](#going-below-the-limit).
+    - Most importantly, each side sets a **limit** on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except [through that account's own actions](#going-above-the-limit).
 
 Each trust line is specific to a given [currency code][]. Two accounts can have any number of trust lines between them for different currency codes, but only one shared trust line for any particular currency code.
 
