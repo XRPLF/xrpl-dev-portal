@@ -4241,6 +4241,15 @@ pages:
         targets:
             - en
 
+    -   name: Developer Funding
+        html: developer-funding.html
+        parent: contribute.html
+        template: page-funding.html.jinja
+        sidebar: disabled
+        targets:
+            - en
+            - ja
+
     -   name: XRPL Jobs
         html: https://jobs.xrpl.org/
         parent: contribute.html
