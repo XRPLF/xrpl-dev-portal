@@ -24,7 +24,7 @@ This example shows how to:
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try the sample in your own browser.
 
-## Authorize a Minter
+## Get Accounts
 
 1. Open `6.authorized-minter.html` in a browser.
 2. Get test accounts.
@@ -132,10 +132,10 @@ Set `NFTokenMinter` to the account number of the authorized minter.
     "NFTokenMinter": standbyMinterField.value,
 ```
 
-Set flag 10, which is `asfAuthorizedNFTokenMinter`.
+Set the `asfAuthorizedNFTokenMinter` flag (the numeric value is _10_).
 
 ```javascript
-    "SetFlag": 10
+    "SetFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
     }
 ```
 
@@ -295,7 +295,7 @@ async function oPsetMinter(type) {
     "TransactionType": "AccountSet",
     "Account": my_wallet.address,
     "NFTokenMinter": operationalMinterField.value,
-    "SetFlag": 10
+    "SetFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
   } 
     results += '\n Set Minter.' 
     document.getElementById('operationalResultField').value = results
