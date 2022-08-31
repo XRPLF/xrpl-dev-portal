@@ -1043,11 +1043,10 @@ Revise the HTML form to add a new Broker section at the top.
       </table>
     </form>
   </body>
-</html>
+</html> 
 ```
 
----
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← 4. Transfer NFTokens >](transfer-nftokens.html)  |  |
+| [← 4. Transfer NFTokens >](transfer-nftokens.html)  | [Authorize Minter → >](authorize-minter.html)||
