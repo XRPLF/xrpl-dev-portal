@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v6.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v7.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -156,6 +156,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+          </div><!--./col-->
+          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
@@ -191,6 +193,7 @@
           <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="events.html">Events</a>
             <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="developer-funding.html">Developer Funding</a>
             <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
@@ -249,7 +252,7 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#trust-lines-and-issuing">Trust Lines and Issuing</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#creation">Creation</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#going-below-the-limit">Going Below the Limit</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#going-above-the-limit">Going Above the Limit</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#trust-line-settings">Trust Line Settings</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#reserves-and-deletion">Reserves and Deletion</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#free-trust-lines">Free Trust Lines</a></li>
@@ -282,7 +285,7 @@
 </ul>
 </li>
 <li>Various <strong>settings</strong> and metadata. <em>Each</em> of the two accounts can control its own settings on the trust line.<ul>
-<li>Most importantly, each side sets a <strong>limit</strong> on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except <a href="#going-below-the-limit">through that account's own actions</a>.</li>
+<li>Most importantly, each side sets a <strong>limit</strong> on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except <a href="#going-above-the-limit">through that account's own actions</a>.</li>
 </ul>
 </li>
 </ul>
@@ -290,7 +293,7 @@
 <h2 id="creation">Creation<a aria-hidden="true" class="hover_anchor" href="#creation"><i class="fa fa-link"></i></a></h2>
 <p>Any account can unilaterally "trust" another account to issue a token by sending a <a href="trustset.html">TrustSet transaction</a> with a nonzero limit and their own settings. This creates a line with a zero balance, and sets the other side's settings to the default.</p>
 <p>Trust lines can be implicitly created by some transactions, such as when you buy a token in the <a href="decentralized-exchange.html">decentralized exchange</a>. In this case, the trust line uses entirely default settings.</p>
-<h2 id="going-below-the-limit">Going Below the Limit<a aria-hidden="true" class="hover_anchor" href="#going-below-the-limit"><i class="fa fa-link"></i></a></h2>
+<h2 id="going-above-the-limit">Going Above the Limit<a aria-hidden="true" class="hover_anchor" href="#going-above-the-limit"><i class="fa fa-link"></i></a></h2>
 <p>There are three cases where you can hold a balance that is <em>greater</em> than your limit on that trust line:</p>
 <ol>
 <li>When you acquire more of that token through <a href="decentralized-exchange.html">trading</a>.</li>
@@ -2719,6 +2722,7 @@
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
             <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>

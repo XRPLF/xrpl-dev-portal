@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v6.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v7.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -160,7 +160,9 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者用ツール</a>
+          </div><!--./col-->
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/dev-tools.html">Dev Tools</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -196,6 +198,7 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/developer-funding.html">Developer Funding</a>
             <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
@@ -388,7 +391,7 @@
 <span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 </code></pre></div>
 <p>Define the AccountSet transaction, setting the <code>NFTokenMinter</code> account and the <code>asfAuthorizedNFTokenMinter</code> flag.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">  </span><span class="nx">tx_blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">  </span><span class="nx">tx_json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w">    </span>
 <span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
 </code></pre></div>
@@ -404,17 +407,17 @@
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 </code></pre></div>
 <p>Prepare and send the transaction, then wait for results</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">cst_prepared</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">tx_json</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_json</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>If the transaction succeeds, stringify the results and report. If not, report that the transaction failed.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nAccount setting succeeded.'</span><span class="w"></span>
-<span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">cst_result</span><span class="p">,</span><span class="kc">null</span><span class="p">,</span><span class="mf">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span><span class="kc">null</span><span class="p">,</span><span class="mf">2</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="s1">'Error sending transaction: ${cst_result}'</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="s1">'Error sending transaction: ${result}'</span><span class="w"></span>
 <span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nAccount setting failed.'</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -443,7 +446,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nConnected. Minting NFToken.'</span><span class="w"></span>
 <span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 </code></pre></div>
-<p>This transaction blob is the same as the one used for the previous <code>Mint Token</code> function, with the addition of the <code>Issuer</code> field.</p>
+<p>This transaction blob is the same as the one used for the previous <a href="mint-and-burn-nftokens.html#mint-token"><code>mintToken()</code> function</a>, with the addition of the <code>Issuer</code> field.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">transactionBlob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"NFTokenMint"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">classicAddress</span><span class="p">,</span><span class="w"></span>
@@ -451,7 +454,7 @@
 <p>The URI is a link to a data file represented by the NFToken.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="w">    </span><span class="s2">"URI"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">convertStringToHex</span><span class="p">(</span><span class="nx">standbyTokenUrlField</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span><span class="w"></span>
 </code></pre></div>
-<p>At a minimum, we recommend that you set the tfTransferable flag (8) to enable accounts to sell and resell the NFToken for testing purposes.</p>
+<p>At a minimum, we recommend that you set the <code>tfTransferable</code> flag (8) to enable accounts to sell and resell the NFToken for testing purposes.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="w">    </span><span class="s2">"Flags"</span><span class="o">:</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">standbyFlagsField</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span><span class="w"></span>
 </code></pre></div>
 <p>Transfer fee is a value 0-50000 representing .001% of the purchase price for a resale to be returned to the original issuer. For example, <em>25000</em> translates to 25% of the purchase price to be sent to the issuer on resale.</p>
@@ -499,7 +502,7 @@
 <span class="w">  </span><span class="nx">my_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">operationalSeedField</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 
-<span class="w">  </span><span class="nx">tx_blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">tx_json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"NFTokenMinter"</span><span class="o">:</span><span class="w"> </span><span class="nx">operationalMinterField</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span><span class="w"></span>
@@ -508,15 +511,15 @@
 <span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\n Set Minter.'</span><span class="w"> </span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">cst_prepared</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cst_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">cst_signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cst_result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">(</span><span class="nx">tx_json</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_json</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nAccount setting succeeded.'</span><span class="w"></span>
-<span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">cst_result</span><span class="p">,</span><span class="kc">null</span><span class="p">,</span><span class="mf">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span><span class="kc">null</span><span class="p">,</span><span class="mf">2</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="s1">'Error sending transaction: ${cst_result}'</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="s1">'Error sending transaction: ${result}'</span><span class="w"></span>
 <span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nAccount setting failed.'</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -3270,7 +3273,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
-        <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
+        <a class="nav-link" href="/ja/dev-tools.html">Dev Tools</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
@@ -3339,7 +3342,7 @@
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
-            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
+            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">Dev Tools</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3348,6 +3351,7 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">Developer Funding</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>

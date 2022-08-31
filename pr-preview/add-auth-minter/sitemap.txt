@@ -406,6 +406,7 @@ https://xrpl.org/contribute.html
 https://xrpl.org/contribute-code.html
 https://xrpl.org/events.html
 https://xrpl.org/ambassadors.html
+https://xrpl.org/developer-funding.html
 https://xrpl.org/report-a-scam.html
 https://xrpl.org/explore.html
 https://xrpl.org/wallets.html
