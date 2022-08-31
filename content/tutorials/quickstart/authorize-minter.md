@@ -121,7 +121,7 @@ Connect to the ledger and get the account wallet.
 Define the AccountSet transaction, setting the `NFTokenMinter` account and the `asfAuthorizedNFTokenMinter` flag.
 
 ```javascript
-  tx_blob = {
+  tx_json = {
     "TransactionType": "AccountSet",    
     "Account": my_wallet.address,
 ```
@@ -149,20 +149,20 @@ Report progress.
 Prepare and send the transaction, then wait for results
 
 ```javascript
-    const cst_prepared = await client.autofill(tx_blob)
-    const cst_signed = my_wallet.sign(cst_prepared)
-    const cst_result = await client.submitAndWait(cst_signed.tx_blob)
+    const prepared = await client.autofill(tx_json)
+    const signed = my_wallet.sign(prepared)
+    const result = await client.submitAndWait(signed.tx_json)
 ```
 
 If the transaction succeeds, stringify the results and report. If not, report that the transaction failed.
 
 ```javascript
-    if (cst_result.result.meta.TransactionResult == "tesSUCCESS") {
+    if (result.result.meta.TransactionResult == "tesSUCCESS") {
     results += '\nAccount setting succeeded.'
-    results += JSON.stringify(cst_result,null,2)
+    results += JSON.stringify(result,null,2)
     document.getElementById('standbyResultField').value = results
     } else {
-    throw 'Error sending transaction: ${cst_result}'
+    throw 'Error sending transaction: ${result}'
     results += '\nAccount setting failed.'
     document.getElementById('standbyResultField').value = results
     }
@@ -205,7 +205,7 @@ Report success
   document.getElementById('standbyResultField').value = results
 ```
       
-This transaction blob is the same as the one used for the previous `Mint Token` function, with the addition of the `Issuer` field.
+This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nftokens.html#mint-token), with the addition of the `Issuer` field.
 
 ```javascript
   const transactionBlob = {
@@ -219,7 +219,7 @@ The URI is a link to a data file represented by the NFToken.
     "URI": xrpl.convertStringToHex(standbyTokenUrlField.value),
 ```
 
-At a minimum, we recommend that you set the tfTransferable flag (8) to enable accounts to sell and resell the NFToken for testing purposes.
+At a minimum, we recommend that you set the `tfTransferable` flag (8) to enable accounts to sell and resell the NFToken for testing purposes.
 
 ```javascript
     "Flags": parseInt(standbyFlagsField.value),
@@ -291,7 +291,7 @@ async function oPsetMinter(type) {
   my_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   document.getElementById('operationalResultField').value = results
 
-  tx_blob = {
+  tx_json = {
     "TransactionType": "AccountSet",
     "Account": my_wallet.address,
     "NFTokenMinter": operationalMinterField.value,
@@ -300,15 +300,15 @@ async function oPsetMinter(type) {
     results += '\n Set Minter.' 
     document.getElementById('operationalResultField').value = results
       
-    const cst_prepared = await client.autofill(tx_blob)
-    const cst_signed = my_wallet.sign(cst_prepared)
-    const cst_result = await client.submitAndWait(cst_signed.tx_blob)
-    if (cst_result.result.meta.TransactionResult == "tesSUCCESS") {
+    const prepared = await client.autofill(tx_json)
+    const signed = my_wallet.sign(prepared)
+    const result = await client.submitAndWait(signed.tx_json)
+    if (result.result.meta.TransactionResult == "tesSUCCESS") {
     results += '\nAccount setting succeeded.'
-    results += JSON.stringify(cst_result,null,2)
+    results += JSON.stringify(result,null,2)
     document.getElementById('operationalResultField').value = results
     } else {
-    throw 'Error sending transaction: ${cst_result}'
+    throw 'Error sending transaction: ${result}'
     results += '\nAccount setting failed.'
     document.getElementById('operationalResultField').value = results
     }
