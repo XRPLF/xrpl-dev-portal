@@ -4236,6 +4236,7 @@ pages:
         top_nav_hero_image: top-nav-hero-contribute
         targets:
             - en
+            - ja
 
     -   name: Ambassadors
         html: ambassadors.html
@@ -4244,16 +4245,16 @@ pages:
         sidebar: disabled
         targets:
             - en
+            - ja
 
-    # Developer funding page disabled until Bounties program launches.
-    # -   name: Developer Funding
-    #     html: developer-funding.html
-    #     parent: contribute.html
-    #     template: page-funding.html.jinja
-    #     sidebar: disabled
-    #     targets:
-    #         - en
-    #         - ja
+    -   name: Developer Funding
+        html: developer-funding.html
+        parent: contribute.html
+        template: page-funding.html.jinja
+        sidebar: disabled
+        targets:
+            - en
+            - ja
 
     -   name: XRPL Jobs
         html: https://jobs.xrpl.org/
