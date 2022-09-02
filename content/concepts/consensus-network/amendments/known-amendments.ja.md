@@ -17,7 +17,7 @@ labels:
 | [CryptoConditionsSuite][]       | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [fixNFTokenNegOffer][]          | v1.9.2     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
-| [NonFungibleTokensV1_1][]       | v1.9.2     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
+| [NonFungibleTokensV1_1][]       | v1.9.2     | [予定: 2022/09/13](ttps://xrpl.org/blog/2022/get-ready-for-nfts.html "BADGE_BLUE") |
 | [ExpandedSignerList][]          | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [fixNFTokenDirV1][]             | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1][]         | v1.9.0     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
@@ -657,7 +657,7 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 | 投票中 |
+| 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 | 予定 |
 
 <!-- TODO: translate description -->
 This amendment's only effect is to enable three other amendments at the same time:
