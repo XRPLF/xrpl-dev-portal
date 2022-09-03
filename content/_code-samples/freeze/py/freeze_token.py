@@ -35,7 +35,7 @@ sender_wallet = Wallet(seed=issuer_seed, sequence=0)
 trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCurrencyAmount(
     currency=symbol_to_hex(token),
     issuer=target_addr,
-    value = "0"
+    value = value
 ),
 flags=1048576) # flag to freeze the trust line. check all trustset flags here https://xrpl.org/trustset.html#trustset-flags
 
