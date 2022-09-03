@@ -1,7 +1,10 @@
 from xrpl.models import AccountObjects
 from xrpl.utils import drops_to_xrp, ripple_time_to_datetime
+from xrpl.clients import JsonRpcClient
 
 # Retreive all escrows created or received by an account, formatted
+
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the testnetwork
 
 account_address = "rxxxxxxxxxxxxxxxxxxxxxxxx"
 
