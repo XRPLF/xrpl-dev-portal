@@ -146,11 +146,6 @@ Ripple does contribute to a reference implementation of the core XRP Ledger serv
 Ripple is also one of several entities who publish recommended UNL settings and runs validators on the network. As of late-2022, Ripple runs 3 of the 35+ validators in the default UNL.
 
 
-#### Does Ripple offer a secure method to download their software?
-
-`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. Ripple also publishes pre-built binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published. <!-- STYLE_OVERRIDE: evident -->
-
-
 #### Does the XRP Ledger distinguish between the codebase for validation and the one for user software?
 
 Yes. There are several [XRP Ledger client libraries](client-libraries.html) which are intended for user software developers. These libraries have different codebases and repositories from the [core XRP Ledger server](xrpl-servers.html) which powers the network and validates transactions.
