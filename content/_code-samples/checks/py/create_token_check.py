@@ -18,13 +18,6 @@ def symbol_to_hex(symbol: str = None) -> str:
         return bytes_string.hex().upper().ljust(40, '0')
     return symbol
 
-def hex_to_symbol(hex: str = None) -> str:
-    """token hex_to_symbol."""
-    if len(hex) > 3:
-        bytes_string = bytes.fromhex(str(hex)).decode('utf-8')
-        return bytes_string.rstrip('\x00')
-    return hex
-
 
 # check sender seed
 sender_seed = "sxxxxxxxxxxxxxxxxxxxx"
