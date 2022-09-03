@@ -5,6 +5,8 @@ const ripple_binary_codec = require('ripple-binary-codec');
 const payload = require("./json_input.json");
 let outputs = require("./binary_outputs.json");
 
+// NOTE: This sample uses ripple-binary-codec (https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-binary-codec) and xrpl.js (https://github.com/XRPLF/xrpl.js/) libraries
+
 const main = async () => {
     try {
         console.log("Converting your transaction...");
@@ -16,13 +18,13 @@ const main = async () => {
         // autofill all the missing fields
         const complete_payload = await client.autofill(payload);
 
-        // convert the JSON tx to serialized using ripple-binary-codec (https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-binary-codec)
+        // convert the JSON tx to serialized using ripple-binary-codec
         const decoded_payload = ripple_binary_codec.encode(complete_payload);
 
         // push decoded tx into output array
         outputs.push(decoded_payload);
 
-        // write the output into output.json file.
+        // write the output into binary_outputs.json file.
         fs.writeFileSync("./binary_outputs.json", JSON.stringify(outputs, null, "\t"));
 
         // disconnect from public server
