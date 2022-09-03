@@ -10,7 +10,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the
 # If the escrow wasnt created with a CancelAfter time, it never expires and this transaction fails
 
 sender_seed = "sxxxxxxxxxxxxxxxxxxxxxx" # sender seeed
-escrow_creator = "rxxxxxxxxxxxxxxxxxxxxxxxxxxx" # ecsrow creator/ sender address
+escrow_creator = "rxxxxxxxxxxxxxxxxxxxxxxxxxxx" # escrow creator/ sender address
 escrow_seq = int # escrow sequence
 
 # generate wallet object
