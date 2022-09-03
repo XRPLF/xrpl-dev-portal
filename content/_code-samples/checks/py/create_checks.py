@@ -3,7 +3,7 @@ from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCreate, IssuedCurrencyAmount
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
-from xrpl.utils import ripple_time_to_datetime
+from xrpl.utils import datetime_to_rippletime, xrp_to_drops
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the testnetwork
 
