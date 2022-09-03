@@ -5,9 +5,6 @@ const ripple_binary_codec = require('ripple-binary-codec');
 const payload = require("./json_input.json");
 let outputs = require("./binary_outputs.json");
 
-// if output JSON is invalid set the default value to empty array
-outputs = Array.isArray(outputs) ? outputs : [];
-
 const main = async () => {
     try {
         console.log("Converting your transaction...");
