@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ripple-keypairs": "^1.1.4"
+  }
+}
