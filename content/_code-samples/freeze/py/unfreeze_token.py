@@ -22,7 +22,7 @@ issuer_seed = "sxxxxxxxxxxxxxxxxxxxxx"
 # token name
 token = "LegitXRP"
 
-# amount a trustline can handle, for this transaction it is set to 0
+# amount a trustline can handle
 value = "0"
 
 # address to ufreeze trustline
@@ -35,7 +35,7 @@ sender_wallet = Wallet(seed=issuer_seed, sequence=0)
 trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCurrencyAmount(
     currency=symbol_to_hex(token),
     issuer=target_addr,
-    value = "0"
+    value = value 
 ),
 flags=2097152)# flag to unfreeze the trust line.
 
