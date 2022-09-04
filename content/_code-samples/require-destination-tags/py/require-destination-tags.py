@@ -8,7 +8,6 @@ myAddr = "rwDMiiYQTnPRxPxPg3DN5FneWmSrx8B2Ej"
 mySeed = "sss69gbX4ayqgBHgKRa----------"
 
 # Derive and initialize wallet
-public, private = keypairs.derive_keypair(mySeed)
 wallet_from_seed = Wallet(mySeed, 0)
 
 # Connect to a testnet node
