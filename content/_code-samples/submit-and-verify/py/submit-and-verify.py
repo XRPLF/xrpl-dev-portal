@@ -18,7 +18,6 @@ client = JsonRpcClient(JSON_RPC_URL)
 # Construct AccountSet transaction
 tx = AccountSet(
     account=myAddr,
-    fee="10",
     set_flag=1  # Numerical Value: 1 = asfRequireDest
 )
 
