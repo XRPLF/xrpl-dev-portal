@@ -18,7 +18,6 @@ client = JsonRpcClient(JSON_RPC_URL)
 # Construct AccountSet transaction
 tx = AccountSet(
     account=myAddr,
-    set_flag=1  # Numerical Value: 1 = asfRequireDest
 )
 
 # Sign the transaction locally & submit transaction and verify its validity on the ledger
