@@ -1,11 +1,13 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import AccountSet
-from xrpl.transaction import safe_sign_and_submit_transaction
-from xrpl.core import keypairs
+from xrpl.transaction import safe_sign_transaction, send_reliable_submission
+from xrpl.account import get_next_valid_seq_number
+from xrpl.ledger import get_latest_validated_ledger_sequence
 from xrpl.wallet import Wallet
+from xrpl.core import keypairs
 
-myAddr = "rfaNymVS1fEREj4FpNroXVEcVVMph6k2Mt"
-mySeed = "ss3GZzmyEBxvwB3LUv-----------"
+myAddr = "r31FLxNkfFJwRXbJw82RYB6Fa7jmfA3ix1"
+mySeed = "sn51LT5QeaPYhjM1HL9-----------"
 
 # Derive and initialize wallet
 public, private = keypairs.derive_keypair(mySeed)
@@ -18,15 +20,15 @@ client = JsonRpcClient(JSON_RPC_URL)
 # Construct AccountSet transaction
 tx = AccountSet(
     account=myAddr,
+    fee="10",
+    sequence=get_next_valid_seq_number(address=myAddr, client=client),
+    last_ledger_sequence=get_latest_validated_ledger_sequence(client=client)+20,
 )
 
 # Sign the transaction locally & submit transaction and verify its validity on the ledger
 my_tx_payment_signed = safe_sign_transaction(transaction=tx, wallet=wallet_from_seed)
 response = send_reliable_submission(transaction=my_tx_payment_signed, client=client)
-result = response.result["engine_result"]
-my_tx_payment_signed = my_tx_payment_signed.result
-
-result = my_tx_payment_signed["engine_result"]
+result = response.result["meta"]["TransactionResult"]
 
 if result == "tesSUCCESS":
     print("Transaction successful!")
