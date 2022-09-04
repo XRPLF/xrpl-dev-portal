@@ -21,7 +21,7 @@ const main = async () => {
         // convert the JSON tx to serialized using ripple-binary-codec
         const decoded_payload = ripple_binary_codec.encode(complete_payload);
 
-        // push decoded tx into output array
+        // push binary tx into output array
         outputs.push(decoded_payload);
 
         // write the output into binary_outputs.json file.
