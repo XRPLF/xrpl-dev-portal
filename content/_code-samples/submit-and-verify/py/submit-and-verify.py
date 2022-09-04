@@ -21,7 +21,9 @@ tx = AccountSet(
 )
 
 # Sign the transaction locally & submit transaction and verify its validity on the ledger
-my_tx_payment_signed = safe_sign_and_submit_transaction(transaction=tx, wallet=wallet_from_seed, client=client)
+my_tx_payment_signed = safe_sign_transaction(transaction=tx, wallet=wallet_from_seed)
+response = send_reliable_submission(transaction=my_tx_payment_signed, client=client)
+result = response.result["engine_result"]
 my_tx_payment_signed = my_tx_payment_signed.result
 
 result = my_tx_payment_signed["engine_result"]
