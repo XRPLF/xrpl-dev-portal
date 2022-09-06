@@ -59,7 +59,6 @@ print(stxn_result["hash"])
 
 
 
-
 ############# CREATE XRP CHECK ################################
 """Create xrp check"""
 
