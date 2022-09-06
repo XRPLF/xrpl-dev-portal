@@ -33,3 +33,4 @@ stxn_result = stxn_response.result
 # print result and transaction hash
 print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])
+
