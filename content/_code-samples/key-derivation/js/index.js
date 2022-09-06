@@ -176,12 +176,12 @@ class Seed {
             Seed (hex): ${hexSeed}
             Seed (rippled RFC-1751): ${rfc1751Rippled}
             
-            Ed25519 Secret Key (hex): ${seed.ED25519Keypair.privateKey}
-            Ed25519 Public Key (hex): ${seed.ED25519Keypair.publicKey}
+            Ed25519 Secret Key (hex): ${this.ED25519Keypair.privateKey}
+            Ed25519 Public Key (hex): ${this.ED25519Keypair.publicKey}
             Ed25519 Public Key (base58 - Account): ${base58ED25519Account}
             
-            secp256k1 Secret Key (hex): ${seed.Secp256K1Keypair.privateKey}
-            secp256k1 Public Key (hex): ${seed.Secp256K1Keypair.publicKey}
+            secp256k1 Secret Key (hex): ${this.Secp256K1Keypair.privateKey}
+            secp256k1 Public Key (hex): ${this.Secp256K1Keypair.publicKey}
             secp256k1 Public Key (base58 - Account): ${base58Secp256k1Account}
             secp256k1 Public Key (base58 - Validator): ${base58Secp256k1AccountValidator}
         `
@@ -190,12 +190,21 @@ class Seed {
     }
 }
 
+if (process.argv[2] !== undefined) {
+    console.log(process.argv[2]);
+    const seed = new Seed(process.argv[2]);
+    console.log(seed.toString())
+} else {
+    const seed = new Seed();
+    console.log(seed.toString())
+}
+
 //from empty seed
 //const seed = new Seed();
 //console.log(seed.toString());
 
 //from hex formatted seed
-//const hexSeed = '0x21edc3dec3ef1873cf8f333381c5f360c3'
+//const hexSeed = "0x21edc3dec3ef1873cf8f333381c5f360c3"
 //const seed = new Seed(hexSeed);
 //console.log(seed.toString());
 
@@ -205,6 +214,6 @@ class Seed {
 //console.log(seed.toString());
 
 //from fixed seed
-const string = "sEdSKaCy2JT7JaM7v95H9SxkhP9wS2r"
-const seed = new Seed(string);
-console.log(seed.toString());
+//const string = "sEdSKaCy2JT7JaM7v95H9SxkhP9wS2r"
+//const seed = new Seed(string);
+//console.log(seed.toString());
