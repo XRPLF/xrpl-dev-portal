@@ -18,8 +18,8 @@ check_id = str
 # amount to cash
 amount = 10.00
 
-# generate wallet from seed
-sender_wallet =generate_faucet_wallet(client=client)
+# generate wallet
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build check cash transaction
 check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=xrp_to_drops(amount))
@@ -50,10 +50,10 @@ token = "LegitXRP"
 amount = 10.00
 
 # token issuer address
-issuer = "rxxxxxxxxxxxxxxxxxxxxxxxx"
+issuer = generate_faucet_wallet(client=client).classic_address
 
-# create wallet object
-sender_wallet = sender_wallet =generate_faucet_wallet(client=client)
+# create sender wallet object
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build check cash transaction
 check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=IssuedCurrencyAmount(
