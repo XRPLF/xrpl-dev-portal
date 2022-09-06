@@ -1,4 +1,4 @@
-from xrpl.wallet import Wallet
+from xrpl.wallet import Wallet, generate_faucet_wallet
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCancel
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
@@ -11,14 +11,12 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the
 # sender is the check creator or recipient
 # If the Check has expired, any address can cancel it
 
-# check casher seed
-sender_seed = "sxxxxxxxxxxxxxxxxxxxxx"
 
 # check id
 check_id = str
 
 # create wallet object
-sender_wallet = Wallet(seed=sender_seed, sequence=0)
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build check cancel transaction
 check_txn = CheckCancel(account=sender_wallet.classic_address, check_id=check_id)
