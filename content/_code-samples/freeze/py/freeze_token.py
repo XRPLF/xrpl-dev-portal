@@ -2,7 +2,7 @@ from xrpl.clients import JsonRpcClient
 from xrpl.models import IssuedCurrencyAmount, TrustSet
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
-from xrpl.wallet import Wallet
+from xrpl.wallet import Wallet, generate_faucet_wallet
 
 from Misc import symbol_to_hex
 
@@ -16,8 +16,6 @@ def symbol_to_hex(symbol: str = None) -> str:
         return bytes_string.hex().upper().ljust(40, '0')
     return symbol
 
-# your issuing account's seed
-issuer_seed = "sxxxxxxxxxxxxxxxxxxxxx"
 
 # token name
 token = "LegitXRP"
@@ -26,10 +24,10 @@ token = "LegitXRP"
 value = "0"
 
 # address to freeze trustline
-target_addr = "rxxxxxxxxxxxxxxxxxxxxx"
+target_addr = generate_faucet_wallet(client=client).classic_address
 
 # generate wallet
-sender_wallet = Wallet(seed=issuer_seed, sequence=0)
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build trustline freeze transaction
 trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCurrencyAmount(
