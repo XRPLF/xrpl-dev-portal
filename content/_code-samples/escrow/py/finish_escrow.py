@@ -9,8 +9,8 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the
 # Complete an escrow
 # cannot be called until the finish time is reached
 
-sender_seed = "sxxxxxxxxxxxxxxxxxxxxxx" # sender seeed
-escrow_creator = "rxxxxxxxxxxxxxxxxxxxxxxxxxxx" # ecsrow creator/ sender address
+
+escrow_creator = generate_faucet_wallet(client=client).classic_address # ecsrow creator/ sender address
 escrow_seq = int # escrow sequence
 
 # optional fields
@@ -22,7 +22,7 @@ condition = str
 fulfillment = str
 
 # generate wallet object
-sender_wallet = Wallet(seed=sender_seed, sequence=0)
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build escrow finish transaction
 finish_txn = EscrowFinish(account=sender_wallet.classic_address, owner=escrow_creator, offer_sequence=escrow_seq, condition=condition, fulfillment=fulfillment)
