@@ -13,12 +13,12 @@ def symbol_to_hex(symbol: str = None) -> str:
     return symbol
 
 # issuer address
-issuer_addr = "sxxxxxxxxxxxxxxxxxxxxxxxx"
+issuer_addr =generate_faucet_wallet(client=client).classic_address
 
 # target address to query for freeze status
-target_addr = "rxxxxxxxxxxxxxxxxxxxxxxxx"
+target_addr = generate_faucet_wallet(client=client).classic_address
 
-# token name to 
+# token name
 token = "LegitXRP"
 
 # build account line query
