@@ -1,5 +1,4 @@
-
-from xrpl.wallet import Wallet
+from xrpl.wallet import Wallet, generate_faucet_wallet
 from xrpl.utils import xrp_to_drops
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
@@ -9,9 +8,9 @@ from xrpl.models import EscrowCreate
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # instanstiate ripple client
 
-sender_seed = "sxxxxxxxxxxxxxxxxxxxxxxxxxx" # sender seed
 amount = 10.000 # amount to escrow
-receiver_addr = "rxxxxxxxxxxxxxxxxxxxxxxxxxxx" # receiver address
+
+receiver_addr = generate_faucet_wallet(client=client).classic_address # receiver address
 
 claim_date = int # date when and after ecsrow can be claimed `xrpl.utils.datetime_to_ripple_time()`
 
@@ -22,7 +21,7 @@ condition = str # cryptic condition that must be met before escrow can be comple
 
 
 # generate sender wallet with seed
-sender_wallet = Wallet(seed=sender_seed, sequence=0)
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build escrow create transaction
 create_txn = EscrowCreate(
