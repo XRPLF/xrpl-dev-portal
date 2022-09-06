@@ -1,4 +1,4 @@
-from xrpl.wallet import Wallet
+from xrpl.wallet import Wallet, generate_faucet_wallet
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCreate, IssuedCurrencyAmount
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
@@ -17,11 +17,9 @@ def symbol_to_hex(symbol: str = None) -> str:
         return bytes_string.hex().upper().ljust(40, '0')
     return symbol
 
-# check sender seed
-sender_seed = "sxxxxxxxxxxxxxxxxxxxx"
 
 # check receiver address
-receiver_addr = "rxxxxxxxxxxxxxxxxxxxxxxxxxx"
+receiver_addr = "rxxxxxxxxxxxxxxxxxxxxxxx"
 
 # token name
 token = "LegitXRP" 
@@ -36,7 +34,7 @@ issuer = "rxxxxxxxxxxxxxxxxxxxxxxxx"
 expiry_date = int # from xrpl.utils import datetime_to_ripple_time()
 
 # generate wallet from seed
-sender_wallet = Wallet(seed=sender_seed, sequence=0)
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build check create transaction
 check_txn = CheckCreate(account=sender_wallet.classic_address, destination=receiver_addr,
@@ -62,14 +60,12 @@ print(stxn_result["hash"])
 
 
 
-############ CREATE XRP CHECK ################################
+############# CREATE XRP CHECK ################################
 """Create xrp check"""
 
-# check sender seed
-sender_seed = "sxxxxxxxxxxxxxxxxxxxx"
 
 # check receiver address
-receiver_addr = "rxxxxxxxxxxxxxxxxxxxxxxxxxx"
+receiver_addr = "rxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # amount of xrp to deliver
 amount = 10.00
@@ -78,7 +74,7 @@ amount = 10.00
 expiry_date = int # from xrpl.utils import datetime_to_ripple_time()
 
 # generate wallet from seed
-sender_wallet = Wallet(seed=sender_seed, sequence=0)
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build check create transaction
 check_txn = CheckCreate(account=sender_wallet.classic_address,
