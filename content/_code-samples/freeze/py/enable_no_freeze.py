@@ -7,11 +7,8 @@ from xrpl.wallet import Wallet
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to testnet
 
 
-# sender seed
-sender_seed = "sxxxxxxxxxxxxxxxxxxxxx"
-
 # generate wallet
-sender_wallet = Wallet(seed=sender_seed, sequence=0)
+sender_wallet = generate_faucet_wallet(client=client)
 
 # build accountset transaction to disable freezing
 accountset = AccountSet(account=sender_wallet.classic_address,
