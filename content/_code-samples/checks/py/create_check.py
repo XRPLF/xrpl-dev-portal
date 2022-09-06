@@ -19,7 +19,7 @@ def symbol_to_hex(symbol: str = None) -> str:
 
 
 # check receiver address
-receiver_addr = "rxxxxxxxxxxxxxxxxxxxxxxx"
+receiver_addr = generate_faucet_wallet(client=client).classic_address
 
 # token name
 token = "LegitXRP" 
@@ -28,7 +28,7 @@ token = "LegitXRP"
 amount = 10.00
 
 # token issuer address
-issuer = "rxxxxxxxxxxxxxxxxxxxxxxxx"
+issuer = generate_faucet_wallet(client=client).classic_address
 
 # check expiry date
 expiry_date = int # from xrpl.utils import datetime_to_ripple_time()
@@ -65,7 +65,7 @@ print(stxn_result["hash"])
 
 
 # check receiver address
-receiver_addr = "rxxxxxxxxxxxxxxxxxxxxxxxx"
+receiver_addr = generate_faucet_wallet(client=client).classic_address
 
 # amount of xrp to deliver
 amount = 10.00
