@@ -1,5 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountLines
+from xrpl.wallet import Wallet, generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to testnetwork
 
