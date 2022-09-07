@@ -149,7 +149,7 @@ No, Ripple does not own or control the XRP Ledger or XRP Ledger network.
 
 Ripple contributes to a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/xrplf/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple periodically publishes pre-compiled binary packages of the software for convenience. Anyone can [download and compile the software from source](install-rippled.html).
 
-Ripple is also one of several entities who publish recommended UNL settings and runs validators on the network. As of late-2022, Ripple runs 3 of the 35+ validators in the default UNL.
+Several entities publish recommended validator lists (UNLs). As of September 2022, Ripple runs 3 of the 35 validators in the default UNL.
 
 
 #### Does the XRP Ledger distinguish between the codebase for validation and the one for user software?
