@@ -5,8 +5,8 @@ from cryptoconditions import PreimageSha256
 
 # """Generate a condition and fulfillment for escrows"""
 
-# whatever you please
-secret = urandom(random.randint(32, 64))
+# Generate a random preimage with at least 32 bytes of cryptographically-secure randomness.
+secret = urandom(32)
 
 # generate cryptic image from secret
 fufill = PreimageSha256(preimage=secret)
