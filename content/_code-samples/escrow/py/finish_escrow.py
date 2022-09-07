@@ -1,8 +1,8 @@
-from xrpl.wallet import Wallet
 from xrpl.clients import JsonRpcClient
-from xrpl.models EscrowFinish
+from xrpl.models import EscrowFinish
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
+from xrpl.wallet import Wallet, generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the testnetwork
 
@@ -11,15 +11,15 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the
 
 
 escrow_creator = generate_faucet_wallet(client=client).classic_address # ecsrow creator/ sender address
-escrow_seq = int # escrow sequence
+escrow_seq = 27641268 # escrow sequence
 
 # optional fields
 
 # cryptic condition that must be met before escrow can be completed, passed on escrow creation
-condition = str 
+condition = "A02580203882E2EB9B44130530541C4CC360D079F265792C4A7ED3840968897CB7DF2DA1810120"
 
 # cryptic fulfillment of the condtion 
-fulfillment = str
+fulfillment = "A0228020AED2C5FE4D147D310D3CFEBD9BFA81AD0F63CE1ADD92E00379DDDAF8E090E24C"
 
 # generate wallet object
 sender_wallet = generate_faucet_wallet(client=client)
@@ -28,7 +28,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 finish_txn = EscrowFinish(account=sender_wallet.classic_address, owner=escrow_creator, offer_sequence=escrow_seq, condition=condition, fulfillment=fulfillment)
 
 # sign transaction with wallet
-stxn = safe_sign_and_autofill_transaction(cancel_txn, sender_wallet, client)
+stxn = safe_sign_and_autofill_transaction(finish_txn, sender_wallet, client)
 
 # send transaction and wait for response
 stxn_response = send_reliable_submission(stxn, client)
