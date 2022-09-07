@@ -1,18 +1,16 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import TicketCreate, AccountSet
 from xrpl.transaction import safe_sign_and_submit_transaction
-from xrpl.wallet import Wallet
+from xrpl.wallet import Wallet, generate_faucet_wallet
 from xrpl.models.requests.account_objects import AccountObjects, AccountObjectType
-
-myAddr = "rLugkhsRxNHroDVJ29anq9UoTcNQdDjXCR"
-mySeed = "sARIIQ06xLZulXC1MBeE---------"
-
-# Derive and initialize wallet
-wallet_from_seed = Wallet(mySeed, 0)
 
 # Connect to a testnet node
 JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 client = JsonRpcClient(JSON_RPC_URL)
+
+# Generate a wallet and request faucet
+test_wallet = generate_faucet_wallet(client=client)
+myAddr = test_wallet.classic_address
 
 # Construct a TicketCreate transaction, 1 ticket created for future use
 tx = TicketCreate(
@@ -21,7 +19,7 @@ tx = TicketCreate(
 )
 
 # Sign transaction locally and submit
-my_tx_payment_signed = safe_sign_and_submit_transaction(transaction=tx, wallet=wallet_from_seed, client=client)
+my_tx_payment_signed = safe_sign_and_submit_transaction(transaction=tx, wallet=test_wallet, client=client)
 
 # Get a Ticket Sequence
 get_ticket_sequence = AccountObjects(
@@ -42,9 +40,10 @@ tx_1 = AccountSet(
 )
 
 # Send transaction (w/ Ticket)
-tx_result = safe_sign_and_submit_transaction(transaction=tx_1, client=client, wallet=wallet_from_seed)
+tx_result = safe_sign_and_submit_transaction(transaction=tx_1, client=client, wallet=test_wallet)
 result = tx_result.result["engine_result"]
 
+print(f"Account: {myAddr}")
 if result == "tesSUCCESS":
     print("Transaction successful!")
 elif result == "tefMAX_LEDGER":
