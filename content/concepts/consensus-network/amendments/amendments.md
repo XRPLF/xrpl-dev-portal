@@ -42,7 +42,7 @@ Every 256th ledger is called a "flag" ledger. The process of approving an amendm
 The flag ledger itself has no special contents. However, during that time, the servers look at the votes of the validators they trust, and decide whether to insert an [`EnableAmendment` pseudo-transaction](enableamendment.html) into the following ledger. The flags of an EnableAmendment pseudo-transaction show what the server thinks happened:
 
 * The `tfGotMajority` flag means that support for the amendment has increased to more than 80% of trusted validators.
-* The `tfLostMajority` flag means that support for the amendment has decreased to less than 80% (<=80%) of trusted validators.
+* The `tfLostMajority` flag means that support for the amendment has decreased to 80% of trusted validators or less.
 * An EnableAmendment pseudo-transaction with no flags means that support for the amendment has been enabled. (The change in transaction processing applies to every ledger after this one.)
 
 A server only inserts the pseudo-transaction to enable an amendment if all of the following conditions are met:
