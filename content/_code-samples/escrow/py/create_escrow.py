@@ -10,7 +10,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # instanstiate r
 
 amount = 10.000 # amount to escrow
 
-receiver_addr = generate_faucet_wallet(client=client).classic_address # receiver address
+receiver_addr = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" # Example: send back to Testnet Faucet
 
 claim_date = int # date when and after ecsrow can be claimed `xrpl.utils.datetime_to_ripple_time()`
 
