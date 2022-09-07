@@ -1,25 +1,14 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountObjects
-from xrpl.utils import drops_to_xrp, ripple_time_to_datetime
+from xrpl.utils import drops_to_xrp, hex_to_str, ripple_time_to_datetime
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the testnetwork
-
-
-
-"""Helper methods for working with token names"""
-
-def hex_to_symbol(hex: str = None) -> str:
-    """token hex_to_symbol."""
-    if len(hex) > 3:
-        bytes_string = bytes.fromhex(str(hex)).decode('utf-8')
-        return bytes_string.rstrip('\x00')
-    return hex
 
 
 # Query the ledger for all xrp checks an account has created or received
 
 # wallet address to query
-wallet_addr = str
+wallet_addr = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
 # dict to store all the checks
 checks_dict = {}
@@ -68,7 +57,7 @@ print(checks_dict)
 # Query the ledger for all token checks an account has created or received
 
 # wallet address to query
-wallet_addr = str
+wallet_addr = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
 # dict to store all the checks
 checks_dict = {}
@@ -96,7 +85,7 @@ if "account_objects" in result:
             check_data["receiver"] = check["Destination"]
             if "Expiration" in check:
                 check_data["expiry_date"] = str(ripple_time_to_datetime(check["Expiration"]))
-            check_data["token"] = hex_to_symbol(check["SendMax"]["currency"])
+            check_data["token"] = hex_to_str(check["SendMax"]["currency"])
             check_data["issuer"] = check["SendMax"]["issuer"]
             check_data["amount"] = check["SendMax"]["value"]
             check_data["check_id"] = check["index"]
