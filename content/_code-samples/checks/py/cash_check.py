@@ -1,10 +1,9 @@
+from xrpl.clients import JsonRpcClient
+from xrpl.models import CheckCash, IssuedCurrencyAmount
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
-from xrpl.utils import xrp_to_drops
-from xrpl.wallet import Wallet, generate_faucet_wallet
-
-from xrpl.clients import JsonRpcClient
-from xrpl.models import CheckCreate, IssuedCurrencyAmount
+from xrpl.utils import str_to_hex, xrp_to_drops
+from xrpl.wallet import generate_faucet_wallet
 
 # create a client
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
@@ -13,7 +12,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
 # cash an xrp check
 
 # check id
-check_id = str
+check_id = "F944CB379DEE18EFDA7A58A4F81AF1A98C46E54A8B9F2D268F1E26610BC0EB03"
 
 # amount to cash
 amount = 10.00
@@ -57,7 +56,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 
 # build check cash transaction
 check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=IssuedCurrencyAmount(
-    currency=token,
+    currency=str_to_hex(token),
     issuer=issuer,
     value=amount))
 
