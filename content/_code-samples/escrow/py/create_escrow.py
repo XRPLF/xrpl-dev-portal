@@ -1,7 +1,10 @@
 from xrpl.wallet import Wallet, generate_faucet_wallet
+from xrpl.clients import JsonRpcClient
+from datetime import datetime, timedelta
 from xrpl.utils import xrp_to_drops
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
+from xrpl.utils import datetime_to_ripple_time
 from xrpl.models import EscrowCreate                             
 
 # Create Escrow
@@ -12,12 +15,15 @@ amount = 10.000 # amount to escrow
 
 receiver_addr = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" # Example: send back to Testnet Faucet
 
-claim_date = int # date when and after ecsrow can be claimed `xrpl.utils.datetime_to_ripple_time()`
+# make claimable escrow after 3 days
+claim_date = datetime_to_ripple_time(datetime.now() + timedelta(days=3))
 
-expiry_date = int # date when and after escrow expires `xrpl.utils.datetime_to_ripple_time()`
+# escrow will expire after 5 days
+expiry_date = datetime_to_ripple_time(datetime.now() + timedelta(days=5))
 
 # optional field
-condition = str # cryptic condition that must be met before escrow can be completed | see....
+# cryptic condition that must be met before escrow can be completed | see....
+condition = "A02580205A0E9E4018BE1A6E0F51D39B483122EFDF1DDEF3A4BE83BE71522F9E8CDAB179810120" # do not use in production
 
 
 # generate sender wallet with seed
