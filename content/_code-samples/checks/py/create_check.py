@@ -1,25 +1,18 @@
-from xrpl.wallet import Wallet, generate_faucet_wallet
+from datetime import datetime, timedelta
+
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCreate, IssuedCurrencyAmount
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
-from xrpl.utils import datetime_to_rippletime, xrp_to_drops
+from xrpl.utils import datetime_to_ripple_time, str_to_hex, xrp_to_drops
+from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the testnetwork
 
 """Create a token check"""
 
-"""Helper methods for working with token names"""
-def symbol_to_hex(symbol: str = None) -> str:
-    """token symbol_to_hex."""
-    if len(symbol) > 3:
-        bytes_string = bytes(str(symbol).encode('utf-8'))
-        return bytes_string.hex().upper().ljust(40, '0')
-    return symbol
-
-
 # check receiver address
-receiver_addr = generate_faucet_wallet(client=client).classic_address
+receiver_addr = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" # Example: send back to Testnet Faucet
 
 # token name
 token = "LegitXRP" 
@@ -28,10 +21,12 @@ token = "LegitXRP"
 amount = 10.00
 
 # token issuer address
-issuer = generate_faucet_wallet(client=client).classic_address
+issuer = "r9CEVt4Cmcjt68ME6GKyhf2DyEGo2rG8AW"
 
 # check expiry date
-expiry_date = int # from xrpl.utils import datetime_to_ripple_time()
+# check will expire after 5 days
+expiry_date = datetime_to_ripple_time(datetime.now() + timedelta(days=5))
+
 
 # generate wallet from seed
 sender_wallet = generate_faucet_wallet(client=client)
@@ -39,7 +34,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 # build check create transaction
 check_txn = CheckCreate(account=sender_wallet.classic_address, destination=receiver_addr,
 send_max=IssuedCurrencyAmount(
-    currency=symbol_to_hex(token), 
+    currency=str_to_hex(token), 
     issuer=issuer, 
     value=amount),
     expiration=expiry_date)
@@ -70,7 +65,9 @@ receiver_addr = generate_faucet_wallet(client=client).classic_address
 amount = 10.00
 
 # check expiry date
-expiry_date = int # from xrpl.utils import datetime_to_ripple_time()
+# check will expire after 5 days
+expiry_date = datetime_to_ripple_time(datetime.now() + timedelta(days=5))
+
 
 # generate wallet from seed
 sender_wallet = generate_faucet_wallet(client=client)
