@@ -102,7 +102,7 @@ For recommendations and best practices, see [Run `rippled` as a Validator](run-r
 
 
 #### If the dUNL has the most influence on the network, then is the XRPL centralized?
-False, validators can choose to not listen to the dUNL or any widely used UNLs for that matter. They can can create a brand new UNL at anytime.
+Validators can choose to not use the dUNL, or any widely-used UNL for that matter. Anyone can create a new UNL at any time.
 
 We're also not taking into account of the other UNLs on the network, which also has a huge say in ledger progress. The dUNL is simply the most widely used UNL out there, and validators can choose to opt-out and use another UNL.
 
