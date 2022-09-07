@@ -2,19 +2,10 @@ from xrpl.clients import JsonRpcClient
 from xrpl.models import IssuedCurrencyAmount, TrustSet
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
-from xrpl.wallet import Wallet, generate_faucet_wallet
-
-from Misc import symbol_to_hex
+from xrpl.utils import str_to_hex
+from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to testnet
-
-# token helper method
-def symbol_to_hex(symbol: str = None) -> str:
-    """symbol_to_hex."""
-    if len(symbol) > 3:
-        bytes_string = bytes(str(symbol).encode('utf-8'))
-        return bytes_string.hex().upper().ljust(40, '0')
-    return symbol
 
 
 # token name
@@ -31,7 +22,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 
 # build trustline freeze transaction
 trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCurrencyAmount(
-    currency=symbol_to_hex(token),
+    currency=str_to_hex(token),
     issuer=target_addr,
     value = value 
 ),
@@ -49,5 +40,3 @@ stxn_result = stxn_response.result
 # print result and transaction hash
 print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])
-
-
