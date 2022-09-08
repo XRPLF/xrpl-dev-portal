@@ -12,8 +12,6 @@ status: not_enabled
 
 The `NFTokenMint` transaction creates a non-fungible token and adds it to the relevant [NFTokenPage object][] of the `NFTokenMinter` as an [NFToken][] object. A required parameter to this transaction is the `Token` field specifying the actual token. This transaction is the only opportunity the `NFTokenMinter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
 
-If the transaction is successful, the newly minted token is owned by the account (the `minter` account) that executed the transaction. If needed, the server creates a new `NFTokenPage` for the account and applies a reserve charge.
-
 
 ## Example {{currentpage.name}} JSON
 
@@ -38,9 +36,6 @@ If the transaction is successful, the newly minted token is owned by the account
     ]
 }
 ```
-
-
-This transaction assumes that the issuer, `rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2`, has set the `NFTokenMinter` field in its `AccountRoot` to `rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B`, thereby authorizing that account to mint tokens on its behalf.
 
 
 {% include '_snippets/tx-fields-intro.md' %}
