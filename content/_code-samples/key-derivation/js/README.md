@@ -1,6 +1,9 @@
 # JavaScript key derivation examples
 
-Generates key from a given input in Ed25519 and Secp256k1 format
+Generates key from a given input in Ed25519 and Secp256k1 format. On first run, you
+have to install the necessary node.js dedpendencies:
+
+    npm install
 
 ## Command-line usage:
 
