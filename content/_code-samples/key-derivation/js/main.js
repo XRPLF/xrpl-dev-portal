@@ -1,5 +1,5 @@
 const { generateSeed } = require("ripple-keypairs/dist");
-const { decodeEd25519Seed, decodeSecp256k1 } = require("./decodeSeeds");
+const { decodeEd25519Seed, decodeSecp256k1 } = require("./deriveKeys");
 
 console.log(`Code snippet to derive ed25519 & secp256k1 key pairs\n`);
 
