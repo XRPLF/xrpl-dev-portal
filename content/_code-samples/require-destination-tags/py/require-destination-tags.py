@@ -43,6 +43,6 @@ get_acc_flag = AccountInfo(
 response = client.request(get_acc_flag)
 
 if response.result['account_data']['Flags'] & lsfRequireDestTag:
-    print("Require Destination Tag is enabled.")
+    print("Require Destination Tag is ENABLED.")
 else:
     print("Require Destination Tag is DISABLED.")
