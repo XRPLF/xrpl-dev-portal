@@ -3,6 +3,7 @@ import websockets
 import json
 
 # Using client libraries for ASYNC functions and websockets are needed in python.
+# To install, use terminal command 'pip install asyncio && pip install websockets'
 
 # Handles incoming messages
 async def handler(websocket):
