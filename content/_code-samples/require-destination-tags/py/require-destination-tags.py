@@ -2,6 +2,7 @@ from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import AccountSet
 from xrpl.transaction import safe_sign_and_submit_transaction
 from xrpl.wallet import generate_faucet_wallet
+from xrpl.models.requests import AccountInfo
 
 # Connect to a testnet node
 JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
@@ -19,15 +20,18 @@ tx = AccountSet(
 
 # Sign the transaction locally and submit to a node
 my_tx_payment_signed = safe_sign_and_submit_transaction(tx, wallet=test_wallet, client=client)
-my_tx_payment_signed = my_tx_payment_signed.result
-result = my_tx_payment_signed["engine_result"]
+my_tx_payment_signed = my_tx_payment_signed.result["engine_result"]
 
-print(f"Account: {myAddr}")
-if result == "tesSUCCESS":
-    print("AccountSet transaction successful, Destination Tag is now required for all incoming transactions")
-elif result == "tefMAX_LEDGER":
-    print("Transaction failed to achieve consensus")
-elif result == "unknown":
-    print("Transaction status unknown")
+print(f"Transaction result: {my_tx_payment_signed}")
+
+# Verify Account Settings
+get_acc_flag = AccountInfo(
+        account=myAddr
+)
+
+response = client.request(get_acc_flag)
+
+if response.result['account_data']['Flags'] == 131072:
+    print("Require Destination Tag is enabled.")
 else:
-    print(f"Transaction failed with code {result}")
+    print("Require Destination Tag is DISABLED.")
