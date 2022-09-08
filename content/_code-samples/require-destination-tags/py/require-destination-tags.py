@@ -1,11 +1,13 @@
 from xrpl.clients import JsonRpcClient
-from xrpl.models.transactions import AccountSet
+from xrpl.models.transactions import AccountSet, AccountSetFlag
 from xrpl.transaction import safe_sign_and_autofill_transaction, submit_transaction
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountInfo
 
 
 if __name__ == "__main__":
+    lsfRequireDestTag = 131072
+
     # Connect to a testnet node
     print("Connecting to Testnet...")
     JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
@@ -19,7 +21,7 @@ if __name__ == "__main__":
     # Construct AccountSet transaction
     tx = AccountSet(
         account=myAddr,
-        set_flag=1  # Numerical Value: 1 = asfRequireDest
+        set_flag=AccountSetFlag.ASF_REQUIRE_DEST
     )
     print(f"Prepared transaction: {tx}")
 
@@ -40,7 +42,7 @@ if __name__ == "__main__":
 
     response = client.request(get_acc_flag)
 
-    if response.result['account_data']['Flags'] == 131072:
+    if response.result['account_data']['Flags'] == lsfRequireDestTag:
         print("Require Destination Tag is enabled.")
     else:
         print("Require Destination Tag is DISABLED.")
