@@ -9,7 +9,7 @@ status: not_enabled
 # NFToken
 {% include '_snippets/nfts-disclaimer.md' %}
 
-The `NFToken` object represents a single non-fungible token (NFT). It is not stored on its own, but is contained in a [NFTokenPage object][] alongside other NFTs.
+The `NFToken` object represents a single non-fungible token (NFT). It is not stored on its own, but is contained in a [NFTokenPage object][] alongside other `NFToken` objects.
 
 Example {{currentpage.name}} JSON
 
@@ -26,12 +26,12 @@ Unlike other objects, `NFToken` has no field to identify the object type or curr
 
 ## NFTokenID
 
-NFTokenID, optional, string, Hash256
+`NFTokenID`, optional, string, Hash256
 
 This composite field uniquely identifies a token, and consists of the following sections.
 
-1. 16 bits that identify flags or settings specific to the NFT
-2. 16 bits that encode the transfer fee associated with this token, if any
+1. 16 bits that identify flags or settings specific to the NFToken
+2. 16 bits that encode the transfer fee associated with this NFToken, if any
 3. A 160-bit account identifier of the issuer
 4. A 32-bit issuer-specified [NFTokenTaxon](https://www.merriam-webster.com/dictionary/taxon)
 5. An (automatically generated) monotonically increasing 32-bit sequence number.
@@ -40,7 +40,7 @@ This composite field uniquely identifies a token, and consists of the following 
 ![Token ID Breakdown](img/nftoken1.png "Token ID Breakdown")
 
 
-The 16-bit flags, transfer fee fields, the 32-bit NFTokenTaxon, and the sequence number fields are stored in big-endian format.
+The 16-bit flags, transfer fee fields, the 32-bit `NFTokenTaxon`, and the sequence number fields are stored in big-endian format.
 
 
 ## NFToken Flags
@@ -86,7 +86,7 @@ Flags are properties or other options associated with the `NFToken` object.
    </td>
    <td><code>0x0008</code>
    </td>
-   <td>If set, indicates that this NFT can be transferred. This flag has no effect if the token is being transferred <em>from</em> the issuer or <em>to</em> the issuer.
+   <td>If set, indicates that this <code>NFToken</code> can be transferred. This flag has no effect if the token is being transferred <em>from</em> the issuer or <em>to</em> the issuer.
    </td>
   </tr>
   <tr>
@@ -100,7 +100,7 @@ Flags are properties or other options associated with the `NFToken` object.
 </table>
 
 
-`NFToken `flags are immutable: they can only be set during the `NFTokenMint` transaction and cannot be changed later.
+`NFToken` flags are immutable: they can only be set during the `NFTokenMint` transaction and cannot be changed later.
 
 
 ### Example
@@ -112,12 +112,12 @@ The example sets three flags: lsfBurnable (0x0001), lsfOnlyXRP (0x0002), lsfTran
 
 ### TransferFee
 
-The TransferFee value specifies the percentage fee, in units of 1/10,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 1bps or 0.01%, allowing transfer rates between 0% and 50%.
+The `TransferFee` value specifies the percentage fee, in units of 1/10,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 1bps or 0.00001%, allowing transfer rates between 0% and 50%.
 
 
 ### Example
 
-This value sets the transfer fee to 314 bps, or 3.14%.
+This value sets the transfer fee to 314, or .00314%.
 
 ![Txr Fee](img/nftokenb.png "Txr Fee")
 
@@ -125,7 +125,7 @@ This value sets the transfer fee to 314 bps, or 3.14%.
 
 ### Issuer Identification
 
-The third section of the NFTokenID is a big endian representation of the issuer’s public address.
+The third section of the `NFTokenID` is a big endian representation of the issuer’s public address.
 
 ![Issuer Address](img/nftokenc.png "Issuer Address")
 
@@ -133,15 +133,15 @@ The third section of the NFTokenID is a big endian representation of the issuer�
 
 ### NFTokenTaxon
 
-The fourth section is a NFTokenTaxon created by the issuer.
+The fourth section is a `NFTokenTaxon` created by the issuer.
 
 ![NFTokenTaxon](img/nftokend.png "NFTokenTaxon")
 
-An issuer might issue several NFTs with the same NFTokenTaxon; to ensure that NFTs are spread across multiple pages, the NFTokenTaxon is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual NFTokenTaxon.
+An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual NFTokenTaxon.
 
 ![Dumb Sequential](img/nftokene.png "Dumb Sequential")
 
-Notice that the scrambled version of the NFTokenTaxon is `0xBC8B858E`: the scrambled version of the NFTokenTaxon specified by the issuer. But the _actual_ value of the NFTokenTaxon is the unscrambled value.
+Notice that the scrambled version of the `NFTokenTaxon` is `0xBC8B858E`: the scrambled version of the `NFTokenTaxon` specified by the issuer. But the _actual_ value of the `NFTokenTaxon` is the unscrambled value.
 
 ### Token Sequence
 
@@ -176,7 +176,7 @@ xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{nft
 ```
 
 
-Replace the string `{nftokenid}` with the requested token’s `NFTokenID` as a 64-byte hex string when you attempt to query information.
+Replace the string `{nftokenid}` with the requested `NFTokenID` as a 64-byte hex string when you attempt to query information.
 
 Your implementation should check for the presence of `TXT` records and use those query strings if present. If no string is present, implementations should attempt to use a default URL. Assuming the domain is _example.com_, the default URL would be:
 
@@ -186,7 +186,7 @@ https://example.com/.well-known/xrpl-nft/{nftokenid}
 ```
 
 
-You create NFTs using the `NFTokenMint` transaction. You can optionally destroy NFTokens using the `NFTokenBurn` transaction.
+You create `NFToken` objects using the `NFTokenMint` transaction. You can optionally destroy `NFToken` objects using the `NFTokenBurn` transaction.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

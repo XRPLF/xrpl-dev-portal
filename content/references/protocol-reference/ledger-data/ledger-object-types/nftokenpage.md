@@ -179,15 +179,15 @@ The value of the incremental reserve is, as of this writing, 2 XRP. The table be
   <tr>
    <td><strong>Incremental Reserve</strong>
    </td>
-   <td><strong>1 NFT</strong>
+   <td><strong>1 NFToken</strong>
    </td>
-   <td><strong>8 NFTs</strong>
+   <td><strong>8 NFTokens</strong>
    </td>
-   <td><strong>16 NFTs</strong>
+   <td><strong>16 NFTokens</strong>
    </td>
-   <td><strong>32 NFTs</strong>
+   <td><strong>32 NFTokens</strong>
    </td>
-   <td><strong>64 NFTs</strong>
+   <td><strong>64 NFTokens</strong>
    </td>
   </tr>
   <tr>
