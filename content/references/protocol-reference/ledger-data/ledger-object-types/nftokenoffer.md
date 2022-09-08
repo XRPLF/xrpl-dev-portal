@@ -90,7 +90,7 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
    </td>
   </tr>
   <tr>
-   <td><code>TokenID</code>
+   <td><code>NFTokenID</code>
    </td>
    <td>Yes
    </td>
@@ -98,7 +98,7 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
    </td>
    <td>Hash256
    </td>
-   <td><code>TokenID</code> of the <code>NFToken</code> object referenced by this offer.
+   <td><code>NFTokenID</code> of the <code>NFToken</code> object referenced by this offer.
    </td>
   </tr>
   <tr>
@@ -152,7 +152,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
    </td>
   </tr>
   <tr>
-   <td><code>OfferNode</code>
+   <td><code>NFTokenOfferNode</code>
    </td>
    <td>No
    </td>
@@ -192,21 +192,21 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
    </td>
   </tr>
   <tr>
-   <td><code>lsfBuyToken</code>
+   <td><code>lsfSellNFToken</code>
    </td>
    <td><code>0x00000001</code>
    </td>
-   <td>If set, the offer is a buy offer. Otherwise, the offer is a sell offer.
+   <td>If set, the offer is a sell offer. Otherwise, the offer is a buy offer.
    </td>
   </tr>
-  <tr>
+  <!-- tr>
    <td><code>lsfAuthorized</code>
    </td>
    <td><code>0x00000002</code>
    </td>
    <td>If set, the offer has been approved by the issuer. This flag can only be set by the <code>Issuer</code> of the token or an account authorized by the issuer (for example, the <code>MintAccount</code> listed in the account root of the <code>Issuer</code>) and only if the token has the flag indicating that authorization is required.
    </td>
-  </tr>
+  </tr -->
 </table>
 
 ## `NFTokenOffer` Transactions

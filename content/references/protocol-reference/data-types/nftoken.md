@@ -15,7 +15,7 @@ Example {{currentpage.name}} JSON
 
 ```json
 {
-    "TokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
+    "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
     "URI": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"
 }
 ```
@@ -24,23 +24,23 @@ Example {{currentpage.name}} JSON
 Unlike other objects, `NFToken` has no field to identify the object type or current owner of the object. `NFToken `objects are grouped into `NFTokenPages` that implicitly define the object type and identify the owner.
 
 
-## TokenID
+## NFTokenID
 
-TokenID, optional, string, Hash256
+NFTokenID, optional, string, Hash256
 
 This composite field uniquely identifies a token, and consists of the following sections.
 
 1. 16 bits that identify flags or settings specific to the NFT
 2. 16 bits that encode the transfer fee associated with this token, if any
 3. A 160-bit account identifier of the issuer
-4. A 32-bit issuer-specified [taxon](https://www.merriam-webster.com/dictionary/taxon)
+4. A 32-bit issuer-specified [NFTokenTaxon](https://www.merriam-webster.com/dictionary/taxon)
 5. An (automatically generated) monotonically increasing 32-bit sequence number.
 
 
 ![Token ID Breakdown](img/nftoken1.png "Token ID Breakdown")
 
 
-The 16-bit flags, transfer fee fields, the 32-bit taxon, and the sequence number fields are stored in big-endian format.
+The 16-bit flags, transfer fee fields, the 32-bit NFTokenTaxon, and the sequence number fields are stored in big-endian format.
 
 
 ## NFToken Flags
@@ -125,23 +125,23 @@ This value sets the transfer fee to 314 bps, or 3.14%.
 
 ### Issuer Identification
 
-The third section of the TokenID is a big endian representation of the issuer’s public address.
+The third section of the NFTokenID is a big endian representation of the issuer’s public address.
 
 ![Issuer Address](img/nftokenc.png "Issuer Address")
 
 
 
-### Taxon
+### NFTokenTaxon
 
-The fourth section is a taxon created by the issuer.
+The fourth section is a NFTokenTaxon created by the issuer.
 
-![Taxon](img/nftokend.png "Taxon")
+![NFTokenTaxon](img/nftokend.png "NFTokenTaxon")
 
-An issuer might issue several NFTs with the same taxon; to ensure that NFTs are spread across multiple pages, the taxon is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual taxon.
+An issuer might issue several NFTs with the same NFTokenTaxon; to ensure that NFTs are spread across multiple pages, the NFTokenTaxon is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual NFTokenTaxon.
 
 ![Dumb Sequential](img/nftokene.png "Dumb Sequential")
 
-Notice that the scrambled version of the taxon is `0xBC8B858E`: the scrambled version of the taxon specified by the issuer. But the _actual_ value of the taxon is the unscrambled value.
+Notice that the scrambled version of the NFTokenTaxon is `0xBC8B858E`: the scrambled version of the NFTokenTaxon specified by the issuer. But the _actual_ value of the NFTokenTaxon is the unscrambled value.
 
 ### Token Sequence
 
@@ -172,17 +172,17 @@ The format for a text record is as follows.
 
 
 ```
-xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{tokenid}"
+xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{nftokenid}"
 ```
 
 
-Replace the string `{tokenid}` with the requested token’s `NFTokenID` as a 64-byte hex string when you attempt to query information.
+Replace the string `{nftokenid}` with the requested token’s `NFTokenID` as a 64-byte hex string when you attempt to query information.
 
 Your implementation should check for the presence of `TXT` records and use those query strings if present. If no string is present, implementations should attempt to use a default URL. Assuming the domain is _example.com_, the default URL would be:
 
 
 ```
-https://example.com/.well-known/xrpl-nft/{tokenid}
+https://example.com/.well-known/xrpl-nft/{nftokenid}
 ```
 
 
