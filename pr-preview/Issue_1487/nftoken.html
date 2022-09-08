@@ -269,7 +269,7 @@
     <div class="content">
         <h1 id="nftoken">NFToken<a aria-hidden="true" class="hover_anchor" href="#nftoken"><i class="fa fa-link"></i></a></h1>
 <p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
-<p>The <code>NFToken</code> object represents a single non-fungible token (NFT). It is not stored on its own, but is contained in a <a href="nftokenpage.html">NFTokenPage object</a> alongside other NFTs.</p>
+<p>The <code>NFToken</code> object represents a single non-fungible token (NFT). It is not stored on its own, but is contained in a <a href="nftokenpage.html">NFTokenPage object</a> alongside other <code>NFToken</code> objects.</p>
 <p>Example NFToken JSON</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"NFTokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"</span><span class="p">,</span><span class="w"></span>
@@ -278,17 +278,17 @@
 </code></pre></div>
 <p>Unlike other objects, <code>NFToken</code> has no field to identify the object type or current owner of the object. <code>NFToken</code>objects are grouped into <code>NFTokenPages</code> that implicitly define the object type and identify the owner.</p>
 <h2 id="nftokenid">NFTokenID<a aria-hidden="true" class="hover_anchor" href="#nftokenid"><i class="fa fa-link"></i></a></h2>
-<p>NFTokenID, optional, string, Hash256</p>
+<p><code>NFTokenID</code>, optional, string, Hash256</p>
 <p>This composite field uniquely identifies a token, and consists of the following sections.</p>
 <ol>
-<li>16 bits that identify flags or settings specific to the NFT</li>
-<li>16 bits that encode the transfer fee associated with this token, if any</li>
+<li>16 bits that identify flags or settings specific to the NFToken</li>
+<li>16 bits that encode the transfer fee associated with this NFToken, if any</li>
 <li>A 160-bit account identifier of the issuer</li>
 <li>A 32-bit issuer-specified <a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank">NFTokenTaxon <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li>An (automatically generated) monotonically increasing 32-bit sequence number.</li>
 </ol>
 <p><img alt="Token ID Breakdown" src="img/nftoken1.png" title="Token ID Breakdown"/></p>
-<p>The 16-bit flags, transfer fee fields, the 32-bit NFTokenTaxon, and the sequence number fields are stored in big-endian format.</p>
+<p>The 16-bit flags, transfer fee fields, the 32-bit <code>NFTokenTaxon</code>, and the sequence number fields are stored in big-endian format.</p>
 <h2 id="nftoken-flags">NFToken Flags<a aria-hidden="true" class="hover_anchor" href="#nftoken-flags"><i class="fa fa-link"></i></a></h2>
 <p>Flags are properties or other options associated with the <code>NFToken</code> object.</p>
 <table class="table-responsive">
@@ -329,7 +329,7 @@
 </td>
 <td><code>0x0008</code>
 </td>
-<td>If set, indicates that this NFT can be transferred. This flag has no effect if the token is being transferred <em>from</em> the issuer or <em>to</em> the issuer.
+<td>If set, indicates that this <code>NFToken</code> can be transferred. This flag has no effect if the token is being transferred <em>from</em> the issuer or <em>to</em> the issuer.
    </td>
 </tr>
 <tr>
@@ -341,24 +341,24 @@
    </td>
 </tr>
 </table>
-<p><code>NFToken</code>flags are immutable: they can only be set during the <code>NFTokenMint</code> transaction and cannot be changed later.</p>
+<p><code>NFToken</code> flags are immutable: they can only be set during the <code>NFTokenMint</code> transaction and cannot be changed later.</p>
 <h3 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h3>
 <p>The example sets three flags: lsfBurnable (0x0001), lsfOnlyXRP (0x0002), lsfTransferable (0x0008). 1+2+8 = 11, or 0x000B in big endian format.</p>
 <p><img alt="Flags" src="img/nftokena.png" title="Flags"/></p>
 <h3 id="transferfee">TransferFee<a aria-hidden="true" class="hover_anchor" href="#transferfee"><i class="fa fa-link"></i></a></h3>
-<p>The TransferFee value specifies the percentage fee, in units of 1/10,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 1bps or 0.01%, allowing transfer rates between 0% and 50%.</p>
+<p>The <code>TransferFee</code> value specifies the percentage fee, in units of 1/10,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 1bps or 0.00001%, allowing transfer rates between 0% and 50%.</p>
 <h3 id="example-1">Example<a aria-hidden="true" class="hover_anchor" href="#example-1"><i class="fa fa-link"></i></a></h3>
-<p>This value sets the transfer fee to 314 bps, or 3.14%.</p>
+<p>This value sets the transfer fee to 314, or .00314%.</p>
 <p><img alt="Txr Fee" src="img/nftokenb.png" title="Txr Fee"/></p>
 <h3 id="issuer-identification">Issuer Identification<a aria-hidden="true" class="hover_anchor" href="#issuer-identification"><i class="fa fa-link"></i></a></h3>
-<p>The third section of the NFTokenID is a big endian representation of the issuer’s public address.</p>
+<p>The third section of the <code>NFTokenID</code> is a big endian representation of the issuer’s public address.</p>
 <p><img alt="Issuer Address" src="img/nftokenc.png" title="Issuer Address"/></p>
 <h3 id="nftokentaxon">NFTokenTaxon<a aria-hidden="true" class="hover_anchor" href="#nftokentaxon"><i class="fa fa-link"></i></a></h3>
-<p>The fourth section is a NFTokenTaxon created by the issuer.</p>
+<p>The fourth section is a <code>NFTokenTaxon</code> created by the issuer.</p>
 <p><img alt="NFTokenTaxon" src="img/nftokend.png" title="NFTokenTaxon"/></p>
-<p>An issuer might issue several NFTs with the same NFTokenTaxon; to ensure that NFTs are spread across multiple pages, the NFTokenTaxon is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the <code>NFToken</code>, but the unscrambled value is the actual NFTokenTaxon.</p>
+<p>An issuer might issue several <code>NFToken</code> objects with the same <code>NFTokenTaxon</code>; to ensure that <code>NFToken</code> objects are spread across multiple pages, the <code>NFTokenTaxon</code> is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the <code>NFToken</code>, but the unscrambled value is the actual NFTokenTaxon.</p>
 <p><img alt="Dumb Sequential" src="img/nftokene.png" title="Dumb Sequential"/></p>
-<p>Notice that the scrambled version of the NFTokenTaxon is <code>0xBC8B858E</code>: the scrambled version of the NFTokenTaxon specified by the issuer. But the <em>actual</em> value of the NFTokenTaxon is the unscrambled value.</p>
+<p>Notice that the scrambled version of the <code>NFTokenTaxon</code> is <code>0xBC8B858E</code>: the scrambled version of the <code>NFTokenTaxon</code> specified by the issuer. But the <em>actual</em> value of the <code>NFTokenTaxon</code> is the unscrambled value.</p>
 <h3 id="token-sequence">Token Sequence<a aria-hidden="true" class="hover_anchor" href="#token-sequence"><i class="fa fa-link"></i></a></h3>
 <p>The fifth section is a sequence number that increases with each <code>NFToken</code> the issuer creates. The <a href="nftokenmint.html">NFTokenMint transaction</a> sets this part of the <code>NFTokenID</code> automatically based on the <code>MintedTokens</code> field of the <code>Issuer</code> account. If the issuer's <a href="accountroot.html">AccountRoot object</a> does not have a <code>MintedTokens</code> field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.</p>
 <h2 id="uri">URI<a aria-hidden="true" class="hover_anchor" href="#uri"><i class="fa fa-link"></i></a></h2>
@@ -373,11 +373,11 @@
 <p>The format for a text record is as follows.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{nftokenid}"
 </code></pre></div>
-<p>Replace the string <code>{nftokenid}</code> with the requested token’s <code>NFTokenID</code> as a 64-byte hex string when you attempt to query information.</p>
+<p>Replace the string <code>{nftokenid}</code> with the requested <code>NFTokenID</code> as a 64-byte hex string when you attempt to query information.</p>
 <p>Your implementation should check for the presence of <code>TXT</code> records and use those query strings if present. If no string is present, implementations should attempt to use a default URL. Assuming the domain is <em>example.com</em>, the default URL would be:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">https://example.com/.well-known/xrpl-nft/{nftokenid}
 </code></pre></div>
-<p>You create NFTs using the <code>NFTokenMint</code> transaction. You can optionally destroy NFTokens using the <code>NFTokenBurn</code> transaction.</p>
+<p>You create <code>NFToken</code> objects using the <code>NFTokenMint</code> transaction. You can optionally destroy <code>NFToken</code> objects using the <code>NFTokenBurn</code> transaction.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
