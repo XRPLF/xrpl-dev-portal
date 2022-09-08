@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "ripple-binary-codec": "^1.5.0-beta.0",
     "xrpl": "^2.5.0-beta.0"
   }
 }

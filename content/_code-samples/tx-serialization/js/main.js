@@ -1,15 +1,10 @@
-const fs = require('fs');
-const { Client } = require("xrpl");
-const ripple_binary_codec = require('ripple-binary-codec');
+const { Client, encode } = require("xrpl");
 
 const payload = require("./json_input.json");
-let outputs = require("./binary_outputs.json");
-
-// NOTE: This sample uses ripple-binary-codec (https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-binary-codec) and xrpl.js (https://github.com/XRPLF/xrpl.js/) libraries
 
 const main = async () => {
     try {
-        console.log("Converting your transaction...");
+        console.log(`Converting your transaction...\n`);
 
         // connect to a public server
         const client = new Client("wss://xrplcluster.com/");
@@ -18,18 +13,14 @@ const main = async () => {
         // autofill all the missing fields
         const complete_payload = await client.autofill(payload);
 
-        // convert the JSON tx to serialized using ripple-binary-codec
-        const decoded_payload = ripple_binary_codec.encode(complete_payload);
+        // convert the JSON tx to serialized using xrpl.js
+        const decoded_payload = encode(complete_payload);
 
-        // push binary tx into output array
-        outputs.push(decoded_payload);
-
-        // write the output into binary_outputs.json file.
-        fs.writeFileSync("./binary_outputs.json", JSON.stringify(outputs, null, "\t"));
+        // display output
+        console.log(`Serialized value:\n${decoded_payload}`);
 
         // disconnect from public server
         await client.disconnect();
-        console.log("Success! Check binary_outputs.json file");
 
         // exit process
         process.exit(0);
