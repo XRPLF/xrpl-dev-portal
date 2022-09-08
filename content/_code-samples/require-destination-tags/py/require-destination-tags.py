@@ -32,9 +32,9 @@ print(f"Transaction Hash: {my_tx_payment_signed.txn_signature}")
 
 # Send the transaction to the node
 print(f"Enabling Require Destination Tag flag (asfRequireDest) on {myAddr}")
-submit_transaction = submit_transaction(client=client, transaction=my_tx_payment_signed)
-submit_transaction = submit_transaction.result["engine_result"]
-print(f"Submit result: {submit_transaction}")
+submit_tx = submit_transaction(client=client, transaction=my_tx_payment_signed)
+submit_tx = submit_tx.result["engine_result"]
+print(f"Submit result: {submit_tx}")
 
 # Verify Account Settings
 get_acc_flag = AccountInfo(
