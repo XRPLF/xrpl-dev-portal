@@ -278,7 +278,6 @@
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a>
 <em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
 <p>The <code>NFTokenMint</code> transaction creates a non-fungible token and adds it to the relevant <a href="nftokenpage.html">NFTokenPage object</a> of the <code>NFTokenMinter</code> as an <a href="nftoken.html">NFToken</a> object. A required parameter to this transaction is the <code>Token</code> field specifying the actual token. This transaction is the only opportunity the <code>NFTokenMinter</code> has to specify any token fields that are defined as immutable (for example, the <code>TokenFlags</code>).</p>
-<p>If the transaction is successful, the newly minted token is owned by the account (the <code>minter</code> account) that executed the transaction. If needed, the server creates a new <code>NFTokenPage</code> for the account and applies a reserve charge.</p>
 <h2 id="example-nftokenmint-json">Example NFTokenMint JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenmint-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenMint"</span><span class="p">,</span><span class="w"></span>
@@ -299,7 +298,6 @@
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>NFTokenMinter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
 <h2 id="nftokenmint-fields">NFTokenMint Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenmint-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a NFTokenMint transaction uses the following fields:</p>
 <table class="table-responsive">
