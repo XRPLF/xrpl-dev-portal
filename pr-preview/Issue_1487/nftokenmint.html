@@ -307,6 +307,12 @@
 <td style="text-align: left;">The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than <code>0xFFFF'FFFF</code> are disallowed.</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>Issuer</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;"><em>(Optional)</em> The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the <code>NFToken</code>. If provided, the issuer's <a href="accountroot.html">AccountRoot object</a> must have the <code>NFTokenMinter</code> field set to the sender of this transaction (this transaction's <code>Account</code> field).</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>TransferFee</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt16</td>
