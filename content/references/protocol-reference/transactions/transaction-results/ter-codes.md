@@ -13,18 +13,19 @@ These codes indicate that the transaction failed, but it could apply successfull
 
 | Code             | Explanation                                               |
 |:-----------------|:----------------------------------------------------------|
-| `terFUNDS_SPENT`  | **DEPRECATED.**                                           |
+| `terFUNDS_SPENT` | **DEPRECATED.**                                           |
 | `terINSUF_FEE_B` | The account sending the transaction does not have enough XRP to pay the `Fee` specified in the transaction. |
-| `terLAST`          | Used internally only. This code should never be returned. |
-| `terNO_ACCOUNT`   | The address sending the transaction is not funded in the ledger (yet). |
-| `terNO_AUTH`      | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
-| `terNO_LINE`      | Used internally only. This code should never be returned. |
-| `terNO_RIPPLE`    | Used internally only. This code should never be returned. |
-| `terOWNERS`        | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
-| `terPRE_SEQ`      | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
-| `terPRE_TICKET`   | The transaction attempted to use a [Ticket](tickets.html), but the specified `TicketSequence` number does not exist in the ledger. However, the Ticket could still be created by another transaction. |
-| `terRETRY`         | Unspecified retriable error.                              |
-| `terQUEUED`        | The transaction met the load-scaled [transaction cost](transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
+| `terLAST`        | Used internally only. This code should never be returned. |
+| `terNO_ACCOUNT`  | The address sending the transaction is not funded in the ledger (yet). |
+| `terNO_AMM`      | The AMM-related transaction :not_enabled: specifies an asset pair that does not currently have an AMM instance. |
+| `terNO_AUTH`     | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
+| `terNO_LINE`     | Used internally only. This code should never be returned. |
+| `terNO_RIPPLE`   | Used internally only. This code should never be returned. |
+| `terOWNERS`      | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
+| `terPRE_SEQ`     | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
+| `terPRE_TICKET`  | The transaction attempted to use a [Ticket](tickets.html), but the specified `TicketSequence` number does not exist in the ledger. However, the Ticket could still be created by another transaction. |
+| `terRETRY`       | Unspecified retriable error.                              |
+| `terQUEUED`      | The transaction met the load-scaled [transaction cost](transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

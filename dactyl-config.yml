@@ -190,6 +190,8 @@ targets:
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
             "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
             "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
+            # Fix links from untranslated AMM pages:
+            "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
 
 pages:
 
@@ -2257,6 +2259,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
         targets:
             - en
@@ -2405,6 +2412,31 @@ pages:
 
     -   md: references/protocol-reference/transactions/transaction-types/accountdelete.ja.md
         targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
@@ -3084,6 +3116,12 @@ pages:
         targets:
             - ja
 
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
+        targets:
+            - en
+            - ja
+
+
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
         targets:
             - en
@@ -3706,6 +3744,28 @@ pages:
         landing_for: アカウント
         template: pagetype-label.html.jinja
         blurb: XRP Ledgerのアカウントに関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: AMM
+        html: label-amm.html
+        parent: by-label.html
+        landing_for: AMM
+        template: pagetype-label.html.jinja
+        blurb: Pages relating to Automated Market Makers (AMM).
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: AMM
+        html: label-amm.html
+        parent: by-label.html
+        landing_for: AMM
+        template: pagetype-label.html.jinja
+        blurb: 自動マーケットメーカー（AMM）に関するページ。
         filters:
             - labels
         targets:

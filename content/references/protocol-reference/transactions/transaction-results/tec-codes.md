@@ -15,6 +15,14 @@ For the most part, transactions with `tec` codes take no action other than to de
 
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|
+| `tecAMM_BALANCE`           | 163   | 
+| `tecAMM_DIRECT_PAYMENT`    | 169   | The transaction tried to send money directly to an AccountRoot object that is part of an Automated Market Maker (AMM) :not_enabled:. AMM AccountRoot entries cannot send or receive money directly except through [AMMWithdraw][] and [AMMDeposit][] transactions. |
+| `tecAMM_EXISTS`            | 167   | The [AMMCreate transaction][] :not_enabled: tried to create an Automated Market Maker (AMM) instance that already exists. There can only be at most one AMM per unique currency pair. |
+| `tecAMM_FAILED_DEPOSIT`    | 164   | The [AMMDeposit transaction][] :not_enabled: failed, probably because the sender does not have enough of the specified assets, or because the deposit requested an effective price that isn't possible with the available amounts. |
+| `tecAMM_FAILED_WITHDRAW`   | 165   | The [AMMWithdraw transaction][] :not_enabled: failed, probably because the sender does not have enough LP Tokens, or because the withdraw requested an effective price that isn't possible with the available amounts. |
+| `tecAMM_FAILED_BID`        | 168   | The [AMMBid transaction][] :not_enabled: failed, probably because the price to win the auction was higher than the specified maximum value or the sender's current balance. |
+| `tecAMM_FAILED_VOTE`       | 170   | The [AMMVote transaction][] :not_enabled: failed, probably because there are already too many votes from accounts that hold more LP Tokens for this AMM. (This can still recalculate the AMM's trading fee.) |
+| `tecAMM_INVALID_TOKENS`    | 166   | The AMM-related transaction :not_enabled: failed due to insufficient LP Tokens or problems with rounding; for example, depositing a very small amount of assets could fail if the amount of LP Tokens to be returned rounds down to zero. |
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | 157 | The transaction tried to accept an offer that was placed by the same account to buy or sell a [non-fungible token](non-fungible-tokens.html). _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `tecCLAIM`                 | 100   | Unspecified failure, with transaction cost destroyed. |
 | `tecCRYPTOCONDITION_ERROR` | 146   | This [EscrowCreate][] or [EscrowFinish][] transaction contained a malformed or mismatched crypto-condition. |
@@ -59,6 +67,7 @@ For the most part, transactions with `tec` codes take no action other than to de
 | `tecTOO_SOON`              | 152   | The [AccountDelete transaction][] failed because the account to be deleted had a `Sequence` number that is too high. The current ledger index must be at least 256 higher than the account's sequence number. |
 | `tecUNFUNDED`              | 129   | The transaction failed because the account does not hold enough XRP to pay the amount in the transaction _and_ satisfy the additional [reserve](reserves.html) necessary to execute this transaction. |
 | `tecUNFUNDED_ADD`          | 102   | **DEPRECATED.**                         |
+| `tecUNFUNDED_AMM`          | 162   | The [AMMCreate transaction][] :not_enabled: failed because the sender does not have enough of the specified assets to fund it. |
 | `tecUNFUNDED_PAYMENT`      | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the [reserve](reserves.html). |
 | `tecUNFUNDED_OFFER`        | 103   | The [OfferCreate transaction][] failed because the account creating the offer does not have any of the `TakerGets` currency. |
 

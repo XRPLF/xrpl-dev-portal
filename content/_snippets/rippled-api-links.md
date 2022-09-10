@@ -64,6 +64,7 @@
 {% set ledger_entries = [
   "AccountRoot",
   "Amendments",
+  "AMM",
   "Check",
   "DepositPreauth",
   "DirectoryNode",

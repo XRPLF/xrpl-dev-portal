@@ -11,10 +11,12 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 
 **Tip:** Transactions with `tem` codes are not applied to ledgers, and cannot cause any changes to XRP Ledger state. A `tem` result is final unless the rules for a valid transaction change. (For example, using functionality from an [Amendment](amendments.html) before that amendment is enabled results in `temDISABLED`; such a transaction could succeed later if it becomes valid when the amendment is enabled.)
 
-| Code                         | Explanation                                   |
-|:-----------------------------|:----------------------------------------------|
+| Code                          | Explanation                                   |
+|:------------------------------|:----------------------------------------------|
+| `temBAD_AMM_OPTIONS`          | The AMM-related transaction :not_enabled: specified a combination of parameters that is invalid. |
+| `temBAD_AMM_TOKENS`           | The AMM-related transaction :not_enabled: specified its LP Tokens in an invalid format or specified LP Tokens for the wrong AMM instance. |
 | `temBAD_AMOUNT`               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment][]) was invalid, possibly because it was a negative number. |
-| `temBAD_AUTH_MASTER`         | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](cryptographic-keys.html) set. |
+| `temBAD_AUTH_MASTER`          | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](cryptographic-keys.html) set. |
 | `temBAD_CURRENCY`             | The transaction improperly specified a currency field. See [Specifying Currency Amounts][Currency Amount] for the correct format. |
 | `temBAD_EXPIRATION`           | The transaction improperly specified an expiration value, for example as part of an [OfferCreate transaction][]. Alternatively, the transaction did not specify a required expiration value, for example as part of an [EscrowCreate transaction][]. |
 | `temBAD_FEE`                  | The transaction improperly specified its `Fee` value, for example by listing a non-XRP currency or some negative amount of XRP. |
@@ -43,6 +45,8 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temREDUNDANT`                 | The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
 | `temREDUNDANT_SEND_MAX`      | [Removed in: rippled 0.28.0][] |
 | `temRIPPLE_EMPTY`             | The [Payment transaction][] includes an empty `Paths` field, but paths are necessary to complete this payment. |
+| `temBAD_AMM_OPTIONS`           | The transaction specified an invalid combination of options regarding an Automated Market Maker (AMM). :not_enabled: |
+| `temBAD_AMM_TOKENS`            | The transaction incorrectly specified an Automated Market Maker's LP Tokens. :not_enabled: |
 | `temBAD_WEIGHT`                | The [SignerListSet transaction][] includes a `SignerWeight` that is invalid, for example a zero or negative value. |
 | `temBAD_SIGNER`                | The [SignerListSet transaction][] includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member. |
 | `temBAD_QUORUM`                | The [SignerListSet transaction][] has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |
