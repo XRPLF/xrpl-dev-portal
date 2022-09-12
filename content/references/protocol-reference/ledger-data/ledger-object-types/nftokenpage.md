@@ -11,7 +11,7 @@ status: not_enabled
 # NFTokenPage
 {% include '_snippets/nfts-disclaimer.md' %}
 
-The `NFTokenPage` object represents a collection of `NFToken` objects owned by the same account. An account can have multiple `NFTokenPage` ledger objects, which form a doubly-linked list (DLL).
+The `NFTokenPage` object represents a collection of `NFToken` objects owned by the same account. An account can have multiple `NFTokenPage` ledger objects, which form a doubly linked list.
 
 ## Example {{currentpage.name}} JSON
 
@@ -26,13 +26,12 @@ The `NFTokenPage` object represents a collection of `NFToken` objects owned by t
       "95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822",
     "PreviousTxnLgrSeq":
       42891441,
-    "Tokens":
+    "NFTokens":
         {
             {
-                "TokenID":
+                "NFTokenID":
                   "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
-                "URI":
-                  "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"
+                "URI": "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"
             },
             /* potentially more objects */
        }
@@ -123,7 +122,7 @@ An `NFTokenPage` object can have the following required and optional fields:
    </td>
   </tr>
   <tr>
-   <td><code>NonFungibleTokens</code>
+   <td><code>NFTokens</code>
    </td>
    <td>Yes
    </td>
@@ -180,15 +179,15 @@ The value of the incremental reserve is, as of this writing, 2 XRP. The table be
   <tr>
    <td><strong>Incremental Reserve</strong>
    </td>
-   <td><strong>1 NFT</strong>
+   <td><strong>1 NFToken</strong>
    </td>
-   <td><strong>8 NFTs</strong>
+   <td><strong>8 NFTokens</strong>
    </td>
-   <td><strong>16 NFTs</strong>
+   <td><strong>16 NFTokens</strong>
    </td>
-   <td><strong>32 NFTs</strong>
+   <td><strong>32 NFTokens</strong>
    </td>
-   <td><strong>64 NFTs</strong>
+   <td><strong>64 NFTokens</strong>
    </td>
   </tr>
   <tr>

@@ -149,7 +149,7 @@ Each object in the `account_nfts` array represents one [NFToken][] and has the f
 | `Flags`        | Number               | A bit-map of boolean flags enabled for this NFToken. See [NFToken Flags](nftoken.html#nftoken-flags) for possible values. |
 | `Issuer`       | String - [Address][] | The account that issued this NFToken. |
 | `NFTokenID`    | String               | The unique identifier of this NFToken, in hexadecimal. |
-| `NFTokenTaxon` | Number               | The unscrambled version of this token's [taxon](nftoken.html#taxon). Several tokens with the same taxon might represent instances of a limited series. |
+| `NFTokenTaxon` | Number               | The unscrambled version of this token's [taxon](nftoken.html#nftokentaxon). Several tokens with the same taxon might represent instances of a limited series. |
 | `URI`          | String               | The URI data associated with this NFToken, in hexadecimal. |
 | `nft_serial`   | Number               | The token sequence number of this NFToken, which is unique for its issuer. |
 
