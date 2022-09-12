@@ -349,14 +349,14 @@
 <p>The <code>TransferFee</code> value specifies the percentage fee, in units of 1/10,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 1bps or 0.00001%, allowing transfer rates between 0% and 50%.</p>
 <h3 id="example-1">Example<a aria-hidden="true" class="hover_anchor" href="#example-1"><i class="fa fa-link"></i></a></h3>
 <p>This value sets the transfer fee to 314, or .00314%.</p>
-<p><img alt="Txr Fee" src="img/nftokenb.png" title="Txr Fee"/></p>
+<p><img alt="Transfer Fee" src="img/nftokenb.png" title="Transfer Fee"/></p>
 <h3 id="issuer-identification">Issuer Identification<a aria-hidden="true" class="hover_anchor" href="#issuer-identification"><i class="fa fa-link"></i></a></h3>
 <p>The third section of the <code>NFTokenID</code> is a big endian representation of the issuer’s public address.</p>
 <p><img alt="Issuer Address" src="img/nftokenc.png" title="Issuer Address"/></p>
 <h3 id="nftokentaxon">NFTokenTaxon<a aria-hidden="true" class="hover_anchor" href="#nftokentaxon"><i class="fa fa-link"></i></a></h3>
 <p>The fourth section is a <code>NFTokenTaxon</code> created by the issuer.</p>
 <p><img alt="NFTokenTaxon" src="img/nftokend.png" title="NFTokenTaxon"/></p>
-<p>An issuer might issue several <code>NFToken</code> objects with the same <code>NFTokenTaxon</code>; to ensure that <code>NFToken</code> objects are spread across multiple pages, the <code>NFTokenTaxon</code> is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the <code>NFToken</code>, but the unscrambled value is the actual NFTokenTaxon.</p>
+<p>An issuer might issue several <code>NFToken</code> objects with the same <code>NFTokenTaxon</code>; to ensure that <code>NFToken</code> objects are spread across multiple pages, the <code>NFTokenTaxon</code> is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the <code>NFToken</code>, but the unscrambled value is the actual NFTokenTaxon.</p>
 <p><img alt="Dumb Sequential" src="img/nftokene.png" title="Dumb Sequential"/></p>
 <p>Notice that the scrambled version of the <code>NFTokenTaxon</code> is <code>0xBC8B858E</code>: the scrambled version of the <code>NFTokenTaxon</code> specified by the issuer. But the <em>actual</em> value of the <code>NFTokenTaxon</code> is the unscrambled value.</p>
 <h3 id="token-sequence">Token Sequence<a aria-hidden="true" class="hover_anchor" href="#token-sequence"><i class="fa fa-link"></i></a></h3>
