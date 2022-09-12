@@ -199,14 +199,6 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
    <td>If set, the offer is a sell offer. Otherwise, the offer is a buy offer.
    </td>
   </tr>
-  <!-- tr>
-   <td><code>lsfAuthorized</code>
-   </td>
-   <td><code>0x00000002</code>
-   </td>
-   <td>If set, the offer has been approved by the issuer. This flag can only be set by the <code>Issuer</code> of the token or an account authorized by the issuer (for example, the <code>MintAccount</code> listed in the account root of the <code>Issuer</code>) and only if the token has the flag indicating that authorization is required.
-   </td>
-  </tr -->
 </table>
 
 ## `NFTokenOffer` Transactions

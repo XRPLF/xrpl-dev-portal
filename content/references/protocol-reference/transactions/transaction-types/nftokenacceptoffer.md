@@ -3,7 +3,7 @@ html: nftokenacceptoffer.html
 parent: transaction-types.html
 blurb: Accept an offer to buy or sell an NFToken.
 labels:
-  - NFTokens, Non-fungible Tokens
+  - NFTs, Non-fungible Tokens
 status: not_enabled
 ---
 # NFTokenAcceptOffer
@@ -28,7 +28,7 @@ The mode in which the transaction operates depends on the presence of the `NFTok
 
 If neither of those fields is specified, the transaction is malformed and produces a `tem` class error.
 
-The semantics of brokered mode are slightly different than one in direct mode: The account executing the transaction functions as a broker, bringing the two offers together and causing them to be matched, but does not acquire ownership of the involved NFToken, which will, if the transaction is successful, be transferred directly from the seller to the buyer.
+The semantics of brokered mode are slightly different than one in direct mode: The account executing the transaction functions as a broker, bringing the two offers together and causing them to be matched, but does not acquire ownership of the involved `NFToken`, which will, if the transaction is successful, be transferred directly from the seller to the buyer.
 
 
 ## Execution Details

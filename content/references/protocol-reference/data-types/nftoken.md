@@ -119,7 +119,7 @@ The `TransferFee` value specifies the percentage fee, in units of 1/10,000, char
 
 This value sets the transfer fee to 314, or .00314%.
 
-![Txr Fee](img/nftokenb.png "Txr Fee")
+![Transfer Fee](img/nftokenb.png "Transfer Fee")
 
 
 
@@ -137,7 +137,7 @@ The fourth section is a `NFTokenTaxon` created by the issuer.
 
 ![NFTokenTaxon](img/nftokend.png "NFTokenTaxon")
 
-An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a dumb sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual NFTokenTaxon.
+An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual NFTokenTaxon.
 
 ![Dumb Sequential](img/nftokene.png "Dumb Sequential")
 

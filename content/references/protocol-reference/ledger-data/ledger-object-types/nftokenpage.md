@@ -11,7 +11,7 @@ status: not_enabled
 # NFTokenPage
 {% include '_snippets/nfts-disclaimer.md' %}
 
-The `NFTokenPage` object represents a collection of `NFToken` objects owned by the same account. An account can have multiple `NFTokenPage` ledger objects, which form a doubly linked list (DLL).
+The `NFTokenPage` object represents a collection of `NFToken` objects owned by the same account. An account can have multiple `NFTokenPage` ledger objects, which form a doubly linked list.
 
 ## Example {{currentpage.name}} JSON
 
