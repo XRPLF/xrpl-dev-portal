@@ -13,6 +13,8 @@ There are two main types of server software that power the XRP Ledger:
 
 Anyone can run instances of one or both of these types of servers based on their needs.
 
+In addition to the main servers, there is a light-weight server type, [_witness server_](witness-server.html), that witnesses and signs transactions between a locking chain and an issuing chain, thus enabling cross-chain transactions between the XRP Ledger and another chain. For more information on these transactions, see the [Locking and Issuing Chains](locking-and-issuing-chains.html) and [witness server](witness-server.html) documentation.
+
 ## Reasons to Run Your Own Server
 
 For lighter use cases and individual servers, you can often rely on free [public servers][]. However, the more serious your use of the XRP Ledger becomes, the more important it becomes to have your own infrastructure.

@@ -987,14 +987,6 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/consensus-network/federated-sidechains.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/federated-sidechains.ja.md
-        targets:
-            - ja
-
     -   md: concepts/xrpl-servers/xrpl-servers.md
         targets:
             - en
@@ -1074,6 +1066,27 @@ pages:
             - en
             - ja
 
+    -   md: concepts/consensus-network/locking-and-issuing-chains.md
+        targets:
+            - en
+            - ja
+
+     # Redirect old "federated-sidechains.html"
+    -   name: Federated Sidechains
+        html: federated-sidechains.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: locking-and-issuing-chains.html
+        blurb: Learn about the locking and issuing chains that enable cross-chain transactions between the XRP Ledger and another chain.
+        nav_omit: true
+        targets:
+            - en
+            - ja 
+
+    -   md: concepts/xrpl-servers/witness-server.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/interoperability/intro-to-evm-sidechain.md
         targets:
             - en
@@ -1085,7 +1098,6 @@ pages:
         blurb: Smart contract proposal for the XRP Ledger.
         targets:
             - en
-
 
     # Redirect old "the-rippled-server.html"
     -   name: The rippled Server
@@ -1117,7 +1129,7 @@ pages:
         nav_omit: true
         targets:
             - en
-            - ja
+            - ja          
 
 
 # Tutorials --------------------------------------------------------------------
