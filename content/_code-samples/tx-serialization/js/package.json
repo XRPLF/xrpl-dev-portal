@@ -1,0 +1,19 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "path": "^0.12.7",
+    "ripple-binary-codec": "^1.4.2",
+    "ripple-keypairs": "^1.1.4",
+    "xrpl": "^2.3.1",
+    "xrpl-accountlib": "^1.5.2"
+  }
+}
