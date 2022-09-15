@@ -256,6 +256,8 @@
         <li class="nav-item level-3"><a class="nav-link" href="#get-xchain_claim_id">Get xchain_claim_id</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-xchain_create_account_claim_id">Get xchain_create_account_claim_id</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#response-for-bridge-object">Response for Bridge Object</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#response-for-xchain-create-account-claim-id">Response for XChain Create Account Claim ID</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
       </ul>
   </div>
@@ -919,7 +921,120 @@
 </code></pre></div></div>
 </div>
 <h3 id="get-xchain_claim_id">Get xchain_claim_id<a aria-hidden="true" class="hover_anchor" href="#get-xchain_claim_id"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve a <a href="xchains.html">Crosschain Claim ID object</a>. Can be provided as string (object ID of the crosschain claim) or as an object. <em>(Added by the [Sidechains amendment][])</em></p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>bridge</code></td>
+<td style="text-align: left;">Object or String</td>
+<td style="text-align: left;">The [<a href="bridge.html">Bridge object</a> to retrieve.</td>
+</tr>
+<tr>
+<td style="text-align: left;">``</td>
+<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td style="text-align: left;"><em>(Required if <code>ticket</code> is specified as an object)</em> The owner of the Ticket object.</td>
+</tr>
+</tbody>
+</table>
+<div class="multicode" id="code-11"><ul class="codetabs"><li><a class="websocket" href="#code-11-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-11-1">JSON-RPC</a></li><li><a class="commandline" href="#code-11-2">Commandline</a></li></ul>
+
+<div class="code_sample websocket" id="code-11-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_xchain_claim_id"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"xchain_claim_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuing_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuing_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"locking_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"locking_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"xchain_claim_id"</span><span class="p">:</span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-11-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-34" id="codeblock-34button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-34"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">"xchain_claim_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuing_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuing_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"locking_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"locking_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"xchain_claim_id"</span><span class="p">:</span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="w">  </span><span class="p">}]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-11-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-35" id="codeblock-35button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-35">rippled json ledger_entry <span class="s1">'{ "xchain_claim_id": { "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt", "issuing_chain_issue": "XRP", "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC", "locking_chain_issue": "XRP", "xchain_claim_id":1 }, "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
 <h3 id="get-xchain_create_account_claim_id">Get xchain_create_account_claim_id<a aria-hidden="true" class="hover_anchor" href="#get-xchain_create_account_claim_id"><i class="fa fa-link"></i></a></h3>
+<p>The <code>xchain_create_account_claim_id</code> object is created when the sidechain is first notified (via an attestation) that a transaction occurred in the locking chain, and is removed when a quorum of attestations is reached. </p>
+<p>Retrieve a <a href="bridge.html">xchain_create_account_claim_id object</a> which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. <em>(Added by the [Sidechains amendment][])</em></p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>bridge</code></td>
+<td style="text-align: left;">Object or String</td>
+<td style="text-align: left;">The [<a href="bridge.html">Bridge object</a> to retrieve.</td>
+</tr>
+<tr>
+<td style="text-align: left;">``</td>
+<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td style="text-align: left;"><em>(Required if <code>ticket</code> is specified as an object)</em> The owner of the Ticket object.</td>
+</tr>
+</tbody>
+</table>
+<div class="multicode" id="code-12"><ul class="codetabs"><li><a class="websocket" href="#code-12-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-12-1">JSON-RPC</a></li><li><a class="commandline" href="#code-12-2">Commandline</a></li></ul>
+
+<div class="code_sample websocket" id="code-12-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-36" id="codeblock-36button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-36"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_bridge"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"xchain_create_account_claim_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuing_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuing_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"locking_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"locking_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"xchain_create_account_claim_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-12-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-37" id="codeblock-37button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-37"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"xchain_create_account_claim_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuing_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuing_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"locking_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"locking_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"xchain_create_account_claim_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="w"></span>
+<span class="w">  </span><span class="p">}]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-12-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-38" id="codeblock-38button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-38">rippled json ledger_entry <span class="s1">'{ "xchain_create_account_claim_id": { "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt", "issuing_chain_issue": "XRP", "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC", "locking_chain_issue": "XRP", "xchain_create_account_claim_id": 1 }, "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
 <table class="table-responsive">
@@ -954,9 +1069,9 @@
 </tbody>
 </table>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-11"><ul class="codetabs"><li><a class="websocket" href="#code-11-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-11-1">JSON-RPC</a></li><li><a class="commandline" href="#code-11-2">Commandline</a></li></ul>
+<div class="multicode" id="code-13"><ul class="codetabs"><li><a class="websocket" href="#code-13-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-13-1">JSON-RPC</a></li><li><a class="commandline" href="#code-13-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-11-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="p">{</span><span class="w"></span>
+<div class="code_sample websocket" id="code-13-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-39" id="codeblock-39button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-39"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_accountroot"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span><span class="w"></span>
@@ -986,7 +1101,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-11-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-34" id="codeblock-34button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-34"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w"></span>
+<div class="code_sample jsonrpc" id="code-13-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-40" id="codeblock-40button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-40"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w"></span>
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1016,7 +1131,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-11-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-35" id="codeblock-35button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-35"><span class="p">{</span><span class="w"></span>
+<div class="code_sample commandline" id="code-13-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-41" id="codeblock-41button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-41"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E"</span><span class="p">,</span><span class="w"></span>
@@ -1040,6 +1155,309 @@
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+</div>
+<h3 id="response-for-bridge-object">Response for Bridge Object<a aria-hidden="true" class="hover_anchor" href="#response-for-bridge-object"><i class="fa fa-link"></i></a></h3>
+<p>Here is a sample response for the Bridge object:</p>
+<div class="multicode" id="code-14"><ul class="codetabs"><li><a class="websocket" href="#code-14-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-14-1">JSON-RPC</a></li><li><a class="commandline" href="#code-14-2">Commandline</a></li></ul>
+
+<div class="code_sample websocket" id="code-14-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-42" id="codeblock-42button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-42"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_bridge"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bridge"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"MinAccountCreateAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C73BBB7F7B22A5C27217597CADA505462E1F5DEABB32CF23C2D72BC4D36225EF"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountClaimCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainClaimID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-14-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-43" id="codeblock-43button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-43"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bridge"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"MinAccountCreateAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C73BBB7F7B22A5C27217597CADA505462E1F5DEABB32CF23C2D72BC4D36225EF"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountClaimCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainClaimID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-14-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-44" id="codeblock-44button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-44"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bridge"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"MinAccountCreateAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C73BBB7F7B22A5C27217597CADA505462E1F5DEABB32CF23C2D72BC4D36225EF"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountClaimCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainClaimID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+</div>
+<p>### Response for XChain Claim ID</p>
+<p>{"index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942",
+ "ledger_current_index": 6,
+ "node": 
+ {"Account": "r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg",
+  "Flags": 0,
+  "LedgerEntryType": "XChainClaimID",
+  "OtherChainAccount": "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
+  "OwnerNode": "0",
+  "PreviousTxnID": "29B3F0A2FD3A7765CBFDA15CC91B11BF6A1B574F1BE43611D7C33EF72353C000",
+  "PreviousTxnLgrSeq": 4,
+  "SignatureReward": "1000000",
+  "XChainBridge": 
+  {"IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+   "IssuingChainIssue": "XRP",
+   "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+   "LockingChainIssue": "XRP"},
+  "XChainClaimAttestations": [],
+  "XChainClaimID": "1",
+  "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942"},
+ "status": "success",
+ "validated": false}</p>
+<h3 id="response-for-xchain-create-account-claim-id">Response for XChain Create Account Claim ID<a aria-hidden="true" class="hover_anchor" href="#response-for-xchain-create-account-claim-id"><i class="fa fa-link"></i></a></h3>
+<p>The <code>xchain_create_account_claim_id</code> object is created when the sidechain is first notified (via an attestation) that a transaction occurred in the locking chain, and is removed when a quorum of attestations is reached. The following example shows the state when the object had accumulated 3 attestations, one shy of the required quorum of 4.</p>
+<div class="multicode" id="code-15"><ul class="codetabs"><li><a class="websocket" href="#code-15-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-15-1">JSON-RPC</a></li><li><a class="commandline" href="#code-15-2">Commandline</a></li></ul>
+
+<div class="code_sample websocket" id="code-15-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-45" id="codeblock-45button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-45"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_accountroot"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XChainCreateAccountClaimID"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969D5B4F80266E795A965B2B0D3FCEB39395B826FBB205770175BBEF4BAEF9D9"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainCreateAccountAttestations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBdjyperRHKTzdxnZhyN94MpjN2aknRX8G"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJj2ty2MDGu7dtm1bvZMA5KuhzreNL2HHo"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPQDTwG7tWYNzqjytf8YCYX6hZemGG9TTh"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-15-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-46" id="codeblock-46button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-46"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XChainCreateAccountClaimID"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969D5B4F80266E795A965B2B0D3FCEB39395B826FBB205770175BBEF4BAEF9D9"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainCreateAccountAttestations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBdjyperRHKTzdxnZhyN94MpjN2aknRX8G"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJj2ty2MDGu7dtm1bvZMA5KuhzreNL2HHo"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPQDTwG7tWYNzqjytf8YCYX6hZemGG9TTh"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-15-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-47" id="codeblock-47button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-47"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XChainCreateAccountClaimID"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969D5B4F80266E795A965B2B0D3FCEB39395B826FBB205770175BBEF4BAEF9D9"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"XChainCreateAccountAttestations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBdjyperRHKTzdxnZhyN94MpjN2aknRX8G"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJj2ty2MDGu7dtm1bvZMA5KuhzreNL2HHo"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountProofSig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPQDTwG7tWYNzqjytf8YCYX6hZemGG9TTh"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></div>
