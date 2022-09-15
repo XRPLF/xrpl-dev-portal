@@ -619,7 +619,114 @@ rippled json ledger_entry '{ "bridge": { "issuing_chain_door": "rKeSSvHvaMZJp9yk
 
 ### Get xchain_claim_id
 
+Retrieve a [Crosschain Claim ID object](xchains.html). Can be provided as string (object ID of the crosschain claim) or as an object. _(Added by the [Sidechains amendment][])_
+
+| `Field`                 | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `bridge`                | Object or String           | The [[Bridge object](bridge.html) to retrieve. |
+| ``          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "example_get_xchain_claim_id",
+  "command": "ledger_entry",
+  "xchain_claim_id": {
+    "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+    "issuing_chain_issue": "XRP",
+    "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+    "locking_chain_issue": "XRP",
+    "xchain_claim_id":1
+  },
+  "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+   "xchain_claim_id": {
+    "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+    "issuing_chain_issue": "XRP",
+    "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+    "locking_chain_issue": "XRP",
+    "xchain_claim_id":1
+  },
+  "ledger_index": "validated"
+  }]
+}
+```
+
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "xchain_claim_id": { "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt", "issuing_chain_issue": "XRP", "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC", "locking_chain_issue": "XRP", "xchain_claim_id":1 }, "ledger_index": "validated" }'
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
 ### Get xchain_create_account_claim_id
+
+The `xchain_create_account_claim_id` object is created when the sidechain is first notified (via an attestation) that a transaction occurred in the locking chain, and is removed when a quorum of attestations is reached. 
+
+Retrieve a [xchain_create_account_claim_id object](bridge.html) which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. _(Added by the [Sidechains amendment][])_
+
+| `Field`                 | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `bridge`                | Object or String           | The [[Bridge object](bridge.html) to retrieve. |
+| ``          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "example_get_bridge",
+  "command": "ledger_entry",
+  "xchain_create_account_claim_id": {
+    "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+    "issuing_chain_issue": "XRP",
+    "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+    "locking_chain_issue": "XRP",
+    "xchain_create_account_claim_id": 1
+    },
+  "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+  "xchain_create_account_claim_id": {
+    "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+    "issuing_chain_issue": "XRP",
+    "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+    "locking_chain_issue": "XRP",
+    "xchain_create_account_claim_id": 1
+    },
+  "ledger_index": "validated"
+  }]
+}
+```
+
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "xchain_create_account_claim_id": { "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt", "issuing_chain_issue": "XRP", "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC", "locking_chain_issue": "XRP", "xchain_create_account_claim_id": 1 }, "ledger_index": "validated" }'
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
 
 ## Response Format
 
@@ -734,6 +841,341 @@ An example of a successful response:
 ```
 
 <!-- MULTICODE_BLOCK_END -->
+
+### Response for Bridge Object
+
+Here is a sample response for the Bridge object:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "example_get_bridge",
+  "result": {
+    "index": "DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367",
+    "ledger_current_index": 4,
+    "node": { 
+      "Account": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+      "Balance": "0",
+      "Flags": 0,
+      "LedgerEntryType": "Bridge",
+      "MinAccountCreateAmount": "20000000",
+      "OwnerNode": "0",
+      "PreviousTxnID": "C73BBB7F7B22A5C27217597CADA505462E1F5DEABB32CF23C2D72BC4D36225EF",
+      "PreviousTxnLgrSeq": 3,
+      "SignatureReward": "1000000",
+      "XChainAccountClaimCount": "0",
+      "XChainAccountCreateCount": "0",
+      "XChainBridge": {
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+      },
+      "XChainClaimID": "0",
+      "index": "DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"
+    },
+    "status": "success",
+    "validated": false
+  },
+  "type": "response"
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+  "result": {
+    "index": "DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367",
+    "ledger_current_index": 4,
+    "node": { 
+      "Account": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+      "Balance": "0",
+      "Flags": 0,
+      "LedgerEntryType": "Bridge",
+      "MinAccountCreateAmount": "20000000",
+      "OwnerNode": "0",
+      "PreviousTxnID": "C73BBB7F7B22A5C27217597CADA505462E1F5DEABB32CF23C2D72BC4D36225EF",
+      "PreviousTxnLgrSeq": 3,
+      "SignatureReward": "1000000",
+      "XChainAccountClaimCount": "0",
+      "XChainAccountCreateCount": "0",
+      "XChainBridge": {
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+      },
+      "XChainClaimID": "0",
+      "index": "DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"
+    },
+    "status": "success",
+    "validated": false
+  }
+}
+```
+
+*Commandline*
+
+```json
+{
+  "result": {
+    "index": "DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367",
+    "ledger_current_index": 4,
+    "node": { 
+      "Account": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+      "Balance": "0",
+      "Flags": 0,
+      "LedgerEntryType": "Bridge",
+      "MinAccountCreateAmount": "20000000",
+      "OwnerNode": "0",
+      "PreviousTxnID": "C73BBB7F7B22A5C27217597CADA505462E1F5DEABB32CF23C2D72BC4D36225EF",
+      "PreviousTxnLgrSeq": 3,
+      "SignatureReward": "1000000",
+      "XChainAccountClaimCount": "0",
+      "XChainAccountCreateCount": "0",
+      "XChainBridge": {
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+      },
+      "XChainClaimID": "0",
+      "index": "DC74C41BDD449D5DC421E521E69CB903F3A4A97C9C12BD638E055BF46B1EF367"
+    },
+    "status": "success",
+    "validated": false
+  }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+ ### Response for XChain Claim ID
+
+
+{"index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942",
+ "ledger_current_index": 6,
+ "node": 
+ {"Account": "r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg",
+  "Flags": 0,
+  "LedgerEntryType": "XChainClaimID",
+  "OtherChainAccount": "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
+  "OwnerNode": "0",
+  "PreviousTxnID": "29B3F0A2FD3A7765CBFDA15CC91B11BF6A1B574F1BE43611D7C33EF72353C000",
+  "PreviousTxnLgrSeq": 4,
+  "SignatureReward": "1000000",
+  "XChainBridge": 
+  {"IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+   "IssuingChainIssue": "XRP",
+   "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+   "LockingChainIssue": "XRP"},
+  "XChainClaimAttestations": [],
+  "XChainClaimID": "1",
+  "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942"},
+ "status": "success",
+ "validated": false}
+
+### Response for XChain Create Account Claim ID
+
+ The `xchain_create_account_claim_id` object is created when the sidechain is first notified (via an attestation) that a transaction occurred in the locking chain, and is removed when a quorum of attestations is reached. The following example shows the state when the object had accumulated 3 attestations, one shy of the required quorum of 4.
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "example_get_accountroot",
+  "result": {
+    "index": "C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54",
+    "ledger_current_index": 5,
+    "node": { 
+      "Account": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+      "Flags": 0,
+      "LedgerEntryType": "XChainCreateAccountClaimID",
+      "OwnerNode": "0",
+      "PreviousTxnID": "969D5B4F80266E795A965B2B0D3FCEB39395B826FBB205770175BBEF4BAEF9D9",
+      "PreviousTxnLgrSeq": 4,
+      "XChainAccountCreateCount": "1",
+      "XChainBridge": { 
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+        },
+      "XChainCreateAccountAttestations": [ { 
+        "XChainCreateAccountProofSig": {
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rBdjyperRHKTzdxnZhyN94MpjN2aknRX8G",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+          }
+        }, {
+        "XChainCreateAccountProofSig": { 
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rJj2ty2MDGu7dtm1bvZMA5KuhzreNL2HHo",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+          }
+        }, {
+        "XChainCreateAccountProofSig": {
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rPQDTwG7tWYNzqjytf8YCYX6hZemGG9TTh",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+        }
+      }
+    ],
+    "index": "C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"},
+    "status": "success",
+    "validated": false
+  },
+  "status": "success",
+  "type": "response"
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+  "result": {
+    "index": "C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54",
+    "ledger_current_index": 5,
+    "node": { 
+      "Account": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+      "Flags": 0,
+      "LedgerEntryType": "XChainCreateAccountClaimID",
+      "OwnerNode": "0",
+      "PreviousTxnID": "969D5B4F80266E795A965B2B0D3FCEB39395B826FBB205770175BBEF4BAEF9D9",
+      "PreviousTxnLgrSeq": 4,
+      "XChainAccountCreateCount": "1",
+      "XChainBridge": { 
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+        },
+      "XChainCreateAccountAttestations": [ { 
+        "XChainCreateAccountProofSig": {
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rBdjyperRHKTzdxnZhyN94MpjN2aknRX8G",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+          }
+        }, {
+        "XChainCreateAccountProofSig": { 
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rJj2ty2MDGu7dtm1bvZMA5KuhzreNL2HHo",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+          }
+        }, {
+        "XChainCreateAccountProofSig": {
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rPQDTwG7tWYNzqjytf8YCYX6hZemGG9TTh",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+        }
+      }
+    ],
+    "index": "C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"},
+    "status": "success",
+    "validated": false
+  }
+}
+```
+
+*Commandline*
+
+```json
+{
+  "result": { 
+    "index": "C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54",
+    "ledger_current_index": 5,
+    "node": { 
+      "Account": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+      "Flags": 0,
+      "LedgerEntryType": "XChainCreateAccountClaimID",
+      "OwnerNode": "0",
+      "PreviousTxnID": "969D5B4F80266E795A965B2B0D3FCEB39395B826FBB205770175BBEF4BAEF9D9",
+      "PreviousTxnLgrSeq": 4,
+      "XChainAccountCreateCount": "1",
+      "XChainBridge": { 
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+        },
+      "XChainCreateAccountAttestations": [ { 
+        "XChainCreateAccountProofSig": {
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rBdjyperRHKTzdxnZhyN94MpjN2aknRX8G",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+          }
+        }, {
+        "XChainCreateAccountProofSig": { 
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rJj2ty2MDGu7dtm1bvZMA5KuhzreNL2HHo",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+          }
+        }, {
+        "XChainCreateAccountProofSig": {
+          "Amount": "1000000000",
+          "AttestationRewardAccount": "rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f",
+          "AttestationSignerAccount": "rPQDTwG7tWYNzqjytf8YCYX6hZemGG9TTh",
+          "Destination": "rnJ32bja1a9V4Wheerr76HnLgUJmYoLP5i",
+          "SignatureReward": "1000000",
+          "WasLockingChainSend": 1,
+          "XChainAccountCreateCount": "1"
+        }
+      }
+    ],
+    "index": "C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54"},
+    "status": "success",
+    "validated": false
+  }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
 
 ## Possible Errors
 
