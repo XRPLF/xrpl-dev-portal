@@ -39,6 +39,9 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
 - [`payment_channel`](#get-paychannel-object)
 - [`deposit_preauth`](#get-depositpreauth-object)
 - [`ticket`](#get-ticket-object)
+- [`bridge`](#get-bridge-object)
+- [`xchain_claim_id`](#get-xchain-claim-id-object)
+- [`xchain_create_account_claim_id`](#get-xchain-create-account-claim-id-object)
 
 **Caution:** If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.
 
@@ -557,11 +560,66 @@ rippled json ledger_entry '{ "ticket": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYf
 
 <!-- MULTICODE_BLOCK_END -->
 
+
 <!-- TODO: enable if/when Tickets are available on Mainnet
 [Try it! >](websocket-api-tool.html#ledger_entry-ticket)
 -->
 
+### Get Bridge Object
 
+Retrieve a [Bridge object](bridge.html) which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. _(Added by the [Sidechains amendment][])_
+
+| `Field`                 | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `bridge`                | Object or String           | The [[Bridge object](bridge.html) to retrieve. |
+| ``          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "example_get_bridge",
+  "command": "ledger_entry",
+  "bridge": {
+    "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+    "issuing_chain_issue": "XRP",
+    "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+    "locking_chain_issue": "XRP"
+  },
+  "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+   "bridge": {
+    "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+    "issuing_chain_issue": "XRP",
+    "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+    "locking_chain_issue": "XRP"
+   },
+  "ledger_index": "validated"
+  }]
+}
+```
+
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "bridge": { "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt", "issuing_chain_issue": "XRP", "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC", "locking_chain_issue": "XRP" }, "ledger_index": "validated" }'
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+### Get xchain_claim_id
+
+### Get xchain_create_account_claim_id
 
 ## Response Format
 
@@ -676,7 +734,6 @@ An example of a successful response:
 ```
 
 <!-- MULTICODE_BLOCK_END -->
-
 
 ## Possible Errors
 
