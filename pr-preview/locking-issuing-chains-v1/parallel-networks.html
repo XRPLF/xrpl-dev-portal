@@ -259,7 +259,7 @@
     <div class="content">
         <h1 id="parallel-networks">Parallel Networks<a aria-hidden="true" class="hover_anchor" href="#parallel-networks"><i class="fa fa-link"></i></a></h1>
 <p>There is one production XRP Ledger peer-to-peer network, and all business that takes place on the XRP Ledger occurs within the production network—the Mainnet.</p>
-<p>To help members of the XRP Ledger community interact with XRP Ledger technology without affecting anything on the Mainnet, Ripple hosts two alternative networks, or altnets: the Testnet and the Devnet. Here's a breakdown of all three networks:</p>
+<p>To help members of the XRP Ledger community interact with XRP Ledger technology without affecting anything on the Mainnet, there are alternative networks, or altnets. Here's a breakdown of some public altnets:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -296,11 +296,11 @@
 </tr>
 </tbody>
 </table>
-<p>Each test network has its own separate supply of test XRP, which is <a href="xrp-testnet-faucet.html">given away for free</a> to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.</p>
+<p>Each altnet has its own separate supply of test XRP, which is <a href="xrp-testnet-faucet.html">given away for free</a> to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Unlike the XRP Ledger Mainnet, test networks are usually <em>centralized</em> and there are no guarantees about the stability and availability of these networks. They have been and continue to be used to test various properties of server configuration, network topology, and network performance.</p>
 <h2 id="parallel-networks-and-consensus">Parallel Networks and Consensus<a aria-hidden="true" class="hover_anchor" href="#parallel-networks-and-consensus"><i class="fa fa-link"></i></a></h2>
-<p>The main factor in determining which network a server follows is its configured UNL—the list of validators it trusts not to collude. Each server uses its configured UNL to know which ledger to accept as the truth. When different consensus groups of <code>rippled</code> instances only trust other members of the same group, each group continues as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.</p>
-<p>Ripple runs the main servers in the Testnet, Devnet, and NFT-Devnet; you can also <a href="connect-your-rippled-to-the-xrp-test-net.html">connect your own <code>rippled</code> server to these networks</a>. The Testnet and Devnet do not use diverse, censorship-resistant sets of validators. This makes it possible for Ripple to reset the Testnet or Devnet on a regular basis.</p>
+<p>The main factor in determining which network a server follows is its configured UNL—the list of validators it trusts not to collude. Each server uses its configured UNL to know which ledger to accept as the truth. When different consensus groups of <code>rippled</code> instances only trust other members of the same group, each group continues as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process avoids confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.</p>
+<p>Ripple runs the main servers in the Testnet, Devnet, and NFT-Devnet; you can also <a href="connect-your-rippled-to-the-xrp-test-net.html">connect your own <code>rippled</code> server to these networks</a>. The Testnet and Devnet do not use diverse, censorship-resistant sets of validators. This makes it possible for Ripple to reset the Testnet or Devnet at any time.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Tools:</strong><ul>
