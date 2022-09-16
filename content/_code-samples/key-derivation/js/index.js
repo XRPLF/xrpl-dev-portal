@@ -62,7 +62,7 @@ class Seed {
                 return decoded
             } else {
                 //Raise Error
-                console.log('Raise error!')
+                throw new Error("incorrect decoded seed length")
             }
         }
 
