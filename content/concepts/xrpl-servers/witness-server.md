@@ -10,6 +10,7 @@ The _witness server_ is a light-weight server that is aware the locking and issu
 The witness server is an independent server that has similar responsibilities as that of a validator server on the XRP Ledger's peer-to-peer network and helps avoid double-spend and collusion. 
 
 The witness server serves as a neutral witness for transactions between a locking chain and an issuing chain. 
+It listens to the door accounts on both sides of the bridge and signs attestations for cross-chain transfer transactions, essentially affirming that a transaction on the source account happened, so the value can be claimed on the destination account. They are essentially acting as an oracle, to “prove” that the value was locked/burned on the source account, which allows the recipient to then claim (via minting/ unlocking) the equivalent funds on the destination account.
 
 The bridge between the locking chain and the issuing chain includes the following information in its configuration: 
 
