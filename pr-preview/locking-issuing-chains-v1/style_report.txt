@@ -1,28 +1,28 @@
 -------------
 Spell Checker
 -------------
-Found 264 possible spelling errors:
+Found 271 possible spelling errors:
 <Page 'FAQ' (faq.html)> Unknown Words:
-  aml: amy, ahl, ami
+  aml: acl, sml, afl
 
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerweight: 
   signerquorum: 
+  signerweight: 
   expandedsignerlist: 
 
 <Page 'Direct XRP Payments' (direct-xrp-payments.html)> Unknown Words:
   proactively: preactively
 
 <Page 'Checks' (checks.html)> Unknown Words:
-  aml: amy, ahl, ami
+  aml: acl, sml, afl
 
 <Page 'Tokens' (tokens.html)> Unknown Words:
-  bharath: bharata, bharat
   asheesh: hasheesh
+  bharath: bharat, bharata
 
 <Page 'Authorized Trust Lines' (authorized-trust-lines.html)> Unknown Words:
   onboarding: 
@@ -37,9 +37,9 @@ Found 264 possible spelling errors:
   nftokenoffer: 
   nftokenburn: 
   0x000008: 
-  nftokencanceloffer: 
-  nftokenacceptoffer: 
   nftokencreateoffer: 
+  nftokenacceptoffer: 
+  nftokencanceloffer: 
 
 <Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)> Unknown Words:
   nftokens: 
@@ -56,42 +56,51 @@ Found 264 possible spelling errors:
   proactively: preactively
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  checkcashmakestrustline: 
+  fixnftokendirv1: 
   expandedsignerlist: 
+  nonfungibletokensv1_1: 
   nonfungibletokensv1: 
   fixnftokennegoffer: 
-  nonfungibletokensv1_1: 
-  fixnftokendirv1: 
-  nftokencanceloffer: 
-  nftokenacceptoffer: 
+  checkcashmakestrustline: 
+  nftokenmint: 
   nftokencreateoffer: 
   nftokenburn: 
-  nftokenmint: 
+  nftokenacceptoffer: 
+  nftokencanceloffer: 
   nftokenoffer: 
   nftokenpage: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  xls: cls, fls, ls
   20d: 2d, 2nd
+  xls: els, pls, sls
+
+<Page 'Locking and Issuing Chains' (locking-and-issuing-chains.html)> Unknown Words:
+  parllel: parallel
+  mainchain: 
+  salice: saline, slice, saice
+  xchaindoorcreate: 
+  xchainseqnumcreate: 
+  xchaintransfer: 
+  xchainclaim: 
 
 <Page 'rippled Server Modes' (rippled-server-modes.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Ledger History' (ledger-history.html)> Unknown Words:
   xrplcluster: 
 
 <Page 'Online Deletion' (online-deletion.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'History Sharding' (history-sharding.html)> Unknown Words:
   bittorrent: 
 
 <Page 'Peer Protocol' (peer-protocol.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'The Clio Server' (the-clio-server.html)> Unknown Words:
   scylladb: 
@@ -113,8 +122,8 @@ Found 264 possible spelling errors:
   quickstart: 
   trustline: 
   ripplex2: ripplex
-  rippledefault: 
   checkbox: 
+  rippledefault: 
   autofill: 
   nftokens: 
 
@@ -152,31 +161,31 @@ Found 264 possible spelling errors:
   sologenic: 
 
 <Page 'Get Started Using Python' (get-started-using-python.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Get Started Using Java' (get-started-using-java.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Get Started Using JavaScript' (get-started-using-javascript.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Get Started Using HTTP / WebSocket APIs' (get-started-using-http-websocket-apis.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
   disallowxrp: 
   wxpython: 
-  wsl: ws, csl, msl
+  wsl: wl, wol, wel
   threadsafe: 
   asyncio: 
   wxglade: 
-  guis: gui, gis, guls
-  s1: si, sq, t1
+  guis: gui, guin, guss
+  s1: sf, t1, sg
   popup: pop-up
   toolkits: toolkit
   tooltip: 
-  lsf: lsv, bsf, fsf
-  refactor: reactor, refractor, redactor
+  lsf: lsv, sf, lsi
+  refactor: refractor, prefactor, redactor
   tooltips: 
 
 <Page 'Assign a Regular Key Pair' (assign-a-regular-key-pair.html)> Unknown Words:
@@ -192,86 +201,86 @@ Found 264 possible spelling errors:
   nftoken: 
   nonfungibletokensv1: 
   nftokens: 
-  ipfs: ipms, ipcs, ips
+  ipfs: ifs, ipcs, ipms
   nftokenacceptoffer: 
   acceptselloffer: 
-  nftokenoffer: 
   nftokenburn: 
-  nftokencanceloffer: 
-  nftokenpage: 
   nftokenmint: 
   nftokencreateoffer: 
+  nftokenoffer: 
+  nftokencanceloffer: 
+  nftokenpage: 
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Unknown Words:
   reputational: deputational
-  aml: amy, ahl, ami
+  aml: acl, sml, afl
   xapps: apps, lapps, capps
 
 <Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: nome, name, vme
+  nvme: vme, nome, name
 
 <Page 'Install on CentOS/Red Hat with yum' (install-rippled-on-centos-rhel-with-yum.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Install on Ubuntu or Debian Linux' (install-rippled-on-ubuntu.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Build and Run rippled on macOS' (build-run-rippled-macos.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Build and Run rippled in Reporting Mode' (build-run-rippled-in-reporting-mode.html)> Unknown Words:
   datastores: 
   datastore: 
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'rippled v1.3.x Migration Instructions' (rippled-1-3-migration-instructions.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Configure Amendment Voting' (configure-amendment-voting.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Connect Your rippled to a Parallel Network' (connect-your-rippled-to-the-xrp-test-net.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Configure Advisory Deletion' (configure-advisory-deletion.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Configure History Sharding' (configure-history-sharding.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Enable Link Compression' (enable-link-compression.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Forward Ports for Peering' (forward-ports-for-peering.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Manually Connect to a Specific Peer' (manually-connect-to-a-specific-peer.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Use a Peer Reservation' (use-a-peer-reservation.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Start a New Genesis Ledger in Stand-Alone Mode' (start-a-new-genesis-ledger-in-stand-alone-mode.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Diagnosing Problems with rippled' (diagnosing-problems.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Understanding Log Messages' (understanding-log-messages.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'rippled Server Doesn't Sync' (server-doesnt-sync.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'rippled Server Won't Start' (server-wont-start.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Fix SQLite Transaction Database Page Size Issue' (fix-sqlite-tx-db-page-size-issue.html)> Unknown Words:
   proactively: preactively
-  config: confit, confix
+  config: confix, confit
 
 <Page 'NFToken' (nftoken.html)> Unknown Words:
   nftoken: 
@@ -279,18 +288,18 @@ Found 264 possible spelling errors:
   nftokenpage: 
   nftokenid: 
   trustline: 
-  lsfonlyxrp: 
-  0x000b: 
-  0x0001: 
-  0x0002: 
   lsftransferable: 
+  0x0001: 
+  lsfonlyxrp: 
   lsfburnable: 
+  0x0002: 
+  0x000b: 
   0x0008: 
   transferfee: transferee
-  1bps: kbps, mbps, bps
+  1bps: bps, kbps, mbps
   nftokentaxon: 
   nftokenmint: 
-  ipfs: ipms, ipcs, ips
+  ipfs: ifs, ipcs, ipms
   rfc2379: 
 
 <Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
@@ -306,7 +315,7 @@ Found 264 possible spelling errors:
   nftokenpage: 
   nonfungibletokensv1: 
   tokenpage: 
-  shamap: shama, shamal, shaman
+  shamap: shama, shamas, shaman
   nftoken: 
   nftokens: 
 
@@ -314,9 +323,9 @@ Found 264 possible spelling errors:
   expandedsignerlist: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenmint: 
-  xls: cls, fls, ls
   nftokens: 
+  nftokenmint: 
+  xls: els, pls, sls
   nftoken: 
 
 <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
@@ -340,9 +349,9 @@ Found 264 possible spelling errors:
 <Page 'NFTokenMint' (nftokenmint.html)> Unknown Words:
   nftokenmint: 
   nonfungibletokensv1: 
-  nftokenpage: 
   nftoken: 
-  ipfs: ipms, ipcs, ips
+  nftokenpage: 
+  ipfs: ifs, ipcs, ipms
   rfc2379: 
 
 <Page 'SignerListSet' (signerlistset.html)> Unknown Words:
@@ -356,8 +365,8 @@ Found 264 possible spelling errors:
   nonfungibletokensv1: 
 
 <Page 'tem Codes' (tem-codes.html)> Unknown Words:
-  nftokenmint: 
   nonfungibletokensv1: 
+  nftokenmint: 
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -376,88 +385,88 @@ Found 264 possible spelling errors:
   crosschain: 
   xchain_create_account_claim_id: 
   xchain: chain
-  ownernode: 
   xchainclaimid: 
-  rnjmyaiqevngtnb5ckrroxltcbwc7crubx: 
-  ledger_current_index: 
-  issuingchainissue: 
-  r9a8uynpw3x46fuc6p7jzqgn6wgapjbwpg: 
-  rjvexvelel4jndeelkcvdxascn9cebneqc: 
-  rkessvhvamzjp9ykaxutvwkhzgwuwmlnqt: 
-  xchainbridge: 
-  signaturereward: 
-  otherchainaccount: 
-  ledgerentrytype: 
-  lockingchaindoor: 
-  issuingchaindoor: 
   xchainclaimattestations: 
+  r9a8uynpw3x46fuc6p7jzqgn6wgapjbwpg: 
+  issuingchainissue: 
+  rjvexvelel4jndeelkcvdxascn9cebneqc: 
+  ownernode: 
+  issuingchaindoor: 
+  rkessvhvamzjp9ykaxutvwkhzgwuwmlnqt: 
   previoustxnid: 
+  rnjmyaiqevngtnb5ckrroxltcbwc7crubx: 
   previoustxnlgrseq: 
+  ledgerentrytype: 
+  ledger_current_index: 
   lockingchainissue: 
+  xchainbridge: 
+  otherchainaccount: 
+  lockingchaindoor: 
+  signaturereward: 
 
 <Page 'nft_buy_offers' (nft_buy_offers.html)> Unknown Words:
   nft_buy_offers: 
   nftoken: 
   nonfungibletokensv1: 
-  _the: the, ithe, ethe
+  _the: ithe, athe, ethe
   nftokenoffer: 
 
 <Page 'nft_sell_offers' (nft_sell_offers.html)> Unknown Words:
   nft_sell_offers: 
   nonfungibletokensv1: 
   nftoken: 
-  _the: the, ithe, ethe
+  _the: ithe, athe, ethe
   nftokenoffer: 
 
 <Page 'server_info (rippled)' (server_info.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'server_state' (server_state.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'server_info' (server_info-clio.html)> Unknown Words:
   localhost: 
-  rpcs: rps, rpc, rcs
+  rpcs: rocs, rcs, recs
 
 <Page 'nft_info' (nft_info.html)> Unknown Words:
   nft_info: 
-  nftokenmint: 
   ledger_index: 
+  nftokenmint: 
 
 <Page 'Admin API Methods' (admin-api-methods.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'ledger_request' (ledger_request.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'node_to_shard' (node_to_shard.html)> Unknown Words:
   node_to_shard: 
 
 <Page 'validation_seed' (validation_seed.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'connect' (connect.html)> Unknown Words:
   standalone: 
 
 <Page 'peers' (peers.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'validators' (validators.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'rippled Commandline Usage Reference' (commandline-usage.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'Validator List Method' (validator-list.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 <Page 'xrp-ledger.toml File' (xrp-ledger-toml.html)> Unknown Words:
-  config: confit, confix
+  config: confix, confit
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 307 discouraged words/phrases:
+Found 309 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
    Discouraged word: sufficient (1 instances); suggest 'enough' instead.
@@ -504,6 +513,9 @@ Page: <Page 'Known Amendments' (known-amendments.html)>
    Discouraged word: purchase (1 instances); suggest 'buy' instead.
    Discouraged word: therefore (1 instances); suggest 'so' instead.
    Discouraged word: encounter (2 instances); suggest 'meet' instead.
+Page: <Page 'Locking and Issuing Chains' (locking-and-issuing-chains.html)>
+   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
+   Discouraged word: initiate (1 instances); suggest 'start' instead.
 Page: <Page 'Ledger History' (ledger-history.html)>
    Discouraged word: sufficient (1 instances); suggest 'enough' instead.
    Discouraged word: portion (1 instances); suggest 'part' instead.
@@ -747,7 +759,7 @@ Readability Scores
 ------------------
 Average Page Readability Scores:
   Flesch Reading Ease Score: 57.3 (Fairly Difficult)
-  Dale-Chall Readability Score: 8.0 (average 11th or 12-grade student)
+  Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.5
   Gunning FOG Index: Grade level 9.2
   Automated Readability Index: Grade level 11.0
@@ -788,8 +800,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 56
-  Words: 755
-  Characters: 4,701
+  Words: 757
+  Characters: 4,710
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
@@ -808,6 +820,11 @@ Longest pages by character count:
   Characters: 29,594
 
 Shortest pages by character count:
+<Page 'API Conventions' (api-conventions.html)> Length Metrics:
+  Sentences: 4
+  Words: 38
+  Characters: 231
+
 <Page 'XRP-API' (xrp-api.html)> Length Metrics:
   Sentences: 3
   Words: 29
@@ -817,9 +834,4 @@ Shortest pages by character count:
   Sentences: 3
   Words: 22
   Characters: 129
-
-<Page 'Locking and Issuing Chains' (locking-and-issuing-chains.html)> Length Metrics:
-  Sentences: 2
-  Words: 5
-  Characters: 28
 

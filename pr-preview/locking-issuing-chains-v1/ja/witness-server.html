@@ -237,6 +237,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#witness-server">Witness Server</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#witness-server-configuration">Witness Server Configuration</a></li>
       </ul>
   </div>
       </aside>
@@ -259,16 +260,44 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="witness-server">Witness Server<a aria-hidden="true" class="hover_anchor" href="#witness-server"><i class="fa fa-link"></i></a></h1>
-<p>The <em>witness server</em> is a light-weight server that witnesses and signs transactions between <a href="locking-and-issuing-chains.html">a locking chain and an issuing chain</a>, thus enabling cross-chain transactions between the XRP Ledger and another chain. </p>
-<p>The witness server is an independent server that has similar responsibilities as that of a validator server on the peer-to-peer network and helps avoid double-spend and collusion. </p>
+<p>The <em>witness server</em> is a light-weight server that is aware the locking and issuing chains in a bridging solution between blockchains. The witness server witnesses and signs transactions between <a href="locking-and-issuing-chains.html">a locking chain and an issuing chain</a> when assets are moved to designation addresses, thus enabling cross-chain transactions. </p>
+<p>The witness server is an independent server that has similar responsibilities as that of a validator server on the XRP Ledger's peer-to-peer network and helps avoid double-spend and collusion. </p>
 <p>The witness server serves as a neutral witness for transactions between a locking chain and an issuing chain. </p>
 <p>The bridge between the locking chain and the issuing chain includes the following information in its configuration: </p>
 <ul>
 <li>Witness servers that monitor transactions on the bridge. You can choose one or more witness servers. </li>
 <li>Fee for witness servers for their service.</li>
 </ul>
-<p>Anyone can run a witness server. However, the burden is on the participants of the locking chain to evaluate the reliability of witness servers. </p>
-<p>Note that a locking chain may choose to configure a bridge with only one witness server initially and run the witness server itself. This strategy may be helpful in the initial period when the locking chain is yet to establish itself in the marketplace.</p>
+<p>Anyone can run a witness server. However, the burden is on the participants of the issuing chain to evaluate the reliability of witness servers. </p>
+<p>Note that an issuing chain may choose to configure a bridge with only one witness server initially and run the witness server itself. This strategy may be helpful in the initial period when the issuing chain is yet to establish itself in the marketplace.</p>
+<h2 id="witness-server-configuration">Witness Server Configuration<a aria-hidden="true" class="hover_anchor" href="#witness-server-configuration"><i class="fa fa-link"></i></a></h2>
+<p>The witness server takes a JSON configuration file with the <code>--config</code> file.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"mainchain_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6005</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"sidechain_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6007</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"rpc_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.3"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6010</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"db_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home/swd/data/witness/witness0/db"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"signing_key_seed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snwitEjg9Mr8n65cnqhATKcd1dQmv"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"sidechain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"src_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"src_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhczJR49YsdxwtYTPvxeSc1Jjr7R748cHv"</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"dst_chain_door"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"dst_chain_issue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
     </div>
   </article>
 <!-- Feedback Widget -->
