@@ -1135,7 +1135,13 @@ pages:
         targets:
             - en
             - ja
+            
     -   md: tutorials/quickstart/authorize-minter.md
+        targets:
+            - en
+            - ja
+            
+    -   md: tutorials/quickstart/batch-minting.md
         targets:
             - en
             - ja
