@@ -68,6 +68,7 @@ https://xrpl.org/fee-voting.html
 https://xrpl.org/consensus-research.html
 https://xrpl.org/parallel-networks.html
 https://xrpl.org/locking-and-issuing-chains.html
+https://xrpl.org/bridge.html
 https://xrpl.org/federated-sidechains.html
 https://xrpl.org/xrpl-servers.html
 https://xrpl.org/rippled-server-modes.html
