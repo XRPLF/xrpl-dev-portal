@@ -1071,6 +1071,16 @@ pages:
             - en
             - ja
 
+    -   md: concepts/consensus-network/bridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/xrpl-servers/witness-server.md
+        targets:
+            - en
+            - ja
+
      # Redirect old "federated-sidechains.html"
     -   name: Federated Sidechains
         html: federated-sidechains.html
@@ -1081,11 +1091,6 @@ pages:
         targets:
             - en
             - ja 
-
-    -   md: concepts/xrpl-servers/witness-server.md
-        targets:
-            - en
-            - ja
 
     -   md: concepts/interoperability/intro-to-evm-sidechain.md
         targets:

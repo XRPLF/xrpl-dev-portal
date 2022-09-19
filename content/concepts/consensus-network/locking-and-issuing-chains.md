@@ -63,11 +63,12 @@ Consider an example where Alice wants to send XRP from her account on the XRP Le
 
 5. If the XRP is not automatically released, for whatever reason (such as Alice forgetting to specify sAlice’s account in the OtherChainDestination field), then sAlice submits a XChainClaim transaction on the sidechain, specifying her account as the destination. This then releases the XRP on the sidechain to sAlice’s account.
 
+
 ## Terminology
 
 * Bridge: A method of moving assets/value from one blockchain to another.
 
-* Witness: Independent servers that are aware of the locking and issuing chains. See [witness servers](witness-servers.md) for more information.
+* Witness: Independent servers that are aware of the locking and issuing chains. See [witness servers](witness-server.md) for more information.
 
 * Cross-chain transfer: A transfer of assets from one chain to another.
 
@@ -120,6 +121,20 @@ This transaction completes a cross-chain transfer of value. It allows a user to 
 
 This transaction creates an account on the sidechain. In order to start a cross-chain transfer, you need an account on the destination chain, which is a bit of a paradox situation - so to avoid that, this is a special transaction that can create an account on the destination chain for you.
 
+## How to Set Up a Sidechain? 
+
+The [`sidechain_cli`](https://github.com/XRPLF/sidechain-cli) is a commandline tool that simplifies setting up bridges and issuing chains on your local machine. 
+
+Follow the [tutorial](https://github.com/XRPLF/sidechain-cli/blob/main/scripts/tutorial.sh) to walk through the steps of creating a bridge and completing your first cross-chain transaction. 
+
+
+## <TBD> XRPL Sidechain Explorer 
+
+The XRP Ledger Explorer provides a way to look up historical transactions, accounts, ledgers, fees, exchange rates, timestamps, sequence numbers, node uptime, IP addresses, topology, versions and peers for the XRP Ledger mainchain. 
+
+Similarly, you can use the XRP Ledger Sidechain Explorer to look up information for an XRP Ledger sidechain. Use the following syntax to access the XRPL Sidechain Explorer:
+
+`https://sidechain.xrpl.org/_<SIDECHAIN-NODE-DNS-ADDRESS-OR-IP>_`
 
 ## Frequently Asked Questions
 
