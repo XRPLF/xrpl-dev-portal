@@ -9,7 +9,7 @@ labels:
 
 [Introduced in: rippled 0.31.0][]
 
-The Amendments system provides a means of introducing new features to the decentralized XRP Ledger network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires **80% support for two weeks** before it can apply.
+The Amendments system provides a means of introducing new features to the decentralized XRP Ledger network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires **more than 80% support for two weeks** before it can apply.
 
 When an Amendment has been enabled, it applies permanently to all ledger versions after the one that included it. You cannot disable an Amendment, unless you introduce a new Amendment to do so.
 
@@ -41,8 +41,8 @@ Every 256th ledger is called a "flag" ledger. The process of approving an amendm
 
 The flag ledger itself has no special contents. However, during that time, the servers look at the votes of the validators they trust, and decide whether to insert an [`EnableAmendment` pseudo-transaction](enableamendment.html) into the following ledger. The flags of an EnableAmendment pseudo-transaction show what the server thinks happened:
 
-* The `tfGotMajority` flag means that support for the amendment has increased to at least 80% of trusted validators.
-* The `tfLostMajority` flag means that support for the amendment has decreased to less than 80% of trusted validators.
+* The `tfGotMajority` flag means that support for the amendment has increased to more than 80% of trusted validators.
+* The `tfLostMajority` flag means that support for the amendment has decreased to 80% of trusted validators or less.
 * An EnableAmendment pseudo-transaction with no flags means that support for the amendment has been enabled. (The change in transaction processing applies to every ledger after this one.)
 
 A server only inserts the pseudo-transaction to enable an amendment if all of the following conditions are met:
@@ -59,7 +59,7 @@ Theoretically, a `tfLostMajority` EnableAmendment pseudo-transaction could be in
 
 Each version of `rippled` is compiled with a list of known amendments and the code to implement those amendments. Operators of `rippled` validators [configure their servers](configure-amendment-voting.html) to vote in favor or against each inactive amendment. Server operators can change their votes at any time. If the operator does not choose a setting for a particular amendment, the server uses a default vote which is defined in the source code. The default can change in new software releases. For example, version 2.0 of the server might understand a new amendment but vote against it by default; then version 2.1 of the server might vote in favor of the same amendment by default. [Updated in: rippled 1.8.1][]
 
-To become enabled, an amendment must be supported by at least 80% of trusted validators continuously for two weeks. If support for an amendment goes below 80% of trusted validators, the amendment is temporarily rejected. The two week period starts over if the amendment regains support of at least 80% of trusted validators. (This can occur if validators vote differently, or if there is a change in which validators are trusted.) An amendment can gain and lose a majority any number of times before it becomes permanently enabled.
+To become enabled, an amendment must be supported by more than 80% of trusted validators continuously for two weeks. If support for an amendment goes below 80% of trusted validators, the amendment is temporarily rejected. The two week period starts over if the amendment regains support of more than 80% of trusted validators. (This can occur if validators vote differently, or if there is a change in which validators are trusted.) An amendment can gain and lose a majority any number of times before it becomes permanently enabled.
 
 An amendment cannot be permanently rejected, but it becomes very unlikely for an amendment to become enabled if new versions of `rippled` do not have the amendment in their known amendments list. Amendments that have had their source code removed without becoming enabled are considered "Vetoed" by the network.
 
