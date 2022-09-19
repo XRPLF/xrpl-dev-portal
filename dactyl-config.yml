@@ -4100,20 +4100,13 @@ pages:
             - ja
 
 # Dev Tools --------------------------------------------------------------------
-
-    -   md: dev-tools/dev-tools.md
+    -   name: Dev Tools
         html: dev-tools.html
+        template: page-dev-tools.html.jinja
         parent: docs.html
-        top_nav_grouping: Online Tools
-        blurb: Use these web-based tools to interact with the ledger and test your software.
+        sidebar: left_only
         targets:
             - en
-
-    -   md: dev-tools/dev-tools.ja.md
-        html: dev-tools.html
-        parent: docs.html
-        top_nav_grouping: Online Tools
-        targets:
             - ja
 
     -   name: Dev Tools # Redirect page for old broken URL
@@ -4249,6 +4242,7 @@ pages:
         top_nav_hero_image: top-nav-hero-contribute
         targets:
             - en
+            - ja
 
     -   name: Ambassadors
         html: ambassadors.html
@@ -4257,6 +4251,16 @@ pages:
         sidebar: disabled
         targets:
             - en
+            - ja
+
+    -   name: Developer Funding
+        html: developer-funding.html
+        parent: contribute.html
+        template: page-funding.html.jinja
+        sidebar: disabled
+        targets:
+            - en
+            - ja
 
     -   name: XRPL Jobs
         html: https://jobs.xrpl.org/
@@ -4402,6 +4406,9 @@ ignore_anchors_in:
 #Sometimes, a link is not really problematic, but the link checker detects it
 # as such and the easiest solution is to ignore it.
 known_broken_links:
+    # This dummy URI is used for some images that require a src attribute, but
+    # their actually content is defined in CSS (and theme-dependent)
+    - data:,
     # These PDFs download OK in a browser
     - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF

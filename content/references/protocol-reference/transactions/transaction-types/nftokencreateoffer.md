@@ -41,9 +41,9 @@ If successful, the transaction creates a [NFTokenOffer object][]. Each offer cou
 
 Transactions of the NFTokenCreateOffer type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
 
-| Flag Name     | Hex Value    | Decimal Value | Description                   |
-|:--------------|:-------------|:--------------|:------------------------------|
-| `tfSellToken` | `0x00000001` | `1`           | If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer. |
+| Flag Name       | Hex Value    | Decimal Value | Description                   |
+|:----------------|:-------------|:--------------|:------------------------------|
+| `tfSellNFToken` | `0x00000001` | `1`           | If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer. |
 
 
 ## Error Cases

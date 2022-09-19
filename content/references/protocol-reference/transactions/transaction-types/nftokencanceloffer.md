@@ -37,7 +37,7 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 
 | Field             | JSON Type | [Internal Type][] | Description              |
 |:------------------|:----------|:------------------|:-------------------------|
-| `TokenOffers`     | Array     | VECTOR256         | An array of IDs of the `NFTokenOffer` objects to cancel (not the IDs of `NFToken` objects, but the IDs of the `NFTokenOffer` objects). Each entry must be a different [object ID](ledger-object-ids.html) of an [NFTokenOffer](nftokenoffer.html) object; the transaction is invalid if the array contains duplicate entries. |
+| `NFTokenOffers`     | Array     | VECTOR256         | An array of IDs of the `NFTokenOffer` objects to cancel (not the IDs of `NFToken` objects, but the IDs of the `NFTokenOffer` objects). Each entry must be a different [object ID](ledger-object-ids.html) of an [NFTokenOffer](nftokenoffer.html) object; the transaction is invalid if the array contains duplicate entries. |
 
 The transaction can succeed even if one or more of the IDs in the `NFTokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been deleted.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a [NFTokenOffer](nftokenoffer.html) object.
 
@@ -52,8 +52,8 @@ In addition to errors that can occur for all transactions, {{currentpage.name}} 
 | Error Code         | Description                                             |
 |:-------------------|:--------------------------------------------------------|
 | `temDISABLED`      | The [NonFungibleTokensV1 amendment][] is not enabled. |
-| `temMALFORMED`     | The transaction was not validly formatted. For example, the `TokenOffers` array was empty or contained more than the maximum number of offers that can be canceled at one time. |
-| `tecNO_PERMISSION` | At least one of the IDs in the `TokenOffers` field refers to an object that cannot be canceled. For example, the sender of this transaction is not the owner or `Destination` of the offer, or the object was not an `NFTokenOffer` type object. |
+| `temMALFORMED`     | The transaction was not validly formatted. For example, the `NFTokenOffers` array was empty or contained more than the maximum number of offers that can be canceled at one time. |
+| `tecNO_PERMISSION` | At least one of the IDs in the `NFTokenOffers` field refers to an object that cannot be canceled. For example, the sender of this transaction is not the owner or `Destination` of the offer, or the object was not an `NFTokenOffer` type object. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

@@ -792,3 +792,17 @@ $placeholder-color: $gray-600;
     }
   }
 }
+
+.page-funding {
+  .funding-list {
+    @each $funding in "funding-01", "funding-02", "funding-03", "funding-04" {
+      ##{$funding} {
+        content: url("../img/funding/lightmode/#{$funding}.svg");
+      }
+    }
+  }
+
+  #xrplGrantsDark {
+    filter: invert(100%) brightness(0.8);
+  }
+}

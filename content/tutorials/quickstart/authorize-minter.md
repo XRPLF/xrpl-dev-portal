@@ -18,13 +18,13 @@ This example shows how to:
 1. Authorize an account to create NFTokens for your account.
 2. Mint a NFToken for another account, when authorized.
 
-[![Token Test Harness](../../img/quickstart28.png)](../../img/quickstart28.png)
+[![Token Test Harness](img/quickstart28.png)](img/quickstart28.png)
 
 # Usage
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try the sample in your own browser.
 
-## Authorize a Minter
+## Get Accounts
 
 1. Open `6.authorized-minter.html` in a browser.
 2. Get test accounts.
@@ -43,7 +43,7 @@ To authorize another account to create NFTokens for your account:
 2. Paste the **Operational Account** value in the **Authorized Minter** field.
 3. Click **Set Minter**.
 
-[![Authorized Minter](../../img/quickstart29.png)](../../img/quickstart29.png)
+[![Authorized Minter](img/quickstart29.png)](img/quickstart29.png)
 
 ## Mint a NFToken for Another Account
 
@@ -57,7 +57,7 @@ To mint a non-fungible token for another account:
 4. Copy the **Standby Account** value.
 5. Paste the **Standby Account** value in the Operational account **Issuer** field.
 6. Click the Operational account **Mint Other** button.
-[![Minted NFToken for Another Account](../../img/quickstart30.png)](../../img/quickstart30.png)
+[![Minted NFToken for Another Account](img/quickstart30.png)](img/quickstart30.png)
 
 Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the purchase price separately.
 
@@ -73,7 +73,7 @@ To create a NFToken sell offer:
 
 The important piece of information in the response is the Token Offer Index, labeled as _nft_offer_index,_ which is used to accept the sell offer.
 
-[![NFToken Sell Offer](../../img/quickstart31.png)](../../img/quickstart31.png)
+[![NFToken Sell Offer](img/quickstart31.png)](img/quickstart31.png)
 
 ## Accept Sell Offer
 
@@ -86,7 +86,7 @@ To accept an available sell offer:
 2. Click **Accept Sell Offer**.
 
 When you examine the results field, you'll find that the Issuer account is credited 25 XRP. The Buyer account is debited the 100 XRP purchase price plus 12 drops as the transaction fee. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
-[![Transaction Results](../../img/quickstart32.png)](../../img/quickstart32.png)
+[![Transaction Results](img/quickstart32.png)](img/quickstart32.png)
 
 # Code Walkthrough
 
@@ -121,7 +121,7 @@ Connect to the ledger and get the account wallet.
 Define the AccountSet transaction, setting the `NFTokenMinter` account and the `asfAuthorizedNFTokenMinter` flag.
 
 ```javascript
-  tx_blob = {
+  tx_json = {
     "TransactionType": "AccountSet",    
     "Account": my_wallet.address,
 ```
@@ -132,10 +132,10 @@ Set `NFTokenMinter` to the account number of the authorized minter.
     "NFTokenMinter": standbyMinterField.value,
 ```
 
-Set flag 10, which is `asfAuthorizedNFTokenMinter`.
+Set the `asfAuthorizedNFTokenMinter` flag (the numeric value is _10_).
 
 ```javascript
-    "SetFlag": 10
+    "SetFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
     }
 ```
 
@@ -149,20 +149,20 @@ Report progress.
 Prepare and send the transaction, then wait for results
 
 ```javascript
-    const cst_prepared = await client.autofill(tx_blob)
-    const cst_signed = my_wallet.sign(cst_prepared)
-    const cst_result = await client.submitAndWait(cst_signed.tx_blob)
+    const prepared = await client.autofill(tx_json)
+    const signed = my_wallet.sign(prepared)
+    const result = await client.submitAndWait(signed.tx_json)
 ```
 
 If the transaction succeeds, stringify the results and report. If not, report that the transaction failed.
 
 ```javascript
-    if (cst_result.result.meta.TransactionResult == "tesSUCCESS") {
+    if (result.result.meta.TransactionResult == "tesSUCCESS") {
     results += '\nAccount setting succeeded.'
-    results += JSON.stringify(cst_result,null,2)
+    results += JSON.stringify(result,null,2)
     document.getElementById('standbyResultField').value = results
     } else {
-    throw 'Error sending transaction: ${cst_result}'
+    throw 'Error sending transaction: ${result}'
     results += '\nAccount setting failed.'
     document.getElementById('standbyResultField').value = results
     }
@@ -205,7 +205,7 @@ Report success
   document.getElementById('standbyResultField').value = results
 ```
       
-This transaction blob is the same as the one used for the previous `Mint Token` function, with the addition of the `Issuer` field.
+This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nftokens.html#mint-token), with the addition of the `Issuer` field.
 
 ```javascript
   const transactionBlob = {
@@ -219,7 +219,7 @@ The URI is a link to a data file represented by the NFToken.
     "URI": xrpl.convertStringToHex(standbyTokenUrlField.value),
 ```
 
-At a minimum, we recommend that you set the tfTransferable flag (8) to enable accounts to sell and resell the NFToken for testing purposes.
+At a minimum, we recommend that you set the `tfTransferable` flag (8) to enable accounts to sell and resell the NFToken for testing purposes.
 
 ```javascript
     "Flags": parseInt(standbyFlagsField.value),
@@ -291,24 +291,24 @@ async function oPsetMinter(type) {
   my_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   document.getElementById('operationalResultField').value = results
 
-  tx_blob = {
+  tx_json = {
     "TransactionType": "AccountSet",
     "Account": my_wallet.address,
     "NFTokenMinter": operationalMinterField.value,
-    "SetFlag": 10
+    "SetFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
   } 
     results += '\n Set Minter.' 
     document.getElementById('operationalResultField').value = results
       
-    const cst_prepared = await client.autofill(tx_blob)
-    const cst_signed = my_wallet.sign(cst_prepared)
-    const cst_result = await client.submitAndWait(cst_signed.tx_blob)
-    if (cst_result.result.meta.TransactionResult == "tesSUCCESS") {
+    const prepared = await client.autofill(tx_json)
+    const signed = my_wallet.sign(prepared)
+    const result = await client.submitAndWait(signed.tx_json)
+    if (result.result.meta.TransactionResult == "tesSUCCESS") {
     results += '\nAccount setting succeeded.'
-    results += JSON.stringify(cst_result,null,2)
+    results += JSON.stringify(result,null,2)
     document.getElementById('operationalResultField').value = results
     } else {
-    throw 'Error sending transaction: ${cst_result}'
+    throw 'Error sending transaction: ${result}'
     results += '\nAccount setting failed.'
     document.getElementById('operationalResultField').value = results
     }
@@ -759,3 +759,4 @@ Update the form with fields and buttons to support the new functions.
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
 | [← Broker a NFToken Sale >](broker-sale.html)  | [Batch Mint NFTokens → >](batch-minting.md) |
+

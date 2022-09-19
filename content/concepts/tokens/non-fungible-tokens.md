@@ -46,7 +46,7 @@ You create a new `NFToken` using the [NFTokenMint transaction][].
 
 [NFTokenOffer object][] is a new object that describes an offer to buy or sell a single `NFToken`.
 
-You destroy an `NFToken` using the [NFTokenBurn transaction][].
+You destroy an `NFToken` using the [NFTokenBurn transaction][]. Token owners can always burn a token they own. If you mint a token with the `tfBurnable` flag set, you have the option of burning the token at any time, regardless of the owner.
 
 
 ## `NFToken` Lifecycle

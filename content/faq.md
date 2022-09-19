@@ -101,6 +101,14 @@ Publishers of individual default UNLs set their own policies for when to add or 
 For recommendations and best practices, see [Run `rippled` as a Validator](run-rippled-as-a-validator.html).
 
 
+#### If the dUNL has the most influence on the network, then is the XRPL centralized?
+Validators can choose to not use the dUNL, or any widely-used UNL for that matter. Anyone can create a new UNL at any time.
+
+There can be multiple UNLs in use on the same network. Each operator can customize their server's own UNL or choose to follow a different recommended list. All these servers can still operate on the same chain and reach consensus with one another.
+
+However, if your UNL does not have sufficient overlap with the UNLs used by others, there is a risk that your server forks away from the rest of the network. As long as your UNL has > 90% overlap with the one used by people you're transacting with, you are completely safe from forking. If you have less overlap, you may still be able to follow the same chain, but the chances of forking increase with lower overlap, worse network connectivity, and the presence of unreliable or malicious validators on your UNL.
+
+
 ## Role of XRP
 
 
@@ -141,16 +149,9 @@ Once the pull request passes automated tests and receives approvals from reviewe
 
 No, Ripple does not own or control the XRP Ledger or XRP Ledger network.
 
-Ripple does publish a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/ripple/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple also periodically publishes pre-compiled binary packages of the software as a convenience. Anyone is free to [download and compile the software from source](install-rippled.html), if they prefer.
+Ripple contributes to a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/xrplf/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple periodically publishes pre-compiled binary packages of the software for convenience. Anyone can [download and compile the software from source](install-rippled.html).
 
-You don't need to use Ripple’s version of the XRP Ledger software to interact with the XRP Ledger. `rippled` is open-source software and Ripple grants anyone the ability to use, extend, and modify it as long as they follow the terms of the [ISC license](https://github.com/ripple/rippled/blob/develop/LICENSE.md). The ISC License is very permissive compared to some other open-source licenses that strictly limit how you can extend and adapt the software.
-
-Ripple is also one of several entities who publish recommended UNL settings and runs validators on the network. As of mid-2021, Ripple runs 6 of the 35+ validators in the default UNL.
-
-
-#### Does Ripple offer a secure method to download their software?
-
-`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. Ripple also publishes pre-built binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published. <!-- STYLE_OVERRIDE: evident -->
+Several entities publish recommended validator lists (UNLs). As of September 2022, Ripple runs 3 of the 35 validators in the default UNL.
 
 
 #### Does the XRP Ledger distinguish between the codebase for validation and the one for user software?

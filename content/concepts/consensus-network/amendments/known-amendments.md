@@ -17,7 +17,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixNFTokenNegOffer][]          | v1.9.2     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
-| [NonFungibleTokensV1_1][]       | v1.9.2     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
+| [NonFungibleTokensV1_1][]       | v1.9.2     | [Expected: 2022-09-13](https://xrpl.org/blog/2022/get-ready-for-nfts.html "BADGE_BLUE") |
 | [ExpandedSignerList][]          | v1.9.1     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [fixNFTokenDirV1][]             | v1.9.1     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1][]         | v1.9.0     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
@@ -77,7 +77,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | Amendment | CheckCashMakesTrustLine |
 |:----------|:-----------|
 | Amendment ID | 98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F |
-| Status | In Development |
+| Status | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -185,7 +185,7 @@ Adds a new transaction type, DepositPreauth for adding or removing preauthorizat
 
 Changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code `tecNO_PERMISSION`. With this amendment, those payments succeed as they would with Deposit Authorization disabled.
 
-TAlso changes the OfferCreate transaction to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
+Also changes the OfferCreate transaction to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
 
 
 ## EnforceInvariants
@@ -796,7 +796,7 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 | Amendment | NonFungibleTokensV1_1 |
 |:----------|:-----------|
 | Amendment ID | 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 |
-| Status | Open for Voting |
+| Status | Expected  |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
