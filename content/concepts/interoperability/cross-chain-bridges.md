@@ -1,22 +1,14 @@
 ---
-html: locking-and-issuing-chains.html
-parent: consensus-network.html
-blurb: Learn about locking and issuing chains which enable value in the form of XRP and other tokens (IOUs) to move efficiently between the XRP Ledger and another chain, also known as a sidechain.
+html: cross-chain-bridges.html
+parent: interoperability.html
+blurb: Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains.
 labels:
   - Blockchain
 ---
-# Locking and Issuing Chains
+# Cross-Chain Bridges
 
-Locking and issuing chains together represent a bridging solution between blockchains that enables the transfer of value from a locking chain to an issuing chain, for example the XRP Ledger (locking chain) and its sidechain(issuing chain).
+Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains such as the XRP Ledger and its sidechain.
 
-A bridging solution between blockchains should support the following primitives:
-
-* Put assets into trust on the locking chain.
-* Issue wrapped assets on the issuing chain.
-* Return or destroy wrapped assets on the issuing chain.
-* Prove to an issuing chain that assets were put into trust on the locking chain.
-* Prove to an issuing chain that assets were returned or destroyed on the locking chain.
-* Prevent assets from being wrapped multiple times and prevent transaction replay.
 
 A locking chain is a blockchain that holds assets that are then put into trust when a bridge to an issuing chain is created.
 
@@ -84,12 +76,6 @@ Consider an example where Alice wants to send XRP from her account on the XRP Le
 
 
 ## Transactions
-
-### Bridge Control: XChainCreateBridge
-
-This transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It tells rippled what the tokens being exchanged are. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up the witness servers.
-
-The complete production-grade setup would also include a SignerListSet transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This would ensure that the funds are truly in control of the witness servers.
 
 ### Bridge Control: XChainModifyBridge
 

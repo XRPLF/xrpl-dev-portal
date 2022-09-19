@@ -987,6 +987,22 @@ pages:
         targets:
             - ja
 
+   -   md: concepts/interoperability/parallel-networks-list.md
+        targets:
+            - en
+            - ja
+
+     # Redirect old "federated-sidechains.html"
+    -   name: Federated Sidechains
+        html: federated-sidechains.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: cross-chain-bridges.html
+        blurb: Learn about the locking and issuing chains that enable cross-chain transactions between the XRP Ledger and another chain.
+        nav_omit: true
+        targets:
+            - en
+            - ja 
+
     -   md: concepts/xrpl-servers/xrpl-servers.md
         targets:
             - en
@@ -1061,6 +1077,14 @@ pages:
             - en
             - ja
 
+    -   name: Interoperability
+        html: interoperability.html
+        parent: concepts.html
+        template: pagetype-category.html.jinja
+        blurb: Interoperability between the XRP Ledger and other chains enables value to move efficiently between blockchains.
+        targets:
+            - en
+    
     -   md: concepts/interoperability/xrpl-interoperability.md
         targets:
             - en
@@ -1070,27 +1094,20 @@ pages:
         targets:
             - en
             - ja
+    -   md: concepts/interoperability/cross-chain-bridges.md
+        targets:
+            - en
+            - ja
 
     -   md: concepts/consensus-network/bridge.md
         targets:
             - en
             - ja
 
-    -   md: concepts/xrpl-servers/witness-server.md
+    -   md: concepts/interoperability/witness-server.md
         targets:
             - en
             - ja
-
-     # Redirect old "federated-sidechains.html"
-    -   name: Federated Sidechains
-        html: federated-sidechains.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: locking-and-issuing-chains.html
-        blurb: Learn about the locking and issuing chains that enable cross-chain transactions between the XRP Ledger and another chain.
-        nav_omit: true
-        targets:
-            - en
-            - ja 
 
     -   md: concepts/interoperability/intro-to-evm-sidechain.md
         targets:
@@ -2630,6 +2647,42 @@ pages:
 
     -   md: references/protocol-reference/transactions/transaction-types/trustset.ja.md
         targets:
+            - ja
+    
+    -   md: references/protocol-reference/transactions/transaction-types/XChainAddAttestation.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchaincommit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchaincreateaccountcommit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchaincreateclaimid.md
+        targets:
+            - en
+            - ja
+
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchaincreatebridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchainclaim.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/XChainAddAttestation.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.md
