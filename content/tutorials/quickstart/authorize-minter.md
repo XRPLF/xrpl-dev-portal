@@ -1,5 +1,5 @@
 ---
-html: authorized-minter.html
+html: authorize-minter.html
 parent: xrpl-quickstart.html
 blurb: Authorize another account to mint NFTokens for you.
 labels:
@@ -758,5 +758,5 @@ Update the form with fields and buttons to support the new functions.
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← Broker a NFToken Sale >](broker-sale.html)  | [Batch Mint NFTokens → >](batch-minting.md) |
+| [← Broker a NFToken Sale >](broker-sale.html)  | [Batch Mint NFTokens → >](batch-minting.html) |
 

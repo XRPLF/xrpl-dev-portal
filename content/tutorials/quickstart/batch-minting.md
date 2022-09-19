@@ -490,6 +490,5 @@ For this form:
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← Authorize Minter>](authorize-minter.html)  |  |
-
+| [← Authorize Minter >](authorize-minter.html)  |  |
 
