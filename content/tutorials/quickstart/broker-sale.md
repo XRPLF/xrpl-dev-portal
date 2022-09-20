@@ -1049,4 +1049,4 @@ Revise the HTML form to add a new Broker section at the top.
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← 4. Transfer NFTokens >](transfer-nftokens.html)  | [Authorize Minter → >](authorize-minter.html)||
+| [← 4. Transfer NFTokens >](transfer-nftokens.html)  | [Authorize Minter → >](authorize-minter.html)|
