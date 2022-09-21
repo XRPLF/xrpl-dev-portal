@@ -32,12 +32,12 @@ The `FeeSettings` object has the following fields:
 
 | Name                | JSON Type | [Internal Type][] | Description            |
 |:--------------------|:----------|:------------------|:-----------------------|
-| `LedgerEntryType`   | String    | UInt16            | The value `0x0073`, mapped to the string `FeeSettings`, indicates that this object contains the ledger's fee settings. |
 | `BaseFee`           | String    | UInt64            | The [transaction cost](transaction-cost.html) of the "reference transaction" in drops of XRP as hexadecimal. |
+| `Flags`             | Number    | UInt32            | A bit-map of boolean flags for this object. No flags are defined for this type. |
+| `LedgerEntryType`   | String    | UInt16            | The value `0x0073`, mapped to the string `FeeSettings`, indicates that this object contains the ledger's fee settings. |
 | `ReferenceFeeUnits` | Number    | UInt32            | The `BaseFee` translated into "fee units". |
 | `ReserveBase`       | Number    | UInt32            | The [base reserve](reserves.html#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
 | `ReserveIncrement`  | Number    | UInt32            | The incremental [owner reserve](reserves.html#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
-| `Flags`             | Number    | UInt32            | A bit-map of boolean flags for this object. No flags are defined for this type. |
 
 **Warning:** The JSON format for this ledger object type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP][Currency Amount].
 

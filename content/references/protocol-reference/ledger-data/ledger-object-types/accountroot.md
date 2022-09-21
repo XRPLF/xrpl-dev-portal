@@ -38,22 +38,22 @@ The `AccountRoot` object has the following fields:
 
 | Field                         | JSON Type | [Internal Type][] | Description  |
 |:------------------------------|:----------|:------------------|:-------------|
-| `LedgerEntryType`             | String    | UInt16            | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this is an AccountRoot object. |
 | `Account`                     | String    | AccountID         | The identifying (classic) address of this [account](accounts.html). |
-| `Balance`                     | String    | Amount            | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
-| [`Flags`](#accountroot-flags) | Number    | UInt32            | A bit-map of boolean flags enabled for this account. |
-| `OwnerCount`                  | Number    | UInt32            | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
-| `PreviousTxnID`               | String    | Hash256           | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq`           | Number    | UInt32            | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
-| `Sequence`                    | Number    | UInt32            | The [sequence number](basic-data-types.html#account-sequence) of the next valid transaction for this account. |
 | `AccountTxnID`                | String    | Hash256           | _(Optional)_ The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the [`AccountTxnID` transaction field](transaction-common-fields.html#accounttxnid). To enable it, send an [AccountSet transaction with the `asfAccountTxnID` flag enabled](accountset.html#accountset-flags). |
+| `Balance`                     | String    | Amount            | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
 | `BurnedNFTokens`              | Number    | UInt32            | _(Optional)_ How many total of this account's issued [non-fungible tokens](non-fungible-tokens.html) :not_enabled: have been burned. This number is always equal or less than `MintedNFTokens`. |
 | `Domain`                      | String    | Blob              | _(Optional)_ A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
 | `EmailHash`                   | String    | Hash128           | _(Optional)_ The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
+| [`Flags`](#accountroot-flags) | Number    | UInt32            | A bit-map of boolean flags enabled for this account. |
+| `LedgerEntryType`             | String    | UInt16            | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this is an AccountRoot object. |
 | `MessageKey`                  | String    | Blob              | _(Optional)_ A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. |
 | `MintedNFTokens`              | Number    | UInt32            | _(Optional)_ How many total [non-fungible tokens](non-fungible-tokens.html) :not_enabled: have been minted by and on behalf of this account. |
 | `NFTokenMinter`               | String    | AccountID         | _(Optional)_ Another account that is authorized to mint [non-fungible tokens](non-fungible-tokens.html) :not_enabled: on behalf of this account. |
+| `OwnerCount`                  | Number    | UInt32            | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
+| `PreviousTxnID`               | String    | Hash256           | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq`           | Number    | UInt32            | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `RegularKey`                  | String    | AccountID         | _(Optional)_ The address of a [key pair](cryptographic-keys.html) that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction][] to change this value. |
+| `Sequence`                    | Number    | UInt32            | The [sequence number](basic-data-types.html#account-sequence) of the next valid transaction for this account. |
 | `TicketCount`                 | Number    | UInt32            | _(Optional)_ How many [Tickets](tickets.html) this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. _(Added by the [TicketBatch amendment][].)_ |
 | `TickSize`                    | Number    | UInt8             | _(Optional)_ How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Added by the [TickSize amendment][].)_ |
 | `TransferRate`                | Number    | UInt32            | _(Optional)_ A [transfer fee](transfer-fees.html) to charge other users for sending currency issued by this account to each other. |

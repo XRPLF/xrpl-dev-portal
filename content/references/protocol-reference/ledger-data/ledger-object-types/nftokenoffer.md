@@ -27,7 +27,6 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
 
 ### `NFTokenOffer` Fields
 
-
 <table>
   <tr>
    <td><strong>Field Name</strong>
@@ -39,6 +38,92 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
    <td><strong>Internal Type</strong>
    </td>
    <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td><code>Amount</code>
+   </td>
+   <td>Yes
+   </td>
+   <td>object or string
+   </td>
+   <td>AMOUNT
+   </td>
+   <td>Amount expected or offered for the <code>NFToken</code>. If the token has the <code>lsfOnlyXRP</code> flag set, the amount must be specified in XRP.
+<p>
+Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the <code>Amount</code> field can be equal to <code>"0"</code>).
+   </td>
+  </tr>
+  <tr>
+   <td><code>Destination</code>
+   </td>
+   <td>No
+   </td>
+   <td>string
+   </td>
+   <td>AccountID
+   </td>
+   <td>The <code>AccountID</code> for which this offer is intended. If present, only that account can accept the offer.
+   </td>
+  </tr>
+  <tr>
+   <td><code>Expiration</code>
+   </td>
+   <td>No
+   </td>
+   <td>number
+   </td>
+   <td>UInt32
+   </td>
+   <td>The time after which the offer is no longer active. The value is the number of seconds since the <a href="https://xrpl.org/basic-data-types.html#specifying-time">Ripple Epoch</a>.
+   </td>
+  </tr>
+  <tr>
+   <td><code>Flags</code>
+   </td>
+   <td>Yes
+   </td>
+   <td>number
+   </td>
+   <td>UInt32
+   </td>
+   <td>A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.
+   </td>
+  </tr>
+  <tr>
+   <td><code>LedgerEntryType</code>
+   </td>
+   <td>Yes
+   </td>
+   <td>string
+   </td>
+   <td>UInt16
+   </td>
+   <td>The type of ledger object (<code>0x0074</code>).
+   </td>
+  </tr>
+  <tr>
+   <td><code>NFTokenID</code>
+   </td>
+   <td>Yes
+   </td>
+   <td>string
+   </td>
+   <td>Hash256
+   </td>
+   <td><code>NFTokenID</code> of the <code>NFToken</code> object referenced by this offer.
+   </td>
+  </tr>
+  <tr>
+   <td><code>NFTokenOfferNode</code>
+   </td>
+   <td>No
+   </td>
+   <td>string
+   </td>
+   <td>UInt64
+   </td>
+   <td>Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.
    </td>
   </tr>
   <tr>
@@ -54,15 +139,15 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
    </td>
   </tr>
   <tr>
-   <td><code>LedgerEntryType</code>
+   <td><code>OwnerNode</code>
    </td>
-   <td>Yes
+   <td>No
    </td>
    <td>string
    </td>
-   <td>UInt16
+   <td>UInt64
    </td>
-   <td>The type of ledger object (<code>0x0074</code>).
+   <td>Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.
    </td>
   </tr>
   <tr>
@@ -87,92 +172,6 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
    <td>UInt32
    </td>
    <td>Index of the ledger that contains the transaction that most recently modified this object.
-   </td>
-  </tr>
-  <tr>
-   <td><code>NFTokenID</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>Hash256
-   </td>
-   <td><code>NFTokenID</code> of the <code>NFToken</code> object referenced by this offer.
-   </td>
-  </tr>
-  <tr>
-   <td><code>Amount</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>object or string
-   </td>
-   <td>AMOUNT
-   </td>
-   <td>Amount expected or offered for the <code>NFToken</code>. If the token has the <code>lsfOnlyXRP</code> flag set, the amount must be specified in XRP.
-<p>
-Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the <code>Amount</code> field can be equal to <code>"0"</code>).
-   </td>
-  </tr>
-  <tr>
-   <td><code>Expiration</code>
-   </td>
-   <td>No
-   </td>
-   <td>number
-   </td>
-   <td>UInt32
-   </td>
-   <td>The time after which the offer is no longer active. The value is the number of seconds since the <a href="https://xrpl.org/basic-data-types.html#specifying-time">Ripple Epoch</a>.
-   </td>
-  </tr>
-  <tr>
-   <td><code>Destination</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>AccountID
-   </td>
-   <td>The <code>AccountID</code> for which this offer is intended. If present, only that account can accept the offer.
-   </td>
-  </tr>
-  <tr>
-   <td><code>OwnerNode</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>UInt64
-   </td>
-   <td>Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.
-   </td>
-  </tr>
-  <tr>
-   <td><code>NFTokenOfferNode</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>UInt64
-   </td>
-   <td>Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.
-   </td>
-  </tr>
-  <tr>
-   <td><code>Flags</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>number
-   </td>
-   <td>UInt32
-   </td>
-   <td>A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.
    </td>
   </tr>
 </table>

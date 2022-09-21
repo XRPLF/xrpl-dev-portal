@@ -74,18 +74,6 @@ An `NFTokenPage` object can have the following required and optional fields:
    </td>
   </tr>
   <tr>
-   <td><code>PreviousPageMin</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>Hash256
-   </td>
-   <td>The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
-   </td>
-  </tr>
-  <tr>
    <td><code>NextPageMin</code>
    </td>
    <td>No
@@ -95,6 +83,30 @@ An `NFTokenPage` object can have the following required and optional fields:
    <td><code>Hash256</code>
    </td>
    <td>The locator of the next page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
+   </td>
+  </tr>
+  <tr>
+   <td><code>NFTokens</code>
+   </td>
+   <td>Yes
+   </td>
+   <td><code>object</code>
+   </td>
+   <td><code>TOKEN</code>
+   </td>
+   <td>The collection of <code>NFToken</code> objects contained in this <code>NFTokenPage</code> object. This specification places an upper bound of 32 <code>NFToken</code> objects per page. Objects should be stored in sorted order, from low to high with the <code>TokenID</code> used as the sorting parameter.
+   </td>
+  </tr>
+  <tr>
+   <td><code>PreviousPageMin</code>
+   </td>
+   <td>No
+   </td>
+   <td>string
+   </td>
+   <td>Hash256
+   </td>
+   <td>The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
    </td>
   </tr>
   <tr>
@@ -119,18 +131,6 @@ An `NFTokenPage` object can have the following required and optional fields:
    <td><code>UInt32</code>
    </td>
    <td>The sequence of the ledger that contains the transaction that most recently modified this <code>NFTokenPage</code> object.
-   </td>
-  </tr>
-  <tr>
-   <td><code>NFTokens</code>
-   </td>
-   <td>Yes
-   </td>
-   <td><code>object</code>
-   </td>
-   <td><code>TOKEN</code>
-   </td>
-   <td>The collection of <code>NFToken</code> objects contained in this <code>NFTokenPage</code> object. This specification places an upper bound of 32 <code>NFToken</code> objects per page. Objects should be stored in sorted order, from low to high with the <code>TokenID</code> used as the sorting parameter.
    </td>
   </tr>
 </table>

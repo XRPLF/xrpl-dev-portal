@@ -36,8 +36,9 @@ A `NegativeUNL` object has the following fields:
 
 | Name                  | JSON Type | [Internal Type][] | Description          |
 |:----------------------|:----------|:------------------|:---------------------|
-| `LedgerEntryType`     | String    | UInt16            | The value `0x004E`, mapped to the string `NegativeUNL`, indicates that this object is the Negative UNL. |
 | `DisabledValidators`  | Array     | Array             | _(May be omitted)_ A list of `DisabledValidator` objects (see below), each representing a trusted validator that is currently disabled. |
+| `Flags`             | Number    | UInt32    | A bit-map of boolean flags. No flags are defined for the NegativeUNL object type, so this value is always `0`. |
+| `LedgerEntryType`     | String    | UInt16            | The value `0x004E`, mapped to the string `NegativeUNL`, indicates that this object is the Negative UNL. |
 | `ValidatorToDisable`  | String    | Blob              | _(May be omitted)_ The public key of a trusted validator that is scheduled to be disabled in the next flag ledger. |
 | `ValidatorToReEnable` | String    | Blob              | _(May be omitted)_ The public key of a trusted validator in the Negative UNL that is scheduled to be re-enabled in the next flag ledger. |
 
