@@ -1,6 +1,5 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountLines
-from xrpl.utils import str_to_hex
 from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to testnetwork
@@ -13,7 +12,7 @@ issuer_addr =generate_faucet_wallet(client=client).classic_address
 target_addr = generate_faucet_wallet(client=client).classic_address
 
 # token name
-token = "LegitXRP"
+token = "FOO"
 
 # build account line query
 acc_info = AccountLines(account=issuer_addr, ledger_index="validated")
@@ -29,7 +28,7 @@ if "lines" in result:
     lines = result["lines"]
     for line in lines:
         # query result with trustline params
-        if target_addr == line["account"] and str_to_hex(token) == line["currency"]: 
+        if target_addr == line["account"] and token == line["currency"]: 
             if 'freeze' in line:
                print(f'freeze status of trustline: {line["freeze"]}')
             else:
