@@ -92,14 +92,14 @@ Each `NFTokenPage` costs an incremental reserve to the owner account. This speci
 
 ### The reserve in practice
 
-The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the _effective_ reserve per token is, if a given page contains 1, 8, 16, 32 and 64 NFTs.
+The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the _effective_ reserve per token is, if a given page contains 1, 8, 16 and 32 NFTs.
 
 
-|Incremental Reserve|1 NFToken|8 NFTokens|16 NFTokens|32 NFTokens|64 NFTokens|
-|--- |--- |--- |--- |--- |--- |
-|5 XRP|5 XRP|0.625 XRP|0.3125 XRP|0.15625 XRP|0.07812 XRP|
-|2 XRP|2 XRP|0.25 XRP|0.125 XRP|0.0625 XRP|0.03125 XRP|
-|1 XRP|1 XRP|0.125 XRP|0.0625 XRP|0.03125 XRP|0.01562 XRP|
+| Incremental Reserve | 1 NFToken | 8 NFTokens | 16 NFTokens | 32 NFTokens | 64 NFTokens |
+|:--------------------|:----------|:-----------|:------------|:------------|:------------|
+| 5 XRP               | 5 XRP     | 0.625 XRP  | 0.3125 XRP  | 0.15625 XRP | 0.07812 XRP |
+| 2 XRP               | 2 XRP     | 0.25 XRP   | 0.125 XRP   | 0.0625 XRP  | 0.03125 XRP |
+| 1 XRP               | 1 XRP     | 0.125 XRP  | 0.0625 XRP  | 0.03125 XRP | 0.01562 XRP |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

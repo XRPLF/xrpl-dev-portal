@@ -31,30 +31,35 @@ But since you are standing around in 1919, you might be offered 24-cent airmail 
 
 Those stamps cannot be replaced by just another other 24-cent stamp. They have become _non-fungible_.
 
-The XRPL Labs team has created a framework that supports non-fungible tokens (NFTs, or “nifties” in the vernacular).  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
+The [NonFungibleTokensV1 amendment][] :not_enabled: adds support for non-fungible tokens (NFTs, or “nifties” in the vernacular) natively on the XRP Ledger.  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
 
 
-## NFT Extensions
+## NFTs on the XRP Ledger
 
-Extensions to the XRP Ledger support two new objects and a new ledger structure.
+On the XRP Ledger, a non-fungible token is represented as a [NFToken][] object. A `NFToken` is a unique, indivisible unit that is not used for payments. Users can mint (create), hold, buy, sell, and burn (destroy) such tokens.
 
-The [NFToken][] is a native NFT type. It has operations to enumerate, purchase, sell, and hold such tokens. An `NFToken` is a unique, indivisible unit that is not used for payments.
+The ledger stores up to 32 `NFToken` objects owned by the same account in a single [NFTokenPage object][] to save space. As a result, the owner's [reserve requirement](reserves.html) for `NFToken` objects only increases when the ledger needs to make a new page to store additional tokens.
 
-The [NFTokenPage object][] contains a set of `NFToken` objects owned by the same account.
+Accounts can also designate a broker, or "Authorized Minter", who can mint and sell `NFToken` objects on their behalf.
 
-You create a new `NFToken` using the [NFTokenMint transaction][].
+`NFToken` objects have several settings that are defined when the token is minted and cannot be changed later. These include:
 
-[NFTokenOffer object][] is a new object that describes an offer to buy or sell a single `NFToken`.
-
-You destroy an `NFToken` using the [NFTokenBurn transaction][]. Token owners can always burn a token they own. If you mint a token with the `tfBurnable` flag set, you have the option of burning the token at any time, regardless of the owner.
+- Various identifying data that uniquely defines the token.
+- Whether the issuer can burn the token regardless of who currently holds it.
+- Whether the holder of the token can transfer it to others. (The `NFToken` can always be sent to or from the issuer directly.)
+    - If transfers are allowed, the issuer can charge a transfer fee as a percentage of the sale price.
+- Whether the holder can sell the `NFToken` for [fungible token](tokens.html) amounts, or only for XRP.
 
 
 ## `NFToken` Lifecycle
 
-You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the `NFTokenPage` of the issuing account. You can create an `NFTokenOffer` to sell the `NFToken`, creating an entry to the XRP Ledger. Another account can accept the `NFTokenOffer`, transferring the `NFToken` to the accepting account’s `NFTokenPage`. If the `lsfTransferable `flag is set to _true_ (0x000008) when the `NFToken` is minted, the `NFToken` can be traded multiple times between accounts. The `NFToken` can be permanently destroyed by its owner using the `NFTokenBurn` transaction.
+Anyone can create a new `NFToken` using the [NFTokenMint transaction][] type. The `NFToken` lives on the [NFTokenPage object][] of the issuing account. Either the owner or an interested party can send a [NFTokenCreateOffer transaction][] to propose buying or selling the `NFToken`; the ledger tracks the proposed transfer as a [NFTokenOffer object][], and deletes the `NFTokenOffer` when either side accepts or cancels the offer. If the `NFToken` is transferable, it can be traded multiple times between accounts.
+
+You can destroy a `NFToken` you own using the [NFTokenBurn transaction][]. If the issuer minted the token with `tfBurnable` flag enabled, the issuer can also burn the token regardless of the current owner. (This could be useful, for example, for a token that represents a ticket to an event which is used up at some point.)
 
 ![The NFT Lifecycle](img/nft-lifecycle.png "NFT Lifecycle Image")
 
+For more info about transferring `NFToken` objects, see [Trading NFTokens on the XRP Ledger](non-fungible-token-transfers.html).
 
 
 ## Reference
@@ -69,13 +74,11 @@ You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the
     - [NFTokenCancelOffer transaction][]
     - [NFTokenAcceptOffer transaction][]
     - [NFTokenBurn transaction][]
-
-
-### API Methods
-
-* `account_nfts`
-* `nft_sell_offers`
-* `nft_buy_offers`
+- API Methods
+    - [account_nfts method][]
+    - [nft_sell_offers method][]
+    - [nft_buy_offers method][]
+    - [nft_info method][] (Clio server only)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

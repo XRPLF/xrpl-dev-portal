@@ -48,64 +48,20 @@ The 16-bit flags, transfer fee fields, the 32-bit `NFTokenTaxon`, and the sequen
 Flags are properties or other options associated with the `NFToken` object.
 
 
-<table>
-  <tr>
-   <td><strong>Flag Name</strong>
-   </td>
-   <td><strong>Flag Value</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><code>lsfBurnable</code>
-   </td>
-   <td><code>0x0001</code>
-   </td>
-   <td>If set, indicates that the issuer (or an entity authorized by the issuer) can destroy the object. The object's owner can <em>always</em> do so.
-   </td>
-  </tr>
-  <tr>
-   <td><code>lsfOnlyXRP</code>
-   </td>
-   <td><code>0x0002</code>
-   </td>
-   <td>If set, indicates that the tokens can only be offered or sold for XRP.
-   </td>
-  </tr>
-  <tr>
-   <td><code>lsfTrustLine</code>
-   </td>
-   <td><code>0x0004</code>
-   </td>
-   <td>If set, indicates that the issuer wants a trustline to be automatically created. The <code>lsfTrustLine</code> field is useful when the token can be offered for sale for assets other than XRP and the issuer charges a <code>TransferFee</code>. If this flag is set, a trust line is automatically created as needed to allow the issuer to receive the appropriate transfer fee. If this flag is not set, an attempt to transfer the NFToken for an asset for which the issuer does not have a trustline fails.
-   </td>
-  </tr>
-  <tr>
-   <td><code>lsfTransferable</code>
-   </td>
-   <td><code>0x0008</code>
-   </td>
-   <td>If set, indicates that this <code>NFToken</code> can be transferred. This flag has no effect if the token is being transferred <em>from</em> the issuer or <em>to</em> the issuer.
-   </td>
-  </tr>
-  <tr>
-   <td><code>lsfReservedFlag</code>
-   </td>
-   <td><code>0x8000</code>
-   </td>
-   <td>This proposal reserves this flag for future use. Attempts to set this flag fail.
-   </td>
-  </tr>
-</table>
+| Flag Name         | Flag Value | Description                                 |
+|:------------------|:-----------|:--------------------------------------------|
+| `lsfBurnable`     | `0x0001`   | If enabled, the issuer (or an entity authorized by the issuer) can destroy this `NFToken`. The object's owner can always do so. |
+| `lsfOnlyXRP`      | `0x0002`   | If enabled, this `NFToken` can only be offered or sold for XRP. |
+| `lsfTrustLine`    | `0x0004`   | **DEPRECATED** If enabled, automatically create [trust lines](trust-lines-and-issuing.html) to hold transfer fees. Otherwise, buying or selling this `NFToken` for a fungible token amount fails if the issuer does not have a trust line for that token. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to enable this flag. |
+| `lsfTransferable` | `0x0008`   | If enabled, this `NFToken` can be transferred from one holder to another. Otherwise, it can only be transferred to or from the issuer. |
+| `lsfReservedFlag` | `0x8000`   | This flag is reserved for future use. Attempts to set this flag fail. |
 
-
-`NFToken` flags are immutable: they can only be set during the `NFTokenMint` transaction and cannot be changed later.
+`NFToken` flags are immutable: they can only be set during the [NFTokenMint transaction][] and cannot be changed later.
 
 
 ### Example
 
-The example sets three flags: lsfBurnable (0x0001), lsfOnlyXRP (0x0002), lsfTransferable (0x0008). 1+2+8 = 11, or 0x000B in big endian format.
+The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or 0x000B in big endian format.
 
 ![Flags](img/nftokena.png "Flags")
 
