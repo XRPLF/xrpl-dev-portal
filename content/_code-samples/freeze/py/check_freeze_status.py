@@ -1,18 +1,18 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountLines
-from xrpl.wallet import generate_faucet_wallet
 
-client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to testnetwork
+client = JsonRpcClient("https://xrplcluster.com")
 
+print("connected to mainnet")
 
 # issuer address
-issuer_addr =generate_faucet_wallet(client=client).classic_address
+issuer_addr = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
 
 # target address to query for freeze status
-target_addr = generate_faucet_wallet(client=client).classic_address
+target_addr = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"
 
 # token name
-token = "FOO"
+token = "USD"
 
 # build account line query
 acc_info = AccountLines(account=issuer_addr, ledger_index="validated")
