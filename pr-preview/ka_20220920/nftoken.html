@@ -303,27 +303,27 @@
 <tr>
 <td style="text-align: left;"><code>lsfBurnable</code></td>
 <td style="text-align: left;"><code>0x0001</code></td>
-<td style="text-align: left;">If set, indicates that the issuer (or an entity authorized by the issuer) can destroy the object. The object's owner can always do so.</td>
+<td style="text-align: left;">If enabled, the issuer (or an entity authorized by the issuer) can destroy this <code>NFToken</code>. The object's owner can always do so.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>lsfOnlyXRP</code></td>
 <td style="text-align: left;"><code>0x0002</code></td>
-<td style="text-align: left;">If set, indicates that the tokens can only be offered or sold for XRP.</td>
+<td style="text-align: left;">If enabled, this <code>NFToken</code> can only be offered or sold for XRP.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>lsfTrustLine</code></td>
 <td style="text-align: left;"><code>0x0004</code></td>
-<td style="text-align: left;"><strong>DEPRECATED</strong> If enabled, automatically create <a href="trust-lines-and-issuing.html">trust lines</a> to hold transfer fees. Otherwise, buying or selling this <code>NFToken</code> for a fungible token amount fails if the issuer does not have a trust line for that token. The <a href="known-amendments.html#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine amendment</a> makes it invalid to set this flag.</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> If enabled, automatically create <a href="trust-lines-and-issuing.html">trust lines</a> to hold transfer fees. Otherwise, buying or selling this <code>NFToken</code> for a fungible token amount fails if the issuer does not have a trust line for that token. The <a href="known-amendments.html#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine amendment</a> makes it invalid to enable this flag.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>lsfTransferable</code></td>
 <td style="text-align: left;"><code>0x0008</code></td>
-<td style="text-align: left;">If set, indicates that this <code>NFToken</code> can be transferred. This flag has no effect if the token is being transferred from the issuer or to the issuer.</td>
+<td style="text-align: left;">If enabled, this <code>NFToken</code> can be transferred from one holder to another. Otherwise, it can only be transferred to or from the issuer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>lsfReservedFlag</code></td>
 <td style="text-align: left;"><code>0x8000</code></td>
-<td style="text-align: left;">This proposal reserves this flag for future use. Attempts to set this flag fail.</td>
+<td style="text-align: left;">This flag is reserved for future use. Attempts to set this flag fail.</td>
 </tr>
 </tbody>
 </table>

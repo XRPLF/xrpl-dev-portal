@@ -684,6 +684,7 @@
 </tbody>
 </table>
 <p><a href="escrowcreate.html">EscrowCreate</a>トランザクションと<a href="escrowfinish.html">EscrowFinish</a>トランザクションで使用するために、公式の<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">Crypto-Conditions仕様 <i aria-hidden="true" class="fa fa-external-link"></i></a>から数種類のCrypto-Conditionsを導入します。この修正を行わない場合、サポートされるのはPREIMAGE-SHA-256タイプのみです。</p>
+<!-- TODO: update translated description to clarify that this amendment is obsolete. -->
 <p class="devportal-callout 注意"><strong>注意:</strong> この修正は<a class="external-link" href="https://github.com/ripple/rippled/pull/2170" target="_blank">開発中 <i aria-hidden="true" class="fa fa-external-link"></i></a>です。<code>rippled</code>v0.60.0以降のバージョンでは、完全な機能は導入されません。</p>
 <h2 id="deletableaccounts">DeletableAccounts<a aria-hidden="true" class="hover_anchor" href="#deletableaccounts"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
@@ -1131,7 +1132,7 @@
 </tbody>
 </table>
 <!-- TODO: translate description -->
-<p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> an <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
+<p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> a <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
 <p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.</p>
 <h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
@@ -1202,7 +1203,7 @@
 </tbody>
 </table>
 <!-- TODO: translate amendment description -->
-<p>Removes the <code>tfTrustLine</code> setting on <a href="non-fungible-tokens.html">non-fungible tokens</a>, to protect against a denial of service attack on issuers using this flag. With this amendment enabled, an <a href="nftokenmint.html">NFTokenMint transaction</a> with the <code>tfTrustLine</code> flag enabled is considered invalid and cannot be confirmed by consensus; therefore, <code>NFToken</code> objects cannot be minted with the flag.</p>
+<p>Removes the <code>tfTrustLine</code> setting on <a href="non-fungible-tokens.html">non-fungible tokens</a>, to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a <a href="nftokenmint.html">NFTokenMint transaction</a> with the <code>tfTrustLine</code> flag enabled is considered invalid and cannot be confirmed by consensus; therefore, <code>NFToken</code> objects cannot be minted with the flag.</p>
 <p>Without this amendment, an attacker could create new, meaningless fungible tokens and sell an NFT back and forth for those tokens, creating numerous useless trust lines tied to the issuer and increasing the issuer's reserve requirement. </p>
 <p>This amendment does not change the code for <code>NFToken</code> objects that have already been minted. On test networks that already have NonFungibleTokensV1_1 enabled, this means that issuers who have already minted NFTokens with the <code>tfTrustLine</code> flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.</p>
 <p>This amendment has no effect unless <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a> is also enabled.</p>
@@ -1277,7 +1278,7 @@
 </tbody>
 </table>
 <!-- TODO: translate amendment description -->
-<p>This amendment removes up two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment is activated, it deletes the trust lines with the IDs <code>2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1</code> and <code>326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A</code> if they exist. After doing so, the amendment does nothing else.</p>
+<p>This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs <code>2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1</code> and <code>326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A</code> if they exist. After doing so, the amendment does nothing else.</p>
 <p>On test networks that do not have these trust lines, the amendment has no effect.</p>
 <h2 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
