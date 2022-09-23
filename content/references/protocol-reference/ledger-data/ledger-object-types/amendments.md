@@ -36,12 +36,12 @@ The `Amendments` object type contains a list of [Amendments](amendments.html) th
 
 ## {{currentpage.name}} Fields
 
-| Name              | JSON Type | [Internal Type][] | Description |
-|-------------------|-----------|-----------|---------------------|
-| `Amendments`      | Array     | Vector256 | _(Optional)_ Array of 256-bit [amendment IDs](amendments.html#about-amendments) for all currently-enabled amendments. If omitted, there are no enabled amendments. |
-| `Flags`           | Number    | UInt32    | A bit-map of boolean flags. No flags are defined for the Amendments object type, so this value is always `0`. |
-| `LedgerEntryType` | String    | UInt16    |  The value `0x0066`, mapped to the string `Amendments`, indicates that this object describes the status of amendments to the XRP Ledger. |
-| `Majorities`      | Array     | STArray   | _(Optional)_ Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
+| Name              | JSON Type | [Internal Type][] | Required? | Description |
+|-------------------|-----------|-------------------|-----------|-------------|
+| `Amendments`      | Array     | Vector256         | No        | Array of 256-bit [amendment IDs](amendments.html#about-amendments) for all currently-enabled amendments. If omitted, there are no enabled amendments. |
+| `Flags`           | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Amendments` objects. The value is always `0`. |
+| `LedgerEntryType` | String    | UInt16            | Yes       | The value `0x0066`, mapped to the string `Amendments`, indicates that this object describes the status of amendments to the XRP Ledger. |
+| `Majorities`      | Array     | STArray           | No        | Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
 
 Each member of the `Majorities` field, if it is present, is an object with one field, `Majority`, whose contents are a nested object with the following fields:
 

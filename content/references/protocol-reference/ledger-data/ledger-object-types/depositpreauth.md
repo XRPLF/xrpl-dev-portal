@@ -31,15 +31,15 @@ This has no effect on processing of transactions unless the account that provide
 
 A `DepositPreauth` object has the following fields:
 
-| Field               | JSON Type        | [Internal Type][] | Description     |
-|:--------------------|:-----------------|:------------------|:----------------|
-| `Account` | String           | Account           | The account that granted the preauthorization. (The destination of the preauthorized payments.) |
-| `Authorize` | String | Account | The account that received the preauthorization. (The sender of the preauthorized payments.) |
-| `Flags`             | Number           | UInt32            |  A bit-map of boolean flags. No flags are defined for DepositPreauth objects, so this value is always `0`. |
-| `LedgerEntryType`   | String           | UInt16            | The value `0x0070`, mapped to the string `DepositPreauth`, indicates that this is a DepositPreauth object. |
-| `OwnerNode`         | String           | UInt64            | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
-| `PreviousTxnID`     | String           | Hash256           | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number           | UInt32            | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| Field               | JSON Type        | [Internal Type][] | Required? | Description     |
+|:--------------------|:-----------------|:------------------|:----------|:----------------|
+| `Account`           | String           | Account           | Yes       | The account that granted the preauthorization. (The destination of the preauthorized payments.) |
+| `Authorize`         | String           | Account           | Yes       | The account that received the preauthorization. (The sender of the preauthorized payments.) |
+| `Flags`             | Number           | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `DepositPreauth` objects. The value is always `0`. |
+| `LedgerEntryType`   | String           | UInt16            | Yes       | The value `0x0070`, mapped to the string `DepositPreauth`, indicates that this is a DepositPreauth object. |
+| `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| `PreviousTxnID`     | String           | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 
 
 ## DepositPreauth ID Format

@@ -27,178 +27,28 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
 
 ### `NFTokenOffer` Fields
 
-<table>
-  <tr>
-   <td><strong>Field Name</strong>
-   </td>
-   <td><strong>Required?</strong>
-   </td>
-   <td><strong>JSON Type</strong>
-   </td>
-   <td><strong>Internal Type</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><code>Amount</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>object or string
-   </td>
-   <td>AMOUNT
-   </td>
-   <td>Amount expected or offered for the <code>NFToken</code>. If the token has the <code>lsfOnlyXRP</code> flag set, the amount must be specified in XRP.
-<p>
-Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the <code>Amount</code> field can be equal to <code>"0"</code>).
-   </td>
-  </tr>
-  <tr>
-   <td><code>Destination</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>AccountID
-   </td>
-   <td>The <code>AccountID</code> for which this offer is intended. If present, only that account can accept the offer.
-   </td>
-  </tr>
-  <tr>
-   <td><code>Expiration</code>
-   </td>
-   <td>No
-   </td>
-   <td>number
-   </td>
-   <td>UInt32
-   </td>
-   <td>The time after which the offer is no longer active. The value is the number of seconds since the <a href="https://xrpl.org/basic-data-types.html#specifying-time">Ripple Epoch</a>.
-   </td>
-  </tr>
-  <tr>
-   <td><code>Flags</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>number
-   </td>
-   <td>UInt32
-   </td>
-   <td>A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.
-   </td>
-  </tr>
-  <tr>
-   <td><code>LedgerEntryType</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>UInt16
-   </td>
-   <td>The type of ledger object (<code>0x0074</code>).
-   </td>
-  </tr>
-  <tr>
-   <td><code>NFTokenID</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>Hash256
-   </td>
-   <td><code>NFTokenID</code> of the <code>NFToken</code> object referenced by this offer.
-   </td>
-  </tr>
-  <tr>
-   <td><code>NFTokenOfferNode</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>UInt64
-   </td>
-   <td>Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.
-   </td>
-  </tr>
-  <tr>
-   <td><code>Owner</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>AccountID
-   </td>
-   <td><code>Owner</code> of the account that is creating and owns the offer. Only the current <code>Owner</code> of an <code>NFToken</code> can create an offer to sell an <code>NFToken</code>, but any account can create an offer to buy an <code>NFToken</code>.
-   </td>
-  </tr>
-  <tr>
-   <td><code>OwnerNode</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>UInt64
-   </td>
-   <td>Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.
-   </td>
-  </tr>
-  <tr>
-   <td><code>PreviousTxnID</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>Hash256
-   </td>
-   <td>Identifying hash of the transaction that most recently modified this object.
-   </td>
-  </tr>
-  <tr>
-   <td><code>PreviousTxnLgrSeq</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>number
-   </td>
-   <td>UInt32
-   </td>
-   <td>Index of the ledger that contains the transaction that most recently modified this object.
-   </td>
-  </tr>
-</table>
+| Name                |JSON Type         | [Internal Type][] | Required?   | Description |
+|:--------------------|:-----------------|:------------------|:------------|:-----------|
+| `Amount`            | object or string | AMOUNT            | Yes         | Amount expected or offered for the NFToken. If the token has the `lsfOnlyXRP` flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to `"0"`). |
+| `Destination`       | string           | AccountID         | No          | The AccountID for which this offer is intended. If present, only that account can accept the offer. |
+| `Expiration`        | number           | UInt32            | No          | The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch. |
+| `Flags`             | number           | UInt32            | Yes         | A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below. |
+| `LedgerEntryType`   | string           | UInt16            | Yes         | The type of ledger object (0x0074). |
+| `NFTokenID`         | string           | Hash256           | Yes         | NFTokenID of the NFToken object referenced by this offer. |
+| `NFTokenOfferNode`  | string           | UInt64            | No          | Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers. |
+| `Owner`             | string           | AccountID         | Yes         | Owner of the account that is creating and owns the offer. Only the current Owner of an NFToken can create an offer to sell an NFToken, but any account can create an offer to buy an NFToken. |
+| `OwnerNode`         | string           | UInt64            | No          | Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers. |
+| `PreviousTxnID`     | string           | Hash256           | Yes         | Identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | number           | UInt32            | Yes         | Index of the ledger that contains the transaction that most recently modified this object. |
 
 
 
 #### NFTokenOffer Flags
 
 
-<table>
-  <tr>
-   <td><strong>Flag Name</strong>
-   </td>
-   <td><strong>Flag Value</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><code>lsfSellNFToken</code>
-   </td>
-   <td><code>0x00000001</code>
-   </td>
-   <td>If set, the offer is a sell offer. Otherwise, the offer is a buy offer.
-   </td>
-  </tr>
-</table>
+|Flag Name|Flag Value|Description|
+|---|---|---|
+|lsfSellNFToken|0x00000001|If set, the offer is a sell offer. Otherwise, the offer is a buy offer.|
 
 ## `NFTokenOffer` Transactions
 

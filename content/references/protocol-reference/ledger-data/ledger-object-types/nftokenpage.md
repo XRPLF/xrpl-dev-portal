@@ -17,24 +17,23 @@ The `NFTokenPage` object represents a collection of `NFToken` objects owned by t
 
 ```json
 {
-    "LedgerEntryType": "NFTokenPage",
-    "PreviousTokenPage":
-      "598EDFD7CF73460FB8C695d6a9397E907378C8A841F7204C793DCBEF5406",
-    "PreviousTokenNext":
-      "598EDFD7CF73460FB8C695d6a9397E9073781BA3B78198904F659AAA252A",
-    "PreviousTxnID":
-      "95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822",
-    "PreviousTxnLgrSeq":
-      42891441,
-    "NFTokens":
-        {
-            {
-                "NFTokenID":
-                  "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
-                "URI": "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"
-            },
-            /* potentially more objects */
-       }
+  "LedgerEntryType": "NFTokenPage",
+  "PreviousTokenPage":
+    "598EDFD7CF73460FB8C695d6a9397E907378C8A841F7204C793DCBEF5406",
+  "PreviousTokenNext":
+    "598EDFD7CF73460FB8C695d6a9397E9073781BA3B78198904F659AAA252A",
+  "PreviousTxnID":
+    "95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822",
+  "PreviousTxnLgrSeq":
+    42891441,
+  "NFTokens": [
+    {
+      "NFTokenID":
+          "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
+        "URI": "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"
+    },
+    /* potentially more objects */
+  ]
 }
 ```
 
@@ -48,93 +47,14 @@ In the interest of minimizing the size of a page and optimizing storage, the `Ow
 An `NFTokenPage` object can have the following required and optional fields:
 
 
-<table>
-  <tr>
-   <td><strong>Field Name</strong>
-   </td>
-   <td><strong>Required?</strong>
-   </td>
-   <td><strong>JSON Type</strong>
-   </td>
-   <td><strong>Internal Type</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><code>LedgerEntryType</code>
-   </td>
-   <td>Yes
-   </td>
-   <td>string
-   </td>
-   <td>UInt16
-   </td>
-   <td>Identifies the type of ledger object. The reserved ledger entry type is <code>0x0050</code>.
-   </td>
-  </tr>
-  <tr>
-   <td><code>NextPageMin</code>
-   </td>
-   <td>No
-   </td>
-   <td><code>string</code>
-   </td>
-   <td><code>Hash256</code>
-   </td>
-   <td>The locator of the next page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
-   </td>
-  </tr>
-  <tr>
-   <td><code>NFTokens</code>
-   </td>
-   <td>Yes
-   </td>
-   <td><code>object</code>
-   </td>
-   <td><code>TOKEN</code>
-   </td>
-   <td>The collection of <code>NFToken</code> objects contained in this <code>NFTokenPage</code> object. This specification places an upper bound of 32 <code>NFToken</code> objects per page. Objects should be stored in sorted order, from low to high with the <code>TokenID</code> used as the sorting parameter.
-   </td>
-  </tr>
-  <tr>
-   <td><code>PreviousPageMin</code>
-   </td>
-   <td>No
-   </td>
-   <td>string
-   </td>
-   <td>Hash256
-   </td>
-   <td>The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
-   </td>
-  </tr>
-  <tr>
-   <td><code>PreviousTxnID</code>
-   </td>
-   <td>No
-   </td>
-   <td><code>string</code>
-   </td>
-   <td><code>HASH256</code>
-   </td>
-   <td>Identifies the transaction ID of the transaction that most recently modified this <code>NFTokenPage</code> object.
-   </td>
-  </tr>
-  <tr>
-   <td><code>PreviousTxnLgrSeq</code>
-   </td>
-   <td>No
-   </td>
-   <td><code>number</code>
-   </td>
-   <td><code>UInt32</code>
-   </td>
-   <td>The sequence of the ledger that contains the transaction that most recently modified this <code>NFTokenPage</code> object.
-   </td>
-  </tr>
-</table>
-
+| Field Name          | JSON Type | [Internal Type][] | Required? | Description |
+|:--------------------|:----------|:------------------|:----------|:------------|
+| `LedgerEntryType`   | string    | UInt16            | Yes       | Identifies the type of ledger object. The reserved ledger entry type is 0x0050.|
+| `NextPageMin`       | string    | Hash256           | No        | The locator of the next page, if any. Details about this field and how it should be used are outlined below, after the construction of the NFTokenPageID is explained.|
+| `NFTokens`          | object    | TOKEN             | Yes       | The collection of NFToken objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects should be stored in sorted order, from low to high with the TokenID used as the sorting parameter.|
+| `PreviousPageMin`   | string    | Hash256           | No        | The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the NFTokenPageID is explained.|
+| `PreviousTxnID`     | string    | HASH256           | No        | Identifies the transaction ID of the transaction that most recently modified this NFTokenPage object.|
+| `PreviousTxnLgrSeq` | number    | UInt32            | No        | The sequence of the ledger that contains the transaction that most recently modified this NFTokenPage object.|
 
 
 ### TokenPage ID Format
@@ -175,64 +95,11 @@ Each `NFTokenPage` costs an incremental reserve to the owner account. This speci
 The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the _effective_ reserve per token is, if a given page contains 1, 8, 16, 32 and 64 NFTs.
 
 
-<table>
-  <tr>
-   <td><strong>Incremental Reserve</strong>
-   </td>
-   <td><strong>1 NFToken</strong>
-   </td>
-   <td><strong>8 NFTokens</strong>
-   </td>
-   <td><strong>16 NFTokens</strong>
-   </td>
-   <td><strong>32 NFTokens</strong>
-   </td>
-   <td><strong>64 NFTokens</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>5 XRP
-   </td>
-   <td>5 XRP
-   </td>
-   <td>0.625 XRP
-   </td>
-   <td>0.3125 XRP
-   </td>
-   <td>0.15625 XRP
-   </td>
-   <td>0.07812 XRP
-   </td>
-  </tr>
-  <tr>
-   <td>2 XRP
-   </td>
-   <td>2 XRP
-   </td>
-   <td>0.25 XRP
-   </td>
-   <td>0.125 XRP
-   </td>
-   <td>0.0625 XRP
-   </td>
-   <td>0.03125 XRP
-   </td>
-  </tr>
-  <tr>
-   <td>1 XRP
-   </td>
-   <td>1 XRP
-   </td>
-   <td>0.125 XRP
-   </td>
-   <td>0.0625 XRP
-   </td>
-   <td>0.03125 XRP
-   </td>
-   <td>0.01562 XRP
-   </td>
-  </tr>
-</table>
+|Incremental Reserve|1 NFToken|8 NFTokens|16 NFTokens|32 NFTokens|64 NFTokens|
+|--- |--- |--- |--- |--- |--- |
+|5 XRP|5 XRP|0.625 XRP|0.3125 XRP|0.15625 XRP|0.07812 XRP|
+|2 XRP|2 XRP|0.25 XRP|0.125 XRP|0.0625 XRP|0.03125 XRP|
+|1 XRP|1 XRP|0.125 XRP|0.0625 XRP|0.03125 XRP|0.01562 XRP|
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
