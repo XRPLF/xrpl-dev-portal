@@ -48,13 +48,13 @@ The 16-bit flags, transfer fee fields, the 32-bit `NFTokenTaxon`, and the sequen
 Flags are properties or other options associated with the `NFToken` object.
 
 
-| Flag Name       | Flag Value | Description                                   |
-|:----------------|:-----------|:----------------------------------------------|
-| `lsfBurnable`     | `0x0001`     | If set, indicates that the issuer (or an entity authorized by the issuer) can destroy the object. The object's owner can always do so. |
-| `lsfOnlyXRP`      | `0x0002`     | If set, indicates that the tokens can only be offered or sold for XRP. |
-| `lsfTrustLine`    | `0x0004`     | **DEPRECATED** If enabled, automatically create [trust lines](trust-lines-and-issuing.html) to hold transfer fees. Otherwise, buying or selling this `NFToken` for a fungible token amount fails if the issuer does not have a trust line for that token. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to set this flag. |
-| `lsfTransferable` | `0x0008`     | If set, indicates that this `NFToken` can be transferred. This flag has no effect if the token is being transferred from the issuer or to the issuer. |
-| `lsfReservedFlag` | `0x8000`     | This proposal reserves this flag for future use. Attempts to set this flag fail. |
+| Flag Name         | Flag Value | Description                                 |
+|:------------------|:-----------|:--------------------------------------------|
+| `lsfBurnable`     | `0x0001`   | If enabled, the issuer (or an entity authorized by the issuer) can destroy this `NFToken`. The object's owner can always do so. |
+| `lsfOnlyXRP`      | `0x0002`   | If enabled, this `NFToken` can only be offered or sold for XRP. |
+| `lsfTrustLine`    | `0x0004`   | **DEPRECATED** If enabled, automatically create [trust lines](trust-lines-and-issuing.html) to hold transfer fees. Otherwise, buying or selling this `NFToken` for a fungible token amount fails if the issuer does not have a trust line for that token. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to enable this flag. |
+| `lsfTransferable` | `0x0008`   | If enabled, this `NFToken` can be transferred from one holder to another. Otherwise, it can only be transferred to or from the issuer. |
+| `lsfReservedFlag` | `0x8000`   | This flag is reserved for future use. Attempts to set this flag fail. |
 
 `NFToken` flags are immutable: they can only be set during the [NFTokenMint transaction][] and cannot be changed later.
 

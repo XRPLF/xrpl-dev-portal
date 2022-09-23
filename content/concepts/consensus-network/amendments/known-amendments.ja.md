@@ -120,6 +120,8 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 
 [EscrowCreate][]トランザクションと[EscrowFinish][]トランザクションで使用するために、公式の[Crypto-Conditions仕様](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03)から数種類のCrypto-Conditionsを導入します。この修正を行わない場合、サポートされるのはPREIMAGE-SHA-256タイプのみです。
 
+<!-- TODO: update translated description to clarify that this amendment is obsolete. -->
+
 **注意:** この修正は[開発中](https://github.com/ripple/rippled/pull/2170)です。`rippled`v0.60.0以降のバージョンでは、完全な機能は導入されません。
 
 ## DeletableAccounts
@@ -433,7 +435,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 | 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 | 投票中 |
 
 <!-- TODO: translate description -->
-This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` an `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
+This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` a `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
 
 This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.
 
@@ -485,7 +487,7 @@ This amendment has no known impact on transaction processing.
 
 <!-- TODO: translate amendment description -->
 
-Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.html), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, an [NFTokenMint transaction](nftokenmint.html) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; therefore, `NFToken` objects cannot be minted with the flag.
+Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.html), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](nftokenmint.html) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; therefore, `NFToken` objects cannot be minted with the flag.
 
 Without this amendment, an attacker could create new, meaningless fungible tokens and sell an NFT back and forth for those tokens, creating numerous useless trust lines tied to the issuer and increasing the issuer's reserve requirement. 
 
@@ -544,7 +546,7 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 | F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 | 開発中 |
 
 <!-- TODO: translate amendment description -->
-This amendment removes up two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment is activated, it deletes the trust lines with the IDs `2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1` and `326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A` if they exist. After doing so, the amendment does nothing else.
+This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs `2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1` and `326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A` if they exist. After doing so, the amendment does nothing else.
 
 On test networks that do not have these trust lines, the amendment has no effect.
 
