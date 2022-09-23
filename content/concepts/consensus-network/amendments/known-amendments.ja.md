@@ -14,10 +14,11 @@ labels:
 
 | 名前                            | 導入済み | ステータス                              |
 |:--------------------------------|:-----------|:------------------------------------|
-| [CryptoConditionsSuite][]       | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [OwnerPaysFee][]                | 未定         | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixTrustLinesToSelf][]         | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [OwnerPaysFee][]                | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4   | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.4.html "BADGE_80d0e0") |
 | [fixNFTokenNegOffer][]          | v1.9.2     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
-| [NonFungibleTokensV1_1][]       | v1.9.2     | [予定: 2022/09/13](ttps://xrpl.org/blog/2022/get-ready-for-nfts.html "BADGE_BLUE") |
+| [NonFungibleTokensV1_1][]       | v1.9.2     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
 | [ExpandedSignerList][]          | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [fixNFTokenDirV1][]             | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1][]         | v1.9.0     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
@@ -64,10 +65,11 @@ labels:
 | [TrustSetAuth][]                | v0.30.0    | [有効: 2016/07/19](https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]                   | v0.31.0    | [有効: 2016/06/27](https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]               | v0.31.0    | [有効: 2016/05/19](https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
-| [Tickets][]                     | v0.30.1    | [禁止: v0.90.0で削除]( "BADGE_RED") |
+| [CryptoConditionsSuite][]       | v0.60.0    | [廃止: 削除未定]( "BADGE_RED") |
 | [SHAMapV2][]                    | v0.32.1    | [禁止: v1.4.0で削除](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [FlowV2][]                      | v0.32.1    | [禁止: v0.33.0で削除](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SusPay][]                      | v0.31.0    | [禁止: v0.60.0で削除](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
+| [Tickets][]                     | v0.30.1    | [禁止: v0.90.0で削除](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
 
 **注記:** 多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。
 
@@ -117,6 +119,8 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 | 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 | 開発中 |
 
 [EscrowCreate][]トランザクションと[EscrowFinish][]トランザクションで使用するために、公式の[Crypto-Conditions仕様](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03)から数種類のCrypto-Conditionsを導入します。この修正を行わない場合、サポートされるのはPREIMAGE-SHA-256タイプのみです。
+
+<!-- TODO: update translated description to clarify that this amendment is obsolete. -->
 
 **注意:** この修正は[開発中](https://github.com/ripple/rippled/pull/2170)です。`rippled`v0.60.0以降のバージョンでは、完全な機能は導入されません。
 
@@ -431,7 +435,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 | 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 | 投票中 |
 
 <!-- TODO: translate description -->
-This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` an `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
+This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` a `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
 
 This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.
 
@@ -473,6 +477,26 @@ Fixes a bug in unused code for estimating the ratio of input to output of indivi
 
 This amendment has no known impact on transaction processing.
 
+## fixRemoveNFTokenAutoTrustLine
+[fixRemoveNFTokenAutoTrustLine]: #fixremovenftokenautotrustline
+
+
+| Amendment ID                                                     | ステータス |
+|:-----------------------------------------------------------------|:---------|
+| DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD | 投票中 |
+
+<!-- TODO: translate amendment description -->
+
+Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.html), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](nftokenmint.html) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; therefore, `NFToken` objects cannot be minted with the flag.
+
+Without this amendment, an attacker could create new, meaningless fungible tokens and sell an NFT back and forth for those tokens, creating numerous useless trust lines tied to the issuer and increasing the issuer's reserve requirement. 
+
+This amendment does not change the code for `NFToken` objects that have already been minted. On test networks that already have NonFungibleTokensV1_1 enabled, this means that issuers who have already minted NFTokens with the `tfTrustLine` flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.
+
+This amendment has no effect unless [NonFungibleTokensV1][] or [NonFungibleTokensV1_1][] is also enabled.
+
+To protect issuers, this amendment should be enabled _before_ [NonFungibleTokensV1][] or [NonFungibleTokensV1_1][].
+
 
 ## fixRmSmallIncreasedQOffers
 [fixRmSmallIncreasedQOffers]: #fixrmsmallincreasedqoffers
@@ -512,6 +536,19 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 この修正を行わなければ、ドライオファーがレジャー上に残り、所有者の[必要準備金](reserves.html#所有者準備金)に加算されることになり、所有者に何も利益をもたらしません。正しいタイプとクオリティで掛け合わせた別のオファーによって、ドライオファーを除去することができます。ただし、タイプとクオリティがうまく掛け合わされたオファーがめったにない場合、ドライオファーの除去には時間がかかることがあります。
 
 この修正により、これらのドライオファーがオートブリッジで一致した場合に、XRP Ledgerによって除去されます。
+
+
+## fixTrustLinesToSelf
+[fixTrustLinesToSelf]: #fixtrustlinestoself
+
+| Amendment ID                                                     | ステータス |
+|:-----------------------------------------------------------------|:---------|
+| F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 | 開発中 |
+
+<!-- TODO: translate amendment description -->
+This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs `2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1` and `326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A` if they exist. After doing so, the amendment does nothing else.
+
+On test networks that do not have these trust lines, the amendment has no effect.
 
 
 ## Flow
