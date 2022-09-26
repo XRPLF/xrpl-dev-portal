@@ -136,7 +136,7 @@ Request the `account_nfts`. Set the `limit` to 400, the maximum amount, to retri
   results += JSON.stringify(nfts,null,2)
 ```
 
-If the list of NFTokens exceeds your limit, the result will include a `marker` field that you can use as a parameter for the next `account_nfts` request. The `marker` indicates where the next batch of records starts. While the `marker` field is not null, continue to request another batch of NFToken records.
+If the list of `NFTokens` exceeds your limit, the result includes a `marker` field that you can use as a parameter for the next `account_nfts` request. The `marker` indicates where the next batch of records starts. While the `marker` field is present, continue to request another batch of NFToken records.
 
 ```javascript
   while (nfts.result.marker != null)
