@@ -1,15 +1,15 @@
 ---
 html: authorize-minter.html
 parent: xrpl-quickstart.html
-blurb: Authorize another account to mint tokens on your behalf.
+blurb: Authorize another account to mint NFTokens for you.
 labels:
   - Accounts
   - Quickstart
-  - NFTokens
   - XRP
+  - NFTs, NFTokens
 ---
 
-# Assign an Authorized Minter 
+# Assign an Authorized Minter
 
 You can assign another account permission to mint NFTokens for you.
 
@@ -758,5 +758,5 @@ Update the form with fields and buttons to support the new functions.
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← Broker a NFToken Sale >](broker-sale.html)  |  |
+| [← Broker a NFToken Sale >](broker-sale.html)  | [Batch Mint NFTokens → >](batch-minting.html) |
 
