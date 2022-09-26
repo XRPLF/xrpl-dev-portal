@@ -292,58 +292,44 @@
 <h2 id="nftoken-flags">NFToken Flags<a aria-hidden="true" class="hover_anchor" href="#nftoken-flags"><i class="fa fa-link"></i></a></h2>
 <p>Flags are properties or other options associated with the <code>NFToken</code> object.</p>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Flag Name</strong>
-</td>
-<td><strong>Flag Value</strong>
-</td>
-<td><strong>Description</strong>
-</td>
+<th style="text-align: left;">Flag Name</th>
+<th style="text-align: left;">Flag Value</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>lsfBurnable</code></td>
+<td style="text-align: left;"><code>0x0001</code></td>
+<td style="text-align: left;">If enabled, the issuer (or an entity authorized by the issuer) can destroy this <code>NFToken</code>. The object's owner can always do so.</td>
 </tr>
 <tr>
-<td><code>lsfBurnable</code>
-</td>
-<td><code>0x0001</code>
-</td>
-<td>If set, indicates that the issuer (or an entity authorized by the issuer) can destroy the object. The object's owner can <em>always</em> do so.
-   </td>
+<td style="text-align: left;"><code>lsfOnlyXRP</code></td>
+<td style="text-align: left;"><code>0x0002</code></td>
+<td style="text-align: left;">If enabled, this <code>NFToken</code> can only be offered or sold for XRP.</td>
 </tr>
 <tr>
-<td><code>lsfOnlyXRP</code>
-</td>
-<td><code>0x0002</code>
-</td>
-<td>If set, indicates that the tokens can only be offered or sold for XRP.
-   </td>
+<td style="text-align: left;"><code>lsfTrustLine</code></td>
+<td style="text-align: left;"><code>0x0004</code></td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> If enabled, automatically create <a href="trust-lines-and-issuing.html">trust lines</a> to hold transfer fees. Otherwise, buying or selling this <code>NFToken</code> for a fungible token amount fails if the issuer does not have a trust line for that token. The <a href="known-amendments.html#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine amendment</a> makes it invalid to enable this flag.</td>
 </tr>
 <tr>
-<td><code>lsfTrustLine</code>
-</td>
-<td><code>0x0004</code>
-</td>
-<td>If set, indicates that the issuer wants a trustline to be automatically created. The <code>lsfTrustLine</code> field is useful when the token can be offered for sale for assets other than XRP and the issuer charges a <code>TransferFee</code>. If this flag is set, a trust line is automatically created as needed to allow the issuer to receive the appropriate transfer fee. If this flag is not set, an attempt to transfer the NFToken for an asset for which the issuer does not have a trustline fails.
-   </td>
+<td style="text-align: left;"><code>lsfTransferable</code></td>
+<td style="text-align: left;"><code>0x0008</code></td>
+<td style="text-align: left;">If enabled, this <code>NFToken</code> can be transferred from one holder to another. Otherwise, it can only be transferred to or from the issuer.</td>
 </tr>
 <tr>
-<td><code>lsfTransferable</code>
-</td>
-<td><code>0x0008</code>
-</td>
-<td>If set, indicates that this <code>NFToken</code> can be transferred. This flag has no effect if the token is being transferred <em>from</em> the issuer or <em>to</em> the issuer.
-   </td>
+<td style="text-align: left;"><code>lsfReservedFlag</code></td>
+<td style="text-align: left;"><code>0x8000</code></td>
+<td style="text-align: left;">This flag is reserved for future use. Attempts to set this flag fail.</td>
 </tr>
-<tr>
-<td><code>lsfReservedFlag</code>
-</td>
-<td><code>0x8000</code>
-</td>
-<td>This proposal reserves this flag for future use. Attempts to set this flag fail.
-   </td>
-</tr>
+</tbody>
 </table>
-<p><code>NFToken</code> flags are immutable: they can only be set during the <code>NFTokenMint</code> transaction and cannot be changed later.</p>
+<p><code>NFToken</code> flags are immutable: they can only be set during the <a href="nftokenmint.html">NFTokenMint transaction</a> and cannot be changed later.</p>
 <h3 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h3>
-<p>The example sets three flags: lsfBurnable (0x0001), lsfOnlyXRP (0x0002), lsfTransferable (0x0008). 1+2+8 = 11, or 0x000B in big endian format.</p>
+<p>The example sets three flags: <code>lsfBurnable</code> (<code>0x0001</code>), <code>lsfOnlyXRP</code> (<code>0x0002</code>), <code>lsfTransferable</code> (<code>0x0008</code>). 1+2+8 = 11, or 0x000B in big endian format.</p>
 <p><img alt="Flags" src="img/nftokena.png" title="Flags"/></p>
 <h3 id="transferfee">TransferFee<a aria-hidden="true" class="hover_anchor" href="#transferfee"><i class="fa fa-link"></i></a></h3>
 <p>The <code>TransferFee</code> value specifies the percentage fee, in units of 1/10,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 1bps or 0.00001%, allowing transfer rates between 0% and 50%.</p>

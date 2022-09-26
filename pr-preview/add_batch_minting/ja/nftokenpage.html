@@ -404,7 +404,7 @@
 <h3 id="reserve-for-nftokenpage-object">Reserve for <code>NFTokenPage</code> object<a aria-hidden="true" class="hover_anchor" href="#reserve-for-nftokenpage-object"><i class="fa fa-link"></i></a></h3>
 <p>Each <code>NFTokenPage</code> costs an incremental reserve to the owner account. This specification allows up to 32 <code>NFToken</code> entries per page, which means that for accounts that hold multiple NFTs the <em>effective</em> reserve cost per NFT can be as low as <em>R</em>/32 where <em>R</em> is the incremental reserve.</p>
 <h3 id="the-reserve-in-practice">The reserve in practice<a aria-hidden="true" class="hover_anchor" href="#the-reserve-in-practice"><i class="fa fa-link"></i></a></h3>
-<p>The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the <em>effective</em> reserve per token is, if a given page contains 1, 8, 16, 32 and 64 NFTs.</p>
+<p>The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the <em>effective</em> reserve per token is, if a given page contains 1, 8, 16 and 32 NFTs.</p>
 <table class="table-responsive">
 <tr>
 <td><strong>Incremental Reserve</strong>
@@ -416,8 +416,6 @@
 <td><strong>16 NFTokens</strong>
 </td>
 <td><strong>32 NFTokens</strong>
-</td>
-<td><strong>64 NFTokens</strong>
 </td>
 </tr>
 <tr>
@@ -431,8 +429,6 @@
    </td>
 <td>0.15625 XRP
    </td>
-<td>0.07812 XRP
-   </td>
 </tr>
 <tr>
 <td>2 XRP
@@ -445,8 +441,6 @@
    </td>
 <td>0.0625 XRP
    </td>
-<td>0.03125 XRP
-   </td>
 </tr>
 <tr>
 <td>1 XRP
@@ -458,8 +452,6 @@
 <td>0.0625 XRP
    </td>
 <td>0.03125 XRP
-   </td>
-<td>0.01562 XRP
    </td>
 </tr>
 </table>

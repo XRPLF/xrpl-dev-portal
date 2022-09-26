@@ -326,7 +326,6 @@
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout note"><strong>Note:</strong> The xrpl.js client library throws an error if you try to sign a transaction with the <code>URI</code> field in lowercase hexadecimal. This is a <a class="external-link" href="https://github.com/XRPLF/xrpl.js/issues/2004" target="_blank">bug <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="nftokenmint-flags">NFTokenMint Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenmint-flags"><i class="fa fa-link"></i></a></h2>
 <p>Transactions of the NFTokenMint type support additional values in the <a href="transaction-common-fields.html#flags-field"><code>Flags</code> field</a>, as follows:</p>
 <table class="table-responsive">
@@ -355,7 +354,7 @@
 <td style="text-align: left;"><code>tfTrustLine</code></td>
 <td style="text-align: left;"><code>0x00000004</code></td>
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">Automatically create <a href="trust-lines-and-issuing.html">trust lines</a> from the issuer to hold transfer fees received from transferring the minted <code>NFToken</code>.</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Automatically create <a href="trust-lines-and-issuing.html">trust lines</a> from the issuer to hold transfer fees received from transferring the minted <code>NFToken</code>. The <a href="known-amendments.html#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine amendment</a> makes it invalid to set this flag.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tfTransferable</code></td>
@@ -412,6 +411,10 @@
 <tr>
 <td style="text-align: left;"><code>temBAD_NFTOKEN_TRANSFER_FEE</code></td>
 <td style="text-align: left;">The <code>TransferFee</code> is not within the acceptable range.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temINVALID_FLAG</code></td>
+<td style="text-align: left;">The <code>Flags</code> value has bits enabled that are not allowed or valid flags. If the <a href="known-amendments.html#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine amendment</a> is enabled, the <code>tfTrustLine</code> flag causes this error.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temMALFORMED</code></td>

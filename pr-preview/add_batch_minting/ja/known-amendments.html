@@ -275,9 +275,11 @@
         <li class="nav-item level-2"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixtrustlinestoself">fixTrustLinesToSelf</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flow">Flow</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flowcross">FlowCross</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flowsortstrands">FlowSortStrands</a></li>
@@ -331,7 +333,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
+<td style="text-align: left;"><a href="#fixtrustlinestoself">fixTrustLinesToSelf</a></td>
 <td style="text-align: left;">未定</td>
 <td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
 </tr>
@@ -341,6 +343,11 @@
 <td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
 </tr>
 <tr>
+<td style="text-align: left;"><a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></td>
+<td style="text-align: left;">v1.9.4</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.4.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
 <td style="text-align: left;"><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></td>
 <td style="text-align: left;">v1.9.2</td>
 <td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.2.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
@@ -348,7 +355,7 @@
 <tr>
 <td style="text-align: left;"><a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></td>
 <td style="text-align: left;">v1.9.2</td>
-<td style="text-align: left;"><a href="ttps://xrpl.org/blog/2022/get-ready-for-nfts.html" title="予定: 2022/09/13"><img alt="予定: 2022/09/13" class="dactyl_badge" src="https://img.shields.io/badge/%E4%BA%88%E5%AE%9A-2022/09/13-blue.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.2.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#expandedsignerlist">ExpandedSignerList</a></td>
@@ -581,9 +588,9 @@
 <td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="有効: 2016/05/19"><img alt="有効: 2016/05/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/05/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#tickets">Tickets</a></td>
-<td style="text-align: left;">v0.30.1</td>
-<td style="text-align: left;"><a title="禁止: v0.90.0で削除"><img alt="禁止: v0.90.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.90.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/></a></td>
+<td style="text-align: left;"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
+<td style="text-align: left;">v0.60.0</td>
+<td style="text-align: left;"><a title="廃止: 削除未定"><img alt="廃止: 削除未定" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-%E5%89%8A%E9%99%A4%E6%9C%AA%E5%AE%9A-red.svg"/></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#shamapv2">SHAMapV2</a></td>
@@ -599,6 +606,11 @@
 <td style="text-align: left;"><a href="#suspay">SusPay</a></td>
 <td style="text-align: left;">v0.31.0</td>
 <td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" target="_blank" title="禁止: v0.60.0で削除"><img alt="禁止: v0.60.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.60.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#tickets">Tickets</a></td>
+<td style="text-align: left;">v0.30.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2018/rippled-0.90.0.html" target="_blank" title="禁止: v0.90.0で削除"><img alt="禁止: v0.90.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.90.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -672,6 +684,7 @@
 </tbody>
 </table>
 <p><a href="escrowcreate.html">EscrowCreate</a>トランザクションと<a href="escrowfinish.html">EscrowFinish</a>トランザクションで使用するために、公式の<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">Crypto-Conditions仕様 <i aria-hidden="true" class="fa fa-external-link"></i></a>から数種類のCrypto-Conditionsを導入します。この修正を行わない場合、サポートされるのはPREIMAGE-SHA-256タイプのみです。</p>
+<!-- TODO: update translated description to clarify that this amendment is obsolete. -->
 <p class="devportal-callout 注意"><strong>注意:</strong> この修正は<a class="external-link" href="https://github.com/ripple/rippled/pull/2170" target="_blank">開発中 <i aria-hidden="true" class="fa fa-external-link"></i></a>です。<code>rippled</code>v0.60.0以降のバージョンでは、完全な機能は導入されません。</p>
 <h2 id="deletableaccounts">DeletableAccounts<a aria-hidden="true" class="hover_anchor" href="#deletableaccounts"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
@@ -1119,7 +1132,7 @@
 </tbody>
 </table>
 <!-- TODO: translate description -->
-<p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> an <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
+<p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> a <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
 <p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.</p>
 <h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
@@ -1174,6 +1187,27 @@
 <!-- TODO: translate amendment description -->
 <p>Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.</p>
 <p>This amendment has no known impact on transaction processing.</p>
+<h2 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD</td>
+<td style="text-align: left;">投票中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate amendment description -->
+<p>Removes the <code>tfTrustLine</code> setting on <a href="non-fungible-tokens.html">non-fungible tokens</a>, to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a <a href="nftokenmint.html">NFTokenMint transaction</a> with the <code>tfTrustLine</code> flag enabled is considered invalid and cannot be confirmed by consensus; therefore, <code>NFToken</code> objects cannot be minted with the flag.</p>
+<p>Without this amendment, an attacker could create new, meaningless fungible tokens and sell an NFT back and forth for those tokens, creating numerous useless trust lines tied to the issuer and increasing the issuer's reserve requirement. </p>
+<p>This amendment does not change the code for <code>NFToken</code> objects that have already been minted. On test networks that already have NonFungibleTokensV1_1 enabled, this means that issuers who have already minted NFTokens with the <code>tfTrustLine</code> flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.</p>
+<p>This amendment has no effect unless <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a> is also enabled.</p>
+<p>To protect issuers, this amendment should be enabled <em>before</em> <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
 <h2 id="fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers<a aria-hidden="true" class="hover_anchor" href="#fixrmsmallincreasedqoffers"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1228,6 +1262,24 @@
 <p>XRP Ledger内にドライオファーを残す可能性がある<a href="autobridging.html">オートブリッジ</a>のバグを修正します。ドライオファーとは、オファーを掛け合わせても資金を調達できないオファーのことです。</p>
 <p>この修正を行わなければ、ドライオファーがレジャー上に残り、所有者の<a href="reserves.html#所有者準備金">必要準備金</a>に加算されることになり、所有者に何も利益をもたらしません。正しいタイプとクオリティで掛け合わせた別のオファーによって、ドライオファーを除去することができます。ただし、タイプとクオリティがうまく掛け合わされたオファーがめったにない場合、ドライオファーの除去には時間がかかることがあります。</p>
 <p>この修正により、これらのドライオファーがオートブリッジで一致した場合に、XRP Ledgerによって除去されます。</p>
+<h2 id="fixtrustlinestoself">fixTrustLinesToSelf<a aria-hidden="true" class="hover_anchor" href="#fixtrustlinestoself"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment ID</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: translate amendment description -->
+<p>This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs <code>2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1</code> and <code>326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A</code> if they exist. After doing so, the amendment does nothing else.</p>
+<p>On test networks that do not have these trust lines, the amendment has no effect.</p>
 <h2 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>

@@ -244,10 +244,9 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nft-conceptual-overview">NFT Conceptual Overview</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nft-extensions">NFT Extensions</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nfts-on-the-xrp-ledger">NFTs on the XRP Ledger</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftoken-lifecycle">NFToken Lifecycle</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#reference">Reference</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#api-methods">API Methods</a></li>
       </ul>
   </div>
       </aside>
@@ -284,17 +283,26 @@
 <p>But since you are standing around in 1919, you might be offered 24-cent airmail stamps where the aeroplane on the stamp is accidentally printed upside down. These are the world famous “Inverted Jenny” stamps. Only 100 were circulated on a single sheet of stamps, making them extremely rare and sought after. The current value of each mint condition stamp is appraised at over $1.5 million dollars.</p>
 <p><img alt="Jenny Stamps" src="img/nft-concepts2.png" title="Jenny Stamps"/></p>
 <p>Those stamps cannot be replaced by just another other 24-cent stamp. They have become <em>non-fungible</em>.</p>
-<p>The XRPL Labs team has created a framework that supports non-fungible tokens (NFTs, or “nifties” in the vernacular).  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.</p>
-<h2 id="nft-extensions">NFT Extensions<a aria-hidden="true" class="hover_anchor" href="#nft-extensions"><i class="fa fa-link"></i></a></h2>
-<p>Extensions to the XRP Ledger support two new objects and a new ledger structure.</p>
-<p>The <a href="nftoken.html">NFToken</a> is a native NFT type. It has operations to enumerate, purchase, sell, and hold such tokens. An <code>NFToken</code> is a unique, indivisible unit that is not used for payments.</p>
-<p>The <a href="nftokenpage.html">NFTokenPage object</a> contains a set of <code>NFToken</code> objects owned by the same account.</p>
-<p>You create a new <code>NFToken</code> using the <a href="nftokenmint.html">NFTokenMint transaction</a>.</p>
-<p><a href="nftokenoffer.html">NFTokenOffer object</a> is a new object that describes an offer to buy or sell a single <code>NFToken</code>.</p>
-<p>You destroy an <code>NFToken</code> using the <a href="nftokenburn.html">NFTokenBurn transaction</a>. Token owners can always burn a token they own. If you mint a token with the <code>tfBurnable</code> flag set, you have the option of burning the token at any time, regardless of the owner.</p>
+<p>The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> adds support for non-fungible tokens (NFTs, or “nifties” in the vernacular) natively on the XRP Ledger.  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.</p>
+<h2 id="nfts-on-the-xrp-ledger">NFTs on the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#nfts-on-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
+<p>On the XRP Ledger, a non-fungible token is represented as a <a href="nftoken.html">NFToken</a> object. A <code>NFToken</code> is a unique, indivisible unit that is not used for payments. Users can mint (create), hold, buy, sell, and burn (destroy) such tokens.</p>
+<p>The ledger stores up to 32 <code>NFToken</code> objects owned by the same account in a single <a href="nftokenpage.html">NFTokenPage object</a> to save space. As a result, the owner's <a href="reserves.html">reserve requirement</a> for <code>NFToken</code> objects only increases when the ledger needs to make a new page to store additional tokens.</p>
+<p>Accounts can also designate a broker, or "Authorized Minter", who can mint and sell <code>NFToken</code> objects on their behalf.</p>
+<p><code>NFToken</code> objects have several settings that are defined when the token is minted and cannot be changed later. These include:</p>
+<ul>
+<li>Various identifying data that uniquely defines the token.</li>
+<li>Whether the issuer can burn the token regardless of who currently holds it.</li>
+<li>Whether the holder of the token can transfer it to others. (The <code>NFToken</code> can always be sent to or from the issuer directly.)<ul>
+<li>If transfers are allowed, the issuer can charge a transfer fee as a percentage of the sale price.</li>
+</ul>
+</li>
+<li>Whether the holder can sell the <code>NFToken</code> for <a href="tokens.html">fungible token</a> amounts, or only for XRP.</li>
+</ul>
 <h2 id="nftoken-lifecycle"><code>NFToken</code> Lifecycle<a aria-hidden="true" class="hover_anchor" href="#nftoken-lifecycle"><i class="fa fa-link"></i></a></h2>
-<p>You create a NFT using the <code>NFTokenMint</code> transaction. The <code>NFToken</code> lives on the <code>NFTokenPage</code> of the issuing account. You can create an <code>NFTokenOffer</code> to sell the <code>NFToken</code>, creating an entry to the XRP Ledger. Another account can accept the <code>NFTokenOffer</code>, transferring the <code>NFToken</code> to the accepting account’s <code>NFTokenPage</code>. If the <code>lsfTransferable</code>flag is set to <em>true</em> (0x000008) when the <code>NFToken</code> is minted, the <code>NFToken</code> can be traded multiple times between accounts. The <code>NFToken</code> can be permanently destroyed by its owner using the <code>NFTokenBurn</code> transaction.</p>
+<p>Anyone can create a new <code>NFToken</code> using the <a href="nftokenmint.html">NFTokenMint transaction</a> type. The <code>NFToken</code> lives on the <a href="nftokenpage.html">NFTokenPage object</a> of the issuing account. Either the owner or an interested party can send a <a href="nftokencreateoffer.html">NFTokenCreateOffer transaction</a> to propose buying or selling the <code>NFToken</code>; the ledger tracks the proposed transfer as a <a href="nftokenoffer.html">NFTokenOffer object</a>, and deletes the <code>NFTokenOffer</code> when either side accepts or cancels the offer. If the <code>NFToken</code> is transferable, it can be traded multiple times between accounts.</p>
+<p>You can destroy a <code>NFToken</code> you own using the <a href="nftokenburn.html">NFTokenBurn transaction</a>. If the issuer minted the token with <code>tfBurnable</code> flag enabled, the issuer can also burn the token regardless of the current owner. (This could be useful, for example, for a token that represents a ticket to an event which is used up at some point.)</p>
 <p><img alt="The NFT Lifecycle" src="img/nft-lifecycle.png" title="NFT Lifecycle Image"/></p>
+<p>For more info about transferring <code>NFToken</code> objects, see <a href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>.</p>
 <h2 id="reference">Reference<a aria-hidden="true" class="hover_anchor" href="#reference"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a href="nftoken.html">NFToken</a> data type</li>
@@ -311,12 +319,13 @@
 <li><a href="nftokenburn.html">NFTokenBurn transaction</a></li>
 </ul>
 </li>
+<li>API Methods<ul>
+<li><a href="account_nfts.html">account_nfts method</a></li>
+<li><a href="nft_sell_offers.html">nft_sell_offers method</a></li>
+<li><a href="nft_buy_offers.html">nft_buy_offers method</a></li>
+<li><a href="nft_info.html">nft_info method</a> (Clio server only)</li>
 </ul>
-<h3 id="api-methods">API Methods<a aria-hidden="true" class="hover_anchor" href="#api-methods"><i class="fa fa-link"></i></a></h3>
-<ul>
-<li><code>account_nfts</code></li>
-<li><code>nft_sell_offers</code></li>
-<li><code>nft_buy_offers</code></li>
+</li>
 </ul>
 <!-- -->
 <!-- -->

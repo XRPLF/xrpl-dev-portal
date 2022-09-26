@@ -342,13 +342,13 @@
 <td style="text-align: left;"><code>WalletLocator</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
-<td style="text-align: left;"><em>(Optional)</em> Not used.</td>
+<td style="text-align: left;"><em>(Optional)</em> An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>WalletSize</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> Not used.</td>
+<td style="text-align: left;"><em>(Optional)</em> Not used. This field is valid in AccountSet transactions but does nothing.</td>
 </tr>
 </tbody>
 </table>
@@ -368,7 +368,7 @@
 <li>The <code>AccountSet</code> transaction type has several transaction flags (prefixed <strong><code>tf</code></strong>) that can be used to enable or disable specific account options when passed in the <code>Flags</code> parameter. You can enable and disable a combination of settings in one transaction using multiple <code>tf</code> flags, but not all settings have <code>tf</code> flags.</li>
 <li>The <code>AccountRoot</code> ledger object type has several ledger-state-flags (prefixed <strong><code>lsf</code></strong>) which represent the state of particular account options within a particular ledger. These settings apply until a transaction changes them.</li>
 </ul>
-<p>The preferred way to enable and disable Account Flags is using the <code>SetFlag</code> and <code>ClearFlag</code> parameters of an AccountSet transaction. AccountSet flags have names that begin with <strong><code>asf</code></strong>.</p>
+<p>To enable or disable Account Flags, use the <code>SetFlag</code> and <code>ClearFlag</code> parameters of an AccountSet transaction. AccountSet flags have names that begin with <strong><code>asf</code></strong>.</p>
 <p>All flags are disabled by default.</p>
 <p>The available AccountSet flags are:</p>
 <table class="table-responsive">
@@ -444,7 +444,7 @@
 </tbody>
 </table>
 <p>To enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="transaction-basics.html#authorizing-transactions">authorize the transaction</a> by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable <code>asfDisableMaster</code> (that is, re-enable the master key pair) using a regular key pair or multi-signature. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The following <a href="transaction-common-fields.html#flags-field">Transaction flags</a>, specific to the AccountSet transaction type, serve the same purpose, but are discouraged:</p>
+<p>The following <a href="transaction-common-fields.html#flags-field">Transaction flags</a> (<code>tf</code> flags), specific to the AccountSet transaction type, serve the same purpose. Due to limited space, some settings do not have associated <code>tf</code> flags, and new <code>tf</code> flags are not being added to the <code>AccountSet</code> transaction type. You can use a combination of <code>tf</code> and <code>asf</code> flags to enable multiple settings with a single transaction.</p>
 <table class="table-responsive">
 <thead>
 <tr>
