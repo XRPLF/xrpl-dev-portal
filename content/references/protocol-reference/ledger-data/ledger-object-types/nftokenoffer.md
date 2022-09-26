@@ -48,7 +48,7 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
 
 |Flag Name|Flag Value|Description|
 |---|---|---|
-|lsfSellNFToken|0x00000001|If set, the offer is a sell offer. Otherwise, the offer is a buy offer.|
+| `lsfSellNFToken `| `0x00000001` | If enabled, the offer is a sell offer. Otherwise, the offer is a buy offer. |
 
 ## `NFTokenOffer` Transactions
 
