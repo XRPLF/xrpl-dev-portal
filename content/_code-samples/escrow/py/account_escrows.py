@@ -36,7 +36,7 @@ for escrow in escrows:
             # date when and after escrow expires if available
             escrow_data["expiry_date"] = str(ripple_time_to_datetime(escrow["CancelAfter"]))
         if "Condition" in escrow:
-            # return cryptic condition if available
+            # return crypto condition if available
             escrow_data["condition"] = escrow["Condition"]
             
         # arrange escrows into sent and received lists
