@@ -7,7 +7,7 @@ from xrpl.wallet import Wallet, generate_faucet_wallet
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the testnetwork
 
 # Cancel an escrow
-# If the escrow wasnt created with a CancelAfter time, it never expires and this transaction fails
+# Note: An Escrow can only be canceled if it was created with a CancelAfter time
 
 escrow_creator = generate_faucet_wallet(client=client).classic_address # escrow creator/ sender address
 escrow_seq = int # escrow sequence
