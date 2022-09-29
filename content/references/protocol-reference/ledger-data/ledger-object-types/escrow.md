@@ -43,22 +43,22 @@ An `Escrow` object is associated with two addresses:
 
 An `Escrow` object has the following fields:
 
-| Name                | JSON Type | [Internal Type][] | Description            |
-|---------------------|-----------|-----------|--------------------------------|
-| `LedgerEntryType`   | String    | UInt16    | The value `0x0075`, mapped to the string `Escrow`, indicates that this object is an `Escrow` object. |
-| `Account`           | String    | AccountID | The address of the owner (sender) of this held payment. This is the account that provided the XRP, and gets it back if the held payment is canceled. |
-| `Destination`       | String    | AccountID | The destination address where the XRP is paid if the held payment is successful. |
-| `Amount`            | String    | Amount    | The amount of XRP, in drops, to be delivered by the held payment. |
-| `Condition`         | String    | Blob      | _(Optional)_ A [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1), as hexadecimal. If present, the [EscrowFinish transaction][] must contain a fulfillment that satisfies this condition. |
-| `CancelAfter`       | Number    | UInt32    | _(Optional)_ The held payment can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch][] and it "has passed" if it's earlier than the close time of the previous validated ledger. |
-| `FinishAfter`       | Number    | UInt32    | _(Optional)_ The time, in [seconds since the Ripple Epoch][], after which this held payment can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
-| `Flags`             | Number    | UInt32    | A bit-map of boolean flags. No flags are defined for the Escrow type, so this value is always `0`. |
-| `SourceTag`         | Number    | UInt32    | _(Optional)_ An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address. |
-| `DestinationTag`    | Number    | UInt32    | _(Optional)_ An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address. |
-| `OwnerNode`         | String    | UInt64    | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
-| `DestinationNode`   | String    | UInt64    | _(Optional)_ A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment][]. |
-| `PreviousTxnID`     | String    | Hash256   | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number    | UInt32    | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| Name                | JSON Type | [Internal Type][] | Required? | Description            |
+|:--------------------|:----------|:------------------|:----------|:-----------------------|
+| `Account`           | String    | AccountID         | Yes       | The address of the owner (sender) of this held payment. This is the account that provided the XRP, and gets it back if the held payment is canceled. |
+| `Amount`            | String    | Amount            | Yes       | The amount of XRP, in drops, to be delivered by the held payment. |
+| `CancelAfter`       | Number    | UInt32            | No        | The held payment can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch][] and it "has passed" if it's earlier than the close time of the previous validated ledger. |
+| `Condition`         | String    | Blob              | No        | A [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1), as hexadecimal. If present, the [EscrowFinish transaction][] must contain a fulfillment that satisfies this condition. |
+| `Destination`       | String    | AccountID         | Yes       | The destination address where the XRP is paid if the held payment is successful. |
+| `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment][]. |
+| `DestinationTag`    | Number    | UInt32            | No        | An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address. |
+| `FinishAfter`       | Number    | UInt32            | No        | The time, in [seconds since the Ripple Epoch][], after which this held payment can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
+| `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Escrow` objects. The value is always `0`. |
+| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0075`, mapped to the string `Escrow`, indicates that this object is an `Escrow` object. |
+| `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| `SourceTag`         | Number    | UInt32            | No        | An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address. |
 
 
 ## Escrow ID Format
