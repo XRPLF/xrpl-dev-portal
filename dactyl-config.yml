@@ -2239,11 +2239,17 @@ pages:
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.md
@@ -2388,27 +2394,41 @@ pages:
     -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md
         targets:
             - en
-            - ja
 
+    -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.ja.md
+        targets:
+            - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/offercancel.md

@@ -40,7 +40,7 @@ In direct mode, `NFTokenAcceptOffer` transaction fails if:
 
 * The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed is an offer to `buy` the `NFToken` and the account executing the `NFTokenAcceptOffer` is not, at the time of execution, the current owner of the corresponding `NFToken`.
 * The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed is an offer to `sell` the `NFToken` and was placed by an account which is not, at the time of execution, the current owner of the `NFToken`.
-* The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed is an offer to `sell` the `NFToken` and was placed by an account which is not, at the time of execution, the `Account` in the recipient field of the `NFTokenOffer`, if one exists.
+* The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed is an offer to `sell` the `NFToken` and was placed by an account which is not, at the time of execution, the `Destination` in the recipient field of the `NFTokenOffer`, if one exists.
 * The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed specifies an `expiration` time and the close time field of the parent of the ledger in which the transaction would be included has already passed.
 * The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed to buy or sell the `NFToken `is owned by the account executing the `NFTokenAcceptOffer`.
 
