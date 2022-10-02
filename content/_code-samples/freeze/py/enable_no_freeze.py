@@ -11,7 +11,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to tes
 sender_wallet = generate_faucet_wallet(client=client)
 
 # build accountset transaction to disable freezing
-accountset = AccountSet(account=sender_wallet.classic_address, set_flag=AccountSetFlag.ASF_NO_FREEZE)# flag to disable freezing for this account
+accountset = AccountSet(account=sender_wallet.classic_address, set_flag=AccountSetFlag.ASF_NO_FREEZE)
 
 # sign transaction
 stxn = safe_sign_and_autofill_transaction(accountset, sender_wallet, client)
