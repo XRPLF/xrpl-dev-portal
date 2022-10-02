@@ -10,14 +10,11 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the
 
 wallet_addr_to_query = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
-# Dict to store all the checks
 checks_dict = {}
 
-# List of sent checks
-sent = []
+sent_checks = []
 
-# List of received checks
-receive = []
+received_checks = []
 
 # Build request
 req = AccountObjects(account=wallet_addr, ledger_index="validated", type="check")
@@ -59,14 +56,11 @@ print(checks_dict)
 
 wallet_addr_to_query = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
-# Dict to store all the checks
 checks_dict = {}
 
-# List of sent checks
-sent = []
+sent_dict = []
 
-# List of received checks
-receive = []
+received_dict = []
 
 # Build request
 req = AccountObjects(account=wallet_addr, ledger_index="validated", type="check")
