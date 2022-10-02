@@ -2,7 +2,7 @@ from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountObjects
 from xrpl.utils import drops_to_xrp, hex_to_str, ripple_time_to_datetime
 
-client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the testnetwork
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the testnetwork
 
 
 # Query the ledger for all xrp checks an account has created or received
@@ -10,23 +10,23 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the
 
 wallet_addr_to_query = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
-# dict to store all the checks
+# Dict to store all the checks
 checks_dict = {}
 
-# list of sent checks
+# List of sent checks
 sent = []
 
-# list of received checks
+# List of received checks
 receive = []
 
-# build request
+# Build request
 req = AccountObjects(account=wallet_addr, ledger_index="validated", type="check")
 
-# make request and return result
+# Make request and return result
 response = client.request(req)
 result = response.result
 
-# parse result
+# Parse result
 if "account_objects" in result:
     account_checks = result["account_objects"]
     for check in account_checks:
@@ -43,7 +43,7 @@ if "account_objects" in result:
             elif check_data["sender"] != wallet_addr:
                 receive.append(check_data)
 
-# sort checks
+# Sort checks
 checks_dict["sent"] = sent
 checks_dict["receive"] = receive
 print(checks_dict)
@@ -59,23 +59,23 @@ print(checks_dict)
 
 wallet_addr_to_query = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
-# dict to store all the checks
+# Dict to store all the checks
 checks_dict = {}
 
-# list of sent checks
+# List of sent checks
 sent = []
 
-# list of received checks
+# List of received checks
 receive = []
 
-# build request
+# Build request
 req = AccountObjects(account=wallet_addr, ledger_index="validated", type="check")
 
-# make request and return result
+# Make request and return result
 response = client.request(req)
 result = response.result
 
-# parse result
+# Parse result
 if "account_objects" in result:
     account_checks = result["account_objects"]
     for check in account_checks:
@@ -94,7 +94,7 @@ if "account_objects" in result:
             elif check_data["sender"] != wallet_addr:
                 receive.append(check_data)
 
-# sort checks
+# Sort checks
 checks_dict["sent"] = sent
 checks_dict["receive"] = receive
 print(checks_dict)
