@@ -32,7 +32,7 @@ if "lines" in result:
             if 'freeze' in line:
                 print(f'freeze status of trustline: {line["freeze"]}')
             else:
-                print(print(f'freeze status of trustline: False'))
+                print(f'freeze status of trustline: False')
         else:
             print("no such trustline exists")
 else:
