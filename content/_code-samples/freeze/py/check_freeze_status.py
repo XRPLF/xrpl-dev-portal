@@ -36,5 +36,5 @@ if "lines" in result:
         else:
             print("no such trustline exists")
 else:
-    print("no lines")
+    print("this account has no trustlines")
 
