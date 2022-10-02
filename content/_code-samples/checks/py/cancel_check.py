@@ -4,33 +4,29 @@ from xrpl.models import CheckCancel
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
 
-client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the testnetwork
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the testnetwork
 
-
-"""cancel a check"""
-# sender is the check creator or recipient
+"""Cancel a check"""
+# Sender is the check creator or recipient
 # If the Check has expired, any address can cancel it
 
+# Check id
+check_id = "F944CB379DEE18EFDA7A58A4F81AF1A98C46E54A8B9F2D268F1E26610BC0EB03"
 
-# check id
-check_id = str
-
-# create wallet object
+# Create wallet object
 sender_wallet = generate_faucet_wallet(client=client)
 
-# build check cancel transaction
+# Build check cancel transaction
 check_txn = CheckCancel(account=sender_wallet.classic_address, check_id=check_id)
 
-# sign transaction
+# Sign and submit transaction
 stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
-
-# submit transaction and wait for result
 stxn_response = send_reliable_submission(stxn, client)
 
-# parse response for result
+# Parse response for result
 stxn_result = stxn_response.result
 
-# print result and transaction hash
+# Print result and transaction hash
 print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])
 
