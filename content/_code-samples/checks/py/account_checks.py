@@ -7,8 +7,8 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to the
 
 # Query the ledger for all xrp checks an account has created or received
 
-# wallet address to query
-wallet_addr = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
+
+wallet_addr_to_query = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
 # dict to store all the checks
 checks_dict = {}
@@ -56,8 +56,8 @@ print(checks_dict)
 
 # Query the ledger for all token checks an account has created or received
 
-# wallet address to query
-wallet_addr = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
+
+wallet_addr_to_query = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
 # dict to store all the checks
 checks_dict = {}
