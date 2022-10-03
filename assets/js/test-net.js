@@ -1,90 +1,138 @@
 async function wait_for_seq(network_url, address) {
-  const api = new xrpl.Client(network_url)
-  await api.connect()
+  const api = new xrpl.Client(network_url);
+  await api.connect();
   let response;
   while (true) {
     try {
       response = await api.request({
         command: "account_info",
         account: address,
-        ledger_index: "validated"
-      })
-      break
-    } catch(e) {
-      await new Promise(resolve => setTimeout(resolve, 1000))
+        ledger_index: "validated",
+      });
+      break;
+    } catch (e) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
-  console.log(response)
-  $("#sequence").html('<h3>Sequence Number</h3> '+response.result.account_data.Sequence)
-  api.disconnect()
+  console.log(response);
+  $("#sequence").html(
+    "<h3>Sequence Number</h3> " + response.result.account_data.Sequence
+  );
+  $("#balance").html(
+    "<h3>Balance</h3> " +
+      (Number(response.result.account_data.Balance) * 0.000001).toLocaleString(
+        "en"
+      ) +
+      " XRP"
+  );
+  api.disconnect();
 }
 
-
 function rippleTestNetCredentials(url, altnet_name) {
+  const credentials = $("#your-credentials");
+  const address = $("#address");
+  const secret = $("#secret");
+  const balance = $("#balance");
+  const sequence = $("#sequence");
+  const loader = $("#loader");
 
-  const credentials = $('#your-credentials')
-  const address = $('#address')
-  const secret = $('#secret')
-  const balance = $('#balance')
-  const sequence = $('#sequence')
-  const loader = $('#loader')
+  const test_wallet = xrpl.Wallet.generate();
 
   //reset the fields initially and for re-generation
-  credentials.hide()
-  address.html('')
-  secret.html('')
-  balance.html('')
-  sequence.html('')
-  loader.css('display', 'inline')
-
+  credentials.hide();
+  address.html("");
+  secret.html("");
+  balance.html("");
+  sequence.html("");
+  loader.css("display", "inline");
 
   //call the alt-net and get key generations
   $.ajax({
     url: url,
-    type: 'POST',
-    dataType: 'json',
-    success: function(data) {
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify({
+      destination: test_wallet.address,
+    }),
+    dataType: "json",
+    success: function (data) {
       //hide the loader and show results
+      console.log("data", data);
       loader.hide();
-      credentials.hide().html('<h2>Your '+altnet_name+' Credentials</h2>').fadeIn('fast')
-      address.hide().html('<h3>Address</h3> ' +
-        data.account.address).fadeIn('fast')
-      secret.hide().html('<h3>Secret</h3> ' +
-        data.account.secret).fadeIn('fast')
-      balance.hide().html('<h3>Balance</h3> ' +
-        Number(data.balance).toLocaleString('en') + ' XRP').fadeIn('fast')
-      sequence.html('<h3>Sequence</h3> <img class="throbber" src="assets/img/xrp-loader-96.png"> Waiting...').fadeIn('fast')
-      if (altnet_name=="Testnet") {
-        wait_for_seq("wss://s.altnet.rippletest.net:51233", data.account.address)
-      } else if (altnet_name=="NFT-Devnet") {
-        wait_for_seq("wss://xls20-sandbox.rippletest.net:51233", data.account.address)
+      credentials
+        .hide()
+        .html("<h2>Your " + altnet_name + " Credentials</h2>")
+        .fadeIn("fast");
+      address
+        .hide()
+        .html("<h3>Address</h3> " + test_wallet.address)
+        .fadeIn("fast");
+      secret
+        .hide()
+        .html("<h3>Secret</h3> " + test_wallet.seed)
+        .fadeIn("fast");
+      balance
+        .hide()
+        .html(
+          "<h3>Balance</h3> " +
+            Number(data.amount).toLocaleString("en") +
+            " XRP"
+        )
+        .fadeIn("fast");
+      sequence
+        .html(
+          '<h3>Sequence</h3> <img class="throbber" src="assets/img/xrp-loader-96.png"> Waiting...'
+        )
+        .fadeIn("fast");
+      if (altnet_name == "Testnet") {
+        wait_for_seq(
+          "wss://s.altnet.rippletest.net:51233",
+          test_wallet.address
+        );
+      } else if (altnet_name == "NFT-Devnet") {
+        wait_for_seq(
+          "wss://xls20-sandbox.rippletest.net:51233",
+          test_wallet.address
+        );
       } else {
-        wait_for_seq("wss://s.devnet.rippletest.net:51233", data.account.address)
+        wait_for_seq(
+          "wss://s.devnet.rippletest.net:51233",
+          test_wallet.address
+        );
       }
-
     },
-    error: function() {
+    error: function () {
       loader.hide();
-      alert("There was an error with the "+altnet_name+" faucet. Please try again.");
-    }
-  })
+      alert(
+        "There was an error with the " +
+          altnet_name +
+          " faucet. Please try again."
+      );
+    },
+  });
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   function testnet_click(evt) {
-    rippleTestNetCredentials("https://faucet.altnet.rippletest.net/accounts",
-      "Testnet")
+    rippleTestNetCredentials(
+      "https://faucet.altnet.rippletest.net/accounts",
+      "Testnet"
+    );
   }
   function devnet_click(evt) {
-    rippleTestNetCredentials("https://faucet.devnet.rippletest.net/accounts",
-      "Devnet")
+    rippleTestNetCredentials(
+      "https://faucet.devnet.rippletest.net/accounts",
+      "Devnet"
+    );
   }
   function nftnet_click(evt) {
-    rippleTestNetCredentials("https://faucet-nft.ripple.com/accounts",
-      "NFT-Devnet")
+    rippleTestNetCredentials(
+      "https://faucet-nft.ripple.com/accounts",
+      "NFT-Devnet"
+    );
   }
 
-  $('#testnet-creds-button').click(testnet_click)
-  $('#devnet-creds-button').click(devnet_click)
-  $('#nftnet-creds-button').click(nftnet_click)
-})
+  $("#testnet-creds-button").click(testnet_click);
+  $("#devnet-creds-button").click(devnet_click);
+  $("#nftnet-creds-button").click(nftnet_click);
+});
