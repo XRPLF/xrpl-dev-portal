@@ -25,7 +25,7 @@ trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCu
     issuer=target_addr,
     value = value 
 ),
-flags=TrustSetFlag.TF_CLEAR_FREEZE)# flag to unfreeze the trust line.
+flags=TrustSetFlag.TF_CLEAR_FREEZE)
 
 # Sign and Submit transaction
 stxn = safe_sign_and_autofill_transaction(trustset, sender_wallet, client)
