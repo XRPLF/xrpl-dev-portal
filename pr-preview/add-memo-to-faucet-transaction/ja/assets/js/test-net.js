@@ -42,8 +42,16 @@ function rippleTestNetCredentials(url, altnet_name) {
   $.ajax({
     url: url,
     type: 'POST',
-    data: { memos: ["xrpl.org-faucet"] },
-    dataType: 'json',
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify({
+      memos: [
+        {
+          Memo: {
+            MemoData: xrpl.convertStringToHex("xrpl.org-faucet"),
+          },
+        },
+      ],
+    }),
     success: function(data) {
       //hide the loader and show results
       loader.hide();
