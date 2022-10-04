@@ -9,27 +9,27 @@ from xrpl.models import EscrowCreate
 
 # Create Escrow
 
-client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # instanstiate ripple client
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to client
 
-amount = 10.000 # amount to escrow
+amount_to_escrow = 10.000 
 
 receiver_addr = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" # Example: send back to Testnet Faucet
 
-# make claimable escrow after 3 days
+# Escrow will be available to claim after 3 days
 claim_date = datetime_to_ripple_time(datetime.now() + timedelta(days=3))
 
-# escrow will expire after 5 days
+# Escrow will expire after 5 days
 expiry_date = datetime_to_ripple_time(datetime.now() + timedelta(days=5))
 
-# optional field
+# Optional field
 # You can optionally use a Crypto Condition to allow for dynamic release of funds. For example:
 condition = "A02580205A0E9E4018BE1A6E0F51D39B483122EFDF1DDEF3A4BE83BE71522F9E8CDAB179810120" # do not use in production
 
 
-# generate sender wallet with seed
+# sender wallet object
 sender_wallet = generate_faucet_wallet(client=client)
 
-# build escrow create transaction
+# Build escrow create transaction
 create_txn = EscrowCreate(
     account=sender_wallet.classic_address,
     amount=xrp_to_drops(amount), 
@@ -38,15 +38,13 @@ create_txn = EscrowCreate(
     cancel_after=expiry_date,
     condition=condition)
 
-# sign transaction with sender wallet
+# Sign and send transaction 
 stxn = safe_sign_and_autofill_transaction(create_txn, sender_wallet, client)
-
-# send signed transaction and wait
 stxn_response = send_reliable_submission(stxn, client)
 
-# return result of transaction
+# Return result of transaction
 stxn_result = stxn_response.result
 
-# parse result and print out the trnasaction result and transaction hash 
+# Parse result and print out the trnasaction result and transaction hash 
 print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])
