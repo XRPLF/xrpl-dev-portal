@@ -4,26 +4,22 @@ from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
 from xrpl.wallet import generate_faucet_wallet
 
-client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to testnet
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to testnet
 
-
-# generate wallet
+# Sender wallet object
 sender_wallet = generate_faucet_wallet(client)
 
-
-# build accountset transaction to disable freezing
+# Build accountset transaction to enable global freeze
 accountset = AccountSet(account=sender_wallet.classic_address,
-    set_flag=AccountSetFlag.ASF_GLOBAL_FREEZE)# flag to set global freeze
+    set_flag=AccountSetFlag.ASF_GLOBAL_FREEZE)
 
-# sign transaction
+# Sign and submit transaction
 stxn = safe_sign_and_autofill_transaction(accountset, sender_wallet, client)
-
-# submit transaction and wait for result
 stxn_response = send_reliable_submission(stxn, client)
 
-# parse response for result
+# Parse response for result
 stxn_result = stxn_response.result
 
-# print result and transaction hash
+# Print result and transaction hash
 print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])
