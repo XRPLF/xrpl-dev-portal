@@ -46,5 +46,4 @@ for escrow in escrows:
 escrow_dict["sent"] = sent
 escrow_dict["received"] = received
 
-# Print escrow dict
 print(escrow_dict)
