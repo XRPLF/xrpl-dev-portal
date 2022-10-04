@@ -5,29 +5,30 @@ client = JsonRpcClient("https://xrplcluster.com")
 
 print("connected to mainnet")
 
-# issuer address
+# Real accounts that were frozen on mainnet as an example
+
+# Issuer address
 issuer_addr = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
 
-# target address to query for freeze status
+# Target address to query for freeze status
 target_addr = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"
 
-# token name
-token = "USD"
+token_name = "USD"
 
-# build account line query
+# Build account line query
 acc_info = AccountLines(account=issuer_addr, ledger_index="validated")
 
-# submit query
+# Submit query
 response = client.request(acc_info)
 
-# parse response for result
+# Parse response for result
 result = response.result
 
-# parse result for account lines
+# Parse result for account lines
 if "lines" in result:
     lines = result["lines"]
     for line in lines:
-        # query result with trustline params
+        # Query result with trustline params
         if target_addr == line["account"] and token == line["currency"]: 
             if 'freeze' in line:
                 print(f'freeze status of trustline: {line["freeze"]}')
