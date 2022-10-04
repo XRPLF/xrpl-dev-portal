@@ -9,7 +9,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the
 # Cancel an escrow
 # An Escrow can only be canceled if it was created with a CancelAfter time
 
-escrow_seq = 30215126
+escrow_sequence = 30215126
 
 # Sender wallet object
 sender_wallet = generate_faucet_wallet(client=client)
