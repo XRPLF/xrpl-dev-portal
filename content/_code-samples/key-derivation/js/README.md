@@ -17,7 +17,7 @@ have to install the necessary node.js dedpendencies:
 
 ### Hex formatted seed
 
-    npm start "0x21edc3dec3ef1873cf8f333381c5f360c3"
+    npm start "21edc3dec3ef1873cf8f333381c5f360c3"
 
 ### Random seed
 
