@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Batch minting | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nftoken-batch-minting.html" />
-    <meta property="og:description" content="Minting NFTokens in batches." />
-    <meta name="description" content="Minting NFTokens in batches." />
+    <meta property="og:description" content="Minting NFToken objects in batches." />
+    <meta name="description" content="Minting NFToken objects in batches." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -272,26 +272,26 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="batch-minting">Batch minting<a aria-hidden="true" class="hover_anchor" href="#batch-minting"><i class="fa fa-link"></i></a></h1>
-<p>There are two common approaches to minting NFTokens in batches: mint on demand and scripted minting.</p>
+<p>There are two common approaches to minting NFToken objects in batches: mint on demand and scripted minting.</p>
 <h2 id="mint-on-demand-lazy-minting">Mint On Demand (Lazy Minting)<a aria-hidden="true" class="hover_anchor" href="#mint-on-demand-lazy-minting"><i class="fa fa-link"></i></a></h2>
-<p>When using a mint on demand model, you and potential customers make buy or sell offers for initial sales of a NFToken off the XRP Ledger. When you are ready to commence the initial sale, you mint the token, create a sell offer or accept a buy offer, then complete the transaction.</p>
+<p>When using a mint on demand model, you and potential customers make buy or sell offers for initial sales of a NFToken object off the XRP Ledger. When you are ready to commence the initial sale, you mint the token, create a sell offer or accept a buy offer, then complete the transaction.</p>
 <h3 id="benefits">Benefits<a aria-hidden="true" class="hover_anchor" href="#benefits"><i class="fa fa-link"></i></a></h3>
 <ul>
-<li>There is little or no reserve requirement for holding unsold NFTokens.</li>
-<li>You mint NFTokens in real time when you know that it will sell.</li>
+<li>There is no reserve requirement for holding unsold NFToken objects.</li>
+<li>You mint NFToken objects in real time when you know that it will sell.</li>
 </ul>
 <h3 id="downside">Downside<a aria-hidden="true" class="hover_anchor" href="#downside"><i class="fa fa-link"></i></a></h3>
-<p>Any market activity prior to the initial sale of the NFToken is not recorded on the XRP Ledger. This might not be an issue for some applications.</p>
+<p>Any market activity prior to the initial sale of the NFToken object is not recorded on the XRP Ledger. This might not be an issue for some applications.</p>
 <h2 id="scripted-minting">Scripted Minting<a aria-hidden="true" class="hover_anchor" href="#scripted-minting"><i class="fa fa-link"></i></a></h2>
 <p>Use a program or script to mint many tokens at once. You might find the XRP Ledger ticket functionality helps you submit transactions in parallel, up to a current limit of 200 transactions in one group.</p>
 <p>For a practical example, see the <a href="batch-minting.html">Batch Mint NFTokens</a> tutorial.</p>
 <h3 id="benefits-1">Benefits<a aria-hidden="true" class="hover_anchor" href="#benefits-1"><i class="fa fa-link"></i></a></h3>
 <ul>
-<li>NFTokens are minted ahead of time</li>
-<li>Market activity for the initial sale of the NFToken is captured on the ledger</li>
+<li>NFToken objects are minted ahead of time</li>
+<li>Market activity for the initial sale of the NFToken object is captured on the ledger</li>
 </ul>
 <p>Downside</p>
-<p>You need to retain the appropriate XRP reserve for all of the NFTokens you mint. As a rule of thumb, this is roughly 1/12th XRP per NFToken at the current reserve rate. In the event that you do not have sufficient XRP in reserve, your mint transactions fail until you add sufficient XRP to your account.</p>
+<p>You need to retain the appropriate XRP reserve for all of the NFToken objects you mint. As a rule of thumb, this is roughly 1/12th XRP per NFToken object at the current reserve rate. In the event that you do not have sufficient XRP in reserve, your mint transactions fail until you add sufficient XRP to your account.</p>
     </div>
   </article>
 <!-- Feedback Widget -->
