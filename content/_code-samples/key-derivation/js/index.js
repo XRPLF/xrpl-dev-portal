@@ -196,22 +196,3 @@ if (process.argv[2] !== undefined) {
     const seed = new Seed();
     console.log(seed.toString())
 }
-
-//from empty seed
-//const seed = new Seed();
-//console.log(seed.toString());
-
-//from hex formatted seed
-//const hexSeed = "0x21edc3dec3ef1873cf8f333381c5f360c3"
-//const seed = new Seed(hexSeed);
-//console.log(seed.toString());
-
-//from rippled RFC1751 mnemonic
-//const rippledMnemonic = 'KANT FISH GENE COST WEB JAKE CHUM HAD SOD MID KICK BOTH'
-//const seed = new Seed(rippledMnemonic);
-//console.log(seed.toString());
-
-//from fixed seed
-//const string = "sEdSKaCy2JT7JaM7v95H9SxkhP9wS2r"
-//const seed = new Seed(string);
-//console.log(seed.toString());
