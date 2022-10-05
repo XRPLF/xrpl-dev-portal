@@ -1,13 +1,12 @@
 'use strict';
 
-//organize imports
+// Organize imports
 const assert = require("assert")
 const brorand = require("brorand")
 const BN = require("bn.js")
 const elliptic = require("elliptic");
 const Ed25519 = elliptic.eddsa('ed25519');
 const Secp256k1 = elliptic.ec('secp256k1');
-const { rfc1751MnemonicToKey, keyToRFC1751Mnemonic } = require("xrpl/dist/npm/Wallet/rfc1751");
 const hashjs = require("hash.js");
 const Sha512 = require("ripple-keypairs/dist/Sha512")
 const { codec, encodeAccountPublic, encodeNodePublic } = require("ripple-address-codec");
@@ -49,34 +48,34 @@ class Seed {
 
     _initSeed(seedValue) {
 
-        //default to random seed
+        // No input given - default to random seed
         if (!seedValue || seedValue === '') {
             const randomBuffer = brorand(16)
             return [...randomBuffer]
         }
 
-        //from hex formatted seed
+        // From base58 formatted seed
+        try {
+            const base58decoded = codec.decodeChecked(seedValue)
+            if (base58decoded[0] === XRPL_SEED_PREFIX && base58decoded.length === 17) {
+                return [...base58decoded.slice(1)];
+            }
+        } catch (exception) {
+            // Continue probing the seed for different format
+        }
+
+        // From hex formatted seed
         if (isHex(seedValue)) {
             const decoded = hexToBytes(seedValue);
             if(decoded.length === 16) {
                 return decoded
             } else {
-                //Raise Error
+                // Raise Error
                 throw new Error("incorrect decoded seed length")
             }
         }
 
-        //from rfc1751 Mnemonic
-        try {
-            const rippledMnemonic = rfc1751MnemonicToKey(seedValue)
-            if (rippledMnemonic.length === 16) {
-                return [...rippledMnemonic]
-            }
-        } catch (error) {
-            //try next seed mode
-        }
-
-        //from password seed
+        // From password seed
         const encoded = encodeUTF8(seedValue)
         return hashjs.sha512().update(encoded).digest().slice(0, 16);
     }
@@ -131,6 +130,7 @@ class Seed {
             hasher.addU32(i);
             const key = hasher.first256BN();
             /* istanbul ignore else */
+            /* istanbul ignore else */
             if (key.cmpn(0) > 0 && key.cmp(order) < 0) {
                 return key;
             }
@@ -164,7 +164,6 @@ class Seed {
     toString() {
         const base58Seed = codec.encodeChecked([XRPL_SEED_PREFIX].concat(this.bytes))
         const hexSeed = Buffer.from(this.bytes).toString('hex').toUpperCase()
-        const rfc1751Rippled = keyToRFC1751Mnemonic(bytesToHex(this.bytes))
 
         const base58ED25519Account = this.getBase58ED25519Account();
 
@@ -174,7 +173,6 @@ class Seed {
         const out = `
             Seed (base58): ${base58Seed}
             Seed (hex): ${hexSeed}
-            Seed (rippled RFC-1751): ${rfc1751Rippled}
             
             Ed25519 Secret Key (hex): ${this.ED25519Keypair.privateKey}
             Ed25519 Public Key (hex): ${this.ED25519Keypair.publicKey}

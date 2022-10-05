@@ -7,17 +7,17 @@ have to install the necessary node.js dedpendencies:
 
 ## Command-line usage:
 
-### Password like seed    
+### Base58 formatted seed:
+
+    npm start "snJj9fYixUfpNCBn9LzLdLv5QqUKZ"
+
+### Hex formatted seed:
+
+    npm start "BB664A14F510A366404BC4352A2230A5"
+
+### Password like seed:
 
     npm start "sEdSKaCy2JT7JaM7v95H9SxkhP9wS2r"
-
-### Rippled RFC1751 Mnemonic
-
-    npm start "KANT FISH GENE COST WEB JAKE CHUM HAD SOD MID KICK BOTH"
-
-### Hex formatted seed
-
-    npm start "21edc3dec3ef1873cf8f333381c5f360c3"
 
 ### Random seed
 
