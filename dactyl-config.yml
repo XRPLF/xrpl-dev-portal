@@ -764,6 +764,11 @@ pages:
             - en
             - ja
 
+    -   md: concepts/tokens/nftoken-batch-minting.md
+        targets:
+            - en
+            - ja
+            
     -   md: concepts/tokens/freezes.md
         targets:
             - en
