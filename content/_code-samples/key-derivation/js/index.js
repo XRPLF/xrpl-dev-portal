@@ -15,7 +15,7 @@ const { codec, encodeAccountPublic, encodeNodePublic } = require("ripple-address
 const XRPL_SEED_PREFIX = 0x21
 
 const isHex = function(value) {
-    const regex = new RegExp(/^0x([0-9a-f]+(\.[0-9a-f]*)?|\.[0-9a-f]+)(p[+-]?\d+)?$/, 'i')
+    const regex = new RegExp(/^[0-9a-f]+$/, 'i')
     return regex.test(value)
 }
 
