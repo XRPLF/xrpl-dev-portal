@@ -64,6 +64,7 @@ function rippleTestNetCredentials(url, altnet_name) {
         test_wallet.address).fadeIn('fast')
       secret.hide().html('<h3>Secret</h3> ' +
       test_wallet.seed).fadeIn('fast')
+      // TODO: currently the faucet api doesn't return balance unless the account is generated server side, need to make upates when faucet repo is updated. 
       balance.hide().html('<h3>Balance</h3> ' +
         Number(data.amount).toLocaleString('en') + ' XRP').fadeIn('fast')
       sequence.html('<h3>Sequence</h3> <img class="throbber" src="assets/img/xrp-loader-96.png"> Waiting...').fadeIn('fast')
