@@ -54,8 +54,14 @@ function rippleTestNetCredentials(url, altnet_name) {
     contentType: "application/json; charset=utf-8",
     data: JSON.stringify({
       destination: test_wallet.address,
+      memos: [
+        {
+          Memo: {
+            MemoData: xrpl.convertStringToHex("xrpl.org-faucet"),
+          },
+        },
+      ],
     }),
-    dataType: 'json',
     success: function(data) {
       //hide the loader and show results
       loader.hide();
