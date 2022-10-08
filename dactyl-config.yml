@@ -717,6 +717,7 @@ pages:
         targets:
             - en
 
+    # TODO: Outdated translation
     -   md: concepts/tokens/tokens.ja.md
         targets:
             - ja
