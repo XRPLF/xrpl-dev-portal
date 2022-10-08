@@ -40,7 +40,7 @@ status: not_enabled
 
 * `NFTokenAcceptOffer` トランザクションの対象となる `NFTokenOffer` が `NFToken` の`購入`オファーであり、`NFTokenAcceptOffer` を送信したアカウントが、実行時に対応する `NFToken` を所有していない場合。
 * `NFTokenAcceptOffer` トランザクションの対象となる `NFTokenOffer` は `NFToken` の`売却`オファーであり、実行時に `NFToken` の所有者ではないアカウントが送信している場合。
-* `NFTokenAcceptOffer` トランザクションの対象となる `NFTokenOffer` は `NFToken` の`売却`オファーであり、実行時に `NFTokenOffer` 内の受信者である `Destination` 以外のアカウントによって送信された場合（存在する場合）。
+* `NFTokenAcceptOffer` トランザクションの対象となる `NFTokenOffer` は `NFToken` の`売却`オファーであり、実行時に `NFTokenOffer` 内の受信者である `Account` 以外のアカウントによって送信された場合（存在する場合）。
 * `NFTokenAcceptOffer` トランザクションの対象となる `NFTokenOffer` に `expiration` が設定されており、そのトランザクションが含まれる親レジャーのフィールドの終了時刻が既に経過している場合。
 * `NFTokenAcceptOffer` トランザクションの対象となる `NFTokenOffer` が、`NFTokenAcceptOffer` を実行するアカウントが所有し、 `NFToken` の売買が行われる場合。
 
