@@ -734,7 +734,7 @@ pages:
         html: issued-currencies.html
         template: pagetype-redirect.html.jinja
         redirect_url: tokens.html
-        blurb: XRP Ledgerでは、XRP以外の通貨はすべて発行済み通貨とされます。XRP Ledgerで発行済み通貨がどのように機能するか説明します。
+        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
         targets:
             - ja
 
@@ -757,11 +757,17 @@ pages:
     -   md: concepts/tokens/non-fungible-tokens.md
         targets:
             - en
+
+    -   md: concepts/tokens/non-fungible-tokens.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/non-fungible-token-transfers.md
         targets:
             - en
+
+    -   md: concepts/tokens/non-fungible-token-transfers.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/freezes.md
