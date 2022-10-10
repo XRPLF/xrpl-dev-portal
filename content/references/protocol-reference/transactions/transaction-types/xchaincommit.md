@@ -1,5 +1,5 @@
 ---
-html: xchaincreatebridge.html 
+html: xchaincommit.html 
 parent: transaction-types.html
 blurb: Create a bridge between two chains.
 labels:
@@ -37,13 +37,15 @@ The complete production-grade setup would also include a `SignerListSet` transac
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
-| `Account`     | String | AccountID | _Required_ The door account used for the bridge. |
-| `XChainBridge`| String | Object | _Required_ The XChainBridge stanza represents the bridge for which the witness is attesting transactions. |
-| `LockingChainDoor` | String | AccountID | The door account on this chain. |
-| `LockingChainIssue` | String | Token | The token that is bridged on this chain. |
-| `IssuingChainDoor` | String  |  AccountID | The door account on the other chain. |
-| `SignatureReward`  | Number  |   |  _Required_ The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. |
-| `MinAccountCreateAmount`  | Number  |   |  _Optional_ The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present. |
+| `Account`     | String | AccountID |  |
+| `XChainBridge`| String |  |  |
+| `LockingChainDoor` | String |  |  |
+| `LockingChainIssue` |  |  |  |
+| `IssuingChainDoor` | String  |   |   |
+| `SignatureReward`  | Number  |   |   |
+| `MinAccountCreateAmount`  | Number  |   |   |
+
+
 
 <!-- ## Error Cases
 
