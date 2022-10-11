@@ -17,8 +17,8 @@ def parse_account_root_flags(flags: int) -> list[str]:
             flags_enabled.append(flag)
     return flags_enabled
 
-# Issuer address to query for global freeze status
-issuer_addr = "rfDJ98Z8k7ubr6atbZoCqAPdg9MetyBwcg"
+# Issuer address to query for no freeze status
+issuer_addr = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"
 
 # Build account line query
 acc_info = AccountInfo(account=issuer_addr, ledger_index="validated")
@@ -29,7 +29,7 @@ response = client.request(acc_info)
 # Parse response for result
 result = response.result
 
-# Query result for global freeze status
+# Query result for no freeze status
 if "account_data" in result:
     if "Flags" in result["account_data"]:
         if "lsfNoFreeze" in parse_account_root_flags(result["account_data"]["Flags"]):
