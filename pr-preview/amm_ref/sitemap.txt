@@ -228,6 +228,7 @@ https://xrpl.org/transaction-types.html
 https://xrpl.org/accountset.html
 https://xrpl.org/accountdelete.html
 https://xrpl.org/amminstancecreate.html
+https://xrpl.org/ammbid.html
 https://xrpl.org/ammdeposit.html
 https://xrpl.org/ammvote.html
 https://xrpl.org/ammwithdraw.html
