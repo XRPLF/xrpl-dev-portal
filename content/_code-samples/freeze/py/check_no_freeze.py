@@ -1,7 +1,7 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountInfo
 
-client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to testnetwork
+client = JsonRpcClient("https://xrpcluster.com") # Connect to a network
 
 
 ACCOUNT_ROOT_LEDGER_FLAGS: dict[str, int] = {
