@@ -318,7 +318,7 @@
 </table>
 <p>You cannot specify both <code>MinSlotPrice</code> and <code>MaxSlotPrice</code>.</p>
 <h2 id="slot-price-calculations">Slot Price Calculations<a aria-hidden="true" class="hover_anchor" href="#slot-price-calculations"><i class="fa fa-link"></i></a></h2>
-<p>If successful, the transaction automatically outbids the previous slot owner and debits the bid price from the sender's LP Tokens. The price to win the auction decreases over time, divided into 20 intervals of 72 minutes each.</p>
+<p>If successful, the transaction automatically outbids the previous slot owner and debits the bid price from the sender's LP Tokens. The price to win the auction decreases over time, divided into 20 intervals of 72 minutes each. If the sender does not have enough LP Tokens to win the bid, or the price of the bid is higher than the transaction's <code>MaxSlotPrice</code> value, the transaction fails with a <code>tecAMM_FAILED_BID</code> result.</p>
 <ul>
 <li>
 <p>If the auction slot is currently empty, expired, or in its last interval, the <strong>minimum bid</strong> is <strong>0.001% of the AMM's total LP Tokens balance</strong>.</p>

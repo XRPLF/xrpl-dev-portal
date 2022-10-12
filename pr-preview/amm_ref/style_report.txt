@@ -1,24 +1,24 @@
 -------------
 Spell Checker
 -------------
-Found 293 possible spelling errors:
+Found 298 possible spelling errors:
 <Page 'FAQ' (faq.html)> Unknown Words:
-  aml: amil, ami, ail
+  aml: mal, amc, cml
 
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerquorum: 
   signerweight: 
+  signerquorum: 
   expandedsignerlist: 
 
 <Page 'Direct XRP Payments' (direct-xrp-payments.html)> Unknown Words:
   proactively: preactively
 
 <Page 'Checks' (checks.html)> Unknown Words:
-  aml: amil, ami, ail
+  aml: mal, amc, cml
 
 <Page 'Tokens' (tokens.html)> Unknown Words:
   bharath: bharata, bharat
@@ -33,17 +33,17 @@ Found 293 possible spelling errors:
   ˈfənjəbəl: 
   nftoken: 
   nftokenpage: 
-  nftokencreateoffer: 
-  nftokenoffer: 
   nftokenmint: 
+  nftokenoffer: 
+  nftokencreateoffer: 
   nftokenburn: 
   nftokens: 
-  nft_sell_offers: 
-  nftokenacceptoffer: 
-  account_nfts: 
-  nft_info: 
-  nft_buy_offers: 
   nftokencanceloffer: 
+  account_nfts: 
+  nftokenacceptoffer: 
+  nft_sell_offers: 
+  nft_buy_offers: 
+  nft_info: 
 
 <Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)> Unknown Words:
   nftokens: 
@@ -70,29 +70,29 @@ Found 293 possible spelling errors:
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   fixnftokennegoffer: 
-  checkcashmakestrustline: 
-  nonfungibletokensv1_1: 
   expandedsignerlist: 
-  fixnftokendirv1: 
   fixtrustlinestoself: 
-  fixremovenftokenautotrustline: 
+  checkcashmakestrustline: 
+  fixnftokendirv1: 
+  nonfungibletokensv1_1: 
   nonfungibletokensv1: 
+  fixremovenftokenautotrustline: 
   nftokenmint: 
   nftokens: 
-  nftokenacceptoffer: 
   nftokenburn: 
-  nftokencreateoffer: 
   nftokencanceloffer: 
+  nftokenacceptoffer: 
+  nftokencreateoffer: 
   nftokenoffer: 
   nftokenpage: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  xls: els, bls, nls
-  20d: 2d, 2nd
+  xls: xms, xl, ils
+  20d: 2nd, 2d
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: eam, bvm, elm
+  evm: avm, eam, evy
   permissionless: 
   federators: federator
 
@@ -123,7 +123,7 @@ Found 293 possible spelling errors:
 <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)> Unknown Words:
   quickstart: 
   nftokens: 
-  getnet: genet, setnet
+  getnet: setnet, genet
   getaccount: 
   xrptodrops: 
 
@@ -192,17 +192,17 @@ Found 293 possible spelling errors:
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
   disallowxrp: 
   wxpython: 
-  wsl: sl, wal, wsd
+  wsl: bsl, esl, wol
   threadsafe: 
   asyncio: 
+  guis: geis, guin, guib
   wxglade: 
-  guis: guise, guids, gris
-  s1: v1, sl, sp
+  s1: si, su, sn
   popup: pop-up
   toolkits: toolkit
   tooltip: 
-  lsf: isf, lcf, fsf
-  refactor: reactor, prefactor, redactor
+  lsf: lsi, lcf, lst
+  refactor: reactor, refractor, prefactor
   tooltips: 
 
 <Page 'Assign a Regular Key Pair' (assign-a-regular-key-pair.html)> Unknown Words:
@@ -221,20 +221,20 @@ Found 293 possible spelling errors:
   ipfs: ipcs, ipms, ips
   nftokenacceptoffer: 
   acceptselloffer: 
-  nftokencreateoffer: 
-  nftokenpage: 
-  nftokenmint: 
-  nftokenoffer: 
-  nftokencanceloffer: 
   nftokenburn: 
+  nftokencanceloffer: 
+  nftokenmint: 
+  nftokencreateoffer: 
+  nftokenoffer: 
+  nftokenpage: 
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Unknown Words:
   reputational: deputational
-  aml: amil, ami, ail
-  xapps: capps, apps, lapps
+  aml: mal, amc, cml
+  xapps: apps, capps, lapps
 
 <Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: name, nome, vme
+  nvme: vme, name, nome
 
 <Page 'Install on CentOS/Red Hat with yum' (install-rippled-on-centos-rhel-with-yum.html)> Unknown Words:
   config: confix, confit
@@ -308,23 +308,23 @@ Found 293 possible spelling errors:
   nftokenmint: 
   0x000b: 
   transferfee: transferee
-  1bps: mbps, bps, kbps
+  1bps: mbps, kbps, bps
   nftokentaxon: 
-  rfc2379: 
   ipfs: ipcs, ipms, ips
+  rfc2379: 
 
 <Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
   nftokenoffer: 
-  amm: apm, omm, ami
   nftokenpage: 
   nftokens: 
+  amm: amc, aym, hamm
 
 <Page 'AMM' (amm.html)> Unknown Words:
-  amm: apm, omm, ami
-  30d: 3rd, 3-d, 3d
-  xls: els, bls, nls
-  stobject: 
+  amm: amc, aym, hamm
+  30d: 3-d, 3rd, 3d
+  xls: xms, xl, ils
   ammtoken: 
+  stobject: 
 
 <Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
   nftokenoffer: 
@@ -336,54 +336,54 @@ Found 293 possible spelling errors:
 <Page 'NFTokenPage' (nftokenpage.html)> Unknown Words:
   nftokenpage: 
   nonfungibletokensv1: 
-  0x0050: 
-  nftoken: 
-  nftokenpageid: 
   tokenid: tokened
+  nftoken: 
+  0x0050: 
+  nftokenpageid: 
   tokenpage: 
-  shamap: shama, shamal, shamas
+  shamap: shamal, shaman, shama
   nftokens: 
 
 <Page 'SignerList' (signerlist.html)> Unknown Words:
   expandedsignerlist: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokens: 
-  xls: els, bls, nls
   nftokenmint: 
+  xls: xms, xl, ils
+  nftokens: 
   nftoken: 
 
 <Page 'AMMInstanceCreate' (amminstancecreate.html)> Unknown Words:
   amminstancecreate: 
-  30d: 3rd, 3-d, 3d
-  amm: apm, omm, ami
-  xls: els, bls, nls
+  30d: 3-d, 3rd, 3d
+  xls: xms, xl, ils
+  amm: amc, aym, hamm
 
 <Page 'AMMBid' (ammbid.html)> Unknown Words:
   ammbid: amebid
-  30d: 3rd, 3-d, 3d
-  amm: apm, omm, ami
-  xls: els, bls, nls
+  30d: 3-d, 3rd, 3d
+  xls: xms, xl, ils
+  amm: amc, aym, hamm
 
 <Page 'AMMDeposit' (ammdeposit.html)> Unknown Words:
   ammdeposit: 
-  30d: 3rd, 3-d, 3d
-  amm: apm, omm, ami
-  xls: els, bls, nls
+  30d: 3-d, 3rd, 3d
+  xls: xms, xl, ils
+  amm: amc, aym, hamm
   assset: asset
-  lptokens: 
+  tembad_amm_tokens: 
 
 <Page 'AMMVote' (ammvote.html)> Unknown Words:
   ammvote: 
-  30d: 3rd, 3-d, 3d
-  amm: apm, omm, ami
-  xls: els, bls, nls
+  30d: 3-d, 3rd, 3d
+  xls: xms, xl, ils
+  amm: amc, aym, hamm
 
 <Page 'AMMWithdraw' (ammwithdraw.html)> Unknown Words:
   ammwithdraw: 
-  30d: 3rd, 3-d, 3d
-  amm: apm, omm, ami
-  xls: els, bls, nls
+  30d: 3-d, 3rd, 3d
+  xls: xms, xl, ils
+  amm: amc, aym, hamm
   ammdeposit: 
   lptokens: 
 
@@ -410,16 +410,21 @@ Found 293 possible spelling errors:
   nonfungibletokensv1: 
   nftoken: 
   nftokenpage: 
-  rfc2379: 
   ipfs: ipcs, ipms, ips
+  rfc2379: 
   fixremovenftokenautotrustline: 
 
 <Page 'SignerListSet' (signerlistset.html)> Unknown Words:
   expandedsignerlist: 
 
 <Page 'tec Codes' (tec-codes.html)> Unknown Words:
-  nftokenacceptoffer: 
+  ammbid: amebid
+  ammwithdraw: 
+  ammdeposit: 
   nonfungibletokensv1: 
+  amminstancecreate: 
+  nftokenacceptoffer: 
+  amm: amc, aym, hamm
 
 <Page 'tef Codes' (tef-codes.html)> Unknown Words:
   nonfungibletokensv1: 
@@ -444,14 +449,14 @@ Found 293 possible spelling errors:
   nft_buy_offers: 
   nftoken: 
   nonfungibletokensv1: 
-  _the: ethe, tthe, ithe
+  _the: the, ethe, ithe
   nftokenoffer: 
 
 <Page 'nft_sell_offers' (nft_sell_offers.html)> Unknown Words:
   nft_sell_offers: 
   nonfungibletokensv1: 
   nftoken: 
-  _the: ethe, tthe, ithe
+  _the: the, ethe, ithe
   nftokenoffer: 
 
 <Page 'server_info (rippled)' (server_info.html)> Unknown Words:
@@ -462,12 +467,12 @@ Found 293 possible spelling errors:
 
 <Page 'server_info' (server_info-clio.html)> Unknown Words:
   localhost: 
-  rpcs: ppcs, rocs, pcs
+  rpcs: ppcs, recs, rics
 
 <Page 'nft_info' (nft_info.html)> Unknown Words:
   nft_info: 
-  ledger_index: 
   nftokenmint: 
+  ledger_index: 
 
 <Page 'Admin API Methods' (admin-api-methods.html)> Unknown Words:
   config: confix, confit
@@ -844,9 +849,9 @@ Most difficult pages by Flesch Reading Ease:
 Page Length Metrics
 -------------------
 Average Page Length Metrics:
-  Sentences: 55
-  Words: 753
-  Characters: 4,682
+  Sentences: 56
+  Words: 754
+  Characters: 4,687
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

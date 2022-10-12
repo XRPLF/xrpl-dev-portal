@@ -380,19 +380,27 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecAMM_BALANCE</code></td>
-<td style="text-align: left;"><strong><em>TODO: clarify "reserves or tokens balance is zero"</em></strong></td>
+<td style="text-align: left;">The sender does not have enough of one of the assets to deposit the specified amount.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMM_TOKENS</code></td>
-<td style="text-align: left;"><strong><em>TODO: clarify "invalid LPTokens"</em></strong></td>
+<td style="text-align: left;">The transaction specified an invalid <code>LPTokens</code> field; for example, the <code>issuer</code> is not the AMM's associated AccountRoot address or the <code>currency</code> is not the currency code for this AMM's LP Tokens.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecAMM_FAILED_DEPOSIT</code></td>
-<td style="text-align: left;"><strong><em>TODO: clarify</em></strong></td>
+<td style="text-align: left;">The transaction could not deposit the specified amounts. <strong><em>TODO: more explanation for why</em></strong></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
-<td style="text-align: left;"><strong><em>TODO: clarify</em></strong></td>
+<td style="text-align: left;"><strong><em>TODO: clarify difference from the temBAD_AMM_TOKENS</em></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecNO_PERMISSION</code></td>
+<td style="text-align: left;">The transaction specified a token that uses <a href="depositauth.html">Deposit Authorization</a> or <a href="authorized-trust-lines.html">Authorized Trust Lines</a> but the sender is not authorized. <strong><em>TODO: confirm this applies to both DepositAuth &amp; Authorized Trust Lines</em></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
+<td style="text-align: left;">The AMM specified in the <code>AMMID</code> (or its corresponding AccountRoot object) does not exist.</td>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
