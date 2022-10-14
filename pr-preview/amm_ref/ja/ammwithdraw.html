@@ -279,11 +279,24 @@
 <p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there is not yet an official amendment and they are not yet available on the production Mainnet.</em></p>
 <p>Withdraw funds an Automated Market-Maker (AMM) instance by returning the AMM's liquidity provider tokens (<code>LPTokens</code>).</p>
 <h2 id="example-ammwithdraw-json">Example AMMWithdraw JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammwithdraw-json"><i class="fa fa-link"></i></a></h2>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="err">TODO</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMWithdraw"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"AMMID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4B82E4CB90FBE26EA172A498F7A7B03A2A7C285149A9B18731370F2644B96F7A"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Asset1Out"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Asset2Out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">369509</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="ammwithdraw-fields">AMMWithdraw Fields<a aria-hidden="true" class="hover_anchor" href="#ammwithdraw-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a AMMWithdraw transaction uses the following fields:</p>
-<!-- -->
 <table class="table-responsive">
 <thead>
 <tr>
@@ -300,7 +313,7 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The <a href="ledger-object-id.html">ledger object ID</a> of the AMM instance to withdraw from.</td>
+<td style="text-align: left;">The AMMID of the AMM instance to withdraw from. <strong>Caution:</strong> This is not the ID of the AMM ledger object!</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Asset1Out</code></td>

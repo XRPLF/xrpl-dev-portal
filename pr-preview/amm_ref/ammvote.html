@@ -265,13 +265,21 @@
 <p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMVote.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- TODO: Update source link to merged version when available -->
 <p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there is not yet an official amendment and they are not yet available on the production Mainnet.</em></p>
-<p>Vote on the trading fee for an Automated Market Maker instance.</p>
+<p>Vote on the trading fee for an Automated Market Maker instance. Up to 8 accounts can vote in proportion to the amount of the AMM's LP Tokens they hold. Each new vote re-calculates the AMM's trading fee based on a weighted average of the votes.</p>
 <h2 id="example-ammvote-json">Example AMMVote JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammvote-json"><i class="fa fa-link"></i></a></h2>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="err">TODO</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMVote"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"AMMID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4B82E4CB90FBE26EA172A498F7A7B03A2A7C285149A9B18731370F2644B96F7A"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"FeeVal"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">369957</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="ammvote-fields">AMMVote Fields<a aria-hidden="true" class="hover_anchor" href="#ammvote-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a AMMVote transaction uses the following fields:</p>
-<!-- -->
 <table class="table-responsive">
 <thead>
 <tr>
@@ -310,8 +318,20 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong><em>TODO: errors</em></strong></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
+<td style="text-align: left;">The sender cannot vote because they do not hold any of this AMM's LP Tokens.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_FAILED_VOTE</code></td>
+<td style="text-align: left;">There are already 8 votes from accounts that hold more LP Tokens than the sender of this transaction.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
+<td style="text-align: left;">The AMM specified in the <code>AMMID</code> (or its corresponding AccountRoot object) does not exist.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temBAD_FEE</code></td>
+<td style="text-align: left;">The <code>FeeVal</code> from this transaction is not valid.</td>
 </tr>
 </tbody>
 </table>

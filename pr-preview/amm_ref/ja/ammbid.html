@@ -247,6 +247,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#ammbid">AMMBid</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-ammbid-json">Example AMMBid JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ammbid-fields">AMMBid Fields</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#authaccount-objects">AuthAccount Objects</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#slot-price-calculations">Slot Price Calculations</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#refunds">Refunds</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-cases-previous-holder">AMM Cases previous holder</a></li>
@@ -280,11 +281,35 @@
 <p>Bid on an Automated Market Maker's (AMM's) auction slot. If this transaction succeeds, you win the bid and can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.</p>
 <p>The price of the auction slot is always denominated in that AMM's LP Tokens; the amount paid is returned to the AMM, decreasing the outstanding balance of LP Tokens.</p>
 <h2 id="example-ammbid-json">Example AMMBid JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammbid-json"><i class="fa fa-link"></i></a></h2>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="err">TODO</span><span class="w"></span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMBid"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"AMMID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4B82E4CB90FBE26EA172A498F7A7B03A2A7C285149A9B18731370F2644B96F7A"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"MaxSlotPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D717347ECCF3E2B373546F02AA016D7ABA13C8F7"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rLcJnZS6M9DyZ23g3GPvtyuYgT5QFwWXaN"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"AuthAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"AuthAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rMKXGCbJ5d8LbrqthdG46q3f969MVK2Qeg"</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"AuthAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBepJuTLFJt3WmtLXYAxSjtBWAeQxVbncv"</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">402207</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="ammbid-fields">AMMBid Fields<a aria-hidden="true" class="hover_anchor" href="#ammbid-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a AMMBid transaction uses the following fields:</p>
-<!-- -->
 <table class="table-responsive">
 <thead>
 <tr>
@@ -320,13 +345,36 @@
 <tr>
 <td style="text-align: left;"><code>AuthAccounts</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;">Array of AccountID</td>
+<td style="text-align: left;">STArray</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">A list of up to 4 additional accounts that you allow to trade at the discounted fee. This cannot include the address of the transaction sender.</td>
+<td style="text-align: left;">A list of up to 4 additional accounts that you allow to trade at the discounted fee. This cannot include the address of the transaction sender. Each of these objects should be an <a href="#authaccount-objects">AuthAccount object</a>.</td>
 </tr>
 </tbody>
 </table>
 <p>You cannot specify both <code>MinSlotPrice</code> and <code>MaxSlotPrice</code>.</p>
+<h3 id="authaccount-objects">AuthAccount Objects<a aria-hidden="true" class="hover_anchor" href="#authaccount-objects"><i class="fa fa-link"></i></a></h3>
+<p>Each member of the <code>AuthAccounts</code> array must be an object with the following field:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Account</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The address of the account to authorize.</td>
+</tr>
+</tbody>
+</table>
+<p>Like other "inner objects" that can appear in arrays, the JSON representation of each of these objects is wrapped in an object whose only key is the object type, <code>AuthAccount</code>.</p>
 <h2 id="slot-price-calculations">Slot Price Calculations<a aria-hidden="true" class="hover_anchor" href="#slot-price-calculations"><i class="fa fa-link"></i></a></h2>
 <p>If successful, the transaction automatically outbids the previous slot owner and debits the bid price from the sender's LP Tokens. The price to win the auction decreases over time, divided into 20 intervals of 72 minutes each. If the sender does not have enough LP Tokens to win the bid, or the price of the bid is higher than the transaction's <code>MaxSlotPrice</code> value, the transaction fails with a <code>tecAMM_FAILED_BID</code> result.</p>
 <ul>
@@ -386,7 +434,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMM_OPTIONS</code></td>
-<td style="text-align: left;">The transaction specified invalid options, such as a list of <code>AuthAccounts</code> that is too long.</td>
+<td style="text-align: left;">The transaction specified invalid options, such as a list of <code>AuthAccounts</code> that is too long, or specifying both <code>MinSlotPrice</code> and <code>MaxSlotPrice</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temDISABLED</code></td>
