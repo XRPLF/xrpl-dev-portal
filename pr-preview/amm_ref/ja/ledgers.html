@@ -248,6 +248,9 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#レジャー">レジャー</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ツリーの形式">ツリーの形式</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#open-closed-and-validated-ledgers">Open, Closed, and Validated Ledgers</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ledger-close-times">Ledger Close Times</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#example">Example</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
@@ -282,6 +285,75 @@
 <p>レジャーの状態ツリーは、その名前のとおりツリー型データ構造です。状態ツリーの各オブジェクトは256ビットのオブジェクトIDで識別されます。JSONではレジャーオブジェクトのIDは<code>index</code>フィールドです。このフィールドには64文字の16進数文字列が含まれています（例: <code>"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"</code>）。状態ツリーの各オブジェクトには、オブジェクトの検索に使用できるIDが設定されています。各トランザクションには、トランザクションツリーでトランザクションを検索するときに使用できる識別用ハッシュが含まれています。レジャーオブジェクトの<code>index</code>（ID）と<a href="basic-data-types.html#レジャーインデックス">レジャーの<code>ledger_index</code>（シーケンス番号）</a>を混同しないでください。</p>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> レジャーの状態ツリーのオブジェクトは「レジャーノード」と呼ばれることもあります。たとえばトランザクションメタデータは<code>AffectedNodes</code>のリストを返します。これをピアツーピアネットワークの「ノード」（サーバー）と混同しないでください。</p>
 <p>トランザクションの場合、識別用ハッシュは署名済みトランザクションの指示に基づいていますが、検索時のトランザクションオブジェクトにはトランザクションの結果とメタデータが含まれています。これは、ハッシュの生成時には反映されません。</p>
+<!-- TODO: translate these new sections -->
+<h2 id="open-closed-and-validated-ledgers">Open, Closed, and Validated Ledgers<a aria-hidden="true" class="hover_anchor" href="#open-closed-and-validated-ledgers"><i class="fa fa-link"></i></a></h2>
+<p>The <code>rippled</code> server makes a distinction between ledger versions that are <em>open</em>, <em>closed</em>, and <em>validated</em>. A server has one open ledger, any number of closed but unvalidated ledgers, and an immutable history of validated ledgers. The following table summarizes the difference:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Ledger Type:</th>
+<th style="text-align: left;">Open</th>
+<th style="text-align: left;">Closed</th>
+<th style="text-align: left;">Validated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Purpose:</strong></td>
+<td style="text-align: left;">Temporary workspace</td>
+<td style="text-align: left;">Proposed next state</td>
+<td style="text-align: left;">Confirmed previous state</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Number used:</strong></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Any number, but usually 0 or 1</td>
+<td style="text-align: left;">One per ledger index, growing over time</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Can contents change?</strong></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No, but the whole ledger could be replaced</td>
+<td style="text-align: left;">Never</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Transactions are applied in:</strong></td>
+<td style="text-align: left;">The order they are received</td>
+<td style="text-align: left;">Canonical order</td>
+<td style="text-align: left;">Canonical order</td>
+</tr>
+</tbody>
+</table>
+<p>Unintuitively, the XRP Ledger never "closes" an open ledger to convert it into a closed ledger. Instead, the server throws away the open ledger, creates a new closed ledger by applying transactions on top of a previous closed ledger, then creates a new open ledger using the latest closed ledger as a base. This is a consequence of <a href="consensus-principles-and-rules.html#問題の単純化">how consensus solves the double-spend problem</a>.</p>
+<p>For an open ledger, servers apply transactions in the order those transactions appear, but different servers may see transactions in different orders. Since there is no central timekeeper to decide which transaction was actually first, servers may disagree on the exact order of transactions that were sent around the same time. Thus, the process for calculating a closed ledger version that is eligible for <a href="consensus.html#検証">validation</a> is different than the process of building an open ledger from proposed transactions in the order they arrive. To create a "closed" ledger, each XRP Ledger server starts with a set of transactions and a previous, or "parent", ledger version. The server puts the transactions in a canonical order, then applies them to the previous ledger in that order. The canonical order is designed to be deterministic and efficient, but hard to game, to increase the difficulty of front-running Offers in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
+<p>Thus, an open ledger is only ever used as a temporary workspace, which is a major reason why transactions' <a href="finality-of-results.html">tentative results may vary from their final results</a>.</p>
+<h2 id="ledger-close-times">Ledger Close Times<a aria-hidden="true" class="hover_anchor" href="#ledger-close-times"><i class="fa fa-link"></i></a></h2>
+<p>The time that a ledger version closed is recorded at the <code>close_time</code> field of the <a href="ledger-header.html">ledger header</a>. To make it easier for the network to reach a consensus on an exact close time, this value is rounded to a number of seconds based on the close time resolution, currently 10 seconds. If rounding would cause a ledger's close time to be the same as (or earlier than) its parent ledger's, the child ledger has its close time set to the parent's close time plus 1. This guarantees that the close times of validated ledgers are strictly increasing. <!-- STYLE_OVERRIDE: a number of --></p>
+<p>Since new ledger versions usually close about every 3 to 5 seconds, these rules result in a loose pattern where ledgers' close times end in :00, :01, :02, :10, :11, :20, :21, and so on. Times ending in 2 are less common and times ending in 3 are very rare, but both occur randomly when more ledgers randomly happen to close within a 10-second window.</p>
+<p>Generally speaking, the ledger cannot make any time-based measurements that are more precise than the close time resolution. For example, to check if an object has passed an expiration date, the rule is to compare it to the close time of the parent ledger. (The close time of a ledger is not yet known when executing transactions to go into that ledger.) This means that, for example, an <a href="escrow.html">Escrow</a> could successfully finish at a real-world time that is up to about 10 seconds later than the time-based expiration specified in the Escrow object.</p>
+<h3 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h3>
+<p>The following examples demonstrate the rounding behavior of ledger close times, from the perspective of an example validator, following a ledger with the close time <strong>12:00:00</strong>:</p>
+<p><strong>Current consensus round</strong></p>
+<ol>
+<li>A validator notes that it was <strong>12:00:03</strong> when the ledger closed and entered consensus. The validator includes this close time in its proposals.</li>
+<li>The validator observes that most other validators (on its UNL) proposed a close time of 12:00:02, and one other proposed a close time of 12:00:03. It changes its proposed close time to match the consensus of <strong>12:00:02</strong>.</li>
+<li>The validator rounds this value to the nearest close time interval, resulting in <strong>12:00:00</strong>.</li>
+<li>Since 12:00:00 is not greater than the previous ledger's close time, the validator adjusts the close time to be exactly 1 second after the previous ledger's close time. The result is an adjusted close time of <strong>12:00:01</strong>.</li>
+<li>The validator builds the ledger with these details, calculates the resulting hash, and confirms in the <a href="consensus.html#検証">validation step</a> that others did the same.</li>
+</ol>
+<p>Non-validating servers do all the same steps, except they don't propose their recorded close times to the rest of the network.</p>
+<p><strong>Next consensus round</strong></p>
+<ol>
+<li>The next ledger enters consensus at <strong>12:00:04</strong> according to most validators.</li>
+<li>This rounds down again, to a close time of <strong>12:00:00</strong>.</li>
+<li>Since this is not greater than the previous ledger's close time of 12:00:01, the adjusted close time is <strong>12:00:02</strong>.</li>
+</ol>
+<p><strong>Next consensus round after that</strong></p>
+<ol>
+<li>The ledger after that enters consensus at <strong>12:00:05</strong> according to most validators.</li>
+<li>This rounds up, based on the close time resolution, to <strong>12:00:10</strong>.</li>
+<li>Since this value is larger than the previous ledger's close time, it does not need to be adjusted. <strong>12:00:10</strong> becomes the official close time.</li>
+</ol>
 <h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <p>レジャーヘッダー、レジャーオブジェクトID、レジャーオブジェクトタイプについての詳細は、<a href="ledger-data-formats.html">レジャーデータフォーマット</a>を参照してください。</p>
 <!-- -->
