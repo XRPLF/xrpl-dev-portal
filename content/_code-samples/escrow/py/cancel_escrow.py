@@ -15,15 +15,15 @@ escrow_sequence = 30215126
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build escrow cancel transaction
-cancel_txn = EscrowCancel(account=sender_wallet.classic_address, owner=sender_wallet.classic_address, offer_sequence=escrow_seq)
+cancel_txn = EscrowCancel(account=sender_wallet.classic_address, owner=sender_wallet.classic_address, offer_sequence=escrow_sequence)
 
 # Sign and submit transaction
 stxn = safe_sign_and_autofill_transaction(cancel_txn, sender_wallet, client)
 stxn_response = send_reliable_submission(stxn, client)
 
-# parse response and return result
+# Parse response and return result
 stxn_result = stxn_response.result
 
-# parse result and print out the transaction result and transaction hash 
+# Parse result and print out the transaction result and transaction hash 
 print(stxn_result["meta"]["TransactionResult"]) 
 print(stxn_result["hash"])
