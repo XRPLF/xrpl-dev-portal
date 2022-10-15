@@ -16,10 +16,10 @@ escrow_sequence = 27641268
 
 # Optional fields
 
-# Cryptio condition that must be met before escrow can be completed, passed on escrow creation
+# Crypto condition that must be met before escrow can be completed, passed on escrow creation
 condition = "A02580203882E2EB9B44130530541C4CC360D079F265792C4A7ED3840968897CB7DF2DA1810120"
 
-# Cryptio fulfillment of the condtion 
+# Crypto fulfillment of the condtion 
 fulfillment = "A0228020AED2C5FE4D147D310D3CFEBD9BFA81AD0F63CE1ADD92E00379DDDAF8E090E24C"
 
 # Sender wallet object
