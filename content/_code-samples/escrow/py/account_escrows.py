@@ -38,12 +38,12 @@ for escrow in escrows:
             
         # Sort escrows
         if escrow_data["sender"] == account_address:
-            sent.append(escrow_data)
+            sent_escrows.append(escrow_data)
         else:
-            received.append(escrow_data)
+            received_escrows.append(escrow_data)
 
 # Add lists to escrow dict
-escrow_dict["sent"] = sent
-escrow_dict["received"] = received
+all_escrow_dict["sent"] = sent_escrows
+all_escrow_dict["received"] = received_escrows
 
-print(escrow_dict)
+print(all_escrow_dict)
