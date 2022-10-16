@@ -8,12 +8,12 @@ from cryptoconditions import PreimageSha256
 # Generate a random preimage with at least 32 bytes of cryptographically-secure randomness.
 secret = urandom(32)
 
-# generate cryptic image from secret
+# Generate cryptic image from secret
 fufill = PreimageSha256(preimage=secret)
 
-# parse image and return the condition and fulfillment
+# Parse image and return the condition and fulfillment
 condition = str.upper(fufill.condition_binary.hex()) # conditon
 fulfillment = str.upper(fufill.serialize_binary().hex()) # fulfillment
 
-# print condition and fulfillment
+# Print condition and fulfillment
 print(f"condition: {condition} \n fulfillment {fulfillment}")
