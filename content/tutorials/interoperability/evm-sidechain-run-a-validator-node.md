@@ -61,10 +61,10 @@ exrpd tx staking edit-validator
   --commission-rate="0.10"
 ```
 
-**Note**: The `commission-rate` value must adhere to the following invariants:
+Note that the `commission-rate` value must adhere to the following invariants:
 
-- Must be between 0 and the validator's `commission-max-rate`
-- Must not exceed the validator's `commission-max-change-rate` which is maximum % point change rate **per day**. In other words, a validator can only change its commission once per day and within `commission-max-change-rate` bounds.
+  * Must be between 0 and the validator's `commission-max-rate`
+  * Must not exceed the validator's `commission-max-change-rate` which is maximum % point change rate **per day**. In other words, a validator can only change its commission once per day and within `commission-max-change-rate` bounds.
 
 ## View Validator Description
 

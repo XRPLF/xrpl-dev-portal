@@ -71,7 +71,7 @@ Now that both Xumm and MetaMask wallets are connected to the bridge, you can sel
     - Commission: The bridge applies a commission for every transaction completed and is to prevent spam and DDOS.
 - **Destination address**: The address on the destination chain where you want to receive funds.
 
-![Initiate the transaction](img/evm-sidechain-initiate-transfer.png "Initiate the transaction")
+    ![Initiate the transaction](img/evm-sidechain-initiate-transfer.png "Initiate the transaction")
 
 Enter the details for your transaction and click "Transfer". Review the details of the transaction carefully before accepting the transaction in the corresponding wallet. 
 
@@ -86,7 +86,7 @@ For this direction you will need to approve the transaction in your Xumm Wallet.
 - Destination address has to be: `radjmEZTb4zsyNUJGV4gcVPXrFTJAuskKa`
 - Memo has to be the same address that you entered in the destination field
 
-![Review the transaction](img/evm-sidechain-review-transaction.jpg)
+    ![Review the transaction](img/evm-sidechain-review-transaction.jpg)
 
 **EVM sidechain → XRP Ledger Devnet**
 
@@ -94,7 +94,7 @@ If this is the case, then you will need to approve the transaction in your Metam
 
 - Destination address has to be: `0x8cDE56336E289c028C8f7CF5c20283fF02272182`
 
-![Review the transaction in MetaMask](img/evm-sidechain-metamask-confirmation.png "Review the transaction in MetaMask")
+    ![Review the transaction in MetaMask](img/evm-sidechain-metamask-confirmation.png "Review the transaction in MetaMask")
 
 
 Once you approve the transaction either in Xumm wallet or in Metamask, you will see a loading screen. This process can take up to a few minutes.

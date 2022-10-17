@@ -35,10 +35,8 @@ To add a network manually, enter the network informaton. The fields displayed on
 
 To connect to the XRP Ledger Devnet, enter the following information: 
 
-| Field | DevNet |
-| --- | --- |
-| Network Name | XRP Ledger EVM Sidechain |
-| New RPC URL | https://rpc.evm-sidechain.xrpl.org |
-| Chain ID | 1440001 |
-| Currency Symbol | XRP |
-| Block Explorer | https://evm-sidechain.xrpl.org |
+* **Network Name**: XRP Ledger EVM Sidechain
+* **New RPC URL**: https://rpc.evm-sidechain.xrpl.org
+* **Chain ID**: 1440001
+* **Currency Symbol**: XRP
+* **Block Explorer**: https://evm-sidechain.xrpl.org

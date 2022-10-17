@@ -27,11 +27,9 @@ The EVM Sidechain runs on a PoS (proof-of-stake) consensus algorithm. The proof-
 
 In a proof-of-stake blockchain, mining power depends on the amount of coins a validator is staking. Participants who stake more coins are more likely to be chosen to add new blocks.
 
-If you are interested in staking coins and running your own validator, please read
+If you are interested in staking coins and running your own validator, see [Join EVM Sidechain Devnet](join-evm-sidechain-devnet.html) for more information.
 
-[Join devnet](join-evm-sidechain-devnet.html)
-
-The underlying technology for the XRP Ledger sidechain consensus is [Tendermint](https://tendermint.com/), a Byzantine-Fault Tolerant engine for building blockchains.
+The underlying technology for the XRP Ledger EVM Sidechain consensus is [Tendermint](https://tendermint.com/), a Byzantine-Fault Tolerant engine for building blockchains.
 
 The blockchain uses the `cosmos-sdk` library on top of Tendermint to create and customize the blockchain using its built-in modules. The EVM sidechain has [Ethermint](https://github.com/evmos/ethermint) `cosmos-sdk` module that brings the Ethereum Virtual Machine (EVM) compatibility.
 

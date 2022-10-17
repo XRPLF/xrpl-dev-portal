@@ -10,7 +10,7 @@ status: not_enabled
 
 Each validator candidate is encouraged to run its operations independently, as diverse setups increase the resilience of the network. Validator candidates should commence their setup phase now in order to be on time for launch.
 
-## **Horcrux**
+## Horcrux
 
 Horcrux is a [multi-party-computation (MPC)](https://en.wikipedia.org/wiki/Secure_multi-party_computation) signing service for Tendermint nodes
 
@@ -22,11 +22,11 @@ Take your validator infrastructure to the next level of security and availabilit
 
 For information on how to upgrade your validator infrastructure with Horcrux, refer to the [documentation](https://github.com/strangelove-ventures/horcrux/blob/main/docs/migrating.md). 
 
-## **Tendermint KMS**
+## Tendermint KMS
 
 Tendermint KMS is a signature service with support for Hardware Security Modules (HSMs), such as YubiHSM2 and Ledger Nano. It’s intended to be run alongside XRP Ledger EVM Sidechain validators, ideally on separate physical hosts, providing defense-in-depth for online validator signing keys, double signing protection, and functioning as a central signing service that can be used when operating multiple validators in several zones.
 
-## **Hardware HSM**
+## Hardware HSM
 
 It is critical to ensure that an attacker cannot steal a validator's key. Not doing so can put the entire stake delegated to the compromised validator at risk. Hardware security modules are an important strategy for mitigating this risk.
 
@@ -34,7 +34,7 @@ HSM modules must support `ed25519` signatures for Evmos. The [YubiHSM 2](http
 
 **IMPORTANT**: The YubiHSM can protect a private key but **cannot ensure** in a secure setting that it won't sign the same block twice.
 
-## **Sentry Nodes (DDOS Protection)**
+## Sentry Nodes (DDOS Protection)
 
 Validators are responsible for ensuring that the network can sustain denial of service attacks.
 
@@ -49,8 +49,8 @@ To setup your sentry node architecture, follow the instructions below:
 1. Validators nodes should edit their `config.toml`:
 
 ```sql
-# Comma separated list of nodes to keep persistent connections to
-# Do not add private peers to this list if you don't want them advertised
+#Comma separated list of nodes to keep persistent connections to
+#Do not add private peers to this list if you don't want them advertised
 persistent_peers =[list of sentry nodes]
 
 # Set true to enable the peer-exchange reactor
@@ -60,8 +60,8 @@ pex = false
 2. Sentry nodes should edit their `config.toml`:
 
 ```sql
-# Comma separated list of peer IDs to keep private (will not be gossiped to other peers)
-# Example ID: 3e16af0cead27979e1fc3dac57d03df3c7a77acc@3.87.179.235:26656
+#Comma separated list of peer IDs to keep private (will not be gossiped to other peers)
+#Example ID: 3e16af0cead27979e1fc3dac57d03df3c7a77acc@3.87.179.235:26656
 
 private_peer_ids = "node_ids_of_private_peers"
 ```
