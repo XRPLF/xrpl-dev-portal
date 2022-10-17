@@ -300,7 +300,7 @@
   --from<span class="o">=</span>&lt;key_name&gt; <span class="se">\</span>
   --commission-rate<span class="o">=</span><span class="s2">"0.10"</span>
 </code></pre></div>
-<p class="devportal-callout note"><strong>Note</strong>: The <code>commission-rate</code> value must adhere to the following invariants:</p>
+<p>Note that the <code>commission-rate</code> value must adhere to the following invariants:</p>
 <ul>
 <li>Must be between 0 and the validator's <code>commission-max-rate</code></li>
 <li>Must not exceed the validator's <code>commission-max-change-rate</code> which is maximum % point change rate <strong>per day</strong>. In other words, a validator can only change its commission once per day and within <code>commission-max-change-rate</code> bounds.</li>
