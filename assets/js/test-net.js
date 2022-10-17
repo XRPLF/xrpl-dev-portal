@@ -16,6 +16,13 @@ async function wait_for_seq(network_url, address) {
   }
   console.log(response)
   $("#sequence").html('<h3>Sequence Number</h3> '+response.result.account_data.Sequence)
+  $("#balance").html(
+    "<h3>Balance</h3> " +
+      (Number(response.result.account_data.Balance) * 0.000001).toLocaleString(
+        "en"
+      ) +
+      " XRP"
+  )
   api.disconnect()
 }
 
@@ -37,29 +44,42 @@ function rippleTestNetCredentials(url, altnet_name) {
   sequence.html('')
   loader.css('display', 'inline')
 
+  // generate the test wallet
+  const test_wallet = xrpl.Wallet.generate();
 
   //call the alt-net and get key generations
   $.ajax({
     url: url,
     type: 'POST',
-    dataType: 'json',
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify({
+      destination: test_wallet.address,
+      memos: [
+        {
+          Memo: {
+            MemoData: xrpl.convertStringToHex("xrpl.org-faucet"),
+          },
+        },
+      ],
+    }),
     success: function(data) {
       //hide the loader and show results
       loader.hide();
       credentials.hide().html('<h2>Your '+altnet_name+' Credentials</h2>').fadeIn('fast')
       address.hide().html('<h3>Address</h3> ' +
-        data.account.address).fadeIn('fast')
+        test_wallet.address).fadeIn('fast')
       secret.hide().html('<h3>Secret</h3> ' +
-        data.account.secret).fadeIn('fast')
+      test_wallet.seed).fadeIn('fast')
+      // TODO: currently the faucet api doesn't return balance unless the account is generated server side, need to make upates when faucet repo is updated. 
       balance.hide().html('<h3>Balance</h3> ' +
-        Number(data.balance).toLocaleString('en') + ' XRP').fadeIn('fast')
+        Number(data.amount).toLocaleString('en') + ' XRP').fadeIn('fast')
       sequence.html('<h3>Sequence</h3> <img class="throbber" src="assets/img/xrp-loader-96.png"> Waiting...').fadeIn('fast')
       if (altnet_name=="Testnet") {
-        wait_for_seq("wss://s.altnet.rippletest.net:51233", data.account.address)
+        wait_for_seq("wss://s.altnet.rippletest.net:51233", test_wallet.address)
       } else if (altnet_name=="NFT-Devnet") {
-        wait_for_seq("wss://xls20-sandbox.rippletest.net:51233", data.account.address)
+        wait_for_seq("wss://xls20-sandbox.rippletest.net:51233", test_wallet.address)
       } else {
-        wait_for_seq("wss://s.devnet.rippletest.net:51233", data.account.address)
+        wait_for_seq("wss://s.devnet.rippletest.net:51233", test_wallet.address)
       }
 
     },

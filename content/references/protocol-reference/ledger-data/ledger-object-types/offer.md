@@ -41,20 +41,20 @@ For more information, see [Offers](offers.html).
 
 An `Offer` object has the following fields:
 
-| Name              | JSON Type | [Internal Type][] | Description |
-|-------------------|-----------|---------------|-------------|
-| `LedgerEntryType`   | String    | UInt16    | The value `0x006F`, mapped to the string `Offer`, indicates that this object describes an order to trade currency. |
-| `Flags`             | Number    | UInt32    | A bit-map of boolean flags enabled for this offer. |
-| `Account`           | String    | AccountID | The address of the account that owns this offer. |
-| `Sequence`          | Number    | UInt32    | The `Sequence` value of the [OfferCreate][] transaction that created this `Offer` object. Used in combination with the `Account` to identify this Offer. |
-| `TakerPays`         | String or Object | Amount | The remaining amount and type of currency requested by the offer creator. |
-| `TakerGets`         | String or Object | Amount | The remaining amount and type of currency being provided by the offer creator. |
-| `BookDirectory`     | String    | Hash256   | The ID of the [Offer Directory](directorynode.html) that links to this offer. |
-| `BookNode`          | String    | UInt64    | A hint indicating which page of the offer directory links to this object, in case the directory consists of multiple pages. |
-| `OwnerNode`         | String    | UInt64    | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
-| `PreviousTxnID`     | String | Hash256 | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number | UInt32 | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
-| `Expiration`        | Number    | UInt32    | (Optional) Indicates the time after which this offer is considered unfunded. See [Specifying Time][] for details. |
+| Name                | JSON Type        | [Internal Type][] | Required? | Description |
+|:--------------------|:-----------------|:------------------|:----------|:------------|
+| `Account`           | String           | AccountID         | Yes       | The address of the account that owns this offer. |
+| `BookDirectory`     | String           | Hash256           | Yes       | The ID of the [Offer Directory](directorynode.html) that links to this offer. |
+| `BookNode`          | String           | UInt64            | Yes       | A hint indicating which page of the offer directory links to this object, in case the directory consists of multiple pages. |
+| `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this offer is considered unfunded. See [Specifying Time][] for details. |
+| `Flags`             | Number           | UInt32            | Yes       | A bit-map of boolean flags enabled for this offer. |
+| `LedgerEntryType`   | String           | UInt16            | Yes       | The value `0x006F`, mapped to the string `Offer`, indicates that this object describes an order to trade currency. |
+| `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| `PreviousTxnID`     | String           | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| `Sequence`          | Number           | UInt32            | Yes       | The `Sequence` value of the [OfferCreate][] transaction that created this `Offer` object. Used in combination with the `Account` to identify this Offer. |
+| `TakerPays`         | String or Object | Amount            | Yes       | The remaining amount and type of currency requested by the offer creator. |
+| `TakerGets`         | String or Object | Amount            | Yes       | The remaining amount and type of currency being provided by the offer creator. |
 
 ## Offer Flags
 
