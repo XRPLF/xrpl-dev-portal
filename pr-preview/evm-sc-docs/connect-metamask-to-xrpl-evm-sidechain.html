@@ -239,9 +239,8 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#connect-metamask-to-xrp-ledger-sidechain">Connect MetaMask to XRP Ledger Sidechain</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#1-installing-metamask">1. Installing MetaMask</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#2-create-an-account-on-metamask">2. Create an account on MetaMask</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#3-adding-xrp-ledger-evm-sidechain-to-metamask">3. Adding XRP Ledger EVM Sidechain to Metamask</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#4-enter-endpoint-information">4. Enter Endpoint Information</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#2-create-an-account-on-metamask">2. Create an Account on MetaMask</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#3-adding-xrp-ledger-evm-sidechain-to-metamask">3. Adding XRP Ledger EVM Sidechain to MetaMask</a></li>
       </ul>
   </div>
       </aside>
@@ -266,23 +265,42 @@
 This tutorial walks through the process of installing MetaMask, configuring it on the XRP Ledger EVM sidechain network, and importing an existing account using a previously generated private key.</p>
 <h2 id="1-installing-metamask">1. Installing MetaMask<a aria-hidden="true" class="hover_anchor" href="#1-installing-metamask"><i class="fa fa-link"></i></a></h2>
 <p>Install the MetaMask extension on your browser from <strong><a class="external-link" href="https://metamask.io/download/" target="_blank">https://metamask.io/download/ <i aria-hidden="true" class="fa fa-external-link"></i></a></strong>. The extension supports most desktop browsers. </p>
-<h2 id="2-create-an-account-on-metamask">2. Create an account on MetaMask<a aria-hidden="true" class="hover_anchor" href="#2-create-an-account-on-metamask"><i class="fa fa-link"></i></a></h2>
-<p>To create a new account on MetaMask, click the icon on top as shown in the image below and then click <strong>Create Account</strong>.</p>
-<p><img alt="Create an account on MetaMask" src="img/evm-sidechain-create-metamask-account.png" title='Create an account on MetaMas"k'/></p>
-<p>Enter a name for the account and then click <strong>Create</strong> to create an account.</p>
-<h3 id="3-adding-xrp-ledger-evm-sidechain-to-metamask">3. Adding XRP Ledger EVM Sidechain to Metamask<a aria-hidden="true" class="hover_anchor" href="#3-adding-xrp-ledger-evm-sidechain-to-metamask"><i class="fa fa-link"></i></a></h3>
-<p>Open the MetaMask extension, click the list of networks at the top, then click <strong>Add network</strong>.</p>
-<p><img alt="Add the EVM Sidechain network to MetaMask" src="img/evm-sidechain-add-metamask-network.png" title="Add the EVM Sidechain network to MetaMask"/></p>
-<h3 id="4-enter-endpoint-information">4. Enter Endpoint Information<a aria-hidden="true" class="hover_anchor" href="#4-enter-endpoint-information"><i class="fa fa-link"></i></a></h3>
-<p>To add a network manually, enter the network informaton. The fields displayed on screen may vary depending on the network.  </p>
-<p>To connect to the XRP Ledger Devnet, enter the following information: </p>
-<ul>
-<li><strong>Network Name</strong>: XRP Ledger EVM Sidechain</li>
-<li><strong>New RPC URL</strong>: https://rpc.evm-sidechain.xrpl.org</li>
-<li><strong>Chain ID</strong>: 1440001</li>
-<li><strong>Currency Symbol</strong>: XRP</li>
-<li><strong>Block Explorer</strong>: https://evm-sidechain.xrpl.org</li>
-</ul>
+<h2 id="2-create-an-account-on-metamask">2. Create an Account on MetaMask<a aria-hidden="true" class="hover_anchor" href="#2-create-an-account-on-metamask"><i class="fa fa-link"></i></a></h2>
+<p>To create a new account on MetaMask:</p>
+<ol>
+<li>
+<p>Click the MetaMask icon.</p>
+<p><img alt="Create an account on MetaMask" src="img/evm-sidechain-create-metamask-account.png" title="Create an account on MetaMask"/></p>
+</li>
+<li>
+<p>Choose <strong>Create Account</strong>.</p>
+</li>
+<li>
+<p>Enter the Account Name.</p>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+</li>
+</ol>
+<h3 id="3-adding-xrp-ledger-evm-sidechain-to-metamask">3. Adding XRP Ledger EVM Sidechain to MetaMask<a aria-hidden="true" class="hover_anchor" href="#3-adding-xrp-ledger-evm-sidechain-to-metamask"><i class="fa fa-link"></i></a></h3>
+<p>To add XRP Ledger EVM Sidechain to MetaMask:</p>
+<ol>
+<li>
+<p>Open the MetaMask extension.</p>
+</li>
+<li>
+<p>Use the drop-down menu to choose <strong>Add Network</strong>.
+    <img alt="Add the EVM Sidechain network to MetaMask" src="img/evm-sidechain-add-metamask-network.png" title="Add the EVM Sidechain network to MetaMask"/></p>
+</li>
+<li>
+<p>Enter the XRP Ledger Devnet endpoint information.
+    a. <strong>Network Name</strong>: XRP Ledger EVM Sidechain
+    b. <strong>New RPC URL</strong>: http://rpc.evm-sidechain.xrpl.org
+    c. <strong>Chain ID</strong>: 1440001
+    d. <strong>Currency Symbol</strong>: XRP
+    e. <strong>Block Explorer</strong>: https://evm-sidechain.xrpl.org</p>
+</li>
+</ol>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -1466,7 +1484,7 @@ This tutorial walks through the process of installing MetaMask, configuring it o
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

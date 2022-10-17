@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Run a Validator Node - XRPL.org</title>
+    <title>Run a Validator Node on an EVM Sidechain - XRPL.org</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Run a Validator Node | XRPL.org">
+    <meta property="og:title" content="Run a Validator Node on an EVM Sidechain | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/evm-sidechain-run-a-validator-node.html" />
     <meta property="og:description" content="Learn how to run a validator node on the EVM Sidechain Devnet." />
     <meta name="description" content="Learn how to run a validator node on the EVM Sidechain Devnet." />
@@ -237,7 +237,7 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#run-a-validator-node">Run a Validator Node</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#run-a-validator-node-on-an-evm-sidechain">Run a Validator Node on an EVM Sidechain</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#create-your-validator">Create Your Validator</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#edit-validator-description">Edit Validator Description</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#view-validator-description">View Validator Description</a></li>
@@ -259,11 +259,11 @@
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
     <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
     <li class="active breadcrumb-item"><a href="evm-sidechains.html">Interoperability - EVM Sidechain</a></li>
-    <li class="active breadcrumb-item">Run a Validator Node</li>
+    <li class="active breadcrumb-item">Run a Validator Node on an EVM Sidechain</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="run-a-validator-node">Run a Validator Node<a aria-hidden="true" class="hover_anchor" href="#run-a-validator-node"><i class="fa fa-link"></i></a></h1>
+        <h1 id="run-a-validator-node-on-an-evm-sidechain">Run a Validator Node on an EVM Sidechain<a aria-hidden="true" class="hover_anchor" href="#run-a-validator-node-on-an-evm-sidechain"><i class="fa fa-link"></i></a></h1>
 <h2 id="create-your-validator">Create Your Validator<a aria-hidden="true" class="hover_anchor" href="#create-your-validator"><i class="fa fa-link"></i></a></h2>
 <p>Use your node consensus public key (<code>exrpvalconspub...</code>) to create a new validator by staking XRP tokens. You can find your validator pubkey by running:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">exrpd tendermint show-validator
@@ -286,9 +286,9 @@
 <p class="devportal-callout note"><strong>Note</strong> <code>Min-self-delegation</code> is a strictly positive integer that represents the minimum amount of self-delegated voting power your validator must always have. A <code>min-self-delegation</code> of <code>1000000</code> means your validator will never have a self-delegation lower than <code>1 axrp</code>.</p>
 <p>You can confirm that you are in the validator set by using a third-party explorer.</p>
 <h2 id="edit-validator-description">Edit Validator Description<a aria-hidden="true" class="hover_anchor" href="#edit-validator-description"><i class="fa fa-link"></i></a></h2>
-<p>You can edit your validator's public description. This info is to identify your validator, and will be relied on by delegators to decide which validators to stake to. Make sure to provide input for every flag below. If a flag is not included in the command the field will default to empty (<code>--moniker</code> defaults to the machine name) if the field has never been set or remain the same if it has been set in the past.</p>
+<p>You can edit your validator's public description. This info is to identify your validator, and is relied on by delegators when they decide to stake XRP tokens to a particular validator. Make sure to provide input for every flag below. If a flag is not included in the command, the field defaults to empty (<code>--moniker</code> defaults to the machine name), if the field has never been set, or remains the same, if it has been set in the past.</p>
 <p>The <key_name> specifies which validator you are editing. If you choose to not include certain flags, remember that the --from flag must be included to identify the validator to update.</key_name></p>
-<p>The <code>--identity</code> can be used as to verify identity with systems like Keybase or UPort. When using with Keybase <code>--identity</code> should be populated with a 16-digit string that is generated with a <a class="external-link" href="https://keybase.io/" target="_blank">keybase.io <i aria-hidden="true" class="fa fa-external-link"></i></a> account. It's a cryptographically secure method of verifying your identity across multiple online networks. The Keybase API allows us to retrieve your Keybase avatar. This is how you can add a logo to your validator profile.</p>
+<p>The <code>--identity</code> can be used as to verify identity with systems like Keybase or UPort. When using with Keybase <code>--identity</code> must be populated with a 16-digit string that is generated with a <a class="external-link" href="https://keybase.io/" target="_blank">keybase.io <i aria-hidden="true" class="fa fa-external-link"></i></a> account. It is a cryptographically secure method of verifying your identity across multiple online networks. The Keybase API allows us to retrieve your Keybase avatar. This is how you can add a logo to your validator profile.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">exrpd tx staking edit-validator
   --moniker<span class="o">=</span><span class="s2">"&lt;your_custom_moniker&gt;"</span> <span class="se">\</span>
   --website<span class="o">=</span><span class="s2">"https://xrpl.org"</span> <span class="se">\</span>
@@ -303,28 +303,28 @@
 <p>Note that the <code>commission-rate</code> value must adhere to the following invariants:</p>
 <ul>
 <li>Must be between 0 and the validator's <code>commission-max-rate</code></li>
-<li>Must not exceed the validator's <code>commission-max-change-rate</code> which is maximum % point change rate <strong>per day</strong>. In other words, a validator can only change its commission once per day and within <code>commission-max-change-rate</code> bounds.</li>
+<li>Must not exceed the validator's <code>commission-max-change-rate</code> which is the maximum % point change rate <strong>per day</strong>. In other words, a validator can only change its commission once per day and within <code>commission-max-change-rate</code> bounds.</li>
 </ul>
 <h2 id="view-validator-description">View Validator Description<a aria-hidden="true" class="hover_anchor" href="#view-validator-description"><i class="fa fa-link"></i></a></h2>
 <p>View the validator's information with this command:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">exrpd query staking validator &lt;account&gt;
 </code></pre></div>
 <h2 id="track-validator-signing-information">Track Validator Signing Information<a aria-hidden="true" class="hover_anchor" href="#track-validator-signing-information"><i class="fa fa-link"></i></a></h2>
-<p>In order to keep track of a validator's signatures in the past you can do so by using the <code>signing-info</code> command:</p>
+<p>To track a validator's signatures from past transactions use the <code>signing-info</code> command. </p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">exrpd query slashing signing-info &lt;validator-pubkey&gt; --chain-id<span class="o">=</span>&lt;chain_id&gt;
 </code></pre></div>
 <h2 id="unjail-validator">Unjail Validator<a aria-hidden="true" class="hover_anchor" href="#unjail-validator"><i class="fa fa-link"></i></a></h2>
-<p>When a validator is "jailed" for downtime, you must submit an <code>Unjail</code> transaction from the operator account in order to be able to get block proposer rewards again (depends on the zone fee distribution).</p>
+<p>When a validator is "jailed" for downtime, you must submit an <code>Unjail</code> transaction from the operator account in order to restore block proposer awards (depending on the zone fee distribution).</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">exrpd tx slashing unjail --from<span class="o">=</span>&lt;key_name&gt; --chain-id<span class="o">=</span>&lt;chain_id&gt;
 </code></pre></div>
 <h2 id="confirm-your-validator-is-running">Confirm Your Validator is Running<a aria-hidden="true" class="hover_anchor" href="#confirm-your-validator-is-running"><i class="fa fa-link"></i></a></h2>
 <p>Your validator is active if the following command returns anything:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">exrpd query tendermint-validator-set <span class="p">|</span> grep <span class="s2">"</span><span class="k">$(</span>exrpd tendermint show-address<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
-<p>You should now see your validator in one of Exrp explorers. You are looking for the <code>bech32</code> encoded <code>address</code> in the <code>~/.exprd/config/priv_validator.json</code> file.</p>
-<p class="devportal-callout note"><strong>Note</strong> To be in the validator set, you need to have more total voting power than the 100th validator.</p>
+<p>You should now see your validator in one of the Exrp explorers. You are looking for the <code>bech32</code> encoded <code>address</code> in the <code>~/.exprd/config/priv_validator.json</code> file.</p>
+<p class="devportal-callout note"><strong>Note</strong> To be in the validator set, you must have more total voting power than the 100th validator.</p>
 <h2 id="halting-your-validator">Halting Your Validator<a aria-hidden="true" class="hover_anchor" href="#halting-your-validator"><i class="fa fa-link"></i></a></h2>
-<p>When attempting to perform routine maintenance or planning for an upcoming coordinated upgrade, it can be useful to have your validator systematically and gracefully halt. You can achieve this by either setting the <code>halt-height</code> to the height at which you want your node to shutdown or by passing the <code>--halt-height</code> flag to <code>exrpd</code>. The node will shutdown with a zero exit code at that given height after committing the block.</p>
+<p>When attempting to perform routine maintenance or planning for an upcoming coordinated upgrade, it can be useful to have your validator systematically and gracefully halt. Set the <code>halt-height</code> to the height at which you want your node to shut down, or pass the <code>--halt-height</code> flag to <code>exrpd</code>. The node shuts down with a 0 exit code at that given height after committing the block.</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -1508,7 +1508,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

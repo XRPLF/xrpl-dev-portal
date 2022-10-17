@@ -240,7 +240,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#evm-sidechain-validator-security">EVM Sidechain Validator Security</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#horcrux">Horcrux</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#tendermint-kms">Tendermint KMS</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#hardware-hsm">Hardware HSM</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#hardware-security-modules-hsm">Hardware Security Modules (HSM)</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#sentry-nodes-ddos-protection">Sentry Nodes (DDOS Protection)</a></li>
       </ul>
   </div>
@@ -262,30 +262,29 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="evm-sidechain-validator-security">EVM Sidechain Validator Security<a aria-hidden="true" class="hover_anchor" href="#evm-sidechain-validator-security"><i class="fa fa-link"></i></a></h1>
-<p>Each validator candidate is encouraged to run its operations independently, as diverse setups increase the resilience of the network. Validator candidates should commence their setup phase now in order to be on time for launch.</p>
+<p>Each validator candidate is encouraged to run its operations independently, as diverse setups increase the resilience of the network. Validator candidates should commence their setup phase now, in order to be on time for launch.</p>
 <h2 id="horcrux">Horcrux<a aria-hidden="true" class="hover_anchor" href="#horcrux"><i class="fa fa-link"></i></a></h2>
-<p>Horcrux is a <a class="external-link" href="https://en.wikipedia.org/wiki/Secure_multi-party_computation" target="_blank">multi-party-computation (MPC) <i aria-hidden="true" class="fa fa-external-link"></i></a> signing service for Tendermint nodes</p>
-<p>Take your validator infrastructure to the next level of security and availability:</p>
+<p>Horcrux is a <a class="external-link" href="https://en.wikipedia.org/wiki/Secure_multi-party_computation" target="_blank">multi-party-computation (MPC) <i aria-hidden="true" class="fa fa-external-link"></i></a> signing service for Tendermint nodes.</p>
 <ul>
-<li>Composed of a cluster of signer nodes in place of the <a class="external-link" href="https://docs.tendermint.com/master/nodes/remote-signer.html" target="_blank">remote signer <i aria-hidden="true" class="fa fa-external-link"></i></a>, enabling High Availability (HA) for block signing through fault tolerance.</li>
-<li>Secure your validator private key by splitting it across multiple private signer nodes using threshold Ed25519 signatures.</li>
-<li>Add security and availability without sacrificing block sign performance.</li>
+<li>Composed of a cluster of signer nodes in place of the <a class="external-link" href="https://docs.tendermint.com/master/nodes/remote-signer.html" target="_blank">remote signer <i aria-hidden="true" class="fa fa-external-link"></i></a>, thereby enabling High Availability (HA) for block signing through fault tolerance.</li>
+<li>Secures your validator private key by splitting it across multiple private signer nodes using threshold Ed25519 signatures.</li>
+<li>Adds security and availability without sacrificing block sign performance.</li>
 </ul>
 <p>For information on how to upgrade your validator infrastructure with Horcrux, refer to the <a class="external-link" href="https://github.com/strangelove-ventures/horcrux/blob/main/docs/migrating.md" target="_blank">documentation <i aria-hidden="true" class="fa fa-external-link"></i></a>. </p>
 <h2 id="tendermint-kms">Tendermint KMS<a aria-hidden="true" class="hover_anchor" href="#tendermint-kms"><i class="fa fa-link"></i></a></h2>
-<p>Tendermint KMS is a signature service with support for Hardware Security Modules (HSMs), such as YubiHSM2 and Ledger Nano. It’s intended to be run alongside XRP Ledger EVM Sidechain validators, ideally on separate physical hosts, providing defense-in-depth for online validator signing keys, double signing protection, and functioning as a central signing service that can be used when operating multiple validators in several zones.</p>
-<h2 id="hardware-hsm">Hardware HSM<a aria-hidden="true" class="hover_anchor" href="#hardware-hsm"><i class="fa fa-link"></i></a></h2>
-<p>It is critical to ensure that an attacker cannot steal a validator's key. Not doing so can put the entire stake delegated to the compromised validator at risk. Hardware security modules are an important strategy for mitigating this risk.</p>
-<p>HSM modules must support <code>ed25519</code> signatures for Evmos. The <a class="external-link" href="https://www.yubico.com/products/hardware-security-module/" target="_blank">YubiHSM 2 <i aria-hidden="true" class="fa fa-external-link"></i></a> supports <code>ed25519</code> and can be used with this YubiKey <a class="external-link" href="https://github.com/iqlusioninc/yubihsm.rs" target="_blank">library <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p><strong>IMPORTANT</strong>: The YubiHSM can protect a private key but <strong>cannot ensure</strong> in a secure setting that it won't sign the same block twice.</p>
+<p>Tendermint KMS is a signature service with support for Hardware Security Modules (HSMs), such as YubiHSM2 and Ledger Nano. It is intended to be run alongside XRP Ledger EVM Sidechain validators, ideally on separate physical hosts, providing defense-in-depth for online validator signing keys, double signing protection, and a central signing service that can be used when operating multiple validators in several zones.</p>
+<h2 id="hardware-security-modules-hsm">Hardware Security Modules (HSM)<a aria-hidden="true" class="hover_anchor" href="#hardware-security-modules-hsm"><i class="fa fa-link"></i></a></h2>
+<p>You must ensure that an attacker cannot steal a validator's key. Otherwise, the entire stake delegated to the compromised validator at risk. Hardware security modules (HSM) help mitigate this risk.</p>
+<p>HSMs must support <code>ed25519</code> signatures for Evmos. The <a class="external-link" href="https://www.yubico.com/products/hardware-security-module/" target="_blank">YubiHSM 2 <i aria-hidden="true" class="fa fa-external-link"></i></a> supports <code>ed25519</code> and can be used with this YubiKey <a class="external-link" href="https://github.com/iqlusioninc/yubihsm.rs" target="_blank">library <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>IMPORTANT</strong>: The YubiHSM can protect a private key but <strong>cannot ensure</strong> in a secure setting that it will not sign the same block twice.</p>
 <h2 id="sentry-nodes-ddos-protection">Sentry Nodes (DDOS Protection)<a aria-hidden="true" class="hover_anchor" href="#sentry-nodes-ddos-protection"><i class="fa fa-link"></i></a></h2>
 <p>Validators are responsible for ensuring that the network can sustain denial of service attacks.</p>
-<p>One recommended way to mitigate these risks is for validators to carefully structure their network topology in a so-called sentry node architecture.</p>
-<p>Validator nodes should only connect to full-nodes they trust, either they operate these nodes themselves or the nodes are run by other validators they know socially. A validator node will typically run in a data center. Most data centers provide direct links to the networks of major cloud providers. The validator can use those links to connect to sentry nodes in the cloud. This shifts the burden of denial-of-service from the validator's node directly to its sentry nodes, and may require new sentry nodes be spun up or activated to mitigate attacks on existing ones.</p>
-<p>Sentry nodes can be quickly spun up or change their IP addresses. Because the links to the sentry nodes are in private IP space, an internet-based attacked cannot disturb them directly. This will ensure validator block proposals and votes always make it to the rest of the network.</p>
-<p>To setup your sentry node architecture, follow the instructions below:</p>
+<p>One recommended way to mitigate these risks is for validators to carefully structure their network topology in a sentry node architecture.</p>
+<p>Validator nodes should only connect to full-nodes they trust; either they operate these nodes themselves, or the nodes are run by other validator administrators they know personally. A validator node typically runs in a data center. Most data centers provide direct links to the networks of major cloud providers. The validator can use those links to connect to sentry nodes in the cloud. This shifts the burden of denial-of-service from the validator's node directly to its sentry nodes, and might require new sentry nodes be spun up or activated to mitigate attacks on existing ones.</p>
+<p>Sentry nodes can be quickly spun up or change their IP addresses. Because the links to the sentry nodes are in private IP space, an internet-based attacked cannot disturb them directly. This ensures that the validator's block proposals and votes always make it to the rest of the network.</p>
+<p>To setup your sentry node architecture:</p>
 <ol>
-<li>Validators nodes should edit their <code>config.toml</code>:</li>
+<li>Edit your validator node's <code>config.toml</code> file:</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="o">#</span><span class="n">Comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">nodes</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">keep</span><span class="w"> </span><span class="n">persistent</span><span class="w"> </span><span class="n">connections</span><span class="w"> </span><span class="k">to</span><span class="w"></span>
 <span class="o">#</span><span class="k">Do</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="n">peers</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">don</span><span class="err">'</span><span class="n">t</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="n">advertised</span><span class="w"></span>
@@ -295,7 +294,7 @@
 <span class="n">pex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="w"></span>
 </code></pre></div>
 <ol start="2">
-<li>Sentry nodes should edit their <code>config.toml</code>:</li>
+<li>Edit your sentry node's <code>config.toml</code> file:</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="o">#</span><span class="n">Comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">peer</span><span class="w"> </span><span class="n">IDs</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">keep</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="p">(</span><span class="n">will</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">gossiped</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">peers</span><span class="p">)</span><span class="w"></span>
 <span class="o">#</span><span class="n">Example</span><span class="w"> </span><span class="n">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="n">e16af0cead27979e1fc3dac57d03df3c7a77acc</span><span class="o">@</span><span class="mi">3</span><span class="p">.</span><span class="mi">87</span><span class="p">.</span><span class="mi">179</span><span class="p">.</span><span class="mi">235</span><span class="p">:</span><span class="mi">26656</span><span class="w"></span>
@@ -1485,7 +1484,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
