@@ -29,7 +29,7 @@ In a proof-of-stake blockchain, mining power depends on the amount of coins a va
 
 If you are interested in staking coins and running your own validator, please read
 
-[Join devnet](join-evm-sidechain-devnet.md)
+[Join devnet](join-evm-sidechain-devnet.html)
 
 The underlying technology for the XRP Ledger sidechain consensus is [Tendermint](https://tendermint.com/), a Byzantine-Fault Tolerant engine for building blockchains.
 
