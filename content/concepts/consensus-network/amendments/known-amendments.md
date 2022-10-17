@@ -19,7 +19,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4   | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.4.html "BADGE_80d0e0") |
 | [fixNFTokenNegOffer][]          | v1.9.2     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1_1][]       | v1.9.2     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
-| [ExpandedSignerList][]          | v1.9.1     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
+| [ExpandedSignerList][]          | v1.9.1     | [Enabled: 2022-10-13](https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87 "BADGE_GREEN") |
 | [fixNFTokenDirV1][]             | v1.9.1     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1][]         | v1.9.0     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
 | [CheckCashMakesTrustLine][]     | v1.8.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
@@ -234,7 +234,7 @@ Provides "suspended payments" for XRP for escrow within the XRP Ledger, includin
 | Amendment | ExpandedSignerList |
 |:----------|:-----------|
 | Amendment ID | B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 |
-| Status | Open for Voting |
+| Status | Enabled   |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
