@@ -68,7 +68,7 @@ The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`),
 
 ### TransferFee
 
-The `TransferFee` value specifies the percentage fee, in units of 1/10,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 0.001% or 1/10 of a basis point (bps), allowing transfer rates between 0% and 50%.
+The `TransferFee` value specifies the percentage fee, in units of 1/100,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 0.001% or 1/10 of a basis point (bps), allowing transfer rates between 0% and 50%.
 
 
 ### Example
