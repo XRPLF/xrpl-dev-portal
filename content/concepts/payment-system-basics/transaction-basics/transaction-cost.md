@@ -38,9 +38,9 @@ The transaction cost is not paid to any party: the XRP is irrevocably destroyed.
 
 ## Load Cost and Open Ledger Cost
 
-When the [FeeEscalation amendment][] is enabled, there are two thresholds for the transaction cost:
+There are two thresholds for the transaction cost:
 
-* If the transaction cost does not meet a `rippled` server's [load-based transaction cost threshold](#local-load-cost), the server ignores the transaction completely. (This logic is essentially unchanged with or without the amendment.)
+* If the transaction cost does not meet a `rippled` server's [load-based transaction cost threshold](#local-load-cost), the server ignores the transaction completely.
 * If the transaction cost does not meet a `rippled` server's [open ledger cost threshold](#open-ledger-cost), the server queues the transaction for a later ledger.
 
 This divides transactions into roughly three categories:
@@ -90,7 +90,7 @@ _Fee levels_ represent the proportional difference between the minimum cost and 
 
 The `rippled` APIs have two ways to query the local load-based transaction cost: the `server_info` command (intended for humans) and the `server_state` command (intended for machines).
 
-If the [FeeEscalation amendment][] is enabled, you can use the [fee method][] to check the open ledger cost.
+You can use the [fee method][] to check the open ledger cost.
 
 ### server_info
 
@@ -151,7 +151,7 @@ This feature is designed to allow you to recover an account if the regular key i
 
 The [`lsfPasswordSpent` flag](accountroot.html) starts out disabled. It gets enabled when you send a SetRegularKey transaction signed by the master key pair. It gets disabled again when the account receives a [Payment](payment.html) of XRP.
 
-When the [FeeEscalation amendment][] is enabled, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+`rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
 
 ## Changing the Transaction Cost
