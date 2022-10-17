@@ -6,7 +6,7 @@ labels:
   - Development, Interoperability
 status: not_enabled
 ---
-# Run a Validator Node
+# Run a Validator Node on an EVM Sidechain
 
 ## Create Your Validator
 
@@ -42,11 +42,11 @@ You can confirm that you are in the validator set by using a third-party explore
 
 ## Edit Validator Description
 
-You can edit your validator's public description. This info is to identify your validator, and will be relied on by delegators to decide which validators to stake to. Make sure to provide input for every flag below. If a flag is not included in the command the field will default to empty (`--moniker` defaults to the machine name) if the field has never been set or remain the same if it has been set in the past.
+You can edit your validator's public description. This info is to identify your validator, and is relied on by delegators when they decide to stake XRP tokens to a particular validator. Make sure to provide input for every flag below. If a flag is not included in the command, the field defaults to empty (`--moniker` defaults to the machine name), if the field has never been set, or remains the same, if it has been set in the past.
 
 The <key_name> specifies which validator you are editing. If you choose to not include certain flags, remember that the --from flag must be included to identify the validator to update.
 
-The `--identity` can be used as to verify identity with systems like Keybase or UPort. When using with Keybase `--identity` should be populated with a 16-digit string that is generated with a [keybase.io](https://keybase.io/) account. It's a cryptographically secure method of verifying your identity across multiple online networks. The Keybase API allows us to retrieve your Keybase avatar. This is how you can add a logo to your validator profile.
+The `--identity` can be used as to verify identity with systems like Keybase or UPort. When using with Keybase `--identity` must be populated with a 16-digit string that is generated with a [keybase.io](https://keybase.io/) account. It is a cryptographically secure method of verifying your identity across multiple online networks. The Keybase API allows us to retrieve your Keybase avatar. This is how you can add a logo to your validator profile.
 
 ```bash
 exrpd tx staking edit-validator
@@ -64,7 +64,7 @@ exrpd tx staking edit-validator
 Note that the `commission-rate` value must adhere to the following invariants:
 
   * Must be between 0 and the validator's `commission-max-rate`
-  * Must not exceed the validator's `commission-max-change-rate` which is maximum % point change rate **per day**. In other words, a validator can only change its commission once per day and within `commission-max-change-rate` bounds.
+  * Must not exceed the validator's `commission-max-change-rate` which is the maximum % point change rate **per day**. In other words, a validator can only change its commission once per day and within `commission-max-change-rate` bounds.
 
 ## View Validator Description
 
@@ -76,7 +76,7 @@ exrpd query staking validator <account>
 
 ## Track Validator Signing Information
 
-In order to keep track of a validator's signatures in the past you can do so by using the `signing-info` command:
+To track a validator's signatures from past transactions use the `signing-info` command. 
 
 ```bash
 exrpd query slashing signing-info <validator-pubkey> --chain-id=<chain_id>
@@ -84,7 +84,7 @@ exrpd query slashing signing-info <validator-pubkey> --chain-id=<chain_id>
 
 ## Unjail Validator
 
-When a validator is "jailed" for downtime, you must submit an `Unjail` transaction from the operator account in order to be able to get block proposer rewards again (depends on the zone fee distribution).
+When a validator is "jailed" for downtime, you must submit an `Unjail` transaction from the operator account in order to restore block proposer awards (depending on the zone fee distribution).
 
 ```bash
 exrpd tx slashing unjail --from=<key_name> --chain-id=<chain_id>
@@ -98,10 +98,10 @@ Your validator is active if the following command returns anything:
 exrpd query tendermint-validator-set | grep "$(exrpd tendermint show-address)"
 ```
 
-You should now see your validator in one of Exrp explorers. You are looking for the `bech32` encoded `address` in the `~/.exprd/config/priv_validator.json` file.
+You should now see your validator in one of the Exrp explorers. You are looking for the `bech32` encoded `address` in the `~/.exprd/config/priv_validator.json` file.
 
-**Note** To be in the validator set, you need to have more total voting power than the 100th validator.
+**Note** To be in the validator set, you must have more total voting power than the 100th validator.
 
 ## Halting Your Validator
 
-When attempting to perform routine maintenance or planning for an upcoming coordinated upgrade, it can be useful to have your validator systematically and gracefully halt. You can achieve this by either setting the `halt-height` to the height at which you want your node to shutdown or by passing the `--halt-height` flag to `exrpd`. The node will shutdown with a zero exit code at that given height after committing the block.
+When attempting to perform routine maintenance or planning for an upcoming coordinated upgrade, it can be useful to have your validator systematically and gracefully halt. Set the `halt-height` to the height at which you want your node to shut down, or pass the `--halt-height` flag to `exrpd`. The node shuts down with a 0 exit code at that given height after committing the block.

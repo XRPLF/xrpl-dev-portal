@@ -10,7 +10,7 @@ status: not_enabled
 
 This tutorial walks you through the steps to join the existing **XRP Ledger EVM Sidechain Devnet**. 
 
-For simplicity and ease of use, we will be creating an alias, `exprd`,  to run all the commands inside a Docker container. 
+For ease of use, create an alias, `exprd`, to run all commands inside your Docker container. 
 
 ## Pre-requisites
 
@@ -33,24 +33,24 @@ The first task is to initialize the node, which creates the necessary validator 
     exrpd config chain-id exrp_1440001-1
     ```
 
-2. Create or add a key to our node. For this tutorial, let's use the `test` keyring:
+2. Create or add a key to your node. For this tutorial, we use the `test` keyring:
 
     ```bash
     exrpd keys add <key_name> --keyring-backend test
     ```
 
-    Note the `key_name` you enter as you will need to reference it in subsequent steps.
+    Note the `key_name` you enter as you need to reference it in subsequent steps.
 
     **Note** For more information on a more secure setup for your validator, refer to [cosmos-sdk keys and keyrings](https://docs.cosmos.network/v0.46/run-node/keyring.html) and [validator security](evm-sidechain-validator-security.html).
 
 
-3. Finally, initialize the node using the following command:
+3. Initialize the node using the following command:
 
     ```bash
     exrpd init <your_custom_moniker> --chain-id exrp_1440001-1
     ```
 
-    Monikers can contain only ASCII characters. Using Unicode characters will render your node unreachable.
+    Monikers can contain only ASCII characters. Using Unicode characters renders your node unreachable.
 
 All these commands create your `~/.exrpd` (i.e `$HOME`) directory with subfolders `config/` and `data/`. In the `config` directory, the most important files for configuration are `app.toml` and `config.toml`.
 
@@ -64,7 +64,7 @@ All these commands create your `~/.exrpd` (i.e `$HOME`) directory with subfol
     wget [https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json](https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json) ~/.exrpd/config/
     ```
 
-    Then verify the correctness of the genesis configuration file:
+    Verify the genesis configuration file:
 
     ```bash
     exrpd validate-genesis
@@ -72,7 +72,7 @@ All these commands create your `~/.exrpd` (i.e `$HOME`) directory with subfol
 
 2. Add Persistent Peer Nodes
 
-    Set the [`persistent_peer`](https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#persistent-peer)s field in `~/.exrpd/config/config.toml` to specify peers that your node will maintain persistent connections with. You can retrieve them from the list of available peers on the archive repo ([https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt](https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt)).
+    Set the [`persistent_peer`](https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#persistent-peer)s field in `~/.exrpd/config/config.toml` to specify peers with which your node maintains persistent connections. You can retrieve them from the list of available peers on the archive repo ([https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt](https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt)).
 
     To get a list of entries from the `peers.txt` file in the `PEERS` variable, run the following command:
 
@@ -80,7 +80,7 @@ All these commands create your `~/.exrpd` (i.e `$HOME`) directory with subfol
     PEERS=`curl -sL https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
     ```
 
-    Use `sed` to include them into the configuration. You can also add them manually:
+    Use `sed` to include them in the configuration. You can also add them manually:
 
     ```bash
     sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.exrpd/config/config.toml
@@ -110,10 +110,10 @@ exrpd tx staking create-validator \
 
 ## Start the Node
 
-The final step is to start the node. 
+Start the node. 
 
 ```bash
 exrpd start
 ```
 
-Once enough voting power (+2/3) from the genesis validators is up-and-running, the node will start producing blocks.
+Once enough voting power (+2/3) from the genesis validators is up-and-running, the node starts producing blocks.
