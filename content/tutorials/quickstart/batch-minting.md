@@ -324,9 +324,9 @@ Disconnect from the XRP Ledger.
 ## 7.batch-minting.html
 
 For this form:
-* The unnecessary script references are removed. 
-* The unused fields and buttons are removed.
-* The `standbyResultField` capacity is set to the maximum value, 524288.
+- The unnecessary script references are removed. 
+- The unused fields and buttons are removed.
+- The `standbyResultField` capacity is set to the maximum value, 524288.
 
 ```html
 <html>
@@ -490,5 +490,5 @@ For this form:
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← Authorize Minter >](authorize-minter.html)  |  |
+| [← Authorize Minter >](authorize-minter.html)  | [Get a List of NFTokens → >](get-list-nftokens.html) |
 
