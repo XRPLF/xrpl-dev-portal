@@ -29,7 +29,7 @@ if "lines" in result:
     lines = result["lines"]
     for line in lines:
         # Query result with trustline params
-        if target_addr == line["account"] and token == line["currency"]: 
+        if target_addr == line["account"] and token_name == line["currency"]: 
             if 'freeze' in line:
                 print(f'freeze status of trustline: {line["freeze"]}')
             else:
