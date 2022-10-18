@@ -1,9 +1,9 @@
 .top-banner {
     height: 46px;
-    background: url(../img/backgrounds/bg-apex-banner-2.png);
+    background: url(../img/backgrounds/bg-learning-banner.png);
     background-position: center;
     background-size: cover;
-    padding: 2px 0;
+    // padding: 2px 0;
     color: #fff;
     text-align: center;
     font-size: 16px;
@@ -12,13 +12,13 @@
 
     @include media-breakpoint-up(md) {
         padding: 5px 8px;
-        background: url(../img/backgrounds/bg-apex-banner-2-md.png);
+        background: url(../img/backgrounds/bg-learning-banner-md.png);
         background-position: center;
         background-size: cover;
     }
 
     @include media-breakpoint-up(xl) {
-        background: url(../img/backgrounds/bg-apex-banner-2-lg.png);
+        background: url(../img/backgrounds/bg-learning-banner-lg.png);
         background-position: center;
         background-size: cover;
     }
