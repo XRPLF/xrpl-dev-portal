@@ -21,7 +21,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 
 # Build trustline freeze transaction
 trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCurrencyAmount(
-    currency=token,
+    currency=token_name,
     issuer=target_addr,
     value = value 
 ),
