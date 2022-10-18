@@ -44,6 +44,6 @@ for escrow in escrows:
 
 # Add lists to escrow dict
 all_escrows_dict["sent"] = sent_escrows
-all_escrow_dict["received"] = received_escrows
+all_escrows_dict["received"] = received_escrows
 
-print(all_escrow_dict)
+print(all_escrows_dict)
