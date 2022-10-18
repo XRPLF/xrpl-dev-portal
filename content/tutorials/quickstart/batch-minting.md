@@ -490,5 +490,5 @@ For this form:
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← Authorize Minter >](authorize-minter.html)  | [Get a List of NFTokens → >](get-list-nftokens.html) |
+| [← Authorize Minter >](authorize-minter.html)  | [Get a List of NFTokens → >](get-nftoken-list.html) |
 
