@@ -37,6 +37,6 @@ For a practical example, see the [Batch Mint NFTokens](batch-minting.html) tutor
 * NFToken objects are minted ahead of time
 * Market activity for the initial sale of the NFToken object is captured on the ledger
 
-Downside
+### Downside
 
 You need to retain the appropriate XRP reserve for all of the NFToken objects you mint. As a rule of thumb, this is roughly 1/12th XRP per NFToken object at the current reserve rate. In the event that you do not have sufficient XRP in reserve, your mint transactions fail until you add sufficient XRP to your account.

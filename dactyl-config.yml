@@ -1060,6 +1060,22 @@ pages:
             - en
             - ja
 
+    -   md: concepts/interoperability/xrpl-interoperability.md
+        targets:
+            - en
+
+    -   md: concepts/interoperability/intro-to-evm-sidechain.md
+        targets:
+            - en
+
+    -   name: Hooks
+        html: https://xrpl-hooks.readme.io/
+        parent: xrpl-interoperability.html
+        blurb: Smart contract proposal for the XRP Ledger.
+        targets:
+            - en
+
+
     # Redirect old "the-rippled-server.html"
     -   name: The rippled Server
         html: the-rippled-server.html
@@ -2071,6 +2087,34 @@ pages:
             - en
             - ja
 
+    -   name: Interoperability - EVM Sidechain
+        html: evm-sidechains.html
+        parent: tutorials.html
+        blurb: Learn how to interact with the EVM Sidechain Devnet.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/interoperability/get-started-evm-sidechain.md
+        targets:
+            - en
+
+    -   md: tutorials/interoperability/connect-metamask-to-xrpl-evm-sidechain.md
+        targets:
+            - en
+
+    -   md: tutorials/interoperability/join-evm-sidechain-devnet.md
+        targets:
+            - en
+
+    -   md: tutorials/interoperability/evm-sidechain-validator-security.md
+        targets:
+            - en
+
+    -   md: tutorials/interoperability/evm-sidechain-run-a-validator-node.md
+        targets:
+            - en
 
 # References -------------------------------------------------------------------
 
