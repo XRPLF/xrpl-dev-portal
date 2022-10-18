@@ -302,26 +302,34 @@ exrpd init &lt;your_custom_moniker&gt; --chain-id exrp_1440001-1</code></p>
 <li>
 <p>Copy the Genesis File.</p>
 <p>Download the <code>genesis.json</code> file from here and copy it to the <code>config</code> directory: <code>~/.exrpd/config/genesis.json</code>. This is a genesis file with the chain-id and genesis accounts balances.</p>
-<p><code>bash
-wget [https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json](https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json) ~/.exrpd/config/</code></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">```bash
+wget [https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json](https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json) ~/.exrpd/config/
+```
+</code></pre></div>
 <p>Verify the genesis configuration file:</p>
-<p><code>bash
-exrpd validate-genesis</code></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">```bash
+exrpd validate-genesis
+```
+</code></pre></div>
 </li>
 <li>
 <p>Add Persistent Peer Nodes</p>
 <p>Set the <a class="external-link" href="https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#persistent-peer" target="_blank"><code>persistent_peer</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>s field in <code>~/.exrpd/config/config.toml</code> to specify peers with which your node maintains persistent connections. You can retrieve them from the list of available peers on the archive repo (<a class="external-link" href="https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt" target="_blank">https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt <i aria-hidden="true" class="fa fa-external-link"></i></a>).</p>
 <p>To get a list of entries from the <code>peers.txt</code> file in the <code>PEERS</code> variable, run the following command:</p>
-<p><code>bash
-PEERS=`curl -sL https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`</code></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">```bash
+PEERS=`curl -sL https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
+```
+</code></pre></div>
 <p>Use <code>sed</code> to include them in the configuration. You can also add them manually:</p>
-<p><code>bash
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.exrpd/config/config.toml</code></p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">```bash
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.exrpd/config/config.toml
+```
+</code></pre></div>
 </li>
 </ol>
 <h2 id="run-a-devnet-validator-node">Run a Devnet Validator Node<a aria-hidden="true" class="hover_anchor" href="#run-a-devnet-validator-node"><i class="fa fa-link"></i></a></h2>
 <p>Run the Devnet validator node using following command:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">exrpd tx staking create-validator <span class="se">\</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">exrpd tx staking create-validator <span class="se">\</span>
   --amount<span class="o">=</span>1000000000000axrp <span class="se">\</span>
   --pubkey<span class="o">=</span><span class="k">$(</span>exrpd tendermint show-validator<span class="k">)</span> <span class="se">\</span>
   --moniker<span class="o">=</span><span class="s2">"&lt;your_custom_moniker&gt;"</span> <span class="se">\</span>
@@ -337,7 +345,7 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.exrpd
 <p class="devportal-callout note"><strong>Note</strong> For more information on running a validator note, see <a href="evm-sidechain-run-a-validator-node.html">Run a validator</a></p>
 <h2 id="start-the-node">Start the Node<a aria-hidden="true" class="hover_anchor" href="#start-the-node"><i class="fa fa-link"></i></a></h2>
 <p>Start the node. </p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">exrpd start
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">exrpd start
 </code></pre></div>
 <p>Once enough voting power (+2/3) from the genesis validators is up-and-running, the node starts producing blocks.</p>
     </div>
