@@ -60,15 +60,15 @@ All these commands create your `~/.exrpd` (i.e `$HOME`) directory with subfol
 
     Download the `genesis.json` file from here and copy it to the `config` directory: `~/.exrpd/config/genesis.json`. This is a genesis file with the chain-id and genesis accounts balances.
 
-    ```bash
-    wget [https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json](https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json) ~/.exrpd/config/
-    ```
+        ```bash
+        wget [https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json](https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/genesis.json) ~/.exrpd/config/
+        ```
 
     Verify the genesis configuration file:
 
-    ```bash
-    exrpd validate-genesis
-    ```
+        ```bash
+        exrpd validate-genesis
+        ```
 
 2. Add Persistent Peer Nodes
 
@@ -76,15 +76,15 @@ All these commands create your `~/.exrpd` (i.e `$HOME`) directory with subfol
 
     To get a list of entries from the `peers.txt` file in the `PEERS` variable, run the following command:
 
-    ```bash
-    PEERS=`curl -sL https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
-    ```
+        ```bash
+        PEERS=`curl -sL https://raw.githubusercontent.com/Peersyst/xrp-evm-archive/main/devnet/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
+        ```
 
     Use `sed` to include them in the configuration. You can also add them manually:
 
-    ```bash
-    sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.exrpd/config/config.toml
-    ```
+        ```bash
+        sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.exrpd/config/config.toml
+        ```
 
 ## Run a Devnet Validator Node
 
