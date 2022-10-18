@@ -291,84 +291,97 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th>Name</th>
-<th>JSON Type</th>
-<th><a href="serialization.html">Internal Type</a></th>
-<th>Description</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>LedgerEntryType</code></td>
-<td>String</td>
-<td>UInt16</td>
-<td>The value <code>0x006F</code>, mapped to the string <code>Offer</code>, indicates that this object describes an order to trade currency.</td>
+<td style="text-align: left;"><code>Account</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The address of the account that owns this offer.</td>
 </tr>
 <tr>
-<td><code>Flags</code></td>
-<td>Number</td>
-<td>UInt32</td>
-<td>A bit-map of boolean flags enabled for this offer.</td>
+<td style="text-align: left;"><code>BookDirectory</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The ID of the <a href="directorynode.html">Offer Directory</a> that links to this offer.</td>
 </tr>
 <tr>
-<td><code>Account</code></td>
-<td>String</td>
-<td>AccountID</td>
-<td>The address of the account that owns this offer.</td>
+<td style="text-align: left;"><code>BookNode</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A hint indicating which page of the offer directory links to this object, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
-<td><code>Sequence</code></td>
-<td>Number</td>
-<td>UInt32</td>
-<td>The <code>Sequence</code> value of the <a href="offercreate.html">OfferCreate</a> transaction that created this <code>Offer</code> object. Used in combination with the <code>Account</code> to identify this Offer.</td>
+<td style="text-align: left;"><code>Expiration</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Indicates the time after which this offer is considered unfunded. See <a href="basic-data-types.html#specifying-time">Specifying Time</a> for details.</td>
 </tr>
 <tr>
-<td><code>TakerPays</code></td>
-<td>String or Object</td>
-<td>Amount</td>
-<td>The remaining amount and type of currency requested by the offer creator.</td>
+<td style="text-align: left;"><code>Flags</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A bit-map of boolean flags enabled for this offer.</td>
 </tr>
 <tr>
-<td><code>TakerGets</code></td>
-<td>String or Object</td>
-<td>Amount</td>
-<td>The remaining amount and type of currency being provided by the offer creator.</td>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x006F</code>, mapped to the string <code>Offer</code>, indicates that this object describes an order to trade currency.</td>
 </tr>
 <tr>
-<td><code>BookDirectory</code></td>
-<td>String</td>
-<td>Hash256</td>
-<td>The ID of the <a href="directorynode.html">Offer Directory</a> that links to this offer.</td>
+<td style="text-align: left;"><code>OwnerNode</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. <strong>Note:</strong> The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
 </tr>
 <tr>
-<td><code>BookNode</code></td>
-<td>String</td>
-<td>UInt64</td>
-<td>A hint indicating which page of the offer directory links to this object, in case the directory consists of multiple pages.</td>
+<td style="text-align: left;"><code>PreviousTxnID</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The identifying hash of the transaction that most recently modified this object.</td>
 </tr>
 <tr>
-<td><code>OwnerNode</code></td>
-<td>String</td>
-<td>UInt64</td>
-<td>A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. <strong>Note:</strong> The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
+<td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
 </tr>
 <tr>
-<td><code>PreviousTxnID</code></td>
-<td>String</td>
-<td>Hash256</td>
-<td>The identifying hash of the transaction that most recently modified this object.</td>
+<td style="text-align: left;"><code>Sequence</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The <code>Sequence</code> value of the <a href="offercreate.html">OfferCreate</a> transaction that created this <code>Offer</code> object. Used in combination with the <code>Account</code> to identify this Offer.</td>
 </tr>
 <tr>
-<td><code>PreviousTxnLgrSeq</code></td>
-<td>Number</td>
-<td>UInt32</td>
-<td>The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
+<td style="text-align: left;"><code>TakerPays</code></td>
+<td style="text-align: left;">String or Object</td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The remaining amount and type of currency requested by the offer creator.</td>
 </tr>
 <tr>
-<td><code>Expiration</code></td>
-<td>Number</td>
-<td>UInt32</td>
-<td>(Optional) Indicates the time after which this offer is considered unfunded. See <a href="basic-data-types.html#specifying-time">Specifying Time</a> for details.</td>
+<td style="text-align: left;"><code>TakerGets</code></td>
+<td style="text-align: left;">String or Object</td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The remaining amount and type of currency being provided by the offer creator.</td>
 </tr>
 </tbody>
 </table>
@@ -638,6 +651,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

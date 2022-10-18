@@ -291,6 +291,7 @@
 <th>Name</th>
 <th>JSON Type</th>
 <th><a href="serialization.html">Internal Type</a></th>
+<th>Required?</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -299,25 +300,29 @@
 <td><code>Amendments</code></td>
 <td>Array</td>
 <td>Vector256</td>
-<td><em>(Optional)</em> Array of 256-bit <a href="amendments.html#about-amendments">amendment IDs</a> for all currently-enabled amendments. If omitted, there are no enabled amendments.</td>
-</tr>
-<tr>
-<td><code>Majorities</code></td>
-<td>Array</td>
-<td>STArray</td>
-<td><em>(Optional)</em> Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support.</td>
+<td>No</td>
+<td>Array of 256-bit <a href="amendments.html#about-amendments">amendment IDs</a> for all currently-enabled amendments. If omitted, there are no enabled amendments.</td>
 </tr>
 <tr>
 <td><code>Flags</code></td>
 <td>Number</td>
 <td>UInt32</td>
-<td>A bit-map of boolean flags. No flags are defined for the Amendments object type, so this value is always <code>0</code>.</td>
+<td>Yes</td>
+<td>A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>Amendments</code> objects. The value is always <code>0</code>.</td>
 </tr>
 <tr>
 <td><code>LedgerEntryType</code></td>
 <td>String</td>
 <td>UInt16</td>
+<td>Yes</td>
 <td>The value <code>0x0066</code>, mapped to the string <code>Amendments</code>, indicates that this object describes the status of amendments to the XRP Ledger.</td>
+</tr>
+<tr>
+<td><code>Majorities</code></td>
+<td>Array</td>
+<td>STArray</td>
+<td>No</td>
+<td>Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support.</td>
 </tr>
 </tbody>
 </table>
@@ -581,6 +586,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

@@ -293,135 +293,157 @@
 <th style="text-align: left;">Field</th>
 <th style="text-align: left;">JSON Type</th>
 <th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>LedgerEntryType</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">The value <code>0x0061</code>, mapped to the string <code>AccountRoot</code>, indicates that this is an AccountRoot object.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>Account</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The identifying (classic) address of this <a href="accounts.html">account</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>AccountTxnID</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code> transaction field</a>. To enable it, send an <a href="accountset.html#accountset-flags">AccountSet transaction with the <code>asfAccountTxnID</code> flag enabled</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Balance</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Amount</td>
+<td style="text-align: left;">No</td>
 <td style="text-align: left;">The account's current <a href="basic-data-types.html#specifying-currency-amounts">XRP balance in drops</a>, represented as a string.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>BurnedNFTokens</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">How many total of this account's issued <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> have been burned. This number is always equal or less than <code>MintedNFTokens</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Domain</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Blob</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. <a class="external-link" href="https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>EmailHash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash128</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The md5 hash of an email address. Clients can use this to look up an avatar through services such as <a class="external-link" href="https://en.gravatar.com/" target="_blank">Gravatar <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#accountroot-flags"><code>Flags</code></a></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">A bit-map of boolean flags enabled for this account.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x0061</code>, mapped to the string <code>AccountRoot</code>, indicates that this is an AccountRoot object.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>MessageKey</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Blob</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>MintedNFTokens</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">How many total <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> have been minted by and on behalf of this account.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NFTokenMinter</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Another account that is authorized to mint <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> on behalf of this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerCount</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The number of objects this account owns in the ledger, which contributes to its owner reserve.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The identifying hash of the transaction that most recently modified this object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Sequence</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#account-sequence">sequence number</a> of the next valid transaction for this account.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AccountTxnID</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash256</td>
-<td style="text-align: left;"><em>(Optional)</em> The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code> transaction field</a>. To enable it, send an <a href="accountset.html#accountset-flags">AccountSet transaction with the <code>asfAccountTxnID</code> flag enabled</a>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>BurnedNFTokens</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> How many total of this account's issued <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> have been burned. This number is always equal or less than <code>MintedNFTokens</code>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Domain</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. <a class="external-link" href="https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>EmailHash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash128</td>
-<td style="text-align: left;"><em>(Optional)</em> The md5 hash of an email address. Clients can use this to look up an avatar through services such as <a class="external-link" href="https://en.gravatar.com/" target="_blank">Gravatar <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>MessageKey</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>MintedNFTokens</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> How many total <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> have been minted by and on behalf of this account.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>NFTokenMinter</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">AccountID</td>
-<td style="text-align: left;"><em>(Optional)</em> Another account that is authorized to mint <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> on behalf of this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>RegularKey</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;"><em>(Optional)</em> The address of a <a href="cryptographic-keys.html">key pair</a> that can be used to sign transactions for this account instead of the master key. Use a <a href="setregularkey.html">SetRegularKey transaction</a> to change this value.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The address of a <a href="cryptographic-keys.html">key pair</a> that can be used to sign transactions for this account instead of the master key. Use a <a href="setregularkey.html">SetRegularKey transaction</a> to change this value.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Sequence</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#account-sequence">sequence number</a> of the next valid transaction for this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TicketCount</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> How many <a href="tickets.html">Tickets</a> this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. <em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>.)</em></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">How many <a href="tickets.html">Tickets</a> this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. <em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>.)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TickSize</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt8</td>
-<td style="text-align: left;"><em>(Optional)</em> How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are <code>3</code> to <code>15</code>, inclusive. <em>(Added by the <a href="known-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are <code>3</code> to <code>15</code>, inclusive. <em>(Added by the <a href="known-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TransferRate</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> A <a href="transfer-fees.html">transfer fee</a> to charge other users for sending currency issued by this account to each other.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A <a href="transfer-fees.html">transfer fee</a> to charge other users for sending currency issued by this account to each other.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>WalletLocator</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
-<td style="text-align: left;"><em>(Optional)</em> <strong>DEPRECATED</strong>. Do not use.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong>. Do not use.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>WalletSize</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> <strong>DEPRECATED</strong>. Do not use.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong>. Do not use.</td>
 </tr>
 </tbody>
 </table>
@@ -738,6 +760,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

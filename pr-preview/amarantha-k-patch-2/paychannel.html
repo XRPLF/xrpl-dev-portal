@@ -283,7 +283,7 @@
 <span class="w">    </span><span class="nt">"CancelAfter"</span><span class="p">:</span><span class="w"> </span><span class="mi">536891313</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"SourceTag"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"DestinationTag"</span><span class="p">:</span><span class="w"> </span><span class="mi">1002341</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"DesinationNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"DestinationNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PayChannel"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span><span class="w"></span>
@@ -300,105 +300,122 @@
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">JSON Type</th>
 <th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>LedgerEntryType</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">The value <code>0x0078</code>, mapped to the string <code>PayChannel</code>, indicates that this object is a payment channel object.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>Account</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The source address that owns this payment channel. This comes from the sending address of the transaction that created the channel.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Destination</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">The destination address for this payment channel. While the payment channel is open, this address is the only one that can receive XRP from the channel. This comes from the <code>Destination</code> field of the transaction that created the channel.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Amount</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">Total <a href="basic-data-types.html#specifying-currency-amounts">XRP, in drops</a>, that has been allocated to this channel. This includes XRP that has been paid to the destination address. This is initially set by the transaction that created the channel and can be increased if the source address sends a PaymentChannelFund transaction.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Balance</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">Total <a href="basic-data-types.html#specifying-currency-amounts">XRP, in drops</a>, already paid out by the channel. The difference between this value and the <code>Amount</code> field is how much XRP can still be paid to the destination address with PaymentChannelClaim transactions. If the channel closes, the remaining difference is returned to the source address.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>PublicKey</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Blob</td>
-<td style="text-align: left;">Public key, in hexadecimal, of the key pair that can be used to sign claims against this channel. This can be any valid secp256k1 or Ed25519 public key. This is set by the transaction that created the channel and must match the public key used in claims against the channel. The channel source address can also send XRP from this channel to the destination without signed claims.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>SettleDelay</code></td>
+<td style="text-align: left;"><code>CancelAfter</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Number of seconds the source address must wait to close the channel if it still has any XRP in it. Smaller values mean that the destination address has less time to redeem any outstanding claims after the source address requests to close the channel. Can be any value that fits in a 32-bit unsigned integer (0 to 2^32-1). This is set by the transaction that creates the channel.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The immutable expiration time for this payment channel, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. This channel is expired if this value is present and smaller than the previous ledger's <a href="ledger-header.html"><code>close_time</code> field</a>. This is optionally set by the transaction that created the channel, and cannot be changed.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Destination</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The destination address for this payment channel. While the payment channel is open, this address is the only one that can receive XRP from the channel. This comes from the <code>Destination</code> field of the transaction that created the channel.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DestinationTag</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DestinationNode</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the <a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir amendment</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Expiration</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The mutable expiration time for this payment channel, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. The channel is expired if this value is present and smaller than the previous ledger's <a href="ledger-header.html"><code>close_time</code> field</a>. See <a href="#setting-channel-expiration">Setting Channel Expiration</a> for more details.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Flags</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>PayChannel</code> objects. The value is always <code>0</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x0078</code>, mapped to the string <code>PayChannel</code>, indicates that this object is a payment channel object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">A hint indicating which page of the source address's owner directory links to this object, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The identifying hash of the transaction that most recently modified this object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this payment channel. Currently, the protocol defines no flags for <code>PayChannel</code> objects.</td>
+<td style="text-align: left;"><code>PublicKey</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Blob</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Public key, in hexadecimal, of the key pair that can be used to sign claims against this channel. This can be any valid secp256k1 or Ed25519 public key. This is set by the transaction that created the channel and must match the public key used in claims against the channel. The channel source address can also send XRP from this channel to the destination without signed claims.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Expiration</code></td>
+<td style="text-align: left;"><code>SettleDelay</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> The mutable expiration time for this payment channel, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. The channel is expired if this value is present and smaller than the previous ledger's <a href="ledger-header.html"><code>close_time</code> field</a>. See <a href="#setting-channel-expiration">Setting Channel Expiration</a> for more details.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>CancelAfter</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> The immutable expiration time for this payment channel, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. This channel is expired if this value is present and smaller than the previous ledger's <a href="ledger-header.html"><code>close_time</code> field</a>. This is optionally set by the transaction that created the channel, and cannot be changed.</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Number of seconds the source address must wait to close the channel if it still has any XRP in it. Smaller values mean that the destination address has less time to redeem any outstanding claims after the source address requests to close the channel. Can be any value that fits in a 32-bit unsigned integer (0 to 2^32-1). This is set by the transaction that creates the channel.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>SourceTag</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>DestinationTag</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>DestinationNode</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">UInt64</td>
-<td style="text-align: left;"><em>(Optional)</em> A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the <a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir amendment</a>.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address.</td>
 </tr>
 </tbody>
 </table>
@@ -658,6 +675,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

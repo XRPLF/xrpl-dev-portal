@@ -266,13 +266,13 @@
 <p>The <code>Ticket</code> object type represents a <a href="tickets.html">Ticket</a>, which tracks an account <a href="basic-data-types.html#account-sequence">sequence number</a> that has been set aside for future use. You can create new tickets with a <a href="ticketcreate.html">TicketCreate transaction</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="New in: rippled 1.7.0"><img alt="New in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <h2 id="example-ticket-json">Example Ticket JSON<a aria-hidden="true" class="hover_anchor" href="#example-ticket-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Flags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"LedgerEntryType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"OwnerNode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"PreviousTxnID"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"F19AD4577212D3BEACA0F75FE1BA1644F2E854D46E8D62E9C95D18E9708CBFB1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"TicketSequence"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F19AD4577212D3BEACA0F75FE1BA1644F2E854D46E8D62E9C95D18E9708CBFB1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TicketSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="ticket-fields">Ticket Fields<a aria-hidden="true" class="hover_anchor" href="#ticket-fields"><i class="fa fa-link"></i></a></h2>
@@ -283,50 +283,58 @@
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">JSON Type</th>
 <th style="text-align: left;">Internal Type</th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>LedgerEntryType</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">The value <code>0x0054</code>, mapped to the string <code>Ticket</code>, indicates that this object is a Ticket object.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>Account</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The <a href="accounts.html">account</a> that owns this Ticket.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Flags</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">A bit-map of Boolean flags enabled for this Ticket. Currently, there are no flags defined for Tickets.</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>Ticket</code> objects. The value is always <code>0</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x0054</code>, mapped to the string <code>Ticket</code>, indicates that this object is a Ticket object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. <strong>Note:</strong> The object does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The identifying hash of the <a href="transaction-basics.html">transaction</a> that most recently modified this object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TicketSequence</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The <a href="basic-data-types.html#account-sequence">Sequence Number</a> this Ticket sets aside.</td>
 </tr>
 </tbody>
@@ -566,6 +574,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

@@ -319,9 +319,9 @@
 <h2 id="beneficiaries-of-the-transaction-cost">Beneficiaries of the Transaction Cost<a aria-hidden="true" class="hover_anchor" href="#beneficiaries-of-the-transaction-cost"><i class="fa fa-link"></i></a></h2>
 <p>The transaction cost is not paid to any party: the XRP is irrevocably destroyed.</p>
 <h2 id="load-cost-and-open-ledger-cost">Load Cost and Open Ledger Cost<a aria-hidden="true" class="hover_anchor" href="#load-cost-and-open-ledger-cost"><i class="fa fa-link"></i></a></h2>
-<p>When the <a href="known-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, there are two thresholds for the transaction cost:</p>
+<p>There are two thresholds for the transaction cost:</p>
 <ul>
-<li>If the transaction cost does not meet a <code>rippled</code> server's <a href="#local-load-cost">load-based transaction cost threshold</a>, the server ignores the transaction completely. (This logic is essentially unchanged with or without the amendment.)</li>
+<li>If the transaction cost does not meet a <code>rippled</code> server's <a href="#local-load-cost">load-based transaction cost threshold</a>, the server ignores the transaction completely.</li>
 <li>If the transaction cost does not meet a <code>rippled</code> server's <a href="#open-ledger-cost">open ledger cost threshold</a>, the server queues the transaction for a later ledger.</li>
 </ul>
 <p>This divides transactions into roughly three categories:</p>
@@ -387,7 +387,7 @@
 </table>
 <h2 id="querying-the-transaction-cost">Querying the Transaction Cost<a aria-hidden="true" class="hover_anchor" href="#querying-the-transaction-cost"><i class="fa fa-link"></i></a></h2>
 <p>The <code>rippled</code> APIs have two ways to query the local load-based transaction cost: the <code>server_info</code> command (intended for humans) and the <code>server_state</code> command (intended for machines).</p>
-<p>If the <a href="known-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, you can use the <a href="fee.html">fee method</a> to check the open ledger cost.</p>
+<p>You can use the <a href="fee.html">fee method</a> to check the open ledger cost.</p>
 <h3 id="server_info">server_info<a aria-hidden="true" class="hover_anchor" href="#server_info"><i class="fa fa-link"></i></a></h3>
 <p>The <a href="server_info.html">server_info method</a> reports the unscaled minimum XRP cost, as of the previous ledger, as <code>validated_ledger.base_fee_xrp</code>, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying that <code>base_fee_xrp</code> value by the <code>load_factor</code> parameter in the same response, which represents the server's current load level. In other words:</p>
 <p><strong>Current Transaction Cost in XRP = <code>base_fee_xrp</code> × <code>load_factor</code></strong></p>
@@ -423,7 +423,7 @@
 <p>As a special case, an account can send a <a href="setregularkey.html">SetRegularKey</a> transaction with a transaction cost of <code>0</code>, as long as the account's <a href="accountroot.html"><code>lsfPasswordSpent</code> flag</a> is disabled. This transaction must be signed by the account's <em>master key pair</em>. Sending this transaction enables the <code>lsfPasswordSpent</code> flag.</p>
 <p>This feature is designed to allow you to recover an account if the regular key is compromised, without worrying about whether the compromised account has any XRP available. This way, you can regain control of the account before you send more XRP to it.</p>
 <p>The <a href="accountroot.html"><code>lsfPasswordSpent</code> flag</a> starts out disabled. It gets enabled when you send a SetRegularKey transaction signed by the master key pair. It gets disabled again when the account receives a <a href="payment.html">Payment</a> of XRP.</p>
-<p>When the <a href="known-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, <code>rippled</code> prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.</p>
+<p><code>rippled</code> prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.</p>
 <h2 id="changing-the-transaction-cost">Changing the Transaction Cost<a aria-hidden="true" class="hover_anchor" href="#changing-the-transaction-cost"><i class="fa fa-link"></i></a></h2>
 <p>The XRP Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="fee-voting.html">Fee Voting</a> for more information.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
@@ -674,6 +674,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

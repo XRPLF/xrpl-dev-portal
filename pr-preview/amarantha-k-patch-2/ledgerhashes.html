@@ -291,42 +291,48 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th>Name</th>
-<th>JSON Type</th>
-<th><a href="serialization.html">Internal Type</a></th>
-<th>Description</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>LedgerEntryType</code></td>
-<td>String</td>
-<td>UInt16</td>
-<td>The value <code>0x0068</code>, mapped to the string <code>LedgerHashes</code>, indicates that this object is a list of ledger hashes.</td>
+<td style="text-align: left;"><code>FirstLedgerSequence</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Do not use. (The "recent hashes" object of the production XRP Ledger has the value <code>2</code> in this field as a result of a previous <code>rippled</code> software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in <a href="parallel-networks.html">parallel networks</a> started with more recent versions of <code>rippled</code>.)</td>
 </tr>
 <tr>
-<td><code>FirstLedgerSequence</code></td>
-<td>Number</td>
-<td>UInt32</td>
-<td><strong>DEPRECATED</strong> Do not use. (The "recent hashes" object of the production XRP Ledger has the value <code>2</code> in this field as a result of a previous <code>rippled</code> software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in <a href="parallel-networks.html">parallel networks</a> started with more recent versions of <code>rippled</code>.)</td>
+<td style="text-align: left;"><code>Flags</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>LedgerHashes</code> objects. The value is always <code>0</code>.</td>
 </tr>
 <tr>
-<td><code>LastLedgerSequence</code></td>
-<td>Number</td>
-<td>UInt32</td>
-<td>The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of the last entry in this object's <code>Hashes</code> array.</td>
+<td style="text-align: left;"><code>Hashes</code></td>
+<td style="text-align: left;">Array of Strings</td>
+<td style="text-align: left;">Vector256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">An array of up to 256 ledger hashes. The contents depend on which sub-type of <code>LedgerHashes</code> object this is.</td>
 </tr>
 <tr>
-<td><code>Hashes</code></td>
-<td>Array of Strings</td>
-<td>Vector256</td>
-<td>An array of up to 256 ledger hashes. The contents depend on which sub-type of <code>LedgerHashes</code> object this is.</td>
+<td style="text-align: left;"><code>LastLedgerSequence</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of the last entry in this object's <code>Hashes</code> array.</td>
 </tr>
 <tr>
-<td><code>Flags</code></td>
-<td>Number</td>
-<td>UInt32</td>
-<td>A bit-map of boolean flags for this object. No flags are defined for this type.</td>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x0068</code>, mapped to the string <code>LedgerHashes</code>, indicates that this object is a list of ledger hashes.</td>
 </tr>
 </tbody>
 </table>
@@ -577,6 +583,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

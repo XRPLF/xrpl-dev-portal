@@ -307,84 +307,97 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th>Name</th>
-<th>JSON Type</th>
-<th><a href="serialization.html">Internal Type</a></th>
-<th>Description</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>LedgerEntryType</code></td>
-<td>String</td>
-<td>UInt16</td>
-<td>The value <code>0x0064</code>, mapped to the string <code>DirectoryNode</code>, indicates that this object is part of a Directory.</td>
+<td style="text-align: left;"><code>ExchangeRate</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">(Offer Directories only) <strong>DEPRECATED</strong>. Do not use.</td>
 </tr>
 <tr>
-<td><code>Flags</code></td>
-<td>Number</td>
-<td>UInt32</td>
-<td>A bit-map of boolean flags enabled for this directory. Currently, the protocol defines no flags for DirectoryNode objects.</td>
+<td style="text-align: left;"><code>Flags</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>DirectoryNode</code> objects. The value is always <code>0</code>.</td>
 </tr>
 <tr>
-<td><code>RootIndex</code></td>
-<td>String</td>
-<td>Hash256</td>
-<td>The ID of root object for this directory.</td>
+<td style="text-align: left;"><code>Indexes</code></td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">Vector256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The contents of this Directory: an array of IDs of other objects.</td>
 </tr>
 <tr>
-<td><code>Indexes</code></td>
-<td>Array</td>
-<td>Vector256</td>
-<td>The contents of this Directory: an array of IDs of other objects.</td>
+<td style="text-align: left;"><code>IndexNext</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">If this Directory consists of multiple pages, this ID links to the next object in the chain, wrapping around at the end.</td>
 </tr>
 <tr>
-<td><code>IndexNext</code></td>
-<td>Number</td>
-<td>UInt64</td>
-<td>(Optional) If this Directory consists of multiple pages, this ID links to the next object in the chain, wrapping around at the end.</td>
+<td style="text-align: left;"><code>IndexPrevious</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">If this Directory consists of multiple pages, this ID links to the previous object in the chain, wrapping around at the beginning.</td>
 </tr>
 <tr>
-<td><code>IndexPrevious</code></td>
-<td>Number</td>
-<td>UInt64</td>
-<td>(Optional) If this Directory consists of multiple pages, this ID links to the previous object in the chain, wrapping around at the beginning.</td>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x0064</code>, mapped to the string <code>DirectoryNode</code>, indicates that this object is part of a Directory.</td>
 </tr>
 <tr>
-<td><code>Owner</code></td>
-<td>String</td>
-<td>AccountID</td>
-<td>(Owner Directories only) The address of the account that owns the objects in this directory.</td>
+<td style="text-align: left;"><code>Owner</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">(Owner Directories only) The address of the account that owns the objects in this directory.</td>
 </tr>
 <tr>
-<td><code>ExchangeRate</code></td>
-<td>Number</td>
-<td>UInt64</td>
-<td>(Offer Directories only) <strong>DEPRECATED</strong>. Do not use.</td>
+<td style="text-align: left;"><code>RootIndex</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The ID of root object for this directory.</td>
 </tr>
 <tr>
-<td><code>TakerPaysCurrency</code></td>
-<td>String</td>
-<td>Hash160</td>
-<td>(Offer Directories only) The currency code of the <code>TakerPays</code> amount from the offers in this directory.</td>
+<td style="text-align: left;"><code>TakerGetsCurrency</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash160</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">(Offer Directories only) The currency code of the <code>TakerGets</code> amount from the offers in this directory.</td>
 </tr>
 <tr>
-<td><code>TakerPaysIssuer</code></td>
-<td>String</td>
-<td>Hash160</td>
-<td>(Offer Directories only) The issuer of the <code>TakerPays</code> amount from the offers in this directory.</td>
+<td style="text-align: left;"><code>TakerGetsIssuer</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash160</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">(Offer Directories only) The issuer of the <code>TakerGets</code> amount from the offers in this directory.</td>
 </tr>
 <tr>
-<td><code>TakerGetsCurrency</code></td>
-<td>String</td>
-<td>Hash160</td>
-<td>(Offer Directories only) The currency code of the <code>TakerGets</code> amount from the offers in this directory.</td>
+<td style="text-align: left;"><code>TakerPaysCurrency</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash160</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">(Offer Directories only) The currency code of the <code>TakerPays</code> amount from the offers in this directory.</td>
 </tr>
 <tr>
-<td><code>TakerGetsIssuer</code></td>
-<td>String</td>
-<td>Hash160</td>
-<td>(Offer Directories only) The issuer of the <code>TakerGets</code> amount from the offers in this directory.</td>
+<td style="text-align: left;"><code>TakerPaysIssuer</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash160</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">(Offer Directories only) The issuer of the <code>TakerPays</code> amount from the offers in this directory.</td>
 </tr>
 </tbody>
 </table>
@@ -643,6 +656,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

@@ -274,171 +274,111 @@
 </ul>
 <h3 id="nftokenoffer-fields"><code>NFTokenOffer</code> Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-fields"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Field Name</strong>
-</td>
-<td><strong>Required?</strong>
-</td>
-<td><strong>JSON Type</strong>
-</td>
-<td><strong>Internal Type</strong>
-</td>
-<td><strong>Description</strong>
-</td>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Amount</code></td>
+<td style="text-align: left;">object or string</td>
+<td style="text-align: left;">AMOUNT</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Amount expected or offered for the NFToken. If the token has the <code>lsfOnlyXRP</code> flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to <code>"0"</code>).</td>
 </tr>
 <tr>
-<td><code>Owner</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>AccountID
-   </td>
-<td><code>Owner</code> of the account that is creating and owns the offer. Only the current <code>Owner</code> of an <code>NFToken</code> can create an offer to sell an <code>NFToken</code>, but any account can create an offer to buy an <code>NFToken</code>.
-   </td>
+<td style="text-align: left;"><code>Destination</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The AccountID for which this offer is intended. If present, only that account can accept the offer.</td>
 </tr>
 <tr>
-<td><code>LedgerEntryType</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>UInt16
-   </td>
-<td>The type of ledger object (<code>0x0074</code>).
-   </td>
+<td style="text-align: left;"><code>Expiration</code></td>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch.</td>
 </tr>
 <tr>
-<td><code>PreviousTxnID</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>Hash256
-   </td>
-<td>Identifying hash of the transaction that most recently modified this object.
-   </td>
+<td style="text-align: left;"><code>Flags</code></td>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.</td>
 </tr>
 <tr>
-<td><code>PreviousTxnLgrSeq</code>
-</td>
-<td>Yes
-   </td>
-<td>number
-   </td>
-<td>UInt32
-   </td>
-<td>Index of the ledger that contains the transaction that most recently modified this object.
-   </td>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The type of ledger object (0x0074).</td>
 </tr>
 <tr>
-<td><code>NFTokenID</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>Hash256
-   </td>
-<td><code>NFTokenID</code> of the <code>NFToken</code> object referenced by this offer.
-   </td>
+<td style="text-align: left;"><code>NFTokenID</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">NFTokenID of the NFToken object referenced by this offer.</td>
 </tr>
 <tr>
-<td><code>Amount</code>
-</td>
-<td>Yes
-   </td>
-<td>object or string
-   </td>
-<td>AMOUNT
-   </td>
-<td>Amount expected or offered for the <code>NFToken</code>. If the token has the <code>lsfOnlyXRP</code> flag set, the amount must be specified in XRP.
-<p>
-Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the <code>Amount</code> field can be equal to <code>"0"</code>).
-   </p></td>
+<td style="text-align: left;"><code>NFTokenOfferNode</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.</td>
 </tr>
 <tr>
-<td><code>Expiration</code>
-</td>
-<td>No
-   </td>
-<td>number
-   </td>
-<td>UInt32
-   </td>
-<td>The time after which the offer is no longer active. The value is the number of seconds since the <a class="external-link" href="https://xrpl.org/basic-data-types.html#specifying-time" target="_blank">Ripple Epoch <i aria-hidden="true" class="fa fa-external-link"></i></a>.
-   </td>
+<td style="text-align: left;"><code>Owner</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Owner of the account that is creating and owns the offer. Only the current Owner of an NFToken can create an offer to sell an NFToken, but any account can create an offer to buy an NFToken.</td>
 </tr>
 <tr>
-<td><code>Destination</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>AccountID
-   </td>
-<td>The <code>AccountID</code> for which this offer is intended. If present, only that account can accept the offer.
-   </td>
+<td style="text-align: left;"><code>OwnerNode</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.</td>
 </tr>
 <tr>
-<td><code>OwnerNode</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>UInt64
-   </td>
-<td>Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.
-   </td>
+<td style="text-align: left;"><code>PreviousTxnID</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Identifying hash of the transaction that most recently modified this object.</td>
 </tr>
 <tr>
-<td><code>NFTokenOfferNode</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>UInt64
-   </td>
-<td>Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.
-   </td>
+<td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Index of the ledger that contains the transaction that most recently modified this object.</td>
 </tr>
-<tr>
-<td><code>Flags</code>
-</td>
-<td>Yes
-   </td>
-<td>number
-   </td>
-<td>UInt32
-   </td>
-<td>A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.
-   </td>
-</tr>
+</tbody>
 </table>
 <h4 id="nftokenoffer-flags">NFTokenOffer Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-flags"><i class="fa fa-link"></i></a></h4>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Flag Name</strong>
-</td>
-<td><strong>Flag Value</strong>
-</td>
-<td><strong>Description</strong>
-</td>
+<th>Flag Name</th>
+<th>Flag Value</th>
+<th>Description</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td><code>lsfSellNFToken</code>
-</td>
-<td><code>0x00000001</code>
-</td>
-<td>If set, the offer is a sell offer. Otherwise, the offer is a buy offer.
-   </td>
+<td><code>lsfSellNFToken</code></td>
+<td><code>0x00000001</code></td>
+<td>If enabled, the offer is a sell offer. Otherwise, the offer is a buy offer.</td>
 </tr>
+</tbody>
 </table>
 <h2 id="nftokenoffer-transactions"><code>NFTokenOffer</code> Transactions<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-transactions"><i class="fa fa-link"></i></a></h2>
 <p>Token offers on XRPL are stored sorted by quality in an order book and automatically matched by an on-ledger mechanism. An <code>NFTokenOffer</code> is not stored in an order book and is never automatically matched or executed.</p>
@@ -687,6 +627,11 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

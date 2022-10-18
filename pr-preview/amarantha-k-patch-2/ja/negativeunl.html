@@ -297,33 +297,45 @@
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">JSON Type</th>
 <th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>LedgerEntryType</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">The value <code>0x004E</code>, mapped to the string <code>NegativeUNL</code>, indicates that this object is the Negative UNL.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>DisabledValidators</code></td>
 <td style="text-align: left;">Array</td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(May be omitted)</em> A list of <code>DisabledValidator</code> objects (see below), each representing a trusted validator that is currently disabled.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A list of <code>DisabledValidator</code> objects (see below), each representing a trusted validator that is currently disabled.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Flags</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A bit-map of boolean flags. No flags are defined for the NegativeUNL object type, so this value is always <code>0</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x004E</code>, mapped to the string <code>NegativeUNL</code>, indicates that this object is the Negative UNL.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ValidatorToDisable</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The public key of a trusted validator that is scheduled to be disabled in the next flag ledger.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The public key of a trusted validator that is scheduled to be disabled in the next flag ledger.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ValidatorToReEnable</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The public key of a trusted validator in the Negative UNL that is scheduled to be re-enabled in the next flag ledger.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The public key of a trusted validator in the Negative UNL that is scheduled to be re-enabled in the next flag ledger.</td>
 </tr>
 </tbody>
 </table>
@@ -591,6 +603,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
