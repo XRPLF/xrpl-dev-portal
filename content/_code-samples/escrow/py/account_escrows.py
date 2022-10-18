@@ -43,7 +43,7 @@ for escrow in escrows:
             received_escrows.append(escrow_data)
 
 # Add lists to escrow dict
-all_escrow_dict["sent"] = sent_escrows
+all_escrows_dict["sent"] = sent_escrows
 all_escrow_dict["received"] = received_escrows
 
 print(all_escrow_dict)
