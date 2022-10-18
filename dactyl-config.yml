@@ -1152,6 +1152,11 @@ pages:
         targets:
             - en
             - ja
+            
+    -   md: tutorials/quickstart/get-nftoken-list.md
+        targets:
+            - en
+            - ja
 
     -   md: tutorials/get-started/get-started.md
         targets:

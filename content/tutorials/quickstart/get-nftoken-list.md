@@ -9,7 +9,7 @@ labels:
 
 # Get a List of NFTokens
 
-You can list all of the tokens that currently exist from the XRP Ledger. The process involves repeatedly using the `ledger_data` request, filtering the NFToken page objects, then listing the array of NFToken objects stored on the page. This example demonstrates how to extract NFToken objects and NFTokenIDs, and how to get information for the listed NFTokens using the `nft_info` request to the Clio server.
+You can list all of the tokens that currently exist on the XRP Ledger. The process involves repeatedly using the `ledger_data` request, filtering the `NFToken` page objects, then listing the array of `NFToken` objects stored on the page. This example demonstrates how to extract `NFToken` objects and `NFTokenIDs`, and how to get information for the listed NFTokens using the `nft_info` request to the Clio server.
 
 ## Usage
 
@@ -19,20 +19,20 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 All transactions on the XRP Ledger are available for public review. You do not need an account or credentials to access information about minting and trading NFTokens.
 
-To get a list of current NFTokens on the XRP Ledger, click **Get NFTokens**. The button retrieves 200 transactions (the maximum batch allowance), then filters to show only the information from NFToken pages. The row marker for the response is stored in the **Marker** field. Each new search starts at the marker to return a unique set of records for the next 200 transactions. Click **Get NFTokens** repeatedly to retrieve all of the NFTokens on the XRP Ledger.
+To get a list of current `NFTokens` on the XRP Ledger, click **Get NFTokens**. The button retrieves 200 transactions (the maximum batch allowance), then filters to show only the information from `NFToken` pages. The row marker for the response is stored in the **Marker** field. Each new search starts at the marker to return a unique set of records for the next 200 transactions. Click **Get NFTokens** repeatedly to retrieve all of the `NFTokens` on the XRP Ledger.
 
 ### Get NFTokenIDs
 
-Click **Get NFToken IDs** for a more finely grained search that returns only the NFTokenIDs from each batch of 200 transactions. Continue to click **Get NFToken IDs**  to retrieve all NFToken IDs on the XRP Ledger.
+Click **Get NFToken IDs** for a more finely grained search that returns only the `NFTokenIDs` from each batch of 200 transactions. Continue to click **Get NFToken IDs**  to retrieve all `NFTokenIDs` on the XRP Ledger.
 
 
 ### Get Info
 
-Having a list of NFTokens is all well and good, but it would be more interesting to do something with the NFTokenIDs returned. You can get information on the NFTokens in the response.
+Having a list of `NFTokens` is all well and good, but it would be more interesting to do something with the `NFTokenIDs` returned. You can get information on the `NFTokens` in the response.
 
-To review NFToken information for a selected NFTokenID:
+To review `NFToken` information for a selected `NFTokenID`:
 
-1. Copy a NFTokenID from the list and paste it in the **NFTokenID** field.
+1. Copy a `NFTokenID` from the list and paste it in the **NFTokenID** field.
 2. Click **Get NFToken Info**.
 
 
@@ -40,7 +40,7 @@ To review NFToken information for a selected NFTokenID:
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
-## Get NFTokens
+## Get `NFTokens`
 
 Declare variables used in the function.
 
@@ -98,7 +98,7 @@ Parse the state tree from the JSON object.
 	stateTree = JSON.parse(jason).state
 ```
 
-Inspect each ledger entry in the tree and capture any NFTokenPage objects.
+Inspect each ledger entry in the tree and capture any `NFTokenPage` objects.
 
 ```javascript
   for (i=0; i < 200; i++) {
@@ -118,7 +118,7 @@ Disconnect from the XLS-20Devnet.
   client.disconnect()
 ```
 
-Report the filtered NFToken objects in the resultField.
+Report the filtered `NFToken` objects in the resultField.
 
 ```javascript
   resultField.value = results
@@ -131,9 +131,9 @@ Save the marker value in the **Marker** field.
 }
 ```
 
-## Get NFTokenIDs
+## Get `NFTokenIDs`
 
-This function extends the `getNFTokens` function to further filter for just the NFTokenIDs.
+This function extends the `getNFTokens` function to further filter for just the `NFTokenIDs`.
 
 Declare variables used in the function.
 
@@ -191,7 +191,7 @@ Parse the state tree from the JSON object.
 ```javascript
 	stateTree = JSON.parse(jason).state
 ```
-Scan the state tree for each instance of a NFTokenPage.
+Scan the state tree for each instance of a `NFTokenPage`.
 
 ```javascript
   for (i=0; i < 200; i++) {
@@ -199,13 +199,13 @@ Scan the state tree for each instance of a NFTokenPage.
 		if (ledger_entry_type == "NFTokenPage") {
 ```
 
-Get the NFTokens from each NFToken page.
+Get the `NFTokens` from each `NFToken` page.
 
 ```javascript
 			nfTokens = stateTree[i].NFTokens
 ```
 
-Cycle through the NFTokens on the page. Parse the NFToken ID from each and append it to the `results` variable.
+Cycle through the `NFTokens` on the page. Parse the `NFTokenID` from each and append it to the `results` variable.
 
 ```javascript
 			for (j=0; j < nfTokens.length; j++) {
@@ -333,5 +333,5 @@ Since there are no accounts or credentials required, you only need buttons to se
 
 | Previous      | Next                                                             |
 | :---          |                                                             ---: |
-| [← Batch Mint NFTokens >](batch-minting.html)  | []|
+| [← Batch Mint NFTokens >](batch-minting.html)  | |
 
