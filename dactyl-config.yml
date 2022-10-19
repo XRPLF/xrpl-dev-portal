@@ -161,9 +161,7 @@ targets:
                                           # the updates to ledger_entry aren't translated either
             "ledger_entry.html#get-paychannel-object": "ledger_entry.html"
             "reliable-transaction-submission.html#ledger-gaps": "reliable-transaction-submission.html#レジャーのギャップ"
-            # Fix links from untranslated NFT transaction references:
-            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
-            "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
+            # "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
             "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
             # Fix links from untranslated build-a-desktop-wallet-in-python.html:
             "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
@@ -175,10 +173,6 @@ targets:
             # Fix links from untranslated common-misconceptions-about-freezes.html
               # Not updated to have the table. The top-level of the page is pretty close.
             "currency-formats.html#comparison": "currency-formats.html"
-            # Fix links from untranslated NFToken tx refs to translated NFToken page
-            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
-            "nftoken.html#taxon": "nftoken.html#分類群"
-            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
             # Fix links from untranslated Clio server_info:
             "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
             "transaction-cost.html#local-load-cost": "transaction-cost.html#ローカル負荷コスト"
@@ -191,6 +185,11 @@ targets:
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             # Fix link from untranslated account_nfts.html
             "nftoken.html#nftokentaxon": "nftoken.html#分類群"
+            # Fix links from untranslated NFT API methods:
+            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
+            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
+            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
+            "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
 
 pages:
 
