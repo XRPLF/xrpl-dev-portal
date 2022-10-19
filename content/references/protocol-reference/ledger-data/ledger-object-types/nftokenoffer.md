@@ -29,7 +29,7 @@ The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of t
 
 | Name                |JSON Type         | [Internal Type][] | Required?   | Description |
 |:--------------------|:-----------------|:------------------|:------------|:-----------|
-| `Amount`            | object or string | AMOUNT            | Yes         | Amount expected or offered for the NFToken. If the token has the `lsfOnlyXRP` flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to `"0"`). |
+| `Amount`            | [Currency Amount][] | AMOUNT            | Yes         | Amount expected or offered for the NFToken. If the token has the `lsfOnlyXRP` flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to `"0"`). |
 | `Destination`       | string           | AccountID         | No          | The AccountID for which this offer is intended. If present, only that account can accept the offer. |
 | `Expiration`        | number           | UInt32            | No          | The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch. |
 | `Flags`             | number           | UInt32            | Yes         | A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below. |
@@ -76,7 +76,7 @@ Each token has two directories. One contains offers to buy the token and the oth
 
 ### `NFTokenOffer` Reserve
 
-Each `NFTokenOffer` object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 5 XRP. The reserve can be recovered by cancelling the offer.
+Each `NFTokenOffer` object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer.
 
 
 <!--{# common link defs #}-->

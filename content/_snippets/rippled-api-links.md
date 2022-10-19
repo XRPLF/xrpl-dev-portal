@@ -239,4 +239,5 @@
 
 {% for amd in amendment_names %}
 [{{amd}} amendment]: known-amendments.html#{{amd|lower}}
+[{{amd}}の修正]: known-amendments.html#{{amd|lower}}
 {% endfor %}
