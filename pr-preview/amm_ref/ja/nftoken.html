@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v10.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,6 +89,12 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-md-flex justify-content-center">
+    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
+    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -353,9 +359,9 @@
 <p>この例では、lsfBurnable (0x0001), lsfOnlyXRP (0x0002), lsfTransferable (0x0008) の3つのフラグを設定しています。1+2+8 = 11、つまりビッグエンディアン形式で0x000Bです。</p>
 <p><img alt="フラグ" src="img/nftokena.png" title="フラグ"/></p>
 <h3 id="送金手数料">送金手数料<a aria-hidden="true" class="hover_anchor" href="#送金手数料"><i class="fa fa-link"></i></a></h3>
-<p>送金手数料には、トークンの二次販売時に発行者が請求する手数料を1/10,000単位で指定します。このフィールドの有効な値は0から50,000までです。1の値は1bpsまたは0.01%に相当し、0%から50%の間の転送レートを許容します。</p>
+<p>送金手数料には、トークンの二次販売時に発行者が請求する手数料を1/100,000単位で指定します。このフィールドの有効な値は0から50,000までです。1の値は1bpsまたは0.01%に相当し、0%から50%の間の転送レートを許容します。</p>
 <h3 id="例-1">例<a aria-hidden="true" class="hover_anchor" href="#例-1"><i class="fa fa-link"></i></a></h3>
-<p>この値では、転送手数料は314bps（3.14％）に設定されます。</p>
+<p>この値では、転送手数料は31.4bps（0.314％）に設定されます。</p>
 <p><img alt="送金手数料" src="img/nftokenb.png" title="送金手数料"/></p>
 <h3 id="発行者識別">発行者識別<a aria-hidden="true" class="hover_anchor" href="#発行者識別"><i class="fa fa-link"></i></a></h3>
 <p>TokenIDの3番目のセクションは、発行者の公開アドレスをビッグ・エンディアンで表現したものである。</p>
@@ -612,12 +618,12 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1514,6 +1520,11 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1713,7 +1724,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amminstancecreate.html">AMMInstanceCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

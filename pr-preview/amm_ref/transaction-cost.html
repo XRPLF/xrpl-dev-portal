@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v10.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,6 +88,12 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-md-flex justify-content-center">
+    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
+    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -319,9 +325,9 @@
 <h2 id="beneficiaries-of-the-transaction-cost">Beneficiaries of the Transaction Cost<a aria-hidden="true" class="hover_anchor" href="#beneficiaries-of-the-transaction-cost"><i class="fa fa-link"></i></a></h2>
 <p>The transaction cost is not paid to any party: the XRP is irrevocably destroyed.</p>
 <h2 id="load-cost-and-open-ledger-cost">Load Cost and Open Ledger Cost<a aria-hidden="true" class="hover_anchor" href="#load-cost-and-open-ledger-cost"><i class="fa fa-link"></i></a></h2>
-<p>When the <a href="known-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, there are two thresholds for the transaction cost:</p>
+<p>There are two thresholds for the transaction cost:</p>
 <ul>
-<li>If the transaction cost does not meet a <code>rippled</code> server's <a href="#local-load-cost">load-based transaction cost threshold</a>, the server ignores the transaction completely. (This logic is essentially unchanged with or without the amendment.)</li>
+<li>If the transaction cost does not meet a <code>rippled</code> server's <a href="#local-load-cost">load-based transaction cost threshold</a>, the server ignores the transaction completely.</li>
 <li>If the transaction cost does not meet a <code>rippled</code> server's <a href="#open-ledger-cost">open ledger cost threshold</a>, the server queues the transaction for a later ledger.</li>
 </ul>
 <p>This divides transactions into roughly three categories:</p>
@@ -387,7 +393,7 @@
 </table>
 <h2 id="querying-the-transaction-cost">Querying the Transaction Cost<a aria-hidden="true" class="hover_anchor" href="#querying-the-transaction-cost"><i class="fa fa-link"></i></a></h2>
 <p>The <code>rippled</code> APIs have two ways to query the local load-based transaction cost: the <code>server_info</code> command (intended for humans) and the <code>server_state</code> command (intended for machines).</p>
-<p>If the <a href="known-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, you can use the <a href="fee.html">fee method</a> to check the open ledger cost.</p>
+<p>You can use the <a href="fee.html">fee method</a> to check the open ledger cost.</p>
 <h3 id="server_info">server_info<a aria-hidden="true" class="hover_anchor" href="#server_info"><i class="fa fa-link"></i></a></h3>
 <p>The <a href="server_info.html">server_info method</a> reports the unscaled minimum XRP cost, as of the previous ledger, as <code>validated_ledger.base_fee_xrp</code>, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying that <code>base_fee_xrp</code> value by the <code>load_factor</code> parameter in the same response, which represents the server's current load level. In other words:</p>
 <p><strong>Current Transaction Cost in XRP = <code>base_fee_xrp</code> × <code>load_factor</code></strong></p>
@@ -423,7 +429,7 @@
 <p>As a special case, an account can send a <a href="setregularkey.html">SetRegularKey</a> transaction with a transaction cost of <code>0</code>, as long as the account's <a href="accountroot.html"><code>lsfPasswordSpent</code> flag</a> is disabled. This transaction must be signed by the account's <em>master key pair</em>. Sending this transaction enables the <code>lsfPasswordSpent</code> flag.</p>
 <p>This feature is designed to allow you to recover an account if the regular key is compromised, without worrying about whether the compromised account has any XRP available. This way, you can regain control of the account before you send more XRP to it.</p>
 <p>The <a href="accountroot.html"><code>lsfPasswordSpent</code> flag</a> starts out disabled. It gets enabled when you send a SetRegularKey transaction signed by the master key pair. It gets disabled again when the account receives a <a href="payment.html">Payment</a> of XRP.</p>
-<p>When the <a href="known-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, <code>rippled</code> prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.</p>
+<p><code>rippled</code> prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.</p>
 <h2 id="changing-the-transaction-cost">Changing the Transaction Cost<a aria-hidden="true" class="hover_anchor" href="#changing-the-transaction-cost"><i class="fa fa-link"></i></a></h2>
 <p>The XRP Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="fee-voting.html">Fee Voting</a> for more information.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
@@ -900,6 +906,28 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
+
+        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -1570,6 +1598,57 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
+
+        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
+
+        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
+
+        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1769,7 +1848,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amminstancecreate.html">AMMInstanceCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

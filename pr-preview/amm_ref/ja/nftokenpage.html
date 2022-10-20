@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="NFTokenPage | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nftokenpage.html" />
-    <meta property="og:description" content="Ledger structure for recording NFTokens." />
-    <meta name="description" content="Ledger structure for recording NFTokens." />
+    <meta property="og:description" content="NFTokenを記録するためのレジャー構造。" />
+    <meta name="description" content="NFTokenを記録するためのレジャー構造。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v10.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,6 +89,12 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-md-flex justify-content-center">
+    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
+    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -231,7 +237,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amm_ref/content/references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.md?pr=/XRPLF/xrpl-dev-portal/pull/1541" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amm_ref/content/references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1541" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -244,14 +250,14 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenpage">NFTokenPage</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenpage-json">Example NFTokenPage JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftokenpage-fields">NFTokenPage Fields</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#tokenpage-id-format">TokenPage ID Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#searching-for-an-nftoken-object">Searching for an NFToken object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#adding-an-nftoken-object">Adding an NFToken object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#removing-an-nftoken-object">Removing an NFToken object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#reserve-for-nftokenpage-object">Reserve for NFTokenPage object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#the-reserve-in-practice">The reserve in practice</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenpage-jsonの例">NFTokenPage JSONの例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenpage-フィールド">NFTokenPage フィールド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#tokenpage-id-のフォーマット">TokenPage ID のフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftoken-オブジェクトの検索">NFToken オブジェクトの検索</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftoken-オブジェクトの追加">NFToken オブジェクトの追加</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftoken-オブジェクトの削除">NFToken オブジェクトの削除</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenpage-オブジェクトの準備金">NFTokenPage オブジェクトの準備金</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#準備金の実例">準備金の実例</a></li>
       </ul>
   </div>
       </aside>
@@ -271,14 +277,11 @@
     <li class="active breadcrumb-item">NFTokenPage</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nftokenpage">NFTokenPage<a aria-hidden="true" class="hover_anchor" href="#nftokenpage"><i class="fa fa-link"></i></a></h1>
 <p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
-<p>The <code>NFTokenPage</code> object represents a collection of <code>NFToken</code> objects owned by the same account. An account can have multiple <code>NFTokenPage</code> ledger objects, which form a doubly linked list.</p>
-<h2 id="example-nftokenpage-json">Example NFTokenPage JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenpage-json"><i class="fa fa-link"></i></a></h2>
+<p><code>NFTokenPage</code> オブジェクトは、同じアカウントが所有する <code>NFToken</code> オブジェクトのコレクションを表します。一つのアカウントは複数の <code>NFTokenPage</code> 型のレジャーオブジェクトを持つことができ、それらは双方向リストを形成します。</p>
+<h2 id="nftokenpage-jsonの例">NFTokenPage JSONの例<a aria-hidden="true" class="hover_anchor" href="#nftokenpage-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenPage"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"PreviousTokenPage"</span><span class="p">:</span><span class="w"></span>
@@ -295,88 +298,88 @@
 <span class="w">          </span><span class="s2">"000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="w"></span>
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="cm">/* potentially more objects */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* 更に多くのオブジェクト */</span><span class="w"></span>
 <span class="w">  </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>In the interest of minimizing the size of a page and optimizing storage, the <code>Owner</code> field is not present, since it is encoded as part of the object's ledger identifier.</p>
-<h2 id="nftokenpage-fields">NFTokenPage Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenpage-fields"><i class="fa fa-link"></i></a></h2>
-<p>An <code>NFTokenPage</code> object can have the following required and optional fields:</p>
+<p>ページのサイズを最小にし、ストレージを最適化するために、<code>Owner</code>フィールドは存在しません。なぜなら、それはオブジェクトのレジャー識別子の一部としてエンコードされているからです。</p>
+<h2 id="nftokenpage-フィールド">NFTokenPage フィールド<a aria-hidden="true" class="hover_anchor" href="#nftokenpage-フィールド"><i class="fa fa-link"></i></a></h2>
+<p><code>NFTokenPage</code> オブジェクトは、以下の必須フィールドと任意フィールドを持つことができます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field Name</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">名前</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">必須？</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">Identifies the type of ledger object. The reserved ledger entry type is 0x0050.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">レジャーオブジェクトのタイプを識別文字列です。予約されているレジャーの種類は、0x0050 です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NextPageMin</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Hash256</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The locator of the next page, if any. Details about this field and how it should be used are outlined below, after the construction of the NFTokenPageID is explained.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">次のページの位置情報(もしあれば)。このフィールドの詳細および使用方法については、NFTokenPageID の構築についての説明以降に記載しています。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokens</code></td>
-<td style="text-align: left;">object</td>
+<td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">TOKEN</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The collection of NFToken objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects should be stored in sorted order, from low to high with the TokenID used as the sorting parameter.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">この NFTokenPage オブジェクトに含まれる NFToken オブジェクトのコレクション。本仕様では、1 ページあたり 32 の NFToken オブジェクトを上限としています。オブジェクトは、TokenID をソート パラメータとして使用して、低いものから高いものへとソートされた順序で格納されています。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousPageMin</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Hash256</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the NFTokenPageID is explained.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">前のページの位置情報(もしあれば)。このフィールドの詳細および使用方法については、NFTokenPageID の構築についての説明以降に記載しています。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">HASH256</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Identifies the transaction ID of the transaction that most recently modified this NFTokenPage object.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">この NFTokenPage オブジェクトを最も最近変更したトランザクションのトランザクション ID の情報を示します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
-<td style="text-align: left;">number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The sequence of the ledger that contains the transaction that most recently modified this NFTokenPage object.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">この NFTokenPage オブジェクトを最も最近変更したトランザクションを含むレジャーのシーケンスを示します。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="tokenpage-id-format">TokenPage ID Format<a aria-hidden="true" class="hover_anchor" href="#tokenpage-id-format"><i class="fa fa-link"></i></a></h3>
-<p><code>NFTokenPage</code> identifiers are constructed so as to specifically allow for the adoption of a more efficient paging structure, ideally suited for <code>NFTokens</code>.</p>
-<p>The identifier of an <code>NFTokenPage</code> is derived by concatenating the 160-bit <code>AccountID</code> of the owner of the page, followed by a 96 bit value that indicates whether a particular <code>NFTokenID</code> can be contained in this page.</p>
-<p>More specifically, and assuming that the function <code>low96(x)</code> returns the low 96 bits of a 256-bit value, an NFT with <code>NFTokenID</code> <code>A</code> can be included in a page with <code>NFTokenPageID</code> <code>B</code> if and only if <code>low96(A) &gt;= low96(B)</code>.</p>
-<p>For example, applying the <code>low96</code> function to the NFT described before, which had an ID of <code>000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65</code> the function <code>low96</code> would return <code>42540EE208C3098E00000D65</code>.</p>
-<p>This curious construct exploits the structure of the SHAMap to allow for efficient lookups of individual <code>NFToken</code> objects without requiring iteration of the doubly-linked list of <code>NFTokenPages</code>.</p>
-<h3 id="searching-for-an-nftoken-object">Searching for an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#searching-for-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>To search for a specific <code>NFToken</code>, compute the <code>NFTokenPageID</code> using the account of the owner and the <code>NFTokenID</code> of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, the <code>NFToken</code> is not held by the given account.</p>
-<h3 id="adding-an-nftoken-object">Adding an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#adding-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>You add an <code>NFToken</code> object by finding the <code>NFTokenPage</code> it should be in (using the same technique as searching for an <code>NFToken</code> object) and adding it to that page. If the page overflows after you add the <code>NFToken</code>, find the <code>next</code> and <code>previous</code> pages (if any) and balance those three pages, inserting a new page as needed.</p>
-<h3 id="removing-an-nftoken-object">Removing an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#removing-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>An <code>NFToken</code> can be removed by using the same approach. If the number of <code>NFTokens</code> in the page goes below a certain threshold, the server attempts to consolidate the page with a previous or subsequent page to recover the reserve.</p>
-<h3 id="reserve-for-nftokenpage-object">Reserve for <code>NFTokenPage</code> object<a aria-hidden="true" class="hover_anchor" href="#reserve-for-nftokenpage-object"><i class="fa fa-link"></i></a></h3>
-<p>Each <code>NFTokenPage</code> costs an incremental reserve to the owner account. This specification allows up to 32 <code>NFToken</code> entries per page, which means that for accounts that hold multiple NFTs the <em>effective</em> reserve cost per NFT can be as low as <em>R</em>/32 where <em>R</em> is the incremental reserve.</p>
-<h3 id="the-reserve-in-practice">The reserve in practice<a aria-hidden="true" class="hover_anchor" href="#the-reserve-in-practice"><i class="fa fa-link"></i></a></h3>
-<p>The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the <em>effective</em> reserve per token is, if a given page contains 1, 8, 16 and 32 NFTs.</p>
+<h3 id="tokenpage-id-のフォーマット">TokenPage ID のフォーマット<a aria-hidden="true" class="hover_anchor" href="#tokenpage-id-のフォーマット"><i class="fa fa-link"></i></a></h3>
+<p><code>NFTokenPage</code> 識別子は、<code>NFTokens</code> に最適で、より効率的なページング構造を採用できるように特別に構築されています。</p>
+<p><code>NFTokenPage</code> の識別子は、そのページの所有者の 160 ビットの <code>AccountID</code> と、そのページに特定の <code>NFTokenID</code> が含まれるかどうかを示す 96 ビットの値を連結して得られます。</p>
+<p>具体的には、関数 <code>low96(x)</code> が 256 ビットの値の下位 96 ビットを返すと仮定すると、<code>NFTokenID</code> <code>A</code> の NFT は <code>NFTokenPageID</code> <code>B</code> のページに含めることができるのは <code>low96(A) &gt;= low96(B)</code> の場合のみとなります。</p>
+<p>例えば、<code>000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65</code>というIDを持つ先ほどのNFTに<code>low96</code>関数を適用すると、<code>42540EE208C3098E00000D65</code>が返されます。</p>
+<p>この不思議な構造は、SHAMap の構造を利用して、<code>NFTokenPages</code> の二重リンクされたリストを反復することなく、個々の <code>NFToken</code> オブジェクトを効率的に検索できるようにするものです。</p>
+<h3 id="nftoken-オブジェクトの検索"><code>NFToken</code> オブジェクトの検索<a aria-hidden="true" class="hover_anchor" href="#nftoken-オブジェクトの検索"><i class="fa fa-link"></i></a></h3>
+<p>特定の <code>NFToken</code> を検索するには、上記のように所有者のアカウントとトークンの <code>NFTokenID</code> を使用して <code>NFTokenPageID</code> を計算します。識別子がその値以下であるレジャーの項目を検索します。そのエントリーが存在しないか、<code>NFTokenPage</code> でない場合、<code>NFToken</code> は与えられたアカウントによって保持されていません。</p>
+<h3 id="nftoken-オブジェクトの追加"><code>NFToken</code> オブジェクトの追加<a aria-hidden="true" class="hover_anchor" href="#nftoken-オブジェクトの追加"><i class="fa fa-link"></i></a></h3>
+<p><code>NFToken</code> オブジェクトを追加するには、そのオブジェクトが含まれるべき <code>NFTokenPage</code> を見つけ（<code>NFToken</code> オブジェクトを検索するのと同じテクニックを使用します)、そのページに追加します。<code>NFToken</code> を追加した後にページがオーバーフローした場合は、 <code>next</code> と <code>previous</code> ページを探し (もしあれば)、その 3 ページでバランスをとりながら、必要に応じて新しいページを挿入します。</p>
+<h3 id="nftoken-オブジェクトの削除"><code>NFToken</code> オブジェクトの削除<a aria-hidden="true" class="hover_anchor" href="#nftoken-オブジェクトの削除"><i class="fa fa-link"></i></a></h3>
+<p><code>NFToken</code> は同じ手法で削除することもできます。ページ内の <code>NFToken</code> の数がある閾値を下回ると、サーバーはそのページを前後のページと統合して準備金を取り戻そうとします。</p>
+<h3 id="nftokenpage-オブジェクトの準備金"><code>NFTokenPage</code> オブジェクトの準備金<a aria-hidden="true" class="hover_anchor" href="#nftokenpage-オブジェクトの準備金"><i class="fa fa-link"></i></a></h3>
+<p><code>NFTokenPage</code>ごとに、所有者アカウントに追加で準備金の費用がかかります。つまり、複数のNFTを保有するアカウントでは、NFTあたりの <em>実効</em> 準備金コストは <em>R</em> /32（ <em>R</em> は準備金増分）と低くすることが可能です。</p>
+<h3 id="準備金の実例">準備金の実例<a aria-hidden="true" class="hover_anchor" href="#準備金の実例"><i class="fa fa-link"></i></a></h3>
+<p>増分準備金の値は、この記事の執筆時点では 2 XRP です。下の表は、あるページが1、8、16、32のNFTを含む場合、トークンごとの _実効_準備金がどの程度になるかを示しています。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Incremental Reserve</th>
+<th style="text-align: left;">増分準備金</th>
 <th style="text-align: left;">1 NFToken</th>
 <th style="text-align: left;">8 NFTokens</th>
 <th style="text-align: left;">16 NFTokens</th>
@@ -638,12 +641,12 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1540,6 +1543,11 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1739,7 +1747,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amminstancecreate.html">AMMInstanceCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

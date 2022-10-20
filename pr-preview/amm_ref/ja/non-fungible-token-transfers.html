@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Trading NFTokens on the XRP Ledger - XRPL.org (日本語)</title>
+    <title>XRP Ledger上でNFTokenを売買する - XRPL.org (日本語)</title>
 
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Trading NFTokens on the XRP Ledger | XRPL.org (日本語)">
+    <meta property="og:title" content="XRP Ledger上でNFTokenを売買する | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/non-fungible-token-transfers.html" />
-    <meta property="og:description" content="Trading NFTokens in direct or brokered mode." />
-    <meta name="description" content="Trading NFTokens in direct or brokered mode." />
+    <meta property="og:description" content="NFTokenをダイレクトモードまたはブローカーモードで取引する。" />
+    <meta name="description" content="NFTokenをダイレクトモードまたはブローカーモードで取引する。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v10.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,6 +89,12 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-md-flex justify-content-center">
+    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
+    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -231,7 +237,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amm_ref/content/concepts/tokens/non-fungible-token-transfers.md?pr=/XRPLF/xrpl-dev-portal/pull/1541" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amm_ref/content/concepts/tokens/non-fungible-token-transfers.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1541" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -243,16 +249,16 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#trading-nftokens-on-the-xrp-ledger">Trading NFTokens on the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sell-offers">Sell Offers</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-a-sell-offer">Create a Sell Offer</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#accept-a-sell-offer">Accept a Sell Offer</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#buy-offers">Buy Offers</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-a-buy-offer">Create a Buy Offer</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#accept-a-buy-offer">Accept a Buy Offer</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#trading-modes">Trading Modes</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#when-to-use-brokered-mode">When to Use Brokered Mode</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#brokered-sale-workflows">Brokered Sale Workflows</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#xrp-ledger上でnftokenを売買する">XRP Ledger上でNFTokenを売買する</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#売却オファー">売却オファー</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#売却オファーの作成">売却オファーの作成</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#売却オファーを受け入れる">売却オファーを受け入れる</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#購入オファー">購入オファー</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#購入オファーの作成">購入オファーの作成</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#購入オファーを受け入れる">購入オファーを受け入れる</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#取引モード">取引モード</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ブローカーモードを使用する場合">ブローカーモードを使用する場合</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ブローカー販売のワークフロー">ブローカー販売のワークフロー</a></li>
       </ul>
   </div>
       </aside>
@@ -267,46 +273,43 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">発行済み通貨の概要</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/non-fungible-tokens.html">NFT Conceptual Overview</a></li>
-    <li class="active breadcrumb-item">Trading NFTokens on the XRP Ledger</li>
+    <li class="active breadcrumb-item"><a href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a></li>
+    <li class="active breadcrumb-item">XRP Ledger上でNFTokenを売買する</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="trading-nftokens-on-the-xrp-ledger">Trading NFTokens on the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#trading-nftokens-on-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
-<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
-<p>You can transfer <code>NFToken</code> objects between accounts on the XRP Ledger. You can offer to buy or sell a <code>NFToken</code>, or accept offers from other accounts to buy a <code>NFToken</code> you own. You can even give away a <code>NFToken</code> by offering to sell it at a price of 0.  All offers are created using <a href="nftokencreateoffer.html">NFTokenCreateOffer transaction</a>.</p>
-<h2 id="sell-offers">Sell Offers<a aria-hidden="true" class="hover_anchor" href="#sell-offers"><i class="fa fa-link"></i></a></h2>
-<h3 id="create-a-sell-offer">Create a Sell Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-sell-offer"><i class="fa fa-link"></i></a></h3>
-<p>As the owner of a <code>NFToken</code> object, you can create a sell offer using a <a href="nftokencreateoffer.html">NFTokenCreateOffer transaction</a> with the <code>tfSellToken</code> flag. You provide the <code>NFTokenID</code> and the <code>Amount</code> you are willing to accept in payment. You can optionally specify an <code>Expiration</code> date, after which the offer is no longer valid, and a <code>Destination</code> account, which is the only account that is allowed to purchase the <code>NFToken</code>.</p>
-<h3 id="accept-a-sell-offer">Accept a Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-a-sell-offer"><i class="fa fa-link"></i></a></h3>
-<p>To purchase a <code>NFToken</code> that is offered for sale, you use a <code>NFTokenAcceptOffer</code> transaction. You provide the owner account and specify the <code>NFTokenOfferID</code> of the <code>NFTokenOffer</code> object you choose to accept.</p>
-<h2 id="buy-offers">Buy Offers<a aria-hidden="true" class="hover_anchor" href="#buy-offers"><i class="fa fa-link"></i></a></h2>
-<h3 id="create-a-buy-offer">Create a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-buy-offer"><i class="fa fa-link"></i></a></h3>
-<p>Any account can offer to buy a <code>NFToken</code>. You can create a buy offer using <a href="nftokencreateoffer.html">NFTokenCreateOffer</a> <em>without</em> the <code>tfSellToken</code> flag. You provide the <code>Owner</code> account, <code>NFTokenID</code>, and the <code>Amount</code> of your offer.</p>
-<h3 id="accept-a-buy-offer">Accept a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#accept-a-buy-offer"><i class="fa fa-link"></i></a></h3>
-<p>Use the <code>NFTokenAcceptOffer</code> transaction to transfer a <code>NFToken</code>. Provide the <code>NFTokenOfferID</code> and the owner account to complete the transaction.</p>
-<h2 id="trading-modes">Trading Modes<a aria-hidden="true" class="hover_anchor" href="#trading-modes"><i class="fa fa-link"></i></a></h2>
-<p>When trading a <code>NFToken</code>, you can choose between a <em>direct</em> transaction between a buyer and seller or a <em>brokered</em> transaction, where a third party account matches a sell and buy offer to arrange the trade.</p>
-<p>Trading in direct mode gives the seller control over the transfer. The seller can either post a <code>NFToken</code> for purchase by anyone, or sell a <code>NFToken</code> to a specific destination account. The seller receives the entire purchase price for the <code>NFToken</code>.</p>
-<p>In brokered mode, the seller allows a third party account to broker the sale of the <code>NFToken</code>. The broker account collects a broker fee for the transfer at an agreed upon rate. The purchase is completed in real time, paying the broker and seller from the buyer’s funds without requiring an up front investment by the broker.</p>
-<h3 id="when-to-use-brokered-mode">When to Use Brokered Mode<a aria-hidden="true" class="hover_anchor" href="#when-to-use-brokered-mode"><i class="fa fa-link"></i></a></h3>
-<p>If a <code>NFToken</code> creator has the time and patience to seek out the right buyers, the creator keeps all proceeds from the sale. This works fine for a creator who sells few <code>NFToken</code> objects at variable prices.</p>
-<p>On the other hand, creators might not want to spend their time selling their creations when they could spend the time creating. Instead of handling each individual sale, the sales work can be turned over to a third-party broker account.</p>
-<p>Using a broker offers several advantages. For example:</p>
+        <h1 id="xrp-ledger上でnftokenを売買する">XRP Ledger上でNFTokenを売買する<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger上でnftokenを売買する"><i class="fa fa-link"></i></a></h1>
+<p><em>NFTのXLS-20規格 (現在は有効ではありません) は、テストネットワークで使用できる予備的な実装がありますが、XRP Ledgerプロトコルの<a href="amendments.html">Amendment(修正案)</a>としてまだ利用可能ではありません。将来のXRP Ledgerのリリースに修正案が含まれる可能性があります。</em></p>
+<p>XRP Ledger上のアカウント間で<code>NFToken</code>オブジェクトを転送することができます。<code>NFToken</code> の売買をオファーしたり、他のアカウントから自分が保有する NFToken への売買オファーを受け入れることができます。<code>NFToken</code> を 無料(価格が0)で売却することで、<code>NFToken</code> を配布することもできます。すべてのオファーは <a href="nftokencreateoffer.html">NFTokenCreateOfferトランザクション</a> を使って作成されます。</p>
+<h2 id="売却オファー">売却オファー<a aria-hidden="true" class="hover_anchor" href="#売却オファー"><i class="fa fa-link"></i></a></h2>
+<h3 id="売却オファーの作成">売却オファーの作成<a aria-hidden="true" class="hover_anchor" href="#売却オファーの作成"><i class="fa fa-link"></i></a></h3>
+<p><code>NFToken</code> オブジェクトの所有者であれば、<code>tfSellToken</code> フラグを指定して <a href="nftokencreateoffer.html">NFTokenCreateOffer トランザクション</a> を使用して売却オファーを作成することができます。<code>NFTokenID</code> と、対価として受け取る金額 <code>Amount</code> を指定します。オプションで、そのオファーが無効になる <code>Expiration</code> と、その <code>NFToken</code> を購入することができる唯一のアカウントである <code>Destination</code> を指定することができます。</p>
+<h3 id="売却オファーを受け入れる">売却オファーを受け入れる<a aria-hidden="true" class="hover_anchor" href="#売却オファーを受け入れる"><i class="fa fa-link"></i></a></h3>
+<p>販売されている <code>NFToken</code> を購入するには、<code>NFTokenAcceptOffer</code> トランザクションを使用します。<code>NFTokenOffer</code> オブジェクトの所有者アカウントと <code>NFTokenOfferID</code> を指定し、受け入れることを決定します。</p>
+<h2 id="購入オファー">購入オファー<a aria-hidden="true" class="hover_anchor" href="#購入オファー"><i class="fa fa-link"></i></a></h2>
+<h3 id="購入オファーの作成">購入オファーの作成<a aria-hidden="true" class="hover_anchor" href="#購入オファーの作成"><i class="fa fa-link"></i></a></h3>
+<p>どのアカウントでも <code>NFToken</code> の購入オファーを作成することができます。<code>tfSellToken</code> のフラグを指定せずに、<a href="nftokencreateoffer.html">NFTokenCreateOffer</a> を使用することで、購入オファーを作成することが可能です。<code>Owner</code>アカウント、<code>NFTokenID</code>、オファーの <code>Amount</code> を指定します。</p>
+<h3 id="購入オファーを受け入れる">購入オファーを受け入れる<a aria-hidden="true" class="hover_anchor" href="#購入オファーを受け入れる"><i class="fa fa-link"></i></a></h3>
+<p><code>NFTokenAcceptOffer</code> トランザクションを使用して <code>NFToken</code> を転送します。<code>NFTokenOfferID</code> と所有者アカウントを指定して、トランザクションを完了させてください。</p>
+<h2 id="取引モード">取引モード<a aria-hidden="true" class="hover_anchor" href="#取引モード"><i class="fa fa-link"></i></a></h2>
+<p><code>NFToken</code>を取引する場合、購入者と販売者の間で直接取引を行う、 <em>ダイレクト</em> 取引と、第三者の口座が売りと買いのオファーをマッチングして取引を仲介する、 <em>ブローカー</em> 取引を選択することができます。</p>
+<p>ダイレクトモードでの取引では、販売者が転送をコントロールすることができます。販売者は誰でも購入できるように <code>NFToken</code> を出品するか、特定の取引先アカウントに <code>NFToken</code> を販売することができます。販売者はNFTokenの販売価格全額を受け取ります。</p>
+<p>ブローカーモードでは、販売者は第三者のアカウントに<code>NFToken</code>の販売を仲介させます。ブローカーアカウントは、合意したレートで仲介手数料を徴収し、転送を行います。購入はリアルタイムで完了し、ブローカーと販売者には購入資金から支払われ、ブローカーによる前払いは必要ありません。</p>
+<h3 id="ブローカーモードを使用する場合">ブローカーモードを使用する場合<a aria-hidden="true" class="hover_anchor" href="#ブローカーモードを使用する場合"><i class="fa fa-link"></i></a></h3>
+<p><code>NFToken</code>の作成者が適切な購入者を探す時間と忍耐力がある場合、作成者は販売から得たすべての収益を得ることができます。これは、少数の<code>NFToken</code>オブジェクトを様々な価格で販売するクリエイターにとって、非常に有効な方法です。</p>
+<p>一方、クリエイターは、創作に時間を割くことができるのに、販売に時間を割くのは抵抗があるのではないでしょうか。そのような場合、個別に対応するのではなく、第三者であるブローカーのアカウントに販売業務を委託することが可能です。</p>
+<p>ブローカーを利用すると、いくつかの利点があります。例えば</p>
 <ul>
-<li>The broker can act as an agent, working to maximize the selling price of the <code>NFToken</code>. If the broker is paid a percentage of the sale price, the higher the price, the more the broker earns.</li>
-<li>The broker can act as a curator, organizing <code>NFToken</code> objects based on a niche market, price point, or other criteria. This can attract groups of buyers who might not otherwise discover a creator’s work.</li>
-<li>The broker can act as a marketplace, similar to Opensea.io, to handle the auction process at the application layer.</li>
+<li>ブローカーは仲介者として、<code>NFToken</code>の販売価格を最大化するために活動することができます。ブローカーが販売価格の何割かを受け取る場合、価格が高ければ高いほど、ブローカーの収入も増えます。</li>
+<li>ブローカーは、ニッチな市場や 価格帯などの基準に基づいて<code>NFToken</code>オブジェクトの管理を行う管理者として活動することができます。これによって、クリエイターの作品を発見できないような購入者のグループを呼び込むことができるでしょう。</li>
+<li>ブローカーは、Opensea.ioのようなマーケットプレイスとして機能し、アプリケーション層でオークション機能を提供することもできます。</li>
 </ul>
-<h3 id="brokered-sale-workflows">Brokered Sale Workflows<a aria-hidden="true" class="hover_anchor" href="#brokered-sale-workflows"><i class="fa fa-link"></i></a></h3>
-<p>In the most straightforward workflow, a creator mints a new <code>NFToken</code>. The creator initiates a sell offer, entering the minimum acceptable sale price and setting the broker as the destination. Potential buyers make bids for the <code>NFToken</code>, setting the broker as the destination for the bid. The broker selects a winning bid and completes the transaction, taking a broker’s fee. As a best practice, the broker then cancels any remaining buy offers for the <code>NFToken</code>.</p>
+<h3 id="ブローカー販売のワークフロー">ブローカー販売のワークフロー<a aria-hidden="true" class="hover_anchor" href="#ブローカー販売のワークフロー"><i class="fa fa-link"></i></a></h3>
+<p>最も単純なワークフローでは、クリエイターが新しい<code>NFToken</code>を発行します。クリエイターは売却オファーを作成する際、最低売却価格を入力し、売却先にブローカーを設定します。購入希望者はブローカーを経由して<code>NFToken</code>に入札を行います。ブローカーは落札者を選び、取引を完了させ、ブローカー手数料を受け取ります。ベストプラクティスとして、ブローカーは<code>NFToken</code>に対して残っている購入オファーをすべてキャンセルします。</p>
 <p><img alt="Brokered Mode with Reserve" src="img/nft-brokered-mode-with-reserve.png"/></p>
-<p>Another potential workflow would give the creator more control over the sale. In this workflow, the creator mints a new <code>NFToken</code>. Bidders create their offers, setting the broker as the destination. The broker selects the winning bid, subtracts their broker fee, and uses <code>NFTokenCreateOffer</code> to request that the creator sign off on the offer. The creator signs the requested offer, setting the broker as the destination. The broker completes the sale using <code>NFTokenAcceptOffer</code>, retaining the broker fee. The broker cancels any remaining bids for the <code>NFToken</code> using <code>NFTokenCancelOffer</code>.</p>
+<p>もう1つのワークフローは、クリエイターが販売をよりコントロールできるようにするものです。このワークフローでは、クリエイターが新しい<code>NFToken</code>を発行します。入札者はオファーを作成し、ブローカーを宛先として設定します。ブローカーは落札者を選び、仲介手数料を差し引き、<code>NFTokenCreateOffer</code>を使用してクリエイターに署名の依頼をします。クリエーターは要求されたオファーに署名し、ブローカーを宛先として設定します。ブローカーは <code>NFTokenAcceptOffer</code> を使って売却を完了し、仲介手数料を保持します。ブローカーは <code>NFTokenCancelOffer</code> を使用して <code>NFToken</code> に対する残りの入札をキャンセルします。</p>
 <p><img alt="Brokered Mode without Reserve" src="img/nft-brokered-mode-without-reserve.png"/></p>
-<p>The same workflows can be used when an owner resells a <code>NFToken</code> created by another account.</p>
+<p>所有者が他のアカウントで作成した <code>NFToken</code> をリセールする場合にも、同じワークフローを使用することができます。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -534,12 +537,12 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="true" aria-controls="tree_nav_group_2_4_3"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
 
     <nav class="nav flex-column show " id="tree_nav_group_2_4_3">
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1436,6 +1439,11 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1635,7 +1643,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amminstancecreate.html">AMMInstanceCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

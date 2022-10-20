@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v10.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -88,6 +88,12 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-md-flex justify-content-center">
+    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
+    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -326,7 +332,7 @@
 <td style="text-align: left;">The effective price of the LP Tokens after depositing these funds. Must be omitted if <code>Asset2In</code> is provided. <strong><em>TODO: need more clarity on how this works</em></strong></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>LPTokens</code></td>
+<td style="text-align: left;"><code>LPTokensOut</code></td>
 <td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">No</td>
@@ -346,7 +352,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>LPTokens</code> only</td>
+<td><code>LPTokensOut</code> only</td>
 <td>None</td>
 <td>Deposit both of this AMM's assets, in amounts calculated so that you receive the specified amount of LP Tokens in return. The amounts deposited maintain the relative proportions of the two assets the AMM already holds.</td>
 </tr>
@@ -361,7 +367,7 @@
 <td>Deposit both of this AMM's assets, up to the specified amounts. The actual amounts deposited must maintain the same balance of assets as the AMM already holds, so the amount of either one debited MAY be less than specified. The amount of LP Tokens you get in return is based on the total value deposited.</td>
 </tr>
 <tr>
-<td><code>Asset1In</code> and <code>LPTokens</code></td>
+<td><code>Asset1In</code> and <code>LPTokensOut</code></td>
 <td><strong><em>TODO: "Fee in terms of the specified assset"</em></strong></td>
 <td>Deposit one of this AMM's assets, up to the specified amount, so that you receive the specified amount of LP Tokens in return.</td>
 </tr>
@@ -875,6 +881,28 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
+
+        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -1545,6 +1573,57 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
+
+        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
+
+        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
+
+        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1744,7 +1823,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amminstancecreate.html">AMMInstanceCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

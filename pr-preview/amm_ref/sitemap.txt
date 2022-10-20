@@ -78,6 +78,8 @@ https://xrpl.org/history-sharding.html
 https://xrpl.org/peer-protocol.html
 https://xrpl.org/transaction-censorship-detection.html
 https://xrpl.org/the-clio-server.html
+https://xrpl.org/xrpl-interoperability.html
+https://xrpl.org/intro-to-evm-sidechain.html
 https://xrpl.org/the-rippled-server.html
 https://xrpl.org/nft-concepts.html
 https://xrpl.org/nft-conceptual-overview.html
@@ -195,6 +197,12 @@ https://xrpl.org/server-wont-start.html
 https://xrpl.org/fix-sqlite-tx-db-page-size-issue.html
 https://xrpl.org/manage-the-clio-server.html
 https://xrpl.org/install-clio-on-ubuntu.html
+https://xrpl.org/evm-sidechains.html
+https://xrpl.org/get-started-evm-sidechain.html
+https://xrpl.org/connect-metamask-to-xrpl-evm-sidechain.html
+https://xrpl.org/join-evm-sidechain-devnet.html
+https://xrpl.org/evm-sidechain-validator-security.html
+https://xrpl.org/evm-sidechain-run-a-validator-node.html
 https://xrpl.org/references.html
 https://xrpl.org/protocol-reference.html
 https://xrpl.org/basic-data-types.html
@@ -227,7 +235,7 @@ https://xrpl.org/transaction-common-fields.html
 https://xrpl.org/transaction-types.html
 https://xrpl.org/accountset.html
 https://xrpl.org/accountdelete.html
-https://xrpl.org/amminstancecreate.html
+https://xrpl.org/ammcreate.html
 https://xrpl.org/ammbid.html
 https://xrpl.org/ammdeposit.html
 https://xrpl.org/ammvote.html

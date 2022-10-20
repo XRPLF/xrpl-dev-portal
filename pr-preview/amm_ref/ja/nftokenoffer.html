@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="NFTokenOffer | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nftokenoffer.html" />
-    <meta property="og:description" content="Create offers to buy or sell NFTs." />
-    <meta name="description" content="Create offers to buy or sell NFTs." />
+    <meta property="og:description" content="NFTを売買するオファーを作成する。" />
+    <meta name="description" content="NFTを売買するオファーを作成する。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v10.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -89,6 +89,12 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-md-flex justify-content-center">
+    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
+    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -231,7 +237,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amm_ref/content/references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md?pr=/XRPLF/xrpl-dev-portal/pull/1541" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/amm_ref/content/references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1541" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -244,11 +250,11 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenoffer">NFTokenOffer</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferid-format">NFTokenOfferID Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-fields">NFTokenOffer Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftokenoffer-transactions">NFTokenOffer Transactions</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#locating-nftokenoffer-objects">Locating NFTokenOffer objects</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-reserve">NFTokenOffer Reserve</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferidのフォーマット">NFTokenOfferIDのフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferのフィールド">NFTokenOfferのフィールド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenoffer-トランザクション">NFTokenOffer トランザクション</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-オブジェクトの検索">NFTokenOffer オブジェクトの検索</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-の準備金">NFTokenOffer の準備金</a></li>
       </ul>
   </div>
       </aside>
@@ -268,132 +274,129 @@
     <li class="active breadcrumb-item">NFTokenOffer</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nftokenoffer">NFTokenOffer<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer"><i class="fa fa-link"></i></a></h1>
 <p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
-<p>Tokens that have the <code>lsfTransferable</code> flag set can be transferred among participants using offers. The <code>NFTokenOffer</code> object represents an offer to buy, sell or transfer an <code>NFToken</code> object. The owner of a <code>NFToken</code> can use <code>NFTokenCreateOffer</code> to start a transaction.</p>
-<h3 id="nftokenofferid-format"><code>NFTokenOfferID</code> Format<a aria-hidden="true" class="hover_anchor" href="#nftokenofferid-format"><i class="fa fa-link"></i></a></h3>
-<p>The unique ID (<code>NFTokenOfferID</code>) of the <code>NFTokenOffer</code> object is the result of the following values concatenated in order:</p>
+<p><code>lsfTransferable</code> フラグが設定されているトークンは、オファーを使って 参加者間で転送することができます。<code>NFTokenOffer</code> オブジェクトは <code>NFToken</code> オブジェクトの購入、売却、または譲渡のオファーを表します。<code>NFToken</code> の所有者は <code>NFTokenCreateOffer</code> を使用して売買を行うことができます。</p>
+<h3 id="nftokenofferidのフォーマット"><code>NFTokenOfferID</code>のフォーマット<a aria-hidden="true" class="hover_anchor" href="#nftokenofferidのフォーマット"><i class="fa fa-link"></i></a></h3>
+<p><code>NFTokenOffer</code> オブジェクトのユニーク ID (<code>NFTokenOfferID</code>) は、以下の値を順番に結合したものである。</p>
 <ul>
-<li>The <code>NFTokenOffer</code> space key, <code>0x0074</code>;</li>
-<li>The <code>AccountID</code> of the account placing the offer; and</li>
-<li>The <code>Sequence</code> (or <code>Ticket</code>) of the <code>NFTokenCreateOffer</code> transaction that will create the <code>NFTokenOffer</code>.</li>
+<li><code>NFTokenOffer</code> のスペースキー、<code>0x0074</code> </li>
+<li>オファーを出すアカウントの <code>AccountID</code></li>
+<li><code>NFTokenCreateOffer</code> トランザクションが生成する <code>Sequence</code> (または <code>Ticket</code>)</li>
 </ul>
-<h3 id="nftokenoffer-fields"><code>NFTokenOffer</code> Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-fields"><i class="fa fa-link"></i></a></h3>
+<h3 id="nftokenofferのフィールド"><code>NFTokenOffer</code>のフィールド<a aria-hidden="true" class="hover_anchor" href="#nftokenofferのフィールド"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">名前</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">必須？</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Amount</code></td>
-<td style="text-align: left;">object or string</td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">AMOUNT</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">Amount expected or offered for the NFToken. If the token has the <code>lsfOnlyXRP</code> flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to <code>"0"</code>).</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">NFTokenに対して見込まれる、または提示される金額です。トークンに <code>lsfOnlyXRP</code> フラグが設定されている場合、金額は XRP で指定する必要があります。XRP 以外の資産を指定する売却オファーは、0 以外の金額を指定する必要があります。XRP を指定する売却オファーは、<code>無料</code>にすることができます（つまり、このフィールドは <code>"0"</code> とすることができます）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Destination</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The AccountID for which this offer is intended. If present, only that account can accept the offer.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">このオファーの対象となるAccountID。存在する場合、そのアカウントのみがオファーを受け入れることができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Expiration</code></td>
-<td style="text-align: left;">number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">オファーが有効でなくなる時刻。値は、リップルエポックからの秒数です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">このオブジェクトに関連付けられたフラグのセットで、様々なオプションや設定を指定するために使用されます。フラグは、以下の表に示すとおりです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The type of ledger object (0x0074).</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">レジャーオブジェクトの種類を示します（0x0074）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokenID</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Hash256</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">NFTokenID of the NFToken object referenced by this offer.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">このオファーが参照する NFToken オブジェクトの NFTokenID。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokenOfferNode</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">UInt64</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">トークン購入または売却のオファーディレクトリの中で、このトークンが記録されている内部的な台帳です。このフィールドを使用することで、オファーを効率的に削除することができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Owner</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">Owner of the account that is creating and owns the offer. Only the current Owner of an NFToken can create an offer to sell an NFToken, but any account can create an offer to buy an NFToken.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">オファーの作成者であり、所有者であるアカウント。NFToken の現在の所有者のみが NFToken の売却オファーを作成できますが、NFToken の購入オファーはどのアカウントでも作成できます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">UInt64</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">このトークンが記録されているオーナーディレクトリ内のページを示す、内部的な台帳です。このフィールドを使用することで、オファーを効率的に削除することができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Hash256</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">Identifying hash of the transaction that most recently modified this object.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">このオブジェクトを最も最近更新したトランザクションの識別ハッシュ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
-<td style="text-align: left;">number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">Index of the ledger that contains the transaction that most recently modified this object.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">このオブジェクトを最も最近更新したトランザクションを含むレジャーのインデックス。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="nftokenoffer-flags">NFTokenOffer Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-flags"><i class="fa fa-link"></i></a></h4>
+<h4 id="nftokenoffer-フラグ">NFTokenOffer フラグ<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-フラグ"><i class="fa fa-link"></i></a></h4>
 <table class="table-responsive">
 <thead>
 <tr>
-<th>Flag Name</th>
-<th>Flag Value</th>
-<th>Description</th>
+<th>フラグ名</th>
+<th>フラグ値</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>lsfSellNFToken</code></td>
 <td><code>0x00000001</code></td>
-<td>If enabled, the offer is a sell offer. Otherwise, the offer is a buy offer.</td>
+<td>有効な場合、オファーは売却オファーとなります。そうでない場合、オファーは購入オファーとなります。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="nftokenoffer-transactions"><code>NFTokenOffer</code> Transactions<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-transactions"><i class="fa fa-link"></i></a></h2>
-<p>Token offers on XRPL are stored sorted by quality in an order book and automatically matched by an on-ledger mechanism. An <code>NFTokenOffer</code> is not stored in an order book and is never automatically matched or executed.</p>
-<p>A buyer must <em>explicitly</em> choose to accept an <code>NFTokenOffer</code> that offers to buy an <code>NFToken</code>. Similarly, a seller must <em>explicitly</em> choose to accept a specific <code>NFTokenOffer</code> that offers to buy an <code>NFToken</code> object that they own.</p>
-<p>There are three defined transactions:</p>
+<h2 id="nftokenoffer-トランザクション"><code>NFTokenOffer</code> トランザクション<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-トランザクション"><i class="fa fa-link"></i></a></h2>
+<p>XRPL上のトークン・オファーは、オーダーブックに品質順に保存され、オンレジャーのメカニズムによって自動的にマッチングされます。<code>NFTokenOffer</code>はオーダーブックに保存されず、自動的にマッチングされたり実行されたりすることはありません。</p>
+<p>購入者は <code>NFToken</code> の購入を申し出る <code>NFTokenOffer</code> を受け入れるかどうかを明示的に選択しなければなりません。同様に、販売者は自分が所有する <code>NFToken</code> オブジェクトの購入を申し出る特定の <code>NFTokenOffer</code> を受け入れることを明示的に選択する必要があります。</p>
+<p>定義されたトランザクションは3つあります。</p>
 <ol>
 <li>
 <p><code>NFTokenCreateOffer</code></p>
@@ -405,10 +408,10 @@
 <p><code>NFTokenAcceptOffer</code></p>
 </li>
 </ol>
-<h3 id="locating-nftokenoffer-objects">Locating <code>NFTokenOffer</code> objects<a aria-hidden="true" class="hover_anchor" href="#locating-nftokenoffer-objects"><i class="fa fa-link"></i></a></h3>
-<p>Each token has two directories. One contains offers to buy the token and the other containing offers to sell the token. This makes it easy to find <code>NFTokenOffer</code> for a particular token. It is expected that off-ledger systems will be used to retrieve, present, communicate and effectuate the creation, enumeration, acceptance or cancellation of offers. For example, a marketplace may offer intuitive web- or app-based interfaces for users.</p>
-<h3 id="nftokenoffer-reserve"><code>NFTokenOffer</code> Reserve<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-reserve"><i class="fa fa-link"></i></a></h3>
-<p>Each <code>NFTokenOffer</code> object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 5 XRP. The reserve can be recovered by cancelling the offer.</p>
+<h3 id="nftokenoffer-オブジェクトの検索"><code>NFTokenOffer</code> オブジェクトの検索<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-オブジェクトの検索"><i class="fa fa-link"></i></a></h3>
+<p>各トークンには、2つのディレクトリがあります。1 つはトークンを購入するためのオファー、もう 1 つはトークンを売却するためのオファーが含まれています。これにより、特定のトークンの <code>NFTokenOffer</code> を簡単に見つけることができます。オフレッジャー システムが、オファーの取得、提示、通知、作成、照会、承認、キャンセルに使用されることが予想されます。たとえば、マーケットプレイスは、ウェブやアプリベースの直感的なインターフェースをユーザに提供することができます。</p>
+<h3 id="nftokenoffer-の準備金"><code>NFTokenOffer</code> の準備金<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-の準備金"><i class="fa fa-link"></i></a></h3>
+<p>各NFTokenOfferオブジェクトは、オファーを出すアカウントに準備金の増額を1つ要求します。この記事の執筆時点では、準備金の増分は2 XRPです。この準備金は、オファーをキャンセルすることで 取り戻すことができます。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -636,12 +639,12 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1538,6 +1541,11 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1737,7 +1745,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amminstancecreate.html">AMMInstanceCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
