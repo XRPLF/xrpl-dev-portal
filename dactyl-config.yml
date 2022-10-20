@@ -2105,22 +2105,27 @@ pages:
     -   md: tutorials/interoperability/get-started-evm-sidechain.md
         targets:
             - en
+            - ja
 
     -   md: tutorials/interoperability/connect-metamask-to-xrpl-evm-sidechain.md
         targets:
             - en
+            - ja
 
     -   md: tutorials/interoperability/join-evm-sidechain-devnet.md
         targets:
             - en
+            - ja
 
     -   md: tutorials/interoperability/evm-sidechain-validator-security.md
         targets:
             - en
+            - ja
 
     -   md: tutorials/interoperability/evm-sidechain-run-a-validator-node.md
         targets:
             - en
+            - ja
 
 # References -------------------------------------------------------------------
 
