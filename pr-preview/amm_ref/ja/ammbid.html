@@ -416,6 +416,7 @@
 <li><code>B</code> is the price of the previous bid to be refunded, in LP Tokens.</li>
 <li><code>t</code> is the fraction of time elapsed in the current 24-hour slot, rounded down to a multiple of 0.05.</li>
 </ul>
+<p>As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.</p>
 <h2 id="amm-cases-previous-holder">AMM Cases previous holder<a aria-hidden="true" class="hover_anchor" href="#amm-cases-previous-holder"><i class="fa fa-link"></i></a></h2>
 <p>In addition to errors that can occur for all transactions, AMMBid transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
@@ -449,10 +450,6 @@
 <tr>
 <td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
 <td style="text-align: left;">Either the specified <code>AMM</code>'s associated <code>AccountRoot</code> object, or one of the other accounts specified in this request, do not exist.</td>
-</tr>
-<tr>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><strong><em>TODO: any other errors specific to this transaction type?</em></strong></td>
 </tr>
 </tbody>
 </table>
