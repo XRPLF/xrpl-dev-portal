@@ -9,7 +9,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the
 # Complete an escrow
 # Cannot be called until the finish time is reached
 
-
+# Required fields (modify to match an escrow you create)
 escrow_creator = generate_faucet_wallet(client=client).classic_address
 
 escrow_sequence = 27641268
