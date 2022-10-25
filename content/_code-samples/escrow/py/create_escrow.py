@@ -1,3 +1,4 @@
+import json
 from datetime import datetime, timedelta
 
 from xrpl.clients import JsonRpcClient
@@ -44,6 +45,10 @@ stxn_response = send_reliable_submission(stxn, client)
 # Return result of transaction
 stxn_result = stxn_response.result
 
-# Parse result and print out the trnasaction result and transaction hash 
+
+# Parse result and print out the neccesary info
+print(stxn_result["Account"])
+print(stxn_result["Sequence"])
+
 print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])
