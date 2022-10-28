@@ -4186,6 +4186,7 @@ pages:
         html: dev-tools.html
         template: page-dev-tools.html.jinja
         parent: docs.html
+        top_nav_grouping: Online Tools
         sidebar: left_only
         targets:
             - en
@@ -4199,6 +4200,14 @@ pages:
         targets:
             - en
             - ja
+    
+    -   name: XRPL Education Portal
+        html: https://learn.xrpl.org/
+        parent: docs.html
+        top_nav_grouping: Online Tools
+        targets:
+            - en
+            - ja  
 
     -   name: RPC Tool
         html: xrp-ledger-rpc-tool.html
