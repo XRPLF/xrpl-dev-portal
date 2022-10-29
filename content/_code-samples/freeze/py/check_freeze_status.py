@@ -14,7 +14,7 @@ issuer_addr = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
 target_addr = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"
 
 token_name = "USD"
-
+print(f"searching for a trustline for {token_name} issued by {target_addr} for the address {issuer_addr}")
 # Build account line query
 acc_info = AccountLines(account=issuer_addr, ledger_index="validated")
 
