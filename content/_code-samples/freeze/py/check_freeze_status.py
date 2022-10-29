@@ -25,17 +25,21 @@ response = client.request(acc_info)
 result = response.result
 
 # Parse result for account lines
+found_target_line = False
 if "lines" in result:
     lines = result["lines"]
     for line in lines:
         # Query result with trustline params
         if target_addr == line["account"] and token_name == line["currency"]: 
+            found_target_line = True
+
             if 'freeze' in line:
                 print(f'freeze status of trustline: {line["freeze"]}')
             else:
                 print(f'freeze status of trustline: False')
-        else:
-            print("no such trustline exists")
+
+    if(not(found_target_line)):
+        print(f"no such trustline exists for {token_name} issued by {target_addr} for the address {issuer_addr}")
 else:
     print("this account has no trustlines")
 
