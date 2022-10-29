@@ -195,6 +195,8 @@ def main():
 
         with open(get_path("/Wallet/public.txt"), "w") as f:
             f.write(pub)
+            
+        print("Re-run this script!") 
 
 
 if __name__ == '__main__':
