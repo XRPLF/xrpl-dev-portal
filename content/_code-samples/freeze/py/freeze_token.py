@@ -10,7 +10,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to tes
 token_name = "FOO"
 
 # Amount a trustline can handle, for this transaction it is set to 0
-value = "0"
+value = "100"
 
 target_addr = generate_faucet_wallet(client=client).classic_address
 
