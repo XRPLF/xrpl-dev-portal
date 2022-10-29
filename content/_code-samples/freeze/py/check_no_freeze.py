@@ -21,6 +21,7 @@ def parse_account_root_flags(flags: int) -> list[str]:
 issuer_addr = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"
 
 # Build account line query
+print(f"Checking if the 'No Freeze' flag is enabled for the address {issuer_addr}")
 acc_info = AccountInfo(account=issuer_addr, ledger_index="validated")
 
 # Submit query
