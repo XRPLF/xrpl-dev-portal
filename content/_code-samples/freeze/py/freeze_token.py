@@ -35,3 +35,5 @@ stxn_result = stxn_response.result
 # Print result and transaction hash
 print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])
+if(stxn_result["meta"]["TransactionResult"] == 'tesSUCCESS'):
+    print(f"Froze {token_name} issued by {target_addr} for address {sender_wallet.classic_address}")
