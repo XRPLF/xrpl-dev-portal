@@ -4,10 +4,8 @@ parent: basic-data-types.html
 blurb: XRPL NFTの紹介
 labels:
   - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFToken
-{% include '_snippets/nfts-disclaimer.ja.md' %}
 
 `NFToken` オブジェクトは、1つの非代替性トークン (NFT) を表します。単体では保存されず、他の NFT と共に [NFTokenPage オブジェクト][] に格納されます。
 
@@ -22,6 +20,8 @@ status: not_enabled
 
 
 他のオブジェクトとは異なり、`NFToken` にはオブジェクトの種類や現在の所有者を特定するためのフィールドはありません。NFToken オブジェクトは、オブジェクトの種類と所有者を暗黙的に定義する `NFTokenPages` にグループ化されています。
+
+_([NonFungibleTokensV1_1 amendment][]が必要です)_
 
 
 ## トークンID

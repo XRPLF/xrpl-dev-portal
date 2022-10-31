@@ -6,23 +6,12 @@ filters:
  - include_code
 labels:
  - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFTokenOffer
-{% include '_snippets/nfts-disclaimer.md' %}
 
 Tokens that have the `lsfTransferable` flag set can be transferred among participants using offers. The `NFTokenOffer` object represents an offer to buy, sell or transfer an `NFToken` object. The owner of a `NFToken` can use `NFTokenCreateOffer` to start a transaction.
 
-
-### `NFTokenOfferID` Format
-
-The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of the following values concatenated in order:
-
-
-
-* The `NFTokenOffer` space key, `0x0074`;
-* The `AccountID` of the account placing the offer; and
-* The `Sequence` (or `Ticket`) of the `NFTokenCreateOffer` transaction that will create the `NFTokenOffer`.
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 
 ### `NFTokenOffer` Fields
@@ -77,6 +66,15 @@ Each token has two directories. One contains offers to buy the token and the oth
 ### `NFTokenOffer` Reserve
 
 Each `NFTokenOffer` object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer.
+
+
+### `NFTokenOfferID` Format
+
+The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of the following values concatenated in order:
+
+* The `NFTokenOffer` space key, `0x0074`;
+* The `AccountID` of the account placing the offer; and
+* The `Sequence` (or `Ticket`) of the `NFTokenCreateOffer` transaction that will create the `NFTokenOffer`.
 
 
 <!--{# common link defs #}-->

@@ -4,15 +4,15 @@ parent: transaction-types.html
 blurb: NFTokenの購入または売却のオファーを受け入れる。
 labels:
   - NFTs, Non-fungible Tokens
-status: not_enabled
 ---
 # NFTokenAcceptOffer
-{% include '_snippets/nfts-disclaimer.md' %}
 
 `NFTokenAcceptOffer` トランザクションは `NFToken` の購入または売却のオファーを受け入れるために使用されます。トランザクションは次のいずれかになります。
 
 * 1つのオファーを受け入れることを許可する。これは _ダイレクト_ モードと呼ばれます。
 * 2つの異なるオファー、1つは与えられた `NFToken` の購入を提案し、もう1つは同じ `NFToken` の売却を提案し、アトミックに受け入れられることを許可します。これは _ブローカー_ モードと呼ばれます。
+
+_([NonFungibleTokensV1_1 amendment][]が必要です)_
 
 
 ## ブローカー vs. ダイレクト モード

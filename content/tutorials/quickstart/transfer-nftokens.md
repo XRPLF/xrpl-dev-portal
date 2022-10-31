@@ -10,11 +10,8 @@ labels:
 
 # 4. Transfer NFTokens
 
-{% include '_snippets/nfts-disclaimer.md' %}
 
 This example shows how to:
-
-
 
 1. Create NFToken Sell Offers.
 2. Create NFToken Buy Offers.

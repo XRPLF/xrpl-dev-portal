@@ -6,11 +6,9 @@ filters:
  - include_code
 labels:
  - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 
 # NFTのコンセプトの概要
-{% include '_snippets/nfts-disclaimer.ja.md' %}
 
 XRP Ledgerは、_IOUs_ としても知られる[発行済み通貨(tokens.html)のサポートを提供しています。このような資産は、主に、代替可能(Fungible)です。
 

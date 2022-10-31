@@ -6,11 +6,16 @@ filters:
  - include_code
 labels:
  - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 
-# NFT Conceptual Overview
-{% include '_snippets/nfts-disclaimer.md' %}
+# Non-Fungible Tokens Overview
+
+The XRP Ledger supports non-fungible tokens (NFTs, or “nifties” in the vernacular) natively.  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
+
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+
+
+## Background
 
 The XRP Ledger offers support for [tokens](tokens.html), also known as _IOUs_. Such assets are, primarily, fungible.
 
@@ -31,7 +36,7 @@ But since you are standing around in 1919, you might be offered 24-cent airmail 
 
 Those stamps cannot be replaced by just another other 24-cent stamp. They have become _non-fungible_.
 
-The [NonFungibleTokensV1 amendment][] :not_enabled: adds support for non-fungible tokens (NFTs, or “nifties” in the vernacular) natively on the XRP Ledger.  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
+To represent digital assets similar to these, use the XRP Ledger's Non-Fungible Tokens feature (sometimes referred to by its standards draft number, [XLS-20](https://github.com/XRPLF/XRPL-Standards/discussions/46)).
 
 
 ## NFTs on the XRP Ledger

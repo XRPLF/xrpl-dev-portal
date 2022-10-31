@@ -4,15 +4,16 @@ parent: transaction-types.html
 blurb: Accept an offer to buy or sell an NFToken.
 labels:
   - NFTs, Non-fungible Tokens
-status: not_enabled
 ---
 # NFTokenAcceptOffer
-{% include '_snippets/nfts-disclaimer.md' %}
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenAcceptOffer.cpp "Source")
 
 The `NFTokenAcceptOffer` transaction is used to accept offers to `buy` or `sell` an `NFToken`. It can either:
 
 * Allow one offer to be accepted. This is called _direct_ mode.
 * Allow two distinct offers, one offering to buy a given `NFToken` and the other offering to sell the same `NFToken`, to be accepted in an atomic fashion. This is called _brokered_ mode.
+
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 
 ## Brokered vs. Direct Mode

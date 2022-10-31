@@ -6,7 +6,7 @@ labels:
   - Security
 ---
 # SignerListSet
-[[Source]](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
 The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](multi-signing.html) a transaction. This transaction type was introduced by the [MultiSign amendment][]. [New in: rippled 0.31.0][]
 
@@ -48,7 +48,7 @@ The SignerListSet transaction creates, replaces, or removes a list of signers th
 | Field         | JSON Type | [Internal Type][] | Description                  |
 |:--------------|:----------|:------------------|:-----------------------------|
 | `SignerQuorum`  | Number    | UInt32            | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is greater than or equal to this value. To delete a signer list, use the value `0`. |
-| `SignerEntries` | Array     | Array             | (Omitted when deleting) Array of [`SignerEntry` objects](signerlist.html#signer-entry-object), indicating the addresses and weights of signers in this list. This signer list must have at least 1 member and no more than 8 members. If the [ExpandedSignerList amendment][] :not_enabled: is enabled, the list can have up to 32 members. No address may appear more than once in the list, nor may the `Account` submitting the transaction appear in the list. |
+| `SignerEntries` | Array     | Array             | _(Omitted when deleting)_ Array of [`SignerEntry` objects](signerlist.html#signer-entry-object), indicating the addresses and weights of signers in this list. This signer list must have at least 1 member and no more than 32 members. No address may appear more than once in the list, nor may the `Account` submitting the transaction appear in the list. _(Updated by the [ExpandedSignerList][] amendment.)_ |
 
 A successful SignerListSet transaction replaces the account's [`SignerList` object](signerlist.html) in the ledger, or adds one if it did not exist before. An account may not have more than one signer list. To delete a signer list, you must set `SignerQuorum` to `0` _and_ omit the `SignerEntries` field. Otherwise, the transaction fails with the error [`temMALFORMED`](tem-codes.html). A transaction to delete a signer list is considered successful even if there was no signer list to delete.
 
@@ -58,7 +58,7 @@ You can create, update, or remove a signer list using the master key, regular ke
 
 You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (the account has the [`lsfDisableMaster` flag](accountroot.html#accountroot-flags) enabled) and the account does not have a [Regular Key](cryptographic-keys.html) configured, then you cannot delete the signer list from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](tec-codes.html).
 
-With the [MultiSignReserve amendment][] enabled, creating or replacing a signer list enables the `lsfOneOwnerCount` flag on the [SignerList object](signerlist.html). When this flag is enabled, the XRP Ledger is able to lower the [`OwnerCount`](accountroot.html#accountroot-fields) and [owner reserve](reserves.html#owner-reserves) for the signer list. For more information, see [SignerList Flags](signerlist.html#signerlist-flags).
+Creating or replacing a signer list enables the `lsfOneOwnerCount` flag on the [SignerList object](signerlist.html). Lists that were created before the [MultiSignReserve amendment][] became enabled do not have this flag and have a higher [owner reserve](reserves.html#owner-reserves). You can decrease the owner reserve for these lists by replacing the list with an identical one. For more information, see [SignerList Flags](signerlist.html#signerlist-flags).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

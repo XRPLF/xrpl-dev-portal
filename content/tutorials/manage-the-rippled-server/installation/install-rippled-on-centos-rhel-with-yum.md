@@ -26,7 +26,6 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     - `stable` for the latest production release (`master` branch)
     - `unstable` for pre-release builds (`release` branch)
     - `nightly` for experimental/development builds (`develop` branch)
-    - `xls20` for the preview of the [XLS-20d NFT standard](https://github.com/XRPLF/XRPL-Standards/discussions/46) :not_enabled:.
 
     <!-- MULTICODE_BLOCK_START -->
 

@@ -10,15 +10,11 @@ labels:
 
 # 3. Mint and Burn NFTokens
 
-{% include '_snippets/nfts-disclaimer.md' %}
-
 This example shows how to:
 
-
-1. Mint new Non-fungible Tokens (NFTokens).
+1. Mint new Non-Fungible Tokens (NFTokens).
 2. Get a list of existing NFTokens.
 3. Delete (Burn) a NFToken.
-
 
 ![Test harness with mint NFToken fields](img/quickstart8.png)
 

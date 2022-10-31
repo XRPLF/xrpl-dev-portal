@@ -20,7 +20,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temBAD_FEE`                  | The transaction improperly specified its `Fee` value, for example by listing a non-XRP currency or some negative amount of XRP. |
 | `temBAD_ISSUER`               | The transaction improperly specified the `issuer` field of some currency included in the request. |
 | `temBAD_LIMIT`                | The [TrustSet transaction][] improperly specified the `LimitAmount` value of a trust line. |
-| `temBAD_NFTOKEN_TRANSFER_FEE` | The [NFTokenMint transaction][] improperly specified the `TransferFee` field of the transaction. _(Added by the [NonFungibleTokensV1 amendment][]. :not_enabled:)_ |
+| `temBAD_NFTOKEN_TRANSFER_FEE` | The [NFTokenMint transaction][] improperly specified the `TransferFee` field of the transaction. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `temBAD_OFFER`                | The [OfferCreate transaction][] specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount. |
 | `temBAD_PATH`                 | The [Payment transaction][] specifies one or more [Paths](paths.html) improperly, for example including an issuer for XRP, or specifying an account differently. |
 | `temBAD_PATH_LOOP`           | One of the [Paths](paths.html) in the [Payment transaction][] was flagged as a loop, so it cannot be processed in a bounded amount of time. |

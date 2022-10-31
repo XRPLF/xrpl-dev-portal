@@ -6,12 +6,13 @@ filters:
  - include_code
 labels:
  - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFTokenPage
-{% include '_snippets/nfts-disclaimer.md' %}
 
 The `NFTokenPage` object represents a collection of `NFToken` objects owned by the same account. An account can have multiple `NFTokenPage` ledger objects, which form a doubly linked list.
+
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+
 
 ## Example {{currentpage.name}} JSON
 
