@@ -20,8 +20,8 @@ labels:
 | [fixNFTokenDirV1][]               | v1.9.1     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1][]           | v1.9.0     | [投票中: 未定](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
-| [NonFungibleTokensV1_1][]         | v1.9.2     | [予定: 2022/10/31](https://xrpl.org/blog/2022/expandedsignerlist-enabled-and-nfts-approaching.html "BADGE_BLUE") |
-| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [予定: 2022/10/27](https://xrpl.org/blog/2022/expandedsignerlist-enabled-and-nfts-approaching.html "BADGE_BLUE") |
+| [NonFungibleTokensV1_1][]         | v1.9.2     | [有効: 2022/10/31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
+| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [有効: 2022/10/27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
 | [ExpandedSignerList][]            | v1.9.1     | [有効: 2022/10/13](https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87 "BADGE_GREEN") |
 | [NegativeUNL][]                   | v1.7.3     | [有効: 2021/11/21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
 | [fixRmSmallIncreasedQOffers][]    | v1.7.2     | [有効: 2021/11/18](https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7 "BADGE_GREEN") |
@@ -483,7 +483,7 @@ This amendment has no known impact on transaction processing.
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD | 予定 |
+| DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD | 有効 |
 
 <!-- TODO: translate amendment description -->
 
@@ -694,7 +694,7 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
-| 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 | 予定 |
+| 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 | 有効 |
 
 <!-- TODO: translate description -->
 This amendment's only effect is to enable three other amendments at the same time:

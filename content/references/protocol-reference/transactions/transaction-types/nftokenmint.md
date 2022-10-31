@@ -4,13 +4,13 @@ parent: transaction-types.html
 blurb: Use TokenMint to issue new NFTs.
 labels:
   - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFTokenMint
-[[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp)
-{% include '_snippets/nfts-disclaimer.md' %}
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenMint.cpp "Source")
 
 The `NFTokenMint` transaction creates a non-fungible token and adds it to the relevant [NFTokenPage object][] of the `NFTokenMinter` as an [NFToken][] object. A required parameter to this transaction is the `Token` field specifying the actual token. This transaction is the only opportunity the `NFTokenMinter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
+
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 
 ## Example {{currentpage.name}} JSON

@@ -10,10 +10,10 @@ status: not_enabled
 ---
 
 # XRP Ledger上でNFTokenを売買する
-{% include '_snippets/nfts-disclaimer.ja.md' %}
 
 XRP Ledger上のアカウント間で`NFToken`オブジェクトを転送することができます。`NFToken` の売買をオファーしたり、他のアカウントから自分が保有する NFToken への売買オファーを受け入れることができます。`NFToken` を 無料(価格が0)で売却することで、`NFToken` を配布することもできます。すべてのオファーは [NFTokenCreateOfferトランザクション][] を使って作成されます。
 
+_([NonFungibleTokensV1_1 amendment][]が必要です)_
 
 ## 売却オファー
 

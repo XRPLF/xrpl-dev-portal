@@ -4,14 +4,10 @@ parent: use-tokens.html
 blurb: Use a JavaScript test harness to mint, trade, and destroy NFTs.
 labels:
   - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFToken Tester Tutorial
 
-{% include '_snippets/nfts-disclaimer.md' %}
-
 This example builds a JavaScript test harness where you can create NFTokens and associated transactions. Each button triggers a frequently used request or transaction used to manage `NFTokens`. The fields provided let you enter required parameters.
-
 
 [![NFTokenTester Tutorial Window](img/nftokentester1.png)](img/nftokentester1.png)
 

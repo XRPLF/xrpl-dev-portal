@@ -4,10 +4,8 @@ parent: transaction-types.html
 blurb: NFTokenの売買のための既存のトークンへのオファーをキャンセルする。
 labels:
   - NFTs, Non-fungible Tokens
-status: not_enabled
 ---
 # NFTokenCancelOffer
-{% include '_snippets/nfts-disclaimer.md' %}
 
 `NFTokenCancelOffer` トランザクションは、`NFTokenCreateOffer` を使用して作成した既存のトークンへのオファーをキャンセルするために使用できます。
 
@@ -22,6 +20,9 @@ status: not_enabled
     ]
 }
 ```
+
+_([NonFungibleTokensV1_1 amendment][]が必要です)_
+
 
 ## アクセス権
 

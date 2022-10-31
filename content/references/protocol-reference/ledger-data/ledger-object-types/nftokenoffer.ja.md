@@ -6,12 +6,12 @@ filters:
  - include_code
 labels:
  - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFTokenOffer
-{% include '_snippets/nfts-disclaimer.md' %}
 
 `lsfTransferable` フラグが設定されているトークンは、オファーを使って 参加者間で転送することができます。`NFTokenOffer` オブジェクトは `NFToken` オブジェクトの購入、売却、または譲渡のオファーを表します。`NFToken` の所有者は `NFTokenCreateOffer` を使用して売買を行うことができます。
+
+_([NonFungibleTokensV1_1 amendment][]が必要です)_
 
 
 ### `NFTokenOfferID`のフォーマット

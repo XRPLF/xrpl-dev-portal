@@ -21,9 +21,9 @@ Benefits of multi-signing include:
 
 Before you can multi-sign, you must create a list of which addresses can sign for you.
 
-The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include 1 to 8 addresses in a SignerList. The SignerList cannot include the sender's address and there can be no duplicate entries. You can control how many signatures are needed, in which combinations, by using the *SignerWeight* and *SignerQuorum* values of the SignerList.
+The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include 1 to 32 addresses in a SignerList. The SignerList cannot include the sender's address and there can be no duplicate entries. You can control how many signatures are needed, in which combinations, by using the *SignerWeight* and *SignerQuorum* values of the SignerList.
 
-If the [ExpandedSignerList amendment][] :not_enabled: is enabled, you can include 1 to 32 addresses in a SignerList.
+_(Updated by the [ExpandedSignerList amendment][].)_
 
 ### Signer Weight
 
@@ -35,7 +35,10 @@ The quorum value is the minimum weight total required to authorize a transaction
 
 ### Wallet Locator
 
-If the [ExpandedSignerList amendment][] :not_enabled: is enabled, you can also add up to 256 bits of arbitrary data to each signer's entry in the list. This data is not required or used by the network, but can be used by smart contracts or other applications to identify or confirm other data about the signers.
+You can also add up to 256 bits of arbitrary data to each signer's entry in the list. This data is not required or used by the network, but can be used by smart contracts or other applications to identify or confirm other data about the signers.
+
+_(Added by the [ExpandedSignerList amendment][].)_
+
 
 ### Examples Using Signer Weight and Signer Quorum
 

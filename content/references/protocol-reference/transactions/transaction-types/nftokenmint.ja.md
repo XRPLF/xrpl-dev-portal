@@ -4,13 +4,13 @@ parent: transaction-types.html
 blurb: TokenMintを使用して新規NFTを発行する。.
 labels:
   - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFTokenMint
-[[ソース]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp)
-{% include '_snippets/nfts-disclaimer.md' %}
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/NFTokenMint.cpp "Source")
 
 `NFTokenMint` トランザクションは非代替性トークンを作成し、`NFTokenMinter` の関連する [NFTokenPage object][] に [NFToken][] オブジェクトとして追加します。このトランザクションの必須パラメーターは `Token` フィールドで、実際のトークンを指定します。このトランザクションは `NFTokenMinter` にとって、不変と定義されているトークン フィールド (例えば `Flags`) を設定することができる唯一の方法です。
+
+_([NonFungibleTokensV1_1 amendment][]が必要です)_
 
 
 ## {currentpage.name}} JSONの例
