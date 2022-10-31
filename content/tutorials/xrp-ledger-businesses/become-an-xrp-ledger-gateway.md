@@ -472,7 +472,7 @@ For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver
 
 When you build an automated system to send payments into the XRP Ledger for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.
 
-One common pitfall is performing pathfinding before sending sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the [default paths](paths.html#default-paths) can deliver the currency as intended.
+One common pitfall is performing pathfinding before sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the [default paths](paths.html#default-paths) can deliver the currency as intended.
 
 The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a payment from the operational address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` to the customer address `raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n`, sending and delivering funds issued by the issuing address `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`.
 
