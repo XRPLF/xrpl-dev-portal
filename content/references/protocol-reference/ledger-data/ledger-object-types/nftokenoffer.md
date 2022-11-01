@@ -13,6 +13,23 @@ Tokens that have the `lsfTransferable` flag set can be transferred among partici
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
+## Example {{currentpage.name}} JSON
+
+```json
+{
+    "Amount": "1000000",
+    "Flags": 1,
+    "LedgerEntryType": "NFTokenOffer",
+    "NFTokenID": "00081B5825A08C22787716FA031B432EBBC1B101BB54875F0002D2A400000000",
+    "NFTokenOfferNode": "0",
+    "Owner": "rhRxL3MNvuKEjWjL7TBbZSDacb8PmzAd7m",
+    "OwnerNode": "17",
+    "PreviousTxnID": "BFA9BE27383FA315651E26FDE1FA30815C5A5D0544EE10EC33D3E92532993769",
+    "PreviousTxnLgrSeq": 75443565,
+    "index": "AEBABA4FAC212BF28E0F9A9C3788A47B085557EC5D1429E7A8266FB859C863B3"
+}
+```
+
 
 ### `NFTokenOffer` Fields
 
