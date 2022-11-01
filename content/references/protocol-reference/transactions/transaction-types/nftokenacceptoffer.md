@@ -15,6 +15,26 @@ The `NFTokenAcceptOffer` transaction is used to accept offers to `buy` or `sell`
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
+## Example NFTokenAcceptOffer JSON
+
+```json
+{
+  "Account": "r9spUPhPBfB6kQeF6vPhwmtFwRhBh2JUCG",
+  "Fee": "12",
+  "LastLedgerSequence": 75447550,
+  "Memos": [
+    {
+      "Memo": {
+        "MemoData": "61356534373538372D633134322D346663382D616466362D393666383562356435386437"
+      }
+    }
+  ],
+  "NFTokenSellOffer": "68CD1F6F906494EA08C9CB5CAFA64DFA90D4E834B7151899B73231DE5A0C3B77",
+  "Sequence": 68549302,
+  "TransactionType": "NFTokenAcceptOffer"
+}
+```
+
 
 ## Brokered vs. Direct Mode
 
