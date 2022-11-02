@@ -477,7 +477,7 @@
       line-height: 26px;
   }
   .event-small-gray {
-      color: $gray-400;
+      color: $gray-200;
   }
 
   .event-card {
@@ -576,6 +576,11 @@
     width: 20px;
   }
 
+  // .events-filter[type="checkbox"]:disabled::after {
+  //   -webkit-filter: opacity(0.4);
+  // }
+
+
   .events-filter[type="checkbox"]::before {
     position: relative;
     display: block;
@@ -583,12 +588,12 @@
     height: 20px;
   
     content: "";
-    background: $blue-purple-500;
-    border-radius: 4px;
+    background: $gray-900;
 
-    border-width: 1px;
+    border-radius: 4px;
+    border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-500;
+    border-color: $gray-400;
   }
   
   .events-filter[type="checkbox"]::after {
@@ -604,51 +609,54 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 4px;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-500;
+    border-color: $gray-400;
   }
   
-  // .events-filter[type="checkbox"]:disabled::after {
-  //   -webkit-filter: opacity(0.4);
-  // }
-  
+  .events-filter[type="checkbox"]:checked::before {
+    background: $gray-900;
+    border: none;
+    border-radius: 0;
+  }
+
   .events-filter[type="checkbox"]:checked::after {
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
     background-position: center;
-    border-width: 1px;
+    background-color: $blue-purple-500;
+    border-width: 2px;
     border-style: solid;
     border-color: $blue-purple-500;
     border-radius: 4px;
   }
   
+
   .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
     background-position: center;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $blue-purple-500;
-    border-radius: 4px;
-  }
-  
-  .events-filter[type="checkbox"]:not(:disabled):hover::after {
-    background: $blue-purple-600;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
     border-color: $blue-purple-600;
     border-radius: 4px;
   }
   
+
   .events-filter[type="checkbox"]:not(:disabled):hover::before {
-    background: $blue-purple-600;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $blue-purple-600;
-    border-radius: 4px;
+    background: $gray-900;
+    border: none;
+    border-radius: 0;
   }
 
+  .events-filter[type="checkbox"]:not(:disabled):hover::after {
+    background: $gray-900;
+    border: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue-purple-600;
+    border-radius: 4px;
+  }
 
 }
 

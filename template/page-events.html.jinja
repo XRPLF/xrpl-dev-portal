@@ -30,7 +30,7 @@
   </div>
 </section>
 
-<section class="container-new py-26">
+<!-- <section class="container-new py-26">
   <div class="event-hero card-grid event-hero card-grid-2xN">
     <div class="col order-2 order-lg-1 pr-2">
       <div class="d-flex flex-column-reverse">
@@ -51,28 +51,28 @@
         <div id="event-hero-image" src="" class=""></div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="container-new py-26">
   <div class="event-hero card-grid card-grid-2xN">
     
     <div class="col pr-2">
-        <img src="./assets/img/events/event-hero2@2x.png" class="w-100">
+        <img src="./assets/img/events/event-hero3@2x.png" class="w-100">
     </div>
     
     <div class="col pt-5 pr-2">
       <div class="d-flex flex-column-reverse">
-        <h2 class="h4 h2-sm mb-8">{% trans %}Apex 2021 On-Demand{% endtrans %}</h2>
+        <h2 class="h4 h2-sm mb-8">{% trans %}The XRPL Developer Summit<br /> On-Demand{% endtrans %}</h2>
+        <h6 class="eyebrow mb-3">{% trans %}Apex{% endtrans %}</h6>
       </div>
-      <p class="mb-4">{% trans %}View sessions from the Apex 2021 stages in Las Vegas and Tallinn. Relive the keynote fireside chat with Alexis Ohanian and soak in the knowledge that was shared by passionate XRPL community members.{% endtrans %}</p>
+      <p class="mb-4">{% trans %}Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.{% endtrans %}</p>
       
       <div class="event-small-gray py-2 my-5" >
-        September 29–30, 2021<br />
-        Las Vegas, Estonia
+        View all sessions from Apex 2022 and soak in the knowledge that was shared by passionate XRPL community members.
       </div>
       
       <div class="d-lg-block">
-        <a class="btn btn-primary btn-arrow" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ">{% trans %}Watch Sessions On-Demand{% endtrans %}</a> 
+        <a class="btn btn-primary btn-arrow" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ">{% trans %}View On-Demand{% endtrans %}</a> 
       </div>
     </div>
     
@@ -89,28 +89,42 @@
   <div class="filter row col-12 mt-lg-5 d-flex flex-column">
     <h6 class="mb-3">Filter By:</h6>
     <div>
-    <div class="form-check form-check-inline">
-      <input value="meetup" id="meetup-upcoming" name="meetup-upcoming" type="checkbox" class="events-filter" checked />
-      <label for="meetup-upcoming">Meetups</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input value="hackathon" id="hackathon-upcoming" name="hackathon-upcoming" type="checkbox" class="events-filter" checked />
-      <label for="hackathon-upcoming">Hackathons</label>
-    </div>
+      <div class="form-check form-check-inline">
+        <input value="conference" id="conference-upcoming" name="conference-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="conference-upcoming">Conference</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="meetup" id="meetup-upcoming" name="meetup-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="meetup-upcoming">Meetups</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="hackathon" id="hackathon-upcoming" name="hackathon-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="hackathon-upcoming">Hackathons</label>
+      </div>
     </div>
   </div>
 
   {% set upcoming = [
     
-    { "name": "XRPL Hackathon: Creating Real World Impact",      
-    "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger",
+  { "name": "XRPL Hackathon: NFT Launch Party",      
+    "description": "Build scalable, sustainable, functional NFTs on XRPL.",
     "type": "hackathon-upcoming",
-    "link": "https://xrplimpact.devpost.com/",
+    "link": "https://xrplnft.devpost.com/",
     "location": "Virtual",
-    "date": "May 26 - July 11",
+    "date": "Nov 7 - Dec 12, 2022",
     "image": "event-hack-impact@2x.png"},
+
+  { "name": "XRPL Hackathon: New Year, New NFT",
+    "id": "upcoming-xrpl-hackathon-new-year",
+    "description": "Build functional NFTs on the XRPL that span across a full range of use cases and showcase your project in this hackathon. Submissions have a chance to win prizes from a total prize pool of $50,000 in XRP.",
+    "type": "hackathon-upcoming",
+    "link": "https://xrplnft2022.devpost.com/",
+    "location": "Virtual",
+    "date": "January 31 - March 14, 2022",
+    "image": "event-hack-new-year.svg"},
       
   ] %}
+
   <div class="row row-cols-1 row-cols-lg-3 card-deck mt-2">
   {% for event in upcoming %}
     <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
@@ -139,14 +153,18 @@
   <div class="filter row col-12 mt-lg-5 d-flex flex-column">
     <h6 class="mb-3">Filter By:</h6>
     <div>
-    <div class="form-check form-check-inline">
-      <input value="meetup" id="meetup-past" name="meetup-past" type="checkbox" class="events-filter" checked />
-      <label for="meetup-past">Meetups</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input value="hackathon" id="hackathon-past" name="hackathon-past" type="checkbox" class="events-filter" checked />
-      <label for="hackathon-past">Hackathons</label>
-    </div>
+      <div class="form-check form-check-inline">
+        <input value="conference" id="conference-past" name="conference-past" type="checkbox" class="events-filter" checked />
+        <label for="conference-past">Conference</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="meetup" id="meetup-past" name="meetup-past" type="checkbox" class="events-filter" checked />
+        <label for="meetup-past">Meetups</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="hackathon" id="hackathon-past" name="hackathon-past" type="checkbox" class="events-filter" checked />
+        <label for="hackathon-past">Hackathons</label>
+      </div>
     </div>
   </div>
 
@@ -157,7 +175,7 @@
       "type": "hackathon-past",
       "link": "https://xrpl-hackathon-2021.devpost.com/project-gallery",
       "location": "Virtual",
-      "date": "September 13–October 6, 2021",
+      "date": "September 13-October 6, 2021",
       "image": "event-hack-2021.svg"},
       
     { "name": "XRPL Community Meetup: San Diego",      
@@ -200,16 +218,7 @@
       "date": "Saturday, December 18, 2021",
       "image": "event-meetup-nashville@2x.jpg"},
 
-    { "name": "XRPL Hackathon: New Year, New NFT",
-      "id": "upcoming-xrpl-hackathon-new-year",
-      "description": "Build functional NFTs on the XRPL that span across a full range of use cases and showcase your project in this hackathon. Submissions have a chance to win prizes from a total prize pool of $50,000 in XRP.",
-      "type": "meetup-past",
-      "link": "https://xrplnft.devpost.com/",
-      "location": "Virtual",
-      "date": "January 31 - March 14, 2022",
-      "image": "event-hack-new-year.svg"},
-
-      { "name": "NYC Meetup/Hackathon XRPL Celebration",
+    { "name": "NYC Meetup/Hackathon XRPL Celebration",
       "id": "upcoming-xrpl-new-york",
       "description": "The NYC/XRP community and Dev Null Productions cordially invites you to attend our 10th meetup, being held in celebration of the on-going XRPL Hackathon, at the unique and artistic TALS studio in Midtown Manhattan.",
       "type": "meetup-past",
@@ -227,7 +236,7 @@
       "date": "March 31, 2022",
       "image": "event-meetup-london.png"},
       
-      { "name": "XRPL Community Meetup: Toronto",
+    { "name": "XRPL Community Meetup: Toronto",
       "id": "upcoming-xrpl-toronto",
       "description": "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!",
       "type": "meetup-past",
@@ -236,7 +245,7 @@
       "date": "March 31, 2022",
       "image": "event-meetup-toronto@2x.jpg"},
       
-      { "name": "XRPL Community Meetup: San Diego",
+    { "name": "XRPL Community Meetup: San Diego",
       "id": "upcoming-xrpl-san-diego",
       "description": "Get together with other San Diego-based members of the XRP Ledger Community to network and discuss all things XRPL! Join us for our second San Diego XRPL Meetup.",
       "type": "meetup-past",
@@ -245,7 +254,7 @@
       "date": "April 1st 2022",
       "image": "event-meetup-san-diego@2x.jpg"},
 
-      { "name": "XRPL Community Meetup: Irvine LA",
+    { "name": "XRPL Community Meetup: Irvine LA",
       "id": "upcoming-xrpl-irvine",
       "description": "Get together with other LA-based members of the XRP Ledger Community to network and discuss all things XRPL.",
       "type": "meetup-past",
@@ -254,7 +263,7 @@
       "date": "April 3rd 2022",
       "image": "event-meetup-irvine@2x.jpg"},
       
-      { "name": "XRPL Community Meetup: Miami #2",
+    { "name": "XRPL Community Meetup: Miami #2",
       "id": "upcoming-xrpl-miami-2",
       "description": "We're excited to host our second Miami meetup for XRP Ledger community members on April 6th from 6-8pm, featuring Marco Neri, Developer Advocate at Ripple, who will join us to give a presentation on the XRP Ledger.",
       "type": "meetup-past",
@@ -262,6 +271,23 @@
       "location": "The LAB Miami, FL",
       "date": "April 6th 2022",
       "image": "event-meetup-miami@2x.jpg"},
+
+    { "name": "XRPL Hackathon: Creating Real World Impact",      
+      "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger",
+      "type": "hackathon-past",
+      "link": "https://xrplimpact.devpost.com/",
+      "location": "Virtual",
+      "date": "May 26 - July 11",
+      "image": "event-hack-impact@2x.png"},
+
+      { "name": "Conference Apex 2021",      
+      "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger",
+      "type": "conference-past",
+      "link": "http://apexdevsummit.com",
+      "location": "Las Vegas, Tallinn",
+      "date": "September 29-30, 2021",
+      "image": "event-conference-apex-2021.svg"},
+
   ] %}
   <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
   {% for event in past|reverse %}
@@ -279,13 +305,26 @@
     </a>
   {% endfor %}
   </div>
+  <!-- Button to show more.  -->
+  <!--  -->
 </section>
 
 
 
 
 <script>
+  let showing = 3
+  function showMore() {
+    // 
+  }
 
+  $('#conference-upcoming').change(function () {
+    if ($('#conference-upcoming').is(':checked')) {
+        $('.conference-upcoming').show();
+    } else {
+      $('.conference-upcoming').hide();
+    }
+  });
   $('#meetup-upcoming').change(function () {
     if ($('#meetup-upcoming').is(':checked')) {
         $('.meetup-upcoming').show();
@@ -301,6 +340,13 @@
     }
   });
 
+  $('#conference-past').change(function () {
+    if ($('#conference-past').is(':checked')) {
+        $('.conference-past').show();
+    } else {
+      $('.conference-past').hide();
+    }
+  });
   $('#meetup-past').change(function () {
     if ($('#meetup-past').is(':checked')) {
         $('.meetup-past').show();
