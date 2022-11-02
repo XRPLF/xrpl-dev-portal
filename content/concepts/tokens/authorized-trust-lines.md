@@ -27,7 +27,7 @@ With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process 
 3. The customer sends a [TrustSet transaction][] to create a trust line to the issuer's address, with a positive limit.
 4. The issuer sends a TrustSet transaction to authorize the customer's trust line.
 
-**Tip:** The issuer can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. _(Added by the [TrustSetAuth amendment][].)_
+**Tip:** The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorize the trust line before the customer sets it up, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line. _(Added by the [TrustSetAuth amendment][].)_
 
 ## As a Precaution
 
