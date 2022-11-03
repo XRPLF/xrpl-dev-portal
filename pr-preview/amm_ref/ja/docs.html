@@ -54,7 +54,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v10.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v11.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -73,9 +73,13 @@
   <!-- End Google Tag Manager (noscript) -->
 
 <div class="top-banner fixed-top"> 
-  <div class="d-md-flex justify-content-center">
-    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
-    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -135,9 +139,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="/ja/dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -256,6 +259,12 @@
         <a class="label label-アカウント" href="/ja/label-accounts.html" title="XRP Ledgerのアカウントに関するページ。">
         アカウント
           <span class="badge badge-pill">20</span>
+        </a>
+      </li>
+      <li class="list-inline-item d-block d-lg-inline-block">
+        <a class="label label-amm" href="/ja/label-amm.html" title="自動マーケットメーカー（AMM）に関するページ。">
+        AMM
+          <span class="badge badge-pill">7</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -440,6 +449,13 @@
   <a class="card" href="/ja/dev-tools.html">
     <div class="card-body">
       <h4 class="card-title h5">Dev Tools</h4>
+      <p class="card-text">XRPとXRP Ledgerの全てに対してのコミュニティーリーソース</p>
+    </div>
+    <div class="card-footer">&nbsp;</div>
+  </a>
+  <a class="card" href="/ja/https://learn.xrpl.org/">
+    <div class="card-body">
+      <h4 class="card-title h5">XRPL Education Portal</h4>
       <p class="card-text">XRPとXRP Ledgerの全てに対してのコミュニティーリーソース</p>
     </div>
     <div class="card-footer">&nbsp;</div>
@@ -867,7 +883,17 @@
         
 
       <li class="level-1"><a href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a></li>
+              <li class="level-2"><a href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain</a></li>
+              <li class="level-3"><a href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain</a></li>
         
+
+      <li class="level-2"><a href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet</a></li>
+              <li class="level-3"><a href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security</a></li>
+        
+
+      <li class="level-2"><a href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain</a></li>
+        
+
 
   </ul>
 </div>    </div>
@@ -1095,7 +1121,9 @@
         
 
       <li class="level-3"><a href="/ja/path-and-order-book-methods.html">Path and Order Book Methods</a></li>
-              <li class="level-4"><a href="/ja/book_offers.html">book_offers</a></li>
+              <li class="level-4"><a href="/ja/amm_info.html">amm_info</a></li>
+        
+      <li class="level-4"><a href="/ja/book_offers.html">book_offers</a></li>
         
       <li class="level-4"><a href="/ja/deposit_authorized.html">deposit_authorized</a></li>
         
@@ -1265,6 +1293,16 @@
 
   </ul>
 </div>    </div>
+    <div class="col-md-6 mt-20">
+      <a href="/ja/https://learn.xrpl.org/"><h5 class="mb-3">XRPL Education Portal</h5></a>
+
+
+
+<div class="children-display">
+  <ul>
+    
+  </ul>
+</div>    </div>
   </div>
 </section><!--/.doc-index-->
       </main>
@@ -1299,6 +1337,7 @@
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 

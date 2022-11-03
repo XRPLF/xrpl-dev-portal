@@ -53,7 +53,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v10.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v11.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -72,9 +72,13 @@
   <!-- End Google Tag Manager (noscript) -->
 
 <div class="top-banner fixed-top"> 
-  <div class="d-md-flex justify-content-center">
-    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
-    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -131,9 +135,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -253,6 +256,12 @@
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
+        <a class="label label-amm" href="label-amm.html" title="Pages relating to Automated Market Makers (AMM).">
+        AMM
+          <span class="badge badge-pill">7</span>
+        </a>
+      </li>
+      <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-blockchain" href="label-blockchain.html" title="Pages about how the XRP Ledger functions as a blockchain.">
         Blockchain
           <span class="badge badge-pill">46</span>
@@ -273,7 +282,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-cross-currency" href="label-cross-currency.html" title="Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.">
         Cross-Currency
-          <span class="badge badge-pill">9</span>
+          <span class="badge badge-pill">10</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -285,7 +294,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-decentralized-exchange" href="label-decentralized-exchange.html" title="Pages about the Decentralized Exchange built into the XRP Ledger.">
         Decentralized Exchange
-          <span class="badge badge-pill">10</span>
+          <span class="badge badge-pill">11</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -438,6 +447,13 @@
     </div>
     <div class="card-footer">&nbsp;</div>
   </a>
+  <a class="card" href="https://learn.xrpl.org/">
+    <div class="card-body">
+      <h4 class="card-title h5">XRPL Education Portal</h4>
+      <p class="card-text">XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools.</p>
+    </div>
+    <div class="card-footer">&nbsp;</div>
+  </a>
 </div>  </section><!--/#doc-types-->
 
   <section class="container-new mb-50-until-sm" id="run-a-network-node">
@@ -563,7 +579,7 @@
         
       <li class="level-2"><a href="authorized-trust-lines.html">Authorized Trust Lines</a></li>
         
-      <li class="level-2"><a href="non-fungible-tokens.html">NFT Conceptual Overview</a></li>
+      <li class="level-2"><a href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a></li>
               <li class="level-3"><a href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a></li>
         
       <li class="level-3"><a href="nftoken-batch-minting.html">Batch minting</a></li>
@@ -1105,7 +1121,9 @@
         
 
       <li class="level-3"><a href="path-and-order-book-methods.html">Path and Order Book Methods</a></li>
-              <li class="level-4"><a href="book_offers.html">book_offers</a></li>
+              <li class="level-4"><a href="amm_info.html">amm_info</a></li>
+        
+      <li class="level-4"><a href="book_offers.html">book_offers</a></li>
         
       <li class="level-4"><a href="deposit_authorized.html">deposit_authorized</a></li>
         
@@ -1275,6 +1293,16 @@
 
   </ul>
 </div>    </div>
+    <div class="col-md-6 mt-20">
+      <a href="https://learn.xrpl.org/"><h5 class="mb-3">XRPL Education Portal</h5></a>
+
+
+
+<div class="children-display">
+  <ul>
+    
+  </ul>
+</div>    </div>
   </div>
 </section><!--/.doc-index-->
       </main>
@@ -1309,6 +1337,7 @@
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 

@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v10.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v11.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -90,9 +90,13 @@
   <!-- End Google Tag Manager (noscript) -->
 
 <div class="top-banner fixed-top"> 
-  <div class="d-md-flex justify-content-center">
-    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
-    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -152,9 +156,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="/ja/dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -241,8 +244,7 @@
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-amm">AMM</span>
-      <!-- TEMPLATE WARNING: no label landing found for "AMM" -->
+      <a href="/ja/label-amm.html" class="label label-amm">AMM</a>
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -281,7 +283,9 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h1>
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there is not yet an official amendment and they are not yet available on the production Mainnet.</em></p>
+<p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<!-- TODO: Update source link to merged version when available -->
+<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there is not yet an official amendment and they are not yet available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
 <p>The <code>AMM</code> object type describes a single Automated Market Maker (AMM) instance.</p>
 <h2 id="example-amm-json">Example AMM JSON<a aria-hidden="true" class="hover_anchor" href="#example-amm-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
@@ -340,56 +344,16 @@
 </code></pre></div>
 <h2 id="amm-fields">AMM Fields<a aria-hidden="true" class="hover_anchor" href="#amm-fields"><i class="fa fa-link"></i></a></h2>
 <p>The <code>AMM</code> object has the following fields:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>AMMToken</code></td>
-<td style="text-align: left;">Object</td>
-<td style="text-align: left;">STObject</td>
-<td style="text-align: left;">Defines the two assets this AMM trades, as an <a href="#ammtoken-object">AMMToken Object</a>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AccountRootID</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">The address of the special account that holds this AMM's assets.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AuctionSlot</code></td>
-<td style="text-align: left;">Object</td>
-<td style="text-align: left;">STObject</td>
-<td style="text-align: left;">Details of the current owner of the auction slot, as an <a href="#auction-slot-object">Auction Slot object</a>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>LPTokenBalance</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
-<td style="text-align: left;">Amount</td>
-<td style="text-align: left;">The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>TradingFee</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">The percentage fee to be charged for trades against this AMM instance, in units of 1/10,000. The maximum value is 65000, for a 65% fee.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>VoteSlots</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">STArray</td>
-<td style="text-align: left;">A list of vote objects, representing votes on the pool's trading fee.</td>
-</tr>
-</tbody>
-</table>
+<p>| Field            | JSON Type           | <a href="serialization.html">Internal Type</a> | Required? | Description  |
+|:-----------------|:--------------------|:------------------|:-------------|
+| <code>AMMToken</code>       | Object              | STObject          | Yes       | Defines the two assets in this AMM's pool, as an <a href="#ammtoken-object">AMMToken Object</a>. |
+| <code>AccountRootID</code>  | String              | AccountID         | Yes       | The address of the special account that holds this AMM's assets. |
+| <code>AuctionSlot</code>    | Object              | STObject          | No        | Details of the current owner of the auction slot, as an <a href="#auction-slot-object">Auction Slot object</a>. |
+| <code>LPTokenBalance</code> | <a href="basic-data-types.html#通貨額の指定">Currency Amount</a> | Amount            | Yes       | The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets. |
+| <code>TradingFee</code>     | Number              | UInt16            | Yes       | The percentage fee to be charged for trades against this AMM instance, in units of 1/10,000. The maximum value is 65000, for a 65% fee. |
+| <code>VoteSlots</code>      | Array               | STArray           | No        | A list of vote objects, representing votes on the pool's trading fee. |</p>
 <h3 id="ammtoken-object">AMMToken Object<a aria-hidden="true" class="hover_anchor" href="#ammtoken-object"><i class="fa fa-link"></i></a></h3>
-<p>The <code>AMMToken</code> field is an object that defines the assets this AMM trades. Each asset can be XRP or a <a href="tokens.html">fungible token</a> but they cannot both be XRP.</p>
+<p>The <code>AMMToken</code> field is an object that defines the assets in this AMM's pool. Each asset can be XRP or a <a href="tokens.html">fungible token</a> but they cannot both be XRP.</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -404,13 +368,13 @@
 <td style="text-align: left;"><code>Token1</code></td>
 <td style="text-align: left;">Object</td>
 <td style="text-align: left;">STObject</td>
-<td style="text-align: left;">The first asset this AMM trades, as an asset definition object.</td>
+<td style="text-align: left;">The first asset in this AMM's pool, as an asset definition object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Token2</code></td>
 <td style="text-align: left;">Object</td>
 <td style="text-align: left;">STObject</td>
-<td style="text-align: left;">The second asset this AMM trades.</td>
+<td style="text-align: left;">The second asset in this AMM's pool.</td>
 </tr>
 </tbody>
 </table>
@@ -439,6 +403,7 @@
 </tr>
 </tbody>
 </table>
+<p>The two assets cannot be the exact same; they <em>can</em> have the same currency code or the same issuer but not both. One or both of the assets <em>can</em> be the LP Tokens from another AMM, but they cannot match the currency and issuer of <em>this</em> AMM's LP Tokens.</p>
 <h3 id="auction-slot-object">Auction Slot Object<a aria-hidden="true" class="hover_anchor" href="#auction-slot-object"><i class="fa fa-link"></i></a></h3>
 <p>The <code>AuctionSlot</code> field contains an object with the following nested fields:</p>
 <table class="table-responsive">
@@ -728,7 +693,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
@@ -738,7 +703,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
   </div>
 
     </nav>
@@ -1296,7 +1261,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial</a>
   </div>
 
       
@@ -1632,7 +1597,53 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11" aria-expanded="false" aria-controls="tree_nav_group_3_11"></a>
+
+        <a class="nav-link" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_1" aria-expanded="false" aria-controls="tree_nav_group_3_11_1"></a>
+
+        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_2" aria-expanded="false" aria-controls="tree_nav_group_3_11_2"></a>
+
+        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
     </nav>
@@ -1675,7 +1686,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken</a>
   </div>
 
     </nav>
@@ -1760,12 +1771,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -1894,27 +1905,27 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -2190,7 +2201,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -2306,6 +2317,11 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2316,12 +2332,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -2758,6 +2774,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-blockchain.html">ブロックチェーン</a>
   </div>
 
@@ -2888,6 +2909,11 @@
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Education Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2920,6 +2946,7 @@
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 

@@ -314,6 +314,7 @@ https://xrpl.org/transaction_entry.html
 https://xrpl.org/tx.html
 https://xrpl.org/tx_history.html
 https://xrpl.org/path-and-order-book-methods.html
+https://xrpl.org/amm_info.html
 https://xrpl.org/book_offers.html
 https://xrpl.org/deposit_authorized.html
 https://xrpl.org/nft_buy_offers.html
@@ -384,6 +385,7 @@ https://xrpl.org/xrp-api.html
 https://xrpl.org/data-api.html
 https://xrpl.org/xrp-ledger-toml.html
 https://xrpl.org/label-accounts.html
+https://xrpl.org/label-amm.html
 https://xrpl.org/label-blockchain.html
 https://xrpl.org/label-checks.html
 https://xrpl.org/label-rippled.html

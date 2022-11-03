@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v10.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v11.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -90,9 +90,13 @@
   <!-- End Google Tag Manager (noscript) -->
 
 <div class="top-banner fixed-top"> 
-  <div class="d-md-flex justify-content-center">
-    <span><p class="mb-0">Learn how to build on the XRP Ledger.</p></span>
-    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -152,9 +156,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="/ja/dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -349,21 +352,6 @@
 <td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></td>
-<td style="text-align: left;">v1.9.2</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.2.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#fixnftokendirv1">fixNFTokenDirV1</a></td>
-<td style="text-align: left;">v1.9.1</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.1.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></td>
-<td style="text-align: left;">v1.9.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/rippled-1.9.0.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
 <td style="text-align: left;"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
 <td style="text-align: left;">v1.8.0</td>
 <td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.8.1.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
@@ -371,12 +359,12 @@
 <tr>
 <td style="text-align: left;"><a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></td>
 <td style="text-align: left;">v1.9.2</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/expandedsignerlist-enabled-and-nfts-approaching.html" target="_blank" title="予定: 2022/10/31"><img alt="予定: 2022/10/31" class="dactyl_badge" src="https://img.shields.io/badge/%E4%BA%88%E5%AE%9A-2022/10/31-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE" target="_blank" title="有効: 2022/10/31"><img alt="有効: 2022/10/31" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2022/10/31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></td>
 <td style="text-align: left;">v1.9.4</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2022/expandedsignerlist-enabled-and-nfts-approaching.html" target="_blank" title="予定: 2022/10/27"><img alt="予定: 2022/10/27" class="dactyl_badge" src="https://img.shields.io/badge/%E4%BA%88%E5%AE%9A-2022/10/27-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C" target="_blank" title="有効: 2022/10/27"><img alt="有効: 2022/10/27" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2022/10/27-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#expandedsignerlist">ExpandedSignerList</a></td>
@@ -592,6 +580,21 @@
 <td style="text-align: left;"><a href="#feeescalation">FeeEscalation</a></td>
 <td style="text-align: left;">v0.31.0</td>
 <td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="有効: 2016/05/19"><img alt="有効: 2016/05/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/05/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></td>
+<td style="text-align: left;">v1.9.2</td>
+<td style="text-align: left;"><a title="廃止: 削除未定"><img alt="廃止: 削除未定" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-%E5%89%8A%E9%99%A4%E6%9C%AA%E5%AE%9A-red.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnftokendirv1">fixNFTokenDirV1</a></td>
+<td style="text-align: left;">v1.9.1</td>
+<td style="text-align: left;"><a title="廃止: 削除未定"><img alt="廃止: 削除未定" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-%E5%89%8A%E9%99%A4%E6%9C%AA%E5%AE%9A-red.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></td>
+<td style="text-align: left;">v1.9.0</td>
+<td style="text-align: left;"><a title="廃止: 削除未定"><img alt="廃止: 削除未定" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-%E5%89%8A%E9%99%A4%E6%9C%AA%E5%AE%9A-red.svg"/></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
@@ -1133,13 +1136,13 @@
 <tbody>
 <tr>
 <td style="text-align: left;">0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3</td>
-<td style="text-align: left;">投票中</td>
+<td style="text-align: left;">廃止</td>
 </tr>
 </tbody>
 </table>
 <!-- TODO: translate description -->
 <p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> a <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
-<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, the fixNFTokenDirV1 amendment should be enabled before the NonFungibleTokensV1 amendment.</p>
+<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
 <h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1151,13 +1154,13 @@
 <tbody>
 <tr>
 <td style="text-align: left;">36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6</td>
-<td style="text-align: left;">投票中</td>
+<td style="text-align: left;">廃止</td>
 </tr>
 </tbody>
 </table>
 <!-- TODO: translate description -->
 <p>This amendment fixes a bug in the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell an NFT for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.</p>
-<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. To avoid bugs, all the NFT-related amendments should be enabled together using <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
 <h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1204,7 +1207,7 @@
 <tbody>
 <tr>
 <td style="text-align: left;">DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD</td>
-<td style="text-align: left;">予定</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
@@ -1450,13 +1453,13 @@ the latest ledger that the validator considers to be fully validated. The consen
 <tbody>
 <tr>
 <td style="text-align: left;">3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87</td>
-<td style="text-align: left;">開発中</td>
+<td style="text-align: left;">廃止</td>
 </tr>
 </tbody>
 </table>
 <!-- TODO: translate description -->
 <p>Adds native support for non-fungible tokens. Standards Draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20d <i aria-hidden="true" class="fa fa-external-link"></i></a>. <!-- SPELLING_IGNORE: xls, 20d --></p>
-<p class="devportal-callout warning"><strong>Warning:</strong> There is a known issue with this amendment that can cause <code>tecINVARIANT_FAILED</code> errors to appear in the ledger. The <a href="#fixnftokendirv1">fixNFTokenDirV1</a> amendment fixes these issues and should be enabled before the NonFungibleTokensV1 amendment to avoid problems.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> There are several known issues with this amendment including one that can cause <code>tecINVARIANT_FAILED</code> errors to appear in the ledger. It has been replaced by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.</p>
 <p>This amendment adds 5 new transaction types:</p>
 <ul>
 <li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
@@ -1483,19 +1486,20 @@ the latest ledger that the validator considers to be fully validated. The consen
 <tbody>
 <tr>
 <td style="text-align: left;">32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627</td>
-<td style="text-align: left;">予定</td>
+<td style="text-align: left;">有効</td>
 </tr>
 </tbody>
 </table>
 <!-- TODO: translate description -->
-<p>This amendment's only effect is to enable three other amendments at the same time:</p>
+<p>Adds native support for <a href="non-fungible-tokens.html">non-fungible tokens</a>, including fixes to several issues that were discovered after <a href="#nonfungibletokensv1">NonFungibleTokensV1</a>.</p>
+<p>This amendment combines the effects of the following amendments, rendering the individual amendments obsolete:</p>
 <ul>
 <li><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
 <li><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
 <li><a href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
 </ul>
-<p>This ensures that the base NFT functionality and the related fixes all become enabled together, with no chance for the buggy functionality to become enabled without the fixes and no delay needed in between.</p>
-<p>Validators who wish to enable Non-Fungible Tokens (NFTs) on the XRP Ledger should vote in favor of this amendment and not the others.</p>
+<p>It has no other effects.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The <a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a> fixes an known issue with this amendment. When creating a new test network, you should make sure that these amendments should be enabled together or the fix amendment is enabled first.</p>
 <h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1897,7 +1901,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
@@ -1907,7 +1911,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
   </div>
 
     </nav>
@@ -2465,7 +2469,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial</a>
   </div>
 
       
@@ -2801,7 +2805,53 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11" aria-expanded="false" aria-controls="tree_nav_group_3_11"></a>
+
+        <a class="nav-link" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_1" aria-expanded="false" aria-controls="tree_nav_group_3_11_1"></a>
+
+        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_2" aria-expanded="false" aria-controls="tree_nav_group_3_11_2"></a>
+
+        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
   </div>
 
     </nav>
@@ -2844,7 +2894,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken</a>
   </div>
 
     </nav>
@@ -2929,12 +2979,12 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -3063,27 +3113,27 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -3359,7 +3409,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -3475,6 +3525,11 @@ the latest ledger that the validator considers to be fully validated. The consen
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -3485,12 +3540,12 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -3927,6 +3982,11 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-blockchain.html">ブロックチェーン</a>
   </div>
 
@@ -4057,6 +4117,11 @@ the latest ledger that the validator considers to be fully validated. The consen
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Education Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -4089,6 +4154,7 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 
