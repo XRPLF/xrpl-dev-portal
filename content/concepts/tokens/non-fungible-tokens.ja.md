@@ -10,7 +10,7 @@ labels:
 
 # NFTのコンセプトの概要
 
-XRP Ledgerは、_IOUs_ としても知られる[発行済み通貨(tokens.html)のサポートを提供しています。このような資産は、主に、代替可能(Fungible)です。
+XRP Ledgerは、_IOUs_ としても知られる[発行済み通貨](tokens.html)のサポートを提供しています。このような資産は、主に、代替可能(Fungible)です。
 
 > 代替可能性
 >
