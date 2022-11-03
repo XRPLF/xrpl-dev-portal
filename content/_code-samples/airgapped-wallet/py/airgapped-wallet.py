@@ -120,7 +120,7 @@ def main():
         File = PurePath(str(usr) + '/Wallet')
         Path_ = str(PurePath(str(usr)))
         
-    # If the Wallet's folder doesn't exist, continue on
+    # If the Wallet's folder already exists, continue on
     if os.path.exists(File):
         while True:
             ask = int(input("\n 1. Transact XRP"
