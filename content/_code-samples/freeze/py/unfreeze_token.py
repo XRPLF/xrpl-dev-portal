@@ -13,7 +13,7 @@ token_name = "USD"
 # Amount a trustline can handle
 value = "0"
 
-# Address to ufreeze trustline
+# Address to unfreeze trustline
 target_addr = generate_faucet_wallet(client=client).classic_address
 
 # Sender wallet
