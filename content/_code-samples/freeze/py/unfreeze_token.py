@@ -39,5 +39,5 @@ if stxn_result["meta"]["TransactionResult"] == "tesSUCCESS":
   print(f'Successfully enabled no freeze for {sender_wallet.classic_address}')
   print(stxn_result["hash"])
 else:
-  print({stxn_result["meta"]["TransactionResult"])
+  print(stxn_result["meta"]["TransactionResult"])
   print(stxn_result["hash"])
