@@ -234,9 +234,7 @@ pages:
         redirect_url: run-rippled-as-a-stock-server.html
         targets:
             - en
-        # This redirect needs to be added to the Japanese target *after*
-        # renaming the original file in that target and translating the changes
-        #    - ja
+            - ja
 
     -   name: Use Cases & Featured Projects
         template: page-uses.html.jinja
@@ -1070,10 +1068,12 @@ pages:
     -   md: concepts/interoperability/xrpl-interoperability.md
         targets:
             - en
+            - ja
 
     -   md: concepts/interoperability/intro-to-evm-sidechain.md
         targets:
             - en
+            - ja
 
     -   name: Hooks
         html: https://xrpl-hooks.readme.io/
@@ -2308,8 +2308,6 @@ pages:
     -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.md
         targets:
             - en
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.ja.md
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
@@ -3235,7 +3233,7 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
+        # TODO: translate title & blurb
     -   name: Clio Server Methods
         html: clio-methods.html
         parent: public-api-methods.html
@@ -4546,6 +4544,7 @@ known_broken_links:
     - https://xrpl-hackathon-2021.devpost.com/project-gallery
     - https://xrplimpact.devpost.com/
     - https://www.postgresqltutorial.com/install-postgresql-linux/
+    - http://www.investopedia.com/terms/o/order-book.asp
     # This site often times out, but it does work and is the original.
     - https://theworld.com/~reinhold/diceware.html
 
