@@ -30,29 +30,6 @@
   </div>
 </section>
 
-<!-- <section class="container-new py-26">
-  <div class="event-hero card-grid event-hero card-grid-2xN">
-    <div class="col order-2 order-lg-1 pr-2">
-      <div class="d-flex flex-column-reverse">
-        <h2 class="h4 h2-sm mb-8">{% trans %}Annual Summit: Apex{% endtrans %}</h2>
-      </div>
-      <p class="mb-4">{% trans %}Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.{% endtrans %}</p>
-      <div class="pt-2 mt-5 mb-5 event-save-date">More info about Apex 2022 coming soon!</div>
-      {# <div class="event-small-gray py-2 mb-5" >
-        September 29–30, 2022<br />
-        Las Vegas
-      </div> #}
-      <div class="d-lg-block">
-        <a class="btn btn-primary btn-arrow" target="_blank" href="http://apexdevsummit.com">{% trans %}Explore Apex{% endtrans %}</a> 
-      </div>
-    </div>
-
-    <div class="col order-1 order-lg-2 pt-5 pr-2">
-        <div id="event-hero-image" src="" class=""></div>
-    </div>
-  </div>
-</section> -->
-
 <section class="container-new py-26">
   <div class="event-hero card-grid card-grid-2xN">
     
@@ -72,7 +49,7 @@
       </div>
       
       <div class="d-lg-block">
-        <a class="btn btn-primary btn-arrow" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ">{% trans %}View On-Demand{% endtrans %}</a> 
+        <a class="btn btn-primary btn-arrow-out" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZi8N1e_dTodg816QzKc9SX">{% trans %}View On-Demand{% endtrans %}</a> 
       </div>
     </div>
     
@@ -107,21 +84,12 @@
   {% set upcoming = [
     
   { "name": "Hackathon:<br />NFT Launch Party",      
-    "description": "Build scalable, sustainable, functional NFTs on XRPL.",
+    "description": "Build Functional NFTs that span across a full range of use cases.",
     "type": "hackathon-upcoming",
     "link": "https://xrplnft.devpost.com/",
     "location": "Virtual",
-    "date": "Nov 7 - Dec 12, 2022",
-    "image": "event-hack-impact@2x.png"},
-
-  { "name": "Hackathon:<br />New Year, New NFT",
-    "id": "upcoming-xrpl-hackathon-new-year",
-    "description": "Build functional NFTs on the XRPL that span across a full range of use cases and showcase your project in this hackathon. Submissions have a chance to win prizes from a total prize pool of $50,000 in XRP.",
-    "type": "hackathon-upcoming",
-    "link": "https://xrplnft2022.devpost.com/",
-    "location": "Virtual",
-    "date": "January 31 - March 14, 2022",
-    "image": "event-hack-new-year.svg"},
+    "date": "Oct 31 - Dec 5, 2022",
+    "image": "event-hack-nft@2x.png"},
       
   ] %}
 
@@ -272,21 +240,30 @@
       "date": "April 6th 2022",
       "image": "event-meetup-miami@2x.jpg"},
 
+    { "name": "Hackathon:<br />New Year, New NFT",
+      "id": "upcoming-xrpl-hackathon-new-year",
+      "description": "Build Functional NFTs that span across a full range of use cases.",
+      "type": "hackathon-past",
+      "link": "https://xrplnft2022.devpost.com/",
+      "location": "Virtual",
+      "date": "January 31 - March 14, 2022",
+      "image": "event-hack-nft@2x.png"},
+
     { "name": "Hackathon: Creating Real World Impact",      
-      "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger",
+      "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger.",
       "type": "hackathon-past",
       "link": "https://xrplimpact.devpost.com/",
       "location": "Virtual",
-      "date": "May 26 - July 11",
-      "image": "event-hack-impact@2x.png"},
+      "date": "May 26 - Jul 11, 2022",
+      "image": "event-hack-nft@2x.png"},
 
-      { "name": "Conference:<br />Apex 2021",      
-      "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger",
+    { "name": "Conference:<br />Apex 2021",      
+      "description": "View sessions from the Apex 2021 stages in Las Vegas and Tallinn.",
       "type": "conference-past",
-      "link": "http://apexdevsummit.com",
+      "link": "https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ",
       "location": "Las Vegas, Tallinn",
       "date": "September 29-30, 2021",
-      "image": "event-conference-apex-2021.svg"},
+      "image": "event-conference-apex-2021.png"},
 
   ] %}
   <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
@@ -305,18 +282,12 @@
     </a>
   {% endfor %}
   </div>
-  <!-- Button to show more.  -->
-  <!--  -->
 </section>
 
 
 
 
 <script>
-  let showing = 3
-  function showMore() {
-    // 
-  }
 
   $('#conference-upcoming').change(function () {
     if ($('#conference-upcoming').is(':checked')) {

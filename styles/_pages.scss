@@ -480,6 +480,33 @@
       color: $gray-200;
   }
 
+  // Button has link out arrow.
+  .btn {
+    padding: .75rem;
+  }
+
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
+  }
+
   .event-card {
       max-width: 311px;
       margin: 32px auto;
