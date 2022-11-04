@@ -88,7 +88,6 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
 
 # 関連項目
 
-* [GB-2014-02新機能残高凍結](https://ripple.com/files/GB-2014-02.pdf)
 * [凍結コードの例](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze)
 
 <!--{# common link defs #}-->
