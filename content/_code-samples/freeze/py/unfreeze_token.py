@@ -19,6 +19,8 @@ target_addr = generate_faucet_wallet(client=client).classic_address
 # Sender wallet
 sender_wallet = generate_faucet_wallet(client=client)
 
+print("Successfully generated test wallets")
+
 # Build trustline freeze transaction
 trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCurrencyAmount(
     currency=token_name,
@@ -26,6 +28,8 @@ trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCu
     value = value 
 ),
 flags=TrustSetFlag.TF_CLEAR_FREEZE)
+
+print("prepared and submitting TF_CLEAR_FREEZE transaction")
 
 # Sign and Submit transaction
 stxn = safe_sign_and_autofill_transaction(trustset, sender_wallet, client)
