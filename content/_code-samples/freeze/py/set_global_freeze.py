@@ -9,9 +9,13 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to tes
 # Sender wallet object
 sender_wallet = generate_faucet_wallet(client)
 
+print("Successfully generated test wallet")
+
 # Build accountset transaction to enable global freeze
 accountset = AccountSet(account=sender_wallet.classic_address,
     set_flag=AccountSetFlag.ASF_GLOBAL_FREEZE)
+
+print("Submitting prepared transaction...")
 
 # Sign and submit transaction
 stxn = safe_sign_and_autofill_transaction(accountset, sender_wallet, client)
