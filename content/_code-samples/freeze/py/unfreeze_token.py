@@ -41,7 +41,9 @@ stxn_result = stxn_response.result
 # Print result and transaction hash
 if stxn_result["meta"]["TransactionResult"] == "tesSUCCESS":
   print(f'Successfully enabled no freeze for {sender_wallet.classic_address}')
-  print(stxn_result["hash"])
-else:
+if stxn_result["meta"]["TransactionResult"] == "tecNoLineRedundant":
+  print("This was used on an account which didn't have a trustline yet. To try this out, modify `target_addr` to point to an account with a frozen trustline, and make sure the currency code matches.")
+else:  
   print(stxn_result["meta"]["TransactionResult"])
-  print(stxn_result["hash"])
+  
+print(stxn_result["hash"])
