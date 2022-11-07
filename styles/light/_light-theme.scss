@@ -775,6 +775,31 @@ $placeholder-color: $gray-600;
   .icon-location::before {
       background: url(../img/events/event-location-light.svg);
   }
+
+
+  .events-filter[type="checkbox"]::before {
+    background-color: $gray-100;
+  }
+
+
+  .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
+    background-image: url(../img/events/event-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $blue-purple-600;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue-purple-600;
+    border-radius: 4px;
+  }
+
+  .events-filter[type="checkbox"]:not(:disabled):hover::before {
+    background-color: $gray-100;
+  }
+  .events-filter[type="checkbox"]:not(:disabled):hover::after {
+    background-color: $gray-100;
+  }
+
 }
 
 
