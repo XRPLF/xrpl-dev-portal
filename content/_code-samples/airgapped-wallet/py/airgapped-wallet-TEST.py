@@ -51,7 +51,6 @@ def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, passwo
         salt = f.read()
 
     print("2. Initializing key...")
-    # Line 49-58: initialize key
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
         length=32,
