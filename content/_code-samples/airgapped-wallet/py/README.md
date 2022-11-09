@@ -108,4 +108,4 @@ Once you have signed a transaction in the airgapped machine, a QR code will be g
 
 Scan the QR code using the phone and transmit it to Machine 2, which will then be sending it to a rippled node.
 
-You could use Discord, Whatsapp or even e-mail the signed transaction blob to yourself in order for you to receive the signed transaction blob in Machine 2.
+You can send a message to yourself using Discord, WhatsApp or even e-mail, then open up the message using Machine 2 to receive the signed transaction blob.
