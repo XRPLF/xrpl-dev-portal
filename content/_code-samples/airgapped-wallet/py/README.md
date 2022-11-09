@@ -17,7 +17,7 @@ Strongly note that an airgapped system's security is not determined by its code 
 
 There are channels that can be maliciously used by outside parties to infiltrate an airgapped system and steal sensitive information.
 
-There are other ways malware could interact across airgapped networks, but they all involve an infected USB drive or a similar device introducing malware onto the airgapped machine. (They could also involve a person physically accessing the computer, compromising it and installing malware or modifying its hardware.)
+There are other ways malware could interact across airgapped networks, but they all involve an infected USB drive or a similar device introducing malware onto the airgapped machine. They could also involve a person physically accessing the computer, compromising it and installing malware or modifying its hardware.
 
 This is why it is also recommended to encrypt sensitive information being stored in an airgapped machine.
 
