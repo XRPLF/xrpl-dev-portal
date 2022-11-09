@@ -6,12 +6,10 @@ labels:
   - Interoperability
 status: not_enabled
 ---
-# XChainCreateBridge
+# XChainAddAttestation
 <!-- [[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp) -->
 
-The `XChainCreateBridge` transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.
-
-The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This would ensure that the funds are truly in control of the witness servers.
+The `XChainAddAddestation` transaction submits an attestation from a witness server. 
 
 
 ## Example {{currentpage.name}} JSON
@@ -19,7 +17,7 @@ The complete production-grade setup would also include a `SignerListSet` transac
 
 ```json
 {
-  "TransactionType": "XChainCreateBridge",
+  "TransactionType": "XChainAddAttestation",
   "Account": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
   "XChainBridge": {
     "LockingChainDoor": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",

@@ -6,7 +6,7 @@ labels:
   - Interoperability
 status: not_enabled
 ---
-# XChainCreateBridge
+# XChainCreateAccountCommit
 <!-- [[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp) -->
 
 The `XChainCreateBridge` transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.

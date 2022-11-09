@@ -1,6 +1,6 @@
 ---
 html: parallel-networks-list.html
-parent: interoperability.html
+parent: xrpl-interoperability.html
 blurb: Available parallel networks.
 labels:
   - Interoperability

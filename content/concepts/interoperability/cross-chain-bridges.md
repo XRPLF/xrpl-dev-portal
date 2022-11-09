@@ -1,13 +1,13 @@
 ---
 html: cross-chain-bridges.html
-parent: interoperability.html
+parent: xrpl-interoperability.html
 blurb: Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains.
 labels:
   - Blockchain
 ---
 # Cross-Chain Bridges
 
-Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains such as the XRP Ledger and its sidechain.
+Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains such as the XRP Ledger and its sidechains.
 
 
 A locking chain is a blockchain that holds assets that are then put into trust when a bridge to an issuing chain is created.
@@ -15,46 +15,6 @@ A locking chain is a blockchain that holds assets that are then put into trust w
 An issuing chain is an independent ledger with its own consensus algorithm and transaction types and rules. It acts as its own blockchain.
 
 Both the locking and issuing chains operate as parllel networks with independent nodes and validators. They rely on independent [witness servers](witness-servers.md) to watch transactions between the two chains and attest that assets have moved into specifically designated accounts.
-
-## How Do Cross-Chain Transactions Work?
-
-*Pre-requisites*
-
-You must ensure that the following are set up and running before initiating cross-chain transactions. 
-
-* The witness server(s) are up and running.
-* Set up a bridge between the two chains. This inovles initializing the bridge on both chains. Each chain has a _door account_ that controls that end of the bridge on-chain. On one chain, the asset is locked and unlocked (hence the name "locking chain"), and on the other chain, assets are minted and burned, or issues and reclaimed (hence the name "issuing chain").
-* When using the XRP Ledger mainchain as one of the chains, ensure that  the `Sidechains` amendment is enabled in the rippled.cfg configuration file. 
-*  
-
-At a high-level, cross-chain transactions involve the following steps: 
-
-1. Claim a cross-chain claim ID on the issuing chain.
-2. Submit a cross-chain transfer transaction on the locking chain, attaching the claimed cross-chain claim ID and include a reward for the witness servers. This locks or burns the asset on the issuing chain.
-3. Obtain the attestations from the witness servers that the transaction occurred on the issuing chain.
-4. Submit a transaction claim for the transferred value on the issuing chain, attaching the attestation as proof that the value was indeed transferred.
-5. The rewards are then distributed to the witness servers' accounts on the issuing chain.
-
-Consider an example where Alice wants to send XRP from her account on the XRP Ledger mainchain (locking chain) to her account sAlice on a sidechain (issuing chain).
-
-* A bridge that transfers XRP between the XRP Ledger mainchain and the sidechain has been set up with XChainCreateBridge.
-* Witness servers are up and running.
-* Alice has also already run a XChainCreateAccountCommit transaction at some point, so she has an account on the sidechain.
-
-<!-- Add image of just the bridge created-->
-
-![Cross-chain Transactions](img/xrpl-bridging-solution.png "Cross-chain transactions")
-
-1. sAlice first checks out a claim ID with XChainCreateClaimID on the sidechain, specifying the above bridge. She retrieves the claim ID from the transaction metadata or the TBD RPC call.
-
-2. Alice then takes the cross-chain claim ID from sAlice’s XChainCreateClaimID transaction and submits a XChainCommit transaction on the mainchain with that claim ID, locking up a specified amount of XRP. She specifies sAlice’s account in the OtherChainDestination field.
-
-3. The witnesses then take note of the XChainCommit transaction and submit XChainAddAttestation transactions on the sidechain, attesting to the fact that the XChainCommit transaction did in fact occur on the mainchain.
-
-4. When there are enough XChainAddAttestation signatures to reach quorum, the XRP is automatically released on the sidechain to sAlice’s account.
-
-5. If the XRP is not automatically released, for whatever reason (such as Alice forgetting to specify sAlice’s account in the OtherChainDestination field), then sAlice submits a XChainClaim transaction on the sidechain, specifying her account as the destination. This then releases the XRP on the sidechain to sAlice’s account.
-
 
 ## Terminology
 
@@ -74,6 +34,47 @@ Consider an example where Alice wants to send XRP from her account on the XRP Le
 
 * Door account: A special type of account that is used to move assets from one chain to another. The door account on a locking chain is used to put assets into trust, and the door account on an issuing chain used to issue wrapped assets. 
 
+* Cross-chain claim ID: A special identifier used for cross-chain transfers. A cross-chain claim ID represents *one* cross-chain transfer of value.
+
+## How Do Cross-Chain Transactions Work?
+
+### Pre-requisites
+
+You must ensure that the following are set up and running before initiating cross-chain transactions. 
+
+* Ensure that the witness server(s) are up and running.
+* Set up a bridge between the two chains, including a _door account_ on each chain. On one chain, the asset is locked and unlocked, hence the name "locking chain", and on the other chain, assets are minted and burned, or issued and reclaimed, hence the name "issuing chain".
+* When using the XRP Ledger Mainnet as one of the chains, ensure that  the `Sidechains` amendment is enabled in the `rippled.cfg` configuration file. 
+
+### Working of Cross-Chain Transactions 
+ 
+At a high-level, cross-chain transactions involve the following steps: 
+
+1. Claim a cross-chain claim ID on the issuing chain.
+2. Submit a cross-chain transfer transaction on the locking chain, attaching the claimed cross-chain claim ID and include a reward for the witness servers. This locks the asset on the locking chain.
+3. Obtain the attestations from the witness servers that the transaction occurred on the issuing chain.
+4. Submit a transaction claim for the transferred value on the issuing chain, attaching the attestation as proof that the value was indeed transferred.
+5. The rewards are then distributed to the witness servers' accounts on the issuing chain.
+
+Consider an example where Alice wants to send XRP from her account on the XRP Ledger Mainnet (locking chain) to her account sAlice on a sidechain (issuing chain).
+
+* A bridge that transfers XRP between the XRP Ledger Mainnet and the sidechain has been set up with XChainCreateBridge.
+* Witness servers are up and running.
+* Alice has also already run a XChainCreateAccountCommit transaction at some point, so she has an account on the sidechain.
+
+<!-- Add image of just the bridge created-->
+
+![Cross-chain Transactions](img/xrpl-bridging-solution.png "Cross-chain transactions")
+
+1. sAlice first checks out a claim ID with XChainCreateClaimID on the sidechain, specifying the above bridge. She retrieves the claim ID from the transaction metadata or the `xchaincreateclaimid` RPC call.
+
+2. Alice then takes the cross-chain claim ID from sAlice’s XChainCreateClaimID transaction and submits a XChainCommit transaction on the Mainnet with that claim ID, locking up a specified amount of XRP. She specifies sAlice’s account in the OtherChainDestination field.
+
+3. The witnesses then take note of the XChainCommit transaction and submit XChainAddAttestation transactions on the sidechain, attesting to the fact that the XChainCommit transaction did in fact occur on the Mainnet.
+
+4. When there are enough XChainAddAttestation signatures to reach quorum, the XRP is automatically released on the sidechain to sAlice’s account.
+
+5. If the XRP is not automatically released, for whatever reason (such as Alice forgetting to specify sAlice’s account in the OtherChainDestination field), then sAlice submits a XChainClaim transaction on the sidechain, specifying her account as the destination. This then releases the XRP on the sidechain to sAlice’s account.
 
 ## Transactions
 
@@ -114,7 +115,7 @@ The [`sidechain_cli`](https://github.com/XRPLF/sidechain-cli) is a commandline t
 Follow the [tutorial](https://github.com/XRPLF/sidechain-cli/blob/main/scripts/tutorial.sh) to walk through the steps of creating a bridge and completing your first cross-chain transaction. 
 
 
-## <TBD> XRPL Sidechain Explorer 
+## XRPL Custom-chain Explorer 
 
 The XRP Ledger Explorer provides a way to look up historical transactions, accounts, ledgers, fees, exchange rates, timestamps, sequence numbers, node uptime, IP addresses, topology, versions and peers for the XRP Ledger mainchain. 
 
@@ -122,6 +123,6 @@ Similarly, you can use the XRP Ledger Sidechain Explorer to look up information 
 
 `https://sidechain.xrpl.org/_<SIDECHAIN-NODE-DNS-ADDRESS-OR-IP>_`
 
-## Frequently Asked Questions
+
 
 

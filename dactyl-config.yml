@@ -987,11 +987,6 @@ pages:
         targets:
             - ja
 
-   -   md: concepts/interoperability/parallel-networks-list.md
-        targets:
-            - en
-            - ja
-
      # Redirect old "federated-sidechains.html"
     -   name: Federated Sidechains
         html: federated-sidechains.html
@@ -1076,30 +1071,13 @@ pages:
         targets:
             - en
             - ja
-
-    -   name: Interoperability
-        html: interoperability.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: Interoperability between the XRP Ledger and other chains enables value to move efficiently between blockchains.
-        targets:
-            - en
     
     -   md: concepts/interoperability/xrpl-interoperability.md
         targets:
             - en
             - ja
 
-    -   md: concepts/consensus-network/locking-and-issuing-chains.md
-        targets:
-            - en
-            - ja
     -   md: concepts/interoperability/cross-chain-bridges.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/consensus-network/bridge.md
         targets:
             - en
             - ja
@@ -2675,12 +2653,12 @@ pages:
             - en
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/xchainclaim.md
+    -   md: references/protocol-reference/transactions/transaction-types/xchainmodifybridge.md
         targets:
             - en
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/XChainAddAttestation.md
+    -   md: references/protocol-reference/transactions/transaction-types/xchainclaim.md
         targets:
             - en
             - ja

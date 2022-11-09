@@ -1,6 +1,6 @@
 ---
 html: witness-server.html
-parent: interoperability.html
+parent: xrpl-interoperability.html
 blurb: A witness server is a light-weight server that witnesses and signs transactions between the XRP Ledger and another chain. 
 ---
 # Witness Server

@@ -6,18 +6,14 @@ labels:
   - Interoperability
 status: not_enabled
 ---
-# XChainCreateBridge
+# XChainCreateClaimID
 <!-- [[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp) -->
 
-The `XChainCreateBridge` transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.
+The `XChainCreateClaimID` transaction creates a new cross-chain claim ID that is used for a cross-chain transfer. A cross-chain claim ID represents *one* cross-chain transfer of value. 
 
-The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This would ensure that the funds are truly in control of the witness servers.
+This transaction is the first step of a cross-chain transfer of value and is submitted on the destination chain, not the source chain. 
 
-The `XChainCreateClaimID` transaction checks out a cross-chain claim ID that is used for a cross-chain transfer. It is submitted on the destination chain, not the source chain. This is the first step of a cross-chain transfer of value. 
-
-A cross-chain claim ID essentially represents one cross-chain transfer of value. 
-
-This transaction also includes the account on the source chain that locks/burns the funds on the source chain.
+It also includes the account on the source chain that locks or burns the funds on the source chain.
 
 
 ## Example {{currentpage.name}} JSON
