@@ -34,18 +34,18 @@ def create_wallet(silent: False):
         pub, priv = keypairs.derive_keypair(seed)
         address = keypairs.derive_classic_address(pub)
         private = keypairs.derive_classic_address(priv)
-    
+ 
     return address, private, seed
 
 
-def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, password):
+def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
     """
     Signs transaction and returns signed transaction blob in QR code
     """
     print("1. Retrieving encrypted private key and salt...")
     with open(get_path("/WalletTEST/private.txt"), "r") as f:
-        _seed = f.read()
-        _seed = bytes.fromhex(_seed)
+        seed = f.read()
+        seed = bytes.fromhex(seed)
 
     with open(get_path("/WalletTEST/salt.txt"), "rb") as f:
         salt = f.read()
@@ -62,19 +62,19 @@ def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, passwo
     crypt = Fernet(key)
 
     print("3. Decrypting wallet's private key using password")
-    _seed = crypt.decrypt(_seed)
+    seed = crypt.decrypt(seed)
 
     print("4. Initializing wallet using decrypted private key")
-    _wallet = wallet.Wallet(seed=_seed.decode(), sequence=0)
+    _wallet = wallet.Wallet(seed=seed.decode(), sequence=0)
 
-    validated_seq = _ledger_seq
-    _wallet.sequence = _wallet_seq
+    validated_seq = ledger_seq
+    _wallet.sequence = wallet_seq
 
     print("5. Constructing payment transaction...")
     my_tx_payment = Payment(
         account=_wallet.classic_address,
-        amount=xrp_to_drops(xrp=_xrp_amount),
-        destination=_destination,
+        amount=xrp_to_drops(xrp=xrp_amount),
+        destination=destination,
         last_ledger_sequence=validated_seq + 100,
         # +100 to catch up with the ledger when we transmit the signed tx blob to Machine 2
         sequence=_wallet.sequence,
@@ -217,11 +217,11 @@ if __name__ == '__main__':
           f"END RESULT: Successful")
 
     print("\nUNIT TEST 5. sign_transaction():")
-    print("Parameters: _xrp_amount, _destination, _ledger_seq, _wallet_seq, password")
+    print("Parameters: xrp_amount, destination, ledger_seq, wallet_seq, password")
     sign_transaction(
-        _xrp_amount=10,
-        _destination="rPEpirdT9UCNbnaZMJ4ENwKAwJqrTpvgMQ",
-        _ledger_seq=32602000,
-        _wallet_seq=32600100,
+        xrp_amount=10,
+        destination="rPEpirdT9UCNbnaZMJ4ENwKAwJqrTpvgMQ",
+        ledger_seq=32602000,
+        wallet_seq=32600100,
         password="This is a unit test password 123 !@# -+= }{/"
     )
