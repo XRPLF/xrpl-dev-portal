@@ -23,16 +23,13 @@ def create_wallet():
     pub, priv = keypairs.derive_keypair(seed)
 
     address = keypairs.derive_classic_address(pub)
-    private = keypairs.derive_classic_address(priv)
     print(
         f"\n\n       XRP WALLET CREDENTIALS"
         f"\n  Wallet Address: {address}"
-        f"\n     Private Key: {private}"
         f"\n            Seed: {seed}"
-          )
+    )
 
-    return address, private, seed
-
+    return address, seed
 
 def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, password):
     """
