@@ -27,15 +27,13 @@ def create_wallet(silent: False):
 
         print("3. Deriving classic addresses from keypair..\n")
         address = keypairs.derive_classic_address(pub)
-        private = keypairs.derive_classic_address(priv)
 
     else:
         seed = keypairs.generate_seed()
         pub, priv = keypairs.derive_keypair(seed)
         address = keypairs.derive_classic_address(pub)
-        private = keypairs.derive_classic_address(priv)
  
-    return address, private, seed
+    return address, seed
 
 
 def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
