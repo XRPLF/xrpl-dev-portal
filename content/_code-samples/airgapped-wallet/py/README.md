@@ -76,6 +76,8 @@ pip install -r requirements.txt
 
 5. Run `airgapped-machine.py`
 
+6. Scan the QR code and fund the account using the [testnet faucet](https://test.bithomp.com/faucet/) 
+
 ## Machine 2 Setup
 This machine will be used to transmit a signed transaction blob from Machine 1, it would require internet access.
 
