@@ -34,7 +34,7 @@ def send_transaction(transaction_dict):
     tx_xrp_amount = int(tx.result['Amount']) / 1000000
     tx_account = tx.result['Account']
 
-    print(f"\n           XRP-L Explorer: https://livenet.xrpl.org/transactions/{tx_hash}"
+    print(f"\n           XRPL Explorer: https://livenet.xrpl.org/transactions/{tx_hash}"
           f"\n         Transaction Hash: {tx_hash}"
           f"\n  Transaction Destination: {tx_destination}"
           f"\n           Transacted XRP: {tx_xrp_amount}"
