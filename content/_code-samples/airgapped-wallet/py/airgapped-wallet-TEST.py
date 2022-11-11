@@ -101,7 +101,7 @@ def get_path(file):
     """
 
     global File_
-    # Checks what OS is being us
+    # Checks what OS is being used
     OS = platform.system()
     usr = Path.home()
 
