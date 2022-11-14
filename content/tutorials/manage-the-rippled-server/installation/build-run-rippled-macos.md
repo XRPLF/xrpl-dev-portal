@@ -13,7 +13,7 @@ That said, macOS is suitable for many development and testing tasks. `rippled` h
 
 For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
-1. Install [Xcode](https://developer.apple.com/download/). <!-- SPELLING_IGNORE: xcode -->
+1. Install [Xcode](https://developer.apple.com/xcode/). <!-- SPELLING_IGNORE: xcode -->
 
 0. Install Xcode command line tools.
 
