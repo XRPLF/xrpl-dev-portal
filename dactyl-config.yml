@@ -161,7 +161,9 @@ targets:
                                           # the updates to ledger_entry aren't translated either
             "ledger_entry.html#get-paychannel-object": "ledger_entry.html"
             "reliable-transaction-submission.html#ledger-gaps": "reliable-transaction-submission.html#レジャーのギャップ"
-            # "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
+            # Fix links from untranslated NFT transaction references:
+            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
+            "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
             "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
             # Fix links from untranslated build-a-desktop-wallet-in-python.html:
             "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
@@ -173,6 +175,10 @@ targets:
             # Fix links from untranslated common-misconceptions-about-freezes.html
               # Not updated to have the table. The top-level of the page is pretty close.
             "currency-formats.html#comparison": "currency-formats.html"
+            # Fix links from untranslated NFToken tx refs to translated NFToken page
+            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
+            "nftoken.html#taxon": "nftoken.html#分類群"
+            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
             # Fix links from untranslated Clio server_info:
             "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
             "transaction-cost.html#local-load-cost": "transaction-cost.html#ローカル負荷コスト"
@@ -185,11 +191,6 @@ targets:
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             # Fix link from untranslated account_nfts.html
             "nftoken.html#nftokentaxon": "nftoken.html#分類群"
-            # Fix links from untranslated NFT API methods:
-            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
-            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
-            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
-            "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
 
 pages:
 
@@ -397,7 +398,7 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
+            #- intro-to-consensus.html
             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
@@ -406,7 +407,7 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
+            #- intro-to-consensus.html
             - public-api-methods.html
         blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
         top_nav_blurb: Dive into XRP Ledger technology and start integrating.
@@ -434,7 +435,7 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
+           # - intro-to-consensus.html
             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
@@ -443,7 +444,7 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
+           # - intro-to-consensus.html
         blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
         filters:
             - labels
@@ -474,7 +475,7 @@ pages:
         html: introduction.html
         parent: concepts.html
         template: pagetype-category.html.jinja
-        blurb: Learn the "what" and "why" of the XRP Ledger.
+        blurb: This is a quick introduction to the principal features of the XRP Ledger (XRPL). Read this to get a high level understanding of the XRPL, then you can read more about areas of particular interest. The XRP Ledger is a blockchain that permanently records digital transactions of tokens between accounts. The sections below expand on the concepts introduced in that sentence.
         targets:
             - en
 
@@ -485,41 +486,142 @@ pages:
         blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
         targets:
             - ja
+    
+    - md: concepts/introduction/what-is-xrpl.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
+    
+    - md: concepts/introduction/what-is-xrp.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/introduction/txn-and-requests.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
 
-    # Supplanted by the new xrp-ledger-overview.html landing page.
-    # TODO: fully replace. https://github.com/XRPLF/xrpl-dev-portal/issues/1202
-    # -   md: concepts/introduction/xrp-ledger-overview.md
-    #     targets:
-    #         - en
-    #
-    # -   md: concepts/introduction/xrp-ledger-overview.ja.md
-    #     targets:
-    #         - ja
-
-    -   md: concepts/introduction/intro-to-consensus.md
+    -   name: Understanding the XRP Ledger
+        html: understanding-xrpl.html
+        parent: concepts.html
+        template: pagetype-category.html.jinja
+        blurb: This is an in-depth discussion of all elements of the XRP Ledger.
         targets:
-            - en
+           - en
+           - ja
 
-    -   md: concepts/introduction/intro-to-consensus.ja.md
-        targets:
-            - ja
+    - md: concepts/understanding-xrpl/xrpl/ledgers.md
+      parent: understanding-xrpl.html
+      targets:
+         - en
+         - ja
 
-    -   md: concepts/introduction/xrp.md
-        targets:
-            - en
+    - md: concepts/understanding-xrpl/xrpl/ledger-structure.md
+      parent: ledgers.html
+      targets:
+         - en
+         - ja
 
-    -   md: concepts/introduction/xrp.ja.md
-        targets:
-            - ja
+    - md: concepts/understanding-xrpl/xrpl/validation.md
+      parent: ledgers.html
+      targets:
+         - en
+         - ja
 
-    -   md: concepts/introduction/software-ecosystem.md
-        targets:
-            - en
+    - md: concepts/understanding-xrpl/xrpl/consensus.md
+      parent: validation.html
+      targets:
+         - en
+         - ja
 
-    -   md: concepts/introduction/software-ecosystem.ja.md
-        targets:
-            - ja
+    - md: concepts/understanding-xrpl/xrpl/consensus-structure.md
+      parent: consensus.html
+      targets:
+         - en
+         - ja
 
+    - md: concepts/understanding-xrpl/xrpl/double-spend.md
+      parent: consensus.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/xrpl/consensus-principles-and-rules.md
+      parent: consensus.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/xrpl/consensus-protections.md
+      parent: consensus.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/xrpl/fee-voting.md
+      parent: consensus.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/xrpl/negative-unl.md
+      parent: consensus.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/xrpl/invariant-checking.md
+      parent: consensus.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/xrpl/consensus-research.md
+      parent: consensus.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/understanding-xrpl/xrpl/open-closed-validated-ledgers.md
+      parent: validation.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/xrpl/ledger-close-times.md
+      parent: open-closed-validated-ledgers.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/transactions/transactions.md
+      parent: understanding-xrpl.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/understanding-xrpl/transactions/transaction-structure.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/understanding-xrpl/transactions/transaction-metadata-concept.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+#     - md: concepts/understanding-xrpl/transactions/transaction-cost.md
+#       parent: transactions.html
+#       targets:
+#          - en
+#          - ja
+# 
     -   name: Payment System Basics
         html: payment-system-basics.html
         parent: concepts.html
@@ -593,9 +695,9 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/ledgers.md
-        targets:
-            - en
+#     -   md: concepts/payment-system-basics/ledgers.md
+#         targets:
+#             - en
 
         # TODO: translation needs to be updated based on ledgers.md
     -   md: concepts/payment-system-basics/ledgers.ja.md
@@ -610,9 +712,9 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
-        targets:
-            - en
+#     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
+#         targets:
+#             - en
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md
         targets:
@@ -716,7 +818,6 @@ pages:
         targets:
             - en
 
-    # TODO: Outdated translation
     -   md: concepts/tokens/tokens.ja.md
         targets:
             - ja
@@ -734,7 +835,7 @@ pages:
         html: issued-currencies.html
         template: pagetype-redirect.html.jinja
         redirect_url: tokens.html
-        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
+        blurb: XRP Ledgerでは、XRP以外の通貨はすべて発行済み通貨とされます。XRP Ledgerで発行済み通貨がどのように機能するか説明します。
         targets:
             - ja
 
@@ -757,17 +858,11 @@ pages:
     -   md: concepts/tokens/non-fungible-tokens.md
         targets:
             - en
-
-    -   md: concepts/tokens/non-fungible-tokens.ja.md
-        targets:
             - ja
 
     -   md: concepts/tokens/non-fungible-token-transfers.md
         targets:
             - en
-
-    -   md: concepts/tokens/non-fungible-token-transfers.ja.md
-        targets:
             - ja
 
     -   md: concepts/tokens/nftoken-batch-minting.md
@@ -862,139 +957,139 @@ pages:
         targets:
             - ja
 
-    -   name: Consensus Network
-        html: consensus-network.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
-        targets:
-            - en
-
-    -   name: コンセンサスネットワーク
-        html: consensus-network.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerはコンセンサスアルゴリズムを使用して、二重支払いの問題を解決し、どのトランザクションをどのような順番で実行するか選択します。コンセンサスは、トランザクション処理のルールを左右します。
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-principles-and-rules.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-principles-and-rules.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-protections.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-protections.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/invariant-checking.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/invariant-checking.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/negative-unl.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/negative-unl.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/transaction-queue.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/transaction-queue.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/about-canceling-a-transaction.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/about-canceling-a-transaction.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/transaction-malleability.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/transaction-malleability.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/amendments/amendments.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/amendments/amendments.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/amendments/known-amendments.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/amendments/known-amendments.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/fee-voting.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/fee-voting.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-research.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-research.ja.md
-        targets:
-            - ja
-
-    # TODO: add pseudo-transactions concept page
-
-    -   md: concepts/consensus-network/parallel-networks.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/parallel-networks.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/federated-sidechains.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/federated-sidechains.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/xrpl-servers.md
-        targets:
-            - en
+#     -   name: Consensus Network
+#         html: consensus-network.html
+#         parent: concepts.html
+#         template: pagetype-category.html.jinja
+#         blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
+#         targets:
+#             - en
+# 
+#     -   name: コンセンサスネットワーク
+#         html: consensus-network.html
+#         parent: concepts.html
+#         template: pagetype-category.html.jinja
+#         blurb: XRP Ledgerはコンセンサスアルゴリズムを使用して、二重支払いの問題を解決し、どのトランザクションをどのような順番で実行するか選択します。コンセンサスは、トランザクション処理のルールを左右します。
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/consensus.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/consensus.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/consensus-principles-and-rules.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/consensus-principles-and-rules.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/consensus-protections.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/consensus-protections.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/invariant-checking.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/invariant-checking.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/negative-unl.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/negative-unl.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/transaction-queue.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/transaction-queue.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/about-canceling-a-transaction.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/about-canceling-a-transaction.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/transaction-malleability.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/transaction-malleability.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/amendments/amendments.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/amendments/amendments.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/amendments/known-amendments.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/amendments/known-amendments.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/fee-voting.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/fee-voting.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/consensus-research.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/consensus-research.ja.md
+#         targets:
+#             - ja
+# 
+#     # TODO: add pseudo-transactions concept page
+# 
+#     -   md: concepts/consensus-network/parallel-networks.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/parallel-networks.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/consensus-network/federated-sidechains.md
+#         targets:
+#             - en
+# 
+#     -   md: concepts/consensus-network/federated-sidechains.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: concepts/xrpl-servers/xrpl-servers.md
+#         targets:
+#             - en
 
     -   name: rippledサーバー
         html: xrpl-servers.html
@@ -1065,22 +1160,6 @@ pages:
         targets:
             - en
             - ja
-
-    -   md: concepts/interoperability/xrpl-interoperability.md
-        targets:
-            - en
-
-    -   md: concepts/interoperability/intro-to-evm-sidechain.md
-        targets:
-            - en
-
-    -   name: Hooks
-        html: https://xrpl-hooks.readme.io/
-        parent: xrpl-interoperability.html
-        blurb: Smart contract proposal for the XRP Ledger.
-        targets:
-            - en
-
 
     # Redirect old "the-rippled-server.html"
     -   name: The rippled Server
@@ -1174,7 +1253,7 @@ pages:
         targets:
             - en
             - ja
-
+ 
     -   md: tutorials/get-started/get-started.md
         targets:
             - en
@@ -2093,35 +2172,37 @@ pages:
             - en
             - ja
 
-    -   name: Interoperability - EVM Sidechain
-        html: evm-sidechains.html
-        parent: tutorials.html
-        blurb: Learn how to interact with the EVM Sidechain Devnet.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/interoperability/get-started-evm-sidechain.md
-        targets:
-            - en
-
-    -   md: tutorials/interoperability/connect-metamask-to-xrpl-evm-sidechain.md
+    -   name: Amendments
+        longer_name: Amendments
+        template: page-references.html.jinja
+        html: amendments-top.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        sidebar: disabled
+        blurb: The amendment process and known amendments to XRPL protocols.
         targets:
             - en
 
-    -   md: tutorials/interoperability/join-evm-sidechain-devnet.md
+    -   md: amendments/amendments.md
+        parent: amendments-top.html
         targets:
             - en
 
-    -   md: tutorials/interoperability/evm-sidechain-validator-security.md
+#     -   md: amendments/amendments.ja.md
+#         parent: amendments-top.html
+#         targets:
+#             - ja
+
+    -   md: amendments/known-amendments.md
+        parent: amendments-top.html
         targets:
             - en
 
-    -   md: tutorials/interoperability/evm-sidechain-run-a-validator-node.md
-        targets:
-            - en
-
+#     -   md: concepts/consensus-network/amendments/known-amendments.ja.md
+#         parent: amendments-top.html
+#         targets:
+#             - ja
+            
 # References -------------------------------------------------------------------
 
     -   name: References
@@ -2294,17 +2375,11 @@ pages:
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
         targets:
             - en
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.md
         targets:
             - en
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.md
@@ -2449,41 +2524,27 @@ pages:
     -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.md
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.ja.md
-        targets:
             - ja
+
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.md
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/offercancel.md
