@@ -82,7 +82,7 @@ Edit your `rippled.cfg` file.
 
     <!-- MULTICODE_BLOCK_END -->
 
-    **Note:** This setting is optional, and does not strictly define which network your server follows, but it helps servers find peers who are following the same network.
+    **Note:** Use a random integer from 0 through 4,294,967,295 for sidechains and custom networks.
 
 ## 2. Set your trusted validator list.
 
