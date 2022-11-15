@@ -31,6 +31,7 @@ def create_wallet():
 
     return address, seed
 
+
 def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, password):
     """
     Signs transaction and returns signed transaction blob in QR code
@@ -53,22 +54,21 @@ def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, passwo
 
     key = base64.urlsafe_b64encode(kdf.derive(bytes(password.encode())))
     crypt = Fernet(key)
-    
+
     # Decrypts the wallet's private key
     _seed = crypt.decrypt(_seed)
-    
-    # Initialize XRPL wallet using decrypted private key
     _wallet = wallet.Wallet(seed=_seed.decode(), sequence=0)
 
     validated_seq = _ledger_seq
     _wallet.sequence = _wallet_seq
-    
+
     # Construct Payment transaction
     my_tx_payment = Payment(
         account=_wallet.classic_address,
         amount=xrp_to_drops(xrp=_xrp_amount),
         destination=_destination,
-        last_ledger_sequence=validated_seq + 100, # +100 to catch up with the ledger when we transmit the signed tx blob to Machine 2
+        last_ledger_sequence=validated_seq + 100,
+        # +100 to catch up with the ledger when we transmit the signed tx blob to Machine 2
         sequence=_wallet.sequence,
         fee="10"
     )
@@ -104,7 +104,7 @@ def get_path(file):
 
 def main():
     global File, Path_
-    
+
     # Gets the machine's operating system (OS)
     OS = platform.system()
     usr = Path.home()
@@ -116,7 +116,7 @@ def main():
         # If it's Linux, use this path:
         File = PurePath(str(usr) + '/Wallet')
         Path_ = str(PurePath(str(usr)))
-        
+
     # If the Wallet's folder already exists, continue on
     if os.path.exists(File):
         while True:
@@ -131,7 +131,8 @@ def main():
                 amount = float(input("\n           Enter XRP To Send: "))
                 destination = input("\n        Enter Destination: ")
                 wallet_sequence = int(input("\n    Enter Wallet Sequence: "))
-                ledger_sequence = int(input("\n    Enter Ledger Sequence: "))
+                ledger_sequence = int(input("Look up the latest ledger sequence on testnet.xrpl.org and enter it below!"
+                                            "\n    Enter Ledger Sequence: "))
 
                 sign_transaction(_xrp_amount=amount,
                                  _destination=destination,
@@ -143,7 +144,7 @@ def main():
                 del destination, amount, wallet_sequence, ledger_sequence
 
             if ask == 2:
-                _pub, _priv, _seed = create_wallet()
+                _pub, _seed = create_wallet()
 
             if ask == 3:
                 with open(get_path("/Wallet/public.txt"), "r") as f:
@@ -153,16 +154,13 @@ def main():
                 image.show()
 
     else:
-        # If the Wallet's folder does not exist, create one and store wallet data (encrypted private key, encrypted seed, account address) 
-        pub, priv, seed = create_wallet()
-        
+        # If the Wallet's folder does not exist, create one and store wallet data (encrypted private key, encrypted seed, account address)
+        pub, seed = create_wallet()
+
         os.makedirs(File)
-        
+
         img = qrcode.make(pub)
         img.save(get_path("/Wallet/public.png"))
-        openimg = Image.open(get_path("/Wallet/public.png"))
-        
-        openimg.show()
 
         password = str(input("\n        Enter Password: "))
         salt = os.urandom(16)
@@ -192,8 +190,11 @@ def main():
 
         with open(get_path("/Wallet/public.txt"), "w") as f:
             f.write(pub)
-            
-        print("Re-run this script!") 
+
+        openimg = Image.open(get_path("/Wallet/public.png"))
+        openimg.show()
+
+        print("Re-run this script!")
 
 
 if __name__ == '__main__':
