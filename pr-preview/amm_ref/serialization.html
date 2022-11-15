@@ -575,6 +575,13 @@
 <td>An array containing a variable number of members, which can be different types depending on the field. Two cases of this include <a href="transaction-common-fields.html#memos-field">memos</a> and lists of signers used in <a href="multi-signing.html">multi-signing</a>.</td>
 </tr>
 <tr>
+<td style="text-align: left;"><a href="#issue-fields">STIssue</a></td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">320</td>
+<td style="text-align: left;">No</td>
+<td><span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> An asset definition, XRP or a token, with no quantity.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><a href="#object-fields">STObject</a></td>
 <td style="text-align: left;">14</td>
 <td style="text-align: left;">Variable</td>
@@ -716,12 +723,11 @@
 <p>The XRP Ledger has several "hash" types: Hash128, Hash160, and Hash256. These fields contain arbitrary binary data of the given number of bits, which may or may not represent the result of a hash operation.</p>
 <p>All such fields are serialized as the specific number of bits, with no length indicator, in big-endian byte order.</p>
 <h3 id="issue-fields">Issue Fields<a aria-hidden="true" class="hover_anchor" href="#issue-fields"><i class="fa fa-link"></i></a></h3>
-<!-- TODO: translate this section -->
-<p>_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d: Automated Market Maker <i aria-hidden="true" class="fa fa-external-link"></i></a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and <a href="federated-sidechains.html">Federated Sidechains</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</p>
+<p><em>(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d: Automated Market Maker <i aria-hidden="true" class="fa fa-external-link"></i></a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and <a href="federated-sidechains.html">Federated Sidechains</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
 <p>Some fields specify a <em>type</em> of asset, which could be XRP or a fungible <a href="tokens.html">token</a>, without an amount. These fields have consist of two 160-bit segments in order:</p>
 <ol>
 <li>The first 160 bits are the <a href="#currency-codes">currency code</a> of the asset. For XRP, this is all 0's.</li>
-<li>The next 160 bits are the AccountID of the issuer. For XRP, this is all 0's.</li>
+<li>The next 160 bits are the <a href="#accountid-fields">AccountID of the token issuer</a>. For XRP, this is all 0's.</li>
 </ol>
 <h3 id="object-fields">Object Fields<a aria-hidden="true" class="hover_anchor" href="#object-fields"><i class="fa fa-link"></i></a></h3>
 <p>Some fields, such as <code>SignerEntry</code> (in <a href="signerlistset.html">SignerListSet transactions</a>), and <code>Memo</code> (in <code>Memos</code> arrays) are objects (called the "STObject" type). The serialization of objects is very similar to that of arrays, with one difference: <strong>object members must be placed in canonical order</strong> within the object field, where array fields have an explicit order already.</p>
@@ -2177,12 +2183,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

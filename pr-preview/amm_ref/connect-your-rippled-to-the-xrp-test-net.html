@@ -336,7 +336,8 @@
 <span class="na">20</span><span class="w"></span>
 </code></pre></div></div>
 </div>
-<p class="devportal-callout note"><strong>Note:</strong> This setting is optional, and does not strictly define which network your server follows, but it helps servers find peers who are following the same network.</p>
+<p>For sidechains and custom networks, everyone who connects to the network should use a value unique to that network. When creating a new network, choose a network ID at random from the integers 11 to 4,294,967,295.</p>
+<p class="devportal-callout note"><strong>Note:</strong> This setting helps your server find peers who are on the same network, but it is not a hard control on what network your server follows. The UNL / trusted validator settings (in the next step) are what actually define what network the server follows.</p>
 </li>
 </ol>
 <h2 id="2-set-your-trusted-validator-list">2. Set your trusted validator list.<a aria-hidden="true" class="hover_anchor" href="#2-set-your-trusted-validator-list"><i class="fa fa-link"></i></a></h2>
@@ -1851,12 +1852,12 @@ rippled --rpc_ip <span class="m">34</span>.211.220.150:51234 server_info <span c
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

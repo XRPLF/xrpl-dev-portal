@@ -271,6 +271,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#配列フィールド">配列フィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ブロブフィールド">ブロブフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ハッシュフィールド">ハッシュフィールド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#issueフィールド">Issueフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#オブジェクトフィールド">オブジェクトフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#pathsetフィールド">PathSetフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#uintフィールド">UIntフィールド</a></li>
@@ -581,6 +582,13 @@
 <td>可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、<a href="transaction-common-fields.html#memosフィールド">memos</a>や<a href="multi-signing.html">マルチ署名</a>で使用される署名者のリストがあります。</td>
 </tr>
 <tr>
+<td style="text-align: left;"><a href="#issue-フィールド">STIssue</a></td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">320</td>
+<td style="text-align: left;">いいえ</td>
+<td><span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> An asset definition, XRP or a token, with no quantity.<!-- TODO: translate --></td>
+</tr>
+<tr>
 <td style="text-align: left;"><a href="#オブジェクトフィールド">STObject</a></td>
 <td style="text-align: left;">14</td>
 <td style="text-align: left;">可変</td>
@@ -663,6 +671,7 @@
 <p>このタイプのフィールドには、XRP Ledger<a href="accounts.html">アカウント</a>の160ビットのIDが含まれています。JSONではこれらのフィールドは<a href="base58-encodings.html">base58</a> XRP Ledger「アドレス」および追加のチェックサムデータとして表示されます。このため、スペルミスが有効なアドレスとなることがありません。（このエンコードは「Base58Check」とも呼ばれ、誤ったアドレスへの送金を防止します。）これらのフィールドのバイナリフォーマットにはチェックサムデータは含まれておらず、また<a href="accounts.html#アドレスのエンコード">アドレスのbase58エンコード</a>で使用される<code>0x00</code>「タイププレフィクス」も含まれていません。（ただし、バイナリフォーマットは主に署名済みトランザクションに使用されるため、署名済みトランザクションを転記する際にスペルミスなどのエラーが発生すると署名が無効となり、送金できなくなります。）</p>
 <p>スタンドアロンフィールドとして表示されるAccountID（<code>Account</code>や<code>Destination</code>など）の長さは固定長の160ビットですが、<a href="#長さプレフィクスを付加する">長さプレフィクスが付加</a>されます。その結果、これらのフィールドの長さインディケーターは常に<code>0x14</code>バイトになります。特殊フィールドの子として示されるAccountID（<a href="#amountフィールド">Amount <code>issuer</code></a>、<a href="#pathsetフィールド">PathSet <code>account</code></a>など）では長さプレフィクスは付加 <em>されません</em> 。</p>
 <h3 id="amountフィールド">Amountフィールド<a aria-hidden="true" class="hover_anchor" href="#amountフィールド"><i class="fa fa-link"></i></a></h3>
+<!-- TODO: update translation based on the English version, which moves in content from the Currency Formats page -->
 <p>「Amount」タイプは、通貨（XRPまたは発行済み通貨）の額を表す特殊なフィールドタイプです。このタイプは2つのサブタイプで構成されます。</p>
 <ul>
 <li><strong>XRP</strong></li>
@@ -692,6 +701,14 @@
 <h3 id="ハッシュフィールド">ハッシュフィールド<a aria-hidden="true" class="hover_anchor" href="#ハッシュフィールド"><i class="fa fa-link"></i></a></h3>
 <p>XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256があります。これらのフィールドには特定のビット数のバイナリデータが含まれており、それらのデータはハッシュ演算の結果を表す場合とそうでない場合があります。</p>
 <p>これらのフィールドは、長さインディケーターを使用せずに、ビッグエンディアンバイトオーダーで特定数のビットとしてシリアル化されます。</p>
+<h3 id="issueフィールド">Issueフィールド<a aria-hidden="true" class="hover_anchor" href="#issueフィールド"><i class="fa fa-link"></i></a></h3>
+<!-- TODO: translate this section -->
+<p><em>(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d: Automated Market Maker <i aria-hidden="true" class="fa fa-external-link"></i></a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and <a href="federated-sidechains.html">Federated Sidechains</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
+<p>Some fields specify a <em>type</em> of asset, which could be XRP or a fungible <a href="tokens.html">token</a>, without an amount. These fields have consist of two 160-bit segments in order:</p>
+<ol>
+<li>The first 160 bits are the <a href="currency-formats.html#通貨コード">currency code</a> of the asset. For XRP, this is all 0's.</li>
+<li>The next 160 bits are the <a href="#accountidフィールド">AccountID of the token issuer</a>. For XRP, this is all 0's.</li>
+</ol>
 <h3 id="オブジェクトフィールド">オブジェクトフィールド<a aria-hidden="true" class="hover_anchor" href="#オブジェクトフィールド"><i class="fa fa-link"></i></a></h3>
 <p>トランザクションフィールドの一部（<a href="signerlistset.html">SignerListSetトランザクション</a>の<code>SignerEntry</code>や<code>Memos</code>配列の<code>Memo</code>など）はオブジェクトです（「STObject」タイプと呼ばれます）。オブジェクトのシリアル化は配列のシリアル化に似ていますが、唯一異なる点としてオブジェクトフィールド内では<strong>オブジェクトのメンバーを正規順序に従って配置する必要がある</strong>点があげられます。配列フィールドではすでに順序が明示的に設定されています。</p>
 <p>オブジェクトフィールドの<a href="#フィールドの正規順序">正規フィールド順序</a>は、すべての最上位フィールドの正規フィールド順序と同じですが、オブジェクトのメンバーはオブジェクト内でソートする必要があります。最終メンバーの後には、「オブジェクトの終わり」を示すフィールドID（<code>0xe1</code>）があり、このフィールドには内容がありません。</p>
@@ -2128,12 +2145,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

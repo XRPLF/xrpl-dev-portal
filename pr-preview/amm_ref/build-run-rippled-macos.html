@@ -298,7 +298,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Install a compatible version of Boost. <code>rippled</code> 1.7.2 is compatible with Boost 1.75.0. To compile Boost yourself, complete the following steps:</p>
+<p>Install a compatible version of Boost. <code>rippled</code> 1.9.4 is compatible with Boost 1.75.0. To compile Boost yourself, complete the following steps:</p>
 <ol>
 <li>
 <p><a class="external-link" href="https://www.boost.org/users/history/version_1_75_0.html" target="_blank">Download version 1.75.0 of Boost <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
@@ -341,7 +341,7 @@ source ~/.bash_profile
 </li>
 <li>
 <p>Clone the <code>rippled</code> source code into your desired location and access the <code>rippled</code> directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see <a class="external-link" href="https://docs.github.com/en/get-started/quickstart/set-up-git/" target="_blank">Set up git <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">git clone https://github.com/ripple/rippled.git
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">git clone https://github.com/XRPLF/rippled.git
 cd rippled
 </code></pre></div>
 </li>
@@ -356,10 +356,10 @@ cd rippled
 <p>For the latest in-progress version, use the <code>develop</code> branch:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">git checkout develop
 </code></pre></div>
-<p>Or, you can checkout one of the tagged releases listed on <a class="external-link" href="https://github.com/ripple/rippled/releases" target="_blank">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>Or, you can checkout one of the tagged releases listed on <a class="external-link" href="https://github.com/XRPLF/rippled/releases" target="_blank">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 </li>
 <li>
-<p>Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The <a class="external-link" href="https://xrpl.org/blog/label/rippled-release-notes.html" target="_blank">release announcements for <code>rippled</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> generally show the exact commit to expect for that release.</p>
+<p>Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known community developer and should set the version number to the latest released version. The <a class="external-link" href="https://xrpl.org/blog/label/rippled-release-notes.html" target="_blank">release announcements for <code>rippled</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> generally show the exact commit to expect for that release.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">git log -1
 </code></pre></div>
 </li>
@@ -1909,12 +1909,12 @@ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
