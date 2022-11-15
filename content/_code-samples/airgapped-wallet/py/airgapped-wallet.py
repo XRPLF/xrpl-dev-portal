@@ -1,4 +1,5 @@
 import os
+import shutil
 import base64
 import qrcode
 import platform
@@ -118,7 +119,7 @@ def main():
         Path_ = str(PurePath(str(usr)))
 
     # If the Wallet's folder already exists, continue on
-    if os.path.exists(File):
+    if os.path.exists(File) and os.path.exists(get_path("/Wallet/public.txt")):
         while True:
             ask = int(input("\n 1. Transact XRP"
                             "\n 2. Generate an XRP wallet (read only)"
@@ -155,13 +156,29 @@ def main():
 
     else:
         # If the Wallet's folder does not exist, create one and store wallet data (encrypted private key, encrypted seed, account address)
-        pub, seed = create_wallet()
+
+        # If the Wallet's directory exists but files are missing, delete it and generate a new wallet
+        if os.path.exists(File):
+            confirmation = input(f"We've detected missing files on {File}, would you like to delete your wallet's credentials & generate new wallet credentials? (YES/NO):")
+            if confirmation == "YES":
+                confirmation_1 = input(f"All wallet credentials will be lost if you continue, are you sure? (YES/NO): ")
+                if confirmation_1 == "YES":
+                    shutil.rmtree(File)
+                else:
+                    print("Aborted: Wallet credentials are still intact")
+                    return 0
+            else:
+                print("- Wallet credentials are still intact")
+                return 0
 
         os.makedirs(File)
+
+        pub, seed = create_wallet()
 
         img = qrcode.make(pub)
         img.save(get_path("/Wallet/public.png"))
 
+        print("\nCreating a brand new Wallet, please enter a new password")
         password = str(input("\n        Enter Password: "))
         salt = os.urandom(16)
 
