@@ -10,8 +10,11 @@ labels:
 
 # 4. Transfer NFTokens
 
+{% include '_snippets/nfts-disclaimer.md' %}
 
 This example shows how to:
+
+
 
 1. Create NFToken Sell Offers.
 2. Create NFToken Buy Offers.
@@ -1189,9 +1192,6 @@ Update the form with fields and buttons to support the new functions.
     <h1>Token Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
-      <input type="radio" id="xls" name="server"
-        value="wss://xls20-sandbox.rippletest.net:51233" checked>
-      <label for="xls20">XLS20-NFT</label>
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233">

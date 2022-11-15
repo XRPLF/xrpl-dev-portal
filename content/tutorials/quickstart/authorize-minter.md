@@ -27,11 +27,11 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 ## Get Accounts
 
 1. Open `6.authorized-minter.html` in a browser.
-2. Get test accounts.
-    1. If you have existing NFT-Devnet account seeds:
+2. Choose your ledger instance (_Testnet_ or _Devnet_).
+    1. If you have existing test account seeds:
         1. Paste the account seeds in the **Seeds** field.
         2. Click **Get Accounts from Seeds**.
-    2. If you do not have existing NFT-Devnet accounts:
+    2. If you do not have existing test accounts:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
         
@@ -398,9 +398,6 @@ Update the form with fields and buttons to support the new functions.
     <h1>Token Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
-      <input type="radio" id="xls" name="server"
-        value="wss://xls20-sandbox.rippletest.net:51233" checked>
-      <label for="xls20">XLS20-NFT</label>
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233">
