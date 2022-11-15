@@ -36,12 +36,12 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 
 1. Open `4.transfer-nftokens.html` in a browser.
-2. Choose **XLS20-NFT** as your ledger instance.
+2. Choose your ledger instance (**Testnet** or **Devnet**).
 3. Get test accounts.
-    1. If you have existing NFT-Devnet account seeds
+    1. If you have existing test account seeds
         1. Paste account seeds in the **Seeds** field.
         2. Click **Get Accounts from Seeds**.
-    2. If you do not have NFT-Devnet account seeds:
+    2. If you do not have test account seeds:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 

@@ -1595,12 +1595,6 @@ pages:
             - en
             - ja
 
-        # TODO: translate
-    -   md: tutorials/use-tokens/nftoken-tester-tutorial.md
-        targets:
-            - en
-            - ja
-
     # TODO: translate this page & blurb
     -   md: tutorials/use-tokens/enable-no-freeze.md
         targets:
