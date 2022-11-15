@@ -106,7 +106,7 @@ def get_path(file):
     # Get PATH format based on the OS
     if OS == "Windows":
         File_ = PureWindowsPath(str(usr) + file)
-    if OS == "Linux":
+    else: # Assuming Linux-style file format
         File_ = PurePath(str(usr) + file)
 
     return str(File_)
