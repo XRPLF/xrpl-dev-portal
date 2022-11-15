@@ -3,26 +3,26 @@ Spell Checker
 -------------
 Found 296 possible spelling errors:
 <Page 'FAQ' (faq.html)> Unknown Words:
-  aml: amn, axl, amp
+  aml: amyl, amd, am.
 
 <Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
   keypairs: 
 
 <Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
   signerlists: signerlist
-  signerquorum: 
   signerweight: 
+  signerquorum: 
   expandedsignerlist: 
 
 <Page 'Direct XRP Payments' (direct-xrp-payments.html)> Unknown Words:
   proactively: preactively
 
 <Page 'Checks' (checks.html)> Unknown Words:
-  aml: amn, axl, amp
+  aml: amyl, amd, am.
 
 <Page 'Tokens' (tokens.html)> Unknown Words:
   asheesh: hasheesh
-  bharath: bharat, bharata
+  bharath: bharata, bharat
 
 <Page 'Authorized Trust Lines' (authorized-trust-lines.html)> Unknown Words:
   onboarding: 
@@ -31,20 +31,20 @@ Found 296 possible spelling errors:
 <Page 'Non-Fungible Tokens Overview' (non-fungible-tokens.html)> Unknown Words:
   nonfungibletokensv1_1: 
   ˈfənjəbəl: 
-  xls: cls, sls, ls
+  xls: els, ils, sls
   nftoken: 
   nftokenpage: 
-  nftokenmint: 
-  nftokenoffer: 
   nftokencreateoffer: 
+  nftokenoffer: 
+  nftokenmint: 
   nftokenburn: 
   nftokens: 
+  nftokenacceptoffer: 
+  nft_sell_offers: 
+  nftokencanceloffer: 
+  nft_buy_offers: 
   account_nfts: 
   nft_info: 
-  nft_sell_offers: 
-  nft_buy_offers: 
-  nftokencanceloffer: 
-  nftokenacceptoffer: 
 
 <Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)> Unknown Words:
   nftokens: 
@@ -70,30 +70,30 @@ Found 296 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  fixtrustlinestoself: 
-  nonfungibletokensv1: 
   checkcashmakestrustline: 
-  fixremovenftokenautotrustline: 
   expandedsignerlist: 
-  nonfungibletokensv1_1: 
-  fixnftokennegoffer: 
   fixnftokendirv1: 
+  fixtrustlinestoself: 
+  nonfungibletokensv1_1: 
+  fixremovenftokenautotrustline: 
+  nonfungibletokensv1: 
+  fixnftokennegoffer: 
   nftokenmint: 
   nftokens: 
-  nftokencreateoffer: 
-  nftokenburn: 
-  nftokencanceloffer: 
   nftokenacceptoffer: 
+  nftokencreateoffer: 
+  nftokencanceloffer: 
+  nftokenburn: 
   nftokenoffer: 
   nftokenpage: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  xls: cls, sls, ls
-  20d: 2nd, 2d
+  xls: els, ils, sls
+  20d: 2d, 2nd
 
 <Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
   mainchain: 
-  evm: evy, avm, evo
+  evm: evx, elm, eem
   permissionless: 
   federators: federator
 
@@ -120,8 +120,8 @@ Found 296 possible spelling errors:
   programmabilty: programmability
 
 <Page 'Introduction to EVM Compatible XRP Ledger Sidechain' (intro-to-evm-sidechain.html)> Unknown Words:
-  evm: evy, avm, evo
-  web3: webb, web, webs
+  evm: evx, elm, eem
+  web3: webb, webs, web
   unstake: unstate
   tendermint: 
   ethermint: 
@@ -200,16 +200,16 @@ Found 296 possible spelling errors:
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
   disallowxrp: 
   wxpython: 
-  wsl: wcl, csl, wl
+  wsl: psl, msl, wsj
   threadsafe: 
   asyncio: 
-  guis: suis, tuis, gris
+  guis: guls, gui, guise
   wxglade: 
-  s1: sm, t1, sv
+  s1: su, sd, sw
   popup: pop-up
   toolkits: toolkit
   tooltip: 
-  lsf: lss, lsm, lsi
+  lsf: lst, lsc, lmf
   refactor: reactor, prefactor, redactor
   tooltips: 
 
@@ -225,23 +225,23 @@ Found 296 possible spelling errors:
 <Page 'NFToken Tester Tutorial' (nftoken-tester-tutorial.html)> Unknown Words:
   nftoken: 
   nftokens: 
-  ipfs: ipms, ipcs, ips
+  ipfs: ipms, ipcs, ifs
   nftokenacceptoffer: 
   acceptselloffer: 
   nftokenburn: 
-  nftokencreateoffer: 
+  nftokenpage: 
   nftokenmint: 
+  nftokencreateoffer: 
   nftokenoffer: 
   nftokencanceloffer: 
-  nftokenpage: 
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Unknown Words:
   reputational: deputational
-  aml: amn, axl, amp
-  xapps: capps, apps, lapps
+  aml: amyl, amd, am.
+  xapps: apps, capps, lapps
 
 <Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: vme, nome, name
+  nvme: name, vme, nome
 
 <Page 'Install on CentOS/Red Hat with yum' (install-rippled-on-centos-rhel-with-yum.html)> Unknown Words:
   config: confix, confit
@@ -307,38 +307,38 @@ Found 296 possible spelling errors:
   config: confix, confit
 
 <Page 'Get Started with the EVM Sidechain' (get-started-evm-sidechain.html)> Unknown Words:
-  evm: evy, avm, evo
+  evm: evx, elm, eem
   metamask: 
-  xumm: umm, xmm, mumm
+  xumm: umm, mumm, xmm
 
 <Page 'Connect MetaMask to XRP Ledger Sidechain' (connect-metamask-to-xrpl-evm-sidechain.html)> Unknown Words:
   metamask: 
-  dapps: apps, daps, lapps
-  web3: webb, web, webs
-  evm: evy, avm, evo
+  web3: webb, webs, web
+  dapps: apps, lapps, capps
+  evm: evx, elm, eem
 
 <Page 'Join the XRP Ledger EVM Sidechain Devnet' (join-evm-sidechain-devnet.html)> Unknown Words:
-  evm: evy, avm, evo
+  evm: evx, elm, eem
 
 <Page 'EVM Sidechain Validator Security' (evm-sidechain-validator-security.html)> Unknown Words:
-  evm: evy, avm, evo
+  evm: evx, elm, eem
   horcrux: 
   tendermint: 
-  kms: sms, dms, bms
-  hsms: sms, hms, hams
+  kms: kus, k's, kos
+  hsms: hims, hsfs, hams
   yubihsm2: 
   yubihsm: 
+  evmos: evos, vmos, evros
   yubikey: 
-  evmos: vmos, evros, emos
 
 <Page 'Run a Validator Node on an EVM Sidechain' (evm-sidechain-run-a-validator-node.html)> Unknown Words:
-  evm: evy, avm, evo
+  evm: evx, elm, eem
   pubkey: pukey, punkey
-  delegators: delegatory, delegator
-  uport: sport, port, aport
+  delegators: delegator, delegatory
   keybase: 
-  unjail: unmail, injail, unnail
-  exrp: earp, exr., erp
+  uport: xport, port, sport
+  unjail: unnail, unmail, enjail
+  exrp: exr, exp, erp
   100th: 10th
 
 <Page 'NFToken' (nftoken.html)> Unknown Words:
@@ -352,39 +352,39 @@ Found 296 possible spelling errors:
   transferfee: transferee
   nftokentaxon: 
   rfc2379: 
-  ipfs: ipms, ipcs, ips
+  ipfs: ipms, ipcs, ifs
 
 <Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
   nftokenoffer: 
-  nftokens: 
   nftokenpage: 
+  nftokens: 
 
 <Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
   nftokenoffer: 
   nonfungibletokensv1_1: 
-  nftoken: 
   nftokenid: 
+  nftoken: 
   0x0074: 
 
 <Page 'NFTokenPage' (nftokenpage.html)> Unknown Words:
   nftokenpage: 
   nonfungibletokensv1_1: 
   0x0050: 
-  nftoken: 
   nftokenpageid: 
+  nftoken: 
   tokenid: tokened
   tokenpage: 
-  shamap: shamal, shaman, shama
+  shamap: shaman, shamal, shama
   nftokens: 
 
 <Page 'SignerList' (signerlist.html)> Unknown Words:
   expandedsignerlist: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenmint: 
   nonfungibletokensv1_1: 
+  xls: els, ils, sls
   nftokens: 
-  xls: cls, sls, ls
+  nftokenmint: 
   nftoken: 
 
 <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
@@ -415,7 +415,7 @@ Found 296 possible spelling errors:
   nftoken: 
   nonfungibletokensv1_1: 
   rfc2379: 
-  ipfs: ipms, ipcs, ips
+  ipfs: ipms, ipcs, ifs
   fixremovenftokenautotrustline: 
   nonfungibletokensv1: 
 
@@ -430,8 +430,8 @@ Found 296 possible spelling errors:
   nonfungibletokensv1_1: 
 
 <Page 'tem Codes' (tem-codes.html)> Unknown Words:
-  nftokenmint: 
   nonfungibletokensv1_1: 
+  nftokenmint: 
 
 <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
   ordercancellation: 
@@ -449,14 +449,14 @@ Found 296 possible spelling errors:
   nft_buy_offers: 
   nftoken: 
   nonfungibletokensv1_1: 
-  _the: tthe, the, athe
+  _the: othe, ethe, the
   nftokenoffer: 
 
 <Page 'nft_sell_offers' (nft_sell_offers.html)> Unknown Words:
   nft_sell_offers: 
   nftoken: 
   nonfungibletokensv1_1: 
-  _the: tthe, the, athe
+  _the: othe, ethe, the
   nftokenoffer: 
 
 <Page 'server_info (rippled)' (server_info.html)> Unknown Words:
@@ -467,7 +467,7 @@ Found 296 possible spelling errors:
 
 <Page 'server_info' (server_info-clio.html)> Unknown Words:
   localhost: 
-  rpcs: rscs, rocs, rps
+  rpcs: recs, ipcs, rocs
 
 <Page 'nft_info' (nft_info.html)> Unknown Words:
   nft_info: 
