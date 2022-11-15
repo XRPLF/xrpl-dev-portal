@@ -39,6 +39,9 @@
   #centersearchboxcontainer {
     justify-content: center;
   }
+  #topsearchboxcontainer{
+    justify-content: right;
+  }
   .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
     background-color: $dropdown-bg;
     border: 0;
