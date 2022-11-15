@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v11.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v12.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -257,6 +257,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#ammdeposit-fields">AMMDeposit Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ammdeposit-modes">AMMDeposit Modes</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#single-asset-deposit-fee-calculations">Single Asset Deposit Fee Calculations</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ammdeposit-flags">AMMDeposit Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
@@ -288,19 +289,24 @@
 <p>Deposit funds into an Automated Market-Maker (AMM) instance and receive the AMM's liquidity provider tokens (<em>LP Tokens</em>) in exchange. You can deposit one or both of the assets in the AMM's pool.</p>
 <h2 id="example-ammdeposit-json">Example AMMDeposit JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammdeposit-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMDeposit"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"AMMID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4B82E4CB90FBE26EA172A498F7A7B03A2A7C285149A9B18731370F2644B96F7A"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Asset1In"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5"</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Asset2In"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">369823</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Amount2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"30000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Asset"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Asset2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Fee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Flags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1048576</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Sequence"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"TransactionType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMDeposit"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="ammdeposit-fields">AMMDeposit Fields<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-fields"><i class="fa fa-link"></i></a></h2>
@@ -317,25 +323,32 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>AMMID</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;"><code>Asset</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">STIssue</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The AMMID of the AMM instance to deposit into. <strong>Caution:</strong> This is not the ID of the AMM ledger object!</td>
+<td style="text-align: left;">The definition for one of the assets in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Asset1In</code></td>
+<td style="text-align: left;"><code>Asset2</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">STIssue</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The definition for the other asset in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Amount</code></td>
 <td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">The amount of one asset to deposit to the AMM. If present, this must match the type of one of the assets (tokens or XRP) in the AMM's pool.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Asset2In</code></td>
+<td style="text-align: left;"><code>Amount2</code></td>
 <td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">The amount of another asset to add to the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same asset as <code>Asset1In</code>.</td>
+<td style="text-align: left;">The amount of another asset to add to the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same asset as <code>Amount</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>EPrice</code></td>
@@ -345,7 +358,7 @@
 <td style="text-align: left;">The maximum effective price, in the deposit asset, to pay for each LP Token received.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>LPTokensOut</code></td>
+<td style="text-align: left;"><code>LPTokenOut</code></td>
 <td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">No</td>
@@ -354,7 +367,7 @@
 </tbody>
 </table>
 <h3 id="ammdeposit-modes">AMMDeposit Modes<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-modes"><i class="fa fa-link"></i></a></h3>
-<p>This transaction has several modes, depending on which combination of fields are provided. The modes fall into two categories: </p>
+<p>This transaction has several modes, depending on which flags you specify. Each mode expects a specific combination of fields. The modes fall into two categories: </p>
 <ul>
 <li><strong>Double-asset deposits</strong>, in which you provide both assets in the AMM's pool in proportions that match the balance of those assets already there. These deposits are not subject to a fee.</li>
 <li><strong>Single-asset deposits</strong>, in which you provide only one of the AMM's two assets. You can envision a single-asset deposit as trading <em>some</em> of the deposited asset for the other asset, then performing a double-asset deposit. The trading fee applies to the amount you would need to trade for, but not to the rest of the deposit; the amount of the fee is debited from the LP Tokens paid out. <em>For example, if the AMM's asset pool is split perfectly evenly between USD and EUR, and you try to deposit 100 USD, the amount of LP Tokens you receive is slightly less than if you had deposited 50 EUR + 50 USD, because you pay the trading fee to convert some of your USD to an equal amount of EUR.</em></li>
@@ -363,17 +376,23 @@
 <table class="table-responsive">
 <thead>
 <tr>
+<th>Flag Name</th>
+<th>Flag Value</th>
 <th>Fields Specified</th>
 <th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>LPTokensOut</code> only</td>
+<td><code>tfLPToken</code></td>
+<td><code>0x00010000</code></td>
+<td><code>LPTokenOut</code> only</td>
 <td>Deposit both of this AMM's assets, in amounts calculated so that you receive the specified amount of LP Tokens in return. The amounts deposited maintain the relative proportions of the two assets the AMM already holds.</td>
 </tr>
 <tr>
-<td><code>Asset1In</code> and <code>Asset2In</code></td>
+<td><code>tfTwoAsset</code></td>
+<td><code>0x00100000</code></td>
+<td><code>Amount</code> and <code>Amount2</code></td>
 <td>Deposit both of this AMM's assets, up to the specified amounts. The actual amounts deposited must maintain the same balance of assets as the AMM already holds, so the amount of either one deposited MAY be less than specified. The amount of LP Tokens you get in return is based on the total value deposited.</td>
 </tr>
 </tbody>
@@ -382,26 +401,34 @@
 <table class="table-responsive">
 <thead>
 <tr>
+<th>Flag Name</th>
+<th>Flag Value</th>
 <th>Fields Specified</th>
 <th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Asset1In</code> only</td>
+<td><code>tfSingleAsset</code></td>
+<td><code>0x00080000</code></td>
+<td><code>Amount</code> only</td>
 <td>Deposit exactly the specified amount of one asset, and receive an amount of LP Tokens based on the resulting share of the pool (minus fees).</td>
 </tr>
 <tr>
-<td><code>Asset1In</code> and <code>LPTokensOut</code></td>
+<td><code>tfOneAssetLPToken</code></td>
+<td><code>0x00200000</code></td>
+<td><code>Amount</code> and <code>LPTokenOut</code></td>
 <td>Deposit up to the specified amount of one asset, so that you receive exactly the specified amount of LP Tokens in return (after fees).</td>
 </tr>
 <tr>
-<td><code>Asset1In</code> and <code>EPrice</code></td>
+<td><code>tfLimitLPToken</code></td>
+<td><code>0x00400000</code></td>
+<td><code>Amount</code> and <code>EPrice</code></td>
 <td>Deposit up to the specified amount of one asset, but pay no more than the specified effective price per LP Token (after fees).</td>
 </tr>
 </tbody>
 </table>
-<p>Any other combination of these fields is invalid.</p>
+<p>Any other combination of these fields and flags is invalid.</p>
 <h3 id="single-asset-deposit-fee-calculations">Single Asset Deposit Fee Calculations<a aria-hidden="true" class="hover_anchor" href="#single-asset-deposit-fee-calculations"><i class="fa fa-link"></i></a></h3>
 <p>If you deposit one asset, the AMM charges a fee by reducing the total amount of LP Tokens it pays out, weighted by how much your deposit shifts the balance of assets in the pool. This is equivalent to if you had traded part of the deposit amount for the other asset, then performed a double-asset deposit. The formula for how many LP Tokens you receive for a double-asset deposit is as follows:</p>
 <!-- TODO: improve graphic -->
@@ -415,6 +442,51 @@
 <li><code>W</code> is the weight of the deposit asset in the pool <!-- TODO: before the deposit? how is this calculated? --></li>
 <li><code>P</code> is the total amount of the deposit asset in the pool before the deposit <!-- TODO: or is it after the deposit? --></li>
 </ul>
+<h3 id="ammdeposit-flags">AMMDeposit Flags<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-flags"><i class="fa fa-link"></i></a></h3>
+<p>Transactions of the AMMDeposit type support additional values in the <a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code> field</a>, as follows:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Flag Name</th>
+<th style="text-align: left;">Hex Value</th>
+<th style="text-align: left;">Decimal Value</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>tfLPToken</code></td>
+<td style="text-align: left;"><code>0x00010000</code></td>
+<td style="text-align: left;">65536</td>
+<td style="text-align: left;">Perform a double-asset deposit and receive the specified amount of LP Tokens.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfSingleAsset</code></td>
+<td style="text-align: left;"><code>0x00080000</code></td>
+<td style="text-align: left;">524288</td>
+<td style="text-align: left;">Perform a single-asset deposit with a specified amount of the asset to deposit.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfTwoAsset</code></td>
+<td style="text-align: left;"><code>0x00100000</code></td>
+<td style="text-align: left;">1048576</td>
+<td style="text-align: left;">Perform a double-asset deposit with specified amounts of both assets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfOneAssetLPToken</code></td>
+<td style="text-align: left;"><code>0x00200000</code></td>
+<td style="text-align: left;">2097152</td>
+<td style="text-align: left;">Perform a single-asset deposit and receive the specified amount of LP Tokens.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfLimitLPToken</code></td>
+<td style="text-align: left;"><code>0x00400000</code></td>
+<td style="text-align: left;">4194304</td>
+<td style="text-align: left;">Perform a single-asset deposit with a specified effective price.</td>
+</tr>
+</tbody>
+</table>
+<p>You must specify <strong>exactly one</strong> of these flags, in addition to any <a href="transaction-common-fields.html#グローバルフラグ">global flags</a>.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
 <p>In addition to errors that can occur for all transactions, AMMDeposit transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
@@ -455,7 +527,11 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
-<td style="text-align: left;">The AMM specified in the <code>AMMID</code> (or its corresponding AccountRoot object) does not exist.</td>
+<td style="text-align: left;">An account specified in the request does not exist.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>terNO_AMM</code></td>
+<td style="text-align: left;">The Automated Market Maker instance for the asset pair in this transaction does not exist.</td>
 </tr>
 </tbody>
 </table>

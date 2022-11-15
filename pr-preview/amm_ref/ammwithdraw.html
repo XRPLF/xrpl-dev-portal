@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v12.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -278,19 +278,24 @@
 <p>Withdraw funds an Automated Market-Maker (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).</p>
 <h2 id="example-ammwithdraw-json">Example AMMWithdraw JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammwithdraw-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMWithdraw"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"AMMID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4B82E4CB90FBE26EA172A498F7A7B03A2A7C285149A9B18731370F2644B96F7A"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Asset1Out"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Asset2Out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">369509</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Amount2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Asset"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Asset2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Fee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Flags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1048576</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Sequence"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"TransactionType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMWithdraw"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="ammwithdraw-fields">AMMWithdraw Fields<a aria-hidden="true" class="hover_anchor" href="#ammwithdraw-fields"><i class="fa fa-link"></i></a></h2>
@@ -307,25 +312,32 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>AMMID</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;"><code>Asset</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">STIssue</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The AMMID of the AMM instance to withdraw from. <strong>Caution:</strong> This is not the ID of the AMM ledger object!</td>
+<td style="text-align: left;">The definition for one of the assets in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Asset1Out</code></td>
+<td style="text-align: left;"><code>Asset2</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">STIssue</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The definition for the other asset in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Amount</code></td>
 <td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">The amount of one asset to withdraw from the AMM. This must match the type of one of the assets (tokens or XRP) in the AMM's pool.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Asset2Out</code></td>
+<td style="text-align: left;"><code>Amount2</code></td>
 <td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">The amount of another asset to withdraw from the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same type as <code>Asset1Out</code>.</td>
+<td style="text-align: left;">The amount of another asset to withdraw from the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same type as <code>Amount</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>EPrice</code></td>
@@ -343,31 +355,40 @@
 </tr>
 </tbody>
 </table>
+<p class="devportal-callout note"><strong>Note:</strong> For a two-asset withdrawal, it is possible for <code>Asset</code> to correspond to <em>either</em> <code>Amount</code> or <code>Amount2</code> as long as <code>Asset2</code> corresponds to the other one. It is recommended to match them (that is, <code>Amount2</code> is an amount of the asset defined in <code>Asset2</code>) because it is less confusing that way.</p>
 <h3 id="ammwithdraw-modes">AMMWithdraw Modes<a aria-hidden="true" class="hover_anchor" href="#ammwithdraw-modes"><i class="fa fa-link"></i></a></h3>
-<p>This transaction has several modes, depending on which combination of fields are provided. The modes fall into two categories: </p>
+<p>This transaction has several modes, depending on which flags you specify. Each mode expects a specific combination of fields. The modes fall into two categories: </p>
 <ul>
 <li><strong>Double-asset withdrawals</strong>, in which you receive both assets from the AMM's pool in proportions that match their balances there. These withdrawals are not subject to a fee.</li>
 <li><strong>Single-asset withdrawals</strong>, in which you receive one asset from the AMM's pool. You can envision a single-asset withdrawal as performing a double-asset deposit, then trading <em>some</em> of the deposited asset for the other asset. The trading fee applies to the amount you would need to trade for, but not to the rest of the withdrawal. Depending on the fields specified, the amount of the fee can be added to the amount of LP Tokens paid in, or debited from the amount of the asset paid out.</li>
 </ul>
-<p>The following combinations of fields indicate a <strong>double-asset withdrawal</strong>:</p>
+<p>The following modes are for a <strong>double-asset withdrawal</strong>:</p>
 <table class="table-responsive">
 <thead>
 <tr>
+<th>Flag Name(s)</th>
+<th>Flag Value</th>
 <th>Fields Specified</th>
 <th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>No fields; <code>tfAMMWithdrawAll</code> flag enabled</td>
-<td>Return <em>all</em> of your LP Tokens and receive as much as you can of both assets in the AMM's pool.</td>
-</tr>
-<tr>
+<td><code>tfLPToken</code></td>
+<td><code>0x00010000</code></td>
 <td><code>LPTokensIn</code> only</td>
 <td>Return the specified amount of LP Tokens and receive both assets from the AMM's pool in amounts based on the returned LP Tokens' share of the total LP Tokens issued.</td>
 </tr>
 <tr>
-<td><code>Asset1Out</code> and <code>Asset2Out</code></td>
+<td><code>tfWithdrawAll</code></td>
+<td><code>0x00020000</code></td>
+<td>No Fields</td>
+<td>Return <em>all</em> of your LP Tokens and receive as much as you can of both assets in the AMM's pool.</td>
+</tr>
+<tr>
+<td><code>tfTwoAsset</code></td>
+<td><code>0x00100000</code></td>
+<td><code>Amount</code> and <code>Amount2</code></td>
 <td>Withdraw both of this AMM's assets, in up to the specified amounts. The actual amounts received maintains the balance of assets in the AMM's pool.</td>
 </tr>
 </tbody>
@@ -376,25 +397,35 @@
 <table class="table-responsive">
 <thead>
 <tr>
+<th>Flag Name(s)</th>
+<th>Flag Value</th>
 <th>Fields Specified</th>
 <th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Asset1Out</code> only</td>
+<td><code>tfSingleAsset</code></td>
+<td><code>0x00080000</code></td>
+<td><code>Amount</code> only</td>
 <td>Withdraw exactly the specified amount of one asset, by returning as many LP Tokens as necessary.</td>
 </tr>
 <tr>
-<td><code>Asset1Out</code>; <code>tfAMMWithdrawAll</code> flag enabled</td>
-<td>Withdraw at least the specified amount of one asset, by returning <em>all</em> of your LP Tokens. (Fails if you can't receive at least the specified amount.)</td>
+<td><code>tfOneAssetWithdrawAll</code></td>
+<td><code>0x00040000</code></td>
+<td><code>Amount</code> only</td>
+<td>Withdraw at least the specified amount of one asset, by returning <em>all</em> of your LP Tokens. Fails if you can't receive at least the specified amount. The specified amount can be 0, meaning the transaction succeeds if it withdraws any positive amount.</td>
 </tr>
 <tr>
-<td><code>Asset1Out</code> and <code>LPTokensIn</code></td>
+<td><code>tfOneAssetLPToken</code></td>
+<td><code>0x00200000</code></td>
+<td><code>Amount</code> and <code>LPTokensIn</code></td>
 <td>Withdraw up to the specified amount of one asset, by returning up to the specified amount of LP Tokens.</td>
 </tr>
 <tr>
-<td><code>Asset1Out</code> and <code>EPrice</code></td>
+<td><code>tfLimitLPToken</code></td>
+<td><code>0x00400000</code></td>
+<td><code>Amount</code> and <code>EPrice</code></td>
 <td>Withdraw up to the specified amount of one asset, but pay no more than the specified effective price in LP Tokens per unit of the asset received.</td>
 </tr>
 </tbody>
@@ -413,13 +444,50 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>tfAMMWithdrawAll</code></td>
+<td style="text-align: left;"><code>tfLPToken</code></td>
 <td style="text-align: left;"><code>0x00010000</code></td>
 <td style="text-align: left;">65536</td>
-<td style="text-align: left;">Withdraw as much as possible by returning all your LP Tokens.</td>
+<td style="text-align: left;">Perform a double-asset withdrawal and receive the specified amount of LP Tokens.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfWithdrawAll</code></td>
+<td style="text-align: left;"><code>0x00020000</code></td>
+<td style="text-align: left;">131072</td>
+<td style="text-align: left;">Perform a double-asset withdrawal returning all your LP Tokens.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfOneAssetWithdrawAll</code></td>
+<td style="text-align: left;"><code>0x00040000</code></td>
+<td style="text-align: left;">262144</td>
+<td style="text-align: left;">Perform a single-asset withdrawal returning all of your LP Tokens.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfSingleAsset</code></td>
+<td style="text-align: left;"><code>0x00080000</code></td>
+<td style="text-align: left;">524288</td>
+<td style="text-align: left;">Perform a single-asset withdrawal with a specified amount of the asset to withdrawal.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfTwoAsset</code></td>
+<td style="text-align: left;"><code>0x00100000</code></td>
+<td style="text-align: left;">1048576</td>
+<td style="text-align: left;">Perform a double-asset withdrawal with specified amounts of both assets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfOneAssetLPToken</code></td>
+<td style="text-align: left;"><code>0x00200000</code></td>
+<td style="text-align: left;">2097152</td>
+<td style="text-align: left;">Perform a single-asset withdrawal and receive the specified amount of LP Tokens.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tfLimitLPToken</code></td>
+<td style="text-align: left;"><code>0x00400000</code></td>
+<td style="text-align: left;">4194304</td>
+<td style="text-align: left;">Perform a single-asset withdrawal with a specified effective price.</td>
 </tr>
 </tbody>
 </table>
+<p>You must specify <strong>exactly one</strong> of these flags, in addition to any <a href="transaction-common-fields.html#global-flags">global flags</a>.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
 <p>In addition to errors that can occur for all transactions, AMMWithdraw transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
@@ -430,10 +498,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><code>temBAD_AMM_OPTIONS</code></td>
-<td style="text-align: left;">The transaction specified an invalid combination of fields. See <a href="#ammdeposit-modes">AMMDeposit Modes</a>.</td>
-</tr>
 <tr>
 <td style="text-align: left;"><code>tecFROZEN</code></td>
 <td style="text-align: left;">The transaction tried to deposit a <a href="freezes.html">frozen</a> token.</td>
@@ -453,6 +517,14 @@
 <tr>
 <td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
 <td style="text-align: left;">The AMM for this token pair does not exist, or one of the calculations resulted in a withdrawal amount rounding to zero.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temBAD_AMM_OPTIONS</code></td>
+<td style="text-align: left;">The transaction specified an invalid combination of fields. See <a href="#ammwithdraw-modes">AMMWithdraw Modes</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>terNO_AMM</code></td>
+<td style="text-align: left;">The Automated Market Maker instance for the asset pair in this transaction does not exist.</td>
 </tr>
 </tbody>
 </table>

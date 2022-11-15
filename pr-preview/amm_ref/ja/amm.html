@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v11.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v12.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -255,7 +255,6 @@
         <li class="nav-item level-1"><a class="nav-link" href="#amm">AMM</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-amm-json">Example AMM JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-fields">AMM Fields</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#ammtoken-object">AMMToken Object</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#auction-slot-object">Auction Slot Object</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-flags">AMM Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-id-format">AMM ID Format</a></li>
@@ -289,121 +288,118 @@
 <p>The <code>AMM</code> object type describes a single Automated Market Maker (AMM) instance.</p>
 <h2 id="example-amm-json">Example AMM JSON<a aria-hidden="true" class="hover_anchor" href="#example-amm-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"AMMAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rLcJnZS6M9DyZ23g3GPvtyuYgT5QFwWXaN"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"AMMToken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"Token1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"TokenCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"TokenIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"AMMAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Asset"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"Token2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"TokenCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000005453540000000000"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"TokenIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F2F97C4301C80D60F86653A319AA7F302C70B83B"</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"AuctionSlot"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"AuthAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"AuthAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rMKXGCbJ5d8LbrqthdG46q3f969MVK2Qeg"</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"AuthAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBepJuTLFJt3WmtLXYAxSjtBWAeQxVbncv"</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"DiscountedFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"Price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D717347ECCF3E2B373546F02AA016D7ABA13C8F7"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rLcJnZS6M9DyZ23g3GPvtyuYgT5QFwWXaN"</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.7115124735378855"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Asset2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span><span class="w"></span>
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"TimeStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">719029222</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"LPTokenBalance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D717347ECCF3E2B373546F02AA016D7ABA13C8F7"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rLcJnZS6M9DyZ23g3GPvtyuYgT5QFwWXaN"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71150.53584131501"</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMM"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"TradingFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">601</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"VoteSlots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">"VoteEntry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"FeeVal"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"VoteWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"AuctionSlot"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"AuthAccounts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"AuthAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rMKXGCbJ5d8LbrqthdG46q3f969MVK2Qeg"</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"AuthAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rBepJuTLFJt3WmtLXYAxSjtBWAeQxVbncv"</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"DiscountedFee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Expiration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">721870180</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Price"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"039C99CD9AB0B70B32ECDA51EAAE471625608EA2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.8696263565463045"</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4C2D6EBC856DE96E1F4859B140CDE495FD878A86E165712F46FF4F2C1D6F16C1"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Flags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"LPTokenBalance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"039C99CD9AB0B70B32ECDA51EAAE471625608EA2"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"71150.53584131501"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"TradingFee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"VoteSlots"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"VoteEntry"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"TradingFee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"VoteWeight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="amm-fields">AMM Fields<a aria-hidden="true" class="hover_anchor" href="#amm-fields"><i class="fa fa-link"></i></a></h2>
 <p>The <code>AMM</code> object has the following fields:</p>
-<p>| Field            | JSON Type           | <a href="serialization.html">Internal Type</a> | Required? | Description  |
-|:-----------------|:--------------------|:------------------|:-------------|
-| <code>AMMToken</code>       | Object              | STObject          | Yes       | Defines the two assets in this AMM's pool, as an <a href="#ammtoken-object">AMMToken Object</a>. |
-| <code>AccountRootID</code>  | String              | AccountID         | Yes       | The address of the special account that holds this AMM's assets. |
-| <code>AuctionSlot</code>    | Object              | STObject          | No        | Details of the current owner of the auction slot, as an <a href="#auction-slot-object">Auction Slot object</a>. |
-| <code>LPTokenBalance</code> | <a href="basic-data-types.html#通貨額の指定">Currency Amount</a> | Amount            | Yes       | The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets. |
-| <code>TradingFee</code>     | Number              | UInt16            | Yes       | The percentage fee to be charged for trades against this AMM instance, in units of 1/10,000. The maximum value is 65000, for a 65% fee. |
-| <code>VoteSlots</code>      | Array               | STArray           | No        | A list of vote objects, representing votes on the pool's trading fee. |</p>
-<h3 id="ammtoken-object">AMMToken Object<a aria-hidden="true" class="hover_anchor" href="#ammtoken-object"><i class="fa fa-link"></i></a></h3>
-<p>The <code>AMMToken</code> field is an object that defines the assets in this AMM's pool. Each asset can be XRP or a <a href="tokens.html">fungible token</a> but they cannot both be XRP.</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;">Field</th>
 <th style="text-align: left;">JSON Type</th>
 <th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Required?</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>Token1</code></td>
+<td style="text-align: left;"><code>Asset</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">STObject</td>
-<td style="text-align: left;">The first asset in this AMM's pool, as an asset definition object.</td>
+<td style="text-align: left;">STIssue</td>
+<td style="text-align: left;">Yes</td>
+<td>The definition for one of the two assets this AMM holds. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Token2</code></td>
+<td style="text-align: left;"><code>Asset2</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">STObject</td>
-<td style="text-align: left;">The second asset in this AMM's pool.</td>
-</tr>
-</tbody>
-</table>
-<p>Both <code>Token1</code> and <code>Token2</code> objects have the following sub-fields:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>TokenCurrency</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Currency Code</td>
-<td style="text-align: left;">The currency code of this asset. As a special case, all 0's refers to XRP. In JSON, this is always hexadecimal even when it uses the "standard currency code" format.</td>
+<td style="text-align: left;">STIssue</td>
+<td style="text-align: left;">Yes</td>
+<td>The definition for the other asset this AMM holds. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>TokenIssuer</code></td>
+<td style="text-align: left;"><code>AMMAccount</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">The issuer for this asset. As a special case, all 0's refers to XRP. In JSON, this is always hexadecimal, not base58.</td>
+<td style="text-align: left;">Yes</td>
+<td>The address of the <a href="accountroot.html#special-amm-accountroot-objects">special account</a> that holds this AMM's assets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>AuctionSlot</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">STObject</td>
+<td style="text-align: left;">No</td>
+<td>Details of the current owner of the auction slot, as an <a href="#auction-slot-object">Auction Slot object</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LPTokenBalance</code></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Yes</td>
+<td>The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets which grows with the trading fees collected.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TradingFee</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td>The percentage fee to be charged for trades against this AMM instance, in units of 1/10,000. The maximum value is 1000, for a 1% fee.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>VoteSlots</code></td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">STArray</td>
+<td style="text-align: left;">No</td>
+<td>A list of vote objects, representing votes on the pool's trading fee.</td>
 </tr>
 </tbody>
 </table>
-<p>The two assets cannot be the exact same; they <em>can</em> have the same currency code or the same issuer but not both. One or both of the assets <em>can</em> be the LP Tokens from another AMM, but they cannot match the currency and issuer of <em>this</em> AMM's LP Tokens.</p>
 <h3 id="auction-slot-object">Auction Slot Object<a aria-hidden="true" class="hover_anchor" href="#auction-slot-object"><i class="fa fa-link"></i></a></h3>
 <p>The <code>AuctionSlot</code> field contains an object with the following nested fields:</p>
 <table class="table-responsive">
@@ -446,11 +442,11 @@
 <td style="text-align: left;">The amount the auction owner paid to win this slot, in LP Tokens.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>TimeStamp</code></td>
+<td style="text-align: left;"><code>Expiration</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The time when this slot was bought, in <a href="basic-data-types.html#時間の指定">seconds since the Ripple Epoch</a>.</td>
+<td style="text-align: left;">The time when this slot expires, in <a href="basic-data-types.html#時間の指定">seconds since the Ripple Epoch</a>.</td>
 </tr>
 </tbody>
 </table>
