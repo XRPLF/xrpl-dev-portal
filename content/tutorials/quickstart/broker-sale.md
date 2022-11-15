@@ -28,12 +28,12 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 ## Get Accounts
 
 1. Open `5.broker-nfts.html` in a browser.
-2. Choose **XLS20-NFT** as your ledger instance.
+2. Choose your ledger instance.
 3. Get test accounts.
-    1. If you have existing NFT-Devnet account seeds:
+    1. If you have existing account seeds:
         1. Paste 3 account seeds in the **Seeds** field.
         2. Click **Get Accounts from Seeds**.
-    2. If you do not have NFT-Devnet account seeds:
+    2. If you do not have account seeds:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
         3. Click **Get New Broker Account**
@@ -625,9 +625,6 @@ Revise the HTML form to add a new Broker section at the top.
     <h1>Token Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
-      <input type="radio" id="xls" name="server"
-        value="wss://xls20-sandbox.rippletest.net:51233" checked>
-      <label for="xls20">XLS20-NFT</label>
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233">

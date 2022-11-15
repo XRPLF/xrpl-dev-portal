@@ -12,9 +12,11 @@ labels:
 
 This example shows how to:
 
-1. Mint new Non-Fungible Tokens (NFTokens).
+
+1. Mint new Non-fungible Tokens (NFTokens).
 2. Get a list of existing NFTokens.
 3. Delete (Burn) a NFToken.
+
 
 ![Test harness with mint NFToken fields](img/quickstart8.png)
 
@@ -30,10 +32,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 1. Open `3.mint-nfts.html` in a browser.
 2. Get test accounts.
-    1. If you have existing NFT-Devnet account seeds:
+    1. If you have existing Testnet account seeds:
         1. Paste the account seeds in the **Seeds** field.
         2. Click **Get Accounts from Seeds**.
-    2. If you do not have existing NFT-Devnet accounts:
+    2. If you do not have existing Testnet accounts:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
@@ -480,11 +482,7 @@ Bold text in the following indicates changes to the form that support the new fu
   <body>
     <h1>Token Test Harness</h1>
     <form id="theForm">
-      Choose your ledger instance:  
-      <input type="radio" id="xls" name="server"
-        value="wss://xls20-sandbox.rippletest.net:51233" checked>
-      <label for="xls20">XLS20-NFT</label>
-      &nbsp;&nbsp;
+      Choose your ledger instance:
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233">
       <label for="testnet">Testnet</label>
