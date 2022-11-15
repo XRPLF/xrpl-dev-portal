@@ -228,7 +228,7 @@
       <div class="center-search search">
         <form role="search">
           <div class="form-group">
-            <div class="input-group">
+            <div class="input-group" id="centersearchboxcontainer">
               <label class="input-group-prepend" for="docsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
               <input id="docsearchbox" type="text" class="form-control searchinput" placeholder="記事、トレーニング、コードサンプルを検索...">
             </div><!--/.form-group-->
@@ -1385,12 +1385,13 @@ $(document).ready(() => {
 
 
 <script type="text/javascript"> docsearch({
-apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
-indexName: 'xrpl',
-inputSelector: '#docsearchbox',
-algoliaOptions: { 'facetFilters': ["lang:ja"] },
-debug: false
-});
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+  indexName: 'xrpl',
+  container: '#centersearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  debug: false
+  });
 </script>
 </body>
 </html>
