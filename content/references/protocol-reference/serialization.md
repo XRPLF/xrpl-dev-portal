@@ -174,20 +174,21 @@ Field codes are reused for fields of different field types, but fields of the sa
 
 Transaction instructions may contain fields of any of the following types:
 
-| Type Name     | Type Code | Bit Length | [Length-prefixed]? | Description    |
-|:--------------|:----------|:-----------|:-------------------|----------------|
-| [AccountID][] | 8         | 160        | Yes             | The unique identifier for an [account](accounts.html). |
-| [Amount][]    | 6         | 64 or 384  | No               | An amount of XRP or tokens. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for tokens. |
-| [Blob][]      | 7         | Variable   | Yes                                 | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
-| [Hash128][]   | 4         | 128        | No                                  | A 128-bit arbitrary binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
-| [Hash160][]   | 17        | 160        | No                                  | A 160-bit arbitrary binary value. This may define a currency code or issuer. |
-| [Hash256][]   | 5         | 256        | No                                  | A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object. |
-| [PathSet][]   | 18        | Variable   | No                                  | A set of possible [payment paths](paths.html) for a [cross-currency payment](cross-currency-payments.html). |
-| [STArray][]   | 15        | Variable   | No                                  | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transaction-common-fields.html#memos-field) and lists of signers used in [multi-signing](multi-signing.html). |
-| [STObject][]  | 14        | Variable   | No                                  | An object containing one or more nested fields. |
-| [UInt8][]     | 16        | 8          | No                                  | An 8-bit unsigned integer. |
-| [UInt16][]    | 1         | 16         | No                                  | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
-| [UInt32][]    | 2         | 32         | No                                  | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
+| Type Name     | Type Code | Bit Length | [Length-prefixed][]? | Description    |
+|:--------------|:----------|:-----------|:---------------------|----------------|
+| [AccountID][] | 8         | 160        | Yes                  | The unique identifier for an [account](accounts.html). |
+| [Amount][]    | 6         | 64 or 384  | No                   | An amount of XRP or tokens. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for tokens. |
+| [Blob][]      | 7         | Variable   | Yes                  | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
+| [Hash128][]   | 4         | 128        | No                   | A 128-bit arbitrary binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
+| [Hash160][]   | 17        | 160        | No                   | A 160-bit arbitrary binary value. This may define a currency code or issuer. |
+| [Hash256][]   | 5         | 256        | No                   | A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object. |
+| [PathSet][]   | 18        | Variable   | No                   | A set of possible [payment paths](paths.html) for a [cross-currency payment](cross-currency-payments.html). |
+| [STArray][]   | 15        | Variable   | No                   | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transaction-common-fields.html#memos-field) and lists of signers used in [multi-signing](multi-signing.html). |
+| [STIssue][]   | 24        | 320        | No                   | :not_enabled: An asset definition, XRP or a token, with no quantity. |
+| [STObject][]  | 14        | Variable   | No                   | An object containing one or more nested fields. |
+| [UInt8][]     | 16        | 8          | No                   | An 8-bit unsigned integer. |
+| [UInt16][]    | 1         | 16         | No                   | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
+| [UInt32][]    | 2         | 32         | No                   | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
 
 [Length-prefixed]: #length-prefixing
 
@@ -301,14 +302,13 @@ All such fields are serialized as the specific number of bits, with no length in
 
 ### Issue Fields
 [STIssue]: #issue-fields
-<!-- TODO: translate this section -->
 
-_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)
+_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_
 
 Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of two 160-bit segments in order:
 
 1. The first 160 bits are the [currency code](#currency-codes) of the asset. For XRP, this is all 0's.
-2. The next 160 bits are the AccountID of the issuer. For XRP, this is all 0's.
+2. The next 160 bits are the [AccountID of the token issuer](#accountid-fields). For XRP, this is all 0's.
 
 
 ### Object Fields

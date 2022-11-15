@@ -2415,12 +2415,12 @@ pages:
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
         targets:
             - en
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
         targets:
             - en
             - ja
@@ -2723,6 +2723,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with new/updated sections from the English version
     -   md: references/protocol-reference/serialization.ja.md
         targets:
             - ja
