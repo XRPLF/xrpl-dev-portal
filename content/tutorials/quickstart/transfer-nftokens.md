@@ -10,8 +10,6 @@ labels:
 
 # 4. Transfer NFTokens
 
-{% include '_snippets/nfts-disclaimer.md' %}
-
 This example shows how to:
 
 
