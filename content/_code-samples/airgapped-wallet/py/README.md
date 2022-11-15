@@ -74,7 +74,7 @@ pip install -r requirements.txt
 
 4. Airgap the machine by following the security practices written [here](#security-practices).
 
-5. Run `airgapped-machine.py`
+5. Run `airgapped-wallet.py`
 
 6. Scan the QR code and fund the account using the [testnet faucet](https://test.bithomp.com/faucet/) 
 
