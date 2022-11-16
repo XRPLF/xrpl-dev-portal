@@ -140,7 +140,6 @@ https://xrpl.org/look-up-checks-by-recipient.html
 https://xrpl.org/use-tokens.html
 https://xrpl.org/issue-a-fungible-token.html
 https://xrpl.org/trade-in-the-decentralized-exchange.html
-https://xrpl.org/nftoken-tester-tutorial.html
 https://xrpl.org/enable-no-freeze.html
 https://xrpl.org/enact-global-freeze.html
 https://xrpl.org/freeze-a-trust-line.html

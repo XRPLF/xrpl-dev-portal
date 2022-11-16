@@ -314,7 +314,7 @@
 <p>To get test accounts:</p>
 <ol>
 <li>Open <code>1.get-accounts-send-xrp.html</code> in a browser</li>
-<li>Choose <strong>NFT-Devnet</strong>, <strong>Testnet</strong>, or <strong>Devnet</strong>.</li>
+<li>Choose <strong>Testnet</strong> or <strong>Devnet</strong>.</li>
 <li>Click <strong>Get New Standby Account</strong>.</li>
 <li>Click <strong>Get New Operational Account.</strong></li>
 <li>Copy and paste the <strong>Seeds</strong> field in a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.</li>
@@ -331,7 +331,7 @@
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> in the source repository for this website.</p>
 <h2 id="ripplex-1-send-xrpjs">ripplex-1-send-xrp.js<a aria-hidden="true" class="hover_anchor" href="#ripplex-1-send-xrpjs"><i class="fa fa-link"></i></a></h2>
-<p>This example can be used with any XRP Ledger network. Currently, there are <em>Testnet</em> and <em>Devnet,</em> with the experimental <em>NFT-Devnet</em> server with support for NFTokens. You can update the code to choose different or additional XRP Ledger networks.</p>
+<p>This example can be used with any XRP Ledger network, <em>Testnet</em>, or <em>Devnet</em>. You can update the code to choose different or additional XRP Ledger networks.</p>
 <h3 id="getnet">getNet()<a aria-hidden="true" class="hover_anchor" href="#getnet"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">// ******************************************************
 // ************* Get the Preferred Network **************
@@ -341,7 +341,6 @@
 </code></pre></div>
 <p>This function uses brute force <code>if</code> statements to discover the selected network instance and return the URI.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">        </span><span class="nv">let</span><span class="w"> </span><span class="nv">net</span><span class="w"></span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"xls"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span><span class="w"> </span><span class="nv">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="w"></span>
 <span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"tn"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span><span class="w"> </span><span class="nv">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="w"></span>
 <span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"dn"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span><span class="w"> </span><span class="nv">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"wss://s.devnet.rippletest.net:51233"</span><span class="w"></span>
 <span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nv">net</span><span class="w"></span>
@@ -618,9 +617,6 @@
 <span class="w">    </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Token</span><span class="w"> </span><span class="n">Test</span><span class="w"> </span><span class="n">Harness</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="o">&lt;</span><span class="n">form</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"theForm"</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="n">Choose</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">ledger</span><span class="w"> </span><span class="n">instance</span><span class="o">:</span><span class="w">  </span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"radio"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"xls"</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">"server"</span><span class="w"></span>
-<span class="w">        </span><span class="n">value</span><span class="o">=</span><span class="s">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="w"> </span><span class="n">checked</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">label</span><span class="w"> </span><span class="k">for</span><span class="o">=</span><span class="s">"xls20"</span><span class="o">&gt;</span><span class="n">XLS20</span><span class="o">-</span><span class="n">NFT</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"radio"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"tn"</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">"server"</span><span class="w"></span>
 <span class="w">        </span><span class="n">value</span><span class="o">=</span><span class="s">"wss://s.altnet.rippletest.net:51233"</span><span class="o">&gt;</span><span class="w"></span>
@@ -1619,11 +1615,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial</a>
   </div>
 
       
