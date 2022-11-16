@@ -269,7 +269,7 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 これらのフィールドは、長さインディケーターを使用せずに、ビッグエンディアンバイトオーダーで特定数のビットとしてシリアル化されます。
 
 ### Issueフィールド
-[STIssue]: #issue-フィールド
+[STIssue]: #issueフィールド
 <!-- TODO: translate this section -->
 
 _(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_
