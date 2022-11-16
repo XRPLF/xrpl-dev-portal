@@ -39,7 +39,7 @@
   #centersearchboxcontainer {
     justify-content: center;
   }
-  #topsearchboxcontainer{
+  #topsearchboxcontainer {
     justify-content: right;
   }
   .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
@@ -97,6 +97,9 @@
   @include media-breakpoint-down(md) {
     .algolia-autocomplete .ds-dropdown-menu {
       min-width: unset;
+    }
+    .DocSearch-Modal {
+      top: 450px;
     }
   }
 }
