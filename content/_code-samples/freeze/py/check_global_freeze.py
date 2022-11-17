@@ -22,8 +22,6 @@ issuer_addr = "rfDJ98Z8k7ubr6atbZoCqAPdg9MetyBwcg"
 
 # Build account line query
 print(f"Checking if global freeze is enabled for the address {issuer_addr}")
-print(f"Checking if global freeze is enabled for the address {issuer_addr}")
-print(f"Checking if global freeze is enabled for the address {issuer_addr}")
 acc_info = AccountInfo(account=issuer_addr, ledger_index="validated")
 
 # Submit query
