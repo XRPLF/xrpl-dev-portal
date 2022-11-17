@@ -101,7 +101,7 @@ sudo apt-get install python3.8 python3-pip
 pip install -r requirements.txt
 ```
 
-4. Edit line 47 @ `relay-transaction.py` and insert the signed transaction blob
+4. Edit line 47 @ `relay-transaction.py` and insert the signed transaction blob from scanning the QR code Machine 1 generated.
 
 5. Run `relay-transaction.py`
 

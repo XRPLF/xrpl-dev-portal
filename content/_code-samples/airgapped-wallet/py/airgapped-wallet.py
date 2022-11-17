@@ -214,7 +214,8 @@ if ask == 4:
         openimg = Image.open(get_path("/Wallet/public.png"))
         openimg.show()
 
-        print("Re-run this script!")
+        print("Finished generating an account.")
+        print("Please scan the QR code on your phone and use https://test.bithomp.com/faucet/ to fund the account.\n After that, re-run this script to use this account and credentials!")
 
 
 if __name__ == '__main__':
