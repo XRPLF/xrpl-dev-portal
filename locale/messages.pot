@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-30 15:01+0900\n"
+"POT-Creation-Date: 2022-11-03 15:52-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.11.0\n"
 
 #: template/component-footer.html.jinja:23
 msgid "Open Source."
@@ -30,15 +30,23 @@ msgid "Edit page"
 msgstr ""
 
 #: template/component-top-nav.html.jinja:3
-msgid "Read the proposal for a native AMM on XRPL"
+msgid "Native NFT support is now available on the XRP Ledger"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:75 template/page-404.html.jinja:11
+#: template/component-top-nav.html.jinja:7
+msgid "Native NFT support is now available"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:8
+msgid "on the XRP Ledger"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:79 template/page-404.html.jinja:11
 #: template/page-docs.html.jinja:18
 msgid "Search"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:76
+#: template/component-top-nav.html.jinja:80
 msgid "Search site..."
 msgstr ""
 
@@ -380,7 +388,7 @@ msgstr ""
 msgid "Apply for funding for your next XRPL project"
 msgstr ""
 
-#: template/page-community.html.jinja:122
+#: template/page-community.html.jinja:122 template/page-funding.html.jinja:134
 #: template/page-xrpl-overview.html.jinja:169
 msgid "XRPL Grants"
 msgstr ""
@@ -392,7 +400,7 @@ msgid ""
 msgstr ""
 
 #: template/page-community.html.jinja:128
-#: template/page-community.html.jinja:148
+#: template/page-community.html.jinja:148 template/page-funding.html.jinja:298
 msgid "Learn More"
 msgstr ""
 
@@ -409,65 +417,106 @@ msgid "Open-source projects funded "
 msgstr ""
 
 #: template/page-community.html.jinja:164
-#: template/page-community.html.jinja:189
+msgid "Showcase your XRPL project, application or product"
+msgstr ""
+
+#: template/page-community.html.jinja:165
+msgid "XRPL Community Spotlight"
+msgstr ""
+
+#: template/page-community.html.jinja:167
+msgid ""
+"Get featured on the Developer Reflections blog or Use Cases page, and "
+"explore XRPL community highlights."
+msgstr ""
+
+#: template/page-community.html.jinja:174
+msgid "Submit Your Projects"
+msgstr ""
+
+#: template/page-community.html.jinja:175
+msgid "Read the Blog"
+msgstr ""
+
+#: template/page-community.html.jinja:191
+#: template/page-community.html.jinja:216
 msgid "Welcome to Apex 2021"
 msgstr ""
 
-#: template/page-community.html.jinja:168
-#: template/page-community.html.jinja:193
+#: template/page-community.html.jinja:195
+#: template/page-community.html.jinja:220
 msgid "XRPL Community Meetup"
 msgstr ""
 
-#: template/page-community.html.jinja:172
-#: template/page-community.html.jinja:197
+#: template/page-community.html.jinja:199
+#: template/page-community.html.jinja:224
 msgid "XRPL Hackathon 2022"
 msgstr ""
 
-#: template/page-community.html.jinja:179
+#: template/page-community.html.jinja:206
 msgid "Check out global events across the XRPL community"
 msgstr ""
 
-#: template/page-community.html.jinja:180
+#: template/page-community.html.jinja:207
 msgid "XRPL Events"
 msgstr ""
 
-#: template/page-community.html.jinja:182
+#: template/page-community.html.jinja:209
 msgid ""
 "Meet the XRPL community at meetups, hackathons, conferences, and more "
 "across global regions."
 msgstr ""
 
-#: template/page-community.html.jinja:202
+#: template/page-community.html.jinja:229
 msgid "View All Events"
 msgstr ""
 
-#: template/page-community.html.jinja:220
+#: template/page-community.html.jinja:247
 msgid "Discover your next career opportunity in the XRPL community"
 msgstr ""
 
-#: template/page-community.html.jinja:221
+#: template/page-community.html.jinja:248
 msgid "XRPL Careers"
 msgstr ""
 
-#: template/page-community.html.jinja:223
+#: template/page-community.html.jinja:250
 msgid ""
 "Teams across the XRPL community are looking for talented individuals to "
 "help build their next innovation."
 msgstr ""
 
-#: template/page-community.html.jinja:229
+#: template/page-community.html.jinja:256
 msgid "View Open Roles"
 msgstr ""
 
-#: template/page-community.html.jinja:243
+#: template/page-community.html.jinja:268
+msgid "Review guidelines for using XRPL design assets"
+msgstr ""
+
+#: template/page-community.html.jinja:269
+msgid "XRPL Assets"
+msgstr ""
+
+#: template/page-community.html.jinja:271
+msgid ""
+"Just like the technology itself, XRPL assets are open source and "
+"available for anyone to use. Check out this helpful framework for using "
+"XRPL visuals. "
+msgstr ""
+
+#: template/page-community.html.jinja:279
+msgid "Download the PDF and Assets"
+msgstr ""
+
+#: template/page-community.html.jinja:297
 msgid "A community-driven resource for all things XRPL.org"
 msgstr ""
 
-#: template/page-community.html.jinja:244
+#: template/page-community.html.jinja:298
 msgid "Contribute to XRPL.org"
 msgstr ""
 
-#: template/page-community.html.jinja:246
+#: template/page-community.html.jinja:300
 msgid ""
 "Thank you for your interest in contributing to XRPL.org. This website was"
 " created as an XRPL community resource and is meant to be a living, "
@@ -475,8 +524,44 @@ msgid ""
 "source and anyone can suggest changes."
 msgstr ""
 
-#: template/page-community.html.jinja:247
+#: template/page-community.html.jinja:301
 msgid "Read Contributor Guidelines"
+msgstr ""
+
+#: template/page-dev-tools.html.jinja:13
+msgid ""
+"Use the developer tools to test, explore, and validate XRP Ledger\n"
+"          API requests and behavior."
+msgstr ""
+
+#: template/page-dev-tools.html.jinja:16
+msgid "Dev Tools"
+msgstr ""
+
+#: template/page-dev-tools.html.jinja:28 template/page-dev-tools.html.jinja:74
+msgid "Explorers"
+msgstr ""
+
+#: template/page-dev-tools.html.jinja:31 template/page-dev-tools.html.jinja:89
+msgid "API Access"
+msgstr ""
+
+#: template/page-dev-tools.html.jinja:34 template/page-dev-tools.html.jinja:146
+msgid "Other"
+msgstr ""
+
+#: template/page-dev-tools.html.jinja:203
+msgid "Have an Idea For a Tool?"
+msgstr ""
+
+#: template/page-dev-tools.html.jinja:204
+msgid ""
+"Contribute to the XRP Ledger community by submitting your idea for a tool"
+" or open a pull request if you've developed a tool."
+msgstr ""
+
+#: template/page-dev-tools.html.jinja:205
+msgid "Open a pull Request"
 msgstr ""
 
 #: template/page-docs.html.jinja:11
@@ -604,6 +689,89 @@ msgid ""
 "of languages, but not all pages are available in all languages. If you'd "
 "like to help, <a href=\"https://github.com/XRPLF/xrpl-dev-"
 "portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
+msgstr ""
+
+#: template/page-funding.html.jinja:27
+msgid "XRPL Developer Funding Programs"
+msgstr ""
+
+#: template/page-funding.html.jinja:28
+msgid "Project Resources"
+msgstr ""
+
+#: template/page-funding.html.jinja:36
+msgid "Explore funding opportunities for developers and teams"
+msgstr ""
+
+#: template/page-funding.html.jinja:37
+msgid "Funding Overview"
+msgstr ""
+
+#: template/page-funding.html.jinja:39
+msgid ""
+"If you’re a software developer or team looking to build your next project"
+" or venture on the XRP Ledger (XRPL), there are a number of opportunities"
+" to fund your next innovation."
+msgstr ""
+
+#: template/page-funding.html.jinja:50
+msgid "XRPL Hackathons"
+msgstr ""
+
+#: template/page-funding.html.jinja:51
+msgid "Join an Event"
+msgstr ""
+
+#: template/page-funding.html.jinja:53
+msgid ""
+"Hackathons are open to all developers to explore and invent a project on "
+"the XRP Ledger. Visit the events page for updates on upcoming hackathons."
+msgstr ""
+
+#: template/page-funding.html.jinja:56 template/page-funding.html.jinja:121
+msgid "See Upcoming Events"
+msgstr ""
+
+#: template/page-funding.html.jinja:135
+msgid "Fund Your Project"
+msgstr ""
+
+#: template/page-funding.html.jinja:137
+msgid ""
+"Developer grants for projects that contribute to the growing XRP Ledger "
+"community."
+msgstr ""
+
+#: template/page-funding.html.jinja:145 template/page-funding.html.jinja:210
+msgid "Visit XRPL Grants"
+msgstr ""
+
+#: template/page-funding.html.jinja:223
+msgid "XRPL Bounties"
+msgstr ""
+
+#: template/page-funding.html.jinja:224
+msgid "Go Deep"
+msgstr ""
+
+#: template/page-funding.html.jinja:226
+msgid ""
+"Bounties are awards for developing software and integrations that enable "
+"and improve specific use cases for the XRP Ledger."
+msgstr ""
+
+#: template/page-funding.html.jinja:294
+msgid "Are you an independent creator?"
+msgstr ""
+
+#: template/page-funding.html.jinja:295
+msgid "Ripple’s Creator Fund"
+msgstr ""
+
+#: template/page-funding.html.jinja:297
+msgid ""
+"If you’re a creator looking to mint NFTs on the XRP Ledger and do not "
+"have technical experience, check out Ripple’s Creator Fund."
 msgstr ""
 
 #: template/page-history.html.jinja:28
@@ -744,13 +912,15 @@ msgstr ""
 
 #: template/page-history.html.jinja:103
 msgid ""
-"<a href=\"https://xrplf.org/assets/XRP_Foundation_Release_24Sep2020.pdf\""
-" target=\"_blank\">Founded</a> September 24, 2020, the XRPL Foundation is"
-" an independent and nonprofit entity with a mission to accelerate the "
-"development and adoption of the decentralized XRP Ledger. The Foundation "
-"received an initial donation of over $6.5M from Coil, Ripple, and Gatehub"
-" to fund the Foundation’s work in service of the growing number of "
-"developers and other community members building on the XRP Ledger."
+"<a href=\"https://foundation.xrpl.org/2020/09/24/xrp-ledger-foundation-"
+"launches-to-drive-growth-and-development-of-the-core-xrp-ledger-and-"
+"community/\" target=\"_blank\">Founded</a> September 24, 2020, the XRPL "
+"Foundation is an independent and nonprofit entity with a mission to "
+"accelerate the development and adoption of the decentralized XRP Ledger. "
+"The Foundation received an initial donation of over $6.5M from Coil, "
+"Ripple, and Gatehub to fund the Foundation’s work in service of the "
+"growing number of developers and other community members building on the "
+"XRP Ledger."
 msgstr ""
 
 #: template/page-home.html.jinja:27
@@ -1062,7 +1232,7 @@ msgstr ""
 #: template/page-impact.html.jinja:50
 msgid ""
 "For more than <a "
-"href=\"https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf\" "
+"href=\"https://publications.iom.int/system/files/pdf/wmr_2020.pdf\" "
 "target=\"_blank\">272 million migrants</a> worldwide, sending and "
 "receiving money across borders is expensive, unreliable and complex."
 msgstr ""
@@ -1890,47 +2060,43 @@ msgid ""
 msgstr ""
 
 #: template/page-xrp-overview.html.jinja:157
-msgid "Hardware Wallets"
-msgstr ""
-
-#: template/page-xrp-overview.html.jinja:162
-msgid "Ledger"
-msgstr ""
-
-#: template/page-xrp-overview.html.jinja:166
-msgid "Secalot"
-msgstr ""
-
-#: template/page-xrp-overview.html.jinja:169
-msgid "Trezor"
-msgstr ""
-
-#: template/page-xrp-overview.html.jinja:178
 msgid "Software Wallets"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:183
+#: template/page-xrp-overview.html.jinja:162
 msgid "Xumm"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:184
+#: template/page-xrp-overview.html.jinja:163
 msgid "https://trustwallet.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:186
+#: template/page-xrp-overview.html.jinja:165
 msgid "Trust Wallet"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:187
+#: template/page-xrp-overview.html.jinja:166
 msgid "https://gatehub.net/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:189
+#: template/page-xrp-overview.html.jinja:168
 msgid "Gatehub"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:198
-#: template/page-xrp-overview.html.jinja:264
+#: template/page-xrp-overview.html.jinja:177
+msgid "Hardware Wallets"
+msgstr ""
+
+#: template/page-xrp-overview.html.jinja:182
+msgid "Ledger"
+msgstr ""
+
+#: template/page-xrp-overview.html.jinja:186
+msgid "Trezor"
+msgstr ""
+
+#: template/page-xrp-overview.html.jinja:195
+#: template/page-xrp-overview.html.jinja:261
 msgid ""
 "Disclaimer: This information is drawn from other sources on the internet."
 "  XRPL.org does not endorse or recommend any exchanges or make any "
@@ -1941,141 +2107,141 @@ msgid ""
 "and privacy practices."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:202
+#: template/page-xrp-overview.html.jinja:199
 msgid "What Exchanges Support XRP?"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:203
+#: template/page-xrp-overview.html.jinja:200
 msgid ""
 "Exchanges are where people trade currencies. XRP is traded on more than "
 "100 markets and exchanges worldwide."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:204
+#: template/page-xrp-overview.html.jinja:201
 msgid ""
 "There are different types of exchanges that vary depending on the type of"
 " market (spot, futures, options, swaps), and the type of security model "
 "(custodial, non-custodial)."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:207
+#: template/page-xrp-overview.html.jinja:204
 msgid "Spot Exchanges"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:208
+#: template/page-xrp-overview.html.jinja:205
 msgid ""
 "Spot exchanges allow people to buy and sell cryptocurrencies at current "
 "(spot) market rates."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:211
+#: template/page-xrp-overview.html.jinja:208
 msgid "Futures, Options and Swap Exchanges"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:212
+#: template/page-xrp-overview.html.jinja:209
 msgid ""
 "Futures, options and swap exchanges allow people to buy and sell "
 "standardized contracts of cryptocurrency market rates in the future."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:215
+#: template/page-xrp-overview.html.jinja:212
 msgid "Custodial Exchanges"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:216
+#: template/page-xrp-overview.html.jinja:213
 msgid ""
 "Custodial exchanges manage a user’s private keys, and publish centralized"
 " order books of buyers and sellers."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:219
+#: template/page-xrp-overview.html.jinja:216
 msgid "Non-Custodial Exchanges"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:220
+#: template/page-xrp-overview.html.jinja:217
 msgid ""
 "Non-custodial exchanges, also known as decentralized exchanges, do not "
 "manage a user’s private keys, and publish decentralized order books of "
 "buyers and sellers on a blockchain."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:223
+#: template/page-xrp-overview.html.jinja:220
 msgid "Top Exchanges, according to CryptoCompare"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:228
+#: template/page-xrp-overview.html.jinja:225
 msgid "Bitstamp"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:229
+#: template/page-xrp-overview.html.jinja:226
 msgid "https://www.kraken.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:231
+#: template/page-xrp-overview.html.jinja:228
 msgid "Kraken"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:232
+#: template/page-xrp-overview.html.jinja:229
 msgid "https://cex.io/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:234
+#: template/page-xrp-overview.html.jinja:231
 msgid "Cex.io"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:235
+#: template/page-xrp-overview.html.jinja:232
 msgid "https://www.liquid.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:237
+#: template/page-xrp-overview.html.jinja:234
 msgid "Liquid"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:238
+#: template/page-xrp-overview.html.jinja:235
 msgid "https://www.lmax.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:240
+#: template/page-xrp-overview.html.jinja:237
 msgid "LMAX"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:241
+#: template/page-xrp-overview.html.jinja:238
 msgid "https://www.bitfinex.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:243
+#: template/page-xrp-overview.html.jinja:240
 msgid "Bitfinex"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:244
+#: template/page-xrp-overview.html.jinja:241
 msgid "https://www.etoro.com/crypto/exchange/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:246
+#: template/page-xrp-overview.html.jinja:243
 msgid "eToro"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:247
+#: template/page-xrp-overview.html.jinja:244
 msgid "https://currency.com"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:249
+#: template/page-xrp-overview.html.jinja:246
 msgid "Currency.com"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:250
+#: template/page-xrp-overview.html.jinja:247
 msgid "https://bittrex.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:252
+#: template/page-xrp-overview.html.jinja:249
 msgid "Bittrex"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:253
+#: template/page-xrp-overview.html.jinja:250
 msgid "https://ftx.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:255
+#: template/page-xrp-overview.html.jinja:252
 msgid "FTX"
 msgstr ""
 
