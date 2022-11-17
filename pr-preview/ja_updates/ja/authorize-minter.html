@@ -56,7 +56,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v11.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v11b.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -324,13 +324,13 @@
 <h2 id="get-accounts">Get Accounts<a aria-hidden="true" class="hover_anchor" href="#get-accounts"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>Open <code>6.authorized-minter.html</code> in a browser.</li>
-<li>Get test accounts.<ol>
-<li>If you have existing NFT-Devnet account seeds:<ol>
+<li>Choose your ledger instance (<em>Testnet</em> or <em>Devnet</em>).<ol>
+<li>If you have existing test account seeds:<ol>
 <li>Paste the account seeds in the <strong>Seeds</strong> field.</li>
 <li>Click <strong>Get Accounts from Seeds</strong>.</li>
 </ol>
 </li>
-<li>If you do not have existing NFT-Devnet accounts:<ol>
+<li>If you do not have existing test accounts:<ol>
 <li>Click <strong>Get New Standby Account</strong>.</li>
 <li>Click <strong>Get New Operational Account</strong>.</li>
 </ol>
@@ -616,9 +616,6 @@
     <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Token Test Harness<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">"theForm"</span><span class="p">&gt;</span>
       Choose your ledger instance:  
-      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"radio"</span> <span class="na">id</span><span class="o">=</span><span class="s">"xls"</span> <span class="na">name</span><span class="o">=</span><span class="s">"server"</span>
-        <span class="na">value</span><span class="o">=</span><span class="s">"wss://xls20-sandbox.rippletest.net:51233"</span> <span class="na">checked</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"xls20"</span><span class="p">&gt;</span>XLS20-NFT<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
       <span class="ni">&amp;nbsp;&amp;nbsp;</span>
       <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"radio"</span> <span class="na">id</span><span class="o">=</span><span class="s">"tn"</span> <span class="na">name</span><span class="o">=</span><span class="s">"server"</span>
         <span class="na">value</span><span class="o">=</span><span class="s">"wss://s.altnet.rippletest.net:51233"</span><span class="p">&gt;</span>
@@ -1788,11 +1785,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial</a>
   </div>
 
       

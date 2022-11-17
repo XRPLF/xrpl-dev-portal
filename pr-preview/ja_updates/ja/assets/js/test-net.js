@@ -56,9 +56,7 @@ function rippleTestNetCredentials(url, altnet_name) {
       destination: test_wallet.address,
       memos: [
         {
-          Memo: {
-            MemoData: xrpl.convertStringToHex("xrpl.org-faucet"),
-          },
+          data: xrpl.convertStringToHex("xrpl.org-faucet"),
         },
       ],
     }),

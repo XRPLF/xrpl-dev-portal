@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v11b.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -291,7 +291,6 @@
         <li class="nav-item level-2"><a class="nav-link" href="#freeze">Freeze</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#authorized-trust-lines">Authorized Trust Lines</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#source-and-destination-tags">Source and Destination Tags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#gateway-bulletins">Gateway Bulletins</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#technical-details">Technical Details</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#infrastructure">Infrastructure</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#apis-and-middleware">APIs and Middleware</a></li>
@@ -627,24 +626,6 @@
 <p>You can generate a destination tag on-demand when a customer intends to send money to you. For greater customer privacy, you should consider that destination tag valid only for that payment with the expected amount, and bounce or ignore any other transactions that reuse the same destination tag.</p>
 <p><a href="require-destination-tags.html">Enable the Require Destination Tag setting</a> on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should be credited when they send payments to you.</p>
 <p>For more information, see <a href="source-and-destination-tags.html">Source and Destination Tags</a>.</p>
-<h2 id="gateway-bulletins">Gateway Bulletins<a aria-hidden="true" class="hover_anchor" href="#gateway-bulletins"><i class="fa fa-link"></i></a></h2>
-<p>Historically, Ripple (the company) published gateway bulletins to introduce new XRP Ledger features or discuss topics related to compliance and risk for issuers. Gateway Bulletins are listed here in reverse chronological order.</p>
-<ul>
-<li>May 13, 2015 - <a href="assets/pdf/GB-2015-06.pdf">GB-2015-06 Gateway Bulletin: Corrections to Autobridging (PDF)</a> <!-- SPELLING_IGNORE: autobridging --></li>
-<li>April 17, 2015 - <a href="assets/pdf/GB-2015-05.pdf">GB-2015-05 Historical Ledger Query Migration</a></li>
-<li>March 13, 2015 - <a class="external-link" href="https://ripple.com/files/GB-2015-04.pdf" target="_blank">GB-2015-04 Action Required: Default Ripple Flag (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>March 3, 2015 - <a class="external-link" href="https://ripple.com/files/GB-2015-03.pdf" target="_blank">GB-2015-03 Gateway Advisory: FinCEN Ruling on MoneyGram Compliance Program (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a> <!-- SPELLING_IGNORE: moneygram --></li>
-<li>March 2, 2015 (Updated) - <a class="external-link" href="https://ripple.com/files/GB-2015-02.pdf" target="_blank">GB-2015-02 New Standards: How to be Featured on Ripple Trade and Ripple Charts (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>January 5, 2015 - <a class="external-link" href="https://ripple.com/files/GB-2015-01.pdf" target="_blank">GB-2015-01 Gateway Advisory: Reliable Transaction Submission (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>December 18, 2014 - <a class="external-link" href="https://ripple.com/files/GB-2014-08.pdf" target="_blank">GB-2014-08 Gateway Advisory: Recent FinCEN Rulings (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>November 4, 2014 -<a class="external-link" href="https://ripple.com/files/GB-2014-07.pdf" target="_blank">GB-2014-07 Gateway Advisory: FATF Standards (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>October 17, 2014 -<a class="external-link" href="https://ripple.com/files/GB-2014-06.pdf" target="_blank">GB-2014-06 Gateway Advisory: Partial Payment Flag (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>September 24, 2014 - <a class="external-link" href="https://ripple.com/files/GB-2014-05.pdf" target="_blank">GB-2014-05 Gateway Advisory: EBA Opinion On Virtual Currency (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a> <!-- SPELLING_IGNORE: eba --></li>
-<li>September 11, 2014 - <a class="external-link" href="https://ripple.com/files/GB-2014-04.pdf" target="_blank">GB-2014-04 Gateway Advisory: CFPB Opinion on Virtual Currency (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a> <!-- SPELLING_IGNORE: cfpb --></li>
-<li>August 19, 2014 - <a class="external-link" href="https://ripple.com/files/GB-2014-03.pdf" target="_blank">GB-2014-03 Updated Feature: Trust Lines UI (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>August 1, 2014 - <a class="external-link" href="https://ripple.com/files/GB-2014-02.pdf" target="_blank">GB-2014-02 New Feature: Balance Freeze (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>April 23, 2014, Updated August 14, 2014 -<a class="external-link" href="https://ripple.com/files/GB-2014-01.pdf" target="_blank">GB-2014-01 New Feature: Ripple Names (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-</ul>
 <h1 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h1>
 <h2 id="infrastructure">Infrastructure<a aria-hidden="true" class="hover_anchor" href="#infrastructure"><i class="fa fa-link"></i></a></h2>
 <p>For your own security as well as the stability of the network, each XRP Ledger business should <a href="install-rippled.html">run its own XRP Ledger servers</a> including one <a href="rippled-server-modes.html#validators">validator</a>.</p>
@@ -1622,11 +1603,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-tester-tutorial.html">NFToken Tester Tutorial</a>
   </div>
 
       

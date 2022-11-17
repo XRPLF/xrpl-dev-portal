@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v11b.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -318,14 +318,14 @@
 <h2 id="get-accounts">Get Accounts<a aria-hidden="true" class="hover_anchor" href="#get-accounts"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>Open <code>4.transfer-nftokens.html</code> in a browser.</li>
-<li>Choose <strong>XLS20-NFT</strong> as your ledger instance.</li>
+<li>Choose your ledger instance (<strong>Testnet</strong> or <strong>Devnet</strong>).</li>
 <li>Get test accounts.<ol>
-<li>If you have existing NFT-Devnet account seeds<ol>
+<li>If you have existing test account seeds<ol>
 <li>Paste account seeds in the <strong>Seeds</strong> field.</li>
 <li>Click <strong>Get Accounts from Seeds</strong>.</li>
 </ol>
 </li>
-<li>If you do not have NFT-Devnet account seeds:<ol>
+<li>If you do not have test account seeds:<ol>
 <li>Click <strong>Get New Standby Account</strong>.</li>
 <li>Click <strong>Get New Operational Account</strong>.</li>
 </ol>
@@ -1149,9 +1149,6 @@ async function acceptBuyOffer() {
 <span class="w">    </span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Token</span><span class="w"> </span><span class="n">Test</span><span class="w"> </span><span class="n">Harness</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="o">&lt;</span><span class="n">form</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"theForm"</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="n">Choose</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">ledger</span><span class="w"> </span><span class="n">instance</span><span class="o">:</span><span class="w">  </span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"radio"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"xls"</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">"server"</span><span class="w"></span>
-<span class="w">        </span><span class="n">value</span><span class="o">=</span><span class="s">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="w"> </span><span class="n">checked</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">      </span><span class="o">&lt;</span><span class="n">label</span><span class="w"> </span><span class="k">for</span><span class="o">=</span><span class="s">"xls20"</span><span class="o">&gt;</span><span class="n">XLS20</span><span class="o">-</span><span class="n">NFT</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"radio"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"tn"</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">"server"</span><span class="w"></span>
 <span class="w">        </span><span class="n">value</span><span class="o">=</span><span class="s">"wss://s.altnet.rippletest.net:51233"</span><span class="o">&gt;</span><span class="w"></span>
@@ -2305,11 +2302,6 @@ async function acceptBuyOffer() {
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-tester-tutorial.html">NFToken Tester Tutorial</a>
   </div>
 
       
