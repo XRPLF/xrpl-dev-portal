@@ -131,7 +131,8 @@ def main():
                 password = str(input("             Enter Password: "))
                 amount = float(input("\n           Enter XRP To Send: "))
                 destination = input("\n        Enter Destination: ")
-                wallet_sequence = int(input("\n    Enter Wallet Sequence: "))
+                wallet_sequence = int(input("Look up the 'Next Sequence' for the public account using test.bithomp.com and enter it below!"
+                "\n    Enter Wallet Sequence: "))
                 ledger_sequence = int(input("Look up the latest ledger sequence on testnet.xrpl.org and enter it below!"
                                             "\n    Enter Ledger Sequence: "))
 
