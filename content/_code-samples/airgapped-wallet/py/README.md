@@ -78,6 +78,10 @@ pip install -r requirements.txt
 
 6. Scan the QR code and fund the account using the [testnet faucet](https://test.bithomp.com/faucet/) 
 
+7. Re-run the script and input '1' to generate a new transaction by following the instructions.
+
+8. Use your phone to scan the QR code, then to send the signed transaction to Machine 2 for submission
+
 ## Machine 2 Setup
 This machine will be used to transmit a signed transaction blob from Machine 1, it would require internet access.
 
