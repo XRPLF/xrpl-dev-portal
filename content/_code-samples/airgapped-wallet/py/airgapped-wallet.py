@@ -97,7 +97,7 @@ def get_path(file):
     # Get PATH format based on the OS
     if OS == "Windows":
         File_ = PureWindowsPath(str(usr) + file)
-    if OS == "Linux":
+    else: # Assuming Linux-style file format, use this path:
         File_ = PurePath(str(usr) + file)
 
     return str(File_)
@@ -113,8 +113,7 @@ def main():
         # If it's Windows, use this path:
         File = PureWindowsPath(str(usr) + '/Wallet')
         Path_ = str(PureWindowsPath(str(usr)))
-    if OS == "Linux":
-        # If it's Linux, use this path:
+    else: # Assuming Linux-style file format, use this path:
         File = PurePath(str(usr) + '/Wallet')
         Path_ = str(PurePath(str(usr)))
 
@@ -132,8 +131,8 @@ def main():
                 password = str(input("             Enter Password: "))
                 amount = float(input("\n           Enter XRP To Send: "))
                 destination = input("\n        Enter Destination: ")
-                wallet_sequence = int(input("Look up the 'Next Sequence' for the public account using test.bithomp.com and enter it below!"
-                "\n    Enter Wallet Sequence: "))
+                wallet_sequence = int(input("Look up the 'Next Sequence' for the account using test.bithomp.com and enter it below!"
+                                            "\n    Enter Wallet Sequence: "))
                 ledger_sequence = int(input("Look up the latest ledger sequence on testnet.xrpl.org and enter it below!"
                                             "\n    Enter Ledger Sequence: "))
 
@@ -155,11 +154,11 @@ def main():
 
                 image = Image.open(get_path("/Wallet/public.png"))
                 image.show()
-if ask == 4:
-       break
+
+            if ask == 4:
+                return 0
     else:
         # If the Wallet's folder does not exist, create one and store wallet data (encrypted private key, encrypted seed, account address)
-
         # If the Wallet's directory exists but files are missing, delete it and generate a new wallet
         if os.path.exists(File):
             confirmation = input(f"We've detected missing files on {File}, would you like to delete your wallet's credentials & generate new wallet credentials? (YES/NO):")
@@ -214,8 +213,13 @@ if ask == 4:
         openimg = Image.open(get_path("/Wallet/public.png"))
         openimg.show()
 
-        print("Finished generating an account.")
-        print("Please scan the QR code on your phone and use https://test.bithomp.com/faucet/ to fund the account.\n After that, re-run this script to use this account and credentials!")
+        print("\nFinished generating an account.")
+        print(f"\nWallet Address: {pub}")
+        print("\nPlease scan the QR code on your phone and use https://test.bithomp.com/faucet/ to fund the account."
+              "\nAfter that, you're able to sign transactions and transmit them to Machine 2 (online machine).")
+
+        # Loop back to the start after setup
+        main()
 
 
 if __name__ == '__main__':
