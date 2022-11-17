@@ -124,6 +124,7 @@ def main():
             ask = int(input("\n 1. Transact XRP"
                             "\n 2. Generate an XRP wallet (read only)"
                             "\n 3. Showcase XRP Wallet Address (QR Code)"
+                            "\n 4. Exit"
                             "\n\n Enter Index: "
                             ))
 
@@ -154,7 +155,8 @@ def main():
 
                 image = Image.open(get_path("/Wallet/public.png"))
                 image.show()
-
+if ask == 4:
+       break
     else:
         # If the Wallet's folder does not exist, create one and store wallet data (encrypted private key, encrypted seed, account address)
 
