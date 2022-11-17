@@ -15,7 +15,7 @@ print("Successfully generated test wallet")
 accountset = AccountSet(account=sender_wallet.classic_address,
     set_flag=AccountSetFlag.ASF_GLOBAL_FREEZE)
 
-print("Submitting prepared transaction...")
+print("Preparing andsubmitting Account set transaction with ASF_GLOBAL_FREEZE ...")
 
 # Sign and submit transaction
 stxn = safe_sign_and_autofill_transaction(accountset, sender_wallet, client)
