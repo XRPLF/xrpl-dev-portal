@@ -41,13 +41,13 @@ Example `LedgerHashes` object (trimmed for length):
 
 A `LedgerHashes` object has the following fields:
 
-| Name              | JSON Type | [Internal Type][] | Description |
-|-------------------|-----------|-------------------|-------------|
-| `LedgerEntryType` | String    | UInt16    | The value `0x0068`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
-| `FirstLedgerSequence` | Number | UInt32   | **DEPRECATED** Do not use. (The "recent hashes" object of the production XRP Ledger has the value `2` in this field as a result of a previous `rippled` software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](parallel-networks.html) started with more recent versions of `rippled`.) |
-| `LastLedgerSequence` | Number | UInt32 | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
-| `Hashes`   | Array of Strings | Vector256 | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
-| `Flags`           | Number    | UInt32    | A bit-map of boolean flags for this object. No flags are defined for this type. |
+| Name                  | JSON Type        | [Internal Type][] | Required? | Description |
+|:----------------------|:-----------------|:------------------|:----------|:------------|
+| `FirstLedgerSequence` | Number           | UInt32            | Yes       | **DEPRECATED** Do not use. (The "recent hashes" object of the production XRP Ledger has the value `2` in this field as a result of a previous `rippled` software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](parallel-networks.html) started with more recent versions of `rippled`.) |
+| `Flags`               | Number           | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `LedgerHashes` objects. The value is always `0`. |
+| `Hashes`              | Array of Strings | Vector256         | Yes       | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
+| `LastLedgerSequence`  | Number           | UInt32            | Yes       | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
+| `LedgerEntryType`     | String           | UInt16            | Yes       | The value `0x0068`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
 
 ## Recent History LedgerHashes
 

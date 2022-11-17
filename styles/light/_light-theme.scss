@@ -677,6 +677,10 @@ pre code {
   #run-a-network-node .text-cards a {
     color: $black;
   }
+
+  #xrpl-blog  .blog-graphic {
+    content: url(../img/community/lightmode/community-blog@2x.png);
+  }
   
   #xrpl-events .text-light {
     color: $black !important;
@@ -771,6 +775,31 @@ $placeholder-color: $gray-600;
   .icon-location::before {
       background: url(../img/events/event-location-light.svg);
   }
+
+
+  .events-filter[type="checkbox"]::before {
+    background-color: $gray-100;
+  }
+
+
+  .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
+    background-image: url(../img/events/event-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $blue-purple-600;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue-purple-600;
+    border-radius: 4px;
+  }
+
+  .events-filter[type="checkbox"]:not(:disabled):hover::before {
+    background-color: $gray-100;
+  }
+  .events-filter[type="checkbox"]:not(:disabled):hover::after {
+    background-color: $gray-100;
+  }
+
 }
 
 
@@ -790,5 +819,19 @@ $placeholder-color: $gray-600;
         content: url("../img/ambassadors/lightmode/#{$eligibility}.svg");
       }
     }
+  }
+}
+
+.page-funding {
+  .funding-list {
+    @each $funding in "funding-01", "funding-02", "funding-03", "funding-04" {
+      ##{$funding} {
+        content: url("../img/funding/lightmode/#{$funding}.svg");
+      }
+    }
+  }
+
+  #xrplGrantsDark {
+    filter: invert(100%) brightness(0.8);
   }
 }

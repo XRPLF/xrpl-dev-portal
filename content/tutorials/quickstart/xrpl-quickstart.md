@@ -41,7 +41,7 @@ In this quickstart, you can:
 3. [Mint and Burn NFTokens](mint-and-burn-nftokens.html).
 4. [Transfer NFTokens](transfer-nftokens.html).
 
-There is also an expanded lesson demonstrating how to [Broker a NFToken Sale](broker-sale.html).
+There are also expanded lessons demonstrating how to [Broker a NFToken Sale](broker-sale.html), [Assign an Authorized Minter](authorize-minter.html), and [Batch Mint NFTokens](batch-minting.html).
 
 
 ## Prerequisites
@@ -54,7 +54,7 @@ To get started, create a new folder on your local disk and install the JavaScrip
 ```
 
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive.
 
 ---
 

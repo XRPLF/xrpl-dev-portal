@@ -30,14 +30,14 @@ You must restart `rippled` for any configuration changes to take effect:
 
 {% if currentpage.md == "tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.md" or
       currentpage.md == "tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum" %}
-        $ sudo systemctl restart rippled.service
+        sudo systemctl restart rippled.service
 
 {% elif currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md" or
         currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md" %}
 
   * Use Ctrl-C to stop `rippled`, then start it again:
 
-        $ ./rippled
+        ./rippled
 
 {% endif %}
 

@@ -26,7 +26,7 @@ This example shows how to:
 ![Test harness with currency transfer](img/quickstart5.png)
 
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
 
 ## Usage
@@ -81,7 +81,7 @@ To transfer an issued currency token, once you have created a trust line:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
 ## ripplex2-send-currency.js
 
@@ -648,9 +648,6 @@ Update the form to support the new functions.
     <h1>Token Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
-      <input type="radio" id="xls" name="server"
-        value="wss://xls20-sandbox.rippletest.net:51233" checked>
-      <label for="xls20">XLS20-NFT</label>
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233">

@@ -36,12 +36,6 @@ If more than 20% of validators suddenly go offline all at once, the remaining se
 Negative UNL has no effect on [stand-alone mode](rippled-server-modes.html) since the server does not use consensus in stand-alone mode.
 
 
-## Enabling the Negative UNL for Testing
-
-Negative UNL functionality is currently available for testing on [Devnet](parallel-networks.html). You can test the Negative UNL feature by adding or modifying a `[features]` stanza in your `rippled.cfg` file, as described in [Connect Your rippled to a Parallel Network](connect-your-rippled-to-the-xrp-test-net.html).
-
-
-
 ## How It Works
 
 The Negative UNL is closely tied to the [consensus process](consensus.html) and is designed with safeguards to maintain the continuity and reliability of the network in adverse situations. When all trusted validators are operating normally, the Negative UNL is unused and has no effect. When some validators appear to be offline or out of sync, the Negative UNL rules take effect.

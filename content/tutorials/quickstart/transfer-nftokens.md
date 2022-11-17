@@ -10,8 +10,6 @@ labels:
 
 # 4. Transfer NFTokens
 
-{% include '_snippets/nfts-disclaimer.md' %}
-
 This example shows how to:
 
 
@@ -27,7 +25,7 @@ This example shows how to:
 
 ![Quickstart form with NFToken transfer fields](img/quickstart13.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
 
 # Usage
@@ -38,12 +36,12 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 
 1. Open `4.transfer-nftokens.html` in a browser.
-2. Choose **XLS20-NFT** as your ledger instance.
+2. Choose your ledger instance (**Testnet** or **Devnet**).
 3. Get test accounts.
-    1. If you have existing NFT-Devnet account seeds
+    1. If you have existing test account seeds
         1. Paste account seeds in the **Seeds** field.
         2. Click **Get Accounts from Seeds**.
-    2. If you do not have NFT-Devnet account seeds:
+    2. If you do not have test account seeds:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
@@ -152,7 +150,7 @@ To cancel a buy or sell offer that you have created:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
 
 ## Create Sell Offer
@@ -1192,9 +1190,6 @@ Update the form with fields and buttons to support the new functions.
     <h1>Token Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
-      <input type="radio" id="xls" name="server"
-        value="wss://xls20-sandbox.rippletest.net:51233" checked>
-      <label for="xls20">XLS20-NFT</label>
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233">

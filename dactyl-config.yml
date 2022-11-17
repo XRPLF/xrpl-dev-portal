@@ -161,9 +161,7 @@ targets:
                                           # the updates to ledger_entry aren't translated either
             "ledger_entry.html#get-paychannel-object": "ledger_entry.html"
             "reliable-transaction-submission.html#ledger-gaps": "reliable-transaction-submission.html#レジャーのギャップ"
-            # Fix links from untranslated NFT transaction references:
-            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
-            "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
+            # "transaction-common-fields.html#memos-field": "transaction-common-fields.html#memosフィールド"
             "basic-data-types.html#specifying-ledgers": "basic-data-types.html#レジャーの指定"
             # Fix links from untranslated build-a-desktop-wallet-in-python.html:
             "subscribe.html#ledger-stream": "subscribe.html#レジャーストリーム"
@@ -175,10 +173,6 @@ targets:
             # Fix links from untranslated common-misconceptions-about-freezes.html
               # Not updated to have the table. The top-level of the page is pretty close.
             "currency-formats.html#comparison": "currency-formats.html"
-            # Fix links from untranslated NFToken tx refs to translated NFToken page
-            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
-            "nftoken.html#taxon": "nftoken.html#分類群"
-            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
             # Fix links from untranslated Clio server_info:
             "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
             "transaction-cost.html#local-load-cost": "transaction-cost.html#ローカル負荷コスト"
@@ -189,6 +183,13 @@ targets:
             "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
+            # Fix link from untranslated account_nfts.html
+            "nftoken.html#nftokentaxon": "nftoken.html#分類群"
+            # Fix links from untranslated NFT API methods:
+            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
+            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
+            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
+            "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
 
 pages:
 
@@ -715,6 +716,7 @@ pages:
         targets:
             - en
 
+    # TODO: Outdated translation
     -   md: concepts/tokens/tokens.ja.md
         targets:
             - ja
@@ -732,7 +734,7 @@ pages:
         html: issued-currencies.html
         template: pagetype-redirect.html.jinja
         redirect_url: tokens.html
-        blurb: XRP Ledgerでは、XRP以外の通貨はすべて発行済み通貨とされます。XRP Ledgerで発行済み通貨がどのように機能するか説明します。
+        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
         targets:
             - ja
 
@@ -755,13 +757,24 @@ pages:
     -   md: concepts/tokens/non-fungible-tokens.md
         targets:
             - en
+
+    -   md: concepts/tokens/non-fungible-tokens.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/non-fungible-token-transfers.md
         targets:
             - en
+
+    -   md: concepts/tokens/non-fungible-token-transfers.ja.md
+        targets:
             - ja
 
+    -   md: concepts/tokens/nftoken-batch-minting.md
+        targets:
+            - en
+            - ja
+            
     -   md: concepts/tokens/freezes.md
         targets:
             - en
@@ -901,6 +914,7 @@ pages:
         targets:
             - en
 
+    # TODO: update translation
     -   md: concepts/consensus-network/negative-unl.ja.md
         targets:
             - ja
@@ -1053,6 +1067,22 @@ pages:
             - en
             - ja
 
+    -   md: concepts/interoperability/xrpl-interoperability.md
+        targets:
+            - en
+
+    -   md: concepts/interoperability/intro-to-evm-sidechain.md
+        targets:
+            - en
+
+    -   name: Hooks
+        html: https://xrpl-hooks.readme.io/
+        parent: xrpl-interoperability.html
+        blurb: Smart contract proposal for the XRP Ledger.
+        targets:
+            - en
+
+
     # Redirect old "the-rippled-server.html"
     -   name: The rippled Server
         html: the-rippled-server.html
@@ -1132,6 +1162,16 @@ pages:
             - ja
 
     -   md: tutorials/quickstart/broker-sale.md
+        targets:
+            - en
+            - ja
+            
+    -   md: tutorials/quickstart/authorize-minter.md
+        targets:
+            - en
+            - ja
+            
+    -   md: tutorials/quickstart/batch-minting.md
         targets:
             - en
             - ja
@@ -1552,12 +1592,6 @@ pages:
 
         # TODO: translate
     -   md: tutorials/use-tokens/trade-in-the-decentralized-exchange.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/use-tokens/nftoken-tester-tutorial.md
         targets:
             - en
             - ja
@@ -2054,6 +2088,39 @@ pages:
             - en
             - ja
 
+    -   name: Interoperability - EVM Sidechain
+        html: evm-sidechains.html
+        parent: tutorials.html
+        blurb: Learn how to interact with the EVM Sidechain Devnet.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/interoperability/get-started-evm-sidechain.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/interoperability/connect-metamask-to-xrpl-evm-sidechain.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/interoperability/join-evm-sidechain-devnet.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/interoperability/evm-sidechain-validator-security.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/interoperability/evm-sidechain-run-a-validator-node.md
+        targets:
+            - en
+            - ja
 
 # References -------------------------------------------------------------------
 
@@ -2227,11 +2294,17 @@ pages:
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.md
@@ -2376,27 +2449,41 @@ pages:
     -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md
         targets:
             - en
-            - ja
 
+    -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.ja.md
+        targets:
+            - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/offercancel.md
@@ -4090,20 +4177,14 @@ pages:
             - ja
 
 # Dev Tools --------------------------------------------------------------------
-
-    -   md: dev-tools/dev-tools.md
+    -   name: Dev Tools
         html: dev-tools.html
+        template: page-dev-tools.html.jinja
         parent: docs.html
         top_nav_grouping: Online Tools
-        blurb: Use these web-based tools to interact with the ledger and test your software.
+        sidebar: left_only
         targets:
             - en
-
-    -   md: dev-tools/dev-tools.ja.md
-        html: dev-tools.html
-        parent: docs.html
-        top_nav_grouping: Online Tools
-        targets:
             - ja
 
     -   name: Dev Tools # Redirect page for old broken URL
@@ -4114,6 +4195,14 @@ pages:
         targets:
             - en
             - ja
+    
+    -   name: XRPL Education Portal
+        html: https://learn.xrpl.org/
+        parent: docs.html
+        top_nav_grouping: Online Tools
+        targets:
+            - en
+            - ja  
 
     -   name: RPC Tool
         html: xrp-ledger-rpc-tool.html
@@ -4239,6 +4328,7 @@ pages:
         top_nav_hero_image: top-nav-hero-contribute
         targets:
             - en
+            - ja
 
     -   name: Ambassadors
         html: ambassadors.html
@@ -4247,6 +4337,16 @@ pages:
         sidebar: disabled
         targets:
             - en
+            - ja
+
+    -   name: Developer Funding
+        html: developer-funding.html
+        parent: contribute.html
+        template: page-funding.html.jinja
+        sidebar: disabled
+        targets:
+            - en
+            - ja
 
     -   name: XRPL Jobs
         html: https://jobs.xrpl.org/
@@ -4392,6 +4492,9 @@ ignore_anchors_in:
 #Sometimes, a link is not really problematic, but the link checker detects it
 # as such and the easiest solution is to ignore it.
 known_broken_links:
+    # This dummy URI is used for some images that require a src attribute, but
+    # their actually content is defined in CSS (and theme-dependent)
+    - data:,
     # These PDFs download OK in a browser
     - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF

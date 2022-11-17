@@ -35,12 +35,12 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 | [Domain](#domain) | String          | Blob              | _(Optional)_ The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
 | `EmailHash`      | String           | Hash128           | _(Optional)_ Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
 | `MessageKey`     | String           | Blob              | _(Optional)_ Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. To remove the key, use an empty value. |
-| `NFTokenMinter` :not_enabled: | String           | Blob              | _(Optional)_ Sets an alternate account that is allowed to mint NFTokens on this account's behalf using NFTokenMint's `Issuer` field. This field is part of the experimental XLS-20 standard for non-fungible tokens. |
+| `NFTokenMinter`  | String           | Blob              | _(Optional)_ Sets an alternate account that is allowed to mint NFTokens on this account's behalf using NFTokenMint's `Issuer` field. This field is part of the experimental XLS-20 standard for non-fungible tokens. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | [`SetFlag`](#accountset-flags) | Number | UInt32        | _(Optional)_ Integer flag to enable for this account. |
 | [`TransferRate`](#transferrate) | Number | UInt32       | _(Optional)_ The fee to charge when users transfer this account's tokens, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
 | [`TickSize`](ticksize.html) | Number | UInt8            | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Added by the [TickSize amendment][].)_ |
-| `WalletLocator`    | String           | Hash256           | _(Optional)_ Not used. |
-| `WalletSize`       | Number           | UInt32            | _(Optional)_ Not used. |
+| `WalletLocator`    | String           | Hash256           | _(Optional)_ An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements. |
+| `WalletSize`       | Number           | UInt32            | _(Optional)_ Not used. This field is valid in AccountSet transactions but does nothing. |
 
 If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Cancel or Skip a Transaction](cancel-or-skip-a-transaction.html) for more details.
 
@@ -63,7 +63,7 @@ There are several options which can be either enabled or disabled for an account
 * The `AccountSet` transaction type has several transaction flags (prefixed **`tf`**) that can be used to enable or disable specific account options when passed in the `Flags` parameter. You can enable and disable a combination of settings in one transaction using multiple `tf` flags, but not all settings have `tf` flags.
 * The `AccountRoot` ledger object type has several ledger-state-flags (prefixed **`lsf`**) which represent the state of particular account options within a particular ledger. These settings apply until a transaction changes them.
 
-The preferred way to enable and disable Account Flags is using the `SetFlag` and `ClearFlag` parameters of an AccountSet transaction. AccountSet flags have names that begin with **`asf`**.
+To enable or disable Account Flags, use the `SetFlag` and `ClearFlag` parameters of an AccountSet transaction. AccountSet flags have names that begin with **`asf`**.
 
 All flags are disabled by default.
 
@@ -72,7 +72,7 @@ The available AccountSet flags are:
 | Flag Name          | Decimal Value | Corresponding Ledger Flag | Description   |
 |:-------------------|:--------------|:--------------------------|:--------------|
 | `asfAccountTxnID`  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](transaction-common-fields.html#accounttxnid) |
-| `asfAuthorizedNFTokenMinter` :not_enabled:| 10         | (None)       | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](accountroot.html) object. This is an experimental field to enable behavior for NFToken support. |
+| `asfAuthorizedNFTokenMinter`| 10         | (None)       | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](accountroot.html) object. This is an experimental field to enable behavior for NFToken support. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `asfDefaultRipple` | 8             | `lsfDefaultRipple`        | Enable [rippling](rippling.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
 | `asfDepositAuth`   | 9             | `lsfDepositAuth`          | Enable [Deposit Authorization](depositauth.html) on this account. _(Added by the [DepositAuth amendment][].)_ |
 | `asfDisableMaster` | 4             | `lsfDisableMaster`        | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](cryptographic-keys.html) or a [Signer List](multi-signing.html). |
@@ -84,7 +84,7 @@ The available AccountSet flags are:
 
 To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](transaction-basics.html#authorizing-transactions) by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable `asfDisableMaster` (that is, re-enable the master key pair) using a regular key pair or multi-signature. [New in: rippled 0.28.0][]
 
-The following [Transaction flags](transaction-common-fields.html#flags-field), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
+The following [Transaction flags](transaction-common-fields.html#flags-field) (`tf` flags), specific to the AccountSet transaction type, serve the same purpose. Due to limited space, some settings do not have associated `tf` flags, and new `tf` flags are not being added to the `AccountSet` transaction type. You can use a combination of `tf` and `asf` flags to enable multiple settings with a single transaction.
 
 | Flag Name           | Hex Value    | Decimal Value | Replaced by AccountSet Flag |
 |:--------------------|:-------------|:--------------|:----------------------------|

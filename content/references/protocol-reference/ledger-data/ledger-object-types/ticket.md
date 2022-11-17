@@ -17,13 +17,13 @@ The `Ticket` object type represents a [Ticket](tickets.html), which tracks an ac
 
 ```json
 {
-  "Account" : "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
-  "Flags" : 0,
-  "LedgerEntryType" : "Ticket",
-  "OwnerNode" : "0000000000000000",
-  "PreviousTxnID" : "F19AD4577212D3BEACA0F75FE1BA1644F2E854D46E8D62E9C95D18E9708CBFB1",
-  "PreviousTxnLgrSeq" : 4,
-  "TicketSequence" : 3
+  "Account": "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+  "Flags": 0,
+  "LedgerEntryType": "Ticket",
+  "OwnerNode": "0000000000000000",
+  "PreviousTxnID": "F19AD4577212D3BEACA0F75FE1BA1644F2E854D46E8D62E9C95D18E9708CBFB1",
+  "PreviousTxnLgrSeq": 4,
+  "TicketSequence": 3
 }
 ```
 
@@ -31,15 +31,15 @@ The `Ticket` object type represents a [Ticket](tickets.html), which tracks an ac
 
 A `Ticket` object has the following fields:
 
-| Name                | JSON Type | Internal Type | Description                |
-|:--------------------|:----------|:--------------|:---------------------------|
-| `LedgerEntryType`   | String    | UInt16        | The value `0x0054`, mapped to the string `Ticket`, indicates that this object is a {{currentpage.name}} object. |
-| `Account`           | String    | AccountID     | The [account](accounts.html) that owns this Ticket. |
-| `Flags`             | Number    | UInt32        | A bit-map of Boolean flags enabled for this Ticket. Currently, there are no flags defined for Tickets. |
-| `OwnerNode`         | String    | UInt64        | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
-| `PreviousTxnID`     | String    | Hash256       | The identifying hash of the [transaction](transaction-basics.html) that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number    | UInt32        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
-| `TicketSequence`    | Number    | UInt32        | The [Sequence Number][] this Ticket sets aside. |
+| Name                | JSON Type | Internal Type | Required? | Description                |
+|:--------------------|:----------|:--------------|:----------|:---------------------------|
+| `Account`           | String    | AccountID     | Yes       | The [account](accounts.html) that owns this Ticket. |
+| `Flags`             | Number    | UInt32        | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Ticket` objects. The value is always `0`. |
+| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this object is a {{currentpage.name}} object. |
+| `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](transaction-basics.html) that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| `TicketSequence`    | Number    | UInt32        | Yes       | The [Sequence Number][] this Ticket sets aside. |
 
 ## {{currentpage.name}} ID Format
 

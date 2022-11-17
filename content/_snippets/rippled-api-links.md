@@ -113,6 +113,7 @@
   "account_currencies",
   "account_info",
   "account_lines",
+  "account_nfts",
   "account_objects",
   "account_offers",
   "account_tx",
@@ -142,6 +143,9 @@
   "log_level",
   "logrotate",
   "manifest",
+  "nft_buy_offers",
+  "nft_info",
+  "nft_sell_offers",
   "noripple_check",
   "path_find",
   "peer_reservations_add",
@@ -210,8 +214,10 @@
   "fixMasterKeyAsRegularKey",
   "fixNFTokenDirV1",
   "fixPayChanRecipientOwnerDir",
+  "fixRemoveNFTokenAutoTrustLine",
   "fixQualityUpperBound",
   "fixTakerDryOfferRemoval",
+  "fixTrustLinesToSelf",
   "Flow",
   "FlowCross",
   "FlowV2",
@@ -219,6 +225,7 @@
   "MultiSignReserve",
   "NegativeUNL",
   "NonFungibleTokensV1",
+  "NonFungibleTokensV1_1",
   "OwnerPaysFee",
   "PayChan",
   "RequireFullyCanonicalSig",
@@ -233,4 +240,5 @@
 
 {% for amd in amendment_names %}
 [{{amd}} amendment]: known-amendments.html#{{amd|lower}}
+[{{amd}}の修正]: known-amendments.html#{{amd|lower}}
 {% endfor %}

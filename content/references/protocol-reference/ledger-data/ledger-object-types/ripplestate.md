@@ -50,21 +50,21 @@ The ["issuer"](trust-lines-and-issuing.html) for the balance in a trust line dep
 
 A `RippleState` object has the following fields:
 
-| Name            | JSON Type | Internal Type | Description |
-|-----------------|-----------|---------------|-------------|
-| `LedgerEntryType` | String    | UInt16 | The value `0x0072`, mapped to the string `RippleState`, indicates that this object is a RippleState object. |
-| `Flags`           | Number    | UInt32 | A bit-map of boolean options enabled for this object. |
-| `Balance`         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the high account holds tokens issued by the low account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](accounts.html#special-addresses). |
-| `LowLimit`        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
-| `HighLimit`       | Object    | Amount | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
-| `PreviousTxnID`   | String    | Hash256 | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number  | UInt32 | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
-| `LowNode`         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this object, in case the directory consists of multiple pages. |
-| `HighNode`        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this object, in case the directory consists of multiple pages. |
-| `LowQualityIn`    | Number    | UInt32 | (Optional) The inbound quality set by the low account, as an integer in the implied ratio `LowQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
-| `LowQualityOut`   | Number    | UInt32 | (Optional) The outbound quality set by the low account, as an integer in the implied ratio `LowQualityOut`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
-| `HighQualityIn`   | Number    | UInt32 | (Optional) The inbound quality set by the high account, as an integer in the implied ratio `HighQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
-| `HighQualityOut`  | Number    | UInt32 | (Optional) The outbound quality set by the high account, as an integer in the implied ratio `HighQualityOut`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
+| Name                | JSON Type | Internal Type | Required? | Description |
+|:--------------------|:----------|:--------------|:----------|:------------|
+| `Balance`           | Object    | Amount        | Yes       | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the high account holds tokens issued by the low account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](accounts.html#special-addresses). |
+| `Flags`             | Number    | UInt32        | Yes       | A bit-map of boolean options enabled for this object. |
+| `HighLimit`         | Object    | Amount        | Yes       | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
+| `HighNode`          | String    | UInt64        | Yes       | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this object, in case the directory consists of multiple pages. |
+| `HighQualityIn`     | Number    | UInt32        | No        | The inbound quality set by the high account, as an integer in the implied ratio `HighQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
+| `HighQualityOut`    | Number    | UInt32        | No        | The outbound quality set by the high account, as an integer in the implied ratio `HighQualityOut`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
+| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0072`, mapped to the string `RippleState`, indicates that this object is a RippleState object. |
+| `LowLimit`          | Object    | Amount        | Yes       | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
+| `LowNode`           | String    | UInt64        | Yes       | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this object, in case the directory consists of multiple pages. |
+| `LowQualityIn`      | Number    | UInt32        | No        | The inbound quality set by the low account, as an integer in the implied ratio `LowQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
+| `LowQualityOut`     | Number    | UInt32        | No        | The outbound quality set by the low account, as an integer in the implied ratio `LowQualityOut`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
+| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 
 ## RippleState Flags
 

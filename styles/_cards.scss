@@ -44,7 +44,7 @@
     position: absolute;
     top: 0;
   }
-  
+
   .dot {
     height: 16px;
     width: 16px;
@@ -91,7 +91,7 @@
 .contribute_3 {
   &::before {
     background: -webkit-linear-gradient(left, rgba(226, 76, 255, 1),rgba(154, 82, 255, 1)    );
-  } 
+  }
   .dot {
     border-color: #C000E5;
   }
@@ -106,7 +106,9 @@
 }
 
 
-
+.card > img {
+  border-radius: $border-radius-lg $border-radius-lg 0 0;
+}
 
 .card-body > p,
 .card-body > p:not(:last-child) {

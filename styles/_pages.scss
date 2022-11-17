@@ -270,6 +270,52 @@
   right: -4px;
 }
 
+.page-funding {
+
+  .funding-list {
+    @each $funding in "funding-01", "funding-02", "funding-03", "funding-04" {
+      ##{$funding} {
+        content: url("../img/funding/#{$funding}.svg");
+      }
+    }
+  }
+
+  #funding-orange {
+    position: absolute;
+    top: 132px;
+    left: -4px;
+  }
+
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
+  }
+
+// even out height on large
+  @media (min-width: 992px) {
+    .funding-box{
+      min-height: 200px;
+    }
+  }
+}
+
 // Ambassadors
 .page-ambassadors {
 
@@ -431,7 +477,34 @@
       line-height: 26px;
   }
   .event-small-gray {
-      color: $gray-400;
+      color: $gray-200;
+  }
+
+  // Button has link out arrow.
+  .btn {
+    padding: .75rem;
+  }
+
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
   }
 
   .event-card {
@@ -530,6 +603,11 @@
     width: 20px;
   }
 
+  // .events-filter[type="checkbox"]:disabled::after {
+  //   -webkit-filter: opacity(0.4);
+  // }
+
+
   .events-filter[type="checkbox"]::before {
     position: relative;
     display: block;
@@ -537,12 +615,12 @@
     height: 20px;
   
     content: "";
-    background: $blue-purple-500;
-    border-radius: 4px;
+    background: $gray-900;
 
-    border-width: 1px;
+    border-radius: 4px;
+    border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-500;
+    border-color: $gray-400;
   }
   
   .events-filter[type="checkbox"]::after {
@@ -558,51 +636,54 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 4px;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-500;
+    border-color: $gray-400;
   }
   
-  // .events-filter[type="checkbox"]:disabled::after {
-  //   -webkit-filter: opacity(0.4);
-  // }
-  
+  .events-filter[type="checkbox"]:checked::before {
+    background: $gray-900;
+    border: none;
+    border-radius: 0;
+  }
+
   .events-filter[type="checkbox"]:checked::after {
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
     background-position: center;
-    border-width: 1px;
+    background-color: $blue-purple-500;
+    border-width: 2px;
     border-style: solid;
     border-color: $blue-purple-500;
     border-radius: 4px;
   }
   
+
   .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
     background-position: center;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $blue-purple-500;
-    border-radius: 4px;
-  }
-  
-  .events-filter[type="checkbox"]:not(:disabled):hover::after {
-    background: $blue-purple-600;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
     border-color: $blue-purple-600;
     border-radius: 4px;
   }
   
+
   .events-filter[type="checkbox"]:not(:disabled):hover::before {
-    background: $blue-purple-600;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $blue-purple-600;
-    border-radius: 4px;
+    background: $gray-900;
+    border: none;
+    border-radius: 0;
   }
 
+  .events-filter[type="checkbox"]:not(:disabled):hover::after {
+    background: $gray-900;
+    border: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue-purple-600;
+    border-radius: 4px;
+  }
 
 }
 
@@ -948,6 +1029,14 @@
     }
   }
 
+  #xrpl-blog {
+    padding-bottom: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 104px;
+      padding-bottom: 104px;
+    }
+  }
+
   #xrpl-events {
     padding-bottom: 5rem;
     @include media-breakpoint-up(md) {
@@ -1278,5 +1367,110 @@
   }
   input[type="range"]::-ms-fill-upper {
     background-color: $gray-500;
+  }
+}
+
+.page-dev-tools {
+  @each $tool,
+    $card-graphic
+      in (
+        "xrp-explorer": "3-col-orange",
+        "bithomp-explorer": "3-col-light-blue",
+        "xrpscan": "3-col-pink",
+        "token-list": "3-col-pink2",
+        "websocket": "3-col-purple2",
+        "rpc": "3-col-green",
+        "technical-explorer": "3-col-purple-blue",
+        "faucets": "3-col-pink2",
+        "trasaction-sender": "3-col-light-blue2",
+        "domain": "3-col-green-purple",
+        "xrp-ledger": "3-col-dark-blue",
+        "binary-visualizer": "3-col-purple-blue",
+        "token-metadata-lookup": "3-col-pink-purple"
+      )
+  {
+    ##{$tool} {
+      .card-footer {
+        background-image: url("../img/cards/#{$card-graphic}.svg");
+      }
+    }
+  }
+  .nav-link {
+    color: $gray-400;
+    background-color: $gray-900;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: $gray-600;
+  }
+
+  @media (max-width: 767.98px) {
+    .nav-tabs {
+      display: flex;
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+      justify-content: space-between;
+    }
+    .nav-item {
+      display: inline-flex;
+      width: auto;
+      list-style: outside none none;
+    }
+    .nav-link {
+      display: inline-flex;
+      width: auto;
+      padding: 1em 1em;
+    }
+  }
+  .nav-link.active {
+    border-bottom-color: $blue-purple-400;
+    color: $white;
+    font-weight: bold;
+  }
+  .nav-tabs {
+    border-bottom: 1px solid $gray-600;
+  }
+  .btn {
+    padding: 0.75rem;
+  }
+
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
+  }
+}
+html.light {
+  .page-dev-tools {
+    .nav-link {
+      background-color: $gray-100;
+    }
+    .nav-link.active {
+      border-bottom-color: $blue-purple-400;
+      color: $black;
+      font-weight: bold;
+    }
+    .nav-link {
+      color: $black;
+    }
+    #trasaction-sender  .card-footer{
+      background-image: url("../img/cards/3-col-light-blue-2.svg");
+    }
   }
 }

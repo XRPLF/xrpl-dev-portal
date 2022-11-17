@@ -246,6 +246,10 @@
         .col-for-online-tools {
           grid-column: 1;
           grid-row: 3;
+
+          .external-link {
+            white-space: nowrap;
+          }
         }
         .col-for-get-started {
           grid-column: 2;

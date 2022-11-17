@@ -10,9 +10,7 @@ labels:
 ---
 # 1. Create Accounts and Send XRP
 
-
 This example shows how to:
-
 
 
 1. Create accounts on the Testnet, funded with 10000 test XRP with no actual value. 
@@ -21,11 +19,7 @@ This example shows how to:
 
 When you create an account, you receive a public/private key pair offline. It does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.
 
-
-
 ![Token Test Harness](img/quickstart2.png)
-
-
 
 
 ## Prerequisites
@@ -38,7 +32,7 @@ To get started, create a new folder on your local disk and install the JavaScrip
 ```
 
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive.
 
 ## Usage
 
@@ -47,7 +41,7 @@ To get test accounts:
 
 
 1. Open `1.get-accounts-send-xrp.html` in a browser
-2. Choose **NFT-Devnet**, **Testnet**, or **Devnet**.
+2. Choose **Testnet** or **Devnet**.
 3. Click **Get New Standby Account**.
 4. Click **Get New Operational Account.**
 5. Copy and paste the **Seeds** field in a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
@@ -74,13 +68,13 @@ To transfer XRP between accounts:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip) in the source repository for this website.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} in the source repository for this website.
 
 
 
 ## ripplex-1-send-xrp.js
 
-This example can be used with any XRP Ledger network. Currently, there are _Testnet_ and _Devnet,_ with the experimental _NFT-Devnet_ server with support for NFTokens. You can update the code to choose different or additional XRP Ledger networks.
+This example can be used with any XRP Ledger network, _Testnet_, or _Devnet_. You can update the code to choose different or additional XRP Ledger networks.
 
 
 ### getNet()
@@ -100,7 +94,6 @@ This function uses brute force `if` statements to discover the selected network 
 
 ```
         let net
-          if (document.getElementById("xls").checked) net = "wss://xls20-sandbox.rippletest.net:51233"
           if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233"
           if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233"
           return net
@@ -380,7 +373,6 @@ Connect to your selected ledger.
 
 ```
 
-
 Prepare the transaction. This is a Payment transaction from the standby wallet to the operational wallet.
 
 The _Payment_ transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the xrpToDrops utility to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).
@@ -542,9 +534,6 @@ Create a standard HTML form to send transactions and requests, then display the 
     <h1>Token Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
-      <input type="radio" id="xls" name="server"
-        value="wss://xls20-sandbox.rippletest.net:51233" checked>
-      <label for="xls20">XLS20-NFT</label>
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233">

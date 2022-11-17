@@ -4,10 +4,8 @@ parent: basic-data-types.html
 blurb: XRPL NFTの紹介
 labels:
   - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFToken
-{% include '_snippets/nfts-disclaimer.ja.md' %}
 
 `NFToken` オブジェクトは、1つの非代替性トークン (NFT) を表します。単体では保存されず、他の NFT と共に [NFTokenPage オブジェクト][] に格納されます。
 
@@ -22,6 +20,8 @@ status: not_enabled
 
 
 他のオブジェクトとは異なり、`NFToken` にはオブジェクトの種類や現在の所有者を特定するためのフィールドはありません。NFToken オブジェクトは、オブジェクトの種類と所有者を暗黙的に定義する `NFTokenPages` にグループ化されています。
+
+_([NonFungibleTokensV1_1 amendment][]が必要です)_
 
 
 ## トークンID
@@ -112,12 +112,12 @@ status: not_enabled
 
 ### 送金手数料
 
-送金手数料には、トークンの二次販売時に発行者が請求する手数料を1/10,000単位で指定します。このフィールドの有効な値は0から50,000までです。1の値は1bpsまたは0.01%に相当し、0%から50%の間の転送レートを許容します。
+送金手数料には、トークンの二次販売時に発行者が請求する手数料を1/100,000単位で指定します。このフィールドの有効な値は0から50,000までです。1の値は1bpsまたは0.01%に相当し、0%から50%の間の転送レートを許容します。
 
 
 ### 例
 
-この値では、転送手数料は314bps（3.14％）に設定されます。
+この値では、転送手数料は31.4bps（0.314％）に設定されます。
 
 ![送金手数料](img/nftokenb.png "送金手数料")
 

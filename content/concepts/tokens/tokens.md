@@ -10,7 +10,7 @@ All assets other than XRP can be represented in the XRP Ledger as **tokens**. St
 
 **Note:** Tokens on the XRP Ledger have also been called "IOUs" (as in [I-owe-you](https://en.wikipedia.org/wiki/IOU)) and "issued currencies" in the past. However, these terms are not preferred because they do not cover the full range of digital assets that XRP Ledger tokens can represent.
 
-Standard tokens are fungible: meaning, all units of that token are interchangeable and indistinguishable. Non-fungible tokens are also possible: see [Non-Fungible Tokens](non-fungible-tokens.html) :not_enabled: for details of the XRP Ledger's native support.
+Standard tokens are fungible: meaning, all units of that token are interchangeable and indistinguishable. Non-fungible tokens are also possible: see [Non-Fungible Tokens](non-fungible-tokens.html) for details of the XRP Ledger's native support.
 
 Tokens can used for [cross-currency payments](cross-currency-payments.html) and can be traded in the [decentralized exchange](decentralized-exchange.html).
 
@@ -32,7 +32,7 @@ For more information on how to run a gateway, see the [Becoming an XRP Ledger Ga
 
 Another way you can use the XRP Ledger is for "community credit", a system where individuals who know each other can use the XRP Ledger to track who owes who else how much money. A powerful feature of the XRP Ledger is that it can automatically and atomically use these debts to settle payments through [rippling](rippling.html).
 
-For example, if Asheesh owes Marcus $20, and Marcus owes Bharath $50, Bharath can "pay" Asheesh $20 by canceling that much of Marcus's debt to him in exchange for canceling Asheesh's debt to Marcus. The reverse is also possible: Asheesh can pays Bharath through Marcus by increasing their respective debts. The XRP Ledger can settle complex chains of exchanges like this in a single transaction without the accounts in the middle needing to do anything manually.
+For example, if Asheesh owes Marcus $20, and Marcus owes Bharath $50, Bharath can "pay" Asheesh $20 by canceling that much of Marcus's debt to him in exchange for canceling Asheesh's debt to Marcus. The reverse is also possible: Asheesh can pay Bharath through Marcus by increasing their respective debts. The XRP Ledger can settle complex chains of exchanges like this in a single transaction without the accounts in the middle needing to do anything manually.
 
 For more on this type of usage, see [paths](paths.html). <!--{# TODO: It would be nice to be able to link to a page with more illustrative examples of community credit. #}-->
 
