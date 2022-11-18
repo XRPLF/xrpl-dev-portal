@@ -15,9 +15,11 @@ print("Generating two test wallets...")
 
 # Address to unfreeze trustline
 target_addr = generate_faucet_wallet(client=client).classic_address
+print("Successfully generated the target account")
 
 # Sender wallet
 sender_wallet = generate_faucet_wallet(client=client)
+print("Successfully generated the sender account")
 
 print("Successfully generated test wallets")
 
