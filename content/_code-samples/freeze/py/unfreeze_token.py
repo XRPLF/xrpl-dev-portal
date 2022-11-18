@@ -3,7 +3,6 @@ from xrpl.models import IssuedCurrencyAmount, TrustSet
 from xrpl.transaction import (safe_sign_and_autofill_transaction,
                               send_reliable_submission)
 from xrpl.models import TrustSetFlag
-from xrpl.utils import str_to_hex
 from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to testnet
