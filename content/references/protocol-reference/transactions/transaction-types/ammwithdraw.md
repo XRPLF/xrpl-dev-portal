@@ -12,7 +12,7 @@ status: not_enabled
 
 {% include '_snippets/amm-disclaimer.md' %}
 
-Withdraw funds an Automated Market-Maker (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
+Withdraw assets from an Automated Market-Maker (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 
 ## Example {{currentpage.name}} JSON
 
