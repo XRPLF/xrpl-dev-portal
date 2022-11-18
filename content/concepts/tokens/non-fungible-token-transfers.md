@@ -1,18 +1,7 @@
----
-html: non-fungible-token-transfers.html
-parent: non-fungible-tokens.html
-blurb: Trading NFTokens in direct or brokered mode.
-filters:
- - include_code
-labels:
- - Non-fungible Tokens, NFTs
-status: not_enabled
----
-
 # Trading NFTokens on the XRP Ledger
 {% include '_snippets/nfts-disclaimer.md' %}
 
-You can transfer `NFToken` objects between accounts on the XRP Ledger. You can offer to buy or sell a `NFToken`, or accept offers from other accounts to buy a `NFToken` you own. You can even give away a `NFToken` by offering to sell it at a price of 0.  All offers are created using [NFTokenCreateOffer transaction][].
+You can transfer `NFToken` objects between accounts on the XRP Ledger. You can offer to buy or sell a `NFToken`, or accept offers from other accounts to buy a `NFToken` you own. You can even give away a `NFToken` by offering to sell it at a price of 0.  All offers are created using `NFTokenCreateOffer` transaction.
 
 
 ## Sell Offers
@@ -20,7 +9,7 @@ You can transfer `NFToken` objects between accounts on the XRP Ledger. You can o
 
 ### Create a Sell Offer
 
-As the owner of a `NFToken` object, you can create a sell offer using a [NFTokenCreateOffer transaction][] with the `tfSellToken` flag. You provide the `NFTokenID` and the `Amount` you are willing to accept in payment. You can optionally specify an `Expiration` date, after which the offer is no longer valid, and a `Destination` account, which is the only account that is allowed to purchase the `NFToken`.
+As the owner of a `NFToken` object, you can create a sell offer using a `NFTokenCreateOffer` transaction with the `tfSellToken` flag. You provide the `NFTokenID` and the `Amount` you are willing to accept in payment. You can optionally specify an `Expiration` date, after which the offer is no longer valid, and a `Destination` account, which is the only account that is allowed to purchase the `NFToken`.
 
 
 ### Accept a Sell Offer
@@ -33,7 +22,7 @@ To purchase a `NFToken` that is offered for sale, you use a `NFTokenAcceptOffer`
 
 ### Create a Buy Offer
 
-Any account can offer to buy a `NFToken`. You can create a buy offer using [NFTokenCreateOffer][] _without_ the `tfSellToken` flag. You provide the `Owner` account, `NFTokenID`, and the `Amount` of your offer.
+Any account can offer to buy a `NFToken`. You can create a buy offer using `NFTokenCreateOffer` _without_ the `tfSellToken` flag. You provide the `Owner` account, `NFTokenID`, and the `Amount` of your offer.
 
 
 ### Accept a Buy Offer
@@ -68,19 +57,13 @@ Using a broker offers several advantages. For example:
 In the most straightforward workflow, a creator mints a new `NFToken`. The creator initiates a sell offer, entering the minimum acceptable sale price and setting the broker as the destination. Potential buyers make bids for the `NFToken`, setting the broker as the destination for the bid. The broker selects a winning bid and completes the transaction, taking a broker’s fee. As a best practice, the broker then cancels any remaining buy offers for the `NFToken`.
 
 
-![Brokered Mode with Reserve](img/nft-brokered-mode-with-reserve.png)
+![Brokered Mode with Reserve](../../../img/nft-brokered-mode-with-reserve.png)
 
 
 Another potential workflow would give the creator more control over the sale. In this workflow, the creator mints a new `NFToken`. Bidders create their offers, setting the broker as the destination. The broker selects the winning bid, subtracts their broker fee, and uses `NFTokenCreateOffer` to request that the creator sign off on the offer. The creator signs the requested offer, setting the broker as the destination. The broker completes the sale using `NFTokenAcceptOffer`, retaining the broker fee. The broker cancels any remaining bids for the `NFToken` using `NFTokenCancelOffer`.
 
 
-![Brokered Mode without Reserve](img/nft-brokered-mode-without-reserve.png)
+![Brokered Mode without Reserve](../../../img/nft-brokered-mode-without-reserve.png)
 
 
 The same workflows can be used when an owner resells a `NFToken` created by another account.
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

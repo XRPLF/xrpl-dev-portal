@@ -196,49 +196,49 @@ pages:
 
 # About tab --------------------------------------------------------------------
     # "XRP Ledger" Grouping
-    -   name: XRPL Overview
-        template: page-xrpl-overview.html.jinja
-        html: xrp-ledger-overview.html
-        parent: index.html
-        top_nav_name: About
-        top_nav_grouping: XRP Ledger
-        sidebar: disabled
-        blurb: An introduction to the key benefits and features of the XRP Ledger, a public blockchain driven by the XRPL developer community.
-        targets:
-            - en
-
-    -   name: XRPL オーバービュー
-        template: page-xrpl-overview.html.jinja
-        html: xrp-ledger-overview.html
-        parent: index.html
-        top_nav_name: アバウト
-        top_nav_grouping: XRP Ledger
-        sidebar: disabled
-        targets:
-            - ja
-
-    # Redirect from the old overview.html
-    -   name: XRP Ledger Overview
-        html: overview.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: xrp-ledger-overview.html
-        targets:
-            - en
-            - ja
-
-    # Redirect for rename from 'wallet server' to 'stock server'
-    -   name: Run rippled as a Stock Server
-        html: run-rippled-as-a-wallet-server.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: run-rippled-as-a-stock-server.html
-        targets:
-            - en
-        # This redirect needs to be added to the Japanese target *after*
-        # renaming the original file in that target and translating the changes
-        #    - ja
-
+#     -   name: XRPL Overview
+#         template: page-xrpl-overview.html.jinja
+#         html: xrp-ledger-overview.html
+#         parent: index.html
+#         top_nav_name: About
+#         top_nav_grouping: XRP Ledger
+#         sidebar: disabled
+#         blurb: An introduction to the key benefits and features of the XRP Ledger, a public blockchain driven by the XRPL developer community.
+#         targets:
+#             - en
+# 
+#     -   name: XRPL オーバービュー
+#         template: page-xrpl-overview.html.jinja
+#         html: xrp-ledger-overview.html
+#         parent: index.html
+#         top_nav_name: アバウト
+#         top_nav_grouping: XRP Ledger
+#         sidebar: disabled
+#         targets:
+#             - ja
+# 
+#     # Redirect from the old overview.html
+#     -   name: XRP Ledger Overview
+#         html: overview.html
+#         template: pagetype-redirect.html.jinja
+#         nav_omit: true
+#         redirect_url: xrp-ledger-overview.html
+#         targets:
+#             - en
+#             - ja
+# 
+#     # Redirect for rename from 'wallet server' to 'stock server'
+#     -   name: Run rippled as a Stock Server
+#         html: run-rippled-as-a-wallet-server.html
+#         template: pagetype-redirect.html.jinja
+#         nav_omit: true
+#         redirect_url: run-rippled-as-a-stock-server.html
+#         targets:
+#             - en
+#         # This redirect needs to be added to the Japanese target *after*
+#         # renaming the original file in that target and translating the changes
+#         #    - ja
+# 
     -   name: Use Cases & Featured Projects
         template: page-uses.html.jinja
         html: uses.html
@@ -258,24 +258,24 @@ pages:
         targets:
             - ja
 
-    -   name: History
-        template: page-history.html.jinja
-        html: history.html
-        parent: xrp-ledger-overview.html
-        blurb: The history of the XRP Ledger (XRPL), launched in 2012 as a faster, scalable, more sustainable blockchain.
-        top_nav_grouping: XRP Ledger
-        sidebar: disabled
-        targets:
-            - en
-
-    -   name: 沿革
-        template: page-history.html.jinja
-        html: history.html
-        parent: xrp-ledger-overview.html
-        top_nav_grouping: XRP Ledger
-        sidebar: disabled
-        targets:
-            - ja
+#     -   name: History
+#         template: page-history.html.jinja
+#         html: history.html
+#         parent: xrp-ledger-overview.html
+#         blurb: The history of the XRP Ledger (XRPL), launched in 2012 as a faster, scalable, more sustainable blockchain.
+#         top_nav_grouping: XRP Ledger
+#         sidebar: disabled
+#         targets:
+#             - en
+# 
+#     -   name: 沿革
+#         template: page-history.html.jinja
+#         html: history.html
+#         parent: xrp-ledger-overview.html
+#         top_nav_grouping: XRP Ledger
+#         sidebar: disabled
+#         targets:
+#             - ja
 
     -   name: Ledger Explorer
         html: https://livenet.xrpl.org/
@@ -284,67 +284,67 @@ pages:
         targets:
             - en
 
-    -   name: XRP Ledger エクスプローラ
-        html: https://livenet.xrpl.org/
-        parent: xrp-ledger-overview.html
-        top_nav_grouping: XRP Ledger
-        targets:
-            - ja
-
-    -   name: XRP
-        template: page-xrp-overview.html.jinja
-        html: xrp-overview.html
-        parent: xrp-ledger-overview.html
-        blurb: Learn more about XRP Ledger’s native digital asset, XRP.
-        top_nav_grouping: XRP
-        top_nav_name: XRP Overview
-        sidebar: disabled
-        targets:
-            - en
-            - ja
-
-    -   name: Impact
-        html: impact.html
-        parent: xrp-ledger-overview.html
-        template: page-impact.html.jinja
-        top_nav_grouping: Sustainability
-        blurb: Learn how the XRP Ledger helps move money around the world faster, cheaper and more sustainably than any other currency available today.
-        sidebar: disabled
-        targets:
-            - en
-
-    -   name: インパクト
-        html: impact.html
-        parent: xrp-ledger-overview.html
-        template: page-impact.html.jinja
-        top_nav_grouping: Sustainability
-        sidebar: disabled
-        targets:
-            - ja
-
-    -   name: Carbon Calculator
-        html: carbon-calculator.html
-        parent: xrp-ledger-overview.html
-        template: page-calculator.html.jinja
-        top_nav_grouping: Sustainability
-        sidebar: disabled
-        blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the XRPL cryptocurrency carbon calculator to compare.
-        fb_card: currency-calculator-card-fb.png
-        twitter_card: currency-calculator-card-tw.png
-        targets:
-            - en
-
-    -   name: 二酸化炭素電卓
-        html: carbon-calculator.html
-        parent: xrp-ledger-overview.html
-        template: page-calculator.html.jinja
-        top_nav_grouping: Sustainability
-        sidebar: disabled
-        blurb: 現金、クレジットカード、暗号資産でもエネルギー消費する。インタラクティブツールで消費量を比較しましょう。
-        fb_card: currency-calculator-card-fb.png
-        twitter_card: currency-calculator-card-tw.png
-        targets:
-            - ja
+#     -   name: XRP Ledger エクスプローラ
+#         html: https://livenet.xrpl.org/
+#         parent: xrp-ledger-overview.html
+#         top_nav_grouping: XRP Ledger
+#         targets:
+#             - ja
+# 
+#     -   name: XRP
+#         template: page-xrp-overview.html.jinja
+#         html: xrp-overview.html
+#         parent: xrp-ledger-overview.html
+#         blurb: Learn more about XRP Ledger’s native digital asset, XRP.
+#         top_nav_grouping: XRP
+#         top_nav_name: XRP Overview
+#         sidebar: disabled
+#         targets:
+#             - en
+#             - ja
+# 
+#     -   name: Impact
+#         html: impact.html
+#         parent: xrp-ledger-overview.html
+#         template: page-impact.html.jinja
+#         top_nav_grouping: Sustainability
+#         blurb: Learn how the XRP Ledger helps move money around the world faster, cheaper and more sustainably than any other currency available today.
+#         sidebar: disabled
+#         targets:
+#             - en
+# 
+#     -   name: インパクト
+#         html: impact.html
+#         parent: xrp-ledger-overview.html
+#         template: page-impact.html.jinja
+#         top_nav_grouping: Sustainability
+#         sidebar: disabled
+#         targets:
+#             - ja
+# 
+#     -   name: Carbon Calculator
+#         html: carbon-calculator.html
+#         parent: xrp-ledger-overview.html
+#         template: page-calculator.html.jinja
+#         top_nav_grouping: Sustainability
+#         sidebar: disabled
+#         blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the XRPL cryptocurrency carbon calculator to compare.
+#         fb_card: currency-calculator-card-fb.png
+#         twitter_card: currency-calculator-card-tw.png
+#         targets:
+#             - en
+# 
+#     -   name: 二酸化炭素電卓
+#         html: carbon-calculator.html
+#         parent: xrp-ledger-overview.html
+#         template: page-calculator.html.jinja
+#         top_nav_grouping: Sustainability
+#         sidebar: disabled
+#         blurb: 現金、クレジットカード、暗号資産でもエネルギー消費する。インタラクティブツールで消費量を比較しましょう。
+#         fb_card: currency-calculator-card-fb.png
+#         twitter_card: currency-calculator-card-tw.png
+#         targets:
+#             - ja
 
     -   name: XRPL Foundation
         html: https://foundation.xrpl.org/
@@ -388,27 +388,28 @@ pages:
         top_nav_name: Docs
         top_nav_shortcuts:
             # Programming Languages
-            - get-started-using-python.html
-            - get-started-using-javascript.html
-            - get-started-using-java.html
-            - get-started-using-http-websocket-apis.html
-            # Popular pages
-            - send-xrp.html
-            - reserves.html
-            - xrp-testnet-faucet.html
-            - run-rippled-as-a-validator.html
-            - build-run-rippled-in-reporting-mode.html
-            #- intro-to-consensus.html
-            - public-api-methods.html
+            - 
+#             - get-started-using-python.html
+#             - get-started-using-javascript.html
+#             - get-started-using-java.html
+#             - get-started-using-http-websocket-apis.html
+#             # Popular pages
+#             - send-xrp.html
+#             - reserves.html
+#             - xrp-testnet-faucet.html
+#             - run-rippled-as-a-validator.html
+#             - build-run-rippled-in-reporting-mode.html
+#             #- intro-to-consensus.html
+#             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
-        popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
-            - send-xrp.html
-            - reserves.html
-            - xrp-testnet-faucet.html
-            - run-rippled-as-a-validator.html
-            - build-run-rippled-in-reporting-mode.html
-            #- intro-to-consensus.html
-            - public-api-methods.html
+#         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
+#             - send-xrp.html
+#             - reserves.html
+#             - xrp-testnet-faucet.html
+#             - run-rippled-as-a-validator.html
+#             - build-run-rippled-in-reporting-mode.html
+#             #- intro-to-consensus.html
+#             - public-api-methods.html
         blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
         top_nav_blurb: Dive into XRP Ledger technology and start integrating.
         filters:
@@ -505,693 +506,278 @@ pages:
          - en
          - ja
 
-    -   name: Understanding the XRP Ledger
-        html: understanding-xrpl.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: This is an in-depth discussion of all elements of the XRP Ledger.
-        targets:
-           - en
-           - ja
+#     -   name: Understanding the XRP Ledger
+#         html: understanding-xrpl.html
+#         parent: concepts.html
+#         template: pagetype-category.html.jinja
+#         blurb: This is an in-depth discussion of all elements of the XRP Ledger.
+#         targets:
+#            - en
+#            - ja
 
-    - md: concepts/understanding-xrpl/xrpl/ledgers.md
-      parent: understanding-xrpl.html
+    - md: concepts/server/rippled-server.md
+      parent: concepts.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/ledger-structure.md
+    - md: concepts/xrpl/ledgers.md
+      parent: concepts.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/xrpl/ledger-structure.md
       parent: ledgers.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/validation.md
+    - md: concepts/xrpl/validation.md
       parent: ledgers.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/consensus.md
+    - md: concepts/xrpl/consensus.md
       parent: validation.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/consensus-structure.md
+    - md: concepts/xrpl/consensus-structure.md
       parent: consensus.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/double-spend.md
+    - md: concepts/xrpl/double-spend.md
       parent: consensus.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/consensus-principles-and-rules.md
+    - md: concepts/xrpl/consensus-principles-and-rules.md
       parent: consensus.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/consensus-protections.md
+    - md: concepts/xrpl/consensus-protections.md
       parent: consensus.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/fee-voting.md
+    - md: concepts/xrpl/fee-voting.md
       parent: consensus.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/negative-unl.md
+    - md: concepts/xrpl/negative-unl.md
       parent: consensus.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/invariant-checking.md
+    - md: concepts/xrpl/invariant-checking.md
       parent: consensus.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/consensus-research.md
+    - md: concepts/xrpl/consensus-research.md
       parent: consensus.html
       targets:
          - en
          - ja
          
-    - md: concepts/understanding-xrpl/xrpl/open-closed-validated-ledgers.md
+    - md: concepts/xrpl/open-closed-validated-ledgers.md
       parent: validation.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/xrpl/ledger-close-times.md
+    - md: concepts/xrpl/ledger-close-times.md
       parent: open-closed-validated-ledgers.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/transactions/transactions.md
-      parent: understanding-xrpl.html
+    - md: concepts/transactions/transactions.md
+      parent: concepts.html
       targets:
          - en
          - ja
 
-    - md: concepts/understanding-xrpl/transactions/transaction-structure.md
+    - md: concepts/transactions/transaction-structure.md
       parent: transactions.html
       targets:
          - en
          - ja
          
-    - md: concepts/understanding-xrpl/transactions/transaction-metadata-concept.md
+    - md: concepts/transactions/transaction-metadata-concept.md
       parent: transactions.html
       targets:
          - en
          - ja
          
-#     - md: concepts/understanding-xrpl/transactions/transaction-cost.md
-#       parent: transactions.html
-#       targets:
-#          - en
-#          - ja
-# 
-    -   name: Payment System Basics
-        html: payment-system-basics.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system.
-        targets:
-            - en
-
-    -   name: 支払いシステムの基本
-        html: payment-system-basics.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerの主な狙いは決済処理です。主要なコンセプトを詳しく学んで、XRP Ledgerの決済システムの理解を深めましょう。
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/accounts/accounts.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/accounts/accounts.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
-        targets:
-            - en
-
-        # TODO: update translation based on latest English version
-    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/accounts/multi-signing.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/accounts/multi-signing.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/accounts/reserves.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/accounts/reserves.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/accounts/tickets.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/accounts/tickets.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/accounts/depositauth.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/accounts/depositauth.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/fees.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/fees.ja.md
-        targets:
-            - ja
-
-#     -   md: concepts/payment-system-basics/ledgers.md
-#         targets:
-#             - en
-
-        # TODO: translation needs to be updated based on ledgers.md
-    -   md: concepts/payment-system-basics/ledgers.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.ja.md
-        targets:
-            - ja
-
-#     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
-#         targets:
-#             - en
-
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
-        targets:
-            - en
-
-    # TODO: Somehow this page's blurb got translated into Japanese but the page itself wasn't?
-    # For now we overwrite the blurb but use the page otherwise as-is.
-    -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
-        blurb: 多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。
-        untranslated_warning: true
-        targets:
-            - ja
-
-    -   name: Payment Types
-        html: payment-types.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
-        targets:
-            - en
-
-    -   name: 支払いのタイプ
-        html: payment-types.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門化した支払いタイプをサポートしています。
-        targets:
-            - ja
-
-        # Redirect from the old landing name/URL
-    -   name: Complex Payment Types
-        html: complex-payment-types.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: payment-types.html
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/payment-types/direct-xrp-payments.md
-        targets:
-            - en
-
-    -   md: concepts/payment-types/direct-xrp-payments.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-types/cross-currency-payments.md
-        targets:
-            - en
-
-    -   md: concepts/payment-types/cross-currency-payments.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-types/checks.md
-        targets:
-            - en
-
-    -   md: concepts/payment-types/checks.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-types/escrow.md
-        targets:
-            - en
-
-    -   md: concepts/payment-types/escrow.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-types/partial-payments.md
-        targets:
-            - en
-
-    -   md: concepts/payment-types/partial-payments.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-types/payment-channels.md
-        targets:
-            - en
-
-    -   md: concepts/payment-types/payment-channels.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/tokens.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/tokens.ja.md
-        targets:
-            - ja
-
-        # Redirects from old (emptyish) landing pages.
-    -   name: Tokens
-        html: issued-currencies.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: tokens.html
-        blurb: Anyone can make tokens representing digital value on the XRP Ledger.
-        targets:
-            - en
-
-    -   name: トークン
-        html: issued-currencies.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: tokens.html
-        blurb: XRP Ledgerでは、XRP以外の通貨はすべて発行済み通貨とされます。XRP Ledgerで発行済み通貨がどのように機能するか説明します。
-        targets:
-            - ja
-
-    -   md: concepts/tokens/trust-lines-and-issuing.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/trust-lines-and-issuing.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/authorized-trust-lines.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/authorized-trust-lines.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/non-fungible-tokens.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/tokens/non-fungible-token-transfers.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/tokens/nftoken-batch-minting.md
-        targets:
-            - en
-            - ja
-            
-    -   md: concepts/tokens/freezes.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/freezes.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/common-misconceptions-about-freezes.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/tokens/rippling.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/rippling.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/transfer-fees.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/transfer-fees.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/issuing-and-operational-addresses.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/issuing-and-operational-addresses.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/paths.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/paths.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/demurrage.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/demurrage.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/decentralized-exchange/decentralized-exchange.md
-
-    -   name: 分散型取引所
-        html: decentralized-exchange.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerには多機能な取引所が含まれており、この取引所を利用してユーザーは発行済み通貨をXRPに、あるいはXRPを発行済み通貨に交換できます。
-        targets:
-            - ja
-
-    -   md: concepts/decentralized-exchange/offers.md
-        targets:
-            - en
-
-    -   md: concepts/decentralized-exchange/offers.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/decentralized-exchange/autobridging.md
-        targets:
-            - en
-
-    -   md: concepts/decentralized-exchange/autobridging.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/decentralized-exchange/ticksize.md
-        targets:
-            - en
-
-    -   md: concepts/decentralized-exchange/ticksize.ja.md
-        targets:
-            - ja
-
-#     -   name: Consensus Network
-#         html: consensus-network.html
-#         parent: concepts.html
-#         template: pagetype-category.html.jinja
-#         blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
-#         targets:
-#             - en
-# 
-#     -   name: コンセンサスネットワーク
-#         html: consensus-network.html
-#         parent: concepts.html
-#         template: pagetype-category.html.jinja
-#         blurb: XRP Ledgerはコンセンサスアルゴリズムを使用して、二重支払いの問題を解決し、どのトランザクションをどのような順番で実行するか選択します。コンセンサスは、トランザクション処理のルールを左右します。
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/consensus.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/consensus.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/consensus-principles-and-rules.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/consensus-principles-and-rules.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/consensus-protections.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/consensus-protections.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/invariant-checking.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/invariant-checking.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/negative-unl.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/negative-unl.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/transaction-queue.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/transaction-queue.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/about-canceling-a-transaction.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/about-canceling-a-transaction.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/transaction-malleability.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/transaction-malleability.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/amendments/amendments.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/amendments/amendments.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/amendments/known-amendments.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/amendments/known-amendments.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/fee-voting.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/fee-voting.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/consensus-research.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/consensus-research.ja.md
-#         targets:
-#             - ja
-# 
-#     # TODO: add pseudo-transactions concept page
-# 
-#     -   md: concepts/consensus-network/parallel-networks.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/parallel-networks.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/consensus-network/federated-sidechains.md
-#         targets:
-#             - en
-# 
-#     -   md: concepts/consensus-network/federated-sidechains.ja.md
-#         targets:
-#             - ja
-# 
-#     -   md: concepts/xrpl-servers/xrpl-servers.md
-#         targets:
-#             - en
-
-    -   name: rippledサーバー
-        html: xrpl-servers.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: rippledは、XRP Ledgerを管理するコアのピアツーピアサーバーです。このセクションではコンセプトについて説明します。XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学ぶことができます。
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/rippled-server-modes.md
-        targets:
-            - en
-
-        # TODO: Update this translation for the latest English version
-    -   md: concepts/xrpl-servers/rippled-server-modes.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/clustering.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/clustering.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/ledger-history.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/ledger-history.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/online-deletion.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/history-sharding.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/history-sharding.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/peer-protocol.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/peer-protocol.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/transaction-censorship-detection.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/transaction-censorship-detection.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/the-clio-server.md
-        targets:
-            - en
-            - ja
-
-    # Redirect old "the-rippled-server.html"
-    -   name: The rippled Server
-        html: the-rippled-server.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: xrpl-servers.html
-        blurb: Learn about the core servers that power the XRP Ledger.
-        nav_omit: true
-        targets:
-            - en
-            - ja
-
-        # Redirect old NFT articles
-    -   name: Non-fungible Tokens (NFTs)
-        html: nft-concepts.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: non-fungible-tokens.html
-        blurb: Explore XRPL-native support for NFTs.
-        nav_omit: true
-        targets:
-            - en
-            - ja
-
-    -   name: NFT Conceptual Overview
-        html: nft-conceptual-overview.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: non-fungible-tokens.html
-        blurb: Explore XRPL-native support for NFTs.
-        nav_omit: true
-        targets:
-            - en
-            - ja
+    - md: concepts/transactions/trust-lines-and-issuing.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-cost.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/multi-signing.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/source-and-destination-tags.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/tickets.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-malleability.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/finality-of-results.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/about-canceling-a-transaction.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-history.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-results/transaction-results-concepts.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-results/tec-codes-concepts.md
+      parent: transaction-results-concepts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-results/tef-codes-concepts.md
+      parent: transaction-results-concepts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-results/tel-codes-concepts.md
+      parent: transaction-results-concepts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-results/tem-codes-concepts.md
+      parent: transaction-results-concepts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-results/ter-codes-concepts.md
+      parent: transaction-results-concepts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/transaction-results/tes-success-concepts.md
+      parent: transaction-results-concepts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/payments/payments.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/payments/direct-xrp-payments.md
+      parent: payments.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/payments/cross-currency-payments.md
+      parent: payments.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/payments/payment-channels.md
+      parent: payments.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/payments/checks.md
+      parent: payments.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/payments/escrow.md
+      parent: payments.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/transactions/payments/partial-payments.md
+      parent: payments.html
+      targets:
+         - en
+         - ja
+
+
+         
+ ############
+ ## Do Payments next.
+ ############
+         
+    - md: concepts/tokens/tokens.md
+      parent: concepts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/accounts/accounts.md
+      parent: concepts.html
+      targets:
+         - en
+         - ja
 
 
 # Tutorials --------------------------------------------------------------------

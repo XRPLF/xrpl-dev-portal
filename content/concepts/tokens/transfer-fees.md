@@ -1,11 +1,3 @@
----
-html: transfer-fees.html
-parent: tokens.html
-blurb: Token issuers can charge a fee for transferring their tokens.
-labels:
-  - Fees
-  - Tokens
----
 # Transfer Fees
 
 [Token](tokens.html) issuers can charge a _transfer fee_ that applies when users transfer those tokens among themselves. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee.
@@ -82,9 +74,3 @@ Some [client libraries](client-libraries.html) have convenience functions for ge
     - [account_info method][]
     - [AccountSet transaction][]
     - [AccountRoot Flags](accountroot.html#accountroot-flags)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

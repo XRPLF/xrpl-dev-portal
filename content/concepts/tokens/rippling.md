@@ -1,16 +1,10 @@
----
-html: rippling.html
-parent: tokens.html
-blurb: Rippling is automatic multi-party net settlement of token balances.
-labels:
-  - Tokens
-  - Cross-Currency
----
 # Rippling
 
-In the XRP Ledger, "rippling" describes a process of atomic net settlement between multiple connected parties who have [trust lines](trust-lines-and-issuing.html) for the same token. Rippling is essential, because it allows users who hold tokens to send those to each other with the issuer as a passive intermediary. In a sense, rippling is like a passive, two-way [exchange order](offers.html) with no limit and a 1:1 exchange rate for two tokens with the same currency code but different issuers.
+In the XRP Ledger, "rippling" describes a process of atomic net settlement between multiple connected parties who have [trust lines](../transactions/trust-lines-and-issuing.md) for the same token. Rippling is essential, because it allows users who hold tokens to send those to each other with the issuer as a passive intermediary. In a sense, rippling is like a passive, two-way exchange order with no limit and a 1:1 exchange rate for two tokens with the same currency code but different issuers.
 
-Rippling only occurs along the [paths](paths.html) of a payment. [Direct XRP-to-XRP payments](direct-xrp-payments.html) do not involve rippling.
+<!-- [exchange order](../server/offers.md) -->
+
+Rippling only occurs along the [paths](paths.md) of a payment. [Direct XRP-to-XRP payments](../transactions/payments/direct-xrp-payments.md) do not involve rippling.
 
 For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between tokens with the same currency code but different issuers. The [No Ripple Flag](#the-no-ripple-flag) disables rippling by default when others open trust lines to your account, unless you enable rippling by default using the [Default Ripple flag](#the-default-ripple-flag).
 
@@ -65,7 +59,7 @@ The **Default Ripple** flag is an account setting that enables rippling on all _
 
 The Default Ripple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the Default Ripple setting of your account, trust lines that were created before the change keep their existing No Ripple settings. You can use a [TrustSet transaction][] to change the No Ripple setting of a trust line to match your address's new default.
 
-For more information, see [Default Ripple in 'Becoming an XRP Ledger Gateway'](become-an-xrp-ledger-gateway.html#default-ripple).
+For more information, see Default Ripple in 'Becoming an XRP Ledger Gateway'. <!--](become-an-xrp-ledger-gateway.html#default-ripple).-->
 
 
 ## Using No Ripple
@@ -75,14 +69,20 @@ For more information, see [Default Ripple in 'Becoming an XRP Ledger Gateway'](b
 
 The No Ripple flag can only be enabled on a trust line if the address has a positive or zero balance on that trust line. This is so that the feature cannot be abused to default on the obligation the trust line balance represents. (Of course, you can still default by abandoning the address.)
 
-To enable the No Ripple flag, send a [TrustSet transaction][] with the `tfSetNoRipple` flag. You can disable the No Ripple flag (that is, allow rippling) with the `tfClearNoRipple` flag instead.
+To enable the No Ripple flag, send a `TrustSet` transaction with the `tfSetNoRipple` flag. You can disable the No Ripple flag (that is, allow rippling) with the `tfClearNoRipple` flag instead.
 
 
 ### Looking Up No Ripple Status
 
 In the case of two accounts that mutually trust each other, the No Ripple flag is tracked separately for each account.
 
-Using the [HTTP / WebSocket APIs](http-websocket-apis.html) or your preferred [client library](client-libraries.html), look up trust lines with the [account_lines method][]. For each trust line, the `no_ripple` field shows whether the current address has enabled the No Ripple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the No Ripple flag.
+Using the HTTP/WebSocket APIs or your preferred [client library](../../../references/client-libraries.md), look up trust lines with the `account_lines method`. For each trust line, the `no_ripple` field shows whether the current address has enabled the No Ripple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the No Ripple flag.
+
+<!-- 
+
+[HTTP / WebSocket APIs](http-websocket-apis.html)
+
+
 
 ## See Also
 
@@ -98,7 +98,3 @@ Using the [HTTP / WebSocket APIs](http-websocket-apis.html) or your preferred [c
     - [AccountRoot Flags](accountroot.html#accountroot-flags)
     - [RippleState (trust line) Flags](ripplestate.html#ripplestate-flags)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
