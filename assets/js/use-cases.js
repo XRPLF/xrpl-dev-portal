@@ -11,7 +11,6 @@ $(document).ready(() => {
             $(`#use_case_companies_list .card-uses.category_${category}`).show()  
         } 
 
-
         const featured_count = show_cats_arr.filter( (current) => {
             return current == "infrastructure" || current == "developer_tooling"
         })
@@ -24,28 +23,40 @@ $(document).ready(() => {
 
         // update category counts
         if (featured_count.length === 0) {
-            $("#featured_count").hide()
+            $(".featured_count").hide()
         }else {
-            $("#featured_count").html(featured_count.length)
-            $("#featured_count").show()
+            $(".featured_count").html(featured_count.length)
+            $(".featured_count").show()
         }
 
         if (other_count.length === 0) {
-            $("#other_count").hide()
+            $(".other_count").hide()
         }else{
-            $("#other_count").html(other_count.length)
-            $("#other_count").show()
+            $(".other_count").html(other_count.length)
+            $(".other_count").show()
         }
+
+        if(show_cats_arr.length === 0) {
+            $(".total_count").hide()
+        }else {
+            $(".total_count").html(show_cats_arr.length)
+            $(".total_count").show()
+        }
+
     }
 
-
   $(".cat_checkbox input").change((event) => {
-    const lang = $(event.target).val().toLowerCase().split(' ').join('_')
+
+    // const lang = $(event.target).val().toLowerCase().split(' ').join('_')
+    const lang = $(event.target).val()
     const lang_checked = $(event.target).prop("checked")
     
+    $(".input_"+lang).prop("checked", lang_checked)
 
     if (lang_checked) {
-        show_cats_arr.push(lang)
+        if ( show_cats_arr.indexOf(lang) === -1){
+            show_cats_arr.push(lang)
+        }  
     } else {
         show_cats_arr.indexOf(lang) !== -1 && show_cats_arr.splice(show_cats_arr.indexOf(lang), 1)
     }
