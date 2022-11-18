@@ -12,6 +12,7 @@ token_name = "USD"
 
 # Amount a trustline can handle
 value = "0"
+print("Generating two test wallets...")
 
 # Address to unfreeze trustline
 target_addr = generate_faucet_wallet(client=client).classic_address
