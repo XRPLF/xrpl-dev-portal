@@ -1,8 +1,15 @@
+---
+html: deposit-authorization.html
+parent: accounts.html
+blurb: Deposit Authorization can block all transfers from strangers, including transfers of XRP and tokens.
+labels:
+  - Accounts
+---
 # Deposit Authorization
 
 _(Added by the DepositAuth amendment.)_
 
-Deposit Authorization is an optional [account](accounts.md) setting in the XRP Ledger. If enabled, Deposit Authorization blocks all transfers from strangers, including transfers of XRP and [tokens](../tokens/tokens.md). An account with Deposit Authorization can only receive value in two ways:
+Deposit Authorization is an optional account setting in the XRP Ledger. If enabled, Deposit Authorization blocks all transfers from strangers, including transfers of XRP and [tokens](tokens.html). An account with Deposit Authorization can only receive value in two ways:
 
 - From accounts it has [preauthorized](#preauthorization).
 - By sending a transaction to receive the funds. For example, an account with Deposit Authorization could finish an escrow that was initiated by a stranger.

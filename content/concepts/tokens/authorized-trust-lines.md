@@ -1,3 +1,10 @@
+---
+html: authorized-trust-lines.html
+parent: tokens.html
+blurb: The Authorized Trust Lines feature enables issuers to create tokens that can only be held by accounts that the issuer specifically authorizes.
+labels:
+  - Tokens
+---
 # Authorized Trust Lines
 
 The Authorized Trust Lines feature enables issuers to create tokens that can only be held by accounts that the issuer specifically authorizes. This feature only applies to tokens, not XRP.

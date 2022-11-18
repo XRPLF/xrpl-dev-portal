@@ -1,5 +1,11 @@
+---
+html: non-fungible-token-transfers.html
+parent: non-fungible.html
+blurb: The XRPL Labs team has created a framework that supports non-fungible tokens.
+labels:
+  - Tokens
+---
 # Trading NFTokens on the XRP Ledger
-{% include '_snippets/nfts-disclaimer.md' %}
 
 You can transfer `NFToken` objects between accounts on the XRP Ledger. You can offer to buy or sell a `NFToken`, or accept offers from other accounts to buy a `NFToken` you own. You can even give away a `NFToken` by offering to sell it at a price of 0.  All offers are created using `NFTokenCreateOffer` transaction.
 

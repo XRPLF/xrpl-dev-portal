@@ -1,3 +1,10 @@
+---
+html: token-types.html
+parent: tokens.html
+blurb: You can use tokens for a variety of purposes on the XRP Ledger.
+labels:
+  - Tokens
+---
 # Token Types
 
 You can use tokens for a variety of purposes on the XRP Ledger.

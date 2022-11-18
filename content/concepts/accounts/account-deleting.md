@@ -1,3 +1,10 @@
+---
+html: account-deleting.html
+parent: accounts.html
+blurb: Delete an account by fulfilling several requirements.
+labels:
+  - Accounts
+---
 # Deleting Accounts
 
 The DeletableAccounts amendment (enabled 2020-05-08) made it possible to delete accounts.

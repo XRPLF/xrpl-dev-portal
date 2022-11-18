@@ -760,15 +760,69 @@ pages:
       targets:
          - en
          - ja
-
-
-         
- ############
- ## Do Payments next.
- ############
          
     - md: concepts/tokens/tokens.md
       parent: concepts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/token-types.md
+      parent: tokens.html
+      targets:
+         - en
+         - ja
+  
+    - md: concepts/tokens/authorized-trust-lines.md
+      parent: tokens.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/paths.md
+      parent: tokens.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/rippling.md
+      parent: tokens.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/transfer-fees.md
+      parent: tokens.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/freezing-tokens.md
+      parent: tokens.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/common-misunderstandings-about-freezes.md
+      parent: freezing-tokens.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/non-fungible.md
+      parent: token-types.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/non-fungible-token-transfers.md
+      parent: non-fungible.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/nftoken-batch-minting.md
+      parent: non-fungible.html
       targets:
          - en
          - ja
@@ -778,6 +832,55 @@ pages:
       targets:
          - en
          - ja
+         
+    - md: concepts/accounts/account-structure.md
+      parent: accounts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/accounts/account-types.md
+      parent: accounts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/accounts/account-creating.md
+      parent: accounts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/accounts/account-deleting.md
+      parent: accounts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/accounts/reserves.md
+      parent: accounts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/accounts/addresses.md
+      parent: accounts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/accounts/deposit-authorization.md
+      parent: accounts.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/accounts/cryptographic-keys.md
+      parent: accounts.html
+      targets:
+         - en
+         - ja
+         
 
 
 # Tutorials --------------------------------------------------------------------

@@ -1,3 +1,10 @@
+---
+html: nftoken-batch-minting.html
+parent: non-fungible.html
+blurb: You can mint non-fungible tokens in batches.
+labels:
+  - Tokens
+---
 # Batch minting
 
 There are two common approaches to minting NFToken objects in batches: mint on demand and scripted minting.
@@ -19,7 +26,7 @@ Any market activity prior to the initial sale of the NFToken object is not recor
 
 Use a program or script to mint many tokens at once. You might find the XRP Ledger ticket functionality helps you submit transactions in parallel, up to a current limit of 200 transactions in one group.
 
-For a practical example, see the [Batch Mint NFTokens](../../../tutorials/quickstart/batch-minting.md) tutorial.
+For a practical example, see the [Batch Mint NFTokens](batch-minting.html) tutorial.
 
 ### Benefits
 

@@ -1,3 +1,10 @@
+---
+html: cryptographic-keys.html
+parent: accounts.html
+blurb: To make a digital signature, you use a cryptographic key pair associated with the transaction's sending account.
+labels:
+  - Accounts
+---
 # Cryptographic Keys
 
 In the XRP Ledger, a digital signature _authorizes_ a [transaction](../transactions/transactions.md) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
@@ -8,7 +15,7 @@ To make a digital signature, you use a cryptographic key pair associated with th
 
 ## Generating Keys
 
-Many [client libraries](../../../references/client-libraries.md) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use keypairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
+Many [client libraries](client-libraries.html) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use keypairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
 
 
 ## Key Components
@@ -17,7 +24,7 @@ A cryptographic key pair is a **private key** and a **public key** that are conn
 
 When dealing with the XRP Ledger, you may also use some related values such as a passphrase, seed, account ID, or address.
 
-{{ include_svg("../../../img/cryptographic-keys.svg", "Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address") }}
+{{ include_svg("img/cryptographic-keys.svg", "Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address") }}
 _Figure: A simplified view of the relationship between cryptographic key values._
 
 
@@ -37,7 +44,7 @@ The passphrase is secret information, so you must protect it very carefully. Any
 
 ### Seed
 
-A _seed_ value is a compact value that is used to derive the actual private and public keys for an account. In a `wallet_propose` method response, the `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to sign transactions in the rippled APIs and some [other XRP Ledger software](../xrpl/xrpl-ecosystem.md). Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
+A _seed_ value is a compact value that is used to derive the actual private and public keys for an account. In a `wallet_propose` method response, the `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to sign transactions in the rippled APIs and some [other XRP Ledger software](xrpl-ecosystem.html). Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
 
 The seed value is secret information, so you must protect it very carefully. Anyone who has knows an address's seed value has effectively full control over that address.
 
@@ -98,11 +105,11 @@ Keeping your master key pair offline means not putting the secret information (p
 
 - Disable the master key pair.
 
-- Permanently give up the ability to [freeze](../tokens/freezing-tokens.md#no-freeze).
+- Permanently give up the ability to [freeze](freezing-tokens.html#no-freeze).
 
 - Send a special key reset transaction with a transaction cost of 0 XRP.
 
-A regular key or multi-signature can do anything else the same as the master key pair. Notably, after you have disabled the master key pair, you can re-enable it using a regular key pair or multi-signature. You can also [delete an account](account-deleting.md) if it meets the requirements for deletion.
+A regular key or multi-signature can do anything else the same as the master key pair. Notably, after you have disabled the master key pair, you can re-enable it using a regular key pair or multi-signature. You can also [delete an account](account-deleting.html) if it meets the requirements for deletion.
 
 
 ## Regular Key Pair
@@ -181,7 +188,7 @@ The key derivation processes described here are implemented in multiple places a
 ### secp256k1 Key Derivation
 [[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
 
-{{ include_svg("../../../img/key-derivation-secp256k1.svg", "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair") }}
+{{ include_svg("img/key-derivation-secp256k1.svg", "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair") }}
 
 Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:
 
@@ -237,7 +244,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
 6. When serializing an account's public key to its base58 format, use the account public key prefix, `0x23`.
 
-    See [Address Encoding](addresses.md#address-encoding) for information and sample code to convert from an account's public key to its address.
+    See [Address Encoding](addresses.html#address-encoding) for information and sample code to convert from an account's public key to its address.
 
 <!--
 

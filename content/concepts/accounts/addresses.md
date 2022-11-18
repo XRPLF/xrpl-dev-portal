@@ -1,4 +1,11 @@
-## Addresses
+---
+html: addresses.html
+parent: accounts.html
+blurb: Accounts in the XRP Ledger are identified by an address in the XRP Ledger's base58 format.
+labels:
+  - Accounts
+---
+# Addresses
 
 Accounts in the XRP Ledger are identified by an address in the XRP Ledger's base58 format. The address is derived from the account's master [public key](https://en.wikipedia.org/wiki/Public-key_cryptography), which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:
 
@@ -13,7 +20,7 @@ Accounts in the XRP Ledger are identified by an address in the XRP Ledger's base
 > The XRP Ledger protocol only supports "classic" addresses natively, but many client libraries support X-addresses too.
 
 
-For more information, see [Accounts](accounts.md).
+For more information, see [Accounts](accounts.html).
 
 
 Any valid address can become an account in the XRP Ledger by being funded. You can also use an address that has not been funded to represent a regular key or a member of a signer list. Only a funded account can be the sender of a transaction.

@@ -1,3 +1,10 @@
+---
+html: account-structure.html
+parent: accounts.html
+blurb: The core elements of an account.
+labels:
+  - Accounts
+---
 # Account Structure
 
 The core elements of an account are:

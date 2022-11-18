@@ -1,3 +1,10 @@
+---
+html: reserves.html
+parent: accounts.html
+blurb: Reserves are the minimum balance of XRP that an account must maintain.
+labels:
+  - Accounts
+---
 # Reserves
 
 The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM.

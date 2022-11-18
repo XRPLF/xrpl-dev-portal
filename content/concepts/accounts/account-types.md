@@ -1,3 +1,10 @@
+---
+html: account-types.html
+parent: accounts.html
+blurb: Common account types include issuing accounts, standby accounts, and operational accounts.
+labels:
+  - Accounts
+---
 # Account Types
 
 In the XRP Ledger, financial institutions typically use multiple XRP Ledger accounts to minimize the risk associated with a compromised secret key. The industry standard is to separate roles as follows:
@@ -48,9 +55,8 @@ If a standby account is compromised, the consequences are like an operational ac
 
 When a token issuer follows this separation of roles, funds tend to flow in specific directions, as in the following diagram:
 
-<!--
-{{ include_svg("../../../img/issued-currency-funds-flow.svg", "Diagram: Funds flow from the issuing account to standby accounts, to operational accounts, to customer and partner accounts, and finally back to the issuing account.")}}
--->
+
+{{ include_svg("img/issued-currency-funds-flow.svg", "Diagram: Funds flow from the issuing account to standby accounts, to operational accounts, to customer and partner accounts, and finally back to the issuing account.")}}
 
 The issuing account creates tokens by sending payments to standby accounts. These tokens have negative value from the perspective of the issuing account, since they (often) represent obligations. The same tokens have positive value from other perspectives, including from the perspective of a standby account.
 

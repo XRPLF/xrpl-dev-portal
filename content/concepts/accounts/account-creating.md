@@ -1,3 +1,10 @@
+---
+html: account-creating.html
+parent: accounts.html
+blurb: Create an account by sending a minimum reserve amount to a valid address.
+labels:
+  - Accounts
+---
 # Creating Accounts
 
 There is not a dedicated "create account" transaction. The `Payment` transaction automatically creates a new account if a payment sends XRP equal to or greater than the account reserve to a mathematically valid address that does not already have an account. This is called _funding_ an account, and creates an AccountRoot object in the ledger. No other transaction can create an account.

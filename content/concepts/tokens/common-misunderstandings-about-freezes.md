@@ -1,3 +1,10 @@
+---
+html: common-misunderstandings-about-freezes.html
+parent: freezing-tokens.html
+blurb: Clarifications on some common areas of confusion around freezing tokens.
+labels:
+  - Tokens
+---
 # Common Misunderstandings about Freezes
 
 It is a common misconception that Ripple or others can freeze XRP, similar to how centralized services like PayPal can suspend your account and prevent you from accessing your funds. In reality, while the XRP Ledger does have a [freeze feature](freezing-tokens.md), it can only be used on issued tokens, not on XRP. _No one can freeze XRP.__

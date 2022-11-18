@@ -1,5 +1,11 @@
+---
+html: non-fungible.html
+parent: token-types.html
+blurb: The XRPL Labs team has created a framework that supports non-fungible tokens.
+labels:
+  - Tokens
+---
 # Non-fungible Tokens
-{% include '_snippets/nfts-disclaimer.md' %}
 
 The XRP Ledger tokens are, primarily, fungible.
 
@@ -12,11 +18,11 @@ Fungible tokens can be easily traded between users for XRP or other issued asset
 
 A good example of a fungible item might be a postage stamp. If you are standing around in 1919 and need to send a letter by airmail, you would purchase a 24-cent stamp and affix it to your envelope. If you lost that stamp, you could use a different 24-cent stamp or use 2 10-cent stamps and 2 2-cent stamps. Very fungible.
 
-![Jenny Stamps](../../../img/nft-concepts1.png "Jenny Stamps")
+![Jenny Stamps](img/nft-concepts1.png "Jenny Stamps")
 
 But since you are standing around in 1919, you might be offered 24-cent airmail stamps where the aeroplane on the stamp is accidentally printed upside down. These are the world famous “Inverted Jenny” stamps. Only 100 were circulated on a single sheet of stamps, making them extremely rare and sought after. The current value of each mint condition stamp is appraised at over $1.5 million dollars.
 
-![Jenny Stamps](../../../img/nft-concepts2.png "Jenny Stamps")
+![Jenny Stamps](img/nft-concepts2.png "Jenny Stamps")
 
 Those stamps cannot be replaced by just another other 24-cent stamp. They have become _non-fungible_.
 
@@ -42,7 +48,7 @@ You destroy an `NFToken` using the `NFTokenBurn` transaction.
 
 You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the `NFTokenPage` of the issuing account. You can create an `NFTokenOffer` to sell the `NFToken`, creating an entry to the XRP Ledger. Another account can accept the `NFTokenOffer`, transferring the `NFToken` to the accepting account’s `NFTokenPage`. If the `lsfTransferable `flag is set to _true_ (0x000008) when the `NFToken` is minted, the `NFToken` can be traded multiple times between accounts. The `NFToken` can be permanently destroyed by its owner using the `NFTokenBurn` transaction.
 
-![The NFT Lifecycle](../../../img/nft-lifecycle.png "NFT Lifecycle Image")
+![The NFT Lifecycle](img/nft-lifecycle.png "NFT Lifecycle Image")
 
 
 <!--

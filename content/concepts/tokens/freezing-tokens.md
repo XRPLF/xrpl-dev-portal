@@ -1,3 +1,10 @@
+---
+html: freezing-tokens.html
+parent: tokens.html
+blurb: Issuers can freeze the tokens they issue in the XRP Ledger.
+labels:
+  - Tokens
+---
 # Freezing Tokens
 
 Issuers can freeze the tokens they issue in the XRP Ledger. _This does not apply to XRP,__ which is the native asset of the XRP Ledger, not an issued token.
