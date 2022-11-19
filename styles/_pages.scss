@@ -172,6 +172,15 @@
     background-image: url(../img/backgrounds/use-cases-blue.svg);
   }
 
+  .card-grid {
+    grid-gap: 8px
+  }
+
+  .card-grid img {
+    max-height: 40px;
+  }
+
+
 @each $usecase in "infrastructure",
 "developer_tooling",
 "interoperability",
@@ -187,10 +196,23 @@
 "custody",
 "defi" {
   ##{$usecase} {
-    max-height: 48px;
     content: url("../img/icons/usecases/ic_#{$usecase}.png");
   }
 }
+
+
+@include media-breakpoint-up(lg) {
+  .card-grid img {
+    max-height: 48px;
+  }
+
+  .card-grid {
+    grid-gap: 48px
+  }
+}
+
+
+
 
   // @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
   //   ##{$usecase} {

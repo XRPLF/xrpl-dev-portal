@@ -569,25 +569,55 @@ pre code {
 .page-uses {
 
   .card-body {
-    background: #FFFFFF;
-
-    color: #343437
+    background: $white;
+    color: $gray-700;
   }
 
   .modal-footer,
   .modal-header {
-    background-color: #FCFCFD;
+    background-color: $gray-050;
   }
 
 
 
-  
-
-  @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
+  @each $usecase in "infrastructure",
+  "developer_tooling",
+  "interoperability",
+  "wallet",
+  "nfts",
+  "exchanges",
+  "gaming",
+  "security",
+  "payments",
+  "web_monetization",
+  "sustainability",
+  "cbdc",
+  "custody",
+  "defi" {
     ##{$usecase} {
-      content: url("../img/icons/lightmode/#{$usecase}.svg");
+      content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png");
     }
   }
+
+  .category-header {
+    color: $gray-700;
+  }
+
+  .category_count {
+    background: #D2B2FF;
+    color: #350080;
+  }
+
+
+
+
+
+
+  // @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
+  //   ##{$usecase} {
+  //     content: url("../img/icons/lightmode/#{$usecase}.svg");
+  //   }
+  // }
 
   // darkened card graphics
   @each $company,$card-graphic in (
