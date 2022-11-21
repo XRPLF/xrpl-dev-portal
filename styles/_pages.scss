@@ -157,9 +157,9 @@
 }
 
 #use-case-card-grid {
-  @include media-breakpoint-up(lg) {
-    margin-top: -40px; // offset the 40px margin of the cols
-  }
+  // @include media-breakpoint-up(lg) {
+  //   margin-top: -40px; // offset the 40px margin of the cols
+  // }
 }
 
 #validator-graphic {
@@ -168,13 +168,35 @@
 
 .page-uses {
   &::before {
+    transform: scaleX(-1);
     background-image: url(../img/backgrounds/use-cases-blue.svg);
   }
-  @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
-    ##{$usecase} {
-      content: url("../img/icons/#{$usecase}.svg");
-    }
+
+@each $usecase in "infrastructure",
+"developer_tooling",
+"interoperability",
+"wallet",
+"nfts",
+"exchanges",
+"gaming",
+"security",
+"payments",
+"web_monetization",
+"sustainability",
+"cbdc",
+"custody",
+"defi" {
+  ##{$usecase} {
+    max-height: 48px;
+    content: url("../img/icons/usecases/ic_#{$usecase}.png");
   }
+}
+
+  // @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
+  //   ##{$usecase} {
+  //     content: url("../img/icons/#{$usecase}.svg");
+  //   }
+  // }
 
   @each $company,$card-graphic in (
     "bitgo": "magenta-3",
