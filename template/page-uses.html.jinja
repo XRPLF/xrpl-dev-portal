@@ -30,12 +30,451 @@
       padding-right: 64px;
     }
   }
+
+  /* Cleanup bootstrap modal */
+  .modal {
+    padding: 0; 
+  }
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #000;
+
+    background-clip: padding-box; 
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+
+    background: #111112;
+  }
+
+  .modal-header {
+    border: none;
+    background: #111112;
+    box-shadow: 0px 1px 2px #000000;
+  }
+
+  .modal-footer {
+    border: none;
+    background: #111112;
+    box-shadow: 0px -1px 2px #000000;
+    
+    align-items: unset; 
+    padding: 0.75rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
 </style>
+
+{% set cards = [
+  {
+    "id": "",
+    "title": _("Aesthetes"),
+    "description": _("Aesthetes is a bridge between fine art and blockchain, enabling everyone, around the world, to buy and sell with just a click for fractional ownership of international physical art."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://aesthetes.art/",
+  },
+  {
+    "id": "",
+    "title": _("Anchain.AI"),
+    "description": _("AnChain.AI offers AI-powered intelligence enhancing blockchain security, risk, and compliance strategies."),
+    "category_id": "security",
+    "category_name": "Security",
+    "link": "https://anchain.ai",
+  },
+  {
+    "id": "",
+    "title": _("Anifie"),
+    "description": _("Anifie is an interactive event and immersive metaverse that provides a one-stop solution for brands who want to monetize their digital content IP."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://anifie.com/",
+  },
+  {
+    "id": "",
+    "title": _("Audiotarky"),
+    "description": _("Audiotarky is a new music streaming platform that prioritises artists and privacy over algorithms and shareholders."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://www.audiotarky.com/",
+  },
+  {
+    "id": "",
+    "title": _("Bithomp"),
+    "description": _("Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency exchanges. Bithomp was launched in 2015 with a mission to build the most user-friendly XRPL explorer."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://bithomp.com/",
+  },
+  {
+    "id": "",
+    "title": _("Blockchain Benchmarking Framework"),
+    "description": _("Blockchain Benchmarking Framework focuses on the development of a user-friendly UI that abstracts the underlying complexities of blockchain technology."),
+    "category_id": "developer_tooling",
+    "category_name": "Developer Tooling",
+    "link": "https://github.com/UNIC-IFF/blockchain-benchmarking-framework/",
+  },
+  {
+    "id": "",
+    "title": _("Carbonland Trust"),
+    "description": _("Carbonland Trust offers transparent nature-based carbon credits, and inclusive access to voluntary carbon markets for landowners and corporations alike. "),
+    "category_id": "sustainability",
+    "category_name": "Sustainability",
+    "link": "https://www.carbonlandtrust.com/",
+  },
+  {
+    "id": "",
+    "title": _("Casino Coin"),
+    "description": _("CasinoCoin (CSC) is a digital currency developed specifically for the regulated gaming industry."),
+    "category_id": "other",
+    "category_name": "Other",
+    "link": "https://casinocoin.im/",
+  },
+  {
+    "id": "",
+    "title": _("Coil"),
+    "description": _("Coil provides better ways to access and reward the creators, publishers and platforms that create the content people love."),
+    "category_id": "web_monetization",
+    "category_name": "Web Monetization",
+    "link": "https://coil.com/",
+  },
+  {
+    "id": "",
+    "title": _("Cryptum"),
+    "description": _("Cryptum is an API/SDK platform for integrating the XRP Ledger with any application."),
+    "category_id": "developer_tooling",
+    "category_name": "Developer Tooling",
+    "link": "https://blockforce.in/products/cryptum",
+  },
+  {
+    "id": "",
+    "title": _("Evernode"),
+    "description": _("Evernode proposes a permissionless, flexible, scalable Layer 2 smart contract network built from the XRP Ledger."),
+    "category_id": "developer_tooling",
+    "category_name": "Developer Tooling",
+    "link": "https://evernode.wordpress.com/",
+  },
+  {
+    "id": "",
+    "title": _("Gatehub XRP Ledger Markets"),
+    "description": _("Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://gatehub.net/markets",
+  },
+  {
+    "id": "",
+    "title": _("Junkiverse"),
+    "description": _("Junkiverse is a collection of unique 3D Voxel characters that serve digital identity in genre-breaking MMORPG."),
+    "category_id": "gaming",
+    "category_name": "Gaming",
+    "link": "https://xrpjunkies.club/",
+  },
+  {
+    "id": "",
+    "title": _("Ledger City"),
+    "description": _("Ledger City is a crypto real estate game powered by the XRP Ledger."),
+    "category_id": "gaming",
+    "category_name": "Gaming",
+    "link": "https://ledgercitygame.com/",
+  },
+  {
+    "id": "",
+    "title": _("Mint NFT"),
+    "description": _("mintNFT is a premium studio and marketplace for NFTs that makes collecting NFTs simple, safe and social."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://mintnft.com/",
+  },
+  {
+    "id": "",
+    "title": _("Multichain"),
+    "description": _("Multichain is the ultimate Router for web3. It is an infrastructure developed for arbitrary cross-chain interactions."),
+    "category_id": "interoperability",
+    "category_name": "Interoperability",
+    "link": "https://multichain.org/",
+  },
+  {
+    "id": "",
+    "title": _("NFT Master"),
+    "description": _("NFT Master is an NFT marketplace where creators can buy, mint and sell NFTs."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://nftmaster.com/",
+  },
+  {
+    "id": "",
+    "title": _("OnTheDex"),
+    "description": _("OnTheDex is a quality source of information for aggregator sites to take live feeds of XRPL token activity."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://onthedex.live/",
+  },
+  {
+    "id": "",
+    "title": _("onXRP"),
+    "description": _("onXRP is an NFT marketplace where creators can buy, mint and sell NFTs built by the XPUNKs."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://onxrp.com/about/",
+  },
+  {
+    "id": "",
+    "title": _("Palisade"),
+    "description": _("Palisade is a secure, regulated, and insured multi-chain custody platform paired with a non-custodial mobile app intended as a day-to-day wallet."),
+    "category_id": "custody",
+    "category_name": "Custody",
+    "link": "https://www.palisade.co/",
+  },
+  {
+    "id": "",
+    "title": _("Peerkat"),
+    "description": _("Peerkat is an NFT services and tooling provider for the XRPL community."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://peerkat.io/",
+  },
+  {
+    "id": "",
+    "title": _("Ripple Reefs"),
+    "description": _("The RippleReefs project features a 10,000 piece NFT collection that will directly enable the community to support the conservation of oceans and marine life."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://linktr.ee/RippleReefs",
+  },
+  {
+    "id": "",
+    "title": _("Sologenic DEX"),
+    "description": _("Sologenic DEX is a popular decentralized exchange on the XRP Ledger made by Sologenic."),
+    "category_id": "exchanges",
+    "category_name": "Exchanges",
+    "link": "https://sologenic.org/",
+  },
+  {
+    "id": "",
+    "title": _("Sologenic NFT"),
+    "description": _("Sologenic NFT is an NFT marketplace designed by Sologenic."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://sologenic.org/nfts/marketplace?network=mainnet",
+  },
+  {
+    "id": "",
+    "title": _("Sologenic XRPL Trading Data"),
+    "description": _("Sologenic XRPL Trading Data is an API that is currently being used in the Sologenic DEX production environment."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://github.com/sologenic/xrpl-trading-data",
+  },
+  {
+    "id": "",
+    "title": _("Trustline"),
+    "description": _("Trustline is a new startup developing new ways to represent assets on the XRPL."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://trustline.co/",
+  },
+  {
+    "id": "",
+    "title": _("X-tokenize"),
+    "description": _("X-Tokenize is a command line tool to simplify the process of creating, managing and distributing issued currencies and eventually NFTs on the XRPL."),
+    "category_id": "developer_tooling",
+    "category_name": "Developer Tooling",
+    "link": "https://x-tokenize.com/",
+  },
+  {
+    "id": "",
+    "title": _("xMochiDonuts"),
+    "description": _("xMochiDonuts is an NFT collection made exclusively for the XRPL community."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://linktr.ee/xMochiDonuts",
+  },
+  {
+    "id": "",
+    "title": _("XP Market"),
+    "description": _("XP Market is a price-tracking website for cryptoassets on the XRPL coupled with a decentralized exchange."),
+    "category_id": "exchanges",
+    "category_name": "Exchanges",
+    "link": "https://xpmarket.com/",
+  },
+  {
+    "id": "",
+    "title": _("Xpunks"),
+    "description": _("Xpunks is an NFT collection with a limited series of 10,000 NFTs generated on the XRP Ledger."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://xpunks.club/",
+  },
+  {
+    "id": "",
+    "title": _("XRP Cafe"),
+    "description": _("XRP Cafe is an NFT marketplace built by the community that aims to be the easiest way to build, sell and mint NFTs."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://xrp.cafe/",
+  },
+  {
+    "id": "",
+    "title": _("XRP Toolkit"),
+    "description": _("XRP Toolkit is a platform for managing crypto assets and trading on the XRP Ledger's decentralized exchange."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://www.xrptoolkit.com/",
+  },
+  {
+    "id": "",
+    "title": _("XRPL Foundation"),
+    "description": _("The XRP Ledger Foundation is an independent non-profit entity which works to support development and usage of the XRP Ledger."),
+    "category_id": "other",
+    "category_name": "Other",
+    "link": "https://foundation.xrpl.org/",
+  },
+  {
+    "id": "",
+    "title": _("XRPL Merch"),
+    "description": _("XRPL Merch is a XRPL focused merch shop."),
+    "category_id": "other",
+    "category_name": "Other",
+    "link": "https://xrplmerch.com/",
+  },
+  {
+    "id": "",
+    "title": _("XRPL Rosetta"),
+    "description": _("XRPL Rosetta explores fiat data on XRPL through visualization."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://threexrp.dev/",
+  },
+  {
+    "id": "",
+    "title": _("XRPL.org Ledger Explorer"),
+    "description": _("XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://livenet.xrpl.org/",
+  },
+  {
+    "id": "",
+    "title": _("XRPScan"),
+    "description": _("XRPSCAN is an explorer and analytics platform for the XRP Ledger. We provide a clean and simple way to look up accounts, ledgers and transactions."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://xrpscan.com/",
+  },
+  {
+    "id": "",
+    "title": _("xShrooms"),
+    "description": _("xShrooms is an NFT collection with 10,000 unique collectible xshrooms minted as NFTs on the XRP Ledger."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://xshrooms.art/",
+  },
+  {
+    "id": "",
+    "title": _("xSPECTAR"),
+    "description": _("xSPECTAR is the Xclusive Society in the metaverse for the protection of equity, currencies, tokens, assets and realty on the XRPL."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://xspectar.com/",
+  },
+  {
+    "id": "",
+    "title": _("Xumm Wallet"),
+    "description": _("Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger."),
+    "category_id": "wallet",
+    "category_name": "Wallet",
+    "link": "https://xumm.app/#team",
+  },
+  {
+    "id": "",
+    "title": _("Yoniverse"),
+    "description": _("The purpose of the Yonix art collective is to give creatives the possibility to join together in creating collective value. They create art, music, comics and phygitals."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://linktr.ee/yoniverse.one",
+  },
+
+] %}
+
+
+{% set featured_categories = {
+  "infrastructure": "Infrastructure",
+  "developer_tooling": "Developer Tooling",
+} %}
+
+{% set other_categories = {
+  "interoperability": "Interoperability",
+  "wallet": "Wallet",
+  "nfts": "NFTs",
+  "exchanges": "Exchanges",
+  "gaming": "Gaming",
+  "security": "Security",
+  "payments": "Payments",
+  "web_monetization": "Web Monetization",
+  "sustainability": "Sustainability",
+  "cbdcs": "CBDCs",
+  "custody": "Custody",
+  "defi": "DeFi",
+  "other": "Other",
+} %}
+
+
+<!-- Modal -->
+<div class="modal fade " id="categoryFilterModal" tabindex="-1" aria-labelledby="categoryFilterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="categoryFilterModalLabel"></h5>
+        <button type="button" class="" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Cancel</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+  <!--  -->
+          <div class="p-3 page-events">
+            <form >
+              <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
+                {% for category_id, category_name in featured_categories.items() %}
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}" checked>
+                      <label for="input_{{category_id}}">{{ category_name }}</label>
+                  </div>
+                {% endfor %}
+  
+              <br><br>
+  
+              <p class="category-header pt-lg-4 mt-lg-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
+                {% for category_id, category_name in other_categories.items() %}
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}">
+                      <label for="input_{{category_id}}">{{ category_name }}</label>
+                  </div>
+                {% endfor %}
+            </form>
+        </div>
+  <!--  -->
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Apply</button>
+        <a class="btn " data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
 
 
 <div class="overflow-hidden">
-   <section class="py-26 text-center">
-    <div class="col-lg-6 mx-auto text-center">
+
+   <section class="container-new py-26 text-lg-center">
+    <div class="p-0 col-lg-6 mx-lg-auto">
       <div class="d-flex flex-column-reverse">
         <h1 class="mb-0">{% trans %}Powering Innovative Technology{% endtrans %}</h1>
         <h6 class="eyebrow mb-3">{% trans %}XRPL Use Cases{% endtrans %}</h6>
@@ -50,6 +489,7 @@
         <h6 class="eyebrow mb-3">{% trans %}XRPL Ecosystem{% endtrans %}</h6>
       </div>
     </div>
+
     <ul class="card-grid card-grid-3xN ls-none mt-4 pt-2" id="use-case-card-grid">
       {% set uses = [
         
@@ -120,7 +560,6 @@
     </ul>
   </section>
 
-
   <section class="container-new py-26">
     <div class="col-12 col-lg-8 col-xl-6 p-3 mb-5">
       <div class="d-flex flex-column-reverse">
@@ -130,338 +569,10 @@
       <p class="mb-0 longform mt-8-until-sm mt-3 ">{% trans %}There are companies and developer projects around the world that leverage the XRP Ledger to solve interesting problems across a variety of industries and use cases.{% endtrans %}</p>
     </div>
 
-    {% set cards = [
-      {
-        "id": "",
-        "title": _("Aesthetes"),
-        "description": _("Aesthetes is a bridge between fine art and blockchain, enabling everyone, around the world, to buy and sell with just a click for fractional ownership of international physical art."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://aesthetes.art/",
-      },
-      {
-        "id": "",
-        "title": _("Anchain.AI"),
-        "description": _("AnChain.AI offers AI-powered intelligence enhancing blockchain security, risk, and compliance strategies."),
-        "category_id": "security",
-        "category_name": "Security",
-        "link": "https://anchain.ai",
-      },
-      {
-        "id": "",
-        "title": _("Anifie"),
-        "description": _("Anifie is an interactive event and immersive metaverse that provides a one-stop solution for brands who want to monetize their digital content IP."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://anifie.com/",
-      },
-      {
-        "id": "",
-        "title": _("Audiotarky"),
-        "description": _("Audiotarky is a new music streaming platform that prioritises artists and privacy over algorithms and shareholders."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://www.audiotarky.com/",
-      },
-      {
-        "id": "",
-        "title": _("Bithomp"),
-        "description": _("Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency exchanges. Bithomp was launched in 2015 with a mission to build the most user-friendly XRPL explorer."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://bithomp.com/",
-      },
-      {
-        "id": "",
-        "title": _("Blockchain Benchmarking Framework"),
-        "description": _("Blockchain Benchmarking Framework focuses on the development of a user-friendly UI that abstracts the underlying complexities of blockchain technology."),
-        "category_id": "developer_tooling",
-        "category_name": "Developer Tooling",
-        "link": "https://github.com/UNIC-IFF/blockchain-benchmarking-framework/",
-      },
-      {
-        "id": "",
-        "title": _("Carbonland Trust"),
-        "description": _("Carbonland Trust offers transparent nature-based carbon credits, and inclusive access to voluntary carbon markets for landowners and corporations alike. "),
-        "category_id": "sustainability",
-        "category_name": "Sustainability",
-        "link": "https://www.carbonlandtrust.com/",
-      },
-      {
-        "id": "",
-        "title": _("Casino Coin"),
-        "description": _("CasinoCoin (CSC) is a digital currency developed specifically for the regulated gaming industry."),
-        "category_id": "other",
-        "category_name": "Other",
-        "link": "https://casinocoin.im/",
-      },
-      {
-        "id": "",
-        "title": _("Coil"),
-        "description": _("Coil provides better ways to access and reward the creators, publishers and platforms that create the content people love."),
-        "category_id": "web_monetization",
-        "category_name": "Web Monetization",
-        "link": "https://coil.com/",
-      },
-      {
-        "id": "",
-        "title": _("Cryptum"),
-        "description": _("Cryptum is an API/SDK platform for integrating the XRP Ledger with any application."),
-        "category_id": "developer_tooling",
-        "category_name": "Developer Tooling",
-        "link": "https://blockforce.in/products/cryptum",
-      },
-      {
-        "id": "",
-        "title": _("Evernode"),
-        "description": _("Evernode proposes a permissionless, flexible, scalable Layer 2 smart contract network built from the XRP Ledger."),
-        "category_id": "developer_tooling",
-        "category_name": "Developer Tooling",
-        "link": "https://evernode.wordpress.com/",
-      },
-      {
-        "id": "",
-        "title": _("Gatehub XRP Ledger Markets"),
-        "description": _("Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://gatehub.net/markets",
-      },
-      {
-        "id": "",
-        "title": _("Junkiverse"),
-        "description": _("Junkiverse is a collection of unique 3D Voxel characters that serve digital identity in genre-breaking MMORPG."),
-        "category_id": "gaming",
-        "category_name": "Gaming",
-        "link": "https://xrpjunkies.club/",
-      },
-      {
-        "id": "",
-        "title": _("Ledger City"),
-        "description": _("Ledger City is a crypto real estate game powered by the XRP Ledger."),
-        "category_id": "gaming",
-        "category_name": "Gaming",
-        "link": "https://ledgercitygame.com/",
-      },
-      {
-        "id": "",
-        "title": _("Mint NFT"),
-        "description": _("mintNFT is a premium studio and marketplace for NFTs that makes collecting NFTs simple, safe and social."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://mintnft.com/",
-      },
-      {
-        "id": "",
-        "title": _("Multichain"),
-        "description": _("Multichain is the ultimate Router for web3. It is an infrastructure developed for arbitrary cross-chain interactions."),
-        "category_id": "interoperability",
-        "category_name": "Interoperability",
-        "link": "https://multichain.org/",
-      },
-      {
-        "id": "",
-        "title": _("NFT Master"),
-        "description": _("NFT Master is an NFT marketplace where creators can buy, mint and sell NFTs."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://nftmaster.com/",
-      },
-      {
-        "id": "",
-        "title": _("OnTheDex"),
-        "description": _("OnTheDex is a quality source of information for aggregator sites to take live feeds of XRPL token activity."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://onthedex.live/",
-      },
-      {
-        "id": "",
-        "title": _("onXRP"),
-        "description": _("onXRP is an NFT marketplace where creators can buy, mint and sell NFTs built by the XPUNKs."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://onxrp.com/about/",
-      },
-      {
-        "id": "",
-        "title": _("Palisade"),
-        "description": _("Palisade is a secure, regulated, and insured multi-chain custody platform paired with a non-custodial mobile app intended as a day-to-day wallet."),
-        "category_id": "custody",
-        "category_name": "Custody",
-        "link": "https://www.palisade.co/",
-      },
-      {
-        "id": "",
-        "title": _("Peerkat"),
-        "description": _("Peerkat is an NFT services and tooling provider for the XRPL community."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://peerkat.io/",
-      },
-      {
-        "id": "",
-        "title": _("Ripple Reefs"),
-        "description": _("The RippleReefs project features a 10,000 piece NFT collection that will directly enable the community to support the conservation of oceans and marine life."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://linktr.ee/RippleReefs",
-      },
-      {
-        "id": "",
-        "title": _("Sologenic DEX"),
-        "description": _("Sologenic DEX is a popular decentralized exchange on the XRP Ledger made by Sologenic."),
-        "category_id": "exchanges",
-        "category_name": "Exchanges",
-        "link": "https://sologenic.org/",
-      },
-      {
-        "id": "",
-        "title": _("Sologenic NFT"),
-        "description": _("Sologenic NFT is an NFT marketplace designed by Sologenic."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://sologenic.org/nfts/marketplace?network=mainnet",
-      },
-      {
-        "id": "",
-        "title": _("Sologenic XRPL Trading Data"),
-        "description": _("Sologenic XRPL Trading Data is an API that is currently being used in the Sologenic DEX production environment."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://github.com/sologenic/xrpl-trading-data",
-      },
-      {
-        "id": "",
-        "title": _("Trustline"),
-        "description": _("Trustline is a new startup developing new ways to represent assets on the XRPL."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://trustline.co/",
-      },
-      {
-        "id": "",
-        "title": _("X-tokenize"),
-        "description": _("X-Tokenize is a command line tool to simplify the process of creating, managing and distributing issued currencies and eventually NFTs on the XRPL."),
-        "category_id": "developer_tooling",
-        "category_name": "Developer Tooling",
-        "link": "https://x-tokenize.com/",
-      },
-      {
-        "id": "",
-        "title": _("xMochiDonuts"),
-        "description": _("xMochiDonuts is an NFT collection made exclusively for the XRPL community."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://linktr.ee/xMochiDonuts",
-      },
-      {
-        "id": "",
-        "title": _("XP Market"),
-        "description": _("XP Market is a price-tracking website for cryptoassets on the XRPL coupled with a decentralized exchange."),
-        "category_id": "exchanges",
-        "category_name": "Exchanges",
-        "link": "https://xpmarket.com/",
-      },
-      {
-        "id": "",
-        "title": _("Xpunks"),
-        "description": _("Xpunks is an NFT collection with a limited series of 10,000 NFTs generated on the XRP Ledger."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://xpunks.club/",
-      },
-      {
-        "id": "",
-        "title": _("XRP Cafe"),
-        "description": _("XRP Cafe is an NFT marketplace built by the community that aims to be the easiest way to build, sell and mint NFTs."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://xrp.cafe/",
-      },
-      {
-        "id": "",
-        "title": _("XRP Toolkit"),
-        "description": _("XRP Toolkit is a platform for managing crypto assets and trading on the XRP Ledger's decentralized exchange."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://www.xrptoolkit.com/",
-      },
-      {
-        "id": "",
-        "title": _("XRPL Foundation"),
-        "description": _("The XRP Ledger Foundation is an independent non-profit entity which works to support development and usage of the XRP Ledger."),
-        "category_id": "other",
-        "category_name": "Other",
-        "link": "https://foundation.xrpl.org/",
-      },
-      {
-        "id": "",
-        "title": _("XRPL Merch"),
-        "description": _("XRPL Merch is a XRPL focused merch shop."),
-        "category_id": "other",
-        "category_name": "Other",
-        "link": "https://xrplmerch.com/",
-      },
-      {
-        "id": "",
-        "title": _("XRPL Rosetta"),
-        "description": _("XRPL Rosetta explores fiat data on XRPL through visualization."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://threexrp.dev/",
-      },
-      {
-        "id": "",
-        "title": _("XRPL.org Ledger Explorer"),
-        "description": _("XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://livenet.xrpl.org/",
-      },
-      {
-        "id": "",
-        "title": _("XRPScan"),
-        "description": _("XRPSCAN is an explorer and analytics platform for the XRP Ledger. We provide a clean and simple way to look up accounts, ledgers and transactions."),
-        "category_id": "infrastructure",
-        "category_name": "Infrastructure",
-        "link": "https://xrpscan.com/",
-      },
-      {
-        "id": "",
-        "title": _("xShrooms"),
-        "description": _("xShrooms is an NFT collection with 10,000 unique collectible xshrooms minted as NFTs on the XRP Ledger."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://xshrooms.art/",
-      },
-      {
-        "id": "",
-        "title": _("xSPECTAR"),
-        "description": _("xSPECTAR is the Xclusive Society in the metaverse for the protection of equity, currencies, tokens, assets and realty on the XRPL."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://xspectar.com/",
-      },
-      {
-        "id": "",
-        "title": _("Xumm Wallet"),
-        "description": _("Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger."),
-        "category_id": "wallet",
-        "category_name": "Wallet",
-        "link": "https://xumm.app/#team",
-      },
-      {
-        "id": "",
-        "title": _("Yoniverse"),
-        "description": _("The purpose of the Yonix art collective is to give creatives the possibility to join together in creating collective value. They create art, music, comics and phygitals."),
-        "category_id": "nfts",
-        "category_name": "NFTs",
-        "link": "https://linktr.ee/yoniverse.one",
-      },
-
-    ] %}
-
+    <a class="btn  d-block d-lg-none" data-toggle="modal" data-target="#categoryFilterModal">
+      <span class="mr-3"><img src="./assets/img/uses/usecase-filter.svg" class=""></span>Filter by Categories <span class="ml-3 total_count category_count">2</span>
+    </a>
+    
 <!-- temp -->
 <style>
   .card-title {
@@ -533,58 +644,40 @@
       padding: 24px;
     }
 
-
   }
 
 </style>
 
 <!-- // TODO:rename events- css  -->
 
+<!-- Start company cards -->
     <div class="row col-12 m-0 p-0 mt-4 pt-2">
-      <div class="col-3 m-0 p-0 mt-2 d-none d-lg-block">
+      <div class="left col-3 m-0 p-0 mt-2 d-none d-lg-block">
 
-        {% set featured_categories = [
-            "Infrastructure",
-            "Developer Tooling",
-        ] %}
-
-        {% set other_categories = [
-            "Interoperability",
-            "Wallet",
-            "NFTs",
-            "Exchanges",
-            "Gaming",
-            "Security",
-            "Payments",
-            "Web Monetization",
-            "Sustainability",
-            "CBDCs",
-            "Custody",
-            "DeFi",
-            "Other",
-        ] %}
-
+<!-- Side bar Desktop.  -->
         <div class="p-3 page-events">
             <form >
-              <p class="category-header mb-4">Featured Categories <span id="featured_count" class="category_count">2</span></p>
-                {% for category in featured_categories %}
+              <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
+                {% for category_id, category_name in featured_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
-                      <input class="events-filter" type="checkbox" name="categories" id="input_{{category}}" value="{{category}}" checked>
-                      <label for="input_{{category}}">{{ category }}</label>
+                      <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}" checked>
+                      <label for="input_{{category_id}}">{{ category_name }}</label>
                   </div>
                 {% endfor %}
-
+  
               <br><br>
-
-              <p class="category-header pt-4 mt-3 mb-4">Other Categories <span id="other_count" class="category_count">2</span></p>    
-                {% for category in other_categories %}
+  
+              <p class="category-header pt-4 mt-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
+                {% for category_id, category_name in other_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
-                      <input class="events-filter" type="checkbox" name="categories" id="input_{{category}}" value="{{category}}">
-                      <label for="input_{{category}}">{{ category }}</label>
+                      <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}">
+                      <label for="input_{{category_id}}">{{ category_name }}</label>
                   </div>
                 {% endfor %}
             </form>
         </div>
+<!-- End sidebar desktop -->
+
       </div>
 
       <!-- cards -->
@@ -602,9 +695,13 @@
         {% endfor %}
 
       </div>
-    </div>
+      <!-- end cards -->
+
+    </div> 
+    <!-- end company cards -->
 
   </section>
+
 </div>
 
 {% endblock %}

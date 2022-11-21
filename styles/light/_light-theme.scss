@@ -567,6 +567,22 @@ pre code {
 
 // Use Cases & Featured Projects page
 .page-uses {
+
+  .card-body {
+    background: #FFFFFF;
+
+    color: #343437
+  }
+
+  .modal-footer,
+  .modal-header {
+    background-color: #FCFCFD;
+  }
+
+
+
+  
+
   @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
     ##{$usecase} {
       content: url("../img/icons/lightmode/#{$usecase}.svg");
