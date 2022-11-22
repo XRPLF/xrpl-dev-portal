@@ -23,10 +23,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 1. Open `7.batch-minting.html` in a browser.
 2. Get a test account.
-    1. If you want to use an existing NFT-Devnet account seed:
+    1. If you want to use an existing account seed:
         1. Paste the account seed in the **Seed** field.
         2. Click **Get Account from Seed**.
-    2. If you do not want to use an existing NFT-Devnet account seed, click **Get New Standby Account**.
+    2. If you do not want to use an existing account seed, click **Get New Standby Account**.
 
 **Note:** Running this command throws an error in the JavaScript console because the `getAccountsFromSeeds` function in `ripplex1-send-xrp.js` looks for the operational seed field, which is not included in this form. You can ignore the error (or fix it in your own implementation).
 
@@ -360,9 +360,6 @@ For this form:
     <h1>Token Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
-      <input type="radio" id="xls" name="server"
-        value="wss://xls20-sandbox.rippletest.net:51233" checked>
-      <label for="xls20">XLS20-NFT</label>
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233">

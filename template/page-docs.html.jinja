@@ -58,7 +58,7 @@
       <h2 class="h4">{% trans %}Article types{% endtrans %}</h2>
       <h6 class="eyebrow mb-3">{% trans %}Dive In{% endtrans %}</h6>
     </div>
-    {% set curated_cards = currentpage.children|selectattr("html","ne","by-label.html")|selectattr("html","ne","faq.html")|map(attribute="html")|list %}
+    {% set curated_cards = currentpage.children|selectattr("html","ne","by-label.html")|selectattr("html","ne","faq.html")|selectattr("html","ne","https://learn.xrpl.org/")|selectattr("html","ne","dev-tools.html")|map(attribute="html")|list %}
     {% set mobile_cols = 1 %}
     {% set show_blurbs = True %}
     {% include 'component-curated-cards.html.jinja' %}
@@ -91,7 +91,6 @@
       <ul class="nav flex-column">
         <li class="nav-item"><a href="nft-conceptual-overview.html" class="nav-link">NFT Conceptual Overview</a></li>
         <li class="nav-item"><a href="nftoken.html" class="nav-link">NFToken Format</a></li>
-        <li class="nav-item"><a href="nftoken-tester-tutorial.html" class="nav-link">NFToken Tester Tutorial</a></li>
       </ul>
     </div>
   </div>
@@ -109,7 +108,7 @@
     {% set depth = 6 %}
     {% set show_blurbs = False %}
     <div class="col-md-6 mt-20">
-      <a href="{{target.prefix}}{{page.html}}"><h5 class="mb-3">{{page.name}}</h5></a>
+      <a href="{% if '//' not in page.html %}{{target.prefix}}{% endif %}{{page.html}}"><h5 class="mb-3">{{page.name}}</h5></a>
       {% include 'children.html' %}
     </div>
     {% endfor %}

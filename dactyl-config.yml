@@ -234,9 +234,7 @@ pages:
         redirect_url: run-rippled-as-a-stock-server.html
         targets:
             - en
-        # This redirect needs to be added to the Japanese target *after*
-        # renaming the original file in that target and translating the changes
-        #    - ja
+            - ja
 
     -   name: Use Cases & Featured Projects
         template: page-uses.html.jinja
@@ -400,7 +398,7 @@ pages:
             - intro-to-consensus.html
             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
-        popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
+        popular_pages: # TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
             - reserves.html
             - xrp-testnet-faucet.html
@@ -437,14 +435,14 @@ pages:
             - intro-to-consensus.html
             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
-        popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
+        popular_pages: # TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
             - reserves.html
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
             - intro-to-consensus.html
-        blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
+        blurb: Dive into XRP Ledger technology and start integrating. # TODO: translate
         filters:
             - labels
         targets:
@@ -914,6 +912,7 @@ pages:
         targets:
             - en
 
+    # TODO: update translation
     -   md: concepts/consensus-network/negative-unl.ja.md
         targets:
             - ja
@@ -1069,10 +1068,12 @@ pages:
     -   md: concepts/interoperability/xrpl-interoperability.md
         targets:
             - en
+            - ja
 
     -   md: concepts/interoperability/intro-to-evm-sidechain.md
         targets:
             - en
+            - ja
 
     -   name: Hooks
         html: https://xrpl-hooks.readme.io/
@@ -1135,41 +1136,49 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
     -   md: tutorials/quickstart/xrpl-quickstart.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/quickstart/create-accounts-send-xrp.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/quickstart/create-trustline-send-currency.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/quickstart/mint-and-burn-nftokens.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/quickstart/transfer-nftokens.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/quickstart/broker-sale.md
         targets:
             - en
             - ja
-            
+
+        # TODO: translate
     -   md: tutorials/quickstart/authorize-minter.md
         targets:
             - en
             - ja
-            
+
+        # TODO: translate
     -   md: tutorials/quickstart/batch-minting.md
         targets:
             - en
@@ -1191,11 +1200,13 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
     -   md: tutorials/get-started/get-started-using-python.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/get-started/get-started-using-java.md
         targets:
             - en
@@ -1503,7 +1514,7 @@ pages:
             - en
             - ja
 
-    #TODO: split concept info off of the paychan tutorial
+    # TODO: split concept info off of the paychan tutorial
     -   md: tutorials/use-specialized-payment-types/use-payment-channels.md
         targets:
             - en
@@ -1591,12 +1602,6 @@ pages:
 
         # TODO: translate
     -   md: tutorials/use-tokens/trade-in-the-decentralized-exchange.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/use-tokens/nftoken-tester-tutorial.md
         targets:
             - en
             - ja
@@ -2058,7 +2063,7 @@ pages:
         targets:
             - en
 
-        #TODO: translate the blurb in this page's frontmatter
+        # TODO: translate the blurb in this page's frontmatter
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
         targets:
             - ja
@@ -2079,6 +2084,7 @@ pages:
         targets:
             - ja
 
+        # TODO: translate title & blurb
     -   name: Manage the Clio Server
         html: manage-the-clio-server.html
         parent: tutorials.html
@@ -2088,11 +2094,13 @@ pages:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/manage-the-clio-server/install-clio-on-ubuntu.md
         targets:
             - en
             - ja
 
+        # TODO: translate title & blurb
     -   name: Interoperability - EVM Sidechain
         html: evm-sidechains.html
         parent: tutorials.html
@@ -2102,26 +2110,31 @@ pages:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/interoperability/get-started-evm-sidechain.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/interoperability/connect-metamask-to-xrpl-evm-sidechain.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/interoperability/join-evm-sidechain-devnet.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/interoperability/evm-sidechain-validator-security.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/interoperability/evm-sidechain-run-a-validator-node.md
         targets:
             - en
@@ -2152,6 +2165,7 @@ pages:
             - ja
 
 
+        # TODO: translate title & blurb
     -   name: XRP Ledger Protocol Reference
         html: protocol-reference.html
         parent: references.html
@@ -2376,8 +2390,6 @@ pages:
     -   md: references/protocol-reference/transactions/transaction-types/transaction-types.ja.md
         targets:
             - ja
-
-    # TODO: translate _snippets/tx-fields-intro.md
 
     -   md: references/protocol-reference/transactions/transaction-types/accountset.md
         targets:
@@ -3004,7 +3016,7 @@ pages:
         html: transaction-methods.html # watch for clashes w/ this filename
         parent: public-api-methods.html
         template: pagetype-category.html.jinja
-        blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions. #TODO:translate
+        blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions. # TODO: translate
         targets:
             - en
 
@@ -3116,10 +3128,11 @@ pages:
         targets:
             - ja
 
+        # TODO: translate title & blurb
     -   name: Payment Channel Methods
         html: payment-channel-methods.html
         parent: public-api-methods.html
-        blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels. #TODO:translate
+        blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels.
         template: pagetype-category.html.jinja
         targets:
             - en
@@ -3141,10 +3154,11 @@ pages:
         targets:
             - ja
 
+        # TODO: translate title & blurb
     -   name: Subscription Methods
         html: subscription-methods.html
         parent: public-api-methods.html
-        blurb: Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. WebSocket API only. #TODO:translate
+        blurb: Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. WebSocket API only.
         template: pagetype-category.html.jinja
         targets:
             - en
@@ -3219,7 +3233,7 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
+        # TODO: translate title & blurb
     -   name: Clio Server Methods
         html: clio-methods.html
         parent: public-api-methods.html
@@ -3247,6 +3261,7 @@ pages:
             - en
             - ja
 
+        # TODO: translate title & blurb
     -   name: Utility Methods
         html: utility-methods.html
         parent: public-api-methods.html
@@ -3339,10 +3354,11 @@ pages:
         targets:
             - en
 
+        # TODO: translate blurb
     -   name: ログとデータ管理のメソッド
         html: logging-and-data-management-methods.html
         parent: admin-api-methods.html
-        blurb: Use these methods to manage log levels and other data, such as ledgers. #TODO: translate
+        blurb: Use these methods to manage log levels and other data, such as ledgers.
         template: pagetype-category.html.jinja
         targets:
             - ja
@@ -3411,7 +3427,7 @@ pages:
         targets:
             - ja
 
-        #TODO: translate title and blurb
+        # TODO: translate title and blurb
     -   name: Server Control Methods
         html: server-control-methods.html
         parent: admin-api-methods.html
@@ -3445,10 +3461,11 @@ pages:
         targets:
             - ja
 
+        # TODO: translate title & blurb
     -   name: Signing Methods
         html: signing-methods.html
         parent: admin-api-methods.html
-        blurb: Use these methods to work with transactions. #TODO:translate
+        blurb: Use these methods to work with transactions.
         template: pagetype-category.html.jinja
         targets:
             - en
@@ -4527,6 +4544,7 @@ known_broken_links:
     - https://xrpl-hackathon-2021.devpost.com/project-gallery
     - https://xrplimpact.devpost.com/
     - https://www.postgresqltutorial.com/install-postgresql-linux/
+    - http://www.investopedia.com/terms/o/order-book.asp
     # This site often times out, but it does work and is the original.
     - https://theworld.com/~reinhold/diceware.html
 

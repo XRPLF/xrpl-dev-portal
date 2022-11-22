@@ -13,7 +13,7 @@ That said, macOS is suitable for many development and testing tasks. `rippled` h
 
 For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
-1. Install [Xcode](https://developer.apple.com/download/). <!-- SPELLING_IGNORE: xcode -->
+1. Install [Xcode](https://developer.apple.com/xcode/). <!-- SPELLING_IGNORE: xcode -->
 
 0. Install Xcode command line tools.
 
@@ -31,7 +31,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         brew install git cmake pkg-config protobuf openssl ninja
 
-0. Install a compatible version of Boost. `rippled` 1.7.2 is compatible with Boost 1.75.0. To compile Boost yourself, complete the following steps:
+0. Install a compatible version of Boost. `rippled` 1.9.4 is compatible with Boost 1.75.0. To compile Boost yourself, complete the following steps:
 
     1. [Download version 1.75.0 of Boost](https://www.boost.org/users/history/version_1_75_0.html).
 
@@ -63,7 +63,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://docs.github.com/en/get-started/quickstart/set-up-git/).
 
-        git clone https://github.com/ripple/rippled.git
+        git clone https://github.com/XRPLF/rippled.git
         cd rippled
 
 0. Switch to the appropriate branch for the software version you want:
@@ -80,9 +80,9 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         git checkout develop
 
-    Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
+    Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/XRPLF/rippled/releases).
 
-0. Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The [release announcements for `rippled`](https://xrpl.org/blog/label/rippled-release-notes.html) generally show the exact commit to expect for that release.
+0. Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known community developer and should set the version number to the latest released version. The [release announcements for `rippled`](https://xrpl.org/blog/label/rippled-release-notes.html) generally show the exact commit to expect for that release.
 
         git log -1
 
