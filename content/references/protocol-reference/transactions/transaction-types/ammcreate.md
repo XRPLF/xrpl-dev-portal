@@ -14,7 +14,7 @@ status: not_enabled
 
 Create a new Automated Market-Maker (AMM) instance for trading a given pair of assets ([fungible tokens](tokens.html) or [XRP](xrp.html)).
 
-If successful, this transaction creates both an [AMM object][] and a [special AccountRoot object](accountroot.html#special-amm-accountroot-objects) which, together, represent the AMM; it also transfers ownership of the starting balance of both assets from the sender to the created `AccountRoot`, and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to this transaction's sender.
+Creates both an [AMM object][] and a [special AccountRoot object](accountroot.html#special-amm-accountroot-objects) to represent the AMM; it also transfers ownership of the starting balance of both assets from the sender to the created `AccountRoot`, and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to this transaction's sender.
 
 **Caution:** When you create the AMM, you should fund it with (approximately) equal-value amounts of each asset. Otherwise, other users can profit at your expense by trading with this AMM ([performing arbitrage](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/#price-arbitrage)). The currency risk that liquidity providers take on increases with the volatility (potential for imbalance) of the asset pair. The higher the trading fee, the more it offsets this risk, so it's best to set the trading fee based on the volatility of the asset pair.
 
@@ -59,9 +59,9 @@ In addition to errors that can occur for all transactions, {{currentpage.name}} 
 | `temBAD_AMM_TOKENS` | The values of `Amount` and `Amount2` are not valid: for example, both refer to the same token. |
 | `temBAD_FEE`        | The `TradingFee` value is invalid. It must be zero or a positive integer and cannot be over 1000. |
 | `terNO_ACCOUNT`     | One of the accounts referenced in the request does not exist. |
-| `terNO_AUTH`        | At least one of `Amount` or `Amount2` requires an [authorized trust line](authorized-trust-lines.html), but the issuer of that token has not authorized the trust line. |
-| `terNO_LINE`        | At least one of `Amount` or `Amount2` requires an [authorized trust line](authorized-trust-lines.html), but no trust line exists. |
-| `tecFROZEN`         | At least one of `Amount` or `Amount2` is currently [frozen](freezes.html). |
+| `tecNO_AUTH`        | The sender is not authorized to hold one of the deposit assets (`Amount` or `Amount2`). |
+| `tecNO_LINE`        | The sender does not have a trust line for one of the deposit assets (`Amount` or `Amount2`). |
+| `tecFROZEN`         | At least one of the deposit assets (`Amount` or `Amount2`) is currently [frozen](freezes.html). |
 | `tecUNFUNDED_AMM`   | The sender does not hold enough money to fund the AMM with the amounts specified in `Amount` and `Amount2`. |
 | `tecAMM_EXISTS`     | There is already another AMM trading this currency pair. |
 

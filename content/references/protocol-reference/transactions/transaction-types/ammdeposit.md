@@ -14,6 +14,8 @@ status: not_enabled
 
 Deposit funds into an Automated Market-Maker (AMM) instance and receive the AMM's liquidity provider tokens (_LP Tokens_) in exchange. You can deposit one or both of the assets in the AMM's pool.
 
+If successful, this transaction creates a [trust line](trust-lines-and-issuing.html) to the AMM Account (limit 0) to hold the LP Tokens.
+
 ## Example {{currentpage.name}} JSON
 
 ```json
@@ -53,10 +55,10 @@ Deposit funds into an Automated Market-Maker (AMM) instance and receive the AMM'
 
 ### AMMDeposit Modes
 
-This transaction has several modes, depending on which flags you specify. Each mode expects a specific combination of fields. The modes fall into two categories: 
+This transaction has five modes, defined by which flag you specify. Each mode expects a specific combination of fields. The modes fall into two categories: 
 
-- **Double-asset deposits**, in which you provide both assets in the AMM's pool in proportions that match the balance of those assets already there. These deposits are not subject to a fee.
-- **Single-asset deposits**, in which you provide only one of the AMM's two assets. You can envision a single-asset deposit as trading _some_ of the deposited asset for the other asset, then performing a double-asset deposit. The trading fee applies to the amount you would need to trade for, but not to the rest of the deposit; the amount of the fee is debited from the LP Tokens paid out. _For example, if the AMM's asset pool is split perfectly evenly between USD and EUR, and you try to deposit 100 USD, the amount of LP Tokens you receive is slightly less than if you had deposited 50 EUR + 50 USD, because you pay the trading fee to convert some of your USD to an equal amount of EUR._
+- **Double-asset deposits**, in which you provide both assets in the AMM's pool, proportional to the balance of the assets already there. These deposits are not subject to a fee.
+- **Single-asset deposits**, in which you provide only one of the AMM's two assets. The AMM charges a fee, debited from the LP Tokens paid out, based on how much your deposit shifts the balance of assets in the pool.
 
 The following combinations of fields indicate a **double-asset deposit**:
 
@@ -76,13 +78,14 @@ The following combinations of fields indicate a **single asset deposit**:
 Any other combination of these fields and flags is invalid.
 
 
-### Single Asset Deposit Fee Calculations
+### Single Asset Deposit Fee
 
-If you deposit one asset, the AMM charges a fee by reducing the total amount of LP Tokens it pays out, weighted by how much your deposit shifts the balance of assets in the pool. This is equivalent to if you had traded part of the deposit amount for the other asset, then performed a double-asset deposit. The formula for how many LP Tokens you receive for a double-asset deposit is as follows:
-
-<!-- TODO: improve graphic -->
+ The fee for a single asset deposit is calculated to be the same as if you had used the AMM to trade part of the deposit amount for the other asset, then performed a double-asset deposit. The AMM's trading fee applies to the amount you would need to trade for, but not to the rest of the deposit. _For example, if the AMM's asset pool is split perfectly evenly between USD and EUR, and you try to deposit 100 USD, the amount of LP Tokens you receive is slightly less than if you had deposited 50 EUR + 50 USD, because you pay the trading fee to convert some of your USD to an equal amount of EUR._
+ 
+ The formula for how many LP Tokens you receive for a double-asset deposit is:
 
 {{ include_svg("img/amm-single-asset-deposit-formula.svg", "L = T × ( (( (B - (F × (1 - W) × B)) ÷ P)^W) - 1)") }}
+<!-- TODO: improve graphic -->
 
 Where:
 
@@ -90,7 +93,7 @@ Where:
 - `T` is the total outstanding LP Tokens before the deposit <!-- TODO: or is it after the deposit? -->
 - `B` is the amount of the asset being deposited
 - `F` is the trading fee, as a decimal
-- `W` is the weight of the deposit asset in the pool <!-- TODO: before the deposit? how is this calculated? -->
+- `W` is the weight of the deposit asset in the pool. This is defined as 0.5 for all AMM pools (meaning a 50/50 split), so exponentiation by W is equivalent to taking the square root.
 - `P` is the total amount of the deposit asset in the pool before the deposit <!-- TODO: or is it after the deposit? -->
 
 ### AMMDeposit Flags
@@ -120,7 +123,10 @@ In addition to errors that can occur for all transactions, {{currentpage.name}} 
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly; for example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields. |
 | `tecAMM_FAILED_DEPOSIT` | The conditions on the deposit could not be satisfied; for example, the requested effective price in the `EPrice` field is too low. |
 | `tecAMM_INVALID_TOKENS` | The AMM for this token pair does not exist, or one of the calculations resulted in a deposit amount rounding to zero. |
-| `tecNO_PERMISSION`      | One of the assets to deposit in this transaction uses [Authorized Trust Lines](authorized-trust-lines.html) but the sender's trust line is not authorized. <!-- TODO: shouldn't this be impossible, since you can't get any amount of a token you aren't authorized to hold? --> |
+| `tecINSUF_RESERVE_LINE` | The sender of this transaction does meet the increased [reserve requirement](reserves.html) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
+| `tecNO_AUTH`            | The sender is not authorized to hold one of the deposit assets. |
+| `tecNO_LINE`            | The sender does not have a trust line for one of the deposit assets. |
+| `tecUNFUNDED_AMM`       | The sender does not have a high enough balance to make the specified deposit. |
 | `terNO_ACCOUNT`         | An account specified in the request does not exist. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
 

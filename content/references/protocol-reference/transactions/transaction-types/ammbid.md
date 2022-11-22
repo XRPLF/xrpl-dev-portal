@@ -12,9 +12,10 @@ status: not_enabled
 
 {% include '_snippets/amm-disclaimer.md' %}
 
-Bid on an Automated Market Maker's (AMM's) auction slot. If this transaction succeeds, you win the bid and can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.
+Bid on an Automated Market Maker's (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.
 
-The price of the auction slot is always denominated in that AMM's LP Tokens; the amount paid is returned to the AMM, decreasing the outstanding balance of LP Tokens.
+You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.
+
 
 ## Example {{currentpage.name}} JSON
 
@@ -74,7 +75,7 @@ Each member of the `AuthAccounts` array must be an object with the following fie
 
 Like other "inner objects" that can appear in arrays, the JSON representation of each of these objects is wrapped in an object whose only key is the object type, `AuthAccount`.
 
-## Slot Price Calculations
+## Auction Slot Price
 
 If successful, the transaction automatically outbids the previous slot owner and debits the bid price from the sender's LP Tokens. The price to win the auction decreases over time, divided into 20 intervals of 72 minutes each. If the sender does not have enough LP Tokens to win the bid, or the price of the bid is higher than the transaction's `BidMax` value, the transaction fails with a `tecAMM_FAILED_BID` result.
 
@@ -101,9 +102,9 @@ If successful, the transaction automatically outbids the previous slot owner and
 
 **Note:** To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the [official close time](ledgers.html#ledger-close-times) of the previous ledger, which is approximate.
 
-## Refunds
+## Bid Refunds
 
-In the case where the transaction outbids the previous slot holder, the AMM refunds the previous holder part of the price of the auction slot. The amount refunded is calculated using the following formula:
+When you outbid an active auction slot, the AMM refunds the previous holder part of the price, using this formula:
 
 ```text
 R = B × (1 - t)
@@ -114,6 +115,8 @@ R = B × (1 - t)
 - `t` is the fraction of time elapsed in the current 24-hour slot, rounded down to a multiple of 0.05.
 
 As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.
+
+**Note:** As with all XRP Ledger times, transaction processing uses the [official close time](ledgers.html#ledger-close-times) of the _previous_ ledger, which can result in a difference of up to about 10 seconds from real time.
 
 
 ## AMM Cases previous holder
