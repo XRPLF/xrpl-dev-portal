@@ -4,7 +4,7 @@
 
 For standard tokens, the tokens paid in the transfer fee are burned, and no longer tracked in the XRP Ledger. If the token is backed by off-ledger assets, this reduces the amount of those assets the issuer has to hold in reserve to meet its obligations in the XRP Ledger. Transfer fees are usually not appropriate for tokens that aren't backed with outside assets.
 
-Non-fungible tokens :not_enabled: can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](non-fungible-tokens.html).
+Non-fungible tokens can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](non-fungible-tokens.html).
 
 The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address][] to another user.
 

@@ -16,12 +16,9 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 |:----------------------------------|:-----------|:------------------------------|
 | [fixTrustLinesToSelf][]           | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixNFTokenNegOffer][]            | v1.9.2     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.2.html "BADGE_80d0e0") |
-| [fixNFTokenDirV1][]               | v1.9.1     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.1.html "BADGE_80d0e0") |
-| [NonFungibleTokensV1][]           | v1.9.0     | [Open for Voting: TBD](https://xrpl.org/blog/2022/rippled-1.9.0.html "BADGE_80d0e0") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
-| [NonFungibleTokensV1_1][]         | v1.9.2     | [Expected: 2022-10-31](https://xrpl.org/blog/2022/expandedsignerlist-enabled-and-nfts-approaching.html "BADGE_BLUE") |
-| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [Expected: 2022-10-27](https://xrpl.org/blog/2022/expandedsignerlist-enabled-and-nfts-approaching.html "BADGE_BLUE") |
+| [NonFungibleTokensV1_1][]         | v1.9.2     | [Enabled: 2022-10-31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
+| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [Enabled: 2022-10-27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
 | [ExpandedSignerList][]            | v1.9.1     | [Enabled: 2022-10-13](https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87 "BADGE_GREEN") |
 | [NegativeUNL][]                   | v1.7.3     | [Enabled: 2021-11-21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
 | [fixRmSmallIncreasedQOffers][]    | v1.7.2     | [Enabled: 2021-11-18](https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7 "BADGE_GREEN") |
@@ -65,6 +62,9 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | [TrustSetAuth][]                  | v0.30.0    | [Enabled: 2016-07-19](https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]                     | v0.31.0    | [Enabled: 2016-06-27](https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]                 | v0.31.0    | [Enabled: 2016-05-19](https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [fixNFTokenNegOffer][]            | v1.9.2     | [Obsolete: To Be Removed]( "BADGE_RED") |
+| [fixNFTokenDirV1][]               | v1.9.1     | [Obsolete: To Be Removed]( "BADGE_RED") |
+| [NonFungibleTokensV1][]           | v1.9.0     | [Obsolete: To Be Removed]( "BADGE_RED") |
 | [CryptoConditionsSuite][]         | v0.60.0    | [Obsolete: To Be Removed]( "BADGE_RED") |
 | [SHAMapV2][]                      | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [FlowV2][]                        | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
@@ -126,7 +126,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 | Amendment | CryptoConditionsSuite |
 |:----------|:-----------|
 | Amendment ID | 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 |
-| Status | Obsolete |
+| Status | Obsolete  |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -529,13 +529,13 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 | Amendment | fixNFTokenDirV1 |
 |:----------|:-----------|
 | Amendment ID | 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 |
-| Status | Open for Voting |
+| Status | Obsolete |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` a `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
 
-This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. To avoid bugs, all the NFT-related amendments should be enabled together using [NonFungibleTokensV1_1][].
+This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. This amendment is obsolete because its effects are included as part of [NonFungibleTokensV1_1][].
 
 
 ## fixNFTokenNegOffer
@@ -550,7 +550,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 
 This amendment fixes a bug in the [NonFungibleTokensV1][] amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell a `NFToken` for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.
 
-This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. To avoid bugs, all the NFT-related amendments should be enabled together using [NonFungibleTokensV1_1][].
+This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. This amendment is obsolete because its effects are included as part of [NonFungibleTokensV1_1][].
 
 
 ## fixPayChanRecipientOwnerDir
@@ -589,7 +589,7 @@ This amendment has no known impact on transaction processing.
 | Amendment | fixRemoveNFTokenAutoTrustLine |
 |:----------|:-----------|
 | Amendment ID | DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD |
-| Status | Expected  |
+| Status | Enabled   |
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
@@ -597,11 +597,9 @@ Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.h
 
 Without this amendment, an attacker could create new, meaningless fungible tokens and sell a `NFToken` back and forth for those tokens, creating numerous useless trust lines tied to the issuer and increasing the issuer's reserve requirement.
 
-This amendment does not change the code for `NFToken` objects that have already been minted. On test networks that already have NonFungibleTokensV1_1 enabled, this means that issuers who have already minted NFTokens with the `tfTrustLine` flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.
+This amendment does not change the code for `NFToken` objects that have already been minted. On test networks that enabled NFT support before this amendment, issuers who have already minted NFTokens with the `tfTrustLine` flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.
 
-This amendment has no effect unless [NonFungibleTokensV1][] or [NonFungibleTokensV1_1][] is also enabled.
-
-To protect issuers, this amendment should be enabled _before_ [NonFungibleTokensV1][] or [NonFungibleTokensV1_1][].
+This amendment has no effect unless either [NonFungibleTokensV1][] or [NonFungibleTokensV1_1][] is enabled. To protect issuers, this amendment should be enabled _before_ [NonFungibleTokensV1][] or [NonFungibleTokensV1_1][].
 
 
 ## fixRmSmallIncreasedQOffers
@@ -802,13 +800,13 @@ Implements a "Negative UNL" system, where the network can track which validators
 | Amendment | NonFungibleTokensV1 |
 |:----------|:-----------|
 | Amendment ID | 3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87 |
-| Status | Open for Voting |
+| Status | Obsolete |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds native support for non-fungible tokens. Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
+Adds native support for [non-fungible tokens](non-fungible-tokens.html). Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
 
-**Warning:** There is a known issue with this amendment that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. The [fixNFTokenDirV1][] amendment fixes these issues and should be enabled before the NonFungibleTokensV1 amendment to avoid problems.
+**Warning:** There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment][].
 
 This amendment adds 5 new transaction types:
 
@@ -834,19 +832,21 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 | Amendment | NonFungibleTokensV1_1 |
 |:----------|:-----------|
 | Amendment ID | 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 |
-| Status | Expected  |
+| Status | Enabled   |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment's only effect is to enable three other amendments at the same time:
+Adds native support for [non-fungible tokens](non-fungible-tokens.html), including fixes to several issues that were discovered after [NonFungibleTokensV1][].
+
+This amendment combines the effects of the following amendments, rendering the individual amendments obsolete:
 
 - [NonFungibleTokensV1][]
 - [fixNFTokenNegOffer][]
 - [fixNFTokenDirV1][]
 
-This ensures that the base NFT functionality and the related fixes all become enabled together, with no chance for the buggy functionality to become enabled without the fixes and no delay needed in between.
+It has no other effects.
 
-Validators who wish to enable Non-Fungible Tokens (NFTs) on the XRP Ledger should vote in favor of this amendment and not the others.
+**Caution:** The [fixRemoveNFTokenAutoTrustLine][] fixes an known issue with this amendment. When creating a new test network, you should make sure that these amendments should be enabled together or the fix amendment is enabled first.
 
 
 ## OwnerPaysFee

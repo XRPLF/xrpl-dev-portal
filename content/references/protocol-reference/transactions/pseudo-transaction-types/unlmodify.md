@@ -28,8 +28,6 @@ A `UNLModify` [pseudo-transaction](pseudo-transaction-types.html) marks a change
 }
 ```
 
-## {{currentpage.name}} Fields
-
 {% include '_snippets/pseudo-tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 

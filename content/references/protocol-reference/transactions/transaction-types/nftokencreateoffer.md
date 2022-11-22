@@ -4,14 +4,15 @@ parent: transaction-types.html
 blurb: Create an offer to buy or sell NFTs.
 labels:
  - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFTokenCreateOffer
-{% include '_snippets/nfts-disclaimer.md' %}
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenCreateOffer.cpp "Source")
 
 Creates either a new _Sell_ offer for an `NFToken` owned by the account executing the transaction, or a new _Buy_ offer for an `NFToken` owned by another account.
 
 If successful, the transaction creates a [NFTokenOffer object][]. Each offer counts as one object towards the [owner reserve](reserves.html) of the account that placed the offer.
+
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## Example {{currentpage.name}} JSON
 

@@ -1,7 +1,11 @@
 <div class="top-banner fixed-top"> 
-  <div class="d-md-flex justify-content-center">
-    <span><p class="mb-0">{% trans %}Learn how to build on the XRP Ledger.{% endtrans %}</p></span>
-    <span><a href="https://learn.xrpl.org/" target="_blank" class="btn btn-outline-secondary">Start Learning</a></span>
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">{% trans %}Native NFT support is now available on the XRP Ledger{% endtrans %}</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">{% trans %}Native NFT support is now available{% endtrans %}</p></span>
+    <span><p class="mb-0">{% trans %}on the XRP Ledger{% endtrans %}<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -79,7 +83,6 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!--{#TEMPORARILY DISABLED: language selector (many common pages are mostly untranslated right now)
     <div class="nav-item" id="topnav-language">
       <div class="dropdown">
         <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,7 +100,6 @@
         </div><!--/.dropdown-menu-->
       </div><!--/.dropdown-->
     </div><!--/.language-selector-->
-#}-->
 
     {% if target.light_theme_enabled %}
     <div class="nav-item" id="topnav-theme">

@@ -94,7 +94,7 @@ Tokens can represent a wide variety of assets, including those typically measure
 
 When sending token amounts in the XRP Ledger's peer-to-peer network, servers [serialize](serialization.html) the amount to a 64-bit binary value.
 
-**Note:** Native support for [Non-Fungible Tokens (NFTs) :not_enabled:](non-fungible-tokens.html) is currently in an experimental state. There are also deprecated, alternative standards for implementing NFTs without changes to the XRP Ledger protocol, including [XLS-14d](https://github.com/XRPLF/XRPL-Standards/discussions/30) and [XLS-19d](https://github.com/XRPLF/XRPL-Standards/discussions/40). <!-- SPELLING_IGNORE: xls, 14d, 19d -->
+**Tip:** For tokens that should not be divisible at all, see [Non-Fungible Tokens (NFTs)](non-fungible-tokens.html).
 
 ## Currency Codes
 [Currency Code]: #currency-codes

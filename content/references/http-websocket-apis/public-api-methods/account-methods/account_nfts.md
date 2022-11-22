@@ -4,14 +4,13 @@ parent: account-methods.html
 blurb: Get a list of all NFTs for an account.
 labels:
   - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # account_nfts
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
 The `account_nfts` method returns a list of `NFToken` objects for the specified account.
 
-{% include '_snippets/nfts-disclaimer.md' %}
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## Request Format
 An example of the request format:

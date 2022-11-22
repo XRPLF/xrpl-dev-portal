@@ -6,23 +6,29 @@ filters:
  - include_code
 labels:
  - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFTokenOffer
-{% include '_snippets/nfts-disclaimer.md' %}
 
 Tokens that have the `lsfTransferable` flag set can be transferred among participants using offers. The `NFTokenOffer` object represents an offer to buy, sell or transfer an `NFToken` object. The owner of a `NFToken` can use `NFTokenCreateOffer` to start a transaction.
 
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
-### `NFTokenOfferID` Format
+## Example {{currentpage.name}} JSON
 
-The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of the following values concatenated in order:
-
-
-
-* The `NFTokenOffer` space key, `0x0074`;
-* The `AccountID` of the account placing the offer; and
-* The `Sequence` (or `Ticket`) of the `NFTokenCreateOffer` transaction that will create the `NFTokenOffer`.
+```json
+{
+    "Amount": "1000000",
+    "Flags": 1,
+    "LedgerEntryType": "NFTokenOffer",
+    "NFTokenID": "00081B5825A08C22787716FA031B432EBBC1B101BB54875F0002D2A400000000",
+    "NFTokenOfferNode": "0",
+    "Owner": "rhRxL3MNvuKEjWjL7TBbZSDacb8PmzAd7m",
+    "OwnerNode": "17",
+    "PreviousTxnID": "BFA9BE27383FA315651E26FDE1FA30815C5A5D0544EE10EC33D3E92532993769",
+    "PreviousTxnLgrSeq": 75443565,
+    "index": "AEBABA4FAC212BF28E0F9A9C3788A47B085557EC5D1429E7A8266FB859C863B3"
+}
+```
 
 
 ### `NFTokenOffer` Fields
@@ -77,6 +83,15 @@ Each token has two directories. One contains offers to buy the token and the oth
 ### `NFTokenOffer` Reserve
 
 Each `NFTokenOffer` object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer.
+
+
+### `NFTokenOfferID` Format
+
+The unique ID (`NFTokenOfferID`) of the `NFTokenOffer` object is the result of the following values concatenated in order:
+
+* The `NFTokenOffer` space key, `0x0074`;
+* The `AccountID` of the account placing the offer; and
+* The `Sequence` (or `Ticket`) of the `NFTokenCreateOffer` transaction that will create the `NFTokenOffer`.
 
 
 <!--{# common link defs #}-->

@@ -4,12 +4,13 @@ parent: transaction-types.html
 blurb: Cancel existing token offers to buy or sell an NFToken.
 labels:
   - NFTs, Non-fungible Tokens
-status: not_enabled
 ---
 # NFTokenCancelOffer
-{% include '_snippets/nfts-disclaimer.md' %}
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenCancelOffer.cpp "Source")
 
 The `NFTokenCancelOffer` transaction can be used to cancel existing token offers created using `NFTokenCreateOffer`.
+
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## Example {{currentpage.name}} JSON
 

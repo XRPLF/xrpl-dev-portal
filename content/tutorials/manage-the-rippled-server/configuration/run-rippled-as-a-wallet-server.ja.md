@@ -1,5 +1,5 @@
 ---
-html: run-rippled-as-a-wallet-server.html
+html: run-rippled-as-a-stock-server.html
 parent: configure-rippled.html
 blurb: XRPを統合する人のための汎用的な構成。
 labels:

@@ -82,7 +82,9 @@ Edit your `rippled.cfg` file.
 
     <!-- MULTICODE_BLOCK_END -->
 
-    **Note:** This setting is optional, and does not strictly define which network your server follows, but it helps servers find peers who are following the same network.
+    For sidechains and custom networks, everyone who connects to the network should use a value unique to that network. When creating a new network, choose a network ID at random from the integers 11 to 4,294,967,295.
+
+    **Note:** This setting helps your server find peers who are on the same network, but it is not a hard control on what network your server follows. The UNL / trusted validator settings (in the next step) are what actually define what network the server follows.
 
 ## 2. Set your trusted validator list.
 

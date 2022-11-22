@@ -4,14 +4,13 @@ parent: path-and-order-book-methods.html
 blurb: Get a list of all buy offers for a NFToken.
 labels:
   - Non-fungible Tokens, NFTs, NFTokens
-status: not_enabled
 ---
 # nft_buy_offers
-[[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/rpc/handlers/NFTOffers.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/NFTOffers.cpp "Source")
 
 The `nft_buy_offers` method returns a list of buy offers for a given [NFToken][] object.
 
-{% include '_snippets/nfts-disclaimer.md' %}
+_(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## Request Format
 An example of the request format:

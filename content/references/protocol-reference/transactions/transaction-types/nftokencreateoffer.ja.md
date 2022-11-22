@@ -4,14 +4,14 @@ parent: transaction-types.html
 blurb: NFTの売買のオファーを作成する。
 labels:
   - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 # NFTokenCreateOffer
-{% include '_snippets/nfts-disclaimer.md' %}
 
 トランザクションを送信するアカウントが所有する `NFToken` に対する新しい _売却_ オファー、または別のアカウントが所有する `NFToken` に対する新しい _購入_ オファー を作成します。
 
 成功した場合、トランザクションは[NFTokenOfferオブジェクト][]を作成します。各オファーは、オファーを提示したアカウントの [所有者準備金](reserves.html) に関連づけて1つのオブジェクトとしてカウントされます。
+
+_([NonFungibleTokensV1_1 amendment][]が必要です)_
 
 ## {{currentpage.name}} JSONの例
 
