@@ -218,7 +218,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ammbid.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -256,8 +270,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-ammbid-json">Example AMMBid JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ammbid-fields">AMMBid Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#authaccount-objects">AuthAccount Objects</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#slot-price-calculations">Slot Price Calculations</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#refunds">Refunds</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#auction-slot-price">Auction Slot Price</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#bid-refunds">Bid Refunds</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-cases-previous-holder">AMM Cases previous holder</a></li>
       </ul>
   </div>
@@ -285,9 +299,9 @@
         <h1 id="ammbid">AMMBid<a aria-hidden="true" class="hover_anchor" href="#ammbid"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMBid.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- TODO: Update source link to merged version when available -->
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there is not yet an official amendment and they are not yet available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
-<p>Bid on an Automated Market Maker's (AMM's) auction slot. If this transaction succeeds, you win the bid and can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.</p>
-<p>The price of the auction slot is always denominated in that AMM's LP Tokens; the amount paid is returned to the AMM, decreasing the outstanding balance of LP Tokens.</p>
+<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
+<p>Bid on an Automated Market Maker's (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.</p>
+<p>You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.</p>
 <h2 id="example-ammbid-json">Example AMMBid JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammbid-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span><span class="w"></span>
@@ -322,7 +336,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="ammbid-fields">AMMBid Fields<a aria-hidden="true" class="hover_anchor" href="#ammbid-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a AMMBid transaction uses the following fields:</p>
+<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, AMMBid transactions use the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -395,7 +409,7 @@
 </tbody>
 </table>
 <p>Like other "inner objects" that can appear in arrays, the JSON representation of each of these objects is wrapped in an object whose only key is the object type, <code>AuthAccount</code>.</p>
-<h2 id="slot-price-calculations">Slot Price Calculations<a aria-hidden="true" class="hover_anchor" href="#slot-price-calculations"><i class="fa fa-link"></i></a></h2>
+<h2 id="auction-slot-price">Auction Slot Price<a aria-hidden="true" class="hover_anchor" href="#auction-slot-price"><i class="fa fa-link"></i></a></h2>
 <p>If successful, the transaction automatically outbids the previous slot owner and debits the bid price from the sender's LP Tokens. The price to win the auction decreases over time, divided into 20 intervals of 72 minutes each. If the sender does not have enough LP Tokens to win the bid, or the price of the bid is higher than the transaction's <code>BidMax</code> value, the transaction fails with a <code>tecAMM_FAILED_BID</code> result.</p>
 <ul>
 <li>
@@ -421,8 +435,8 @@
 </li>
 </ul>
 <p class="devportal-callout note"><strong>Note:</strong> To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the <a href="ledgers.html#ledger-close-times">official close time</a> of the previous ledger, which is approximate.</p>
-<h2 id="refunds">Refunds<a aria-hidden="true" class="hover_anchor" href="#refunds"><i class="fa fa-link"></i></a></h2>
-<p>In the case where the transaction outbids the previous slot holder, the AMM refunds the previous holder part of the price of the auction slot. The amount refunded is calculated using the following formula:</p>
+<h2 id="bid-refunds">Bid Refunds<a aria-hidden="true" class="hover_anchor" href="#bid-refunds"><i class="fa fa-link"></i></a></h2>
+<p>When you outbid an active auction slot, the AMM refunds the previous holder part of the price, using this formula:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">R = B × (1 - t)
 </code></pre></div>
 <ul>
@@ -431,6 +445,7 @@
 <li><code>t</code> is the fraction of time elapsed in the current 24-hour slot, rounded down to a multiple of 0.05.</li>
 </ul>
 <p>As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.</p>
+<p class="devportal-callout note"><strong>Note:</strong> As with all XRP Ledger times, transaction processing uses the <a href="ledgers.html#ledger-close-times">official close time</a> of the <em>previous</em> ledger, which can result in a difference of up to about 10 seconds from real time.</p>
 <h2 id="amm-cases-previous-holder">AMM Cases previous holder<a aria-hidden="true" class="hover_anchor" href="#amm-cases-previous-holder"><i class="fa fa-link"></i></a></h2>
 <p>In addition to errors that can occur for all transactions, AMMBid transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
@@ -936,6 +951,23 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+
+        <a class="nav-link" href="/ja/xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1401,7 +1433,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-wallet-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
   </div>
 
       

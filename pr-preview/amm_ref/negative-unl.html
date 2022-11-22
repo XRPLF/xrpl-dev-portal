@@ -211,7 +211,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/negative-unl.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -248,7 +262,6 @@
         <li class="nav-item level-1"><a class="nav-link" href="#negative-unl">Negative UNL</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#background">Background</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#summary">Summary</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#enabling-the-negative-unl-for-testing">Enabling the Negative UNL for Testing</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#how-it-works">How It Works</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#reliability-measurement">Reliability Measurement</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#modifying-the-negative-unl">Modifying the Negative UNL</a></li>
@@ -290,8 +303,6 @@
 <p>In cases where validators go offline one or two at a time, the remaining validators can use the Negative UNL to gradually adjust their effective UNLs, so that the network only ever needs 80% of the <em>online</em> validators to achieve a quorum. To prevent the network from fragmenting, the quorum has a hard minimum of 60% of <em>total</em> validators.</p>
 <p>If more than 20% of validators suddenly go offline all at once, the remaining servers cannot achieve the quorum necessary to validate a new ledger, so no new ledgers could be validated. However, those servers can still make tentative forward progress through successive consensus rounds. Over time, the remaining validators would continue to apply changes to the Negative UNL to the tentative ledgers and adjust their effective UNLs; eventually, if the situation persists, the network could resume fully validating ledgers by using the adjusted Negative UNL from the tentative ledger versions.</p>
 <p>Negative UNL has no effect on <a href="rippled-server-modes.html">stand-alone mode</a> since the server does not use consensus in stand-alone mode.</p>
-<h2 id="enabling-the-negative-unl-for-testing">Enabling the Negative UNL for Testing<a aria-hidden="true" class="hover_anchor" href="#enabling-the-negative-unl-for-testing"><i class="fa fa-link"></i></a></h2>
-<p>Negative UNL functionality is currently available for testing on <a href="parallel-networks.html">Devnet</a>. You can test the Negative UNL feature by adding or modifying a <code>[features]</code> stanza in your <code>rippled.cfg</code> file, as described in <a href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a>.</p>
 <h2 id="how-it-works">How It Works<a aria-hidden="true" class="hover_anchor" href="#how-it-works"><i class="fa fa-link"></i></a></h2>
 <p>The Negative UNL is closely tied to the <a href="consensus.html">consensus process</a> and is designed with safeguards to maintain the continuity and reliability of the network in adverse situations. When all trusted validators are operating normally, the Negative UNL is unused and has no effect. When some validators appear to be offline or out of sync, the Negative UNL rules take effect.</p>
 <p>The Negative UNL is intentionally designed to change at a slow rate, to avoid any time-based disagreements about which Negative UNL should apply to a given ledger version's consensus process.</p>

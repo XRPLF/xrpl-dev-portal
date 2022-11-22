@@ -211,7 +211,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/ammcreate.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -272,9 +286,9 @@
         <h1 id="ammcreate">AMMCreate<a aria-hidden="true" class="hover_anchor" href="#ammcreate"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMCreate.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- TODO: Update source link to merged version when available -->
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there is not yet an official amendment and they are not yet available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
-<p>Create a new Automated Market-Maker (AMM) instance for trading a given pair of assets (<a href="tokens.html">fungible tokens</a> or <a href="xrp.html">XRP</a>).</p>
-<p>If successful, this transaction creates both an <a href="amm.html">AMM object</a> and a <a href="accountroot.html#special-amm-accountroot-objects">special AccountRoot object</a> which, together, represent the AMM; it also transfers ownership of the starting balance of both assets from the sender to the created <code>AccountRoot</code>, and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to this transaction's sender.</p>
+<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
+<p>Create a new Automated Market-Maker (AMM) instance for trading a pair of assets (<a href="tokens.html">fungible tokens</a> or <a href="xrp.html">XRP</a>).</p>
+<p>Creates both an <a href="amm.html">AMM object</a> and a <a href="accountroot.html#special-amm-accountroot-objects">special AccountRoot object</a> to represent the AMM. Also transfers ownership of the starting balance of both assets from the sender to the created <code>AccountRoot</code> and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to the sender.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> When you create the AMM, you should fund it with (approximately) equal-value amounts of each asset. Otherwise, other users can profit at your expense by trading with this AMM (<a class="external-link" href="https://www.machow.ski/posts/an_introduction_to_automated_market_makers/#price-arbitrage" target="_blank">performing arbitrage <i aria-hidden="true" class="fa fa-external-link"></i></a>). The currency risk that liquidity providers take on increases with the volatility (potential for imbalance) of the asset pair. The higher the trading fee, the more it offsets this risk, so it's best to set the trading fee based on the volatility of the asset pair.</p>
 <h2 id="example-ammcreate-json">Example AMMCreate JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammcreate-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
@@ -293,7 +307,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="ammcreate-fields">AMMCreate Fields<a aria-hidden="true" class="hover_anchor" href="#ammcreate-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a AMMCreate transaction uses the following fields:</p>
+<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, AMMCreate transactions use the following fields:</p>
 <!-- -->
 <table class="table-responsive">
 <thead>
@@ -361,16 +375,16 @@
 <td style="text-align: left;">One of the accounts referenced in the request does not exist.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>terNO_AUTH</code></td>
-<td style="text-align: left;">At least one of <code>Amount</code> or <code>Amount2</code> requires an <a href="authorized-trust-lines.html">authorized trust line</a>, but the issuer of that token has not authorized the trust line.</td>
+<td style="text-align: left;"><code>tecNO_AUTH</code></td>
+<td style="text-align: left;">The sender is not authorized to hold one of the deposit assets (<code>Amount</code> or <code>Amount2</code>).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>terNO_LINE</code></td>
-<td style="text-align: left;">At least one of <code>Amount</code> or <code>Amount2</code> requires an <a href="authorized-trust-lines.html">authorized trust line</a>, but no trust line exists.</td>
+<td style="text-align: left;"><code>tecNO_LINE</code></td>
+<td style="text-align: left;">The sender does not have a trust line for one of the deposit assets (<code>Amount</code> or <code>Amount2</code>).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecFROZEN</code></td>
-<td style="text-align: left;">At least one of <code>Amount</code> or <code>Amount2</code> is currently <a href="freezes.html">frozen</a>.</td>
+<td style="text-align: left;">At least one of the deposit assets (<code>Amount</code> or <code>Amount2</code>) is currently <a href="freezes.html">frozen</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecUNFUNDED_AMM</code></td>
