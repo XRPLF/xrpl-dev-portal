@@ -11,16 +11,6 @@
         <h1 class="mb-18">{% trans %}What Would You Like to Learn?{% endtrans %}</h1>
         <h6 class="eyebrow mb-3">{% trans %}XRP Ledger Documentation{% endtrans %}</h6>
       </div>
-      <div class="center-search search">
-        <form role="search">
-          <div class="form-group">
-            <div class="input-group" id="centersearchboxcontainer">
-              <label class="input-group-prepend" for="centersearchboxcontainer"><i class="fa fa-search input-group-text"></i><span class="sr-only">{% trans %}Search{% endtrans %}</span></label>
-              <input id="centersearchboxcontainer" type="text" class="form-control searchinput" placeholder="{% trans %}Search for articles, training, and code samples...{% endtrans %}">
-            </div><!--/.form-group-->
-          </div>
-        </form>
-      </div><!--/.center-search-->
     </div>
   </section>
 
@@ -128,15 +118,7 @@
 {% endblock %}
 
 {% block endbody %}
-<script type="text/javascript"> docsearch({
-  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
-  indexName: 'xrpl',
-  container: '#centersearchboxcontainer',
-  appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
-  debug: false
-  });
-</script>
+
 {% endblock %}
 
 

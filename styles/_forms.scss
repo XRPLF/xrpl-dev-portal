@@ -93,6 +93,23 @@
     box-shadow: none;
     background-color: $gray-700;
   }
+  .DocSearch-Button {
+    background: $gray-800;
+    width: 700px;
+  }
+  .DocSearch-Button:hover {
+    background: $gray-800;
+    .DocSearch-Button-Placeholder {
+      color: $white;
+    }
+  }
+  .DocSearch-Search-Icon {
+    color: $white !important;
+  }
+  .DocSearch-Modal{
+    max-width: 700px;
+    margin-right: 7em;
+  }
 
   @include media-breakpoint-down(md) {
     .algolia-autocomplete .ds-dropdown-menu {
