@@ -28,6 +28,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
   "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"
 }
 ```
+[Query example transaction. >](https://xrpl.org/websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenBurn%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227B9EFDFDC801C58F2B61B89AA2751634F49CE2A93923671FF0F4F099C7EE17FF%22%2C%22binary%22%3Afalse%7D)
 
 {% include '_snippets/tx-fields-intro.md' %}
 
