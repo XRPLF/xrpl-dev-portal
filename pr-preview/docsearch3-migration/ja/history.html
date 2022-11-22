@@ -54,7 +54,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v11a.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v11b.css" rel="stylesheet" />
 
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -73,7 +73,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal lang-ja no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal lang-ja no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -208,7 +208,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/history.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -283,7 +297,7 @@
             <div class="hidden-section" id="section-2">
               <p>このアプローチでは「Ripple」という言葉が幅広い意味でよく使われるため、コミュニティでは明確にするためにデジタルアセットを「XRP」と呼び始めました。</p>
               <p>2012年6月には、Schwartz、McCaleb、Brittoがコードの開発を完了し、XRP Ledgerが完全に機能するようになっていました。</p>
-              <p>Once the XRP Ledger was live, 80% of the XRP was gifted to a new company that set out to build use cases for the digital asset—initially called NewCoin and renamed quickly to OpenCoin.</p>
+              <p>XRP Ledgerが完全に機能するようになると、XRPの80&#37;がこの会社に贈与されました。当初の名前はNewCoinでしたが、すぐにOpenCoinという名前に変更されました。</p>
               <p>Chris LarsenがOpenCoinのCEOになり、創業時点では、Jed McCalebが共同創業者兼CTO、David Schwartzが最高暗号技術責任者、Arthur Brittoが相談役でした。</p>
             </div>
           </div>
@@ -310,7 +324,7 @@
               <h2 class="mb-6 h5 h2-sm">XRPL財団の創設</h2>
               <h6 class="h1 mb-3">2020</h6>
             </div>
-            <p><a href="https://foundation.xrpl.org/2020/09/24/xrp-ledger-foundation-launches-to-drive-growth-and-development-of-the-core-xrp-ledger-and-community/" target="_blank">Founded</a> September 24, 2020, the XRPL Foundation is an independent and nonprofit entity with a mission to accelerate the development and adoption of the decentralized XRP Ledger. The Foundation received an initial donation of over $6.5M from Coil, Ripple, and Gatehub to fund the Foundation’s work in service of the growing number of developers and other community members building on the XRP Ledger.</p>
+            <p>2020年9月24日に<a href="https://xrplf.org/assets/XRP_Foundation_Release_24Sep2020.pdf" target="_blank">設立</a>されたXRPL財団は、分散化されたXRP Ledgerの開発と採用を加速させることをミッションとする独立した非営利団体です。財団は、XRP Ledger を構築する開発者やその他のコミュニティメンバーの増加に対応するための財団の活動資金として、Coil、Ripple、Gatehubから650万ドルを超える初期寄付金の提供を受けています。</p>
           </div>
         </div>
       </div>
@@ -395,6 +409,7 @@
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({

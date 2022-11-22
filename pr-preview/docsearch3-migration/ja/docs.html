@@ -54,7 +54,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v11a.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v11b.css" rel="stylesheet" />
 
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -66,7 +66,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -201,7 +201,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/docs.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -225,16 +239,6 @@
         <h1 class="mb-18">何を学びたいですか？</h1>
         <h6 class="eyebrow mb-3">XRP Ledger ドキュメント</h6>
       </div>
-      <div class="center-search search">
-        <form role="search">
-          <div class="form-group">
-            <div class="input-group" id="centersearchboxcontainer">
-              <label class="input-group-prepend" for="centersearchboxcontainer"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
-              <input id="centersearchboxcontainer" type="text" class="form-control searchinput" placeholder="記事、トレーニング、コードサンプルを検索...">
-            </div><!--/.form-group-->
-          </div>
-        </form>
-      </div><!--/.center-search-->
     </div>
   </section>
 
@@ -440,20 +444,6 @@
     </div>
     <div class="card-footer">&nbsp;</div>
   </a>
-  <a class="card" href="/ja/dev-tools.html">
-    <div class="card-body">
-      <h4 class="card-title h5">Dev Tools</h4>
-      <p class="card-text">XRPとXRP Ledgerの全てに対してのコミュニティーリーソース</p>
-    </div>
-    <div class="card-footer">&nbsp;</div>
-  </a>
-  <a class="card" href="/ja/https://learn.xrpl.org/">
-    <div class="card-body">
-      <h4 class="card-title h5">XRPL Education Portal</h4>
-      <p class="card-text">XRPとXRP Ledgerの全てに対してのコミュニティーリーソース</p>
-    </div>
-    <div class="card-footer">&nbsp;</div>
-  </a>
 </div>  </section><!--/#doc-types-->
 
   <section class="container-new mb-50-until-sm" id="run-a-network-node">
@@ -655,6 +645,10 @@
       <li class="level-2"><a href="/ja/the-clio-server.html">The Clio Server</a></li>
         
 
+      <li class="level-1"><a href="/ja/xrpl-interoperability.html">Interoperability</a></li>
+              <li class="level-2"><a href="/ja/intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain</a></li>
+        
+
 
   </ul>
 </div>    </div>
@@ -807,7 +801,7 @@
       <li class="level-2"><a href="/ja/configure-rippled.html">rippledの設定</a></li>
               <li class="level-3"><a href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a></li>
         
-      <li class="level-3"><a href="/ja/run-rippled-as-a-wallet-server.html">ウォレットサーバーとしてrippledを実行する</a></li>
+      <li class="level-3"><a href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a></li>
         
       <li class="level-3"><a href="/ja/configure-amendment-voting.html">修正投票機能の設定</a></li>
         
@@ -1271,7 +1265,7 @@
   </ul>
 </div>    </div>
     <div class="col-md-6 mt-20">
-      <a href="/ja/https://learn.xrpl.org/"><h5 class="mb-3">XRPL Education Portal</h5></a>
+      <a href="https://learn.xrpl.org/"><h5 class="mb-3">XRPL Education Portal</h5></a>
 
 
 
@@ -1360,6 +1354,7 @@
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -1381,14 +1376,6 @@ $(document).ready(() => {
 
 
 
-<script type="text/javascript"> docsearch({
-  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
-  indexName: 'xrpl',
-  container: '#centersearchboxcontainer',
-  appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
-  debug: false
-  });
-</script>
+
 </body>
 </html>
