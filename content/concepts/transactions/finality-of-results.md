@@ -7,7 +7,7 @@ labels:
 ---
 # Finality of Results
 
-The order in which transactions apply to the consensus [ledger](../xrpl/ledgers.md) is not final until a ledger is closed and the exact transaction set is approved by the [consensus process](../xrpl/consensus.md). A transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a later round.
+The order in which transactions apply to the consensus [ledger](ledgers.html) is not final until a ledger is closed and the exact transaction set is approved by the [consensus process](consensus.html). A transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a later round.
 
 A validated ledger can include successful transactions (`tes` result codes) as well as failed transactions (`tec` result codes). No transaction with any other result is included in a ledger.
 
@@ -25,15 +25,15 @@ Any other transaction result is potentially not final. In that case, the transac
 
 ## How can non-final results change?
 
-When you initially submit a transaction, the `rippled` server tentatively applies that transaction to its current open ledger, then returns the tentative [transaction results](../transactions/transaction-results/transaction-results.md) from doing so. However, the transaction's final result might be very different than its tentative results, for several reasons:
+When you initially submit a transaction, the `rippled` server tentatively applies that transaction to its current open ledger, then returns the tentative [transaction results](transaction-results-concepts.html) from doing so. However, the transaction's final result might be very different than its tentative results, for several reasons:
 
 - The transaction might be delayed until a later ledger version, or might never be included in a validated ledger. For the most part, the XRP Ledger follows a principle that all valid transactions should be processed as soon as possible. However, there are exceptions, including:
 
-    - If a proposed transaction has not been relayed to a majority of validators by the time a [consensus round](../xrpl/consensus.md) begins, it might be postponed until the next ledger version, to give the remaining validators time to fetch the transaction and confirm that it is valid.
+    - If a proposed transaction has not been relayed to a majority of validators by the time a [consensus round](consensus.html) begins, it might be postponed until the next ledger version, to give the remaining validators time to fetch the transaction and confirm that it is valid.
 
     - If an address sends two different transactions using the same sequence number, at most one of those transactions can become validated. If those transactions are relayed through the network in different paths, a tentatively-successful transaction that some servers saw first might end up failing because the other, conflicting transaction reached a majority of servers first.
 
-    - To protect the network from spam, all transactions must destroy a [transaction cost](transaction-cost.md) in XRP to be relayed throughout the XRP Ledger peer-to-peer network. If heavy load on the peer-to-peer network causes the transaction cost to increase, a transaction that tentatively succeeded might not get relayed to enough servers to achieve a consensus, or might be [queued](../server/transaction-queue.md) for later.
+    - To protect the network from spam, all transactions must destroy a [transaction cost](transaction-cost.md) in XRP to be relayed throughout the XRP Ledger peer-to-peer network. If heavy load on the peer-to-peer network causes the transaction cost to increase, a transaction that tentatively succeeded might not get relayed to enough servers to achieve a consensus, or might be [queued](transaction-queue.html) for later.
 
     - Temporary internet outages or delays might prevent a proposed transaction from being successfully relayed before the transaction's intended expiration, as set by the `LastLedgerSequence` field. (If the transaction does not have an expiration, then it remains valid and could succeed any amount of time later, which can be undesirable in its own way. 
     
@@ -41,7 +41,7 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 
     - Combinations of two or more of these factors can also occur.
 
-- The [order transactions apply in a closed ledger](../xrpl/ledgers.md#open-closed-and-validated-ledgers) is usually different than the order those transactions were tentatively applied to a current open ledger; depending on the transactions involved, this can cause a tentatively-successful transaction to fail or a tentatively-failed transaction to succeed. Some examples include:
+- The [order transactions apply in a closed ledger](ledgers.html#open-closed-and-validated-ledgers) is usually different than the order those transactions were tentatively applied to a current open ledger; depending on the transactions involved, this can cause a tentatively-successful transaction to fail or a tentatively-failed transaction to succeed. Some examples include:
 
     - If two transactions would each fully consume the same <!-- * -->offer] in the decentralized exchange, whichever one comes first succeeds, and the other fails. Since the order in which those transactions apply might change, the one that succeeded can fail and the one that failed can succeed. Since offers can be partially executed, they could also still succeed, but to a greater or lesser extent.
 

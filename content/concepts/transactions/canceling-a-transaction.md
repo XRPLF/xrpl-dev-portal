@@ -1,11 +1,11 @@
 ---
-html: about-canceling-a-transaction.html
+html: canceling-a-transaction.html
 parent: transactions.html
 blurb: Before a transaction is final it might be possible to cancel it using a separate transaction.
 labels:
   - Transactions
 ---
-# About Canceling a Transaction
+# Canceling a Transaction
 
 An important and intentional feature of the XRP Ledger is that a [transaction](transactions.md)'s outcome is [final](finality-of-results.md) as soon as it has been incorporated in a [ledger version](../xrpl/ledgers.md) that is validated by the [consensus process](../xrpl/consensus.md).
 

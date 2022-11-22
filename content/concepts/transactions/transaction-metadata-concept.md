@@ -21,6 +21,9 @@ Some fields that might appear in transaction metadata include:
 | `TransactionResult`                     | String              | A [result code](transaction-results.html) indicating whether the transaction succeeded or how it failed. |
 | [`delivered_amount`](transaction-metadata.html#delivered_amount) | Currency Amount | _(Omitted for non-Payment transactions)_ The Currency Amount actually received by the `Destination` account. Use this field to determine how much was delivered, regardless of whether the transaction is a [partial payment](payments/partial-payments.md). See [this description](transaction-metadata.md#delivered_amount) for details. <!--[New in: rippled 0.27.0][] -->| <!--_ -->
 
+
+<!-- This metadata is too complex to be useful. Need a smaller example that the user can grok. -->
+
 ## Example Metadata
 
 The following JSON object shows the metadata for [a complex cross-currency payment](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B):

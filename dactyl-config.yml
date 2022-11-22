@@ -628,6 +628,18 @@ pages:
       targets:
          - en
          - ja
+
+    - md: concepts/tokens/authorized-trust-lines.md
+      parent: trust-lines-and-issuing.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/tokens/rippling.md
+      parent: trust-lines-and-issuing.html
+      targets:
+         - en
+         - ja
          
     - md: concepts/transactions/transaction-cost.md
       parent: transactions.html
@@ -652,33 +664,33 @@ pages:
       targets:
          - en
          - ja
-         
-    - md: concepts/transactions/transaction-malleability.md
-      parent: transactions.html
-      targets:
-         - en
-         - ja
-         
+          
     - md: concepts/transactions/finality-of-results.md
       parent: transactions.html
       targets:
          - en
          - ja
+ 
+    - md: concepts/transactions/transaction-malleability.md
+      parent: finality-of-results.html
+      targets:
+         - en
+         - ja
          
-    - md: concepts/transactions/about-canceling-a-transaction.md
-      parent: transactions.html
+    - md: concepts/transactions/canceling-a-transaction.md
+      parent: finality-of-results.html
       targets:
          - en
          - ja
          
     - md: concepts/transactions/transaction-history.md
-      parent: transactions.html
+      parent: finality-of-results.html
       targets:
          - en
          - ja
-         
+
     - md: concepts/transactions/transaction-results/transaction-results-concepts.md
-      parent: transactions.html
+      parent: finality-of-results.html
       targets:
          - en
          - ja
@@ -772,20 +784,8 @@ pages:
       targets:
          - en
          - ja
-  
-    - md: concepts/tokens/authorized-trust-lines.md
-      parent: tokens.html
-      targets:
-         - en
-         - ja
-         
+
     - md: concepts/tokens/paths.md
-      parent: tokens.html
-      targets:
-         - en
-         - ja
-         
-    - md: concepts/tokens/rippling.md
       parent: tokens.html
       targets:
          - en
@@ -844,12 +844,7 @@ pages:
       targets:
          - en
          - ja
-         
-    - md: concepts/accounts/account-creating.md
-      parent: accounts.html
-      targets:
-         - en
-         - ja
+
          
     - md: concepts/accounts/account-deleting.md
       parent: accounts.html
