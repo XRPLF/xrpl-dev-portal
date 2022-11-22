@@ -9700,20 +9700,21 @@ p {
   color: #FFFFFF !important;
 }
 .xrp-ledger-dev-portal .DocSearch-Modal {
-  max-width: 700px;
-  margin-right: 7em;
+  margin-top: -12px;
+  max-width: 700px !important;
+  margin-right: 13.75em;
 }
 @media (max-width: 991.98px) {
   .xrp-ledger-dev-portal .algolia-autocomplete .ds-dropdown-menu {
     min-width: unset;
   }
   .xrp-ledger-dev-portal .DocSearch-Modal {
-    top: 450px;
+    top: 128px;
   }
 }
 
 .DocSearch-Container {
-  z-index: 200 !important;
+  z-index: 99999 !important;
   background-color: transparent !important;
 }
 
@@ -11558,6 +11559,7 @@ td:nth-child(1) {
   }
   .top-nav .dropdown-menu.smaller-dropdown {
     min-width: 180px;
+    padding: 1.25rem;
   }
   .top-nav #topnav-pages {
     flex-grow: 0;
