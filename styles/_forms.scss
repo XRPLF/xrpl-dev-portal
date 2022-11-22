@@ -106,7 +106,7 @@
   .DocSearch-Search-Icon {
     color: $white !important;
   }
-  .DocSearch-Modal{
+  .DocSearch-Modal {
     max-width: 700px;
     margin-right: 7em;
   }
@@ -119,4 +119,12 @@
       top: 450px;
     }
   }
+}
+.DocSearch-Container {
+  z-index: 200 !important;
+  background-color: transparent !important;
+}
+
+#xrp-ledger-dev-portal {
+  overflow: auto !important;
 }
