@@ -3221,6 +3221,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
         targets:
             - ja
@@ -3229,6 +3230,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.ja.md
         targets:
             - ja

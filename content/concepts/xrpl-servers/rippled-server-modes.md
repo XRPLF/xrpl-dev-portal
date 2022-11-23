@@ -70,7 +70,7 @@ For more information about running a validator, see [Run `rippled` as a Validato
 ## Reporting Mode
 [New in: rippled 1.7.0][]
 
-Reporting mode is specialized mode for serving API requests more efficiently. In this mode, the server gets the latest validated ledger data over [gRPC](https://xrpl.org/configure-grpc.html) from a separate `rippled` server running in P2P Mode, then loads that data into a relational database ([PostgreSQL](https://www.postgresql.org/)). The reporting mode server does not directly participate in the peer-to-peer network, though it can forward requests such as transaction submission to the P2P Mode server it uses.
+Reporting mode is specialized mode for serving API requests more efficiently. In this mode, the server gets the latest validated ledger data over [gRPC](configure-grpc.html) from a separate `rippled` server running in P2P Mode, then loads that data into a relational database ([PostgreSQL](https://www.postgresql.org/)). The reporting mode server does not directly participate in the peer-to-peer network, though it can forward requests such as transaction submission to the P2P Mode server it uses.
 
 Multiple reporting mode servers can share access to a PostgreSQL database and [Apache Cassandra](https://cassandra.apache.org/) cluster to serve a large amount of history without each server needing a redundant copy of all the data. Reporting mode servers provide this data through the same [`rippled` APIs](http-websocket-apis.html) with some slight changes to accommodate for the differences in how they store the underlying data.
 
