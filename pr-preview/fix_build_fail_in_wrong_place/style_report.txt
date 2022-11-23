@@ -1,0 +1,883 @@
+-------------
+Spell Checker
+-------------
+Found 285 possible spelling errors:
+<Page 'FAQ' (faq.html)> Unknown Words:
+  aml: amp, amc, acl
+
+<Page 'Cryptographic Keys' (cryptographic-keys.html)> Unknown Words:
+  keypairs: 
+
+<Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
+  signerlists: signerlist
+  signerquorum: 
+  signerweight: 
+  expandedsignerlist: 
+
+<Page 'Direct XRP Payments' (direct-xrp-payments.html)> Unknown Words:
+  proactively: preactively
+
+<Page 'Checks' (checks.html)> Unknown Words:
+  aml: amp, amc, acl
+
+<Page 'Tokens' (tokens.html)> Unknown Words:
+  bharath: bharat, bharata
+  asheesh: hasheesh
+
+<Page 'Authorized Trust Lines' (authorized-trust-lines.html)> Unknown Words:
+  onboarding: 
+  requireauth: 
+
+<Page 'Non-Fungible Tokens Overview' (non-fungible-tokens.html)> Unknown Words:
+  nonfungibletokensv1_1: 
+  ˈfənjəbəl: 
+  xls: dls, bls, pls
+  nftoken: 
+  nftokenpage: 
+  nftokenoffer: 
+  nftokencreateoffer: 
+  nftokenmint: 
+  nftokenburn: 
+  nftokens: 
+  nftokenacceptoffer: 
+  nftokencanceloffer: 
+  nft_sell_offers: 
+  nft_buy_offers: 
+  account_nfts: 
+  nft_info: 
+
+<Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)> Unknown Words:
+  nftokens: 
+  nftokencreateoffer: 
+  nonfungibletokensv1_1: 
+  opensea: 
+  workflows: workflow
+
+<Page 'Batch minting' (nftoken-batch-minting.html)> Unknown Words:
+  nftoken: 
+  nftokens: 
+  12th: 10th
+
+<Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)> Unknown Words:
+  mccaleb: 
+  bitstamp: 
+
+<Page 'Offers' (offers.html)> Unknown Words:
+  proactively: preactively
+
+<Page 'Amendments' (amendments.html)> Unknown Words:
+  config: confix, confit
+  11d: 
+
+<Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixnftokennegoffer: 
+  fixtrustlinestoself: 
+  nonfungibletokensv1_1: 
+  expandedsignerlist: 
+  fixremovenftokenautotrustline: 
+  checkcashmakestrustline: 
+  nonfungibletokensv1: 
+  fixnftokendirv1: 
+  nftokenmint: 
+  nftokens: 
+  nftokenacceptoffer: 
+  nftokencanceloffer: 
+  nftokenburn: 
+  nftokencreateoffer: 
+  nftokenoffer: 
+  nftokenpage: 
+
+<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
+  20d: 2nd, 2d
+  xls: dls, bls, pls
+
+<Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
+  mainchain: 
+  evm: eam, evy, eva
+  permissionless: 
+  federators: federator
+
+<Page 'rippled Server Modes' (rippled-server-modes.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Ledger History' (ledger-history.html)> Unknown Words:
+  xrplcluster: 
+
+<Page 'Online Deletion' (online-deletion.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'History Sharding' (history-sharding.html)> Unknown Words:
+  bittorrent: 
+
+<Page 'Peer Protocol' (peer-protocol.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'The Clio Server' (the-clio-server.html)> Unknown Words:
+  scylladb: 
+  datastore: 
+
+<Page 'Interoperability' (xrpl-interoperability.html)> Unknown Words:
+  programmabilty: programmability
+
+<Page 'Introduction to EVM Compatible XRP Ledger Sidechain' (intro-to-evm-sidechain.html)> Unknown Words:
+  evm: eam, evy, eva
+  web3: web, webb, webs
+  unstake: unstate
+  tendermint: 
+  ethermint: 
+
+<Page 'XRPL Quickstart' (xrpl-quickstart.html)> Unknown Words:
+  quickstart: 
+  nftokens: 
+  nftoken: 
+
+<Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)> Unknown Words:
+  quickstart: 
+  getnet: setnet, genet
+  getaccount: 
+  xrptodrops: 
+
+<Page '2. Create Trust Line and Send Currency' (create-trustline-send-currency.html)> Unknown Words:
+  quickstart: 
+  trustline: 
+  ripplex2: ripplex
+  checkbox: 
+  rippledefault: 
+  autofill: 
+  nftokens: 
+
+<Page '3. Mint and Burn NFTokens' (mint-and-burn-nftokens.html)> Unknown Words:
+  nftokens: 
+  quickstart: 
+  nftoken: 
+  ripplex3: ripplex
+  tokentaxon: 
+
+<Page '4. Transfer NFTokens' (transfer-nftokens.html)> Unknown Words:
+  nftokens: 
+  quickstart: 
+  nftoken: 
+  nft_offer_index: 
+  expirationdate: 
+
+<Page 'Broker a NFToken Sale' (broker-sale.html)> Unknown Words:
+  nftoken: 
+  quickstart: 
+  ripplex5: ripplex
+  nftokens: 
+
+<Page 'Assign an Authorized Minter' (authorize-minter.html)> Unknown Words:
+  nftokens: 
+  quickstart: 
+  nftoken: 
+  nft_offer_index: 
+  stringify: stringily
+  nftokentaxon: 
+
+<Page 'Batch Mint NFTokens' (batch-minting.html)> Unknown Words:
+  nftokens: 
+  quickstart: 
+  nftoken: 
+  gettokens: 
+  xrpledger: 
+  nftokencount: 
+
+<Page 'Public Servers' (public-servers.html)> Unknown Words:
+  sologenic: 
+
+<Page 'Get Started Using Python' (get-started-using-python.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Get Started Using Java' (get-started-using-java.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Get Started Using JavaScript' (get-started-using-javascript.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Get Started Using HTTP / WebSocket APIs' (get-started-using-http-websocket-apis.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
+  disallowxrp: 
+  wxpython: 
+  wsl: esl, wil, sl
+  threadsafe: 
+  asyncio: 
+  guis: guvs, ghis, guss
+  wxglade: 
+  s1: sn, sl, ss
+  popup: pop-up
+  toolkits: toolkit
+  tooltip: 
+  lsf: ssf, ksf, nsf
+  refactor: reactor, refractor, prefactor
+  tooltips: 
+
+<Page 'Assign a Regular Key Pair' (assign-a-regular-key-pair.html)> Unknown Words:
+  proactively: preactively
+
+<Page 'Use Tickets' (use-tickets.html)> Unknown Words:
+  autofilling: 
+
+<Page 'Trade in the Decentralized Exchange' (trade-in-the-decentralized-exchange.html)> Unknown Words:
+  rp9jpyp5kyvfrb6zirghagw5u8sgamu4bd: 
+
+<Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Unknown Words:
+  reputational: deputational
+  aml: amp, amc, acl
+  xapps: apps, lapps, capps
+
+<Page 'System Requirements' (system-requirements.html)> Unknown Words:
+  nvme: vme, name, nome
+
+<Page 'Install on CentOS/Red Hat with yum' (install-rippled-on-centos-rhel-with-yum.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Install on Ubuntu or Debian Linux' (install-rippled-on-ubuntu.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Build and Run rippled on macOS' (build-run-rippled-macos.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Build and Run rippled in Reporting Mode' (build-run-rippled-in-reporting-mode.html)> Unknown Words:
+  datastores: 
+  datastore: 
+  config: confix, confit
+
+<Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'rippled v1.3.x Migration Instructions' (rippled-1-3-migration-instructions.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Configure Amendment Voting' (configure-amendment-voting.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Connect Your rippled to a Parallel Network' (connect-your-rippled-to-the-xrp-test-net.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Configure Advisory Deletion' (configure-advisory-deletion.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Configure History Sharding' (configure-history-sharding.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Enable Link Compression' (enable-link-compression.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Forward Ports for Peering' (forward-ports-for-peering.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Manually Connect to a Specific Peer' (manually-connect-to-a-specific-peer.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Use a Peer Reservation' (use-a-peer-reservation.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Start a New Genesis Ledger in Stand-Alone Mode' (start-a-new-genesis-ledger-in-stand-alone-mode.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Diagnosing Problems with rippled' (diagnosing-problems.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Understanding Log Messages' (understanding-log-messages.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'rippled Server Doesn't Sync' (server-doesnt-sync.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'rippled Server Won't Start' (server-wont-start.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Fix SQLite Transaction Database Page Size Issue' (fix-sqlite-tx-db-page-size-issue.html)> Unknown Words:
+  proactively: preactively
+  config: confix, confit
+
+<Page 'Get Started with the EVM Sidechain' (get-started-evm-sidechain.html)> Unknown Words:
+  evm: eam, evy, eva
+  metamask: 
+  xumm: umm, mumm, dumm
+
+<Page 'Connect MetaMask to XRP Ledger Sidechain' (connect-metamask-to-xrpl-evm-sidechain.html)> Unknown Words:
+  metamask: 
+  evm: eam, evy, eva
+  web3: web, webb, webs
+  dapps: apps, capps, damps
+
+<Page 'Join the XRP Ledger EVM Sidechain Devnet' (join-evm-sidechain-devnet.html)> Unknown Words:
+  evm: eam, evy, eva
+
+<Page 'EVM Sidechain Validator Security' (evm-sidechain-validator-security.html)> Unknown Words:
+  evm: eam, evy, eva
+  horcrux: 
+  tendermint: 
+  kms: kts, tms, k's
+  hsms: hums, hims, isms
+  yubihsm2: 
+  yubikey: 
+  evmos: evos, emos, vmos
+  yubihsm: 
+
+<Page 'Run a Validator Node on an EVM Sidechain' (evm-sidechain-run-a-validator-node.html)> Unknown Words:
+  evm: eam, evy, eva
+  pubkey: punkey, pukey
+  delegators: delegator, delegatory
+  uport: aport, port, sport
+  keybase: 
+  unjail: injail, unnail, unmail
+  exrp: exr, exp, xrp
+  100th: 10th
+
+<Page 'NFToken' (nftoken.html)> Unknown Words:
+  nftoken: 
+  nftokenpage: 
+  nonfungibletokensv1_1: 
+  nftokenid: 
+  fixremovenftokenautotrustline: 
+  nftokenmint: 
+  0x000b: 
+  transferfee: transferee
+  nftokentaxon: 
+  rfc2379: 
+  ipfs: ips, ipms, ipcs
+
+<Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
+  nftokenoffer: 
+  nftokenpage: 
+  nftokens: 
+
+<Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
+  nftokenoffer: 
+  nonfungibletokensv1_1: 
+  0x0074: 
+  nftokenid: 
+  nftoken: 
+
+<Page 'NFTokenPage' (nftokenpage.html)> Unknown Words:
+  nftokenpage: 
+  nonfungibletokensv1_1: 
+  tokenid: tokened
+  nftokenpageid: 
+  0x0050: 
+  nftoken: 
+  tokenpage: 
+  shamap: shaman, shamal, shama
+  nftokens: 
+
+<Page 'SignerList' (signerlist.html)> Unknown Words:
+  expandedsignerlist: 
+
+<Page 'AccountSet' (accountset.html)> Unknown Words:
+  nonfungibletokensv1_1: 
+  xls: dls, bls, pls
+  nftokens: 
+  nftokenmint: 
+  nftoken: 
+
+<Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
+  nftokenacceptoffer: 
+  nonfungibletokensv1_1: 
+  nonfungibletokensv1: 
+
+<Page 'NFTokenBurn' (nftokenburn.html)> Unknown Words:
+  nftokenburn: 
+  nonfungibletokensv1_1: 
+  nonfungibletokensv1: 
+
+<Page 'NFTokenCancelOffer' (nftokencanceloffer.html)> Unknown Words:
+  nftokencanceloffer: 
+  nonfungibletokensv1_1: 
+  nftokenoffer: 
+  nonfungibletokensv1: 
+
+<Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
+  nftokencreateoffer: 
+  nftokenoffer: 
+  nonfungibletokensv1_1: 
+  nonfungibletokensv1: 
+
+<Page 'NFTokenMint' (nftokenmint.html)> Unknown Words:
+  nftokenmint: 
+  nftoken: 
+  nftokenpage: 
+  nonfungibletokensv1_1: 
+  rfc2379: 
+  ipfs: ips, ipms, ipcs
+  fixremovenftokenautotrustline: 
+  nonfungibletokensv1: 
+
+<Page 'SignerListSet' (signerlistset.html)> Unknown Words:
+  expandedsignerlist: 
+
+<Page 'tec Codes' (tec-codes.html)> Unknown Words:
+  nftokenacceptoffer: 
+  nonfungibletokensv1_1: 
+
+<Page 'tef Codes' (tef-codes.html)> Unknown Words:
+  nonfungibletokensv1_1: 
+
+<Page 'tem Codes' (tem-codes.html)> Unknown Words:
+  nonfungibletokensv1_1: 
+  nftokenmint: 
+
+<Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
+  ordercancellation: 
+  lastledgersequence: 
+
+<Page 'Public API Methods' (public-api-methods.html)> Unknown Words:
+  nftoken: 
+
+<Page 'account_nfts' (account_nfts.html)> Unknown Words:
+  account_nfts: 
+  nonfungibletokensv1_1: 
+  nftoken: 
+
+<Page 'nft_buy_offers' (nft_buy_offers.html)> Unknown Words:
+  nft_buy_offers: 
+  nftoken: 
+  nonfungibletokensv1_1: 
+  _the: athe, ethe, tthe
+  nftokenoffer: 
+
+<Page 'nft_sell_offers' (nft_sell_offers.html)> Unknown Words:
+  nft_sell_offers: 
+  nftoken: 
+  nonfungibletokensv1_1: 
+  _the: athe, ethe, tthe
+  nftokenoffer: 
+
+<Page 'server_info (rippled)' (server_info.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'server_state' (server_state.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'server_info' (server_info-clio.html)> Unknown Words:
+  localhost: 
+  rpcs: pcs, rics, recs
+
+<Page 'nft_info' (nft_info.html)> Unknown Words:
+  nft_info: 
+  ledger_index: 
+  nftokenmint: 
+
+<Page 'Admin API Methods' (admin-api-methods.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'ledger_request' (ledger_request.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'node_to_shard' (node_to_shard.html)> Unknown Words:
+  node_to_shard: 
+
+<Page 'validation_seed' (validation_seed.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'connect' (connect.html)> Unknown Words:
+  standalone: 
+
+<Page 'peers' (peers.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'validators' (validators.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'rippled Commandline Usage Reference' (commandline-usage.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'Validator List Method' (validator-list.html)> Unknown Words:
+  config: confix, confit
+
+<Page 'xrp-ledger.toml File' (xrp-ledger-toml.html)> Unknown Words:
+  config: confix, confit
+
+-----------------------------
+Discouraged Words and Phrases
+-----------------------------
+Found 336 discouraged words/phrases:
+Page: <Page 'FAQ' (faq.html)>
+   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'Multi-Signing' (multi-signing.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: vice (3 instances); suggest 'instead of, versus' instead.
+Page: <Page 'Ledgers' (ledgers.html)>
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Tokens' (tokens.html)>
+   Discouraged word: ious (1 instances); suggest 'issuances' instead.
+   Discouraged word: retain (1 instances); suggest 'keep' instead.
+Page: <Page 'Trust Lines and Issuing' (trust-lines-and-issuing.html)>
+   Discouraged phrase: is responsible for (1 instances); suggest '(omit) handles' instead.
+Page: <Page 'Non-Fungible Tokens Overview' (non-fungible-tokens.html)>
+   Discouraged word: ious (1 instances); suggest 'issuances' instead.
+   Discouraged word: identical (1 instances); suggest 'same' instead.
+   Discouraged word: easily (1 instances); suggest '(omit)' instead.
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+   Discouraged word: designate (1 instances); suggest 'appoint, choose, name' instead.
+Page: <Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)>
+   Discouraged word: purchase (5 instances); suggest 'buy' instead.
+Page: <Page 'Batch minting' (nftoken-batch-minting.html)>
+   Discouraged word: commence (1 instances); suggest 'begin, start' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+   Discouraged word: retain (1 instances); suggest 'keep' instead.
+   Discouraged word: sufficient (2 instances); suggest 'enough' instead.
+Page: <Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Issuing and Operational Addresses' (issuing-and-operational-addresses.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'Demurrage' (demurrage.html)>
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Decentralized Exchange' (decentralized-exchange.html)>
+   Discouraged word: therefore (2 instances); suggest 'so' instead.
+   Discouraged phrase: limited number (1 instances); suggest 'limits' instead.
+Page: <Page 'Offers' (offers.html)>
+   Discouraged word: remainder (2 instances); suggest 'rest' instead.
+   Discouraged word: permit (1 instances); suggest 'let' instead.
+Page: <Page 'Consensus' (consensus.html)>
+   Discouraged word: proceed (1 instances); suggest 'do, go ahead, try' instead.
+Page: <Page 'Consensus Principles and Rules' (consensus-principles-and-rules.html)>
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Amendments' (amendments.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged word: accurate (2 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Known Amendments' (known-amendments.html)>
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+   Discouraged word: therefore (2 instances); suggest 'so' instead.
+   Discouraged word: encounter (2 instances); suggest 'meet' instead.
+   Discouraged word: numerous (1 instances); suggest 'many' instead.
+Page: <Page 'Federated Sidechains' (federated-sidechains.html)>
+   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
+Page: <Page 'Ledger History' (ledger-history.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'Online Deletion' (online-deletion.html)>
+   Discouraged word: feasible (1 instances); suggest 'can be done, workable' instead.
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+Page: <Page 'History Sharding' (history-sharding.html)>
+   Discouraged word: witnessed (1 instances); suggest 'saw' instead.
+   Discouraged word: identical (1 instances); suggest 'same' instead.
+Page: <Page 'Peer Protocol' (peer-protocol.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged word: prioritize (1 instances); suggest 'rank' instead.
+   Discouraged word: eliminate (1 instances); suggest 'cut, drop, end' instead.
+Page: <Page 'Transaction Censorship Detection' (transaction-censorship-detection.html)>
+   Discouraged word: impacted (1 instances); suggest 'affected, changed' instead.
+Page: <Page 'Introduction to EVM Compatible XRP Ledger Sidechain' (intro-to-evm-sidechain.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: component (1 instances); suggest 'part' instead.
+Page: <Page 'XRPL Quickstart' (xrpl-quickstart.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+   Discouraged word: anticipate (1 instances); suggest 'expect' instead.
+Page: <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)>
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+Page: <Page '3. Mint and Burn NFTokens' (mint-and-burn-nftokens.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+Page: <Page '4. Transfer NFTokens' (transfer-nftokens.html)>
+   Discouraged word: purchase (2 instances); suggest 'buy' instead.
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Broker a NFToken Sale' (broker-sale.html)>
+   Discouraged word: wallet (4 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Assign an Authorized Minter' (authorize-minter.html)>
+   Discouraged word: purchase (5 instances); suggest 'buy' instead.
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Batch Mint NFTokens' (batch-minting.html)>
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Get Started Using Python' (get-started-using-python.html)>
+   Discouraged word: simple (3 instances); suggest '(omit)' instead.
+   Discouraged word: easy (2 instances); suggest '(omit)' instead.
+   Discouraged word: wallet (8 instances); suggest 'address, client application, account' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Get Started Using Java' (get-started-using-java.html)>
+   Discouraged word: simple (3 instances); suggest '(omit)' instead.
+   Discouraged word: easy (2 instances); suggest '(omit)' instead.
+   Discouraged word: wallet (7 instances); suggest 'address, client application, account' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Get Started Using JavaScript' (get-started-using-javascript.html)>
+   Discouraged word: wallet (7 instances); suggest 'address, client application, account' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Send XRP' (send-xrp.html)>
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+   Discouraged word: viable (2 instances); suggest 'practical, workable' instead.
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: consult (1 instances); suggest 'see' instead.
+Page: <Page 'Monitor Incoming Payments with WebSocket' (monitor-incoming-payments-with-websocket.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)>
+   Discouraged word: wallet (18 instances); suggest 'address, client application, account' instead.
+   Discouraged word: easily (1 instances); suggest '(omit)' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+   Discouraged word: numerous (1 instances); suggest 'many' instead.
+Page: <Page 'Set Up Secure Signing' (set-up-secure-signing.html)>
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Look Up Transaction Results' (look-up-transaction-results.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Reliable Transaction Submission' (reliable-transaction-submission.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+Page: <Page 'Assign a Regular Key Pair' (assign-a-regular-key-pair.html)>
+   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+   Discouraged word: transmit (2 instances); suggest 'send' instead.
+Page: <Page 'Change or Remove a Regular Key Pair' (change-or-remove-a-regular-key-pair.html)>
+   Discouraged word: whereas (1 instances); suggest 'because, since' instead.
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Disable Master Key Pair' (disable-master-key-pair.html)>
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Offline Account Setup Tutorial' (offline-account-setup.html)>
+   Discouraged word: accurate (2 instances); suggest 'correct, exact, right' instead.
+   Discouraged word: simple (2 instances); suggest '(omit)' instead.
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: viable (1 instances); suggest 'practical, workable' instead.
+Page: <Page 'Use Tickets' (use-tickets.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Use an Escrow as a Smart Contract' (use-an-escrow-as-a-smart-contract.html)>
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+Page: <Page 'Open a Payment Channel to Enable an Inter-Exchange Network' (open-a-payment-channel-to-enable-an-inter-exchange-network.html)>
+   Discouraged word: wallet (4 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: cold wallet (1 instances); suggest 'issuing address' instead.
+   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
+   Discouraged word: designate (1 instances); suggest 'appoint, choose, name' instead.
+   Discouraged word: viable (1 instances); suggest 'practical, workable' instead.
+Page: <Page 'Cancel a Check' (cancel-a-check.html)>
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Issue a Fungible Token' (issue-a-fungible-token.html)>
+   Discouraged word: ious (1 instances); suggest 'issuances' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+Page: <Page 'Trade in the Decentralized Exchange' (trade-in-the-decentralized-exchange.html)>
+   Discouraged word: encounter (1 instances); suggest 'meet' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
+Page: <Page 'Enact Global Freeze' (enact-global-freeze.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
+Page: <Page 'List XRP as an Exchange' (list-xrp-as-an-exchange.html)>
+   Discouraged word: easy (1 instances); suggest '(omit)' instead.
+   Discouraged phrase: warm wallet (2 instances); suggest 'standby address' instead.
+   Discouraged word: wallet (21 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: cold wallet (4 instances); suggest 'issuing address' instead.
+   Discouraged phrase: hot wallet (2 instances); suggest 'operational address' instead.
+Page: <Page 'List Your Exchange on XRP Charts' (list-your-exchange-on-xrp-charts.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)>
+   Discouraged word: feasible (1 instances); suggest 'can be done, workable' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+Page: <Page 'System Requirements' (system-requirements.html)>
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Install on CentOS/Red Hat with yum' (install-rippled-on-centos-rhel-with-yum.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Install on Ubuntu or Debian Linux' (install-rippled-on-ubuntu.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Build and Run rippled on macOS' (build-run-rippled-macos.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Build and Run rippled in Reporting Mode' (build-run-rippled-in-reporting-mode.html)>
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+   Discouraged word: component (1 instances); suggest 'part' instead.
+Page: <Page 'Capacity Planning' (capacity-planning.html)>
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+   Discouraged word: utilization (1 instances); suggest 'use' instead.
+   Discouraged word: substantial (1 instances); suggest 'large, much' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged word: transmit (4 instances); suggest 'send' instead.
+Page: <Page 'rippled v1.3.x Migration Instructions' (rippled-1-3-migration-instructions.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Run rippled as a Validator' (run-rippled-as-a-validator.html)>
+   Discouraged word: timely (2 instances); suggest 'prompt' instead.
+   Discouraged word: clearly (1 instances); suggest '(omit)' instead.
+Page: <Page 'Run rippled as a Stock Server' (run-rippled-as-a-stock-server.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Configure Full History' (configure-full-history.html)>
+   Discouraged word: sufficient (2 instances); suggest 'enough' instead.
+Page: <Page 'Diagnosing Problems with rippled' (diagnosing-problems.html)>
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'Health Check Interventions' (health-check-interventions.html)>
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+Page: <Page 'Understanding Log Messages' (understanding-log-messages.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+Page: <Page 'rippled Server Doesn't Sync' (server-doesnt-sync.html)>
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+   Discouraged word: impacted (1 instances); suggest 'affected, changed' instead.
+Page: <Page 'Fix SQLite Transaction Database Page Size Issue' (fix-sqlite-tx-db-page-size-issue.html)>
+   Discouraged word: encounter (3 instances); suggest 'meet' instead.
+   Discouraged word: easily (1 instances); suggest '(omit)' instead.
+Page: <Page 'Get Started with the EVM Sidechain' (get-started-evm-sidechain.html)>
+   Discouraged word: wallet (16 instances); suggest 'address, client application, account' instead.
+   Discouraged word: initiate (1 instances); suggest 'start' instead.
+Page: <Page 'EVM Sidechain Validator Security' (evm-sidechain-validator-security.html)>
+   Discouraged word: commence (1 instances); suggest 'begin, start' instead.
+   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
+Page: <Page 'Run a Validator Node on an EVM Sidechain' (evm-sidechain-run-a-validator-node.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
+Page: <Page 'Currency Formats' (currency-formats.html)>
+   Discouraged word: encounter (1 instances); suggest 'meet' instead.
+Page: <Page 'NFToken' (nftoken.html)>
+   Discouraged phrase: and/or (2 instances); suggest '__ or __ or both' instead.
+   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
+Page: <Page 'AccountRoot' (accountroot.html)>
+   Discouraged phrase: is authorized to (1 instances); suggest 'may' instead.
+Page: <Page 'NFTokenOffer' (nftokenoffer.html)>
+   Discouraged word: easy (1 instances); suggest '(omit)' instead.
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'NFTokenPage' (nftokenpage.html)>
+   Discouraged word: consolidate (1 instances); suggest 'combine, join, merge' instead.
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+Page: <Page 'AccountSet' (accountset.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged phrase: the use of (1 instances); suggest '(omit)' instead.
+   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+   Discouraged word: apparent (1 instances); suggest 'clear, plain' instead.
+Page: <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'OfferCreate' (offercreate.html)>
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
+Page: <Page 'SignerListSet' (signerlistset.html)>
+   Discouraged word: identical (1 instances); suggest 'same' instead.
+Page: <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Request Formatting' (request-formatting.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Response Formatting' (response-formatting.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Public API Methods' (public-api-methods.html)>
+   Discouraged phrase: is authorized to (1 instances); suggest 'may' instead.
+Page: <Page 'ledger' (ledger.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'tx' (tx.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'deposit_authorized' (deposit_authorized.html)>
+   Discouraged phrase: is authorized to (2 instances); suggest 'may' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'subscribe' (subscribe.html)>
+   Discouraged word: establish (2 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'manifest' (manifest.html)>
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'server_info (rippled)' (server_info.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'server_state' (server_state.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'server_info' (server_info-clio.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'ledger' (ledger-clio.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'wallet_propose' (wallet_propose.html)>
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+Page: <Page 'validators' (validators.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'rippled Commandline Usage Reference' (commandline-usage.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'xrp-ledger.toml File' (xrp-ledger-toml.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: consult (1 instances); suggest 'see' instead.
+   Discouraged word: desire (1 instances); suggest 'want, wish' instead.
+------------------
+Readability Scores
+------------------
+Average Page Readability Scores:
+  Flesch Reading Ease Score: 57.6 (Fairly Difficult)
+  Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
+  SMOG Index: Grade level 11.5
+  Gunning FOG Index: Grade level 9.2
+  Automated Readability Index: Grade level 11.0
+  Coleman-Liau Index: Grade level 11.6
+  Linsear Write Formula: Grade level 8.6
+
+
+Most difficult pages by Flesch Reading Ease:
+<Page 'Interoperability' (xrpl-interoperability.html)> Readability Scores:
+  Flesch Reading Ease Score: 27.8 (Very Confusing)
+  Dale-Chall Readability Score: 10.2 (higher than average college level)
+  SMOG Index: Grade level 0.0
+  Gunning FOG Index: Grade level 12.8
+  Automated Readability Index: Grade level 17.3
+  Coleman-Liau Index: Grade level 17.7
+  Linsear Write Formula: Grade level 12.5
+
+<Page 'XRP-API' (xrp-api.html)> Readability Scores:
+  Flesch Reading Ease Score: 29.2 (Very Confusing)
+  Dale-Chall Readability Score: 12.5 (higher than average college level)
+  SMOG Index: Grade level 0.0
+  Gunning FOG Index: Grade level 19.6
+  Automated Readability Index: Grade level 18.2
+  Coleman-Liau Index: Grade level 14.8
+  Linsear Write Formula: Grade level 20.5
+
+<Page 'Update Automatically on Linux' (update-rippled-automatically-on-linux.html)> Readability Scores:
+  Flesch Reading Ease Score: 31.4 (Difficult)
+  Dale-Chall Readability Score: 12.1 (higher than average college level)
+  SMOG Index: Grade level 13.2
+  Gunning FOG Index: Grade level 11.7
+  Automated Readability Index: Grade level 14.7
+  Coleman-Liau Index: Grade level 16.3
+  Linsear Write Formula: Grade level 7.5
+
+-------------------
+Page Length Metrics
+-------------------
+Average Page Length Metrics:
+  Sentences: 55
+  Words: 748
+  Characters: 4,653
+
+Longest pages by character count:
+<Page 'Known Amendments' (known-amendments.html)> Length Metrics:
+  Sentences: 485
+  Words: 6,729
+  Characters: 49,419
+
+<Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
+  Sentences: 380
+  Words: 5,852
+  Characters: 36,638
+
+<Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Length Metrics:
+  Sentences: 299
+  Words: 5,188
+  Characters: 29,594
+
+Shortest pages by character count:
+<Page 'API Conventions' (api-conventions.html)> Length Metrics:
+  Sentences: 4
+  Words: 38
+  Characters: 231
+
+<Page 'XRP-API' (xrp-api.html)> Length Metrics:
+  Sentences: 3
+  Words: 29
+  Characters: 169
+
+<Page 'Use Checks' (use-checks.html)> Length Metrics:
+  Sentences: 3
+  Words: 22
+  Characters: 129
+
