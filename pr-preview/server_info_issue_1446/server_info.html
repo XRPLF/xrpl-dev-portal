@@ -616,7 +616,7 @@ rippled server_info
 <tr>
 <td style="text-align: left;"><code>peers</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">How many other <code>rippled</code> servers this one is currently connected to.</td>
+<td style="text-align: left;"><em>(Omitted by <a href="rippled-server-modes.html#reporting-mode">reporting mode</a> servers)</em> How many other <code>rippled</code> servers this one is currently connected to.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>pubkey_node</code></td>
@@ -641,7 +641,7 @@ rippled server_info
 <tr>
 <td style="text-align: left;"><code>reporting.is_writer</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(<a href="rippled-server-modes.html">Reporting mode</a> servers only)</em> If <code>true</code>, this server is writing to the relational database with ledger data. If <code>false</code>, it is not currenty writing, possibly because another reporting mode server is currently populating a shared database.</td>
+<td style="text-align: left;"><em>(<a href="rippled-server-modes.html">Reporting mode</a> servers only)</em>  If <code>true</code>, this server is writing to the external database with ledger data. If <code>false</code>, it is not currenty writing, possibly because another reporting mode server is currently populating a shared database, or because it's configured as read-only.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>reporting.last_publish_time</code></td>
