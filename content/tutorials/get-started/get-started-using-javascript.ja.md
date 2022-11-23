@@ -4,8 +4,6 @@ parent: get-started.html
 blurb: XRP Ledgerを参照するためのエントリーレベルのJavaScriptアプリケーションを構築します。
 top_nav_name: JavaScript
 top_nav_grouping: Get Started
-filters:
-  - include_code
 labels:
   - 開発
 showcase_icon: assets/img/logos/javascript.svg

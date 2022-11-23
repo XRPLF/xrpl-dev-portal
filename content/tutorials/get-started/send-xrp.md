@@ -6,7 +6,6 @@ cta_text: Send XRP
 embed_xrpl_js: true
 filters:
   - interactive_steps
-  - include_code
 labels:
   - XRP
   - Payments

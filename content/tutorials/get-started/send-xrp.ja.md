@@ -6,7 +6,6 @@ cta_text: XRPを送金しよう
 embed_xrpl_js: true
 filters:
     - interactive_steps
-    - include_code
 labels:
   - 支払い
   - XRP

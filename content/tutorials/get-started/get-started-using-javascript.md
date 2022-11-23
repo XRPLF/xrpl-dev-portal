@@ -4,8 +4,6 @@ parent: get-started.html
 blurb: Build an entry-level JavaScript application for querying the XRP Ledger.
 top_nav_name: JavaScript
 top_nav_grouping: Get Started
-filters:
-  - include_code
 labels:
   - Development
 showcase_icon: assets/img/logos/javascript.svg

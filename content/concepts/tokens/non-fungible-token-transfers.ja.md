@@ -2,8 +2,6 @@
 html: non-fungible-token-transfers.html
 parent: non-fungible-tokens.html
 blurb: NFTokenをダイレクトモードまたはブローカーモードで取引する。
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 status: not_enabled

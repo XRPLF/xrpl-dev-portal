@@ -2,8 +2,6 @@
 html: non-fungible-token-transfers.html
 parent: non-fungible-tokens.html
 blurb: Trading NFTokens in direct or brokered mode.
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 ---

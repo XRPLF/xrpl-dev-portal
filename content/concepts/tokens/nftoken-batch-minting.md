@@ -2,8 +2,6 @@
 html: nftoken-batch-minting.html
 parent: non-fungible-tokens.html
 blurb: Minting NFToken objects in batches.
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 ---

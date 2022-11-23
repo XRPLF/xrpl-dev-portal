@@ -25,6 +25,7 @@ default_filters:
     - link_replacement
     - external_links
     - status_badges
+    - include_code
     - include_svg
     - css_tables
     - slug

@@ -2,8 +2,6 @@
 html: nftokenpage.html
 parent: ledger-object-types.html
 blurb: NFTokenを記録するためのレジャー構造。
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 ---

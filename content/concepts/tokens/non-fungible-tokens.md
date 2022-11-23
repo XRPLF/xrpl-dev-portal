@@ -2,8 +2,6 @@
 html: non-fungible-tokens.html
 parent: tokens.html
 blurb: Introduction to XRPL NFTs.
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 ---
