@@ -2,22 +2,22 @@ const xrpl = require("xrpl")
 
 async function main() {
 
-  // Create client and connect to network.
+  // Create a client and connect to the network.
   const client = new xrpl.Client("wss://xrplcluster.com/")
   await client.connect()
 
-  // Query ledger data.
+  // Specify a ledger to query for info.
   let ledger = await client.request({
     "command": "ledger_data",
     "ledger_index": 500000,
   })
 
-  // Create function to loop through API calls.
+  // Create a function to run on each API call.
   function code(){
     console.log(ledger["result"])
   }
  
-  // Run code at least once before checking for markers.
+  // Execute function at least once before checking for markers.
   do {
     code()
     
@@ -25,6 +25,7 @@ async function main() {
         break
     }
 
+    // Specify the same ledger and add the marker to continue querying.
     const ledger_marker = await client.request({
         "command": "ledger_data",
         "ledger_index": 500000,
@@ -34,6 +35,7 @@ async function main() {
 
   } while (true)
 
+  // Disconnect when done. If you omit this, Node.js won't end the process.
   client.disconnect()
 }
 
