@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11a.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v11b.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -211,7 +211,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/server_state.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -622,17 +636,22 @@ rippled server_state
 <tr>
 <td style="text-align: left;"><code>reporting.etl_sources</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(<a href="rippled-server-modes.html#reporting-mode">Reporting mode</a> servers only)</em> A list of p2p-mode servers this reporting mode is retrieving data from. Each entry in this array is an <a href="#etl-source-object">ETL Source object</a>.</td>
+<td style="text-align: left;"><em>(<a href="rippled-server-modes.html#reporting-mode">Reporting mode</a> servers only)</em> A l</td>
+</tr>
+<tr>
+<td style="text-align: left;">ist of P2P-mode servers this reporting mode is retrieving data from. Each entry in this array is an <a href="#etl-source-object">ETL Source object</a>.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>reporting.is_writer</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(<a href="rippled-server-modes.html#reporting-mode">Reporting mode</a> servers only)</em> If <code>true</code>, this server is configured to write to the relational database with ledger data. If <code>false</code>, it is configured read-only and relies on other reporting mode servers to populate the database.</td>
+<td style="text-align: left;"><em>(<a href="rippled-server-modes.html#reporting-mode">Reporting mode</a> servers only)</em> If <code>true</code>, this server is writing to the relational database with ledger data. If <code>false</code>, it is not currenty writing, possibly because another reporting mode server is currently populating a shared database.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>reporting.last_publish_time</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(<a href="rippled-server-modes.html#reporting-mode">Reporting mode</a> servers only)</em> An ISO 8601 timestamp indicating when this server last saw a new validated ledger from any of its p2p mode sources.</td>
+<td style="text-align: left;"><em>(<a href="rippled-server-modes.html#reporting-mode">Reporting mode</a> servers only)</em> An ISO 8601 timestamp indicating when this server last saw a new validated ledger from any of its P2P mode sources.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>server_state</code></td>
@@ -731,32 +750,32 @@ rippled server_state
 <tr>
 <td><code>connected</code></td>
 <td>Boolean</td>
-<td>If <code>true</code>, the reporting mode server is connected to this p2p mode server. If <code>false</code>, that may indicate a network outage or that the p2p mode server is down.</td>
+<td>If <code>true</code>, the reporting mode server is connected to this P2P mode server. If <code>false</code>, the server is not connected. This could be due to misconfiguration, a network outage, or it could mean that the P2P mode server is down.</td>
 </tr>
 <tr>
 <td><code>grpc_port</code></td>
 <td>String</td>
-<td>The port number on the p2p mode server where this reporting mode server is configured to connect and retrieve ledger data via gRPC.</td>
+<td>The port number on the P2P mode server where this reporting mode server is configured to connect and retrieve ledger data via gRPC.</td>
 </tr>
 <tr>
 <td><code>ip</code></td>
 <td>String</td>
-<td>The IP address (IPv4 or IPv6) of the p2p mode server.</td>
+<td>The IP address (IPv4 or IPv6) of the P2P mode server.</td>
 </tr>
 <tr>
 <td><code>last_message_arrival_time</code></td>
 <td>String</td>
-<td>An ISO 8601 timestamp indicating the most recent time the reporting mode server received a message from this p2p server.</td>
+<td>An ISO 8601 timestamp indicating the most recent time the reporting mode server received a message from this P2P server.</td>
 </tr>
 <tr>
 <td><code>validated_ledgers_range</code></td>
 <td>String</td>
-<td>The range of validated ledger versions this p2p mode server reports that it has available, in the same format as <code>complete_ledgers</code>.</td>
+<td>The range of validated ledger versions this P2P mode server reports that it has available, in the same format as <code>complete_ledgers</code>.</td>
 </tr>
 <tr>
 <td><code>websocket_port</code></td>
 <td>String</td>
-<td>The port number on the p2p server where this reporting mode server is configured to forward WebSocket requests that cannot be served directly from reporting mode.</td>
+<td>The port number on the P2P server where this reporting mode server is configured to forward WebSocket requests that cannot be served directly from reporting mode.</td>
 </tr>
 </tbody>
 </table>

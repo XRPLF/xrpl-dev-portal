@@ -55,7 +55,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11a.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v11b.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -211,7 +211,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/configure-grpc.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -269,8 +283,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="configure-grpc">Configure gRPC<a aria-hidden="true" class="hover_anchor" href="#configure-grpc"><i class="fa fa-link"></i></a></h1>
-<p>The <code>rippled</code> server has a limited <a class="external-link" href="https://grpc.io/" target="_blank">gRPC API <i aria-hidden="true" class="fa fa-external-link"></i></a> which <a href="rippled-server-modes.html">p2p mode servers</a> can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p class="devportal-callout caution"><strong>Caution:</strong> gRPC support is intended specifically for providing data to reporting mode servers from p2p mode servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.</p>
+<p>The <code>rippled</code> server has a limited <a class="external-link" href="https://grpc.io/" target="_blank">gRPC API <i aria-hidden="true" class="fa fa-external-link"></i></a> which <a href="rippled-server-modes.html">P2P mode servers</a> can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p class="devportal-callout caution"><strong>Caution:</strong> gRPC support is intended specifically for providing data to reporting mode servers from P2P mode servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To enable gRPC, you must meet the following prerequisites:</p>
 <ul>
