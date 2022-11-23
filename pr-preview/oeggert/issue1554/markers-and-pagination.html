@@ -280,24 +280,24 @@
 <div class="code_sample python" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
 <span class="kn">from</span> <span class="nn">xrpl.models.requests</span> <span class="kn">import</span> <span class="n">LedgerData</span>
 
-<span class="c1"># Create a client to connect to the main network.</span>
+<span class="c1"># Create a client to connect to the network.</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="s2">"https://xrplcluster.com/"</span><span class="p">)</span>
 
-<span class="c1"># Specify ledger to query and request data.</span>
+<span class="c1"># Specify a ledger to query for info.</span>
 <span class="n">ledger</span> <span class="o">=</span> <span class="n">LedgerData</span><span class="p">(</span><span class="n">ledger_index</span><span class="o">=</span><span class="mi">500000</span><span class="p">)</span>
 <span class="n">ledger_data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">ledger</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
 
-<span class="c1"># Code to run on each call.</span>
+<span class="c1"># Create a function to run on each API call.</span>
 <span class="k">def</span> <span class="nf">code</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ledger_data</span><span class="p">)</span>
 
-<span class="c1">#Execute code at least once before checking for markers.</span>
+<span class="c1"># Execute function at least once before checking for markers.</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">code</span><span class="p">()</span>
     <span class="k">if</span> <span class="s2">"marker"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ledger_data</span><span class="p">:</span>
         <span class="k">break</span>
 
-    <span class="c1"># Specify ledger and marker to continue querying.</span>
+    <span class="c1"># Specify the same ledger and add the marker to continue querying.</span>
     <span class="n">ledger_marker</span> <span class="o">=</span> <span class="n">LedgerData</span><span class="p">(</span><span class="n">ledger_index</span><span class="o">=</span><span class="mi">500000</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">ledger_data</span><span class="p">[</span><span class="s2">"marker"</span><span class="p">])</span>
     <span class="n">ledger_data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">ledger_marker</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
 </code></pre></div></div>
@@ -306,22 +306,22 @@
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">// Create client and connect to network.</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Create a client and connect to the network.</span><span class="w"></span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://xrplcluster.com/"</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">// Query ledger data.</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Specify a ledger to query for info.</span><span class="w"></span>
 <span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">ledger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ledger_data"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="mf">500000</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">// Create function to loop through API calls.</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Create a function to run on each API call.</span><span class="w"></span>
 <span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">code</span><span class="p">(){</span><span class="w"></span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">])</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">// Run code at least once before checking for markers.</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Execute function at least once before checking for markers.</span><span class="w"></span>
 <span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nx">code</span><span class="p">()</span><span class="w"></span>
 
@@ -329,6 +329,7 @@
 <span class="w">        </span><span class="k">break</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="c1">// Specify the same ledger and add the marker to continue querying.</span><span class="w"></span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ledger_marker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
 <span class="w">        </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ledger_data"</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="mf">500000</span><span class="p">,</span><span class="w"></span>
@@ -338,6 +339,7 @@
 
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"></span>
 
+<span class="w">  </span><span class="c1">// Disconnect when done. If you omit this, Node.js won't end the process.</span><span class="w"></span>
 <span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
