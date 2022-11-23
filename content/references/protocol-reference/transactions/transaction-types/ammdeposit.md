@@ -84,17 +84,17 @@ Any other combination of these fields and flags is invalid.
  
  The formula for how many LP Tokens you receive for a double-asset deposit is:
 
-{{ include_svg("img/amm-single-asset-deposit-formula.svg", "L = T × ( (( (B - (F × (1 - W) × B)) ÷ P)^W) - 1)") }}
+{{ include_svg("img/amm-single-asset-deposit-formula.svg", "L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)") }}
 <!-- TODO: improve graphic -->
 
 Where:
 
 - `L` is the amount of LP Tokens returned
-- `T` is the total outstanding LP Tokens before the deposit <!-- TODO: or is it after the deposit? -->
+- `T` is the total outstanding LP Tokens before the deposit
 - `B` is the amount of the asset being deposited
 - `F` is the trading fee, as a decimal
 - `W` is the weight of the deposit asset in the pool. This is defined as 0.5 for all AMM pools (meaning a 50/50 split), so exponentiation by W is equivalent to taking the square root.
-- `P` is the total amount of the deposit asset in the pool before the deposit <!-- TODO: or is it after the deposit? -->
+- `P` is the total amount of the deposit asset in the pool before the deposit
 
 ### AMMDeposit Flags
 
