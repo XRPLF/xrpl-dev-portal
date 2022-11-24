@@ -283,22 +283,23 @@
 <span class="c1"># Create a client to connect to the network.</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="s2">"https://xrplcluster.com/"</span><span class="p">)</span>
 
-<span class="c1"># Specify a ledger to query for info.</span>
-<span class="n">ledger</span> <span class="o">=</span> <span class="n">LedgerData</span><span class="p">(</span><span class="n">ledger_index</span><span class="o">=</span><span class="mi">500000</span><span class="p">)</span>
+<span class="c1"># Query the most recently validated ledger for info.</span>
+<span class="n">ledger</span> <span class="o">=</span> <span class="n">LedgerData</span><span class="p">(</span><span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">)</span>
 <span class="n">ledger_data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">ledger</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
+<span class="n">ledger_data_index</span> <span class="o">=</span> <span class="n">ledger_data</span><span class="p">[</span><span class="s2">"ledger_index"</span><span class="p">]</span>
 
 <span class="c1"># Create a function to run on each API call.</span>
-<span class="k">def</span> <span class="nf">code</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">printLedgerResult</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ledger_data</span><span class="p">)</span>
 
 <span class="c1"># Execute function at least once before checking for markers.</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">code</span><span class="p">()</span>
+    <span class="n">printLedgerResult</span><span class="p">()</span>
     <span class="k">if</span> <span class="s2">"marker"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ledger_data</span><span class="p">:</span>
         <span class="k">break</span>
 
     <span class="c1"># Specify the same ledger and add the marker to continue querying.</span>
-    <span class="n">ledger_marker</span> <span class="o">=</span> <span class="n">LedgerData</span><span class="p">(</span><span class="n">ledger_index</span><span class="o">=</span><span class="mi">500000</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">ledger_data</span><span class="p">[</span><span class="s2">"marker"</span><span class="p">])</span>
+    <span class="n">ledger_marker</span> <span class="o">=</span> <span class="n">LedgerData</span><span class="p">(</span><span class="n">ledger_index</span><span class="o">=</span><span class="n">ledger_data_index</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">ledger_data</span><span class="p">[</span><span class="s2">"marker"</span><span class="p">])</span>
     <span class="n">ledger_data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">ledger_marker</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
 </code></pre></div></div>
 
@@ -310,20 +311,21 @@
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://xrplcluster.com/"</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">// Specify a ledger to query for info.</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Query the most recently validated ledger for info.</span><span class="w"></span>
 <span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">ledger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ledger_data"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="mf">500000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ledger_data_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"ledger_index"</span><span class="p">]</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// Create a function to run on each API call.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">code</span><span class="p">(){</span><span class="w"></span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">printLedgerResult</span><span class="p">(){</span><span class="w"></span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">])</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// Execute function at least once before checking for markers.</span><span class="w"></span>
 <span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">code</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="nx">printLedgerResult</span><span class="p">()</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"marker"</span><span class="p">]</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">break</span><span class="w"></span>
@@ -332,7 +334,7 @@
 <span class="w">    </span><span class="c1">// Specify the same ledger and add the marker to continue querying.</span><span class="w"></span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ledger_marker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
 <span class="w">        </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ledger_data"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="mf">500000</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="nx">ledger_data_index</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="s2">"marker"</span><span class="o">:</span><span class="w"> </span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"marker"</span><span class="p">]</span><span class="w"></span>
 <span class="w">    </span><span class="p">})</span><span class="w"></span>
 <span class="w">    </span><span class="nx">ledger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ledger_marker</span><span class="w"></span>
