@@ -21,7 +21,7 @@ async function main() {
   do {
     code()
     
-    if (ledger["result"]["marker"] == null) {
+    if (ledger["result"]["marker"] === undefined) {
         break
     }
 
