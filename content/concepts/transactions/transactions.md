@@ -11,153 +11,25 @@ _Transactions_ allow accounts to modify the XRP Ledger.
 
 Transactions can do more than transfer currency. In addition to supporting various payment types, transactions in the XRP Ledger can rotate cryptographic keys, manage other settings, and trade in the XRP Ledger's decentralized exchange.
 
-## Transaction Structure
-
-### Example Unsigned Transaction
-
-Here is an example of an unsigned `Payment` transaction in JSON:
-
-```json
-{
-  "TransactionType" : "Payment",
-  "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-  "Amount" : {
-     "currency" : "USD",
-     "value" : "1",
-     "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-  },
-  "Fee": "12",
-  "Flags": 2147483648,
-  "Sequence": 2,
-}
-```
-
-| Field Name      | Description |
-|-----------------|-------------|
-| TransactionType | Send a Payment. |
-| Account         | The account sending the funds. |
-| Destination     | The account receiving the funds. |
-| Amount          | The amount and type of currency. |
-| currency        | Currency type to transfer.  |
-| value           | Quantity of currency to transfer. |
-| issuer          | Account that originally issued the currency. |
-| Fee             | Transaction fee, in drops (millionths of one XRP). |
-| Flags           | Additional standard settings for the transaction. |
-| Sequence        | Unique sequence number for the transaction. |
-
-### Signing and Submitting Transactions
+## Signing and Submitting Transactions
 
 Sending a transaction to the XRP Ledger involves several steps:
 
-1. Create an [unsigned transaction in JSON format](#example-unsigned-transaction).
+1. Create an [unsigned transaction in JSON format](transaction-structure.html#example-unsigned-transaction).
 2. Use one or more signatures to [authorize the transaction](#authorizing-transactions).
-3. Submit a transaction to an XRP Ledger server (usually a [`rippled` instance](server-modes.html)). If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
+3. Submit a transaction to an XRP Ledger server. 
 4. The [consensus process](consensus.html) determines which provisional transactions get included in the next validated ledger.
 5. The servers apply those transactions to the previous ledger in a canonical order and share their results.
-6. If enough trusted validators created the exact same ledger, that ledger is declared _validated_ and the <!-- * --> results of the transactions in that ledger are immutable.
-
-<!-- * [results of the transactions](transaction-results.html) -->
+6. If enough trusted validators create the exact same ledger, the ledger is _validated_ and the results of the transactions in that ledger are immutable.
 
 ### Example Executed Transaction Response with Metadata
 
-After a transaction has been executed, the XRP Ledger adds <!-- * --> metadata to show the transaction's final outcome and all the changes that the transaction made to the shared state of the XRP Ledger.
+After a transaction is complete, the XRP Ledger adds metadata to show the transaction's final outcome and all the changes that the transaction made to the shared state of the XRP Ledger.
 
-<!-- * [metadata](transaction-metadata.html) -->
+You can check a transaction's status using the API (for example, using the `tx` command).
 
-You can check a transaction's status using the API, for example using the `tx` command.
+The results of a transaction, including all its metadata, are not final until the transaction appears in a validated ledger.
 
-The results of a transaction, including all its metadata, are not final until the transaction appears in a **validated** ledger.
-
-Example response from the `tx` command:
-
-```json
-{
-  "id": 6,
-  "status": "success",
-  "type": "response",
-  "result": {
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Amount": {
-      "currency": "USD",
-      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "value": "1"
-    },
-    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-    "Fee": "10",
-    "Flags": 2147483648,
-    "Sequence": 2,
-    "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-    "TransactionType": "Payment",
-    "TxnSignature": "3045022100D64A32A506B86E880480CCB846EFA3F9665C9B11FDCA35D7124F53C486CC1D0402206EC8663308D91C928D1FDA498C3A2F8DD105211B9D90F4ECFD75172BAE733340",
-    "date": 455224610,
-    "hash": "33EA42FC7A06F062A7B843AF4DC7C0AB00D6644DFDF4C5D354A87C035813D321",
-    "inLedger": 7013674,
-    "ledger_index": 7013674,
-    "meta": {
-      "AffectedNodes": [
-        {
-          "ModifiedNode": {
-            "FinalFields": {
-              "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-              "Balance": "99999980",
-              "Flags": 0,
-              "OwnerCount": 0,
-              "Sequence": 3
-            },
-            "LedgerEntryType": "AccountRoot",
-            "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-            "PreviousFields": {
-              "Balance": "99999990",
-              "Sequence": 2
-            },
-            "PreviousTxnID": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E",
-            "PreviousTxnLgrSeq": 6979192
-          }
-        },
-        {
-          "ModifiedNode": {
-            "FinalFields": {
-              "Balance": {
-                "currency": "USD",
-                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                "value": "2"
-              },
-              "Flags": 65536,
-              "HighLimit": {
-                "currency": "USD",
-                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "value": "0"
-              },
-              "HighNode": "0000000000000000",
-              "LowLimit": {
-                "currency": "USD",
-                "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-                "value": "100"
-              },
-              "LowNode": "0000000000000000"
-            },
-            "LedgerEntryType": "RippleState",
-            "LedgerIndex": "96D2F43BA7AE7193EC59E5E7DDB26A9D786AB1F7C580E030E7D2FF5233DA01E9",
-            "PreviousFields": {
-              "Balance": {
-                "currency": "USD",
-                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                "value": "1"
-              }
-            },
-            "PreviousTxnID": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E",
-            "PreviousTxnLgrSeq": 6979192
-          }
-        }
-      ],
-      "TransactionIndex": 0,
-      "TransactionResult": "tesSUCCESS"
-    },
-    "validated": true
-  }
-}
-```
 
 ## Identifying Transactions
 

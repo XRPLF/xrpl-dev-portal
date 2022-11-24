@@ -37,7 +37,128 @@ Every transaction has the same set of common fields, plus additional fields base
 
 Removed in: rippled 0.28.0: The `PreviousTxnID` field of transactions was replaced by the [`AccountTxnID`](#accounttxnid) field. This String / Hash256 field is present in some historical transactions. This is unrelated to the field also named `PreviousTxnID` in some [ledger objects](../../../../references/protocol-reference/ledger-data/ledger-data-formats.md).
 
+### Example Unsigned Transaction
 
+Here is an example of an unsigned `Payment` transaction in JSON:
+
+```json
+{
+  "TransactionType" : "Payment",
+  "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+  "Amount" : {
+     "currency" : "USD",
+     "value" : "1",
+     "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+  },
+  "Fee": "12",
+  "Flags": 2147483648,
+  "Sequence": 2,
+}
+```
+
+| Field Name      | Description |
+|-----------------|-------------|
+| TransactionType | Send a Payment. |
+| Account         | The account sending the funds. |
+| Destination     | The account receiving the funds. |
+| Amount          | The amount and type of currency. |
+| currency        | Currency type to transfer.  |
+| value           | Quantity of currency to transfer. |
+| issuer          | Account that originally issued the currency. |
+| Fee             | Transaction fee, in drops (millionths of one XRP). |
+| Flags           | Additional standard settings for the transaction. |
+| Sequence        | Unique sequence number for the transaction. |
+
+Example response from the `tx` command:
+
+```json
+{
+  "id": 6,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Amount": {
+      "currency": "USD",
+      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "value": "1"
+    },
+    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Fee": "10",
+    "Flags": 2147483648,
+    "Sequence": 2,
+    "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+    "TransactionType": "Payment",
+    "TxnSignature": "3045022100D64A32A506B86E880480CCB846EFA3F9665C9B11FDCA35D7124F53C486CC1D0402206EC8663308D91C928D1FDA498C3A2F8DD105211B9D90F4ECFD75172BAE733340",
+    "date": 455224610,
+    "hash": "33EA42FC7A06F062A7B843AF4DC7C0AB00D6644DFDF4C5D354A87C035813D321",
+    "inLedger": 7013674,
+    "ledger_index": 7013674,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+              "Balance": "99999980",
+              "Flags": 0,
+              "OwnerCount": 0,
+              "Sequence": 3
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+            "PreviousFields": {
+              "Balance": "99999990",
+              "Sequence": 2
+            },
+            "PreviousTxnID": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E",
+            "PreviousTxnLgrSeq": 6979192
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "2"
+              },
+              "Flags": 65536,
+              "HighLimit": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "0"
+              },
+              "HighNode": "0000000000000000",
+              "LowLimit": {
+                "currency": "USD",
+                "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+                "value": "100"
+              },
+              "LowNode": "0000000000000000"
+            },
+            "LedgerEntryType": "RippleState",
+            "LedgerIndex": "96D2F43BA7AE7193EC59E5E7DDB26A9D786AB1F7C580E030E7D2FF5233DA01E9",
+            "PreviousFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "1"
+              }
+            },
+            "PreviousTxnID": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E",
+            "PreviousTxnLgrSeq": 6979192
+          }
+        }
+      ],
+      "TransactionIndex": 0,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true
+  }
+}
+```
 ## AccountTxnID
 
 The `AccountTxnID` field lets you chain your transactions together, so that a current transaction is not valid unless the previous transaction sent from the same account has a specific transaction hash. <!-- ][identifying hash]. -->
@@ -47,8 +168,6 @@ Unlike the `PreviousTxnID` field, which tracks the last transaction to _modify_ 
 One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially have serious problems like some transactions sending twice and others not at all. Chaining your transactions together with `AccountTxnID` ensures that, even if both systems are active, only one of them can submit valid transactions at a time.
 
 The `AccountTxnID` field cannot be used on transactions that use [Tickets](tickets.html). Transactions that use `AccountTxnID` cannot be placed in the [transaction queue](../server/transaction-queue.html).
-
-
 
 ## Auto-fillable Fields
 
@@ -63,7 +182,6 @@ Some fields can be automatically filled in before a transaction is signed, eithe
 For a production system, we recommend _not_ leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.
 
 The [`Paths` field](../../../../references/protocol-reference/transactions/transaction-types/payment.md#paths) of the `Payment` transaction type can also be automatically filled in.
-
 
 ## Flags Field
 
@@ -133,7 +251,6 @@ Example of a transaction with a Memos field:
 }
 ```
 
-
 ## Signers Field
 
 The `Signers` field contains a [multi-signature](multi-signing.html), which has signatures from up to 8 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
@@ -144,8 +261,8 @@ The `Signers` field contains a [multi-signature](multi-signing.html), which has 
 | `TxnSignature`  | String | Blob              | A signature for this transaction, verifiable using the `SigningPubKey`. |
 | `SigningPubKey` | String | Blob              | The public key used to create this signature. |
 
-The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the `SigningPubKey` can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [`lsfDisableMaster`](../../../../references/protocol-reference/ledger-data/ledger-object-types/accountroot.md#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
+The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the `SigningPubKey` can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [`lsfDisableMaster`](/accountroot.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
 
-Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the [transaction cost](transaction-cost.md) required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is `10000` drops, then a multi-signed transaction with 3 entries in the `Signers` array would need a `Fee` value of at least `40000` drops to relay.
+Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the [transaction cost](transaction-cost.html) required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is `10000` drops, then a multi-signed transaction with 3 entries in the `Signers` array would need a `Fee` value of at least `40000` drops to relay.
 
 

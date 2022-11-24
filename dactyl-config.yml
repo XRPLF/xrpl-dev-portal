@@ -457,29 +457,11 @@ pages:
         targets:
             - ja
 
-# Concepts ---------------------------------------------------------------------
-
-    -   name: Concepts
-        html: concepts.html
-        parent: docs.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
-        targets:
-            - en
-
-    -   name: コンセプト
-        html: concepts.html
-        parent: docs.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
-        targets:
-            - ja
+# Introduction -----------------------------------------------------------------
 
     -   name: Introduction
         html: introduction.html
-        parent: concepts.html
+        parent: docs.html
         template: pagetype-category.html.jinja
         blurb: This is a quick introduction to the principal features of the XRP Ledger (XRPL). Read this to get a high level understanding of the XRPL, then you can read more about areas of particular interest. The XRP Ledger is a blockchain that permanently records digital transactions of tokens between accounts. The sections below expand on the concepts introduced in that sentence.
         targets:
@@ -510,15 +492,27 @@ pages:
       targets:
          - en
          - ja
+         
+# Concepts ---------------------------------------------------------------------
 
-#     -   name: Understanding the XRP Ledger
-#         html: understanding-xrpl.html
-#         parent: concepts.html
-#         template: pagetype-category.html.jinja
-#         blurb: This is an in-depth discussion of all elements of the XRP Ledger.
-#         targets:
-#            - en
-#            - ja
+    -   name: Concepts
+        html: concepts.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
+        targets:
+            - en
+
+    -   name: コンセプト
+        html: concepts.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
+        targets:
+            - ja
+
 
     - md: concepts/server/rippled-server.md
       parent: concepts.html
@@ -868,14 +862,14 @@ pages:
       targets:
          - en
          - ja
-         
-    - md: concepts/accounts/deposit-authorization.md
+          
+    - md: concepts/accounts/cryptographic-keys.md
       parent: accounts.html
       targets:
          - en
          - ja
-         
-    - md: concepts/accounts/cryptographic-keys.md
+        
+    - md: concepts/accounts/deposit-authorization.md
       parent: accounts.html
       targets:
          - en

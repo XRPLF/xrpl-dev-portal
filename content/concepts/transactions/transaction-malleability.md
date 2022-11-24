@@ -21,8 +21,8 @@ Before 2014, single-signed transactions could be malleable due to properties of 
 
 In the XRP Ledger, a transaction cannot execute unless:
 
-- All [fields of a transaction](transaction-common-fields.md) are signed, except the signature itself.
-- The key pair(s) used to sign the transaction are [authorized to send transactions on behalf of that account](transaction-basics.md#authorizing-transactions).
+- All [fields of a transaction](transaction-common-fields.html) are signed, except the signature itself.
+- The key pair(s) used to sign the transaction are [authorized to send transactions on behalf of that account](transaction-basics.html#authorizing-transactions).
 - The signature is _canonical_ and matches the transaction instructions.
 
 Any change to the signed fields, no matter how small, would invalidate the signature, so no part of the transaction can be malleable except for the signature itself. In most cases, any change to a signature itself also invalidates the signature, but there are some specific exceptions, described below.
@@ -41,11 +41,11 @@ Generally speaking, any standard ECDSA implementation handles these requirements
 
 An ECDSA signature consists of two integers, called R and S. The secp256k1 _group order_, called N, is a constant value for all secp256k1 signatures. Specifically, N is the value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`. For any given signature `(R,S)`, the signature `(R, N-S)` (that is, using N minus S in place of S) is also valid.
 
-Thus, to have _fully_ canonical signatures, one must choose which of the two possibilities is preferred and declare the other to be invalid. The creators of the XRP Ledger decided arbitrarily to prefer the _smaller_ of the two possible values, `S` or `N-S`. A transaction is considered _fully canonical_ if it uses the preferred (smaller) value of `S`, and follows all the normal rules for being canonical. To calculate a fully-canonical ECDSA signature, one must compare S and N-S to determine which is smaller, then use that value in the `Signature` field of the transaction.
+To have _fully_ canonical signatures, you must choose which of the two possibilities is preferred and declare the other to be invalid. The creators of the XRP Ledger decided arbitrarily to prefer the _smaller_ of the two possible values, `S` or `N-S`. A transaction is considered _fully canonical_ if it uses the preferred (smaller) value of `S`, and follows all the normal rules for being canonical. To calculate a fully-canonical ECDSA signature, one must compare S and N-S to determine which is smaller, then use that value in the `Signature` field of the transaction.
 
 With the RequireFullyCanonicalSig amendment (enabled in 2020), all transactions must use _fully canonical_ signatures only.
 
-Between 2014 and 2020, the XRP Ledger was compatible with legacy software that did not always generate fully canonical signatures, but used a flag on transactions called [**`tfFullyCanonicalSig`**](transaction-common-fields.md#global-flags) to protect compatible software from transaction malleability. This flag, which compatible signing software enables by default, required that the transaction use a _fully-canonical_ signature to be valid. Now that the RequireFullyCanonicalSig amendment is enabled, the flag is no longer necessary, but there is no harm in enabling it anyway.
+Between 2014 and 2020, the XRP Ledger was compatible with legacy software that did not always generate fully canonical signatures, but used a flag on transactions called [**`tfFullyCanonicalSig`**](transaction-common-fields.html#global-flags) to protect compatible software from transaction malleability. This flag, which compatible signing software enables by default, required that the transaction use a _fully-canonical_ signature to be valid. Now that the RequireFullyCanonicalSig amendment is enabled, the flag is no longer necessary, but there is no harm in enabling it anyway.
 
 
 ### Malleability with Multi-Signatures
@@ -121,28 +121,10 @@ The process to exploit a vulnerable system follows a series of steps like the fo
 
     If the transaction included the `LastLedgerSequence` field, this would occur after the specified ledger index has passed.
 
-    If the transaction omitted the `LastLedgerSequence` field, this could be wrong in another way: if no other transaction from the same sender uses the same `Sequence` number, then the transaction could theoretically succeed later regardless of how much time has passed. 
-    
-<!-- (See [Reliable Transaction Submission](reliable-transaction-submission.html) for details.) -->
+    If the transaction omitted the `LastLedgerSequence` field, this could be wrong in another way: if no other transaction from the same sender uses the same `Sequence` number, then the transaction could theoretically succeed later regardless of how much time has passed.
 
 8. The vulnerable system takes action assuming that the transaction has failed.
 
     For example, it may refund (or not debit) a customer's balance in its own system, to account for the funds that it thinks have not been sent in the XRP Ledger.
 
     Worse, the vulnerable system might construct a new transaction to replace the transaction, picking new `Sequence`, `LastLedgerSequence`, and `Fee` parameters based on the current state of the network, but keeping the rest of the transaction the same as the original. If this new transaction is also malleable, the system could be exploited in the same way an indefinite number of times.
-
-<!--
-## See Also
-
-- **Concepts:**
-    - [Transaction Basics](transaction-basics.html)
-    - [Finality of Results](finality-of-results.html)
-- **Tutorials:**
-    - [Look Up Transaction Results](look-up-transaction-results.html)
-    - [Reliable Transaction Submission](reliable-transaction-submission.html)
-- **References:**
-    - [Basic Data Types - Hashes](basic-data-types.html#hashes)
-    - [Transaction Common Fields - Global Flags](transaction-common-fields.html#global-flags)
-    - [Transaction Results](transaction-results.html)
-    - [Serialization Format](serialization.html)
--->

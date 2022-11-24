@@ -33,11 +33,9 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 
     - If an address sends two different transactions using the same sequence number, at most one of those transactions can become validated. If those transactions are relayed through the network in different paths, a tentatively-successful transaction that some servers saw first might end up failing because the other, conflicting transaction reached a majority of servers first.
 
-    - To protect the network from spam, all transactions must destroy a [transaction cost](transaction-cost.md) in XRP to be relayed throughout the XRP Ledger peer-to-peer network. If heavy load on the peer-to-peer network causes the transaction cost to increase, a transaction that tentatively succeeded might not get relayed to enough servers to achieve a consensus, or might be [queued](transaction-queue.html) for later.
+    - To protect the network from spam, all transactions must destroy a [transaction cost](transaction-cost.html) in XRP to be relayed throughout the XRP Ledger peer-to-peer network. If heavy load on the peer-to-peer network causes the transaction cost to increase, a transaction that tentatively succeeded might not get relayed to enough servers to achieve a consensus, or might be [queued](transaction-queue.html) for later.
 
     - Temporary internet outages or delays might prevent a proposed transaction from being successfully relayed before the transaction's intended expiration, as set by the `LastLedgerSequence` field. (If the transaction does not have an expiration, then it remains valid and could succeed any amount of time later, which can be undesirable in its own way. 
-    
-<!-- See [Reliable Transaction Submission](reliable-transaction-submission.html) for details.) -->
 
     - Combinations of two or more of these factors can also occur.
 
@@ -45,21 +43,8 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 
     - If two transactions would each fully consume the same <!-- * -->offer] in the decentralized exchange, whichever one comes first succeeds, and the other fails. Since the order in which those transactions apply might change, the one that succeeded can fail and the one that failed can succeed. Since offers can be partially executed, they could also still succeed, but to a greater or lesser extent.
 
-<!-- * [Offer](offers.html) -->
-<!--  [decentralized exchange](decentralized-exchange.html) -->
-
     - If a [cross-currency payment](./payments/cross-currency-payments.md) succeeds by consuming an  <!-- * -- >Offer in the <!-- * -->decentralized exchange, but a different transaction consumes or creates offers in the same order book, the cross-currency payment might succeed with a different exchange rate than it had when it executed tentatively. If it was a [partial payment](./payments/partial-payments.md), it could also deliver a different amount.
 
     - A `Payment` transaction that tentatively failed because the sender did not have enough funds might later succeed because another transaction delivering the necessary funds came first in the canonical order. The reverse is also possible: a transaction that tentatively succeeded might fail because a transaction delivering the necessary funds did not come first after being put into canonical order.
 
     **Tip:** For this reason, when running tests against the XRP Ledger, be sure to wait for a ledger close in between transactions if you have several accounts affecting the same data. If you are testing against a server in stand-alone mode, you must manually close the ledger in such cases.
-
-<!-- [manually close the ledger](advance-the-ledger-in-stand-alone-mode.html) -->
-
-<!--
-## See Also
-
-- [Look up Transaction Results](look-up-transaction-results.html)
-- [Transaction Results Reference](transaction-results.html)
-
--->
