@@ -55,9 +55,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11b.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v12.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -82,7 +82,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -203,7 +203,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -283,8 +283,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="configure-grpc">Configure gRPC<a aria-hidden="true" class="hover_anchor" href="#configure-grpc"><i class="fa fa-link"></i></a></h1>
-<p>The <code>rippled</code> server has an experimental <a class="external-link" href="https://grpc.io/" target="_blank">gRPC API <i aria-hidden="true" class="fa fa-external-link"></i></a>. Currently, this API provides a subset of the full <a href="http-websocket-apis.html"><code>rippled</code> API</a>. You can enable the gRPC API on your server with a new configuration stanza. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p class="devportal-callout caution"><strong>Caution:</strong> gRPC support in <code>rippled</code> v1.5.0 is experimental. Configuration settings and API formats are likely to have breaking changes in forthcoming versions.</p>
+<p>The <code>rippled</code> server has a limited <a class="external-link" href="https://grpc.io/" target="_blank">gRPC API <i aria-hidden="true" class="fa fa-external-link"></i></a> which <a href="rippled-server-modes.html">P2P mode servers</a> can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p class="devportal-callout caution"><strong>Caution:</strong> gRPC support is intended specifically for providing data to reporting mode servers from P2P mode servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To enable gRPC, you must meet the following prerequisites:</p>
 <ul>
@@ -309,31 +309,29 @@
 <li><code>port</code> field defines the port the server listens on for gRPC connections from client applications. The recommended port is <code>50051</code>.</li>
 <li><code>ip</code> defines which interfaces the server listens on. The value <code>0.0.0.0</code> listens on all available network interfaces. To limit connections to the local loopback network (same machine), use <code>127.0.0.1</code> instead.</li>
 </ul>
-<p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.<!--_ --></p>
+<p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.</p>
 </li>
 <li>
 <p>Start (or restart) the <code>rippled</code> service.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">$ sudo systemctl restart rippled
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">sudo systemctl restart rippled
 </code></pre></div>
 </li>
 </ol>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
-<!-- TODO: add gRPC quickstart, overview docs here when available -->
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="xrp-ledger-overview.html">XRP Ledger Overview</a></li>
-<li><a href="software-ecosystem.html">Software Ecosystem</a></li>
-<li><a href="parallel-networks.html">Parallel Networks</a></li>
+<li><a href="rippled-server-modes.html"><code>rippled</code> Server Modes</a></li>
 </ul>
 </li>
 <li><strong>Tutorials:</strong><ul>
+<li><a href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a></li>
 <li><a href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
 <li><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
 </ul>
 </li>
 <li><strong>References:</strong><ul>
-<li><a href="http-websocket-apis.html">rippled API Reference</a></li>
-<li><a href="data-api.html">Ripple Data API v2</a></li>
+<li><a href="http-websocket-apis.html">HTTP / WebSocket API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -1614,6 +1612,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1719,6 +1722,31 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2168,6 +2196,11 @@
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -2622,6 +2655,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -2834,13 +2872,15 @@
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
   algoliaOptions: { 'facetFilters': ["lang:en"] },
   debug: false
   });

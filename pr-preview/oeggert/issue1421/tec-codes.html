@@ -55,9 +55,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11b.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v12.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -82,7 +82,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -203,7 +203,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -293,6 +293,46 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;"><code>tecAMM_BALANCE</code></td>
+<td style="text-align: left;">163</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_DIRECT_PAYMENT</code></td>
+<td style="text-align: left;">169</td>
+<td style="text-align: left;">The transaction tried to send money directly to an AccountRoot object that is part of an Automated Market Maker (AMM) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>. AMM AccountRoot entries cannot send or receive money directly except through <a href="ammwithdraw.html">AMMWithdraw</a> and <a href="ammdeposit.html">AMMDeposit</a> transactions.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_EXISTS</code></td>
+<td style="text-align: left;">167</td>
+<td style="text-align: left;">The <a href="ammcreate.html">AMMCreate transaction</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> tried to create an Automated Market Maker (AMM) instance that already exists. There can only be at most one AMM per unique currency pair.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_FAILED_DEPOSIT</code></td>
+<td style="text-align: left;">164</td>
+<td style="text-align: left;">The <a href="ammdeposit.html">AMMDeposit transaction</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> failed, probably because the sender does not have enough of the specified assets, or because the deposit requested an effective price that isn't possible with the available amounts.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_FAILED_WITHDRAW</code></td>
+<td style="text-align: left;">165</td>
+<td style="text-align: left;">The <a href="ammwithdraw.html">AMMWithdraw transaction</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> failed, probably because the sender does not have enough LP Tokens, or because the withdraw requested an effective price that isn't possible with the available amounts.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_FAILED_BID</code></td>
+<td style="text-align: left;">168</td>
+<td style="text-align: left;">The <a href="ammbid.html">AMMBid transaction</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> failed, probably because the price to win the auction was higher than the specified maximum value or the sender's current balance.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_FAILED_VOTE</code></td>
+<td style="text-align: left;">170</td>
+<td style="text-align: left;">The <a href="ammvote.html">AMMVote transaction</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> failed, probably because there are already too many votes from accounts that hold more LP Tokens for this AMM. (This can still recalculate the AMM's trading fee.)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
+<td style="text-align: left;">166</td>
+<td style="text-align: left;">The AMM-related transaction <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> failed due to insufficient LP Tokens or problems with rounding; for example, depositing a very small amount of assets could fail if the amount of LP Tokens to be returned rounds down to zero.</td>
+</tr>
 <tr>
 <td style="text-align: left;"><code>tecCANT_ACCEPT_OWN_NFTOKEN_OFFER</code></td>
 <td style="text-align: left;">157</td>
@@ -512,6 +552,11 @@
 <td style="text-align: left;"><code>tecUNFUNDED_ADD</code></td>
 <td style="text-align: left;">102</td>
 <td style="text-align: left;"><strong>DEPRECATED.</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecUNFUNDED_AMM</code></td>
+<td style="text-align: left;">162</td>
+<td style="text-align: left;">The <a href="ammcreate.html">AMMCreate transaction</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> failed because the sender does not have enough of the specified assets to fund it.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecUNFUNDED_PAYMENT</code></td>
@@ -1802,6 +1847,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1907,6 +1957,31 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2356,6 +2431,11 @@
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -2810,6 +2890,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -3022,13 +3107,15 @@
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
   algoliaOptions: { 'facetFilters': ["lang:en"] },
   debug: false
   });

@@ -53,9 +53,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11b.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v12.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -65,7 +65,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -186,7 +186,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -244,6 +244,12 @@
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
+        <a class="label label-amm" href="label-amm.html" title="Pages relating to Automated Market Makers (AMM).">
+        AMM
+          <span class="badge badge-pill">7</span>
+        </a>
+      </li>
+      <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-blockchain" href="label-blockchain.html" title="Pages about how the XRP Ledger functions as a blockchain.">
         Blockchain
           <span class="badge badge-pill">46</span>
@@ -264,7 +270,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-cross-currency" href="label-cross-currency.html" title="Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.">
         Cross-Currency
-          <span class="badge badge-pill">9</span>
+          <span class="badge badge-pill">10</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -276,7 +282,7 @@
       <li class="list-inline-item d-block d-lg-inline-block">
         <a class="label label-decentralized-exchange" href="label-decentralized-exchange.html" title="Pages about the Decentralized Exchange built into the XRP Ledger.">
         Decentralized Exchange
-          <span class="badge badge-pill">10</span>
+          <span class="badge badge-pill">11</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -1596,6 +1602,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1701,6 +1712,31 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2150,6 +2186,11 @@
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -2604,6 +2645,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -2816,13 +2862,15 @@
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
   algoliaOptions: { 'facetFilters': ["lang:en"] },
   debug: false
   });
