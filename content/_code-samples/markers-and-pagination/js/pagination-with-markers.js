@@ -6,29 +6,30 @@ async function main() {
   const client = new xrpl.Client("wss://xrplcluster.com/")
   await client.connect()
 
-  // Specify a ledger to query for info.
+  // Query the most recently validated ledger for info.
   let ledger = await client.request({
     "command": "ledger_data",
-    "ledger_index": 500000,
+    "ledger_index": "validated",
   })
+  const ledger_data_index = ledger["result"]["ledger_index"]
 
   // Create a function to run on each API call.
-  function code(){
+  function printLedgerResult(){
     console.log(ledger["result"])
   }
  
   // Execute function at least once before checking for markers.
   do {
-    code()
+    printLedgerResult()
     
-    if (ledger["result"]["marker"] == null) {
+    if (ledger["result"]["marker"] === undefined) {
         break
     }
 
     // Specify the same ledger and add the marker to continue querying.
     const ledger_marker = await client.request({
         "command": "ledger_data",
-        "ledger_index": 500000,
+        "ledger_index": ledger_data_index,
         "marker": ledger["result"]["marker"]
     })
     ledger = ledger_marker
