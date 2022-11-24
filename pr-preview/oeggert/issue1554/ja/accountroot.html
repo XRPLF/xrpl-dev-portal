@@ -56,9 +56,9 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v11b.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v12.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -83,7 +83,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -210,7 +210,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
@@ -272,6 +272,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#accountroot">AccountRoot</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-jsonの例">AccountRoot JSONの例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountrootフィールド">AccountRootフィールド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#special-amm-accountroot-objects">Special AMM AccountRoot Objects</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountrootのフラグ">AccountRootのフラグ</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-idのフォーマット">AccountRoot IDのフォーマット</a></li>
       </ul>
@@ -431,6 +432,18 @@
 </tr>
 </tbody>
 </table>
+<h2 id="special-amm-accountroot-objects">Special AMM AccountRoot Objects<a aria-hidden="true" class="hover_anchor" href="#special-amm-accountroot-objects"><i class="fa fa-link"></i></a></h2>
+<!-- TODO: translate this section -->
+<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
+<p>Automated Market Makers (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, in addition to the <a href="amm.html">AMM object</a> for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoots are created with the following settings:</p>
+<ul>
+<li><code>lsfAMM</code> <strong>enabled</strong>. This indicates that the AccountRoot is part of an AMM and is not a regular account.</li>
+<li><code>lsfDisableMaster</code> <strong>enabled</strong> and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.</li>
+<li><code>lsfRequireAuth</code> <strong>enabled</strong> and no accounts preauthorized. This ensures that the only way to add money to the AMM Account is using the <a href="ammdeposit.html">AMMDeposit transaction</a>.</li>
+<li><code>lsfDefaultRipple</code> <strong>enabled</strong>. This ensures that users can send and trade the AMM's LP Tokens among themselves.</li>
+</ul>
+<p>These special accounts are not subject to the <a href="reserves.html">reserve requirement</a> but they can hold XRP if it is one of the two assets in the AMM's pool.</p>
+<p>In most other ways, these accounts function like ordinary accounts; the LP Tokens they issue behave like other <a href="tokens.html">tokens</a> except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.</p>
 <h2 id="accountrootのフラグ">AccountRootのフラグ<a aria-hidden="true" class="hover_anchor" href="#accountrootのフラグ"><i class="fa fa-link"></i></a></h2>
 <p>このアカウントに対して有効化または無効化できる各種オプションがあります。これらのオプションを変更するには、<a href="accountset.html">AccountSetトランザクション</a>を使用します。レジャーではフラグはバイナリ値として表され、これらのバイナリ値はビットOR演算と組み合わせることができます。レジャーでのフラグのビット値は、トランザクションでこれらのフラグを有効または無効にするために使用する値とは異なります。レジャーのフラグには、 <em>lsf</em> で始まる名前が付いています。</p>
 <p>AccountRootオブジェクトには以下のフラグ値を指定できます。</p>
@@ -1793,6 +1806,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -1898,6 +1916,31 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2347,6 +2390,11 @@
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">Path and Order Book Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -2801,6 +2849,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-blockchain.html">ブロックチェーン</a>
   </div>
 
@@ -3013,13 +3066,15 @@
 <link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
   algoliaOptions: { 'facetFilters': ["lang:ja"] },
   debug: false
   });

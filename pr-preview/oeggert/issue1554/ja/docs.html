@@ -54,9 +54,9 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v11b.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v12.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -66,7 +66,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -193,7 +193,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
@@ -239,16 +239,6 @@
         <h1 class="mb-18">何を学びたいですか？</h1>
         <h6 class="eyebrow mb-3">XRP Ledger ドキュメント</h6>
       </div>
-      <div class="center-search search">
-        <form role="search">
-          <div class="form-group">
-            <div class="input-group">
-              <label class="input-group-prepend" for="docsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
-              <input id="docsearchbox" type="text" class="form-control searchinput" placeholder="記事、トレーニング、コードサンプルを検索...">
-            </div><!--/.form-group-->
-          </div>
-        </form>
-      </div><!--/.center-search-->
     </div>
   </section>
 
@@ -273,6 +263,12 @@
         <a class="label label-アカウント" href="/ja/label-accounts.html" title="XRP Ledgerのアカウントに関するページ。">
         アカウント
           <span class="badge badge-pill">20</span>
+        </a>
+      </li>
+      <li class="list-inline-item d-block d-lg-inline-block">
+        <a class="label label-amm" href="/ja/label-amm.html" title="自動マーケットメーカー（AMM）に関するページ。">
+        AMM
+          <span class="badge badge-pill">7</span>
         </a>
       </li>
       <li class="list-inline-item d-block d-lg-inline-block">
@@ -918,6 +914,8 @@
         
       <li class="level-4"><a href="/ja/amendments-object.html">Amendments</a></li>
         
+      <li class="level-4"><a href="/ja/amm.html">AMM</a></li>
+        
       <li class="level-4"><a href="/ja/check.html">Check</a></li>
         
       <li class="level-4"><a href="/ja/depositpreauth-object.html">DepositPreauth</a></li>
@@ -955,6 +953,16 @@
               <li class="level-4"><a href="/ja/accountset.html">AccountSet</a></li>
         
       <li class="level-4"><a href="/ja/accountdelete.html">AccountDelete</a></li>
+        
+      <li class="level-4"><a href="/ja/ammbid.html">AMMBid</a></li>
+        
+      <li class="level-4"><a href="/ja/ammcreate.html">AMMCreate</a></li>
+        
+      <li class="level-4"><a href="/ja/ammdeposit.html">AMMDeposit</a></li>
+        
+      <li class="level-4"><a href="/ja/ammvote.html">AMMVote</a></li>
+        
+      <li class="level-4"><a href="/ja/ammwithdraw.html">AMMWithdraw</a></li>
         
       <li class="level-4"><a href="/ja/checkcancel.html">CheckCancel</a></li>
         
@@ -1104,7 +1112,9 @@
         
 
       <li class="level-3"><a href="/ja/path-and-order-book-methods.html">Path and Order Book Methods</a></li>
-              <li class="level-4"><a href="/ja/book_offers.html">book_offers</a></li>
+              <li class="level-4"><a href="/ja/amm_info.html">amm_info</a></li>
+        
+      <li class="level-4"><a href="/ja/book_offers.html">book_offers</a></li>
         
       <li class="level-4"><a href="/ja/deposit_authorized.html">deposit_authorized</a></li>
         
@@ -1363,13 +1373,15 @@
 <link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
   algoliaOptions: { 'facetFilters': ["lang:ja"] },
   debug: false
   });
@@ -1384,13 +1396,6 @@ $(document).ready(() => {
 
 
 
-<script type="text/javascript"> docsearch({
-apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
-indexName: 'xrpl',
-inputSelector: '#docsearchbox',
-algoliaOptions: { 'facetFilters': ["lang:ja"] },
-debug: false
-});
-</script>
+
 </body>
 </html>
