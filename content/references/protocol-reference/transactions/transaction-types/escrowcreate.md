@@ -29,7 +29,7 @@ Sequester XRP until the escrow process either finishes or is canceled.
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_EscrowCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22529C16436FFF89C1989A8D7B5182278BC6D8E5C93F4D0D052F9E39E27A222BB1%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_EscrowCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7%22%2C%22binary%22%3Afalse%7D)
 
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
