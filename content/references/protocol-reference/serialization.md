@@ -184,7 +184,7 @@ Transaction instructions may contain fields of any of the following types:
 | [Hash256][]   | 5         | 256        | No                   | A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object. |
 | [PathSet][]   | 18        | Variable   | No                   | A set of possible [payment paths](paths.html) for a [cross-currency payment](cross-currency-payments.html). |
 | [STArray][]   | 15        | Variable   | No                   | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transaction-common-fields.html#memos-field) and lists of signers used in [multi-signing](multi-signing.html). |
-| [STIssue][]   | 24        | 320        | No                   | :not_enabled: An asset definition, XRP or a token, with no quantity. |
+| [STIssue][]   | 24        | 160 or 320 | No                   | :not_enabled: An asset definition, XRP or a token, with no quantity. |
 | [STObject][]  | 14        | Variable   | No                   | An object containing one or more nested fields. |
 | [UInt8][]     | 16        | 8          | No                   | An 8-bit unsigned integer. |
 | [UInt16][]    | 1         | 16         | No                   | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
@@ -305,10 +305,10 @@ All such fields are serialized as the specific number of bits, with no length in
 
 _(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_
 
-Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of two 160-bit segments in order:
+Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of one or two 160-bit segments in order:
 
 1. The first 160 bits are the [currency code](#currency-codes) of the asset. For XRP, this is all 0's.
-2. The next 160 bits are the [AccountID of the token issuer](#accountid-fields). For XRP, this is all 0's.
+2. If the first 160 bits are all 0's (the asset is XRP), the field ends there. Otherwise, the asset is a token and the next 160 bits are the [AccountID of the token issuer](#accountid-fields).
 
 
 ### Object Fields
