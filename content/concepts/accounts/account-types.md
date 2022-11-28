@@ -9,9 +9,9 @@ labels:
 
 In the XRP Ledger, financial institutions typically use multiple XRP Ledger accounts to minimize the risk associated with a compromised secret key. The industry standard is to separate roles as follows:
 
-* One *issuing account*, also known as a "cold wallet." This account is the hub of the financial institution's accounting relationships in the ledger, but sends as few transactions as possible.
-* One or more *operational accounts*, also known as "hot wallets." Automated, internet-connected systems use the secret keys to these accounts to conduct day-to-day business like transfers to customers and partners.
-* Optional *standby accounts*, also known as "warm wallets." Trusted human operators use these accounts to transfer money to the operational accounts.
+* One *issuing account*, also known as a *cold wallet*. This account is the hub of the financial institution's accounting relationships in the ledger, but sends as few transactions as possible.
+* One or more *operational accounts*, also known as *hot wallets*. Automated, internet-connected systems use the secret keys to these accounts to conduct day-to-day business like transfers to customers and partners.
+* Optional *standby accounts*, also known as *warm wallets*. Trusted human operators use these accounts to transfer money to the operational accounts.
 
 ## Issuing Account
 
@@ -21,7 +21,7 @@ Unlike a vault, the issuing account can receive payments directly from customers
 
 ### Issuing Account Compromise
 
-If a malicious actor learns the secret key behind a institution's issuing account, that actor can create new tokens and send them to users or trade them in the decentralized exchange. This can make a stablecoin issuer insolvent. It can become difficult for the financial institution to distinguish legitimately-obtained tokens and redeem them fairly. If a financial institution loses control of its issuing account, the institution must create a new issuing account, and all users who have trust lines to the old issuing account must create new trust lines with the new account.
+If a malicious actor learns the secret key behind a institution's issuing account, that actor can create new tokens and send them to users or trade them in the decentralized exchange. This can make a stablecoin issuer insolvent. It can become difficult for the financial institution to distinguish legitimately obtained tokens and redeem them fairly. If a financial institution loses control of its issuing account, the institution must create a new issuing account, and all users who have trust lines to the old issuing account must create new trust lines with the new account.
 
 ### Multiple Issuing Accounts
 

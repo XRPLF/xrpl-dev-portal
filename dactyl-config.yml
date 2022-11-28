@@ -628,6 +628,12 @@ pages:
          - en
          - ja
 
+    - md: concepts/transactions/paths.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+
     - md: concepts/tokens/authorized-trust-lines.md
       parent: trust-lines-and-issuing.html
       targets:
@@ -779,12 +785,6 @@ pages:
          - ja
          
     - md: concepts/tokens/token-types.md
-      parent: tokens.html
-      targets:
-         - en
-         - ja
-
-    - md: concepts/tokens/paths.md
       parent: tokens.html
       targets:
          - en
