@@ -24,6 +24,8 @@ Example PaymentChannelFund:
 }
 ```
 
+[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelFund%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22877FA6E2FF8E08597D1F24E30BE8E52D0C9C06F0D620C5721E55622B6A632DFF%22%2C%22binary%22%3Afalse%7D)
+
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 
