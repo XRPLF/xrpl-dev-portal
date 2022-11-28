@@ -44,13 +44,13 @@ The passphrase is secret information, so you must protect it very carefully. Any
 
 A _seed_ value is a compact value that is used to [derive](#key-derivation) the actual private and public keys for an account. In a [wallet_propose method][] response, the `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to [sign transactions](transaction-basics.html#signing-and-submitting-transactions) in the [`rippled` APIs](http-websocket-apis.html) and some [other XRP Ledger software](software-ecosystem.html). Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
 
-The seed value is secret information, so you must protect it very carefully. Anyone who has knows an address's seed value has effectively full control over that address.
+The seed value is secret information, so you must protect it very carefully. Anyone who knows an address's seed value has effectively full control over that address.
 
 ### Private Key
 
 The _private key_ is the value that is used to create a digital signature. Most XRP Ledger software does not explicitly show the private key, and [derives the private key](#key-derivation) from the seed value when necessary. It is technically possible to save the private key instead of the seed and use that to sign transactions directly, but this usage is rare.
 
-Like the seed, the private key is secret information, so you must protect it very carefully. Anyone who has knows an address's private key has effectively full control over that address.
+Like the seed, the private key is secret information, so you must protect it very carefully. Anyone who knows an address's private key has effectively full control over that address.
 
 ### Public Key
 
