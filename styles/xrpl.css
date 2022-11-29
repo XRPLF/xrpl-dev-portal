@@ -15928,6 +15928,12 @@ html.light .xrp-ledger-dev-portal .DocSearch-Button:hover .DocSearch-Button-Plac
 html.light .xrp-ledger-dev-portal .DocSearch-Search-Icon {
   color: var(--docsearch-text-color) !important;
 }
+html.light .xrp-ledger-dev-portal .DocSearch-Input {
+  color: #111112;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit-Select-Icon {
+  color: #111112;
+}
 html.light .xrp-ledger-dev-portal .DocSearch-Form {
   box-shadow: inset 0 0 0 2px #7919FF;
   background-color: var(--docsearch-searchbox-focus-background);
