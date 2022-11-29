@@ -6,7 +6,7 @@ labels:
   - Escrow
   - Smart Contracts
 ---
-# Send a Conditionally-Held Escrow
+# Send a Conditionally Held Escrow
 
 ## 1. Generate condition and fulfillment
 
@@ -36,6 +36,7 @@ console.log('Condition:', condition)
 const fulfillment_hex = fulfillment.serializeBinary().toString('hex').toUpperCase()
 console.log('Fulfillment:', fulfillment_hex)
 ```
+<!-- 
 
 _Python_
 
@@ -52,6 +53,7 @@ print("Condition", fulfillment.condition_binary.hex().upper())
 # Keep secret until you want to finish the escrow
 print("Fulfillment", fulfillment.serialize_binary().hex().upper())
 ```
+ -->
 
 <!-- MULTICODE_BLOCK_END -->
 
