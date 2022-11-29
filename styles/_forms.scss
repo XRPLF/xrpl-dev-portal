@@ -36,6 +36,18 @@
   .DocSearch-Modal {
     top: 85px;
   }
+  .DocSearch-Form {
+    box-shadow: inset 0 0 0 2px $blue-purple-400;
+  }
+  .DocSearch-Hit-source {
+    color: $blue-purple-400;
+  }
+  .DocSearch-Hits mark {
+    color: $blue-purple-400;
+  }
+  .DocSearch-Hit[aria-selected="true"] a {
+    background-color: $blue-purple-400;
+  }
   #centersearchboxcontainer {
     justify-content: center;
   }

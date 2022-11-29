@@ -125,6 +125,38 @@ h6,
   .DocSearch-Search-Icon {
     color: var(--docsearch-text-color) !important;
   }
+
+  .DocSearch-Form {
+    box-shadow: inset 0 0 0 2px $blue-purple-500;
+  }
+  .DocSearch-Hit-source {
+    color: $blue-purple-500;
+  }
+  .DocSearch-Hits mark {
+    color: $blue-purple-500;
+  }
+  .DocSearch-Hit[aria-selected="true"] a {
+    background-color: $black-10;
+    .DocSearch-Hit-content-wrapper {
+      .DocSearch-Hit-title {
+        color: $black !important;
+      };
+      .DocSearch-Hit-path {
+        color: $black-60 !important;
+      };
+    };
+    .DocSearch-Hit-icon svg{
+      color: $black !important;
+    };
+    .DocSearch-Hit-action .DocSearch-Hit-action-button svg{
+      color: $black !important;
+    };
+    mark{
+      color: $blue-purple-500 !important;
+    }
+
+  }
+
   // The extra specificity makes this override the default Algolia styles.
   .algolia-autocomplete {
     .ds-dropdown-menu [class^="ds-dataset-"] {

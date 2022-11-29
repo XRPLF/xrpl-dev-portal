@@ -9642,6 +9642,18 @@ p {
 .xrp-ledger-dev-portal .DocSearch-Modal {
   top: 85px;
 }
+.xrp-ledger-dev-portal .DocSearch-Form {
+  box-shadow: inset 0 0 0 2px #9A52FF;
+}
+.xrp-ledger-dev-portal .DocSearch-Hit-source {
+  color: #9A52FF;
+}
+.xrp-ledger-dev-portal .DocSearch-Hits mark {
+  color: #9A52FF;
+}
+.xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a {
+  background-color: #9A52FF;
+}
 .xrp-ledger-dev-portal #centersearchboxcontainer {
   justify-content: center;
 }
@@ -13566,35 +13578,35 @@ html.light .label:hover .badge-pill {
   color: #232325;
   background-color: #E0E0E1;
 }
-.label.label-accounts, .label.label-payment-channels, .label.label-アカウント, .label.label-payment-channel, .label.chip-indigo {
+.label.label-accounts, .label.label-payment-channels, .label.label-amm, .label.label-アカウント, .label.label-payment-channel, .label.chip-indigo {
   background-color: #20004C;
   color: #B480FF;
 }
-.label.label-accounts .badge-pill, .label.label-payment-channels .badge-pill, .label.label-アカウント .badge-pill, .label.label-payment-channel .badge-pill, .label.chip-indigo .badge-pill {
+.label.label-accounts .badge-pill, .label.label-payment-channels .badge-pill, .label.label-amm .badge-pill, .label.label-アカウント .badge-pill, .label.label-payment-channel .badge-pill, .label.chip-indigo .badge-pill {
   color: #20004C;
   background-color: #B480FF;
 }
-.label.label-accounts:hover, .label.label-payment-channels:hover, .label.label-アカウント:hover, .label.label-payment-channel:hover, .label.chip-indigo:hover {
+.label.label-accounts:hover, .label.label-payment-channels:hover, .label.label-amm:hover, .label.label-アカウント:hover, .label.label-payment-channel:hover, .label.chip-indigo:hover {
   background-color: #350080;
   color: #D2B2FF;
 }
-.label.label-accounts:hover .badge-pill, .label.label-payment-channels:hover .badge-pill, .label.label-アカウント:hover .badge-pill, .label.label-payment-channel:hover .badge-pill, .label.chip-indigo:hover .badge-pill {
+.label.label-accounts:hover .badge-pill, .label.label-payment-channels:hover .badge-pill, .label.label-amm:hover .badge-pill, .label.label-アカウント:hover .badge-pill, .label.label-payment-channel:hover .badge-pill, .label.chip-indigo:hover .badge-pill {
   color: #350080;
   background-color: #D2B2FF;
 }
-html.light .label.label-accounts, html.light .label.label-payment-channels, html.light .label.label-アカウント, html.light .label.label-payment-channel, html.light .label.chip-indigo {
+html.light .label.label-accounts, html.light .label.label-payment-channels, html.light .label.label-amm, html.light .label.label-アカウント, html.light .label.label-payment-channel, html.light .label.chip-indigo {
   background-color: #D2B2FF;
   color: #350080;
 }
-html.light .label.label-accounts .badge-pill, html.light .label.label-payment-channels .badge-pill, html.light .label.label-アカウント .badge-pill, html.light .label.label-payment-channel .badge-pill, html.light .label.chip-indigo .badge-pill {
+html.light .label.label-accounts .badge-pill, html.light .label.label-payment-channels .badge-pill, html.light .label.label-amm .badge-pill, html.light .label.label-アカウント .badge-pill, html.light .label.label-payment-channel .badge-pill, html.light .label.chip-indigo .badge-pill {
   color: #D2B2FF;
   background-color: #350080;
 }
-html.light .label.label-accounts:hover, html.light .label.label-payment-channels:hover, html.light .label.label-アカウント:hover, html.light .label.label-payment-channel:hover, html.light .label.chip-indigo:hover {
+html.light .label.label-accounts:hover, html.light .label.label-payment-channels:hover, html.light .label.label-amm:hover, html.light .label.label-アカウント:hover, html.light .label.label-payment-channel:hover, html.light .label.chip-indigo:hover {
   background-color: #B480FF;
   color: #20004C;
 }
-html.light .label.label-accounts:hover .badge-pill, html.light .label.label-payment-channels:hover .badge-pill, html.light .label.label-アカウント:hover .badge-pill, html.light .label.label-payment-channel:hover .badge-pill, html.light .label.chip-indigo:hover .badge-pill {
+html.light .label.label-accounts:hover .badge-pill, html.light .label.label-payment-channels:hover .badge-pill, html.light .label.label-amm:hover .badge-pill, html.light .label.label-アカウント:hover .badge-pill, html.light .label.label-payment-channel:hover .badge-pill, html.light .label.chip-indigo:hover .badge-pill {
   color: #B480FF;
   background-color: #20004C;
 }
@@ -15885,6 +15897,33 @@ html.light .xrp-ledger-dev-portal .DocSearch-Button:hover .DocSearch-Button-Plac
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Search-Icon {
   color: var(--docsearch-text-color) !important;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Form {
+  box-shadow: inset 0 0 0 2px #7919FF;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit-source {
+  color: #7919FF;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hits mark {
+  color: #7919FF;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a {
+  background-color: #F5F5F7;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-content-wrapper .DocSearch-Hit-title {
+  color: #000000 !important;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-content-wrapper .DocSearch-Hit-path {
+  color: #454549 !important;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-icon svg {
+  color: #000000 !important;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-action .DocSearch-Hit-action-button svg {
+  color: #000000 !important;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a mark {
+  color: #7919FF !important;
 }
 html.light .xrp-ledger-dev-portal .algolia-autocomplete .ds-dropdown-menu [class^=ds-dataset-] {
   background-color: #FCFCFD;
