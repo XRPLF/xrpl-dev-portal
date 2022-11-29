@@ -5,7 +5,6 @@ blurb: Require users to specify a destination tag when sending to your address.
 embed_xrpl_js: true
 filters:
   - interactive_steps
-  - include_code
 labels:
   - Accounts
 ---

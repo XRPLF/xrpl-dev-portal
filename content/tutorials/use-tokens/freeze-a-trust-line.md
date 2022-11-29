@@ -5,7 +5,6 @@ blurb: Freeze an individual holder of a token.
 embed_xrpl_js: true
 filters:
   - interactive_steps
-  - include_code
 labels:
   - Tokens
   - Security

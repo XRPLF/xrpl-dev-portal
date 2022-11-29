@@ -5,7 +5,6 @@ blurb: Create your own token and issue it on the XRP Ledger Testnet.
 embed_xrpl_js: true
 filters:
   - interactive_steps
-  - include_code
 labels:
   - Tokens
 ---

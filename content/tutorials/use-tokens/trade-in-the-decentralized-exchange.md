@@ -4,7 +4,6 @@ blurb: Buy or sell fungible tokens for each other or for XRP in the decentralize
 embed_xrpl_js: true
 filters:
   - interactive_steps
-  - include_code
 labels:
   - Decentralized Exchange
   - Tokens

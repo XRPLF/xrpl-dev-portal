@@ -51,7 +51,7 @@ For privacy reasons, the memo does not and MUST NOT include personally identifyi
 
 An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page like any other page. However, you need to add the following pieces to make the interactive stuff work:
 
-1. Set page properties, either in the config file or the page's frontmatter. The `interactive_steps` Dactyl filter gives you access to the functions you use to demarcate the interactive bits in your markdown file. The `include_code` filter is optional, but can be useful for pulling code samples out of another file. Most of the time, you'll also want to include xrpl.js and its dependencies as well; you can have the templates handle that for you by setting the field `embed_xrpl_js: true`. For example:
+1. Set page properties, either in the config file or the page's frontmatter. The `interactive_steps` Dactyl filter gives you access to the functions you use to demarcate the interactive bits in your markdown file. Most of the time, you'll also want to include xrpl.js and its dependencies as well; you can have the templates handle that for you by setting the field `embed_xrpl_js: true`. For example:
 
         html: use-tickets.html
         parent: manage-account-settings.html
@@ -59,7 +59,6 @@ An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page
         embed_xrpl_js: true
         filters:
             - interactive_steps
-            - include_code
 
     Including the `interactive_steps` filter automatically causes the templates to load the [interactive-tutorial.js](../assets/js/interactive-tutorial.js) file on that page. This JavaScript file implements much of the functionality for interactive tutorials, and provides helper functions for a lot of other common things you might want to do.
 
@@ -76,7 +75,7 @@ An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page
 
     Use excerpts of the example code to demonstrate each step. You can gloss over certain parts of the sample code if they're tangential to the goal of the tutorial, like the nitty-gritty of getting credentials from the Testnet faucet.
 
-    This is where the `include_code` filter comes in really handy. You can pull in just an excerpt of a code sample based on starting and ending bits. For example:
+    This is where `include_code` comes in really handy. You can pull in just an excerpt of a code sample based on starting and ending bits. For example:
 
         {{ include_code("_code-samples/send-xrp/send-xrp.js",
            start_with="// Connect", end_before="// Get credentials",
