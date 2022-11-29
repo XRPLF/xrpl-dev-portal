@@ -9641,9 +9641,11 @@ p {
 
 .xrp-ledger-dev-portal .DocSearch-Modal {
   top: 85px;
+  background-color: #232325;
 }
 .xrp-ledger-dev-portal .DocSearch-Form {
   box-shadow: inset 0 0 0 2px #9A52FF;
+  background-color: #232325;
 }
 .xrp-ledger-dev-portal .DocSearch-Hit-source {
   color: #9A52FF;
@@ -9651,8 +9653,33 @@ p {
 .xrp-ledger-dev-portal .DocSearch-Hits mark {
   color: #9A52FF;
 }
+.xrp-ledger-dev-portal .DocSearch-Hit-source, .xrp-ledger-dev-portal .DocSearch-Hit-Container, .xrp-ledger-dev-portal .DocSearch-Footer {
+  background-color: #232325;
+}
+.xrp-ledger-dev-portal .DocSearch-Hit a {
+  background-color: #232325;
+}
+.xrp-ledger-dev-portal .DocSearch-Hit-source {
+  color: #A2A2A4;
+}
+.xrp-ledger-dev-portal .DocSearch-Input {
+  color: #FFFFFF;
+}
+.xrp-ledger-dev-portal .DocSearch-Hit-title {
+  color: #F5F5F7 !important;
+}
+.xrp-ledger-dev-portal .DocSearch-Hit-path {
+  color: #A2A2A4 !important;
+}
 .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a {
-  background-color: #9A52FF;
+  background-color: #343437;
+  background: #343437 !important;
+}
+.xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-Container {
+  background-color: #343437;
+}
+.xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a mark {
+  color: #7919FF !important;
 }
 .xrp-ledger-dev-portal #centersearchboxcontainer {
   justify-content: center;
