@@ -36,6 +36,7 @@
   .DocSearch-Modal {
     top: 85px;
     background-color: #232325;
+    box-shadow: none;
   }
   .DocSearch-Form {
     box-shadow: inset 0 0 0 2px $blue-purple-400;
@@ -52,6 +53,7 @@
   }
   .DocSearch-Hit a{
     background-color: #232325;
+    box-shadow:none;
   }
   .DocSearch-Hit-source{
     color: $black-40; 
@@ -67,14 +69,44 @@
   }
 
   .DocSearch-Hit[aria-selected="true"] a {
-    background-color: $gray-700;
+    background: $gray-700;
     .DocSearch-Hit-Container{
       background-color: $gray-700;
     }
-    background: $gray-700 !important;
     mark{
       color: $blue-purple-500 !important;
     }
+  }
+  .DocSearch-Button {
+    background: $gray-800;
+    width: 700px;
+  }
+  .DocSearch-Button:hover {
+    background: $gray-800;
+    .DocSearch-Button-Placeholder {
+      color: $white;
+    }
+  }
+  .DocSearch-Search-Icon {
+    color: $white !important;
+  }
+  .DocSearch-Modal {
+    margin-top: -15px;
+    max-width: 750px !important;
+    margin-right: 13.75em;
+  }
+
+  @include media-breakpoint-down(md) {
+    .algolia-autocomplete .ds-dropdown-menu {
+      min-width: unset;
+    }
+    .DocSearch-Modal {
+      top: 128px;
+    }
+  }
+  .DocSearch-Container {
+    z-index: 99999 !important;
+    background-color: transparent !important;
   }
 
 
@@ -135,37 +167,6 @@
     box-shadow: none;
     background-color: $gray-700;
   }
-  .DocSearch-Button {
-    background: $gray-800;
-    width: 700px;
-  }
-  .DocSearch-Button:hover {
-    background: $gray-800;
-    .DocSearch-Button-Placeholder {
-      color: $white;
-    }
-  }
-  .DocSearch-Search-Icon {
-    color: $white !important;
-  }
-  .DocSearch-Modal {
-    margin-top: -15px;
-    max-width: 700px !important;
-    margin-right: 13.75em;
-  }
-
-  @include media-breakpoint-down(md) {
-    .algolia-autocomplete .ds-dropdown-menu {
-      min-width: unset;
-    }
-    .DocSearch-Modal {
-      top: 128px;
-    }
-  }
-}
-.DocSearch-Container {
-  z-index: 99999 !important;
-  background-color: transparent !important;
 }
 
 #xrp-ledger-dev-portal {

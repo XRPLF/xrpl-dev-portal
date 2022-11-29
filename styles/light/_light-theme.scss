@@ -113,6 +113,9 @@ h6,
 
 // Algolia search results
 .xrp-ledger-dev-portal {
+  .DocSearch-Modal {
+    background: $white;
+  }
   .DocSearch-Button {
     background: var(--docsearch-searchbox-background);
   }
@@ -125,36 +128,56 @@ h6,
   .DocSearch-Search-Icon {
     color: var(--docsearch-text-color) !important;
   }
-
   .DocSearch-Form {
     box-shadow: inset 0 0 0 2px $blue-purple-500;
+    background-color: var(--docsearch-searchbox-focus-background);
   }
   .DocSearch-Hit-source {
     color: $blue-purple-500;
+    background: $white;
   }
   .DocSearch-Hits mark {
     color: $blue-purple-500;
   }
+  .DocSearch-Hit-Container {
+    background: $white;
+  }
+  .DocSearch-Hit a {
+    background-color: $white;
+  }
+  .DocSearch-Hit-content-wrapper {
+    .DocSearch-Hit-title {
+      color: $black !important;
+    }
+    .DocSearch-Hit-path {
+      color: $black-60 !important;
+    }
+  }
   .DocSearch-Hit[aria-selected="true"] a {
-    background-color: $black-10;
+    background: $black-10;
+    .DocSearch-Hit-Container {
+      background-color:  $black-10;
+    }
     .DocSearch-Hit-content-wrapper {
       .DocSearch-Hit-title {
         color: $black !important;
-      };
+      }
       .DocSearch-Hit-path {
         color: $black-60 !important;
-      };
-    };
-    .DocSearch-Hit-icon svg{
+      }
+    }
+    .DocSearch-Hit-icon svg {
       color: $black !important;
-    };
-    .DocSearch-Hit-action .DocSearch-Hit-action-button svg{
+    }
+    .DocSearch-Hit-action .DocSearch-Hit-action-button svg {
       color: $black !important;
-    };
-    mark{
+    }
+    mark {
       color: $blue-purple-500 !important;
     }
-
+  }
+  .DocSearch-Footer {
+    background: var(--docsearch-footer-background);
   }
 
   // The extra specificity makes this override the default Algolia styles.

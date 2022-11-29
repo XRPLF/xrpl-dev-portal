@@ -9642,6 +9642,7 @@ p {
 .xrp-ledger-dev-portal .DocSearch-Modal {
   top: 85px;
   background-color: #232325;
+  box-shadow: none;
 }
 .xrp-ledger-dev-portal .DocSearch-Form {
   box-shadow: inset 0 0 0 2px #9A52FF;
@@ -9658,6 +9659,7 @@ p {
 }
 .xrp-ledger-dev-portal .DocSearch-Hit a {
   background-color: #232325;
+  box-shadow: none;
 }
 .xrp-ledger-dev-portal .DocSearch-Hit-source {
   color: #A2A2A4;
@@ -9672,14 +9674,43 @@ p {
   color: #A2A2A4 !important;
 }
 .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a {
-  background-color: #343437;
-  background: #343437 !important;
+  background: #343437;
 }
 .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-Container {
   background-color: #343437;
 }
 .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a mark {
   color: #7919FF !important;
+}
+.xrp-ledger-dev-portal .DocSearch-Button {
+  background: #232325;
+  width: 700px;
+}
+.xrp-ledger-dev-portal .DocSearch-Button:hover {
+  background: #232325;
+}
+.xrp-ledger-dev-portal .DocSearch-Button:hover .DocSearch-Button-Placeholder {
+  color: #FFFFFF;
+}
+.xrp-ledger-dev-portal .DocSearch-Search-Icon {
+  color: #FFFFFF !important;
+}
+.xrp-ledger-dev-portal .DocSearch-Modal {
+  margin-top: -15px;
+  max-width: 750px !important;
+  margin-right: 13.75em;
+}
+@media (max-width: 991.98px) {
+  .xrp-ledger-dev-portal .algolia-autocomplete .ds-dropdown-menu {
+    min-width: unset;
+  }
+  .xrp-ledger-dev-portal .DocSearch-Modal {
+    top: 128px;
+  }
+}
+.xrp-ledger-dev-portal .DocSearch-Container {
+  z-index: 99999 !important;
+  background-color: transparent !important;
 }
 .xrp-ledger-dev-portal #centersearchboxcontainer {
   justify-content: center;
@@ -9724,37 +9755,6 @@ p {
 .xrp-ledger-dev-portal .algolia-autocomplete .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
   box-shadow: none;
   background-color: #343437;
-}
-.xrp-ledger-dev-portal .DocSearch-Button {
-  background: #232325;
-  width: 700px;
-}
-.xrp-ledger-dev-portal .DocSearch-Button:hover {
-  background: #232325;
-}
-.xrp-ledger-dev-portal .DocSearch-Button:hover .DocSearch-Button-Placeholder {
-  color: #FFFFFF;
-}
-.xrp-ledger-dev-portal .DocSearch-Search-Icon {
-  color: #FFFFFF !important;
-}
-.xrp-ledger-dev-portal .DocSearch-Modal {
-  margin-top: -15px;
-  max-width: 700px !important;
-  margin-right: 13.75em;
-}
-@media (max-width: 991.98px) {
-  .xrp-ledger-dev-portal .algolia-autocomplete .ds-dropdown-menu {
-    min-width: unset;
-  }
-  .xrp-ledger-dev-portal .DocSearch-Modal {
-    top: 128px;
-  }
-}
-
-.DocSearch-Container {
-  z-index: 99999 !important;
-  background-color: transparent !important;
 }
 
 #xrp-ledger-dev-portal {
@@ -15913,6 +15913,9 @@ html.light .list-group-item.disabled {
 html.light .progress {
   background-color: #E0E0E1;
 }
+html.light .xrp-ledger-dev-portal .DocSearch-Modal {
+  background: #FFFFFF;
+}
 html.light .xrp-ledger-dev-portal .DocSearch-Button {
   background: var(--docsearch-searchbox-background);
 }
@@ -15927,14 +15930,31 @@ html.light .xrp-ledger-dev-portal .DocSearch-Search-Icon {
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Form {
   box-shadow: inset 0 0 0 2px #7919FF;
+  background-color: var(--docsearch-searchbox-focus-background);
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Hit-source {
   color: #7919FF;
+  background: #FFFFFF;
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Hits mark {
   color: #7919FF;
 }
+html.light .xrp-ledger-dev-portal .DocSearch-Hit-Container {
+  background: #FFFFFF;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit a {
+  background-color: #FFFFFF;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit-content-wrapper .DocSearch-Hit-title {
+  color: #000000 !important;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit-content-wrapper .DocSearch-Hit-path {
+  color: #454549 !important;
+}
 html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a {
+  background: #F5F5F7;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-Container {
   background-color: #F5F5F7;
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-content-wrapper .DocSearch-Hit-title {
@@ -15951,6 +15971,9 @@ html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a .DocSearc
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a mark {
   color: #7919FF !important;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Footer {
+  background: var(--docsearch-footer-background);
 }
 html.light .xrp-ledger-dev-portal .algolia-autocomplete .ds-dropdown-menu [class^=ds-dataset-] {
   background-color: #FCFCFD;
