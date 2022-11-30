@@ -2,8 +2,6 @@
 html: nftokenoffer.html
 parent: ledger-object-types.html
 blurb: Create offers to buy or sell NFTs.
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 ---

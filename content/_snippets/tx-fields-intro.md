@@ -1,3 +1,3 @@
 ## {{currentpage.name}} Fields
 
-In addition to the [common fields][], a {{currentpage.name}} transaction uses the following fields:
+In addition to the [common fields][], {{currentpage.name}} transactions use the following fields:

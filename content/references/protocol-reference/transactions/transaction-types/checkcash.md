@@ -26,6 +26,8 @@ Since the funds for a check are not guaranteed, redeeming a Check can fail becau
 }
 ```
 
+[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_CheckCash%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%2267B71B13601CDA5402920691841AC27A156463678E106FABD45357175F9FF406%22%2C%22binary%22%3Afalse%7D)
+
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 

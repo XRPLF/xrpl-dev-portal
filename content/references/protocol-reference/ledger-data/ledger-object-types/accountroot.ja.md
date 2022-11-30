@@ -56,6 +56,22 @@ labels:
 | `WalletLocator`               | 文字列    | Hash256           | _（省略可）_ **廃止予定**。使用しないでください。 |
 | `WalletSize`                  | 数値    | UInt32            | _（省略可）_ **廃止予定**。使用しないでください。 |
 
+## Special AMM AccountRoot Objects
+<!-- TODO: translate this section -->
+
+{% include '_snippets/amm-disclaimer.md' %}
+
+Automated Market Makers (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, in addition to the [AMM object][] for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoots are created with the following settings:
+
+- `lsfAMM` **enabled**. This indicates that the AccountRoot is part of an AMM and is not a regular account.
+- `lsfDisableMaster` **enabled** and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.
+- `lsfRequireAuth` **enabled** and no accounts preauthorized. This ensures that the only way to add money to the AMM Account is using the [AMMDeposit transaction][].
+- `lsfDefaultRipple` **enabled**. This ensures that users can send and trade the AMM's LP Tokens among themselves.
+
+These special accounts are not subject to the [reserve requirement](reserves.html) but they can hold XRP if it is one of the two assets in the AMM's pool.
+
+In most other ways, these accounts function like ordinary accounts; the LP Tokens they issue behave like other [tokens](tokens.html) except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.
+
 ## AccountRootのフラグ
 
 このアカウントに対して有効化または無効化できる各種オプションがあります。これらのオプションを変更するには、[AccountSetトランザクション][]を使用します。レジャーではフラグはバイナリ値として表され、これらのバイナリ値はビットOR演算と組み合わせることができます。レジャーでのフラグのビット値は、トランザクションでこれらのフラグを有効または無効にするために使用する値とは異なります。レジャーのフラグには、 _lsf_ で始まる名前が付いています。

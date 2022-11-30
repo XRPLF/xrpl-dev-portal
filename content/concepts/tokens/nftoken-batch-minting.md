@@ -1,7 +1,8 @@
 ---
 html: nftoken-batch-minting.html
-parent: non-fungible.html
-blurb: You can mint non-fungible tokens in batches.
+
+parent: non-fungible-tokens.html
+blurb: Minting NFToken objects in batches.
 labels:
   - Tokens
 

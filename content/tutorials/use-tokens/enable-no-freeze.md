@@ -5,7 +5,6 @@ blurb: Permanently give up your account's ability to freeze tokens it issues.
 embed_xrpl_js: true
 filters:
   - interactive_steps
-  - include_code
 labels:
   - Tokens
 ---

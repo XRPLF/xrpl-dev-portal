@@ -4,14 +4,14 @@
     color: $white;
     background-color: $gray-800;
     border-radius: $border-radius-sm 0 0 $border-radius-sm;
-    padding: .5rem .5rem .5rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     line-height: 1.5;
   }
 
   .ds-input {
     background-color: $gray-800;
     border-radius: 0 $border-radius-sm $border-radius-sm 0;
-    padding: .75rem 1rem .75rem .5rem;
+    padding: 0.75rem 1rem 0.75rem 0.5rem;
     width: 100%;
     border: 1px solid $gray-800;
 
@@ -27,12 +27,21 @@
 }
 
 #algolia-autocomplete-listbox-0 {
-    z-index: 1100 !important;
+  z-index: 1100 !important;
 }
 
 .xrp-ledger-dev-portal {
   // The extra specificity makes this override the default Algolia styles.
   // Algolia Search results --------------------------------------------------
+  .DocSearch-Modal {
+    top: 85px;
+  }
+  #centersearchboxcontainer {
+    justify-content: center;
+  }
+  #topsearchboxcontainer {
+    justify-content: right;
+  }
   .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
     background-color: $dropdown-bg;
     border: 0;
@@ -70,14 +79,53 @@
     background-color: $gray-700;
   }
 
-  .algolia-autocomplete .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl0 .algolia-docsearch-suggestion--highlight, .algolia-autocomplete .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl1 .algolia-docsearch-suggestion--highlight, .algolia-autocomplete .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
+  .algolia-autocomplete
+    .algolia-docsearch-suggestion--category-header
+    .algolia-docsearch-suggestion--category-header-lvl0
+    .algolia-docsearch-suggestion--highlight,
+  .algolia-autocomplete
+    .algolia-docsearch-suggestion--category-header
+    .algolia-docsearch-suggestion--category-header-lvl1
+    .algolia-docsearch-suggestion--highlight,
+  .algolia-autocomplete
+    .algolia-docsearch-suggestion--text
+    .algolia-docsearch-suggestion--highlight {
     box-shadow: none;
     background-color: $gray-700;
+  }
+  .DocSearch-Button {
+    background: $gray-800;
+    width: 700px;
+  }
+  .DocSearch-Button:hover {
+    background: $gray-800;
+    .DocSearch-Button-Placeholder {
+      color: $white;
+    }
+  }
+  .DocSearch-Search-Icon {
+    color: $white !important;
+  }
+  .DocSearch-Modal {
+    margin-top: -15px;
+    max-width: 700px !important;
+    margin-right: 13.75em;
   }
 
   @include media-breakpoint-down(md) {
     .algolia-autocomplete .ds-dropdown-menu {
       min-width: unset;
     }
+    .DocSearch-Modal {
+      top: 128px;
+    }
   }
+}
+.DocSearch-Container {
+  z-index: 99999 !important;
+  background-color: transparent !important;
+}
+
+#xrp-ledger-dev-portal {
+  overflow: auto !important;
 }

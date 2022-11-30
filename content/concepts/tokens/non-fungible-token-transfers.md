@@ -1,7 +1,7 @@
 ---
 html: non-fungible-token-transfers.html
-parent: non-fungible.html
-blurb: The XRPL Labs team has created a framework that supports non-fungible tokens.
+parent: non-fungible-tokens.html
+blurb: Trading NFTokens in direct or brokered mode.
 labels:
   - Tokens
 ---

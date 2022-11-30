@@ -2,8 +2,6 @@
 html: nftokenpage.html
 parent: ledger-object-types.html
 blurb: Ledger structure for recording NFTokens.
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 ---

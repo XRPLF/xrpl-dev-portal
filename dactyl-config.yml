@@ -25,6 +25,7 @@ default_filters:
     - link_replacement
     - external_links
     - status_badges
+    - include_code
     - include_svg
     - css_tables
     - slug
@@ -191,6 +192,13 @@ targets:
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             # Fix link from untranslated account_nfts.html
             "nftoken.html#nftokentaxon": "nftoken.html#分類群"
+            # Fix links from untranslated NFT API methods:
+            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
+            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
+            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
+            "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
+            # Fix links from untranslated AMM pages:
+            "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
 
 pages:
 
@@ -2025,6 +2033,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with new section from the English version
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
         targets:
             - ja
@@ -2035,6 +2044,11 @@ pages:
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/amendments.ja.md
         targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
@@ -2179,6 +2193,31 @@ pages:
 
     -   md: references/protocol-reference/transactions/transaction-types/accountdelete.ja.md
         targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
@@ -2450,6 +2489,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with new/updated sections from the English version
     -   md: references/protocol-reference/serialization.ja.md
         targets:
             - ja
@@ -2844,6 +2884,12 @@ pages:
         targets:
             - ja
 
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
+        targets:
+            - en
+            - ja
+
+
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
         targets:
             - en
@@ -2981,6 +3027,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
         targets:
             - ja
@@ -2989,6 +3036,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.ja.md
         targets:
             - ja
@@ -3466,6 +3514,28 @@ pages:
         landing_for: アカウント
         template: pagetype-label.html.jinja
         blurb: XRP Ledgerのアカウントに関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: AMM
+        html: label-amm.html
+        parent: by-label.html
+        landing_for: AMM
+        template: pagetype-label.html.jinja
+        blurb: Pages relating to Automated Market Makers (AMM).
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: AMM
+        html: label-amm.html
+        parent: by-label.html
+        landing_for: AMM
+        template: pagetype-label.html.jinja
+        blurb: 自動マーケットメーカー（AMM）に関するページ。
         filters:
             - labels
         targets:

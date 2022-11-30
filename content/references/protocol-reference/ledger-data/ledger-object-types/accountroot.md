@@ -57,8 +57,9 @@ The `AccountRoot` object has the following fields:
 | `TicketCount`                 | Number    | UInt32            | No        | How many [Tickets](tickets.html) this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. _(Added by the [TicketBatch amendment][].)_ |
 | `TickSize`                    | Number    | UInt8             | No        | How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Added by the [TickSize amendment][].)_ |
 | `TransferRate`                | Number    | UInt32            | No        | A [transfer fee](transfer-fees.html) to charge other users for sending currency issued by this account to each other. |
-| `WalletLocator`               | String    | Hash256           | No        | **DEPRECATED**. Do not use. |
-| `WalletSize`                  | Number    | UInt32            | No        | **DEPRECATED**. Do not use. |
+| `WalletLocator`               | String    | Hash256           | No        | An arbitrary 256-bit value that users can set. |
+| `WalletSize`                  | Number    | UInt32            | No        | Unused. (The code supports this field but there is no way to set it.) |
+
 
 ## AccountRoot Flags
 
@@ -68,6 +69,7 @@ AccountRoot objects can have the following flag values:
 
 | Flag Name           | Hex Value    | Decimal Value | Corresponding [AccountSet Flag](accountset.html#accountset-flags) | Description |
 |---------------------|--------------|---------------|--------------------|----|
+| `lsfAMM` :not_enabled: | `0x02000000` | 33554432   | (None)             | This account is an Automated Market Maker instance. :not_enabled: |
 | `lsfDefaultRipple`  | `0x00800000` | 8388608       | `asfDefaultRipple` | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. |
 | `lsfDepositAuth`    | `0x01000000` | 16777216      | `asfDepositAuth`   | This account can only receive funds from transactions it sends, and from [preauthorized](depositauth.html#preauthorization) accounts. (It has [DepositAuth](depositauth.html) enabled.) |
 | `lsfDisableMaster`  | `0x00100000` | 1048576       | `asfDisableMaster` | Disallows use of the master key to sign transactions for this account. |
@@ -77,6 +79,23 @@ AccountRoot objects can have the following flag values:
 | `lsfPasswordSpent`  | `0x00010000` | 65536         | (None)             | The account has used its free SetRegularKey transaction. |
 | `lsfRequireAuth`    | `0x00040000` | 262144        | `asfRequireAuth`   | This account must individually approve other users for those users to hold this account's tokens. |
 | `lsfRequireDestTag` | `0x00020000` | 131072        | `asfRequireDest`   | Requires incoming payments to specify a Destination Tag. |
+
+
+## Special AMM AccountRoot Objects
+
+{% include '_snippets/amm-disclaimer.md' %}
+
+Automated Market Makers (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, in addition to the [AMM object][] for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoots are created with the following settings:
+
+- `lsfAMM` **enabled**. This indicates that the AccountRoot is part of an AMM and is not a regular account.
+- `lsfDisableMaster` **enabled** and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.
+- `lsfRequireAuth` **enabled** and no accounts preauthorized. This ensures that the only way to add money to the AMM Account is using the [AMMDeposit transaction][].
+- `lsfDefaultRipple` **enabled**. This ensures that users can send and trade the AMM's LP Tokens among themselves.
+
+These special accounts are not subject to the [reserve requirement](reserves.html) but they can hold XRP if it is one of the two assets in the AMM's pool.
+
+In most other ways, these accounts function like ordinary accounts; the LP Tokens they issue behave like other [tokens](tokens.html) except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.
+
 
 ## AccountRoot ID Format
 

@@ -17,6 +17,7 @@ labels:
 | `terINSUF_FEE_B` | トランザクションの送信元アカウントに、トランザクションに指定されている`Fee`の支払いに十分なXRPがありません。 |
 | `terLAST`          | 内部使用のみ。通常はこのコードは返されません。 |
 | `terNO_ACCOUNT`   | レジャーのトランザクション送信元アドレスに（まだ）資金が供給されていません。 |
+| `terNO_AMM`      | The AMM-related transaction :not_enabled: specifies an asset pair that does not currently have an AMM instance. <!-- TODO: translate --> |
 | `terNO_AUTH`      | トランザクションでは、`lsfRequireAuth`が有効であるアカウントが発行した通貨を未承認のトラストラインに追加する操作が行われます。たとえば、保有が許可されていない通貨を購入するオファーを出した場合などです。 |
 | `terNO_LINE`      | 内部使用のみ。通常はこのコードは返されません。 |
 | `terNO_RIPPLE`    | 内部使用のみ。通常はこのコードは返されません。 |

@@ -1,7 +1,5 @@
 ---
 parent: build-apps.html
-filters:
-  - include_code
 targets:
   - en
   - ja # TODO: translate this page

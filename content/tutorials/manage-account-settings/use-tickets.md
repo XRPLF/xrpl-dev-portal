@@ -5,7 +5,6 @@ blurb: Use Tickets to send a transaction outside of normal Sequence order.
 embed_xrpl_js: true
 filters:
   - interactive_steps
-  - include_code
 labels:
   - Accounts
 ---
