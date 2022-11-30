@@ -48,34 +48,39 @@
   .DocSearch-Hits mark {
     color: $blue-purple-400;
   }
-  .DocSearch-Hit-source, .DocSearch-Hit-Container, .DocSearch-Footer {
+  .DocSearch-Hit-source,
+  .DocSearch-Hit-Container,
+  .DocSearch-Footer {
     background-color: #232325;
   }
-  .DocSearch-Hit a{
+  .DocSearch-Hit a {
     background-color: #232325;
-    box-shadow:none;
+    box-shadow: none;
   }
-  .DocSearch-Hit-source{
-    color: $black-40; 
+  .DocSearch-Hit-source {
+    color: $black-40;
   }
-  .DocSearch-Input{
-    color: $white; 
+  .DocSearch-Input {
+    color: $white;
   }
-  .DocSearch-Hit-title{
-    color: $black-10 !important
-  }
-  .DocSearch-Hit-path{
-    color: $black-40 !important
+  .DocSearch-Hit-title,
+  .DocSearch-Hit-path,
+  .DocSearch-Label,
+  .DocSearch-Help {
+    color: $black-10 !important;
   }
 
   .DocSearch-Hit[aria-selected="true"] a {
     background: $gray-700;
-    .DocSearch-Hit-Container{
+    .DocSearch-Hit-Container {
       background-color: $gray-700;
     }
-    mark{
-      color: $blue-purple-500 !important;
+    mark {
+      color: $blue-purple-400 !important;
     }
+  }
+  .DocSearch-Prefill {
+    color: $blue-purple-400;
   }
   .DocSearch-Button {
     background: $gray-800;
@@ -83,6 +88,8 @@
   }
   .DocSearch-Button:hover {
     background: $gray-800;
+    border-radius: 40px;
+    box-shadow: inset 0 0 0 2px $blue-purple-400;
     .DocSearch-Button-Placeholder {
       color: $white;
     }
@@ -111,12 +118,13 @@
     z-index: 99999 !important;
     background-color: transparent !important;
   }
-  .DocSearch-Logo svg{
-    .cls-1, .cls-2{
-      fill:white; 
+  .DocSearch-Logo svg {
+    .cls-1,
+    .cls-2 {
+      fill: white;
     }
   }
-  .DocSearch-Commands-Key{
+  .DocSearch-Commands-Key {
     color: $gray-800;
   }
 
@@ -141,7 +149,7 @@
   .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
     color: $white;
     border: 0;
-    border-bottom: 2px solid $blue-purple-500;
+    border-bottom: 2px solid $blue-purple-400;
     font-weight: bold;
   }
 

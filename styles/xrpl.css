@@ -9654,7 +9654,9 @@ p {
 .xrp-ledger-dev-portal .DocSearch-Hits mark {
   color: #9A52FF;
 }
-.xrp-ledger-dev-portal .DocSearch-Hit-source, .xrp-ledger-dev-portal .DocSearch-Hit-Container, .xrp-ledger-dev-portal .DocSearch-Footer {
+.xrp-ledger-dev-portal .DocSearch-Hit-source,
+.xrp-ledger-dev-portal .DocSearch-Hit-Container,
+.xrp-ledger-dev-portal .DocSearch-Footer {
   background-color: #232325;
 }
 .xrp-ledger-dev-portal .DocSearch-Hit a {
@@ -9667,11 +9669,11 @@ p {
 .xrp-ledger-dev-portal .DocSearch-Input {
   color: #FFFFFF;
 }
-.xrp-ledger-dev-portal .DocSearch-Hit-title {
+.xrp-ledger-dev-portal .DocSearch-Hit-title,
+.xrp-ledger-dev-portal .DocSearch-Hit-path,
+.xrp-ledger-dev-portal .DocSearch-Label,
+.xrp-ledger-dev-portal .DocSearch-Help {
   color: #F5F5F7 !important;
-}
-.xrp-ledger-dev-portal .DocSearch-Hit-path {
-  color: #A2A2A4 !important;
 }
 .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a {
   background: #343437;
@@ -9680,7 +9682,10 @@ p {
   background-color: #343437;
 }
 .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a mark {
-  color: #7919FF !important;
+  color: #9A52FF !important;
+}
+.xrp-ledger-dev-portal .DocSearch-Prefill {
+  color: #9A52FF;
 }
 .xrp-ledger-dev-portal .DocSearch-Button {
   background: #232325;
@@ -9688,6 +9693,8 @@ p {
 }
 .xrp-ledger-dev-portal .DocSearch-Button:hover {
   background: #232325;
+  border-radius: 40px;
+  box-shadow: inset 0 0 0 2px #9A52FF;
 }
 .xrp-ledger-dev-portal .DocSearch-Button:hover .DocSearch-Button-Placeholder {
   color: #FFFFFF;
@@ -9715,7 +9722,8 @@ p {
   z-index: 99999 !important;
   background-color: transparent !important;
 }
-.xrp-ledger-dev-portal .DocSearch-Logo svg .cls-1, .xrp-ledger-dev-portal .DocSearch-Logo svg .cls-2 {
+.xrp-ledger-dev-portal .DocSearch-Logo svg .cls-1,
+.xrp-ledger-dev-portal .DocSearch-Logo svg .cls-2 {
   fill: white;
 }
 .xrp-ledger-dev-portal .DocSearch-Commands-Key {
@@ -9742,7 +9750,7 @@ p {
 .xrp-ledger-dev-portal .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
   color: #FFFFFF;
   border: 0;
-  border-bottom: 2px solid #7919FF;
+  border-bottom: 2px solid #9A52FF;
   font-weight: bold;
 }
 .xrp-ledger-dev-portal .algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
@@ -15925,10 +15933,15 @@ html.light .progress {
 html.light .xrp-ledger-dev-portal .DocSearch-Modal {
   background: #FFFFFF;
 }
+html.light .xrp-ledger-dev-portal .DocSearch-Prefill {
+  color: #7919FF;
+}
 html.light .xrp-ledger-dev-portal .DocSearch-Button {
   background: var(--docsearch-searchbox-background);
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Button:hover {
+  box-shadow: inset 0 0 0 2px #7919FF;
+  border-radius: 40px;
   background: var(--docsearch-searchbox-background);
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Button:hover .DocSearch-Button-Placeholder {
@@ -15968,6 +15981,12 @@ html.light .xrp-ledger-dev-portal .DocSearch-Hit-content-wrapper .DocSearch-Hit-
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Logo svg .cls-1, html.light .xrp-ledger-dev-portal .DocSearch-Logo svg .cls-2 {
   fill: var(--docsearch-logo-color);
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Hit-title,
+html.light .xrp-ledger-dev-portal .DocSearch-Hit-path,
+html.light .xrp-ledger-dev-portal .DocSearch-Label,
+html.light .xrp-ledger-dev-portal .DocSearch-Help {
+  color: #454549 !important;
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a {
   background: #F5F5F7;

@@ -116,10 +116,15 @@ h6,
   .DocSearch-Modal {
     background: $white;
   }
+  .DocSearch-Prefill{
+    color: $blue-purple-500;
+  }
   .DocSearch-Button {
     background: var(--docsearch-searchbox-background);
   }
   .DocSearch-Button:hover {
+    box-shadow: inset 0 0 0 2px $blue-purple-500;
+    border-radius: 40px;
     background: var(--docsearch-searchbox-background);
     .DocSearch-Button-Placeholder {
       color: var(--docsearch-text-color);
@@ -163,6 +168,12 @@ h6,
     .cls-1, .cls-2{
       fill:var(--docsearch-logo-color);; 
     }
+  }
+  .DocSearch-Hit-title,
+  .DocSearch-Hit-path,
+  .DocSearch-Label,
+  .DocSearch-Help {
+    color: $black-60 !important;
   }
   .DocSearch-Hit[aria-selected="true"] a {
     background: $black-10;
