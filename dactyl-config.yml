@@ -192,13 +192,14 @@ targets:
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             # Fix link from untranslated account_nfts.html
             "nftoken.html#nftokentaxon": "nftoken.html#分類群"
+# These lines appear to be unnecessary duplicates - commenting out in order to merge.
             # Fix links from untranslated NFT API methods:
-            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
-            "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
-            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
-            "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
-            # Fix links from untranslated AMM pages:
-            "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
+#            "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
+#             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
+#             "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
+#             "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
+#             # Fix links from untranslated AMM pages:
+#             "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
 
 pages:
 
