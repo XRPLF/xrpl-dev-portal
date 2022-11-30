@@ -91,7 +91,7 @@
     color: $white !important;
   }
   .DocSearch-Modal {
-    margin-top: -15px;
+    margin-top: -20px;
     max-width: 50%;
     margin-right: 13.75em;
   }
@@ -101,7 +101,7 @@
       min-width: unset;
     }
     .DocSearch-Modal {
-      top: 128px;
+      top: 127px;
       max-width: 100%;
       margin-left: 10px;
       margin-right: 20px;
@@ -115,6 +115,9 @@
     .cls-1, .cls-2{
       fill:white; 
     }
+  }
+  .DocSearch-Commands-Key{
+    color: $gray-800;
   }
 
   #centersearchboxcontainer {

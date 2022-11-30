@@ -9696,7 +9696,7 @@ p {
   color: #FFFFFF !important;
 }
 .xrp-ledger-dev-portal .DocSearch-Modal {
-  margin-top: -15px;
+  margin-top: -20px;
   max-width: 50%;
   margin-right: 13.75em;
 }
@@ -9705,7 +9705,7 @@ p {
     min-width: unset;
   }
   .xrp-ledger-dev-portal .DocSearch-Modal {
-    top: 128px;
+    top: 127px;
     max-width: 100%;
     margin-left: 10px;
     margin-right: 20px;
@@ -9717,6 +9717,9 @@ p {
 }
 .xrp-ledger-dev-portal .DocSearch-Logo svg .cls-1, .xrp-ledger-dev-portal .DocSearch-Logo svg .cls-2 {
   fill: white;
+}
+.xrp-ledger-dev-portal .DocSearch-Commands-Key {
+  color: #232325;
 }
 .xrp-ledger-dev-portal #centersearchboxcontainer {
   justify-content: center;
