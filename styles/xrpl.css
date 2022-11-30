@@ -9684,7 +9684,7 @@ p {
 }
 .xrp-ledger-dev-portal .DocSearch-Button {
   background: #232325;
-  width: 700px;
+  width: 100%;
 }
 .xrp-ledger-dev-portal .DocSearch-Button:hover {
   background: #232325;
@@ -9697,7 +9697,7 @@ p {
 }
 .xrp-ledger-dev-portal .DocSearch-Modal {
   margin-top: -15px;
-  max-width: 750px !important;
+  max-width: 50%;
   margin-right: 13.75em;
 }
 @media (max-width: 991.98px) {
@@ -9706,11 +9706,17 @@ p {
   }
   .xrp-ledger-dev-portal .DocSearch-Modal {
     top: 128px;
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 20px;
   }
 }
 .xrp-ledger-dev-portal .DocSearch-Container {
   z-index: 99999 !important;
   background-color: transparent !important;
+}
+.xrp-ledger-dev-portal .DocSearch-Logo svg .cls-1, .xrp-ledger-dev-portal .DocSearch-Logo svg .cls-2 {
+  fill: white;
 }
 .xrp-ledger-dev-portal #centersearchboxcontainer {
   justify-content: center;
@@ -15956,6 +15962,9 @@ html.light .xrp-ledger-dev-portal .DocSearch-Hit-content-wrapper .DocSearch-Hit-
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Hit-content-wrapper .DocSearch-Hit-path {
   color: #454549 !important;
+}
+html.light .xrp-ledger-dev-portal .DocSearch-Logo svg .cls-1, html.light .xrp-ledger-dev-portal .DocSearch-Logo svg .cls-2 {
+  fill: var(--docsearch-logo-color);
 }
 html.light .xrp-ledger-dev-portal .DocSearch-Hit[aria-selected=true] a {
   background: #F5F5F7;

@@ -79,7 +79,7 @@
   }
   .DocSearch-Button {
     background: $gray-800;
-    width: 700px;
+    width: 100%;
   }
   .DocSearch-Button:hover {
     background: $gray-800;
@@ -92,7 +92,7 @@
   }
   .DocSearch-Modal {
     margin-top: -15px;
-    max-width: 750px !important;
+    max-width: 50%;
     margin-right: 13.75em;
   }
 
@@ -102,13 +102,20 @@
     }
     .DocSearch-Modal {
       top: 128px;
+      max-width: 100%;
+      margin-left: 10px;
+      margin-right: 20px;
     }
   }
   .DocSearch-Container {
     z-index: 99999 !important;
     background-color: transparent !important;
   }
-
+  .DocSearch-Logo svg{
+    .cls-1, .cls-2{
+      fill:white; 
+    }
+  }
 
   #centersearchboxcontainer {
     justify-content: center;

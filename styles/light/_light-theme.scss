@@ -159,6 +159,11 @@ h6,
       color: $black-60 !important;
     }
   }
+  .DocSearch-Logo svg{
+    .cls-1, .cls-2{
+      fill:var(--docsearch-logo-color);; 
+    }
+  }
   .DocSearch-Hit[aria-selected="true"] a {
     background: $black-10;
     .DocSearch-Hit-Container {
