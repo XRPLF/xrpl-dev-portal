@@ -1192,7 +1192,7 @@ Update the form with fields and buttons to support the new functions.
       Choose your ledger instance:  
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233">
+        value="wss://s.altnet.rippletest.net:51233" checked>
       <label for="testnet">Testnet</label>
       &nbsp;&nbsp;
       <input type="radio" id="dn" name="server"
