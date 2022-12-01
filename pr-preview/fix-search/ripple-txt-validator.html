@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>ripple.txt Validator - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="ripple.txt Validator | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/ripple-txt-validator.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/ripple-txt-validator.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/ripple-txt-validator.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/ripple-txt-validator.html" hreflang="x-default" /><!-- Default: US english -->
@@ -45,7 +44,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v12.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v13.css" rel="stylesheet" />
 
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -2750,7 +2749,6 @@
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -2758,9 +2756,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  searchParameters: {
-    facetFilters: ['language:en'],
-  },
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)
