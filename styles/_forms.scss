@@ -35,7 +35,99 @@
   // Algolia Search results --------------------------------------------------
   .DocSearch-Modal {
     top: 85px;
+    background-color: #232325;
+    box-shadow: none;
   }
+  .DocSearch-Form {
+    box-shadow: inset 0 0 0 2px $blue-purple-400;
+    background-color: #232325;
+  }
+  .DocSearch-Hit-source {
+    color: $blue-purple-400;
+  }
+  .DocSearch-Hits mark {
+    color: $blue-purple-400;
+  }
+  .DocSearch-Hit-source,
+  .DocSearch-Hit-Container,
+  .DocSearch-Footer {
+    background-color: #232325;
+  }
+  .DocSearch-Hit a {
+    background-color: #232325;
+    box-shadow: none;
+  }
+  .DocSearch-Hit-source {
+    color: $black-40;
+  }
+  .DocSearch-Input {
+    color: $white;
+  }
+  .DocSearch-Hit-title,
+  .DocSearch-Hit-path,
+  .DocSearch-Label,
+  .DocSearch-Help {
+    color: $black-10 !important;
+  }
+
+  .DocSearch-Hit[aria-selected="true"] a {
+    background: $gray-700;
+    .DocSearch-Hit-Container {
+      background-color: $gray-700;
+    }
+    mark {
+      color: $blue-purple-400 !important;
+    }
+  }
+  .DocSearch-Prefill {
+    color: $blue-purple-400;
+  }
+  .DocSearch-Button {
+    background: $gray-800;
+    width: 100%;
+  }
+  .DocSearch-Button:hover {
+    background: $gray-800;
+    border-radius: 40px;
+    box-shadow: inset 0 0 0 2px $blue-purple-400;
+    .DocSearch-Button-Placeholder {
+      color: $white;
+    }
+  }
+  .DocSearch-Search-Icon {
+    color: $white !important;
+  }
+  .DocSearch-Modal {
+    margin-top: -20px;
+    max-width: 55%;
+    margin-right: 13.5em;
+  }
+
+  @include media-breakpoint-down(md) {
+    .algolia-autocomplete .ds-dropdown-menu {
+      min-width: unset;
+    }
+    .DocSearch-Modal {
+      top: 127px;
+      max-width: 100%;
+      margin-left: 10px;
+      margin-right: 20px;
+    }
+  }
+  .DocSearch-Container {
+    z-index: 99999 !important;
+    background-color: transparent !important;
+  }
+  .DocSearch-Logo svg {
+    .cls-1,
+    .cls-2 {
+      fill: white;
+    }
+  }
+  .DocSearch-Commands-Key {
+    color: $gray-800;
+  }
+
   #centersearchboxcontainer {
     justify-content: center;
   }
@@ -57,7 +149,7 @@
   .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
     color: $white;
     border: 0;
-    border-bottom: 2px solid $blue-purple-500;
+    border-bottom: 2px solid $blue-purple-400;
     font-weight: bold;
   }
 
@@ -93,37 +185,6 @@
     box-shadow: none;
     background-color: $gray-700;
   }
-  .DocSearch-Button {
-    background: $gray-800;
-    width: 700px;
-  }
-  .DocSearch-Button:hover {
-    background: $gray-800;
-    .DocSearch-Button-Placeholder {
-      color: $white;
-    }
-  }
-  .DocSearch-Search-Icon {
-    color: $white !important;
-  }
-  .DocSearch-Modal {
-    margin-top: -15px;
-    max-width: 700px !important;
-    margin-right: 13.75em;
-  }
-
-  @include media-breakpoint-down(md) {
-    .algolia-autocomplete .ds-dropdown-menu {
-      min-width: unset;
-    }
-    .DocSearch-Modal {
-      top: 128px;
-    }
-  }
-}
-.DocSearch-Container {
-  z-index: 99999 !important;
-  background-color: transparent !important;
 }
 
 #xrp-ledger-dev-portal {
