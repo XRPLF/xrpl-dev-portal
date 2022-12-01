@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>{{ currentpage.name }} - {{target.display_name}}</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="{{ currentpage.name|escape }} | {{ target.display_name }}">
     <meta property="og:url" content="https://xrpl.org/{% if currentpage.html != 'index.html' %}{{currentpage.html}}{% endif %}" />
@@ -16,7 +15,7 @@
     <meta name="twitter:image" content="https://xrpl.org/assets/img/{% if currentpage.twitter_card %}{{currentpage.twitter_card}}{% else %}xrpl-twitter-card.png{% endif %}" />
     {% if currentpage.canonical_url %}<link rel="canonical" href="{{currentpage.canonical_url}}" />{% endif %}
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="{{target.lang}}" />
     {% for lang in config.languages %}
     <link rel="alternate" href="https://xrpl.org{{lang.prefix}}{{currentpage.html}}" hreflang="{{lang.code}}" />
     {% endfor %}
@@ -53,7 +52,7 @@
     {% if target.lang=="ja" %}
     <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
     {% endif %}
-    <link href="{{currentpage.prefix}}assets/css/devportal2022-v12.css" rel="stylesheet" />
+    <link href="{{currentpage.prefix}}assets/css/devportal2022-v13.css" rel="stylesheet" />
 
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -127,7 +126,6 @@
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -135,9 +133,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  searchParameters: {
-    facetFilters: ['language:en'],
-  },
+  searchParameters: { 'facetFilters': ["lang:{{target.lang}}"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)
