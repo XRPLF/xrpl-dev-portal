@@ -627,7 +627,7 @@ Revise the HTML form to add a new Broker section at the top.
       Choose your ledger instance:  
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233">
+        value="wss://s.altnet.rippletest.net:51233" checked>
       <label for="testnet">Testnet</label>
       &nbsp;&nbsp;
       <input type="radio" id="dn" name="server"
@@ -699,7 +699,7 @@ Revise the HTML form to add a new Broker section at the top.
 			  Amount
 			</td>
 			<td>
-			  <input type="text" id="brokerAmountField" size="40" value="100"></input>
+			  <input type="text" id="brokerAmountField" size="40"></input>
 			  <br>
 			</td>
 		  </tr>
@@ -784,7 +784,7 @@ Revise the HTML form to add a new Broker section at the top.
                         Amount
                       </td>
                       <td>
-                        <input type="text" id="standbyAmountField" size="40" value="100"></input>
+                        <input type="text" id="standbyAmountField" size="40"></input>
                         <br>
                       </td>
                     </tr>
@@ -968,7 +968,7 @@ Revise the HTML form to add a new Broker section at the top.
                               Amount
                             </td>
                             <td>
-                              <input type="text" id="operationalAmountField" size="40" value="100"></input>
+                              <input type="text" id="operationalAmountField" size="40"></input>
                               <br>
                             </td>
                           </tr>
