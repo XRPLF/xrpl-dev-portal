@@ -135,7 +135,9 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:{{target.lang}}"] },
+  searchParameters: {
+    facetFilters: ['language:en'],
+  },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)
