@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>4. Transfer NFTokens - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="4. Transfer NFTokens | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/transfer-nftokens.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/transfer-nftokens.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/transfer-nftokens.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/transfer-nftokens.html" hreflang="x-default" /><!-- Default: US english -->
@@ -1151,7 +1150,7 @@ async function acceptBuyOffer() {
 <span class="w">      </span><span class="n">Choose</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">ledger</span><span class="w"> </span><span class="n">instance</span><span class="o">:</span><span class="w">  </span>
 <span class="w">      </span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"radio"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"tn"</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">"server"</span><span class="w"></span>
-<span class="w">        </span><span class="n">value</span><span class="o">=</span><span class="s">"wss://s.altnet.rippletest.net:51233"</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="n">value</span><span class="o">=</span><span class="s">"wss://s.altnet.rippletest.net:51233"</span><span class="w"> </span><span class="n">checked</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&lt;</span><span class="n">label</span><span class="w"> </span><span class="k">for</span><span class="o">=</span><span class="s">"testnet"</span><span class="o">&gt;</span><span class="n">Testnet</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"radio"</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="s">"dn"</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">"server"</span><span class="w"></span>
@@ -4032,7 +4031,6 @@ async function acceptBuyOffer() {
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -4040,7 +4038,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

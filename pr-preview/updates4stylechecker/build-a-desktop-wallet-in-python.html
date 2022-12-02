@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Build a Desktop Wallet in Python - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Build a Desktop Wallet in Python | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/build-a-desktop-wallet-in-python.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/build-a-desktop-wallet-in-python.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/build-a-desktop-wallet-in-python.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/build-a-desktop-wallet-in-python.html" hreflang="x-default" /><!-- Default: US english -->
@@ -304,7 +303,7 @@
 <li>Shows how much XRP is set aside for the account's <a href="reserves.html">reserve requirement</a>.</li>
 <li>Can send <a href="direct-xrp-payments.html">direct XRP payments</a>, and provides feedback about the intended destination address, including:<ul>
 <li>Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.</li>
-<li>If the address doesn't want to receive XRP (<a href="become-an-xrp-ledger-gateway.html#disallow-xrp">DisallowXRP flag</a> enabled).</li>
+<li>If the address doesn't want to receive XRP (<a href="become-an-xrp-ledger-gateway.html#disallow-xrp"><code>DisallowXRP</code> flag</a> enabled).</li>
 <li>If the address has a <a class="external-link" href="https://xrpl.org/xrp-ledger-toml.html#account-verification" target="_blank">verified domain name <i aria-hidden="true" class="fa fa-external-link"></i></a> associated with it.</li>
 </ul>
 </li>
@@ -4088,7 +4087,6 @@
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -4096,7 +4094,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

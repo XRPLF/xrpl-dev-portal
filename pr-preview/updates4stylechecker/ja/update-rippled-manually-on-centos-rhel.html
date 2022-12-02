@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>CentOS/Red Hatでの手動更新 - XRPL.org (日本語)</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="CentOS/Red Hatでの手動更新 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/update-rippled-manually-on-centos-rhel.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="ja" />
     <link rel="alternate" href="https://xrpl.org/update-rippled-manually-on-centos-rhel.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/update-rippled-manually-on-centos-rhel.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/update-rippled-manually-on-centos-rhel.html" hreflang="x-default" /><!-- Default: US english -->
@@ -2882,7 +2881,6 @@ REPOFILE
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -2890,7 +2888,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  searchParameters: { 'facetFilters': ["lang:ja"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

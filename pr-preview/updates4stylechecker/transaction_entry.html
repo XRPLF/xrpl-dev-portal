@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>transaction_entry - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="transaction_entry | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/transaction_entry.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/transaction_entry.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/transaction_entry.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/transaction_entry.html" hreflang="x-default" /><!-- Default: US english -->
@@ -3291,7 +3290,6 @@ rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -3299,7 +3297,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

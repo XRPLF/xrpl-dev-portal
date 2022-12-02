@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Decentralized Exchange - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Decentralized Exchange | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/decentralized-exchange.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/decentralized-exchange.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/decentralized-exchange.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/decentralized-exchange.html" hreflang="x-default" /><!-- Default: US english -->
@@ -2820,7 +2819,6 @@
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -2828,7 +2826,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)
