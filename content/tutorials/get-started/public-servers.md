@@ -18,6 +18,7 @@ If you don't [run your own `rippled` server](install-rippled.html), you can use 
 | Ripple[¹][]   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net/` | Testnet public server |
 | XRPL Labs     | Testnet     | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | Testnet public server with CORS support |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net/` | Devnet public server |
+| Ripple[¹][]   | AMM-Devnet  | `https://amm.devnet.rippletest.net:51234/` | `wss://amm.devnet.rippletest.net:51233/` | Special devnet for [XLS-30d Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) development. |
 
 [Network]: parallel-networks.html
 [¹]: #footnote-1
