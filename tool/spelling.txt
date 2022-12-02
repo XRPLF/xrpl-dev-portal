@@ -62,6 +62,7 @@ nudb
 p2p
 pathfinding
 pathset
+permissionless
 postgresql
 preauthorizations
 proactively
