@@ -31,6 +31,7 @@ cors
 counterparty
 counterparties
 crypto
+dapp
 datastore
 demurrage
 demurraging
@@ -64,6 +65,7 @@ pathset
 postgresql
 preauthorizations
 proactively
+quickstart
 readme
 ripemd160
 rippleapi
@@ -88,6 +90,8 @@ v1
 v2
 v10
 validators
+web3
+XLS
 XRPL
 
 # rippled API methods
@@ -234,12 +238,17 @@ trustsetauth
 # Names of people, orgs, etc.
 AWS
 bithomp
+bittorrent
 britto
+ethermint
 evm
 horcrux
 macbrough
 metamask
+opensea
 RippleX
+scylladb
+sologenic
 tendermint
 xpring
 xrpcharts
