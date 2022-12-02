@@ -46,7 +46,7 @@ The request does not take any parameters.
 
 When a client connects to the `Clio` server over `localhost`, the response includes the `counters` and `etl` objects. These objects are omitted from the response when the client is not located on the same server, and hence does not connect over `localhost`.  
 
-An example of a successful response when client connects over localhost:
+An example of a successful response when client connects over `localhost`:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -477,7 +477,7 @@ An example of a successful response when client connects over localhost:
 
 <!-- MULTICODE_BLOCK_END -->
 
-An example of a successful response when client does not connect over localhost:
+An example of a successful response when client does not connect over `localhost`:
 
 <!-- MULTICODE_BLOCK_START -->
 
