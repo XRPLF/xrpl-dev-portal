@@ -9,7 +9,7 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # connect to tes
 token_name = "USD"
 
 # Amount a trustline can handle
-value = "0"
+value = "100"
 print("Generating two test wallets...")
 
 # Address to unfreeze trustline
