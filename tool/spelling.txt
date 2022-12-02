@@ -59,6 +59,7 @@ NFT
 NFTs
 noripple
 nudb
+onboarding
 p2p
 pathfinding
 pathset
@@ -237,7 +238,9 @@ ticksize
 trustsetauth
 
 # Names of people, orgs, etc.
+asheesh
 AWS
+bharath
 bithomp
 bittorrent
 britto
