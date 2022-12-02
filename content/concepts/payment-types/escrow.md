@@ -8,9 +8,13 @@ labels:
 ---
 # Escrow
 
-Escrow is a feature of the XRP Ledger that allows you to send conditional XRP payments. These conditional payments, called _escrows_, set aside XRP and deliver it later when certain conditions are met. Conditions to successfully finish an escrow include time-based unlocks and [crypto-conditions][]. Escrows can also be set to expire if not finished in time.
+The XRP Ledger enables you to send conditional payments using an escrow. An escrow locks up XRP, which can't be used or destroyed until certain conditions are met. You can specify conditions by:
 
-The XRP set aside in an escrow is locked up. No one can use or destroy the XRP until the escrow has been successfully finished or canceled. Before the expiration time, only the intended receiver can get the XRP. After the expiration time, the XRP can only be returned to the sender.
+- Time.
+- Crypto-condition.
+- A combination of both.
+
+Once the escrow conditions are met, the funds are unlocked and can be delivered to the recipient.
 
 ## Usage
 
