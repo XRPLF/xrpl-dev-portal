@@ -840,6 +840,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/decentralized-exchange/automated-market-makers.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/decentralized-exchange/offers.md
         targets:
             - en
