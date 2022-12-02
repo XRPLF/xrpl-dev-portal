@@ -454,7 +454,7 @@
 <tr>
 <td style="text-align: left;"><code>uri</code></td>
 <td style="text-align: left;">String or <code>null</code></td>
-<td style="text-align: left;"><em>(Omitted if the NFT is burned at this ledger.)</em>. This field is <code>null</code> if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request <code>nft_info</code> for this token, specifying the <code>ledger_index</code> as the one previous to the index where this token was burned ({ledger_index-where-token-was-burned} - 1).</td>
+<td style="text-align: left;"><em>(Omitted if the NFT is burned at this ledger.)</em>. This field is <code>null</code> if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request <code>nft_info</code> for this token, specifying the <code>ledger_index</code> as the one previous to the index where this token was burned ({<em>ledger-index-where-token-was-burned</em>} - 1).</td>
 </tr>
 </tbody>
 </table>
