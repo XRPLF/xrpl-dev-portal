@@ -7,7 +7,6 @@ labels:
 status: not_enabled
 ---
 # XChainCreateClaimID
-<!-- [[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp) -->
 
 The `XChainCreateClaimID` transaction creates a new cross-chain claim ID that is used for a cross-chain transfer. A cross-chain claim ID represents *one* cross-chain transfer of value. 
 

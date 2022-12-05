@@ -7,7 +7,6 @@ labels:
 status: not_enabled
 ---
 # XChainModifyBridge
-<!-- [[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp) -->
 
 The `XChainModifyBridge` transaction modifies a `Bridge` ledger object on one of the chains that the bridge connects. You can only change the `SignaturesReward` or `MinAccountCreateAmount` values, because changing the bridge itself (either door account or either currency) would essentially render all cross-chain funds useless - you’d be better off creating another bridge instead. This transaction must be sent by the door account, and correctly signed using whatever signer list set it has.
 

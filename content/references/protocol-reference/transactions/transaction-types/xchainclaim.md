@@ -7,9 +7,8 @@ labels:
 status: not_enabled
 ---
 # XChainClaim
-<!-- [[Source]](https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp) -->
 
-The `XChainClaim` transaction claims the transfer funds on the destination chain.
+The `XChainClaim` transaction completes a cross-chain transfer of value. It allows a user to claim the value on the destination chain - the equivalent of the value locked on the source chain. A user can only claim the value if they own the cross-chain claim ID associated with the value locked on the source chain (the Account field). The user can send the funds to anyone (the Destination field). This transaction is only needed if an OtherChainDestination is not specified in the XChainCommit transaction, or if something goes wrong with the automatic transfer of funds.
 
 
 ## Example {{currentpage.name}} JSON

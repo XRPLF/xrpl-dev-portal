@@ -76,53 +76,32 @@ Consider an example where Alice wants to send XRP from her account on the XRP Le
 
 5. If the XRP is not automatically released, for whatever reason (such as Alice forgetting to specify sAlice’s account in the OtherChainDestination field), then sAlice submits a XChainClaim transaction on the sidechain, specifying her account as the destination. This then releases the XRP on the sidechain to sAlice’s account.
 
-## Transactions
-
-### Bridge Control: XChainModifyBridge
-
-This transaction modifies a Bridge ledger object on one of the chains that the bridge connects. You can only change the SignaturesReward or MinAccountCreateAmount values, because changing the bridge itself (either door account or either currency) would essentially render all cross-chain funds useless - you’d be better off creating another bridge instead. This transaction must be sent by the door account, and correctly signed using whatever signer list set it has.
-
-### Cross-Chain Transfer: XChainCreateClaimID
-
-This transaction checks out a cross-chain claim ID that is used for a cross-chain transfer. It is submitted on the destination chain, not the source chain. This is the first step of a cross-chain transfer of value. 
-
-A cross-chain claim ID essentially represents one cross-chain transfer of value. 
-
-### Cross-Chain Transfer: XChainCommit
-
-This transaction initiates a cross-chain transfer of value. This is done on the source chain, and locks/burns the value (“commits” the value), so that the equivalent amount can be minted/unlocked on the destination chain. Essentially, it tells the witness servers that the value was locked/burned. This value is tied to a specific cross-chain claim ID (which is included in the transaction).
-
-The account that owns the cross-chain claim ID on the destination chain is the account that controls the funds on the other end of the bridge. The funds go to the destination account specified in the XChainCommit transaction, if specified. If the destination account is not specified, then the claim ID owner must submit an XChainClaim transaction to determine where the funds will go on the destination chain.
-
-### Cross-Chain Transfer: XChainAddAttestation
-
-This transaction is submitted on the destination chain, by the witness server or anyone with access to the signatures from the witness server. It is a proof that an event (essentially just a locking/burning of funds) happened on the source chain.
-
-When enough witnesses have submitted their proofs on the destination chain that an event has occurred, the funds will be released to the destination account in the XChainCommit transaction, if specified. Otherwise, the claim ID owner must submit an XChainClaim transaction to determine where the funds will go on the destination chain.
-
-### Cross-Chain Transfer: XChainClaim
-
-This transaction completes a cross-chain transfer of value. It allows a user to claim the value on the destination chain - the equivalent of the value locked on the source chain. A user can only claim the value if they own the cross-chain claim ID associated with the value locked on the source chain (the Account field). The user can send the funds to anyone (the Destination field). This transaction is only needed if an OtherChainDestination is not specified in the XChainCommit transaction, or if something goes wrong with the automatic transfer of funds.
-
-### Other: XChainCreateAccountCommit
-
-This transaction creates an account on the sidechain. In order to start a cross-chain transfer, you need an account on the destination chain, which is a bit of a paradox situation - so to avoid that, this is a special transaction that can create an account on the destination chain for you.
-
 ## How to Set Up a Sidechain? 
 
-The [`sidechain_cli`](https://github.com/XRPLF/sidechain-cli) is a commandline tool that simplifies setting up bridges and issuing chains on your local machine. 
+The [`xrpl-sidechain-cli`](https://github.com/XRPLF/sidechain-cli) is a commandline tool that simplifies setting up a cross-chain bridge and issuing chains on your local machine. 
 
 Follow the [tutorial](https://github.com/XRPLF/sidechain-cli/blob/main/scripts/tutorial.sh) to walk through the steps of creating a bridge and completing your first cross-chain transaction. 
 
 
-## XRPL Custom-chain Explorer 
+## XRPL Custom Network Explorer 
 
 The XRP Ledger Explorer provides a way to look up historical transactions, accounts, ledgers, fees, exchange rates, timestamps, sequence numbers, node uptime, IP addresses, topology, versions and peers for the XRP Ledger mainchain. 
 
-Similarly, you can use the XRP Ledger Sidechain Explorer to look up information for an XRP Ledger sidechain. Use the following syntax to access the XRPL Sidechain Explorer:
+Similarly, you can use the [XRP Ledger Custom Network Explorer](https://custom.xrpl.org/) to connect an XRP Ledger Sidechain (_issuing chain_) and look up network information. 
 
-`https://sidechain.xrpl.org/_<SIDECHAIN-NODE-DNS-ADDRESS-OR-IP>_`
 
+## See Also
+
+- [Witness Server](witness-server.html)
+- [Tutorial](https://github.com/XRPLF/sidechain-cli/blob/main/scripts/tutorial.sh)
+- [Transaction Reference](transaction-types.html)
+    - [xchaincreateaccountcommit][]
+    - [xchaincreatebridge][]
+    - [xchaincreateclaimid][]
+    - [xchaincommit][]
+    - [xchainaddattestation][]
+    - [xchainclaim][]
+    - [xchainmodifybridge][]
 
 
 

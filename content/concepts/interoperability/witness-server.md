@@ -24,32 +24,42 @@ Note that an issuing chain may choose to configure a bridge with only one witnes
 
 ## Witness Server Configuration
 
-The witness server takes a JSON configuration file with the `--config` file.
+The witness server takes a JSON configuration file, specified using the `--conf` command-line argument.
+
+The configuration file contains the following information:
+* Websocket endpoints for the locking chain and the issuing chain.
+* Port that clients can use to connect to this server ("RPCENdpoint").
+* Directory to store the SQL database
+* Secret key used to sign attestations
+* Information about door accounts on the locking and issuing chains.
+
+Here is an example configuration file for a witness server:
 
 ```json
 {
-  "mainchain_endpoint": {
-    "ip": "127.0.0.1",
-    "port": 6005
+  "LockingChainEndpoint": {
+    "IP": "127.0.0.1",
+    "Port": 6005
   },
-  "sidechain_endpoint": {
-    "ip": "127.0.0.2",
-    "port": 6007
+  "IssuingChainEndpoint": {
+    "IP": "127.0.0.2",
+    "Port": 6007
   },
-  "rpc_endpoint": {
-    "ip": "127.0.0.3",
-    "port": 6010
+  "RPCEndpoint": {
+    "IP": "127.0.0.3",
+    "Port": 6010
   },
-  "db_dir": "/home/swd/data/witness/witness0/db",
-  "signing_key_seed": "snwitEjg9Mr8n65cnqhATKcd1dQmv",
-  "sidechain": {
-    "src_chain_door": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
-    "src_chain_issue": {
-        "currency": "USD",
-        "issuer": "rhczJR49YsdxwtYTPvxeSc1Jjr7R748cHv"
-      },
-    "dst_chain_door": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    "dst_chain_issue": "XRP"
+  "DBDir": "/home/swd/data/witness/witness0/db",
+  "SigningKeySeed": "snwitEjg9Mr8n65cnqhATKcd1dQmv",
+  "SigningKeyType": "ed25519",
+  "LockingChainRewardAccount": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
+  "IssuingChainRewardAccount": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+  "XChainBridge": {
+    "LockingChainDoor": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
+    "LockingChainIssue": "XRP",
+    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "IssuingChainIssue": "XRP"
   }
 }
 ```
+
