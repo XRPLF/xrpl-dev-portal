@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>NFTokenPage - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="NFTokenPage | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/nftokenpage.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/nftokenpage.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/nftokenpage.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/nftokenpage.html" hreflang="x-default" /><!-- Default: US english -->
@@ -55,9 +54,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v13.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -82,12 +81,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,9 +151,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -194,7 +202,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -202,7 +210,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/nftokenpage.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -266,118 +288,86 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="nftokenpage">NFTokenPage<a aria-hidden="true" class="hover_anchor" href="#nftokenpage"><i class="fa fa-link"></i></a></h1>
-<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
 <p>The <code>NFTokenPage</code> object represents a collection of <code>NFToken</code> objects owned by the same account. An account can have multiple <code>NFTokenPage</code> ledger objects, which form a doubly linked list.</p>
+<p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
 <h2 id="example-nftokenpage-json">Example NFTokenPage JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenpage-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenPage"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"PreviousTokenPage"</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="s2">"598EDFD7CF73460FB8C695d6a9397E907378C8A841F7204C793DCBEF5406"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"PreviousTokenNext"</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="s2">"598EDFD7CF73460FB8C695d6a9397E9073781BA3B78198904F659AAA252A"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="s2">"95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="mi">42891441</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"NFTokens"</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"NFTokenID"</span><span class="p">:</span><span class="w"></span>
-<span class="w">                  </span><span class="s2">"000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="cm">/* potentially more objects */</span><span class="w"></span>
-<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenPage"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"PreviousTokenPage"</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"598EDFD7CF73460FB8C695d6a9397E907378C8A841F7204C793DCBEF5406"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"PreviousTokenNext"</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"598EDFD7CF73460FB8C695d6a9397E9073781BA3B78198904F659AAA252A"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="mi">42891441</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"NFTokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"NFTokenID"</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="s2">"000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* potentially more objects */</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>In the interest of minimizing the size of a page and optimizing storage, the <code>Owner</code> field is not present, since it is encoded as part of the object's ledger identifier.</p>
 <h2 id="nftokenpage-fields">NFTokenPage Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenpage-fields"><i class="fa fa-link"></i></a></h2>
 <p>An <code>NFTokenPage</code> object can have the following required and optional fields:</p>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Field Name</strong>
-</td>
-<td><strong>Required?</strong>
-</td>
-<td><strong>JSON Type</strong>
-</td>
-<td><strong>Internal Type</strong>
-</td>
-<td><strong>Description</strong>
-</td>
+<th style="text-align: left;">Field Name</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Identifies the type of ledger object. The reserved ledger entry type is 0x0050.</td>
 </tr>
 <tr>
-<td><code>LedgerEntryType</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>UInt16
-   </td>
-<td>Identifies the type of ledger object. The reserved ledger entry type is <code>0x0050</code>.
-   </td>
+<td style="text-align: left;"><code>NextPageMin</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The locator of the next page, if any. Details about this field and how it should be used are outlined below, after the construction of the NFTokenPageID is explained.</td>
 </tr>
 <tr>
-<td><code>PreviousPageMin</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>Hash256
-   </td>
-<td>The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
-   </td>
+<td style="text-align: left;"><code>NFTokens</code></td>
+<td style="text-align: left;">object</td>
+<td style="text-align: left;">TOKEN</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The collection of NFToken objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects should be stored in sorted order, from low to high with the TokenID used as the sorting parameter.</td>
 </tr>
 <tr>
-<td><code>NextPageMin</code>
-</td>
-<td>No
-   </td>
-<td><code>string</code>
-</td>
-<td><code>Hash256</code>
-</td>
-<td>The locator of the next page, if any. Details about this field and how it should be used are outlined below, after the construction of the <code>NFTokenPageID</code> is explained.
-   </td>
+<td style="text-align: left;"><code>PreviousPageMin</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the NFTokenPageID is explained.</td>
 </tr>
 <tr>
-<td><code>PreviousTxnID</code>
-</td>
-<td>No
-   </td>
-<td><code>string</code>
-</td>
-<td><code>HASH256</code>
-</td>
-<td>Identifies the transaction ID of the transaction that most recently modified this <code>NFTokenPage</code> object.
-   </td>
+<td style="text-align: left;"><code>PreviousTxnID</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">HASH256</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Identifies the transaction ID of the transaction that most recently modified this NFTokenPage object.</td>
 </tr>
 <tr>
-<td><code>PreviousTxnLgrSeq</code>
-</td>
-<td>No
-   </td>
-<td><code>number</code>
-</td>
-<td><code>UInt32</code>
-</td>
-<td>The sequence of the ledger that contains the transaction that most recently modified this <code>NFTokenPage</code> object.
-   </td>
+<td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The sequence of the ledger that contains the transaction that most recently modified this NFTokenPage object.</td>
 </tr>
-<tr>
-<td><code>NFTokens</code>
-</td>
-<td>Yes
-   </td>
-<td><code>object</code>
-</td>
-<td><code>TOKEN</code>
-</td>
-<td>The collection of <code>NFToken</code> objects contained in this <code>NFTokenPage</code> object. This specification places an upper bound of 32 <code>NFToken</code> objects per page. Objects should be stored in sorted order, from low to high with the <code>TokenID</code> used as the sorting parameter.
-   </td>
-</tr>
+</tbody>
 </table>
 <h3 id="tokenpage-id-format">TokenPage ID Format<a aria-hidden="true" class="hover_anchor" href="#tokenpage-id-format"><i class="fa fa-link"></i></a></h3>
 <p><code>NFTokenPage</code> identifiers are constructed so as to specifically allow for the adoption of a more efficient paging structure, ideally suited for <code>NFTokens</code>.</p>
@@ -394,64 +384,44 @@
 <h3 id="reserve-for-nftokenpage-object">Reserve for <code>NFTokenPage</code> object<a aria-hidden="true" class="hover_anchor" href="#reserve-for-nftokenpage-object"><i class="fa fa-link"></i></a></h3>
 <p>Each <code>NFTokenPage</code> costs an incremental reserve to the owner account. This specification allows up to 32 <code>NFToken</code> entries per page, which means that for accounts that hold multiple NFTs the <em>effective</em> reserve cost per NFT can be as low as <em>R</em>/32 where <em>R</em> is the incremental reserve.</p>
 <h3 id="the-reserve-in-practice">The reserve in practice<a aria-hidden="true" class="hover_anchor" href="#the-reserve-in-practice"><i class="fa fa-link"></i></a></h3>
-<p>The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the <em>effective</em> reserve per token is, if a given page contains 1, 8, 16, 32 and 64 NFTs.</p>
+<p>The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the <em>effective</em> reserve per token is, if a given page contains 1, 8, 16 and 32 NFTs.</p>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Incremental Reserve</strong>
-</td>
-<td><strong>1 NFToken</strong>
-</td>
-<td><strong>8 NFTokens</strong>
-</td>
-<td><strong>16 NFTokens</strong>
-</td>
-<td><strong>32 NFTokens</strong>
-</td>
-<td><strong>64 NFTokens</strong>
-</td>
+<th style="text-align: left;">Incremental Reserve</th>
+<th style="text-align: left;">1 NFToken</th>
+<th style="text-align: left;">8 NFTokens</th>
+<th style="text-align: left;">16 NFTokens</th>
+<th style="text-align: left;">32 NFTokens</th>
+<th style="text-align: left;">64 NFTokens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">5 XRP</td>
+<td style="text-align: left;">5 XRP</td>
+<td style="text-align: left;">0.625 XRP</td>
+<td style="text-align: left;">0.3125 XRP</td>
+<td style="text-align: left;">0.15625 XRP</td>
+<td style="text-align: left;">0.07812 XRP</td>
 </tr>
 <tr>
-<td>5 XRP
-   </td>
-<td>5 XRP
-   </td>
-<td>0.625 XRP
-   </td>
-<td>0.3125 XRP
-   </td>
-<td>0.15625 XRP
-   </td>
-<td>0.07812 XRP
-   </td>
+<td style="text-align: left;">2 XRP</td>
+<td style="text-align: left;">2 XRP</td>
+<td style="text-align: left;">0.25 XRP</td>
+<td style="text-align: left;">0.125 XRP</td>
+<td style="text-align: left;">0.0625 XRP</td>
+<td style="text-align: left;">0.03125 XRP</td>
 </tr>
 <tr>
-<td>2 XRP
-   </td>
-<td>2 XRP
-   </td>
-<td>0.25 XRP
-   </td>
-<td>0.125 XRP
-   </td>
-<td>0.0625 XRP
-   </td>
-<td>0.03125 XRP
-   </td>
+<td style="text-align: left;">1 XRP</td>
+<td style="text-align: left;">1 XRP</td>
+<td style="text-align: left;">0.125 XRP</td>
+<td style="text-align: left;">0.0625 XRP</td>
+<td style="text-align: left;">0.03125 XRP</td>
+<td style="text-align: left;">0.01562 XRP</td>
 </tr>
-<tr>
-<td>1 XRP
-   </td>
-<td>1 XRP
-   </td>
-<td>0.125 XRP
-   </td>
-<td>0.0625 XRP
-   </td>
-<td>0.03125 XRP
-   </td>
-<td>0.01562 XRP
-   </td>
-</tr>
+</tbody>
 </table>
 <!-- -->
 <!-- -->
@@ -675,12 +645,17 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
   </div>
 
     </nav>
@@ -840,16 +815,6 @@
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="locking-and-issuing-chains.html">Locking and Issuing Chains</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="bridge.html">Bridge</a>
-  </div>
-
     </nav>
 
   </div>
@@ -909,9 +874,36 @@
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
+
+        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cross-chain-bridges.html">Cross-Chain Bridges</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="witness-server.html">Witness Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -966,6 +958,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
   </div>
 
     </nav>
@@ -1239,11 +1236,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-tester-tutorial.html">NFToken Tester Tutorial <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1577,6 +1569,57 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
+
+        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
+
+        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
+
+        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1617,7 +1660,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken.html">NFToken <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
   </div>
 
     </nav>
@@ -1662,6 +1705,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1697,12 +1745,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -1771,6 +1819,31 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
   </div>
 
@@ -1806,27 +1879,27 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -1877,6 +1950,41 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trustset.html">TrustSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainaddattestation.html">XChainAddAttestation <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincommit.html">XChainCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreateclaimid.html">XChainCreateClaimID <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreatebridge.html">XChainCreateBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainmodifybridge.html">XChainModifyBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainclaim.html">XChainClaim <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2102,7 +2210,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -2218,6 +2326,11 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
@@ -2228,12 +2341,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -2670,6 +2783,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -2800,6 +2918,11 @@
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Education Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2832,6 +2955,7 @@
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2876,14 +3000,15 @@
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

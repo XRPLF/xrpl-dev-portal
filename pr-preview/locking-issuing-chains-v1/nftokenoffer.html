@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>NFTokenOffer - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="NFTokenOffer | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/nftokenoffer.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/nftokenoffer.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/nftokenoffer.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/nftokenoffer.html" hreflang="x-default" /><!-- Default: US english -->
@@ -55,9 +54,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v13.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -82,12 +81,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,9 +151,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -194,7 +202,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -202,7 +210,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/nftokenoffer.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -237,11 +259,12 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenoffer">NFTokenOffer</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferid-format">NFTokenOfferID Format</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenoffer-json">Example NFTokenOffer JSON</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-fields">NFTokenOffer Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenoffer-transactions">NFTokenOffer Transactions</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#locating-nftokenoffer-objects">Locating NFTokenOffer objects</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-reserve">NFTokenOffer Reserve</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferid-format">NFTokenOfferID Format</a></li>
       </ul>
   </div>
       </aside>
@@ -263,182 +286,129 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="nftokenoffer">NFTokenOffer<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer"><i class="fa fa-link"></i></a></h1>
-<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
 <p>Tokens that have the <code>lsfTransferable</code> flag set can be transferred among participants using offers. The <code>NFTokenOffer</code> object represents an offer to buy, sell or transfer an <code>NFToken</code> object. The owner of a <code>NFToken</code> can use <code>NFTokenCreateOffer</code> to start a transaction.</p>
-<h3 id="nftokenofferid-format"><code>NFTokenOfferID</code> Format<a aria-hidden="true" class="hover_anchor" href="#nftokenofferid-format"><i class="fa fa-link"></i></a></h3>
-<p>The unique ID (<code>NFTokenOfferID</code>) of the <code>NFTokenOffer</code> object is the result of the following values concatenated in order:</p>
-<ul>
-<li>The <code>NFTokenOffer</code> space key, <code>0x0074</code>;</li>
-<li>The <code>AccountID</code> of the account placing the offer; and</li>
-<li>The <code>Sequence</code> (or <code>Ticket</code>) of the <code>NFTokenCreateOffer</code> transaction that will create the <code>NFTokenOffer</code>.</li>
-</ul>
+<p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
+<h2 id="example-nftokenoffer-json">Example NFTokenOffer JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenoffer-json"><i class="fa fa-link"></i></a></h2>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenOffer"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"NFTokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00081B5825A08C22787716FA031B432EBBC1B101BB54875F0002D2A400000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"NFTokenOfferNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhRxL3MNvuKEjWjL7TBbZSDacb8PmzAd7m"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BFA9BE27383FA315651E26FDE1FA30815C5A5D0544EE10EC33D3E92532993769"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">75443565</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AEBABA4FAC212BF28E0F9A9C3788A47B085557EC5D1429E7A8266FB859C863B3"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 <h3 id="nftokenoffer-fields"><code>NFTokenOffer</code> Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-fields"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Field Name</strong>
-</td>
-<td><strong>Required?</strong>
-</td>
-<td><strong>JSON Type</strong>
-</td>
-<td><strong>Internal Type</strong>
-</td>
-<td><strong>Description</strong>
-</td>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Amount</code></td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
+<td style="text-align: left;">AMOUNT</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Amount expected or offered for the NFToken. If the token has the <code>lsfOnlyXRP</code> flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to <code>"0"</code>).</td>
 </tr>
 <tr>
-<td><code>Owner</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>AccountID
-   </td>
-<td><code>Owner</code> of the account that is creating and owns the offer. Only the current <code>Owner</code> of an <code>NFToken</code> can create an offer to sell an <code>NFToken</code>, but any account can create an offer to buy an <code>NFToken</code>.
-   </td>
+<td style="text-align: left;"><code>Destination</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The AccountID for which this offer is intended. If present, only that account can accept the offer.</td>
 </tr>
 <tr>
-<td><code>LedgerEntryType</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>UInt16
-   </td>
-<td>The type of ledger object (<code>0x0074</code>).
-   </td>
+<td style="text-align: left;"><code>Expiration</code></td>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch.</td>
 </tr>
 <tr>
-<td><code>PreviousTxnID</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>Hash256
-   </td>
-<td>Identifying hash of the transaction that most recently modified this object.
-   </td>
+<td style="text-align: left;"><code>Flags</code></td>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.</td>
 </tr>
 <tr>
-<td><code>PreviousTxnLgrSeq</code>
-</td>
-<td>Yes
-   </td>
-<td>number
-   </td>
-<td>UInt32
-   </td>
-<td>Index of the ledger that contains the transaction that most recently modified this object.
-   </td>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The type of ledger object (0x0074).</td>
 </tr>
 <tr>
-<td><code>NFTokenID</code>
-</td>
-<td>Yes
-   </td>
-<td>string
-   </td>
-<td>Hash256
-   </td>
-<td><code>NFTokenID</code> of the <code>NFToken</code> object referenced by this offer.
-   </td>
+<td style="text-align: left;"><code>NFTokenID</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">NFTokenID of the NFToken object referenced by this offer.</td>
 </tr>
 <tr>
-<td><code>Amount</code>
-</td>
-<td>Yes
-   </td>
-<td>object or string
-   </td>
-<td>AMOUNT
-   </td>
-<td>Amount expected or offered for the <code>NFToken</code>. If the token has the <code>lsfOnlyXRP</code> flag set, the amount must be specified in XRP.
-<p>
-Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the <code>Amount</code> field can be equal to <code>"0"</code>).
-   </p></td>
+<td style="text-align: left;"><code>NFTokenOfferNode</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.</td>
 </tr>
 <tr>
-<td><code>Expiration</code>
-</td>
-<td>No
-   </td>
-<td>number
-   </td>
-<td>UInt32
-   </td>
-<td>The time after which the offer is no longer active. The value is the number of seconds since the <a class="external-link" href="https://xrpl.org/basic-data-types.html#specifying-time" target="_blank">Ripple Epoch <i aria-hidden="true" class="fa fa-external-link"></i></a>.
-   </td>
+<td style="text-align: left;"><code>Owner</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Owner of the account that is creating and owns the offer. Only the current Owner of an NFToken can create an offer to sell an NFToken, but any account can create an offer to buy an NFToken.</td>
 </tr>
 <tr>
-<td><code>Destination</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>AccountID
-   </td>
-<td>The <code>AccountID</code> for which this offer is intended. If present, only that account can accept the offer.
-   </td>
+<td style="text-align: left;"><code>OwnerNode</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">UInt64</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.</td>
 </tr>
 <tr>
-<td><code>OwnerNode</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>UInt64
-   </td>
-<td>Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers.
-   </td>
+<td style="text-align: left;"><code>PreviousTxnID</code></td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Identifying hash of the transaction that most recently modified this object.</td>
 </tr>
 <tr>
-<td><code>NFTokenOfferNode</code>
-</td>
-<td>No
-   </td>
-<td>string
-   </td>
-<td>UInt64
-   </td>
-<td>Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers.
-   </td>
+<td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Index of the ledger that contains the transaction that most recently modified this object.</td>
 </tr>
-<tr>
-<td><code>Flags</code>
-</td>
-<td>Yes
-   </td>
-<td>number
-   </td>
-<td>UInt32
-   </td>
-<td>A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.
-   </td>
-</tr>
+</tbody>
 </table>
 <h4 id="nftokenoffer-flags">NFTokenOffer Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-flags"><i class="fa fa-link"></i></a></h4>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>Flag Name</strong>
-</td>
-<td><strong>Flag Value</strong>
-</td>
-<td><strong>Description</strong>
-</td>
+<th>Flag Name</th>
+<th>Flag Value</th>
+<th>Description</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td><code>lsfSellNFToken</code>
-</td>
-<td><code>0x00000001</code>
-</td>
-<td>If set, the offer is a sell offer. Otherwise, the offer is a buy offer.
-   </td>
+<td><code>lsfSellNFToken</code></td>
+<td><code>0x00000001</code></td>
+<td>If enabled, the offer is a sell offer. Otherwise, the offer is a buy offer.</td>
 </tr>
+</tbody>
 </table>
 <h2 id="nftokenoffer-transactions"><code>NFTokenOffer</code> Transactions<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-transactions"><i class="fa fa-link"></i></a></h2>
 <p>Token offers on XRPL are stored sorted by quality in an order book and automatically matched by an on-ledger mechanism. An <code>NFTokenOffer</code> is not stored in an order book and is never automatically matched or executed.</p>
@@ -458,7 +428,14 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 <h3 id="locating-nftokenoffer-objects">Locating <code>NFTokenOffer</code> objects<a aria-hidden="true" class="hover_anchor" href="#locating-nftokenoffer-objects"><i class="fa fa-link"></i></a></h3>
 <p>Each token has two directories. One contains offers to buy the token and the other containing offers to sell the token. This makes it easy to find <code>NFTokenOffer</code> for a particular token. It is expected that off-ledger systems will be used to retrieve, present, communicate and effectuate the creation, enumeration, acceptance or cancellation of offers. For example, a marketplace may offer intuitive web- or app-based interfaces for users.</p>
 <h3 id="nftokenoffer-reserve"><code>NFTokenOffer</code> Reserve<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-reserve"><i class="fa fa-link"></i></a></h3>
-<p>Each <code>NFTokenOffer</code> object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 5 XRP. The reserve can be recovered by cancelling the offer.</p>
+<p>Each <code>NFTokenOffer</code> object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer.</p>
+<h3 id="nftokenofferid-format"><code>NFTokenOfferID</code> Format<a aria-hidden="true" class="hover_anchor" href="#nftokenofferid-format"><i class="fa fa-link"></i></a></h3>
+<p>The unique ID (<code>NFTokenOfferID</code>) of the <code>NFTokenOffer</code> object is the result of the following values concatenated in order:</p>
+<ul>
+<li>The <code>NFTokenOffer</code> space key, <code>0x0074</code>;</li>
+<li>The <code>AccountID</code> of the account placing the offer; and</li>
+<li>The <code>Sequence</code> (or <code>Ticket</code>) of the <code>NFTokenCreateOffer</code> transaction that will create the <code>NFTokenOffer</code>.</li>
+</ul>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -681,12 +658,17 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
   </div>
 
     </nav>
@@ -846,16 +828,6 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="locking-and-issuing-chains.html">Locking and Issuing Chains</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="bridge.html">Bridge</a>
-  </div>
-
     </nav>
 
   </div>
@@ -915,9 +887,36 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
+
+        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cross-chain-bridges.html">Cross-Chain Bridges</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="witness-server.html">Witness Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -972,6 +971,11 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
   </div>
 
     </nav>
@@ -1245,11 +1249,6 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-tester-tutorial.html">NFToken Tester Tutorial <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1583,6 +1582,57 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
+
+        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
+
+        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
+
+        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1623,7 +1673,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken.html">NFToken <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
   </div>
 
     </nav>
@@ -1668,6 +1718,11 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1703,12 +1758,12 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -1777,6 +1832,31 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
   </div>
 
@@ -1812,27 +1892,27 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -1883,6 +1963,41 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trustset.html">TrustSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainaddattestation.html">XChainAddAttestation <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincommit.html">XChainCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreateclaimid.html">XChainCreateClaimID <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreatebridge.html">XChainCreateBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainmodifybridge.html">XChainModifyBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainclaim.html">XChainClaim <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2108,7 +2223,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -2224,6 +2339,11 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
@@ -2234,12 +2354,12 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -2676,6 +2796,11 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -2806,6 +2931,11 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Education Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2838,6 +2968,7 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2882,14 +3013,15 @@ Sell offers that specify assets other than XRP must specify a non-zero amount. S
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

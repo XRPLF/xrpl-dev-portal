@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>AccountRoot - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AccountRoot | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/accountroot.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/accountroot.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/accountroot.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/accountroot.html" hreflang="x-default" /><!-- Default: US english -->
@@ -55,9 +54,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v13.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -82,12 +81,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,9 +151,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -194,7 +202,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -202,7 +210,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/accountroot.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -243,6 +265,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-accountroot-json">Example AccountRoot JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-fields">AccountRoot Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-flags">AccountRoot Flags</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#special-amm-accountroot-objects">Special AMM AccountRoot Objects</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-id-format">AccountRoot ID Format</a></li>
       </ul>
   </div>
@@ -293,135 +316,157 @@
 <th style="text-align: left;">Field</th>
 <th style="text-align: left;">JSON Type</th>
 <th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>LedgerEntryType</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">The value <code>0x0061</code>, mapped to the string <code>AccountRoot</code>, indicates that this is an AccountRoot object.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>Account</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The identifying (classic) address of this <a href="accounts.html">account</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>AccountTxnID</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code> transaction field</a>. To enable it, send an <a href="accountset.html#accountset-flags">AccountSet transaction with the <code>asfAccountTxnID</code> flag enabled</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Balance</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Amount</td>
+<td style="text-align: left;">No</td>
 <td style="text-align: left;">The account's current <a href="basic-data-types.html#specifying-currency-amounts">XRP balance in drops</a>, represented as a string.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>BurnedNFTokens</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">How many total of this account's issued <a href="non-fungible-tokens.html">non-fungible tokens</a> have been burned. This number is always equal or less than <code>MintedNFTokens</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Domain</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Blob</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. <a class="external-link" href="https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>EmailHash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash128</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The md5 hash of an email address. Clients can use this to look up an avatar through services such as <a class="external-link" href="https://en.gravatar.com/" target="_blank">Gravatar <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#accountroot-flags"><code>Flags</code></a></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">A bit-map of boolean flags enabled for this account.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x0061</code>, mapped to the string <code>AccountRoot</code>, indicates that this is an AccountRoot object.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>MessageKey</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Blob</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>MintedNFTokens</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">How many total <a href="non-fungible-tokens.html">non-fungible tokens</a> have been minted by and on behalf of this account.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NFTokenMinter</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Another account that is authorized to mint <a href="non-fungible-tokens.html">non-fungible tokens</a> on behalf of this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerCount</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The number of objects this account owns in the ledger, which contributes to its owner reserve.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The identifying hash of the transaction that most recently modified this object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Sequence</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#account-sequence">sequence number</a> of the next valid transaction for this account.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AccountTxnID</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash256</td>
-<td style="text-align: left;"><em>(Optional)</em> The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code> transaction field</a>. To enable it, send an <a href="accountset.html#accountset-flags">AccountSet transaction with the <code>asfAccountTxnID</code> flag enabled</a>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>BurnedNFTokens</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> How many total of this account's issued <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> have been burned. This number is always equal or less than <code>MintedNFTokens</code>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Domain</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. <a class="external-link" href="https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>EmailHash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash128</td>
-<td style="text-align: left;"><em>(Optional)</em> The md5 hash of an email address. Clients can use this to look up an avatar through services such as <a class="external-link" href="https://en.gravatar.com/" target="_blank">Gravatar <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>MessageKey</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>MintedNFTokens</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> How many total <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> have been minted by and on behalf of this account.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>NFTokenMinter</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">AccountID</td>
-<td style="text-align: left;"><em>(Optional)</em> Another account that is authorized to mint <a href="non-fungible-tokens.html">non-fungible tokens</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> on behalf of this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>RegularKey</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;"><em>(Optional)</em> The address of a <a href="cryptographic-keys.html">key pair</a> that can be used to sign transactions for this account instead of the master key. Use a <a href="setregularkey.html">SetRegularKey transaction</a> to change this value.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The address of a <a href="cryptographic-keys.html">key pair</a> that can be used to sign transactions for this account instead of the master key. Use a <a href="setregularkey.html">SetRegularKey transaction</a> to change this value.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Sequence</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#account-sequence">sequence number</a> of the next valid transaction for this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TicketCount</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> How many <a href="tickets.html">Tickets</a> this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. <em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>.)</em></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">How many <a href="tickets.html">Tickets</a> this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. <em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>.)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TickSize</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt8</td>
-<td style="text-align: left;"><em>(Optional)</em> How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are <code>3</code> to <code>15</code>, inclusive. <em>(Added by the <a href="known-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are <code>3</code> to <code>15</code>, inclusive. <em>(Added by the <a href="known-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TransferRate</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> A <a href="transfer-fees.html">transfer fee</a> to charge other users for sending currency issued by this account to each other.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">A <a href="transfer-fees.html">transfer fee</a> to charge other users for sending currency issued by this account to each other.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>WalletLocator</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
-<td style="text-align: left;"><em>(Optional)</em> <strong>DEPRECATED</strong>. Do not use.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">An arbitrary 256-bit value that users can set.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>WalletSize</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> <strong>DEPRECATED</strong>. Do not use.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Unused. (The code supports this field but there is no way to set it.)</td>
 </tr>
 </tbody>
 </table>
@@ -439,6 +484,13 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>lsfAMM</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
+<td><code>0x02000000</code></td>
+<td>33554432</td>
+<td>(None)</td>
+<td>This account is an Automated Market Maker instance. <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
+</tr>
 <tr>
 <td><code>lsfDefaultRipple</code></td>
 <td><code>0x00800000</code></td>
@@ -504,6 +556,17 @@
 </tr>
 </tbody>
 </table>
+<h2 id="special-amm-accountroot-objects">Special AMM AccountRoot Objects<a aria-hidden="true" class="hover_anchor" href="#special-amm-accountroot-objects"><i class="fa fa-link"></i></a></h2>
+<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
+<p>Automated Market Makers (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, in addition to the <a href="amm.html">AMM object</a> for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoots are created with the following settings:</p>
+<ul>
+<li><code>lsfAMM</code> <strong>enabled</strong>. This indicates that the AccountRoot is part of an AMM and is not a regular account.</li>
+<li><code>lsfDisableMaster</code> <strong>enabled</strong> and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.</li>
+<li><code>lsfRequireAuth</code> <strong>enabled</strong> and no accounts preauthorized. This ensures that the only way to add money to the AMM Account is using the <a href="ammdeposit.html">AMMDeposit transaction</a>.</li>
+<li><code>lsfDefaultRipple</code> <strong>enabled</strong>. This ensures that users can send and trade the AMM's LP Tokens among themselves.</li>
+</ul>
+<p>These special accounts are not subject to the <a href="reserves.html">reserve requirement</a> but they can hold XRP if it is one of the two assets in the AMM's pool.</p>
+<p>In most other ways, these accounts function like ordinary accounts; the LP Tokens they issue behave like other <a href="tokens.html">tokens</a> except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.</p>
 <h2 id="accountroot-id-format">AccountRoot ID Format<a aria-hidden="true" class="hover_anchor" href="#accountroot-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of an AccountRoot object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
@@ -732,12 +795,17 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
   </div>
 
     </nav>
@@ -897,16 +965,6 @@
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="locking-and-issuing-chains.html">Locking and Issuing Chains</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="bridge.html">Bridge</a>
-  </div>
-
     </nav>
 
   </div>
@@ -966,9 +1024,36 @@
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
+
+        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cross-chain-bridges.html">Cross-Chain Bridges</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="witness-server.html">Witness Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -1023,6 +1108,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
   </div>
 
     </nav>
@@ -1296,11 +1386,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-tester-tutorial.html">NFToken Tester Tutorial <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1634,6 +1719,57 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
+
+        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
+
+        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
+
+        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1674,7 +1810,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken.html">NFToken <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
   </div>
 
     </nav>
@@ -1719,6 +1855,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1754,12 +1895,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -1828,6 +1969,31 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
   </div>
 
@@ -1863,27 +2029,27 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -1934,6 +2100,41 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trustset.html">TrustSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainaddattestation.html">XChainAddAttestation <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincommit.html">XChainCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreateclaimid.html">XChainCreateClaimID <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchaincreatebridge.html">XChainCreateBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainmodifybridge.html">XChainModifyBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xchainclaim.html">XChainClaim <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2159,7 +2360,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -2275,6 +2476,11 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
@@ -2285,12 +2491,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -2727,6 +2933,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -2857,6 +3068,11 @@
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Education Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2889,6 +3105,7 @@
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2933,14 +3150,15 @@
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

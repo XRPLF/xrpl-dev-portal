@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>NFTokenMint - XRPL.org (日本語)</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="NFTokenMint | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nftokenmint.html" />
-    <meta property="og:description" content="Use TokenMint to issue new NFTs." />
-    <meta name="description" content="Use TokenMint to issue new NFTs." />
+    <meta property="og:description" content="TokenMintを使用して新規NFTを発行する。." />
+    <meta name="description" content="TokenMintを使用して新規NFTを発行する。." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="ja" />
     <link rel="alternate" href="https://xrpl.org/nftokenmint.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/nftokenmint.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/nftokenmint.html" hreflang="x-default" /><!-- Default: US english -->
@@ -56,9 +55,9 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v13.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -83,12 +82,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,9 +155,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="/ja/dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -201,7 +209,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
@@ -209,7 +217,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/nftokenmint.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -231,7 +253,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/locking-issuing-chains-v1/content/references/protocol-reference/transactions/transaction-types/nftokenmint.md?pr=/XRPLF/xrpl-dev-portal/pull/1516" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/locking-issuing-chains-v1/content/references/protocol-reference/transactions/transaction-types/nftokenmint.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1516" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -244,13 +266,13 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenmint">NFTokenMint</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenmint-json">Example NFTokenMint JSON</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#currentpagename-jsonの例">{currentpage.name}} JSONの例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenmint-fields">NFTokenMint Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftokenmint-flags">NFTokenMint Flags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#embedding-additional-information">Embedding additional information</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#issuing-on-behalf-of-another-account">Issuing on behalf of another account</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#example-of-nftokenmint-with-an-issuer">Example of NFTokenMint with an issuer</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenmintフラグ">NFTokenMintフラグ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#追加情報の埋め込み">追加情報の埋め込み</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#他のアカウントの代わりとして発行する">他のアカウントの代わりとして発行する</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenmintと発行者の組み合わせ例">NFTokenMintと発行者の組み合わせ例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#エラーケース">エラーケース</a></li>
       </ul>
   </div>
       </aside>
@@ -270,15 +292,12 @@
     <li class="active breadcrumb-item">NFTokenMint</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nftokenmint">NFTokenMint<a aria-hidden="true" class="hover_anchor" href="#nftokenmint"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/xls20/src/ripple/app/tx/impl/NFTokenMint.cpp" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a>
-<em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
-<p>The <code>NFTokenMint</code> transaction creates a non-fungible token and adds it to the relevant <a href="nftokenpage.html">NFTokenPage object</a> of the <code>NFTokenMinter</code> as an <a href="nftoken.html">NFToken</a> object. A required parameter to this transaction is the <code>Token</code> field specifying the actual token. This transaction is the only opportunity the <code>NFTokenMinter</code> has to specify any token fields that are defined as immutable (for example, the <code>TokenFlags</code>).</p>
-<h2 id="example-nftokenmint-json">Example NFTokenMint JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenmint-json"><i class="fa fa-link"></i></a></h2>
+<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/NFTokenMint.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>NFTokenMint</code> トランザクションは非代替性トークンを作成し、<code>NFTokenMinter</code> の関連する <a href="nftokenpage.html">NFTokenPage object</a> に <a href="nftoken.html">NFToken</a> オブジェクトとして追加します。このトランザクションの必須パラメーターは <code>Token</code> フィールドで、実際のトークンを指定します。このトランザクションは <code>NFTokenMinter</code> にとって、不変と定義されているトークン フィールド (例えば <code>Flags</code>) を設定することができる唯一の方法です。</p>
+<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>が必要です)</em></p>
+<h2 id="currentpagename-jsonの例">{currentpage.name}} JSONの例<a aria-hidden="true" class="hover_anchor" href="#currentpagename-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenMint"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w"></span>
@@ -299,53 +318,52 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="nftokenmint-fields">NFTokenMint Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenmint-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a NFTokenMint transaction uses the following fields:</p>
+<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, NFTokenMint transactions use the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>NFTokenTaxon</code></td>
-<td style="text-align: left;">Number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">The taxon associated with the token. The taxon is generally a value chosen by the minter of the token. A given taxon can be used for multiple tokens. Taxon identifiers greater than <code>0xFFFF'FFFF</code> are disallowed.</td>
+<td style="text-align: left;">トークンに関連する分類群。Taxonは通常、トークンの発行者が選択した値である。1つのTaxonは複数のトークンに使用することができます。<code>0xFFFF'FFFF</code>より大きいTaxonの識別子は使用できません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Issuer</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;"><em>(Optional)</em> The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the <code>NFToken</code>. If provided, the issuer's <a href="accountroot.html">AccountRoot object</a> must have the <code>NFTokenMinter</code> field set to the sender of this transaction (this transaction's <code>Account</code> field).</td>
+<td style="text-align: left;"><em>(省略可)</em> The 送信元アカウントが他のアカウントの代理としてトークンを発行する場合における、トークンの発行者。トランザクションを送信するアカウントが <code>NFToken</code> の発行者である場合、このフィールドは指定してはいけません。指定される場合、発行者の <a href="accountroot.html">AccountRoot オブジェクト</a> には <code>NFTokenMinter</code> フィールドが、このトランザクションの送信者 (このトランザクションの <code>Account</code> フィールド) に設定されていなければなりません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TransferFee</code></td>
-<td style="text-align: left;">Number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt16</td>
-<td style="text-align: left;"><em>(Optional)</em> The value specifies the fee charged by the issuer for secondary sales of the <code>NFToken</code>, if such sales are allowed. Valid values for this field are between 0 and 50000 inclusive, allowing transfer rates of between 0.00% and 50.00% in increments of 0.001. If this field is provided, the transaction MUST have the <a href="#nftokenmint-flags"><code>tfTransferable</code> flag</a> enabled.</td>
+<td style="text-align: left;"><em>(省略可)</em> この値は、<code>NFToken</code>の二次販売が許可されている場合に、発行者が徴収する手数料を指定します。このフィールドの有効な値は0から50000の間で、0.001刻みで0.00%から50.00%の送金手数料を設定することができます。このフィールドが設定されている場合、トランザクションは <a href="#nftokenmintフラグ"><code>tfTransferable</code> フラグ</a> を有効にしなければなりません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>URI</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the <a class="external-link" href="https://js.xrpl.org/modules.html#convertStringToHex" target="_blank"><code>xrpl.convertStringToHex</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an issuer-specific encoding. The URI is NOT checked for validity.</td>
+<td style="text-align: left;"><em>(省略可)</em> 最大 256 バイトの任意のデータ。JSONでは、16進数の文字列としてエンコードされる必要があります。URIを16進数に変換するために、<a class="external-link" href="https://js.xrpl.org/modules.html#convertStringToHex" target="_blank"><code>xrpl.convertStringToHex</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>ユーティリティを使用することができます。これは、NFTに関連するデータまたはメタデータを指し示すURIであることを想定しています。コンテンツは、HTTP または HTTPS URL、IPFS URI、マグネットリンク、<a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a> としてエンコードされた即値データ、あるいは発行者固有のエンコーディングにデコードされていることがあります。URIの有効性はチェックされません。</td>
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout note"><strong>Note:</strong> The xrpl.js client library throws an error if you try to sign a transaction with the <code>URI</code> field in lowercase hexadecimal. This is a <a class="external-link" href="https://github.com/XRPLF/xrpl.js/issues/2004" target="_blank">bug <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="nftokenmint-flags">NFTokenMint Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenmint-flags"><i class="fa fa-link"></i></a></h2>
-<p>Transactions of the NFTokenMint type support additional values in the <a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code> field</a>, as follows:</p>
+<h2 id="nftokenmintフラグ">NFTokenMintフラグ<a aria-hidden="true" class="hover_anchor" href="#nftokenmintフラグ"><i class="fa fa-link"></i></a></h2>
+<p>NFTokenMint型のトランザクションでは、以下のように<a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code>フィールド</a>に追加の値を設定することが可能です。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Flag Name</th>
-<th style="text-align: left;">Hex Value</th>
-<th style="text-align: left;">Decimal Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フラグ名</th>
+<th style="text-align: left;">16進数値</th>
+<th style="text-align: left;">整数値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
@@ -353,37 +371,37 @@
 <td style="text-align: left;"><code>tfBurnable</code></td>
 <td style="text-align: left;"><code>0x00000001</code></td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">Allow the issuer (or an entity authorized by the issuer) to destroy the minted <code>NFToken</code>. (The <code>NFToken</code>'s owner can <em>always</em> do so.)</td>
+<td style="text-align: left;">発行者 (または発行者が許可した者) が <code>NFToken</code> を破棄できるようにします。(<code>NFToken</code> の所有者は常に破棄することができます)。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tfOnlyXRP</code></td>
 <td style="text-align: left;"><code>0x00000002</code></td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">The minted <code>NFToken</code> can only be bought or sold for XRP. This can be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies.</td>
+<td style="text-align: left;">発行された <code>NFToken</code> は XRP でのみ売買が可能です。これは、トークンに送金手数料がかかり、発行者が XRP 以外の発行済み通貨で手数料を受け取りたくない場合に望ましいでしょう。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tfTrustLine</code></td>
 <td style="text-align: left;"><code>0x00000004</code></td>
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">Automatically create <a href="trust-lines-and-issuing.html">trust lines</a> from the issuer to hold transfer fees received from transferring the minted <code>NFToken</code>.</td>
+<td style="text-align: left;"><strong>非推奨</strong> 発行者が、発行した <code>NFToken</code> を転送する際に受け取る手数料を保有するために、自動的に <a href="trust-lines-and-issuing.html">トラストライン</a> を作成します。<a href="known-amendments.html#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLineの修正</a>により、このフラグの設定は無効となります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tfTransferable</code></td>
 <td style="text-align: left;"><code>0x00000008</code></td>
 <td style="text-align: left;">8</td>
-<td style="text-align: left;">The minted <code>NFToken</code> can be transferred to others. If this flag is <em>not</em> enabled, the token can still be transferred <em>from</em> or <em>to</em> the issuer.</td>
+<td style="text-align: left;">発行された <code>NFToken</code> は他の人に譲渡することができます。このフラグが <em>有効でない</em> 場合、トークンは <em>発行者から</em> 、または <em>発行者へ</em> 転送することができます。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="embedding-additional-information">Embedding additional information<a aria-hidden="true" class="hover_anchor" href="#embedding-additional-information"><i class="fa fa-link"></i></a></h2>
-<p>If you need to specify additional information during minting (for example, details identifying a property by referencing a particular <a class="external-link" href="https://en.wikipedia.org/wiki/Plat" target="_blank">plat <i aria-hidden="true" class="fa fa-external-link"></i></a>, a vehicle by specifying a <a class="external-link" href="https://en.wikipedia.org/wiki/Vehicle_identification_number" target="_blank">VIN <i aria-hidden="true" class="fa fa-external-link"></i></a>, or other object-specific descriptions) you can use a <a href="transaction-common-fields.html#memosフィールド">transaction memo</a>. Memos are a part of the signed transaction and are available from historical archives, but are not stored in the ledger's state data.</p>
-<h2 id="issuing-on-behalf-of-another-account">Issuing on behalf of another account<a aria-hidden="true" class="hover_anchor" href="#issuing-on-behalf-of-another-account"><i class="fa fa-link"></i></a></h2>
-<p>If you want to issue an NFT for another account there are two things you must do. Given that <em>Account A</em> is your account and <em>Account B</em> is the account for which you want to mint a NFToken:</p>
+<h2 id="追加情報の埋め込み">追加情報の埋め込み<a aria-hidden="true" class="hover_anchor" href="#追加情報の埋め込み"><i class="fa fa-link"></i></a></h2>
+<p>発行時に追加情報を指定する必要がある場合 (たとえば、特定の [区画] (https://en.wikipedia.org/wiki/Plat) を参照して不動産 を特定できる詳細情報、[車両識別番号] (https://ja.wikipedia.org/wiki/%E8%BB%8A%E4%B8%A1%E8%AD%98%E5%88%A5%E7%95%AA%E5%8F%B7) を指定して車両を特定できる詳細情報、その他オブジェクト固有の説明)、 [取引メモ] (transaction-common-fields.html#memosフィールド) を使用することができます。メモは署名された取引の一部であり、履歴アーカイブから入手できますが、レジャーの状態データには保存されません。</p>
+<h2 id="他のアカウントの代わりとして発行する">他のアカウントの代わりとして発行する<a aria-hidden="true" class="hover_anchor" href="#他のアカウントの代わりとして発行する"><i class="fa fa-link"></i></a></h2>
+<p>別のアカウントで NFT を発行する場合、次の 2 つを実行する必要があります。<em>アカウント A</em> があなたのアカウントで、<em>アカウント B</em> が NFToken を発行したいアカウントであるとします。</p>
 <ol>
-<li>Set the <code>NFTokenMinter</code> account setting on <em>Account B</em> to be <em>Account A</em>. (This says that <em>Account B</em> trusts <em>Account A</em> to create NFTs on their behalf.)</li>
-<li>When you mint the NFToken, set the <code>Issuer</code> field to Account B.</li>
+<li><em>アカウントB</em>の<code>NFTokenMinter</code>アカウント設定を、<em>アカウントA</em>に設定します。(これは、<em>アカウントB</em>が、自分に代わってNFTを作成するために<em>アカウントA</em>を信頼することを意味します)。</li>
+<li>NFTokenを発行する際、<code>Issuer</code> フィールドをアカウントBに設定します。</li>
 </ol>
-<h3 id="example-of-nftokenmint-with-an-issuer">Example of NFTokenMint with an issuer<a aria-hidden="true" class="hover_anchor" href="#example-of-nftokenmint-with-an-issuer"><i class="fa fa-link"></i></a></h3>
+<h3 id="nftokenmintと発行者の組み合わせ例">NFTokenMintと発行者の組み合わせ例<a aria-hidden="true" class="hover_anchor" href="#nftokenmintと発行者の組み合わせ例"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenMint"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w"></span>
@@ -404,44 +422,48 @@
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>This transaction assumes that the issuer, <code>rNCFjv8Ek5oDrNiMJ3pw6eLLFtMjZLJnf2</code>, has set the <code>NFTokenMinter</code> field in its <code>AccountRoot</code> to <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code>, thereby authorizing that account to mint tokens on its behalf.</p>
-<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>In addition to errors that can occur for all transactions, NFTokenMint transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<p>このトランザクションは、発行者である <code>rNCFjv8Ek5oDrNiMJ3pw6eLFtMjZLJnf2</code> がその <code>AccountRoot</code> の <code>NFTokenMinter</code> フィールドを <code>rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</code> と設定して、そのアカウントが自身に代わってトークンを発行する権限を与えていると想定したものです。</p>
+<h2 id="エラーケース">エラーケース<a aria-hidden="true" class="hover_anchor" href="#エラーケース"><i class="fa fa-link"></i></a></h2>
+<p>すべてのトランザクションで発生する可能性のあるエラーに加えて、NFTokenMintトランザクションでは、次の<a href="transaction-results.html">トランザクション結果コード</a>が発生する可能性があります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Error Code</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">エラーコード</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>temDISABLED</code></td>
-<td style="text-align: left;">The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> is not enabled.</td>
+<td style="text-align: left;"><a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1の修正</a>は有効ではありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_NFTOKEN_TRANSFER_FEE</code></td>
-<td style="text-align: left;">The <code>TransferFee</code> is not within the acceptable range.</td>
+<td style="text-align: left;"><code>TransferFee</code>が許容範囲外です。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temINVALID_FLAG</code></td>
+<td style="text-align: left;"><code>Flags</code> 値には、許可されていない、または有効なフラグでないビットが有効になっています。<a href="known-amendments.html#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine amendment</a> が有効になっている場合、<code>tfTrustLine</code> フラグはこのエラーを発生させます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temMALFORMED</code></td>
-<td style="text-align: left;">The transaction was not validly specified. For example, the <code>URI</code> field is longer than 256 bytes.</td>
+<td style="text-align: left;">トランザクションが正しく指定されていません。例えば、<code>URI</code>フィールドが256バイトより長い場合です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_ISSUER</code></td>
-<td style="text-align: left;">The <code>Issuer</code> refers to an account that does not exist in the ledger.</td>
+<td style="text-align: left;"><code>Issuer</code>は、レジャーに存在しないアカウントを指定しています。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_PERMISSION</code></td>
-<td style="text-align: left;">The account referenced by the <code>Issuer</code> field has not authorized this transaction's sender (using the <code>NFTokenMinter</code> setting) to mint on their behalf.</td>
+<td style="text-align: left;"><code>Issuer</code>フィールドで参照されるアカウントは、このトランザクションの送信者（<code>NFTokenMinter</code>設定を使用）が自身の代わりに発行することを承認していません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecINSUFFICIENT_RESERVE</code></td>
-<td style="text-align: left;">The owner would not meet the updated <a href="reserves.html">reserve requirement</a> after minting the token. Note that new <code>NFToken</code>s only increase the owner's reserve if it requires a new <a href="nftokenpage.html">NFTokenPage object</a>, which can each hold up to 32 NFTs.</td>
+<td style="text-align: left;">トークンを発行した後、オーナーは更新された<a href="reserves.html"> 準備金要件 </a> を満たせなくなります。新しい<code>NFToken</code>は、新しい<a href="nftokenpage.html">NFTokenPageオブジェクト</a>を必要とする場合にのみ、オーナーの準備金を増加させることに注意する必要があり、それぞれ最大32 NFTを格納することができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecMAX_SEQUENCE_REACHED</code></td>
-<td style="text-align: left;">The <code>Issuer</code>'s <code>MintedNFTokens</code> field is already at its maximum. This is only possible if 2<sup>32</sup>-1 <code>NFToken</code>s have been minted in total by the issuer or on their behalf.</td>
+<td style="text-align: left;"><code>Issuer</code>の <code>MintedNFTokens</code> フィールドはすでに最大値になっています。これは、発行者またはその代理人が合計で 2<sup>32</sup>-1 つの <code>NFToken</code> を発行した場合にのみ発生します。</td>
 </tr>
 </tbody>
 </table>
@@ -672,12 +694,17 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
   </div>
 
     </nav>
@@ -837,16 +864,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/locking-and-issuing-chains.html">Locking and Issuing Chains</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bridge.html">Bridge</a>
-  </div>
-
     </nav>
 
   </div>
@@ -906,9 +923,31 @@
     <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+
+        <a class="nav-link" href="/ja/xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cross-chain-bridges.html">Cross-Chain Bridges</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/witness-server.html">Witness Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -963,6 +1002,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTokens</a>
   </div>
 
     </nav>
@@ -1240,11 +1284,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
   </div>
 
@@ -1380,7 +1419,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-wallet-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
   </div>
 
       
@@ -1574,6 +1613,57 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11" aria-expanded="false" aria-controls="tree_nav_group_3_11"></a>
+
+        <a class="nav-link" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_1" aria-expanded="false" aria-controls="tree_nav_group_3_11_1"></a>
+
+        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_2" aria-expanded="false" aria-controls="tree_nav_group_3_11_2"></a>
+
+        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1614,7 +1704,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken</a>
   </div>
 
     </nav>
@@ -1659,6 +1749,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -1694,12 +1789,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -1768,6 +1863,31 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcancel.html">CheckCancel</a>
   </div>
 
@@ -1803,27 +1923,27 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -1874,6 +1994,41 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trustset.html">TrustSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainaddattestation.html">XChainAddAttestation <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincommit.html">XChainCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincreateclaimid.html">XChainCreateClaimID <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincreatebridge.html">XChainCreateBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainmodifybridge.html">XChainModifyBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainclaim.html">XChainClaim <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2099,7 +2254,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -2215,6 +2370,11 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2225,12 +2385,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -2667,6 +2827,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-blockchain.html">ブロックチェーン</a>
   </div>
 
@@ -2797,6 +2962,11 @@
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Education Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2829,6 +2999,7 @@
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2873,14 +3044,15 @@
 <link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:ja"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

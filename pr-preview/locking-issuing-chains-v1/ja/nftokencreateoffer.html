@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>NFTokenCreateOffer - XRPL.org (日本語)</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="NFTokenCreateOffer | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nftokencreateoffer.html" />
-    <meta property="og:description" content="Create an offer to buy or sell NFTs." />
-    <meta name="description" content="Create an offer to buy or sell NFTs." />
+    <meta property="og:description" content="NFTの売買のオファーを作成する。" />
+    <meta name="description" content="NFTの売買のオファーを作成する。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="ja" />
     <link rel="alternate" href="https://xrpl.org/nftokencreateoffer.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/nftokencreateoffer.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/nftokencreateoffer.html" hreflang="x-default" /><!-- Default: US english -->
@@ -56,9 +55,9 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v8.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v13.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -83,12 +82,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,9 +155,8 @@
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
             <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
-          </div><!--./col-->
-          <div class="navcol col-for-ungrouped">
             <a class="dropdown-item" href="/ja/dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -201,7 +209,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
@@ -209,7 +217,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/nftokencreateoffer.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -231,7 +253,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/locking-issuing-chains-v1/content/references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md?pr=/XRPLF/xrpl-dev-portal/pull/1516" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/locking-issuing-chains-v1/content/references/protocol-reference/transactions/transaction-types/nftokencreateoffer.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1516" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -244,10 +266,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nftokencreateoffer">NFTokenCreateOffer</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-nftokencreateoffer-json">Example NFTokenCreateOffer JSON</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokencreateoffer-jsonの例">NFTokenCreateOffer JSONの例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokencreateoffer-fields">NFTokenCreateOffer Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftokencreateoffer-flags">NFTokenCreateOffer Flags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokencreateofferフラグ">NFTokenCreateOfferフラグ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#エラーケース">エラーケース</a></li>
       </ul>
   </div>
       </aside>
@@ -267,15 +289,12 @@
     <li class="active breadcrumb-item">NFTokenCreateOffer</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nftokencreateoffer">NFTokenCreateOffer<a aria-hidden="true" class="hover_anchor" href="#nftokencreateoffer"><i class="fa fa-link"></i></a></h1>
-<p><em>Non-fungible token functionality is part of the <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on the <a href="parallel-networks.html">NFT-Devnet</a> now, but they are not yet available on the production Mainnet.</em></p>
-<p>Creates either a new <em>Sell</em> offer for an <code>NFToken</code> owned by the account executing the transaction, or a new <em>Buy</em> offer for an <code>NFToken</code> owned by another account.</p>
-<p>If successful, the transaction creates a <a href="nftokenoffer.html">NFTokenOffer object</a>. Each offer counts as one object towards the <a href="reserves.html">owner reserve</a> of the account that placed the offer.</p>
-<h2 id="example-nftokencreateoffer-json">Example NFTokenCreateOffer JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokencreateoffer-json"><i class="fa fa-link"></i></a></h2>
+<p>トランザクションを送信するアカウントが所有する <code>NFToken</code> に対する新しい <em>売却</em> オファー、または別のアカウントが所有する <code>NFToken</code> に対する新しい <em>購入</em> オファー を作成します。</p>
+<p>成功した場合、トランザクションは<a href="nftokenoffer.html">NFTokenOfferオブジェクト</a>を作成します。各オファーは、オファーを提示したアカウントの <a href="reserves.html">所有者準備金</a> に関連づけて1つのオブジェクトとしてカウントされます。</p>
+<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>が必要です)</em></p>
+<h2 id="nftokencreateoffer-jsonの例">NFTokenCreateOffer JSONの例<a aria-hidden="true" class="hover_anchor" href="#nftokencreateoffer-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenCreateOffer"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX"</span><span class="p">,</span><span class="w"></span>
@@ -285,58 +304,58 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="nftokencreateoffer-fields">NFTokenCreateOffer Fields<a aria-hidden="true" class="hover_anchor" href="#nftokencreateoffer-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a NFTokenCreateOffer transaction uses the following fields:</p>
+<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, NFTokenCreateOffer transactions use the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Owner</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;"><em>(Optional)</em> Who owns the corresponding <code>NFToken</code>. If the offer is to buy a token, this field must be present and it must be different than the <code>Account</code> field (since an offer to buy a token one already holds is meaningless). If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as the <code>Account</code> (since an offer to sell a token one doesn't already hold is meaningless).</td>
+<td style="text-align: left;"><em>(省略可)</em> 対応する <code>NFToken</code> の所有者を指定します。トークンの購入オファーである場合、このフィールドは必ず存在し、 <code>Account</code> フィールドとは異なるものでなければなりません (すでに保有しているトークンの購入オファーは無意味)。トークンの売却オファーで ある場合、このフィールドは存在してはいけません。所有者は暗黙のうちに <code>Account</code> と同じになるからです(すでに保有していないトークンを売却するオファーは無意味)。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokenID</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Hash256</td>
-<td style="text-align: left;">Identifies the <code>NFToken</code> object that the offer references.</td>
+<td style="text-align: left;">オファーが参照する <code>NFToken</code> オブジェクトを指定します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Amount</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;">Indicates the amount expected or offered for the corresponding <code>NFToken</code>. The amount must be non-zero, except where this is an offer to sell and the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the <code>Destination</code> field.</td>
+<td style="text-align: left;">対応する <code>NFToken</code> に対する売却希望額または売却提示額を表します。0 を指定することは、トークンの現在の所有者が、誰でも、または <code>Destination</code> フィールドで指定されたアカウントに、トークンを無償で譲渡することを意味します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Expiration</code></td>
-<td style="text-align: left;">Number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Optional)</em> Indicates the time after which the offer will no longer be valid. The value is the number of <a href="basic-data-types.html#時間の指定">seconds since the Ripple Epoch</a>.</td>
+<td style="text-align: left;"><em>(省略可)</em> オファーが無効となる時間を指定します。値は<a href="basic-data-types.html#時間の指定">Rippleエポック以降の経過秒数</a>です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Destination</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;"><em>(Optional)</em> If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to accept this offer MUST fail.</td>
+<td style="text-align: left;"><em>(省略可)</em> 存在する場合、このオファーは指定されたアカウントによってのみ受け入れることが可能であることを示します。他のアカウントによってこのオファーを受け入れることはできません。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="nftokencreateoffer-flags">NFTokenCreateOffer Flags<a aria-hidden="true" class="hover_anchor" href="#nftokencreateoffer-flags"><i class="fa fa-link"></i></a></h2>
-<p>Transactions of the NFTokenCreateOffer type support additional values in the <a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code> field</a>, as follows:</p>
+<h2 id="nftokencreateofferフラグ">NFTokenCreateOfferフラグ<a aria-hidden="true" class="hover_anchor" href="#nftokencreateofferフラグ"><i class="fa fa-link"></i></a></h2>
+<p>NFTokenCreateOfferタイプのトランザクションは、以下のように<a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code>フィールド</a>に追加の値を設定することが可能です。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Flag Name</th>
-<th style="text-align: left;">Hex Value</th>
-<th style="text-align: left;">Decimal Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フラグ名</th>
+<th style="text-align: left;">16進数値</th>
+<th style="text-align: left;">整数値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
@@ -344,71 +363,71 @@
 <td style="text-align: left;"><code>tfSellNFToken</code></td>
 <td style="text-align: left;"><code>0x00000001</code></td>
 <td style="text-align: left;"><code>1</code></td>
-<td style="text-align: left;">If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.</td>
+<td style="text-align: left;">有効な場合、オファーが売却オファーであることを示します。そうでない場合は、購入オファーであることを示します。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>In addition to errors that can occur for all transactions, NFTokenCreateOffer transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<h2 id="エラーケース">エラーケース<a aria-hidden="true" class="hover_anchor" href="#エラーケース"><i class="fa fa-link"></i></a></h2>
+<p>すべてのトランザクションで発生する可能性のあるエラーに加えて、NFTokenCreateOfferトランザクションでは、次の<a href="transaction-results.html">トランザクション結果コード</a>が発生する可能性があります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Error Code</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">エラーコード</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>temDISABLED</code></td>
-<td style="text-align: left;">The <a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1 amendment</a> is not enabled.</td>
+<td style="text-align: left;"><a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1の修正</a>は有効ではありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMOUNT</code></td>
-<td style="text-align: left;">The <code>Amount</code> field is not valid. For example, the amount was zero for a buy offer, or the amount is denominated in fungible tokens but the <code>NFToken</code> has the <a href="nftoken.html#nftoken-フラグ"><code>lsfOnlyXRP</code> flag</a> enabled.</td>
+<td style="text-align: left;"><code>Amount</code> フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額は発行済み通貨であるが <code>NFToken</code> で <a href="nftoken.html#nftoken-フラグ"><code>lsfOnlyXRP</code> flag</a> が有効になっている場合などです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_EXPIRATION</code></td>
-<td style="text-align: left;">The specified <code>Expiration</code> time is invalid (for example, <code>0</code>).</td>
+<td style="text-align: left;">指定された<code>Expiration</code>は無効です（例：<code>0</code>）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecDIR_FULL</code></td>
-<td style="text-align: left;">The sender already owns too many objects in the ledger, or there are already too many offers to buy or sell this token.</td>
+<td style="text-align: left;">送信者がレジャーにすでにあまりにも多くのオブジェクトを所有しているか、またはこのトークンの売買のオファーがあまりにも多く存在しています。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecEXPIRED</code></td>
-<td style="text-align: left;">The specified <code>Expiration</code> time has already passed.</td>
+<td style="text-align: left;">指定された<code>Expiration</code>の時間は既に経過しています。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecFROZEN</code></td>
-<td style="text-align: left;">The <code>Amount</code> is denominated in fungible tokens, but one of the trust lines that would receive tokens from this offer is <a href="freezes.html">frozen</a>. This could be the seller's trust line or the <code>NFToken</code>'s issuer's trust line (if the <code>NFToken</code> has a transfer fee).</td>
+<td style="text-align: left;"><code>Amount</code>は発行済み通貨で、このオファーからトークンを受け取るトラストラインは<a href="freezes.html">凍結</a>されています。これは売却者のトラストラインか、<code>NFToken</code>の発行者のトラストライン（<code>NFToken</code>に送金手数料がある場合）である可能性があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecINSUFFICIENT_RESERVE</code></td>
-<td style="text-align: left;">The sender does not have enough XRP to meet the <a href="reserves.html">reserve requirement</a> after placing this offer.</td>
+<td style="text-align: left;">送信者はこのオファーを提示した後、<a href="reserves.html">所有者準備金</a> を満たすのに十分なXRPを持っていません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_DST</code></td>
-<td style="text-align: left;">The account specified in the <code>Destination</code> field does not exist in the ledger.</td>
+<td style="text-align: left;"><code>Destination</code>に指定されたアカウントがレジャーに存在しません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_ENTRY</code></td>
-<td style="text-align: left;">The <code>NFToken</code> is not owned by the expected account.</td>
+<td style="text-align: left;"><code>NFToken</code>フィールドで指定したアカウントは所有していません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_ISSUER</code></td>
-<td style="text-align: left;">The issuer specified in the <code>Amount</code> field does not exist.</td>
+<td style="text-align: left;"><code>Amount</code>フィールドで指定した発行者が存在しません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_LINE</code></td>
-<td style="text-align: left;">The <code>Amount</code> field is denominated in fungible tokens, but the <code>NFToken</code>'s issuer does not have a trust line for those tokens and the <code>NFToken</code> does not have the <a href="nftoken.html#nftoken-フラグ"><code>lsfTrustLine</code> flag</a> enabled.</td>
+<td style="text-align: left;"><code>Amount</code>フィールドは発行済み通貨ですが、<code>NFToken</code>の発行者はそのトークンのトラストラインを持っておらず、<code>NFToken</code>は <a href="nftoken.html#nftoken-フラグ"><code>lsfTrustLine</code> フラグ</a> が有効ではありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecUNFUNDED_OFFER</code></td>
-<td style="text-align: left;">For a buy offer, the sender does have the funds specified in the <code>Amount</code> field available. If the <code>Amount</code> is XRP, this could be due to the reserve requirement; if the <code>Amount</code> is denominated in fungible tokens, this could be because they are <a href="freezes.html">frozen</a>.</td>
+<td style="text-align: left;">購入オファーの場合、送信者は <code>Amount</code> フィールドで指定された通貨を利用可能です。もし <code>Amount</code> が XRP である場合、これは準備不足によるものかもしれません。もし <code>Amount</code> が発行済み通貨である場合、これは<a href="freezes.html">凍結</a> されている可能性があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tefNFTOKEN_IS_NOT_TRANSFERABLE</code></td>
-<td style="text-align: left;">The <code>NFToken</code> has the <a href="nftoken.html#nftoken-フラグ"><code>lsfTransferable</code> flag</a> disabled and this transaction would not transfer the <code>NFToken</code> to or from the issuer.</td>
+<td style="text-align: left;"><code>NFToken</code> は <a href="nftoken.html#nftoken-フラグ"><code>lsfTransferable</code> flag</a> が無効になっており、このトランザクションでは <code>NFToken</code> を発行者に転送したり発行者から転送したりすることはできません。</td>
 </tr>
 </tbody>
 </table>
@@ -639,12 +658,17 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFT Conceptual Overview <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
   </div>
 
     </nav>
@@ -804,16 +828,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/locking-and-issuing-chains.html">Locking and Issuing Chains</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bridge.html">Bridge</a>
-  </div>
-
     </nav>
 
   </div>
@@ -873,9 +887,31 @@
     <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+
+        <a class="nav-link" href="/ja/xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cross-chain-bridges.html">Cross-Chain Bridges</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/witness-server.html">Witness Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -930,6 +966,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTokens</a>
   </div>
 
     </nav>
@@ -1207,11 +1248,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-tester-tutorial.html">NFToken Tester Tutorial <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
   </div>
 
@@ -1347,7 +1383,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-wallet-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
   </div>
 
       
@@ -1541,6 +1577,57 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11" aria-expanded="false" aria-controls="tree_nav_group_3_11"></a>
+
+        <a class="nav-link" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_1" aria-expanded="false" aria-controls="tree_nav_group_3_11_1"></a>
+
+        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_2" aria-expanded="false" aria-controls="tree_nav_group_3_11_2"></a>
+
+        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -1581,7 +1668,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken</a>
   </div>
 
     </nav>
@@ -1626,6 +1713,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -1661,12 +1753,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -1735,6 +1827,31 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcancel.html">CheckCancel</a>
   </div>
 
@@ -1770,27 +1887,27 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -1841,6 +1958,41 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trustset.html">TrustSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainaddattestation.html">XChainAddAttestation <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincommit.html">XChainCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincreateclaimid.html">XChainCreateClaimID <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincreatebridge.html">XChainCreateBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainmodifybridge.html">XChainModifyBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainclaim.html">XChainClaim <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2066,7 +2218,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -2182,6 +2334,11 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2192,12 +2349,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -2634,6 +2791,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-blockchain.html">ブロックチェーン</a>
   </div>
 
@@ -2764,6 +2926,11 @@
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Education Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2796,6 +2963,7 @@
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2840,14 +3008,15 @@
 <link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:ja"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

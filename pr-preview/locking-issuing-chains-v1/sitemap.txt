@@ -42,6 +42,7 @@ https://xrpl.org/trust-lines-and-issuing.html
 https://xrpl.org/authorized-trust-lines.html
 https://xrpl.org/non-fungible-tokens.html
 https://xrpl.org/non-fungible-token-transfers.html
+https://xrpl.org/nftoken-batch-minting.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html
@@ -67,8 +68,6 @@ https://xrpl.org/known-amendments.html
 https://xrpl.org/fee-voting.html
 https://xrpl.org/consensus-research.html
 https://xrpl.org/parallel-networks.html
-https://xrpl.org/locking-and-issuing-chains.html
-https://xrpl.org/bridge.html
 https://xrpl.org/federated-sidechains.html
 https://xrpl.org/xrpl-servers.html
 https://xrpl.org/rippled-server-modes.html
@@ -79,7 +78,10 @@ https://xrpl.org/history-sharding.html
 https://xrpl.org/peer-protocol.html
 https://xrpl.org/transaction-censorship-detection.html
 https://xrpl.org/the-clio-server.html
+https://xrpl.org/xrpl-interoperability.html
+https://xrpl.org/cross-chain-bridges.html
 https://xrpl.org/witness-server.html
+https://xrpl.org/intro-to-evm-sidechain.html
 https://xrpl.org/the-rippled-server.html
 https://xrpl.org/nft-concepts.html
 https://xrpl.org/nft-conceptual-overview.html
@@ -91,6 +93,7 @@ https://xrpl.org/mint-and-burn-nftokens.html
 https://xrpl.org/transfer-nftokens.html
 https://xrpl.org/broker-sale.html
 https://xrpl.org/authorize-minter.html
+https://xrpl.org/batch-minting.html
 https://xrpl.org/get-started.html
 https://xrpl.org/public-servers.html
 https://xrpl.org/get-started-using-python.html
@@ -139,7 +142,6 @@ https://xrpl.org/look-up-checks-by-recipient.html
 https://xrpl.org/use-tokens.html
 https://xrpl.org/issue-a-fungible-token.html
 https://xrpl.org/trade-in-the-decentralized-exchange.html
-https://xrpl.org/nftoken-tester-tutorial.html
 https://xrpl.org/enable-no-freeze.html
 https://xrpl.org/enact-global-freeze.html
 https://xrpl.org/freeze-a-trust-line.html
@@ -196,6 +198,12 @@ https://xrpl.org/server-wont-start.html
 https://xrpl.org/fix-sqlite-tx-db-page-size-issue.html
 https://xrpl.org/manage-the-clio-server.html
 https://xrpl.org/install-clio-on-ubuntu.html
+https://xrpl.org/evm-sidechains.html
+https://xrpl.org/get-started-evm-sidechain.html
+https://xrpl.org/connect-metamask-to-xrpl-evm-sidechain.html
+https://xrpl.org/join-evm-sidechain-devnet.html
+https://xrpl.org/evm-sidechain-validator-security.html
+https://xrpl.org/evm-sidechain-run-a-validator-node.html
 https://xrpl.org/references.html
 https://xrpl.org/protocol-reference.html
 https://xrpl.org/basic-data-types.html
@@ -208,6 +216,7 @@ https://xrpl.org/ledger-object-ids.html
 https://xrpl.org/ledger-object-types.html
 https://xrpl.org/accountroot.html
 https://xrpl.org/amendments-object.html
+https://xrpl.org/amm.html
 https://xrpl.org/check.html
 https://xrpl.org/depositpreauth-object.html
 https://xrpl.org/directorynode.html
@@ -227,6 +236,11 @@ https://xrpl.org/transaction-common-fields.html
 https://xrpl.org/transaction-types.html
 https://xrpl.org/accountset.html
 https://xrpl.org/accountdelete.html
+https://xrpl.org/ammbid.html
+https://xrpl.org/ammcreate.html
+https://xrpl.org/ammdeposit.html
+https://xrpl.org/ammvote.html
+https://xrpl.org/ammwithdraw.html
 https://xrpl.org/checkcancel.html
 https://xrpl.org/checkcash.html
 https://xrpl.org/checkcreate.html
@@ -249,6 +263,13 @@ https://xrpl.org/setregularkey.html
 https://xrpl.org/signerlistset.html
 https://xrpl.org/ticketcreate.html
 https://xrpl.org/trustset.html
+https://xrpl.org/xchainaddattestation.html
+https://xrpl.org/xchaincommit.html
+https://xrpl.org/xchaincreateaccountcommit.html
+https://xrpl.org/xchaincreateclaimid.html
+https://xrpl.org/xchaincreatebridge.html
+https://xrpl.org/xchainmodifybridge.html
+https://xrpl.org/xchainclaim.html
 https://xrpl.org/pseudo-transaction-types.html
 https://xrpl.org/enableamendment.html
 https://xrpl.org/setfee.html
@@ -301,6 +322,7 @@ https://xrpl.org/transaction_entry.html
 https://xrpl.org/tx.html
 https://xrpl.org/tx_history.html
 https://xrpl.org/path-and-order-book-methods.html
+https://xrpl.org/amm_info.html
 https://xrpl.org/book_offers.html
 https://xrpl.org/deposit_authorized.html
 https://xrpl.org/nft_buy_offers.html
@@ -371,6 +393,7 @@ https://xrpl.org/xrp-api.html
 https://xrpl.org/data-api.html
 https://xrpl.org/xrp-ledger-toml.html
 https://xrpl.org/label-accounts.html
+https://xrpl.org/label-amm.html
 https://xrpl.org/label-blockchain.html
 https://xrpl.org/label-checks.html
 https://xrpl.org/label-rippled.html
