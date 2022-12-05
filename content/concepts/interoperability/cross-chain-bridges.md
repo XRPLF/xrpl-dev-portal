@@ -14,7 +14,7 @@ A locking chain is a blockchain that holds assets that are then put into trust w
 
 An issuing chain is an independent ledger with its own consensus algorithm and transaction types and rules. It acts as its own blockchain.
 
-Both the locking and issuing chains operate as parllel networks with independent nodes and validators. They rely on independent [witness servers](witness-servers.md) to watch transactions between the two chains and attest that assets have moved into specifically designated accounts.
+Both the locking and issuing chains operate as parllel networks with independent nodes and validators. They rely on independent [witness servers](witness-server.html) to watch transactions between the two chains and attest that assets have moved into specifically designated accounts.
 
 ## Terminology
 

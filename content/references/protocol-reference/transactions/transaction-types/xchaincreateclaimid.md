@@ -38,10 +38,13 @@ It also includes the account on the source chain that locks or burns the funds o
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
-| `Account`     | String | AccountID |  _Required_ The account that wants to create a new cross-chain claim ID.|
-| `XChainBridge`| String |  | _Required_ the bridge for which the new cross-chain claim ID should be created. |
-| `SourceAccount` | String  |   | _Required_ The account that must send the XChainCommit transaction on the other chain. |
-| `SignaturesReward`  | Number  |   | _Required_ The total amount to pay the witness servers for their signatures. This must be at least the value of `SignaturesReward` in the `Bridge` ledger object.  |
+| `XChainBridge`| String | Object | _Required_ The XChainBridge stanza represents the bridge for which the witness is attesting transactions. |
+| `LockingChainDoor` | String | AccountID | The door account on the locking chain. |
+| `LockingChainIssue` | String | Token | The token that is bridged on the locking chain. |
+| `IssuingChainDoor` | String  |  AccountID | The door account on the issuing chain. |
+| `IssuingChainIssue` | String | Token | The token that is bridged on the issuing chain. |
+| `SignatureReward`  | Number  | Token |  _Required_ The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. This must be at least the value of `SignaturesReward` in the `Bridge` ledger object. |
+| `MinAccountCreateAmount`  | Number  |   |  _Optional_ The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present. |
 
 
 <!-- ## Error Cases

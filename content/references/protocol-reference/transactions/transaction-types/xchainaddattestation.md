@@ -35,14 +35,13 @@ When enough witnesses have submitted their proofs on the destination chain that 
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
-| `Account`     | String | AccountID |  |
-| `XChainBridge`| String |  |  |
-| `LockingChainDoor` | String |  |  |
-| `LockingChainIssue` |  |  |  |
-| `IssuingChainDoor` | String  |   |   |
-| `SignatureReward`  | Number  |   |   |
-| `MinAccountCreateAmount`  | Number  |   |   |
-
+| `XChainBridge`| String | Object | _Required_ The XChainBridge stanza represents the bridge for which the witness is attesting transactions. |
+| `LockingChainDoor` | String | AccountID | The door account on the locking chain. |
+| `LockingChainIssue` | String | Token | The token that is bridged on the locking chain. |
+| `IssuingChainDoor` | String  |  AccountID | The door account on the issuing chain. |
+| `IssuingChainIssue` | String | Token | The token that is bridged on the issuing chain. |
+| `SignatureReward`  | Number  | Token |  _Required_ The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. |
+| `MinAccountCreateAmount`  | Number  |   |  _Optional_ The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present. |
 
 
 <!-- ## Error Cases

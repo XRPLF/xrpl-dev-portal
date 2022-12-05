@@ -10,7 +10,7 @@ status: not_enabled
 
 The `XChainCreateBridge` transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.
 
-The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This would ensure that the funds are truly in control of the witness servers.
+The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This would ensure that the witness servers are truly in control of the funds.
 
 
 ## Example {{currentpage.name}} JSON
@@ -36,7 +36,6 @@ The complete production-grade setup would also include a `SignerListSet` transac
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
-| `Account`     | String | AccountID | _Required_ The door account used for the bridge. |
 | `XChainBridge`| String | Object | _Required_ The XChainBridge stanza represents the bridge for which the witness is attesting transactions. |
 | `LockingChainDoor` | String | AccountID | The door account on this chain. |
 | `LockingChainIssue` | String | Token | The token that is bridged on this chain. |

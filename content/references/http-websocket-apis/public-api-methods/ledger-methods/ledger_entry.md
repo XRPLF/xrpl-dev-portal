@@ -688,7 +688,7 @@ Retrieve a [xchain_create_account_claim_id object](bridge.html) which connects a
 
 ```json
 {
-  "id": "example_get_bridge",
+  "id": "example_get_xchain_account_claim_id",
   "command": "ledger_entry",
   "xchain_create_account_claim_id": {
     "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
@@ -747,7 +747,7 @@ An example of a successful response:
 
 ```json
 {
-  "id": "example_get_accountroot",
+  "id": "example_get_xchain_account_claim_id",
   "result": {
     "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
     "ledger_hash": "31850E8E48E76D1064651DF39DF4E9542E8C90A9A9B629F4DE339EB3FA74F726",
@@ -960,27 +960,120 @@ Here is a sample response for the Bridge object:
  ### Response for XChain Claim ID
 
 
-{"index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942",
- "ledger_current_index": 6,
- "node": 
- {"Account": "r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg",
-  "Flags": 0,
-  "LedgerEntryType": "XChainClaimID",
-  "OtherChainAccount": "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
-  "OwnerNode": "0",
-  "PreviousTxnID": "29B3F0A2FD3A7765CBFDA15CC91B11BF6A1B574F1BE43611D7C33EF72353C000",
-  "PreviousTxnLgrSeq": 4,
-  "SignatureReward": "1000000",
-  "XChainBridge": 
-  {"IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
-   "IssuingChainIssue": "XRP",
-   "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
-   "LockingChainIssue": "XRP"},
-  "XChainClaimAttestations": [],
-  "XChainClaimID": "1",
-  "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942"},
- "status": "success",
- "validated": false}
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "example_get_xchain_claim_id",
+  "result": 
+  {
+    "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942",
+    "ledger_current_index": 6,
+    "node": 
+    {
+      "Account": "r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg",
+      "Flags": 0,
+      "LedgerEntryType": "XChainClaimID",
+      "OtherChainAccount": "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
+      "OwnerNode": "0",
+      "PreviousTxnID": "29B3F0A2FD3A7765CBFDA15CC91B11BF6A1B574F1BE43611D7C33EF72353C000",
+      "PreviousTxnLgrSeq": 4,
+      "SignatureReward": "1000000",
+      "XChainBridge": 
+      {
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+      },
+      "XChainClaimAttestations": [],
+      "XChainClaimID": "1",
+      "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942"
+      },
+    "status": "success",
+    "validated": false
+  }
+}
+ ```
+
+ *JSON-RPC*
+
+```json
+200 OK
+
+{
+  "result": 
+  {
+    "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942",
+    "ledger_current_index": 6,
+    "node": 
+    {
+      "Account": "r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg",
+      "Flags": 0,
+      "LedgerEntryType": "XChainClaimID",
+      "OtherChainAccount": "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
+      "OwnerNode": "0",
+      "PreviousTxnID": "29B3F0A2FD3A7765CBFDA15CC91B11BF6A1B574F1BE43611D7C33EF72353C000",
+      "PreviousTxnLgrSeq": 4,
+      "SignatureReward": "1000000",
+      "XChainBridge": 
+      {
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+      },
+      "XChainClaimAttestations": [],
+      "XChainClaimID": "1",
+      "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942"
+      },
+    "status": "success",
+    "validated": false
+  }
+
+}
+```  
+
+ *Commandline*
+
+```json
+{
+  "result":
+  {
+    "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942",
+    "ledger_current_index": 6,
+    "node": 
+    {
+      "Account": "r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg",
+      "Flags": 0,
+      "LedgerEntryType": "XChainClaimID",
+      "OtherChainAccount": "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
+      "OwnerNode": "0",
+      "PreviousTxnID": "29B3F0A2FD3A7765CBFDA15CC91B11BF6A1B574F1BE43611D7C33EF72353C000",
+      "PreviousTxnLgrSeq": 4,
+      "SignatureReward": "1000000",
+      "XChainBridge": 
+      {
+        "IssuingChainDoor": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt",
+        "IssuingChainIssue": "XRP",
+        "LockingChainDoor": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC",
+        "LockingChainIssue": "XRP"
+      },
+      "XChainClaimAttestations": [],
+      "XChainClaimID": "1",
+      "index": "B459014123A6535823584F96DB50721FE517FE697B7E21275A84C43FACBF9942"
+      },
+    "status": "success",
+    "validated": false
+  }
+
+}
+``` 
+
+
+ <!-- MULTICODE_BLOCK_END -->
 
 ### Response for XChain Create Account Claim ID
 
@@ -992,7 +1085,7 @@ Here is a sample response for the Bridge object:
 
 ```json
 {
-  "id": "example_get_accountroot",
+  "id": "example_get_xchain_account_claim_id",
   "result": {
     "index": "C6FFFA82BED460689AD1DD5F8F6208F40B7AC01E26F4000B7020D783264DBD54",
     "ledger_current_index": 5,
