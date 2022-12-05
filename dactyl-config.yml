@@ -2627,7 +2627,7 @@ pages:
         targets:
             - ja
     
-    -   md: references/protocol-reference/transactions/transaction-types/XChainAddAttestation.md
+    -   md: references/protocol-reference/transactions/transaction-types/xchainaddattestation.md
         targets:
             - en
             - ja
