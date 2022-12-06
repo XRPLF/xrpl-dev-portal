@@ -187,35 +187,25 @@ rippled server_info | grep seq
 *Testnet*
 
 ```sh
-# s.altnet.rippletest.net
-rippled --rpc_ip 35.158.96.209:51234 server_info | grep seq
+rippled --rpc_ip s.altnet.rippletest.net:51234 server_info | grep seq
 ```
 
 *Devnet*
 
 ```sh
-# s.devnet.rippletest.net
-rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
+rippled --rpc_ip s.devnet.rippletest.net:51234 server_info | grep seq
 ```
 
 
 *Mainnet*
 
 ```sh
-# s1.ripple.com
-rippled --rpc_ip 34.201.59.230:51234 server_info | grep seq
+rippled --rpc_ip s1.ripple.com:51234 server_info | grep seq
 ```
 
-*NFT-Devnet*
-
-```sh
-# xls20-sandbox.rippletest.net
-rippled --rpc_ip 34.211.220.150:51234 server_info | grep seq
-```
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Note:** The IP addresses in these examples are for public servers, and may change periodically. If you get no response, look up the IP address of a [public server][public servers], for example using the `dig` command.
 
 
 
