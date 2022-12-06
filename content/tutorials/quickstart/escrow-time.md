@@ -107,9 +107,10 @@ If you forget to save the sequence number, you can find it in the escrow transac
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnID_ value from the results.
    ![Transaction ID in Get Escrows results](img/quickstart-escrow7.png)
-4. Paste the _PreviousTxnID_ in the **Tranaction to Look Up** field.
+4. Paste the _PreviousTxnID_ in the **Transaction to Look Up** field.
    ![Transaction to Look Up field](img/quickstart-escrow8.png)
-5. Click **Get Transaction** and locate the _Sequence_ value in the results.
+5. Click **Get Transaction**.
+6. Locate the _Sequence_ value in the results.
    ![Sequence number in results](img/quickstart-escrow9.png)
 
 # Code Walkthrough
@@ -421,27 +422,27 @@ Connect to the XRP Ledger.
   operationalResultField.value = results
 
   results= "\nGetting transaction information...\n"
-  ```
+```
   
 Prepare and send the transaction information request. The only required parameter is the transaction ID.
   
-  ```javascript
+```javascript
   const tx_info = await client.request({
     "id": 1,
     "command": "tx",
     "transaction": operationalTransactionField.value,
   })
-  ```
+```
 Report the results.
   
-  ```javascript
+```javascript
   results += JSON.stringify(tx_info.result, null, 2)
   operationalResultField.value = results
-  ```
+```
   
 Disconnect from the XRP Ledger instance.  
   
-  ```javascript
+```javascript
   client.disconnect()
 } // End of getTransaction()
 ```
