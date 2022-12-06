@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Serialization Format - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Serialization Format | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/serialization.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/serialization.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/serialization.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/serialization.html" hreflang="x-default" /><!-- Default: US english -->
@@ -55,9 +54,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11a.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v13.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -82,7 +81,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -203,7 +202,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -211,7 +210,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/serialization.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -264,6 +277,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#array-fields">Array Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#blob-fields">Blob Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#hash-fields">Hash Fields</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#issue-fields">Issue Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#object-fields">Object Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#pathset-fields">PathSet Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#uint-fields">UInt Fields</a></li>
@@ -574,6 +588,13 @@
 <td>An array containing a variable number of members, which can be different types depending on the field. Two cases of this include <a href="transaction-common-fields.html#memos-field">memos</a> and lists of signers used in <a href="multi-signing.html">multi-signing</a>.</td>
 </tr>
 <tr>
+<td style="text-align: left;"><a href="#issue-fields">STIssue</a></td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">320</td>
+<td style="text-align: left;">No</td>
+<td><span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> An asset definition, XRP or a token, with no quantity.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><a href="#object-fields">STObject</a></td>
 <td style="text-align: left;">14</td>
 <td style="text-align: left;">Variable</td>
@@ -714,6 +735,13 @@
 <h3 id="hash-fields">Hash Fields<a aria-hidden="true" class="hover_anchor" href="#hash-fields"><i class="fa fa-link"></i></a></h3>
 <p>The XRP Ledger has several "hash" types: Hash128, Hash160, and Hash256. These fields contain arbitrary binary data of the given number of bits, which may or may not represent the result of a hash operation.</p>
 <p>All such fields are serialized as the specific number of bits, with no length indicator, in big-endian byte order.</p>
+<h3 id="issue-fields">Issue Fields<a aria-hidden="true" class="hover_anchor" href="#issue-fields"><i class="fa fa-link"></i></a></h3>
+<p><em>(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d: Automated Market Maker <i aria-hidden="true" class="fa fa-external-link"></i></a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and <a href="federated-sidechains.html">Federated Sidechains</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
+<p>Some fields specify a <em>type</em> of asset, which could be XRP or a fungible <a href="tokens.html">token</a>, without an amount. These fields have consist of two 160-bit segments in order:</p>
+<ol>
+<li>The first 160 bits are the <a href="#currency-codes">currency code</a> of the asset. For XRP, this is all 0's.</li>
+<li>The next 160 bits are the <a href="#accountid-fields">AccountID of the token issuer</a>. For XRP, this is all 0's.</li>
+</ol>
 <h3 id="object-fields">Object Fields<a aria-hidden="true" class="hover_anchor" href="#object-fields"><i class="fa fa-link"></i></a></h3>
 <p>Some fields, such as <code>SignerEntry</code> (in <a href="signerlistset.html">SignerListSet transactions</a>), and <code>Memo</code> (in <code>Memos</code> arrays) are objects (called the "STObject" type). The serialization of objects is very similar to that of arrays, with one difference: <strong>object members must be placed in canonical order</strong> within the object field, where array fields have an explicit order already.</p>
 <p>The <a href="#canonical-field-order">canonical field order</a> of object fields is the same as the canonical field order for all top-level fields, but the members of the object must be sorted within the object. After the last member, there is an "Object end" Field ID of <code>0xe1</code> with no contents.</p>
@@ -2049,6 +2077,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -2154,6 +2187,31 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2603,6 +2661,11 @@
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -3057,6 +3120,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -3269,14 +3337,15 @@
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

@@ -214,6 +214,7 @@ https://xrpl.org/ledger-object-ids.html
 https://xrpl.org/ledger-object-types.html
 https://xrpl.org/accountroot.html
 https://xrpl.org/amendments-object.html
+https://xrpl.org/amm.html
 https://xrpl.org/check.html
 https://xrpl.org/depositpreauth-object.html
 https://xrpl.org/directorynode.html
@@ -233,6 +234,11 @@ https://xrpl.org/transaction-common-fields.html
 https://xrpl.org/transaction-types.html
 https://xrpl.org/accountset.html
 https://xrpl.org/accountdelete.html
+https://xrpl.org/ammbid.html
+https://xrpl.org/ammcreate.html
+https://xrpl.org/ammdeposit.html
+https://xrpl.org/ammvote.html
+https://xrpl.org/ammwithdraw.html
 https://xrpl.org/checkcancel.html
 https://xrpl.org/checkcash.html
 https://xrpl.org/checkcreate.html
@@ -307,6 +313,7 @@ https://xrpl.org/transaction_entry.html
 https://xrpl.org/tx.html
 https://xrpl.org/tx_history.html
 https://xrpl.org/path-and-order-book-methods.html
+https://xrpl.org/amm_info.html
 https://xrpl.org/book_offers.html
 https://xrpl.org/deposit_authorized.html
 https://xrpl.org/nft_buy_offers.html
@@ -377,6 +384,7 @@ https://xrpl.org/xrp-api.html
 https://xrpl.org/data-api.html
 https://xrpl.org/xrp-ledger-toml.html
 https://xrpl.org/label-accounts.html
+https://xrpl.org/label-amm.html
 https://xrpl.org/label-blockchain.html
 https://xrpl.org/label-checks.html
 https://xrpl.org/label-rippled.html

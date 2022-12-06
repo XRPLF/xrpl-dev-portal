@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Markers and Pagination - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Markers and Pagination | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/markers-and-pagination.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/markers-and-pagination.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/markers-and-pagination.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/markers-and-pagination.html" hreflang="x-default" /><!-- Default: US english -->
@@ -55,9 +54,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v11a.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v13.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 
     <!-- Theme switch -->
@@ -82,7 +81,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -203,7 +202,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -211,7 +210,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/markers-and-pagination.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -261,6 +274,79 @@
         <h1 id="markers-and-pagination">Markers and Pagination<a aria-hidden="true" class="hover_anchor" href="#markers-and-pagination"><i class="fa fa-link"></i></a></h1>
 <p>Some methods return more data than can efficiently fit into one response. When there are more results than contained, the response includes a <code>marker</code> field. You can use this to retrieve more pages of data across multiple calls. In each request, pass the <code>marker</code> value from the previous response to resume from the point where you left off. If the <code>marker</code> is omitted from a response, then you have reached the end of the data set.</p>
 <p>The format of the <code>marker</code> field is intentionally undefined. Each server can define a <code>marker</code> field as desired, so it may take the form of a string, a nested object, or another type. Different servers, and different methods provided by the same server, can have different <code>marker</code> definitions. Each <code>marker</code> is ephemeral, and may not work as expected after 10 minutes.</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="python" href="#code-0-0">Python</a></li><li><a class="javascript" href="#code-0-1">JavaScript</a></li></ul>
+
+<div class="code_sample python" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<span class="kn">from</span> <span class="nn">xrpl.models.requests</span> <span class="kn">import</span> <span class="n">LedgerData</span>
+
+<span class="c1"># Create a client to connect to the network.</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="s2">"https://xrplcluster.com/"</span><span class="p">)</span>
+
+<span class="c1"># Query the most recently validated ledger for info.</span>
+<span class="n">ledger</span> <span class="o">=</span> <span class="n">LedgerData</span><span class="p">(</span><span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">)</span>
+<span class="n">ledger_data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">ledger</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
+<span class="n">ledger_data_index</span> <span class="o">=</span> <span class="n">ledger_data</span><span class="p">[</span><span class="s2">"ledger_index"</span><span class="p">]</span>
+
+<span class="c1"># Create a function to run on each API call.</span>
+<span class="k">def</span> <span class="nf">printLedgerResult</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ledger_data</span><span class="p">)</span>
+
+<span class="c1"># Execute function at least once before checking for markers.</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">printLedgerResult</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">"marker"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ledger_data</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="c1"># Specify the same ledger and add the marker to continue querying.</span>
+    <span class="n">ledger_marker</span> <span class="o">=</span> <span class="n">LedgerData</span><span class="p">(</span><span class="n">ledger_index</span><span class="o">=</span><span class="n">ledger_data_index</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">ledger_data</span><span class="p">[</span><span class="s2">"marker"</span><span class="p">])</span>
+    <span class="n">ledger_data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">ledger_marker</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
+</code></pre></div></div>
+
+<div class="code_sample javascript" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"xrpl"</span><span class="p">)</span><span class="w"></span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Create a client and connect to the network.</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://xrplcluster.com/"</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Query the most recently validated ledger for info.</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">ledger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ledger_data"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ledger_data_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"ledger_index"</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Create a function to run on each API call.</span><span class="w"></span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">printLedgerResult</span><span class="p">(){</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">])</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Execute function at least once before checking for markers.</span><span class="w"></span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">printLedgerResult</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"marker"</span><span class="p">]</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Specify the same ledger and add the marker to continue querying.</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ledger_marker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ledger_data"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">"ledger_index"</span><span class="o">:</span><span class="w"> </span><span class="nx">ledger_data_index</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">"marker"</span><span class="o">:</span><span class="w"> </span><span class="nx">ledger</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"marker"</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ledger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ledger_marker</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Disconnect when done. If you omit this, Node.js won't end the process.</span><span class="w"></span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nx">main</span><span class="p">()</span><span class="w"></span>
+</code></pre></div></div>
+</div>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -1531,6 +1617,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1636,6 +1727,31 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2085,6 +2201,11 @@
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -2539,6 +2660,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -2751,14 +2877,15 @@
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)
