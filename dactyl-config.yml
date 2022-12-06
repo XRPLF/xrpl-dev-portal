@@ -1247,8 +1247,19 @@ pages:
         targets:
             - ja
 
+    -   name: Quickstart
+        html: quickstart.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
+        targets:
+            - en
+            - ja
+
         # TODO: translate
     -   md: tutorials/quickstart/xrpl-quickstart.md
+        parent: quickstart.html
         targets:
             - en
             - ja
@@ -1266,31 +1277,52 @@ pages:
             - ja
 
         # TODO: translate
+    -   md: tutorials/quickstart/escrow-time.md
+        targets:
+            - en
+            - ja
+            
+    -   name: NFTokens Quickstart
+        html: nft-quickstart.html
+        parent: quickstart.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Mint and sell NFTokens on the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
     -   md: tutorials/quickstart/mint-and-burn-nftokens.md
+        parent: nft-quickstart.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/transfer-nftokens.md
+        parent: nft-quickstart.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/broker-sale.md
+        parent: nft-quickstart.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/authorize-minter.md
+        parent: nft-quickstart.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/batch-minting.md
+        parent: nft-quickstart.html
         targets:
             - en
             - ja

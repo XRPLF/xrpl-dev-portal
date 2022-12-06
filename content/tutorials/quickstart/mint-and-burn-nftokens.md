@@ -1,14 +1,14 @@
 ---
 html: mint-and-burn-nftokens.html
 parent: xrpl-quickstart.html
-blurb: Quickstart step 3, mint and burn NFTokens.
+blurb: Mint and burn NFTokens.
 labels:
   - Quickstart
   - Tokens
   - Non-fungible tokens, NFTs
 ---
 
-# 3. Mint and Burn NFTokens
+# Mint and Burn NFTokens
 
 This example shows how to:
 

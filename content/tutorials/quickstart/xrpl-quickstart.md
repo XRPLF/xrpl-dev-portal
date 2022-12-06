@@ -32,17 +32,7 @@ Each lesson shows you how to build the Token Test Harness one section at a time.
 
 This quickstart tutorial introduces you to the API used to implement features and explore the capabilities of XRP Ledger. It does not represent *all* of the capabilities of the API and this example is not intended for production or secure payment use.
 
-Much of this is “brute force” code that sacrifices conciseness for readability. Each example builds on the previous step, adding a new JavaScript file and the supporting UI. We expect the applications you build to greatly improve upon these examples. Your feedback and contributions are most welcome.
-
-In this quickstart, you can:
-
-1. [Create Accounts and Send XRP](create-accounts-send-xrp.html)
-2. [Create Trust Line and Send Currency](create-trustline-send-currency.html).
-3. [Mint and Burn NFTokens](mint-and-burn-nftokens.html).
-4. [Transfer NFTokens](transfer-nftokens.html).
-
-There are also expanded lessons demonstrating how to [Broker a NFToken Sale](broker-sale.html), [Assign an Authorized Minter](authorize-minter.html), and [Batch Mint NFTokens](batch-minting.html).
-
+Much of this is “brute force” code that sacrifices conciseness for readability. Each example builds on the previous examples, adding a new JavaScript file and the supporting UI. We anticipate that the applications you build greatly improve upon these examples. Your feedback and contributions are most welcome.
 
 ## Prerequisites
 
@@ -53,5 +43,3 @@ To get started, create a new folder on your local disk and install the JavaScrip
 ```
 
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive.
-
-**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow.

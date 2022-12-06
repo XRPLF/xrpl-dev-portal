@@ -8,7 +8,7 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 
-# 4. Transfer NFTokens
+# Transfer NFTokens
 
 This example shows how to:
 
