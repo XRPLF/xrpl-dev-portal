@@ -752,8 +752,3 @@ Update the form with fields and buttons to support the new functions.
   </body>
 </html>
 ```
-
-| Previous      | Next                                                             |
-| :---          |                                                             ---: |
-| [← Broker a NFToken Sale >](broker-sale.html)  | [Batch Mint NFTokens → >](batch-minting.html) |
-

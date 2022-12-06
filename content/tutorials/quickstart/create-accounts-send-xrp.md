@@ -1,14 +1,14 @@
 ---
 html: create-accounts-send-xrp.html
 parent: xrpl-quickstart.html
-blurb: Quickstart 1, create two accounts and transfer XRP between them.
+blurb: Create two accounts and transfer XRP between them.
 labels:
   - Accounts
   - Quickstart
   - Transaction Sending
   - XRP
 ---
-# 1. Create Accounts and Send XRP
+# Create Accounts and Send XRP
 
 This example shows how to:
 
@@ -744,7 +744,3 @@ Create a standard HTML form to send transactions and requests, then display the 
   </body>
 </html>
 ```
-
-| Previous                                | Next                                                                          |
-| :---                                    |                                                                          ---: |
-| [← XRPL Quickstart >](xrpl-quickstart.html) | [2. Create Trust Line and Send Currency → >](create-trustline-send-currency.html) |

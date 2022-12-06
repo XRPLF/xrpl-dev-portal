@@ -8,7 +8,7 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 
-# 4. Transfer NFTokens
+# Transfer NFTokens
 
 This example shows how to:
 
@@ -1521,15 +1521,3 @@ Update the form with fields and buttons to support the new functions.
 </html>
 
 ```
-
----
-
-
-| Previous                                                 | Next  |
-| :---                                                     |  ---: |
-| [← 3. Mint and Burn NFTokens >](mint-and-burn-nftokens.html) | [Broker a NFToken Sale → >](broker-sale.html) |
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

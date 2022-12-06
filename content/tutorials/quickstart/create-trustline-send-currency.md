@@ -1,7 +1,7 @@
 ---
 html: create-trustline-send-currency.html
 parent: xrpl-quickstart.html
-blurb: Quickstart step 2, create TrustLines and send currency.
+blurb: Create Trust Lines and send currency.
 labels:
   - Cross-Currency
   - Payments
@@ -10,7 +10,7 @@ labels:
 
 ---
 
-# 2. Create Trust Line and Send Currency
+# Create Trust Line and Send Currency
 
 This example shows how to:
 
@@ -893,10 +893,3 @@ Update the form to support the new functions.
   </body>
 </html>
 ```
-
----
-
-
-| Previous      | Next                                                             |
-| :---          |                                                             ---: |
-| [← 1. Create Accounts and Send XRP >](create-accounts-send-xrp.html) | [3. Mint and Burn NFTokens → >](mint-and-burn-nftokens.html) |

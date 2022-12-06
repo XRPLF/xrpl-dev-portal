@@ -1,14 +1,14 @@
 ---
 html: mint-and-burn-nftokens.html
 parent: xrpl-quickstart.html
-blurb: Quickstart step 3, mint and burn NFTokens.
+blurb: Mint and burn NFTokens.
 labels:
   - Quickstart
   - Tokens
   - Non-fungible tokens, NFTs
 ---
 
-# 3. Mint and Burn NFTokens
+# Mint and Burn NFTokens
 
 This example shows how to:
 
@@ -774,14 +774,3 @@ Bold text in the following indicates changes to the form that support the new fu
 </html>
 
 ```
-
----
-
-| Previous      | Next                                                             |
-| :---          |                                                             ---: |
-| [← 2. Create Trust Line and Send Currency >](create-trustline-send-currency.html) | [4. Transfer NFTokens → >](transfer-nftokens.html) |
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

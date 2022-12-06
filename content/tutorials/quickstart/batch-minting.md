@@ -484,8 +484,3 @@ For this form:
   </body>
 </html>
 ```
-
-| Previous      | Next                                                             |
-| :---          |                                                             ---: |
-| [← Authorize Minter >](authorize-minter.html)  |  |
-
