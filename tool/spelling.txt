@@ -10,8 +10,13 @@ uint64
 uint8
 vector256
 accountid
+STObject
+STIssue
 
 # General purpose words
+12th
+20th
+100th
 512half
 account_one
 account_zero
@@ -19,11 +24,13 @@ altnet
 altnets
 aml
 amm
+AMMs
 autobridging
 base58
 base58check
 base64
 blockchains
+checkbox
 cmake
 codebases
 config
@@ -33,6 +40,7 @@ counterparties
 crypto
 dapp
 datastore
+datastores
 demurrage
 demurraging
 deserialization
@@ -42,15 +50,19 @@ ecmascript
 ed25519
 eddsa
 etl
+federators
 fincen
 gravatar
 GPG
 grpc
+GUIs
 hmac
 interledger
 interoperability
+IPFS
 kyc
 lz4
+mainchain
 mainnet
 micropayments
 middleware
@@ -69,6 +81,8 @@ preauthorizations
 proactively
 quickstart
 readme
+refactor
+reputational
 ripemd160
 rippleapi
 rocksdb
@@ -85,14 +99,19 @@ stablecoins
 statsd
 testnet
 TLS
+toolkits
+tooltip
+tooltips
 unl
 unls
+unstake
 v0
 v1
 v2
 v10
 validators
 web3
+workflows
 XLS
 XRPL
 
@@ -126,6 +145,7 @@ ledger_entry
 ledger_request
 log_level
 logrotate
+node_to_shard
 noripple_check
 nft_buy_offers
 nft_info
@@ -182,22 +202,25 @@ TicketCreate
 trustset
 UNLModify
 
-# XRP Ledger data objects
+# XRP Ledger ledger entries
 accountroot
 directorynode
 feesettings
 ledgerhashes
+NFTokenPage
 paychannel
 ripplestate
 signerlist
 
 # XRP Ledger amendment names
+checkcashmakestrustline
 cryptoconditions
 cryptoconditionssuite
 deletableaccounts
 depositauth
 depositpreauth
 enforceinvariants
+expandedsignerlist
 fix1201
 fix1368
 fix1373
@@ -214,11 +237,15 @@ fix1781
 fixamendmentmajoritycalc
 fixcheckthreading
 fixmasterkeyasregularkey
+fixnftokendirv1
+fixnftokennegoffer
 fixpaychanrecipientownerdir
 fixqualityupperbound
+fixremovenftokenautotrustline
 fixrmsmallincreasedqoffers
 fixstamountcanonicalize
 fixtakerdryofferremoval
+fixtrustlinestoself
 flowcross
 flowsortstrands
 flowv2
@@ -227,6 +254,8 @@ hardenedvalidations
 multisign
 multisignreserve
 negativeunl
+nonfungibletokensv1
+nonfungibletokensv1_1
 ownerpaysfee
 paychan
 requirefullycanonicalsig
@@ -242,18 +271,22 @@ asheesh
 AWS
 bharath
 bithomp
+Bitstamp
 bittorrent
 britto
 ethermint
 evm
 horcrux
+Keybase
 macbrough
+McCaleb
 metamask
 opensea
 RippleX
 scylladb
 sologenic
 tendermint
+wxPython
 xpring
 xrpcharts
 xrpchat

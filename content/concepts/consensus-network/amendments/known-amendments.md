@@ -83,7 +83,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adjusts the [CheckCash transaction][] so that cashing a [Check](checks.html) for an issued token automatically creates a [trust line](trust-lines-and-issuing.html) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users purchase tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
+Adjusts the [CheckCash transaction][] so that cashing a [Check](checks.html) for an issued token automatically creates a [trust line](trust-lines-and-issuing.html) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users buy tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
 
 Without this amendment, users have to separately send a [TrustSet transaction][] before they can cash a Check for an issued token.
 
@@ -321,7 +321,7 @@ The fix1373 amendment corrects the issue so that the paths are properly prepared
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Fixes a bug in transaction processing that causes some invalid [PaymentChannelClaim][] transactions to fail with the wrong error code. Without this amendment, the transactions have a `tec`-class result code despite not being included in a ledger and therefore not paying the [transaction cost](transaction-cost.html).
+Fixes a bug in transaction processing that causes some invalid [PaymentChannelClaim][] transactions to fail with the wrong error code. Without this amendment, the transactions have a `tec`-class result code despite not being included in a ledger.
 
 With this amendment, the transactions fail with a more appropriate result code, `temBAD_AMOUNT`, instead.
 
@@ -385,7 +385,7 @@ With this amendment, new escrows are added to the [owner directories](directoryn
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Fixes a bug where validators could build consensus ledgers with different timestamps, potentially delaying the process of declaring validated ledgers. The circumstances for this to occur require precise timing, so validators are unlikely to encounter this bug outside of controlled test conditions.
+Fixes a bug where validators could build consensus ledgers with different timestamps, potentially delaying the process of declaring validated ledgers. The circumstances for this to occur require precise timing, so this bug is unlikely to happen outside of controlled test conditions.
 
 This amendment changes how validators negotiate the close time of the consensus ledger so that they cannot reach a consensus on ledger contents but build ledger versions with different timestamps.
 
@@ -593,9 +593,9 @@ This amendment has no known impact on transaction processing.
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.html), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](nftokenmint.html) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; therefore, `NFToken` objects cannot be minted with the flag.
+Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.html), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](nftokenmint.html) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; new `NFToken` objects cannot be minted with the flag.
 
-Without this amendment, an attacker could create new, meaningless fungible tokens and sell a `NFToken` back and forth for those tokens, creating numerous useless trust lines tied to the issuer and increasing the issuer's reserve requirement.
+Without this amendment, an attacker could create new, meaningless fungible tokens and sell a `NFToken` back and forth for those tokens, creating many useless trust lines tied to the issuer and increasing the issuer's reserve requirement.
 
 This amendment does not change the code for `NFToken` objects that have already been minted. On test networks that enabled NFT support before this amendment, issuers who have already minted NFTokens with the `tfTrustLine` flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.
 
@@ -928,7 +928,7 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 
 Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
-**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](install-rippled.html) to `rippled` version 0.80.0 or later.
+**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](install-rippled.html) to `rippled` version 0.80.0 or later.
 
 
 ## SusPay

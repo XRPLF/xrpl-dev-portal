@@ -29,7 +29,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 ```
 
 
-### `NFTokenOffer` Fields
+### NFTokenOffer Fields
 
 | Name                |JSON Type         | [Internal Type][] | Required?   | Description |
 |:--------------------|:-----------------|:------------------|:------------|:-----------|
@@ -37,8 +37,8 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 | `Destination`       | string           | AccountID         | No          | The AccountID for which this offer is intended. If present, only that account can accept the offer. |
 | `Expiration`        | number           | UInt32            | No          | The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch. |
 | `Flags`             | number           | UInt32            | Yes         | A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below. |
-| `LedgerEntryType`   | string           | UInt16            | Yes         | The type of ledger object (0x0074). |
-| `NFTokenID`         | string           | Hash256           | Yes         | NFTokenID of the NFToken object referenced by this offer. |
+| `LedgerEntryType`   | string           | UInt16            | Yes         | The value `0x0074`, mapped to the string `NFTokenOffer`, indicates that this is an offer to trade a `NFToken`. |
+| `NFTokenID`         | string           | Hash256           | Yes         | The `NFTokenID` of the NFToken object referenced by this offer. |
 | `NFTokenOfferNode`  | string           | UInt64            | No          | Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers. |
 | `Owner`             | string           | AccountID         | Yes         | Owner of the account that is creating and owns the offer. Only the current Owner of an NFToken can create an offer to sell an NFToken, but any account can create an offer to buy an NFToken. |
 | `OwnerNode`         | string           | UInt64            | No          | Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers. |

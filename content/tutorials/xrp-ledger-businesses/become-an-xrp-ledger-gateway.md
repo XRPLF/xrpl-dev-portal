@@ -368,7 +368,7 @@ There are several interfaces you can use to connect to the XRP Ledger, depending
 
 * [HTTP / WebSocket APIs](http-websocket-apis.html) can be used as a low-level interface to all core XRP Ledger functionality.
 * [Client Libraries](client-libraries.html) are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.
-* Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available.
+* Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available. <!-- SPELLING_IGNORE: xApps -->
 
 
 ## Tool Security

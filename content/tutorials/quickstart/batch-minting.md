@@ -46,7 +46,7 @@ To batch mint a non-fungible token objects:
 
 Click **Get Batch NFTokens** to get the current list of NFTokens for your account.
 
-The difference between this function and the getTokens() function used earlier is that it allows for larger lists of tokens, and sends multiple requests if the tokens exceed the number of objects allowed in a single request.
+The difference between this function and the `getTokens()` function used earlier is that it allows for larger lists of tokens, and sends multiple requests if the tokens exceed the number of objects allowed in a single request.
 
 # Code Walkthrough
 
@@ -111,7 +111,7 @@ This version of `getTokens()` allows for a larger set of NFTokens by watching fo
 async function getBatchNFTokens() {
 ```
 
-Connect to the XRPLedger and get the account wallet.
+Connect to the XRP Ledger and get the account wallet.
 
 ```javascript
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
@@ -252,7 +252,7 @@ Report the function progress.
   document.getElementById('standbyResultField').value = results
 ```
 
-Use a `for` loop to create the NFTokens one at a time, up to the NFTokenCount you specified.
+Use a `for` loop to create the NFTokens one at a time, up to the number you specified.
 
 ```javascript
   for (let i=0; i < nftokenCount; i++) {

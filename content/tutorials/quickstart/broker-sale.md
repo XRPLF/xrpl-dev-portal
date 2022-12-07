@@ -93,6 +93,7 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to examine the code samples.
 
 ## ripplex5-broker-nfts.js
+<!-- SPELLING_IGNORE: ripplex5 -->
 
 This script has new functions for brokered transactions and revised functions to support a third account on the same screen.
 

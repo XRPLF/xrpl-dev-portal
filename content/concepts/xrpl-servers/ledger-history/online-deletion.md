@@ -22,7 +22,7 @@ The default config file sets the `rippled` server to keep the most recent 2000 l
 
 The `rippled` server stores [ledger history](ledger-history.html) in its _ledger store_. This data accumulates over time.
 
-Inside the ledger store, ledger data is "de-duplicated". In other words, data that doesn't change from version to version is only stored once. The records themselves in the ledger store do not indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so it is not feasible to delete old data on every ledger close.
+Inside the ledger store, ledger data is "de-duplicated". In other words, data that doesn't change from version to version is only stored once. The records themselves in the ledger store do not indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so the server cannot delete old data every time it closes a new ledger.
 
 
 ## Online Deletion Behavior

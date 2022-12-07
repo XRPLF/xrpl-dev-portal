@@ -78,7 +78,7 @@ This example can be used with any XRP Ledger network, _Testnet_, or _Devnet_. Yo
 
 
 ### getNet()
-
+<!-- SPELLING_IGNORE: getnet -->
 
 ```
 // ******************************************************
@@ -103,6 +103,7 @@ This function uses brute force `if` statements to discover the selected network 
 
 
 ### getAccount(type)              
+<!-- SPELLING_IGNORE: getaccount -->
 
 
 ```
@@ -375,7 +376,7 @@ Connect to your selected ledger.
 
 Prepare the transaction. This is a Payment transaction from the standby wallet to the operational wallet.
 
-The _Payment_ transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the xrpToDrops utility to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).
+The _Payment_ transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the `xrpToDrops()` method to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).
 
 
 ```

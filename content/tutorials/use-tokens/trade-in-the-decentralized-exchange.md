@@ -36,7 +36,7 @@ This tutorial demonstrates how to buy a fungible token in the decentralized exch
 
 | Currency Code | Issuer | Notes |
 |---|---|---|
-| TST | rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens.  |
+| TST | `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd` | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens.  |
 
 
 ### {{n.next()}}. Connect to Network

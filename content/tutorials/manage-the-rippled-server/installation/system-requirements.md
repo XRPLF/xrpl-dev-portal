@@ -27,7 +27,7 @@ For testing purposes or occasional use, you can run an XRP Ledger server on comm
 - Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better). Minimum 50 GB for the database partition. Do not use Amazon Elastic Block Store (AWS EBS) because its latency is too high to sync reliably.
 - RAM: 16 GB+.
 
-<!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2 -->
+<!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2, nvme -->
 
 Amazon EC2's `i3.2xlarge` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
 

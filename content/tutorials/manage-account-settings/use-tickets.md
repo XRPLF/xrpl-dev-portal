@@ -191,7 +191,7 @@ _JavaScript_
 
 > **Tip:** If you don't plan to submit the TicketCreate transaction right away, you should be sure not to set the `LastLedgerSequence` so that the transaction does not expire. The way you do this varies by library:
 >
-> - **xrpl.js:** Specify `"LastLedgerSequence": null` when autofilling the transaction.
+> - **xrpl.js:** Specify `"LastLedgerSequence": null` when auto-filling the transaction.
 > - **`rippled`:** Omit `LastLedgerSequence` from the prepared instructions. The server does not provide a value by default.
 
 {{ start_step("Prepare Ticketed Tx") }}

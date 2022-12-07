@@ -22,13 +22,13 @@ For information on how to upgrade your validator infrastructure with Horcrux, re
 
 ## Tendermint KMS
 
-Tendermint KMS is a signature service with support for Hardware Security Modules (HSMs), such as YubiHSM2 and Ledger Nano. It is intended to be run alongside XRP Ledger EVM Sidechain validators, ideally on separate physical hosts, providing defense-in-depth for online validator signing keys, double signing protection, and a central signing service that can be used when operating multiple validators in several zones.
+Tendermint KMS is a signature service with support for Hardware Security Modules (HSMs), such as YubiHSM 2 and Ledger Nano. It is intended to be run alongside XRP Ledger EVM Sidechain validators, ideally on separate physical hosts, providing defense-in-depth for online validator signing keys, double signing protection, and a central signing service that can be used when operating multiple validators in several zones. <!-- SPELLING_IGNORE: kms, hsms, yubihsm, yubikey -->
 
 ## Hardware Security Modules (HSM)
 
 You must ensure that an attacker cannot steal a validator's key. Otherwise, the entire stake delegated to the compromised validator at risk. Hardware security modules (HSM) help mitigate this risk.
 
-HSMs must support `ed25519` signatures for Evmos. The [YubiHSM 2](https://www.yubico.com/products/hardware-security-module/) supports `ed25519` and can be used with this YubiKey [library](https://github.com/iqlusioninc/yubihsm.rs).
+HSMs must support **`ed25519` signatures for Evmos**. The [YubiHSM 2](https://www.yubico.com/products/hardware-security-module/) supports `ed25519` and can be used with this YubiKey [library](https://github.com/iqlusioninc/yubihsm.rs). <!-- SPELLING_IGNORE: evmos -->
 
 **IMPORTANT**: The YubiHSM can protect a private key but **cannot ensure** in a secure setting that it will not sign the same block twice.
 

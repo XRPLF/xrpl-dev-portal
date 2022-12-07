@@ -23,7 +23,7 @@ The EVM Sidechain is a powerful latest generation blockchain with the following 
 
 ## Consensus
 
-The EVM Sidechain runs on a proof-of-stake (PoS) consensus algorithm. Staking is when you pledge your coins to be used for verifying transactions. The proof-of-stake model allows you to stake cryptocurrency (also referred to as "coins") and create your own validator nodes. Your coins are locked up while you stake them, but you can unstake them if you want to trade your coins. 
+The EVM Sidechain runs on a proof-of-stake (PoS) consensus algorithm. Staking is when you pledge your coins to be used for verifying transactions. The proof-of-stake model allows you to stake cryptocurrency (also referred to as "coins") and create your own validator nodes. Your coins are locked up while you stake them, but you can unstake them if you want to trade your coins.
 
 In a proof-of-stake blockchain, mining power depends on the amount of coins a validator is staking. Participants who stake more coins are more likely to be chosen to add new blocks.
 

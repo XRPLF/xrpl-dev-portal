@@ -1,7 +1,7 @@
 ---
 html: create-trustline-send-currency.html
 parent: xrpl-quickstart.html
-blurb: Quickstart step 2, create TrustLines and send currency.
+blurb: Quickstart step 2, create trust lines and send currency.
 labels:
   - Cross-Currency
   - Payments
@@ -45,20 +45,20 @@ Open the Token Test Harness and get accounts:
         2. Click **Get New Operational Account**.
 
 
-## Create TrustLine
+## Create Trust Line
 
-To create a trustline between accounts:
+To create a trust line between accounts:
 
 
 
 3. Enter a [currency code](https://www.iban.com/currency-codes) in the **Currency** field.
 4. Enter the maximum transfer limit in the **Amount** field.
 5. Enter the destination account value in the **Destination** field.
-6. Click **Create Trustline**.
+6. Click **Create Trustline**. <!-- SPELLING_IGNORE: trustline --><!--{# TODO: update the test harness to spell trust line as two words #}-->
 
 
 
-![Trustline results](img/quickstart6.png)
+![Trust line results](img/quickstart6.png)
 
 
 
@@ -84,11 +84,11 @@ To transfer an issued currency token, once you have created a trust line:
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
 ## ripplex2-send-currency.js
-
+<!-- SPELLING_IGNORE: ripplex2 -->
 
 ### Configure Account
 
-When transferring fiat currency, the actual transfer of funds is not simultaneous, as it is with XRP. If currency is transferred to a third party for a different currency, there can be a devaluation of the currency that impacts the originating account. To avoid this situation, this up and down valuation of currency, known as _rippling_, is not allowed by default. Currency transferred from one account can only be transferred back to the same account. To enable currency transfer to third parties, you need to set the _rippleDefault_ value to true. The Token Test Harness provides a checkbox to enable or disable rippling.
+When transferring fiat currency, the actual transfer of funds is not simultaneous, as it is with XRP. If currency is transferred to a third party for a different currency, there can be a devaluation of the currency that impacts the originating account. To avoid this situation, this up and down valuation of currency, known as _rippling_, is not allowed by default. Currency transferred from one account can only be transferred back to the same account. To enable currency transfer to third parties, you need to set the `rippleDefault` value to true. The Token Test Harness provides a checkbox to enable or disable rippling.
 
 
 ```
@@ -127,7 +127,7 @@ Get the account wallets.
 ```
 
 
-Prepare the transaction. If the _rippleDefault_ argument is true, set the `asfDefaultRipple` flag. If it is false, clear the `asfDefaultRipple` flag.
+Prepare the transaction. If the `rippleDefault` argument is true, set the `asfDefaultRipple` flag. If it is false, clear the `asfDefaultRipple` flag.
 
 
 ```
@@ -152,7 +152,7 @@ Prepare the transaction. If the _rippleDefault_ argument is true, set the `asfDe
 ```
 
 
-Autofill the default values for the transaction.
+Auto-fill the default values for the transaction.
 
 
 ```

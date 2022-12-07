@@ -10,7 +10,7 @@ status: not_enabled
 
 ## Create Your Validator
 
-Use your node consensus public key (`exrpvalconspub...`) to create a new validator by staking XRP tokens. You can find your validator pubkey by running:
+Use your node consensus public key (`exrpvalconspub...`) to create a new validator by staking XRP tokens. You can find your validator public key by running:
 
 ```bash
 exrpd tendermint show-validator
@@ -42,11 +42,11 @@ You can confirm that you are in the validator set by using a third-party explore
 
 ## Edit Validator Description
 
-You can edit your validator's public description. This info is to identify your validator, and is relied on by delegators when they decide to stake XRP tokens to a particular validator. Make sure to provide input for every flag below. If a flag is not included in the command, the field defaults to empty (`--moniker` defaults to the machine name), if the field has never been set, or remains the same, if it has been set in the past.
+You can edit your validator's public description. This info identifies your validator, and _delegators_ use it when they decide to stake XRP tokens to a particular validator. Make sure to provide input for every flag below. If a flag is not included in the command, the field defaults to empty (`--moniker` defaults to the machine name), if the field has never been set, or remains the same, if it has been set in the past. <!-- SPELLING_IGNORE: delegators -->
 
 The <key_name> specifies which validator you are editing. If you choose to not include certain flags, remember that the --from flag must be included to identify the validator to update.
 
-The `--identity` can be used as to verify identity with systems like Keybase or UPort. When using with Keybase `--identity` must be populated with a 16-digit string that is generated with a [keybase.io](https://keybase.io/) account. It is a cryptographically secure method of verifying your identity across multiple online networks. The Keybase API allows us to retrieve your Keybase avatar. This is how you can add a logo to your validator profile.
+The `--identity` can be used as to verify identity with systems like Keybase or UPort. When using with Keybase `--identity` must be populated with a 16-digit string that is generated with a [keybase.io](https://keybase.io/) account. It is a cryptographically secure method of verifying your identity across multiple online networks. The Keybase API allows us to retrieve your Keybase avatar. This is how you can add a logo to your validator profile. <!-- SPELLING_IGNORE: uport -->
 
 ```bash
 exrpd tx staking edit-validator
@@ -83,6 +83,7 @@ exrpd query slashing signing-info <validator-pubkey> --chain-id=<chain_id>
 ```
 
 ## Unjail Validator
+<!-- SPELLING_IGNORE: unjail -->
 
 When a validator is "jailed" for downtime, you must submit an `Unjail` transaction from the operator account in order to restore block proposer awards (depending on the zone fee distribution).
 
@@ -98,7 +99,7 @@ Your validator is active if the following command returns anything:
 exrpd query tendermint-validator-set | grep "$(exrpd tendermint show-address)"
 ```
 
-You should now see your validator in one of the Exrp explorers. You are looking for the `bech32` encoded `address` in the `~/.exprd/config/priv_validator.json` file.
+You should now see your validator in one of the Exrp explorers. You are looking for the `bech32` encoded `address` in the `~/.exprd/config/priv_validator.json` file. <!-- SPELLING_IGNORE: exrp -->
 
 **Note** To be in the validator set, you must have more total voting power than the 100th validator.
 

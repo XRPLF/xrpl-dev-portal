@@ -71,7 +71,7 @@ To create a NFToken sell offer:
 4. Optionally, enter a number of days until **Expiration**.
 5. Click **Create Sell Offer**.
 
-The important piece of information in the response is the Token Offer Index, labeled as _nft_offer_index,_ which is used to accept the sell offer.
+The important piece of information in the response is the NFToken Offer Index, labeled as `nft_offer_index`, which is used to accept the sell offer.
 
 [![NFToken Sell Offer](img/quickstart31.png)](img/quickstart31.png)
 
@@ -82,10 +82,10 @@ Once a sell offer is available, you can create a new account to accept the offer
 To accept an available sell offer:
 
 1. Click **Get New Standby Account**.
-1. Enter the **NFToken Offer Index** (labeled as _nft_offer_index_ in the token offer results. This is not the same as the _nft_id_).
+1. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the NFToken offer results. This is different from the `nft_id`).
 2. Click **Accept Sell Offer**.
 
-When you examine the results field, you'll find that the Issuer account is credited 25 XRP. The Buyer account is debited the 100 XRP purchase price plus 12 drops as the transaction fee. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
+The results show that the Issuer account has been credited 25 XRP. The Buyer account was debited the 100 XRP purchase price plus 12 drops as the transaction cost. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
 [![Transaction Results](img/quickstart32.png)](img/quickstart32.png)
 
 # Code Walkthrough
@@ -154,7 +154,7 @@ Prepare and send the transaction, then wait for results
     const result = await client.submitAndWait(signed.tx_json)
 ```
 
-If the transaction succeeds, stringify the results and report. If not, report that the transaction failed.
+If the transaction succeeds, show the results. If not, report that the transaction failed.
 
 ```javascript
     if (result.result.meta.TransactionResult == "tesSUCCESS") {

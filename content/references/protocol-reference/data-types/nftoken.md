@@ -21,10 +21,11 @@ Example {{currentpage.name}} JSON
 ```
 
 
-Unlike other objects, `NFToken` has no field to identify the object type or current owner of the object. `NFToken `objects are grouped into `NFTokenPages` that implicitly define the object type and identify the owner.
+Unlike full-fledged [ledger entries](ledger-object-types.html), `NFToken` has no field to identify the object type or current owner of the object. `NFToken` objects are grouped into pages that implicitly define the object type and identify the owner.
 
 
 ## NFTokenID
+<!-- SPELLING_IGNORE: nftokenid -->
 
 `NFTokenID`, optional, string, Hash256
 
@@ -33,7 +34,7 @@ This composite field uniquely identifies a token, and consists of the following 
 1. 16 bits that identify flags or settings specific to the NFToken
 2. 16 bits that encode the transfer fee associated with this NFToken, if any
 3. A 160-bit account identifier of the issuer
-4. A 32-bit issuer-specified [NFTokenTaxon](https://www.merriam-webster.com/dictionary/taxon)
+4. A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
 5. An (automatically generated) monotonically increasing 32-bit sequence number.
 
 
@@ -61,12 +62,13 @@ Flags are properties or other options associated with the `NFToken` object.
 
 ### Example
 
-The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or 0x000B in big endian format.
+The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big endian format.
 
 ![Flags](img/nftokena.png "Flags")
 
 
 ### TransferFee
+<!-- SPELLING_IGNORE: transferfee -->
 
 The `TransferFee` value specifies the percentage fee, in units of 1/100,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 0.001% or 1/10 of a basis point (bps), allowing transfer rates between 0% and 50%.
 
@@ -106,7 +108,7 @@ The fifth section is a sequence number that increases with each `NFToken` the is
 
 ## URI
 
-The URI field points to the data and/or metadata associated with the `NFToken`. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 ["data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an opaque issuer-specific encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.
+The URI field points to the data and/or metadata associated with the `NFToken`. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an [RFC 2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an opaque issuer-specific encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.
 
 One drawback of using this method is that the value is immutable, so it commits the issuer to hosting the data in perpetuity.
 

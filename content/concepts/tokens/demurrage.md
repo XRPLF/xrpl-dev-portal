@@ -14,7 +14,7 @@ status: removed
 
 Rather than continuously update all amounts in the XRP Ledger, this approach divides amounts of interest-bearing or demurraging tokens into two types of amount: "ledger values" recorded in the XRP Ledger, and "display values" shown to people. The "ledger values" represent the value of the currency at a fixed point, namely the "Ripple Epoch" of midnight January 1, 2000. The "display values" represent the amount at a later point in time (usually the current time) after calculating continuous interest or demurrage from the Ripple Epoch until that time.
 
-**Tip:** You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not reflect actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.
+**Tip:** You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not show actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.
 
 Thus, client software must apply two conversions:
 
@@ -84,7 +84,7 @@ To support interest-bearing and demurraging tokens, client applications must imp
 
 Demurrage was supported in ripple-lib versions **0.7.37** through **0.12.9**. Demurrage is ***not supported*** in most modern libraries.
 
-The following code samples demonstrate how to use compatible versions of ripple-lib to convert between ledger values and display values. Also see the [Ripple Demurrage Calculator](https://ripple.github.io/ripple-demurrage-tool/).
+The following code samples show how to use compatible versions of ripple-lib to convert between ledger values and display values. Also see the [Ripple Demurrage Calculator](https://ripple.github.io/ripple-demurrage-tool/).
 
 To convert from a display value to a ledger value, use `Amount.from_human()`:
 

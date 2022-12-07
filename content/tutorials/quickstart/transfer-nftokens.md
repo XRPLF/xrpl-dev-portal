@@ -61,7 +61,7 @@ To create a NFToken sell offer:
 4. Optionally, enter a number of days until **Expiration**.
 5. Click **Create Sell Offer**.
 
-The important piece of information in the response is the Token Offer Index, labeled as _nft_offer_index,_ which is used to accept the sell offer.
+The important piece of information in the response is the NFToken Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
 
 
 
@@ -77,7 +77,7 @@ To accept an available sell offer:
 
 
 
-1. Enter the **NFToken Offer Index** (labeled as _nft_offer_index_ in the token offer results. This is not the same as the _nft_id_).
+1. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
 2. Click **Accept Sell Offer**.
 
 
@@ -112,7 +112,7 @@ To accept an offer to buy a NFToken:
 
 
 
-1. Enter the **NFToken Offer Index** (the _nft_offer_index_ of the token buy offer).
+1. Enter the **NFToken Offer Index** (the `nft_offer_index` of the NFToken buy offer).
 3. Click **Accept Buy Offer**.
 
 
@@ -179,7 +179,7 @@ async function createSellOffer() {
   document.getElementById('standbyResultField').value = results
 ```
 
-Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the expirationDate variable to the converted date in Ripple time. 
+Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the `expirationDate` variable to the converted date in Ripple time. 
 
 ```
   //------------------------------------- Prepare Expiration Date

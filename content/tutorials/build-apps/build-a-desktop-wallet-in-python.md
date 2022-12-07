@@ -64,7 +64,7 @@ The `requests` and `toml` libraries are only needed for the [domain verification
 
 #### Notes for Windows Users
 
-On Windows, you can build apps using either Windows natively or by using the Windows Subsystem for Linux (WSL).
+On Windows, you can build apps using either Windows natively or by using the Windows Subsystem for Linux (WSL). <!-- SPELLING_IGNORE: wsl -->
 
 On native Windows, the GUI uses native Windows controls and should run without any dependencies beyond those mentioned above.
 
@@ -105,7 +105,7 @@ You may have noticed that the app in step 1 only shows the latest validated ledg
 
 If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so the user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
 
-The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with `self.`). When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:
+The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with `self.`). When the threads need to communicate, they use specific, "thread-safe" methods of communication, namely:
 
 - For GUI to worker thread, use [`asyncio.run_coroutine_threadsafe()`](https://docs.python.org/3/library/asyncio-task.html#asyncio.run_coroutine_threadsafe).
 - For worker to GUI communications, use [`wx.CallAfter()`](https://docs.wxpython.org/wx.functions.html#wx.CallAfter).
@@ -122,7 +122,7 @@ Then, the code for the monitor thread is as follows (put this in the same file a
 
 {{ include_code("_code-samples/build-a-wallet/py/2_threaded.py", language="py", start_with="class XRPLMonitorThread", end_before="class TWaXLFrame") }}
 
-This code defines a `Thread` subclass for the worker. When the thread starts, it sets up an event loop, which waits for async tasks to be created and run. The code uses [asyncio's Debug Mode](https://docs.python.org/3/library/asyncio-dev.html#asyncio-debug-mode) so that the console shows any errors that occur in async tasks.
+This code defines a `Thread` subclass for the worker. When the thread starts, it sets up an event loop, which waits for async tasks to be created and run. The code uses [`asyncio`'s Debug Mode](https://docs.python.org/3/library/asyncio-dev.html#asyncio-debug-mode) so that the console shows any errors that occur in async tasks.
 
 The `watch_xrpl()` function is an example of a such a task (which the GUI thread starts when it's ready): it connects to the XRP Ledger, then calls the [subscribe method][] to be notified whenever a new ledger is validated. It uses the immediate response _and_ all later subscription stream messages to trigger updates of the GUI.
 
@@ -134,7 +134,7 @@ Update the code for the main thread and GUI frame to look like this:
 
 The part that builds the GUI has been moved to a separate method, `build_ui(self)`. This helps to divide the code into chunks that are easier to understand, because the `__init__()` constructor has other work to do now, too: it starts the worker thread, and gives it its first job. The GUI setup also now uses a [sizer](https://docs.wxpython.org/sizers_overview.html) to control placement of the text within the frame.
 
-**Tip:** In this tutorial, all the GUI code is written by hand, but you may find it easier to create powerful GUIs using a "builder" tool such as [wxGlade](http://wxglade.sourceforge.net/). Separating the GUI code from the constructor may make it easier to switch to this type of approach later.
+**Tip:** In this tutorial, all the GUI code is written by hand, but you may find it easier to create powerful GUIs using a "builder" tool such as [wxGlade](http://wxglade.sourceforge.net/). Separating the GUI code from the constructor may make it easier to switch to this type of approach later. <!-- SPELLING_IGNORE: wxGlade -->
 
 There's a new helper method, `run_bg_job()`, which runs an asynchronous function (defined with `async def`) in the worker thread. Use this method any time you want the worker thread to interact with the XRP Ledger network.
 
@@ -158,7 +158,7 @@ If you get an error like this, you may need to make sure your operating system's
 
 On macOS, run the [`Install Certificates.command`](https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate) for your Python version.
 
-On Windows, open Edge or Chrome and browse to <https://s1.ripple.com>, then close the page. This should be enough to update your system's certificates. (It doesn't work if you use Firefox or Safari, because those browser's don't use Windows' certificate validation APIs.)
+On Windows, open Edge or Chrome and browse to <https://s1.ripple.com>, then close the page. This should be enough to update your system's certificates. (It doesn't work if you use Firefox or Safari, because those browser's don't use Windows' certificate validation APIs.) <!-- SPELLING_IGNORE: s1 -->
 
 
 ### 3. Display an Account
@@ -167,7 +167,7 @@ On Windows, open Edge or Chrome and browse to <https://s1.ripple.com>, then clos
 
 Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the [reserve requirement](reserves.html).
 
-The prompt is in a popup dialog like this:
+The prompt is in a pop-up dialog like this:
 
 ![Screenshot: step 3, account input prompt](img/python-wallet-3-enter.png)
 
@@ -207,7 +207,7 @@ Update the `build_ui()` method definition as follows:
 
 This adds a [`wx.StaticBox`](https://docs.wxpython.org/wx.StaticBox.html) with several new widgets, then uses the `AutoGridBagSizer` (defined above) to lay them out in 2×4 grid within the box. These new widgets are all static text to display [details of the account](accountroot.html), though some of them start with placeholder text. (Since they require data from the ledger, you have to wait for the worker thread to send that data back.)
 
-**Caution:** You may notice that even though the constructor for this class sees the `wallet` variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be threadsafe.
+**Caution:** You may notice that even though the constructor for this class sees the `wallet` variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be thread-safe.
 
 Add a new `prompt_for_account()` method to the `TWaXLFrame` class:
 
@@ -465,11 +465,11 @@ In the `XRPLMonitorThread` class, add a new `check_destination()` method to chec
 
 This code uses [`xrpl.asyncio.account.get_account_info()`](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.account.html#xrpl.asyncio.account.get_account_info) to look up the account in the ledger; unlike using the client's `request()` method, `get_account_info()` raises an exception if the account is not found.
 
-If the account _does_ exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags). Note that this is an "lsf" (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the [AccountSet transaction][] uses to configure the same settings.
+If the account _does_ exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags). Note that this is an `lsf` (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the [AccountSet transaction][] uses to configure the same settings.
 
 Finally, the code decodes the account's `Domain` field, if present, and performs domain verification using the method imported above.
 
-**Caution:** The background check takes the Send XRP dialog (`dlg`) as a parameter, since each dialog is a separate instance, but does not modify the dialog directly since that might not be threadsafe. (It _only_ uses `wx.CallAfter` to pass the results of the check back to the dialog.)
+**Caution:** The background check takes the Send XRP dialog (`dlg`) as a parameter, since each dialog is a separate instance, but does not modify the dialog directly since that might not be thread-safe. (It _only_ uses `wx.CallAfter` to pass the results of the check back to the dialog.)
 
 After this, it's time to update the `SendXRPDialog` class to make it capable of displaying these errors. You can also set a more specific upper bound for how much XRP the account can actually send. Change the constructor to take a new parameter:
 
