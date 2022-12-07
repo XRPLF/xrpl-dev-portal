@@ -1,339 +1,29 @@
 -------------
 Spell Checker
 -------------
-Found 150 possible spelling errors:
-<Page 'Multi-Signing' (multi-signing.html)> Unknown Words:
-  signerlists: signerlist
-  signerquorum: 
-  signerweight: 
-  expandedsignerlist: 
-
-<Page 'Authorized Trust Lines' (authorized-trust-lines.html)> Unknown Words:
-  requireauth: 
-
-<Page 'Non-Fungible Tokens Overview' (non-fungible-tokens.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  ˈfənjəbəl: 
-  nftokenpage: 
-
-<Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  workflows: workflow
-
-<Page 'Batch minting' (nftoken-batch-minting.html)> Unknown Words:
-  12th: 10th
-
-<Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)> Unknown Words:
-  mccaleb: 
-  bitstamp: 
-
-<Page 'Amendments' (amendments.html)> Unknown Words:
-  11d: 
-
-<Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  nonfungibletokensv1: 
-  fixnftokennegoffer: 
-  fixtrustlinestoself: 
-  checkcashmakestrustline: 
-  fixnftokendirv1: 
-  fixremovenftokenautotrustline: 
-  expandedsignerlist: 
-  nftokenpage: 
-
-<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  20d: 2d, 2nd
-
-<Page 'Federated Sidechains' (federated-sidechains.html)> Unknown Words:
-  mainchain: 
-  federators: federator
-
-<Page 'Ledger History' (ledger-history.html)> Unknown Words:
-  xrplcluster: 
-
-<Page 'Interoperability' (xrpl-interoperability.html)> Unknown Words:
-  programmabilty: programmability
-
-<Page 'Introduction to EVM Compatible XRP Ledger Sidechain' (intro-to-evm-sidechain.html)> Unknown Words:
-  unstake: unstate
-
-<Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)> Unknown Words:
-  getnet: setnet, genet
-  getaccount: 
-  xrptodrops: 
-
-<Page '2. Create Trust Line and Send Currency' (create-trustline-send-currency.html)> Unknown Words:
-  trustline: 
-  ripplex2: ripplex
-  checkbox: 
-  rippledefault: 
-  autofill: 
-
-<Page '3. Mint and Burn NFTokens' (mint-and-burn-nftokens.html)> Unknown Words:
-  ripplex3: ripplex
-  tokentaxon: 
-
-<Page '4. Transfer NFTokens' (transfer-nftokens.html)> Unknown Words:
-  nft_offer_index: 
-  expirationdate: 
-
-<Page 'Broker a NFToken Sale' (broker-sale.html)> Unknown Words:
-  ripplex5: ripplex
-
+Found 2 possible spelling errors:
 <Page 'Assign an Authorized Minter' (authorize-minter.html)> Unknown Words:
-  nft_offer_index: 
-  stringify: stringily
   nftokentaxon: 
-
-<Page 'Batch Mint NFTokens' (batch-minting.html)> Unknown Words:
-  gettokens: 
-  xrpledger: 
-  nftokencount: 
-
-<Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Unknown Words:
-  wxpython: 
-  wsl: wss, wsp, usl
-  threadsafe: 
-  asyncio: 
-  guis: guids, gis, gois
-  wxglade: 
-  s1: sw, sp, l1
-  popup: pop-up
-  toolkits: toolkit
-  tooltip: 
-  lsf: ksf, fsf, lmf
-  refactor: prefactor, refractor, reactor
-  tooltips: 
-
-<Page 'Use Tickets' (use-tickets.html)> Unknown Words:
-  autofilling: 
-
-<Page 'Trade in the Decentralized Exchange' (trade-in-the-decentralized-exchange.html)> Unknown Words:
-  rp9jpyp5kyvfrb6zirghagw5u8sgamu4bd: 
-
-<Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Unknown Words:
-  reputational: deputational
-  xapps: lapps, capps, apps
-
-<Page 'System Requirements' (system-requirements.html)> Unknown Words:
-  nvme: name, nome, vme
-
-<Page 'Build and Run rippled in Reporting Mode' (build-run-rippled-in-reporting-mode.html)> Unknown Words:
-  datastores: datastore
-
-<Page 'Connect MetaMask to XRP Ledger Sidechain' (connect-metamask-to-xrpl-evm-sidechain.html)> Unknown Words:
-  dapps: lapps, capps, dapp
-
-<Page 'EVM Sidechain Validator Security' (evm-sidechain-validator-security.html)> Unknown Words:
-  kms: kas, rms, kos
-  hsms: hums, homs, hms
-  yubihsm2: 
-  yubihsm: 
-  yubikey: 
-  evmos: evros, emos, vmos
-
-<Page 'Run a Validator Node on an EVM Sidechain' (evm-sidechain-run-a-validator-node.html)> Unknown Words:
-  pubkey: punkey, pukey
-  delegators: delegatory, delegator
-  uport: sport, port, aport
-  keybase: 
-  unjail: injail, unmail, unnail
-  exrp: erp, exr., exrx
-  100th: 10th
 
 <Page 'NFToken' (nftoken.html)> Unknown Words:
-  nftokenpage: 
-  nonfungibletokensv1_1: 
-  nftokenid: 
-  fixremovenftokenautotrustline: 
-  0x000b: 
-  transferfee: transferee
   nftokentaxon: 
-  ipfs: ipcs, ipms, ips
-  rfc2379: 
-
-<Page 'Ledger Data Formats' (ledger-data-formats.html)> Unknown Words:
-  nftokenpage: 
-
-<Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-  amms: lmms, mms, arms
-  accountroots: accountroot
-
-<Page 'AMM' (amm.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-  stobject: 
-  stissue: tissue
-
-<Page 'NFTokenOffer' (nftokenoffer.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  0x0074: 
-  nftokenid: 
-
-<Page 'NFTokenPage' (nftokenpage.html)> Unknown Words:
-  nftokenpage: 
-  nonfungibletokensv1_1: 
-  tokenid: tokened
-  0x0050: 
-  nftokenpageid: 
-  tokenpage: 
-  shamap: shamas, shaman, shama
-
-<Page 'SignerList' (signerlist.html)> Unknown Words:
-  expandedsignerlist: 
-
-<Page 'AccountSet' (accountset.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-
-<Page 'AMMBid' (ammbid.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-  stissue: tissue
-  authaccount: 
-  20th: 10th
-
-<Page 'AMMCreate' (ammcreate.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-
-<Page 'AMMDeposit' (ammdeposit.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-  stissue: tissue
-
-<Page 'AMMVote' (ammvote.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-  stissue: tissue
-
-<Page 'AMMWithdraw' (ammwithdraw.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-  stissue: tissue
-
-<Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  nonfungibletokensv1: 
-
-<Page 'NFTokenBurn' (nftokenburn.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  nonfungibletokensv1: 
-
-<Page 'NFTokenCancelOffer' (nftokencanceloffer.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  nonfungibletokensv1: 
-
-<Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  nonfungibletokensv1: 
-
-<Page 'NFTokenMint' (nftokenmint.html)> Unknown Words:
-  nftokenpage: 
-  nonfungibletokensv1_1: 
-  ipfs: ipcs, ipms, ips
-  rfc2379: 
-  fixremovenftokenautotrustline: 
-  nonfungibletokensv1: 
-
-<Page 'SignerListSet' (signerlistset.html)> Unknown Words:
-  expandedsignerlist: 
-
-<Page 'tec Codes' (tec-codes.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-
-<Page 'tef Codes' (tef-codes.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-
-<Page 'tem Codes' (tem-codes.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-
-<Page 'Serialization Format' (serialization.html)> Unknown Words:
-  stissue: tissue
-  30d: 3-d, 3d, 3rd
-
-<Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)> Unknown Words:
-  ordercancellation: 
-  lastledgersequence: 
-
-<Page 'account_nfts' (account_nfts.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-
-<Page 'amm_info' (amm_info.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-
-<Page 'nft_buy_offers' (nft_buy_offers.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  _the: the, ithe, othe
-
-<Page 'nft_sell_offers' (nft_sell_offers.html)> Unknown Words:
-  nonfungibletokensv1_1: 
-  _the: the, ithe, othe
-
-<Page 'server_info' (server_info-clio.html)> Unknown Words:
-  rpcs: pcs, rics, ppcs
-
-<Page 'node_to_shard' (node_to_shard.html)> Unknown Words:
-  node_to_shard: 
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 343 discouraged words/phrases:
+Found 295 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
    Discouraged word: sufficient (1 instances); suggest 'enough' instead.
 Page: <Page 'Multi-Signing' (multi-signing.html)>
    Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
-   Discouraged word: vice (3 instances); suggest 'instead of, versus' instead.
-Page: <Page 'Ledgers' (ledgers.html)>
-   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
-Page: <Page 'Tokens' (tokens.html)>
-   Discouraged word: ious (1 instances); suggest 'issuances' instead.
-   Discouraged word: retain (1 instances); suggest 'keep' instead.
-Page: <Page 'Trust Lines and Issuing' (trust-lines-and-issuing.html)>
-   Discouraged phrase: is responsible for (1 instances); suggest '(omit) handles' instead.
-Page: <Page 'Non-Fungible Tokens Overview' (non-fungible-tokens.html)>
-   Discouraged word: ious (1 instances); suggest 'issuances' instead.
-   Discouraged word: identical (1 instances); suggest 'same' instead.
-   Discouraged word: easily (1 instances); suggest '(omit)' instead.
-   Discouraged word: purchase (1 instances); suggest 'buy' instead.
-   Discouraged word: just (1 instances); suggest '(omit)' instead.
-   Discouraged word: designate (1 instances); suggest 'appoint, choose, name' instead.
-Page: <Page 'Trading NFTokens on the XRP Ledger' (non-fungible-token-transfers.html)>
-   Discouraged word: purchase (5 instances); suggest 'buy' instead.
-Page: <Page 'Batch minting' (nftoken-batch-minting.html)>
-   Discouraged word: commence (1 instances); suggest 'begin, start' instead.
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
-   Discouraged word: retain (1 instances); suggest 'keep' instead.
-   Discouraged word: sufficient (2 instances); suggest 'enough' instead.
 Page: <Page 'Common Misunderstandings about Freezes' (common-misconceptions-about-freezes.html)>
    Discouraged word: just (1 instances); suggest '(omit)' instead.
 Page: <Page 'Issuing and Operational Addresses' (issuing-and-operational-addresses.html)>
    Discouraged word: sufficient (1 instances); suggest 'enough' instead.
-Page: <Page 'Demurrage' (demurrage.html)>
-   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
-   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
-Page: <Page 'Decentralized Exchange' (decentralized-exchange.html)>
-   Discouraged word: therefore (2 instances); suggest 'so' instead.
-   Discouraged phrase: limited number (1 instances); suggest 'limits' instead.
-Page: <Page 'Offers' (offers.html)>
-   Discouraged word: remainder (2 instances); suggest 'rest' instead.
-   Discouraged word: permit (1 instances); suggest 'let' instead.
-Page: <Page 'Consensus' (consensus.html)>
-   Discouraged word: proceed (1 instances); suggest 'do, go ahead, try' instead.
 Page: <Page 'Consensus Principles and Rules' (consensus-principles-and-rules.html)>
    Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
-Page: <Page 'Amendments' (amendments.html)>
-   Discouraged word: therefore (1 instances); suggest 'so' instead.
-   Discouraged word: accurate (2 instances); suggest 'correct, exact, right' instead.
-Page: <Page 'Known Amendments' (known-amendments.html)>
-   Discouraged word: purchase (1 instances); suggest 'buy' instead.
-   Discouraged word: therefore (2 instances); suggest 'so' instead.
-   Discouraged word: encounter (2 instances); suggest 'meet' instead.
-   Discouraged word: numerous (1 instances); suggest 'many' instead.
-Page: <Page 'Federated Sidechains' (federated-sidechains.html)>
-   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
-Page: <Page 'Ledger History' (ledger-history.html)>
-   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
-   Discouraged word: portion (1 instances); suggest 'part' instead.
 Page: <Page 'Online Deletion' (online-deletion.html)>
-   Discouraged word: feasible (1 instances); suggest 'can be done, workable' instead.
    Discouraged phrase: a number of (1 instances); suggest 'some' instead.
 Page: <Page 'History Sharding' (history-sharding.html)>
    Discouraged word: witnessed (1 instances); suggest 'saw' instead.
@@ -347,9 +37,6 @@ Page: <Page 'Transaction Censorship Detection' (transaction-censorship-detection
 Page: <Page 'Introduction to EVM Compatible XRP Ledger Sidechain' (intro-to-evm-sidechain.html)>
    Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
    Discouraged word: component (1 instances); suggest 'part' instead.
-Page: <Page 'XRPL Quickstart' (xrpl-quickstart.html)>
-   Discouraged word: just (1 instances); suggest '(omit)' instead.
-   Discouraged word: anticipate (1 instances); suggest 'expect' instead.
 Page: <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)>
    Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
 Page: <Page '3. Mint and Burn NFTokens' (mint-and-burn-nftokens.html)>
@@ -436,7 +123,7 @@ Page: <Page 'Open a Payment Channel to Enable an Inter-Exchange Network' (open-a
 Page: <Page 'Cancel a Check' (cancel-a-check.html)>
    Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
 Page: <Page 'Issue a Fungible Token' (issue-a-fungible-token.html)>
-   Discouraged word: ious (1 instances); suggest 'issuances' instead.
+   Discouraged word: ious (1 instances); suggest 'tokens' instead.
    Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
    Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
    Discouraged word: purchase (1 instances); suggest 'buy' instead.
@@ -608,8 +295,8 @@ Most difficult pages by Flesch Reading Ease:
   Dale-Chall Readability Score: 10.2 (higher than average college level)
   SMOG Index: Grade level 0.0
   Gunning FOG Index: Grade level 12.8
-  Automated Readability Index: Grade level 17.3
-  Coleman-Liau Index: Grade level 17.7
+  Automated Readability Index: Grade level 17.4
+  Coleman-Liau Index: Grade level 17.9
   Linsear Write Formula: Grade level 12.5
 
 <Page 'XRP-API' (xrp-api.html)> Readability Scores:
@@ -636,13 +323,13 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 55
   Words: 751
-  Characters: 4,667
+  Characters: 4,665
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
   Sentences: 485
-  Words: 6,729
-  Characters: 49,419
+  Words: 6,721
+  Characters: 49,337
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
   Sentences: 380
@@ -651,8 +338,8 @@ Longest pages by character count:
 
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Length Metrics:
   Sentences: 299
-  Words: 5,187
-  Characters: 29,583
+  Words: 5,189
+  Characters: 29,575
 
 Shortest pages by character count:
 <Page 'API Conventions' (api-conventions.html)> Length Metrics:

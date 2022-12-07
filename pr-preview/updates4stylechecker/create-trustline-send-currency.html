@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="2. Create Trust Line and Send Currency | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/create-trustline-send-currency.html" />
-    <meta property="og:description" content="Quickstart step 2, create TrustLines and send currency." />
-    <meta name="description" content="Quickstart step 2, create TrustLines and send currency." />
+    <meta property="og:description" content="Quickstart step 2, create trust lines and send currency." />
+    <meta name="description" content="Quickstart step 2, create trust lines and send currency." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -270,12 +270,12 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#2-create-trust-line-and-send-currency">2. Create Trust Line and Send Currency</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#usage">Usage</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#create-trustline">Create TrustLine</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#create-trust-line">Create Trust Line</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#send-an-issued-currency-token">Send an Issued Currency Token</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#code-walkthrough">Code Walkthrough</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ripplex2-send-currencyjs">ripplex2-send-currency.js</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#configure-account">Configure Account</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-trust-line">Create Trust Line</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#create-trust-line-1">Create Trust Line</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#send-issued-currency">Send Issued Currency</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-balances">Get Balances</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#reciprocal-transactions">Reciprocal Transactions</a></li>
@@ -327,15 +327,15 @@
 </ol>
 </li>
 </ol>
-<h2 id="create-trustline">Create TrustLine<a aria-hidden="true" class="hover_anchor" href="#create-trustline"><i class="fa fa-link"></i></a></h2>
-<p>To create a trustline between accounts:</p>
+<h2 id="create-trust-line">Create Trust Line<a aria-hidden="true" class="hover_anchor" href="#create-trust-line"><i class="fa fa-link"></i></a></h2>
+<p>To create a trust line between accounts:</p>
 <ol start="3">
 <li>Enter a <a class="external-link" href="https://www.iban.com/currency-codes" target="_blank">currency code <i aria-hidden="true" class="fa fa-external-link"></i></a> in the <strong>Currency</strong> field.</li>
 <li>Enter the maximum transfer limit in the <strong>Amount</strong> field.</li>
 <li>Enter the destination account value in the <strong>Destination</strong> field.</li>
-<li>Click <strong>Create Trustline</strong>.</li>
+<li>Click <strong>Create Trustline</strong>. <!-- SPELLING_IGNORE: trustline --><!-- --></li>
 </ol>
-<p><img alt="Trustline results" src="img/quickstart6.png"/></p>
+<p><img alt="Trust line results" src="img/quickstart6.png"/></p>
 <h2 id="send-an-issued-currency-token">Send an Issued Currency Token<a aria-hidden="true" class="hover_anchor" href="#send-an-issued-currency-token"><i class="fa fa-link"></i></a></h2>
 <p>To transfer an issued currency token, once you have created a trust line:</p>
 <ol>
@@ -348,8 +348,9 @@
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
 <h2 id="ripplex2-send-currencyjs">ripplex2-send-currency.js<a aria-hidden="true" class="hover_anchor" href="#ripplex2-send-currencyjs"><i class="fa fa-link"></i></a></h2>
+<!-- SPELLING_IGNORE: ripplex2 -->
 <h3 id="configure-account">Configure Account<a aria-hidden="true" class="hover_anchor" href="#configure-account"><i class="fa fa-link"></i></a></h3>
-<p>When transferring fiat currency, the actual transfer of funds is not simultaneous, as it is with XRP. If currency is transferred to a third party for a different currency, there can be a devaluation of the currency that impacts the originating account. To avoid this situation, this up and down valuation of currency, known as <em>rippling</em>, is not allowed by default. Currency transferred from one account can only be transferred back to the same account. To enable currency transfer to third parties, you need to set the <em>rippleDefault</em> value to true. The Token Test Harness provides a checkbox to enable or disable rippling.</p>
+<p>When transferring fiat currency, the actual transfer of funds is not simultaneous, as it is with XRP. If currency is transferred to a third party for a different currency, there can be a devaluation of the currency that impacts the originating account. To avoid this situation, this up and down valuation of currency, known as <em>rippling</em>, is not allowed by default. Currency transferred from one account can only be transferred back to the same account. To enable currency transfer to third parties, you need to set the <code>rippleDefault</code> value to true. The Token Test Harness provides a checkbox to enable or disable rippling.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">// *******************************************************
 // **************** Configure Account ********************
 // *******************************************************
@@ -373,7 +374,7 @@
 <span class="w">        </span><span class="nv">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\Ripple Default Setting: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">rippleDefault</span><span class="w"></span>
 <span class="w">        </span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'standbyResultField'</span><span class="ss">)</span>.<span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">results</span><span class="w"></span>
 </code></pre></div>
-<p>Prepare the transaction. If the <em>rippleDefault</em> argument is true, set the <code>asfDefaultRipple</code> flag. If it is false, clear the <code>asfDefaultRipple</code> flag.</p>
+<p>Prepare the transaction. If the <code>rippleDefault</code> argument is true, set the <code>asfDefaultRipple</code> flag. If it is false, clear the <code>asfDefaultRipple</code> flag.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="w">        </span><span class="nv">let</span><span class="w"> </span><span class="nv">settings_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>{}<span class="w"></span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">rippleDefault</span><span class="ss">)</span><span class="w"> </span>{<span class="w"></span>
 <span class="w">          </span><span class="nv">settings_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>{<span class="w"></span>
@@ -393,7 +394,7 @@
 <span class="w">          </span><span class="nv">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nSending account setting.'</span><span class="w"></span>
 <span class="w">          </span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'standbyResultField'</span><span class="ss">)</span>.<span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">results</span><span class="w"></span>
 </code></pre></div>
-<p>Autofill the default values for the transaction.</p>
+<p>Auto-fill the default values for the transaction.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">cst_prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">autofill</span><span class="p">(</span><span class="n">settings_tx</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Sign the transaction.</p>
@@ -416,7 +417,7 @@
         client.disconnect()
       } // End of configureAccount()
 </code></pre></div>
-<h3 id="create-trust-line">Create Trust Line<a aria-hidden="true" class="hover_anchor" href="#create-trust-line"><i class="fa fa-link"></i></a></h3>
+<h3 id="create-trust-line-1">Create Trust Line<a aria-hidden="true" class="hover_anchor" href="#create-trust-line-1"><i class="fa fa-link"></i></a></h3>
 <p>A trust line enables two accounts to trade a defined currency up to a set limit. This gives the participants assurance that any exchanges are between known entities at agreed upon maximum amounts.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="o">//</span><span class="w"> </span><span class="o">*******************************************************</span><span class="w"></span>
 <span class="o">//</span><span class="w"> </span><span class="o">*****************</span><span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">TrustLine</span><span class="w"> </span><span class="o">********************</span><span class="w"></span>

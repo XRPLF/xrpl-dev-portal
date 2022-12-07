@@ -346,6 +346,7 @@
 <h2 id="ripplex-1-send-xrpjs">ripplex-1-send-xrp.js<a aria-hidden="true" class="hover_anchor" href="#ripplex-1-send-xrpjs"><i class="fa fa-link"></i></a></h2>
 <p>This example can be used with any XRP Ledger network, <em>Testnet</em>, or <em>Devnet</em>. You can update the code to choose different or additional XRP Ledger networks.</p>
 <h3 id="getnet">getNet()<a aria-hidden="true" class="hover_anchor" href="#getnet"><i class="fa fa-link"></i></a></h3>
+<!-- SPELLING_IGNORE: getnet -->
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1">// ******************************************************</span><span class="w"></span>
 <span class="c1">// ************* Get the Preferred Network **************</span><span class="w"></span>
 <span class="c1">// ******************************************************   </span><span class="w"></span>
@@ -360,6 +361,7 @@
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="c1">// End of getNet()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="getaccounttype">getAccount(type)<a aria-hidden="true" class="hover_anchor" href="#getaccounttype"><i class="fa fa-link"></i></a></h3>
+<!-- SPELLING_IGNORE: getaccount -->
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// *******************************************************</span><span class="w"></span>
 <span class="c1">// ************* Get Account *****************************</span><span class="w"></span>
 <span class="c1">// *******************************************************</span><span class="w"></span>
@@ -511,7 +513,7 @@
 <span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
 </code></pre></div>
 <p>Prepare the transaction. This is a Payment transaction from the standby wallet to the operational wallet.</p>
-<p>The <em>Payment</em> transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the xrpToDrops utility to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).</p>
+<p>The <em>Payment</em> transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the <code>xrpToDrops()</code> method to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">autofill</span><span class="p">({</span><span class="w"></span>
 <span class="w">          </span><span class="s2">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w"></span>
 <span class="w">          </span><span class="s2">"Account"</span><span class="p">:</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span><span class="w"></span>

@@ -531,7 +531,7 @@
 <blockquote class="devportal-callout tip">
 <p><strong>Tip:</strong> If you don't plan to submit the TicketCreate transaction right away, you should be sure not to set the <code>LastLedgerSequence</code> so that the transaction does not expire. The way you do this varies by library:</p>
 <ul>
-<li><strong>xrpl.js:</strong> Specify <code>"LastLedgerSequence": null</code> when autofilling the transaction.</li>
+<li><strong>xrpl.js:</strong> Specify <code>"LastLedgerSequence": null</code> when auto-filling the transaction.</li>
 <li><strong><code>rippled</code>:</strong> Omit <code>LastLedgerSequence</code> from the prepared instructions. The server does not provide a value by default.</li>
 </ul>
 </blockquote>

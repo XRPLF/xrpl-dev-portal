@@ -300,7 +300,7 @@
 <li>Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better). Minimum 50 GB for the database partition. Do not use Amazon Elastic Block Store (AWS EBS) because its latency is too high to sync reliably.</li>
 <li>RAM: 16 GB+.</li>
 </ul>
-<!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2 -->
+<!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2, nvme -->
 <p>Amazon EC2's <code>i3.2xlarge</code> VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.</p>
 <p>For a validator, consider <code>z1d.2xlarge</code> with an extra 1 TB disk for logging and core dump storage.</p>
 <h2 id="system-time">System Time<a aria-hidden="true" class="hover_anchor" href="#system-time"><i class="fa fa-link"></i></a></h2>

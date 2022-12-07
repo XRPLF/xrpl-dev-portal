@@ -298,15 +298,16 @@
 <span class="w">    </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>Unlike other objects, <code>NFToken</code> has no field to identify the object type or current owner of the object. <code>NFToken</code>objects are grouped into <code>NFTokenPages</code> that implicitly define the object type and identify the owner.</p>
+<p>Unlike full-fledged <a href="ledger-object-types.html">ledger entries</a>, <code>NFToken</code> has no field to identify the object type or current owner of the object. <code>NFToken</code> objects are grouped into pages that implicitly define the object type and identify the owner.</p>
 <h2 id="nftokenid">NFTokenID<a aria-hidden="true" class="hover_anchor" href="#nftokenid"><i class="fa fa-link"></i></a></h2>
+<!-- SPELLING_IGNORE: nftokenid -->
 <p><code>NFTokenID</code>, optional, string, Hash256</p>
 <p>This composite field uniquely identifies a token, and consists of the following sections.</p>
 <ol>
 <li>16 bits that identify flags or settings specific to the NFToken</li>
 <li>16 bits that encode the transfer fee associated with this NFToken, if any</li>
 <li>A 160-bit account identifier of the issuer</li>
-<li>A 32-bit issuer-specified <a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank">NFTokenTaxon <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li>A 32-bit issuer-specified <a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank"><code>NFTokenTaxon</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li>An (automatically generated) monotonically increasing 32-bit sequence number.</li>
 </ol>
 <p><img alt="Token ID Breakdown" src="img/nftoken1.png" title="Token ID Breakdown"/></p>
@@ -351,9 +352,10 @@
 </table>
 <p><code>NFToken</code> flags are immutable: they can only be set during the <a href="nftokenmint.html">NFTokenMint transaction</a> and cannot be changed later.</p>
 <h3 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h3>
-<p>The example sets three flags: <code>lsfBurnable</code> (<code>0x0001</code>), <code>lsfOnlyXRP</code> (<code>0x0002</code>), <code>lsfTransferable</code> (<code>0x0008</code>). 1+2+8 = 11, or 0x000B in big endian format.</p>
+<p>The example sets three flags: <code>lsfBurnable</code> (<code>0x0001</code>), <code>lsfOnlyXRP</code> (<code>0x0002</code>), <code>lsfTransferable</code> (<code>0x0008</code>). 1+2+8 = 11, or <code>0x000B</code> in big endian format.</p>
 <p><img alt="Flags" src="img/nftokena.png" title="Flags"/></p>
 <h3 id="transferfee">TransferFee<a aria-hidden="true" class="hover_anchor" href="#transferfee"><i class="fa fa-link"></i></a></h3>
+<!-- SPELLING_IGNORE: transferfee -->
 <p>The <code>TransferFee</code> value specifies the percentage fee, in units of 1/100,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 0.001% or 1/10 of a basis point (bps), allowing transfer rates between 0% and 50%.</p>
 <h3 id="example-1">Example<a aria-hidden="true" class="hover_anchor" href="#example-1"><i class="fa fa-link"></i></a></h3>
 <p>This value sets the transfer fee to 314, or 0.314%.</p>
@@ -370,7 +372,7 @@
 <h3 id="token-sequence">Token Sequence<a aria-hidden="true" class="hover_anchor" href="#token-sequence"><i class="fa fa-link"></i></a></h3>
 <p>The fifth section is a sequence number that increases with each <code>NFToken</code> the issuer creates. The <a href="nftokenmint.html">NFTokenMint transaction</a> sets this part of the <code>NFTokenID</code> automatically based on the <code>MintedTokens</code> field of the <code>Issuer</code> account. If the issuer's <a href="accountroot.html">AccountRoot object</a> does not have a <code>MintedTokens</code> field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.</p>
 <h2 id="uri">URI<a aria-hidden="true" class="hover_anchor" href="#uri"><i class="fa fa-link"></i></a></h2>
-<p>The URI field points to the data and/or metadata associated with the <code>NFToken</code>. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">"data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an opaque issuer-specific encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.</p>
+<p>The URI field points to the data and/or metadata associated with the <code>NFToken</code>. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC 2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an opaque issuer-specific encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.</p>
 <p>One drawback of using this method is that the value is immutable, so it commits the issuer to hosting the data in perpetuity.</p>
 <h1 id="retrieving-nftoken-data-and-metadata">Retrieving <code>NFToken</code> Data and Metadata<a aria-hidden="true" class="hover_anchor" href="#retrieving-nftoken-data-and-metadata"><i class="fa fa-link"></i></a></h1>
 <p>To minimize the footprint of <code>NFTokens</code> without sacrificing functionality or imposing unnecessary restrictions, XRPL NFTs do not have arbitrary data fields. Instead, data is maintained separately and referenced by the <code>NFToken</code>. The URI provides a reference to immutable content for the <code>Hash</code> and any mutable data for the <code>NFToken</code> object.</p>

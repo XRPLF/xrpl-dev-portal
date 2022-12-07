@@ -832,27 +832,27 @@
 <tr>
 <td style="text-align: left;"><code>rpc.*.started</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Number of RPCs of this type that the Clio server has started processing since startup.</td>
+<td style="text-align: left;">Number of API calls of this type that the Clio server has started processing since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.finished</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Number of RPCs of this type that the Clio server has finished processing since startup.</td>
+<td style="text-align: left;">Number of API calls of this type that the Clio server has finished processing since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.errored</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Number of RPCs of this type that have resulted in some sort of error since startup.</td>
+<td style="text-align: left;">Number of API calls of this type that have resulted in some sort of error since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.forwarded</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Number of RPCs of this type that the Clio server has forwarded to a <code>rippled</code> P2P server since startup.</td>
+<td style="text-align: left;">Number of API calls of this type that the Clio server has forwarded to a <code>rippled</code> P2P server since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.duration_us</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">The total number of microseconds spent processing RPCs of this type since startup.</td>
+<td style="text-align: left;">The total number of microseconds spent processing API calls of this type since startup.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>subscriptions</code></td>
@@ -972,7 +972,7 @@
 <tr>
 <td style="text-align: left;"><code>cache.is_full</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">True if cache contains all state data for a specific ledger, false otherwise. Some RPCs, such as book_offers, process much faster when the cache is full.</td>
+<td style="text-align: left;">True if cache contains all state data for a specific ledger, false otherwise. Some API calls, such as [book_offers][], process much faster when the cache is full.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>cache.latest_ledger_seq</code></td>

@@ -297,14 +297,14 @@
         <h1 id="batch-minting">Batch minting<a aria-hidden="true" class="hover_anchor" href="#batch-minting"><i class="fa fa-link"></i></a></h1>
 <p>There are two common approaches to minting NFToken objects in batches: mint on demand and scripted minting.</p>
 <h2 id="mint-on-demand-lazy-minting">Mint On Demand (Lazy Minting)<a aria-hidden="true" class="hover_anchor" href="#mint-on-demand-lazy-minting"><i class="fa fa-link"></i></a></h2>
-<p>When using a mint on demand model, you and potential customers make buy or sell offers for initial sales of a NFToken object off the XRP Ledger. When you are ready to commence the initial sale, you mint the token, create a sell offer or accept a buy offer, then complete the transaction.</p>
+<p>When using a mint on demand model, you and potential customers make buy or sell offers for initial sales of a NFToken object off the XRP Ledger. When you are ready to start the initial sale, you mint the token, create a sell offer or accept a buy offer, then complete the transaction.</p>
 <h3 id="benefits">Benefits<a aria-hidden="true" class="hover_anchor" href="#benefits"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>There is no reserve requirement for holding unsold NFToken objects.</li>
-<li>You mint NFToken objects in real time when you know that it will sell.</li>
+<li>You mint NFToken objects in real time when you know that it will sell. <!-- STYLE_OVERRIDE: will --></li>
 </ul>
 <h3 id="downside">Downside<a aria-hidden="true" class="hover_anchor" href="#downside"><i class="fa fa-link"></i></a></h3>
-<p>Any market activity prior to the initial sale of the NFToken object is not recorded on the XRP Ledger. This might not be an issue for some applications.</p>
+<p>Any market activity before the initial sale of the NFToken object is not recorded on the XRP Ledger. This might not be an issue for some applications.</p>
 <h2 id="scripted-minting">Scripted Minting<a aria-hidden="true" class="hover_anchor" href="#scripted-minting"><i class="fa fa-link"></i></a></h2>
 <p>Use a program or script to mint many tokens at once. You might find that <a href="tickets.html">Tickets</a> help you submit transactions in parallel, up to a current limit of 200 transactions in one group.</p>
 <p>For a practical example, see the <a href="batch-minting.html">Batch Mint NFTokens</a> tutorial.</p>
@@ -314,7 +314,7 @@
 <li>Market activity for the initial sale of the NFToken object is captured on the ledger</li>
 </ul>
 <h3 id="downside-1">Downside<a aria-hidden="true" class="hover_anchor" href="#downside-1"><i class="fa fa-link"></i></a></h3>
-<p>You need to retain the appropriate XRP reserve for all of the NFToken objects you mint. As a rule of thumb, this is roughly 1/12th XRP per NFToken object at the current reserve rate. In the event that you do not have sufficient XRP in reserve, your mint transactions fail until you add sufficient XRP to your account.</p>
+<p>You need to meet the <a href="reserves.html">reserve requirement</a> for all of the <code>NFToken</code> objects you mint. As a rule of thumb, this is roughly 1/12th XRP per NFToken object at the current reserve rate. In the event that you do not have enough XRP in reserve, your mint transactions fail until you get more XRP.</p>
     </div>
   </article>
 <!-- Feedback Widget -->

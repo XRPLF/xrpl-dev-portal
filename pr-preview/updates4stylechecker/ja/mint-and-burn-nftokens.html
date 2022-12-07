@@ -359,6 +359,7 @@
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to examine the code samples.</p>
 <h2 id="ripplex3-mint-nftsjs">ripplex3-mint-nfts.js<a aria-hidden="true" class="hover_anchor" href="#ripplex3-mint-nftsjs"><i class="fa fa-link"></i></a></h2>
+<!-- SPELLING_IGNORE: ripplex3 -->
 <h3 id="mint-token">Mint Token<a aria-hidden="true" class="hover_anchor" href="#mint-token"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">// *******************************************************
 // ********************** Mint Token *********************
@@ -389,7 +390,7 @@ async function mintToken() {
 <p>The Transfer Fee is a value 0 to 50000, used to set a royalty of 0.000% to 50.000% in increments of 0.001. </p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">    "TransferFee": parseInt(standbyTransferFeeField.value),
 </code></pre></div>
-<p>The TokenTaxon is a required value. It is an arbitrary value defined by the issuer. If you do not have a use for the field, you can set it to <em>0</em>.</p>
+<p>The <code>TokenTaxon</code> is a required value. It is an arbitrary value defined by the issuer. If you do not have a use for the field, you can set it to <em>0</em>.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="w">    </span><span class="s2">"NFTokenTaxon"</span>:<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">//</span><span class="nv">Required</span>,<span class="w"> </span><span class="nv">but</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">have</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">it</span>,<span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">zero</span>.<span class="w"></span>
 <span class="w">  </span>}<span class="w"></span>
 </code></pre></div>

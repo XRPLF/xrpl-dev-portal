@@ -356,17 +356,17 @@
 <li>Optionally, enter a number of days until <strong>Expiration</strong>.</li>
 <li>Click <strong>Create Sell Offer</strong>.</li>
 </ol>
-<p>The important piece of information in the response is the Token Offer Index, labeled as <em>nft_offer_index,</em> which is used to accept the sell offer.</p>
+<p>The important piece of information in the response is the NFToken Offer Index, labeled as <code>nft_offer_index</code>, which is used to accept the sell offer.</p>
 <p><a href="img/quickstart31.png"><img alt="NFToken Sell Offer" src="img/quickstart31.png"/></a></p>
 <h2 id="accept-sell-offer">Accept Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-sell-offer"><i class="fa fa-link"></i></a></h2>
 <p>Once a sell offer is available, you can create a new account to accept the offer and purchase the NFToken.</p>
 <p>To accept an available sell offer:</p>
 <ol>
 <li>Click <strong>Get New Standby Account</strong>.</li>
-<li>Enter the <strong>NFToken Offer Index</strong> (labeled as <em>nft_offer_index</em> in the token offer results. This is not the same as the <em>nft_id</em>).</li>
+<li>Enter the <strong>NFToken Offer Index</strong> (labeled as <code>nft_offer_index</code> in the NFToken offer results. This is different from the <code>nft_id</code>).</li>
 <li>Click <strong>Accept Sell Offer</strong>.</li>
 </ol>
-<p>When you examine the results field, you'll find that the Issuer account is credited 25 XRP. The Buyer account is debited the 100 XRP purchase price plus 12 drops as the transaction fee. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
+<p>The results show that the Issuer account has been credited 25 XRP. The Buyer account was debited the 100 XRP purchase price plus 12 drops as the transaction cost. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
 <a href="img/quickstart32.png"><img alt="Transaction Results" src="img/quickstart32.png"/></a></p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
@@ -410,7 +410,7 @@
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_json</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p>If the transaction succeeds, stringify the results and report. If not, report that the transaction failed.</p>
+<p>If the transaction succeeds, show the results. If not, report that the transaction failed.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nAccount setting succeeded.'</span><span class="w"></span>
 <span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span><span class="kc">null</span><span class="p">,</span><span class="mf">2</span><span class="p">)</span><span class="w"></span>

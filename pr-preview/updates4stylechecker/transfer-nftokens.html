@@ -342,13 +342,13 @@
 <li>Optionally, enter a number of days until <strong>Expiration</strong>.</li>
 <li>Click <strong>Create Sell Offer</strong>.</li>
 </ol>
-<p>The important piece of information in the response is the Token Offer Index, labeled as <em>nft_offer_index,</em> which is used to accept the sell offer.</p>
+<p>The important piece of information in the response is the NFToken Offer Index, labeled as <code>nft_offer_index</code>, which you use to accept the sell offer.</p>
 <p><img alt="NFToken Sell Offer" src="img/quickstart15.png"/></p>
 <h2 id="accept-sell-offer">Accept Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-sell-offer"><i class="fa fa-link"></i></a></h2>
 <p>Once a sell offer is available, another account can opt to accept the offer and purchase the NFToken.</p>
 <p>To accept an available sell offer:</p>
 <ol>
-<li>Enter the <strong>NFToken Offer Index</strong> (labeled as <em>nft_offer_index</em> in the token offer results. This is not the same as the <em>nft_id</em>).</li>
+<li>Enter the <strong>NFToken Offer Index</strong> (labeled as <code>nft_offer_index</code> in the token offer results. This is different from the <code>NFTokenID</code>.)</li>
 <li>Click <strong>Accept Sell Offer</strong>.</li>
 </ol>
 <p><img alt="Accept Sell Offer" src="img/quickstart16.png"/></p>
@@ -366,7 +366,7 @@
 <h2 id="accept-a-buy-offer">Accept a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#accept-a-buy-offer"><i class="fa fa-link"></i></a></h2>
 <p>To accept an offer to buy a NFToken:</p>
 <ol>
-<li>Enter the <strong>NFToken Offer Index</strong> (the <em>nft_offer_index</em> of the token buy offer).</li>
+<li>Enter the <strong>NFToken Offer Index</strong> (the <code>nft_offer_index</code> of the NFToken buy offer).</li>
 <li>Click <strong>Accept Buy Offer</strong>.</li>
 </ol>
 <p><img alt="Accept Buy Offer" src="img/quickstart18.png"/></p>
@@ -401,7 +401,7 @@
 <span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'</span><span class="se">\n</span><span class="s1">Connected. Creating sell offer...'</span><span class="w"></span>
 <span class="w">  </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span><span class="w"></span>
 </code></pre></div>
-<p>Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the expirationDate variable to the converted date in Ripple time. </p>
+<p>Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the <code>expirationDate</code> variable to the converted date in Ripple time. </p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">  </span><span class="o">//-------------------------------------</span><span class="w"> </span><span class="n">Prepare</span><span class="w"> </span><span class="n">Expiration</span><span class="w"> </span><span class="n">Date</span><span class="w"></span>
 <span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">expirationDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">standbyExpirationField</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">!=</span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
