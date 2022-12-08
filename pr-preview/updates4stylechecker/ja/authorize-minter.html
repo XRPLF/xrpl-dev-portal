@@ -351,13 +351,13 @@
 <ol>
 <li>Set the <strong>Flags</strong> field. For testing purposes, we recommend setting the value to <em>8</em>. </li>
 <li>Enter the <strong>NFToken URL</strong>. This is a URI that points to the data or metadata associated with the NFToken object. You can use the sample URI provided if you do not have one of your own.</li>
-<li>Enter the <strong>Transfer Fee</strong>, a percentage of the proceeds from future sales of the NFToken that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the <strong>Flags</strong> field to allow the NFToken to be transferrable, set this field to 0.</li>
+<li>Enter the <strong>Transfer Fee</strong>, a percentage of the proceeds that the original creator receives from future sales of the NFToken. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the <strong>Flags</strong> field to allow the NFToken to be transferrable, set this field to 0.</li>
 <li>Copy the <strong>Standby Account</strong> value.</li>
 <li>Paste the <strong>Standby Account</strong> value in the Operational account <strong>Issuer</strong> field.</li>
-<li>Click the Operational account <strong>Mint Other</strong> button.
-<a href="img/quickstart30.png"><img alt="Minted NFToken for Another Account" src="img/quickstart30.png"/></a></li>
+<li>Click the Operational account <strong>Mint Other</strong> button.</li>
 </ol>
-<p>Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the purchase price separately.</p>
+<p><a href="img/quickstart30.png"><img alt="Minted NFToken for Another Account" src="img/quickstart30.png"/></a></p>
+<p>Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.</p>
 <h2 id="create-a-sell-offer">Create a Sell Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-sell-offer"><i class="fa fa-link"></i></a></h2>
 <p>To create a NFToken sell offer:</p>
 <ol>
@@ -370,14 +370,14 @@
 <p>The important piece of information in the response is the NFToken Offer Index, labeled as <code>nft_offer_index</code>, which is used to accept the sell offer.</p>
 <p><a href="img/quickstart31.png"><img alt="NFToken Sell Offer" src="img/quickstart31.png"/></a></p>
 <h2 id="accept-sell-offer">Accept Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-sell-offer"><i class="fa fa-link"></i></a></h2>
-<p>Once a sell offer is available, you can create a new account to accept the offer and purchase the NFToken.</p>
+<p>Once a sell offer is available, you can create a new account to accept the offer and buy the NFToken.</p>
 <p>To accept an available sell offer:</p>
 <ol>
 <li>Click <strong>Get New Standby Account</strong>.</li>
 <li>Enter the <strong>NFToken Offer Index</strong> (labeled as <code>nft_offer_index</code> in the NFToken offer results. This is different from the <code>nft_id</code>).</li>
 <li>Click <strong>Accept Sell Offer</strong>.</li>
 </ol>
-<p>The results show that the Issuer account has been credited 25 XRP. The Buyer account was debited the 100 XRP purchase price plus 12 drops as the transaction cost. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
+<p>The results show that the Issuer account has been credited 25 XRP. The Buyer account was debited the 100 XRP price plus 12 drops as the transaction cost. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
 <a href="img/quickstart32.png"><img alt="Transaction Results" src="img/quickstart32.png"/></a></p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
@@ -389,7 +389,7 @@
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">setMinter</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
 </code></pre></div>
-<p>Connect to the ledger and get the account wallet.</p>
+<p>Connect to the ledger and get the account.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="nx">net</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span><span class="w"></span>
@@ -444,7 +444,7 @@
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">mintOther</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 </code></pre></div>
-<p>Connect to the ledger and get the account wallet.</p>
+<p>Connect to the ledger and get the account.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span><span class="w"></span>
 <span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="w"></span>
 <span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span><span class="w"></span>
@@ -467,13 +467,13 @@
 <p>At a minimum, we recommend that you set the <code>tfTransferable</code> flag (8) to enable accounts to sell and resell the NFToken for testing purposes.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="w">    </span><span class="s2">"Flags"</span><span class="o">:</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">standbyFlagsField</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span><span class="w"></span>
 </code></pre></div>
-<p>Transfer fee is a value 0-50000 representing .001% of the purchase price for a resale to be returned to the original issuer. For example, <em>25000</em> translates to 25% of the purchase price to be sent to the issuer on resale.</p>
+<p>Transfer fee is a value 0-50000 representing .001% of the price for a resale to be returned to the original issuer. For example, <em>25000</em> translates to 25% of the price to be sent to the issuer on resale.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="w">    </span><span class="s2">"TransferFee"</span><span class="o">:</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">standbyTransferFeeField</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span><span class="w"></span>
 </code></pre></div>
 <p>The <strong>Issuer</strong> is the original creator of the object represented by the NFToken. </p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="w">    </span><span class="s2">"Issuer"</span><span class="o">:</span><span class="w"> </span><span class="nx">standbyIssuerField</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span><span class="w"></span>
 </code></pre></div>
-<p>The NFTokenTaxon is an optional number field the issuer can use for their own purposes. The same taxon can be used for multiple tokens. Set it to 0 if you have no use for it.</p>
+<p>The <code>NFTokenTaxon</code> is an optional number field the issuer can use for their own purposes. The same taxon can be used for multiple tokens. Set it to 0 if you have no use for it.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="w">    </span><span class="s2">"NFTokenTaxon"</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="c1">//Required, but if you have no use for it, set to zero.</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
@@ -1820,7 +1820,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       

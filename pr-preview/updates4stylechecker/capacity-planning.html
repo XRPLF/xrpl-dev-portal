@@ -296,7 +296,7 @@
 <p>The default configuration file contains settings for a broad range of common use cases. You can get better performance by customizing the settings for your specific hardware and intended usage pattern.</p>
 <p>The settings in this section are parameters in the <code>rippled.cfg</code> file. You can access an example config file, <code>rippled-example.cfg</code>, in the <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank"><code>cfg</code> directory <i aria-hidden="true" class="fa fa-external-link"></i></a> in the <code>rippled</code> GitHub repo. The settings in the example config file match the default config installed alongside the server.</p>
 <h3 id="node-size">Node Size<a aria-hidden="true" class="hover_anchor" href="#node-size"><i class="fa fa-link"></i></a></h3>
-<p>The <code>[node_size]</code> parameter should reflect the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>[node_size]</code> parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>As a general rule, you should always use the largest node size your available RAM can support. See the following table for recommended settings.</p>
 <h4 id="recommendation">Recommendation<a aria-hidden="true" class="hover_anchor" href="#recommendation"><i class="fa fa-link"></i></a></h4>
 <p>Each <code>[node_size]</code> has a corresponding requirement for available RAM. For example, if you set <code>[node_size]</code> to <code>huge</code>, you should have at least 32 GB of available RAM to help ensure that <code>rippled</code> can run smoothly.</p>
@@ -386,7 +386,7 @@
 <p>Each server in the XRP Ledger network performs all of the transaction processing work of the network. Total activity on the network varies but has mostly increased over time, so you should choose hardware with greater capacity than you need for the current network activity.</p>
 <h3 id="recommendation-1">Recommendation<a aria-hidden="true" class="hover_anchor" href="#recommendation-1"><i class="fa fa-link"></i></a></h3>
 <p>See <a href="system-requirements.html">System Requirements</a> for a summary of the recommended hardware specs.</p>
-<h4 id="cpu-utilization-and-virtualization">CPU Utilization and Virtualization<a aria-hidden="true" class="hover_anchor" href="#cpu-utilization-and-virtualization"><i class="fa fa-link"></i></a></h4>
+<h4 id="cpu-utilization-and-virtualization">CPU Utilization and Virtualization <!-- STYLE_OVERRIDE: utilization --><a aria-hidden="true" class="hover_anchor" href="#cpu-utilization-and-virtualization"><i class="fa fa-link"></i></a></h4>
 <p>You'll get the best performance on bare metal, but virtual machines can perform nearly as well as long as the host hardware has high enough specs.</p>
 <h4 id="disk-speed">Disk Speed<a aria-hidden="true" class="hover_anchor" href="#disk-speed"><i class="fa fa-link"></i></a></h4>
 <p>The speed of storage is one of the most important factors in a server's capacity. Use a high-grade solid state disk drive (SSD) with low-latency random reads and high throughput. Ripple engineers have observed the following maximum reads and writes per second:</p>
@@ -472,32 +472,32 @@
 <h4 id="rammemory">RAM/Memory<a aria-hidden="true" class="hover_anchor" href="#rammemory"><i class="fa fa-link"></i></a></h4>
 <p>Memory requirements are mainly a function of the <code>node_size</code> configuration setting and the amount of client traffic retrieving historical data. For more information about memory requirements, see <a href="#node-size">Node Size</a>.</p>
 <h4 id="network">Network<a aria-hidden="true" class="hover_anchor" href="#network"><i class="fa fa-link"></i></a></h4>
-<p>Any enterprise or carrier-class data center should have substantial network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling <a href="ledger-history.html">ledger history</a>) also affects network use. Consumer-grade home internet is generally not sufficient to run a reliable server.</p>
-<p>During exceptionally high periods of transaction volume, some operators have reported that their servers have completely saturated a 100 megabit/s network link. Therefore, a gigabit network interface is required for reliable performance.</p>
+<p>Any enterprise or carrier-class data center should have enough network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling <a href="ledger-history.html">ledger history</a>) also affects network use. Consumer-grade home internet is generally not enough to run a reliable server.</p>
+<p>During exceptionally high periods of transaction volume, some operators have reported that their servers have completely saturated a 100 megabit/s network link, so a gigabit network interface is required for reliable performance.</p>
 <p>Here are examples of observed uncompressed network bandwidth use for common tasks:</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;">Task</th>
-<th style="text-align: left;">Transmit/Receive</th>
+<th style="text-align: left;">Send/Receive</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">Process average transaction volumes</td>
-<td style="text-align: left;">2 Mbps transmit, 2 Mbps receive</td>
+<td style="text-align: left;">2 Mbps up, 2 Mbps down</td>
 </tr>
 <tr>
 <td style="text-align: left;">Process peak transaction volumes</td>
-<td style="text-align: left;">&gt;100 Mbps transmit</td>
+<td style="text-align: left;">&gt;100 Mbps up</td>
 </tr>
 <tr>
 <td style="text-align: left;">Serve historical ledger and transaction reports</td>
-<td style="text-align: left;">100 Mbps transmit</td>
+<td style="text-align: left;">100 Mbps up</td>
 </tr>
 <tr>
 <td style="text-align: left;">Start up <code>rippled</code></td>
-<td style="text-align: left;">20 Mbps receive</td>
+<td style="text-align: left;">20 Mbps down</td>
 </tr>
 </tbody>
 </table>

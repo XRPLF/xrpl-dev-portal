@@ -364,9 +364,10 @@
 <p>The third section of the <code>NFTokenID</code> is a big endian representation of the issuer’s public address.</p>
 <p><img alt="Issuer Address" src="img/nftokenc.png" title="Issuer Address"/></p>
 <h3 id="nftokentaxon">NFTokenTaxon<a aria-hidden="true" class="hover_anchor" href="#nftokentaxon"><i class="fa fa-link"></i></a></h3>
+<!-- SPELLING_IGNORE: nftokentaxon -->
 <p>The fourth section is a <code>NFTokenTaxon</code> created by the issuer.</p>
-<p><img alt="NFTokenTaxon" src="img/nftokend.png" title="NFTokenTaxon"/></p>
-<p>An issuer might issue several <code>NFToken</code> objects with the same <code>NFTokenTaxon</code>; to ensure that <code>NFToken</code> objects are spread across multiple pages, the <code>NFTokenTaxon</code> is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the <code>NFToken</code>, but the unscrambled value is the actual NFTokenTaxon.</p>
+<p><img alt="Diagram of NFTokenTaxon bits" src="img/nftokend.png"/></p>
+<p>An issuer might issue several <code>NFToken</code> objects with the same <code>NFTokenTaxon</code>; to ensure that <code>NFToken</code> objects are spread across multiple pages, the <code>NFTokenTaxon</code> is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the <code>NFToken</code>, but the unscrambled value is the actual <code>NFTokenTaxon</code>.</p>
 <p><img alt="Dumb Sequential" src="img/nftokene.png" title="Dumb Sequential"/></p>
 <p>Notice that the scrambled version of the <code>NFTokenTaxon</code> is <code>0xBC8B858E</code>: the scrambled version of the <code>NFTokenTaxon</code> specified by the issuer. But the <em>actual</em> value of the <code>NFTokenTaxon</code> is the unscrambled value.</p>
 <h3 id="token-sequence">Token Sequence<a aria-hidden="true" class="hover_anchor" href="#token-sequence"><i class="fa fa-link"></i></a></h3>

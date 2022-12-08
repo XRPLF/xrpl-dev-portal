@@ -410,7 +410,7 @@ async function mintToken() {
 
 async function getTokens() {
 </code></pre></div>
-<p>Connect to the ledger and get the account wallet.</p>
+<p>Connect to the ledger and get the account.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">net</span><span class="p">)</span><span class="w"></span>

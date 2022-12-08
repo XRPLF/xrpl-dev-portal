@@ -275,7 +275,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#procedure">Procedure</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#what-to-expect">What to Expect</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#frequently-asked-questions">Frequently Asked Questions </a></li>
       </ul>
   </div>
       </aside>
@@ -611,7 +611,7 @@ cp &lt;RIPPLED_SOURCE&gt;/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-r
 2021-Dec-09 21:31:53.368075 UTC ReportingETL:NFO monitor : Database is empty. Will download a ledger from the network.
 2021-Dec-09 21:31:53.368183 UTC ReportingETL:NFO monitor : Waiting for next ledger to be validated by network...
 </code></pre></div>
-<h2 id="frequently-asked-questions">Frequently Asked Questions<a aria-hidden="true" class="hover_anchor" href="#frequently-asked-questions"><i class="fa fa-link"></i></a></h2>
+<h2 id="frequently-asked-questions">Frequently Asked Questions <!-- STYLE_OVERRIDE: frequently --><a aria-hidden="true" class="hover_anchor" href="#frequently-asked-questions"><i class="fa fa-link"></i></a></h2>
 <p><strong>Do I need to run more than one instance of <code>rippled</code> to use reporting mode?</strong></p>
 <p>Yes. A <code>rippled</code> server running in reporting mode does not connect to the peer-to-peer network, but instead extracts validated data from one or more <code>rippled</code> servers that are connected to the network, so you need to run at least one P2P mode server.</p>
 <p><strong>I’ve already installed <code>rippled</code>. Can I update the configuration file to enable reporting mode and restart <code>rippled</code>?</strong> </p>
@@ -623,7 +623,7 @@ cp &lt;RIPPLED_SOURCE&gt;/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-r
 <p><strong>How can I confirm the validity of the data that comes from the PostgreSQL or Cassandra database?</strong></p>
 <p>When <code>rippled</code> runs in reporting mode, it only serves validated data from the ETL source specified in the config file. If you are using someone else's <code>rippled</code> server in P2P mode as the ETL source, you are implicitly trusting that server. If not, you need to run your own <code>rippled</code> node in P2P mode.</p>
 <p><strong>Is it possible to make traditional SQL queries to the relational database rather than using the API?</strong></p>
-<p>Technically, you <em>can</em> directly access the database if you want. However, the data is stored as binary blobs and you have to decode the blobs to access the component fields. This makes traditional SQL queries much less useful since they cannot find and filter the individual fields of the data.</p>
+<p>Technically, you <em>can</em> directly access the database if you want. However, the data is stored as binary blobs and you have to decode the blobs to access the data in them. This makes traditional SQL queries much less useful since they cannot find and filter the individual fields of the data.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1468,7 +1468,7 @@ cp &lt;RIPPLED_SOURCE&gt;/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-r
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       

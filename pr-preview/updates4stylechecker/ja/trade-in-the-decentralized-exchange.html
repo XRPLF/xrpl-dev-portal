@@ -334,7 +334,7 @@
 </tbody>
 </table>
 <h3 id="1-connect-to-network">1. Connect to Network<a aria-hidden="true" class="hover_anchor" href="#1-connect-to-network"><i class="fa fa-link"></i></a></h3>
-<p>You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may encounter in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a> with the appropriate dependencies.</p>
+<p>You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may find in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a> with the appropriate dependencies.</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li></ul>
 
 <div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, add the following &lt;script&gt; tags to the HTML to load dependencies</span><span class="w"></span>
@@ -394,7 +394,7 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, <strong>do not</strong> use the same addresses on Testnet/Devnet and Mainnet.</p>
-<p>When you're <a href="production-readiness.html">building production-ready software</a>, you should use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>. The following code shows how to create a Wallet instance to use your keys:</p>
+<p>When you're <a href="production-readiness.html">building production-ready software</a>, you should use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>. The following code shows how to create a <code>Wallet</code> instance to use your keys:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li></ul>
 
 <div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1">// Get credentials from the Testnet Faucet -----------------------------------</span><span class="w"></span>
@@ -683,7 +683,7 @@
 <p>You can use the validated transaction's <a href="transaction-metadata.html">metadata</a> to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the <a href="finality-of-results.html">final result</a>, especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:</p>
 <ul>
 <li>Some or all of the Offer may have been filled by matching with existing Offers in the ledger.</li>
-<li>The unmatched remainder, if any, has been placed into the ledger to await new matching Offers.</li>
+<li>The unmatched remainder, if any, has been placed into the ledger to await new matching Offers. <!-- STYLE_OVERRIDE: remainder --></li>
 <li>Other bookkeeping may have occurred, such as removing expired or unfunded Offers that would have matched.</li>
 </ul>
 <p>The following code demonstrates how to check the metadata of the transaction:</p>
@@ -1630,7 +1630,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       

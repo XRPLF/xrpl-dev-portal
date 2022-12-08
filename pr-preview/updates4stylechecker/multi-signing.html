@@ -265,7 +265,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#signer-lists">Signer Lists</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#signer-weight">Signer Weight</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#quorum">Quorum</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#wallet-locator">Wallet Locator</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#wallet-locator">Wallet Locator </a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#examples-using-signer-weight-and-quorum">Examples Using Signer Weight and Quorum</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#sending-multi-signed-transactions">Sending Multi-Signed Transactions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
@@ -305,8 +305,7 @@
 <p>You assign a weight to each signer in the list. The weight represents the authority of the signer relative to other signers on the list. The higher the value, the more authority. Individual weight values cannot exceed 2<sup>16</sup>-1.</p>
 <h3 id="quorum">Quorum<a aria-hidden="true" class="hover_anchor" href="#quorum"><i class="fa fa-link"></i></a></h3>
 <p>The quorum value of a list is the minimum weight total required to authorize a transaction. The quorum must be greater than 0 but less than or equal to the sum of the weight values in the signer list: meaning, it must be possible to achieve a quorum with the given signer weights.</p>
-<h3 id="wallet-locator">Wallet Locator<a aria-hidden="true" class="hover_anchor" href="#wallet-locator"><i class="fa fa-link"></i></a></h3>
-<!-- STYLE_OVERRIDE: wallet -->
+<h3 id="wallet-locator">Wallet Locator <!-- STYLE_OVERRIDE: wallet --><a aria-hidden="true" class="hover_anchor" href="#wallet-locator"><i class="fa fa-link"></i></a></h3>
 <p>You can also add up to 256 bits of arbitrary data to each signer's entry in the list. This data is not required or used by the network, but can be used by smart contracts or other applications to identify or confirm other data about the signers.</p>
 <p><em>(Added by the <a href="known-amendments.html#expandedsignerlist">ExpandedSignerList amendment</a>.)</em></p>
 <h3 id="examples-using-signer-weight-and-quorum">Examples Using Signer Weight and Quorum<a aria-hidden="true" class="hover_anchor" href="#examples-using-signer-weight-and-quorum"><i class="fa fa-link"></i></a></h3>

@@ -356,7 +356,7 @@
 <p>The important piece of information in the response is the NFToken Offer Index, labeled as <code>nft_offer_index</code>, which you use to accept the sell offer.</p>
 <p><img alt="NFToken Sell Offer" src="img/quickstart15.png"/></p>
 <h2 id="accept-sell-offer">Accept Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-sell-offer"><i class="fa fa-link"></i></a></h2>
-<p>Once a sell offer is available, another account can opt to accept the offer and purchase the NFToken.</p>
+<p>Once a sell offer is available, another account can opt to accept the offer and buy the NFToken.</p>
 <p>To accept an available sell offer:</p>
 <ol>
 <li>Enter the <strong>NFToken Offer Index</strong> (labeled as <code>nft_offer_index</code> in the token offer results. This is different from the <code>NFTokenID</code>.)</li>
@@ -400,7 +400,7 @@
 // ****************** Create Sell Offer ******************
 // *******************************************************
 </code></pre></div>
-<p>Connect to the ledger and get the wallet accounts.</p>
+<p>Connect to the ledger and get the accounts.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="n">async</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">createSellOffer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
@@ -436,7 +436,7 @@
 <span class="w">    </span><span class="nv">transactionBlob</span>.<span class="nv">Expiration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">expirationDate</span><span class="w"></span>
 <span class="w">  </span>}<span class="w"></span>
 </code></pre></div>
-<p>If the Destination field is not empty, append it to the transaction. When the destination is set, only the destination account can purchase the NFToken.</p>
+<p>If the Destination field is not empty, append it to the transaction. When the destination is set, only the destination account can buy the NFToken.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="w">  </span><span class="k">if</span><span class="ss">(</span><span class="nv">standbyDestinationField</span>.<span class="nv">value</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">''</span><span class="ss">)</span><span class="w"> </span>{<span class="w"></span>
 <span class="w">    </span><span class="nv">transactionBlob</span>.<span class="nv">Destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">standbyDestinationField</span>.<span class="nv">value</span><span class="w"></span>
 <span class="w">  </span>}<span class="w"></span>
@@ -494,7 +494,7 @@
 
 async function createBuyOffer() {
 </code></pre></div>
-<p>Get the account wallets and connect to the ledger.</p>
+<p>Get the account and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"></span>
@@ -575,7 +575,7 @@ async function createBuyOffer() {
 
 async function cancelOffer() {    
 </code></pre></div>
-<p>Get the standby wallet and connect to the ledger.</p>
+<p>Get the standby address and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span><span class="w"></span>
@@ -688,7 +688,7 @@ async function getOffers() {
 
 async function acceptSellOffer() {
 </code></pre></div>
-<p>Get the account wallets and connect to the ledger.</p>
+<p>Get the accounts and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-38" id="codeblock-38button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-38"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"></span>
@@ -740,7 +740,7 @@ async function acceptSellOffer() {
 
 async function acceptBuyOffer() {
 </code></pre></div>
-<p>Get the account wallets and connect to the ledger.</p>
+<p>Get the accounts and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-46" id="codeblock-46button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-46"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"></span>
@@ -2348,7 +2348,7 @@ async function acceptBuyOffer() {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       

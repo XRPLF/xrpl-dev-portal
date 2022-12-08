@@ -300,7 +300,7 @@
 </ol>
 <h2 id="1-generate-a-key-pair">1. Generate a Key Pair<a aria-hidden="true" class="hover_anchor" href="#1-generate-a-key-pair"><i class="fa fa-link"></i></a></h2>
 <p>Generate a key pair that you'll assign to your account as a regular key pair.</p>
-<p>This key pair is the same data type as a master key pair, so you can generate it the same way: you can use the client library of your choice or use the <a href="wallet_propose.html">wallet_propose method</a> of a server you operate. This might look as follows:</p>
+<p>This key pair is the same data type as a master key pair, so you can generate it the same way: you can use the client library of your choice or use the <a href="wallet_propose.html">wallet_propose method</a> of a server you run. This might look as follows:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li><li><a class="python" href="#code-0-3">Python</a></li><li><a class="javascript" href="#code-0-4">JavaScript</a></li><li><a class="java" href="#code-0-5">Java</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// Request:</span><span class="w"></span>
@@ -384,7 +384,7 @@
 <h2 id="2-assign-the-key-pair-to-your-account-as-a-regular-key-pair">2. Assign the Key Pair to Your Account as a Regular Key Pair<a aria-hidden="true" class="hover_anchor" href="#2-assign-the-key-pair-to-your-account-as-a-regular-key-pair"><i class="fa fa-link"></i></a></h2>
 <p>Use a <a href="setregularkey.html">SetRegularKey transaction</a> to assign the key pair you generated in step 1 to your account as a regular key pair.</p>
 <p>When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are <a href="set-up-secure-signing.html">several ways of securely signing transactions</a>, but this tutorial uses a local <code>rippled</code> server.</p>
-<p>When you send subsequent SetRegularKey transactions, you can sign using the existing regular private key to replace or <a href="change-or-remove-a-regular-key-pair.html">remove itself</a>. Note that you should still not submit your regular private key across the network.</p>
+<p>When you send later SetRegularKey transactions, you can sign using the existing regular private key to replace or <a href="change-or-remove-a-regular-key-pair.html">remove itself</a>. Note that you should still not submit your regular private key across the network.</p>
 <h3 id="sign-your-transaction">Sign Your Transaction<a aria-hidden="true" class="hover_anchor" href="#sign-your-transaction"><i class="fa fa-link"></i></a></h3>
 <p>The most secure way to sign a transaction is to <a href="set-up-secure-signing.html#local-signing-example">sign locally with a client library</a>. Alternatively, if you run your own <code>rippled</code> node you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local (same-machine) connection.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
@@ -509,7 +509,7 @@ rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType":
 </code></pre></div></div>
 </div>
 <p>The <code>sign</code> command response contains a <code>tx_blob</code> value, as shown above. The offline signing response contains a <code>signedTransaction</code> value. Both are signed binary representations (blobs) of the transaction.</p>
-<p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
+<p>Next, use the <code>submit</code> command to send the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
 <h3 id="submit-your-transaction">Submit Your Transaction<a aria-hidden="true" class="hover_anchor" href="#submit-your-transaction"><i class="fa fa-link"></i></a></h3>
 <p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="submit.html">submit method</a>.</p>
 <h4 id="request-format-1">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-1"><i class="fa fa-link"></i></a></h4>
@@ -726,7 +726,7 @@ rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType":
 </code></pre></div></div>
 </div>
 <p>The <code>sign</code> command response contains a <code>tx_blob</code> value, as shown above. The offline signing response contains a <code>signedTransaction</code> value. Both are signed binary representations (blobs) of the transaction.</p>
-<p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
+<p>Next, use the <code>submit</code> command to send the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
 <h3 id="submit-your-transaction-1">Submit Your Transaction<a aria-hidden="true" class="hover_anchor" href="#submit-your-transaction-1"><i class="fa fa-link"></i></a></h3>
 <p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="submit.html">submit method</a>.</p>
 <h4 id="request-format-3">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-3"><i class="fa fa-link"></i></a></h4>
