@@ -13,7 +13,7 @@ top_nav_grouping: Popular Pages
 ---
 # Send XRP
 
-This tutorial explains how to send a simple XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, or xrpl4j for Java. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
+This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, or xrpl4j for Java. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
 
 **Tip:** Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) for a complete version of the code used in this tutorial.
 
@@ -107,7 +107,7 @@ The bare minimum set of instructions you must provide for an XRP Payment is:
 - The address that should receive the XRP (`"Destination"`). This can't be the same as the sending address.
 - The amount of XRP to send (`"Amount"`). Typically, this is specified as an integer in "drops" of XRP, where 1,000,000 drops equals 1 XRP.
 
-Technically, a viable transaction must contain some additional fields, and certain optional fields such as `LastLedgerSequence` are strongly recommended. Some other language-specific notes:
+Technically, a transaction must contain some additional fields, and certain optional fields such as `LastLedgerSequence` are strongly recommended. Some other language-specific notes:
 
 - If you're using `xrpl.js` for JavaScript, you can use the [`Client.autofill()` method](https://js.xrpl.org/classes/Client.html#autofill) to automatically fill in good defaults for the remaining fields of a transaction. In TypeScript, you can also use the transaction models like `xrpl.Payment` to enforce the correct fields.
 - With `xrpl-py` for Python, you can use the models in `xrpl.models.transactions` to construct transactions as native Python objects.
@@ -155,8 +155,8 @@ _Java_
 
 Signing a transaction uses your credentials to authorize the transaction on your behalf. The input to this step is a completed set of transaction instructions (usually JSON), and the output is a binary blob containing the instructions and a signature from the sender.
 
-- **JavaScript:** Use the [`sign()` method of a Wallet instance](https://js.xrpl.org/classes/Wallet.html#sign) to sign the transaction with `xrpl.js`.
-- **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and wallet object.
+- **JavaScript:** Use the [`sign()` method of a `Wallet` instance](https://js.xrpl.org/classes/Wallet.html#sign) to sign the transaction with `xrpl.js`.
+- **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and `Wallet` object.
 - **Java:** Use a [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html) instance to sign the transaction. For this tutorial, use the [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html).
 
 <!-- MULTICODE_BLOCK_START -->
@@ -193,7 +193,7 @@ The result of the signing operation is a transaction object containing a signatu
 
 ### {{n.next()}}. Submit the Signed Blob
 
-Now that you have a signed transaction, you can submit it to an XRP Ledger server, and that server will relay it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
+Now that you have a signed transaction, you can submit it to an XRP Ledger server, which relays it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
 
 - **JavaScript:** Use the [`submitAndWait()` method of the Client](https://js.xrpl.org/classes/Client.html#submitAndWait) to submit a signed transaction to the network and wait for the response, or use [`submitSigned()`](https://js.xrpl.org/classes/Client.html#submitSigned) to submit a transaction and get only the preliminary response.
 - **Python:** Use the [`xrpl.transaction.send_reliable_submission()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission) to submit a transaction to the network and wait for a response.
@@ -342,7 +342,7 @@ System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLK
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Warning:** You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could potentially also be viable on the other network, depending on the parameters you provided.
+**Warning:** You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.
 
 Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to [fund the account](accounts.html#creating-accounts). A common way to acquire XRP is to buy it from an [exchange](exchanges.html), then withdraw it to your own address.
 
@@ -410,8 +410,10 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 
 After completing this tutorial, you may want to try the following:
 
+- [Issue a token](issue-a-fungible-token.html) on the XRP Ledger Testnet.
+- [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html).
 - Build [Reliable transaction submission](reliable-transaction-submission.html) for production systems.
-- Consult your [client library](client-libraries.html)'s API reference for the full range of XRP Ledger functionality. <!-- SPELLING_IGNORE: javadocs -->
+- Check your [client library](client-libraries.html)'s API reference for the full range of XRP Ledger functionality.
 - Customize your [Account Settings](manage-account-settings.html).
 - Learn how [Transaction Metadata](transaction-metadata.html) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](payment-types.html) such as Escrows and Payment Channels.

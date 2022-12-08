@@ -10,8 +10,7 @@ It is a common misconception that Ripple or others can freeze XRP, similar to ho
 
 Tokens in the XRP Ledger are [fundamentally different than XRP](currency-formats.html#comparison). Tokens always exist _in trust lines_, which _can_ be frozen. XRP exists in accounts, which _cannot_ be frozen.
 
-## Isn't XRP Just Ripple's Token?
-<!-- STYLE_OVERRIDE: just -->
+## Isn't XRP Just Ripple's Token? <!-- STYLE_OVERRIDE: just -->
 
 No, XRP is different from tokens. XRP is the only native asset on the XRP Ledger and is required to conduct transactions on the XRP Ledger. XRP has no counterparty, meaning that when someone holds XRP, they are not holding a liability, they are holding the actual currency, XRP. Due to this fact, _**<u>XRP CANNOT be frozen by any entity or individual</u>**_.
 

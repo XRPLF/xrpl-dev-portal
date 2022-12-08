@@ -28,7 +28,7 @@ Ripple's official RPM repository and instructions for using it have changed. If 
 
         $ sudo rpm -e ripple-repo
 
-    The `rippled-repo` package is now **DEPRECATED**. The package has been updated one last time for version 1.3.1. In the future, any changes to the repositories will require manual changes to the `ripple.repo` file.
+    The `rippled-repo` package is now **DEPRECATED**. The package has been updated one last time for version 1.3.1. In the future, any changes to the repositories will require manual changes to the `ripple.repo` file. <!-- STYLE_OVERRIDE: will -->
 
 3. Add Ripple's new yum repository:
 
@@ -66,7 +66,7 @@ Prior to version 1.3, the supported way to install `rippled` on Ubuntu Linux was
 
 If you have made any changes to your config files (`/opt/ripple/etc/rippled.cfg` and `/opt/ripple/etc/validators.txt`), `apt` may prompt you during installation asking if you want to overwrite your config files with the newest versions from the packages. Version 1.3 does not require any changes to the config file, so you can safely keep your existing config files unchanged.
 
-After installing the native APT package for 1.3, you will need to reload/restart the service:
+After installing the native APT package for 1.3, you need to reload/restart the service:
 
 1. Reload systemd unit files:
 

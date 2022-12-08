@@ -1,7 +1,7 @@
 ---
 html: get-started-using-python.html
 parent: get-started.html
-blurb: Build a simple Python app that interacts with the XRP Ledger.
+blurb: Build a Python app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 top_nav_name: Python
 top_nav_grouping: Get Started
@@ -12,7 +12,7 @@ showcase_icon: assets/img/logos/python.svg
 
 # Get Started Using Python
 
-This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using [`xrpl-py`](https://github.com/XRPLF/xrpl-py), a pure [Python](https://www.python.org) library that makes it easy to interact with the XRP Ledger using native Python models and methods.
+This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl-py`](https://github.com/XRPLF/xrpl-py), a pure [Python](https://www.python.org) library built to interact with the XRP Ledger using native Python models and methods.
 
 This tutorial is intended for beginners and should take no longer than 30 minutes to complete.
 
@@ -22,9 +22,9 @@ In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
 * How to connect to the XRP Ledger using `xrpl-py`.
-* How to generate a wallet on the [Testnet](xrp-testnet-faucet.html) using `xrpl-py`.
+* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `xrpl-py`.
 * How to use the `xrpl-py` library to look up information about an account on the XRP Ledger.
-* How to put these steps together to create a simple Python app.
+* How to put these steps together to create a Python app.
 
 ## Requirements
 
@@ -43,25 +43,24 @@ pip3 install xrpl-py
 ## Start Building
 {% set n = cycler(* range(1,99)) %}
 
-When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your [wallet](wallets.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](issued-currencies.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
+When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](accounts.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](tokens.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
 1. [Connect to the XRP Ledger.](#1-connect-to-the-xrp-ledger)
-1. [Generate a wallet.](#2-generate-wallet)
+1. [Get an account.](#2-get-account)
 1. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
 
 ### {{n.next()}}. Connect to the XRP Ledger
 
-To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
-
+To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
 
 {{ include_code("_code-samples/get-started/py/get-acct-info.py", start_with="# Define the network client", end_before="# Create a wallet using the testnet faucet:", language="py") }}
 
 #### Connect to the production XRP Ledger
 
-The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](parallel-networks.html). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
+The sample code in the previous section shows you how to connect to the Testnet, which is a [parallel network](parallel-networks.html) for testing where the money has no real value. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
 
 * By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](connect-your-rippled-to-the-xrp-test-net.html). [There are good reasons to run your own core server](xrpl-servers.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
@@ -78,17 +77,13 @@ The sample code in the previous section shows you how to connect to the Testnet,
         client = JsonRpcClient(JSON_RPC_URL)
 
 
-### {{n.next()}}. Generate wallet
+### {{n.next()}}. Get account
 
-To store value and execute transactions on the XRP Ledger, you need to create a wallet: a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger.
+To store value and execute transactions on the XRP Ledger, you need an account: a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger.
 
+For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-faucet.html) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](set-up-secure-signing.html). Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.
 
-For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-faucet.html) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](set-up-secure-signing.html).
-
-
-To make it easy to create a wallet on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
-
-
+To create and fund an account on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
 
 {{ include_code("_code-samples/get-started/py/get-acct-info.py", start_with="# Create a wallet using the testnet faucet:", end_before="# Create an account str from the wallet", language="py") }}
 
@@ -105,7 +100,7 @@ private_key:: -HIDDEN-
 classic_address: raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q
 ```
 
-#### Using the wallet
+#### Using the account
 
 In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the `Wallet` instance to prepare, sign, and submit transactions with `xrpl-py`.   
 
@@ -145,7 +140,7 @@ The X-address format [packs the address and destination tag](https://github.com/
 
 You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exchange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).  
 
-Here, we'll use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [wallet we generated](#2-generate-wallet) in the previous step.
+Here, we use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [account we got](#2-get-account) in the previous step.
 
 
 {{ include_code("_code-samples/get-started/py/get-acct-info.py", start_with="# Look up info about your account", language="py")  }}
@@ -154,9 +149,9 @@ Here, we'll use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/l
 
 ### {{n.next()}}. Putting it all together
 
-Using these building blocks, we can create a simple Python app that:
+Using these building blocks, we can create a Python app that:
 
-1. Generates a wallet on the Testnet.
+1. Gets an account on the Testnet.
 2. Connects to the XRP Ledger.
 3. Looks up and prints information about the account you created.
 
@@ -219,7 +214,7 @@ For a detailed description of every response field, see [account_info](account_i
 
 ## Keep on building
 
-Now that you know how to use `xrpl-py` to connect to the XRP Ledger, generate a wallet, and look up information about an account, you can also use `xrpl-py` to:
+Now that you know how to use `xrpl-py` to connect to the XRP Ledger, get an account, and look up information about it, you can also use `xrpl-py` to:
 
 * [Send XRP](send-xrp.html).
 * [Set up secure signing](set-up-secure-signing.html) for your account.

@@ -36,7 +36,7 @@ For a validator, consider `z1d.2xlarge` with an extra 1 TB disk for logging and 
 
 ## System Time
 
-A `rippled` server relies on maintaining accurate time. It is recommended that the system synchronize time using the Network Time Protocol (NTP) with daemons such as `ntpd` or `chrony`.
+A `rippled` server relies on maintaining the correct time. It is recommended that the system synchronize time using the Network Time Protocol (NTP) with daemons such as `ntpd` or `chrony`.
 
 
 ## See Also

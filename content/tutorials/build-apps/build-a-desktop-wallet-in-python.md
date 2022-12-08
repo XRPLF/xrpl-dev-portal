@@ -57,7 +57,7 @@ This installs and upgrades the following Python libraries:
 
 - [xrpl-py](https://xrpl-py.readthedocs.io/), a client library for the XRP Ledger. This tutorial requires **version 1.3.0 or higher**.
 - [wxPython](https://wxpython.org/), a cross-platform graphical toolkit.
-- [Requests](https://requests.readthedocs.io/), a library for easily making HTTP requests.
+- [Requests](https://requests.readthedocs.io/), a library for making HTTP requests.
 - [toml](https://github.com/uiri/toml), a library for parsing TOML-formatted files.
 
 The `requests` and `toml` libraries are only needed for the [domain verification in step 6](#6-domain-verification-and-polish), but you can install them now while you're installing other dependencies.
@@ -189,7 +189,7 @@ Still in the `XRPLMonitorThread` class, update the `on_connected()` method as fo
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="async def on_connected", end_before="class AutoGridBagSizer") }}
 
-The `on_connected()` method now subscribes to transactions for the provided account (in addition to the ledger stream). Furthermore, it now calls [account_info][account_info method] on startup, and passes the response to the GUI for display.
+The `on_connected()` method now subscribes to transactions for the provided account (and the ledger stream too). Furthermore, it now calls [account_info][account_info method] on startup, and passes the response to the GUI for display.
 
 The new GUI has a lot more fields that need to be laid out in two dimensions. The following subclass of [`wx.GridBagSizer`](https://docs.wxpython.org/wx.GridBagSizer.html) provides a quick way to do so, setting the appropriate padding and sizing values for a two-dimensional list of widgets. Add this code to the same file:
 
@@ -287,7 +287,7 @@ Have the worker use the [account_tx method][] to look up the account's transacti
 
 {{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="# Get the first page of the account's transaction history", end_before="class AutoGridBagSizer") }}
 
-**Note:** You may have to [paginate](markers-and-pagination.html) across multiple [account_tx][account_tx method] requests and responses if you want the _complete_ list of transactions that affected an account since its creation. This example does not demonstrate pagination, so the app only displays the most recent transactions to affect the account.
+**Note:** You may have to [paginate](markers-and-pagination.html) across multiple [account_tx][account_tx method] requests and responses if you want the _complete_ list of transactions that affected an account since its creation. This example does not show pagination, so the app only displays the most recent transactions to affect the account.
 
 Now, edit the `build_ui()` method of the `TWaXLFrame` class. **Update the beginning of the method** to add a new [`wx.Notebook`](https://docs.wxpython.org/wx.Notebook.html), which makes a "tabs" interface, and make the `main_panel` into the first tab, as follows:
 
@@ -498,7 +498,7 @@ One of the new checks is to decode X-addresses to pull out the additional data t
 - If the X-address includes a destination tag, show it in the destination tag field.
 - If the X-address is not intended for a test network and the app is connected to a test network (or the other way around), show an error.
 
-One tricky bit of writing handlers like this in GUI code is that you have to be ready for the handler to be called numerous times as the user inputs and erases data. For example, if you disable a field when some input is invalid, you also have to enable it if the user changes their input to be valid.
+One tricky bit of writing handlers like this in GUI code is that you have to be ready for the handler to be called many times as the user inputs and erases data. For example, if you disable a field when some input is invalid, you also have to enable it if the user changes their input to be valid.
 
 The code shows the error icons when it finds errors (and hides them when it doesn't), and adds tooltips with the error message. You could, of course, display errors to the user in another way as well, such as additional pop-up dialogs or a status bar.
 

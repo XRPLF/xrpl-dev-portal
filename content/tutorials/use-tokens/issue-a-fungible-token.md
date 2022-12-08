@@ -10,7 +10,7 @@ labels:
 ---
 # Issue a Fungible Token
 
-Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial demonstrates the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see [Issued Currencies](issued-currencies.html); for more on the business decisions involved in issuing a stablecoin, see [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html).
+Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial shows the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see [Issued Currencies](issued-currencies.html); for more on the business decisions involved in issuing a stablecoin, see [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html). <!-- STYLE_OVERRIDE: ious -->
 
 ## Prerequisites
 
@@ -459,7 +459,7 @@ As before, wait for the previous transaction to be validated by consensus before
 
 ### {{n.next()}}. Confirm Token Balances
 
-You can check the balances of your token from the perspective of either the token issuer or the hot wallet. Tokens issued in the XRP Ledger always have balances that sum to 0: negative from the perspective of the issuer and positive from the perspective of the holder.
+You can check the balances of your token from the perspective of either the token issuer or the hot address. Tokens issued in the XRP Ledger always have balances that sum to 0: negative from the perspective of the issuer and positive from the perspective of the holder.
 
 Use the [account_lines method][] to look up the balances from the perspective of the holder. This lists each trust line along with its limit, balance, and settings.
 
@@ -505,7 +505,7 @@ Now that you've created the token, you can explore how it fits into features of 
 
 ## Footnotes
 
-¹ Users can hold your token without explicitly creating a trust line if they purchase your token in the [decentralized exchange](decentralized-exchange.html). Buying a token in the exchange [automatically creates the necessary trust lines](offers.html#offers-and-trust). This is only possible if someone is selling your token in the decentralized exchange.
+¹ Users can hold your token without explicitly creating a trust line if they buy your token in the [decentralized exchange](decentralized-exchange.html). Buying a token in the exchange [automatically creates the necessary trust lines](offers.html#offers-and-trust). This is only possible if someone is selling your token in the decentralized exchange.
 
 
 <!--{# common link defs #}-->

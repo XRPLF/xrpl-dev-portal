@@ -38,7 +38,7 @@ Figure out the values of the [CheckCancel transaction][] fields. The following f
 
 ### Example CheckCancel Preparation
 
-The following examples demonstrate how to cancel a Check.
+The following examples show how to cancel a Check.
 
 <!-- MULTICODE_BLOCK_START -->
 

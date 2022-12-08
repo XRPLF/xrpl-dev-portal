@@ -104,9 +104,9 @@ For recommendations and best practices, see [Run `rippled` as a Validator](run-r
 #### If the dUNL has the most influence on the network, then is the XRPL centralized?
 Validators can choose to not use the dUNL, or any widely-used UNL for that matter. Anyone can create a new UNL at any time.
 
-There can be multiple UNLs in use on the same network. Each operator can customize their server's own UNL or choose to follow a different recommended list. All these servers can still operate on the same chain and reach consensus with one another.
+There can be multiple UNLs in use on the same network. Each operator can customize their server's own UNL or choose to follow a different recommended list. All these servers can still run the same chain and reach consensus with one another.
 
-However, if your UNL does not have sufficient overlap with the UNLs used by others, there is a risk that your server forks away from the rest of the network. As long as your UNL has > 90% overlap with the one used by people you're transacting with, you are completely safe from forking. If you have less overlap, you may still be able to follow the same chain, but the chances of forking increase with lower overlap, worse network connectivity, and the presence of unreliable or malicious validators on your UNL.
+However, if your UNL does not have enough overlap with the UNLs used by others, there is a risk that your server forks away from the rest of the network. As long as your UNL has > 90% overlap with the one used by people you're transacting with, you are completely safe from forking. If you have less overlap, you may still be able to follow the same chain, but the chances of forking increase with lower overlap, worse network connectivity, and the presence of unreliable or malicious validators on your UNL.
 
 
 ## Role of XRP

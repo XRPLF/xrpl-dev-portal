@@ -7,7 +7,7 @@ labels:
 ---
 # Run rippled as a Stock Server
 
-A stock server is a multipurpose configuration for `rippled`. With a stock server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](software-ecosystem.html) to integrate with XRP. It is also a server that you can use to connect a wallet with the XRPL.
+A stock server is a multipurpose configuration for `rippled`. With a stock server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](software-ecosystem.html) to integrate with XRP and the XRP Ledger. You can connect client applications to the XRP Ledger using this server.
 
 
 A stock server does all of the following:

@@ -221,7 +221,7 @@ async function getTokens() {
 ```
 
 
-Connect to the ledger and get the account wallet.
+Connect to the ledger and get the account.
 
 
 ```

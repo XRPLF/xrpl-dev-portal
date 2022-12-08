@@ -33,8 +33,7 @@ You assign a weight to each signer in the list. The weight represents the author
 
 The quorum value of a list is the minimum weight total required to authorize a transaction. The quorum must be greater than 0 but less than or equal to the sum of the weight values in the signer list: meaning, it must be possible to achieve a quorum with the given signer weights.
 
-### Wallet Locator
-<!-- STYLE_OVERRIDE: wallet -->
+### Wallet Locator <!-- STYLE_OVERRIDE: wallet -->
 
 You can also add up to 256 bits of arbitrary data to each signer's entry in the list. This data is not required or used by the network, but can be used by smart contracts or other applications to identify or confirm other data about the signers.
 

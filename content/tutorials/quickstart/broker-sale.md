@@ -163,7 +163,7 @@ Disconnect from the ledger.
 async function brokerSale() {
 ```
 
-Connect to the ledger and get the wallet accounts.
+Connect to the ledger and get the accounts.
 
 ```
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
@@ -225,7 +225,7 @@ Disconnect from the ledger.
 async function brCancelOffer() {
 ```
 
-Get the broker wallet and connect to the ledger. 
+Get the broker account and connect to the ledger. 
 
 ```
   const wallet = xrpl.Wallet.fromSeed(brokerSeedField.value)
@@ -359,7 +359,7 @@ Connect to the ledger.
   }
 ```
 
-Create and fund a test wallet and report progress.
+Create and fund a test account and report progress.
 
 ```
 const my_wallet = (await client.fundWallet(null, { faucetHost })).wallet
@@ -456,7 +456,7 @@ Use the `split` function to parse the values from the **Seeds** field.
   var lines = seeds.value.split('\n');
 ```
 
-Get the wallets based on the seed values.
+Derive the accounts from the seed values.
 
 ```
   const standby_wallet = xrpl.Wallet.fromSeed(lines[0])
@@ -472,7 +472,7 @@ Get the XRP balances for the accounts.
   const broker_balance = (await client.getXrpBalance(broker_wallet.address))  
 ```
 
-Populate the form fields based on the wallet values. 
+Populate the form fields based on the account values. 
 
 ```
   document.getElementById('standbyAccountField').value = standby_wallet.address
@@ -533,7 +533,7 @@ Connect with the ledger.
   document.getElementById('standbyResultField').value = results
 ```
 
-Get the wallets for each of the three accounts.
+Derive each of the three accounts.
 
 ```
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)

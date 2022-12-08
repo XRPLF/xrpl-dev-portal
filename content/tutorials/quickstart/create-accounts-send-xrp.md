@@ -169,7 +169,7 @@ Connect to the server.
 ```
 
 
-Create and fund a test account wallet.
+Create and fund a test account.
 
 
 ```
@@ -374,7 +374,7 @@ Connect to your selected ledger.
 
 ```
 
-Prepare the transaction. This is a Payment transaction from the standby wallet to the operational wallet.
+Prepare the transaction. This is a Payment transaction from the standby address to the operational address.
 
 The _Payment_ transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the `xrpToDrops()` method to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).
 

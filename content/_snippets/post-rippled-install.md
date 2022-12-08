@@ -13,7 +13,7 @@ If the `server_state` in the response is `full` or `proposing`, then your server
 
 After your server has synchronized with the rest of the network, you have a fully functional XRP Ledger peer-to-peer server that you can use to submit transactions or get API access to the XRP Ledger. See [Client Libraries](client-libraries.html) or [HTTP / WebSocket APIs](http-websocket-apis.html) for different ways to communicate with the server.
 
-If you use the XRP Ledger for your business or you just want to contribute to the stability of the network, you should run one server as a validator. For information about validating servers and why you might want to run one, see [Run rippled as a Validator](run-rippled-as-a-validator.html).
+If you use the XRP Ledger for your business or you want to contribute to the stability of the network, you should run one server as a validator. For information about validating servers and why you might want to run one, see [Run rippled as a Validator](run-rippled-as-a-validator.html).
 
 Having trouble getting your server started? See [rippled Server Won't Start](server-wont-start.html).
 

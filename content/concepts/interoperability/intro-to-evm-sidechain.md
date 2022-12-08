@@ -19,7 +19,7 @@ The EVM Sidechain is a powerful latest generation blockchain with the following 
 - Supports up to 1000 transactions per second, thus handling large loads and throughput.
 - Has a low transaction confirmation time, on average, as a block is produced every 5 seconds. 
 - Once a block is added to the chain and confirmed, it is considered final (1 block finalization time).
-- Provides full Ethereum Virtual Machine (EVM) compatibility, enabling you to connect your wallet and interact or deploy smart contracts written in Solidity.
+- Provides full Ethereum Virtual Machine (EVM) compatibility, enabling you to connect your wallet and interact or deploy smart contracts written in Solidity. <!-- STYLE_OVERRIDE: wallet -->
 
 ## Consensus
 
@@ -35,7 +35,7 @@ The blockchain uses the `cosmos-sdk` library on top of Tendermint to create and 
 
 ## Interoperability Using the EVM Sidechain
 
-The EVM sidechain is directly connected to XRP Ledger through the XRP Ledger bridge ([https://bridge.devnet.xrpl.](https://bridge.devnet.xrpl.org/). Through this bridge component, you can move your XRP to the EVM Sidechain and use its features.
+The EVM sidechain is directly connected to XRP Ledger through the XRP Ledger bridge (<https://bridge.devnet.xrpl.org/>). Through this bridge, you can move your XRP to the EVM Sidechain and use its features.
 
 ## See Also
 

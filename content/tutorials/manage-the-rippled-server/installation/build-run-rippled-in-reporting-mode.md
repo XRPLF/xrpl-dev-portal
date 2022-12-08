@@ -314,7 +314,7 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 2021-Dec-09 21:31:53.368183 UTC ReportingETL:NFO monitor : Waiting for next ledger to be validated by network...
 ```
 
-## Frequently Asked Questions
+## Frequently Asked Questions <!-- STYLE_OVERRIDE: frequently -->
 
 **Do I need to run more than one instance of `rippled` to use reporting mode?**
 
@@ -339,7 +339,7 @@ When `rippled` runs in reporting mode, it only serves validated data from the ET
 
 **Is it possible to make traditional SQL queries to the relational database rather than using the API?**
 
-Technically, you *can* directly access the database if you want. However, the data is stored as binary blobs and you have to decode the blobs to access the component fields. This makes traditional SQL queries much less useful since they cannot find and filter the individual fields of the data.
+Technically, you *can* directly access the database if you want. However, the data is stored as binary blobs and you have to decode the blobs to access the data in them. This makes traditional SQL queries much less useful since they cannot find and filter the individual fields of the data.
 
 <!--{# common link defs #}--> 
 {% include '_snippets/rippled-api-links.md' %} 

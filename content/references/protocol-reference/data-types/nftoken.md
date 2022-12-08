@@ -90,12 +90,13 @@ The third section of the `NFTokenID` is a big endian representation of the issue
 
 
 ### NFTokenTaxon
+<!-- SPELLING_IGNORE: nftokentaxon -->
 
 The fourth section is a `NFTokenTaxon` created by the issuer.
 
-![NFTokenTaxon](img/nftokend.png "NFTokenTaxon")
+![Diagram of `NFTokenTaxon` bits](img/nftokend.png)
 
-An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual NFTokenTaxon.
+An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual `NFTokenTaxon`.
 
 ![Dumb Sequential](img/nftokene.png "Dumb Sequential")
 

@@ -53,13 +53,14 @@ To mint a non-fungible token for another account:
 
 1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. 
 2. Enter the **NFToken URL**. This is a URI that points to the data or metadata associated with the NFToken object. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFToken that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
+3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFToken. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
 4. Copy the **Standby Account** value.
 5. Paste the **Standby Account** value in the Operational account **Issuer** field.
 6. Click the Operational account **Mint Other** button.
+
 [![Minted NFToken for Another Account](img/quickstart30.png)](img/quickstart30.png)
 
-Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the purchase price separately.
+Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.
 
 ## Create a Sell Offer
 
@@ -77,7 +78,7 @@ The important piece of information in the response is the NFToken Offer Index, l
 
 ## Accept Sell Offer
 
-Once a sell offer is available, you can create a new account to accept the offer and purchase the NFToken.
+Once a sell offer is available, you can create a new account to accept the offer and buy the NFToken.
 
 To accept an available sell offer:
 
@@ -85,7 +86,7 @@ To accept an available sell offer:
 1. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the NFToken offer results. This is different from the `nft_id`).
 2. Click **Accept Sell Offer**.
 
-The results show that the Issuer account has been credited 25 XRP. The Buyer account was debited the 100 XRP purchase price plus 12 drops as the transaction cost. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
+The results show that the Issuer account has been credited 25 XRP. The Buyer account was debited the 100 XRP price plus 12 drops as the transaction cost. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
 [![Transaction Results](img/quickstart32.png)](img/quickstart32.png)
 
 # Code Walkthrough
@@ -104,7 +105,7 @@ This function sets the authorized minter for an account. Each account can have 0
 async function setMinter(type) {  
 ```
 
-Connect to the ledger and get the account wallet.
+Connect to the ledger and get the account.
 
 ```javascript
   let net = getNet()
@@ -188,7 +189,7 @@ This revised mint function allows one account to mint for another issuer.
 async function mintOther() {
 ```
 
-Connect to the ledger and get the account wallet.
+Connect to the ledger and get the account.
 
 ```javascript
   results = 'Connecting to ' + getNet() + '....'
@@ -225,7 +226,8 @@ At a minimum, we recommend that you set the `tfTransferable` flag (8) to enable 
     "Flags": parseInt(standbyFlagsField.value),
 ```
 
-Transfer fee is a value 0-50000 representing .001% of the purchase price for a resale to be returned to the original issuer. For example, _25000_ translates to 25% of the purchase price to be sent to the issuer on resale.
+Transfer fee is a value 0-50000 representing .001% of the price for a resale to be returned to the original issuer. For example, _25000_ translates to 25% of the price to be sent to the issuer on resale.
+
 ```javascript
     "TransferFee": parseInt(standbyTransferFeeField.value),
 ```
@@ -236,7 +238,7 @@ The **Issuer** is the original creator of the object represented by the NFToken.
     "Issuer": standbyIssuerField.value,
 ```
 
-The NFTokenTaxon is an optional number field the issuer can use for their own purposes. The same taxon can be used for multiple tokens. Set it to 0 if you have no use for it.
+The `NFTokenTaxon` is an optional number field the issuer can use for their own purposes. The same taxon can be used for multiple tokens. Set it to 0 if you have no use for it.
 
 ```javascript
     "NFTokenTaxon": 0 //Required, but if you have no use for it, set to zero.

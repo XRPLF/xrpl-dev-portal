@@ -20,10 +20,10 @@ The scripts and config files used in this guide are [available in this website's
 In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
-* How to connect to the XRP Ledger using xrpl.js.
-* How to generate a wallet on the [Testnet](xrp-testnet-faucet.html) using xrpl.js.
+* How to connect to the XRP Ledger using `xrpl.js`.
+* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `xrpl.js`.
 * How to use the `xrpl.js` library to look up information about an account on the XRP Ledger.
-* How to put these steps together to create a simple JavaScript app or web-app.
+* How to put these steps together to create a JavaScript app or web-app.
 
 
 ## Requirements
@@ -42,13 +42,13 @@ npm install xrpl
 
 ## Start Building
 
-When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your [wallet](wallets.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](issued-currencies.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
+When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](accounts.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](tokens.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
 Here are some steps you use in many XRP Ledger projects:
 
 1. [Import the library.](#1-import-the-library)
 1. [Connect to the XRP Ledger.](#2-connect-to-the-xrp-ledger)
-1. [Generate a wallet.](#3-generate-wallet)
+1. [Get an account.](#3-get-account)
 1. [Query the XRP Ledger.](#4-query-the-xrp-ledger)
 1. [Listen for Events.](#5-listen-for-events)
 
@@ -85,7 +85,7 @@ const xrpl = require("xrpl")
 
 ### 2. Connect to the XRP Ledger
 
-To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl.js`, you create an instance of the `Client` class and use the `connect()` method.
+To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl.js`, you create an instance of the `Client` class and use the `connect()` method.
 
 **Tip:** Many network functions in `xrpl.js` use [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to return values asynchronously. The code samples here use the [`async/await` pattern](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await) to wait for the actual result of the Promises.
 
@@ -110,19 +110,19 @@ The sample code in the previous section shows you how to connect to the Testnet,
         await client.connect()
 
 
-### 3. Generate Wallet
+### 3. Get Account
 
-The `xrpl.js` library has a `Wallet` class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new wallet like this:
+The `xrpl.js` library has a `Wallet` class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new account like this:
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Create a wallet", end_before="// Get info", language="js") }}
 
-If you just want to generate keys, you can create a new Wallet instance like this:
+If you only want to generate keys, you can create a new `Wallet` instance like this:
 
 ```js
 const test_wallet = xrpl.Wallet.generate()
 ```
 
-Or, if you already have a seed encoded in [base58][], you can instantiate a Wallet from it like this:
+Or, if you already have a seed encoded in [base58][], you can make a `Wallet` instance from it like this:
 
 ```js
 const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // Test secret; don't use for real
@@ -144,7 +144,7 @@ You can set up handlers for various types of events in `xrpl.js`, such as whenev
 
 ## Keep on Building
 
-Now that you know how to use `xrpl.js` to connect to the XRP Ledger, generate a wallet, and look up information about an account, you can also:
+Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an account, and look up information about it, you can also:
 
 * [Send XRP](send-xrp.html).
 * [Issue a Fungible Token](issue-a-fungible-token.html)
