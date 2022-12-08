@@ -10,12 +10,11 @@ labels:
 
 Traditionally, an escrow is a contract between two parties to facilitate risky financial transactions. An impartial third party receives and holds funds, and only releases them to the intended recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
 
-The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met. You can specify conditions by:
+The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met. You can set an escrow to release:
 
-- Time.
-- Crypto-condition.
-- A combination of both.
-
+- When a certain amount of time passes.
+- After meeting cryptographic conditions.
+- After a combination of both.
 
 ## Escrow Lifecycle
 
@@ -47,8 +46,6 @@ The diagram shows three different cases for three possible combinations of the e
 
 
 ## Limitations
-
-Escrow is designed as a feature to enable the XRP Ledger to be used in the [Interledger Protocol][] and with other smart contracts. The current version has a modest scope to avoid complexity.
 
 - Escrow only works with XRP, not tokens.
 - The costs can make it infeasible for small amounts.
