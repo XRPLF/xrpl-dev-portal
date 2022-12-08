@@ -597,7 +597,7 @@ The `info` object may have some arrangement of the following fields:
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list will expire, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. [Updated in: rippled 1.5.0][] |
 | `cache`                             | Object          | Information on Clio's state data cache. |
 | `cache.size`                        | Number          | Number of state data objects currently in the cache. |
-| `cache.is_full`                     | Boolean         | True if cache contains all state data for a specific ledger, false otherwise. Some API calls, such as [book_offers][], process much faster when the cache is full. |
+| `cache.is_full`                     | Boolean         | True if cache contains all state data for a specific ledger, false otherwise. Some API calls, such as the [book_offers method][], process much faster when the cache is full. |
 | `cache.latest_ledger_seq`           | Number          | The [ledger index][] of the latest validated ledger stored in the cache. |
 | `etl`                               | Object          | The `rippled` sources (ETL sources) that the Clio server is connected to. This is present only if the client connects to the `Clio` server over `localhost`. |
 | `etl.etl_sources`                   | Object Array    | List the `rippled` sources (ETL sources) that the Clio server is connected to and extracts data from. |
