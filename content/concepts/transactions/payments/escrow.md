@@ -9,11 +9,11 @@ labels:
 
 A traditional escrow is a contract between two parties to facilitate risky financial transactions. Funds are sent to and held by an impartial third party, guaranteeing its availability. The funds are only released to their intended recipients when conditions specified by the contract are met. This method ensures both parties meet their obligations.
 
-The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met. You can specify conditions by:
+The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met. You can specify XRP to release:
 
-- Time.
-- Crypto-condition.
-- A combination of both.
+- When a certain amount of time passes.
+- After meeting cryptographic conditions.
+- After a combination of both.
 
 ## Escrow Lifecycle
 
