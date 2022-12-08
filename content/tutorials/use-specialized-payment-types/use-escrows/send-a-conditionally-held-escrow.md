@@ -6,8 +6,8 @@ labels:
   - Escrow
   - Smart Contracts
 ---
-# Send a Conditionally Held Escrow
-<!--> Note to Dennis: This topic is very similar to the use an escrow as a smart contract tutorial. I think the 2 pages can be merged. <-->
+# Send a Conditionally-Held Escrow
+
 ## 1. Generate condition and fulfillment
 
 XRP Ledger escrows require PREIMAGE-SHA-256 [crypto-conditions][]. To calculate a condition and fulfillment in the proper format, you should use a crypto-conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). To generate the fulfillment:
@@ -36,7 +36,6 @@ console.log('Condition:', condition)
 const fulfillment_hex = fulfillment.serializeBinary().toString('hex').toUpperCase()
 console.log('Fulfillment:', fulfillment_hex)
 ```
-<!-- 
 
 _Python_
 
@@ -53,7 +52,6 @@ print("Condition", fulfillment.condition_binary.hex().upper())
 # Keep secret until you want to finish the escrow
 print("Fulfillment", fulfillment.serialize_binary().hex().upper())
 ```
- -->
 
 <!-- MULTICODE_BLOCK_END -->
 
