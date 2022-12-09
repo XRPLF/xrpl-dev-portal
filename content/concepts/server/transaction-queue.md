@@ -1,3 +1,11 @@
+---
+html: transaction-queue.html
+parent: xrpl-servers.html
+blurb: Set up an environment where you can submit transactions securely.
+labels:
+  - Security
+  - Development
+---
 # Transaction Queue
 
 The `rippled` server uses a transaction queue to help enforce the [open ledger cost](transaction-cost.html#open-ledger-cost). The open ledger cost sets a target number of transactions in a given ledger, and escalates the required transaction cost very quickly when the open ledger surpasses this size. Rather than discarding transactions that cannot pay the escalated transaction cost, `rippled` tries to put them in a transaction queue, which it uses to build the next ledger.

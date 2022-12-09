@@ -1,12 +1,12 @@
 ---
-html: set-up-secure-signing.html
-parent: production-readiness.html
+html: secure-signing.html
+parent: transactions.html
 blurb: Set up an environment where you can submit transactions securely.
 labels:
   - Security
   - Development
 ---
-# Set Up Secure Signing
+# Secure Signing
 
 To submit [transactions](transaction-basics.html) to the XRP Ledger, you need a way to digitally sign them without compromising the security of your [secret keys](cryptographic-keys.html). (If others gain access to your secret keys, they have as much control over your accounts as you do, and can steal or destroy all your money.) This page summarizes how to set up such an environment so you can sign transactions securely.
 
