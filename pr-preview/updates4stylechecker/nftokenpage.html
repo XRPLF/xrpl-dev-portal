@@ -262,10 +262,10 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenpage-json">Example NFTokenPage JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenpage-fields">NFTokenPage Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#nftokenpage-id-format">NFTokenPage ID Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#searching-for-an-nftoken-object">Searching for an NFToken object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#adding-an-nftoken-object">Adding an NFToken object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#removing-an-nftoken-object">Removing an NFToken object</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#reserve-for-nftokenpage-object">Reserve for NFTokenPage object</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#finding-nftokens">Finding NFTokens</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#adding-nftokens">Adding NFTokens</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#removing-nftokens">Removing NFTokens</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#reserve-for-nftokenpage-objects">Reserve for NFTokenPage objects</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#the-reserve-in-practice">The reserve in practice</a></li>
       </ul>
   </div>
@@ -375,13 +375,13 @@
 <p>More specifically, a <code>NFToken</code> with the <code>NFTokenID</code> value <code>A</code> can be included in a page with <code>NFTokenPage</code> ID <code>B</code> if and only if <code>low96(A) &gt;= low96(B)</code>.</p>
 <p>This uses a function <code>low96(x)</code> which returns the low 96 bits of a 256-bit value, For example, applying the <code>low96</code> function to the <code>NFTokenID</code> of <code>000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65</code> returns the value <code>42540EE208C3098E00000D65</code>.</p>
 <p>This design allows for efficient lookups of individual <code>NFToken</code> objects without needing to check each <code>NFTokenPage</code> in a list.</p>
-<h3 id="searching-for-an-nftoken-object">Searching for an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#searching-for-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>To search for a specific <code>NFToken</code>, compute the <code>NFTokenPage</code> ID using the account of the owner and the <code>NFTokenID</code> of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, that account does not own that <code>NFToken</code>.</p>
-<h3 id="adding-an-nftoken-object">Adding an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#adding-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
+<h3 id="finding-nftokens">Finding NFTokens<a aria-hidden="true" class="hover_anchor" href="#finding-nftokens"><i class="fa fa-link"></i></a></h3>
+<p>To find a specific <code>NFToken</code>, you need to know its <code>NFTokenID</code> and current owner. Compute the <code>NFTokenPage</code> ID as described above. Search for a ledger entry whose identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, that account does not own that <code>NFToken</code>.</p>
+<h3 id="adding-nftokens">Adding NFTokens<a aria-hidden="true" class="hover_anchor" href="#adding-nftokens"><i class="fa fa-link"></i></a></h3>
 <p>To add an <code>NFToken</code>, find the <code>NFTokenPage</code> it should be in (using the same technique as searching for an <code>NFToken</code> object) and add it to that page. If the <code>NFTokenPage</code> is already full, find the previous and next pages (if any) and balance those three pages, inserting a new <code>NFTokenPage</code> as needed.</p>
-<h3 id="removing-an-nftoken-object">Removing an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#removing-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>An <code>NFToken</code> can be removed by using the same approach. If the number of <code>NFTokens</code> in the page goes below a certain threshold, the server attempts to consolidate the page with a previous or subsequent page to recover the reserve.</p>
-<h2 id="reserve-for-nftokenpage-object">Reserve for <code>NFTokenPage</code> object<a aria-hidden="true" class="hover_anchor" href="#reserve-for-nftokenpage-object"><i class="fa fa-link"></i></a></h2>
+<h3 id="removing-nftokens">Removing NFTokens<a aria-hidden="true" class="hover_anchor" href="#removing-nftokens"><i class="fa fa-link"></i></a></h3>
+<p>Removing <code>NFToken</code> objects works like adding them. If the number of <code>NFToken</code> objects in the page goes below a certain threshold, the ledger combines the page with a previous or next page if possible.</p>
+<h2 id="reserve-for-nftokenpage-objects">Reserve for NFTokenPage objects<a aria-hidden="true" class="hover_anchor" href="#reserve-for-nftokenpage-objects"><i class="fa fa-link"></i></a></h2>
 <p>Each <code>NFTokenPage</code> counts as one item towards an account's <a href="reserves.html#owner-reserves">owner reserve</a>. Since each page can hold up to 32 <code>NFToken</code> entries, the <em>effective</em> reserve cost per <code>NFToken</code> can be as low as <em>R</em>/32 where <em>R</em> is the incremental reserve.</p>
 <h3 id="the-reserve-in-practice">The reserve in practice<a aria-hidden="true" class="hover_anchor" href="#the-reserve-in-practice"><i class="fa fa-link"></i></a></h3>
 <p>Because of the way splitting and combining pages works, the actual number of <code>NFToken</code> objects per page is somewhat unpredictable and depends on the actual <code>NFTokenID</code> values involved. In practice, after minting or receiving a large number of <code>NFToken</code> objects, each page can have as few as 16 <code>NFToken</code> objects, or as many as 32, with the typical case being around 24 <code>NFToken</code> objects per page.</p>

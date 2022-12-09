@@ -304,6 +304,7 @@
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
@@ -311,12 +312,14 @@
 <tr>
 <td style="text-align: left;"><code>tx_blob</code></td>
 <td style="text-align: left;">String</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;">Hex representation of the signed transaction to submit. This can be a <a href="multi-signing.html">multi-signed transaction</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>fail_hard</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">(Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">If <code>true</code>, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is <code>false</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -401,7 +404,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td style="text-align: left;"><code>offline</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">(Optional, defaults to false) If true, when constructing the transaction, do not try to automatically fill in or validate values.</td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, when constructing the transaction, do not try to automatically fill in or validate values. The default is <code>false</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>build_path</code></td>

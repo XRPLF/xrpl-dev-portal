@@ -1,135 +1,19 @@
 -------------
 Spell Checker
 -------------
-Found 1 possible spelling errors:
-<Page 'Enact Global Freeze' (enact-global-freeze.html)> Unknown Words:
-  style_override: 
-
+No spelling mistakes found in 319 pages!
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 139 discouraged words/phrases:
-Page: <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)>
-   Discouraged word: wallet (18 instances); suggest 'address, client application, account' instead.
-Page: <Page 'Enact Global Freeze' (enact-global-freeze.html)>
-   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
-   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
-Page: <Page 'List XRP as an Exchange' (list-xrp-as-an-exchange.html)>
-   Discouraged phrase: warm wallet (2 instances); suggest 'standby address' instead.
-   Discouraged word: wallet (21 instances); suggest 'address, client application, account' instead.
-   Discouraged phrase: cold wallet (4 instances); suggest 'issuing address' instead.
-   Discouraged phrase: hot wallet (2 instances); suggest 'operational address' instead.
-Page: <Page 'Diagnosing Problems with rippled' (diagnosing-problems.html)>
-   Discouraged word: remainder (1 instances); suggest 'rest' instead.
-   Discouraged word: portion (1 instances); suggest 'part' instead.
-Page: <Page 'Health Check Interventions' (health-check-interventions.html)>
-   Discouraged word: frequently (1 instances); suggest 'often' instead.
-Page: <Page 'Understanding Log Messages' (understanding-log-messages.html)>
-   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
-   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
-Page: <Page 'rippled Server Doesn't Sync' (server-doesnt-sync.html)>
-   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
-   Discouraged word: impacted (1 instances); suggest 'affected, changed' instead.
-Page: <Page 'Fix SQLite Transaction Database Page Size Issue' (fix-sqlite-tx-db-page-size-issue.html)>
-   Discouraged word: encounter (3 instances); suggest 'meet' instead.
-   Discouraged word: easily (1 instances); suggest '(omit)' instead.
-Page: <Page 'Get Started with the EVM Sidechain' (get-started-evm-sidechain.html)>
-   Discouraged word: wallet (16 instances); suggest 'address, client application, account' instead.
-   Discouraged word: initiate (1 instances); suggest 'start' instead.
-Page: <Page 'EVM Sidechain Validator Security' (evm-sidechain-validator-security.html)>
-   Discouraged word: commence (1 instances); suggest 'begin, start' instead.
-   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
-Page: <Page 'Run a Validator Node on an EVM Sidechain' (evm-sidechain-run-a-validator-node.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
-Page: <Page 'Currency Formats' (currency-formats.html)>
-   Discouraged word: encounter (1 instances); suggest 'meet' instead.
-Page: <Page 'NFToken' (nftoken.html)>
-   Discouraged phrase: and/or (2 instances); suggest '__ or __ or both' instead.
-   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
-Page: <Page 'AccountRoot' (accountroot.html)>
-   Discouraged phrase: is authorized to (1 instances); suggest 'may' instead.
-   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
-Page: <Page 'NFTokenOffer' (nftokenoffer.html)>
-   Discouraged word: easy (1 instances); suggest '(omit)' instead.
-   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'NFTokenPage' (nftokenpage.html)>
-   Discouraged word: consolidate (1 instances); suggest 'combine, join, merge' instead.
-   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
-Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
-   Discouraged word: performed (1 instances); suggest 'done' instead.
-Page: <Page 'AccountSet' (accountset.html)>
-   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
-Page: <Page 'AMMDeposit' (ammdeposit.html)>
-   Discouraged word: performed (1 instances); suggest 'done' instead.
-   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
-   Discouraged word: portion (1 instances); suggest 'part' instead.
-Page: <Page 'AMMWithdraw' (ammwithdraw.html)>
-   Discouraged word: performed (1 instances); suggest 'done' instead.
-   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
-Page: <Page 'NFTokenAcceptOffer' (nftokenacceptoffer.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-   Discouraged phrase: the use of (1 instances); suggest '(omit)' instead.
-   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
-   Discouraged word: apparent (1 instances); suggest 'clear, plain' instead.
-Page: <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'OfferCreate' (offercreate.html)>
-   Discouraged word: remainder (1 instances); suggest 'rest' instead.
-Page: <Page 'SignerListSet' (signerlistset.html)>
-   Discouraged word: identical (1 instances); suggest 'same' instead.
-Page: <Page 'tem Codes' (tem-codes.html)>
-   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
-Page: <Page 'Migration Guide for ripple-lib 1.x to xrpl.js 2.x' (xrpljs2-migration-guide.html)>
-   Discouraged word: therefore (1 instances); suggest 'so' instead.
-   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
-   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
-Page: <Page 'Request Formatting' (request-formatting.html)>
-   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Response Formatting' (response-formatting.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Public API Methods' (public-api-methods.html)>
-   Discouraged phrase: is authorized to (1 instances); suggest 'may' instead.
-Page: <Page 'ledger' (ledger.html)>
-   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
-Page: <Page 'tx' (tx.html)>
-   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
-Page: <Page 'deposit_authorized' (deposit_authorized.html)>
-   Discouraged phrase: is authorized to (2 instances); suggest 'may' instead.
-   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
-Page: <Page 'subscribe' (subscribe.html)>
-   Discouraged word: establish (2 instances); suggest 'set up, create, prove' instead.
-Page: <Page 'manifest' (manifest.html)>
-   Discouraged word: portion (1 instances); suggest 'part' instead.
-Page: <Page 'server_info (rippled)' (server_info.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'server_state' (server_state.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'server_info' (server_info-clio.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'ledger' (ledger-clio.html)>
-   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
-Page: <Page 'wallet_propose' (wallet_propose.html)>
-   Discouraged word: simple (1 instances); suggest '(omit)' instead.
-Page: <Page 'validators' (validators.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'rippled Commandline Usage Reference' (commandline-usage.html)>
-   Discouraged word: therefore (1 instances); suggest 'so' instead.
-   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
-Page: <Page 'xrp-ledger.toml File' (xrp-ledger-toml.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-   Discouraged word: consult (1 instances); suggest 'see' instead.
-   Discouraged word: desire (1 instances); suggest 'want, wish' instead.
+No discouraged words/phrases found in 319 pages!
 ------------------
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 57.8 (Fairly Difficult)
+  Flesch Reading Ease Score: 57.9 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
-  Gunning FOG Index: Grade level 9.2
+  Gunning FOG Index: Grade level 9.1
   Automated Readability Index: Grade level 10.9
   Coleman-Liau Index: Grade level 11.6
   Linsear Write Formula: Grade level 8.5
@@ -168,8 +52,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 748
-  Characters: 4,648
+  Words: 746
+  Characters: 4,637
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

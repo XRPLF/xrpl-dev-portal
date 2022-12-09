@@ -456,7 +456,7 @@
 </table>
 <p>Any other combination of these fields is invalid.</p>
 <h3 id="single-asset-withdrawal-fee">Single Asset Withdrawal Fee<a aria-hidden="true" class="hover_anchor" href="#single-asset-withdrawal-fee"><i class="fa fa-link"></i></a></h3>
-<p>The fee for a single asset withdrawal is calculated to be the same as if you had performed a double-asset withdrawal and then used the AMM to trade all of the other asset for the one you are withdrawing. The trading fee applies to the amount you would need to trade for, but not to the rest of the withdrawal.</p>
+<p>The fee for a single asset withdrawal is calculated to be the same as if you had done a double-asset withdrawal and then used the AMM to trade all of the other asset for the one you are withdrawing. The trading fee applies to the amount you would need to trade for, but not to the rest of the withdrawal.</p>
 <!-- TODO: add a formula and example calculation(s) of single-asset withdrawal fees -->
 <h3 id="ammwithdraw-flags">AMMWithdraw Flags<a aria-hidden="true" class="hover_anchor" href="#ammwithdraw-flags"><i class="fa fa-link"></i></a></h3>
 <p>Transactions of the AMMWithdraw type support additional values in the <a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code> field</a>, as follows:</p>
@@ -514,9 +514,9 @@
 </tr>
 </tbody>
 </table>
-<p>You must specify <strong>exactly one</strong> of these flags, in addition to any <a href="transaction-common-fields.html#グローバルフラグ">global flags</a>.</p>
+<p>You must specify <strong>exactly one</strong> of these flags, plus any <a href="transaction-common-fields.html#グローバルフラグ">global flags</a>.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>In addition to errors that can occur for all transactions, AMMWithdraw transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<p>Besides errors that can occur for all transactions, AMMWithdraw transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
 <thead>
 <tr>

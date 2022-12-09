@@ -412,7 +412,7 @@ rippled -a <span class="o">[</span>OPTIONS<span class="o">]</span>
 </tr>
 <tr>
 <td style="text-align: left;"><code>--start</code></td>
-<td style="text-align: left;">Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. The functionality of those amendments is therefore available starting from the second ledger, rather than going through the full two-week <a href="amendments.html">Amendment Process</a>.</td>
+<td style="text-align: left;">Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the <a href="amendments.html">Amendment Process</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>--valid</code></td>
@@ -425,7 +425,7 @@ rippled -a <span class="o">[</span>OPTIONS<span class="o">]</span>
 </code></pre></div>
 <p>In client mode, the <code>rippled</code> executable acts as a client to another <code>rippled</code> service. (The service may be the same executable running in a separate process locally, or it could be a <code>rippled</code> server on another server.)</p>
 <p>To run in client mode, provide the <a href="request-formatting.html#commandline-format">commandline syntax</a> for one of the <a href="http-websocket-apis.html"><code>rippled</code> API</a> methods.</p>
-<p>In addition to the individual command syntax, client mode accepts the <a href="#generic-options">Generic Options</a> and the following options:</p>
+<p>Besides the individual commands, client mode accepts the <a href="#generic-options">Generic Options</a> and the following options:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -463,7 +463,7 @@ rippled -u <span class="o">[</span>OPTIONS<span class="o">]</span>
 <li>The source code for <code>rippled</code> contains a bug</li>
 <li>A unit test has a bug or has not been updated to account for new behavior</li>
 </ul>
-<p>While running unit tests, you can specify the <a href="#generic-options">Generic Options</a> in addition to any of the following options:</p>
+<p>While running unit tests, you can specify the <a href="#generic-options">Generic Options</a> and any of the following options:</p>
 <table class="table-responsive">
 <thead>
 <tr>

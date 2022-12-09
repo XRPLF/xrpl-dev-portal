@@ -767,7 +767,7 @@ rippled tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 <spa
 <li>The transaction has not been included in any ledger version, and has not been executed.</li>
 <li>The transaction was included in a ledger version that the server does not have available.</li>
 </ul>
-<p>This means that a <code>txnNotFound</code> on its own is not sufficient to know the <a href="finality-of-results.html">final outcome of a transaction</a>.</p>
+<p>This means that a <code>txnNotFound</code> on its own is not enough to know the <a href="finality-of-results.html">final outcome of a transaction</a>.</p>
 <p>To further narrow down the possibilities, you can provide a range of ledgers to search using the <code>min_ledger</code> and <code>max_ledger</code> fields in the request. If you provide <strong>both</strong> of those fields, the <code>txnNotFound</code> response includes the following field:</p>
 <table class="table-responsive">
 <thead>

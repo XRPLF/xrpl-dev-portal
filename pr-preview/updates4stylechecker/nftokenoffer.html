@@ -264,7 +264,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenoffer-transactions">NFTokenOffer Transactions</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#locating-nftokenoffer-objects">Locating NFTokenOffer objects</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-reserve">NFTokenOffer Reserve</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferid-format">NFTokenOfferID Format</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-id-format">NFTokenOffer ID Format</a></li>
       </ul>
   </div>
       </aside>
@@ -398,7 +398,8 @@
 <thead>
 <tr>
 <th>Flag Name</th>
-<th>Flag Value</th>
+<th>Hex Value</th>
+<th>Decimal Value</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -406,35 +407,29 @@
 <tr>
 <td><code>lsfSellNFToken</code></td>
 <td><code>0x00000001</code></td>
+<td>1</td>
 <td>If enabled, the offer is a sell offer. Otherwise, the offer is a buy offer.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="nftokenoffer-transactions"><code>NFTokenOffer</code> Transactions<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-transactions"><i class="fa fa-link"></i></a></h2>
-<p>Token offers on XRPL are stored sorted by quality in an order book and automatically matched by an on-ledger mechanism. An <code>NFTokenOffer</code> is not stored in an order book and is never automatically matched or executed.</p>
-<p>A buyer must <em>explicitly</em> choose to accept an <code>NFTokenOffer</code> that offers to buy an <code>NFToken</code>. Similarly, a seller must <em>explicitly</em> choose to accept a specific <code>NFTokenOffer</code> that offers to buy an <code>NFToken</code> object that they own.</p>
-<p>There are three defined transactions:</p>
-<ol>
-<li>
-<p><code>NFTokenCreateOffer</code></p>
-</li>
-<li>
-<p><code>NFTokenCancelOffer</code></p>
-</li>
-<li>
-<p><code>NFTokenAcceptOffer</code></p>
-</li>
-</ol>
-<h3 id="locating-nftokenoffer-objects">Locating <code>NFTokenOffer</code> objects<a aria-hidden="true" class="hover_anchor" href="#locating-nftokenoffer-objects"><i class="fa fa-link"></i></a></h3>
-<p>Each token has two directories. One contains offers to buy the token and the other containing offers to sell the token. This makes it easy to find <code>NFTokenOffer</code> for a particular token. It is expected that off-ledger systems will be used to retrieve, present, communicate and effectuate the creation, enumeration, acceptance or cancellation of offers. For example, a marketplace may offer intuitive web- or app-based interfaces for users.</p>
-<h3 id="nftokenoffer-reserve"><code>NFTokenOffer</code> Reserve<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-reserve"><i class="fa fa-link"></i></a></h3>
+<h2 id="nftokenoffer-transactions">NFTokenOffer Transactions<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-transactions"><i class="fa fa-link"></i></a></h2>
+<p>Unlike <a href="offers.html">Offers for fungible tokens</a>, a <code>NFTokenOffer</code> is not stored in an order book and is never automatically matched or executed. A buyer must <em>explicitly</em> choose to accept an <code>NFTokenOffer</code> that offers to buy a <code>NFToken</code>. Similarly, a seller must <em>explicitly</em> choose to accept a specific <code>NFTokenOffer</code> that offers to buy a <code>NFToken</code> object that they own.</p>
+<p>The transactions for <code>NFToken</code> trading are:</p>
+<ul>
+<li><a href="nftokencreateoffer.html">NFTokenCreateOffer</a></li>
+<li><a href="nftokencanceloffer.html">NFTokenCancelOffer</a></li>
+<li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
+</ul>
+<h3 id="locating-nftokenoffer-objects">Locating NFTokenOffer objects<a aria-hidden="true" class="hover_anchor" href="#locating-nftokenoffer-objects"><i class="fa fa-link"></i></a></h3>
+<p>Each <code>NFToken</code> has two <a href="directorynode.html">directories</a>: one contains offers to buy the token and the other contains offers to sell the token. Marketplaces or other client applications can use these directories to find and display offers to trade <code>NFToken</code> objects to users or even automatically match them and accept them.</p>
+<h3 id="nftokenoffer-reserve">NFTokenOffer Reserve<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-reserve"><i class="fa fa-link"></i></a></h3>
 <p>Each <code>NFTokenOffer</code> object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer.</p>
-<h3 id="nftokenofferid-format"><code>NFTokenOfferID</code> Format<a aria-hidden="true" class="hover_anchor" href="#nftokenofferid-format"><i class="fa fa-link"></i></a></h3>
-<p>The unique ID (<code>NFTokenOfferID</code>) of the <code>NFTokenOffer</code> object is the result of the following values concatenated in order:</p>
+<h3 id="nftokenoffer-id-format">NFTokenOffer ID Format<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-id-format"><i class="fa fa-link"></i></a></h3>
+<p>The unique ID (<code>NFTokenOfferID</code>) of a <code>NFTokenOffer</code> object is the result of the following values concatenated in order:</p>
 <ul>
 <li>The <code>NFTokenOffer</code> space key, <code>0x0074</code>;</li>
 <li>The <code>AccountID</code> of the account placing the offer; and</li>
-<li>The <code>Sequence</code> (or <code>Ticket</code>) of the <code>NFTokenCreateOffer</code> transaction that will create the <code>NFTokenOffer</code>.</li>
+<li>The <code>Sequence</code> (or <code>Ticket</code>) of the <code>NFTokenCreateOffer</code> transaction that created the <code>NFTokenOffer</code>.</li>
 </ul>
 <!-- -->
 <!-- -->

@@ -388,14 +388,14 @@
 <p>The following parameters are deprecated and may be removed without further notice: <code>user</code>, <code>password</code>, <code>rt_accounts</code>.</p>
 <p>The <code>streams</code> parameter provides access to the following default streams of information:</p>
 <ul>
-<li><code>consensus</code> - Sends a message whenever the server changes phase in the consensus cycle (open, establish, accepted, and so forth)</li>
-<li><code>ledger</code> - Sends a message whenever the consensus process declares a new validated ledger</li>
+<li><code>consensus</code> - Sends a message whenever the server changes phase in the consensus cycle.</li>
+<li><code>ledger</code> - Sends a message whenever the consensus process declares a new validated ledger.</li>
 <li><code>manifests</code> - Sends a message whenever the server receives an update to a validator's ephemeral signing key.</li>
 <li><code>peer_status</code> - <strong>(Admin only)</strong> Information about connected peer <code>rippled</code> servers, especially with regards to the consensus process.</li>
-<li><code>transactions</code> - Sends a message whenever a transaction is included in a closed ledger</li>
+<li><code>transactions</code> - Sends a message whenever a transaction is included in a closed ledger.</li>
 <li><code>transactions_proposed</code> - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation.
     <strong>Note:</strong> <a href="transaction-results.html">Even some transactions that don't succeed are included</a> in validated ledgers, because they take the anti-spam transaction fee.</li>
-<li><code>server</code> - Sends a message whenever the status of the <code>rippled</code> server (for example, network connectivity) changes</li>
+<li><code>server</code> - Sends a message whenever the status of the <code>rippled</code> server (for example, network connectivity) changes.</li>
 <li><code>validations</code> - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual <code>rippled</code> declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)</li>
 </ul>
 <p class="devportal-callout note"><strong>Note:</strong> The following streams are not available from servers in <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>: <code>server</code>, <code>peer_status</code>, <code>consensus</code>. Reporting Mode servers return the error <code>reportingUnsupported</code> if you request one of these streams. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
@@ -1106,7 +1106,7 @@
 <tr>
 <td style="text-align: left;"><code>consensus</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The new consensus phase the server is in. Possible values are open, establish, and accepted.</td>
+<td style="text-align: left;">The new consensus phase the server is in. Possible values are <code>open</code>, <code>establish</code>, and <code>accepted</code>.</td>
 </tr>
 </tbody>
 </table>
