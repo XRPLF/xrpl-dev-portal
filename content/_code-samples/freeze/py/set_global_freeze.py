@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountSet, AccountSetFlag
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
+from xrpl.transaction import (autofill_and_sign,
                               send_reliable_submission)
 from xrpl.wallet import generate_faucet_wallet
 
@@ -18,7 +18,7 @@ accountset = AccountSet(account=sender_wallet.classic_address,
 print("Preparing and submitting Account set transaction with ASF_GLOBAL_FREEZE ...")
 
 # Sign and submit transaction
-stxn = safe_sign_and_autofill_transaction(accountset, sender_wallet, client)
+stxn = autofill_and_sign(accountset, sender_wallet, client)
 stxn_response = send_reliable_submission(stxn, client)
 
 # Parse response for result

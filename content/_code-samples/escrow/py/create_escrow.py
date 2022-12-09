@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 from xrpl.clients import JsonRpcClient
 from xrpl.models import EscrowCreate
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
+from xrpl.transaction import (autofill_and_sign,
                               send_reliable_submission)
 from xrpl.utils import datetime_to_ripple_time, xrp_to_drops
 from xrpl.wallet import generate_faucet_wallet
@@ -39,7 +39,7 @@ create_txn = EscrowCreate(
     condition=condition)
 
 # Sign and send transaction 
-stxn = safe_sign_and_autofill_transaction(create_txn, sender_wallet, client)
+stxn = autofill_and_sign(create_txn, sender_wallet, client)
 stxn_response = send_reliable_submission(stxn, client)
 
 # Return result of transaction

@@ -33,9 +33,9 @@ my_tx_payment = Payment(
 print(my_tx_payment)
 
 # Sign the transaction
-from xrpl.transaction import safe_sign_and_autofill_transaction
+from xrpl.transaction import autofill_and_sign
 
-my_tx_payment_signed = safe_sign_and_autofill_transaction(my_tx_payment, test_wallet, client)
+my_tx_payment_signed = autofill_and_sign(my_tx_payment, test_wallet, client)
 
 # Print signed tx
 print("Signed tx:", my_tx_payment_signed)

@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCreate, IssuedCurrencyAmount
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
+from xrpl.transaction import (autofill_and_sign,
                               send_reliable_submission)
 from xrpl.utils import datetime_to_ripple_time, str_to_hex, xrp_to_drops
 from xrpl.wallet import generate_faucet_wallet
@@ -34,7 +34,7 @@ send_max=IssuedCurrencyAmount(
     expiration=expiry_date)
 
 # Sign, submit transaction and wait for result
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
+stxn = autofill_and_sign(check_txn, sender_wallet, client)
 stxn_response = send_reliable_submission(stxn, client)
 
 # Parse response for result
@@ -67,7 +67,7 @@ check_txn = CheckCreate(account=sender_wallet.classic_address,
         expiration=expiry_date)
 
 # Sign, submit transaction and wait for result
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
+stxn = autofill_and_sign(check_txn, sender_wallet, client)
 stxn_response = send_reliable_submission(stxn, client)
 
 # Parse response for result

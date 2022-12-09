@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCash, IssuedCurrencyAmount
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
+from xrpl.transaction import (autofill_and_sign,
                               send_reliable_submission)
 from xrpl.utils import str_to_hex, xrp_to_drops
 from xrpl.wallet import generate_faucet_wallet
@@ -24,7 +24,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=xrp_to_drops(amount))
 
 # Sign transaction
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
+stxn = autofill_and_sign(check_txn, sender_wallet, client)
 
 # Submit transaction and wait for result
 stxn_response = send_reliable_submission(stxn, client)
@@ -61,7 +61,7 @@ check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, 
     value=amount))
 
 # Sign transaction
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
+stxn = autofill_and_sign(check_txn, sender_wallet, client)
 
 # Submit transaction and wait for result
 stxn_response = send_reliable_submission(stxn, client)

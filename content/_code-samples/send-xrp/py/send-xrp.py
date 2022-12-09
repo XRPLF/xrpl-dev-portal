@@ -1,6 +1,6 @@
 # Example Credentials ----------------------------------------------------------
 from xrpl.wallet import Wallet
-test_wallet = Wallet(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9", sequence=16237283)
+test_wallet = Wallet.from_seed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9")
 print(test_wallet.classic_address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
 
 # Connect ----------------------------------------------------------------------
@@ -24,7 +24,7 @@ my_payment = xrpl.models.transactions.Payment(
 print("Payment object:", my_payment)
 
 # Sign transaction -------------------------------------------------------------
-signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
+signed_tx = xrpl.transaction.autofill_and_sign(
         my_payment, test_wallet, client)
 max_ledger = signed_tx.last_ledger_sequence
 tx_id = signed_tx.get_hash()

@@ -25,7 +25,7 @@ cold_settings_tx = xrpl.models.transactions.AccountSet(
     domain=bytes.hex("example.com".encode("ASCII")),
     set_flag=xrpl.models.transactions.AccountSetFlag.ASF_DEFAULT_RIPPLE,
 )
-cst_prepared = xrpl.transaction.safe_sign_and_autofill_transaction(
+cst_prepared = xrpl.transaction.autofill_and_sign(
     transaction=cold_settings_tx,
     wallet=cold_wallet,
     client=client,
@@ -40,7 +40,7 @@ hot_settings_tx = xrpl.models.transactions.AccountSet(
     account=hot_wallet.classic_address,
     set_flag=xrpl.models.transactions.AccountSetFlag.ASF_REQUIRE_AUTH,
 )
-hst_prepared = xrpl.transaction.safe_sign_and_autofill_transaction(
+hst_prepared = xrpl.transaction.autofill_and_sign(
     transaction=hot_settings_tx,
     wallet=hot_wallet,
     client=client,
@@ -60,7 +60,7 @@ trust_set_tx = xrpl.models.transactions.TrustSet(
         value="10000000000", # Large limit, arbitrarily chosen
     )
 )
-ts_prepared = xrpl.transaction.safe_sign_and_autofill_transaction(
+ts_prepared = xrpl.transaction.autofill_and_sign(
     transaction=trust_set_tx,
     wallet=hot_wallet,
     client=client,
@@ -81,7 +81,7 @@ send_token_tx = xrpl.models.transactions.Payment(
         value=issue_quantity
     )
 )
-pay_prepared = xrpl.transaction.safe_sign_and_autofill_transaction(
+pay_prepared = xrpl.transaction.autofill_and_sign(
     transaction=send_token_tx,
     wallet=cold_wallet,
     client=client,

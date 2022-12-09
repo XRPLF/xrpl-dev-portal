@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import AccountSet, AccountSetFlag
-from xrpl.transaction import safe_sign_and_autofill_transaction, submit_transaction
+from xrpl.transaction import autofill_and_sign, submit_transaction
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountInfo
 
@@ -27,7 +27,7 @@ tx = AccountSet(
 print(f"Prepared transaction: {tx}")
 
 # Sign the transaction
-my_tx_payment_signed = safe_sign_and_autofill_transaction(tx, wallet=test_wallet, client=client)
+my_tx_payment_signed = autofill_and_sign(tx, wallet=test_wallet, client=client)
 print(f"Transaction Hash: {my_tx_payment_signed.txn_signature}")
 
 # Send the transaction to the node

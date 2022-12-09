@@ -1,7 +1,7 @@
 from xrpl.wallet import Wallet, generate_faucet_wallet
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCancel
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
+from xrpl.transaction import (autofill_and_sign,
                               send_reliable_submission)
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the testnetwork
@@ -20,7 +20,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 check_txn = CheckCancel(account=sender_wallet.classic_address, check_id=check_id)
 
 # Sign and submit transaction
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
+stxn = autofill_and_sign(check_txn, sender_wallet, client)
 stxn_response = send_reliable_submission(stxn, client)
 
 # Parse response for result

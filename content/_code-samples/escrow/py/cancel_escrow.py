@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import EscrowCancel
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
+from xrpl.transaction import (autofill_and_sign,
                               send_reliable_submission)
 from xrpl.wallet import generate_faucet_wallet
 
@@ -18,7 +18,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 cancel_txn = EscrowCancel(account=sender_wallet.classic_address, owner=sender_wallet.classic_address, offer_sequence=escrow_sequence)
 
 # Sign and submit transaction
-stxn = safe_sign_and_autofill_transaction(cancel_txn, sender_wallet, client)
+stxn = autofill_and_sign(cancel_txn, sender_wallet, client)
 stxn_response = send_reliable_submission(stxn, client)
 
 # Parse response and return result

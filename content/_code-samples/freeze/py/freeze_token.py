@@ -1,7 +1,7 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import IssuedCurrencyAmount, TrustSet
 from xrpl.models.transactions import TrustSetFlag
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
+from xrpl.transaction import (autofill_and_sign,
                               send_reliable_submission)
 from xrpl.wallet import generate_faucet_wallet
 
@@ -26,7 +26,7 @@ trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCu
     flags=TrustSetFlag.TF_SET_FREEZE) 
 
 # Sign transaction
-stxn = safe_sign_and_autofill_transaction(trustset, sender_wallet, client)
+stxn = autofill_and_sign(trustset, sender_wallet, client)
 
 print("Now setting a trustline with the TF_SET_FREEZE flag enabled...")
 

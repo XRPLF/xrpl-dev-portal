@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import IssuedCurrencyAmount, TrustSet, TrustSetFlag
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
+from xrpl.transaction import (autofill_and_sign,
                               send_reliable_submission)
 from xrpl.wallet import generate_faucet_wallet
 
@@ -33,7 +33,7 @@ flags=TrustSetFlag.TF_CLEAR_FREEZE)
 print("prepared and submitting TF_CLEAR_FREEZE transaction")
 
 # Sign and Submit transaction
-stxn = safe_sign_and_autofill_transaction(trustset, sender_wallet, client)
+stxn = autofill_and_sign(trustset, sender_wallet, client)
 stxn_response = send_reliable_submission(stxn, client)
 
 # Parse response for result

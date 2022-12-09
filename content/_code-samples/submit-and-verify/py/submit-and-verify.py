@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import AccountSet
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import autofill_and_sign, send_reliable_submission
 from xrpl.wallet import Wallet, generate_faucet_wallet
 
 # Connect to a testnet node
@@ -17,7 +17,7 @@ tx = AccountSet(
 )
 
 # Sign the transaction locally
-my_tx_payment_signed = safe_sign_and_autofill_transaction(transaction=tx, wallet=test_wallet, client=client)
+my_tx_payment_signed = autofill_and_sign(transaction=tx, wallet=test_wallet, client=client)
 # Submit transaction and verify its validity on the ledger
 response = send_reliable_submission(transaction=my_tx_payment_signed, client=client)
 result = response.result["meta"]["TransactionResult"]
