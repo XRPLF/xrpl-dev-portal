@@ -8,7 +8,7 @@ status: not_enabled
 ---
 # EVM Sidechain Validator Security
 
-Each validator candidate is encouraged to run its operations independently, as diverse setups increase the resilience of the network. Validator candidates should commence their setup phase now, in order to be on time for launch.
+Each validator candidate is encouraged to run its operations independently, as diverse setups increase the resilience of the network. Validator candidates should begin their setup phase now, to be on time for launch.
 
 ## Horcrux
 
@@ -22,7 +22,7 @@ For information on how to upgrade your validator infrastructure with Horcrux, re
 
 ## Tendermint KMS
 
-Tendermint KMS is a signature service with support for Hardware Security Modules (HSMs), such as YubiHSM 2 and Ledger Nano. It is intended to be run alongside XRP Ledger EVM Sidechain validators, ideally on separate physical hosts, providing defense-in-depth for online validator signing keys, double signing protection, and a central signing service that can be used when operating multiple validators in several zones. <!-- SPELLING_IGNORE: kms, hsms, yubihsm, yubikey -->
+Tendermint KMS is a signature service with support for Hardware Security Modules (HSMs), such as YubiHSM 2 and Ledger Nano. It is intended to be run alongside XRP Ledger EVM Sidechain validators, ideally on separate physical hosts, providing defense-in-depth for online validator signing keys, double signing protection, and a central signing service that can be used when running multiple validators in several zones. <!-- SPELLING_IGNORE: kms, hsms, yubihsm, yubikey -->
 
 ## Hardware Security Modules (HSM)
 
@@ -30,7 +30,7 @@ You must ensure that an attacker cannot steal a validator's key. Otherwise, the 
 
 HSMs must support **`ed25519` signatures for Evmos**. The [YubiHSM 2](https://www.yubico.com/products/hardware-security-module/) supports `ed25519` and can be used with this YubiKey [library](https://github.com/iqlusioninc/yubihsm.rs). <!-- SPELLING_IGNORE: evmos -->
 
-**IMPORTANT**: The YubiHSM can protect a private key but **cannot ensure** in a secure setting that it will not sign the same block twice.
+**IMPORTANT**: The YubiHSM can protect a private key but **cannot ensure** in a secure setting that it will not sign the same block twice. <!-- STYLE_OVERRIDE: will -->
 
 ## Sentry Nodes (DDOS Protection)
 
@@ -38,11 +38,11 @@ Validators are responsible for ensuring that the network can sustain denial of s
 
 One recommended way to mitigate these risks is for validators to carefully structure their network topology in a sentry node architecture.
 
-Validator nodes should only connect to full-nodes they trust; either they operate these nodes themselves, or the nodes are run by other validator administrators they know personally. A validator node typically runs in a data center. Most data centers provide direct links to the networks of major cloud providers. The validator can use those links to connect to sentry nodes in the cloud. This shifts the burden of denial-of-service from the validator's node directly to its sentry nodes, and might require new sentry nodes be spun up or activated to mitigate attacks on existing ones.
+Validator nodes should only connect to full-nodes they trust; either they run these nodes themselves, or the nodes are run by other validator administrators they know personally. A validator node typically runs in a data center. Most data centers provide direct links to the networks of major cloud providers. The validator can use those links to connect to sentry nodes in the cloud. This shifts the burden of denial-of-service from the validator's node directly to its sentry nodes, and might require new sentry nodes be spun up or activated to mitigate attacks on existing ones.
 
 Sentry nodes can be quickly spun up or change their IP addresses. Because the links to the sentry nodes are in private IP space, an internet-based attacked cannot disturb them directly. This ensures that the validator's block proposals and votes always make it to the rest of the network.
 
-To setup your sentry node architecture:
+To set up your sentry node architecture:
 
 1. Edit your validator node's `config.toml` file:
 

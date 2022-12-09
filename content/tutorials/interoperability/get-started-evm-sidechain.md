@@ -11,6 +11,7 @@ status: not_enabled
 This getting started tutorial walks you through the steps to set up your account and transfer funds using the EVM sidechain bridge. 
 
 ## 1. Create an Account Using an EVM Compatible Wallet
+<!-- STYLE_OVERRIDE: wallet -->
 
 In order to interact with the network, you need to create an account in the EVM sidechain. To create and manage this account you can use any EVM compatible wallet such as MetaMask.
 
@@ -61,7 +62,7 @@ To connect a MetaMask wallet to the bridge, go to the [EVM Sidechain bridge](htt
 
 ![Connect MetaMask Wallet](img/evm-sidechain-connect-metamask.png "Connect MetaMask wallet")
 
-### 2. Initiate the Transfer of Funds 
+### 2. Start the Transfer of Funds 
 
 Now that both Xumm and MetaMask wallets are connected to the bridge, you can select the direction of the bridge, the amount to send, and the destination address.
 
@@ -71,7 +72,7 @@ Now that both Xumm and MetaMask wallets are connected to the bridge, you can sel
     - Commission: The bridge applies a commission for every transaction completed. This is to prevent spam and distributed denial of service attacks (DDOS).
 - **Destination address**: The address on the destination chain where you want to receive funds.
 
-    ![Initiate the transaction](img/evm-sidechain-initiate-transfer.png "Initiate the transaction")
+    ![Start the transaction](img/evm-sidechain-initiate-transfer.png "Start the transaction")
 
 Enter the details for your transaction and click **Transfer**. Review the details of the transaction carefully before accepting the transaction in the corresponding wallet. 
 

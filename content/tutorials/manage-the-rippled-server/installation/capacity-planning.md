@@ -119,7 +119,8 @@ Each server in the XRP Ledger network performs all of the transaction processing
 
 See [System Requirements](system-requirements.html) for a summary of the recommended hardware specs.
 
-#### CPU Utilization and Virtualization <!-- STYLE_OVERRIDE: utilization -->
+#### CPU Utilization and Virtualization
+<!-- STYLE_OVERRIDE: utilization -->
 
 You'll get the best performance on bare metal, but virtual machines can perform nearly as well as long as the host hardware has high enough specs.
 

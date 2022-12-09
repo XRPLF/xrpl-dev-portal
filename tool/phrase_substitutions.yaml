@@ -4,6 +4,7 @@ hot wallet: operational address
 market maker: liquidity provider
 warm wallet: standby address
 ripple network: Ripple Consensus Ledger, Ripple peer-to-peer network
+defaults to: the default is
 
 #Plainlanguage.gov guidelines (adapted)
 and/or: __ or __ or both

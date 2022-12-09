@@ -178,7 +178,7 @@ These two types of messages often occur together, when a long-running job causes
 
 It is **normal** to display several messages of these types **during the first few minutes** after starting the server.
 
-If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have sufficient resources, such as disk I/O, RAM, or CPU**. This may be caused by not having sufficiently-powerful hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
+If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have enough disk I/O, RAM, or CPU**. This may be caused by not having powerful enough hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
 
 Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). Ripple recommends always using SSD storage for `rippled`'s databases, but you _may_ be able to run `rippled` successfully on rotational disks using RocksDB. If you are using rotational disks, make sure both the `[node_db]` and the `[shard_db]` (if you have one) are configured to use RocksDB. For example:
 
@@ -265,20 +265,13 @@ If the server falls out of sync while running online deletion, it interrupts onl
 
 ## Shard: No such file or directory
 
-A bug in `rippled` 1.3.1 can cause it to write log messages such as the following when you have [history sharding](history-sharding.html) enabled:
+Log messages such as the following can occur when you have [history sharding](history-sharding.html) enabled:
 
 ```text
 ShardStore:ERR shard 1804: No such file or directory
-ShardStore:ERR shard 354: No such file or directory
-ShardStore:ERR shard 408: No such file or directory
-ShardStore:ERR shard 2927: No such file or directory
-ShardStore:ERR shard 2731: No such file or directory
-ShardStore:ERR shard 2236: No such file or directory
 ```
 
-This indicates that the server tried to start acquiring a new history shard, but it failed to create a new directory to hold the shard. This bug prevents rippled 1.3.1 from acquiring new shards. [A fix is forthcoming.](https://github.com/ripple/rippled/pull/3014)
-
-Aside from the bug, this error can also occur if `rippled` became unable to write to the underlying file system **after startup**. Possible causes include:
+This indicates that the server tried to start acquiring a new history shard, but it cannot write to the underlying file system. Possible causes include:
 
 - Hardware failure of storage media
 - The file system became unmounted

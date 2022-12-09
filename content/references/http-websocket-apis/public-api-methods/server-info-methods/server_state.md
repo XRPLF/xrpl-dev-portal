@@ -308,7 +308,7 @@ The `state` object may have some arrangement of the following fields:
 | `validated_ledger.reserve_inc`   | Number          | The [owner reserve](reserves.html) for each item an account owns, as of the most recent validated ledger version. |
 | `validated_ledger.seq`           | Number          | The [ledger index][] of the most recently validated ledger version. |
 | `validation_quorum`              | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
-| `validator_list_expires`         | Number          | _(Admin only)_ When the current validator list will expire, in [seconds since the Ripple Epoch][], or 0 if the server has yet to load a published validator list. [New in: rippled 0.80.1][] |
+| `validator_list_expires`         | Number          | _(Admin only)_ When the current validator list expires, in [seconds since the Ripple Epoch][], or 0 if the server has yet to load a published validator list. [New in: rippled 0.80.1][] |
 
 [Reporting mode]: rippled-server-modes.html
 

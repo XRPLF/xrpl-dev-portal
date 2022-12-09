@@ -48,7 +48,7 @@ The `AccountRoot` object has the following fields:
 | `LedgerEntryType`             | String    | UInt16            | Yes       | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this is an AccountRoot object. |
 | `MessageKey`                  | String    | Blob              | No        | A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. |
 | `MintedNFTokens`              | Number    | UInt32            | No        | How many total [non-fungible tokens](non-fungible-tokens.html) have been minted by and on behalf of this account. |
-| `NFTokenMinter`               | String    | AccountID         | No        | Another account that is authorized to mint [non-fungible tokens](non-fungible-tokens.html) on behalf of this account. |
+| `NFTokenMinter`               | String    | AccountID         | No        | Another account that can mint [non-fungible tokens](non-fungible-tokens.html) on behalf of this account. |
 | `OwnerCount`                  | Number    | UInt32            | Yes       | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
 | `PreviousTxnID`               | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq`           | Number    | UInt32            | Yes       |The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
@@ -85,7 +85,7 @@ AccountRoot objects can have the following flag values:
 
 {% include '_snippets/amm-disclaimer.md' %}
 
-Automated Market Makers (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, in addition to the [AMM object][] for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:
+Automated Market Makers (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, and an [AMM object][] for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:
 
 - `lsfAMM` **enabled**. This indicates that the AccountRoot is part of an AMM and is not a regular account.
 - `lsfDisableMaster` **enabled** and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.

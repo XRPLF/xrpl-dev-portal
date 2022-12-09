@@ -54,7 +54,7 @@ const xrpl = require("xrpl");
 
 ## Validated Results
 
-By default, most methods in ripple-lib 1.x only returned results that were validated by the [consensus process](consensus.html) and therefore final. The xrpl.js equivalents of many methods use the [`Client.request()` method](https://js.xrpl.org/classes/Client.html#request) to call the WebSocket API, where the XRP Ledger server's default settings often use the current (pending) ledger to serve data which is not final.
+By default, most methods in ripple-lib 1.x only returned results that were validated by the [consensus process](consensus.html) and therefore final. <!-- STYLE_OVERRIDE: therefore --> The xrpl.js equivalents of many methods use the [`Client.request()` method](https://js.xrpl.org/classes/Client.html#request) to call the WebSocket API, where the XRP Ledger server's default settings often use the current (pending) ledger to serve data which is not final.
 
 Sometimes you want to use the current open ledger because it has the pending results of many transactions that are likely to succeed, such as when looking up the state of the [decentralized exchange](decentralized-exchange.html). In other cases, you want to use a validated ledger, which only incorporates the results of transactions that are finalized.
 
@@ -140,6 +140,7 @@ const prepared = await client.autofill({
 
 
 ## Keys and Wallets
+<!-- STYLE_OVERRIDE: wallet -->
 
 xrpl.js 2.0 introduces a new [`Wallet` class](https://js.xrpl.org/classes/Wallet.html) for managing [cryptographic keys](cryptographic-keys.html) and signing transactions. This replaces functions that took seed or secret values in ripple-lib 1.x, and handles various address encoding and generation tasks as well.
 
@@ -209,7 +210,7 @@ const signed = wallet.sign(tx_json)
 
 ## Events and Subscriptions
 
-In 1.x, you could subscribe to ledger events and API errors using the `.on()` method of the `RippleAPI` class; or you could subscribe to specific WebSocket message types using `.connection.on()`. These have been merged into the [`Client.on()` method](https://js.xrpl.org/classes/Client.html#on). Additionally, the client library no longer automatically subscribes to ledger close events when connecting to an XRP Ledger server, so **you must explicitly subscribe to the ledger stream** to get ledger close events in addition to adding a handler.
+In 1.x, you could subscribe to ledger events and API errors using the `.on()` method of the `RippleAPI` class; or you could subscribe to specific WebSocket message types using `.connection.on()`. These have been merged into the [`Client.on()` method](https://js.xrpl.org/classes/Client.html#on). Additionally, the client library no longer automatically subscribes to ledger close events when connecting to an XRP Ledger server. To get ledger close events, you still add a handler, but **you must also explicitly subscribe to the ledger stream**.
 
 To subscribe to ledger close events, use `Client.request(method)` to call the [subscribe method][] with `"streams": ["ledger"]`. To attach event handlers, use `Client.on(event_type, callback)`. You can make these calls in either order.
 

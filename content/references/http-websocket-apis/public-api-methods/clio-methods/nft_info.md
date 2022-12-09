@@ -48,8 +48,10 @@ The request contains the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. If you do not specify this field, it defaults to `validated`. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. If you do not specify this field, it defaults to `validated`. Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers][]) | 
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers][]) |
+
+If you do not specify a ledger version, Clio uses the latest validated ledger.
 
 ## Response Format
 

@@ -86,7 +86,7 @@ The following options determine which ledger to load first when starting up. The
 | `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided [`ledger-file.json`]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_api-examples/rippled-cli/ledger-file.json). |
 | `--load`              | **DEPRECATED** Intended for debugging. Only load the initial ledger from the ledger store on disk. |
 | `--replay`            | Intended for debugging. Use with `--ledger` to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
-| `--start`             | Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. The functionality of those amendments is therefore available starting from the second ledger, rather than going through the full two-week [Amendment Process](amendments.html). |
+| `--start`             | Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the [Amendment Process](amendments.html). |
 | `--valid`            | **DEPRECATED** Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network. |
 
 ## Client Mode Options
@@ -99,7 +99,7 @@ In client mode, the `rippled` executable acts as a client to another `rippled` s
 
 To run in client mode, provide the [commandline syntax](request-formatting.html#commandline-format) for one of the [`rippled` API](http-websocket-apis.html) methods.
 
-In addition to the individual command syntax, client mode accepts the [Generic Options](#generic-options) and the following options:
+Besides the individual commands, client mode accepts the [Generic Options](#generic-options) and the following options:
 
 | Option                  | Description                                        |
 |:------------------------|:---------------------------------------------------|
@@ -131,7 +131,7 @@ If unit testing reports a failure, that generally indicates one of the following
 - The source code for `rippled` contains a bug
 - A unit test has a bug or has not been updated to account for new behavior
 
-While running unit tests, you can specify the [Generic Options](#generic-options) in addition to any of the following options:
+While running unit tests, you can specify the [Generic Options](#generic-options) and any of the following options:
 
 | Option                             | Short Version | Description             |
 |:-----------------------------------|:--------------|:------------------------|

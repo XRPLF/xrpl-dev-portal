@@ -69,22 +69,22 @@ This uses a function `low96(x)` which returns the low 96 bits of a 256-bit value
 This design allows for efficient lookups of individual `NFToken` objects without needing to check each `NFTokenPage` in a list.
 
 
-### Searching for an `NFToken` object
+### Finding NFTokens
 
-To search for a specific `NFToken`, compute the `NFTokenPage` ID using the account of the owner and the `NFTokenID` of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an `NFTokenPage`, that account does not own that `NFToken`.
+To find a specific `NFToken`, you need to know its `NFTokenID` and current owner. Compute the `NFTokenPage` ID as described above. Search for a ledger entry whose identifier is less than or equal to that value. If that entry does not exist or is not an `NFTokenPage`, that account does not own that `NFToken`.
 
 
-### Adding an `NFToken` object
+### Adding NFTokens
 
 To add an `NFToken`, find the `NFTokenPage` it should be in (using the same technique as searching for an `NFToken` object) and add it to that page. If the `NFTokenPage` is already full, find the previous and next pages (if any) and balance those three pages, inserting a new `NFTokenPage` as needed.
 
 
-### Removing an `NFToken` object
+### Removing NFTokens
 
-An `NFToken` can be removed by using the same approach. If the number of `NFTokens` in the page goes below a certain threshold, the server attempts to consolidate the page with a previous or subsequent page to recover the reserve.
+Removing `NFToken` objects works like adding them. If the number of `NFToken` objects in the page goes below a certain threshold, the ledger combines the page with a previous or next page if possible.
 
 
-## Reserve for `NFTokenPage` object
+## Reserve for NFTokenPage objects
 
 Each `NFTokenPage` counts as one item towards an account's [owner reserve](reserves.html#owner-reserves). Since each page can hold up to 32 `NFToken` entries, the _effective_ reserve cost per `NFToken` can be as low as _R_/32 where _R_ is the incremental reserve.
 

@@ -36,13 +36,13 @@ exrpd tx staking create-validator \
 **Note** When specifying commission parameters, the `commission-max-change-rate` is used to measure % *point* change over the `commission-rate`. For example, 1% to 2% is a 100% rate increase, but only 1 percentage point.
 
 
-**Note** `Min-self-delegation` is a strictly positive integer that represents the minimum amount of self-delegated voting power your validator must always have. A `min-self-delegation` of `1000000` means your validator will never have a self-delegation lower than `1 axrp`.
+**Note** `Min-self-delegation` is a strictly positive integer that represents the minimum amount of self-delegated voting power your validator must always have. A `min-self-delegation` of `1000000` means your validator will never have a self-delegation lower than `1 axrp`. <!-- STYLE_OVERRIDE: will -->
 
 You can confirm that you are in the validator set by using a third-party explorer.
 
 ## Edit Validator Description
 
-You can edit your validator's public description. This info identifies your validator, and _delegators_ use it when they decide to stake XRP tokens to a particular validator. Make sure to provide input for every flag below. If a flag is not included in the command, the field defaults to empty (`--moniker` defaults to the machine name), if the field has never been set, or remains the same, if it has been set in the past. <!-- SPELLING_IGNORE: delegators -->
+You can edit your validator's public description. This info identifies your validator, and _delegators_ use it when they decide to stake XRP tokens to a particular validator. Make sure to provide input for every flag below. If a flag is not included in the command, the field defaults to empty (`--moniker` defaults to the machine name), if the field has never been set, or remains the same, if it has been set in the past. <!-- SPELLING_IGNORE: delegators --><!-- STYLE_OVERRIDE: defaults to -->
 
 The <key_name> specifies which validator you are editing. If you choose to not include certain flags, remember that the --from flag must be included to identify the validator to update.
 
@@ -85,7 +85,7 @@ exrpd query slashing signing-info <validator-pubkey> --chain-id=<chain_id>
 ## Unjail Validator
 <!-- SPELLING_IGNORE: unjail -->
 
-When a validator is "jailed" for downtime, you must submit an `Unjail` transaction from the operator account in order to restore block proposer awards (depending on the zone fee distribution).
+When a validator is "jailed" for downtime, you must submit an `Unjail` transaction from the operator account to restore block proposer awards (depending on the zone fee distribution).
 
 ```bash
 exrpd tx slashing unjail --from=<key_name> --chain-id=<chain_id>

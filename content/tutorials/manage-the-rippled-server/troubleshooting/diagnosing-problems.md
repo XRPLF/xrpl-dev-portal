@@ -14,7 +14,7 @@ See the following pages for some common categories of problems, their causes, an
 - If your server does not start (such as crashing or otherwise shutting down automatically), see **[rippled Server Won't Start](server-wont-start.html)**.
 - If your server starts, but does not reliably sync or remain synced to the XRP Ledger network, see **[rippled Server Doesn't Sync](server-doesnt-sync.html)**.
 
-The remainder of this document suggests steps for diagnosing problems that happen while your server is up and running (including if the process is active but unable to sync with the network).
+The rest of this document suggests steps for diagnosing problems that happen while your server is up and running (including if the process is active but unable to sync with the network).
 
 ## Get the server_info
 
@@ -70,7 +70,7 @@ For troubleshooting purposes, the most important fields are (from most commonly 
               }
             }
 
-        If your server shows multiple `transitions` between the same states, that indicates that your server was unable to stay synced. If you do not have a `full` or `proposing` state, then your server has not yet synced to the network. Over a long period of time, it's likely your server may occasionally lose sync because internet connections fluctuate, so this is only a problem if the amount of time spent not in sync is a significant portion of your uptime. After about 24 hours of uptime, if less than 99% of your server's total runtime is spent in the `full` or `proposing` states, you may want to investigate possible sources of instability.
+        If you do not have a `full` or `proposing` state, then your server has not yet synced to the network. If your server shows multiple transitions between the same states (`transitions` is 2 or more), that indicates that your server lost sync with the network. It's a problem if you have many transitions in a short period of time; it's OK if you have a few transitions over a long period of time, because some fluctuations in internet connectivity are unavoidable. The amount of time in individual states (`duration_us`) compared with total uptime (`server_state_duration_us`) can also tell you how well your server is staying synced. After about 24 hours of uptime, if less than 99% of your server's total runtime is spent in the `full` or `proposing` states, you may want to investigate possible sources of instability.
 
     - For help debugging syncing issues, see [Server Doesn't Sync](server-doesnt-sync.html).
 

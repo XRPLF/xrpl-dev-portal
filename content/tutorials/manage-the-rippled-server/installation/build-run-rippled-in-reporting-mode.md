@@ -314,7 +314,8 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 2021-Dec-09 21:31:53.368183 UTC ReportingETL:NFO monitor : Waiting for next ledger to be validated by network...
 ```
 
-## Frequently Asked Questions <!-- STYLE_OVERRIDE: frequently -->
+## Frequently Asked Questions
+<!-- STYLE_OVERRIDE: frequently -->
 
 **Do I need to run more than one instance of `rippled` to use reporting mode?**
 

@@ -484,7 +484,7 @@ The response follows the [standard format][], with a successful result containin
 | `signing_keys`           | Object | Mapping from master public key to current ephemeral public key for all currently-trusted validators. Excludes validators that don't use an ephemeral signing key. |
 | `trusted_validator_keys` | Array  | Array of master public keys of all currently trusted validators. |
 | `validation_quorum`      | Number | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
-| `validator_list_expires` | String | The human readable time when the current validator list will expire. There are two special cases: the string `unknown` if the server has not yet loaded a published validator list, or the string `never` if the server uses a static validator list. |
+| `validator_list_expires` | String | The human readable time when the current validator list expires. There are two special cases: the string `unknown` if the server has not yet loaded a published validator list, or the string `never` if the server uses a static validator list. |
 
 Each member of the `publisher_lists` array is a **Publisher List** object with the following fields:
 
