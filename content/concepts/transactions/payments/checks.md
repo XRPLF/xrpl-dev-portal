@@ -7,21 +7,11 @@ labels:
 ---
 # Checks
 
-_(Added by the Checks amendment.)_
-
-The Checks feature in the XRP Ledger allows users to create deferred payments that can be canceled or cashed by the intended recipients. Like personal paper checks, XRP Ledger Checks start with the sender of the funds creating a Check that specifies an amount and a recipient. The recipient cashes the check to pull the funds from the sender's account into the recipient's account. No money moves until the recipient cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the recipient tries to cash it. If there's a failure cashing the check, the check's recipient can retry until the Check expires.
+The Checks feature in the XRP Ledger enable users to create deferred payments that can be canceled or cashed by a recipients. Like personal paper checks, XRP Ledger Checks start with the sender of the funds creating a check that specifies an amount and a recipient. The recipient cashes the check to pull the funds from the sender's account into the recipient's account. Unlike an escrow or payment channel, funds aren't set aside when a check is created, so money only moves when the check is cashed. If the sender doesn't have the funds at the time a check is cashed, it'll fail. No money moves until the recipient cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the recipient tries to cash it. If there's a failure cashing the check, the check's recipient can retry until the Check expires.
 
 XRP Ledger Checks may have expiration times after which they may no longer be cashed. If the recipient doesn't successfully cash the Check before it expires, the Check can no longer be cashed, but the object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and recipient can cancel the Check before it expires. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
 
-Checks have some similarities to [escrow](escrow.md) and [payment channels](payment-channels.md), but there are some important differences between those features and checks:
-
-* You can send [tokens](../../tokens/tokens.md) with checks. With payment channels and Escrow, you can only send XRP.
-
-* Checks do not lock up or set aside any funds. The XRP involved in payment channels and escrow cannot be spent until it is redeemed with a claim provided by the sender (payment channels), or released by an expiration or crypto-condition (escrow).
-
-* You can send XRP to yourself through escrow. You cannot send checks to yourself.
-
-
+***TODO: Don't think this needs to be noted here. Is the behavior change documented on the reference page?***
 **Note:** The Checks amendment changes the expiration behavior of the `OfferCreate` transaction. 
 
 <!-- For more information, see [Offer Expiration](offers.html#offer-expiration). -->
@@ -29,9 +19,11 @@ Checks have some similarities to [escrow](escrow.md) and [payment channels](paym
 
 ## Why Checks?
 
-Traditional paper checks allow people to transfer funds without immediately exchanging physical currency. XRP Ledger Checks allow people to exchange funds asynchronously using a process that is familiar to and accepted by the banking industry.
+- Checks allow people to exchange funds using a process that is familiar to and accepted by the banking industry.
 
-XRP Ledger Checks also solve a problem that is unique to the XRP Ledger: they allow users to reject unwanted payments or accept only part of a payment. This is useful for institutions that need to be careful about accepting payments for compliance reasons.
+- XRP Ledger Checks solve a problem that is unique to the Ledger: they enable users to reject unwanted payments or accept only part of a payment. This is useful for institutions that need to be careful about accepting payments for compliance reasons.
+
+- If your intended recipient blocks direct payments from stranger using deposit authorization, a check is a good alternative.
 
 
 ### Use Case: Payment Authorization
