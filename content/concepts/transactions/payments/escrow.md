@@ -73,15 +73,6 @@ The diagram shows three different cases for three possible combinations of the e
 
 Placing the money into escrow sharply limits the amount of XRP that can be stolen or redirected if a malicious actors gains temporary control over Ripple's XRP account. This reduces the risk of catastrophic losses of XRP and increases the time for Ripple to detect, prevent, and track down unintended uses of Ripple's XRP assets.
 
-***TODO: Escrows aren't recommended for interledger payments. However, we can use them for smart contracts. Replace this section with a real-life smart contract use case.***
-### Interledger Payments
-
-**Background:** In the quickly-developing world of financial technology, one of the core challenges is coordinating activities that cross multiple digital money systems, or ledgers. Many proposed solutions to this problem can be reduced to creating "one ledger to rule them all." Ripple doesn't believe a single system can meet everyone's needs; instead, an interconnected network of ledgers—an _interledger_—is the true future of financial technology. The `Interledger Protocol` defines standards for making as many systems as possible connect securely and smoothly.
-
-The most fundamental principle of inter-ledger payments is _conditional transfers_. Multi-hop payments have a risk problem: the more hops in the middle, the more places the payment can fail. Interledger solves this with the financial equivalent of a "[two-phase commit](https://en.wikipedia.org/wiki/Two-phase_commit_protocol)", where the two steps are (1) prepare conditional transfers, then (2) fulfill the conditions to execute the transfers. The Interledger project defined a `crypto-conditions` specification to standardize automated ways to define and verify conditions, and settled on SHA-256 hashes as a "common denominator" of such conditions.
-
-**Solution:** The Escrow feature makes the XRP Ledger ideal for bridging multi-hop payments using the Interledger Protocol, because it natively supports transfers that deliver XRP based on PREIMAGE-SHA-256 crypto-conditions, and it executes those transfers within seconds of being presented with the matching fulfillment.
-
 ***TODO: Think of a smart contract that would see real-world use. The draw of smart contracts is it removes human interaction (I think?), but the example in use-an-escrow-as-a-smart-contract.md still has a person ultimately deciding if someone gets paid.***
 ### Smart Contracts
 
@@ -100,8 +91,5 @@ The most fundamental principle of inter-ledger payments is _conditional transfer
     - [EscrowCancel transaction][]
 - [Ledger Reference](ledger-data-formats.html)
     - [Escrow object](escrow-object.html)
-
-***TODO: Out of date, I believe. Confirm before deleting.***
-For more information on Interledger and how conditional transfers enable secure payments across multiple ledgers, see [Interledger Architecture](https://interledger.org/rfcs/0001-interledger-architecture/).
 
 For more information on Ripple's 55-billion XRP lock-up, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
