@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>AccountDelete - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AccountDelete | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/accountdelete.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/accountdelete.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/accountdelete.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/accountdelete.html" hreflang="x-default" /><!-- Default: US english -->
@@ -366,7 +365,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecHAS_OBLIGATIONS</code></td>
-<td style="text-align: left;">Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as <a href="escrow.html">escrows</a>.)</td>
+<td style="text-align: left;">Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as <a href="escrow.html">escrows</a> and for example <a href="nftokenmint.html">NFT's minted</a>, <a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp#L197" target="_blank">even if owned by another account <i aria-hidden="true" class="fa fa-external-link"></i></a>.)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tefTOO_BIG</code></td>
@@ -2917,7 +2916,6 @@
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -2925,7 +2923,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

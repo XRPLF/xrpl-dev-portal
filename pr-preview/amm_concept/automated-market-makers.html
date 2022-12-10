@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Automated Market Makers - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Automated Market Makers | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/automated-market-makers.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/automated-market-makers.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/automated-market-makers.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/automated-market-makers.html" hreflang="x-default" /><!-- Default: US english -->
@@ -270,6 +269,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#flow-of-funds">Flow of Funds</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#lp-token-currency-codes">LP Token Currency Codes</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#representation-in-the-ledger">Representation in the Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#trading-fees">Trading Fees</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#auction-slot">Auction Slot</a></li>
       </ul>
   </div>
       </aside>
@@ -322,6 +323,14 @@
 </ul>
 <p>There are also <a href="trust-lines-and-issuing.html">trust lines</a> for the tokens in the AMM's pool as well as the LP Tokens it issues.</p>
 <p>These objects are not owned by any account, so the <a href="reserves.html">reserve requirement</a> does not apply to them. However, to prevent spam, the transaction to create an AMM has a special <a href="transaction-cost.html">transaction cost</a> that requires the sender to burn a larger than usual amount of XRP.</p>
+<h2 id="trading-fees">Trading Fees<a aria-hidden="true" class="hover_anchor" href="#trading-fees"><i class="fa fa-link"></i></a></h2>
+<p>The trading fee is charged on top of the implicit exchange rate between the assets in the AMM's pool. The exchange rate changes dynamically based on the balance of assets in the pool, but the trading fees only change as the result of voting. Trading fees are a source of passive income for liquidity providers, and they offset the currency risk of letting others trade against the pool's assets.</p>
+<p>Liquidity providers have an incentive to set to set trading fees at an appropriate rate: if fees are too high, trades will use order books to get a better rate instead; if fees are too low, liquidity providers don't get any benefit for contributing to the pool. <!-- STYLE_OVERRIDE: will --> Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the amount of LP Tokens those liquidity providers hold.</p>
+<p>Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%, using the [AMMVote transaction type][]. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes weighted by how many LP Tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote then only the top 8 votes (by most LP Tokens held) are counted. Even though liquidity providers' share of LP Tokens can shift rapidly for many reasons (such as trading those tokens using <a href="offers.html">Offers</a>), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).</p>
+<h3 id="auction-slot">Auction Slot<a aria-hidden="true" class="hover_anchor" href="#auction-slot"><i class="fa fa-link"></i></a></h3>
+<p>Unlike any previous Automated Market Makers, the XRP Ledger's AMM design has an <em>auction slot</em> that a liquidity provider can bid on to get a discount on the trading fee for a 24-hour period. The bid must be paid in LP Tokens, which are returned to the AMM. No more than one account hold the auction slot at a time, but the bidder can name up to 4 additional accounts to also receive the discount. There is a minimum bid of 0.001% of the AMM's total outstanding LP Tokens, and if the slot is currently occupied then you must bid more to displace the current slot holder. If someone displaces you, you get part of your bid back depending on how much time remains. As long as you hold an active auction slot, you pay a discounted trading fee of 0% when making trades against that AMM.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The minimum bid value is a placeholder and may change before the AMM feature becomes finalized.</p>
+<p>With any AMM, when the price of its assets shifts significantly in external markets shifts significantly, traders can use arbitrage to profit off the AMM, which results in a loss for liquidity providers. The auction mechanism is intended to return more of that value to liquidity providers and more quickly bring the AMM's prices back into balance with external markets.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -2865,7 +2874,6 @@
 
 <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<meta name="docsearch:language" content="en" />
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
@@ -2873,7 +2881,7 @@ $(document).ready(() => {
   indexName: 'xrpl',
   container: '#topsearchboxcontainer',
   appId: 'R39QY3MZC7',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)
