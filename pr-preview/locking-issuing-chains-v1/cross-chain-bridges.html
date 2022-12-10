@@ -261,8 +261,8 @@
         <li class="nav-item level-1"><a class="nav-link" href="#cross-chain-bridges">Cross-Chain Bridges</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#terminology">Terminology</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#how-do-cross-chain-transactions-work">How Do Cross-Chain Transactions Work?</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#pre-requisites">Pre-requisites</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#working-of-cross-chain-transactions">Working of Cross-Chain Transactions</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#how-do-cross-chain-transactions-work-1">How Do Cross-Chain Transactions Work ?</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#how-to-set-up-a-sidechain">How to Set Up a Sidechain?</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#xrpl-custom-network-explorer">XRPL Custom Network Explorer</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
@@ -288,77 +288,80 @@
 <p>Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains such as the XRP Ledger and its sidechains.</p>
 <p>A locking chain is a blockchain that holds assets that are then put into trust when a bridge to an issuing chain is created.</p>
 <p>An issuing chain is an independent ledger with its own consensus algorithm and transaction types and rules. It acts as its own blockchain.</p>
-<p>Both the locking and issuing chains operate as parllel networks with independent nodes and validators. They rely on independent <a href="witness-server.html">witness servers</a> to watch transactions between the two chains and attest that assets have moved into specifically designated accounts.</p>
+<p>Both the locking and issuing chains operate as parallel networks with independent nodes and validators. They rely on independent <a href="witness-server.html">witness servers</a> to watch transactions between the two chains and attest that assets have moved into specifically designated accounts.</p>
 <h2 id="terminology">Terminology<a aria-hidden="true" class="hover_anchor" href="#terminology"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>
-<p>Bridge: A method of moving assets/value from one blockchain to another.</p>
+<p><em>Bridge</em>: A method of moving assets/value from one blockchain to another.</p>
 </li>
 <li>
-<p>Witness: Independent servers that are aware of the locking and issuing chains. See <a href="witness-server.md">witness servers</a> for more information.</p>
+<p><em>Witness</em>: Independent servers that are aware of the locking and issuing chains. See <a href="witness-server.html">witness servers</a> for more information.</p>
 </li>
 <li>
-<p>Cross-chain transfer: A transfer of assets from one chain to another.</p>
+<p><em>Cross-chain transfer</em>: A transfer of assets from one chain to another.</p>
 </li>
 <li>
-<p>Source chain: The chain that a cross-chain transfer begins from. The transfer is from the source chain and to the destination chain.</p>
+<p><em>Source chain</em>: The chain that a cross-chain transfer begins from. The transfer is from the source chain and to the destination chain.</p>
 </li>
 <li>
-<p>Destination chain: The chain that a cross-chain transfer ends at. The transfer is from the source chain and to the destination chain.</p>
+<p><em>Destination chain</em>: The chain that a cross-chain transfer ends at. The transfer is from the source chain and to the destination chain.</p>
 </li>
 <li>
-<p>Locking chain: The chain on which the bridge locks and unlocks assets.</p>
+<p><em>Locking chain</em>: The chain on which the bridge locks and unlocks assets.</p>
 </li>
 <li>
-<p>Issuing chain: The chain on which the bridge mints and burns assets.</p>
+<p><em>Issuing chain</em>: The chain on which the bridge mints and burns assets.</p>
 </li>
 <li>
-<p>Door account: A special type of account that is used to move assets from one chain to another. The door account on a locking chain is used to put assets into trust, and the door account on an issuing chain used to issue wrapped assets. </p>
+<p><em>Door account</em>: A special type of account that is used to move assets from one chain to another. The door account on a locking chain is used to put assets into trust, and the door account on an issuing chain used to issue wrapped assets. </p>
 </li>
 <li>
-<p>Cross-chain claim ID: A special identifier used for cross-chain transfers. A cross-chain claim ID represents <em>one</em> cross-chain transfer of value.</p>
+<p><em>Cross-chain claim ID</em>: A special identifier used for cross-chain transfers. A cross-chain claim ID represents <em>one</em> cross-chain transfer of value.</p>
 </li>
 </ul>
 <h2 id="how-do-cross-chain-transactions-work">How Do Cross-Chain Transactions Work?<a aria-hidden="true" class="hover_anchor" href="#how-do-cross-chain-transactions-work"><i class="fa fa-link"></i></a></h2>
-<h3 id="pre-requisites">Pre-requisites<a aria-hidden="true" class="hover_anchor" href="#pre-requisites"><i class="fa fa-link"></i></a></h3>
-<p>You must ensure that the following are set up and running before initiating cross-chain transactions. </p>
+<h3 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h3>
+<p>Ensure that the following are set up and running before initiating cross-chain transactions. </p>
 <ul>
-<li>Ensure that the witness server(s) are up and running.</li>
+<li>The locking and issuing chains are both up and running.</li>
+<li>The witness server(s) are up and running.</li>
 <li>Set up a bridge between the two chains, including a <em>door account</em> on each chain. On one chain, the asset is locked and unlocked, hence the name "locking chain", and on the other chain, assets are minted and burned, or issued and reclaimed, hence the name "issuing chain".</li>
-<li>When using the XRP Ledger Mainnet as one of the chains, ensure that  the <code>Sidechains</code> amendment is enabled in the <code>rippled.cfg</code> configuration file. </li>
+<li>Enable the <code>XChainBridge</code> amendment in the <code>rippled.cfg</code> configuration file on the locking chain and the issuing chain. </li>
 </ul>
-<h3 id="working-of-cross-chain-transactions">Working of Cross-Chain Transactions<a aria-hidden="true" class="hover_anchor" href="#working-of-cross-chain-transactions"><i class="fa fa-link"></i></a></h3>
+<h3 id="how-do-cross-chain-transactions-work-1">How Do Cross-Chain Transactions Work ?<a aria-hidden="true" class="hover_anchor" href="#how-do-cross-chain-transactions-work-1"><i class="fa fa-link"></i></a></h3>
 <p>At a high-level, cross-chain transactions involve the following steps: </p>
 <ol>
 <li>Claim a cross-chain claim ID on the issuing chain.</li>
-<li>Submit a cross-chain transfer transaction on the locking chain, attaching the claimed cross-chain claim ID and include a reward for the witness servers. This locks the asset on the locking chain.</li>
+<li>Submit a commit transaction on the locking chain, attaching the claimed cross-chain claim ID and include a reward for the witness servers. This locks the asset on the locking chain.</li>
 <li>Obtain the attestations from the witness servers that the transaction occurred on the issuing chain.</li>
-<li>Submit a transaction claim for the transferred value on the issuing chain, attaching the attestation as proof that the value was indeed transferred.</li>
+<li>When there are enough signatures to reach quorum, the XRP is automatically released on the issuing chain to the destination account. In some cases, for example a trustline is not set up properly, or a deposit auth is set up, you need to submit a transaction claim for the transferred value on the issuing chain, attaching the attestation as proof that the value was indeed transferred.</li>
 <li>The rewards are then distributed to the witness servers' accounts on the issuing chain.</li>
 </ol>
-<p>Consider an example where Alice wants to send XRP from her account on the XRP Ledger Mainnet (locking chain) to her account sAlice on a sidechain (issuing chain).</p>
+<p>Consider an example where Alice wants to send XRP from her account on the XRP Ledger Mainnet to her account sAlice on a sidechain. In this example. the XRP Ledger Mainnet is the locking chain and the sidechain is the issuing chain. </p>
+<p>For the sake of this example, let's assume that the following prerequisites have been met.</p>
 <ul>
-<li>A bridge that transfers XRP between the XRP Ledger Mainnet and the sidechain has been set up with XChainCreateBridge.</li>
+<li>The sidechain has been configured with validators and is up and running.</li>
+<li>A bridge that transfers XRP between the locking chain and the issuing chain has been set up with <code>XChainCreateBridge</code>.</li>
 <li>Witness servers are up and running.</li>
-<li>Alice has also already run a XChainCreateAccountCommit transaction at some point, so she has an account on the sidechain.</li>
+<li>Alice has already run a <code>XChainCreateAccountCommit</code> transaction and has an account on the sidechain.</li>
 </ul>
 <!-- Add image of just the bridge created-->
 <p><img alt="Cross-chain Transactions" src="img/xrpl-bridging-solution.png" title="Cross-chain transactions"/></p>
 <ol>
 <li>
-<p>sAlice first checks out a claim ID with XChainCreateClaimID on the sidechain, specifying the above bridge. She retrieves the claim ID from the transaction metadata or the <code>xchaincreateclaimid</code> RPC call.</p>
+<p>sAlice first checks out a claim ID with <code>XChainCreateClaimID</code> on the sidechain, specifying the above bridge. She retrieves the claim ID from the transaction metadata or the <code>xchaincreateclaimid</code> RPC call.</p>
 </li>
 <li>
-<p>Alice then takes the cross-chain claim ID from sAlice’s XChainCreateClaimID transaction and submits a XChainCommit transaction on the Mainnet with that claim ID, locking up a specified amount of XRP. She specifies sAlice’s account in the OtherChainDestination field.</p>
+<p>Alice then takes the cross-chain claim ID from sAlice’s <code>XChainCreateClaimID</code> transaction and submits a <code>XChainCommit</code> transaction on the XRP Ledger Mainnet with that claim ID, locking up a specified amount of XRP. She specifies sAlice’s account in the <code>OtherChainDestination</code> field.</p>
 </li>
 <li>
-<p>The witnesses then take note of the XChainCommit transaction and submit XChainAddAttestation transactions on the sidechain, attesting to the fact that the XChainCommit transaction did in fact occur on the Mainnet.</p>
+<p>The witnesses then take note of the <code>XChainCommit</code> transaction and submit <code>XChainAddAttestation</code> transactions on the sidechain, attesting to the fact that the <code>XChainCommit</code> transaction did in fact occur on the Mainnet.</p>
 </li>
 <li>
-<p>When there are enough XChainAddAttestation signatures to reach quorum, the XRP is automatically released on the sidechain to sAlice’s account.</p>
+<p>When there are enough <code>XChainAddAttestation</code> signatures to reach quorum, the XRP is automatically released on the sidechain to sAlice’s account.</p>
 </li>
 <li>
-<p>If the XRP is not automatically released, for whatever reason (such as Alice forgetting to specify sAlice’s account in the OtherChainDestination field), then sAlice submits a XChainClaim transaction on the sidechain, specifying her account as the destination. This then releases the XRP on the sidechain to sAlice’s account.</p>
+<p>If the XRP is not automatically released, for whatever reason (such as Alice forgetting to specify sAlice’s account in the <code>OtherChainDestination</code> field), then sAlice submits a <code>XChainClaim</code> transaction on the sidechain, specifying her account as the destination. This then releases the XRP on the sidechain to sAlice’s account.</p>
 </li>
 </ol>
 <h2 id="how-to-set-up-a-sidechain">How to Set Up a Sidechain?<a aria-hidden="true" class="hover_anchor" href="#how-to-set-up-a-sidechain"><i class="fa fa-link"></i></a></h2>

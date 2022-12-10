@@ -424,28 +424,20 @@
 <p>It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the <a href="server_info.html">server_info method</a> shows the a <code>validated_ledger</code> object based on the network you are connected to.</p>
 <p>To verify that your <code>rippled</code> is connected to the XRP Testnet or Devnet, compare the results from your server to <a href="public-servers.html">a public server</a> on the Testnet or Devnet. The <code>seq</code> field of the <code>validated_ledger</code> object should be the same on both servers (possibly off by one or two, if it changed as you were checking).</p>
 <p>The following example shows how to check the latest validated ledger from the commandline:</p>
-<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="localserver" href="#code-3-0">Local Server</a></li><li><a class="testnet" href="#code-3-1">Testnet</a></li><li><a class="devnet" href="#code-3-2">Devnet</a></li><li><a class="mainnet" href="#code-3-3">Mainnet</a></li><li><a class="nftdevnet" href="#code-3-4">NFT-Devnet</a></li></ul>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="localserver" href="#code-3-0">Local Server</a></li><li><a class="testnet" href="#code-3-1">Testnet</a></li><li><a class="devnet" href="#code-3-2">Devnet</a></li><li><a class="mainnet" href="#code-3-3">Mainnet</a></li></ul>
 
 <div class="code_sample localserver" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16">rippled server_info <span class="p">|</span> grep seq
 </code></pre></div></div>
 
-<div class="code_sample testnet" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1"># s.altnet.rippletest.net</span>
-rippled --rpc_ip <span class="m">35</span>.158.96.209:51234 server_info <span class="p">|</span> grep seq
+<div class="code_sample testnet" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">rippled --rpc_ip s.altnet.rippletest.net:51234 server_info <span class="p">|</span> grep seq
 </code></pre></div></div>
 
-<div class="code_sample devnet" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="c1"># s.devnet.rippletest.net</span>
-rippled --rpc_ip <span class="m">34</span>.83.125.234:51234 server_info <span class="p">|</span> grep seq
+<div class="code_sample devnet" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18">rippled --rpc_ip s.devnet.rippletest.net:51234 server_info <span class="p">|</span> grep seq
 </code></pre></div></div>
 
-<div class="code_sample mainnet" id="code-3-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="c1"># s1.ripple.com</span>
-rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span class="p">|</span> grep seq
-</code></pre></div></div>
-
-<div class="code_sample nftdevnet" id="code-3-4" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="c1"># xls20-sandbox.rippletest.net</span>
-rippled --rpc_ip <span class="m">34</span>.211.220.150:51234 server_info <span class="p">|</span> grep seq
+<div class="code_sample mainnet" id="code-3-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19">rippled --rpc_ip s1.ripple.com:51234 server_info <span class="p">|</span> grep seq
 </code></pre></div></div>
 </div>
-<p class="devportal-callout note"><strong>Note:</strong> The IP addresses in these examples are for public servers, and may change periodically. If you get no response, look up the IP address of a <a href="public-servers.html">public server</a>, for example using the <code>dig</code> command.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Tools:</strong><ul>

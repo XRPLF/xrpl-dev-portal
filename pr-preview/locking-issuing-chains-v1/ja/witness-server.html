@@ -282,7 +282,7 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="witness-server">Witness Server<a aria-hidden="true" class="hover_anchor" href="#witness-server"><i class="fa fa-link"></i></a></h1>
-<p>The <em>witness server</em> is a light-weight server that is aware the locking and issuing chains in a bridging solution between blockchains. The witness server witnesses and signs transactions between <a href="cross-chain-bridges.md">a locking chain and an issuing chain</a> when assets are moved to designation addresses, thus enabling cross-chain transactions. </p>
+<p>The <em>witness server</em> is a light-weight server that is aware of the locking and issuing chains in a bridging solution between blockchains. The witness server witnesses and signs transactions between <a href="cross-chain-bridges.html">a locking chain and an issuing chain</a> when assets are moved to designated addresses, thus enabling cross-chain transactions. </p>
 <p>The witness server is an independent server that has similar responsibilities as that of a validator server on the XRP Ledger's peer-to-peer network and helps avoid double-spend and collusion. </p>
 <p>The witness server serves as a neutral witness for transactions between a locking chain and an issuing chain. 
 It listens to the door accounts on both sides of the bridge and signs attestations for cross-chain transfer transactions, essentially affirming that a transaction on the source account happened, so the value can be claimed on the destination account. They are essentially acting as an oracle, to “prove” that the value was locked/burned on the source account, which allows the recipient to then claim (via minting/ unlocking) the equivalent funds on the destination account.</p>
@@ -295,12 +295,15 @@ It listens to the door accounts on both sides of the bridge and signs attestatio
 <p>Note that an issuing chain may choose to configure a bridge with only one witness server initially and run the witness server itself. This strategy may be helpful in the initial period when the issuing chain is yet to establish itself in the marketplace.</p>
 <h2 id="witness-server-configuration">Witness Server Configuration<a aria-hidden="true" class="hover_anchor" href="#witness-server-configuration"><i class="fa fa-link"></i></a></h2>
 <p>The witness server takes a JSON configuration file, specified using the <code>--conf</code> command-line argument.</p>
-<p>The configuration file contains the following information:
-* Websocket endpoints for the locking chain and the issuing chain.
-* Port that clients can use to connect to this server ("RPCENdpoint").
-* Directory to store the SQL database
-* Secret key used to sign attestations
-* Information about door accounts on the locking and issuing chains.</p>
+<p>The configuration file contains the following information:</p>
+<ul>
+<li>Websocket endpoints for the locking chain and the issuing chain (<code>LockingChainEndpoint</code> and <code>IssuingChainEndpoint</code>).</li>
+<li>Port that clients can use to connect to this server (<code>RPCEndpoint</code>).</li>
+<li>Directory to store the SQL database (<code>DBDir</code>).</li>
+<li>Secret key used to sign attestations (<code>SigningKeySeed</code> and <code>SigningKeyType</code>).</li>
+<li>Reward accounts on both chains (<code>LockingChainRewardAccount</code> and <code>IssuingChainRewardAccount</code>).</li>
+<li>Information about the cross-chain bridge (<code>XChainBridge</code>) including door accounts and assets on both chains.</li>
+</ul>
 <p>Here is an example configuration file for a witness server:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"LockingChainEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
