@@ -63,6 +63,24 @@ There are also [trust lines](trust-lines-and-issuing.html) for the tokens in the
 
 These objects are not owned by any account, so the [reserve requirement](reserves.html) does not apply to them. However, to prevent spam, the transaction to create an AMM has a special [transaction cost](transaction-cost.html) that requires the sender to burn a larger than usual amount of XRP.
 
+
+## Trading Fees
+
+The trading fee is charged on top of the implicit exchange rate between the assets in the AMM's pool. The exchange rate changes dynamically based on the balance of assets in the pool, but the trading fees only change as the result of voting. Trading fees are a source of passive income for liquidity providers, and they offset the currency risk of letting others trade against the pool's assets.
+
+Liquidity providers have an incentive to set to set trading fees at an appropriate rate: if fees are too high, trades will use order books to get a better rate instead; if fees are too low, liquidity providers don't get any benefit for contributing to the pool. <!-- STYLE_OVERRIDE: will --> Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the amount of LP Tokens those liquidity providers hold.
+
+Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%, using the [AMMVote transaction type][]. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes weighted by how many LP Tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote then only the top 8 votes (by most LP Tokens held) are counted. Even though liquidity providers' share of LP Tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.html)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
+
+### Auction Slot
+
+Unlike any previous Automated Market Makers, the XRP Ledger's AMM design has an _auction slot_ that a liquidity provider can bid on to get a discount on the trading fee for a 24-hour period. The bid must be paid in LP Tokens, which are returned to the AMM. No more than one account hold the auction slot at a time, but the bidder can name up to 4 additional accounts to also receive the discount. There is a minimum bid of 0.001% of the AMM's total outstanding LP Tokens, and if the slot is currently occupied then you must bid more to displace the current slot holder. If someone displaces you, you get part of your bid back depending on how much time remains. As long as you hold an active auction slot, you pay a discounted trading fee of 0% when making trades against that AMM.
+
+**Caution:** The minimum bid value is a placeholder and may change before the AMM feature becomes finalized.
+
+With any AMM, when the price of its assets shifts significantly in external markets shifts significantly, traders can use arbitrage to profit off the AMM, which results in a loss for liquidity providers. The auction mechanism is intended to return more of that value to liquidity providers and more quickly bring the AMM's prices back into balance with external markets.
+
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
