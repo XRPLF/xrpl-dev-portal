@@ -5,7 +5,7 @@ blurb: A witness server is a light-weight server that witnesses and signs transa
 ---
 # Witness Server
 
-The _witness server_ is a light-weight server that is aware the locking and issuing chains in a bridging solution between blockchains. The witness server witnesses and signs transactions between [a locking chain and an issuing chain](cross-chain-bridges.md) when assets are moved to designation addresses, thus enabling cross-chain transactions. 
+The _witness server_ is a light-weight server that is aware of the locking and issuing chains in a bridging solution between blockchains. The witness server witnesses and signs transactions between [a locking chain and an issuing chain](cross-chain-bridges.html) when assets are moved to designated addresses, thus enabling cross-chain transactions. 
 
 The witness server is an independent server that has similar responsibilities as that of a validator server on the XRP Ledger's peer-to-peer network and helps avoid double-spend and collusion. 
 
@@ -27,11 +27,13 @@ Note that an issuing chain may choose to configure a bridge with only one witnes
 The witness server takes a JSON configuration file, specified using the `--conf` command-line argument.
 
 The configuration file contains the following information:
-* Websocket endpoints for the locking chain and the issuing chain.
-* Port that clients can use to connect to this server ("RPCENdpoint").
-* Directory to store the SQL database
-* Secret key used to sign attestations
-* Information about door accounts on the locking and issuing chains.
+
+* Websocket endpoints for the locking chain and the issuing chain (`LockingChainEndpoint` and `IssuingChainEndpoint`).
+* Port that clients can use to connect to this server (`RPCEndpoint`).
+* Directory to store the SQL database (`DBDir`).
+* Secret key used to sign attestations (`SigningKeySeed` and `SigningKeyType`).
+* Reward accounts on both chains (`LockingChainRewardAccount` and `IssuingChainRewardAccount`).
+* Information about the cross-chain bridge (`XChainBridge`) including door accounts and assets on both chains.
 
 Here is an example configuration file for a witness server:
 
