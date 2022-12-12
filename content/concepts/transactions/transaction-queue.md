@@ -1,6 +1,6 @@
 ---
 html: transaction-queue.html
-parent: xrpl-servers.html
+parent: transactions.html
 blurb: Set up an environment where you can submit transactions securely.
 labels:
   - Security

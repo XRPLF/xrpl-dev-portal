@@ -457,18 +457,6 @@ pages:
       targets:
          - en
          - ja
-         
-    - md: concepts/server/transaction-queue.md
-      parent: xrpl-servers.html
-      targets:
-         - en
-         - ja
-         
-    - md: concepts/server/invariant-checking.md
-      parent: xrpl-servers.html
-      targets:
-         - en
-
 
     - md: concepts/xrpl/ledgers.md
       parent: concepts.html
@@ -560,6 +548,12 @@ pages:
          - en
          - ja
          
+    - md: concepts/transactions/transaction-queue.md
+      parent: transactions.html
+      targets:
+         - en
+         - ja
+         
     - md: concepts/transactions/transaction-metadata-concept.md
       parent: transactions.html
       targets:
@@ -571,6 +565,11 @@ pages:
       targets:
          - en
          - ja
+         
+    - md: concepts/transactions/invariant-checking.md
+      parent: transactions.html
+      targets:
+         - en
 
     - md: concepts/transactions/paths.md
       parent: transactions.html
@@ -849,6 +848,43 @@ pages:
          - en
          - ja
          
+# Use Cases --------------------------------------------------------------------
+
+    -   name: Use Cases
+        html: use-cases.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Browse the documentation based on practical use cases.
+        targets:
+            - en
+
+        # TODO: translate
+    -   md: use-cases/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
+        parent: use-cases.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.md
+        parent: use-cases.html
+        targets:
+            - en
+            
+    -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
+        parent: use-cases.html
+        targets:            
+            - ja
+
+    -   md: use-cases/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
+        parent: use-cases.html
+        targets:
+            - en
+            
+    -   md: use-cases/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.ja.md
+        parent: use-cases.html
+        targets:            
+            - ja
 
 
 # Tutorials --------------------------------------------------------------------
@@ -1356,42 +1392,42 @@ pages:
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
     # enable/disable rippling, use auth'd trust lines
 
-    -   name: XRP Ledger Businesses
-        html: xrp-ledger-businesses.html
-        parent: tutorials.html
-        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: XRP Ledgerが利用する会社について
-        html: xrp-ledger-businesses.html
-        parent: tutorials.html
-        blurb: このセクションでは、さまざまなベストプラクティスに従って、XRPを上場する取引所やXRP Ledgerで通貨を発行するゲートウェアなど、XRP Ledgerとインターフェイス接続するビジネスを運営する方法をデモンストレーションします。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
-        targets:
-            - en
-
-    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
-        targets:
-            - en
-
-    -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
-        targets:
-            - en
-            - ja
+#     -   name: XRP Ledger Businesses
+#         html: xrp-ledger-businesses.html
+#         parent: tutorials.html
+#         blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.
+#         template: pagetype-category.html.jinja
+#         targets:
+#             - en
+# 
+#     -   name: XRP Ledgerが利用する会社について
+#         html: xrp-ledger-businesses.html
+#         parent: tutorials.html
+#         blurb: このセクションでは、さまざまなベストプラクティスに従って、XRPを上場する取引所やXRP Ledgerで通貨を発行するゲートウェアなど、XRP Ledgerとインターフェイス接続するビジネスを運営する方法をデモンストレーションします。
+#         template: pagetype-category.html.jinja
+#         targets:
+#             - ja
+# 
+#     -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
+#         targets:
+#             - en
+# 
+#     -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
+#         targets:
+#             - en
+# 
+#     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.ja.md
+#         targets:
+#             - ja
+# 
+#     -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
+#         targets:
+#             - en
+#             - ja
 
     -   name: Manage the rippled Server
         html: manage-the-rippled-server.html
@@ -1866,25 +1902,6 @@ pages:
         targets:
             - en
             - ja
-
-    -   md: amendments/amendments.md
-        targets:
-            - en
-
-    -   md: amendments/known-amendments.md
-        parent: amendments.html
-        targets:
-            - en
-            
-    -   md: amendments/amendments.ja.md
-        targets:
-            - ja
-            
-    -   md: amendments/known-amendments.ja.md
-        parent: known-amendments.ja.html
-        targets:
-            - ja
-            
             
 # References -------------------------------------------------------------------
 
@@ -3824,26 +3841,57 @@ pages:
         targets:
             - ja
 
+# Amendments -------------------------------------------------------------------
+
+    -   name: Amendments
+        template: page-references.html.jinja
+        html: amendment-heading.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        sidebar: disabled
+        blurb: Complete references for different interfaces to the XRP Ledger.
+        targets:
+            - en
+
+    -   md: amendments/amendments.md
+        parent: amendment-heading.html
+        targets:
+            - en
+
+    -   md: amendments/known-amendments.md
+        parent: amendment-heading.html
+        targets:
+            - en
+            
+    -   md: amendments/amendment-heading.ja.md
+        targets:
+            - ja
+            
+    -   md: amendments/known-amendments.ja.md
+        parent: known-amendment-heading.ja.html
+        targets:
+            - ja
+            
 
 
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases: these have been removed. Only redirects remain.
 
-    -   name: Use Cases
-        html: use-cases.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: uses.html
-        targets:
-            - en
-
-    -   name: ユースケース
-        html: use-cases.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: uses.html
-        targets:
-            - ja
+#     -   name: Use Cases
+#         html: use-cases.html
+#         template: pagetype-redirect.html.jinja
+#         nav_omit: true
+#         redirect_url: uses.html
+#         targets:
+#             - en
+# 
+#     -   name: ユースケース
+#         html: use-cases.html
+#         template: pagetype-redirect.html.jinja
+#         nav_omit: true
+#         redirect_url: uses.html
+#         targets:
+#             - ja
 
     -   name: Run a rippled Validator
         html: run-a-rippled-validator.html

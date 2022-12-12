@@ -1,3 +1,10 @@
+---
+html: invariant-checking.html
+parent: transactions.html
+blurb: A safety feature that guarantees that certain invariants hold true across all transactions
+labels:
+  - Transactions
+---
 # Invariant Checking
 
 Invariant checking is a safety feature of the XRP Ledger. It consists of a set of checks, separate from normal transaction processing, that guarantee that certain _invariants_ hold true across all transactions.
