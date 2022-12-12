@@ -1,7 +1,7 @@
 ---
 html: transaction-queue.html
-parent: consensus-network.html
-blurb: Understand how transactions can be queued before reaching consensus.
+parent: transactions.html
+blurb: Transactions can be queued before being processed.
 labels:
   - Transaction Sending
 ---

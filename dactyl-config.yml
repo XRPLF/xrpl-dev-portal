@@ -479,6 +479,24 @@ pages:
             - en
             - ja
 
+# Use Cases  -------------------------------------------------------------------
+
+    -   md: use-cases/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
+        parent: use-cases.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.md
+        parent: use-cases.html
+        targets:
+            - en
+            
+    -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
+        parent: use-cases.html
+        targets:            
+            - ja
+
 # Concepts ---------------------------------------------------------------------
 
     -   name: Concepts
@@ -1040,7 +1058,6 @@ pages:
         targets:
             - en
 
-        # TODO: translate
     -   md: concepts/consensus-network/transaction-malleability.ja.md
         targets:
             - ja
@@ -1097,8 +1114,7 @@ pages:
         html: federated-sidechains.html
         template: pagetype-redirect.html.jinja
         redirect_url: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
-        nav_omit: true
-        targets:
+        nav_omit: true        targets:
             - en
             - ja
 
@@ -1795,42 +1811,6 @@ pages:
 
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
     # enable/disable rippling, use auth'd trust lines
-
-    -   name: XRP Ledger Businesses
-        html: xrp-ledger-businesses.html
-        parent: tutorials.html
-        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: ビジネスとしてのXRP Ledger
-        html: xrp-ledger-businesses.html
-        parent: tutorials.html
-        blurb: このセクションでは、XRPを上場している取引所やXRP Ledgerで通貨を発行しているゲートウェイなど、XRP Ledgerとインターフェースを持つビジネスを運営するための様々なベストプラクティスをご紹介しています。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
-        targets:
-            - en
-
-    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
-        targets:
-            - ja
-
-    # legacy feature that has been removed.
-    -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
-        targets:
-            - en
-            - ja
-
-    # TODO: translate
-    -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
-        targets:
-            - en
-            - ja
 
     -   name: Manage the rippled Server
         html: manage-the-rippled-server.html
@@ -4468,26 +4448,57 @@ pages:
         targets:
             - ja
 
+# Amendments -------------------------------------------------------------------
+
+    -   name: Amendments
+        template: page-references.html.jinja
+        html: amendment-heading.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        sidebar: disabled
+        blurb: Complete references for different interfaces to the XRP Ledger.
+        targets:
+            - en
+
+    -   md: amendments/amendments.md
+        parent: amendment-heading.html
+        targets:
+            - en
+
+    -   md: amendments/known-amendments.md
+        parent: amendment-heading.html
+        targets:
+            - en
+            
+    -   md: amendments/amendment-heading.ja.md
+        targets:
+            - ja
+            
+    -   md: amendments/known-amendments.ja.md
+        parent: known-amendment-heading.ja.html
+        targets:
+            - ja
+            
 
 
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases: these have been removed. Only redirects remain.
 
-    -   name: Use Cases
-        html: use-cases.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: uses.html
-        targets:
-            - en
-
-    -   name: ユースケース
-        html: use-cases.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: uses.html
-        targets:
-            - ja
+#     -   name: Use Cases
+#         html: use-cases.html
+#         template: pagetype-redirect.html.jinja
+#         nav_omit: true
+#         redirect_url: uses.html
+#         targets:
+#             - en
+# 
+#     -   name: ユースケース
+#         html: use-cases.html
+#         template: pagetype-redirect.html.jinja
+#         nav_omit: true
+#         redirect_url: uses.html
+#         targets:
+#             - ja
 
     -   name: Run a rippled Validator
         html: run-a-rippled-validator.html
