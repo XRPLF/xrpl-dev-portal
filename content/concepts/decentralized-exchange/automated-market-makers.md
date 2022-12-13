@@ -10,11 +10,11 @@ labels:
 ---
 # Automated Market Makers
 
-An Automated Market Maker (AMM) is a type of smart contract, built into the XRP Ledger, that provides liquidity in the decentralized exchange. An AMM holds a pool of two fungible assets, which can be XRP or [tokens](tokens.html), and allows users to swap between them for a fee. [Offers](offers.html) and [Cross-Currency Payments](cross-currency-payments.html) automatically use a combination of Offers and AMMs to achieve cost-effective exchanges between assets.
+An Automated Market Maker (AMM) is a type of smart contract, built into the XRP Ledger, that provides liquidity in the decentralized exchange. An AMM holds a pool of two assets, which can be XRP or [tokens](tokens.html), and allows users to swap between them at an exchange rate set by a formula. [Offers](offers.html) and [Cross-Currency Payments](cross-currency-payments.html) automatically use a combination of Offers and AMMs to achieve cost-effective exchanges between assets.
 
 {% include '_snippets/amm-disclaimer.md' %}
 
-For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create an AMM for an asset pair if it doesn't exist yet, or deposit to an existing AMM's pools. Those who deposit assets into an AMM are called _liquidity providers_ (LPs) and receive "LP Tokens" from the AMM in proportion to the amounts of assets they deposit. LP Tokens are like other fungible tokens in the XRP Ledger, except that they also give special privileges for the AMM that issues them:
+For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create an AMM for an asset pair if it doesn't exist yet, or deposit to an existing AMM's pools. Those who deposit assets into an AMM are called _liquidity providers_ (LPs) and receive "LP Tokens" from the AMM in proportion to the amounts they deposit. LP Tokens are like other fungible tokens in the XRP Ledger, except that they also give special privileges for the AMM that issues them:
 
 - Liquidity providers can redeem their LP Tokens to withdraw a corresponding share of the assets in the AMM's pool, including fees collected.
 - Liquidity providers can vote to change the AMM's fee settings. The votes are weighted based on how many LP Tokens the voters hold.
@@ -24,7 +24,7 @@ When the flow of funds between the two assets in a pool is relatively active and
 
 ## How the AMM Works
 
-[Kris Machowski's Introduction to Automated Market Makers](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/) is a good in-depth explanation on the economics and principles of AMMs in general. The XRP Ledger implements a _constant product_ AMM, where the cost of trading between the two assets in its pool scales so that multiplying the amounts of the two pools together always comes out to the same value. For example, if the AMM holds 5 ETH and 5 USD, the "constant product" value is 5×5=25. To buy 1 ETH, you'd have to spend 1.25 USD, because after removing 1 ETH from the pool and adding 1.25 USD, the constant product value is 4×6.25=25. The AMM also charges a configurable trading fee, which can be as low as 0 or as high as 1%, so you would have to pay a little more for that as well.
+[Kris Machowski's Introduction to Automated Market Makers](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/) is a good in-depth explanation on the economics and principles of AMMs in general. The XRP Ledger implements a _constant product_ AMM, which sets the exchange rate between the two assets in its pool so that multiplying the amounts of the two pools together always comes out to the same value. For example, if the AMM holds 5 ETH and 5 USD, the "constant product" value is 5×5=25. To buy 1 ETH, you'd have to spend 1.25 USD, because after removing 1 ETH from the pool and adding 1.25 USD, the constant product value is 4×6.25=25. The AMM also charges a configurable trading fee, which can be as low as 0 or as high as 1%, so you would have to pay a little more for that as well.
 
 **Note:** The XRP Ledger's AMM is designed to be extensible so that, with future protocol amendments, it would be possible to create an AMM where the pools are be weighted unevenly, which would make it a more general _geometric mean market maker_. However, the current implementation always uses a weight parameter of 0.5, so it functions like a constant product AMM.
 
@@ -34,7 +34,7 @@ An AMM can hold two assets: at most one of these can be XRP, and one or both of 
 
 
 ## Flow of Funds
-
+<!-- TODO: add diagrams showcasing flow of funds -->
 Whoever creates the AMM becomes the first liquidity provider, and receives LP Tokens that represent 100% ownership of assets in the AMM's pool. They can redeem some or all of those LP Tokens to withdraw assets from the AMM in proportion to the amounts currently there. (The proportions shift over time as people trade against the AMM.) The AMM does not charge a fee when withdrawing both assets.
 
 For example, if you created an AMM with 5 ETH and 5 USD, then someone bought 1 ETH by spending 1.25 USD, the pool has 4 ETH and 6.25 USD in it. You can spend half your LP Tokens to withdraw 2 ETH and 3.125 USD.
@@ -47,21 +47,7 @@ The AMM is designed so that an AMM's asset pool is empty if and only if the AMM 
 
 ### LP Token Currency Codes
 
-LP Tokens use a special type of currency code that use the 160-bit hexadecimal ["non-standard" format](currency-formats.html#nonstandard-currency-codes). These codes have the first 8 bits `0x03`. The remainder of the code is a SHA-512 hash, truncated to the first 152 bits, of the two assets' currency codes and their issuers. (The assets are placed in a "canonical order" with the numerically lower currency+issuer pair first.)
-
-
-## Representation in the Ledger
-
-In the ledger's state data, an AMM consists of two [ledger entries](ledger-object-types.html):
-
-- An [AMM object][] describing the automated market maker itself.
-- A special [AccountRoot object][] that holds the AMM's funds and issues LP Tokens.
-    
-    The address of this AccountRoot is chosen somewhat randomly when the AMM is created, and it is different if the AMM is deleted and re-created. This is to prevent people from funding the AMM account with excess XRP in advance.
-
-There are also [trust lines](trust-lines-and-issuing.html) for the tokens in the AMM's pool as well as the LP Tokens it issues.
-
-These objects are not owned by any account, so the [reserve requirement](reserves.html) does not apply to them. However, to prevent spam, the transaction to create an AMM has a special [transaction cost](transaction-cost.html) that requires the sender to burn a larger than usual amount of XRP.
+LP Tokens use a special type of currency code that use the 160-bit hexadecimal ["non-standard" format](currency-formats.html#nonstandard-currency-codes). These codes have the first 8 bits `0x03`. The remainder of the code is a SHA-512 hash, truncated to the first 152 bits, of the two assets' currency codes and their issuers. (The assets are placed in a "canonical order" with the numerically lower currency+issuer pair first.) As a result, the LP Tokens for a given asset pair's AMM have a predictable, consistent currency code.
 
 
 ## Trading Fees
@@ -70,7 +56,7 @@ The trading fee is charged on top of the implicit exchange rate between the asse
 
 Liquidity providers have an incentive to set to set trading fees at an appropriate rate: if fees are too high, trades will use order books to get a better rate instead; if fees are too low, liquidity providers don't get any benefit for contributing to the pool. <!-- STYLE_OVERRIDE: will --> Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the amount of LP Tokens those liquidity providers hold.
 
-Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%, using the [AMMVote transaction type][]. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes weighted by how many LP Tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote then only the top 8 votes (by most LP Tokens held) are counted. Even though liquidity providers' share of LP Tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.html)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
+Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%, using the [AMMVote transaction type][AMMVote]. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes weighted by how many LP Tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote then only the top 8 votes (by most LP Tokens held) are counted. Even though liquidity providers' share of LP Tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.html)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
 
 ### Auction Slot
 
@@ -79,6 +65,21 @@ Unlike any previous Automated Market Makers, the XRP Ledger's AMM design has an 
 **Caution:** The minimum bid value is a placeholder and may change before the AMM feature becomes finalized.
 
 With any AMM, when the price of its assets shifts significantly in external markets shifts significantly, traders can use arbitrage to profit off the AMM, which results in a loss for liquidity providers. The auction mechanism is intended to return more of that value to liquidity providers and more quickly bring the AMM's prices back into balance with external markets.
+
+
+## Representation in the Ledger
+
+In the ledger's state data, an AMM consists of multiple [ledger entries](ledger-object-types.html):
+
+- An [AMM object][] describing the automated market maker itself.
+
+- A special [AccountRoot object][] that issues the AMM's LP Tokens, and holds the AMM's XRP (if it has any).
+    
+    The address of this AccountRoot is chosen somewhat randomly when the AMM is created, and it is different if the AMM is deleted and re-created. This is to prevent people from funding the AMM account with excess XRP in advance.
+
+- [Trust lines](trust-lines-and-issuing.html) to the special AMM Account for the tokens in the AMM's pool.
+
+These objects are not owned by any account, so the [reserve requirement](reserves.html) does not apply to them. However, to prevent spam, the transaction to create an AMM has a special [transaction cost](transaction-cost.html) that requires the sender to burn a larger than usual amount of XRP.
 
 
 <!--{# common link defs #}-->
