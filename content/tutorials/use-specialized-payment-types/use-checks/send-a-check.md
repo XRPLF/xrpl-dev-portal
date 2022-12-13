@@ -7,8 +7,6 @@ labels:
 ---
 # Send a Check
 
-_Added by the [Checks amendment][]._
-
 Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](check.html) which the recipient can cash later.
 
 <!--> Moved to checks.md

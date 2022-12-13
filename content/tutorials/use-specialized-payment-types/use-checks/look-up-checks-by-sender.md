@@ -9,8 +9,6 @@ labels:
 
 ***TODO: Merge this with the look up checks by recipient page.***
 
-_Added by the [Checks amendment][]._
-
 This tutorial shows how to look up [Checks](checks.html) by their sender. You may also want to [look up Checks by recipient](look-up-checks-by-recipient.html).
 
 ## 1. Look up all Checks for the address
