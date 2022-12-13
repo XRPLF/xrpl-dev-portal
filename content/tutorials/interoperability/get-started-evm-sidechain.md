@@ -8,7 +8,7 @@ status: not_enabled
 ---
 # Get Started with the EVM Sidechain
 
-This getting started tutorial walks you through the steps to set up your account and transfer funds using the EVM sidechain bridge. 
+This getting started tutorial walks you through the steps to set up your account and submit a transaction using the EVM sidechain bridge. 
 
 ## 1. Create an Account Using an EVM Compatible Wallet
 <!-- STYLE_OVERRIDE: wallet -->
@@ -17,21 +17,22 @@ In order to interact with the network, you need to create an account in the EVM 
 
 For instructions on how to install and create an account using MetaMask, then send and receive tokens, see [Connect MetaMask to XRP Ledger EVM Sidechain](connect-metamask-to-xrpl-evm-sidechain.html).
 
+
 ## 2. Move XRP Ledger Devnet Tokens to the EVM Sidechain
 
-Before you can start interacting with the EVM blockchain, you need to transfer some tokens from the XRP Ledger Devnet to the EVM sidechain. 
+Before you can start interacting with the EVM blockchain, you need to fund the EVM sidechain using test tokens from the XRP Ledger Devnet. 
 
-To obtain tokens in the XRP Ledger Devnet, go to the [XRP Faucets](xrp-testnet-faucet.html) page and click *Generate Devnet credentials* to generate a new Devnet account with some test XRP in it.
+To generate tokens in the XRP Ledger Devnet, go to the [XRP Faucets](xrp-testnet-faucet.html) page and click *Generate Devnet credentials* to generate a new Devnet account with some test XRP in it.
 
 ![Generate XRP Ledger Devnet credentials](img/evm-sidechain-xrpl-devnet-faucet.png "Generate XRP Ledger Devnet credentials")
 
 Note the address and secret associated with your Devnet address. You need this information to set up your preferred XRP Ledger wallet. 
 
-## 3. Transfer Funds Using the EVM Sidechain Bridge
+## 3. Submit a Transaction Using the EVM Sidechain Bridge
 
-Once you have your accounts set up and test fund allocated, you can use the EVM Sidechain bridge to move the test XRP tokens to the EVM Sidechain. 
+Once you have your accounts set up and test fund allocated, submit a transaction to fund the EVM sidechain with test XRP tokens using the EVM Sidechain bridge. 
 
-The EVM Sidechain bridge is a tool that allows you to transfer funds between chains in a fast and secure way.
+The EVM Sidechain bridge is a tool that enables transactions between chains in a fast and secure way.
 
 To start using the bridge, go to [https://bridge.devnet.xrpl.org](https://bridge.devnet.xrpl.org/)
 
@@ -62,12 +63,12 @@ To connect a MetaMask wallet to the bridge, go to the [EVM Sidechain bridge](htt
 
 ![Connect MetaMask Wallet](img/evm-sidechain-connect-metamask.png "Connect MetaMask wallet")
 
-### 2. Start the Transfer of Funds 
+### 2. Initiate the Transaction 
 
 Now that both Xumm and MetaMask wallets are connected to the bridge, you can select the direction of the bridge, the amount to send, and the destination address.
 
 - **Direction of the bridge**: This is the direction of transfer; it can be either EVM sidechain → XRP Ledger Devnet or XRP Ledger Devnet → EVM sidechain. Use the “Switch Network” button to switch the direction of transfer.
-- **Amount to send**: This is the amount that you want to transfer to the other side. Note that there is a fee to use the bridge.
+- **Amount to send**: This is the amount that you want to send to the other side. Note that there is a fee to use the bridge.
     - Network fees: The fees required by the network for your transactions.
     - Commission: The bridge applies a commission for every transaction completed. This is to prevent spam and distributed denial of service attacks (DDOS).
 - **Destination address**: The address on the destination chain where you want to receive funds.
@@ -114,4 +115,4 @@ Following a few minutes of transaction processing time, you are redirected to th
 
 ![Transaction confirmation](img/evm-sidechain-transaction-confirmation.png "Transaction confirmation")
 
-Your test XRP tokens have been successfully transferred and are now available in the other chain.
+Your transaction has completed successfully and the test XRP tokens are now available in the other chain.
