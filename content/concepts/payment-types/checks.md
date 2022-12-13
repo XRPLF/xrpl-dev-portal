@@ -9,12 +9,11 @@ labels:
 ---
 # Checks
 
-The Checks feature enables users to create deferred payments, similar to personal paper checks. Unlike an escrow or payment channel, funds aren't set aside when a check is created, so money only moves when the check is cashed. If the sender doesn't have the funds at the time a check is cashed, the transaction fails; recipients can retry failed transactions until the check expires.
+The Checks feature enables users to create deferred payments similar to personal paper checks. Unlike an escrow or payment channel, funds aren't set aside when a check is created, so money only moves when the check is cashed. If the sender doesn't have the funds at the time a check is cashed, the transaction fails; recipients can retry failed transactions until the check expires.
 
-XRP Ledger Checks may have expiration times after which they may no longer be cashed. If the recipient doesn't successfully cash the Check before it expires, the Check can no longer be cashed, but the object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and recipient can cancel the Check before it expires. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
+XRP Ledger Checks can have expiration times after which they may no longer be cashed. If the recipient doesn't successfully cash the Check before it expires, the Check can no longer be cashed, but the object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and recipient can cancel the Check before it expires. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
 
-
-## Why Checks?
+## Use Cases
 
 - Checks allow people to exchange funds using a process that is familiar to and accepted by the banking industry.
 
@@ -36,23 +35,8 @@ XRP Ledger Checks may have expiration times after which they may no longer be ca
     - Exact Amount: They specify an exact amount to cash that doesn't exceed the check maximum.
     - Flexible Amount: They specify a minimum amount to cash and the XRP Ledger delivers as much as possible up to the check maximum. If the sender doesn't have the funds to at least meet the specified minimum, the transaction fails.
 
+4. If the check expires before the receiver cashes the check, the `Check` object remains until anyone cancels it.
 
-### Expiration Case
-
-In the case of expirations, Checks have the lifecycle described below.
-
-<!--{# Diagram source: https://docs.google.com/drawings/d/11auqa0kVUPonqlc_RaQUfHcSkUI47xneSKpwlLxzSK0/edit #}-->
-
-[![Check flow diagram (expiration)](img/checks-expiration.png)](img/checks-expiration.png)
-
-
-All Checks start the same way, so **Steps 1 and 2** are the same.
-
-**Step 3a:** If the Check expires before the recipient can cash it, the Check can no longer be cashed but the object remains in the ledger.
-
-**Step 4a:** After a Check expires, anyone may cancel it by submitting a [CheckCancel][] transaction. That transaction removes the Check from the ledger.  
-
-<!-- SPELLING_IGNORE: 3a, 4a -->
 
 
 ## See Also
