@@ -13,6 +13,7 @@ This tutorial shows how to look up [Checks](checks.html) by their recipient. You
 
 To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command with the recipient account's address and set the `type` field of the request to `checks`.
 
+<!-- Moved this note to the account_objects method page. -->
 **Note:** The commandline interface to the `account_objects` command does not accept the `type` field. You can use the [json method][] to send the JSON-RPC format request on the commandline instead.
 
 ### Example Request
