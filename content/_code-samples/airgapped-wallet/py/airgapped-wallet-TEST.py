@@ -129,7 +129,7 @@ def create_wallet_directory():
 
     if not os.path.exists(File):
         print("1. Generating wallet's keypair...")
-        pub, priv, seed = create_wallet(silent=True)
+        pub, seed = create_wallet(silent=True)
 
         print("2. Creating wallet's file directory...")
         os.makedirs(File)
@@ -181,7 +181,7 @@ def showcase_wallet_address_qr_code():
     __path = get_path("/WalletTEST/public.png")
     print(f"1. Getting address from {__path}...")
     print("2. Displaying QR code on the screen...")
-    image = Image.open(get_path("/Wallet/public.png"))
+    image = Image.open(get_path("/WalletTEST/public.png"))
     image.show()
 
 
@@ -189,10 +189,9 @@ if __name__ == '__main__':
     print("Airgapped Machine Unit Test (5 functions):\n")
 
     print(f"UNIT TEST 1. create_wallet():")
-    _address, _private, _seed = create_wallet(silent=False)
+    _address, _seed = create_wallet(silent=False)
     print(f"-- RESULTS --\n"
           f"Address: {_address}\n"
-          f"Private Key: {_private}\n"
           f"Seed: {_seed}\n"
           f"END RESULT: Successful"
           )
