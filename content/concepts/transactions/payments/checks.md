@@ -7,33 +7,7 @@ labels:
 ---
 # Checks
 
-The Checks feature enables users to create deferred payments similar to personal paper checks. Unlike an escrow or payment channel, funds aren't set aside when a check is created, so money only moves when the check is cashed. If the sender doesn't have the funds at the time a check is cashed, the transaction fails; recipients can retry failed transactions until the check expires.
-
-XRP Ledger Checks can have expiration times after which they may no longer be cashed. If the recipient doesn't successfully cash the Check before it expires, the Check can no longer be cashed, but the object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and recipient can cancel the Check before it expires. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
-
-***TODO: Don't think this needs to be noted here. Is the behavior change documented on the reference page?***
-**Note:** The Checks amendment changes the expiration behavior of the `OfferCreate` transaction. 
-
-<!-- For more information, see [Offer Expiration](offers.html#offer-expiration). -->
-
-***TODO: Repurpose this into use cases.***
-## Use Cases
-
-- Checks allow people to exchange funds using a process that is familiar to and accepted by the banking industry.
-
-- XRP Ledger Checks solve a problem that is unique to the Ledger: they enable users to reject unwanted payments or accept only part of a payment. This is useful for institutions that need to be careful about accepting payments for compliance reasons.
-
-- If your intended recipient blocks direct payments from stranger using deposit authorization, a check is a good alternative.
-
-- Flexible check cashes. Specify a min amount up to maxamount to cash.
-
-### Payment Authorization
-
-**Problem:** To comply with regulations like BSA, KYC, AML, and CFT, financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to know the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, tokens) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant cost and time delays to these institutions' compliance departments, including potential fines or penalties. <!-- SPELLING_IGNORE: cft -->
-
-<!-- [BSA, KYC, AML, and CFT](become-an-xrp-ledger-gateway.html#gateway-compliance) -->
-
-**Solution:** Institutions can enable deposit authorization on their XRP Ledger accounts by setting the `asfDepositAuth` flag in an `AccountSet` transaction. This makes the account unable to receive Payment transactions. Accounts with Deposit Authorization enabled can only receive funds through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.
+XRPL Ledger checks enable users to create deferred payments similar to personal paper checks. Unlike an escrow or payment channel, funds aren't set aside when a check is created, so money only moves when the check is cashed. If the sender doesn't have the funds at the time a check is cashed, the transaction fails; recipients can retry failed transactions until the check expires.
 
 
 ## Check Lifecycle
@@ -50,7 +24,23 @@ XRP Ledger Checks can have expiration times after which they may no longer be ca
         - Exact Amount: They specify an exact amount to cash that doesn't exceed the check maximum.
         - Flexible Amount: They specify a minimum amount to cash and the XRP Ledger delivers as much as possible up to the check maximum. If the sender doesn't have the funds to meet the minimum, the transaction fails.
 
-4. If the check expires before the receiver cashes the check, the `Check` object remainds until anyone cancels it.
+4. If the check expires before the receiver cashes the check, the `Check` object remains until someone cancels it.
+
+
+## Use Cases
+
+### Deposit Authorization
+
+**Problem:** To comply with regulations like BSA, KYC, AML, and CFT, financial institutions must provide documentation about the sources of funds they receive. These regulations seek to prevent illicit activity by requiring institutions to track the source and destination of all payments they process. Because of the nature of the XRP Ledger, anyone can send XRP to an institution's account on the ledger; to prevent this behavior, they'll enable deposit authorization to only receive funds they explicitly approve. <!-- SPELLING_IGNORE: cft -->
+
+<!-- [BSA, KYC, AML, and CFT](become-an-xrp-ledger-gateway.html#gateway-compliance) -->
+
+**Solution:** Accounts with deposit authorization enabled can only receive funds through:
+    - Preauthorized Accounts
+    - Escrow
+    - Payment Channels
+    - Checks
+Checks are the most straightforward, familiar, and flexible way to transfer funds when deposite authorization is enabled.
 
 <!-- SPELLING_IGNORE: 3a, 4a -->
 
