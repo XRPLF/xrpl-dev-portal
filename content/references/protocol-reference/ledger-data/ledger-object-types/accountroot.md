@@ -85,7 +85,7 @@ AccountRoot objects can have the following flag values:
 
 {% include '_snippets/amm-disclaimer.md' %}
 
-Automated Market Makers (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, and an [AMM object][] for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:
+[Automated Market Makers](automated-market-makers.html) (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, in addition to the [AMM object][] for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoots are created with the following settings:
 
 - `lsfAMM` **enabled**. This indicates that the AccountRoot is part of an AMM and is not a regular account.
 - `lsfDisableMaster` **enabled** and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.

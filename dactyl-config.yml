@@ -194,6 +194,7 @@ targets:
             "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
             # Fix links from untranslated AMM pages:
             "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
+            "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
 
 pages:
 
