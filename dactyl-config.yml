@@ -413,6 +413,129 @@ pages:
          - en
          - ja
          
+# Use Cases --------------------------------------------------------------------
+
+    -   name: Use Cases
+        html: use-cases.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Browse the documentation based on practical use cases.
+        targets:
+            - en
+
+
+    -   name: Payments
+        html: payments-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Practical examples for using different types of payment on the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/xrp-to-xrp-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/payment-channels-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/cross-currency-payments-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/escrow-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   name: Tokenization
+        html: tokenization.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Work with a variety of tokens supported by the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/authorized-minter.md
+        parent: tokenization.html
+        targets:            
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/stablecoin-issuer.md
+        parent: tokenization.html
+        targets:            
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/nftoken-marketplace.md
+        parent: tokenization.html
+        targets:            
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/digital-artist.md
+        parent: tokenization.html
+        targets:            
+            - en
+            - ja
+
+    -   name: Decentralized Finance
+        html: defi-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Enabling fast, secure financial transactions without a central authority.
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/defi/moneychanger-uc.md
+        parent: defi-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/defi/amm-uc.md
+        parent: defi-uc.html
+        targets:
+            - en
+            - ja
+
+    -   name: Interoperability
+        html: interoperability-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Practical ways to connect the XRP Ledger to external chains.
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/interoperability/sidechains-uc.md
+        parent: interoperability-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/interoperability/xrpl-hooks-uc.md
+        parent: interoperability-uc.html
+        targets:
+            - en
+            - ja
 # Concepts ---------------------------------------------------------------------
 
     -   name: Concepts
@@ -536,6 +659,16 @@ pages:
          - en
          - ja
 
+    -   md: concepts/xrpl/list-xrp-as-an-exchange.md
+        parent: xrpl-servers.html
+        targets:
+            - en
+
+    -   md: concepts/xrpl/list-xrp-as-an-exchange.ja.md
+        parent: xrpl-servers.html
+        targets:
+            - ja
+            
     - md: concepts/transactions/transactions.md
       parent: concepts.html
       targets:
@@ -768,19 +901,26 @@ pages:
       targets:
          - en
          - ja
+
          
     - md: concepts/tokens/freezing-tokens.md
       parent: tokens.html
       targets:
          - en
          - ja
-         
+
     - md: concepts/tokens/common-misunderstandings-about-freezes.md
       parent: freezing-tokens.html
       targets:
          - en
          - ja
-         
+
+    - md: concepts/tokens/become-an-xrp-ledger-gateway.md
+      parent: tokens.html
+      targets:
+         - en
+         - ja
+            
     - md: concepts/tokens/non-fungible.md
       parent: token-types.html
       targets:
@@ -847,46 +987,8 @@ pages:
       targets:
          - en
          - ja
-         
-# Use Cases --------------------------------------------------------------------
 
-    -   name: Use Cases
-        html: use-cases.html
-        parent: docs.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Browse the documentation based on practical use cases.
-        targets:
-            - en
-
-        # TODO: translate
-    -   md: use-cases/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
-        parent: use-cases.html
-        targets:
-            - en
-            - ja
-
-    -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.md
-        parent: use-cases.html
-        targets:
-            - en
-            
-    -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
-        parent: use-cases.html
-        targets:            
-            - ja
-
-    -   md: use-cases/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
-        parent: use-cases.html
-        targets:
-            - en
-            
-    -   md: use-cases/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.ja.md
-        parent: use-cases.html
-        targets:            
-            - ja
-
-
+        
 # Tutorials --------------------------------------------------------------------
 
     -   name: Tutorials
@@ -3862,15 +3964,15 @@ pages:
         parent: amendment-heading.html
         targets:
             - en
-            
-    -   md: amendments/amendment-heading.ja.md
-        targets:
-            - ja
-            
-    -   md: amendments/known-amendments.ja.md
-        parent: known-amendment-heading.ja.html
-        targets:
-            - ja
+#             
+#     -   md: amendments/amendment-heading.ja.md
+#         targets:
+#             - ja
+#             
+#     -   md: amendments/known-amendments.ja.md
+#         parent: known-amendment-heading.ja.html
+#         targets:
+#             - ja
             
 
 
