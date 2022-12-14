@@ -481,6 +481,84 @@ pages:
 
 # Use Cases  -------------------------------------------------------------------
 
+    -   name: Use Cases
+        html: use-cases.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Browse the documentation based on practical use cases.
+        targets:
+            - en
+
+
+    -   name: Payments
+        html: payments-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Practical examples for using different types of payment on the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/xrp-to-xrp-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/payment-channels-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/cross-currency-payments-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/escrow-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   name: Tokenization
+        html: tokenization.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Work with a variety of tokens supported by the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/authorized-minter.md
+        parent: tokenization.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/stablecoin-issuer.md
+        parent: tokenization.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/nftoken-marketplace.md
+        parent: tokenization.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/digital-artist.md
+        parent: tokenization.html
+        targets:
+            - en
+            - ja
+
     -   md: use-cases/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
         parent: use-cases.html
         targets:
@@ -495,6 +573,50 @@ pages:
     -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
         parent: use-cases.html
         targets:            
+            - ja
+            
+    -   name: Decentralized Finance
+        html: defi-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Enabling fast, secure financial transactions without a central authority.
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/defi/moneychanger-uc.md
+        parent: defi-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/defi/amm-uc.md
+        parent: defi-uc.html
+        targets:
+            - en
+            - ja
+
+    -   name: Interoperability
+        html: interoperability-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Practical ways to connect the XRP Ledger to external chains.
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/interoperability/sidechains-uc.md
+        parent: interoperability-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/interoperability/xrpl-hooks-uc.md
+        parent: interoperability-uc.html
+        targets:
+            - en
             - ja
 
 # Concepts ---------------------------------------------------------------------
@@ -533,6 +655,23 @@ pages:
         targets:
             - ja
 
+    - md: concepts/introduction/what-is-xrpl.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
+    
+    - md: concepts/introduction/what-is-xrp.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/introduction/txn-and-requests.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
     # Supplanted by the new xrp-ledger-overview.html landing page.
     # TODO: fully replace. https://github.com/XRPLF/xrpl-dev-portal/issues/1202
     # -   md: concepts/introduction/xrp-ledger-overview.md
@@ -1243,6 +1382,7 @@ pages:
             - ja
 
 
+        
 # Tutorials --------------------------------------------------------------------
 
     -   name: Tutorials
@@ -4469,15 +4609,15 @@ pages:
         parent: amendment-heading.html
         targets:
             - en
-            
-    -   md: amendments/amendment-heading.ja.md
-        targets:
-            - ja
-            
-    -   md: amendments/known-amendments.ja.md
-        parent: known-amendment-heading.ja.html
-        targets:
-            - ja
+#             
+#     -   md: amendments/amendment-heading.ja.md
+#         targets:
+#             - ja
+#             
+#     -   md: amendments/known-amendments.ja.md
+#         parent: known-amendment-heading.ja.html
+#         targets:
+#             - ja
             
 
 

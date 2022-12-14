@@ -1,6 +1,6 @@
 ---
 html: become-an-xrp-ledger-gateway.html
-parent: xrp-ledger-businesses.html
+parent: tokens.html
 blurb: Stablecoin issuers link tokens in the XRP Ledger to assets in the outside world.
 labels:
   - Tokens
