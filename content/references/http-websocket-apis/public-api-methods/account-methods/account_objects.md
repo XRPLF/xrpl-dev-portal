@@ -81,6 +81,8 @@ The request includes the following parameters:
 | `limit`                  | Number           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
 | `marker`                 | [Marker][]       | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
+**Note:** The commandline interface to the `account_objects` command doesn't accept the `type` field. Use the [json method][] to send the JSON-RPC format request on the commandline instead.
+
 ## Response Format
 
 An example of a successful response:
