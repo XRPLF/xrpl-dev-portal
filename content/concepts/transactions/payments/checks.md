@@ -31,7 +31,7 @@ XRPL Ledger checks enable users to create deferred payments similar to personal 
 
 ### Deposit Authorization
 
-**Problem:** To comply with regulations like BSA, KYC, AML, and CFT, financial institutions must provide documentation about the sources of funds they receive. These regulations seek to prevent illicit activity by requiring institutions to track the source and destination of all payments they process. Because of the nature of the XRP Ledger, anyone can send XRP to an institution's account on the ledger; to prevent this behavior, they'll enable deposit authorization to only receive funds they explicitly approve. <!-- SPELLING_IGNORE: cft -->
+**Problem:** To comply with banking regulations, financial institutions must provide documentation about the sources of funds they receive. These regulations seek to prevent illicit activity by requiring institutions to track the source and destination of all payments they process. Because of the nature of the XRP Ledger, anyone can send XRP to an institution's account on the ledger; to prevent this behavior, they'll enable deposit authorization to only receive funds they explicitly approve. <!-- SPELLING_IGNORE: cft -->
 
 <!-- [BSA, KYC, AML, and CFT](become-an-xrp-ledger-gateway.html#gateway-compliance) -->
 
