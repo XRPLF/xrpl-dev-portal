@@ -8,20 +8,18 @@ labels:
 ---
 # Send a Time-Held Escrow
 
-You can configure an escrow to release funds after a specific time has passed.
+The [EscrowCreate transaction][] type can create an escrow whose only condition for release is that a specific time has passed. To do this, use the `FinishAfter` field and omit the `Condition` field.
 
 ## 1. Calculate release time
 
-You must specify the release time as whole seconds since **[the Ripple Epoch][]**, which you can calculate using this formula:
-(Release_Time = Date_in_Unix_Time - 946684800)
-***TODO: Format this properly.***
+You must specify the time as whole **[seconds since the Ripple Epoch][]**, which is 946684800 seconds after the UNIX epoch. For example, to release funds at midnight UTC on November 13, 2017:
 
 <!-- MULTICODE_BLOCK_START -->
 
 *JavaScript*
 
 ```js
-// JavaScript Date() is natively expressed in milliseconds; convert to seconds.
+// JavaScript Date() is natively expressed in milliseconds; convert to seconds
 const release_date_unix = Math.floor( new Date("2017-11-13T00:00:00Z") / 1000 );
 const release_date_ripple = release_date_unix - 946684800;
 console.log(release_date_ripple);
@@ -43,9 +41,11 @@ print(release_date_ripple)
 
 <!-- MULTICODE_BLOCK_END -->
 
+**Warning:** If you use a UNIX time in the `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!
+
 ## 2. Submit EscrowCreate transaction
-<!--> Note to Dennis: I'd like to remove most links taking people out of the tutorial. It breaks the flow of thought and, like you've said earlier, it forces them to think when we're supposed to be doing most of the heavy lifting here. However most of these steps are includes from other pages, so it'd requiring modifying those and I'm not sure how that will affect the other pages they're being referenced. <-->
-[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field to the calcualted release time. Set the `Amount` to the total [XRP, in drops][], to escrow.
+
+[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
@@ -110,7 +110,7 @@ Response:
 
 ## 5. Wait for the release time
 
-Held payments release when a ledger closes with a [`close_time` header field](ledger-header.html) that is later than the Escrow node's `FinishAfter` time.
+Held payments with a `FinishAfter` time cannot be finished until a ledger has already closed with a [`close_time` header field](ledger-header.html) that is later than the Escrow node's `FinishAfter` time.
 
 You can check the close time of the most recently-validated ledger with the [ledger method][]:
 
@@ -141,9 +141,12 @@ Response:
 
 ## 6. Submit EscrowFinish transaction
 
-[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the `EscrowCreate` transaction. The sender of this transaction can be any XRP Ledger address.
+[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
 
-If the escrow expires, you can only [cancel the escrow](cancel-an-expired-escrow.html).
+***TODO: First half of this statement is covered by concept info already. It's also reiterated in escrow.md. The second portion about potential recipients should remain.***
+**Tip:** The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
+
+If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.html) instead.
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 

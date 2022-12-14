@@ -7,13 +7,17 @@ labels:
 ---
 # Escrow
 
-A traditional escrow is a contract between two parties to facilitate risky financial transactions. Funds are sent to and held by an impartial third party, guaranteeing its availability. The funds are only released to their intended recipients when conditions specified by the contract are met. This method ensures both parties meet their obligations.
+A traditional escrow is a contract between two parties to facilitate financial transactions. A sender delivers funds to an impartial third party to hold, guaranteeing its availability to a recipient. The third party only releases the funds to the recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
 
-The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met. You can specify conditions by:
+The XRP Ledger takes escrow a step further, removing the need for a third party to hold the funds. Instead, an escrow locks up XRP on the ledger itself, which can't be used or destroyed until conditions are met.
 
-- Time.
-- Crypto-condition.
-- A combination of both.
+## Types of Escrow
+
+The XRP Ledger supports three types of escrow:
+
+- **Time-based Escrow:** Escrow funds only become available after a certain amount of time passes.
+- **Conditional Escrow:** This escrow is created with a corresponding condition and fulfillment. The condition serves as a lock on the funds and won't release until the correct fulfillment key is provided.
+- **Combination Escrow:** This escrow combines the features of time-based and conditional escrow. The escrow is completely inaccessible until the specified time passes, after which the funds can be release by providing the correct fulfillment.
 
 ## Escrow Lifecycle
 
@@ -25,10 +29,13 @@ The XRP Ledger takes escrow a step further, replacing the third party with an au
 
 2. After the transaction is processed, the XRP Ledger creates an `Escrow` object that holds the escrowed XRP.
 
-3. The recipient sends an `EscrowFinish` transaction to deliver the XRP. If the conditions have been met, the `Escrow` object is destroyed and the XRP credited to the recipient.
+3. When the escrow conditions are met, the funds become available.
+
+4. The recipient sends an `EscrowFinish` transaction to actually deliver the XRP. The `Escrow` object is destroyed and the XRP credited to the recipient.
     
     **Note:** If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. Expired escrows remain in the ledger until an `EscrowCancel` transaction cancels it, destroying the `Escrow` object and returning the XRP to the sender.
 
+***TODO: Are these official escrow statuses you can look up in the XRPL?***
 ## Escrow States
 
 The following diagram shows the states an Escrow can progress through:
@@ -53,18 +60,6 @@ The diagram shows three different cases for three possible combinations of the e
 - Timed releases and expirations resolve according to XRP Ledger close times. In practice, actual release and expiration times can vary by about five seconds as ledgers close.
 - The only supported crypto condition type is PREIMAGE-SHA-256.
 
-***TODO: Can we remove this section? It's five years old. Is there any situation where someone's using an old version of the ledger that doesn't have this enabled already?***
-## Availability of Escrow
-
-Conditional payments have been enabled by the ["Escrow" Amendment](../../../../amendments/known-amendments.md#escrow) to the XRP Ledger Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the XRP Ledger Test Net by the name "Suspended Payments" (SusPay) in 2016.
-
-When testing in stand-alone mode, you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
-
-    [features]
-    Escrow
-
-You can check the status of the Escrow amendment using the `feature` method.
-
 ## Use Cases
 
 ### Time-based Lock-Up
@@ -78,14 +73,12 @@ You can check the status of the Escrow amendment using the `feature` method.
 
 Placing the money into escrow sharply limits the amount of XRP that can be stolen or redirected if a malicious actors gains temporary control over Ripple's XRP account. This reduces the risk of catastrophic losses of XRP and increases the time for Ripple to detect, prevent, and track down unintended uses of Ripple's XRP assets.
 
-***TODO: Are interledger payments still a valid use case with an escrow? As I understand it, that was in ILP v1. Payment channels are now recommended for ILP v4.***
-### Interledger Payments
+***TODO: Think of a smart contract that would see real-world use. The draw of smart contracts is it removes human interaction (I think?), but the example in use-an-escrow-as-a-smart-contract.md still has a person ultimately deciding if someone gets paid.***
+### Smart Contracts
 
-**Background:** In the quickly-developing world of financial technology, one of the core challenges is coordinating activities that cross multiple digital money systems, or ledgers. Many proposed solutions to this problem can be reduced to creating "one ledger to rule them all." Ripple doesn't believe a single system can meet everyone's needs; instead, an interconnected network of ledgers—an _interledger_—is the true future of financial technology. The `Interledger Protocol` defines standards for making as many systems as possible connect securely and smoothly.
+**Background:** 
 
-The most fundamental principle of inter-ledger payments is _conditional transfers_. Multi-hop payments have a risk problem: the more hops in the middle, the more places the payment can fail. Interledger solves this with the financial equivalent of a "[two-phase commit](https://en.wikipedia.org/wiki/Two-phase_commit_protocol)", where the two steps are (1) prepare conditional transfers, then (2) fulfill the conditions to execute the transfers. The Interledger project defined a `crypto-conditions` specification to standardize automated ways to define and verify conditions, and settled on SHA-256 hashes as a "common denominator" of such conditions.
-
-**Solution:** The Escrow feature makes the XRP Ledger ideal for bridging multi-hop payments using the Interledger Protocol, because it natively supports transfers that deliver XRP based on PREIMAGE-SHA-256 crypto-conditions, and it executes those transfers within seconds of being presented with the matching fulfillment.
+**Solution:**  
 
 ## See Also
 
@@ -98,7 +91,5 @@ The most fundamental principle of inter-ledger payments is _conditional transfer
     - [EscrowCancel transaction][]
 - [Ledger Reference](ledger-data-formats.html)
     - [Escrow object](escrow-object.html)
-
-For more information on Interledger and how conditional transfers enable secure payments across multiple ledgers, see [Interledger Architecture](https://interledger.org/rfcs/0001-interledger-architecture/).
 
 For more information on Ripple's 55-billion XRP lock-up, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
