@@ -1,7 +1,7 @@
 anyio==3.2.1
 asgiref==3.4.1
 base58==2.1.0
-certifi==2021.5.30
+certifi==2022.12.7
 cffi==1.15.0
 colorama==0.4.4
 cryptography==35.0.0
