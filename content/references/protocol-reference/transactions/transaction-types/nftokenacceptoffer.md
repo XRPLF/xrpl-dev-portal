@@ -50,38 +50,23 @@ The mode in which the transaction operates depends on the presence of the `NFTok
 
 If neither of those fields is specified, the transaction is malformed and produces a `tem` class error.
 
-The semantics of brokered mode are slightly different than one in direct mode: The account executing the transaction functions as a broker, bringing the two offers together and causing them to be matched, but does not acquire ownership of the involved `NFToken`, which will, if the transaction is successful, be transferred directly from the seller to the buyer.
+The semantics of brokered mode are slightly different than direct mode: the account sending the transaction acts as a broker, bringing the two offers together and causing them to be matched, but does not acquire ownership of the involved `NFToken`. If the transaction is successful, the `NFToken` is sent directly from the seller to the buyer.
 
 
 ## Execution Details
 
+If the transaction succeeds:
 
-### Direct Mode
+- The `NFTtoken` changes ownership, meaning that the token is removed from the `NFTokenPage` of the existing owner and added to the `NFTokenPage` of the new owner.
+- Funds are transferred from the buyer to the seller, as specified in the `NFTokenOffer`. If the `NFToken` has a transfer fee, then its issuer receives the specified percentage, and the rest goes to the seller.
 
-In direct mode, `NFTokenAcceptOffer` transaction fails if:
+The transaction fails with a [`tec`-class code](tec-codes.html) if:
 
-* The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed is an offer to `buy` the `NFToken` and the account executing the `NFTokenAcceptOffer` is not, at the time of execution, the current owner of the corresponding `NFToken`.
-* The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed is an offer to `sell` the `NFToken` and was placed by an account which is not, at the time of execution, the current owner of the `NFToken`.
-* The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed is an offer to `sell` the `NFToken` and was placed by an account which is not, at the time of execution, the `Account` in the recipient field of the `NFTokenOffer`, if one exists.
-* The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed specifies an `expiration` time and the close time field of the parent of the ledger in which the transaction would be included has already passed.
-* The `NFTokenOffer` against which `NFTokenAcceptOffer` transaction is placed to buy or sell the `NFToken `is owned by the account executing the `NFTokenAcceptOffer`.
-
-A side-effect of such failures is the removal of the `NFTokenOffer` object and the refund of the incremental reserve as if the offer had been cancelled. This necessitates the use of an appropriate `tec` class error.
-
-If the transaction is executed successfully then:
-
-* The relevant `NFTtoken` changes ownership, meaning that the token is removed from the `NFTokenPage` of the existing `owner` and added to the `NFTokenPage` of the new `owner`.
-* Funds are transferred from the buyer to the seller, as specified in the `NFTokenOffer`. If the corresponding `NFToken` offer specifies a `TransferFee`, then the `issuer` receives the specified percentage, with the balance going to the seller of the `NFToken`.
-
-
-### Brokered Mode
-
-In brokered mode, the `NFTokenAcceptOffer` transaction fails if:
-
-* The `buy` `NFTokenOffer` against which the  `NFTokenAcceptOffer` transaction is placed is owned by the account executing the transaction.
-* The `sell` `NFTokenOffer` against which the `NFTokenAcceptOffer` transaction is placed is owned by the account executing the transaction.
-* The account that placed the offer to sell the `NFToken` is not, at the time of execution, the current owner of the corresponding `NFToken`.
-* Either offer (`buy` or `sell`) specifies an `expiration` time and the close time field of the parent of the ledger in which the transaction would be included has already passed.
+- The buyer already owns the `NFToken`.
+- The seller is not the current owner of the `NFToken`.
+- One or both offers in the transaction have already expired.
+- The sell offer specifies a specific destination account, and the sender of the transaction is not that account.
+- The sender of this transaction owns the buy or sell offer.
 
 
 ## Fields
@@ -92,19 +77,19 @@ In brokered mode, the `NFTokenAcceptOffer` transaction fails if:
 |:-------------------|:--------------------|:------------------|:--------------|
 | `NFTokenSellOffer` | String              | Hash256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
 | `NFTokenBuyOffer`  | String              | Hash256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
-| `NFTokenBrokerFee` | [Currency Amount][] | Amount            | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the `NFToken` being bought. If specified, the fee must be such that, prior to accounting for the transfer fee charged by the issuer, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
+| `NFTokenBrokerFee` | [Currency Amount][] | Amount            | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the `NFToken` being bought. If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
 
 In direct mode, you must specify **either** the `NFTokenSellOffer` or the `NFTokenBuyOffer` field. In brokered mode, you must specify **both** fields.
 
 This functionality is intended to allow the owner of an `NFToken` to offer their token for sale to a third party broker, who may then attempt to sell the `NFToken` on for a larger amount, without the broker having to own the `NFToken` or custody funds.
 
-If both offers are for the same asset, it is possible that the order in which funds are transferred might cause a transaction that would succeed to fail due to an apparent lack of funds. To ensure deterministic transaction execution and maximize the chances of successful execution, the account attempting to buy the `NFToken` is debited first. Funds due to the broker are credited _before_ crediting the seller.
+If both offers are for the same asset, it is possible that the order in which funds are transferred might cause a transaction that would succeed to fail due to a lack of funds. To ensure deterministic transaction execution and maximize the chances of successful execution, the account attempting to buy the `NFToken` is debited first. Funds due to the broker are credited _before_ crediting the seller.
 
 In brokered mode, the offers referenced by `NFTokenBuyOffer` and `NFTokenSellOffer` must both specify the same `NFTokenID`; that is, both must be for the same `NFToken`.
 
 ## Error Cases
 
-In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
 
 | Error Code                         | Description                             |
 |:-----------------------------------|:----------------------------------------|

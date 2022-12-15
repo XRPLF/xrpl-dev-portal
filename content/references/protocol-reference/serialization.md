@@ -303,7 +303,7 @@ All such fields are serialized as the specific number of bits, with no length in
 ### Issue Fields
 [STIssue]: #issue-fields
 
-_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_
+_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_ <!-- SPELLING_IGNORE: 30d -->
 
 Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of one or two 160-bit segments in order:
 

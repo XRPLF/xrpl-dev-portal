@@ -117,4 +117,4 @@ At the protocol level, this format is [serialized](serialization.html#currency-c
 
 You can also use a 160-bit (40-character) hexadecimal string such as `015841551A748AD2C1F76FF6ECB0CCCD00000000` as the currency code. To prevent this from being treated as a "standard" currency code, the first 8 bits MUST NOT be `0x00`.
 
-**Deprecated:** Some previous versions of [ripple-lib](https://github.com/XRPLF/xrpl.js) supported an "interest-bearing" or "demurraging" currency code type. These codes have the first 8 bits `0x01`. Demurraging / interest-bearing currencies are no longer supported, but you may encounter them in ledger data. For more information, see [Demurrage](demurrage.html).
+**Deprecated:** Some previous versions of [ripple-lib](https://github.com/XRPLF/xrpl.js) supported an "interest-bearing" or "demurraging" currency code type. These codes have the first 8 bits `0x01`. Demurraging / interest-bearing currencies are no longer supported, but you may find them in ledger data. For more information, see [Demurrage](demurrage.html).

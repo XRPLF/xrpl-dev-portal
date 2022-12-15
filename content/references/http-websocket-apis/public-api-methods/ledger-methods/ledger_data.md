@@ -50,14 +50,13 @@ An example of the request format:
 
 A request can include the following fields:
 
-| `Field`        | Type                                       | Description    |
-|:---------------|:-------------------------------------------|:---------------|
-| `id`           | (Arbitrary)                                | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
-| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `binary`       | Boolean                                    | (Optional, defaults to False) If set to true, return ledger objects as hashed hex strings instead of JSON. |
-| `limit`        | Integer                                    | (Optional, default varies) Limit the number of ledger objects to retrieve. The server is not required to honor this value. |
-| `marker`       | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `Field`        | Type                      | Required? | Description    |
+|:---------------|:--------------------------|:----------|----------------|
+| `ledger_hash`  | String - [Hash][]         | No        | A 20-byte hex string identifying the ledger version to use. |
+| `ledger_index` | Number - [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `binary`       | Boolean                   | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`. |
+| `limit`        | Integer                   | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). The default is the maximum. |
+| `marker`       | [Marker][]                | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 The `ledger` field is deprecated and may be removed without further notice.
 

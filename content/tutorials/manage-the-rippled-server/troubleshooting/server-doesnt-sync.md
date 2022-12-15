@@ -27,7 +27,7 @@ If the server is unable to keep up with the network while doing these tasks, the
 
 ## First Step: Restart
 
-Many syncing issues can be resolved by restarting the server. No matter why it failed to sync the first time, it may succeed on the second try.
+Many syncing issues can be resolved by restarting the server. No matter why it didn't sync the first time, it may succeed on the second try.
 
 If the [server_info method][] shows a [`server_state`](rippled-server-states.html) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `rippled` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
 
@@ -38,7 +38,7 @@ If the problem persists, check the other possibilities listed on this page. If n
 
 The most common cause of syncing issues is not meeting the [system requirements](system-requirements.html). The three most common shortfalls are:
 
-- **Slow disks.** You need a consistently fast solid state disk (SSD). Cloud providers like AWS usually don't guarantee disk performance, which may be impacted by other users of shared hardware.
+- **Slow disks.** You need a consistently fast solid state disk (SSD). Cloud providers like AWS usually don't guarantee disk performance, because it depends on hardware shared with other customers.
 - **Insufficient RAM.** The memory requirements vary depending on several factors including ones that are hard to predict like network load and how people use the XRP Ledger, so it's good to have more than the minimum system requirements.
 - **Poor network connection.** Network requirements vary the most based on how people use the XRP Ledger, but a slow or unstable connection can make it impossible to keep up with new transactions and data added to the XRP Ledger.
 

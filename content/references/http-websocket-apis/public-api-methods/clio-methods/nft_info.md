@@ -48,8 +48,10 @@ The request contains the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. If you do not specify this field, it defaults to `validated`. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. If you do not specify this field, it defaults to `validated`. Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers][]) | 
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers][]) |
+
+If you do not specify a ledger version, Clio uses the latest validated ledger.
 
 ## Response Format
 
@@ -135,7 +137,7 @@ The response follows the [standard format][], with a successful result containin
 | `issuer`                          | String          | The account ID which denotes the issuer of this NFT. |
 | `nft_taxon`                       | Integer         | The NFT’s taxon. |
 | `nft_sequence`                    | Integer         | The NFT’s sequence number. |
-| `uri`                             | String or `null` | _(Omitted if the NFT is burned at this ledger.)_. This field is `null` if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request `nft_info` for this token, specifying the `ledger_index` as the one previous to the index where this token was burned ({ledger_index-where-token-was-burned} - 1). |
+| `uri`                             | String or `null` | _(Omitted if the NFT is burned at this ledger.)_. This field is `null` if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request `nft_info` for this token, specifying the `ledger_index` as the one previous to the index where this token was burned ({_ledger-index-where-token-was-burned_} - 1). |
 
 
 ## Possible Errors

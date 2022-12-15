@@ -95,7 +95,7 @@ Validation can be broken up into roughly two parts:
 - Calculating the resulting ledger version from an agreed-upon transaction set.
 - Comparing results and declaring the ledger version validated if enough trusted validators agree.
 
-Each server in the network performs validation separately and locally; the consensus process can proceed to tentatively confirm transactions even if no ledger is validated from a given round.
+Each server in the network performs validation separately and locally.
 
 
 #### Calculate and Share Validations

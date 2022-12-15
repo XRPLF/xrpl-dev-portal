@@ -14,7 +14,7 @@ The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometim
 
 ## Structure
 
-The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. A currency pair can consist of XRP and a token or two different tokens; tokens are always identified by the combination of an issuer and a currency code. Therefore, it is possible to trade between two tokens with the same currency code and different issuers, or the same issuer and different currency codes.
+The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. A currency pair can consist of XRP and a token or two different tokens; tokens are always identified by the combination of an issuer and a currency code. It is possible to trade between two tokens with the same currency code and different issuers, or the same issuer and different currency codes. <!-- STYLE_OVERRIDE: limited number -->
 
 As with all changes to the XRP Ledger, you need to send a [transaction](transaction-basics.html) to make a trade. A trade in the XRP Ledger is called an [Offer](offers.html). An Offer is effectively a [_limit order_](https://en.wikipedia.org/wiki/Order_(exchange)#Limit_order) to buy or sell a specific amount of one currency (XRP or a token) for a specific amount of another. When the network executes an Offer, if there are any matching Offers for the same currency pair, they are consumed starting with the best exchange rate first.
 
@@ -51,7 +51,7 @@ Because trades are only executed each time a new ledger closes (approximately ev
 
 The XRP Ledger does not natively represent concepts such as market orders, stop orders, or trading on leverage. Some of these may be possible with creative use of custom tokens and Offer properties.
 
-As a decentralized system, the XRP Ledger does not have any information on the actual people and organizations behind the [accounts](accounts.html) involved in trading. Therefore, the ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](freezes.html) and [authorized trust lines](authorized-trust-lines.html) are intended to help issuers comply with relevant laws and regulations.
+As a decentralized system, the XRP Ledger does not have any information on the actual people and organizations behind the [accounts](accounts.html) involved in trading. The ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](freezes.html) and [authorized trust lines](authorized-trust-lines.html) are intended to help issuers comply with relevant laws and regulations.
 
 ## See Also
 

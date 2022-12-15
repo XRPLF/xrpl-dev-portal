@@ -17,7 +17,7 @@ A highly secure [signing configuration](set-up-secure-signing.html) involves kee
 To use offline signing, you must meet the following prerequisites:
 
 - You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](system-requirements.html). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
-- You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive accurate information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](get-started-using-http-websocket-apis.html).
+- You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](get-started-using-http-websocket-apis.html).
 - You must have a secure way to transfer signed transaction binary data from the offline machine to the online machine.
     - One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)
     - Another way is to copy files from the offline machine to an online machine using physical media. If you use this method, be sure not to use physical media that could infect your offline machine with malicious software. (For example, do not reuse the same USB drive on both online and offline machines.)
@@ -43,7 +43,7 @@ You may want to set up custom software to help construct transaction instruction
 
 ### {{n.next()}}. Generate cryptographic keys
 
-On the **offline machine**, generate a pair of [cryptographic keys](cryptographic-keys.html) to be used with your account. Be sure to generate the keys with a securely random procedure, not from a simple passphrase or some other source that does not have enough entropy. For example, you can use the [wallet_propose method][] of `rippled`:
+On the **offline machine**, generate a pair of [cryptographic keys](cryptographic-keys.html) to be used with your account. Be sure to generate the keys with a securely random procedure, not from a short passphrase or some other source that does not have enough entropy. For example, you can use the [wallet_propose method][] of `rippled`:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -72,9 +72,9 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 Take note of the following values:
 
-- **`account_id`**. This is the address associated with the key pair, which will become your **[account](accounts.html) address** in the XRP Ledger after you fund it with XRP (later in this process). It is safe to share your `account_id` publicly.
+- **`account_id`**. This is the address associated with the key pair, which becomes your **[account](accounts.html) address** in the XRP Ledger after you fund it with XRP (later in this process). It is safe to share your `account_id` publicly.
 - **`master_seed`**. This is the secret seed value for the key pair, which you'll use to sign transactions from the account. For best security, encrypt this value before writing it to disk on the offline machine. As an encryption key, use a secure passphrase that human operators can memorize or write down somewhere physically secure, such as a [diceware passphrase](https://theworld.com/~reinhold/diceware.html) created with properly weighted dice. You may also want to use a physical security key as a second factor. The extent of the precautions to take at this stage is up to you.
-- **`key_type`**. This is the cryptographic algorithm used for this key pair. You need to know what type of key pair you have in order to sign valid transactions. The default is `secp256k1`.
+- **`key_type`**. This is the cryptographic algorithm used for this key pair. You need to know what type of key pair you have. The default in `rippled` is `secp256k1`, but some client libraries use `Ed25519` by default.
 
 **Do not** share the `master_key`, `master_seed`, or `master_seed_hex` values anywhere. Any of these can be used to reconstruct the private key associated with this address.
 
@@ -133,7 +133,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 Save the account's starting sequence number on the offline machine. Whenever you prepare a transaction using the offline machine, use the saved sequence number, then increase the sequence number by 1 and save the new value.
 
-You can prepare several transactions in advance this way, then transfer the signed transactions to the online machine all at once and submit them. As long as each transaction is validly formed and pays a sufficient [transaction cost](transaction-cost.html), the XRP Ledger network should eventually include those transactions in validated ledgers, keeping the account's sequence number in the shared XRP Ledger in sync with the "current" sequence number you are tracking on the offline machine. (Most transactions get a final, validated result within 15 seconds or less after being submitted to the network.)
+You can prepare several transactions in advance this way, then transfer the signed transactions to the online machine all at once and submit them. As long as each transaction is validly formed and pays a high enough [transaction cost](transaction-cost.html), the XRP Ledger network should eventually include those transactions in validated ledgers, keeping the account's sequence number in the shared XRP Ledger in sync with the "current" sequence number you are tracking on the offline machine. (Most transactions get a final, validated result within 15 seconds or less after being submitted to the network.)
 
 Optionally, save the current ledger index to the offline machine. You can use this value to choose an appropriate `LastLedgerSequence` value for upcoming transactions.
 
@@ -147,7 +147,7 @@ On the offline machine, prepare and sign transactions for configuring your accou
 - [Require destination tags](require-destination-tags.html) so that users can't send you payments without tagging the reason they sent it or the customer it's intended for.
 - [Set Up Multi-Signing](set-up-multi-signing.html) for a higher bar of account security.
 - [Enable DepositAuth](depositauth.html) so you can only receive payments you've explicitly accepted or from parties you've pre-approved.
-- [Require Auth](authorized-trust-lines.html#enabling-requireauth) so that users can't open [trust lines](trust-lines-and-issuing.html) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or [token](tokens.html) features, you may want to do this as a precaution.
+- [Require Auth](authorized-trust-lines.html#enabling-require-auth) so that users can't open [trust lines](trust-lines-and-issuing.html) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or [token](tokens.html) features, you may want to do this as a precaution.
 - [Token Issuers](become-an-xrp-ledger-gateway.html) may have additional setup, such as:
     - [Set a Transfer Fee](become-an-xrp-ledger-gateway.html#transfer-fees) for users transferring your tokens.
     - [Disallow XRP payments](become-an-xrp-ledger-gateway.html#disallow-xrp) if you plan to use this address for tokens only.
@@ -187,7 +187,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 <!-- MULTICODE_BLOCK_END -->
 
-To ensure _all_ transactions have a final outcome within a limited amount of time, provide a [`LastLedgerSequence`](reliable-transaction-submission.html#lastledgersequence) field. This value should be based on the current ledger index (which you must look up from an online machine) and the amount of time you want the transaction to remain valid. Be sure to set a large enough `LastLedgerSequence` value to allow for time spent switching from the online machine to the offline machine and back. For example, a value 256 higher than the current ledger index means that the transaction will be viable for about 15 minutes. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](reliable-transaction-submission.html).
+To ensure _all_ transactions have a final outcome within a limited amount of time, provide a [`LastLedgerSequence`](reliable-transaction-submission.html#lastledgersequence) field. This value should be based on the current ledger index (which you must look up from an online machine) and the amount of time you want the transaction to remain valid. Be sure to set a large enough `LastLedgerSequence` value to allow for time spent switching from the online machine to the offline machine and back. For example, a value 256 higher than the current ledger index means that the transaction is valid for about 15 minutes. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 
 ### {{n.next()}}. Copy transactions to online machine.
@@ -200,7 +200,7 @@ After you have signed the transactions, the next step is to get the signed trans
 
 The next step is to submit the transactions. Most transactions should have a final outcome in the next validated ledger after submission (about 4 seconds later), or possibly the ledger after that if they get queued (less than 10 seconds). For detailed steps to track the final outcome of a transaction, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
-Example of simple transaction submission:
+Example of transaction submission:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -318,7 +318,7 @@ For any transactions you decide to adjust or replace, note the details for when 
 
 Return to the offline machine and apply any necessary changes to your custom server's saved settings, such as:
 
-- Updating the account's current `Sequence` number. If all transactions were included in validated ledgers (successfully or with `tec` codes), then the offline machine's saved sequence number should already be accurate. Otherwise, you may need to change the saved sequence number to match the `Sequence` value you noted in the previous step.
+- Updating the account's current `Sequence` number. If all transactions were included in validated ledgers (successfully or with `tec` codes), then the offline machine's saved sequence number should already be correct. Otherwise, you may need to change the saved sequence number to match the `Sequence` value you noted in the previous step.
 - Updating the current ledger index so that you can use appropriate `LastLedgerSequence` values in any new transactions. (You should always do this shortly before constructing any new transactions.)
 - _(Optional)_ Updating your actual amount of XRP available, if you are tracking it in the offline machine.
 

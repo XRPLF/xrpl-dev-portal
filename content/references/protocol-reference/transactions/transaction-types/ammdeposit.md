@@ -80,7 +80,7 @@ Any other combination of these fields and flags is invalid.
 
 ### Single Asset Deposit Fee
 
- The fee for a single asset deposit is calculated to be the same as if you had used the AMM to trade part of the deposit amount for the other asset, then performed a double-asset deposit. The AMM's trading fee applies to the amount you would need to trade for, but not to the rest of the deposit. _For example, if the AMM's asset pool is split perfectly evenly between USD and EUR, and you try to deposit 100 USD, the amount of LP Tokens you receive is slightly less than if you had deposited 50 EUR + 50 USD, because you pay the trading fee to convert some of your USD to an equal amount of EUR._
+ The fee for a single asset deposit is calculated to be the same as if you had used the AMM to trade part of the deposit amount for the other asset, then done a double-asset deposit. The AMM's trading fee applies to the amount you would need to trade for, but not to the rest of the deposit. _For example, if the AMM's asset pool is split perfectly evenly between USD and EUR, and you try to deposit 100 USD, the amount of LP Tokens you receive is slightly less than if you had deposited 50 EUR + 50 USD, because you pay the trading fee to convert some of your USD to an equal amount of EUR._
  
  The formula for how many LP Tokens you receive for a double-asset deposit is:
 
@@ -108,18 +108,18 @@ Transactions of the AMMDeposit type support additional values in the [`Flags` fi
 | `tfOneAssetLPToken` | `0x00200000` | 2097152       | Perform a single-asset deposit and receive the specified amount of LP Tokens. |
 | `tfLimitLPToken`    | `0x00400000` | 4194304       | Perform a single-asset deposit with a specified effective price. |
 
-You must specify **exactly one** of these flags, in addition to any [global flags](transaction-common-fields.html#global-flags).
+You must specify **exactly one** of these flags, plus any [global flags](transaction-common-fields.html#global-flags).
 
 
 ## Error Cases
 
-In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
 
 | Error Code              | Description                                  |
 |:------------------------|:---------------------------------------------|
 | `temBAD_AMM_OPTIONS`    | The transaction specified an invalid combination of fields. See [AMMDeposit Modes](#ammdeposit-modes). |
 | `tecFROZEN`             | The transaction tried to deposit a [frozen](freezes.html) token. |
-| `tecAMM_BALANCE`        | The AMM does not have enough of one of the assets to accept the deposit (for example, to satisfy the trade portion of a single-asset deposit) or the sender does not have enough of a given token. |
+| `tecAMM_BALANCE`        | The AMM does not have enough of one of the assets to accept the deposit (for example, to satisfy the trade part of a single-asset deposit) or the sender does not have enough of a given token. |
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly; for example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields. |
 | `tecAMM_FAILED_DEPOSIT` | The conditions on the deposit could not be satisfied; for example, the requested effective price in the `EPrice` field is too low. |
 | `tecAMM_INVALID_TOKENS` | The AMM for this token pair does not exist, or one of the calculations resulted in a deposit amount rounding to zero. |

@@ -29,7 +29,7 @@ The [server_info method][] reports how many ledger versions your server has avai
 
 When an XRP Ledger server starts, its first priority is to get a complete copy of the latest validated ledger. From there, it keeps up with advances in the ledger progress. The server fills in any gaps in its ledger history that occur after syncing, and can backfill history from before it became synced. (Gaps in ledger history can occur if a server temporarily becomes too busy to keep up with the network, loses its network connection, or suffers other temporary issues.) When downloading ledger history, the server requests the missing data from its [peer servers](peer-protocol.html), and verifies the data's integrity using cryptographic [hashes][Hash].
 
-Backfilling history is one of the server's lowest priorities, so it may take a long time to fill missing history, especially if the server is busy or has less than sufficient hardware and network specs. For recommendations on hardware specs, see [Capacity Planning](capacity-planning.html). Backfilling history also requires that at least one of the server's direct peers has the history in question. For more information on managing your server's peer-to-peer connections, see [Configure Peering](configure-peering.html).
+Backfilling history is one of the server's lowest priorities, so it may take a long time to fill missing history, especially if the server is busy or its hardware and network specs aren't good enough. For recommendations on hardware specs, see [Capacity Planning](capacity-planning.html). Backfilling history also requires that at least one of the server's direct peers has the history in question. For more information on managing your server's peer-to-peer connections, see [Configure Peering](configure-peering.html).
 
 The XRP Ledger identifies data (on several different levels) by a unique hash of its contents. The XRP Ledger's state data contains a short summary of the ledger's history, in the form of the [LedgerHashes object type](ledgerhashes.html). Servers use the LedgerHashes objects to know which ledger versions to fetch, and to confirm that the ledger data they receive is correct and complete.
 
@@ -49,7 +49,7 @@ The `[ledger_history]` setting defines a minimum number of ledgers to accumulate
 Some servers in the XRP Ledger network are configured as "full-history" servers. These servers, which require significantly more disk space than other tracking servers, collect all available XRP Ledger history and **do not use online deletion**.
 
 The XRP Ledger Foundation provides access to a set of full history servers operated by community members (see [xrplcluster.com](https://xrplcluster.com) for more details).
-Ripple also provides a set of public full-history servers as a public service at `s2.ripple.com`.
+Ripple also provides a set of public full-history servers as a public service at `s2.ripple.com`. <!-- SPELLING_IGNORE: xrplcluster -->
 
 Providers of Full History servers reserve the right to block access that is found to abuse resources, or put inordinate load on the systems.
 
@@ -59,7 +59,7 @@ For instructions on setting up full history, see [Configure Full History](config
 
 ## History Sharding
 
-An alternative to storing the full history of the XRP Ledger on a single expensive machine is to configure many servers to each store a portion of ledger history. The [History Sharding](history-sharding.html) feature makes this possible, storing ranges of ledger history in a separate storage area called the _shard store_. When a peer server asks for specific data (as described in [fetching history](#fetching-history) above), a server can answer using data from either its ledger store or shard store.
+An alternative to storing the full history of the XRP Ledger on a single expensive machine is to configure many servers to each store a part of all ledger history. The [History Sharding](history-sharding.html) feature makes this possible, storing ranges of ledger history in a separate storage area called the _shard store_. When a peer server asks for specific data (as described in [fetching history](#fetching-history) above), a server can answer using data from either its ledger store or shard store.
 
 Online deletion **does not** delete from the shard store. However, if you configure online deletion to keep at least 32768 ledger versions in your server's ledger store, your server can copy full shards from the ledger store to the shard store before automatically deleting them from the ledger store.
 

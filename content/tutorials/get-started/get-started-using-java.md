@@ -4,7 +4,7 @@ parent: get-started.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
-blurb: Build a simple Java app that interacts with the XRP Ledger.
+blurb: Build a Java app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 top_nav_name: Java
 top_nav_grouping: Get Started
@@ -15,7 +15,7 @@ showcase_icon: assets/img/logos/java.svg
 
 # Get Started Using Java
 
-This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using [`xrpl4j`](https://github.com/XRPLF/xrpl4j), a pure Java library that makes it easy to interact with the XRP Ledger.
+This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl4j`](https://github.com/XRPLF/xrpl4j), a pure Java library built to interact with the XRP Ledger.
 
 This tutorial is intended for beginners and should take no longer than 30 minutes to complete.
 
@@ -25,9 +25,9 @@ In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
 * How to connect to the XRP Ledger using `xrpl4j`.
-* How to generate a wallet on the [Testnet](xrp-testnet-faucet.html) using `xrpl4j`.
+* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `xrpl4j`.
 * How to use the `xrpl4j` library to look up information about an account on the XRP Ledger.
-* How to put these steps together to create a simple Java app.
+* How to put these steps together to create a Java app.
 
 ## Requirements
 
@@ -40,7 +40,7 @@ In this tutorial, you'll learn:
 The [`xrpl4j` library](https://github.com/XRPLF/xrpl4j) is available on [Maven Central](https://search.maven.org/artifact/org.xrpl/xrpl4j-parent).
 `xrpl4j` is split into multiple artifacts, which can be imported as needed.
 
-In this tutorial, you will need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html), [xrpl4j-address-codec](https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html), [xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and [xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html) modules. <!-- SPELLING_IGNORE: keypairs -->
+In this tutorial, you need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html), [xrpl4j-address-codec](https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html), [xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and [xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html) modules. <!-- SPELLING_IGNORE: keypairs -->
 
 To install with Maven, add the following to your project's `pom.xml` file and then run `mvn install`:
 
@@ -74,18 +74,18 @@ Check out the [xrpl4j sample project](https://github.com/XRPLF/xrpl4j-sample) fo
 ## Start Building
 {% set n = cycler(* range(1,99)) %}
 
-When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your [wallet](wallets.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](issued-currencies.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
+When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](accounts.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](tokens.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
 1. [Connect to the XRP Ledger.](#1-connect-to-the-xrp-ledger)
-1. [Generate a wallet.](#2-generate-wallet)
+1. [Get an account.](#2-get-account)
 1. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
 
 ### {{n.next()}}. Connect to the XRP Ledger
 
-To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl4j`,
+To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl4j`,
 you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html):
 
 {{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Construct a network client", end_before="// Create a Wallet using a WalletFactory", language="java") }}
@@ -106,26 +106,18 @@ The sample code in the previous section shows you how to connect to the Testnet,
         final HttpUrl rippledUrl = HttpUrl.get("https://s2.ripple.com:51234/");
         XrplClient xrplClient = new XrplClient(rippledUrl);
 
-### {{n.next()}}. Generate wallet
+### {{n.next()}}. Get account
 
-To store value and execute transactions on the XRP Ledger, you need to create a wallet:
-a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's
-been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html).
-The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to
-sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up
-a [secure signing method](set-up-secure-signing.html).
+To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](set-up-secure-signing.html).
 
-For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-faucet.html) to fund
-an account on the Testnet or Devnet.
-
-To make it easy to generate a new, random Wallet, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
+To generate a new account, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
 
 {{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Create a Wallet using a WalletFactory", end_before="// Get the Classic and X-Addresses from testWallet", language="java") }}
 
 
 The result of a call to `walletFactory.randomWallet(true).wallet()` is a [`Wallet` instance](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/Wallet.html):
 
-```
+```java
 System.out.println(testWallet);
 
 // print output
@@ -138,7 +130,7 @@ Wallet {
 }
 ```
 
-In order to fund the account on the XRP Ledger, you can use a `FaucetClient` connected to the XRP Ledger Testnet:
+For testing and development purposes, you can use a `FaucetClient` connected to the XRP Ledger [Testnet](parallel-networks.html):
 
 {{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Fund the account using the testnet Faucet", end_before="// Look up your Account Info", language="java") }}
 
@@ -146,16 +138,16 @@ In order to fund the account on the XRP Ledger, you can use a `FaucetClient` con
 
 You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exchange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).
 
-Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [wallet we generated](#2-generate-wallet) in the previous step.
+Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [account we got](#2-get-account) in the previous step.
 
 {{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Look up your Account Info", end_before="// Print the result", language="java") }}
 
 
 ### {{n.next()}}. Putting it all together
 
-Using these building blocks, we can create a simple Java app that:
+Using these building blocks, we can create a Java app that:
 
-1. Generates a wallet on the Testnet.
+1. Gets an account on the Testnet.
 2. Connects to the XRP Ledger.
 3. Looks up and prints information about the account you created.
 
@@ -216,7 +208,7 @@ For a detailed description of every response field, see [account_info](account_i
 
 ## Keep on building
 
-Now that you know how to use `xrpl4j` to connect to the XRP Ledger, generate a wallet, and look up information about an account, you can also use `xrpl4j` to:
+Now that you know how to use `xrpl4j` to connect to the XRP Ledger, get an account, and look up information about it, you can also use `xrpl4j` to:
 
 * [Send XRP](send-xrp.html).
 * [Set up secure signing](set-up-secure-signing.html) for your account.

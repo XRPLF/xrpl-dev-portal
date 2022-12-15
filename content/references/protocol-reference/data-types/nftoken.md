@@ -21,10 +21,11 @@ Example {{currentpage.name}} JSON
 ```
 
 
-Unlike other objects, `NFToken` has no field to identify the object type or current owner of the object. `NFToken `objects are grouped into `NFTokenPages` that implicitly define the object type and identify the owner.
+Unlike full-fledged [ledger entries](ledger-object-types.html), `NFToken` has no field to identify the object type or current owner of the object. `NFToken` objects are grouped into pages that implicitly define the object type and identify the owner.
 
 
 ## NFTokenID
+<!-- SPELLING_IGNORE: nftokenid -->
 
 `NFTokenID`, optional, string, Hash256
 
@@ -33,7 +34,7 @@ This composite field uniquely identifies a token, and consists of the following 
 1. 16 bits that identify flags or settings specific to the NFToken
 2. 16 bits that encode the transfer fee associated with this NFToken, if any
 3. A 160-bit account identifier of the issuer
-4. A 32-bit issuer-specified [NFTokenTaxon](https://www.merriam-webster.com/dictionary/taxon)
+4. A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
 5. An (automatically generated) monotonically increasing 32-bit sequence number.
 
 
@@ -61,12 +62,13 @@ Flags are properties or other options associated with the `NFToken` object.
 
 ### Example
 
-The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or 0x000B in big endian format.
+The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big endian format.
 
 ![Flags](img/nftokena.png "Flags")
 
 
 ### TransferFee
+<!-- SPELLING_IGNORE: transferfee -->
 
 The `TransferFee` value specifies the percentage fee, in units of 1/100,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 0.001% or 1/10 of a basis point (bps), allowing transfer rates between 0% and 50%.
 
@@ -88,12 +90,13 @@ The third section of the `NFTokenID` is a big endian representation of the issue
 
 
 ### NFTokenTaxon
+<!-- SPELLING_IGNORE: nftokentaxon -->
 
 The fourth section is a `NFTokenTaxon` created by the issuer.
 
-![NFTokenTaxon](img/nftokend.png "NFTokenTaxon")
+![Diagram of `NFTokenTaxon` bits](img/nftokend.png)
 
-An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual NFTokenTaxon.
+An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual `NFTokenTaxon`.
 
 ![Dumb Sequential](img/nftokene.png "Dumb Sequential")
 
@@ -106,20 +109,20 @@ The fifth section is a sequence number that increases with each `NFToken` the is
 
 ## URI
 
-The URI field points to the data and/or metadata associated with the `NFToken`. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 ["data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an opaque issuer-specific encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.
+The URI field points to the data or metadata associated with the `NFToken`. This field does not need to be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, an [RFC 2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even a totally custom encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.
 
-One drawback of using this method is that the value is immutable, so it commits the issuer to hosting the data in perpetuity.
+**Caution:** The URI is immutable, so no one can update it if, for example, it links to a website that no longer exists.
 
 
-# Retrieving `NFToken` Data and Metadata
+# Retrieving NFToken Data and Metadata
 
 To minimize the footprint of `NFTokens` without sacrificing functionality or imposing unnecessary restrictions, XRPL NFTs do not have arbitrary data fields. Instead, data is maintained separately and referenced by the `NFToken`. The URI provides a reference to immutable content for the `Hash` and any mutable data for the `NFToken` object.
 
-The `URI` field is especially useful for referring to non-traditional Peer-to-Peer (P2P) URLs. For example, a `minter` that stores `NFToken` data or metadata using the Inter Planetary File System (IPFS) can use the `URI` field to refer to data on IPFS in different ways, each of which is suited to different use-cases. For more context on types of IPFS links that can be used to store NFT data, see [Best Practices for Storing NFT Data using IPFS](https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them),
+The `URI` field is especially useful for referring to non-traditional Peer-to-Peer (P2P) URLs. For example, a minter that stores `NFToken` data or metadata using the Inter Planetary File System (IPFS) can use the `URI` field to refer to data on IPFS in different ways, each of which is suited to different use-cases. For more context on types of IPFS links that can be used to store NFT data, see [Best Practices for Storing NFT Data using IPFS](https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them),
 
-An alternative to the URI approach is for issuers of `NFToken` objects to set the `Domain` field of their issuing account to the correct domain, and offer an API for clients that want to lookup the data or metadata associated with a particular `NFToken`. Note that using this mechanism _requires_ the `minter` to acquire a domain name and set the domain name for their minting account, but does not require the `minter` to necessarily operate a server nor other service to provide the ability to query this data; instead, a `minter` can "redirect" queries to a data provider (for example, to a marketplace, registry or other service).
+An alternative to the URI approach is for issuers of `NFToken` objects to set the `Domain` field of their issuing account to the correct domain, and offer an API for clients that want to lookup the data or metadata associated with a particular `NFToken`. Note that using this mechanism _requires_ the minter to acquire a domain name and set the domain name for their minting account, but does not require the minter to necessarily run a server nor other service to provide the ability to query this data; instead, a minter can "redirect" queries to a data provider (for example, to a marketplace, registry or other service).
 
-Your implementation should first attempt to check for the presence of the `URI` field to retrieve the associated data and/or metadata. If the `URI` field does not exist, the implementation should check for the presence of `Domain` field. If neither field exists, nothing happens. Implementations must be prepared to handle HTTP redirections (for example, using HTTP responses 301, 302, 307 and 308) from the URI.
+Your implementation should first attempt to check for the presence of the `URI` field to retrieve the associated data or metadata. If the `URI` field does not exist, the implementation should check for the presence of `Domain` field. If neither field exists, nothing happens. Implementations must be prepared to handle HTTP redirections (for example, using HTTP responses 301, 302, 307 and 308) from the URI.
 
 
 ## TXT Record Format

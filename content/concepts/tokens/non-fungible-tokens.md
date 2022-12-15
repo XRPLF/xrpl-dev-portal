@@ -15,16 +15,16 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## Background
 
-The XRP Ledger offers support for [tokens](tokens.html), also known as _IOUs_. Such assets are, primarily, fungible.
+The XRP Ledger offers support for [tokens](tokens.html). Such assets are, primarily, fungible.
 
-> Fun·gi·ble /ˈfənjəbəl/ (adj)
+> Fun·gi·ble /´fənjəbəl/ (adj) <!-- SPELLING_IGNORE: fənjəbəl -->
 >
-> 1. able to replace or be replaced by another identical item; mutually interchangeable.
+> 1. able to replace or be replaced by another identical item; mutually interchangeable. <!-- STYLE_OVERRIDE: identical -->
 
-Fungible tokens can be easily traded between users for XRP or other issued assets on the XRP Ledger's decentralized exchange. This makes them ideal for payments.
+Fungible tokens can be traded between users for XRP or other issued assets on the XRP Ledger's decentralized exchange. This makes them ideal for payments.
 
 
-A good example of a fungible item might be a postage stamp. If you are standing around in 1919 and need to send a letter by airmail, you would purchase a 24-cent stamp and affix it to your envelope. If you lost that stamp, you could use a different 24-cent stamp or use 2 10-cent stamps and 2 2-cent stamps. Very fungible.
+A good example of a fungible item might be a postage stamp. If you are standing around in 1919 and need to send a letter by airmail, you would buy a 24-cent stamp and affix it to your envelope. If you lost that stamp, you could use a different 24-cent stamp or use 2 10-cent stamps and 2 2-cent stamps. Very fungible.
 
 ![Jenny Stamps](img/nft-concepts1.png "Jenny Stamps")
 
@@ -32,7 +32,7 @@ But since you are standing around in 1919, you might be offered 24-cent airmail 
 
 ![Jenny Stamps](img/nft-concepts2.png "Jenny Stamps")
 
-Those stamps cannot be replaced by just another other 24-cent stamp. They have become _non-fungible_.
+Those stamps cannot be replaced by an ordinary 24-cent stamp. They have become _non-fungible_.
 
 To represent digital assets similar to these, use the XRP Ledger's Non-Fungible Tokens feature (sometimes referred to by its standards draft number, [XLS-20](https://github.com/XRPLF/XRPL-Standards/discussions/46)).
 
@@ -43,7 +43,7 @@ On the XRP Ledger, a non-fungible token is represented as a [NFToken][] object. 
 
 The ledger stores up to 32 `NFToken` objects owned by the same account in a single [NFTokenPage object][] to save space. As a result, the owner's [reserve requirement](reserves.html) for `NFToken` objects only increases when the ledger needs to make a new page to store additional tokens.
 
-Accounts can also designate a broker, or "Authorized Minter", who can mint and sell `NFToken` objects on their behalf.
+Accounts can also name a broker, or "Authorized Minter", who can mint and sell `NFToken` objects on their behalf.
 
 `NFToken` objects have several settings that are defined when the token is minted and cannot be changed later. These include:
 

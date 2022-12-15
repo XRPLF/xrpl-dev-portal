@@ -11,7 +11,7 @@ labels:
 ---
 # Enact Global Freeze
 
-If you [issue tokens](issued-currencies.html) in the XRP Ledger, can enact a [Global Freeze](freezes.html#global-freeze) to prevent users from sending your tokens to each other and trading your token in the [decentralized exchange](decentralized-exchange.html). This tutorial shows how to enact and end a Global Freeze. You might want to do this, for example, if you see signs of suspicious activity regarding your issuing address in the ledger, or relating to off-ledger systems you use to manage your token. (For example, if your token is a stablecoin and you process withdrawals and deposits from the ledger, you may want to freeze your token while you investigate if you suspect your systems have been hacked.) You can later disable the Global Freeze setting unless you have also enabled the [No Freeze setting](freezes.html#no-freeze).
+If you [issue tokens](issued-currencies.html) in the XRP Ledger, can enact a [Global Freeze](freezes.html#global-freeze) to prevent users from sending your tokens to each other and trading your token in the [decentralized exchange](decentralized-exchange.html). This tutorial shows how to enact and end a Global Freeze. You might want to do this, for example, if you see signs of suspicious activity related to your issuing address in the ledger, or to off-ledger systems you use to manage your token. (For example, if your token is a stablecoin and you process withdrawals and deposits from the ledger, you may want to freeze your token while you investigate if you suspect your systems have been hacked.) You can later disable the Global Freeze setting unless you have also enabled the [No Freeze setting](freezes.html#no-freeze).
 
 **Tip:** As a reminder, freezes only apply to issued tokens, not XRP, and do not prevent users from sending the tokens _directly_ back to the issuer.
 
@@ -184,7 +184,7 @@ At this point all token issued by your address are frozen. During this time, you
 
 Keep in mind that while a token is frozen, it is still possible for the frozen token to be sent _directly to_ or _directly from_ the issuer, so you may still want to disable any systems you have that are configured to send such transactions, and you may want to track incoming transactions without processing them so that you can eventually process the legitimate ones.
 
-If you use a [hot wallet or operational address](issuing-and-operational-addresses.html), it has no special status compared to other users, so it also cannot send and receive the frozen tokens except when dealing directly with the issuer.
+If you use a [hot wallet or operational address](issuing-and-operational-addresses.html), it has no special status compared to other users, so it also cannot send and receive the frozen tokens except when dealing directly with the issuer. <!-- STYLE_OVERRIDE: wallet, hot wallet -->
 
 If you use the [No Freeze setting](freezes.html#no-freeze) then the Global Freeze continues forever. If you want to resume issuing tokens, you must create a new account and start over from there.
 

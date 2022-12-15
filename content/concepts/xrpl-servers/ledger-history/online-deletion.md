@@ -22,7 +22,7 @@ The default config file sets the `rippled` server to keep the most recent 2000 l
 
 The `rippled` server stores [ledger history](ledger-history.html) in its _ledger store_. This data accumulates over time.
 
-Inside the ledger store, ledger data is "de-duplicated". In other words, data that doesn't change from version to version is only stored once. The records themselves in the ledger store do not indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so it is not feasible to delete old data on every ledger close.
+Inside the ledger store, ledger data is "de-duplicated". In other words, data that doesn't change from version to version is only stored once. The records themselves in the ledger store do not indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so the server cannot delete old data every time it closes a new ledger.
 
 
 ## Online Deletion Behavior
@@ -38,7 +38,7 @@ The online deletion settings configure how many ledger versions the `rippled` se
 
     The amount of data the server stores depends on how often you call [can_delete][can_delete method] and how big an interval of time your `online_delete` setting represents:
 
-    - If you call `can_delete` _more often_ than your `online_delete` interval, the server stores at most a number of ledger versions approximately equal to **twice the `online_delete` value**. (After deletion, this is reduced to approximately the `online_delete` value.) <!-- STYLE_OVERRIDE: a number of -->
+    - If you call `can_delete` _more often_ than your `online_delete` interval, the server stores **up to twice the `online_delete` number** of ledger versions. (After deletion, this is reduced to approximately the `online_delete` value.)
 
         For example, if you call `can_delete` with a value of `now` once per day and an `online_delete` value of 50,000, the server typically stores up to 100,000 ledger versions before running deletion. After running deletion, the server keeps at least 50,000 ledger versions (about two days' worth). With this configuration, approximately every other `can_delete` call results in no change because the server does not have enough ledger versions to delete.
 
@@ -66,13 +66,13 @@ To temporarily disable online deletion, you can use the [can_delete method][] wi
 
 The following settings relate to online deletion:
 
-- **`online_delete`** - Specify a number of validated ledger versions to keep. The server periodically deletes any ledger versions that are older than this number. If not specified, no ledgers are deleted.
+- **`online_delete`** - Specify how many validated ledger versions to keep. The server periodically deletes any ledger versions that are older than this number. If not specified, no ledgers are deleted.
 
     The default config file specifies 2000 for this value. This cannot be less than 256, because some events like [Fee Voting](fee-voting.html) and the [Amendment Process](amendments.html#amendment-process) update only every 256 ledgers.
 
     **Caution:** If you run `rippled` with `online_delete` disabled, then later enable `online_delete` and restart the server, the server disregards but does not delete existing ledger history that your server already downloaded while `online_delete` was disabled. To save disk space, delete your existing history before re-starting the server after changing the `online_delete` setting.
 
-- **`[ledger_history]`** - Specify a number of validated ledgers, equal to or less than `online_delete`. If the server does not have at least this many validated ledger versions, it attempts to backfill them by fetching the data from peers.
+- **`[ledger_history]`** - Specify how many validated ledgers to backfill. Must be equal to or less than `online_delete`. If the server does not have at least this many validated ledger versions, it attempts to fetch the data from peers when it can.
 
     The default for this setting is 256 ledgers.
 
@@ -84,7 +84,7 @@ The following settings relate to online deletion:
 
     This setting is disabled by default.
 
-- **`[fetch_depth]`** - Specify a number of ledger versions. The server does not accept fetch requests from peers for historical data that is older than the specified number of ledger versions. Specify the value `full` to serve any available data to peers.
+- **`[fetch_depth]`** - Specify how many ledger versions to serve to peers. The server does not accept fetch requests from peers for historical data that is older than the specified number of ledger versions. Specify the value `full` to serve any available data to peers.
 
     The default for `fetch_depth` is `full` (serve all available data).
 

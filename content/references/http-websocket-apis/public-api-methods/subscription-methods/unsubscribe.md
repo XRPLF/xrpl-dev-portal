@@ -48,22 +48,22 @@ An example of the request format:
 
 The parameters in the request are specified almost exactly like the parameters to the [subscribe method][], except that they are used to define which subscriptions to end instead. The parameters are:
 
-| `Field`             | Type  | Description                                    |
-|:--------------------|:------|:-----------------------------------------------|
-| `streams`           | Array | _(Optional)_ Array of string names of generic streams to unsubscribe from, including `ledger`, `server`, `transactions`, and `transactions_proposed`. |
-| `accounts`          | Array | _(Optional)_ Array of unique account addresses to stop receiving updates for, in the XRP Ledger's [base58][] format. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
-| `accounts_proposed` | Array | _(Optional)_ Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
-| `books`             | Array | _(Optional)_ Array of objects defining order books to unsubscribe from, as explained below. |
+| `Field`             | Type  | Required? | Description                                    |
+|:--------------------|:------|:----------|:-----------------------------------------------|
+| `streams`           | Array | No        | Array of string names of generic streams to unsubscribe from, including `ledger`, `server`, `transactions`, and `transactions_proposed`. |
+| `accounts`          | Array | No        | Array of unique account addresses to stop receiving updates for, in the XRP Ledger's [base58][] format. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
+| `accounts_proposed` | Array | No        | Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
+| `books`             | Array | No        | Array of objects defining order books to unsubscribe from, as explained below. |
 
 The `rt_accounts` and `url` parameters, and the `rt_transactions` stream name, are deprecated and may be removed without further notice.
 
 The objects in the `books` array are defined almost like the ones from subscribe, except that they don't have all the fields. The fields they have are as follows:
 
-| `Field`      | Type    | Description                                         |
-|:-------------|:--------|:----------------------------------------------------|
-| `taker_gets` | Object  | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts][Currency Amount]. |
-| `taker_pays` | Object  | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts][Currency Amount]. |
-| `both`       | Boolean | (Optional, defaults to false) If true, remove a subscription for both sides of the order book. |
+| `Field`      | Type    | Required? | Description                                         |
+|:-------------|:--------|:----------|:----------------------------------------------------|
+| `taker_gets` | Object  | No        | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields. Omit `issuer` for XRP. |
+| `taker_pays` | Object  | No        | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields. Omit `issuer` for XRP. |
+| `both`       | Boolean | No        | If `true`, remove a subscription for both sides of the order book. |
 
 ## Response Format
 

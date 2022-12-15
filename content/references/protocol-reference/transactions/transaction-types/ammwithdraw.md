@@ -80,7 +80,7 @@ Any other combination of these fields is invalid.
 
 ### Single Asset Withdrawal Fee
 
-The fee for a single asset withdrawal is calculated to be the same as if you had performed a double-asset withdrawal and then used the AMM to trade all of the other asset for the one you are withdrawing. The trading fee applies to the amount you would need to trade for, but not to the rest of the withdrawal.
+The fee for a single asset withdrawal is calculated to be the same as if you had done a double-asset withdrawal and then used the AMM to trade all of the other asset for the one you are withdrawing. The trading fee applies to the amount you would need to trade for, but not to the rest of the withdrawal.
 
 <!-- TODO: add a formula and example calculation(s) of single-asset withdrawal fees -->
 
@@ -99,12 +99,12 @@ Transactions of the AMMWithdraw type support additional values in the [`Flags` f
 | `tfOneAssetLPToken`     | `0x00200000` | 2097152       | Perform a single-asset withdrawal and receive the specified amount of LP Tokens. |
 | `tfLimitLPToken`        | `0x00400000` | 4194304       | Perform a single-asset withdrawal with a specified effective price. |
 
-You must specify **exactly one** of these flags, in addition to any [global flags](transaction-common-fields.html#global-flags).
+You must specify **exactly one** of these flags, plus any [global flags](transaction-common-fields.html#global-flags).
 
 
 ## Error Cases
 
-In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
 
 | Error Code               | Description                                  |
 |:-------------------------|:---------------------------------------------|

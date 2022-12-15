@@ -102,7 +102,7 @@ The commandline always uses the latest [API version](#api-versioning).
 
 The `rippled` server uses a single integer to identify the API version to use. The first API version is `1`; currently, this is the only version of the `rippled` API. (There is no API version 0.) [New in: rippled 1.5.0][]
 
-Future versions of `rippled` that introduce breaking changes will introduce a new API version number, such as `2`. The server will support a range of API versions, which it reports in the `version` API method. <!-- TODO: add a link when `version` method is documented. --> <!-- Uncomment when multiple API versions exist: Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make a server_info request using API version 2 and then make another server_info request using API version 1 from the same connection. -->
+Future versions of `rippled` that introduce breaking changes will introduce a new API version number, such as `2`. The server will support a range of API versions, which it reports in the `version` API method. <!-- STYLE_OVERRIDE: will --> <!-- TODO: add a link when `version` method is documented. --> <!-- Uncomment when multiple API versions exist: Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make a server_info request using API version 2 and then make another server_info request using API version 1 from the same connection. -->
 
 ### Breaking Changes
 

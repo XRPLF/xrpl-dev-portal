@@ -16,7 +16,7 @@ To make a digital signature, you use a cryptographic key pair associated with th
 
 ## Generating Keys
 
-Many [client libraries](client-libraries.html) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use keypairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
+Many [client libraries](client-libraries.html) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use key pairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
 
 
 ## Key Components

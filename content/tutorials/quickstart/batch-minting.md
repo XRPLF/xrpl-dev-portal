@@ -39,14 +39,14 @@ To batch mint a non-fungible token objects:
 1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFToken object can be transferred to another account. Otherwise, the NFToken object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for information about all of the available flags for minting NFTokens.
 2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFToken object. You can use the sample URI provided if you do not have one of your own.
 3. Enter a **Token Count** of up to 200 NFTokens to create in one batch.
-4. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFToken that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
+4. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFToken. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
 5. Click **Batch Mint**.
 
 ## Get Batch NFTokens
 
 Click **Get Batch NFTokens** to get the current list of NFTokens for your account.
 
-The difference between this function and the getTokens() function used earlier is that it allows for larger lists of tokens, and sends multiple requests if the tokens exceed the number of objects allowed in a single request.
+The difference between this function and the `getTokens()` function used earlier is that it allows for larger lists of tokens, and sends multiple requests if the tokens exceed the number of objects allowed in a single request.
 
 # Code Walkthrough
 
@@ -72,7 +72,7 @@ async function getAccountFromSeed() {
 	document.getElementById('standbyResultField').value = results
 ```
 
-Use the account seed to get information about the wallet.
+Use the seed to derive the account.
 
 ```javascript
   var theSeed = document.getElementById('seeds').value
@@ -111,7 +111,7 @@ This version of `getTokens()` allows for a larger set of NFTokens by watching fo
 async function getBatchNFTokens() {
 ```
 
-Connect to the XRPLedger and get the account wallet.
+Connect to the XRP Ledger and get the account.
 
 ```javascript
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
@@ -172,7 +172,7 @@ This script mints multiple copies of the same NFToken.
 async function batchMint() {
 ```
 
-Connect to the XRP Ledger and get the account wallet.
+Connect to the XRP Ledger and get the account.
 
 ```javascript
   let net = getNet()
@@ -199,7 +199,7 @@ Get the account information, particularly the `Sequence` number.
   document.getElementById('standbyResultField').value = results
 ```
 
-Next, create ticket numbers for the batch. Without tickets, if one transaction fails, all others in the batch fail. With tickets, there can be failures, but the rest will continue, and you can investigate any problems afterward.
+Next, create ticket numbers for the batch. Without tickets, if one transaction fails, all others in the batch fail. With tickets, there can be failures, but the rest can still succeed, and you can investigate any problems afterward.
 
 Parse the NFToken Count field value to an integer.
 
@@ -252,7 +252,7 @@ Report the function progress.
   document.getElementById('standbyResultField').value = results
 ```
 
-Use a `for` loop to create the NFTokens one at a time, up to the NFTokenCount you specified.
+Use a `for` loop to create the NFTokens one at a time, up to the number you specified.
 
 ```javascript
   for (let i=0; i < nftokenCount; i++) {

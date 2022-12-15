@@ -162,7 +162,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'online_delete mus
 
 The `[ledger_history]` setting represents how many ledgers of history the server should seek to back-fill. The `online_delete` field (in the `[node_db]` stanza) indicates how many ledgers of history to keep when dropping older history. The `online_delete` value must be equal to or larger than `[ledger_history]` to prevent the server from deleting historical ledgers that it is also trying to download.
 
-To fix the problem, edit the `rippled.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it defaults to 256 ledger versions, so `online_delete`, if present, must be larger than 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
+To fix the problem, edit the `rippled.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it uses a default of 256 ledger versions. If you specify the `online_delete` field, it must be larger than 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
 
 
 ## Bad node_size value

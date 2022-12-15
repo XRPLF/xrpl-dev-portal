@@ -50,7 +50,7 @@ One or both of `Amount` and `Amount2` can be [tokens](tokens.html); at most one 
 
 ## Error Cases
 
-In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
 
 | Error Code          | Description                                  |
 |:--------------------|:---------------------------------------------|

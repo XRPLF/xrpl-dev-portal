@@ -135,10 +135,10 @@ rippled submit_multisigned '{
 
 The request includes the following parameters:
 
-| `Field`     | Type    | Description                                          |
-|:------------|:--------|:-----------------------------------------------------|
-| `tx_json`   | Object  | [Transaction in JSON format](transaction-formats.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](signerlist.html). |
-| `fail_hard` | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers. |
+| `Field`     | Type    | Required? | Description                                          |
+|:------------|:--------|:----------|:-----------------------------------------------------|
+| `tx_json`   | Object  | Yes       | [Transaction in JSON format](transaction-formats.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](signerlist.html). |
+| `fail_hard` | Boolean | No        | If `true`, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is `false`. |
 
 ## Response Format
 

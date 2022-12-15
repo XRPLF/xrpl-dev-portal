@@ -47,7 +47,7 @@ Prepare an [AccountSet transaction][] from your account with the field `"SetValu
 
 You must use the **master key pair** to sign the transaction.
 
-**Warning:** Do not submit your secret to a server you don't control, and do not transmit it over the network unencrypted. These examples assume you are using a [local `rippled` server](set-up-secure-signing.html#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](set-up-secure-signing.html).
+**Warning:** Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a [local `rippled` server](set-up-secure-signing.html#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](set-up-secure-signing.html).
 
 #### Example Request
 

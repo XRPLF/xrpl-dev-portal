@@ -51,7 +51,7 @@ In addition to the shared balance, each account has its own settings on the trus
 
 Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](reserves.html). Either or both accounts in the trust line may be charged the reserve for the trust line, depending on the status of the trust line: if any of your settings are not the default, or if you hold a positive balance, it counts as one item toward your owner reserve.
 
-Generally, this means that the account that created the trust line is responsible for the reserve and the issuer is not.
+Generally, this means that the account that created the trust line is responsible for the reserve and the issuer is not. <!-- STYLE_OVERRIDE: is responsible for -->
 
 Trust lines are automatically deleted if both sides' settings are in the default state and the balance is 0. This means that, to delete a trust line, you need to:
 

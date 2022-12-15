@@ -3,7 +3,7 @@ consult: see
 # gateway: financial institution, issuer
 # gateways: financial institutions, issuers
 wallet: address, client application, account
-ious: issuances
+ious: tokens
 will: (avoid future tense)
 
 #Plainlanguage.gov suggestions (adapted for Ripple)

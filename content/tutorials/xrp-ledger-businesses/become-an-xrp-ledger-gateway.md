@@ -135,9 +135,7 @@ See also:
 
 To prevent illicit funds from passing through their systems, financial institutions must be able to determine within reason if the source of a customer’s funds is linked to criminal activity.
 
-Determining the exact source of funds for every customer may not be administratively feasible. As a result, some regulatory authorities may not provide specific regulation or guidance for all accounts. In specific cases, however, authorities may require financial institutions to identify and report the source of funds. Guidance by the FATF recommends that where the risks of money laundering or terrorist financing are higher (commonly referred to as a “risk-based approach”), financial institutions conduct enhanced due diligence, including but not limited to determining the customer’s source of funds.
-
-<!-- STYLE_OVERRIDE: feasible -->
+Determining the exact source of funds for every customer may not be administratively feasible. As a result, some regulatory authorities may not provide specific regulation or guidance for all accounts. In specific cases, however, authorities may require financial institutions to identify and report the source of funds. Guidance by the FATF recommends that where the risks of money laundering or terrorist financing are higher (commonly referred to as a “risk-based approach”), financial institutions conduct enhanced due diligence, including but not limited to determining the customer’s source of funds. <!-- STYLE_OVERRIDE: feasible -->
 
 ### Suspicious Activity Reporting
 
@@ -258,7 +256,7 @@ There are several prerequisites that ACME must meet for this to happen:
 - ACME sets aside money that is issued in the XRP Ledger. ACME can query the XRP Ledger to see who holds its tokens at any time. There are several ways ACME may do this:
     - ACME may create a XRP Ledger collateral account in ACME's system of record.
     - ACME can store the funds allocated to the XRP Ledger in a separate bank account.
-    - If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the issuer is solvent.
+    - If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the issuer is solvent. <!-- STYLE_OVERRIDE: wallet -->
 - ACME should control two separate XRP Ledger addresses. See [Issuing and Operational Addresses](issuing-and-operational-addresses.html) for details.
     - ACME must enable the [Default Ripple Flag](#default-ripple) on its issuing address for customers to send and receive its tokens.
 - Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.
@@ -368,7 +366,7 @@ There are several interfaces you can use to connect to the XRP Ledger, depending
 
 * [HTTP / WebSocket APIs](http-websocket-apis.html) can be used as a low-level interface to all core XRP Ledger functionality.
 * [Client Libraries](client-libraries.html) are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.
-* Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available.
+* Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available. <!-- SPELLING_IGNORE: xApps -->
 
 
 ## Tool Security

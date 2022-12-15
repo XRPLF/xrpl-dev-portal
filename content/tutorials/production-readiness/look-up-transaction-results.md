@@ -8,7 +8,7 @@ labels:
 ---
 # Look Up Transaction Results
 
-To use the XRP Ledger effectively, you need to be able to understand [transaction](transaction-basics.html) outcomes: did the transaction succeed? What did it accomplish? If it failed, why?
+To use the XRP Ledger effectively, you need to be able to understand [transaction](transaction-basics.html) outcomes: did the transaction succeed? What did it do? If it failed, why?
 
 The XRP Ledger is a shared system, with all data recorded publicly and carefully, securely updated with each new [ledger version](ledgers.html). Anyone can look up the exact outcome of any transaction and read the [transaction metadata](transaction-metadata.html) to see what it did.
 
@@ -20,7 +20,7 @@ To understand the outcome of a transaction as described in these instructions, y
 
 - Know which transaction you want to understand. If you know the transaction's [identifying hash][], you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.
 - Have access to a `rippled` server that provides reliable information and has the necessary history for when the transaction was submitted.
-    - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be sufficient, as long as it maintains sync with the network during that time.
+    - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be enough, as long as it maintains sync with the network during that time.
     - For outcomes of older transactions, you may want to use a [full-history server](ledger-history.html#full-history).
 
 **Tip:** There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](data-api.html) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `rippled` API directly, for the most direct and authoritative results possible.
@@ -91,7 +91,7 @@ Transaction metadata describes _exactly_ how the transaction was applied to the 
 
 Most of the metadata is contained in [the `AffectedNodes` array](transaction-metadata.html#affectednodes). What to look for in this array depends on the type of transaction. Almost every transaction modifies the sender's [AccountRoot object][] to destroy the XRP [transaction cost](transaction-cost.html) and increase the [account's Sequence number](basic-data-types.html#account-sequence).
 
-**Info:** One exception to this rule is for [pseudo-transactions](pseudo-transaction-types.html), which aren't sent from a real account and thus do not modify an AccountRoot object. There are other exceptions that modify an AccountRoot object without changing its `Balance` field: [free key reset transactions](transaction-cost.html#key-reset-transaction) do not change the sender's XRP balance; and in the unlikely scenario that a transaction causes an account to receive exactly as much XRP as it destroys, the account's Balance shows no net change. (The transaction cost is reflected elsewhere in the metadata, from wherever the account received the XRP.)
+**Info:** One exception to this rule is for [pseudo-transactions](pseudo-transaction-types.html), which aren't sent from a real account and thus do not modify an AccountRoot object. There are other exceptions that modify an AccountRoot object without changing its `Balance` field: [free key reset transactions](transaction-cost.html#key-reset-transaction) do not change the sender's XRP balance; and in the unlikely scenario that a transaction causes an account to receive exactly as much XRP as it destroys, the account's Balance shows no net change. (The net decrease in XRP occurs elsewhere in the metadata, debited from wherever the account sent the XRP.)
 
 This example shows the full response from step 1 above. See if you can figure out what changes it made to the ledger:
 
@@ -150,7 +150,7 @@ The _only_ changes made by this [no-op transaction](cancel-or-skip-a-transaction
 
 - The XRP `Balance` in this account changes from `396015176` to `396015164` [drops of XRP][]. This decrease of exactly 12 drops represents the [transaction cost](transaction-cost.html), as specified in the `Fee` field of the transaction.
 
-- The [`AccountTxnID`](transaction-common-fields.html#accounttxnid) changes to reflect that this transaction is now the one most recently sent from this address.
+- The [`AccountTxnID`](transaction-common-fields.html#accounttxnid) changes to show that this transaction is now the one most recently sent from this address.
 
 - The previous transaction to affect this account was the transaction `E710CADE7FE9C26C51E8630138322D80926BE91E46D69BF2F36E6E4598D6D0CF`, which executed in ledger version 46447387, as specified in the `PreviousTxnID` and `PreviousTxnLgrSeq` fields. (This may be useful if you want to walk backwards through the account's transaction history.)
 
@@ -238,7 +238,7 @@ Cross-currency payments consume [Offers](offer.html) in part or entirely to chan
 
 The [`QualityIn` and `QualityOut` settings of trust lines](trustset.html) can affect how one side of a trust line values the token, so that the numeric change in balances is different from how the sender values that token. The `delivered_amount` shows how much was delivered as valued by the recipient.
 
-If the amount to be sent or received is outside of the [token precision](currency-formats.html#token-precision), it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. Therefore, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the token. (XRP is never rounded, so this is not possible with XRP.)
+If the amount to be sent or received is outside of the [token precision](currency-formats.html#token-precision), it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. As a result, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the token. (XRP is never rounded, so this is not possible with XRP.)
 
 Depending on the length of the [paths](paths.html), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by `rHaaans...`, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from `r9ZoLsJ...` to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb -->
 
@@ -309,7 +309,7 @@ If an OfferCreate transaction shows a `CreatedNode` of type `RippleState`, that 
 
 A successful [EscrowCreate transaction][] creates an [Escrow object](escrow-object.html) in the ledger. Look for a `CreatedNode` entry of type `Escrow`. The `NewFields` should show an `Amount` equal to the amount of XRP escrowed, and other properties as specified.
 
-A successful EscrowCreate transaction also debits the same amount of XRP from the sender. Look for a `ModifiedNode` of type `AccountRoot`, where the `Account` in the final fields matches the address from the `Account` in the transaction instructions. The `Balance` should show the decrease in XRP due to the escrowed XRP (in addition to the XRP destroyed to pay the transaction cost).
+A successful EscrowCreate transaction also debits the same amount of XRP from the sender. Look for a `ModifiedNode` of type `AccountRoot`, where the `Account` in the final fields matches the address from the `Account` in the transaction instructions. The `Balance` should show the decrease in XRP due to the escrowed XRP (and the XRP destroyed to pay the transaction cost).
 
 A successful [EscrowFinish transaction][] modifies the `AccountRoot` of the recipient to increase their XRP balance (in the `Balance` field), deletes the `Escrow` object, and reduces the owner count of the escrow creator. Since the escrow's creator, recipient, and finisher may all be different accounts or the same, this can result in _one to three_ `ModifiedNode` objects of type `AccountRoot`. A successful [EscrowCancel transaction][] is very similar, except it sends the XRP back to the original creator of the escrow.
 

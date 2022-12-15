@@ -36,12 +36,12 @@ This tutorial demonstrates how to buy a fungible token in the decentralized exch
 
 | Currency Code | Issuer | Notes |
 |---|---|---|
-| TST | rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens.  |
+| TST | `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd` | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens.  |
 
 
 ### {{n.next()}}. Connect to Network
 
-You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may encounter in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html) with the appropriate dependencies.
+You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may find in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html) with the appropriate dependencies.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -63,7 +63,7 @@ To transact on the XRP Ledger, you need an address, a secret key, and some XRP. 
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html). The following code shows how to create a Wallet instance to use your keys:
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html). The following code shows how to create a `Wallet` instance to use your keys:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -176,7 +176,7 @@ Most transactions are accepted into the next ledger version after they're submit
 You can use the validated transaction's [metadata](transaction-metadata.html) to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](finality-of-results.html), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
 
 - Some or all of the Offer may have been filled by matching with existing Offers in the ledger.
-- The unmatched remainder, if any, has been placed into the ledger to await new matching Offers.
+- The unmatched remainder, if any, has been placed into the ledger to await new matching Offers. <!-- STYLE_OVERRIDE: remainder -->
 - Other bookkeeping may have occurred, such as removing expired or unfunded Offers that would have matched.
 
 The following code demonstrates how to check the metadata of the transaction:

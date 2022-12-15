@@ -8,7 +8,7 @@ labels:
 # SignerListSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](multi-signing.html) a transaction. This transaction type was introduced by the [MultiSign amendment][]. [New in: rippled 0.31.0][]
+The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](multi-signing.html) a transaction. This transaction type was introduced by the [MultiSign amendment][].
 
 ## Example {{currentpage.name}} JSON
 
@@ -60,7 +60,7 @@ You can create, update, or remove a signer list using the master key, regular ke
 
 You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (the account has the [`lsfDisableMaster` flag](accountroot.html#accountroot-flags) enabled) and the account does not have a [Regular Key](cryptographic-keys.html) configured, then you cannot delete the signer list from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](tec-codes.html).
 
-Creating or replacing a signer list enables the `lsfOneOwnerCount` flag on the [SignerList object](signerlist.html). Lists that were created before the [MultiSignReserve amendment][] became enabled do not have this flag and have a higher [owner reserve](reserves.html#owner-reserves). You can decrease the owner reserve for these lists by replacing the list with an identical one. For more information, see [SignerList Flags](signerlist.html#signerlist-flags).
+Creating or replacing a signer list enables the `lsfOneOwnerCount` flag on the [SignerList object](signerlist.html). Lists that were created before the [MultiSignReserve amendment][] became enabled do not have this flag and have a higher [owner reserve](reserves.html#owner-reserves). You can decrease the owner reserve for these lists by replacing the list with the same list. For more information, see [SignerList Flags](signerlist.html#signerlist-flags).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

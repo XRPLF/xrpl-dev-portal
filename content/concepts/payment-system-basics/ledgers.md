@@ -58,7 +58,7 @@ Generally speaking, the ledger cannot make any time-based measurements that are 
 
 ### Example
 
-The following examples demonstrate the rounding behavior of ledger close times, from the perspective of an example validator, following a ledger with the close time **12:00:00**:
+The following examples show the rounding behavior of ledger close times, from the perspective of an example validator, following a ledger with the close time **12:00:00**:
 
 **Current consensus round**
 
