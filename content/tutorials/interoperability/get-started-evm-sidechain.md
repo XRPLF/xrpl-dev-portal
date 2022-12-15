@@ -15,7 +15,7 @@ This getting started tutorial walks you through the steps to set up your account
 
 In order to interact with the network, you need to create an account in the EVM sidechain. To create and manage this account you can use any EVM compatible wallet such as MetaMask.
 
-For instructions on how to install and create an account using MetaMask, then send and receive tokens, see [Connect MetaMask to XRP Ledger EVM Sidechain](connect-metamask-to-xrpl-evm-sidechain.html).
+For instructions on how to install and create an account using MetaMask, see [Connect MetaMask to XRP Ledger EVM Sidechain](connect-metamask-to-xrpl-evm-sidechain.html).
 
 
 ## 2. Move XRP Ledger Devnet Tokens to the EVM Sidechain
@@ -65,13 +65,13 @@ To connect a MetaMask wallet to the bridge, go to the [EVM Sidechain bridge](htt
 
 ### 2. Initiate the Transaction 
 
-Now that both Xumm and MetaMask wallets are connected to the bridge, you can select the direction of the bridge, the amount to send, and the destination address.
+Now that both Xumm and MetaMask wallets are connected to the bridge, you can select the direction of the bridge, the amount, and the address to fund.
 
-- **Direction of the bridge**: This is the direction of transfer; it can be either EVM sidechain → XRP Ledger Devnet or XRP Ledger Devnet → EVM sidechain. Use the “Switch Network” button to switch the direction of transfer.
-- **Amount to send**: This is the amount that you want to send to the other side. Note that there is a fee to use the bridge.
+- **Direction of the bridge**: The direction can be either EVM sidechain → XRP Ledger Devnet or XRP Ledger Devnet → EVM sidechain. Use the “Switch Network” button to switch the direction.
+- **Amount**: This is the transaction amount. Note that there is a fee to use the bridge.
     - Network fees: The fees required by the network for your transactions.
     - Commission: The bridge applies a commission for every transaction completed. This is to prevent spam and distributed denial of service attacks (DDOS).
-- **Destination address**: The address on the destination chain where you want to receive funds.
+- **Address**: The address on the chain where you want the funds.
 
     ![Start the transaction](img/evm-sidechain-initiate-transfer.png "Start the transaction")
 
