@@ -299,13 +299,13 @@
 </ul>
 <p>If the server is unable to keep up with the network while doing these tasks, the server does not sync to the network.</p>
 <h2 id="first-step-restart">First Step: Restart<a aria-hidden="true" class="hover_anchor" href="#first-step-restart"><i class="fa fa-link"></i></a></h2>
-<p>Many syncing issues can be resolved by restarting the server. No matter why it failed to sync the first time, it may succeed on the second try.</p>
+<p>Many syncing issues can be resolved by restarting the server. No matter why it didn't sync the first time, it may succeed on the second try.</p>
 <p>If the <a href="server_info.html">server_info method</a> shows a <a href="rippled-server-states.html"><code>server_state</code></a> other than <code>proposing</code> or <code>full</code> and a <code>server_state_duration_us</code> of more than <code>900000000</code> (15 minutes in microseconds), then you should shut down the <code>rippled</code> service, wait a few seconds, and start it again. Optionally, restart the entire machine.</p>
 <p>If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, <a class="external-link" href="https://github.com/ripple/rippled/issues" target="_blank">open an issue in the <code>rippled</code> repository <i aria-hidden="true" class="fa fa-external-link"></i></a> and add the "Syncing issue" label.</p>
 <h2 id="usual-causes-of-syncing-issues">Usual Causes of Syncing Issues<a aria-hidden="true" class="hover_anchor" href="#usual-causes-of-syncing-issues"><i class="fa fa-link"></i></a></h2>
 <p>The most common cause of syncing issues is not meeting the <a href="system-requirements.html">system requirements</a>. The three most common shortfalls are:</p>
 <ul>
-<li><strong>Slow disks.</strong> You need a consistently fast solid state disk (SSD). Cloud providers like AWS usually don't guarantee disk performance, which may be impacted by other users of shared hardware.</li>
+<li><strong>Slow disks.</strong> You need a consistently fast solid state disk (SSD). Cloud providers like AWS usually don't guarantee disk performance, because it depends on hardware shared with other customers.</li>
 <li><strong>Insufficient RAM.</strong> The memory requirements vary depending on several factors including ones that are hard to predict like network load and how people use the XRP Ledger, so it's good to have more than the minimum system requirements.</li>
 <li><strong>Poor network connection.</strong> Network requirements vary the most based on how people use the XRP Ledger, but a slow or unstable connection can make it impossible to keep up with new transactions and data added to the XRP Ledger.</li>
 </ul>

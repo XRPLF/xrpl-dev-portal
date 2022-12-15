@@ -336,15 +336,16 @@
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. If you do not specify this field, it defaults to <code>validated</code>. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">String or Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. If you do not specify this field, it defaults to <code>validated</code>. Do not specify the <code>ledger_index</code> as <code>closed</code> or <code>current</code>; doing so forwards the request to the P2P <code>rippled</code> server and the <code>nft_info</code> API is not available on <code>rippled</code>. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the <code>ledger_index</code> as <code>closed</code> or <code>current</code>; doing so forwards the request to the P2P <code>rippled</code> server and the <code>nft_info</code> API is not available on <code>rippled</code>. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
 </tr>
 </tbody>
 </table>
+<p>If you do not specify a ledger version, Clio uses the latest validated ledger.</p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
@@ -464,7 +465,7 @@
 <tr>
 <td style="text-align: left;"><code>uri</code></td>
 <td style="text-align: left;">String or <code>null</code></td>
-<td style="text-align: left;"><em>(Omitted if the NFT is burned at this ledger.)</em>. This field is <code>null</code> if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request <code>nft_info</code> for this token, specifying the <code>ledger_index</code> as the one previous to the index where this token was burned ({ledger_index-where-token-was-burned} - 1).</td>
+<td style="text-align: left;"><em>(Omitted if the NFT is burned at this ledger.)</em>. This field is <code>null</code> if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request <code>nft_info</code> for this token, specifying the <code>ledger_index</code> as the one previous to the index where this token was burned ({<em>ledger-index-where-token-was-burned</em>} - 1).</td>
 </tr>
 </tbody>
 </table>
@@ -1316,7 +1317,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       

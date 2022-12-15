@@ -401,6 +401,7 @@ rippled submit_multisigned <span class="s1">'{</span>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
@@ -408,12 +409,14 @@ rippled submit_multisigned <span class="s1">'{</span>
 <tr>
 <td style="text-align: left;"><code>tx_json</code></td>
 <td style="text-align: left;">Object</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;"><a href="transaction-formats.html">Transaction in JSON format</a> with an array of <code>Signers</code>. To be successful, the weights of the signatures must be equal or higher than the quorum of the <a href="signerlist.html">SignerList</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>fail_hard</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">(Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">If <code>true</code>, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is <code>false</code>.</td>
 </tr>
 </tbody>
 </table>

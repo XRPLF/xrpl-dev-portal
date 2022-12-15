@@ -346,7 +346,7 @@
 <p>Since new ledger versions usually close about every 3 to 5 seconds, these rules result in a loose pattern where ledgers' close times end in :00, :01, :02, :10, :11, :20, :21, and so on. Times ending in 2 are less common and times ending in 3 are very rare, but both occur randomly when more ledgers randomly happen to close within a 10-second window.</p>
 <p>Generally speaking, the ledger cannot make any time-based measurements that are more precise than the close time resolution. For example, to check if an object has passed an expiration date, the rule is to compare it to the close time of the parent ledger. (The close time of a ledger is not yet known when executing transactions to go into that ledger.) This means that, for example, an <a href="escrow.html">Escrow</a> could successfully finish at a real-world time that is up to about 10 seconds later than the time-based expiration specified in the Escrow object.</p>
 <h3 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h3>
-<p>The following examples demonstrate the rounding behavior of ledger close times, from the perspective of an example validator, following a ledger with the close time <strong>12:00:00</strong>:</p>
+<p>The following examples show the rounding behavior of ledger close times, from the perspective of an example validator, following a ledger with the close time <strong>12:00:00</strong>:</p>
 <p><strong>Current consensus round</strong></p>
 <ol>
 <li>A validator notes that it was <strong>12:00:03</strong> when the ledger closed and entered consensus. The validator includes this close time in its proposals.</li>

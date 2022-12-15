@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Get Started Using Python | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/get-started-using-python.html" />
-    <meta property="og:description" content="Build a simple Python app that interacts with the XRP Ledger." />
-    <meta name="description" content="Build a simple Python app that interacts with the XRP Ledger." />
+    <meta property="og:description" content="Build a Python app that interacts with the XRP Ledger." />
+    <meta name="description" content="Build a Python app that interacts with the XRP Ledger." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -264,7 +264,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#installation">Installation</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start Building</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#2-generate-wallet">2. Generate wallet</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#2-get-account">2. Get account</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#3-query-the-xrp-ledger">3. Query the XRP Ledger</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#4-putting-it-all-together">4. Putting it all together</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#keep-on-building">Keep on building</a></li>
@@ -287,16 +287,16 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="get-started-using-python">Get Started Using Python<a aria-hidden="true" class="hover_anchor" href="#get-started-using-python"><i class="fa fa-link"></i></a></h1>
-<p>This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using <a class="external-link" href="https://github.com/XRPLF/xrpl-py" target="_blank"><code>xrpl-py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>, a pure <a class="external-link" href="https://www.python.org" target="_blank">Python <i aria-hidden="true" class="fa fa-external-link"></i></a> library that makes it easy to interact with the XRP Ledger using native Python models and methods.</p>
+<p>This tutorial walks you through the basics of building an XRP Ledger-connected application using <a class="external-link" href="https://github.com/XRPLF/xrpl-py" target="_blank"><code>xrpl-py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>, a pure <a class="external-link" href="https://www.python.org" target="_blank">Python <i aria-hidden="true" class="fa fa-external-link"></i></a> library built to interact with the XRP Ledger using native Python models and methods.</p>
 <p>This tutorial is intended for beginners and should take no longer than 30 minutes to complete.</p>
 <h2 id="learning-goals">Learning Goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
 <p>In this tutorial, you'll learn:</p>
 <ul>
 <li>The basic building blocks of XRP Ledger-based applications.</li>
 <li>How to connect to the XRP Ledger using <code>xrpl-py</code>.</li>
-<li>How to generate a wallet on the <a href="xrp-testnet-faucet.html">Testnet</a> using <code>xrpl-py</code>.</li>
+<li>How to get an account on the <a href="xrp-testnet-faucet.html">Testnet</a> using <code>xrpl-py</code>.</li>
 <li>How to use the <code>xrpl-py</code> library to look up information about an account on the XRP Ledger.</li>
-<li>How to put these steps together to create a simple Python app.</li>
+<li>How to put these steps together to create a Python app.</li>
 </ul>
 <h2 id="requirements">Requirements<a aria-hidden="true" class="hover_anchor" href="#requirements"><i class="fa fa-link"></i></a></h2>
 <p>The <code>xrpl-py</code> library supports <a class="external-link" href="https://www.python.org/downloads/" target="_blank">Python 3.7 <i aria-hidden="true" class="fa fa-external-link"></i></a> and later.</p>
@@ -305,22 +305,22 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="n">pip3</span> <span class="n">install</span> <span class="n">xrpl</span><span class="o">-</span><span class="n">py</span>
 </code></pre></div>
 <h2 id="start-building">Start Building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
-<p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your <a href="wallets.html">wallet</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="issued-currencies.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
+<p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your <a href="accounts.html">account</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="tokens.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
 <p>Here are the basic steps you'll need to cover for almost any XRP Ledger project:</p>
 <ol>
 <li><a href="#1-connect-to-the-xrp-ledger">Connect to the XRP Ledger.</a></li>
-<li><a href="#2-generate-wallet">Generate a wallet.</a></li>
+<li><a href="#2-get-account">Get an account.</a></li>
 <li><a href="#3-query-the-xrp-ledger">Query the XRP Ledger.</a></li>
 </ol>
 <h3 id="1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#1-connect-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
-<p>To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with <code>xrpl-py</code>, use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html" target="_blank"><code>xrp.clients</code> module <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
+<p>To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with <code>xrpl-py</code>, use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html" target="_blank"><code>xrp.clients</code> module <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1"># Define the network client</span>
 <span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
 <span class="n">JSON_RPC_URL</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234/"</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">JSON_RPC_URL</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="connect-to-the-production-xrp-ledger">Connect to the production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connect-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h4>
-<p>The sample code in the previous section shows you how to connect to the Testnet, which is one of the available <a href="parallel-networks.html">parallel networks</a>. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:</p>
+<p>The sample code in the previous section shows you how to connect to the Testnet, which is a <a href="parallel-networks.html">parallel network</a> for testing where the money has no real value. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:</p>
 <ul>
 <li>
 <p>By <a href="install-rippled.html">installing the core server</a> (<code>rippled</code>) and running a node yourself. The core server connects to the Mainnet by default, but you can <a href="connect-your-rippled-to-the-xrp-test-net.html">change the configuration to use Testnet or Devnet</a>. <a href="xrpl-servers.html#reasons-to-run-your-own-server">There are good reasons to run your own core server</a>. If you run your own server, you can connect to it like so:</p>
@@ -338,10 +338,10 @@
 </code></pre></div>
 </li>
 </ul>
-<h3 id="2-generate-wallet">2. Generate wallet<a aria-hidden="true" class="hover_anchor" href="#2-generate-wallet"><i class="fa fa-link"></i></a></h3>
-<p>To store value and execute transactions on the XRP Ledger, you need to create a wallet: a <a href="cryptographic-keys.html#key-components">set of keys</a> and an <a href="accounts.html#addresses">address</a> that's been <a href="accounts.html#creating-accounts">funded with enough XRP</a> to meet the <a href="reserves.html">account reserve</a>. The address is the identifier of your account and you use the <a href="cryptographic-keys.html#private-key">private key</a> to sign transactions that you submit to the XRP Ledger.</p>
-<p>For testing and development purposes, you can use the <a href="xrp-testnet-faucet.html">XRP Faucets</a> to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a <a href="set-up-secure-signing.html">secure signing method</a>.</p>
-<p>To make it easy to create a wallet on the Testnet, <code>xrpl-py</code> provides the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet" target="_blank"><code>generate_faucet_wallet</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method:</p>
+<h3 id="2-get-account">2. Get account<a aria-hidden="true" class="hover_anchor" href="#2-get-account"><i class="fa fa-link"></i></a></h3>
+<p>To store value and execute transactions on the XRP Ledger, you need an account: a <a href="cryptographic-keys.html#key-components">set of keys</a> and an <a href="accounts.html#addresses">address</a> that's been <a href="accounts.html#creating-accounts">funded with enough XRP</a> to meet the <a href="reserves.html">account reserve</a>. The address is the identifier of your account and you use the <a href="cryptographic-keys.html#private-key">private key</a> to sign transactions that you submit to the XRP Ledger.</p>
+<p>For testing and development purposes, you can use the <a href="xrp-testnet-faucet.html">XRP Faucets</a> to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a <a href="set-up-secure-signing.html">secure signing method</a>. Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.</p>
+<p>To create and fund an account on the Testnet, <code>xrpl-py</code> provides the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet" target="_blank"><code>generate_faucet_wallet</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1"># Create a wallet using the testnet faucet:</span>
 <span class="c1"># https://xrpl.org/xrp-testnet-faucet.html</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">generate_faucet_wallet</span>
@@ -355,7 +355,7 @@
 <span class="n">private_key</span><span class="p">::</span> <span class="o">-</span><span class="n">HIDDEN</span><span class="o">-</span>
 <span class="n">classic_address</span><span class="p">:</span> <span class="n">raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q</span>
 </code></pre></div>
-<h4 id="using-the-wallet">Using the wallet<a aria-hidden="true" class="hover_anchor" href="#using-the-wallet"><i class="fa fa-link"></i></a></h4>
+<h4 id="using-the-account">Using the account<a aria-hidden="true" class="hover_anchor" href="#using-the-account"><i class="fa fa-link"></i></a></h4>
 <p>In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the <code>Wallet</code> instance to prepare, sign, and submit transactions with <code>xrpl-py</code>.   </p>
 <h5 id="prepare">Prepare<a aria-hidden="true" class="hover_anchor" href="#prepare"><i class="fa fa-link"></i></a></h5>
 <p>To prepare the transaction:</p>
@@ -394,7 +394,7 @@
 <p>The X-address format <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/6" target="_blank">packs the address and destination tag <i aria-hidden="true" class="fa fa-external-link"></i></a> into a more user-friendly value.</p>
 <h3 id="3-query-the-xrp-ledger">3. Query the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#3-query-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>You can query the XRP Ledger to get information about <a href="account-methods.html">a specific account</a>, <a href="tx.html">a specific transaction</a>, the state of a <a href="ledger-methods.html">current or a historical ledger</a>, and <a href="path-and-order-book-methods.html">the XRP Ledger's decentralized exchange</a>. You need to make these queries, among other reasons, to look up account info to follow best practices for <a href="reliable-transaction-submission.html">reliable transaction submission</a>.  </p>
-<p>Here, we'll use <code>xrpl-py</code>'s <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html" target="_blank"><code>xrpl.account</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> module to look up information about the <a href="#2-generate-wallet">wallet we generated</a> in the previous step.</p>
+<p>Here, we use <code>xrpl-py</code>'s <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html" target="_blank"><code>xrpl.account</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> module to look up information about the <a href="#2-get-account">account we got</a> in the previous step.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1"># Look up info about your account</span>
 <span class="kn">from</span> <span class="nn">xrpl.models.requests.account_info</span> <span class="kn">import</span> <span class="n">AccountInfo</span>
 <span class="n">acct_info</span> <span class="o">=</span> <span class="n">AccountInfo</span><span class="p">(</span>
@@ -409,9 +409,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </code></pre></div>
 <h3 id="4-putting-it-all-together">4. Putting it all together<a aria-hidden="true" class="hover_anchor" href="#4-putting-it-all-together"><i class="fa fa-link"></i></a></h3>
-<p>Using these building blocks, we can create a simple Python app that:</p>
+<p>Using these building blocks, we can create a Python app that:</p>
 <ol>
-<li>Generates a wallet on the Testnet.</li>
+<li>Gets an account on the Testnet.</li>
 <li>Connects to the XRP Ledger.</li>
 <li>Looks up and prints information about the account you created.</li>
 </ol>
@@ -497,7 +497,7 @@ response.status:  ResponseStatus.SUCCESS
 </ul>
 <p>For a detailed description of every response field, see <a href="account_info.html#response-format">account_info</a>.</p>
 <h2 id="keep-on-building">Keep on building<a aria-hidden="true" class="hover_anchor" href="#keep-on-building"><i class="fa fa-link"></i></a></h2>
-<p>Now that you know how to use <code>xrpl-py</code> to connect to the XRP Ledger, generate a wallet, and look up information about an account, you can also use <code>xrpl-py</code> to:</p>
+<p>Now that you know how to use <code>xrpl-py</code> to connect to the XRP Ledger, get an account, and look up information about it, you can also use <code>xrpl-py</code> to:</p>
 <ul>
 <li><a href="send-xrp.html">Send XRP</a>.</li>
 <li><a href="set-up-secure-signing.html">Set up secure signing</a> for your account.</li>

@@ -290,7 +290,7 @@
 <li>If your server does not start (such as crashing or otherwise shutting down automatically), see <strong><a href="server-wont-start.html">rippled Server Won't Start</a></strong>.</li>
 <li>If your server starts, but does not reliably sync or remain synced to the XRP Ledger network, see <strong><a href="server-doesnt-sync.html">rippled Server Doesn't Sync</a></strong>.</li>
 </ul>
-<p>The remainder of this document suggests steps for diagnosing problems that happen while your server is up and running (including if the process is active but unable to sync with the network).</p>
+<p>The rest of this document suggests steps for diagnosing problems that happen while your server is up and running (including if the process is active but unable to sync with the network).</p>
 <h2 id="get-the-server_info">Get the server_info<a aria-hidden="true" class="hover_anchor" href="#get-the-server_info"><i class="fa fa-link"></i></a></h2>
 <p>You can use the commandline to get server status information from the local <code>rippled</code> instance. For example:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">rippled server_info
@@ -343,7 +343,7 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>If your server shows multiple <code>transitions</code> between the same states, that indicates that your server was unable to stay synced. If you do not have a <code>full</code> or <code>proposing</code> state, then your server has not yet synced to the network. Over a long period of time, it's likely your server may occasionally lose sync because internet connections fluctuate, so this is only a problem if the amount of time spent not in sync is a significant portion of your uptime. After about 24 hours of uptime, if less than 99% of your server's total runtime is spent in the <code>full</code> or <code>proposing</code> states, you may want to investigate possible sources of instability.</p>
+<p>If you do not have a <code>full</code> or <code>proposing</code> state, then your server has not yet synced to the network. If your server shows multiple transitions between the same states (<code>transitions</code> is 2 or more), that indicates that your server lost sync with the network. It's a problem if you have many transitions in a short period of time; it's OK if you have a few transitions over a long period of time, because some fluctuations in internet connectivity are unavoidable. The amount of time in individual states (<code>duration_us</code>) compared with total uptime (<code>server_state_duration_us</code>) can also tell you how well your server is staying synced. After about 24 hours of uptime, if less than 99% of your server's total runtime is spent in the <code>full</code> or <code>proposing</code> states, you may want to investigate possible sources of instability.</p>
 </li>
 <li>
 <p>For help debugging syncing issues, see <a href="server-doesnt-sync.html">Server Doesn't Sync</a>.</p>

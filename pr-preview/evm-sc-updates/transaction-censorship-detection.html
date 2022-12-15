@@ -285,12 +285,12 @@
         <h1 id="transaction-censorship-detection">Transaction Censorship Detection<a aria-hidden="true" class="hover_anchor" href="#transaction-censorship-detection"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="New in: rippled 1.2.0"><img alt="New in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The XRP Ledger is designed to be censorship resistant. In support of this design, the XRP Ledger provides an automated transaction censorship detector that is available on all <code>rippled</code> servers, enabling all participants to see if censorship is affecting the network.</p>
-<p>While a <code>rippled</code> server is in sync with the network, the detector tracks all transactions that, in the view of the <code>rippled</code> server, should have been accepted in the last round of <a href="intro-to-consensus.html">consensus</a> and included in the last validated ledger. The detector issues log messages of increasing severity for transactions that have not been included in a validated ledger after several rounds of consensus.</p>
+<p>While a <code>rippled</code> server is in sync with the network, the detector tracks all transactions that should have been accepted in the last round of <a href="intro-to-consensus.html">consensus</a> and included in the last validated ledger. The detector issues log messages of increasing severity when it sees transactions that have not been included in a validated ledger after several rounds of consensus.</p>
 <h2 id="how-it-works">How It Works<a aria-hidden="true" class="hover_anchor" href="#how-it-works"><i class="fa fa-link"></i></a></h2>
 <p>At a high-level, here’s how the transaction censorship detector works:</p>
 <ol>
 <li>
-<p>The detector adds all transactions in a <code>rippled</code> server's initial consensus proposal to the tracker.</p>
+<p>The detector adds all transactions in the server's initial consensus proposal to the tracker.</p>
 </li>
 <li>
 <p>At the close of the consensus round, the detector removes all transactions included in the resulting validated ledger from the tracker.</p>
@@ -314,13 +314,13 @@
 <p>Here are some scenarios that could cause the detector to issue false positive messages:</p>
 <ul>
 <li>
-<p>Your <code>rippled</code> server is running a build with code that is different from the rest of the network. This may cause your <code>rippled</code> server to apply transactions differently, resulting in false positives. While this type of false positive is unlikely, in general, it is crucial that you run the correct version of <code>rippled</code>.</p>
+<p>Your server is running a build with code that is different from the rest of the network. This may cause your server to apply transactions differently, resulting in false positives. While this type of false positive is unlikely, in general, it is crucial that you run a compatible version of the core XRP Ledger server.</p>
 </li>
 <li>
-<p>Your <code>rippled</code> server is out of sync with the network and has not yet realized it.</p>
+<p>Your server is out of sync with the network and has not yet realized it.</p>
 </li>
 <li>
-<p><code>rippled</code> servers in the network, including possibly your own server, are being impacted by a class of bug that causes <code>rippled</code> servers to inconsistently relay transactions to other <code>rippled</code> servers in the network.</p>
+<p>Servers in the network, including possibly your own server, have a bug that causes them to inconsistently relay transactions to other servers in the network.</p>
 <p>Currently, there are no known bugs that cause this unexpected behavior. However, if you see the impact of what you suspect is a bug, consider reporting it to the <a class="external-link" href="https://ripple.com/bug-bounty/" target="_blank">Ripple Bug Bounty <i aria-hidden="true" class="fa fa-external-link"></i></a> program.</p>
 </li>
 </ul>

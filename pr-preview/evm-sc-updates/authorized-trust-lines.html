@@ -265,8 +265,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#with-stablecoin-issuing">With Stablecoin Issuing</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#as-a-precaution">As a Precaution</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#technical-details">Technical Details</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#enabling-requireauth">Enabling RequireAuth</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#checking-whether-an-account-has-requireauth-enabled">Checking Whether an Account Has RequireAuth Enabled</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#enabling-require-auth">Enabling Require Auth</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#checking-whether-an-account-has-require-auth-enabled">Checking Whether an Account Has Require Auth Enabled</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#authorizing-trust-lines">Authorizing Trust Lines</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#checking-whether-trust-lines-are-authorized">Checking Whether Trust Lines Are Authorized</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
@@ -290,10 +290,10 @@
     <div class="content">
         <h1 id="authorized-trust-lines">Authorized Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorized-trust-lines"><i class="fa fa-link"></i></a></h1>
 <p>The Authorized Trust Lines feature enables issuers to create tokens that can only be held by accounts that the issuer specifically authorizes. This feature only applies to tokens, not XRP.</p>
-<p>To use the Authorized Trust Lines feature, enable the <code>RequireAuth</code> flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.</p>
+<p>To use the Authorized Trust Lines feature, enable the <strong>Require Auth</strong> flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.</p>
 <p>You can authorize a trust line by sending a <a href="trustset.html">TrustSet transaction</a> from your issuing address, configuring the trust line between your account and the account to authorize. After you have authorized a trust line, you can never revoke that authorization. (You can, however, <a href="freezes.html">freeze</a> that trust line if you need to.)</p>
 <p>The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> You can only enable <code>RequireAuth</code> if your account has no trust lines and no Offers in the XRP Ledger, so you must decide whether or not to use it <em>before</em> you start issuing tokens.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> You can only enable Require Auth if your account has no trust lines and no Offers in the XRP Ledger, so you must decide whether or not to use it <em>before</em> you start issuing tokens.</p>
 <h2 id="with-stablecoin-issuing">With Stablecoin Issuing<a aria-hidden="true" class="hover_anchor" href="#with-stablecoin-issuing"><i class="fa fa-link"></i></a></h2>
 <p>With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process of onboarding a new customer might look something like the following:</p>
 <ol>
@@ -304,11 +304,11 @@
 </ol>
 <p class="devportal-callout tip"><strong>Tip:</strong> The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorizes the trust line first, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line. <em>(Added by the <a href="known-amendments.html#trustsetauth">TrustSetAuth amendment</a>.)</em></p>
 <h2 id="as-a-precaution">As a Precaution<a aria-hidden="true" class="hover_anchor" href="#as-a-precaution"><i class="fa fa-link"></i></a></h2>
-<p>Even if you don't intend to use Authorized Trust Lines, you can enable the <code>RequireAuth</code> setting on <a href="issuing-and-operational-addresses.html">operational and standby accounts</a>, and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the <em>issuer's</em> tokens, as intended.</p>
+<p>Even if you don't intend to use Authorized Trust Lines, you can enable the Require Auth setting on <a href="issuing-and-operational-addresses.html">operational and standby accounts</a>, and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the <em>issuer's</em> tokens, as intended.</p>
 <h2 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h2>
 <!-- -->
-<h3 id="enabling-requireauth">Enabling RequireAuth<a aria-hidden="true" class="hover_anchor" href="#enabling-requireauth"><i class="fa fa-link"></i></a></h3>
-<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an <a href="accountset.html">AccountSet transaction</a> to enable the <code>RequireAuth</code> flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)</p>
+<h3 id="enabling-require-auth">Enabling Require Auth<a aria-hidden="true" class="hover_anchor" href="#enabling-require-auth"><i class="fa fa-link"></i></a></h3>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an <a href="accountset.html">AccountSet transaction</a> that enables Require Auth using the <code>asfRequireAuth</code> flag. (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)</p>
 <p>Request:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="err">POST</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//localhost:5005/</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -329,9 +329,9 @@
 </code></pre></div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <!-- -->
-<h2 id="checking-whether-an-account-has-requireauth-enabled">Checking Whether an Account Has RequireAuth Enabled<a aria-hidden="true" class="hover_anchor" href="#checking-whether-an-account-has-requireauth-enabled"><i class="fa fa-link"></i></a></h2>
-<p>To see whether an account has the <code>RequireAuth</code> setting enabled, use the <a href="account_info.html">account_info method</a> to look up the account. Compare the value of the <code>Flags</code> field (in the <code>result.account_data</code> object) with the <a href="accountroot.html">bitwise flags defined for an AccountRoot ledger object</a>.</p>
-<p>If the result of the <code>Flags</code> value bitwise-AND the <code>lsfRequireAuth</code> flag value (<code>0x00040000</code>) is nonzero, then the account has <code>RequireAuth</code> enabled. If the result is zero, then the account has <code>RequireAuth</code> disabled.</p>
+<h2 id="checking-whether-an-account-has-require-auth-enabled">Checking Whether an Account Has Require Auth Enabled<a aria-hidden="true" class="hover_anchor" href="#checking-whether-an-account-has-require-auth-enabled"><i class="fa fa-link"></i></a></h2>
+<p>To see whether an account has the Require Auth setting enabled, use the <a href="account_info.html">account_info method</a> to look up the account. Compare the value of the <code>Flags</code> field (in the <code>result.account_data</code> object) with the <a href="accountroot.html">bitwise flags defined for an AccountRoot ledger object</a>.</p>
+<p>If the result of the <code>Flags</code> value bitwise-AND the <code>lsfRequireAuth</code> flag value (<code>0x00040000</code>) is nonzero, then the account has Require Auth enabled. If the result is zero, then the account has Require Auth disabled.</p>
 <h2 id="authorizing-trust-lines">Authorizing Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorizing-trust-lines"><i class="fa fa-link"></i></a></h2>
 <p>If you are using the Authorized Trust Lines feature, others cannot hold balances you issue unless you first authorize their trust lines to you. If you issue more than one currency, you must separately authorize trust lines for each currency.</p>
 <p>To authorize a trust line, submit a <a href="trustset.html">TrustSet transaction</a> from your issuing address, with the user to trust as the <code>issuer</code> of the <code>LimitAmount</code>. Leave the <code>value</code> (the amount to trust them for) as <strong>0</strong>, and enable the <a href="trustset.html#trustset-flags"><code>tfSetfAuth</code></a> flag for the transaction.</p>

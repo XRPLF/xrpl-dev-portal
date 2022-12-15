@@ -449,17 +449,17 @@ rippled wallet_propose masterpassphrase
 <tr>
 <td style="text-align: left;"><code>master_seed</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">This is the private key of the key pair. The master seed from which all other information about this account is derived, in the XRP Ledger's <a href="base58-encodings.html">base58</a> encoded string format. Typically, you use the key in this format to sign transactions.</td>
+<td style="text-align: left;">The <a href="cryptographic-keys.html#key-components">master seed</a>, in the XRP Ledger's <a href="base58-encodings.html">base58</a> encoded string format. Typically, you use the key in this format to sign transactions.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>master_seed_hex</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The master seed, in hex format. A simple, widely-supported way to represent the private key. Can be used to sign transactions.</td>
+<td style="text-align: left;">The master seed, in hex format.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>master_key</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><strong>DEPRECATED</strong> The master seed, in <a class="external-link" href="https://tools.ietf.org/html/rfc1751" target="_blank">RFC-1751 <i aria-hidden="true" class="fa fa-external-link"></i></a> format. An easier to remember, easier-to-write-down version of the private key. Can be used to sign transactions. <strong>Note:</strong> The <code>rippled</code> implementation reverses the byte order of the key after decoding from RFC-1751 and before encoding it to RFC-1751; if you read or write keys for use with the XRP Ledger using a different RFC-1751 implementation, you must do the same to be compatible with <code>rippled</code>'s RFC-1751 encoding.</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> The master seed, in <a class="external-link" href="https://tools.ietf.org/html/rfc1751" target="_blank">RFC-1751 <i aria-hidden="true" class="fa fa-external-link"></i></a> format. <strong>Note:</strong> The <code>rippled</code> implementation reverses the byte order of the key after decoding from RFC-1751 and before encoding to RFC-1751; if you read or write keys for use with the XRP Ledger using a different RFC-1751 implementation, you must do the same to be compatible with <code>rippled</code>'s RFC-1751 encoding.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>account_id</code></td>

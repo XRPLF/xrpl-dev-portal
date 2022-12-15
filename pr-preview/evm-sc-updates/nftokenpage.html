@@ -261,11 +261,11 @@
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenpage">NFTokenPage</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenpage-json">Example NFTokenPage JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenpage-fields">NFTokenPage Fields</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#tokenpage-id-format">TokenPage ID Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#searching-for-an-nftoken-object">Searching for an NFToken object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#adding-an-nftoken-object">Adding an NFToken object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#removing-an-nftoken-object">Removing an NFToken object</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#reserve-for-nftokenpage-object">Reserve for NFTokenPage object</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenpage-id-format">NFTokenPage ID Format</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#finding-nftokens">Finding NFTokens</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#adding-nftokens">Adding NFTokens</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#removing-nftokens">Removing NFTokens</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#reserve-for-nftokenpage-objects">Reserve for NFTokenPage objects</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#the-reserve-in-practice">The reserve in practice</a></li>
       </ul>
   </div>
@@ -327,102 +327,102 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">Identifies the type of ledger object. The reserved ledger entry type is 0x0050.</td>
+<td style="text-align: left;">The value <code>0x0050</code>, mapped to the string <code>NFTokenPage</code>, indicates that this is a page containing <code>NFToken</code> objects.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NextPageMin</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">The locator of the next page, if any. Details about this field and how it should be used are outlined below, after the construction of the NFTokenPageID is explained.</td>
+<td style="text-align: left;">The locator of the next page, if any. Details about this field and how it should be used are outlined below.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokens</code></td>
-<td style="text-align: left;">object</td>
-<td style="text-align: left;">TOKEN</td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">Array</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The collection of NFToken objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects should be stored in sorted order, from low to high with the TokenID used as the sorting parameter.</td>
+<td style="text-align: left;">The collection of <code>NFToken</code> objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects are sorted from low to high with the <code>NFTokenID</code> used as the sorting parameter.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousPageMin</code></td>
-<td style="text-align: left;">string</td>
+<td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">The locator of the previous page, if any. Details about this field and how it should be used are outlined below, after the construction of the NFTokenPageID is explained.</td>
+<td style="text-align: left;">The locator of the previous page, if any. Details about this field and how it should be used are outlined below.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
-<td style="text-align: left;">string</td>
-<td style="text-align: left;">HASH256</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">Identifies the transaction ID of the transaction that most recently modified this NFTokenPage object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
-<td style="text-align: left;">number</td>
+<td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">The sequence of the ledger that contains the transaction that most recently modified this NFTokenPage object.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="tokenpage-id-format">TokenPage ID Format<a aria-hidden="true" class="hover_anchor" href="#tokenpage-id-format"><i class="fa fa-link"></i></a></h3>
-<p><code>NFTokenPage</code> identifiers are constructed so as to specifically allow for the adoption of a more efficient paging structure, ideally suited for <code>NFTokens</code>.</p>
+<h3 id="nftokenpage-id-format">NFTokenPage ID Format<a aria-hidden="true" class="hover_anchor" href="#nftokenpage-id-format"><i class="fa fa-link"></i></a></h3>
+<p><code>NFTokenPage</code> identifiers are constructed to allow a more efficient paging structure, ideally suited for <code>NFToken</code> objects.</p>
 <p>The identifier of an <code>NFTokenPage</code> is derived by concatenating the 160-bit <code>AccountID</code> of the owner of the page, followed by a 96 bit value that indicates whether a particular <code>NFTokenID</code> can be contained in this page.</p>
-<p>More specifically, and assuming that the function <code>low96(x)</code> returns the low 96 bits of a 256-bit value, an NFT with <code>NFTokenID</code> <code>A</code> can be included in a page with <code>NFTokenPageID</code> <code>B</code> if and only if <code>low96(A) &gt;= low96(B)</code>.</p>
-<p>For example, applying the <code>low96</code> function to the NFT described before, which had an ID of <code>000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65</code> the function <code>low96</code> would return <code>42540EE208C3098E00000D65</code>.</p>
-<p>This curious construct exploits the structure of the SHAMap to allow for efficient lookups of individual <code>NFToken</code> objects without requiring iteration of the doubly-linked list of <code>NFTokenPages</code>.</p>
-<h3 id="searching-for-an-nftoken-object">Searching for an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#searching-for-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>To search for a specific <code>NFToken</code>, compute the <code>NFTokenPageID</code> using the account of the owner and the <code>NFTokenID</code> of the token, as described above. Search for a ledger entry where the identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, the <code>NFToken</code> is not held by the given account.</p>
-<h3 id="adding-an-nftoken-object">Adding an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#adding-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>You add an <code>NFToken</code> object by finding the <code>NFTokenPage</code> it should be in (using the same technique as searching for an <code>NFToken</code> object) and adding it to that page. If the page overflows after you add the <code>NFToken</code>, find the <code>next</code> and <code>previous</code> pages (if any) and balance those three pages, inserting a new page as needed.</p>
-<h3 id="removing-an-nftoken-object">Removing an <code>NFToken</code> object<a aria-hidden="true" class="hover_anchor" href="#removing-an-nftoken-object"><i class="fa fa-link"></i></a></h3>
-<p>An <code>NFToken</code> can be removed by using the same approach. If the number of <code>NFTokens</code> in the page goes below a certain threshold, the server attempts to consolidate the page with a previous or subsequent page to recover the reserve.</p>
-<h3 id="reserve-for-nftokenpage-object">Reserve for <code>NFTokenPage</code> object<a aria-hidden="true" class="hover_anchor" href="#reserve-for-nftokenpage-object"><i class="fa fa-link"></i></a></h3>
-<p>Each <code>NFTokenPage</code> costs an incremental reserve to the owner account. This specification allows up to 32 <code>NFToken</code> entries per page, which means that for accounts that hold multiple NFTs the <em>effective</em> reserve cost per NFT can be as low as <em>R</em>/32 where <em>R</em> is the incremental reserve.</p>
+<p>More specifically, a <code>NFToken</code> with the <code>NFTokenID</code> value <code>A</code> can be included in a page with <code>NFTokenPage</code> ID <code>B</code> if and only if <code>low96(A) &gt;= low96(B)</code>.</p>
+<p>This uses a function <code>low96(x)</code> which returns the low 96 bits of a 256-bit value, For example, applying the <code>low96</code> function to the <code>NFTokenID</code> of <code>000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65</code> returns the value <code>42540EE208C3098E00000D65</code>.</p>
+<p>This design allows for efficient lookups of individual <code>NFToken</code> objects without needing to check each <code>NFTokenPage</code> in a list.</p>
+<h3 id="finding-nftokens">Finding NFTokens<a aria-hidden="true" class="hover_anchor" href="#finding-nftokens"><i class="fa fa-link"></i></a></h3>
+<p>To find a specific <code>NFToken</code>, you need to know its <code>NFTokenID</code> and current owner. Compute the <code>NFTokenPage</code> ID as described above. Search for a ledger entry whose identifier is less than or equal to that value. If that entry does not exist or is not an <code>NFTokenPage</code>, that account does not own that <code>NFToken</code>.</p>
+<h3 id="adding-nftokens">Adding NFTokens<a aria-hidden="true" class="hover_anchor" href="#adding-nftokens"><i class="fa fa-link"></i></a></h3>
+<p>To add an <code>NFToken</code>, find the <code>NFTokenPage</code> it should be in (using the same technique as searching for an <code>NFToken</code> object) and add it to that page. If the <code>NFTokenPage</code> is already full, find the previous and next pages (if any) and balance those three pages, inserting a new <code>NFTokenPage</code> as needed.</p>
+<h3 id="removing-nftokens">Removing NFTokens<a aria-hidden="true" class="hover_anchor" href="#removing-nftokens"><i class="fa fa-link"></i></a></h3>
+<p>Removing <code>NFToken</code> objects works like adding them. If the number of <code>NFToken</code> objects in the page goes below a certain threshold, the ledger combines the page with a previous or next page if possible.</p>
+<h2 id="reserve-for-nftokenpage-objects">Reserve for NFTokenPage objects<a aria-hidden="true" class="hover_anchor" href="#reserve-for-nftokenpage-objects"><i class="fa fa-link"></i></a></h2>
+<p>Each <code>NFTokenPage</code> counts as one item towards an account's <a href="reserves.html#owner-reserves">owner reserve</a>. Since each page can hold up to 32 <code>NFToken</code> entries, the <em>effective</em> reserve cost per <code>NFToken</code> can be as low as <em>R</em>/32 where <em>R</em> is the incremental reserve.</p>
 <h3 id="the-reserve-in-practice">The reserve in practice<a aria-hidden="true" class="hover_anchor" href="#the-reserve-in-practice"><i class="fa fa-link"></i></a></h3>
-<p>The value of the incremental reserve is, as of this writing, 2 XRP. The table below shows what the <em>effective</em> reserve per token is, if a given page contains 1, 8, 16 and 32 NFTs.</p>
+<p>Because of the way splitting and combining pages works, the actual number of <code>NFToken</code> objects per page is somewhat unpredictable and depends on the actual <code>NFTokenID</code> values involved. In practice, after minting or receiving a large number of <code>NFToken</code> objects, each page can have as few as 16 <code>NFToken</code> objects, or as many as 32, with the typical case being around 24 <code>NFToken</code> objects per page.</p>
+<p>Currently, the reserve per item is 2 XRP. The table below shows how much the <strong>total owner reserve</strong> is for various numbers of <code>NFToken</code> objects owned under various scenarios:</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Incremental Reserve</th>
-<th style="text-align: left;">1 NFToken</th>
-<th style="text-align: left;">8 NFTokens</th>
-<th style="text-align: left;">16 NFTokens</th>
-<th style="text-align: left;">32 NFTokens</th>
-<th style="text-align: left;">64 NFTokens</th>
+<th style="text-align: left;"><code>NFTokens</code> Owned</th>
+<th style="text-align: left;">Best Case</th>
+<th style="text-align: left;">Typical</th>
+<th style="text-align: left;">Worst Case</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">5 XRP</td>
-<td style="text-align: left;">5 XRP</td>
-<td style="text-align: left;">0.625 XRP</td>
-<td style="text-align: left;">0.3125 XRP</td>
-<td style="text-align: left;">0.15625 XRP</td>
-<td style="text-align: left;">0.07812 XRP</td>
-</tr>
-<tr>
+<td style="text-align: left;">32 or fewer</td>
 <td style="text-align: left;">2 XRP</td>
 <td style="text-align: left;">2 XRP</td>
-<td style="text-align: left;">0.25 XRP</td>
-<td style="text-align: left;">0.125 XRP</td>
-<td style="text-align: left;">0.0625 XRP</td>
-<td style="text-align: left;">0.03125 XRP</td>
+<td style="text-align: left;">2 XRP</td>
 </tr>
 <tr>
-<td style="text-align: left;">1 XRP</td>
-<td style="text-align: left;">1 XRP</td>
-<td style="text-align: left;">0.125 XRP</td>
-<td style="text-align: left;">0.0625 XRP</td>
-<td style="text-align: left;">0.03125 XRP</td>
-<td style="text-align: left;">0.01562 XRP</td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">4 XRP</td>
+<td style="text-align: left;">6 XRP</td>
+<td style="text-align: left;">8 XRP</td>
+</tr>
+<tr>
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">14 XRP</td>
+<td style="text-align: left;">18 XRP</td>
+<td style="text-align: left;">26 XRP</td>
+</tr>
+<tr>
+<td style="text-align: left;">1000</td>
+<td style="text-align: left;">64 XRP</td>
+<td style="text-align: left;">84 XRP</td>
+<td style="text-align: left;">126 XRP</td>
 </tr>
 </tbody>
 </table>
+<p>These numbers are estimates; the actual numbers may vary.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
