@@ -1,33 +1,21 @@
 ---
 html: payments.html
-parent: transactions.html
+parent: concepts.html
 blurb: tef code definitions.
 labels:
   - Transactions
+  - Payments
 ---
 # Payment Types
-  The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
 
-- [Direct XRP Payments](direct-xrp-payments.md)
+- **[Direct XRP Payments](direct-xrp-payments.md)** send XRP directly from one account to another in the XRP Ledger.
 
-  Direct XRP payments are the simplest way to send value in the XRP Ledger.
+- **[Cross-Currency Payments](cross-currency-payments.md)** convert one currency to another through paths and order books before sending it to a recipient.
 
-- [Cross-Currency Payments](cross-currency-payments.md)
+- **[Checks](checks.md)** create deferred payments that can be canceled or cashed by the intended recipients.
 
-  Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books.
+- **[Escrow](escrow.md)** set aside XRP and deliver it after certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
 
-- [Checks](checks.md)
+- **[Partial Payments](partial-payments.md)** subtract fees from the amount to send before delivering it. They're useful for returning unwanted payments without incurring additional costs.
 
-  Checks let users create deferred payments that can be canceled or cashed by the intended recipients.
-
-- [Escrow](escrow.md)
-
-  Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
-
-- [Partial Payments](partial-payments.md)
-
-  Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
-
-- [Payment Channels](payment-channels.md)
-
-  Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later.
+- **[Payment Channels](payment-channels.md)** enable fast, asynchronous XRP payments that can be divided into small increments and settled later.

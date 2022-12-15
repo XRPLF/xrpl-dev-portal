@@ -833,7 +833,7 @@ pages:
          - ja
          
     - md: concepts/transactions/payments/payments.md
-      parent: transactions.html
+      parent: concepts.html
       targets:
          - en
          - ja
