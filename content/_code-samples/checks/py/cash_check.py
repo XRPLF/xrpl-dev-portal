@@ -56,7 +56,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check cash transaction
 check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=IssuedCurrencyAmount(
-    currency=str_to_hex(token),
+    currency=token,
     issuer=issuer,
     value=amount))
 

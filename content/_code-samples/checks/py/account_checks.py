@@ -17,7 +17,7 @@ sent_checks = []
 received_checks = []
 
 # Build request
-req = AccountObjects(account=wallet_addr, ledger_index="validated", type="check")
+req = AccountObjects(account=wallet_addr_to_query, ledger_index="validated", type="check")
 
 # Make request and return result
 response = client.request(req)
@@ -35,14 +35,14 @@ if "account_objects" in result:
                 check_data["expiry_date"] = str(ripple_time_to_datetime(check["Expiration"]))
             check_data["amount"] = str(drops_to_xrp(check["SendMax"]))
             check_data["check_id"] = check["index"]
-            if check_data["sender"] == wallet_addr:
-                sent.append(check_data)
-            elif check_data["sender"] != wallet_addr:
-                receive.append(check_data)
+            if check_data["sender"] == wallet_addr_to_query:
+                sent_checks.append(check_data)
+            elif check_data["sender"] != wallet_addr_to_query:
+                received_checks.append(check_data)
 
 # Sort checks
-checks_dict["sent"] = sent
-checks_dict["receive"] = receive
+checks_dict["sent"] = sent_checks
+checks_dict["receive"] = received_checks
 print(checks_dict)
 
 
@@ -58,12 +58,12 @@ wallet_addr_to_query = "rPKcw5cXUtREMgsQZqSLkxJTfpwMGg7WcP"
 
 checks_dict = {}
 
-sent_dict = []
+sent_checks = []
 
-received_dict = []
+received_checks = []
 
 # Build request
-req = AccountObjects(account=wallet_addr, ledger_index="validated", type="check")
+req = AccountObjects(account=wallet_addr_to_query, ledger_index="validated", type="check")
 
 # Make request and return result
 response = client.request(req)
@@ -83,12 +83,12 @@ if "account_objects" in result:
             check_data["issuer"] = check["SendMax"]["issuer"]
             check_data["amount"] = check["SendMax"]["value"]
             check_data["check_id"] = check["index"]
-            if check_data["sender"] == wallet_addr:
-                sent.append(check_data)
-            elif check_data["sender"] != wallet_addr:
-                receive.append(check_data)
+            if check_data["sender"] == wallet_addr_to_query:
+                sent_checks.append(check_data)
+            elif check_data["sender"] != wallet_addr_to_query:
+                received_checks.append(check_data)
 
 # Sort checks
-checks_dict["sent"] = sent
-checks_dict["receive"] = receive
+checks_dict["sent"] = sent_checks
+checks_dict["receive"] = received_checks
 print(checks_dict)

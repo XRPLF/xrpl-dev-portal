@@ -1,5 +1,3 @@
-import json
-
 # Helpers to find accounts in AffectedNodes and see how much the balance changed.
 def FindXRPDifference(tx, address):
 	# Define empty list to put the Node change type in.
@@ -70,5 +68,3 @@ def CountXRPReceived(tx, address):
 		print("Not a currency-delivering transaction type", tx['transaction']['TransactionType'])
 
 CountXRPReceived(tx=transaction, address='rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe')
-
-

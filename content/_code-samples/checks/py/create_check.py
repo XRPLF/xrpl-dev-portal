@@ -26,11 +26,11 @@ expiry_date = datetime_to_ripple_time(datetime.now() + timedelta(days=5))
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check create transaction
-check_txn = CheckCreate(account=sender_wallet.classic_address, destination=receiver_addr,
+check_txn = CheckCreate(account=sender_wallet.classic_address, destination=check_receiver_addr,
 send_max=IssuedCurrencyAmount(
-    currency=str_to_hex(token), 
-    issuer=issuer, 
-    value=amount),
+    currency=token_name, 
+    issuer=token_issuer, 
+    value=amount_to_deliver),
     expiration=expiry_date)
 
 # Sign, submit transaction and wait for result
@@ -62,8 +62,8 @@ sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check create transaction
 check_txn = CheckCreate(account=sender_wallet.classic_address,
-        destination=receiver_addr,
-        send_max=xrp_to_drops(amount),
+        destination=check_receiver_addr,
+        send_max=xrp_to_drops(amount_to_deliver),
         expiration=expiry_date)
 
 # Sign, submit transaction and wait for result

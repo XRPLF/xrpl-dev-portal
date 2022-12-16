@@ -33,7 +33,7 @@ def create_wallet(silent: False):
         pub, priv = keypairs.derive_keypair(seed)
         address = keypairs.derive_classic_address(pub)
  
-    return address, seed
+    return address, priv, seed
 
 
 def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
@@ -120,9 +120,9 @@ def create_wallet_directory():
         print("- OS Detected: Windows")
         File = PureWindowsPath(str(usr) + '/WalletTEST')
         Path_ = str(PureWindowsPath(str(usr)))
-    if OS == "Linux":
-        print("- OS Detected: Linux")
-        # If it's Linux, use this path:
+    else:
+        print("- Non-Windows OS Detected")
+        # If it's not Windows, use this path:
         File = PurePath(str(usr) + '/WalletTEST')
         Path_ = str(PurePath(str(usr)))
 
