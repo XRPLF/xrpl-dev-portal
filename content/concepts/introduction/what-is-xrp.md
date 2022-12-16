@@ -17,13 +17,13 @@ A cryptocurrency is a digital or virtual currency that is secured by cryptograph
 ![XRP on the blockchain](img/introduction10-xrp-on-chain.png)
 
 Cryptocurrencies, digital currencies, and digital assets all fall into the same general category. Cryptocurrencies are:
-- digitally native (meaning they are built for the internet)
-- programmable
-- fast to transfer at a low cost
-- open and transparent
-- not restricted by borders or governments (so no need for nostro accounts that hold funds in another country)
-- not subject to counterfeit
-- do not require a bank account or infrastructure to settle payments.
+<li>digitally native (meaning they are built for the internet)</li>
+<li>programmable</li>
+<li>fast to transfer at a low cost</li>
+<li>open and transparent</li>
+<li>not restricted by borders or governments (so no need for nostro accounts that hold funds in another country)</li>
+<li>not subject to counterfeit</li>
+<li>independent of a bank account or infrastructure to settle payments</li>
 
 ![Advantages of cryptocurrencies](img/introduction11-all-the-things.png)
 
