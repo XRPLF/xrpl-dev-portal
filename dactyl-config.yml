@@ -442,7 +442,7 @@ pages:
             - ja
 
     -   md: use-cases/payments/checks-uc.md
-        parent: checks-uc.html
+        parent: payments-uc.html
         targets:
             - en
             - ja

@@ -9,6 +9,9 @@ labels:
 
 XRPL Ledger checks enable users to create deferred payments similar to personal paper checks. Unlike an escrow or payment channel, funds aren't set aside when a check is created, so money only moves when the check is cashed. If the sender doesn't have the funds at the time a check is cashed, the transaction fails; recipients can retry failed transactions until the check expires.
 
+Learn about [Check](checks-uc.html) use cases.
+
+---
 
 ## Check Lifecycle
 
@@ -25,22 +28,6 @@ XRPL Ledger checks enable users to create deferred payments similar to personal 
         - Flexible Amount: They specify a minimum amount to cash and the XRP Ledger delivers as much as possible up to the check maximum. If the sender doesn't have the funds to meet the minimum, the transaction fails.
 
 4. If the check expires before the receiver cashes the check, the `Check` object remains until someone cancels it.
-
-
-## Use Cases
-
-### Deposit Authorization
-
-**Problem:** To comply with banking regulations, financial institutions must provide documentation about the sources of funds they receive. These regulations seek to prevent illicit activity by requiring institutions to track the source and destination of all payments they process. Because of the nature of the XRP Ledger, anyone can send XRP to an institution's account on the ledger; to prevent this behavior, they'll enable deposit authorization to only receive funds they explicitly approve. <!-- SPELLING_IGNORE: cft -->
-
-<!-- [BSA, KYC, AML, and CFT](become-an-xrp-ledger-gateway.html#gateway-compliance) -->
-
-**Solution:** Accounts with deposit authorization enabled can only receive funds through:
-    - Preauthorized Accounts
-    - Escrow
-    - Payment Channels
-    - Checks
-Checks are the most straightforward, familiar, and flexible way to transfer funds when deposite authorization is enabled.
 
 <!-- SPELLING_IGNORE: 3a, 4a -->
 
