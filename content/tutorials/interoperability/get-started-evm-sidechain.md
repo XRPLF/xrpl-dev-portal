@@ -18,9 +18,9 @@ In order to interact with the network, you need to create an account in the EVM 
 For instructions on how to install and create an account using MetaMask, see [Connect MetaMask to XRP Ledger EVM Sidechain](connect-metamask-to-xrpl-evm-sidechain.html).
 
 
-## 2. Move XRP Ledger Devnet Tokens to the EVM Sidechain
+## 2. Assign your XRP Ledger Devnet Tokens to the EVM Sidechain
 
-Before you can start interacting with the EVM blockchain, you need to fund the EVM sidechain using test tokens from the XRP Ledger Devnet. 
+Before you can start interacting with the EVM blockchain, you need to assign some of your XRP Ledger Devnet Tokens to the EVM Sidechain. 
 
 To generate tokens in the XRP Ledger Devnet, go to the [XRP Faucets](xrp-testnet-faucet.html) page and click *Generate Devnet credentials* to generate a new Devnet account with some test XRP in it.
 
@@ -30,7 +30,7 @@ Note the address and secret associated with your Devnet address. You need this i
 
 ## 3. Submit a Transaction Using the EVM Sidechain Bridge
 
-Once you have your accounts set up and test fund allocated, submit a transaction to fund the EVM sidechain with test XRP tokens using the EVM Sidechain bridge. 
+Once you have your accounts set up and test fund allocated, submit a transaction to assign some of your test tokens from the XRP Ledger Devnet to the EVM Sidechain using the EVM Sidechain bridge.
 
 The EVM Sidechain bridge is a tool that enables transactions between chains in a fast and secure way.
 
