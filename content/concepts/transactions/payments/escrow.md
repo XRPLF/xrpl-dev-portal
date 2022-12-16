@@ -11,6 +11,10 @@ A traditional escrow is a contract between two parties to facilitate financial t
 
 The XRP Ledger takes escrow a step further, removing the need for a third party to hold the funds. Instead, an escrow locks up XRP on the ledger itself, which can't be used or destroyed until conditions are met.
 
+Learn about [Escrow Use Cases](escrow-uc.html).
+
+---
+
 ## Types of Escrow
 
 The XRP Ledger supports three types of escrow:
@@ -60,26 +64,6 @@ The diagram shows three different cases for three possible combinations of the e
 - Timed releases and expirations resolve according to XRP Ledger close times. In practice, actual release and expiration times can vary by about five seconds as ledgers close.
 - The only supported crypto condition type is PREIMAGE-SHA-256.
 
-## Use Cases
-
-### Time-based Lock-Up
-
-**Background:** Ripple holds a large amount of the total XRP, which it sells methodically as a way to fund and incentivize the healthy development of the XRP Ledger and related technologies. At the same time, owning such a large chunk of XRP causes problems for the company, such as:
-
-- Individuals and businesses who use the XRP Ledger worry that their investments in XRP could be diluted or devalued if Ripple floods the market. Flooding the market would be a long-term loss for Ripple, but the possibility the company could do so exerts downward pressure on the price of XRP and decreases the value of the company's assets.
-- Ripple must carefully manage ownership of its accounts to protect against digital theft and other forms of malicious behavior--even by insiders.
-
-**Solution:** By placing 55 billion XRP into time-based escrows, Ripple ensures that the supply of XRP in circulation is predictable and increases at a slow and steady rate. Anyone who holds XRP knows that Ripple can't flood the market, even if the company's priorities or strategy changes.
-
-Placing the money into escrow sharply limits the amount of XRP that can be stolen or redirected if a malicious actors gains temporary control over Ripple's XRP account. This reduces the risk of catastrophic losses of XRP and increases the time for Ripple to detect, prevent, and track down unintended uses of Ripple's XRP assets.
-
-***TODO: Think of a smart contract that would see real-world use. The draw of smart contracts is it removes human interaction (I think?), but the example in use-an-escrow-as-a-smart-contract.md still has a person ultimately deciding if someone gets paid.***
-### Smart Contracts
-
-**Background:** 
-
-**Solution:**  
-
 ## See Also
 
 - [Transactions](../transactions.html)
@@ -91,5 +75,3 @@ Placing the money into escrow sharply limits the amount of XRP that can be stole
     - [EscrowCancel transaction][]
 - [Ledger Reference](ledger-data-formats.html)
     - [Escrow object](escrow-object.html)
-
-For more information on Ripple's 55-billion XRP lock-up, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
