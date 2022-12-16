@@ -435,7 +435,13 @@ pages:
             - en
             - ja
 
-    -   md: use-cases/payments/xrp-to-xrp-uc.md
+    -   md: use-cases/payments/direct-xrp-payments-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/payments/checks-uc.md
         parent: payments-uc.html
         targets:
             - en
