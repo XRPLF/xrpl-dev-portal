@@ -16,8 +16,8 @@ For the most part, transactions with `tec` codes take no action other than to de
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|
 | `tecAMM_BALANCE`           | 163   | 
-| `tecAMM_DIRECT_PAYMENT`    | 169   | The transaction tried to send money directly to an AccountRoot object that is part of an Automated Market Maker (AMM) :not_enabled:. AMM AccountRoot entries cannot send or receive money directly except through [AMMWithdraw][] and [AMMDeposit][] transactions. |
-| `tecAMM_EXISTS`            | 167   | The [AMMCreate transaction][] :not_enabled: tried to create an Automated Market Maker (AMM) instance that already exists. There can only be at most one AMM per unique currency pair. |
+| `tecAMM_DIRECT_PAYMENT`    | 169   | The transaction tried to send money directly to an AccountRoot object that is part of an [Automated Market Maker](automated-market-makers.html) (AMM) :not_enabled:. AMM AccountRoot entries cannot send or receive money directly except through [AMMWithdraw][] and [AMMDeposit][] transactions. |
+| `tecAMM_EXISTS`            | 167   | The [AMMCreate transaction][] :not_enabled: tried to create an [Automated Market Maker](automated-market-makers.html) (AMM) instance that already exists. There can only be at most one AMM per unique currency pair. |
 | `tecAMM_FAILED_DEPOSIT`    | 164   | The [AMMDeposit transaction][] :not_enabled: failed, probably because the sender does not have enough of the specified assets, or because the deposit requested an effective price that isn't possible with the available amounts. |
 | `tecAMM_FAILED_WITHDRAW`   | 165   | The [AMMWithdraw transaction][] :not_enabled: failed, probably because the sender does not have enough LP Tokens, or because the withdraw requested an effective price that isn't possible with the available amounts. |
 | `tecAMM_FAILED_BID`        | 168   | The [AMMBid transaction][] :not_enabled: failed, probably because the price to win the auction was higher than the specified maximum value or the sender's current balance. |

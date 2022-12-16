@@ -12,7 +12,7 @@ status: not_enabled
 
 {% include '_snippets/amm-disclaimer.md' %}
 
-Deposit funds into an Automated Market-Maker (AMM) instance and receive the AMM's liquidity provider tokens (_LP Tokens_) in exchange. You can deposit one or both of the assets in the AMM's pool.
+Deposit funds into an [Automated Market Maker](automated-market-makers.html) (AMM) instance and receive the AMM's liquidity provider tokens (_LP Tokens_) in exchange. You can deposit one or both of the assets in the AMM's pool.
 
 If successful, this transaction creates a [trust line](trust-lines-and-issuing.html) to the AMM Account (limit 0) to hold the LP Tokens.
 

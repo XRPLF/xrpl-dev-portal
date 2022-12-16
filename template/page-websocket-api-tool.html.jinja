@@ -100,49 +100,71 @@
         </div>
         <div class="modal-body">
 
+          {% for conn in [
+            {
+              "id": "wstool-1-connection-s1",
+              "ws_url": "wss://s1.ripple.com/",
+              "jsonrpc_url": "https://s1.ripple.com:51234/",
+              "shortname": "Mainnet s1",
+              "longname": "s1.ripple.com (Mainnet Public Cluster)"
+            },
+            {
+              "id": "wstool-1-connection-xrplcluster",
+              "ws_url": "wss://xrplcluster.com/",
+              "jsonrpc_url": "https://xrplcluster.com/",
+              "shortname": "Mainnet xrplcluster",
+              "longname": "xrplcluster.com (Mainnet Full History Cluster)"
+            },
+            {
+              "id": "wstool-1-connection-s2",
+              "ws_url": "wss://s2.ripple.com/",
+              "jsonrpc_url": "https://s2.ripple.com:51234/",
+              "shortname": "Mainnet s2",
+              "longname": "s2.ripple.com (Mainnet Full History Cluster)"
+            },
+            {
+              "id": "wstool-1-connection-testnet",
+              "ws_url": "wss://s.altnet.rippletest.net:51233/",
+              "jsonrpc_url": "https://s.altnet.rippletest.net:51234/",
+              "shortname": "Testnet",
+              "longname": "s.altnet.rippletest.net (Testnet Public Cluster)"
+            },
+            {
+              "id": "wstool-1-connection-devnet",
+              "ws_url": "wss://s.devnet.rippletest.net:51233/",
+              "jsonrpc_url": "https://s.devnet.rippletest.net:51234/",
+              "shortname": "Devnet",
+              "longname": "s.devnet.rippletest.net (Devnet Public Cluster)"
+            },
+            {
+              "id": "wstool-1-connection-nftdevnet",
+              "ws_url": "wss://xls20-sandbox.rippletest.net:51233/",
+              "jsonrpc_url": "https://xls20-sandbox.rippletest.net:51234/",
+              "shortname": "NFT-Devnet",
+              "longname": "xls20-sandbox.rippletest.net (NFT-Devnet Cluster)"
+            },
+            {
+              "id": "wstool-1-connection-ammdevnet",
+              "ws_url": "wss://amm.devnet.rippletest.net:51233/",
+              "jsonrpc_url": "https://amm.devnet.rippletest.net:51234/",
+              "shortname": "AMM-Devnet",
+              "longname": "amm.devnet.rippletest.net (XLS-30d AMM Devnet)"
+            },
+            {
+              "id": "wstool-1-connection-localhost",
+              "ws_url": "ws://localhost:6006/",
+              "jsonrpc_url": "http://localhost:5005/",
+              "shortname": "Local server",
+              "longname": "localhost:6006 (Local <code>rippled</code> Server on port 6006) <br/>\n              <small>(Requires that you <a href=\"install-rippled.html\">run <code>rippled</code></a> on this machine with default WebSocket settings)</small>"
+            }
+          ] %}
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s1" value="wss://s1.ripple.com/" data-jsonrpcurl="https://s1.ripple.com:51234/" data-shortname="Mainnet s1" checked>
-            <label class="form-check-label" for="wstool-1-connection-s1">
-              s1.ripple.com (Mainnet Public Cluster)
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="{{conn.id}}" value="{{conn.ws_url}}" data-jsonrpcurl="{{conn.jsonrpc_url}}" data-shortname="{{conn.shortname}}"{% if loop.index == 1 %} checked{% endif %}>
+            <label class="form-check-label" for="{{conn.id}}">
+              {{conn.longname}}
             </label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-xrplcluster" value="wss://xrplcluster.com/" data-jsonrpcurl="https://xrplcluster.com/" data-shortname="Mainnet xrplcluster">
-            <label class="form-check-label" for="wstool-1-connection-xrplcluster">
-              xrplcluster.com (Mainnet Full History Cluster)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-jsonrpcurl="https://s2.ripple.com:51234/" data-shortname="Mainnet s2">
-            <label class="form-check-label" for="wstool-1-connection-s2">
-              s2.ripple.com (Mainnet Full History Cluster)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-testnet" value="wss://s.altnet.rippletest.net:51233/" data-jsonrpcurl="https://s.altnet.rippletest.net:51234/" data-shortname="Testnet">
-            <label class="form-check-label" for="wstool-1-connection-testnet">
-              s.altnet.rippletest.net (Testnet Public Cluster)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-devnet" value="wss://s.devnet.rippletest.net:51233/" data-jsonrpcurl="https://s.devnet.rippletest.net:51234/" data-shortname="Devnet">
-            <label class="form-check-label" for="wstool-1-connection-devnet">
-              s.devnet.rippletest.net (Devnet Public Cluster)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-nftdevnet" value="wss://xls20-sandbox.rippletest.net:51233/" data-jsonrpcurl="https://xls20-sandbox.rippletest.net:51234/" data-shortname="NFT-Devnet">
-            <label class="form-check-label" for="wstool-1-connection-nftdevnet">
-              xls20-sandbox.rippletest.net (NFT-Devnet Cluster)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-localhost" value="ws://localhost:6006/" data-jsonrpcurl="http://localhost:5005/" data-shortname="Local server">
-            <label class="form-check-label" for="wstool-1-connection-localhost">
-              localhost:6006 (Local <code>rippled</code> Server on port 6006) <br/>
-              <small>(Requires that you <a href="install-rippled.html">run <code>rippled</code></a> on this machine with default WebSocket settings)</small>
-            </label>
-          </div>
+          {% endfor %}
 
         </div>
         <div class="modal-footer">

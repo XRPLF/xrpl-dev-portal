@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>170</y>
+      <w>110</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>AMM</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>100</y>
+      <w>120</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;
+Sell 1.25 USD
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;90.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>200</y>
+      <w>70</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>USD: 6.25</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>220</y>
+      <w>70</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>ETH: 4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>180</x>
+      <y>30</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Trader</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>60</y>
+      <w>280</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+Receive 1 ETH</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0;160.0;170.0;120.0;170.0</additional_attributes>
+  </element>
+</diagram>
