@@ -55,7 +55,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 55
   Words: 746
-  Characters: 4,636
+  Characters: 4,637
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
