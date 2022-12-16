@@ -447,6 +447,12 @@ pages:
             - en
             - ja
 
+    -   md: use-cases/payments/payment-channels-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+            - ja
+
     -   md: use-cases/payments/cross-currency-payments-uc.md
         parent: payments-uc.html
         targets:
