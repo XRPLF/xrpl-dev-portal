@@ -5,7 +5,9 @@ No spelling mistakes found in 319 pages!
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 1 discouraged words/phrases:
+Found 2 discouraged words/phrases:
+Page: <Page 'Introduction to EVM Compatible XRP Ledger Sidechain' (intro-to-evm-sidechain.html)>
+   Discouraged word: component (1 instances); suggest 'part' instead.
 Page: <Page 'Get Started with the EVM Sidechain' (get-started-evm-sidechain.html)>
    Discouraged word: initiate (1 instances); suggest 'start' instead.
 ------------------
