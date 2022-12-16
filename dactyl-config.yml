@@ -441,6 +441,12 @@ pages:
             - en
             - ja
 
+    -   md: use-cases/payments/checks-uc.md
+        parent: checks-uc.html
+        targets:
+            - en
+            - ja
+
     -   md: use-cases/payments/payment-channels-uc.md
         parent: payments-uc.html
         targets:
