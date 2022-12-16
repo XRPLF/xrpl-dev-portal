@@ -79,7 +79,7 @@ Enter the details for your transaction and click **Transfer**. Review the detail
 
 ![Approve the transaction](img/evm-sidechain-approve-transaction.png "Approve the transaction")
 
-Depending on the direction of the transfer, you need to approve the transaction in the Xumm Wallet or in the Metamask.
+Depending on the direction of the transaction, you need to approve the transaction in the Xumm Wallet or in the Metamask.
 
 **XRP Ledger Devnet → EVM sidechain**
 
@@ -109,8 +109,8 @@ Following a few minutes of transaction processing time, you are redirected to th
 
 - **Origin transaction hash**: Hash of the transaction in the origin chain.
 - **Destination transaction hash**: Hash of the transaction in the destination chain.
-- **From address**: Origin address of the transfer.
-- **To address**: Destination address of the transfer.
+- **From address**: Address on the origin chain.
+- **To address**: Address on the destination chain.
 - **Receive**: The amount received in the destination address.
 
 ![Transaction confirmation](img/evm-sidechain-transaction-confirmation.png "Transaction confirmation")
