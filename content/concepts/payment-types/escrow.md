@@ -4,11 +4,10 @@ parent: payment-types.html
 blurb: Escrow holds funds until specified conditions are met.
 labels:
   - Escrow
-  - Smart Contracts
 ---
 # Escrow
 
-Traditionally, an escrow is a contract between two parties to facilitate risky financial transactions. An impartial third party receives and holds funds, and only releases them to the intended recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
+Traditionally, an escrow is a contract between two parties to facilitate financial transactions. An impartial third party receives and holds funds, and only releases them to the intended recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
 
 The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met.
 
@@ -57,16 +56,16 @@ The diagram shows three different cases for three possible combinations of the e
     - While the escrow is incomplete, the sender is responsible for the [reserve requirement](reserves.html) of the `Escrow` object.
 - You can't create an escrow with past time values.
 - Timed releases and expirations resolve according to [ledger close times](ledgers.html#ledger-close-times). In practice, actual release and expiration times can vary by about five seconds as ledgers close.
-- The only supported [crypto-condition][] type is PREIMAGE-SHA-256.
+- The only supported crypto-condition type is PREIMAGE-SHA-256.
 
 
 ## EscrowFinish Transaction Cost
 
-When using [crypto-conditions][], the EscrowFinish transaction must pay a [higher transaction cost](transaction-cost.html#special-transaction-costs) because of the higher processing load involved in verifying the crypto-condition fulfillment.
+When using crypto-conditions, the EscrowFinish transaction must pay a [higher transaction cost](transaction-cost.html#special-transaction-costs) because of the higher processing load involved in verifying the crypto-condition fulfillment.
 
-If the escrow is purely time-locked with no crypto-condition, the EscrowFinish costs only the standard [transaction cost](transaction-cost.html) for a reference transaction.
+The additional transaction cost required is proportional to the size of the fulfillment. If the transaction is [multi-signed](multi-signing.html), the cost of multi-signing is added to the cost of the fulfillment.
 
-The additional transaction cost required is proportional to the size of the fulfillment. Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](basic-data-types.html#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**. If the transaction is [multi-signed](multi-signing.html), the cost of multi-signing is added to the cost of the fulfillment.
+Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](basic-data-types.html#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**.
 
 **Note:** The above formula is based on the assumption that the reference cost of a transaction is 10 drops of XRP.
 
@@ -77,29 +76,12 @@ reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 ```
 
 
-## Use cases
-
-### Time-based Lock-Up
-
-**Background:** Ripple holds a large amount of the total XRP, which it sells methodically as a way to fund and incentivize the healthy development of the XRP Ledger and related technologies. At the same time, owning such a large chunk of XRP causes problems for the company, such as:
-
-- Individuals and businesses who use the XRP Ledger worry that their investments in XRP could be diluted or devalued if Ripple were to flood the market by selling at a higher rate than usual.
-    - Although flooding the market would be a long-term loss for Ripple, the possibility that the company could do so exerts downward pressure over the price of XRP, and thus decreases the value of the company's assets.
-- Ripple must carefully manage ownership of its accounts to protect against digital theft and other forms of malicious behavior, even by insiders.
-
-**Solution:** By placing 55 billion XRP into time-based escrows, Ripple ensures that the supply of XRP in circulation is predictable and increases at a slow but steady rate. Others who hold XRP know that Ripple cannot flood the market, even if the company's priorities or strategy changes.
-
-Placing the money into escrow does not directly protect Ripple's holdings from malicious actors, but it sharply reduces the amount of XRP that can be quickly stolen or redirected if a malicious actor gains temporary control over Ripple's XRP accounts. This reduces the risk of catastrophic losses of XRP and increases the time for Ripple to detect, prevent, and track down unintended uses of Ripple's XRP assets.
-
 
 ## See Also
 
 For more information about Escrow in the XRP Ledger, see the following:
 
 - [Escrow Tutorials](use-escrows.html)
-    - [Send a Time-Held Escrow](send-a-time-held-escrow.html)
-    - [Send a conditionally-held escrow](send-a-conditionally-held-escrow.html)
-    - [Look up escrows by sender or receiver](look-up-escrows.html)
 - [Transaction Reference](transaction-formats.html)
     - [EscrowCreate transaction][]
     - [EscrowFinish transaction][]
