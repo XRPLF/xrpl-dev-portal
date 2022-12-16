@@ -1,14 +1,14 @@
 ---
-html: xchaincreateaccountcommit.html 
+html: xchainaccountcreatecommit.html 
 parent: transaction-types.html
 blurb: Create a bridge between two chains.
 labels:
   - Interoperability
 status: not_enabled
 ---
-# XChainCreateAccountCommit
+# XChainAccountCreateCommit
 
-The `XChainCreateBridge` transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.
+The `XChainAccountCreateCommit` transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.
 
 The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This would ensure that the funds are truly in control of the witness servers.
 
@@ -17,16 +17,21 @@ The complete production-grade setup would also include a `SignerListSet` transac
 
 ```json
 {
-  "TransactionType": "XChainCreateBridge",
-  "Account": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
+  "Account": "rwEqJ2UaQHe7jihxGqmx6J4xdbGiiyMaGa",
+  "Destination": "rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo",
+  "TransactionType": "XChainAccountCreateCommit",
+  "Amount": "20000000",
+  "SignatureReward": "100",
   "XChainBridge": {
-    "LockingChainDoor": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
-    "LockingChainIssue": "XRP",
+    "LockingChainDoor": "rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
     "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    "IssuingChainIssue": "XRP"
-  },
-  "SignatureReward": 200,
-  "MinAccountCreateAmount": 1000000
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    }
+  }
 }
 ```
 

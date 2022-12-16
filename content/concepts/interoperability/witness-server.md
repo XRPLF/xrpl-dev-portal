@@ -28,39 +28,63 @@ The witness server takes a JSON configuration file, specified using the `--conf`
 
 The configuration file contains the following information:
 
-* Websocket endpoints for the locking chain and the issuing chain (`LockingChainEndpoint` and `IssuingChainEndpoint`).
-* Port that clients can use to connect to this server (`RPCEndpoint`).
-* Directory to store the SQL database (`DBDir`).
-* Secret key used to sign attestations (`SigningKeySeed` and `SigningKeyType`).
+* For both locking and issuing chains (`LockingChain` and `IssuingChain`):
+    * Websocket endpoints (`Endpoint`)
+    * Information on how witness servers can submit `XChainAddAttestation` transactions to the relevant chain (`TxnSubmit`).
+        * `ShouldSubmit` defines whether the attestations should be submitted at all. The server operator can instead submit them by hand, or via other means.
+        * The seed that the witness server uses to derive keys to sign its attestations (`SigningKeySeed`), and the key type used to interpret it (`SigningKeyKeyType`).
+        * Account that the witness server uses to submit its transactions (`SubmittingAccount`).
+        * Account that receives the signature rewards for this witness’s attestations (`RewardAccount`).
+* IP and port number that clients can use to connect to this witness server (`RPCEndpoint`).
+* Directory to store the witness server's SQL database (`DBDir`).
+* The seed that the witness server uses to derive keys to sign its attestations (`SigningKeySeed`), and the key type used to interpret it (`SigningKeyKeyType`).
+* Log file for the witness server (`LogFile`)
 * Reward accounts on both chains (`LockingChainRewardAccount` and `IssuingChainRewardAccount`).
-* Information about the cross-chain bridge (`XChainBridge`) including door accounts and assets on both chains.
+* Information about the cross-chain bridge (`XChainBridge`) for which the witness server is attesting transactions, including door accounts and assets on both chains.
 
 Here is an example configuration file for a witness server:
 
 ```json
 {
-  "LockingChainEndpoint": {
-    "IP": "127.0.0.1",
-    "Port": 6005
+  "LockingChain": {
+    "Endpoint": {
+      "IP": "127.0.0.1",
+      "Port": 6005
+    },
+    "TxnSubmit": {
+      "ShouldSubmit": true,
+      "SigningKeySeed": "shUe3eSgGK4e6xMFuCakZnxsMN1uk",
+      "SigningKeyType": "ed25519",
+      "SubmittingAccount": "rpFp36UHW6FpEcZjZqq5jSJWY6UCj3k4Es"
+    },
+    "RewardAccount": "rpFp36UHW6FpEcZjZqq5jSJWY6UCj3k4Es"
   },
-  "IssuingChainEndpoint": {
-    "IP": "127.0.0.2",
-    "Port": 6007
+  "IssuingChain": {
+    "Endpoint": {
+      "IP": "127.0.0.1",
+      "Port": 6007
+    },
+    "TxnSubmit": {
+      "ShouldSubmit": true,
+      "SigningKeySeed": "shUe3eSgGK4e6xMFuCakZnxsMN1uk",
+      "SigningKeyType": "ed25519",
+      "SubmittingAccount": "rpFp36UHW6FpEcZjZqq5jSJWY6UCj3k4Es"
+    },
+    "RewardAccount": "rpFp36UHW6FpEcZjZqq5jSJWY6UCj3k4Es"
   },
   "RPCEndpoint": {
-    "IP": "127.0.0.3",
+    "IP": "127.0.0.1",
     "Port": 6010
   },
-  "DBDir": "/home/swd/data/witness/witness0/db",
-  "SigningKeySeed": "snwitEjg9Mr8n65cnqhATKcd1dQmv",
+  "DBDir": "/var/lib/witness0/db",
+  "LogFile": "/var/log/witness/witness0.log",
+  "SigningKeySeed": "spkHEwDKeChm8PAFApLkF1E2sDs6t",
   "SigningKeyType": "ed25519",
-  "LockingChainRewardAccount": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
-  "IssuingChainRewardAccount": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
   "XChainBridge": {
-    "LockingChainDoor": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
-    "LockingChainIssue": "XRP",
+    "LockingChainDoor": "r3nCVTbZGGYoWvZ58BcxDmiMUU7ChMa1eC",
+    "LockingChainIssue": {"currency": "XRP"},
     "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    "IssuingChainIssue": "XRP"
+    "IssuingChainIssue": {"currency": "XRP"}
   }
 }
 ```

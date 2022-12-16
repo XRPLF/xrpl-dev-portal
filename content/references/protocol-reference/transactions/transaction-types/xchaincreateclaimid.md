@@ -20,16 +20,20 @@ It also includes the account on the source chain that locks or burns the funds o
 
 ```json
 {
+  "Account": "rahDmoXrtPdh7sUdrPjini3gcnTVYjbjjw",
+  "OtherChainSource": "rMTi57fNy2UkUb4RcdoUeJm7gjxVQvxzUo",
   "TransactionType": "XChainCreateClaimID",
-  "Account": "rG5r16gHYktYHrLyiWzMMbKQAFRptZe5rH",
+  "SignatureReward": "100",
   "XChainBridge": {
-    "LockingChainDoor": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
-    "LockingChainIssue": "XRP",
+    "LockingChainDoor": "rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
     "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    "IssuingChainIssue": "XRP"
-  },
-  "SourceAccount": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
-  "SignatureReward": 200
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    }
+  }
 }
 ```
 
@@ -38,12 +42,13 @@ It also includes the account on the source chain that locks or burns the funds o
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
+| `OtherChainSource` | String | AccountID | The source account on the other chain. |
+| `SignatureReward`  | Number  | Token |  _Required_ The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. This must be at least the value of `SignaturesReward` in the `Bridge` ledger object. |
 | `XChainBridge`| String | Object | _Required_ The XChainBridge stanza represents the bridge for which the witness is attesting transactions. |
 | `LockingChainDoor` | String | AccountID | The door account on the locking chain. |
 | `LockingChainIssue` | String | Token | The token that is bridged on the locking chain. |
 | `IssuingChainDoor` | String  |  AccountID | The door account on the issuing chain. |
 | `IssuingChainIssue` | String | Token | The token that is bridged on the issuing chain. |
-| `SignatureReward`  | Number  | Token |  _Required_ The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. This must be at least the value of `SignaturesReward` in the `Bridge` ledger object. |
 | `MinAccountCreateAmount`  | Number  |   |  _Optional_ The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present. |
 
 

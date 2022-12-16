@@ -8,7 +8,7 @@ status: not_enabled
 ---
 # XChainClaim
 
-The `XChainClaim` transaction completes a cross-chain transfer of value. It allows a user to claim the value on the destination chain - the equivalent of the value locked on the source chain. A user can only claim the value if they own the cross-chain claim ID associated with the value locked on the source chain (the Account field). The user can send the funds to anyone (the Destination field). This transaction is only needed if an OtherChainDestination is not specified in the XChainCommit transaction, or if something goes wrong with the automatic transfer of funds.
+The `XChainClaim` transaction completes a cross-chain transfer of value. It allows a user to claim the value on the destination chain - the equivalent of the value locked on the source chain. A user can only claim the value if they own the cross-chain claim ID associated with the value locked on the source chain (the `Account` field). The user can send the funds to anyone (the `Destination` field). This transaction is only needed if an `OtherChainDestination` is not specified in the XChainCommit transaction, or if something goes wrong with the automatic transfer of funds.
 
 
 ## Example {{currentpage.name}} JSON
@@ -16,16 +16,21 @@ The `XChainClaim` transaction completes a cross-chain transfer of value. It allo
 
 ```json
 {
+  "Account": "rahDmoXrtPdh7sUdrPjini3gcnTVYjbjjw",
+  "Amount": "10000",
   "TransactionType": "XChainClaim",
-  "Account": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
+  "XChainClaimID": "13f",
+  "Destination": "rahDmoXrtPdh7sUdrPjini3gcnTVYjbjjw",
   "XChainBridge": {
-    "LockingChainDoor": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
-    "LockingChainIssue": "XRP",
+    "LockingChainDoor": "rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
     "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    "IssuingChainIssue": "XRP"
-  },
-  "SignatureReward": 200,
-  "MinAccountCreateAmount": 1000000
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    }
+  }
 }
 ```
 

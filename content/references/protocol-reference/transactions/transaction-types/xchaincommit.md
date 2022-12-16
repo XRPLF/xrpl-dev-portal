@@ -18,16 +18,20 @@ The account that owns the cross-chain claim ID on the destination chain is the a
 
 ```json
 {
+  "Account": "rMTi57fNy2UkUb4RcdoUeJm7gjxVQvxzUo",
   "TransactionType": "XChainCommit",
-  "Account": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
   "XChainBridge": {
-    "LockingChainDoor": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
-    "LockingChainIssue": "XRP",
+    "LockingChainDoor": "rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
     "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    "IssuingChainIssue": "XRP"
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    }
   },
-  "SignatureReward": 200,
-  "MinAccountCreateAmount": 1000000
+  "Amount": "10000",
+  "XChainClaimID": "13f"
 }
 ```
 
@@ -36,13 +40,14 @@ The account that owns the cross-chain claim ID on the destination chain is the a
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
-| `XChainBridge`| String | Object | _Required_ The XChainBridge stanza represents the bridge for which the witness is attesting transactions. |
+| `Account` | String | AccountID | The account that has initiated the transaction and wants to commit funds. Funds will be deducted from this account. |
+| `XChainBridge`| String | Object | _Required_ The bridge for which the witness is attesting transactions. |
 | `LockingChainDoor` | String | AccountID | The door account on the locking chain. |
 | `LockingChainIssue` | String | Token | The token that is bridged on the locking chain. |
 | `IssuingChainDoor` | String  |  AccountID | The door account on the issuing chain. |
 | `IssuingChainIssue` | String | Token | The token that is bridged on the issuing chain. |
-| `SignatureReward`  | Number  | Token |  _Required_ The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. |
-| `MinAccountCreateAmount`  | Number  |   |  _Optional_ The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present. |
+| `Amount`  | Number  | Token |  _Required_ The total amount that the account wants to transfer. |
+| `XChainClaimID` | String | ID | The cross-chain claim ID from the `XChainCreateClaimID` transaction. |
 
 
 
