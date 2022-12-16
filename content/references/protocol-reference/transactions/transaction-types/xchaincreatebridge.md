@@ -36,7 +36,7 @@ The complete production-grade setup would also include a `SignerListSet` transac
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
-| `XChainBridge`| String | Object | _Required_ The XChainBridge stanza represents the bridge for which the witness is attesting transactions. |
+| `XChainBridge`| String | Object | _Required_ The bridge for which the witness is attesting transactions. |
 | `LockingChainDoor` | String | AccountID | The door account on this chain. |
 | `LockingChainIssue` | String | Token | The token that is bridged on this chain. |
 | `IssuingChainDoor` | String  |  AccountID | The door account on the other chain. |
