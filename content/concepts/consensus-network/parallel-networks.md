@@ -18,6 +18,7 @@ To help members of the XRP Ledger community interact with XRP Ledger technology 
 | Devnet  | Beta releases   | A preview of coming attractions, where unstable changes to the core XRP Ledger software may be tested out. Developers can use this altnet to interact with and learn about planned new XRP Ledger features and amendments that are not yet enabled on the Mainnet. |
 | NFT-Devnet | [XLS-20 pre-release](https://github.com/ripple/rippled/tree/xls20) | A preview of the [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46) standard for non-fungible tokens on the XRP Ledger. <!-- SPELLING_IGNORE: 20d --> |
 | [Hooks Testnet V2](https://hooks-testnet-v2.xrpl-labs.com/) | [Hooks server](https://github.com/XRPL-Labs/xrpld-hooks) | A preview of on-chain smart contract functionality using [hooks](https://write.as/xumm/xrpl-labs-is-working-on-the-transaction-hooks-amendment-for-the-xrp-ledger). |
+| Sidechains-Devnet | Sidechains pre-release | A preview of the sidechains feature to enhance interoperability on the XRP Ledger. The [locking chain](https://sidechain-net1.devnet.rippletest.net) and [issuing chain](https://sidechain-net2.devnet.rippletest.net) networks are available for testing. |
 
 Each altnet has its own separate supply of test XRP, which is [given away for free](xrp-testnet-faucet.html) to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.
 
