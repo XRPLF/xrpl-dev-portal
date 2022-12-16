@@ -8,25 +8,53 @@ labels:
 
 # What is the XRP Ledger?
 
-The XRP Ledger is a _blockchain_ that records transactions of XRP and other tokens.
+![Howdy, I'm Dennis Dawson](img/introduction1-howdy.png)
+
+I started working with the XRP Ledger in late 2021. At the time, I could completely relate to this tongue-in-cheek meme I found on the interwebs:
+
+<table border="2">
+<tr><td>
+"Cryptocurrency combines everything I don't understand about money with everything I don't understand about computers."
+</td></tr>
+</table>
+
+This quote gave me a boost in confidence. It helped me get past my imposter syndrome. If you can relate to that notion, what follows is  my best attempt at describing the XRP Ledger.
+
+XRP is a digital currency in which transactions are verified and records maintained by the XRP Ledger, a decentralized system using blockchain cryptography, rather than a centralized authority. Now, to break down that sentence...
 
 ## What Is a Blockchain?
 
 A blockchain is a continuously growing list of records. The blockchain starts with a block of data. 
 
+![A block of data](img/introduction2-data-block.png)
+
 A group of trusted validator nodes reach consensus that the data is valid.
 
-The block is uniquely identified with a very elaborate, complicated, computer-generated, cryptographic Hash number that is 64 hexadecimal characters long, 
+![Validator nodes](img/introduction3-validators.png)
+
+The block is uniquely identified with a very elaborate, complicated, computer-generated, cryptographic Hash number that is 64 hexadecimal characters long.
+
+![Crypto hash](img/introduction4-hash.png)
 
 The block is also identified by a timestamp with its creation time.
 
+![Timestamp](img/introduction5-time-stamp.png)
+
 Each validator node gets its own copy of the data block. There is no single central authority. All copies are equally valid.
+
+![Validators with valid copies](img/introduction6-validators.png)
 
 Each block contains a hash pointer as a link to the previous block. It also has a timestamp, new data, and its own unique hash number.
 
-Using this structure, each block has a clear position in the chain, linking back to the previous data block. This creates an immutable chain of blocks. You can always verify all current information on the chain by tracing back through the previous blocks. 
+![Hash pointer](img/introduction7-two-blocks.png)
+
+Using this structure, each block has a clear position in the chain, linking back to the previous data block. This creates an immutable chain of blocks. You can always verify all current information on the chain by tracing back through the previous blocks.
+
+![Three data blocks](img/introduction8-3-blocks.png)
 
 By design, blockchains are resistant to modification of the data. Every ledger node gets an exact copy of the blockchain.
+
+![Two validators with identical copies of the blockchain](introduction9-2-sets-of-3.[png])
 
 This creates an open, distributed ledger that records transactions between parties efficiently and in a verifiable and permanent way.
 
