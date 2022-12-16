@@ -11,7 +11,7 @@ A traditional escrow is a contract between two parties to facilitate financial t
 
 The XRP Ledger takes escrow a step further, removing the need for a third party to hold the funds. Instead, an escrow locks up XRP on the ledger itself, which can't be used or destroyed until conditions are met.
 
-Learn about [Escrow Use Cases](escrow-uc.html).
+Learn about [Escrow](escrow-uc.html) use cases.
 
 ---
 

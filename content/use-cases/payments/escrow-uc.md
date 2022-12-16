@@ -5,13 +5,14 @@ blurb: Transactions allow accounts to modify the XRP Ledger.
 labels:
   - Ledgers
 ---
-# Escrow Use Case
+# Escrow
 
 A traditional escrow is a contract between two parties to facilitate financial transactions. A sender delivers funds to an impartial third party to hold, guaranteeing its availability to a recipient. The third party only releases the funds to the recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
 
 The XRP Ledger takes escrow a step further, removing the need for a third party to hold the funds. Instead, an escrow locks up XRP on the ledger itself, which can't be used or destroyed until conditions are met.
 
-Learn how the XRP Ledger implements [Escrow](escrow.html).
+Learn about [Escrow](escrow.html) on the XRP Ledger.
+
 ***TODO: Investigate tabbed content.***
 ---
 
