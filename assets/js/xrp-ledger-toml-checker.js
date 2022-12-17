@@ -1,5 +1,6 @@
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
 const TIPS_1 = '<p>Make sure you are entering a valid XRP address.</p>'
+const TIPS_2 = '<p>Make sure the wallet address has the domain field.</p>'
 const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
 const CLASS_GOOD = "badge badge-success"
 const CLASS_BAD = "badge badge-danger"
@@ -322,13 +323,13 @@ function fetch_wallet_1() {
     try {
       data = JSON.parse(event.data)
       if (data.status === 'success') {
-          checking_log.resolve('SUCCESS').addClass(CLASS_GOOD)
           decode_hex_1(data.result.account_data.Domain)
+          checking_log.resolve('SUCCESS').addClass(CLASS_GOOD)
       } else {
         checking_log.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_1)
       }
     } catch {
-      checking_log.resolve('ERROR').addClass(CLASS_BAD)
+      checking_log.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_2)
       return false
     }
   })
