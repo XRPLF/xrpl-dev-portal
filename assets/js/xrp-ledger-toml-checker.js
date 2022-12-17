@@ -1,4 +1,5 @@
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
+const TIPS_1 = '<p>Make sure you are entering a valid XRP address.</p>'
 const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
 const CLASS_GOOD = "badge badge-success"
 const CLASS_BAD = "badge badge-danger"
@@ -254,6 +255,171 @@ function handle_submit(event) {
   fetch_file()
 }
 
+// ------------------------------------------ DOMAIN VERIFICATION VIA ACCOUNT BELOW ------------------------------------------
+
+function makeLogEntry_1(text, raw) {
+  let log
+  if (raw) {
+    log = $('<li></li>').appendTo('#verify-domain-log').append(text)
+  } else {
+    log = $('<li></li>').text(text+" ").appendTo('#verify-domain-log')
+  }
+  log.resolve = function(text) {
+    return $('<span></span>').html(text).appendTo(log)
+  }
+  return log
+}
+
+function fetch_file_1(domain) {
+  const url = "https://" + domain + TOML_PATH
+  const log = makeLogEntry_1('Checking ' + url + '...')
+  $.ajax({
+    url: url,
+    dataType: 'text',
+    success: function(data) {
+      log.resolve('FOUND').addClass(CLASS_GOOD)
+      parse_xrpl_toml_1(data, domain)
+    },
+    error: function(jqxhr, status, error) {
+      switch (status) {
+        case 'timeout':
+          err = 'TIMEOUT'
+          break
+        case 'abort':
+          err = 'ABORTED'
+          break
+        case 'error':
+          err = 'ERROR'
+          break
+        default:
+          err = 'UNKNOWN'
+      }
+      log.resolve(err).addClass(CLASS_BAD).after(TIPS)
+    }
+  })
+}
+
+let socket;
+function fetch_wallet_1() {
+  const wallet = $('#verify-domain').val()
+  const checking_log = makeLogEntry_1('Checking domain of wallet')
+
+  const url = "wss://xrplcluster.com"
+  if (typeof socket !== "undefined" && socket.readyState < 2) {
+    socket.close()
+  }
+  const data = {
+    "id": 2,
+    "command": "account_info",
+    "account": wallet,
+    "strict": true,
+    "ledger_index": "current",
+    "queue": true
+  }
+  socket = new WebSocket(url)
+  socket.addEventListener('message', (event) => {
+    let data;
+    try {
+      data = JSON.parse(event.data)
+      if (data.status === 'success') {
+          checking_log.resolve('SUCCESS').addClass(CLASS_GOOD)
+          decode_hex_1(data.result.account_data.Domain)
+      } else {
+        checking_log.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_1)
+      }
+    } catch {
+      checking_log.resolve('ERROR').addClass(CLASS_BAD)
+      return false
+    }
+  })
+  socket.addEventListener('open', (event) => {
+    socket.send(JSON.stringify(data))
+  })
+}
+
+async function parse_xrpl_toml_1(data, domain) {
+  let parsed
+  let log1 = makeLogEntry_1("Parsing TOML data...")
+  try {
+    parsed = TOML(data)
+    log1.resolve("SUCCESS").addClass(CLASS_GOOD)
+  } catch(e) {
+    log1.resolve(e).addClass(CLASS_BAD)
+    return
+  }
+
+  if (parsed.hasOwnProperty("METADATA")) {
+    const metadata_type = makeLogEntry_1("Metadata section: ")
+    if (Array.isArray(parsed.METADATA)) {
+      metadata_type.resolve("Wrong type - should be table").addClass(CLASS_BAD)
+    } else {
+      metadata_type.resolve("Found").addClass(CLASS_GOOD)
+
+      if (parsed.METADATA.modified) {
+        const mod_log = makeLogEntry_1("Modified date: ")
+        try {
+          mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
+        } catch(e) {
+          mod_log.resolve("INVALID").addClass(CLASS_BAD)
+        }
+      }
+    }
+  }
+
+  async function list_entries_1(name, list, fields) {
+    let list_wrap = $("<p>"+name+"</p>")
+    let list_ol = $("<ol>").appendTo(list_wrap)
+    for (i=0; i<list.length; i++) {
+      let entry_def = $("<ul class='mb-3'>").appendTo(list_ol)
+      let entry = list[i]
+      for (j=0; j<fields.length; j++) {
+        let fieldname = fields[j]
+        if (fieldname == 'address' && entry[fieldname] !== undefined) {
+          console.log(entry[fieldname])
+          let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
+          $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
+          entry_def.append('<li class="badge badge-success">Domain Validated <i class="fa fa-check-circle"></i></li>')
+        }
+      }
+    }
+    makeLogEntry_1(list_wrap, true)
+  }
+  if (parsed.ACCOUNTS) {
+    if (!Array.isArray(parsed.ACCOUNTS)) {
+      makeLogEntry_1("Accounts:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+    } else {
+      list_entries_1("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS, async function(acct) {
+        if (acct.address === undefined) {return undefined}
+        let net
+        if (acct.network === undefined) { net = "main" } else { net = acct.network }
+        return await validate_address_domain_on_net(acct.address, domain, net)
+      })
+    }
+  }
+}
+
+function decode_hex_1(hex) {
+    let str = '';
+    for (let i = 0; i < hex.length; i += 2) {
+      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+    }
+    const decode_log = makeLogEntry_1('Decoding domain hex')
+    decode_log.resolve("SUCCESS").addClass(CLASS_GOOD)
+    fetch_file_1(str)
+}
+
+function domain_verification_submit(event) {
+  event.preventDefault();
+
+  $('#verify-domain-result-title').show()
+  $('#verify-domain-result').show()
+  $('#verify-domain-log').empty()
+
+  fetch_wallet_1()
+}
+
+
 $(document).ready(() => {
   $('#domain-entry').submit(handle_submit)
+  $('#domain-verification').submit(domain_verification_submit)
 })
