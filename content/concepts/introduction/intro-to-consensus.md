@@ -42,7 +42,7 @@ The XRP Ledger processes transactions in blocks called "ledger versions", or "le
 
 Each ledger version is numbered with a _ledger index_ and builds on a previous ledger version whose index is one less, going all the way back to a starting point called the _genesis ledger_ with ledger index 1.[¹](#footnote-1) Like Bitcoin and other blockchain technologies, this forms a public history of all transactions and their results. Unlike many blockchain technologies, each new "block" in the XRP Ledger contains the entirety of the current state, so you don't need to collect the entire history to know what's happening now.[²](#footnote-2)
 
-The main job of the XRP Ledger Consensus Protocol is to agree on a set of transactions to apply to the next ledger, apply them in a well-defined order, then confirm that everyone got the same results. When this happens successfully, a ledger version is considered _validated_, and final. From there, the process continues by building the next ledger version.
+The main goal of the XRP Ledger Consensus Protocol is to agree on a set of transactions to add to the next ledger version, apply them in a well-defined order, then confirm that everyone got the same results. When this happens successfully, a ledger version is considered _validated_, and final. From there, the process continues by building the next ledger version.
 
 
 ## Trust-Based Validation
