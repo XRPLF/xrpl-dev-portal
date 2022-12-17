@@ -33,8 +33,10 @@ To get started with time-based escrows, see: [Create Time-based Escrows](time-es
 
 ## Escrow Smart Contract
 
-**Background:** Need good example here.
+***TODO: Need good example here.***
 
-**Solution:** Ditto
+**Background:**
+
+**Solution:**
 
 To get started with escrow smart contracts, see: [Create Conditionally-held Escrows]().

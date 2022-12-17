@@ -11,6 +11,10 @@ In the XRP Ledger, you can send cross-currency payments that exchange tokens, XR
 
 By default, cross-currency payments deliver a fixed amount to their destination at a variable cost to their source. Cross-currency payments can also be [partial payments](partial-payments.md), which deliver a variable amount to the destination within a fixed sending limit.
 
+Learn about [Cross-currency Payments](cross-currency-payments-uc.html) use cases.
+
+---
+
 
 ## Prerequisites
 

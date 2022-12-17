@@ -13,6 +13,9 @@ The XRP for a payment channel is set aside temporarily. The sender creates _Clai
 
 Because Claims can be verified individually but settled in bulk later, payment channels make it possible to conduct transactions at a rate only limited by the participants' ability to create and verify the digital signatures of those Claims. This limit is primarily based on the speed of the participants' hardware and the complexity of the signature algorithms. For maximum speed, use Ed25519 signatures, which are faster than the XRP Ledger's default secp256k1 ECDSA signatures. Research has [demonstrated the ability to create over Ed25519 100,000 signatures per second and to verify over 70,000 per second](https://ed25519.cr.yp.to/ed25519-20110926.pdf) on commodity hardware in 2011.
 
+Learn about [Payment Channels](payment-channels.html) use cases.
+
+---
 
 ## Why Use Payment Channels?
 
