@@ -47,6 +47,11 @@ Edit your `rippled.cfg` file.
         [ips]
         xls20-sandbox.rippletest.net 51235
 
+    *AMM-Devnet*
+
+        [ips]
+        amm.devnet.rippletest.net 51235
+
     <!-- MULTICODE_BLOCK_END -->
 
 2. Comment out the previous `[ips]` stanza, if there is one:
@@ -79,6 +84,11 @@ Edit your `rippled.cfg` file.
 
         [network_id]
         20
+
+    *AMM-Devnet*
+
+        [network_id]
+        25
 
     <!-- MULTICODE_BLOCK_END -->
 
@@ -127,9 +137,17 @@ Edit your `validators.txt` file. This file is located in the same folder as your
         [validator_list_keys]
         ED8E43A943A174190BA2FAE91F44AC6E2D1D8202EFDCC2EA3DBB39814576D690F7
 
+    *AMM-Devnet*
+
+        [validator_list_sites]
+        http://vlamm.devnet.rippletest.net/
+
+        [validator_list_keys]
+        03553F67DC5A6FE0EBFE1B3B4742833D14AF7C65E79E5760EC76EC56EAFD254CE9
+
     <!-- MULTICODE_BLOCK_END -->
 
-    **Tip:** The packages for the NFT preview should already contain the necessary stanzas, but check them just in case.
+    **Tip:** Preview packages might come with the necessary stanzas pre-configured, but check them just in case.
 
 1. Comment out any previous `[validator_list_sites]`, `[validator_list_keys]`, or `[validators]` stanzas.
 
@@ -151,14 +169,50 @@ Edit your `validators.txt` file. This file is located in the same folder as your
             # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
             # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
 
-## 3. (NFT-Devnet Only) Enable Features
+## 3. Enable (or Disable) Features
 
-To connect to the NFT-Devnet, you must also forcefully enable the NFT feature, `XLS20`. Add or modify the `[features]` stanza of your config file as follows:
+For some test networks using experimental features, you must also forcefully enable the appropriate feature in the config file. For other networks, you should not use the `[features]` stanza. Add or modify the `[features]` stanza of your config file as follows:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Testnet_
+
+```
+# [features]
+# Delete or comment out. Don't force-enable features on Testnet.
+```
+
+_Devnet_
+
+```
+# [features]
+# Delete or comment out. Don't force-enable features on Devnet.
+```
+
+_Mainnet_
+
+```
+# [features]
+# Delete or comment out. Don't force-enable features on Mainnet.
+```
+
+_NFT-Devnet_
 
 ```
 [features]
 NonFungibleTokensV1
 ```
+
+_AMM-Devnet_
+
+```
+[features]
+AMM
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+(On Mainnet, Testnet, and Devnet, no you)
 
 **Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
 
@@ -172,40 +226,15 @@ $ sudo systemctl restart rippled
 
 It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the [server_info method][] shows the a `validated_ledger` object based on the network you are connected to.
 
-To verify that your `rippled` is connected to the XRP Testnet or Devnet, compare the results from your server to [a public server][public servers] on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
+To verify that your `rippled` is connected to the right network, compare the results from your server to [a public server][public servers] on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
 
-The following example shows how to check the latest validated ledger from the commandline:
-
-<!-- MULTICODE_BLOCK_START -->
-
-*Local Server*
+The following example shows how to check your server's latest validated ledger from the commandline:
 
 ```sh
 rippled server_info | grep seq
 ```
 
-*Testnet*
-
-```sh
-rippled --rpc_ip s.altnet.rippletest.net:51234 server_info | grep seq
-```
-
-*Devnet*
-
-```sh
-rippled --rpc_ip s.devnet.rippletest.net:51234 server_info | grep seq
-```
-
-
-*Mainnet*
-
-```sh
-rippled --rpc_ip s1.ripple.com:51234 server_info | grep seq
-```
-
-
-<!-- MULTICODE_BLOCK_END -->
-
+You can use [server_info in the WebSocket Tool](websocket-api-tool.html#server_info) to look up the latest ledger index on the intended network.
 
 
 
