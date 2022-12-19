@@ -27,7 +27,7 @@ async function wait_for_seq(network_url, address) {
 }
 
 
-function rippleTestNetCredentials(url, altnet_name) {
+function TestNetCredentials(url, altnet_name, ws_url) {
 
   const credentials = $('#your-credentials')
   const address = $('#address')
@@ -72,13 +72,7 @@ function rippleTestNetCredentials(url, altnet_name) {
       balance.hide().html('<h3>Balance</h3> ' +
         Number(data.amount).toLocaleString('en') + ' XRP').fadeIn('fast')
       sequence.html('<h3>Sequence</h3> <img class="throbber" src="assets/img/xrp-loader-96.png"> Waiting...').fadeIn('fast')
-      if (altnet_name=="Testnet") {
-        wait_for_seq("wss://s.altnet.rippletest.net:51233", test_wallet.address)
-      } else if (altnet_name=="NFT-Devnet") {
-        wait_for_seq("wss://xls20-sandbox.rippletest.net:51233", test_wallet.address)
-      } else {
-        wait_for_seq("wss://s.devnet.rippletest.net:51233", test_wallet.address)
-      }
+      wait_for_seq(ws_url, test_wallet.address)
 
     },
     error: function() {
@@ -89,20 +83,11 @@ function rippleTestNetCredentials(url, altnet_name) {
 }
 
 $(document).ready(function() {
-  function testnet_click(evt) {
-    rippleTestNetCredentials("https://faucet.altnet.rippletest.net/accounts",
-      "Testnet")
-  }
-  function devnet_click(evt) {
-    rippleTestNetCredentials("https://faucet.devnet.rippletest.net/accounts",
-      "Devnet")
-  }
-  function nftnet_click(evt) {
-    rippleTestNetCredentials("https://faucet-nft.ripple.com/accounts",
-      "NFT-Devnet")
-  }
-
-  $('#testnet-creds-button').click(testnet_click)
-  $('#devnet-creds-button').click(devnet_click)
-  $('#nftnet-creds-button').click(nftnet_click)
+  $('#generate-creds-button').click( (evt) => {
+    const checked_network = $("input[name='faucet-selector']:checked")
+    const url = checked_network.val()
+    const net_name = checked_network.data("shortname")
+    const ws_url = checked_network.data("wsurl")
+    TestNetCredentials(url, net_name, ws_url)
+  });
 })
