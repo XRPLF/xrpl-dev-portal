@@ -21,7 +21,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. Install [Homebrew](https://brew.sh/).
 
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 0. Update Homebrew.
 
