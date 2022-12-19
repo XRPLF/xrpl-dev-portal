@@ -1,5 +1,6 @@
 DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
 DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+TST_ISSUER = "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
 
 Request("Account Methods")
 
@@ -471,6 +472,22 @@ Request('ripple_path_find', {
         "value": "0.001",
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
+  }
+})
+
+Request('amm_info', {
+  description: "Looks up info on an Automated Market Maker instance.",
+  link: "amm_info.html",
+  status: "not_enabled",
+  body: {
+    "command": "amm_info",
+    "asset": {
+      "currency": "XRP"
+    },
+    "asset2": {
+      "currency": "TST",
+      "issuer": TST_ISSUER
     }
   }
 })

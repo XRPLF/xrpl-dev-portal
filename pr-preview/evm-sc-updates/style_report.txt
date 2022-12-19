@@ -1,15 +1,28 @@
 -------------
 Spell Checker
 -------------
-No spelling mistakes found in 319 pages!
+Found 4 possible spelling errors:
+<Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
+  stablefoo: 
+  unbalances: unbalance, unbalanced
+  machowski: 
+
+<Page 'Public Servers' (public-servers.html)> Unknown Words:
+  30d: 3-d, 3rd, 3d
+
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 2 discouraged words/phrases:
+Found 6 discouraged words/phrases:
+Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
+   Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
 Page: <Page 'Introduction to EVM Compatible XRP Ledger Sidechain' (intro-to-evm-sidechain.html)>
    Discouraged word: component (1 instances); suggest 'part' instead.
 Page: <Page 'Get Started with the EVM Sidechain' (get-started-evm-sidechain.html)>
    Discouraged word: initiate (1 instances); suggest 'start' instead.
+Page: <Page 'tem Codes' (tem-codes.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
 ------------------
 Readability Scores
 ------------------
@@ -56,8 +69,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 746
-  Characters: 4,637
+  Words: 749
+  Characters: 4,650
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

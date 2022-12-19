@@ -51,6 +51,7 @@ https://xrpl.org/issuing-and-operational-addresses.html
 https://xrpl.org/paths.html
 https://xrpl.org/demurrage.html
 https://xrpl.org/decentralized-exchange.html
+https://xrpl.org/automated-market-makers.html
 https://xrpl.org/offers.html
 https://xrpl.org/autobridging.html
 https://xrpl.org/ticksize.html
