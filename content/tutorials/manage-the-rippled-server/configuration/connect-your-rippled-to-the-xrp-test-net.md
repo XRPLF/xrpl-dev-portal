@@ -224,9 +224,9 @@ $ sudo systemctl restart rippled
 
 ## 5. Verify that your server syncs.
 
-It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the [server_info method][] shows the a `validated_ledger` object based on the network you are connected to.
+It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the [server_info method][] shows a `validated_ledger` object based on the network you are connected to.
 
-To verify that your `rippled` is connected to the right network, compare the results from your server to [a public server][public servers] on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
+To confirm that your `rippled` is connected to the right network, compare the results from your server to [a public server][public servers] on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
 
 The following example shows how to check your server's latest validated ledger from the commandline:
 
@@ -234,7 +234,7 @@ The following example shows how to check your server's latest validated ledger f
 rippled server_info | grep seq
 ```
 
-You can use [server_info in the WebSocket Tool](websocket-api-tool.html#server_info) to look up the latest ledger index on the intended network.
+You can use [server_info in the WebSocket Tool](websocket-api-tool.html#server_info) to look up the latest ledger index (`seq`) on the intended network.
 
 
 
