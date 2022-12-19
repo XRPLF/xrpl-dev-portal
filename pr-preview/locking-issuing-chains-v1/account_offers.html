@@ -327,11 +327,6 @@ rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current strict
 <td style="text-align: left;">A unique identifier for the account, most commonly the account's <a href="basic-data-types.html#addresses">Address</a>.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>ledger</code></td>
-<td style="text-align: left;">Unsigned Integer, or String</td>
-<td style="text-align: left;"><em>(<strong>Deprecated</strong>, Optional)</em> A unique identifier for the ledger version to use, such as a ledger index, a hash, or a shortcut such as "validated".</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String - <a href="basic-data-types.html#hashes">Hash</a></td>
 <td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string identifying the ledger version to use.</td>
@@ -339,12 +334,12 @@ rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current strict
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">Number - <a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
-<td style="text-align: left;">(Optional, defaults to <code>current</code>) The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;">(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4" target="_blank" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> Limit the number of Offers to retrieve. The server may return fewer than this number of results. Must be within the inclusive range 10 to 400. The default is 200. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4" target="_blank" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
@@ -854,6 +849,11 @@ rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current strict
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2102,7 +2102,7 @@ rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current strict
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

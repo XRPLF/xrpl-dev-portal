@@ -330,7 +330,7 @@
 <p>It is important to note that if you inadvertently provide a <code>nft_id</code> rather than a <code>nft_offer_index</code>, you might receive a <code>tesSUCCESS</code> response. The reason is that when passed a properly formatted ID value that is not found, the system assumes that the <code>NFTokenOffer</code> has already been deleted.</p>
 <p>The transaction fails with an error if one of the IDs points to an object that does exist, but is not a <a href="nftokenoffer.html">NFTokenOffer</a> object.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>In addition to errors that can occur for all transactions, NFTokenCancelOffer transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<p>Besides errors that can occur for all transactions, NFTokenCancelOffer transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -646,6 +646,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1894,7 +1899,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

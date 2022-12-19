@@ -297,37 +297,65 @@ It listens to the door accounts on both sides of the bridge and signs attestatio
 <p>The witness server takes a JSON configuration file, specified using the <code>--conf</code> command-line argument.</p>
 <p>The configuration file contains the following information:</p>
 <ul>
-<li>Websocket endpoints for the locking chain and the issuing chain (<code>LockingChainEndpoint</code> and <code>IssuingChainEndpoint</code>).</li>
-<li>Port that clients can use to connect to this server (<code>RPCEndpoint</code>).</li>
-<li>Directory to store the SQL database (<code>DBDir</code>).</li>
-<li>Secret key used to sign attestations (<code>SigningKeySeed</code> and <code>SigningKeyType</code>).</li>
+<li>For both locking and issuing chains (<code>LockingChain</code> and <code>IssuingChain</code>):<ul>
+<li>Websocket endpoints (<code>Endpoint</code>)</li>
+<li>Information on how witness servers can submit <code>XChainAddAttestation</code> transactions to the relevant chain (<code>TxnSubmit</code>).<ul>
+<li><code>ShouldSubmit</code> defines whether the attestations should be submitted at all. The server operator can instead submit them by hand, or via other means.</li>
+<li>The seed that the witness server uses to derive keys to sign its attestations (<code>SigningKeySeed</code>), and the key type used to interpret it (<code>SigningKeyKeyType</code>).</li>
+<li>Account that the witness server uses to submit its transactions (<code>SubmittingAccount</code>).</li>
+<li>Account that receives the signature rewards for this witness’s attestations (<code>RewardAccount</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IP and port number that clients can use to connect to this witness server (<code>RPCEndpoint</code>).</li>
+<li>Directory to store the witness server's SQL database (<code>DBDir</code>).</li>
+<li>The seed that the witness server uses to derive keys to sign its attestations (<code>SigningKeySeed</code>), and the key type used to interpret it (<code>SigningKeyKeyType</code>).</li>
+<li>Log file for the witness server (<code>LogFile</code>)</li>
 <li>Reward accounts on both chains (<code>LockingChainRewardAccount</code> and <code>IssuingChainRewardAccount</code>).</li>
-<li>Information about the cross-chain bridge (<code>XChainBridge</code>) including door accounts and assets on both chains.</li>
+<li>Information about the cross-chain bridge (<code>XChainBridge</code>) for which the witness server is attesting transactions, including door accounts and assets on both chains.</li>
 </ul>
 <p>Here is an example configuration file for a witness server:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"LockingChainEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"IP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"Port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6005</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"LockingChain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"IP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6005</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"TxnSubmit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"ShouldSubmit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SigningKeySeed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shUe3eSgGK4e6xMFuCakZnxsMN1uk"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SigningKeyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed25519"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SubmittingAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpFp36UHW6FpEcZjZqq5jSJWY6UCj3k4Es"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"RewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpFp36UHW6FpEcZjZqq5jSJWY6UCj3k4Es"</span><span class="w"></span>
 <span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"IssuingChainEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"IP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.2"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"Port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6007</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"IssuingChain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"IP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"Port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6007</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"TxnSubmit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"ShouldSubmit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SigningKeySeed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shUe3eSgGK4e6xMFuCakZnxsMN1uk"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SigningKeyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed25519"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"SubmittingAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpFp36UHW6FpEcZjZqq5jSJWY6UCj3k4Es"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"RewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpFp36UHW6FpEcZjZqq5jSJWY6UCj3k4Es"</span><span class="w"></span>
 <span class="w">  </span><span class="p">},</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"RPCEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"IP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.3"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"IP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"Port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6010</span><span class="w"></span>
 <span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"DBDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home/swd/data/witness/witness0/db"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"SigningKeySeed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snwitEjg9Mr8n65cnqhATKcd1dQmv"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"DBDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/lib/witness0/db"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"LogFile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/log/witness/witness0.log"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"SigningKeySeed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spkHEwDKeChm8PAFApLkF1E2sDs6t"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"SigningKeyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed25519"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"LockingChainRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"IssuingChainRewardAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3nCVTbZGGYoWvZ58BcxDmiMUU7ChMa1eC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
@@ -622,6 +650,11 @@ It listens to the door accounts on both sides of the bridge and signs attestatio
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1173,7 +1206,7 @@ It listens to the door accounts on both sides of the bridge and signs attestatio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       
@@ -1865,7 +1898,7 @@ It listens to the door accounts on both sides of the bridge and signs attestatio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

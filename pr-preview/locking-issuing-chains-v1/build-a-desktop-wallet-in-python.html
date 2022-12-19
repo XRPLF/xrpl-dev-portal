@@ -283,6 +283,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="build-a-desktop-wallet-in-python">Build a Desktop Wallet in Python<a aria-hidden="true" class="hover_anchor" href="#build-a-desktop-wallet-in-python"><i class="fa fa-link"></i></a></h1>
+<!-- STYLE_OVERRIDE: wallet -->
 <p>This tutorial demonstrates how to build a desktop wallet for the XRP Ledger using the Python programming language and various libraries. This application can be used as a starting point for building a more complete and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To complete this tutorial, you should meet the following guidelines:</p>
@@ -303,7 +304,7 @@
 <li>Shows how much XRP is set aside for the account's <a href="reserves.html">reserve requirement</a>.</li>
 <li>Can send <a href="direct-xrp-payments.html">direct XRP payments</a>, and provides feedback about the intended destination address, including:<ul>
 <li>Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.</li>
-<li>If the address doesn't want to receive XRP (<a href="become-an-xrp-ledger-gateway.html#disallow-xrp">DisallowXRP flag</a> enabled).</li>
+<li>If the address doesn't want to receive XRP (<a href="become-an-xrp-ledger-gateway.html#disallow-xrp"><code>DisallowXRP</code> flag</a> enabled).</li>
 <li>If the address has a <a class="external-link" href="https://xrpl.org/xrp-ledger-toml.html#account-verification" target="_blank">verified domain name <i aria-hidden="true" class="fa fa-external-link"></i></a> associated with it.</li>
 </ul>
 </li>
@@ -320,12 +321,12 @@
 <ul>
 <li><a class="external-link" href="https://xrpl-py.readthedocs.io/" target="_blank">xrpl-py <i aria-hidden="true" class="fa fa-external-link"></i></a>, a client library for the XRP Ledger. This tutorial requires <strong>version 1.3.0 or higher</strong>.</li>
 <li><a class="external-link" href="https://wxpython.org/" target="_blank">wxPython <i aria-hidden="true" class="fa fa-external-link"></i></a>, a cross-platform graphical toolkit.</li>
-<li><a class="external-link" href="https://requests.readthedocs.io/" target="_blank">Requests <i aria-hidden="true" class="fa fa-external-link"></i></a>, a library for easily making HTTP requests.</li>
+<li><a class="external-link" href="https://requests.readthedocs.io/" target="_blank">Requests <i aria-hidden="true" class="fa fa-external-link"></i></a>, a library for making HTTP requests.</li>
 <li><a class="external-link" href="https://github.com/uiri/toml" target="_blank">toml <i aria-hidden="true" class="fa fa-external-link"></i></a>, a library for parsing TOML-formatted files.</li>
 </ul>
 <p>The <code>requests</code> and <code>toml</code> libraries are only needed for the <a href="#6-domain-verification-and-polish">domain verification in step 6</a>, but you can install them now while you're installing other dependencies.</p>
 <h4 id="notes-for-windows-users">Notes for Windows Users<a aria-hidden="true" class="hover_anchor" href="#notes-for-windows-users"><i class="fa fa-link"></i></a></h4>
-<p>On Windows, you can build apps using either Windows natively or by using the Windows Subsystem for Linux (WSL).</p>
+<p>On Windows, you can build apps using either Windows natively or by using the Windows Subsystem for Linux (WSL). <!-- SPELLING_IGNORE: wsl --></p>
 <p>On native Windows, the GUI uses native Windows controls and should run without any dependencies beyond those mentioned above.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> As of 2022-02-01, the latest wxPython is not compatible with Python 3.10 on Windows. You should be able to follow this tutorial if you downgrade to the latest release of Python 3.9.</p>
 <p>On WSL, you may need to install <code>libnotify-dev</code> as follows:</p>
@@ -388,7 +389,7 @@
 <p>You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the text displayed never changes unless you close the app and reopen it. The actual XRP Ledger is constantly making forward progress, so a more useful app would show it, something like this:</p>
 <p><img alt="Animation: Step 2, showing ledger updates" src="img/python-wallet-2.gif"/></p>
 <p>If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two <em>threads</em>: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so the user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.</p>
-<p>The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with <code>self.</code>). When the threads need to communicate, they use specific, "threadsafe" methods of communication, namely:</p>
+<p>The main challenge with threads is that you have to be careful not to access data from one thread that another thread may be in the middle of changing. A straightforward way to do this is to design your program so that each thread has variables it "owns" and doesn't write to the other thread's variables. In this program, each thread is its own class, so each thread should only write to its own class attributes (anything starting with <code>self.</code>). When the threads need to communicate, they use specific, "thread-safe" methods of communication, namely:</p>
 <ul>
 <li>For GUI to worker thread, use <a class="external-link" href="https://docs.python.org/3/library/asyncio-task.html#asyncio.run_coroutine_threadsafe" target="_blank"><code>asyncio.run_coroutine_threadsafe()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 <li>For worker to GUI communications, use <a class="external-link" href="https://docs.wxpython.org/wx.functions.html#wx.CallAfter" target="_blank"><code>wx.CallAfter()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
@@ -452,7 +453,7 @@
         <span class="c1"># new ledger to close.</span>
         <span class="n">wx</span><span class="o">.</span><span class="n">CallAfter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">update_ledger</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
-<p>This code defines a <code>Thread</code> subclass for the worker. When the thread starts, it sets up an event loop, which waits for async tasks to be created and run. The code uses <a class="external-link" href="https://docs.python.org/3/library/asyncio-dev.html#asyncio-debug-mode" target="_blank">asyncio's Debug Mode <i aria-hidden="true" class="fa fa-external-link"></i></a> so that the console shows any errors that occur in async tasks.</p>
+<p>This code defines a <code>Thread</code> subclass for the worker. When the thread starts, it sets up an event loop, which waits for async tasks to be created and run. The code uses <a class="external-link" href="https://docs.python.org/3/library/asyncio-dev.html#asyncio-debug-mode" target="_blank"><code>asyncio</code>'s Debug Mode <i aria-hidden="true" class="fa fa-external-link"></i></a> so that the console shows any errors that occur in async tasks.</p>
 <p>The <code>watch_xrpl()</code> function is an example of a such a task (which the GUI thread starts when it's ready): it connects to the XRP Ledger, then calls the <a href="subscribe.html">subscribe method</a> to be notified whenever a new ledger is validated. It uses the immediate response <em>and</em> all later subscription stream messages to trigger updates of the GUI.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Define worker jobs like this using <code>async def</code> instead of <code>def</code> so that you can use the <code>await</code> keyword in them; you need to use <code>await</code> to get the response to the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.clients.html#xrpl.asyncio.clients.AsyncWebsocketClient.request" target="_blank"><code>AsyncWebsocketClient.request()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>. Normally, you would also need to use <code>await</code> or something similar to get the response from any function you define with <code>async def</code>; but, in this app, the <code>run_bg_job()</code> helper takes care of that in a different way.</p>
 <p>Update the code for the main thread and GUI frame to look like this:</p>
@@ -501,7 +502,7 @@
                          <span class="sa">f</span><span class="s2">"Close time: </span><span class="si">{</span><span class="n">close_time_iso</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <p>The part that builds the GUI has been moved to a separate method, <code>build_ui(self)</code>. This helps to divide the code into chunks that are easier to understand, because the <code>__init__()</code> constructor has other work to do now, too: it starts the worker thread, and gives it its first job. The GUI setup also now uses a <a class="external-link" href="https://docs.wxpython.org/sizers_overview.html" target="_blank">sizer <i aria-hidden="true" class="fa fa-external-link"></i></a> to control placement of the text within the frame.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> In this tutorial, all the GUI code is written by hand, but you may find it easier to create powerful GUIs using a "builder" tool such as <a class="external-link" href="http://wxglade.sourceforge.net/" target="_blank">wxGlade <i aria-hidden="true" class="fa fa-external-link"></i></a>. Separating the GUI code from the constructor may make it easier to switch to this type of approach later.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> In this tutorial, all the GUI code is written by hand, but you may find it easier to create powerful GUIs using a "builder" tool such as <a class="external-link" href="http://wxglade.sourceforge.net/" target="_blank">wxGlade <i aria-hidden="true" class="fa fa-external-link"></i></a>. Separating the GUI code from the constructor may make it easier to switch to this type of approach later. <!-- SPELLING_IGNORE: wxGlade --></p>
 <p>There's a new helper method, <code>run_bg_job()</code>, which runs an asynchronous function (defined with <code>async def</code>) in the worker thread. Use this method any time you want the worker thread to interact with the XRP Ledger network.</p>
 <p>Instead of a <code>get_validated_ledger()</code> method, the GUI class now has an <code>update_ledger()</code> method, which takes an object in the format of a <a href="subscribe.html#ledger-stream">ledger stream message</a> and displays some of that information to the user. The worker thread calls this method using <code>wx.CallAfter()</code> whenever it gets a <code>ledgerClosed</code> event from the ledger.</p>
 <p>Finally, change the code to start the app (at the end of the file) slightly:</p>
@@ -519,11 +520,11 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate
 </code></pre></div>
 <p>On macOS, run the <a class="external-link" href="https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate" target="_blank"><code>Install Certificates.command</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> for your Python version.</p>
-<p>On Windows, open Edge or Chrome and browse to <a class="external-link" href="https://s1.ripple.com" target="_blank">https://s1.ripple.com <i aria-hidden="true" class="fa fa-external-link"></i></a>, then close the page. This should be enough to update your system's certificates. (It doesn't work if you use Firefox or Safari, because those browser's don't use Windows' certificate validation APIs.)</p>
+<p>On Windows, open Edge or Chrome and browse to <a class="external-link" href="https://s1.ripple.com" target="_blank">https://s1.ripple.com <i aria-hidden="true" class="fa fa-external-link"></i></a>, then close the page. This should be enough to update your system's certificates. (It doesn't work if you use Firefox or Safari, because those browser's don't use Windows' certificate validation APIs.) <!-- SPELLING_IGNORE: s1 --></p>
 <h3 id="3-display-an-account">3. Display an Account<a aria-hidden="true" class="hover_anchor" href="#3-display-an-account"><i class="fa fa-link"></i></a></h3>
 <p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/locking-issuing-chains-v1/content/_code-samples/build-a-wallet/py/3_account.py" target="_blank"><code>3_account.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the <a href="reserves.html">reserve requirement</a>.</p>
-<p>The prompt is in a popup dialog like this:</p>
+<p>The prompt is in a pop-up dialog like this:</p>
 <p><img alt="Screenshot: step 3, account input prompt" src="img/python-wallet-3-enter.png"/></p>
 <p>After the user inputs the prompt, the updated GUI looks like this:</p>
 <p><img alt="Screenshot, step 3, showing account details" src="img/python-wallet-3-main.png"/></p>
@@ -585,7 +586,7 @@
             <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">wx</span><span class="o">.</span><span class="n">CallAfter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">update_account</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">"account_data"</span><span class="p">])</span>
 </code></pre></div>
-<p>The <code>on_connected()</code> method now subscribes to transactions for the provided account (in addition to the ledger stream). Furthermore, it now calls <a href="account_info.html">account_info</a> on startup, and passes the response to the GUI for display.</p>
+<p>The <code>on_connected()</code> method now subscribes to transactions for the provided account (and the ledger stream too). Furthermore, it now calls <a href="account_info.html">account_info</a> on startup, and passes the response to the GUI for display.</p>
 <p>The new GUI has a lot more fields that need to be laid out in two dimensions. The following subclass of <a class="external-link" href="https://docs.wxpython.org/wx.GridBagSizer.html" target="_blank"><code>wx.GridBagSizer</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> provides a quick way to do so, setting the appropriate padding and sizing values for a two-dimensional list of widgets. Add this code to the same file:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">class</span> <span class="nc">AutoGridBagSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">):</span>
     <span class="sd">"""</span>
@@ -660,7 +661,7 @@
         <span class="n">main_panel</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">main_sizer</span><span class="p">)</span>
 </code></pre></div>
 <p>This adds a <a class="external-link" href="https://docs.wxpython.org/wx.StaticBox.html" target="_blank"><code>wx.StaticBox</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> with several new widgets, then uses the <code>AutoGridBagSizer</code> (defined above) to lay them out in 2×4 grid within the box. These new widgets are all static text to display <a href="accountroot.html">details of the account</a>, though some of them start with placeholder text. (Since they require data from the ledger, you have to wait for the worker thread to send that data back.)</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> You may notice that even though the constructor for this class sees the <code>wallet</code> variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be threadsafe.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> You may notice that even though the constructor for this class sees the <code>wallet</code> variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be thread-safe.</p>
 <p>Add a new <code>prompt_for_account()</code> method to the <code>TWaXLFrame</code> class:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">    <span class="k">def</span> <span class="nf">prompt_for_account</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""</span>
@@ -835,7 +836,7 @@
         <span class="p">))</span>
         <span class="n">wx</span><span class="o">.</span><span class="n">CallAfter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">update_account_tx</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
-<p class="devportal-callout note"><strong>Note:</strong> You may have to <a href="markers-and-pagination.html">paginate</a> across multiple <a href="account_tx.html">account_tx</a> requests and responses if you want the <em>complete</em> list of transactions that affected an account since its creation. This example does not demonstrate pagination, so the app only displays the most recent transactions to affect the account.</p>
+<p class="devportal-callout note"><strong>Note:</strong> You may have to <a href="markers-and-pagination.html">paginate</a> across multiple <a href="account_tx.html">account_tx</a> requests and responses if you want the <em>complete</em> list of transactions that affected an account since its creation. This example does not show pagination, so the app only displays the most recent transactions to affect the account.</p>
 <p>Now, edit the <code>build_ui()</code> method of the <code>TWaXLFrame</code> class. <strong>Update the beginning of the method</strong> to add a new <a class="external-link" href="https://docs.wxpython.org/wx.Notebook.html" target="_blank"><code>wx.Notebook</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>, which makes a "tabs" interface, and make the <code>main_panel</code> into the first tab, as follows:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25">    <span class="k">def</span> <span class="nf">build_ui</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""</span>
@@ -1315,9 +1316,9 @@
         <span class="n">wx</span><span class="o">.</span><span class="n">CallAfter</span><span class="p">(</span><span class="n">dlg</span><span class="o">.</span><span class="n">update_dest_info</span><span class="p">,</span> <span class="n">account_status</span><span class="p">)</span>
 </code></pre></div>
 <p>This code uses <a class="external-link" href="https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.account.html#xrpl.asyncio.account.get_account_info" target="_blank"><code>xrpl.asyncio.account.get_account_info()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to look up the account in the ledger; unlike using the client's <code>request()</code> method, <code>get_account_info()</code> raises an exception if the account is not found.</p>
-<p>If the account <em>does</em> exist, the code checks for the <a href="accountroot.html#accountroot-flags"><code>lsfDisallowXRP</code> flag</a>. Note that this is an "lsf" (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the <a href="accountset.html">AccountSet transaction</a> uses to configure the same settings.</p>
+<p>If the account <em>does</em> exist, the code checks for the <a href="accountroot.html#accountroot-flags"><code>lsfDisallowXRP</code> flag</a>. Note that this is an <code>lsf</code> (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the <a href="accountset.html">AccountSet transaction</a> uses to configure the same settings.</p>
 <p>Finally, the code decodes the account's <code>Domain</code> field, if present, and performs domain verification using the method imported above.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> The background check takes the Send XRP dialog (<code>dlg</code>) as a parameter, since each dialog is a separate instance, but does not modify the dialog directly since that might not be threadsafe. (It <em>only</em> uses <code>wx.CallAfter</code> to pass the results of the check back to the dialog.)</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The background check takes the Send XRP dialog (<code>dlg</code>) as a parameter, since each dialog is a separate instance, but does not modify the dialog directly since that might not be thread-safe. (It <em>only</em> uses <code>wx.CallAfter</code> to pass the results of the check back to the dialog.)</p>
 <p>After this, it's time to update the <code>SendXRPDialog</code> class to make it capable of displaying these errors. You can also set a more specific upper bound for how much XRP the account can actually send. Change the constructor to take a new parameter:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-49" id="codeblock-49button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-49">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">max_send</span><span class="o">=</span><span class="mf">100000000.0</span><span class="p">):</span>
 </code></pre></div>
@@ -1406,7 +1407,7 @@
 <li>If the X-address includes a destination tag, show it in the destination tag field.</li>
 <li>If the X-address is not intended for a test network and the app is connected to a test network (or the other way around), show an error.</li>
 </ul>
-<p>One tricky bit of writing handlers like this in GUI code is that you have to be ready for the handler to be called numerous times as the user inputs and erases data. For example, if you disable a field when some input is invalid, you also have to enable it if the user changes their input to be valid.</p>
+<p>One tricky bit of writing handlers like this in GUI code is that you have to be ready for the handler to be called many times as the user inputs and erases data. For example, if you disable a field when some input is invalid, you also have to enable it if the user changes their input to be valid.</p>
 <p>The code shows the error icons when it finds errors (and hides them when it doesn't), and adds tooltips with the error message. You could, of course, display errors to the user in another way as well, such as additional pop-up dialogs or a status bar.</p>
 <p>Moving on, you also need a new method in the <code>SendXRPDialog</code> class to process the results from the background check. Add the following code:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-54" id="codeblock-54button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-54">    <span class="k">def</span> <span class="nf">update_dest_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dest_status</span><span class="p">):</span>
@@ -1842,6 +1843,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -3090,7 +3096,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

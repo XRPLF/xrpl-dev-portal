@@ -300,7 +300,7 @@
 <p>To use offline signing, you must meet the following prerequisites:</p>
 <ul>
 <li>You must have one computer to use as an offline machine. This machine must be set up with a <a href="system-requirements.html">supported operating system</a>. See your operating system's support for offline setup instructions. (For example, <a class="external-link" href="https://access.redhat.com/solutions/7227" target="_blank">Red Hat Enterprise Linux DVD ISO installation instructions <i aria-hidden="true" class="fa fa-external-link"></i></a>.) Be sure that the software and physical media you use are not infected with malware.</li>
-<li>You must have a separate computer to use as an online machine. This machine does not need to run <code>rippled</code> but it must be able to connect to the XRP Ledger network and receive accurate information about the state of the shared ledger. For example, you can use a <a href="get-started-using-http-websocket-apis.html">WebSocket connection to a public server</a>.</li>
+<li>You must have a separate computer to use as an online machine. This machine does not need to run <code>rippled</code> but it must be able to connect to the XRP Ledger network and receive information about the state of the shared ledger. For example, you can use a <a href="get-started-using-http-websocket-apis.html">WebSocket connection to a public server</a>.</li>
 <li>You must have a secure way to transfer signed transaction binary data from the offline machine to the online machine.<ul>
 <li>One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)</li>
 <li>Another way is to copy files from the offline machine to an online machine using physical media. If you use this method, be sure not to use physical media that could infect your offline machine with malicious software. (For example, do not reuse the same USB drive on both online and offline machines.)</li>
@@ -319,7 +319,7 @@
 </ul>
 <p>You may want to set up custom software to help construct transaction instructions on the offline machine. For example, your software may track what <a href="basic-data-types.html#account-sequence">sequence number</a> to use next, or contain preset templates for certain types of transactions you expect to send.</p>
 <h3 id="2-generate-cryptographic-keys">2. Generate cryptographic keys<a aria-hidden="true" class="hover_anchor" href="#2-generate-cryptographic-keys"><i class="fa fa-link"></i></a></h3>
-<p>On the <strong>offline machine</strong>, generate a pair of <a href="cryptographic-keys.html">cryptographic keys</a> to be used with your account. Be sure to generate the keys with a securely random procedure, not from a simple passphrase or some other source that does not have enough entropy. For example, you can use the <a href="wallet_propose.html">wallet_propose method</a> of <code>rippled</code>:</p>
+<p>On the <strong>offline machine</strong>, generate a pair of <a href="cryptographic-keys.html">cryptographic keys</a> to be used with your account. Be sure to generate the keys with a securely random procedure, not from a short passphrase or some other source that does not have enough entropy. For example, you can use the <a href="wallet_propose.html">wallet_propose method</a> of <code>rippled</code>:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="rippledcommandline" href="#code-0-0">rippled Commandline</a></li></ul>
 
 <div class="code_sample rippledcommandline" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">$ ./rippled wallet_propose
@@ -342,9 +342,9 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 </div>
 <p>Take note of the following values:</p>
 <ul>
-<li><strong><code>account_id</code></strong>. This is the address associated with the key pair, which will become your <strong><a href="accounts.html">account</a> address</strong> in the XRP Ledger after you fund it with XRP (later in this process). It is safe to share your <code>account_id</code> publicly.</li>
+<li><strong><code>account_id</code></strong>. This is the address associated with the key pair, which becomes your <strong><a href="accounts.html">account</a> address</strong> in the XRP Ledger after you fund it with XRP (later in this process). It is safe to share your <code>account_id</code> publicly.</li>
 <li><strong><code>master_seed</code></strong>. This is the secret seed value for the key pair, which you'll use to sign transactions from the account. For best security, encrypt this value before writing it to disk on the offline machine. As an encryption key, use a secure passphrase that human operators can memorize or write down somewhere physically secure, such as a <a class="external-link" href="https://theworld.com/~reinhold/diceware.html" target="_blank">diceware passphrase <i aria-hidden="true" class="fa fa-external-link"></i></a> created with properly weighted dice. You may also want to use a physical security key as a second factor. The extent of the precautions to take at this stage is up to you.</li>
-<li><strong><code>key_type</code></strong>. This is the cryptographic algorithm used for this key pair. You need to know what type of key pair you have in order to sign valid transactions. The default is <code>secp256k1</code>.</li>
+<li><strong><code>key_type</code></strong>. This is the cryptographic algorithm used for this key pair. You need to know what type of key pair you have. The default in <code>rippled</code> is <code>secp256k1</code>, but some client libraries use <code>Ed25519</code> by default.</li>
 </ul>
 <p><strong>Do not</strong> share the <code>master_key</code>, <code>master_seed</code>, or <code>master_seed_hex</code> values anywhere. Any of these can be used to reconstruct the private key associated with this address.</p>
 <!-- SPELLING_IGNORE: diceware -->
@@ -383,7 +383,7 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 </div>
 <h3 id="5-enter-the-sequence-number-on-the-offline-machine">5. Enter the sequence number on the offline machine.<a aria-hidden="true" class="hover_anchor" href="#5-enter-the-sequence-number-on-the-offline-machine"><i class="fa fa-link"></i></a></h3>
 <p>Save the account's starting sequence number on the offline machine. Whenever you prepare a transaction using the offline machine, use the saved sequence number, then increase the sequence number by 1 and save the new value.</p>
-<p>You can prepare several transactions in advance this way, then transfer the signed transactions to the online machine all at once and submit them. As long as each transaction is validly formed and pays a sufficient <a href="transaction-cost.html">transaction cost</a>, the XRP Ledger network should eventually include those transactions in validated ledgers, keeping the account's sequence number in the shared XRP Ledger in sync with the "current" sequence number you are tracking on the offline machine. (Most transactions get a final, validated result within 15 seconds or less after being submitted to the network.)</p>
+<p>You can prepare several transactions in advance this way, then transfer the signed transactions to the online machine all at once and submit them. As long as each transaction is validly formed and pays a high enough <a href="transaction-cost.html">transaction cost</a>, the XRP Ledger network should eventually include those transactions in validated ledgers, keeping the account's sequence number in the shared XRP Ledger in sync with the "current" sequence number you are tracking on the offline machine. (Most transactions get a final, validated result within 15 seconds or less after being submitted to the network.)</p>
 <p>Optionally, save the current ledger index to the offline machine. You can use this value to choose an appropriate <code>LastLedgerSequence</code> value for upcoming transactions.</p>
 <h3 id="6-sign-initial-setup-transactions-if-any">6. Sign initial setup transactions, if any.<a aria-hidden="true" class="hover_anchor" href="#6-sign-initial-setup-transactions-if-any"><i class="fa fa-link"></i></a></h3>
 <p>On the offline machine, prepare and sign transactions for configuring your account. The details depend on how you intend to use your account. Some examples of things you might want to do include:</p>
@@ -392,7 +392,7 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 <li><a href="require-destination-tags.html">Require destination tags</a> so that users can't send you payments without tagging the reason they sent it or the customer it's intended for.</li>
 <li><a href="set-up-multi-signing.html">Set Up Multi-Signing</a> for a higher bar of account security.</li>
 <li><a href="depositauth.html">Enable DepositAuth</a> so you can only receive payments you've explicitly accepted or from parties you've pre-approved.</li>
-<li><a href="authorized-trust-lines.html#enabling-requireauth">Require Auth</a> so that users can't open <a href="trust-lines-and-issuing.html">trust lines</a> to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or <a href="tokens.html">token</a> features, you may want to do this as a precaution.</li>
+<li><a href="authorized-trust-lines.html#enabling-require-auth">Require Auth</a> so that users can't open <a href="trust-lines-and-issuing.html">trust lines</a> to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or <a href="tokens.html">token</a> features, you may want to do this as a precaution.</li>
 <li><a href="become-an-xrp-ledger-gateway.html">Token Issuers</a> may have additional setup, such as:<ul>
 <li><a href="become-an-xrp-ledger-gateway.html#transfer-fees">Set a Transfer Fee</a> for users transferring your tokens.</li>
 <li><a href="become-an-xrp-ledger-gateway.html#disallow-xrp">Disallow XRP payments</a> if you plan to use this address for tokens only.</li>
@@ -427,12 +427,12 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 <span class="o">}</span>
 </code></pre></div></div>
 </div>
-<p>To ensure <em>all</em> transactions have a final outcome within a limited amount of time, provide a <a href="reliable-transaction-submission.html#lastledgersequence"><code>LastLedgerSequence</code></a> field. This value should be based on the current ledger index (which you must look up from an online machine) and the amount of time you want the transaction to remain valid. Be sure to set a large enough <code>LastLedgerSequence</code> value to allow for time spent switching from the online machine to the offline machine and back. For example, a value 256 higher than the current ledger index means that the transaction will be viable for about 15 minutes. For more information, see <a href="finality-of-results.html">Finality of Results</a> and <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
+<p>To ensure <em>all</em> transactions have a final outcome within a limited amount of time, provide a <a href="reliable-transaction-submission.html#lastledgersequence"><code>LastLedgerSequence</code></a> field. This value should be based on the current ledger index (which you must look up from an online machine) and the amount of time you want the transaction to remain valid. Be sure to set a large enough <code>LastLedgerSequence</code> value to allow for time spent switching from the online machine to the offline machine and back. For example, a value 256 higher than the current ledger index means that the transaction is valid for about 15 minutes. For more information, see <a href="finality-of-results.html">Finality of Results</a> and <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
 <h3 id="7-copy-transactions-to-online-machine">7. Copy transactions to online machine.<a aria-hidden="true" class="hover_anchor" href="#7-copy-transactions-to-online-machine"><i class="fa fa-link"></i></a></h3>
 <p>After you have signed the transactions, the next step is to get the signed transaction data to your online machine. See <a href="#prerequisites">Prerequisites</a> for some examples of how to do this.</p>
 <h3 id="8-submit-setup-transactions">8. Submit setup transactions.<a aria-hidden="true" class="hover_anchor" href="#8-submit-setup-transactions"><i class="fa fa-link"></i></a></h3>
 <p>The next step is to submit the transactions. Most transactions should have a final outcome in the next validated ledger after submission (about 4 seconds later), or possibly the ledger after that if they get queued (less than 10 seconds). For detailed steps to track the final outcome of a transaction, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
-<p>Example of simple transaction submission:</p>
+<p>Example of transaction submission:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a class="rippledcommandline" href="#code-3-0">rippled Commandline</a></li></ul>
 
 <div class="code_sample rippledcommandline" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">$ rippled submit 1200032280000000240000000120210000000268400000000000000C7321039543A0D3004CDA0904A09FB3710251C652D69EA338589279BC849D47A7B019A174473045022100D5C92D7705036CD7EBB601C8DFCD90927FA591A62AF832C489E9C898EC8E2FA0022052F1819340EB73E9749B8930A6935727362B8E141D1B2E246B49F912223FFD4381144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
@@ -530,7 +530,7 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 <h3 id="10-reconcile-offline-machine-status">10. Reconcile offline machine status.<a aria-hidden="true" class="hover_anchor" href="#10-reconcile-offline-machine-status"><i class="fa fa-link"></i></a></h3>
 <p>Return to the offline machine and apply any necessary changes to your custom server's saved settings, such as:</p>
 <ul>
-<li>Updating the account's current <code>Sequence</code> number. If all transactions were included in validated ledgers (successfully or with <code>tec</code> codes), then the offline machine's saved sequence number should already be accurate. Otherwise, you may need to change the saved sequence number to match the <code>Sequence</code> value you noted in the previous step.</li>
+<li>Updating the account's current <code>Sequence</code> number. If all transactions were included in validated ledgers (successfully or with <code>tec</code> codes), then the offline machine's saved sequence number should already be correct. Otherwise, you may need to change the saved sequence number to match the <code>Sequence</code> value you noted in the previous step.</li>
 <li>Updating the current ledger index so that you can use appropriate <code>LastLedgerSequence</code> values in any new transactions. (You should always do this shortly before constructing any new transactions.)</li>
 <li><em>(Optional)</em> Updating your actual amount of XRP available, if you are tracking it in the offline machine.</li>
 </ul>
@@ -851,6 +851,11 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2099,7 +2104,7 @@ Loading: <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

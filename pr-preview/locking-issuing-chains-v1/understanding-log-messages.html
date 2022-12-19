@@ -399,7 +399,7 @@ LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
 </code></pre></div>
 <p>These two types of messages often occur together, when a long-running job causes other jobs to wait a long time for it to finish.</p>
 <p>It is <strong>normal</strong> to display several messages of these types <strong>during the first few minutes</strong> after starting the server.</p>
-<p>If the messages continue for more than 5 minutes after starting the server, especially if the <code>run</code> times are well over 1000 ms, that may indicate that <strong>your server does not have sufficient resources, such as disk I/O, RAM, or CPU</strong>. This may be caused by not having sufficiently-powerful hardware or because other processes running on the same hardware are competing with <code>rippled</code> for resources. (Examples of other processes that may compete with <code>rippled</code> for resources include scheduled backups, virus scanners, and periodic database cleaners.)</p>
+<p>If the messages continue for more than 5 minutes after starting the server, especially if the <code>run</code> times are well over 1000 ms, that may indicate that <strong>your server does not have enough disk I/O, RAM, or CPU</strong>. This may be caused by not having powerful enough hardware or because other processes running on the same hardware are competing with <code>rippled</code> for resources. (Examples of other processes that may compete with <code>rippled</code> for resources include scheduled backups, virus scanners, and periodic database cleaners.)</p>
 <p>Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). Ripple recommends always using SSD storage for <code>rippled</code>'s databases, but you <em>may</em> be able to run <code>rippled</code> successfully on rotational disks using RocksDB. If you are using rotational disks, make sure both the <code>[node_db]</code> and the <code>[shard_db]</code> (if you have one) are configured to use RocksDB. For example:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="k">[node_db]</span><span class="w"></span>
 <span class="na">type</span><span class="o">=</span><span class="s">RocksDB</span><span class="w"></span>
@@ -470,16 +470,10 @@ LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
 <p>The number at the end of the message is the <a href="basic-data-types.html#ledger-index">ledger index</a> of the validated ledger at the time online deletion started, matching the <code>validatedSeq</code> value of the "rotating" message. This becomes the <code>lastRotated</code> value the next time online deletion runs.</p>
 <p>If the server falls out of sync while running online deletion, it interrupts online deletion and writes a <a href="#not-deleting">"Not deleting" log message</a> instead of a "finished rotation" message.</p>
 <h2 id="shard-no-such-file-or-directory">Shard: No such file or directory<a aria-hidden="true" class="hover_anchor" href="#shard-no-such-file-or-directory"><i class="fa fa-link"></i></a></h2>
-<p>A bug in <code>rippled</code> 1.3.1 can cause it to write log messages such as the following when you have <a href="history-sharding.html">history sharding</a> enabled:</p>
+<p>Log messages such as the following can occur when you have <a href="history-sharding.html">history sharding</a> enabled:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20">ShardStore:ERR shard 1804: No such file or directory
-ShardStore:ERR shard 354: No such file or directory
-ShardStore:ERR shard 408: No such file or directory
-ShardStore:ERR shard 2927: No such file or directory
-ShardStore:ERR shard 2731: No such file or directory
-ShardStore:ERR shard 2236: No such file or directory
 </code></pre></div>
-<p>This indicates that the server tried to start acquiring a new history shard, but it failed to create a new directory to hold the shard. This bug prevents rippled 1.3.1 from acquiring new shards. <a class="external-link" href="https://github.com/ripple/rippled/pull/3014" target="_blank">A fix is forthcoming. <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>Aside from the bug, this error can also occur if <code>rippled</code> became unable to write to the underlying file system <strong>after startup</strong>. Possible causes include:</p>
+<p>This indicates that the server tried to start acquiring a new history shard, but it cannot write to the underlying file system. Possible causes include:</p>
 <ul>
 <li>Hardware failure of storage media</li>
 <li>The file system became unmounted</li>
@@ -826,6 +820,11 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2074,7 +2073,7 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

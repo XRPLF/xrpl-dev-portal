@@ -423,7 +423,7 @@
 <p>At the protocol level, this format is <a href="serialization.html#currency-codes">serialized</a> into a 160-bit binary value starting with <code>0x00</code>.</p>
 <h3 id="nonstandard-currency-codes">Nonstandard Currency Codes<a aria-hidden="true" class="hover_anchor" href="#nonstandard-currency-codes"><i class="fa fa-link"></i></a></h3>
 <p>You can also use a 160-bit (40-character) hexadecimal string such as <code>015841551A748AD2C1F76FF6ECB0CCCD00000000</code> as the currency code. To prevent this from being treated as a "standard" currency code, the first 8 bits MUST NOT be <code>0x00</code>.</p>
-<p><strong>Deprecated:</strong> Some previous versions of <a class="external-link" href="https://github.com/XRPLF/xrpl.js" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a> supported an "interest-bearing" or "demurraging" currency code type. These codes have the first 8 bits <code>0x01</code>. Demurraging / interest-bearing currencies are no longer supported, but you may encounter them in ledger data. For more information, see <a href="demurrage.html">Demurrage</a>.</p>
+<p><strong>Deprecated:</strong> Some previous versions of <a class="external-link" href="https://github.com/XRPLF/xrpl.js" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a> supported an "interest-bearing" or "demurraging" currency code type. These codes have the first 8 bits <code>0x01</code>. Demurraging / interest-bearing currencies are no longer supported, but you may find them in ledger data. For more information, see <a href="demurrage.html">Demurrage</a>.</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -710,6 +710,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1958,7 +1963,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

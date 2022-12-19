@@ -416,7 +416,7 @@
 </ul>
 </li>
 <li>
-<p>Failure case (3) represents an unexpected state. When a transaction is not processed, you should check the  <code>Sequence</code> number of the sending account in the most recent validated ledger. (You can use the <a href="account_info.html">account_info method</a> to do so.) If the account's <code>Sequence</code> value in the latest validated ledger is higher than the transaction's <code>Sequence</code> value, then a different transaction with the same <code>Sequence</code> value has been included in a validated ledger. If your system is not aware of the other transaction, you are in an unexpected state and should stop processing until you have determined why that has happened; otherwise, your system might send multiple transactions to accomplish the same goal. The steps you should take depend on specifically what caused it. Some possibilities include:</p>
+<p>Failure case (3) represents an unexpected state. When a transaction is not processed, you should check the  <code>Sequence</code> number of the sending account in the most recent validated ledger. (You can use the <a href="account_info.html">account_info method</a> to do so.) If the account's <code>Sequence</code> value in the latest validated ledger is higher than the transaction's <code>Sequence</code> value, then a different transaction with the same <code>Sequence</code> value has been included in a validated ledger. If your system is not aware of the other transaction, you are in an unexpected state and should stop processing until you have determined why that has happened; otherwise, your system might send multiple transactions trying to do the same thing. The steps you should take depend on specifically what caused it. Some possibilities include:</p>
 <ul>
 <li>
 <p>The previously-sent transaction was <a href="transaction-malleability.html">malleable</a> and it actually was included in a validated ledger, but with a different hash than you expected. This can happen if you specify a set of flags that do not include the <code>tfFullyCanonicalSig</code> flag or if the transaction is multi-signed by more signers than necessary. If this is the case, save the different hash and the final outcome of the transaction, then resume normal activities.</p>
@@ -1037,6 +1037,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2285,7 +2290,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

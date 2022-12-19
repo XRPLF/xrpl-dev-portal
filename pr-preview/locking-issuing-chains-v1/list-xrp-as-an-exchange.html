@@ -351,8 +351,7 @@
 <p>When the <a href="payment.html#payment-flags"><code>tfPartialPayment</code> flag</a> is enabled, the <code>Amount</code> field <strong><em>is not guaranteed to be the amount received</em></strong>. The <code>delivered_amount</code> field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use <code>delivered_amount</code> instead of the Amount field to determine how much your account received instead.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> Be aware that malicious actors could exploit this. For more information, see <a href="partial-payments.html">Partial Payments</a>.</p>
 <h3 id="accounts">Accounts<a aria-hidden="true" class="hover_anchor" href="#accounts"><i class="fa fa-link"></i></a></h3>
-<p>XRP is held in <em>accounts</em> (also referred to as <em>wallets</em> or <em>addresses</em>  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are <a href="accounts.html#deletion-of-accounts">not easy to delete</a>. To offset the costs associated with storing accounts, each account must hold a separate <a href="reserves.html">reserve of XRP</a> that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.</p>
-<!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
+<p>XRP is held in <em>accounts</em> (also referred to as <em>wallets</em> or <em>addresses</em>  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are <a href="accounts.html#deletion-of-accounts">not easy to delete</a>. To offset the costs associated with storing accounts, each account must hold a separate <a href="reserves.html">reserve of XRP</a> that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts. <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy --></p>
 <p>To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating <a href="issuing-and-operational-addresses.html"><em>cold</em>, <em>hot</em>, and <em>warm</em> accounts</a> (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:</p>
 <ul>
 <li>
@@ -1196,6 +1195,11 @@ Off-Ledger Balances</i></b></td>
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2444,7 +2448,7 @@ Off-Ledger Balances</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

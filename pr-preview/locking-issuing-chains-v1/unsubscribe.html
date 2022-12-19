@@ -326,6 +326,7 @@
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
@@ -333,22 +334,26 @@
 <tr>
 <td style="text-align: left;"><code>streams</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(Optional)</em> Array of string names of generic streams to unsubscribe from, including <code>ledger</code>, <code>server</code>, <code>transactions</code>, and <code>transactions_proposed</code>.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Array of string names of generic streams to unsubscribe from, including <code>ledger</code>, <code>server</code>, <code>transactions</code>, and <code>transactions_proposed</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>accounts</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(Optional)</em> Array of unique account addresses to stop receiving updates for, in the XRP Ledger's <a href="base58-encodings.html">base58</a> format. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.)</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Array of unique account addresses to stop receiving updates for, in the XRP Ledger's <a href="base58-encodings.html">base58</a> format. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>accounts_proposed</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(Optional)</em> Like <code>accounts</code>, but for <code>accounts_proposed</code> subscriptions that included not-yet-validated transactions.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Like <code>accounts</code>, but for <code>accounts_proposed</code> subscriptions that included not-yet-validated transactions.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>books</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(Optional)</em> Array of objects defining order books to unsubscribe from, as explained below.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Array of objects defining order books to unsubscribe from, as explained below.</td>
 </tr>
 </tbody>
 </table>
@@ -359,6 +364,7 @@
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
@@ -366,17 +372,20 @@
 <tr>
 <td style="text-align: left;"><code>taker_gets</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">Specification of which currency the account taking the offer would receive, as an object with <code>currency</code> and <code>issuer</code> fields (omit issuer for XRP), like <a href="basic-data-types.html#specifying-currency-amounts">currency amounts</a>.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Specification of which currency the account taking the offer would receive, as an object with <code>currency</code> and <code>issuer</code> fields. Omit <code>issuer</code> for XRP.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>taker_pays</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">Specification of which currency the account taking the offer would pay, as an object with <code>currency</code> and <code>issuer</code> fields (omit issuer for XRP), like <a href="basic-data-types.html#specifying-currency-amounts">currency amounts</a>.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Specification of which currency the account taking the offer would receive, as an object with <code>currency</code> and <code>issuer</code> fields. Omit <code>issuer</code> for XRP.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>both</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">(Optional, defaults to false) If true, remove a subscription for both sides of the order book.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">If <code>true</code>, remove a subscription for both sides of the order book.</td>
 </tr>
 </tbody>
 </table>
@@ -701,6 +710,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1949,7 +1963,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

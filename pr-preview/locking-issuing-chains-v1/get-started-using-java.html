@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Get Started Using Java | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/get-started-using-java.html" />
-    <meta property="og:description" content="Build a simple Java app that interacts with the XRP Ledger." />
-    <meta name="description" content="Build a simple Java app that interacts with the XRP Ledger." />
+    <meta property="og:description" content="Build a Java app that interacts with the XRP Ledger." />
+    <meta name="description" content="Build a Java app that interacts with the XRP Ledger." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -264,7 +264,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#installation">Installation</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start Building</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#2-generate-wallet">2. Generate wallet</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#2-get-account">2. Get account</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#3-query-the-xrp-ledger">3. Query the XRP Ledger</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#4-putting-it-all-together">4. Putting it all together</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#keep-on-building">Keep on building</a></li>
@@ -287,16 +287,16 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="get-started-using-java">Get Started Using Java<a aria-hidden="true" class="hover_anchor" href="#get-started-using-java"><i class="fa fa-link"></i></a></h1>
-<p>This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using <a class="external-link" href="https://github.com/XRPLF/xrpl4j" target="_blank"><code>xrpl4j</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>, a pure Java library that makes it easy to interact with the XRP Ledger.</p>
+<p>This tutorial walks you through the basics of building an XRP Ledger-connected application using <a class="external-link" href="https://github.com/XRPLF/xrpl4j" target="_blank"><code>xrpl4j</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>, a pure Java library built to interact with the XRP Ledger.</p>
 <p>This tutorial is intended for beginners and should take no longer than 30 minutes to complete.</p>
 <h2 id="learning-goals">Learning Goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
 <p>In this tutorial, you'll learn:</p>
 <ul>
 <li>The basic building blocks of XRP Ledger-based applications.</li>
 <li>How to connect to the XRP Ledger using <code>xrpl4j</code>.</li>
-<li>How to generate a wallet on the <a href="xrp-testnet-faucet.html">Testnet</a> using <code>xrpl4j</code>.</li>
+<li>How to get an account on the <a href="xrp-testnet-faucet.html">Testnet</a> using <code>xrpl4j</code>.</li>
 <li>How to use the <code>xrpl4j</code> library to look up information about an account on the XRP Ledger.</li>
-<li>How to put these steps together to create a simple Java app.</li>
+<li>How to put these steps together to create a Java app.</li>
 </ul>
 <h2 id="requirements">Requirements<a aria-hidden="true" class="hover_anchor" href="#requirements"><i class="fa fa-link"></i></a></h2>
 <ul>
@@ -306,7 +306,7 @@
 <h2 id="installation">Installation<a aria-hidden="true" class="hover_anchor" href="#installation"><i class="fa fa-link"></i></a></h2>
 <p>The <a class="external-link" href="https://github.com/XRPLF/xrpl4j" target="_blank"><code>xrpl4j</code> library <i aria-hidden="true" class="fa fa-external-link"></i></a> is available on <a class="external-link" href="https://search.maven.org/artifact/org.xrpl/xrpl4j-parent" target="_blank">Maven Central <i aria-hidden="true" class="fa fa-external-link"></i></a>.
 <code>xrpl4j</code> is split into multiple artifacts, which can be imported as needed.</p>
-<p>In this tutorial, you will need the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html" target="_blank">xrpl4j-client <i aria-hidden="true" class="fa fa-external-link"></i></a>, <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html" target="_blank">xrpl4j-address-codec <i aria-hidden="true" class="fa fa-external-link"></i></a>, <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html" target="_blank">xrpl4j-keypairs <i aria-hidden="true" class="fa fa-external-link"></i></a>, and <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html" target="_blank">xrpl4j-model <i aria-hidden="true" class="fa fa-external-link"></i></a> modules. <!-- SPELLING_IGNORE: keypairs --></p>
+<p>In this tutorial, you need the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html" target="_blank">xrpl4j-client <i aria-hidden="true" class="fa fa-external-link"></i></a>, <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html" target="_blank">xrpl4j-address-codec <i aria-hidden="true" class="fa fa-external-link"></i></a>, <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html" target="_blank">xrpl4j-keypairs <i aria-hidden="true" class="fa fa-external-link"></i></a>, and <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html" target="_blank">xrpl4j-model <i aria-hidden="true" class="fa fa-external-link"></i></a> modules. <!-- SPELLING_IGNORE: keypairs --></p>
 <p>To install with Maven, add the following to your project's <code>pom.xml</code> file and then run <code>mvn install</code>:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="nt">&lt;dependencies&gt;</span>
     <span class="nt">&lt;dependency&gt;</span>
@@ -333,15 +333,15 @@
 </code></pre></div>
 <p>Check out the <a class="external-link" href="https://github.com/XRPLF/xrpl4j-sample" target="_blank">xrpl4j sample project <i aria-hidden="true" class="fa fa-external-link"></i></a> for a full Maven project containing the code from this tutorial.</p>
 <h2 id="start-building">Start Building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
-<p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your <a href="wallets.html">wallet</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="issued-currencies.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
+<p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your <a href="accounts.html">account</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="tokens.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
 <p>Here are the basic steps you'll need to cover for almost any XRP Ledger project:</p>
 <ol>
 <li><a href="#1-connect-to-the-xrp-ledger">Connect to the XRP Ledger.</a></li>
-<li><a href="#2-generate-wallet">Generate a wallet.</a></li>
+<li><a href="#2-get-account">Get an account.</a></li>
 <li><a href="#3-query-the-xrp-ledger">Query the XRP Ledger.</a></li>
 </ol>
 <h3 id="1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#1-connect-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
-<p>To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with <code>xrpl4j</code>,
+<p>To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with <code>xrpl4j</code>,
 you can use an <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html" target="_blank"><code>XrplClient</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1">// Construct a network client</span><span class="w"></span>
 <span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="w"></span>
@@ -365,33 +365,26 @@ you can use an <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xr
 </code></pre></div>
 </li>
 </ul>
-<h3 id="2-generate-wallet">2. Generate wallet<a aria-hidden="true" class="hover_anchor" href="#2-generate-wallet"><i class="fa fa-link"></i></a></h3>
-<p>To store value and execute transactions on the XRP Ledger, you need to create a wallet:
-a <a href="cryptographic-keys.html#key-components">set of keys</a> and an <a href="accounts.html#addresses">address</a> that's
-been <a href="accounts.html#creating-accounts">funded with enough XRP</a> to meet the <a href="reserves.html">account reserve</a>.
-The address is the identifier of your account and you use the <a href="cryptographic-keys.html#private-key">private key</a> to
-sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up
-a <a href="set-up-secure-signing.html">secure signing method</a>.</p>
-<p>For testing and development purposes, you can use the <a href="xrp-testnet-faucet.html">XRP Faucets</a> to fund
-an account on the Testnet or Devnet.</p>
-<p>To make it easy to generate a new, random Wallet, <code>xrpl4j</code> provides the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html" target="_blank"><code>DefaultWalletFactory</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h3 id="2-get-account">2. Get account<a aria-hidden="true" class="hover_anchor" href="#2-get-account"><i class="fa fa-link"></i></a></h3>
+<p>To store value and execute transactions on the XRP Ledger, you need to get an account: a <a href="cryptographic-keys.html#key-components">set of keys</a> and an <a href="accounts.html#addresses">address</a> that's been <a href="accounts.html#creating-accounts">funded with enough XRP</a> to meet the <a href="reserves.html">account reserve</a>. The address is the identifier of your account and you use the <a href="cryptographic-keys.html#private-key">private key</a> to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a <a href="set-up-secure-signing.html">secure signing method</a>.</p>
+<p>To generate a new account, <code>xrpl4j</code> provides the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html" target="_blank"><code>DefaultWalletFactory</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Create a Wallet using a WalletFactory</span><span class="w"></span>
 <span class="n">WalletFactory</span><span class="w"> </span><span class="n">walletFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span><span class="w"></span>
 <span class="n">Wallet</span><span class="w"> </span><span class="n">testWallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletFactory</span><span class="p">.</span><span class="na">randomWallet</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="na">wallet</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <p>The result of a call to <code>walletFactory.randomWallet(true).wallet()</code> is a <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/Wallet.html" target="_blank"><code>Wallet</code> instance <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">System.out.println(testWallet);
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">testWallet</span><span class="p">);</span><span class="w"></span>
 
-// print output
-Wallet {
-    privateKey= -HIDDEN-,
-    publicKey=ED90635A6F2A5905D3D5CD2C14905FFB2D838185993576CA4CEE24A920D0D6BD6B,
-    classicAddress=raj5eirfEpbN9YzG9FzB8ZPNyjpFvH6ycV,
-    xAddress=T76mQFr9zLGi2LCjVDgJ7mEQCk4767SdEL32mZFygpdGcFf,
-    isTest=true
-}
+<span class="c1">// print output</span><span class="w"></span>
+<span class="n">Wallet</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">privateKey</span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">HIDDEN</span><span class="o">-</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">publicKey</span><span class="o">=</span><span class="n">ED90635A6F2A5905D3D5CD2C14905FFB2D838185993576CA4CEE24A920D0D6BD6B</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">classicAddress</span><span class="o">=</span><span class="n">raj5eirfEpbN9YzG9FzB8ZPNyjpFvH6ycV</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">xAddress</span><span class="o">=</span><span class="n">T76mQFr9zLGi2LCjVDgJ7mEQCk4767SdEL32mZFygpdGcFf</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">isTest</span><span class="o">=</span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>In order to fund the account on the XRP Ledger, you can use a <code>FaucetClient</code> connected to the XRP Ledger Testnet:</p>
+<p>For testing and development purposes, you can use a <code>FaucetClient</code> connected to the XRP Ledger <a href="parallel-networks.html">Testnet</a>:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Fund the account using the testnet Faucet</span><span class="w"></span>
 <span class="n">FaucetClient</span><span class="w"> </span><span class="n">faucetClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaucetClient</span><span class="w"></span>
 <span class="w">  </span><span class="p">.</span><span class="na">construct</span><span class="p">(</span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://faucet.altnet.rippletest.net"</span><span class="p">));</span><span class="w"></span>
@@ -399,7 +392,7 @@ Wallet {
 </code></pre></div>
 <h3 id="3-query-the-xrp-ledger">3. Query the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#3-query-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>You can query the XRP Ledger to get information about <a href="account-methods.html">a specific account</a>, <a href="tx.html">a specific transaction</a>, the state of a <a href="ledger-methods.html">current or a historical ledger</a>, and <a href="path-and-order-book-methods.html">the XRP Ledger's decentralized exchange</a>. You need to make these queries, among other reasons, to look up account info to follow best practices for <a href="reliable-transaction-submission.html">reliable transaction submission</a>.</p>
-<p>Here, we'll use the <a href="#1-connect-to-the-xrp-ledger"><code>XrplClient</code> we constructed</a> to look up information about the <a href="#2-generate-wallet">wallet we generated</a> in the previous step.</p>
+<p>Here, we'll use the <a href="#1-connect-to-the-xrp-ledger"><code>XrplClient</code> we constructed</a> to look up information about the <a href="#2-get-account">account we got</a> in the previous step.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Look up your Account Info</span><span class="w"></span>
 <span class="n">AccountInfoRequestParams</span><span class="w"> </span><span class="n">requestParams</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">  </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">);</span><span class="w"></span>
@@ -407,9 +400,9 @@ Wallet {
 <span class="w">  </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="n">requestParams</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="4-putting-it-all-together">4. Putting it all together<a aria-hidden="true" class="hover_anchor" href="#4-putting-it-all-together"><i class="fa fa-link"></i></a></h3>
-<p>Using these building blocks, we can create a simple Java app that:</p>
+<p>Using these building blocks, we can create a Java app that:</p>
 <ol>
-<li>Generates a wallet on the Testnet.</li>
+<li>Gets an account on the Testnet.</li>
 <li>Connects to the XRP Ledger.</li>
 <li>Looks up and prints information about the account you created.</li>
 </ol>
@@ -488,7 +481,7 @@ AccountInfoResult<span class="o">{</span>
 </ul>
 <p>For a detailed description of every response field, see <a href="account_info.html#response-format">account_info</a>.</p>
 <h2 id="keep-on-building">Keep on building<a aria-hidden="true" class="hover_anchor" href="#keep-on-building"><i class="fa fa-link"></i></a></h2>
-<p>Now that you know how to use <code>xrpl4j</code> to connect to the XRP Ledger, generate a wallet, and look up information about an account, you can also use <code>xrpl4j</code> to:</p>
+<p>Now that you know how to use <code>xrpl4j</code> to connect to the XRP Ledger, get an account, and look up information about it, you can also use <code>xrpl4j</code> to:</p>
 <ul>
 <li><a href="send-xrp.html">Send XRP</a>.</li>
 <li><a href="set-up-secure-signing.html">Set up secure signing</a> for your account.</li>
@@ -786,6 +779,11 @@ AccountInfoResult<span class="o">{</span>
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2034,7 +2032,7 @@ AccountInfoResult<span class="o">{</span>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

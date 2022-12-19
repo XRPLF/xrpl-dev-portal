@@ -301,7 +301,7 @@
 <p>The <a href="server_info.html">server_info method</a> reports how many ledger versions your server has available in the <code>complete_ledgers</code> field.</p>
 <h2 id="fetching-history">Fetching History<a aria-hidden="true" class="hover_anchor" href="#fetching-history"><i class="fa fa-link"></i></a></h2>
 <p>When an XRP Ledger server starts, its first priority is to get a complete copy of the latest validated ledger. From there, it keeps up with advances in the ledger progress. The server fills in any gaps in its ledger history that occur after syncing, and can backfill history from before it became synced. (Gaps in ledger history can occur if a server temporarily becomes too busy to keep up with the network, loses its network connection, or suffers other temporary issues.) When downloading ledger history, the server requests the missing data from its <a href="peer-protocol.html">peer servers</a>, and verifies the data's integrity using cryptographic <a href="basic-data-types.html#hashes">hashes</a>.</p>
-<p>Backfilling history is one of the server's lowest priorities, so it may take a long time to fill missing history, especially if the server is busy or has less than sufficient hardware and network specs. For recommendations on hardware specs, see <a href="capacity-planning.html">Capacity Planning</a>. Backfilling history also requires that at least one of the server's direct peers has the history in question. For more information on managing your server's peer-to-peer connections, see <a href="configure-peering.html">Configure Peering</a>.</p>
+<p>Backfilling history is one of the server's lowest priorities, so it may take a long time to fill missing history, especially if the server is busy or its hardware and network specs aren't good enough. For recommendations on hardware specs, see <a href="capacity-planning.html">Capacity Planning</a>. Backfilling history also requires that at least one of the server's direct peers has the history in question. For more information on managing your server's peer-to-peer connections, see <a href="configure-peering.html">Configure Peering</a>.</p>
 <p>The XRP Ledger identifies data (on several different levels) by a unique hash of its contents. The XRP Ledger's state data contains a short summary of the ledger's history, in the form of the <a href="ledgerhashes.html">LedgerHashes object type</a>. Servers use the LedgerHashes objects to know which ledger versions to fetch, and to confirm that the ledger data they receive is correct and complete.</p>
 <p><a id="with-advisory-deletion"></a><!-- old anchor to this area --></p>
 <h3 id="backfilling">Backfilling<a aria-hidden="true" class="hover_anchor" href="#backfilling"><i class="fa fa-link"></i></a></h3>
@@ -311,12 +311,12 @@
 <h2 id="full-history">Full History<a aria-hidden="true" class="hover_anchor" href="#full-history"><i class="fa fa-link"></i></a></h2>
 <p>Some servers in the XRP Ledger network are configured as "full-history" servers. These servers, which require significantly more disk space than other tracking servers, collect all available XRP Ledger history and <strong>do not use online deletion</strong>.</p>
 <p>The XRP Ledger Foundation provides access to a set of full history servers operated by community members (see <a class="external-link" href="https://xrplcluster.com" target="_blank">xrplcluster.com <i aria-hidden="true" class="fa fa-external-link"></i></a> for more details).
-Ripple also provides a set of public full-history servers as a public service at <code>s2.ripple.com</code>.</p>
+Ripple also provides a set of public full-history servers as a public service at <code>s2.ripple.com</code>. <!-- SPELLING_IGNORE: xrplcluster --></p>
 <p>Providers of Full History servers reserve the right to block access that is found to abuse resources, or put inordinate load on the systems.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Unlike some cryptocurrency networks, servers in the XRP Ledger do not need full history to know the current state and keep up with current transactions.</p>
 <p>For instructions on setting up full history, see <a href="configure-full-history.html">Configure Full History</a>.</p>
 <h2 id="history-sharding">History Sharding<a aria-hidden="true" class="hover_anchor" href="#history-sharding"><i class="fa fa-link"></i></a></h2>
-<p>An alternative to storing the full history of the XRP Ledger on a single expensive machine is to configure many servers to each store a portion of ledger history. The <a href="history-sharding.html">History Sharding</a> feature makes this possible, storing ranges of ledger history in a separate storage area called the <em>shard store</em>. When a peer server asks for specific data (as described in <a href="#fetching-history">fetching history</a> above), a server can answer using data from either its ledger store or shard store.</p>
+<p>An alternative to storing the full history of the XRP Ledger on a single expensive machine is to configure many servers to each store a part of all ledger history. The <a href="history-sharding.html">History Sharding</a> feature makes this possible, storing ranges of ledger history in a separate storage area called the <em>shard store</em>. When a peer server asks for specific data (as described in <a href="#fetching-history">fetching history</a> above), a server can answer using data from either its ledger store or shard store.</p>
 <p>Online deletion <strong>does not</strong> delete from the shard store. However, if you configure online deletion to keep at least 32768 ledger versions in your server's ledger store, your server can copy full shards from the ledger store to the shard store before automatically deleting them from the ledger store.</p>
 <p>For more information, see <a href="configure-history-sharding.html">Configure History Sharding</a>.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
@@ -638,6 +638,11 @@ Ripple also provides a set of public full-history servers as a public service at
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1886,7 +1891,7 @@ Ripple also provides a set of public full-history servers as a public service at
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

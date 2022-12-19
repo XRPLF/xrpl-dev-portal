@@ -305,7 +305,7 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="issue-a-fungible-token">Issue a Fungible Token<a aria-hidden="true" class="hover_anchor" href="#issue-a-fungible-token"><i class="fa fa-link"></i></a></h1>
-<p>Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial demonstrates the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see <a href="issued-currencies.html">Issued Currencies</a>; for more on the business decisions involved in issuing a stablecoin, see <a href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>.</p>
+<p>Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial shows the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see <a href="issued-currencies.html">Issued Currencies</a>; for more on the business decisions involved in issuing a stablecoin, see <a href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>. <!-- STYLE_OVERRIDE: ious --></p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>You need two funded XRP Ledger accounts, each with an address, secret key, and some XRP. For this tutorial, you can generate new test credentials as needed.<ul>
@@ -1192,7 +1192,7 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <h3 id="11-confirm-token-balances">11. Confirm Token Balances<a aria-hidden="true" class="hover_anchor" href="#11-confirm-token-balances"><i class="fa fa-link"></i></a></h3>
-<p>You can check the balances of your token from the perspective of either the token issuer or the hot wallet. Tokens issued in the XRP Ledger always have balances that sum to 0: negative from the perspective of the issuer and positive from the perspective of the holder.</p>
+<p>You can check the balances of your token from the perspective of either the token issuer or the hot address. Tokens issued in the XRP Ledger always have balances that sum to 0: negative from the perspective of the issuer and positive from the perspective of the holder.</p>
 <p>Use the <a href="account_lines.html">account_lines method</a> to look up the balances from the perspective of the holder. This lists each trust line along with its limit, balance, and settings.</p>
 <p>Use the <a href="gateway_balances.html">gateway_balances method</a> to look up balances from the perspective of a token issuer. This provides a sum of all tokens issued by a given address.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Since the XRP Ledger is fully public, you can check the balances of any account at any time without needing any cryptographic keys.</p>
@@ -1272,7 +1272,7 @@
 <li>Learn about other <a href="issued-currencies.html">features of XRP Ledger tokens</a>.</li>
 </ul>
 <h2 id="footnotes">Footnotes<a aria-hidden="true" class="hover_anchor" href="#footnotes"><i class="fa fa-link"></i></a></h2>
-<p>¹ Users can hold your token without explicitly creating a trust line if they purchase your token in the <a href="decentralized-exchange.html">decentralized exchange</a>. Buying a token in the exchange <a href="offers.html#オファーとトラスト">automatically creates the necessary trust lines</a>. This is only possible if someone is selling your token in the decentralized exchange.</p>
+<p>¹ Users can hold your token without explicitly creating a trust line if they buy your token in the <a href="decentralized-exchange.html">decentralized exchange</a>. Buying a token in the exchange <a href="offers.html#オファーとトラスト">automatically creates the necessary trust lines</a>. This is only possible if someone is selling your token in the decentralized exchange.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1572,6 +1572,11 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -2123,7 +2128,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       
@@ -2815,7 +2820,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

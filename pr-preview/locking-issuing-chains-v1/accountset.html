@@ -320,7 +320,7 @@
 <td style="text-align: left;"><em>(Optional)</em> Unique identifier of a flag to disable for this account.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#domain">Domain</a></td>
+<td style="text-align: left;"><a href="#domain"><code>Domain</code></a></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Blob</td>
 <td style="text-align: left;"><em>(Optional)</em> The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. <a class="external-link" href="https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
@@ -341,7 +341,7 @@
 <td style="text-align: left;"><code>NFTokenMinter</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> Sets an alternate account that is allowed to mint NFTokens on this account's behalf using NFTokenMint's <code>Issuer</code> field. This field is part of the experimental XLS-20 standard for non-fungible tokens. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></td>
+<td style="text-align: left;"><em>(Optional)</em> Another account that can <a href="authorize-minter.html">mint NFTokens for you</a>. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#accountset-flags"><code>SetFlag</code></a></td>
@@ -379,10 +379,10 @@
 <h2 id="domain">Domain<a aria-hidden="true" class="hover_anchor" href="#domain"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Domain</code> field is represented as the hex string of the lowercase ASCII of the domain. For example, the domain <em>example.com</em> would be represented as <code>"6578616D706C652E636F6D"</code>.</p>
 <p>To remove the <code>Domain</code> field from an account, send an AccountSet with the Domain set to an empty string.</p>
-<p>You can put any domain in your account's <code>Domain</code> field. To prove that an account and domain belong to the same person or business, establish a "two-way link":</p>
+<p>You can put any domain in your account's <code>Domain</code> field. To prove that an account and domain belong to the same person or business, you need a "two-way link":</p>
 <ul>
 <li>Accounts you own should have a domain you own in the <code>Domain</code> field.</li>
-<li>On a website at that domain, host an <a href="xrp-ledger-toml.html">xrp-ledger.toml file</a> listing accounts you own, and optionally other information about how you use the XRP Ledger.</li>
+<li>At that domain, host an <a href="xrp-ledger-toml.html">xrp-ledger.toml file</a> listing accounts you own, and optionally other information about how you use the XRP Ledger.</li>
 </ul>
 <h2 id="accountset-flags">AccountSet Flags<a aria-hidden="true" class="hover_anchor" href="#accountset-flags"><i class="fa fa-link"></i></a></h2>
 <p>There are several options which can be either enabled or disabled for an account. Account options are represented by different types of flags depending on the situation:</p>
@@ -818,6 +818,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2066,7 +2071,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

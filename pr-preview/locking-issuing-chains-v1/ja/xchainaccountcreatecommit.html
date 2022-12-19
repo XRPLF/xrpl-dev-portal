@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>XChainCreateAccountCommit - XRPL.org (日本語)</title>
+    <title>XChainAccountCreateCommit - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="XChainCreateAccountCommit | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/xchaincreateaccountcommit.html" />
+    <meta property="og:title" content="XChainAccountCreateCommit | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/xchainaccountcreatecommit.html" />
     <meta property="og:description" content="Create a bridge between two chains." />
     <meta name="description" content="Create a bridge between two chains." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
@@ -15,9 +15,9 @@
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/xchaincreateaccountcommit.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/xchaincreateaccountcommit.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/xchaincreateaccountcommit.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/xchainaccountcreatecommit.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/xchainaccountcreatecommit.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/xchainaccountcreatecommit.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -225,7 +225,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/xchaincreateaccountcommit.html">
+          <a class="dropdown-item" href="/xchainaccountcreatecommit.html">
             English
           </a>
           <hr />
@@ -253,7 +253,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/locking-issuing-chains-v1/content/references/protocol-reference/transactions/transaction-types/xchaincreateaccountcommit.md?pr=/XRPLF/xrpl-dev-portal/pull/1516" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/locking-issuing-chains-v1/content/references/protocol-reference/transactions/transaction-types/xchainaccountcreatecommit.md?pr=/XRPLF/xrpl-dev-portal/pull/1516" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -266,9 +266,9 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#xchaincreateaccountcommit">XChainCreateAccountCommit</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-xchaincreateaccountcommit-json">Example XChainCreateAccountCommit JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#xchaincreateaccountcommit-fields">XChainCreateAccountCommit Fields</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#xchainaccountcreatecommit">XChainAccountCreateCommit</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#example-xchainaccountcreatecommit-json">Example XChainAccountCreateCommit JSON</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xchainaccountcreatecommit-fields">XChainAccountCreateCommit Fields</a></li>
       </ul>
   </div>
       </aside>
@@ -285,32 +285,37 @@
     <li class="active breadcrumb-item"><a href="/ja/protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="/ja/transaction-formats.html">トランザクションのフォーマット</a></li>
     <li class="active breadcrumb-item"><a href="/ja/transaction-types.html">トランザクションのタイプ</a></li>
-    <li class="active breadcrumb-item">XChainCreateAccountCommit</li>
+    <li class="active breadcrumb-item">XChainAccountCreateCommit</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
       <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="xchaincreateaccountcommit">XChainCreateAccountCommit<a aria-hidden="true" class="hover_anchor" href="#xchaincreateaccountcommit"><i class="fa fa-link"></i></a></h1>
-<p>The <code>XChainCreateBridge</code> transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.</p>
+        <h1 id="xchainaccountcreatecommit">XChainAccountCreateCommit<a aria-hidden="true" class="hover_anchor" href="#xchainaccountcreatecommit"><i class="fa fa-link"></i></a></h1>
+<p>The <code>XChainAccountCreateCommit</code> transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.</p>
 <p>The complete production-grade setup would also include a <code>SignerListSet</code> transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This would ensure that the funds are truly in control of the witness servers.</p>
-<h2 id="example-xchaincreateaccountcommit-json">Example XChainCreateAccountCommit JSON<a aria-hidden="true" class="hover_anchor" href="#example-xchaincreateaccountcommit-json"><i class="fa fa-link"></i></a></h2>
+<h2 id="example-xchainaccountcreatecommit-json">Example XChainAccountCreateCommit JSON<a aria-hidden="true" class="hover_anchor" href="#example-xchainaccountcreatecommit-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XChainCreateBridge"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rwEqJ2UaQHe7jihxGqmx6J4xdbGiiyMaGa"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XChainAccountCreateCommit"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"MinAccountCreateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h2 id="xchaincreateaccountcommit-fields">XChainCreateAccountCommit Fields<a aria-hidden="true" class="hover_anchor" href="#xchaincreateaccountcommit-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, XChainCreateAccountCommit transactions use the following fields:</p>
+<h2 id="xchainaccountcreatecommit-fields">XChainAccountCreateCommit Fields<a aria-hidden="true" class="hover_anchor" href="#xchainaccountcreatecommit-fields"><i class="fa fa-link"></i></a></h2>
+<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, XChainAccountCreateCommit transactions use the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -367,7 +372,7 @@
 </table>
 <!-- ## Error Cases
 
-In addition to errors that can occur for all transactions, XChainCreateAccountCommit transactions can result in the following [transaction result codes](transaction-results.html):
+In addition to errors that can occur for all transactions, XChainAccountCreateCommit transactions can result in the following [transaction result codes](transaction-results.html):
 
 | Error Code                    | Description                                  |
 |:------------------------------|:---------------------------------------------|
@@ -671,6 +676,11 @@ In addition to errors that can occur for all transactions, XChainCreateAccountCo
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1222,7 +1232,7 @@ In addition to errors that can occur for all transactions, XChainCreateAccountCo
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       
@@ -1914,7 +1924,7 @@ In addition to errors that can occur for all transactions, XChainCreateAccountCo
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

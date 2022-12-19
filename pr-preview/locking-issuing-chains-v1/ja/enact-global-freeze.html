@@ -306,7 +306,7 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="enact-global-freeze">Enact Global Freeze<a aria-hidden="true" class="hover_anchor" href="#enact-global-freeze"><i class="fa fa-link"></i></a></h1>
-<p>If you <a href="issued-currencies.html">issue tokens</a> in the XRP Ledger, can enact a <a href="freezes.html#global-freeze">Global Freeze</a> to prevent users from sending your tokens to each other and trading your token in the <a href="decentralized-exchange.html">decentralized exchange</a>. This tutorial shows how to enact and end a Global Freeze. You might want to do this, for example, if you see signs of suspicious activity regarding your issuing address in the ledger, or relating to off-ledger systems you use to manage your token. (For example, if your token is a stablecoin and you process withdrawals and deposits from the ledger, you may want to freeze your token while you investigate if you suspect your systems have been hacked.) You can later disable the Global Freeze setting unless you have also enabled the <a href="freezes.html#no-freeze">No Freeze setting</a>.</p>
+<p>If you <a href="issued-currencies.html">issue tokens</a> in the XRP Ledger, can enact a <a href="freezes.html#global-freeze">Global Freeze</a> to prevent users from sending your tokens to each other and trading your token in the <a href="decentralized-exchange.html">decentralized exchange</a>. This tutorial shows how to enact and end a Global Freeze. You might want to do this, for example, if you see signs of suspicious activity related to your issuing address in the ledger, or to off-ledger systems you use to manage your token. (For example, if your token is a stablecoin and you process withdrawals and deposits from the ledger, you may want to freeze your token while you investigate if you suspect your systems have been hacked.) You can later disable the Global Freeze setting unless you have also enabled the <a href="freezes.html#no-freeze">No Freeze setting</a>.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> As a reminder, freezes only apply to issued tokens, not XRP, and do not prevent users from sending the tokens <em>directly</em> back to the issuer.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <ul>
@@ -539,7 +539,7 @@
 <h3 id="intermission-while-frozen">Intermission: While Frozen<a aria-hidden="true" class="hover_anchor" href="#intermission-while-frozen"><i class="fa fa-link"></i></a></h3>
 <p>At this point all token issued by your address are frozen. During this time, you may want to investigate the potential security breach or take a snapshot of the balances of your token, depending on your reasons for enacting the global freeze.</p>
 <p>Keep in mind that while a token is frozen, it is still possible for the frozen token to be sent <em>directly to</em> or <em>directly from</em> the issuer, so you may still want to disable any systems you have that are configured to send such transactions, and you may want to track incoming transactions without processing them so that you can eventually process the legitimate ones.</p>
-<p>If you use a <a href="issuing-and-operational-addresses.html">hot wallet or operational address</a>, it has no special status compared to other users, so it also cannot send and receive the frozen tokens except when dealing directly with the issuer.</p>
+<p>If you use a <a href="issuing-and-operational-addresses.html">hot wallet or operational address</a>, it has no special status compared to other users, so it also cannot send and receive the frozen tokens except when dealing directly with the issuer. <!-- STYLE_OVERRIDE: wallet, hot wallet --></p>
 <p>If you use the <a href="freezes.html#no-freeze">No Freeze setting</a> then the Global Freeze continues forever. If you want to resume issuing tokens, you must create a new account and start over from there.</p>
 <p>Otherwise, you can continue to the next step whenever you're ready.</p>
 <h3 id="6-send-accountset-transaction-to-end-the-freeze">6. Send AccountSet Transaction to End the Freeze<a aria-hidden="true" class="hover_anchor" href="#6-send-accountset-transaction-to-end-the-freeze"><i class="fa fa-link"></i></a></h3>
@@ -961,6 +961,11 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1512,7 +1517,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       
@@ -2204,7 +2209,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -401,6 +401,7 @@ rippled submit_multisigned <span class="s1">'{</span>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
+<th style="text-align: left;">Required?</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
@@ -408,12 +409,14 @@ rippled submit_multisigned <span class="s1">'{</span>
 <tr>
 <td style="text-align: left;"><code>tx_json</code></td>
 <td style="text-align: left;">Object</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: left;"><a href="transaction-formats.html">Transaction in JSON format</a> with an array of <code>Signers</code>. To be successful, the weights of the signatures must be equal or higher than the quorum of the <a href="signerlist.html">SignerList</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>fail_hard</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">(Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">If <code>true</code>, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is <code>false</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -887,6 +890,11 @@ Connecting to 127.0.0.1:5005
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2135,7 +2143,7 @@ Connecting to 127.0.0.1:5005
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

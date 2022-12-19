@@ -268,7 +268,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#ammbid">AMMBid</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-ammbid-json">Example AMMBid JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ammbid-fields">AMMBid Fields</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#authaccount-objects">AuthAccount Objects</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#auth-account-objects">Auth Account Objects</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#auction-slot-price">Auction Slot Price</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#bid-refunds">Bid Refunds</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-cases-previous-holder">AMM Cases previous holder</a></li>
@@ -298,8 +298,8 @@
         <h1 id="ammbid">AMMBid<a aria-hidden="true" class="hover_anchor" href="#ammbid"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMBid.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- TODO: Update source link to merged version when available -->
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
-<p>Bid on an Automated Market Maker's (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.</p>
+<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em> <!-- SPELLING_IGNORE: 30d --></p>
+<p>Bid on an <a href="automated-market-makers.html">Automated Market Maker</a>'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.</p>
 <p>You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.</p>
 <h2 id="example-ammbid-json">Example AMMBid JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammbid-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
@@ -380,12 +380,12 @@
 <td style="text-align: left;">Array</td>
 <td style="text-align: left;">STArray</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">A list of up to 4 additional accounts that you allow to trade at the discounted fee. This cannot include the address of the transaction sender. Each of these objects should be an <a href="#authaccount-objects">AuthAccount object</a>.</td>
+<td style="text-align: left;">A list of up to 4 additional accounts that you allow to trade at the discounted fee. This cannot include the address of the transaction sender. Each of these objects should be an <a href="#auth-account-objects">Auth Account object</a>.</td>
 </tr>
 </tbody>
 </table>
 <p>You cannot specify both <code>BidMin</code> and <code>BidMax</code>.</p>
-<h3 id="authaccount-objects">AuthAccount Objects<a aria-hidden="true" class="hover_anchor" href="#authaccount-objects"><i class="fa fa-link"></i></a></h3>
+<h3 id="auth-account-objects">Auth Account Objects<a aria-hidden="true" class="hover_anchor" href="#auth-account-objects"><i class="fa fa-link"></i></a></h3>
 <p>Each member of the <code>AuthAccounts</code> array must be an object with the following field:</p>
 <table class="table-responsive">
 <thead>
@@ -446,7 +446,7 @@
 <p>As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.</p>
 <p class="devportal-callout note"><strong>Note:</strong> As with all XRP Ledger times, transaction processing uses the <a href="ledgers.html#ledger-close-times">official close time</a> of the <em>previous</em> ledger, which can result in a difference of up to about 10 seconds from real time.</p>
 <h2 id="amm-cases-previous-holder">AMM Cases previous holder<a aria-hidden="true" class="hover_anchor" href="#amm-cases-previous-holder"><i class="fa fa-link"></i></a></h2>
-<p>In addition to errors that can occur for all transactions, AMMBid transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<p>Besides errors that can occur for all transactions, AMMBid transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -783,6 +783,11 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1334,7 +1339,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       
@@ -2026,7 +2031,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -265,7 +265,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#start-building">Start Building</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#1-import-the-library">1. Import the Library</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#2-connect-to-the-xrp-ledger">2. Connect to the XRP Ledger</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#3-generate-wallet">3. Generate Wallet</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#3-get-account">3. Get Account</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#4-query-the-xrp-ledger">4. Query the XRP Ledger</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#5-listen-for-events">5. Listen for Events</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#keep-on-building">Keep on Building</a></li>
@@ -295,10 +295,10 @@
 <p>In this tutorial, you'll learn:</p>
 <ul>
 <li>The basic building blocks of XRP Ledger-based applications.</li>
-<li>How to connect to the XRP Ledger using xrpl.js.</li>
-<li>How to generate a wallet on the <a href="xrp-testnet-faucet.html">Testnet</a> using xrpl.js.</li>
+<li>How to connect to the XRP Ledger using <code>xrpl.js</code>.</li>
+<li>How to get an account on the <a href="xrp-testnet-faucet.html">Testnet</a> using <code>xrpl.js</code>.</li>
 <li>How to use the <code>xrpl.js</code> library to look up information about an account on the XRP Ledger.</li>
-<li>How to put these steps together to create a simple JavaScript app or web-app.</li>
+<li>How to put these steps together to create a JavaScript app or web-app.</li>
 </ul>
 <h2 id="requirements">Requirements<a aria-hidden="true" class="hover_anchor" href="#requirements"><i class="fa fa-link"></i></a></h2>
 <p>To follow this tutorial, you should have some familiarity with writing code in JavaScript and managing small JavaScript projects. In browsers, any modern web browser with JavaScript support should work fine. In Node.js, <strong>version 14</strong> is recommended. Node.js versions 12 and 16 are also regularly tested.</p>
@@ -307,12 +307,12 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">npm install xrpl
 </code></pre></div>
 <h2 id="start-building">Start Building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
-<p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your <a href="wallets.html">wallet</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="issued-currencies.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
+<p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your <a href="accounts.html">account</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="tokens.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
 <p>Here are some steps you use in many XRP Ledger projects:</p>
 <ol>
 <li><a href="#1-import-the-library">Import the library.</a></li>
 <li><a href="#2-connect-to-the-xrp-ledger">Connect to the XRP Ledger.</a></li>
-<li><a href="#3-generate-wallet">Generate a wallet.</a></li>
+<li><a href="#3-get-account">Get an account.</a></li>
 <li><a href="#4-query-the-xrp-ledger">Query the XRP Ledger.</a></li>
 <li><a href="#5-listen-for-events">Listen for Events.</a></li>
 </ol>
@@ -332,7 +332,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"xrpl"</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="2-connect-to-the-xrp-ledger">2. Connect to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
-<p>To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with <code>xrpl.js</code>, you create an instance of the <code>Client</code> class and use the <code>connect()</code> method.</p>
+<p>To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with <code>xrpl.js</code>, you create an instance of the <code>Client</code> class and use the <code>connect()</code> method.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Many network functions in <code>xrpl.js</code> use <a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promises <i aria-hidden="true" class="fa fa-external-link"></i></a> to return values asynchronously. The code samples here use the <a class="external-link" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank"><code>async/await</code> pattern <i aria-hidden="true" class="fa fa-external-link"></i></a> to wait for the actual result of the Promises.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span><span class="w"></span>
 <span class="c1">// const xrpl = require('xrpl')</span><span class="w"></span>
@@ -371,17 +371,17 @@
 </code></pre></div>
 </li>
 </ul>
-<h3 id="3-generate-wallet">3. Generate Wallet<a aria-hidden="true" class="hover_anchor" href="#3-generate-wallet"><i class="fa fa-link"></i></a></h3>
-<p>The <code>xrpl.js</code> library has a <code>Wallet</code> class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new wallet like this:</p>
+<h3 id="3-get-account">3. Get Account<a aria-hidden="true" class="hover_anchor" href="#3-get-account"><i class="fa fa-link"></i></a></h3>
+<p>The <code>xrpl.js</code> library has a <code>Wallet</code> class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new account like this:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Create a wallet and fund it with the Testnet faucet:</span><span class="w"></span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fund_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">test_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fund_result</span><span class="p">.</span><span class="nx">wallet</span><span class="w"></span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fund_result</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p>If you just want to generate keys, you can create a new Wallet instance like this:</p>
+<p>If you only want to generate keys, you can create a new <code>Wallet</code> instance like this:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="kd">const</span><span class="w"> </span><span class="nx">test_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">generate</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
-<p>Or, if you already have a seed encoded in <a href="base58-encodings.html">base58</a>, you can instantiate a Wallet from it like this:</p>
+<p>Or, if you already have a seed encoded in <a href="base58-encodings.html">base58</a>, you can make a <code>Wallet</code> instance from it like this:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="kd">const</span><span class="w"> </span><span class="nx">test_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">)</span><span class="w"> </span><span class="c1">// Test secret; don't use for real</span><span class="w"></span>
 </code></pre></div>
 <h3 id="4-query-the-xrp-ledger">4. Query the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#4-query-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
@@ -406,7 +406,7 @@
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
 <h2 id="keep-on-building">Keep on Building<a aria-hidden="true" class="hover_anchor" href="#keep-on-building"><i class="fa fa-link"></i></a></h2>
-<p>Now that you know how to use <code>xrpl.js</code> to connect to the XRP Ledger, generate a wallet, and look up information about an account, you can also:</p>
+<p>Now that you know how to use <code>xrpl.js</code> to connect to the XRP Ledger, get an account, and look up information about it, you can also:</p>
 <ul>
 <li><a href="send-xrp.html">Send XRP</a>.</li>
 <li><a href="issue-a-fungible-token.html">Issue a Fungible Token</a></li>
@@ -727,6 +727,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1975,7 +1980,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

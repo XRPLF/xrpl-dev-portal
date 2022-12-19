@@ -415,7 +415,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">Terminating thread rippled: main: unhandled St13runtime_error 'online_delete must not be less than ledger_history (currently 3000)
 </code></pre></div>
 <p>The <code>[ledger_history]</code> setting represents how many ledgers of history the server should seek to back-fill. The <code>online_delete</code> field (in the <code>[node_db]</code> stanza) indicates how many ledgers of history to keep when dropping older history. The <code>online_delete</code> value must be equal to or larger than <code>[ledger_history]</code> to prevent the server from deleting historical ledgers that it is also trying to download.</p>
-<p>To fix the problem, edit the <code>rippled.cfg</code> file and change or remove either the <code>[ledger_history]</code> or <code>online_delete</code> options. (If you omit <code>[ledger_history]</code>, it defaults to 256 ledger versions, so <code>online_delete</code>, if present, must be larger than 256. If you omit <code>online_delete</code>, it disables automatic deletion of old ledger versions.)</p>
+<p>To fix the problem, edit the <code>rippled.cfg</code> file and change or remove either the <code>[ledger_history]</code> or <code>online_delete</code> options. (If you omit <code>[ledger_history]</code>, it uses a default of 256 ledger versions. If you specify the <code>online_delete</code> field, it must be larger than 256. If you omit <code>online_delete</code>, it disables automatic deletion of old ledger versions.)</p>
 <h2 id="bad-node_size-value">Bad node_size value<a aria-hidden="true" class="hover_anchor" href="#bad-node_size-value"><i class="fa fa-link"></i></a></h2>
 <p>An error such as the following indicates that the <code>rippled.cfg</code> file has an improper value for the <code>node_size</code> setting:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
@@ -751,6 +751,11 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1999,7 +2004,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

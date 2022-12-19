@@ -298,15 +298,44 @@
 <h2 id="example-xchainaddattestation-json">Example XChainAddAttestation JSON<a aria-hidden="true" class="hover_anchor" href="#example-xchainaddattestation-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XChainAddAttestation"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"MinAccountCreateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"XChainAttestationBatch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"XChainClaimAttestationBatch"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"XChainClaimAttestationBatchElement"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"PublicKey"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"03DAB289CA36FF377F3F4304C7A7203FDE5EDCBFC209F430F6A4355361425526D0"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Signature"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"616263"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainClaimID"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"XChainCreateAccountAttestationBatch"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"XChainCreateAccountAttestationBatchElement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"AttestationSignerAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEziJZmeZzsJvGVUmpUTey7qxQLKYxaK9f"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKT9gDkaedAosiHyHZTjyZs2HvXpzuiGmC"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"PublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03ADB44CA8E56F78A0096825E5667C450ABD5C24C34E027BC1AAF7E5BD114CB5B5"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"Signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3044022036C8B90F85E8073C465F00625248A72D4714600F98EBBADBAD3B7ED226109A3A02204C5A0AE12D169CF790F66541F3DB59C289E0D9CA7511FDFE352BB601F667A26"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"WasLockingChainSend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">"XChainAccountCreateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000001"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="xchainaddattestation-fields">XChainAddAttestation Fields<a aria-hidden="true" class="hover_anchor" href="#xchainaddattestation-fields"><i class="fa fa-link"></i></a></h2>
@@ -322,46 +351,28 @@
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;"><code>Account</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;"><em>Required</em> The account submitting the proof.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>XChainBridge</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;"><em>Required</em> The XChainBridge stanza represents the bridge for which the witness is attesting transactions.</td>
+<td style="text-align: left;"><em>Required</em> The bridge that the transaction is transferred across.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>LockingChainDoor</code></td>
+<td style="text-align: left;"><code>XChainClaimAttestationBatchElement</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">The door account on the locking chain.</td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">A single proof that a <code>XChainCommit</code> transaction occurred on the source chain. These can be batched.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>LockingChainIssue</code></td>
+<td style="text-align: left;"><code>XChainCreateAccountAttestationBatchElement</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">Token</td>
-<td style="text-align: left;">The token that is bridged on the locking chain.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>IssuingChainDoor</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">The door account on the issuing chain.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>IssuingChainIssue</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Token</td>
-<td style="text-align: left;">The token that is bridged on the issuing chain.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>SignatureReward</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">Token</td>
-<td style="text-align: left;"><em>Required</em> The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>MinAccountCreateAmount</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><em>Optional</em> The minimum amount, in XRP, required for a <code>XChainCreateAccountCommit</code> transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present.</td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">A single proof that a <code>XChainCreateAccountCommit</code> transaction occurred on the source chain. These can be batched.</td>
 </tr>
 </tbody>
 </table>
@@ -671,6 +682,11 @@ In addition to errors that can occur for all transactions, XChainAddAttestation 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1222,7 +1238,7 @@ In addition to errors that can occur for all transactions, XChainAddAttestation 
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       
@@ -1914,7 +1930,7 @@ In addition to errors that can occur for all transactions, XChainAddAttestation 
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

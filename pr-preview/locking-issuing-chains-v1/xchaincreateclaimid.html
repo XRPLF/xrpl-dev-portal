@@ -288,16 +288,20 @@
 <p>It also includes the account on the source chain that locks or burns the funds on the source chain.</p>
 <h2 id="example-xchaincreateclaimid-json">Example XChainCreateClaimID JSON<a aria-hidden="true" class="hover_anchor" href="#example-xchaincreateclaimid-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rahDmoXrtPdh7sUdrPjini3gcnTVYjbjjw"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"OtherChainSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rMTi57fNy2UkUb4RcdoUeJm7gjxVQvxzUo"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XChainCreateClaimID"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG5r16gHYktYHrLyiWzMMbKQAFRptZe5rH"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"XChainBridge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"LockingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"LockingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">"IssuingChainDoor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"SourceAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">"SignatureReward"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"IssuingChainIssue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="xchaincreateclaimid-fields">XChainCreateClaimID Fields<a aria-hidden="true" class="hover_anchor" href="#xchaincreateclaimid-fields"><i class="fa fa-link"></i></a></h2>
@@ -312,6 +316,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;"><code>OtherChainSource</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">AccountID</td>
+<td style="text-align: left;">The source account on the other chain.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SignatureReward</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">Token</td>
+<td style="text-align: left;"><em>Required</em> The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. This must be at least the value of <code>SignaturesReward</code> in the <code>Bridge</code> ledger object.</td>
+</tr>
 <tr>
 <td style="text-align: left;"><code>XChainBridge</code></td>
 <td style="text-align: left;">String</td>
@@ -341,12 +357,6 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Token</td>
 <td style="text-align: left;">The token that is bridged on the issuing chain.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>SignatureReward</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">Token</td>
-<td style="text-align: left;"><em>Required</em> The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. This must be at least the value of <code>SignaturesReward</code> in the <code>Bridge</code> ledger object.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>MinAccountCreateAmount</code></td>
@@ -657,6 +667,11 @@ In addition to errors that can occur for all transactions, XChainCreateClaimID t
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1905,7 +1920,7 @@ In addition to errors that can occur for all transactions, XChainCreateClaimID t
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

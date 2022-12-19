@@ -317,7 +317,7 @@
 <p class="devportal-callout tip"><strong>Tip:</strong> It is strongly recommended to also provide the <code>LastLedgerSequence</code> field so that you can <a href="reliable-transaction-submission.html">reliably get the outcome of the transaction in a predictable amount of time</a>.</p>
 <h3 id="2-sign-transaction">2. Sign Transaction<a aria-hidden="true" class="hover_anchor" href="#2-sign-transaction"><i class="fa fa-link"></i></a></h3>
 <p>You must use the <strong>master key pair</strong> to sign the transaction.</p>
-<p class="devportal-callout warning"><strong>Warning:</strong> Do not submit your secret to a server you don't control, and do not transmit it over the network unencrypted. These examples assume you are using a <a href="set-up-secure-signing.html#run-rippled-locally">local <code>rippled</code> server</a>. You should adapt these instructions if you are using another <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a <a href="set-up-secure-signing.html#run-rippled-locally">local <code>rippled</code> server</a>. You should adapt these instructions if you are using another <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
 <h4 id="example-request">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request"><i class="fa fa-link"></i></a></h4>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
 
@@ -981,6 +981,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2229,7 +2234,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

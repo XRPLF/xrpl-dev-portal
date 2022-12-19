@@ -288,8 +288,8 @@
         <h1 id="ammdeposit">AMMDeposit<a aria-hidden="true" class="hover_anchor" href="#ammdeposit"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMDeposit.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- TODO: Update source link to merged version when available -->
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em></p>
-<p>Deposit funds into an Automated Market-Maker (AMM) instance and receive the AMM's liquidity provider tokens (<em>LP Tokens</em>) in exchange. You can deposit one or both of the assets in the AMM's pool.</p>
+<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em> <!-- SPELLING_IGNORE: 30d --></p>
+<p>Deposit funds into an <a href="automated-market-makers.html">Automated Market Maker</a> (AMM) instance and receive the AMM's liquidity provider tokens (<em>LP Tokens</em>) in exchange. You can deposit one or both of the assets in the AMM's pool.</p>
 <p>If successful, this transaction creates a <a href="trust-lines-and-issuing.html">trust line</a> to the AMM Account (limit 0) to hold the LP Tokens.</p>
 <h2 id="example-ammdeposit-json">Example AMMDeposit JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammdeposit-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span><span class="w"></span>
@@ -434,7 +434,7 @@
 </table>
 <p>Any other combination of these fields and flags is invalid.</p>
 <h3 id="single-asset-deposit-fee">Single Asset Deposit Fee<a aria-hidden="true" class="hover_anchor" href="#single-asset-deposit-fee"><i class="fa fa-link"></i></a></h3>
-<p>The fee for a single asset deposit is calculated to be the same as if you had used the AMM to trade part of the deposit amount for the other asset, then performed a double-asset deposit. The AMM's trading fee applies to the amount you would need to trade for, but not to the rest of the deposit. <em>For example, if the AMM's asset pool is split perfectly evenly between USD and EUR, and you try to deposit 100 USD, the amount of LP Tokens you receive is slightly less than if you had deposited 50 EUR + 50 USD, because you pay the trading fee to convert some of your USD to an equal amount of EUR.</em></p>
+<p>The fee for a single asset deposit is calculated to be the same as if you had used the AMM to trade part of the deposit amount for the other asset, then done a double-asset deposit. The AMM's trading fee applies to the amount you would need to trade for, but not to the rest of the deposit. <em>For example, if the AMM's asset pool is split perfectly evenly between USD and EUR, and you try to deposit 100 USD, the amount of LP Tokens you receive is slightly less than if you had deposited 50 EUR + 50 USD, because you pay the trading fee to convert some of your USD to an equal amount of EUR.</em></p>
 <p>The formula for how many LP Tokens you receive for a double-asset deposit is:</p>
 <figure><a href="img/amm-single-asset-deposit-formula.svg" title="L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="70 100 380 120" width="380" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/amm-single-asset-deposit-formula.svg__genericDefs"></defs><g><defs id="img/amm-single-asset-deposit-formula.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath2"><path d="M0 0 L0 30 L40 30 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath3"><path d="M0 0 L0 20 L160 20 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath4"><path d="M0 0 L0 30 L30 30 L30 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath5"><path d="M0 0 L0 80 L40 80 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath6"><path d="M0 0 L0 70 L40 70 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath7"><path d="M0 0 L0 50 L40 50 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath8"><path d="M0 0 L0 30 L70 30 L70 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath9"><path d="M0 0 L0 30 L180 30 L180 0 Z"></path></clippath></defs><g font-family="sans-serif" font-size="14px" transform="translate(170,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">1 +</text></g><g font-family="sans-serif" font-size="14px" transform="translate(200,140)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath3)" stroke="none" x="5" xml:space="preserve" y="18.1094">B - (F × (1 - W) × B)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(260,160)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">P</text></g><g font-family="sans-serif" font-size="60px" transform="translate(390,120)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath5)" stroke="none" x="5" xml:space="preserve" y="61.2188">]</text></g><g font-family="sans-serif" font-size="60px" transform="translate(150,120)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath6)" stroke="none" x="5" xml:space="preserve" y="61.2188">[</text></g><g font-family="sans-serif" font-size="40px" transform="translate(340,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="42.4844">)</text></g><g font-family="sans-serif" font-size="40px" transform="translate(160,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="42.4844">(</text></g><g font-family="sans-serif" font-size="14px" transform="translate(350,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">W</text></g><g font-family="sans-serif" font-size="14px" transform="translate(370,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">- 1</text></g><g font-family="sans-serif" font-size="14px" transform="translate(90,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="18.1094">L = T ×</text></g><g transform="translate(190,150)"><path clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath9)" d="M10.5 10.5 L160.5 10.5" fill="none"></path></g></g></svg></a></figure>
 <!-- TODO: improve graphic -->
@@ -491,9 +491,9 @@
 </tr>
 </tbody>
 </table>
-<p>You must specify <strong>exactly one</strong> of these flags, in addition to any <a href="transaction-common-fields.html#global-flags">global flags</a>.</p>
+<p>You must specify <strong>exactly one</strong> of these flags, plus any <a href="transaction-common-fields.html#global-flags">global flags</a>.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>In addition to errors that can occur for all transactions, AMMDeposit transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<p>Besides errors that can occur for all transactions, AMMDeposit transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -512,7 +512,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecAMM_BALANCE</code></td>
-<td style="text-align: left;">The AMM does not have enough of one of the assets to accept the deposit (for example, to satisfy the trade portion of a single-asset deposit) or the sender does not have enough of a given token.</td>
+<td style="text-align: left;">The AMM does not have enough of one of the assets to accept the deposit (for example, to satisfy the trade part of a single-asset deposit) or the sender does not have enough of a given token.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMM_TOKENS</code></td>
@@ -845,6 +845,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2093,7 +2098,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

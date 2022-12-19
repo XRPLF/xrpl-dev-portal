@@ -287,13 +287,13 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="monitor-incoming-payments-with-websocket">Monitor Incoming Payments with WebSocket<a aria-hidden="true" class="hover_anchor" href="#monitor-incoming-payments-with-websocket"><i class="fa fa-link"></i></a></h1>
-<p>This tutorial shows how to monitor for incoming <a href="payment-types.html">payments</a> using the <a href="http-websocket-apis.html">WebSocket <code>rippled</code> API</a>. Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.</p>
-<p>WebSocket follows a model where the client and server establish one connection, then send messages both ways through the same connection, which remains open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.<a href="#footnote-1">¹</a><a id="from-footnote-1"></a></p>
+<p>This tutorial shows how to monitor for incoming <a href="payment-types.html">payments</a> using the <a href="http-websocket-apis.html">WebSocket API</a>. Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.</p>
+<p>WebSocket follows a model where the client and server open one connection, then send messages both ways through the same connection, which stays open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.<a href="#footnote-1">¹</a><a id="from-footnote-1"></a></p>
 <p class="devportal-callout tip"><strong>Tip:</strong> The examples in this page use JavaScript so that the examples can run natively in a web browser. If you are developing in JavaScript, you can also use the <a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.js library for JavaScript <i aria-hidden="true" class="fa fa-external-link"></i></a> to simplify some tasks. This tutorial shows how to monitor for transactions <em>without</em> using a xrpl.js so that you can translate the steps to other programming languages that don't have a native XRP Ledger client library.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>The examples in this page use JavaScript and the WebSocket protocol, which are available in all major modern browsers. If you have some JavaScript knowledge and expertise in another programming language with a WebSocket client, you can follow along while adapting the instructions to the language of your choice.</li>
-<li>You need a stable internet connection and access to a <code>rippled</code> server. The embedded examples connect to Ripple's pool of public servers. If you <a href="install-rippled.html">run your own <code>rippled</code> server</a>, you can also connect to that server locally.</li>
+<li>You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you <a href="install-rippled.html">run your own <code>rippled</code> or Clio server</a>, you can also connect to that server locally.</li>
 <li>To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use <a class="external-link" href="https://github.com/MikeMcl/big.js/" target="_blank">big.js <i aria-hidden="true" class="fa fa-external-link"></i></a>. If you are working with <a href="tokens.html">tokens</a>, you need even more precision. For more information, see <a href="currency-formats.html#xrp-precision">Currency Precision</a>.</li>
 </ul>
 <!-- Big number support -->
@@ -333,7 +333,7 @@ function writeToConsole(console_selector, message) {
 <p>The above example opens a secure connection (<code>wss://</code>) to one of Ripple's public API servers on the <a href="xrp-test-net-faucet.html">Test Net</a>. To connect to a locally-running <code>rippled</code> server with the default configuration instead, open an <em>unsecured</em> connection (<code>ws://</code>) on port <strong>6006</strong> locally, using the following first line:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'ws://localhost:6006'</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p class="devportal-callout tip"><strong>Tip:</strong> By default, connecting to a local <code>rippled</code> server gives you access to the full set of <a href="admin-api-methods.html">admin methods</a> and admin-only data in some responses such as <a href="server_info.html">server_info</a>, in addition to the <a href="public-api-methods.html">public methods</a> that are available when you connect to public servers over the internet.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> By default, connecting to a local <code>rippled</code> server gives you access to the full set of <a href="admin-api-methods.html">admin methods</a> and admin-only data in some responses such as <a href="server_info.html">server_info</a>, plus the <a href="public-api-methods.html">public methods</a> that are available when you connect to public servers over the internet.</p>
 <p>Example:</p>
 <div class="interactive-block" data-stepnumber="1" data-totalsteps="4" id="interactive-connect">
 <div class="interactive-block-inner">
@@ -448,7 +448,7 @@ $("#connect-socket-button").click((event) => {
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">})</span><span class="w"></span>
 
-<span class="c1">// Demonstrate api_request functionality</span><span class="w"></span>
+<span class="c1">// Show api_request functionality</span><span class="w"></span>
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">pingpong</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Ping..."</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api_request</span><span class="p">({</span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s2">"ping"</span><span class="p">})</span><span class="w"></span>
@@ -830,8 +830,8 @@ $("#tx_read").click((event) => {
 </ul>
 <!-- -->
 <h2 id="other-programming-languages">Other Programming Languages<a aria-hidden="true" class="hover_anchor" href="#other-programming-languages"><i class="fa fa-link"></i></a></h2>
-<p>Many programming languages have libraries for sending and receiving data over a WebSocket connection. If you want a head-start on communicating with <code>rippled</code>'s WebSocket API in a language other than JavaScript, the following examples demonstrate similar functionality:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="go" href="#code-0-0">Go</a></li></ul>
+<p>Many programming languages have libraries for sending and receiving data over a WebSocket connection. If you want a head-start on communicating with <code>rippled</code>'s WebSocket API in a language other than JavaScript, the following examples show how:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="go" href="#code-0-0">Go</a></li><li><a class="python" href="#code-0-1">Python</a></li></ul>
 
 <div class="code_sample go" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w"></span>
 
@@ -930,6 +930,69 @@ $("#tx_read").click((event) => {
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">websockets</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Using client libraries for ASYNC functions and websockets are needed in python.</span>
+<span class="c1"># To install, use terminal command 'pip install asyncio &amp;&amp; pip install websockets'</span>
+
+<span class="c1"># Handles incoming messages</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">message</span>
+
+<span class="c1"># Use this to send API requests</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">api_request</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">websocket</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">options</span><span class="p">))</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">e</span>
+
+<span class="c1"># Tests functionality of API_Requst</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">pingpong</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"on_open_ping_1"</span><span class="p">,</span>
+        <span class="s2">"command"</span><span class="p">:</span> <span class="s2">"ping"</span>
+    <span class="p">}</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api_request</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">websocket</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">do_subscribe</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api_request</span><span class="p">({</span>
+        <span class="s1">'command'</span><span class="p">:</span> <span class="s1">'subscribe'</span><span class="p">,</span>
+        <span class="s1">'accounts'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe'</span><span class="p">]</span>
+        <span class="p">},</span> <span class="n">websocket</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">command</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'success'</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Successfully Subscribed!'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error subscribing: "</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Received message from server'</span><span class="p">,</span> <span class="k">await</span> <span class="n">handler</span><span class="p">(</span><span class="n">websocket</span><span class="p">))</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="c1"># Opens connection to ripple testnet</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">websocket</span> <span class="ow">in</span> <span class="n">websockets</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+           <span class="k">await</span> <span class="n">pingpong</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
+           <span class="k">await</span> <span class="n">do_subscribe</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">websockets</span><span class="o">.</span><span class="n">ConnectionClosed</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Disconnected...'</span><span class="p">)</span>
+
+<span class="c1"># Runs the webhook on a loop</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Restarting Loop'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </code></pre></div></div>
 </div>
 <p class="devportal-callout tip"><strong>Tip:</strong> Don't see the programming language of your choice? Click the "Edit on GitHub" link at the top of this page and contribute your own sample code!</p>
@@ -1247,6 +1310,11 @@ $("#tx_read").click((event) => {
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2495,7 +2563,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

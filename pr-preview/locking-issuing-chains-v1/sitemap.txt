@@ -51,6 +51,7 @@ https://xrpl.org/issuing-and-operational-addresses.html
 https://xrpl.org/paths.html
 https://xrpl.org/demurrage.html
 https://xrpl.org/decentralized-exchange.html
+https://xrpl.org/automated-market-makers.html
 https://xrpl.org/offers.html
 https://xrpl.org/autobridging.html
 https://xrpl.org/ticksize.html
@@ -265,7 +266,7 @@ https://xrpl.org/ticketcreate.html
 https://xrpl.org/trustset.html
 https://xrpl.org/xchainaddattestation.html
 https://xrpl.org/xchaincommit.html
-https://xrpl.org/xchaincreateaccountcommit.html
+https://xrpl.org/xchainaccountcreatecommit.html
 https://xrpl.org/xchaincreateclaimid.html
 https://xrpl.org/xchaincreatebridge.html
 https://xrpl.org/xchainmodifybridge.html

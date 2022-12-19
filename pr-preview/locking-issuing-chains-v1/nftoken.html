@@ -298,15 +298,16 @@
 <span class="w">    </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>Unlike other objects, <code>NFToken</code> has no field to identify the object type or current owner of the object. <code>NFToken</code>objects are grouped into <code>NFTokenPages</code> that implicitly define the object type and identify the owner.</p>
+<p>Unlike full-fledged <a href="ledger-object-types.html">ledger entries</a>, <code>NFToken</code> has no field to identify the object type or current owner of the object. <code>NFToken</code> objects are grouped into pages that implicitly define the object type and identify the owner.</p>
 <h2 id="nftokenid">NFTokenID<a aria-hidden="true" class="hover_anchor" href="#nftokenid"><i class="fa fa-link"></i></a></h2>
+<!-- SPELLING_IGNORE: nftokenid -->
 <p><code>NFTokenID</code>, optional, string, Hash256</p>
 <p>This composite field uniquely identifies a token, and consists of the following sections.</p>
 <ol>
 <li>16 bits that identify flags or settings specific to the NFToken</li>
 <li>16 bits that encode the transfer fee associated with this NFToken, if any</li>
 <li>A 160-bit account identifier of the issuer</li>
-<li>A 32-bit issuer-specified <a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank">NFTokenTaxon <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li>A 32-bit issuer-specified <a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank"><code>NFTokenTaxon</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li>An (automatically generated) monotonically increasing 32-bit sequence number.</li>
 </ol>
 <p><img alt="Token ID Breakdown" src="img/nftoken1.png" title="Token ID Breakdown"/></p>
@@ -351,9 +352,10 @@
 </table>
 <p><code>NFToken</code> flags are immutable: they can only be set during the <a href="nftokenmint.html">NFTokenMint transaction</a> and cannot be changed later.</p>
 <h3 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h3>
-<p>The example sets three flags: <code>lsfBurnable</code> (<code>0x0001</code>), <code>lsfOnlyXRP</code> (<code>0x0002</code>), <code>lsfTransferable</code> (<code>0x0008</code>). 1+2+8 = 11, or 0x000B in big endian format.</p>
+<p>The example sets three flags: <code>lsfBurnable</code> (<code>0x0001</code>), <code>lsfOnlyXRP</code> (<code>0x0002</code>), <code>lsfTransferable</code> (<code>0x0008</code>). 1+2+8 = 11, or <code>0x000B</code> in big endian format.</p>
 <p><img alt="Flags" src="img/nftokena.png" title="Flags"/></p>
 <h3 id="transferfee">TransferFee<a aria-hidden="true" class="hover_anchor" href="#transferfee"><i class="fa fa-link"></i></a></h3>
+<!-- SPELLING_IGNORE: transferfee -->
 <p>The <code>TransferFee</code> value specifies the percentage fee, in units of 1/100,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 0.001% or 1/10 of a basis point (bps), allowing transfer rates between 0% and 50%.</p>
 <h3 id="example-1">Example<a aria-hidden="true" class="hover_anchor" href="#example-1"><i class="fa fa-link"></i></a></h3>
 <p>This value sets the transfer fee to 314, or 0.314%.</p>
@@ -362,21 +364,22 @@
 <p>The third section of the <code>NFTokenID</code> is a big endian representation of the issuer’s public address.</p>
 <p><img alt="Issuer Address" src="img/nftokenc.png" title="Issuer Address"/></p>
 <h3 id="nftokentaxon">NFTokenTaxon<a aria-hidden="true" class="hover_anchor" href="#nftokentaxon"><i class="fa fa-link"></i></a></h3>
+<!-- SPELLING_IGNORE: nftokentaxon -->
 <p>The fourth section is a <code>NFTokenTaxon</code> created by the issuer.</p>
-<p><img alt="NFTokenTaxon" src="img/nftokend.png" title="NFTokenTaxon"/></p>
-<p>An issuer might issue several <code>NFToken</code> objects with the same <code>NFTokenTaxon</code>; to ensure that <code>NFToken</code> objects are spread across multiple pages, the <code>NFTokenTaxon</code> is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the <code>NFToken</code>, but the unscrambled value is the actual NFTokenTaxon.</p>
+<p><img alt="Diagram of NFTokenTaxon bits" src="img/nftokend.png"/></p>
+<p>An issuer might issue several <code>NFToken</code> objects with the same <code>NFTokenTaxon</code>; to ensure that <code>NFToken</code> objects are spread across multiple pages, the <code>NFTokenTaxon</code> is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the <code>NFToken</code>, but the unscrambled value is the actual <code>NFTokenTaxon</code>.</p>
 <p><img alt="Dumb Sequential" src="img/nftokene.png" title="Dumb Sequential"/></p>
 <p>Notice that the scrambled version of the <code>NFTokenTaxon</code> is <code>0xBC8B858E</code>: the scrambled version of the <code>NFTokenTaxon</code> specified by the issuer. But the <em>actual</em> value of the <code>NFTokenTaxon</code> is the unscrambled value.</p>
 <h3 id="token-sequence">Token Sequence<a aria-hidden="true" class="hover_anchor" href="#token-sequence"><i class="fa fa-link"></i></a></h3>
 <p>The fifth section is a sequence number that increases with each <code>NFToken</code> the issuer creates. The <a href="nftokenmint.html">NFTokenMint transaction</a> sets this part of the <code>NFTokenID</code> automatically based on the <code>MintedTokens</code> field of the <code>Issuer</code> account. If the issuer's <a href="accountroot.html">AccountRoot object</a> does not have a <code>MintedTokens</code> field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.</p>
 <h2 id="uri">URI<a aria-hidden="true" class="hover_anchor" href="#uri"><i class="fa fa-link"></i></a></h2>
-<p>The URI field points to the data and/or metadata associated with the <code>NFToken</code>. This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">"data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even an opaque issuer-specific encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.</p>
-<p>One drawback of using this method is that the value is immutable, so it commits the issuer to hosting the data in perpetuity.</p>
-<h1 id="retrieving-nftoken-data-and-metadata">Retrieving <code>NFToken</code> Data and Metadata<a aria-hidden="true" class="hover_anchor" href="#retrieving-nftoken-data-and-metadata"><i class="fa fa-link"></i></a></h1>
+<p>The URI field points to the data or metadata associated with the <code>NFToken</code>. This field does not need to be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC 2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even a totally custom encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The URI is immutable, so no one can update it if, for example, it links to a website that no longer exists.</p>
+<h1 id="retrieving-nftoken-data-and-metadata">Retrieving NFToken Data and Metadata<a aria-hidden="true" class="hover_anchor" href="#retrieving-nftoken-data-and-metadata"><i class="fa fa-link"></i></a></h1>
 <p>To minimize the footprint of <code>NFTokens</code> without sacrificing functionality or imposing unnecessary restrictions, XRPL NFTs do not have arbitrary data fields. Instead, data is maintained separately and referenced by the <code>NFToken</code>. The URI provides a reference to immutable content for the <code>Hash</code> and any mutable data for the <code>NFToken</code> object.</p>
-<p>The <code>URI</code> field is especially useful for referring to non-traditional Peer-to-Peer (P2P) URLs. For example, a <code>minter</code> that stores <code>NFToken</code> data or metadata using the Inter Planetary File System (IPFS) can use the <code>URI</code> field to refer to data on IPFS in different ways, each of which is suited to different use-cases. For more context on types of IPFS links that can be used to store NFT data, see <a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them" target="_blank">Best Practices for Storing NFT Data using IPFS <i aria-hidden="true" class="fa fa-external-link"></i></a>,</p>
-<p>An alternative to the URI approach is for issuers of <code>NFToken</code> objects to set the <code>Domain</code> field of their issuing account to the correct domain, and offer an API for clients that want to lookup the data or metadata associated with a particular <code>NFToken</code>. Note that using this mechanism <em>requires</em> the <code>minter</code> to acquire a domain name and set the domain name for their minting account, but does not require the <code>minter</code> to necessarily operate a server nor other service to provide the ability to query this data; instead, a <code>minter</code> can "redirect" queries to a data provider (for example, to a marketplace, registry or other service).</p>
-<p>Your implementation should first attempt to check for the presence of the <code>URI</code> field to retrieve the associated data and/or metadata. If the <code>URI</code> field does not exist, the implementation should check for the presence of <code>Domain</code> field. If neither field exists, nothing happens. Implementations must be prepared to handle HTTP redirections (for example, using HTTP responses 301, 302, 307 and 308) from the URI.</p>
+<p>The <code>URI</code> field is especially useful for referring to non-traditional Peer-to-Peer (P2P) URLs. For example, a minter that stores <code>NFToken</code> data or metadata using the Inter Planetary File System (IPFS) can use the <code>URI</code> field to refer to data on IPFS in different ways, each of which is suited to different use-cases. For more context on types of IPFS links that can be used to store NFT data, see <a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them" target="_blank">Best Practices for Storing NFT Data using IPFS <i aria-hidden="true" class="fa fa-external-link"></i></a>,</p>
+<p>An alternative to the URI approach is for issuers of <code>NFToken</code> objects to set the <code>Domain</code> field of their issuing account to the correct domain, and offer an API for clients that want to lookup the data or metadata associated with a particular <code>NFToken</code>. Note that using this mechanism <em>requires</em> the minter to acquire a domain name and set the domain name for their minting account, but does not require the minter to necessarily run a server nor other service to provide the ability to query this data; instead, a minter can "redirect" queries to a data provider (for example, to a marketplace, registry or other service).</p>
+<p>Your implementation should first attempt to check for the presence of the <code>URI</code> field to retrieve the associated data or metadata. If the <code>URI</code> field does not exist, the implementation should check for the presence of <code>Domain</code> field. If neither field exists, nothing happens. Implementations must be prepared to handle HTTP redirections (for example, using HTTP responses 301, 302, 307 and 308) from the URI.</p>
 <h2 id="txt-record-format">TXT Record Format<a aria-hidden="true" class="hover_anchor" href="#txt-record-format"><i class="fa fa-link"></i></a></h2>
 <p>The format for a text record is as follows.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{nftokenid}"
@@ -679,6 +682,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1927,7 +1935,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -487,7 +487,7 @@
 <tr>
 <td style="text-align: left;"><code>ledger.close_flags</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;">A bit-map of flags relating to the closing of this ledger. Currently, the ledger has only one flag defined for <code>close_flags</code>: <strong><code>sLCF_NoConsensusTime</code></strong> (value 1). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but build otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a <code>close_time</code> that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>close_time</code>.)</td>
+<td style="text-align: left;">A bit-map of <a href="ledger-header.html#close-flags">flags relating to the closing of this ledger</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_time</code></td>
@@ -1272,6 +1272,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2520,7 +2525,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

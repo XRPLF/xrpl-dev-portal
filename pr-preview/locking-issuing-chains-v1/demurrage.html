@@ -281,7 +281,7 @@
 <p><a class="external-link" href="http://en.wikipedia.org/wiki/Demurrage_%28currency%29" target="_blank">Demurrage <i aria-hidden="true" class="fa fa-external-link"></i></a> is a negative interest rate on assets held that represents the cost of holding those assets. To represent the demurrage on a token in the XRP Ledger, you can track it using a custom <a href="currency-formats.html#currency-codes">currency code</a> that indicates the demurrage rate. This effectively creates separate versions of the token for each varying amount of demurrage. Client applications can support this by representing the demurraging currency code with an annual percentage rate alongside the currency code. For example: "XAU (-0.5%pa)".</p>
 <h2 id="representing-demurraging-token-amounts">Representing Demurraging Token Amounts<a aria-hidden="true" class="hover_anchor" href="#representing-demurraging-token-amounts"><i class="fa fa-link"></i></a></h2>
 <p>Rather than continuously update all amounts in the XRP Ledger, this approach divides amounts of interest-bearing or demurraging tokens into two types of amount: "ledger values" recorded in the XRP Ledger, and "display values" shown to people. The "ledger values" represent the value of the currency at a fixed point, namely the "Ripple Epoch" of midnight January 1, 2000. The "display values" represent the amount at a later point in time (usually the current time) after calculating continuous interest or demurrage from the Ripple Epoch until that time.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not reflect actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not show actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.</p>
 <p>Thus, client software must apply two conversions:</p>
 <ul>
 <li>Taking display values at a given time and converting them to ledger values to be recorded.</li>
@@ -344,7 +344,7 @@
 </ul>
 <h3 id="ripple-lib-support">ripple-lib Support<a aria-hidden="true" class="hover_anchor" href="#ripple-lib-support"><i class="fa fa-link"></i></a></h3>
 <p>Demurrage was supported in ripple-lib versions <strong>0.7.37</strong> through <strong>0.12.9</strong>. Demurrage is <strong><em>not supported</em></strong> in most modern libraries.</p>
-<p>The following code samples demonstrate how to use compatible versions of ripple-lib to convert between ledger values and display values. Also see the <a class="external-link" href="https://ripple.github.io/ripple-demurrage-tool/" target="_blank">Ripple Demurrage Calculator <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>The following code samples show how to use compatible versions of ripple-lib to convert between ledger values and display values. Also see the <a class="external-link" href="https://ripple.github.io/ripple-demurrage-tool/" target="_blank">Ripple Demurrage Calculator <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>To convert from a display value to a ledger value, use <code>Amount.from_human()</code>:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1">// create an Amount object for the display amount of the demurring currency</span><span class="w"></span>
 <span class="c1">// and pass in a reference_date that represents the current date</span><span class="w"></span>
@@ -665,6 +665,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1913,7 +1918,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

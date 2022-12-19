@@ -295,7 +295,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="look-up-transaction-results">Look Up Transaction Results<a aria-hidden="true" class="hover_anchor" href="#look-up-transaction-results"><i class="fa fa-link"></i></a></h1>
-<p>To use the XRP Ledger effectively, you need to be able to understand <a href="transaction-basics.html">transaction</a> outcomes: did the transaction succeed? What did it accomplish? If it failed, why?</p>
+<p>To use the XRP Ledger effectively, you need to be able to understand <a href="transaction-basics.html">transaction</a> outcomes: did the transaction succeed? What did it do? If it failed, why?</p>
 <p>The XRP Ledger is a shared system, with all data recorded publicly and carefully, securely updated with each new <a href="ledgers.html">ledger version</a>. Anyone can look up the exact outcome of any transaction and read the <a href="transaction-metadata.html">transaction metadata</a> to see what it did.</p>
 <p>This document describes, at a low level, how to know why a transaction reached the outcome it did. For an end-user, it is easier to look at a processed view of a transaction. For example, you can <a class="external-link" href="https://xrpcharts.ripple.com/#/transactions/" target="_blank">use XRP Charts to get an English-language description of any recorded transaction <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
@@ -303,7 +303,7 @@
 <ul>
 <li>Know which transaction you want to understand. If you know the transaction's <a href="transaction-basics.html#identifying-transactions">identifying hash</a>, you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.</li>
 <li>Have access to a <code>rippled</code> server that provides reliable information and has the necessary history for when the transaction was submitted.<ul>
-<li>For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be sufficient, as long as it maintains sync with the network during that time.</li>
+<li>For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be enough, as long as it maintains sync with the network during that time.</li>
 <li>For outcomes of older transactions, you may want to use a <a href="ledger-history.html#full-history">full-history server</a>.</li>
 </ul>
 </li>
@@ -394,7 +394,7 @@
 </tbody>
 </table>
 <p>Most of the metadata is contained in <a href="transaction-metadata.html#affectednodes">the <code>AffectedNodes</code> array</a>. What to look for in this array depends on the type of transaction. Almost every transaction modifies the sender's <a href="accountroot.html">AccountRoot object</a> to destroy the XRP <a href="transaction-cost.html">transaction cost</a> and increase the <a href="basic-data-types.html#account-sequence">account's Sequence number</a>.</p>
-<p><strong>Info:</strong> One exception to this rule is for <a href="pseudo-transaction-types.html">pseudo-transactions</a>, which aren't sent from a real account and thus do not modify an AccountRoot object. There are other exceptions that modify an AccountRoot object without changing its <code>Balance</code> field: <a href="transaction-cost.html#key-reset-transaction">free key reset transactions</a> do not change the sender's XRP balance; and in the unlikely scenario that a transaction causes an account to receive exactly as much XRP as it destroys, the account's Balance shows no net change. (The transaction cost is reflected elsewhere in the metadata, from wherever the account received the XRP.)</p>
+<p><strong>Info:</strong> One exception to this rule is for <a href="pseudo-transaction-types.html">pseudo-transactions</a>, which aren't sent from a real account and thus do not modify an AccountRoot object. There are other exceptions that modify an AccountRoot object without changing its <code>Balance</code> field: <a href="transaction-cost.html#key-reset-transaction">free key reset transactions</a> do not change the sender's XRP balance; and in the unlikely scenario that a transaction causes an account to receive exactly as much XRP as it destroys, the account's Balance shows no net change. (The net decrease in XRP occurs elsewhere in the metadata, debited from wherever the account sent the XRP.)</p>
 <p>This example shows the full response from step 1 above. See if you can figure out what changes it made to the ledger:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span><span class="w"></span>
@@ -452,7 +452,7 @@
 <p>The XRP <code>Balance</code> in this account changes from <code>396015176</code> to <code>396015164</code> <a href="basic-data-types.html#specifying-currency-amounts">drops of XRP</a>. This decrease of exactly 12 drops represents the <a href="transaction-cost.html">transaction cost</a>, as specified in the <code>Fee</code> field of the transaction.</p>
 </li>
 <li>
-<p>The <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code></a> changes to reflect that this transaction is now the one most recently sent from this address.</p>
+<p>The <a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code></a> changes to show that this transaction is now the one most recently sent from this address.</p>
 </li>
 <li>
 <p>The previous transaction to affect this account was the transaction <code>E710CADE7FE9C26C51E8630138322D80926BE91E46D69BF2F36E6E4598D6D0CF</code>, which executed in ledger version 46447387, as specified in the <code>PreviousTxnID</code> and <code>PreviousTxnLgrSeq</code> fields. (This may be useful if you want to walk backwards through the account's transaction history.)</p>
@@ -518,7 +518,7 @@
 <p class="devportal-callout tip"><strong>Tip:</strong> The order that modified objects are presented in the metadata does not necessarily match the order those objects were visited while processing a payment. To better understand payment execution, it may help to reorder <code>AffectedNodes</code> members to reconstruct the paths the funds took through the ledger.</p>
 <p>Cross-currency payments consume <a href="offer.html">Offers</a> in part or entirely to change between different currency codes and issuers. If a transaction shows <code>DeletedNode</code> objects for <code>Offer</code> types, that can indicate an Offer that was fully consumed, or an Offer that was found to be <a href="offers.html#lifecycle-of-an-offer">expired or unfunded</a> at the time of processing. If a transaction shows a <code>ModifiedNode</code> of type <code>Offer</code>, that indicates an Offer that was partially consumed.</p>
 <p>The <a href="trustset.html"><code>QualityIn</code> and <code>QualityOut</code> settings of trust lines</a> can affect how one side of a trust line values the token, so that the numeric change in balances is different from how the sender values that token. The <code>delivered_amount</code> shows how much was delivered as valued by the recipient.</p>
-<p>If the amount to be sent or received is outside of the <a href="currency-formats.html#token-precision">token precision</a>, it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. Therefore, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the token. (XRP is never rounded, so this is not possible with XRP.)</p>
+<p>If the amount to be sent or received is outside of the <a href="currency-formats.html#token-precision">token precision</a>, it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. As a result, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the token. (XRP is never rounded, so this is not possible with XRP.)</p>
 <p>Depending on the length of the <a href="paths.html">paths</a>, the metadata for cross-currency payments can be <em>long</em>. For example, <a class="external-link" href="https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B" target="_blank">transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B <i aria-hidden="true" class="fa fa-external-link"></i></a> delivered 2.788 GCB issued by <code>rHaaans...</code>, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from <code>r9ZoLsJ...</code> to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb --></p>
 <h3 id="offers">Offers<a aria-hidden="true" class="hover_anchor" href="#offers"><i class="fa fa-link"></i></a></h3>
 <p>An <a href="offercreate.html">OfferCreate transaction</a> may or may not create an object in the ledger, depending on how much was matched and whether the transaction used flags such as <code>tfImmediateOrCancel</code>. Look for a <code>CreatedNode</code> entry with <code>"LedgerEntryType": "Offer"</code> to see if the transaction added a new Offer to the ledger's order books. For example:</p>
@@ -573,7 +573,7 @@
 <p>If an OfferCreate transaction shows a <code>CreatedNode</code> of type <code>RippleState</code>, that indicates that <a href="offers.html#offers-and-trust">the Offer created a trust line</a> to hold a token received in the trade.</p>
 <h3 id="escrows">Escrows<a aria-hidden="true" class="hover_anchor" href="#escrows"><i class="fa fa-link"></i></a></h3>
 <p>A successful <a href="escrowcreate.html">EscrowCreate transaction</a> creates an <a href="escrow-object.html">Escrow object</a> in the ledger. Look for a <code>CreatedNode</code> entry of type <code>Escrow</code>. The <code>NewFields</code> should show an <code>Amount</code> equal to the amount of XRP escrowed, and other properties as specified.</p>
-<p>A successful EscrowCreate transaction also debits the same amount of XRP from the sender. Look for a <code>ModifiedNode</code> of type <code>AccountRoot</code>, where the <code>Account</code> in the final fields matches the address from the <code>Account</code> in the transaction instructions. The <code>Balance</code> should show the decrease in XRP due to the escrowed XRP (in addition to the XRP destroyed to pay the transaction cost).</p>
+<p>A successful EscrowCreate transaction also debits the same amount of XRP from the sender. Look for a <code>ModifiedNode</code> of type <code>AccountRoot</code>, where the <code>Account</code> in the final fields matches the address from the <code>Account</code> in the transaction instructions. The <code>Balance</code> should show the decrease in XRP due to the escrowed XRP (and the XRP destroyed to pay the transaction cost).</p>
 <p>A successful <a href="escrowfinish.html">EscrowFinish transaction</a> modifies the <code>AccountRoot</code> of the recipient to increase their XRP balance (in the <code>Balance</code> field), deletes the <code>Escrow</code> object, and reduces the owner count of the escrow creator. Since the escrow's creator, recipient, and finisher may all be different accounts or the same, this can result in <em>one to three</em> <code>ModifiedNode</code> objects of type <code>AccountRoot</code>. A successful <a href="escrowcancel.html">EscrowCancel transaction</a> is very similar, except it sends the XRP back to the original creator of the escrow.</p>
 <p>Of course, an EscrowFinish can only be successful if it meets the conditions of the escrow, and an EscrowCancel can only be successful if the expiration of the Escrow object is before the close time of the previous ledger.</p>
 <p>Escrow transactions also do normal <a href="#general-purpose-bookkeeping">bookkeeping</a> for adjusting the sender's owner reserve and the directories of the accounts involved.</p>
@@ -993,6 +993,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -2241,7 +2246,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

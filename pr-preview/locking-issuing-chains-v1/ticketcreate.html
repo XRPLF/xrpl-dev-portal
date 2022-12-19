@@ -320,7 +320,7 @@
 <p>If the transaction cannot create <em>all</em> of the requested Tickets (either due to the 250-Ticket limit or the <a href="reserves.html">owner reserve</a>), it fails and creates no Tickets. To look up how many Tickets an account currently owns, use the <a href="account_info.html">account_info method</a> and check the <code>account_data.TicketCount</code> field.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> This transaction increases the sending account's <a href="basic-data-types.html#account-sequence">sequence number</a> by 1 <em>plus</em> the number of tickets created (<code>TicketCount</code>). This is the only transaction that increases an account's sequence number by more than 1.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>In addition to errors that can occur for all transactions, TicketCreate transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<p>Besides errors that can occur for all transactions, TicketCreate transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -636,6 +636,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1884,7 +1889,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

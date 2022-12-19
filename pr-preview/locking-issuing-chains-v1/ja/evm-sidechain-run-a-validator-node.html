@@ -297,7 +297,7 @@
     <div class="content">
         <h1 id="run-a-validator-node-on-an-evm-sidechain">Run a Validator Node on an EVM Sidechain<a aria-hidden="true" class="hover_anchor" href="#run-a-validator-node-on-an-evm-sidechain"><i class="fa fa-link"></i></a></h1>
 <h2 id="create-your-validator">Create Your Validator<a aria-hidden="true" class="hover_anchor" href="#create-your-validator"><i class="fa fa-link"></i></a></h2>
-<p>Use your node consensus public key (<code>exrpvalconspub...</code>) to create a new validator by staking XRP tokens. You can find your validator pubkey by running:</p>
+<p>Use your node consensus public key (<code>exrpvalconspub...</code>) to create a new validator by staking XRP tokens. You can find your validator public key by running:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">exrpd tendermint show-validator
 </code></pre></div>
 <p>To create your validator on Devnet, use the following command:</p>
@@ -315,12 +315,12 @@
   --from<span class="o">=</span>&lt;key_name&gt;
 </code></pre></div>
 <p class="devportal-callout note"><strong>Note</strong> When specifying commission parameters, the <code>commission-max-change-rate</code> is used to measure % <em>point</em> change over the <code>commission-rate</code>. For example, 1% to 2% is a 100% rate increase, but only 1 percentage point.</p>
-<p class="devportal-callout note"><strong>Note</strong> <code>Min-self-delegation</code> is a strictly positive integer that represents the minimum amount of self-delegated voting power your validator must always have. A <code>min-self-delegation</code> of <code>1000000</code> means your validator will never have a self-delegation lower than <code>1 axrp</code>.</p>
+<p class="devportal-callout note"><strong>Note</strong> <code>Min-self-delegation</code> is a strictly positive integer that represents the minimum amount of self-delegated voting power your validator must always have. A <code>min-self-delegation</code> of <code>1000000</code> means your validator will never have a self-delegation lower than <code>1 axrp</code>. <!-- STYLE_OVERRIDE: will --></p>
 <p>You can confirm that you are in the validator set by using a third-party explorer.</p>
 <h2 id="edit-validator-description">Edit Validator Description<a aria-hidden="true" class="hover_anchor" href="#edit-validator-description"><i class="fa fa-link"></i></a></h2>
-<p>You can edit your validator's public description. This info is to identify your validator, and is relied on by delegators when they decide to stake XRP tokens to a particular validator. Make sure to provide input for every flag below. If a flag is not included in the command, the field defaults to empty (<code>--moniker</code> defaults to the machine name), if the field has never been set, or remains the same, if it has been set in the past.</p>
+<p>You can edit your validator's public description. This info identifies your validator, and <em>delegators</em> use it when they decide to stake XRP tokens to a particular validator. Make sure to provide input for every flag below. If a flag is not included in the command, the field defaults to empty (<code>--moniker</code> defaults to the machine name), if the field has never been set, or remains the same, if it has been set in the past. <!-- SPELLING_IGNORE: delegators --><!-- STYLE_OVERRIDE: defaults to --></p>
 <p>The <key_name> specifies which validator you are editing. If you choose to not include certain flags, remember that the --from flag must be included to identify the validator to update.</key_name></p>
-<p>The <code>--identity</code> can be used as to verify identity with systems like Keybase or UPort. When using with Keybase <code>--identity</code> must be populated with a 16-digit string that is generated with a <a class="external-link" href="https://keybase.io/" target="_blank">keybase.io <i aria-hidden="true" class="fa fa-external-link"></i></a> account. It is a cryptographically secure method of verifying your identity across multiple online networks. The Keybase API allows us to retrieve your Keybase avatar. This is how you can add a logo to your validator profile.</p>
+<p>The <code>--identity</code> can be used as to verify identity with systems like Keybase or UPort. When using with Keybase <code>--identity</code> must be populated with a 16-digit string that is generated with a <a class="external-link" href="https://keybase.io/" target="_blank">keybase.io <i aria-hidden="true" class="fa fa-external-link"></i></a> account. It is a cryptographically secure method of verifying your identity across multiple online networks. The Keybase API allows us to retrieve your Keybase avatar. This is how you can add a logo to your validator profile. <!-- SPELLING_IGNORE: uport --></p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">exrpd tx staking edit-validator
   --moniker<span class="o">=</span><span class="s2">"&lt;your_custom_moniker&gt;"</span> <span class="se">\</span>
   --website<span class="o">=</span><span class="s2">"https://xrpl.org"</span> <span class="se">\</span>
@@ -346,14 +346,15 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">exrpd query slashing signing-info &lt;validator-pubkey&gt; --chain-id<span class="o">=</span>&lt;chain_id&gt;
 </code></pre></div>
 <h2 id="unjail-validator">Unjail Validator<a aria-hidden="true" class="hover_anchor" href="#unjail-validator"><i class="fa fa-link"></i></a></h2>
-<p>When a validator is "jailed" for downtime, you must submit an <code>Unjail</code> transaction from the operator account in order to restore block proposer awards (depending on the zone fee distribution).</p>
+<!-- SPELLING_IGNORE: unjail -->
+<p>When a validator is "jailed" for downtime, you must submit an <code>Unjail</code> transaction from the operator account to restore block proposer awards (depending on the zone fee distribution).</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">exrpd tx slashing unjail --from<span class="o">=</span>&lt;key_name&gt; --chain-id<span class="o">=</span>&lt;chain_id&gt;
 </code></pre></div>
 <h2 id="confirm-your-validator-is-running">Confirm Your Validator is Running<a aria-hidden="true" class="hover_anchor" href="#confirm-your-validator-is-running"><i class="fa fa-link"></i></a></h2>
 <p>Your validator is active if the following command returns anything:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">exrpd query tendermint-validator-set <span class="p">|</span> grep <span class="s2">"</span><span class="k">$(</span>exrpd tendermint show-address<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
-<p>You should now see your validator in one of the Exrp explorers. You are looking for the <code>bech32</code> encoded <code>address</code> in the <code>~/.exprd/config/priv_validator.json</code> file.</p>
+<p>You should now see your validator in one of the Exrp explorers. You are looking for the <code>bech32</code> encoded <code>address</code> in the <code>~/.exprd/config/priv_validator.json</code> file. <!-- SPELLING_IGNORE: exrp --></p>
 <p class="devportal-callout note"><strong>Note</strong> To be in the validator set, you must have more total voting power than the 100th validator.</p>
 <h2 id="halting-your-validator">Halting Your Validator<a aria-hidden="true" class="hover_anchor" href="#halting-your-validator"><i class="fa fa-link"></i></a></h2>
 <p>When attempting to perform routine maintenance or planning for an upcoming coordinated upgrade, it can be useful to have your validator systematically and gracefully halt. Set the <code>halt-height</code> to the height at which you want your node to shut down, or pass the <code>--halt-height</code> flag to <code>exrpd</code>. The node shuts down with a 0 exit code at that given height after committing the block.</p>
@@ -648,6 +649,11 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1199,7 +1205,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       
@@ -1891,7 +1897,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xchaincreateaccountcommit.html">XChainCreateAccountCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
