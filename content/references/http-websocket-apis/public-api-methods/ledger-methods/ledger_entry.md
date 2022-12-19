@@ -567,11 +567,11 @@ rippled json ledger_entry '{ "ticket": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYf
 
 ### Get Bridge Object
 
-Retrieve a [Bridge object](bridge.html) which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. _(Added by the [Sidechains amendment][])_
+Retrieve a `Bridge` object which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. _(Added by the Sidechains amendment)_
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `bridge`                | Object or String           | The [[Bridge object](bridge.html) to retrieve. |
+| `bridge`                | Object or String           | The `Bridge` object to retrieve. |
 | ``          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
 
 <!-- MULTICODE_BLOCK_START -->
@@ -619,11 +619,11 @@ rippled json ledger_entry '{ "bridge": { "issuing_chain_door": "rKeSSvHvaMZJp9yk
 
 ### Get xchain_claim_id
 
-Retrieve a [Crosschain Claim ID object](xchains.html). Can be provided as string (object ID of the crosschain claim) or as an object. _(Added by the [Sidechains amendment][])_
+Retrieve a [Crosschain Claim ID object](xchains.html). Can be provided as string (object ID of the crosschain claim) or as an object. _(Added by the Sidechains amendment)_
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `bridge`                | Object or String           | The [[Bridge object](bridge.html) to retrieve. |
+| `bridge`                | Object or String           | The `Bridge` object to retrieve. |
 | ``          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
 
 <!-- MULTICODE_BLOCK_START -->
@@ -675,12 +675,7 @@ rippled json ledger_entry '{ "xchain_claim_id": { "issuing_chain_door": "rKeSSvH
 
 The `xchain_create_account_claim_id` object is created when the sidechain is first notified (via an attestation) that a transaction occurred in the locking chain, and is removed when a quorum of attestations is reached. 
 
-Retrieve a [xchain_create_account_claim_id object](bridge.html) which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. _(Added by the [Sidechains amendment][])_
-
-| `Field`                 | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `bridge`                | Object or String           | The [[Bridge object](bridge.html) to retrieve. |
-| ``          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
+Retrieve a `xchain_create_account_claim_id` object which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. _(Added by the Sidechains amendment)_
 
 <!-- MULTICODE_BLOCK_START -->
 

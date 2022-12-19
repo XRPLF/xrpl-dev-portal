@@ -98,13 +98,13 @@ Similarly, you can use the [XRP Ledger Custom Network Explorer](https://custom.x
 - [Witness Server](witness-server.html)
 - [Tutorial](https://github.com/XRPLF/sidechain-cli/blob/main/scripts/tutorial.sh)
 - [Transaction Reference](transaction-types.html)
-    - [xchainaccountcreatecommit][]
-    - [xchaincreatebridge][]
-    - [xchaincreateclaimid][]
-    - [xchaincommit][]
-    - [xchainaddattestation][]
-    - [xchainclaim][]
-    - [xchainmodifybridge][]
+    - [xchainaccountcreatecommit](xchainaccountcreatecommit.html)
+    - [xchaincreatebridge](xchaincreatebridge.html)
+    - [xchaincreateclaimid](xchaincreateclaimid.html)
+    - [xchaincommit](xchaincommit.html)
+    - [xchainaddattestation](xchainaddattestation.html)
+    - [xchainclaim](xchainclaim.html)
+    - [xchainmodifybridge](xchainmodifybridge.html)
 
 
 
