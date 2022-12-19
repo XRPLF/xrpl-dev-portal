@@ -29,7 +29,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. Use Homebrew to install dependencies.
 
-        brew install git cmake pkg-config protobuf openssl ninja
+        brew install git cmake pkg-config protobuf openssl ninja conan
 
 0. Install a compatible version of Boost. `rippled` 1.9.4 is compatible with Boost 1.75.0. To compile Boost yourself, complete the following steps:
 
