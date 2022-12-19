@@ -2637,7 +2637,7 @@ pages:
             - en
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/xchaincreateaccountcommit.md
+    -   md: references/protocol-reference/transactions/transaction-types/xchainaccountcreatecommit.md
         targets:
             - en
             - ja
