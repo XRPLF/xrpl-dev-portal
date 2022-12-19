@@ -456,12 +456,12 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22">$ sudo systemctl restart rippled
 </code></pre></div>
 <h2 id="5-verify-that-your-server-syncs">5. Verify that your server syncs.<a aria-hidden="true" class="hover_anchor" href="#5-verify-that-your-server-syncs"><i class="fa fa-link"></i></a></h2>
-<p>It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the <a href="server_info.html">server_info method</a> shows the a <code>validated_ledger</code> object based on the network you are connected to.</p>
-<p>To verify that your <code>rippled</code> is connected to the right network, compare the results from your server to <a href="public-servers.html">a public server</a> on the Testnet or Devnet. The <code>seq</code> field of the <code>validated_ledger</code> object should be the same on both servers (possibly off by one or two, if it changed as you were checking).</p>
+<p>It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the <a href="server_info.html">server_info method</a> shows a <code>validated_ledger</code> object based on the network you are connected to.</p>
+<p>To confirm that your <code>rippled</code> is connected to the right network, compare the results from your server to <a href="public-servers.html">a public server</a> on the Testnet or Devnet. The <code>seq</code> field of the <code>validated_ledger</code> object should be the same on both servers (possibly off by one or two, if it changed as you were checking).</p>
 <p>The following example shows how to check your server's latest validated ledger from the commandline:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23">rippled server_info <span class="p">|</span> grep seq
 </code></pre></div>
-<p>You can use <a href="websocket-api-tool.html#server_info">server_info in the WebSocket Tool</a> to look up the latest ledger index on the intended network.</p>
+<p>You can use <a href="websocket-api-tool.html#server_info">server_info in the WebSocket Tool</a> to look up the latest ledger index (<code>seq</code>) on the intended network.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Tools:</strong><ul>
