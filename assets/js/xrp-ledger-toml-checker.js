@@ -97,8 +97,6 @@ async function parse_xrpl_toml(data, domain) {
     return
   }
 
-  console.log(parsed)
-
   if (parsed.hasOwnProperty("METADATA")) {
     const metadata_type = makeLogEntry("Metadata section: ")
     if (Array.isArray(parsed.METADATA)) {
@@ -257,6 +255,9 @@ function handle_submit(event) {
 }
 
 // ------------------------------------------ DOMAIN VERIFICATION VIA ACCOUNT BELOW ------------------------------------------
+let wallet;
+let socket;
+
 
 function makeLogEntry_1(text, raw) {
   let log
@@ -279,7 +280,7 @@ function fetch_file_1(domain) {
     dataType: 'text',
     success: function(data) {
       log.resolve('FOUND').addClass(CLASS_GOOD)
-      parse_xrpl_toml_1(data, domain)
+      parse_xrpl_toml_1(data)
     },
     error: function(jqxhr, status, error) {
       switch (status) {
@@ -300,9 +301,8 @@ function fetch_file_1(domain) {
   })
 }
 
-let socket;
 function fetch_wallet_1() {
-  const wallet = $('#verify-domain').val()
+  wallet = $('#verify-domain').val()
   const checking_log = makeLogEntry_1('Checking domain of wallet')
 
   const url = "wss://xrplcluster.com"
@@ -310,12 +310,8 @@ function fetch_wallet_1() {
     socket.close()
   }
   const data = {
-    "id": 2,
     "command": "account_info",
     "account": wallet,
-    "strict": true,
-    "ledger_index": "current",
-    "queue": true
   }
   socket = new WebSocket(url)
   socket.addEventListener('message', (event) => {
@@ -323,22 +319,30 @@ function fetch_wallet_1() {
     try {
       data = JSON.parse(event.data)
       if (data.status === 'success') {
-          decode_hex_1(data.result.account_data.Domain)
-          checking_log.resolve('SUCCESS').addClass(CLASS_GOOD)
+          if (data.result.account_data.Domain) {
+            try {
+              checking_log.resolve('SUCCESS').addClass(CLASS_GOOD)
+              decode_hex_1(data.result.account_data.Domain)
+            } catch {
+              checking_log.resolve('ERROR').addClass(CLASS_BAD).after('<p>Error decoding domain field: ' + data.result.account_data.Domain + '</p>')
+            }
+          } else {
+            checking_log.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_2)
+          }
+          
       } else {
         checking_log.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_1)
       }
     } catch {
-      checking_log.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_2)
       return false
     }
   })
-  socket.addEventListener('open', (event) => {
+  socket.addEventListener('open', () => {
     socket.send(JSON.stringify(data))
   })
 }
 
-async function parse_xrpl_toml_1(data, domain) {
+async function parse_xrpl_toml_1(data) {
   let parsed
   let log1 = makeLogEntry_1("Parsing TOML data...")
   try {
@@ -368,33 +372,38 @@ async function parse_xrpl_toml_1(data, domain) {
   }
 
   async function list_entries_1(name, list, fields) {
+    let found = false;
     let list_wrap = $("<p>"+name+"</p>")
     let list_ol = $("<ol>").appendTo(list_wrap)
     for (i=0; i<list.length; i++) {
-      let entry_def = $("<ul class='mb-3'>").appendTo(list_ol)
+      let entry_wrap = $("<li>").appendTo(list_ol)
+      let entry_def = $("<ul class='mb-3'>").appendTo(entry_wrap)
       let entry = list[i]
       for (j=0; j<fields.length; j++) {
         let fieldname = fields[j]
-        if (fieldname == 'address' && entry[fieldname] !== undefined) {
-          console.log(entry[fieldname])
-          let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
-          $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
-          entry_def.append('<li class="badge badge-success">Domain Validated <i class="fa fa-check-circle"></i></li>')
+        if (entry[fieldname] !== undefined) {
+            let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
+            $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
         }
       }
+      if (entry['address'] === wallet) {
+        entry_def.append('<li class="badge badge-success">Domain Validated <i class="fa fa-check-circle"></i></li>')
+        found=true;
+      }
     }
+
     makeLogEntry_1(list_wrap, true)
+    if(found) {
+      makeLogEntry_1('Account has been found in TOML file and validated.').resolve('DOMAIN VALIDATED <i class="fa fa-check-circle"></i>').addClass(CLASS_GOOD)
+    } else {
+      makeLogEntry_1('Account not found in TOML file. Domain can not be verified.').resolve('ERROR').addClass(CLASS_BAD)
+    }
   }
   if (parsed.ACCOUNTS) {
     if (!Array.isArray(parsed.ACCOUNTS)) {
       makeLogEntry_1("Accounts:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
     } else {
-      list_entries_1("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS, async function(acct) {
-        if (acct.address === undefined) {return undefined}
-        let net
-        if (acct.network === undefined) { net = "main" } else { net = acct.network }
-        return await validate_address_domain_on_net(acct.address, domain, net)
-      })
+      list_entries_1("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS)
     }
   }
 }
