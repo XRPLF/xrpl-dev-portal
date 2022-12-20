@@ -13,11 +13,11 @@ The XRP Ledger takes escrow a step further, removing the need for a third party 
 
 Learn about [Escrow](escrow.html) on the XRP Ledger.
 
-***TODO: Investigate tabbed content.***
-
 ---
 
-## Time-based Escrow
+## Use Cases
+
+### Time-based Escrow
 
 **Background:** Ripple holds a large amount of the total XRP, which it sells methodically as a way to fund and incentivize the healthy development of the XRP Ledger and related technologies. At the same time, owning such a large chunk of XRP causes problems for the company, such as:
 
@@ -31,7 +31,7 @@ Placing the money into escrow sharply limits the amount of XRP that can be stole
 To get started with time-based escrows, see: [Create Time-based Escrows](time-escrows.html).
 
 
-## Escrow Smart Contract
+### Escrow Smart Contract
 
 ***TODO: Need good example here.***
 

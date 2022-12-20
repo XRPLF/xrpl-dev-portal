@@ -5,7 +5,6 @@ blurb: Transfer XRP between accounts.
 labels:
   - Transactions
 ---
-
 # Payment Channels
 
 Payment Channels are an advanced feature for sending asynchronous XRP payments that can be divided into very small increments and settled later.
@@ -17,3 +16,5 @@ Because Claims can be verified individually but settled in bulk later, payment c
 Learn about [Payment Channels](payment-channels.html) on the XRP Ledger.
 
 ---
+
+***TODO: Improve conceptual intro of corresponding topic and update this page.***
