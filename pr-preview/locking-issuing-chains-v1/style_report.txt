@@ -1,68 +1,37 @@
 -------------
 Spell Checker
 -------------
-Found 31 possible spelling errors:
+Found 8 possible spelling errors:
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
-  stablefoo: 
-  unbalances: unbalanced, unbalance
-  machowski: 
+  unbalances: unbalance, unbalanced
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Cross-Chain Bridges' (cross-chain-bridges.html)> Unknown Words:
-  salice: salic, salite, saline
-  xchaincreateclaimid: 
-  xchainclaim: 
-  xchainaccountcreatecommit: 
-  xchaincreatebridge: 
-  xchaincommit: 
-  xchainmodifybridge: 
-  xchainaddattestation: 
+  salice: alice, salite, slice
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
-
-<Page 'XChainAddAttestation' (xchainaddattestation.html)> Unknown Words:
-  xchainaddattestation: 
-  xchainclaim: 
-  xchaincommit: 
-
-<Page 'XChainCommit' (xchaincommit.html)> Unknown Words:
-  xchaincommit: 
-  xchainclaim: 
+  30d: 3d, 3rd, 3-d
 
 <Page 'XChainAccountCreateCommit' (xchainaccountcreatecommit.html)> Unknown Words:
-  xchainaccountcreatecommit: 
   xchainbridge: 
 
 <Page 'XChainCreateClaimID' (xchaincreateclaimid.html)> Unknown Words:
-  xchaincreateclaimid: 
   xchainbridge: 
 
-<Page 'XChainCreateBridge' (xchaincreatebridge.html)> Unknown Words:
-  xchaincreatebridge: 
-
-<Page 'XChainModifyBridge' (xchainmodifybridge.html)> Unknown Words:
-  xchainmodifybridge: 
-
 <Page 'XChainClaim' (xchainclaim.html)> Unknown Words:
-  xchainclaim: 
-  xchaincommit: 
   xchainbridge: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  xchain_claim_id: 
-  crosschain: 
-  xchain_create_account_claim_id: 
   xchain: chain
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 18 discouraged words/phrases:
+Found 19 discouraged words/phrases:
 Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
-   Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.
+   Discouraged phrase: market maker (3 instances); suggest 'liquidity provider' instead.
    Discouraged word: remainder (1 instances); suggest 'rest' instead.
 Page: <Page 'Cross-Chain Bridges' (cross-chain-bridges.html)>
    Discouraged word: ious (1 instances); suggest 'tokens' instead.
@@ -133,8 +102,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 54
-  Words: 737
-  Characters: 4,579
+  Words: 738
+  Characters: 4,583
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

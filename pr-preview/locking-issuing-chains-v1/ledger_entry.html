@@ -942,29 +942,8 @@
 <div class="code_sample commandline" id="code-10-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-32" id="codeblock-32button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-32">rippled json ledger_entry <span class="s1">'{ "bridge": { "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt", "issuing_chain_issue": "XRP", "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC", "locking_chain_issue": "XRP" }, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
-<h3 id="get-xchain_claim_id">Get xchain_claim_id<a aria-hidden="true" class="hover_anchor" href="#get-xchain_claim_id"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="xchains.html">Crosschain Claim ID object</a>. Can be provided as string (object ID of the crosschain claim) or as an object. <em>(Added by the Sidechains amendment)</em></p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>bridge</code></td>
-<td style="text-align: left;">Object or String</td>
-<td style="text-align: left;">The <code>Bridge</code> object to retrieve.</td>
-</tr>
-<tr>
-<td style="text-align: left;">``</td>
-<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td style="text-align: left;"><em>(Required if <code>ticket</code> is specified as an object)</em> The owner of the Ticket object.</td>
-</tr>
-</tbody>
-</table>
+<h3 id="get-xchain_claim_id">Get <code>xchain_claim_id</code><a aria-hidden="true" class="hover_anchor" href="#get-xchain_claim_id"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve a <a href="xchains.html">Cross-chain Claim ID object</a>. Can be provided as string (object ID of the cross-chain claim) or as an object. <em>(Added by the Sidechains amendment)</em></p>
 <div class="multicode" id="code-11"><ul class="codetabs"><li><a class="websocket" href="#code-11-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-11-1">JSON-RPC</a></li><li><a class="commandline" href="#code-11-2">Commandline</a></li></ul>
 
 <div class="code_sample websocket" id="code-11-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="p">{</span><span class="w"></span>
@@ -999,7 +978,7 @@
 <div class="code_sample commandline" id="code-11-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-35" id="codeblock-35button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-35">rippled json ledger_entry <span class="s1">'{ "xchain_claim_id": { "issuing_chain_door": "rKeSSvHvaMZJp9ykaxutVwkhZgWuWMLnQt", "issuing_chain_issue": "XRP", "locking_chain_door": "rJvExveLEL4jNDEeLKCVdxaSCN9cEBnEQC", "locking_chain_issue": "XRP", "xchain_claim_id":1 }, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
-<h3 id="get-xchain_create_account_claim_id">Get xchain_create_account_claim_id<a aria-hidden="true" class="hover_anchor" href="#get-xchain_create_account_claim_id"><i class="fa fa-link"></i></a></h3>
+<h3 id="get-xchain_create_account_claim_id">Get <code>xchain_create_account_claim_id</code><a aria-hidden="true" class="hover_anchor" href="#get-xchain_create_account_claim_id"><i class="fa fa-link"></i></a></h3>
 <p>The <code>xchain_create_account_claim_id</code> object is created when the sidechain is first notified (via an attestation) that a transaction occurred in the locking chain, and is removed when a quorum of attestations is reached. </p>
 <p>Retrieve a <code>xchain_create_account_claim_id</code> object which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. <em>(Added by the Sidechains amendment)</em></p>
 <div class="multicode" id="code-12"><ul class="codetabs"><li><a class="websocket" href="#code-12-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-12-1">JSON-RPC</a></li><li><a class="commandline" href="#code-12-2">Commandline</a></li></ul>
