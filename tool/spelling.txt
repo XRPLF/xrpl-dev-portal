@@ -201,6 +201,13 @@ signerlistset
 TicketCreate
 trustset
 UNLModify
+xchaincommit 
+xchaincreateclaimid
+xchainaccountcreatecommit 
+xchainclaim 
+xchainmodifybridge 
+xchainaddattestation 
+xchaincreatebridge
 
 # XRP Ledger ledger entries
 accountroot
@@ -279,6 +286,7 @@ evm
 horcrux
 Keybase
 macbrough
+machowski
 McCaleb
 metamask
 opensea

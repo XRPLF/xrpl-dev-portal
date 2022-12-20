@@ -617,14 +617,9 @@ rippled json ledger_entry '{ "bridge": { "issuing_chain_door": "rKeSSvHvaMZJp9yk
 
 <!-- MULTICODE_BLOCK_END -->
 
-### Get xchain_claim_id
+### Get `xchain_claim_id`
 
-Retrieve a [Crosschain Claim ID object](xchains.html). Can be provided as string (object ID of the crosschain claim) or as an object. _(Added by the Sidechains amendment)_
-
-| `Field`                 | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `bridge`                | Object or String           | The `Bridge` object to retrieve. |
-| ``          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
+Retrieve a [Cross-chain Claim ID object](xchains.html). Can be provided as string (object ID of the cross-chain claim) or as an object. _(Added by the Sidechains amendment)_
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -671,7 +666,7 @@ rippled json ledger_entry '{ "xchain_claim_id": { "issuing_chain_door": "rKeSSvH
 
 <!-- MULTICODE_BLOCK_END -->
 
-### Get xchain_create_account_claim_id
+### Get `xchain_create_account_claim_id`
 
 The `xchain_create_account_claim_id` object is created when the sidechain is first notified (via an attestation) that a transaction occurred in the locking chain, and is removed when a quorum of attestations is reached. 
 
