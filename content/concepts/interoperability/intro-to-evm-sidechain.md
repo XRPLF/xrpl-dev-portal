@@ -35,7 +35,7 @@ The blockchain uses the `cosmos-sdk` library on top of Tendermint to create and 
 
 ## Interoperability Using the EVM Sidechain
 
-The EVM sidechain is directly connected to XRP Ledger through the XRP Ledger bridge (<https://bridge.devnet.xrpl.org/>). Through this bridge, you can move your XRP to the EVM Sidechain and use its features.
+The EVM sidechain is directly connected to XRP Ledger through the XRP Ledger bridge [https://bridge.devnet.xrpl](https://bridge.devnet.xrpl.org/). Through this bridge, you can connect to the EVM Sidechain and use its features.
 
 ## See Also
 
