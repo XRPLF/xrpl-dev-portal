@@ -360,17 +360,12 @@
 </li>
 <li>
 <p><code>rippled</code>がXRP TestnetまたはDevnetに接続していることを確認するため、サーバーで<a href="server_info.html">server_infoメソッド</a>を使用して、その結果をTestnetまたはDevnetの公開サーバーの結果と比較します。両方のサーバーで<code>validated_ledger</code>オブジェクトの<code>seq</code>フィールドが同一である必要があります（確認中にこの数が変化した場合は、1～2の差が生じる可能性があります）。</p>
+<p>以下のコマンドは、ローカルの<code>rippled</code>の最新検証済みレジャーインデックスをチェックします。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"> $ ./rippled server_info | grep seq
+</code></pre></div>
+<p><a href="websocket-api-tool.html#server_info">WebSocket Toolのserver_info</a>でネットワークのレジャーインデックスをチェックします。</p>
 </li>
 </ol>
-<p>以下のコマンドは、Testnetサーバーの最新の検証済みレジャーをチェックします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">    $ ./rippled --rpc_ip s.altnet.rippletest.net:51234 server_info | grep seq
-</code></pre></div>
-<p>以下のコマンドは、Devnetサーバーの最新の検証済みレジャーをチェックします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">    $ ./rippled --rpc_ip s.devnet.rippletest.net:51234 server_info | grep seq
-</code></pre></div>
-<p>以下のコマンドは、ローカルの<code>rippled</code>の最新検証済みレジャーインデックスをチェックします。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">    $ ./rippled server_info | grep seq
-</code></pre></div>
 <h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>ツール:</strong></li>
