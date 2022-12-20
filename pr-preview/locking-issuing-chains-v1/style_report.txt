@@ -1,29 +1,32 @@
 -------------
 Spell Checker
 -------------
-Found 30 possible spelling errors:
+Found 31 possible spelling errors:
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
+<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
+  0b0: 
+
 <Page 'Cross-Chain Bridges' (cross-chain-bridges.html)> Unknown Words:
-  salice: salite, alice, slice
-  xchaincommit: 
+  salice: salic, salite, saline
   xchaincreateclaimid: 
-  xchainaccountcreatecommit: 
   xchainclaim: 
+  xchainaccountcreatecommit: 
+  xchaincreatebridge: 
+  xchaincommit: 
   xchainmodifybridge: 
   xchainaddattestation: 
-  xchaincreatebridge: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3rd, 3-d, 3d
 
 <Page 'XChainAddAttestation' (xchainaddattestation.html)> Unknown Words:
   xchainaddattestation: 
-  xchaincommit: 
   xchainclaim: 
+  xchaincommit: 
 
 <Page 'XChainCommit' (xchaincommit.html)> Unknown Words:
   xchaincommit: 
@@ -131,7 +134,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 737
-  Characters: 4,577
+  Characters: 4,579
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
