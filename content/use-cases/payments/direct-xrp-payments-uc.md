@@ -7,9 +7,9 @@ labels:
 ---
 # Direct XRP Payments
 
-The basis of any financial system is transferring value. The simplest and most direct method on the XRP Ledger is transferring XRP from one account to another; successful transactions can complete in 8 seconds or less on the ledger.
+The basis of any financial system is transferring value. The quickest and simplest method on the XRP Ledger are direct XRP payments from one account to another. Unlike other payment methods that require multiple transactions to complete, direct XRP payments require only one and can complete in 8 seconds or less.
 
-**Note:** A direct XRP payment transfers funds in one transaction, without intermediary steps. You can only make direct payments when XRP is the currency sent and received.
+**Note:** You can only make direct payments when XRP is the currency sent and received.
 
 Learn about [Direct XRP Payments](direct-xrp-payments.html) on the Ledger.
 
