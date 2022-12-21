@@ -2282,6 +2282,11 @@ pages:
             - en
             - ja
 
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/bridge.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
         targets:
             - en
