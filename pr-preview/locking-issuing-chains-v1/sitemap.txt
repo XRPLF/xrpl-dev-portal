@@ -218,6 +218,7 @@ https://xrpl.org/ledger-object-types.html
 https://xrpl.org/accountroot.html
 https://xrpl.org/amendments-object.html
 https://xrpl.org/amm.html
+https://xrpl.org/bridge.html
 https://xrpl.org/check.html
 https://xrpl.org/depositpreauth-object.html
 https://xrpl.org/directorynode.html

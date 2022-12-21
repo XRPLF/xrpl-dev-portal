@@ -1,18 +1,22 @@
 -------------
 Spell Checker
 -------------
-Found 9 possible spelling errors:
+Found 11 possible spelling errors:
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Cross-Chain Bridges' (cross-chain-bridges.html)> Unknown Words:
-  salice: salite, splice, malice
+  salice: saice, splice, slice
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3d, 3-d, 3rd
+
+<Page 'references/protocol-reference/ledger-data/ledger-object-types/bridge.md' (bridge.html)> Unknown Words:
+  not_enabled: 
+  xchain_bridge: 
 
 <Page 'XChainAccountCreateCommit' (xchainaccountcreatecommit.html)> Unknown Words:
   xchainbridge: 
@@ -30,7 +34,7 @@ Found 9 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 19 discouraged words/phrases:
+Found 21 discouraged words/phrases:
 Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
    Discouraged phrase: market maker (3 instances); suggest 'liquidity provider' instead.
    Discouraged word: remainder (1 instances); suggest 'rest' instead.
@@ -39,6 +43,9 @@ Page: <Page 'Cross-Chain Bridges' (cross-chain-bridges.html)>
    Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
 Page: <Page 'Witness Server' (witness-server.html)>
    Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'references/protocol-reference/ledger-data/ledger-object-types/bridge.md' (bridge.html)>
+   Discouraged word: ious (1 instances); suggest 'tokens' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'XChainAddAttestation' (xchainaddattestation.html)>
    Discouraged word: just (1 instances); suggest '(omit)' instead.
    Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
@@ -103,8 +110,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 54
-  Words: 738
-  Characters: 4,582
+  Words: 737
+  Characters: 4,574
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
