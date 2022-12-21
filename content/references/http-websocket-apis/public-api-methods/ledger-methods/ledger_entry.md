@@ -392,7 +392,7 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
   "method": "ledger_entry",
   "params": [{
     "escrow": {
-      "account": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
+      "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
       "seq": 126
     },
     "ledger_index": "validated"
@@ -403,7 +403,7 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "escrow": { "account": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
