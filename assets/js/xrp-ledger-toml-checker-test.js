@@ -1,13 +1,10 @@
 // This code takes in a wallet address, checks the domain field, then gets the TOML info to verify the domains ownership.
-// This is runnable in NODE JS for easier testing, and works the same as the code in xrp-ledger-toml-checker.js
+// This is runnable in NODE JS for easier testing, and works the same as the code in xrp-ledger-toml-checker.js 
 const WebSocket = require('ws');
 const https = require('https');
 const TOML = require('../vendor/iarna-toml-parse');
 
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
-const TIPS = 'Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required CORS header.\n'
-const TIPS_1 = 'Make sure you are entering a valid XRP address.\n'
-const TIPS_2 = 'Make sure the wallet address has the domain field.\n'
 
 const ACCOUNT_FIELDS = [
     "address",
@@ -15,21 +12,20 @@ const ACCOUNT_FIELDS = [
     "desc"
 ]
 
-// set 'wallet' to any of these test wallets
-const works2 = 'rSTAYKxF2K77ZLZ8GoAwTqPGaphAqMyXV'
-const works = 'r4MPhp7NeayAohgEd8FWSUV6eR2nLGwDX3'
-const no_toml2 = 'rV64miFA53xbWS3x9A6nRnzxMqLHN1t2h'
-const no_toml = 'rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz'
-const no_domain = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh'
-const wallet = no_toml
+// Test wallet addresses
+const WORKS = 'rSTAYKxF2K77ZLZ8GoAwTqPGaphAqMyXV'
+const NOTOML = 'rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz'
+const NODOMAIN = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh'
+
 let socket;
 
+function makeLogEntry(text) {
+    log = console.log(text + '\n')
+}
 
-function fetch_file_1(domain) {
-    // NODE AJAX equivalent
+function fetchFile(domain) {
     const url = "https://" + domain + TOML_PATH
-    console.log('Checking ' + url + '\n')
-
+    makeLogEntry('CHECKING DOMAIN: ' + url)
     https.get(url, (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
@@ -37,22 +33,24 @@ function fetch_file_1(domain) {
         });
         resp.on('end', () => {
             if (data != '') {
-                console.log('TOML Found\n');
-                parse_xrpl_toml_1(data, domain)
+                makeLogEntry('TOML FILE: Found');
+                parseXrplToml(data)
             } else {
-                console.log(TIPS)
-                process.exit()
+                makeLogEntry('TOML FILE: Not found')
+                makeLogEntry('WALLET CAN NOT BE VERIFIED: TOML file was not found.')
+                return
             }
         });
     }).on("error", (err) => {
-        console.log("Error: " + err.message);
-        process.exit()
+        if (err.code == 'ENOTFOUND') {
+            makeLogEntry('WALLET CAN NOT BE VERIFIED: Network error while fetching TOML file.')
+        }
+        return
     });
 }
 
-function fetch_wallet_1() {
-    console.log('Checking domain of wallet...\n')
-
+function fetchWallet() {
+    makeLogEntry('\nCHECKING DOMAIN OF WALLET...')
     const url = "wss://xrplcluster.com"
     if (typeof socket !== "undefined" && socket.readyState < 2) {
         socket.close()
@@ -69,20 +67,30 @@ function fetch_wallet_1() {
             if (data.status === 'success') {
                 if (data.result.account_data.Domain) {
                     try {
-                        decode_hex_1(data.result.account_data.Domain)
+                        makeLogEntry('WALLET ADDRESS: Valid')
+                        decodeHex(data.result.account_data.Domain)
                     } catch {
-                        console.log('error decoding domain field: ' + data.result.account_data.Domain)
+                        makeLogEntry('error decoding domain field: ' + data.result.account_data.Domain)
                     }
                 } else {
-                    console.log(TIPS_2)
-                    process.exit()
+                    makeLogEntry('WALLET ADDRESS: Valid')
+                    makeLogEntry('DOMAIN DECODED: Domain field not found')
+                    makeLogEntry('CHECKING DOMAIN: Error')
+                    makeLogEntry('TOML FILE: Not found')
+                    makeLogEntry('WALLET CAN NOT BE VERIFIED: Wallet has no domain field.')
+                    return
                 }
             } else {
-                console.log(TIPS_1)
+                makeLogEntry('WALLET ADDRESS: Invalid')
+                makeLogEntry('DOMAIN DECODED: Domain field not found')
+                makeLogEntry('CHECKING DOMAIN: Error')
+                makeLogEntry('TOML FILE: Not found')
+                makeLogEntry('WALLET CAN NOT BE VERIFIED: Wallet address is not valid.')
+                return
             }
         } catch (e) {
-            console.log(e)
-            process.exit()
+            makeLogEntry(e)
+            return
         }
     })
     socket.addEventListener('open', () => {
@@ -90,33 +98,18 @@ function fetch_wallet_1() {
     })
 }
 
-async function parse_xrpl_toml_1(data, domain) {
+async function parseXrplToml(data) {
     let parsed
-    console.log("Parsing TOML data...\n")
+    makeLogEntry("Parsing TOML data...")
     try {
         parsed = TOML(data)
     } catch (e) {
-        console.log('TOML ERROR: Wallet can not be verified\n')
-        process.exit()
-    }
-    if (parsed.hasOwnProperty("METADATA")) {
-        console.log("Metadata section: ")
-        if (Array.isArray(parsed.METADATA)) {
-            console.log("Wrong type - should be table\n")
-        } else {
-            console.log("Found \n")
-            if (parsed.METADATA.modified) {
-                console.log("Modified date: ")
-                try {
-                    console.log(parsed.METADATA.modified.toISOString() + '\n')
-                } catch (e) {
-                    console.log("INVALID\n")
-                }
-            }
-        }
+        makeLogEntry('WALLET CAN NOT BE VERIFIED: TOML file can not be read.')
+        return
     }
 
-    async function list_entries_1(list, fields) {
+    async function listEntries(list, fields) {
+        makeLogEntry('\nADDRESSES:')
         let found = false;
         for (i = 0; i < list.length; i++) {
             let entry = list[i]
@@ -124,41 +117,62 @@ async function parse_xrpl_toml_1(data, domain) {
                 let fieldname = fields[j]
                 if (fieldname == 'address' && entry[fieldname] !== undefined) {
                     if (entry[fieldname] === wallet) {
-                        console.log('MATCH: ' + entry[fieldname] + ' *\n')
+                        makeLogEntry('MATCH: ' + entry[fieldname] + ' *')
                         found = true;
                     } else {
-                        console.log('NO_MATCH: ' + entry[fieldname] + '\n')
+                        makeLogEntry('NO_MATCH: ' + entry[fieldname])
                     }
                 }
             }
         }
         if (found) {
-            console.log('WALLET DOMAIN VERIFIED\n')
+            makeLogEntry('WALLET IS PRESENT: Wallet domain verified')
         } else {
-            console.log('WALLET NOT VERIFIED. WALLET NOT PRESENT IN TOML FILE\n')
+            makeLogEntry('WALLET IS NOT PRESENT: Wallet domain can not be verified')
         }
-        process.exit()
+        return
     }
     if (parsed.ACCOUNTS) {
         if (!Array.isArray(parsed.ACCOUNTS)) {
-            console.log("Wrong type- should be table-array")
+            makeLogEntry("Wrong type- should be table-array")
             process.exit()
         } else {
-            list_entries_1(parsed.ACCOUNTS, ACCOUNT_FIELDS)
+            listEntries(parsed.ACCOUNTS, ACCOUNT_FIELDS)
         }
     }
 }
 
-function decode_hex_1(hex) {
+function decodeHex(hex) {
     let str = '';
     for (let i = 0; i < hex.length; i += 2) {
         str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
     }
-    console.log('Domain decoded: ' + str + '\n')
-    fetch_file_1(str)
+    makeLogEntry('DOMAIN DECODED: ' + str)
+    fetchFile(str)
 }
 
+// 'wallet' must be a global func.
+let wallet;
 
+function main() {
+    makeLogEntry('\n\n--------EXAMPLE OF FAIL: WEBSITE TOML ERROR--------')
+    wallet = NOTOML
+    fetchWallet()
 
-// RUNS CODE. Edit 'wallet' CONST at top of file to change wallet.
-fetch_wallet_1()
+    setTimeout(function() {
+        makeLogEntry('\n\n--------EXAMPLE OF FAIL: NO DOMAIN FIELD--------')
+        wallet = NODOMAIN
+        fetchWallet()
+
+        setTimeout(function() {
+            makeLogEntry('\n\n--------EXAMPLE OF SUCCESS--------')
+            wallet = WORKS
+            fetchWallet()
+
+            setTimeout(function(){process.exit()},5000)
+        }, 5000)
+    }, 5000)   
+
+}
+
+main()
