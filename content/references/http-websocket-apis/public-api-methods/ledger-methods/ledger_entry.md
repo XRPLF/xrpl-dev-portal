@@ -670,7 +670,7 @@ rippled json ledger_entry '{ "xchain_claim_id": { "issuing_chain_door": "rKeSSvH
 
 Retrieve a `XChainCreateAccountClaimID` object which connects a locking chain and an issuing chain. Can be provided as string (object ID of the Bridge) or as an object. _(Added by the in-development Sidechains feature)_ :not_enabled:
 
-The `XChainCreateAccountClaimID` object is created when the sidechain is first notified (via an attestation) that a transaction occurred in the locking chain, and is removed when a quorum of attestations is reached. 
+When a transaction occurs in the locking chain, an attestation notifies the sidechain to create the `XChainCreateAccountClaimID` object. And reaching a quorum of attestations removes the object.
 
 <!-- MULTICODE_BLOCK_START -->
 
