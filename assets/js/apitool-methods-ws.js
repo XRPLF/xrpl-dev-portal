@@ -292,20 +292,19 @@ Request('ledger_entry - DepositPreauth', {
   }
 })
 
-// Waiting for TicketBatch amendment on Mainnet
-// Request('ledger_entry - Ticket', {
-//   description: "Returns a Ticket object in its raw ledger format.",
-//   link: "ledger_entry.html#get-ticket-object",
-//   body: {
-//     "id": "example_get_ticket",
-//     "command": "ledger_entry",
-//     "ticket": {
-//       "owner": DEFAULT_ADDRESS_1,
-//       "ticket_sequence": 0 // TODO: make a real ticket, fill in the seq
-//     },
-//     "ledger_index": "validated"
-//   }
-// })
+Request('ledger_entry - Ticket', {
+  description: "Returns a Ticket object in its raw ledger format.",
+  link: "ledger_entry.html#get-ticket-object",
+  body: {
+    "id": "example_get_ticket",
+    "command": "ledger_entry",
+    "ticket": {
+      "account": DEFAULT_ADDRESS_1,
+      "ticket_seq": 389 // This is a real ticket on Mainnet.
+    },
+    "ledger_index": "validated"
+  }
+})
 
 
 Request("Transaction Methods")
