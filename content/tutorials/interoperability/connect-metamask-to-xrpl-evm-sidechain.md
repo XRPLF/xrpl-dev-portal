@@ -42,7 +42,7 @@ To add XRP Ledger EVM Sidechain to MetaMask:
 3. Enter the XRP Ledger Devnet endpoint information.
 
     * **Network Name**: XRP Ledger EVM Sidechain
-    * **New RPC URL**: http://rpc.evm-sidechain.xrpl.org
+    * **New RPC URL**: https://rpc-evm-sidechain.xrpl.org
     * **Chain ID**: 1440001
     * **Currency Symbol**: XRP
     * **Block Explorer**: https://evm-sidechain.xrpl.org
