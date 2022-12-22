@@ -1,0 +1,41 @@
+sign
+
+
+prepare contract GovernmentSupportForFood '{
+  "code": "const XRP_LEDGER_ADDRESS = \"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh\"; class GovernmentSupportForFood { mapping (address => uint256) public support; event SupportDistributed(address recipient, uint256 amount); constructor() public { address government = msg.sender; } function distributeSupport(address recipient, uint256 amount) public { require(msg.sender == government, \"Only the government can distribute support\"); support[recipient] += amount; emit SupportDistributed(recipient, amount); } function checkSupport(address recipient) public view returns (uint256) { return support[recipient]; } }"
+}' --secret <YOUR_SECRET_KEY>
+
+
+const XRP_LEDGER_ADDRESS = "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh";
+
+class GovernmentSupportForFood {
+  // mapping from recipient address to amount of support received
+  mapping (address => uint256) public support;
+
+  // event for when support is distributed
+  event SupportDistributed(address recipient, uint256 amount);
+
+  constructor() public {
+    // initialize the contract with the government's address as the owner
+    address government = msg.sender;
+  }
+
+  // function to distribute support to a recipient
+  function distributeSupport(address recipient, uint256 amount) public {
+    require(msg.sender == government, "Only the government can distribute support");
+
+    support[recipient] += amount;
+    emit SupportDistributed(recipient, amount);
+  }
+
+  // function to check the amount of support a recipient has received
+  function checkSupport(address recipient) public view returns (uint256) {
+    return support[recipient];
+  }
+}
+
+
+sign contract GovernmentSupportForFood --secret <YOUR_SECRET_KEY>
+
+submit contract Government-Food-Support
+
