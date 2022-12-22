@@ -445,6 +445,11 @@ aside .active > a:hover {
     white -2px -2px 3px, white -2px -2px 4px;
 }
 
+// Osano cookie consent overrides
+a.osano-cm-link {
+  color: #ffffff;
+}
+
 // Layout elements -------------------------------------------------------------
 .card,
 .cta-card {
