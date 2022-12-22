@@ -42,12 +42,12 @@ The XRP Ledger processes transactions in blocks called "ledger versions", or "le
 
 Each ledger version is numbered with a _ledger index_ and builds on a previous ledger version whose index is one less, going all the way back to a starting point called the _genesis ledger_ with ledger index 1.[¹](#footnote-1) Like Bitcoin and other blockchain technologies, this forms a public history of all transactions and their results. Unlike many blockchain technologies, each new "block" in the XRP Ledger contains the entirety of the current state, so you don't need to collect the entire history to know what's happening now.[²](#footnote-2)
 
-The main job of the XRP Ledger Consensus Protocol is to agree on a set of transactions to apply to the previous ledger, apply them in a well-defined order, then confirm that everyone got the same results. When this happens successfully, a ledger version is considered _validated_, and final. From there, the process continues by building the next ledger version.
+The main goal of the XRP Ledger Consensus Protocol is to agree on a set of transactions to add to the next ledger version, apply them in a well-defined order, then confirm that everyone got the same results. When this happens successfully, a ledger version is considered _validated_, and final. From there, the process continues by building the next ledger version.
 
 
 ## Trust-Based Validation
 
-The core principle behind the XRP Ledger's consensus mechanism is that a little trust goes a long way. Each participant in the network chooses a set of _validators_, servers [specifically configured to participate actively in consensus](run-rippled-as-a-validator.html), run by different parties who are expected to behave honestly most of the time. More importantly, the set of chosen validators should not be likely to collude with one another to break the rules in the exact same way. This list is sometimes called a _Unique Node List_, or UNL.
+The core principle behind the XRP Ledger's consensus mechanism is that a little trust goes a long way. Each participant in the network chooses a set of _validators_, servers [specifically configured to participate actively in consensus](run-rippled-as-a-validator.html), run by different parties who are expected to behave honestly most of the time according to the protocol. More importantly, the set of chosen validators should not be likely to collude with one another to break the rules in the exact same way. This list is called a _Unique Node List_, or UNL.
 
 As the network progresses, each server listens to its trusted validators[³](#footnote-3); as long as a large enough percentage of them agree that a set of transactions should occur and that a given ledger is the result, the server declares a consensus. If they don't agree, validators modify their proposals to more closely match the other validators they trust, repeating the process in several rounds until they reach a consensus.
 
