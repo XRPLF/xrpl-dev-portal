@@ -38,7 +38,7 @@ A `Bridge` object has the following fields:
 
 | Field               | JSON Type        | [Internal Type][] | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
-| `Account`           | String           | Account           | Yes       | The sender of the Check. Cashing the Check debits this address's balance. |
+| `Account`           | String           | Account           | Yes       |  |
 | `Balance`           | String           | Amount            | Yes       | Balance in the sender's account. |
 | `SignatureReward`   | String           | Amount            | Yes       | The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. |
 | `MinAccountCreateAmount` | String      | Amount            | No        | The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present.  |
