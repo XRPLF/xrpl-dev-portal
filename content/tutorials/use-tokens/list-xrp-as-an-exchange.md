@@ -1,6 +1,6 @@
 ---
 html: list-xrp-as-an-exchange.html
-parent: xrp-ledger-businesses.html
+parent: use-tokens.html
 blurb: Run a digital asset exchange? Follow these steps to add XRP.
 labels:
   - XRP

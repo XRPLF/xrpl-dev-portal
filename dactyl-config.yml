@@ -664,16 +664,6 @@ pages:
       targets:
          - en
          - ja
-
-    -   md: concepts/xrpl/list-xrp-as-an-exchange.md
-        parent: xrpl-servers.html
-        targets:
-            - en
-
-    -   md: concepts/xrpl/list-xrp-as-an-exchange.ja.md
-        parent: xrpl-servers.html
-        targets:
-            - ja
             
     - md: concepts/transactions/transactions.md
       parent: concepts.html
@@ -1475,6 +1465,14 @@ pages:
     -   md: tutorials/use-tokens/trade-in-the-decentralized-exchange.md
         targets:
             - en
+            - ja
+
+    -   md: tutorials/use-tokens/list-xrp-as-an-exchange.md
+        targets:
+            - en
+
+    -   md: tutorials/use-tokens/list-xrp-as-an-exchange.ja.md
+        targets:
             - ja
 
     # TODO: translate this page & blurb
