@@ -1,7 +1,7 @@
 ---
 html: xchaincommit.html 
 parent: transaction-types.html
-blurb: Create a bridge between two chains.
+blurb: Initiate a cross-chain transfer of value.
 labels:
   - Interoperability
 status: not_enabled

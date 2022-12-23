@@ -1,7 +1,7 @@
 ---
 html: xchainaddattestation.html 
 parent: transaction-types.html
-blurb: Create a bridge between two chains.
+blurb: Submit a proof (attestation) to the destination chain that an event that happened on the source chain.
 labels:
   - Interoperability
 status: not_enabled

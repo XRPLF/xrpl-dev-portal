@@ -1,7 +1,7 @@
 ---
 html: xchainclaim.html 
 parent: transaction-types.html
-blurb: Create a bridge between two chains.
+blurb: Complete a cross-chain transfer of value by claiming the value on the destination chain.
 labels:
   - Interoperability
 status: not_enabled

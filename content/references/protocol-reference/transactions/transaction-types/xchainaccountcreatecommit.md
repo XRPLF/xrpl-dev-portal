@@ -1,7 +1,7 @@
 ---
 html: xchainaccountcreatecommit.html 
 parent: transaction-types.html
-blurb: Create a bridge between two chains.
+blurb: Create an account on one of the chains that the bridge connects. This account serves as the bridge entrance for that chain.
 labels:
   - Interoperability
 status: not_enabled
