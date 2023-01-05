@@ -1,7 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 5 possible spelling errors:
+Found 7 possible spelling errors:
+<Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
+  nftokenminter: 
+  transferfee: transferee
+
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
   unbalances: unbalanced, unbalance
@@ -11,7 +15,7 @@ Found 5 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3d, 3rd, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
@@ -68,8 +72,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 749
-  Characters: 4,652
+  Words: 748
+  Characters: 4,641
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
