@@ -4,8 +4,8 @@ Spell Checker
 Found 8 possible spelling errors:
 <Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
   nftokenminter: 
-  transferfee: transferee
   unassigning: 
+  transferfee: transferee
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
@@ -16,7 +16,7 @@ Found 8 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3d, 3-d, 3rd
 
 -----------------------------
 Discouraged Words and Phrases
