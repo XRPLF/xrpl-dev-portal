@@ -29,7 +29,7 @@ tx_json = {
 
 ## Unassigning an Authorized Minter
 
-To remove an authorized minter, use the `AccountSet` transaction to clear the `asfAuthorizedNFTokenMinter` flag.
+To remove an authorized minter, use the `AccountSet` transaction and clear the `asfAuthorizedNFTokenMinter` flag.
 
 ``` json
 tx_json = {
