@@ -27,6 +27,17 @@ tx_json = {
 
 *Note*: The `asfAuthorizedNFTokenMinter` flag is used only in the `AccountSet` transaction. It indicates whether the transaction affects the presence or value of the NFTokenMinter field on an account root. Specifically, there is no corresponding flag on the AccountRoot.
 
+## Unassigning an Authorized Minter
+
+To remove an authorized minter, use the `AccountSet` transaction to clear the `asfAuthorizedNFTokenMinter` flag.
+
+``` json
+tx_json = {
+  "TransactionType": "AccountSet",
+  "Account": "rrE5EgHN4DfjXhR9USecudHm7UyhTYq6m",
+  "ClearFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
+}
+```
 
 ## Minting an NFT for Another Account
 
@@ -47,14 +58,3 @@ const transactionBlob = {
 
 When you or a broker sells the NFT, the TransferFee (percentage of sale) is credited to your issuing account.
 
-## Unassigning an Authorized Minter
-
-To remove an authorized minter, use the `AccountSet` transaction to clear the `asfAuthorizedNFTokenMinter` flag.
-
-``` json
-tx_json = {
-  "TransactionType": "AccountSet",
-  "Account": "rrE5EgHN4DfjXhR9USecudHm7UyhTYq6m",
-  "ClearFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
-}
-```
