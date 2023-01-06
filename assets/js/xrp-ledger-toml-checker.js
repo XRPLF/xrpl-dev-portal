@@ -1,7 +1,7 @@
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
 const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
-const TIPS_1 = '<p>Make sure you are entering a valid XRP address.</p>'
-const TIPS_2 = '<p>Make sure the wallet address has the domain field.</p>'
+const TIPS_1 = '<p>Make sure you are entering a valid XRP Ledger address.</p>'
+const TIPS_2 = '<p>Make sure the account has the Domain field set.</p>'
 const CLASS_GOOD = "badge badge-success"
 const CLASS_BAD = "badge badge-danger"
 
@@ -284,7 +284,7 @@ function makeLogEntryWallet(text, raw) {
 
 function fetchWallet() {
   wallet = $('#verify-domain').val()
-  const checkingLog = makeLogEntryWallet('Checking domain of wallet')
+  const checkingLog = makeLogEntryWallet('Checking domain of account')
   const url = "wss://xrplcluster.com"
   if (typeof socket !== "undefined" && socket.readyState < 2) {
     socket.close()
@@ -356,34 +356,35 @@ async function parseXRPLTomlWallet(data) {
     let list_wrap = $("<p>"+name+"</p>")
     let list_ol = $("<ol>").appendTo(list_wrap)
     for (i=0; i<list.length; i++) {
-      let entry_wrap = $("<li>").appendTo(list_ol)
-      let entry_def = $("<ul class='mb-3'>").appendTo(entry_wrap)
+      let entry_def = $("<ul>").appendTo(list_ol)
       let entry = list[i]
       for (j=0; j<fields.length; j++) {
         let fieldname = fields[j]
-        if (entry[fieldname] !== undefined) {
+        if (entry['address'] === wallet) {
             let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
             $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
+            found=true;
         }
       }
-      if (entry['address'] === wallet) {
-        entry_def.append('<li class="badge badge-success">Domain Validated <i class="fa fa-check-circle"></i></li>')
-        found=true;
-      }
     }
-
-    makeLogEntryWallet(list_wrap, true)
+    
     if(found) {
+      makeLogEntryWallet(list_wrap, true)
       makeLogEntryWallet('Account has been found in TOML file and validated.').resolve('DOMAIN VALIDATED <i class="fa fa-check-circle"></i>').addClass(CLASS_GOOD)
     } else {
-      makeLogEntryWallet('Account not found in TOML file. Domain can not be verified.').resolve('ERROR').addClass(CLASS_BAD)
+      let entry_def = $("<ul>").appendTo(list_ol)
+      let field_def = $("<li><strong>address: </strong>").appendTo(entry_def)
+      $(" <span class='address'>").text('Not found ').appendTo(field_def).append(' <li class="badge badge-danger">ERROR</li>')
+      
+      makeLogEntryWallet(list_wrap, true)
+      makeLogEntryWallet('Account not found in TOML file. Domain can not be verified.').resolve('VALIDATION FAILED').addClass(CLASS_BAD)
     }
   }
   if (parsed.ACCOUNTS) {
     if (!Array.isArray(parsed.ACCOUNTS)) {
-      makeLogEntryWallet("Accounts:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+      makeLogEntryWallet("Account:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
     } else {
-      listEntriesWallet("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS)
+      listEntriesWallet("Account:", parsed.ACCOUNTS, ACCOUNT_FIELDS)
     }
   }
 }

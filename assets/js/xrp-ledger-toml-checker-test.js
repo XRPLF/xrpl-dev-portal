@@ -37,20 +37,20 @@ function fetchFile(domain) {
                 parseXrplToml(data)
             } else {
                 makeLogEntry('TOML FILE: Not found')
-                makeLogEntry('WALLET CAN NOT BE VERIFIED: TOML file was not found.')
+                makeLogEntry('ACCOUNT CAN NOT BE VERIFIED: TOML file was not found.')
                 return
             }
         });
     }).on("error", (err) => {
         if (err.code == 'ENOTFOUND') {
-            makeLogEntry('WALLET CAN NOT BE VERIFIED: Network error while fetching TOML file.')
+            makeLogEntry('ACCOUNT CAN NOT BE VERIFIED: Network error while fetching TOML file.')
         }
         return
     });
 }
 
 function fetchWallet() {
-    makeLogEntry('\nCHECKING DOMAIN OF WALLET...')
+    makeLogEntry('\nCHECKING DOMAIN OF ACCOUNT...')
     const url = "wss://xrplcluster.com"
     if (typeof socket !== "undefined" && socket.readyState < 2) {
         socket.close()
@@ -67,25 +67,25 @@ function fetchWallet() {
             if (data.status === 'success') {
                 if (data.result.account_data.Domain) {
                     try {
-                        makeLogEntry('WALLET ADDRESS: Valid')
+                        makeLogEntry('ACCOUNT ADDRESS: Valid')
                         decodeHex(data.result.account_data.Domain)
                     } catch {
                         makeLogEntry('error decoding domain field: ' + data.result.account_data.Domain)
                     }
                 } else {
-                    makeLogEntry('WALLET ADDRESS: Valid')
+                    makeLogEntry('ACCOUNT ADDRESS: Valid')
                     makeLogEntry('DOMAIN DECODED: Domain field not found')
                     makeLogEntry('CHECKING DOMAIN: Error')
                     makeLogEntry('TOML FILE: Not found')
-                    makeLogEntry('WALLET CAN NOT BE VERIFIED: Wallet has no domain field.')
+                    makeLogEntry('ACCOUNT CAN NOT BE VERIFIED: Account has no domain field.')
                     return
                 }
             } else {
-                makeLogEntry('WALLET ADDRESS: Invalid')
+                makeLogEntry('ACCOUNT ADDRESS: Invalid')
                 makeLogEntry('DOMAIN DECODED: Domain field not found')
                 makeLogEntry('CHECKING DOMAIN: Error')
                 makeLogEntry('TOML FILE: Not found')
-                makeLogEntry('WALLET CAN NOT BE VERIFIED: Wallet address is not valid.')
+                makeLogEntry('ACCOUNT CAN NOT BE VERIFIED: Account address is not valid.')
                 return
             }
         } catch (e) {
@@ -104,7 +104,7 @@ async function parseXrplToml(data) {
     try {
         parsed = TOML(data)
     } catch (e) {
-        makeLogEntry('WALLET CAN NOT BE VERIFIED: TOML file can not be read.')
+        makeLogEntry('ACCOUNT CAN NOT BE VERIFIED: TOML file can not be read.')
         return
     }
 
@@ -126,9 +126,9 @@ async function parseXrplToml(data) {
             }
         }
         if (found) {
-            makeLogEntry('WALLET IS PRESENT: Wallet domain verified')
+            makeLogEntry('ACCOUNT IS PRESENT: Account domain verified')
         } else {
-            makeLogEntry('WALLET IS NOT PRESENT: Wallet domain can not be verified')
+            makeLogEntry('ACCOUNT IS NOT PRESENT: Account domain can not be verified')
         }
         return
     }
