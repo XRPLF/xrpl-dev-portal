@@ -1,5 +1,6 @@
 DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
 DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+TST_ISSUER = "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
 
 Request("Account Methods")
 
@@ -291,20 +292,19 @@ Request('ledger_entry - DepositPreauth', {
   }
 })
 
-// Waiting for TicketBatch amendment on Mainnet
-// Request('ledger_entry - Ticket', {
-//   description: "Returns a Ticket object in its raw ledger format.",
-//   link: "ledger_entry.html#get-ticket-object",
-//   body: {
-//     "id": "example_get_ticket",
-//     "command": "ledger_entry",
-//     "ticket": {
-//       "owner": DEFAULT_ADDRESS_1,
-//       "ticket_sequence": 0 // TODO: make a real ticket, fill in the seq
-//     },
-//     "ledger_index": "validated"
-//   }
-// })
+Request('ledger_entry - Ticket', {
+  description: "Returns a Ticket object in its raw ledger format.",
+  link: "ledger_entry.html#get-ticket-object",
+  body: {
+    "id": "example_get_ticket",
+    "command": "ledger_entry",
+    "ticket": {
+      "account": DEFAULT_ADDRESS_1,
+      "ticket_seq": 389 // This is a real ticket on Mainnet.
+    },
+    "ledger_index": "validated"
+  }
+})
 
 
 Request("Transaction Methods")
@@ -471,6 +471,22 @@ Request('ripple_path_find', {
         "value": "0.001",
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
+  }
+})
+
+Request('amm_info', {
+  description: "Looks up info on an Automated Market Maker instance.",
+  link: "amm_info.html",
+  status: "not_enabled",
+  body: {
+    "command": "amm_info",
+    "asset": {
+      "currency": "XRP"
+    },
+    "asset2": {
+      "currency": "TST",
+      "issuer": TST_ISSUER
     }
   }
 })

@@ -21,8 +21,18 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   &:not(.chip) {
     color: $light-fg;
   }
@@ -62,7 +72,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // Forms and inputs ------------------------------------------------------------
-.search, .input-group, .form-group {
+.search,
+.input-group,
+.form-group {
   .input-group-text {
     background-color: $gray-200;
     color: $gray-800;
@@ -101,6 +113,95 @@ h1, h2, h3, h4, h5, h6,
 
 // Algolia search results
 .xrp-ledger-dev-portal {
+  .DocSearch-Modal {
+    background: $white;
+  }
+  .DocSearch-Prefill{
+    color: $blue-purple-500;
+  }
+  .DocSearch-Button {
+    background: var(--docsearch-searchbox-background);
+  }
+  .DocSearch-Button:hover {
+    box-shadow: inset 0 0 0 2px $blue-purple-500;
+    border-radius: 40px;
+    background: var(--docsearch-searchbox-background);
+    .DocSearch-Button-Placeholder {
+      color: var(--docsearch-text-color);
+    }
+  }
+  .DocSearch-Search-Icon {
+    color: var(--docsearch-text-color) !important;
+  }
+  .DocSearch-Input{
+    color: $gray-900; 
+  }
+  .DocSearch-Hit-Select-Icon{
+    color: $gray-900; 
+  }
+  .DocSearch-Form {
+    box-shadow: inset 0 0 0 2px $blue-purple-500;
+    background-color: var(--docsearch-searchbox-focus-background);
+  }
+  .DocSearch-Hit-source {
+    color: $blue-purple-500;
+    background: $white;
+  }
+  .DocSearch-Hits mark {
+    color: $blue-purple-500;
+  }
+  .DocSearch-Hit-Container {
+    background: $white;
+  }
+  .DocSearch-Hit a {
+    background-color: $white;
+  }
+  .DocSearch-Hit-content-wrapper {
+    .DocSearch-Hit-title {
+      color: $black !important;
+    }
+    .DocSearch-Hit-path {
+      color: $black-60 !important;
+    }
+  }
+  .DocSearch-Logo svg{
+    .cls-1, .cls-2{
+      fill:var(--docsearch-logo-color);; 
+    }
+  }
+  .DocSearch-Hit-title,
+  .DocSearch-Hit-path,
+  .DocSearch-Label,
+  .DocSearch-Help {
+    color: $black-60 !important;
+  }
+  .DocSearch-Hit[aria-selected="true"] a {
+    background: $black-10;
+    .DocSearch-Hit-Container {
+      background-color:  $black-10;
+    }
+    .DocSearch-Hit-content-wrapper {
+      .DocSearch-Hit-title {
+        color: $black !important;
+      }
+      .DocSearch-Hit-path {
+        color: $black-60 !important;
+      }
+    }
+    .DocSearch-Hit-icon svg {
+      color: $black !important;
+    }
+    .DocSearch-Hit-action .DocSearch-Hit-action-button svg {
+      color: $black !important;
+    }
+    mark {
+      color: $blue-purple-500 !important;
+    }
+  }
+  .DocSearch-Footer {
+    background: var(--docsearch-footer-background);
+  }
+
   // The extra specificity makes this override the default Algolia styles.
   .algolia-autocomplete {
     .ds-dropdown-menu [class^="ds-dataset-"] {
@@ -114,7 +215,7 @@ h1, h2, h3, h4, h5, h6,
     }
     .algolia-docsearch-suggestion--category-header {
       color: $black;
-      border-bottom-color:$blue-purple-500;
+      border-bottom-color: $blue-purple-500;
     }
     .algolia-docsearch-suggestion--subcategory-column {
       color: $black;
@@ -129,7 +230,14 @@ h1, h2, h3, h4, h5, h6,
       color: $black;
       background-color: $gray-300;
     }
-    .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl0 .algolia-docsearch-suggestion--highlight, .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl1 .algolia-docsearch-suggestion--highlight, .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
+    .algolia-docsearch-suggestion--category-header
+      .algolia-docsearch-suggestion--category-header-lvl0
+      .algolia-docsearch-suggestion--highlight,
+    .algolia-docsearch-suggestion--category-header
+      .algolia-docsearch-suggestion--category-header-lvl1
+      .algolia-docsearch-suggestion--highlight,
+    .algolia-docsearch-suggestion--text
+      .algolia-docsearch-suggestion--highlight {
       background-color: $gray-300;
     }
   }
@@ -137,7 +245,8 @@ h1, h2, h3, h4, h5, h6,
 
 // Navigation ------------------------------------------------------------------
 
-a, nav a {
+a,
+nav a {
   color: $light-fg;
 
   &.btn-primary {
@@ -149,7 +258,9 @@ a, nav a {
     }
   }
 
-  &:hover, &:active, &.active {
+  &:hover,
+  &:active,
+  &.active {
     color: $light-link-hover-color;
   }
 
@@ -158,7 +269,9 @@ a, nav a {
   }
 }
 
-a.card:hover, &:active, &.active {
+a.card:hover,
+&:active,
+&.active {
   // Don't turn link-card text purple on hover
   color: $light-fg;
 }
@@ -167,7 +280,6 @@ a.card:hover, &:active, &.active {
   color: $light-fg-muted;
 }
 
-
 // Buttons
 .btn-outline-secondary,
 .content a.button,
@@ -175,7 +287,8 @@ a.card:hover, &:active, &.active {
   color: $dark;
   border-color: $dark;
 
-  &:not(:disabled):not(.disabled):hover, &:not(:disabled):not(.disabled):active {
+  &:not(:disabled):not(.disabled):hover,
+  &:not(:disabled):not(.disabled):active {
     color: $primary;
     border-color: $primary;
     background-color: transparent;
@@ -190,7 +303,7 @@ a.card:hover, &:active, &.active {
   color: $gray-600;
 
   &:hover {
-    color: $primary
+    color: $primary;
   }
 }
 
@@ -223,7 +336,8 @@ a.card:hover, &:active, &.active {
     border-color: $gray-100;
     box-shadow: $light-box-shadow;
 
-    a:hover, a.active {
+    a:hover,
+    a.active {
       color: $light-link-hover-color;
     }
 
@@ -302,7 +416,6 @@ aside .active > a:hover {
   }
 }
 
-
 .page-toc,
 .command-list {
   border-left: 1px solid $black;
@@ -327,15 +440,14 @@ aside .active > a:hover {
 }
 
 .copyright-license {
-  text-shadow: white 0px 0px 2px, white 1px 1px 2px,
-               white 2px 2px 3px, white 2px 2px 4px,
-               white 2px 2px 5px, white 2px 2px 6px,
-               white -1px -1px 2px,
-               white -2px -2px 3px, white -2px -2px 4px;
+  text-shadow: white 0px 0px 2px, white 1px 1px 2px, white 2px 2px 3px,
+    white 2px 2px 4px, white 2px 2px 5px, white 2px 2px 6px, white -1px -1px 2px,
+    white -2px -2px 3px, white -2px -2px 4px;
 }
 
 // Layout elements -------------------------------------------------------------
-.card, .cta-card {
+.card,
+.cta-card {
   color: $light-fg;
   background-color: $light-standout-bg;
   box-shadow: $light-box-shadow;
@@ -352,7 +464,6 @@ aside .active > a:hover {
     background-color: $light-standout-bg;
   }
 }
-
 
 // FAQ
 .page-faq,
@@ -414,7 +525,8 @@ aside .active > a:hover {
 }
 
 // Callouts
-.devportal-callout.caution, .devportal-callout.注意 {
+.devportal-callout.caution,
+.devportal-callout.注意 {
   border-color: $yellow-700;
 
   > strong:first-child::before {
@@ -422,12 +534,13 @@ aside .active > a:hover {
   }
 }
 
-.devportal-callout.tip, .devportal-callout.ヒント {
+.devportal-callout.tip,
+.devportal-callout.ヒント {
   border-color: $green-600;
 
-    > strong:first-child::before {
-      color: $green-600;
-    }
+  > strong:first-child::before {
+    color: $green-600;
+  }
 }
 
 // Code ------------------------------------------------------------------------
@@ -465,7 +578,6 @@ pre code {
   border-color: $gray-100;
 }
 
-
 .interactive-block {
   .breadcrumb-item.done a::after {
     color: $green-900;
@@ -477,7 +589,6 @@ pre code {
   background-color: $light-standout-bg;
 }
 
-
 .rpc-tool {
   pre .toggle {
     color: $white;
@@ -488,7 +599,6 @@ pre code {
   }
 }
 
-
 // Individual page styles ------------------------------------------------------
 
 // Homepage
@@ -498,7 +608,9 @@ pre code {
   }
 
   #benefits-list {
-    @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
+    @each $benefit in "public", "streamlined", "performance", "low-cost",
+      "community", "reliability"
+    {
       ##{$benefit} {
         content: url("../img/icons/lightmode/#{$benefit}.svg");
       }
@@ -515,7 +627,7 @@ pre code {
 
 #wallets {
   #wallet-xumm {
-    content: url("../img/wallets/lightmode/xumm.svg")
+    content: url("../img/wallets/lightmode/xumm.svg");
   }
 }
 
@@ -544,7 +656,8 @@ pre code {
 
 // Carbon calculator
 .page-calculator {
-  #co2Animation, #gasAnimation {
+  #co2Animation,
+  #gasAnimation {
     //filter: invert(100%) hue-rotate(200deg) brightness(1.8);
     // Leave these dark for now
     background: $body-bg;
@@ -620,20 +733,27 @@ pre code {
   // }
 
   // darkened card graphics
-  @each $company,$card-graphic in (
-    "bitpay": "blue-green",
-    "exodus": "green",
-    "forte": "light-blue-2",
-    "ripple": "blue-light-blue",
-    "xrplorer": "green-purple"
-  ) {
+  @each $company,
+    $card-graphic
+      in (
+        "bitpay": "blue-green",
+        "exodus": "green",
+        "forte": "light-blue-2",
+        "ripple": "blue-light-blue",
+        "xrplorer": "green-purple"
+      )
+  {
     ##{$company} .card-footer {
       background-image: url("../img/cards/lightmode/3col-#{$card-graphic}.svg");
     }
   }
 
   // Monochrome logos; invert.
-  #bitpay, #coil, #forte, #xrplorer, #gatehub {
+  #bitpay,
+  #coil,
+  #forte,
+  #xrplorer,
+  #gatehub {
     .biz-logo {
       filter: invert(100%);
     }
@@ -665,23 +785,21 @@ pre code {
 .landing-bg {
   opacity: 0.4;
   @include media-breakpoint-up(md) {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
 .landing-builtin-bg {
   &::before {
     opacity: 0.4;
     @include media-breakpoint-up(md) {
-      opacity: 1.0;
+      opacity: 1;
     }
   }
 }
 
-
 // feedback widget
 #feedback-content {
   .docked-widget {
-
     .widget-header {
       background-color: $light-bg !important;
       color: $light-fg !important;
@@ -718,16 +836,15 @@ pre code {
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/lightmode/4col-light-green.svg);
     }
-    
   }
   #run-a-network-node .text-cards a {
     color: $black;
   }
 
-  #xrpl-blog  .blog-graphic {
+  #xrpl-blog .blog-graphic {
     content: url(../img/community/lightmode/community-blog@2x.png);
   }
-  
+
   #xrpl-events .text-light {
     color: $black !important;
   }
@@ -761,72 +878,72 @@ pre code {
 
 // Placeholder text colors (search bars, etc.)
 $placeholder-color: $gray-600;
-::-webkit-input-placeholder { /* Chrome */
+::-webkit-input-placeholder {
+  /* Chrome */
   color: $placeholder-color;
 }
-:-ms-input-placeholder { /* IE 10+ */
+:-ms-input-placeholder {
+  /* IE 10+ */
   color: $placeholder-color;
 }
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder {
+  /* Firefox 19+ */
   color: $placeholder-color;
   opacity: 1;
 }
-:-moz-placeholder { /* Firefox 4 - 18 */
+:-moz-placeholder {
+  /* Firefox 4 - 18 */
   color: $placeholder-color;
   opacity: 1;
 }
-
 
 // Events page
 .page-events {
-
   label {
     color: $gray-900;
   }
 
   .event-card {
-      color: $black;
-      background-color: $gray-050;
-      box-shadow: 0px 5px 20px 0px $gray-300;
+    color: $black;
+    background-color: $gray-050;
+    box-shadow: 0px 5px 20px 0px $gray-300;
   }
   a.event-card:hover {
-      color: $black;
+    color: $black;
   }
 
   .event-hero {
-      color: $gray-900;
+    color: $gray-900;
   }
 
   .event-save-date {
-      color: $gray-900;
+    color: $gray-900;
   }
 
   .event-small-gray {
-      color: $gray-600;
+    color: $gray-600;
   }
 
   #event-hero-image {
-      height: 100%;
-      min-height: 209px;
-      background: url(../img/events/event-hero1-light@2x.png);
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+    height: 100%;
+    min-height: 209px;
+    background: url(../img/events/event-hero1-light@2x.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .icon-date::before {
-      background: url(../img/events/event-date-light.svg);
+    background: url(../img/events/event-date-light.svg);
   }
 
   .icon-location::before {
-      background: url(../img/events/event-location-light.svg);
+    background: url(../img/events/event-location-light.svg);
   }
-
 
   .events-filter[type="checkbox"]::before {
     background-color: $gray-100;
   }
-
 
   .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
     background-image: url(../img/events/event-check.svg);
@@ -845,14 +962,13 @@ $placeholder-color: $gray-600;
   .events-filter[type="checkbox"]:not(:disabled):hover::after {
     background-color: $gray-100;
   }
-
 }
 
-
 .page-ambassadors {
-
   #benefits-list {
-    @each $benefits in "benefits-01", "benefits-02", "benefits-03", "benefits-04", "benefits-05", "benefits-06" {
+    @each $benefits in "benefits-01", "benefits-02", "benefits-03",
+      "benefits-04", "benefits-05", "benefits-06"
+    {
       ##{$benefits} {
         content: url("../img/ambassadors/lightmode/#{$benefits}.svg");
       }
@@ -860,7 +976,9 @@ $placeholder-color: $gray-600;
   }
 
   #eligibility-list {
-    @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03", "eligibility-04", "eligibility-05" {
+    @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03",
+      "eligibility-04", "eligibility-05"
+    {
       ##{$eligibility} {
         content: url("../img/ambassadors/lightmode/#{$eligibility}.svg");
       }

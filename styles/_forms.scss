@@ -4,14 +4,14 @@
     color: $white;
     background-color: $gray-800;
     border-radius: $border-radius-sm 0 0 $border-radius-sm;
-    padding: .5rem .5rem .5rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     line-height: 1.5;
   }
 
   .ds-input {
     background-color: $gray-800;
     border-radius: 0 $border-radius-sm $border-radius-sm 0;
-    padding: .75rem 1rem .75rem .5rem;
+    padding: 0.75rem 1rem 0.75rem 0.5rem;
     width: 100%;
     border: 1px solid $gray-800;
 
@@ -27,12 +27,113 @@
 }
 
 #algolia-autocomplete-listbox-0 {
-    z-index: 1100 !important;
+  z-index: 1100 !important;
 }
 
 .xrp-ledger-dev-portal {
   // The extra specificity makes this override the default Algolia styles.
   // Algolia Search results --------------------------------------------------
+  .DocSearch-Modal {
+    top: 85px;
+    background-color: #232325;
+    box-shadow: none;
+  }
+  .DocSearch-Form {
+    box-shadow: inset 0 0 0 2px $blue-purple-400;
+    background-color: #232325;
+  }
+  .DocSearch-Hit-source {
+    color: $blue-purple-400;
+  }
+  .DocSearch-Hits mark {
+    color: $blue-purple-400;
+  }
+  .DocSearch-Hit-source,
+  .DocSearch-Hit-Container,
+  .DocSearch-Footer {
+    background-color: #232325;
+  }
+  .DocSearch-Hit a {
+    background-color: #232325;
+    box-shadow: none;
+  }
+  .DocSearch-Hit-source {
+    color: $black-40;
+  }
+  .DocSearch-Input {
+    color: $white;
+  }
+  .DocSearch-Hit-title,
+  .DocSearch-Hit-path,
+  .DocSearch-Label,
+  .DocSearch-Help {
+    color: $black-10 !important;
+  }
+
+  .DocSearch-Hit[aria-selected="true"] a {
+    background: $gray-700;
+    .DocSearch-Hit-Container {
+      background-color: $gray-700;
+    }
+    mark {
+      color: $blue-purple-400 !important;
+    }
+  }
+  .DocSearch-Prefill {
+    color: $blue-purple-400;
+  }
+  .DocSearch-Button {
+    background: $gray-800;
+    width: 100%;
+  }
+  .DocSearch-Button:hover {
+    background: $gray-800;
+    border-radius: 40px;
+    box-shadow: inset 0 0 0 2px $blue-purple-400;
+    .DocSearch-Button-Placeholder {
+      color: $white;
+    }
+  }
+  .DocSearch-Search-Icon {
+    color: $white !important;
+  }
+  .DocSearch-Modal {
+    margin-top: -20px;
+    max-width: 55%;
+    margin-right: 13.5em;
+  }
+
+  @include media-breakpoint-down(md) {
+    .algolia-autocomplete .ds-dropdown-menu {
+      min-width: unset;
+    }
+    .DocSearch-Modal {
+      top: 127px;
+      max-width: 100%;
+      margin-left: 10px;
+      margin-right: 20px;
+    }
+  }
+  .DocSearch-Container {
+    z-index: 99999 !important;
+    background-color: transparent !important;
+  }
+  .DocSearch-Logo svg {
+    .cls-1,
+    .cls-2 {
+      fill: white;
+    }
+  }
+  .DocSearch-Commands-Key {
+    color: $gray-800;
+  }
+
+  #centersearchboxcontainer {
+    justify-content: center;
+  }
+  #topsearchboxcontainer {
+    justify-content: right;
+  }
   .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
     background-color: $dropdown-bg;
     border: 0;
@@ -48,7 +149,7 @@
   .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
     color: $white;
     border: 0;
-    border-bottom: 2px solid $blue-purple-500;
+    border-bottom: 2px solid $blue-purple-400;
     font-weight: bold;
   }
 
@@ -70,14 +171,22 @@
     background-color: $gray-700;
   }
 
-  .algolia-autocomplete .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl0 .algolia-docsearch-suggestion--highlight, .algolia-autocomplete .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl1 .algolia-docsearch-suggestion--highlight, .algolia-autocomplete .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
+  .algolia-autocomplete
+    .algolia-docsearch-suggestion--category-header
+    .algolia-docsearch-suggestion--category-header-lvl0
+    .algolia-docsearch-suggestion--highlight,
+  .algolia-autocomplete
+    .algolia-docsearch-suggestion--category-header
+    .algolia-docsearch-suggestion--category-header-lvl1
+    .algolia-docsearch-suggestion--highlight,
+  .algolia-autocomplete
+    .algolia-docsearch-suggestion--text
+    .algolia-docsearch-suggestion--highlight {
     box-shadow: none;
     background-color: $gray-700;
   }
+}
 
-  @include media-breakpoint-down(md) {
-    .algolia-autocomplete .ds-dropdown-menu {
-      min-width: unset;
-    }
-  }
+#xrp-ledger-dev-portal {
+  overflow: auto !important;
 }

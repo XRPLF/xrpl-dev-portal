@@ -15,7 +15,7 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 
 ## Changing a Regular Key Pair
 
-The steps to change your existing regular key pair are almost the same as the steps to [assign a regular key](assign-a-regular-key-pair.html) for the first time. You generate the key pair and assign it to your account as a regular key pair, overwriting the existing regular key pair. However, the main difference is that when changing the existing regular key pair, you can use the existing regular private key to replace itself, whereas when assigning a regular key pair to an account for the first time, you have to use the account's master private key to do it.
+The steps to change your existing regular key pair are almost the same as the steps to [assign a regular key](assign-a-regular-key-pair.html) for the first time. You generate the key pair and assign it to your account as a regular key pair, overwriting the existing regular key pair. However, the main difference is that when changing the existing regular key pair, you can use the existing regular private key to replace itself; but when assigning a regular key pair to an account for the first time, you have to use the account's master private key to do it.
 
 For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
@@ -25,7 +25,7 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 If you want to remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](multi-signing.html)).
 
 
-When removing a regular key pair to your account, the `SetRegularKey` transaction requires signing by your account's master private key (secret) or existing regular key pair. Transmitting your master or regular private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
+When removing a regular key pair to your account, the `SetRegularKey` transaction requires signing by your account's master private key (secret) or existing regular key pair. Sending your master or regular private key anywhere is dangerous, so we keep transaction signing separate from transaction submission to the network.
 
 ### Sign Your Transaction
 
@@ -160,7 +160,7 @@ An example of a successful response:
 
 The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
 
-Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `signedTransaction`) to the network.
+Next, use the `submit` command to send the transaction blob (`tx_blob` or `signedTransaction`) to the network.
 
 
 ### Submit Your Transaction

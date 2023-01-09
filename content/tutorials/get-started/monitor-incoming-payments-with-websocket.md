@@ -9,16 +9,16 @@ labels:
 ---
 # Monitor Incoming Payments with WebSocket
 
-This tutorial shows how to monitor for incoming [payments](payment-types.html) using the [WebSocket `rippled` API](http-websocket-apis.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
+This tutorial shows how to monitor for incoming [payments](payment-types.html) using the [WebSocket API](http-websocket-apis.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
 
-WebSocket follows a model where the client and server establish one connection, then send messages both ways through the same connection, which remains open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.[¹](#footnote-1)<a id="from-footnote-1"></a>
+WebSocket follows a model where the client and server open one connection, then send messages both ways through the same connection, which stays open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.[¹](#footnote-1)<a id="from-footnote-1"></a>
 
 **Tip:** The examples in this page use JavaScript so that the examples can run natively in a web browser. If you are developing in JavaScript, you can also use the [xrpl.js library for JavaScript](https://js.xrpl.org/) to simplify some tasks. This tutorial shows how to monitor for transactions _without_ using a xrpl.js so that you can translate the steps to other programming languages that don't have a native XRP Ledger client library.
 
 ## Prerequisites
 
 - The examples in this page use JavaScript and the WebSocket protocol, which are available in all major modern browsers. If you have some JavaScript knowledge and expertise in another programming language with a WebSocket client, you can follow along while adapting the instructions to the language of your choice.
-- You need a stable internet connection and access to a `rippled` server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` server](install-rippled.html), you can also connect to that server locally.
+- You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` or Clio server](install-rippled.html), you can also connect to that server locally.
 - To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [tokens](tokens.html), you need even more precision. For more information, see [Currency Precision](currency-formats.html#xrp-precision).
 
 <!-- Big number support -->
@@ -69,7 +69,7 @@ The above example opens a secure connection (`wss://`) to one of Ripple's public
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](admin-api-methods.html) and admin-only data in some responses such as [server_info][server_info method], in addition to the [public methods](public-api-methods.html) that are available when you connect to public servers over the internet.
+**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](admin-api-methods.html) and admin-only data in some responses such as [server_info][server_info method], plus the [public methods](public-api-methods.html) that are available when you connect to public servers over the internet.
 
 Example:
 
@@ -179,7 +179,7 @@ socket.addEventListener('message', (event) => {
   }
 })
 
-// Demonstrate api_request functionality
+// Show api_request functionality
 async function pingpong() {
   console.log("Ping...")
   const response = await api_request({command: "ping"})
@@ -471,7 +471,7 @@ $("#tx_read").click((event) => {
 
 ## Other Programming Languages
 
-Many programming languages have libraries for sending and receiving data over a WebSocket connection. If you want a head-start on communicating with `rippled`'s WebSocket API in a language other than JavaScript, the following examples demonstrate similar functionality:
+Many programming languages have libraries for sending and receiving data over a WebSocket connection. If you want a head-start on communicating with `rippled`'s WebSocket API in a language other than JavaScript, the following examples show how:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -479,6 +479,12 @@ _Go_
 
 ```go
 {% include '_code-samples/monitor-payments-websocket/go/monitor-incoming-payments.go' %}
+```
+
+_Python_
+
+```py
+{% include '_code-samples/monitor-payments-websocket/py/monitor_incoming.py' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->

@@ -252,7 +252,7 @@ Tools that parse the `xrp-ledger.toml` file MUST accept documents that contain a
 
 Tools MAY return an error if a field they recognize is not formatted as expected, even if that field is not defined in this specification.
 
-When creating custom fields, be mindful of the field name you choose. If you use a very generic field name, other users may use the same name to mean something different, or formatted in a conflicting way. If you use a custom field that you think others will find useful, please contribute a specification for your field to the maintainers of this document.
+When creating custom fields, be mindful of the field name you choose. If you use a very generic field name, other users may use the same name to mean something different, or formatted in a conflicting way. If you use a custom field that you think others will find useful, please contribute a specification for your field to the maintainers of this document. <!-- STYLE_OVERRIDE: will -->
 
 
 ## CORS Setup
@@ -284,7 +284,7 @@ location /.well-known/xrp-ledger.toml {
 }
 ```
 
-For other web servers, see [I want to add CORS support to my server](https://enable-cors.org/server.html). If you use managed hosting, consult your web host's documentation for how to enable CORS on a specific path. (You probably do not want to enable CORS for your entire website.)
+For other web servers, see [I want to add CORS support to my server](https://enable-cors.org/server.html). If you use managed hosting, check your web host's documentation for how to enable CORS on a specific path. (You probably do not want to enable CORS for your entire website.)
 
 [CORS]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
@@ -356,7 +356,7 @@ Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attest
 
 ## Account Verification
 
-Similar to [Domain Verification](#domain-verification), account verification is the idea of proving that the same entity controls a particular domain and a particular XRP Ledger address. Account verification is not necessary for using the XRP Ledger or providing an `xrp-ledger.toml` file, but you may desire to verify your accounts in the name of transparency.
+Similar to [Domain Verification](#domain-verification), account verification is the idea of proving that the same entity controls a particular domain and a particular XRP Ledger address. Account verification is not necessary for using the XRP Ledger or providing an `xrp-ledger.toml` file, but you may want to verify your accounts in the name of transparency.
 
 Account verification requires establishing a two-way link between the domain operator and the address:
 

@@ -25,7 +25,7 @@ The settings in this section are parameters in the `rippled.cfg` file. You can a
 
 ### Node Size
 
-The `[node_size]` parameter should reflect the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) [Updated in: rippled 1.8.1][]
+The `[node_size]` parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) [Updated in: rippled 1.8.1][]
 
 As a general rule, you should always use the largest node size your available RAM can support. See the following table for recommended settings.
 
@@ -120,6 +120,7 @@ Each server in the XRP Ledger network performs all of the transaction processing
 See [System Requirements](system-requirements.html) for a summary of the recommended hardware specs.
 
 #### CPU Utilization and Virtualization
+<!-- STYLE_OVERRIDE: utilization -->
 
 You'll get the best performance on bare metal, but virtual machines can perform nearly as well as long as the host hardware has high enough specs.
 
@@ -149,7 +150,7 @@ The following table approximates the requirements for different amounts of histo
 | 90 days          | 2,250,000                 | 720 GB                        | 1 TB |
 | 1 year           | 10,000,000                | 3 TB                          | 4.5 TB |
 | 2 years          | 20,000,000                | 6 TB                          | 9 TB |
-| Full history (as of 2020-11-10) | 59,000,000+    | (Not recommended)             | ~14 TB |
+| Full history (as of 2022-12-18) | 76,500,000+    | (Not recommended)             | ~22.3 TB |
 
 These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data. You should provision extra storage capacity to prepare for future growth.
 
@@ -178,18 +179,18 @@ Memory requirements are mainly a function of the `node_size` configuration setti
 
 #### Network
 
-Any enterprise or carrier-class data center should have substantial network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use. Consumer-grade home internet is generally not sufficient to run a reliable server.
+Any enterprise or carrier-class data center should have enough network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use. Consumer-grade home internet is generally not enough to run a reliable server.
 
-During exceptionally high periods of transaction volume, some operators have reported that their servers have completely saturated a 100 megabit/s network link. Therefore, a gigabit network interface is required for reliable performance.
+During exceptionally high periods of transaction volume, some operators have reported that their servers have completely saturated a 100 megabit/s network link, so a gigabit network interface is required for reliable performance.
 
 Here are examples of observed uncompressed network bandwidth use for common tasks:
 
-| Task                                            | Transmit/Receive           |
-|:------------------------------------------------|:---------------------------|
-| Process average transaction volumes             | 2 Mbps transmit, 2 Mbps receive |
-| Process peak transaction volumes                | >100 Mbps transmit          |
-| Serve historical ledger and transaction reports | 100 Mbps transmit           |
-| Start up `rippled`                              | 20 Mbps receive             |
+| Task                                            | Send/Receive           |
+|:------------------------------------------------|:-----------------------|
+| Process average transaction volumes             | 2 Mbps up, 2 Mbps down |
+| Process peak transaction volumes                | >100 Mbps up           |
+| Serve historical ledger and transaction reports | 100 Mbps up            |
+| Start up `rippled`                              | 20 Mbps down           |
 
 You can save bandwidth by [enabling compression on peer-to-peer communications](enable-link-compression.html), at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited.
 

@@ -2,8 +2,6 @@
 html: nftokenoffer.html
 parent: ledger-object-types.html
 blurb: NFTを売買するオファーを作成する。
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 ---

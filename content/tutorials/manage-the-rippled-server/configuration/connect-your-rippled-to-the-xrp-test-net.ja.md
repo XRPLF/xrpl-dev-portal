@@ -62,7 +62,7 @@ Rippleは[代替となるテスト用および開発用ネットワーク](paral
             # https://vl.altnet.rippletest.net
 
             # [validator_list_keys]
-            # ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860        
+            # ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
 
             # [validator_list_sites]
             # https://vl.ripple.com
@@ -84,17 +84,11 @@ Rippleは[代替となるテスト用および開発用ネットワーク](paral
 
 4. `rippled`がXRP TestnetまたはDevnetに接続していることを確認するため、サーバーで[server_infoメソッド][]を使用して、その結果をTestnetまたはDevnetの公開サーバーの結果と比較します。両方のサーバーで`validated_ledger`オブジェクトの`seq`フィールドが同一である必要があります（確認中にこの数が変化した場合は、1～2の差が生じる可能性があります）。
 
-   以下のコマンドは、`s.altnet.rippletest.net`にあるTestnetサーバーの最新の検証済みレジャーをチェックします。
+    以下のコマンドは、ローカルの`rippled`の最新検証済みレジャーインデックスをチェックします。
 
-        $ ./rippled --rpc_ip 34.210.87.206:51234 server_info | grep seq
+         $ ./rippled server_info | grep seq
 
-   以下のコマンドは、`s.devnet.rippletest.net`にあるDevnetサーバーの最新の検証済みレジャーをチェックします。
-
-        $ ./rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
-
-   以下のコマンドは、ローカルの`rippled`の最新検証済みレジャーインデックスをチェックします。
-
-        $ ./rippled server_info | grep seq
+    [WebSocket Toolのserver_info](websocket-api-tool.html#server_info)でネットワークのレジャーインデックスをチェックします。
 
 
 ## 関連項目

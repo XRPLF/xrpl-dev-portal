@@ -1,6 +1,11 @@
 {% set txtypes = [
     "AccountDelete",
     "AccountSet",
+    "AMMBid",
+    "AMMDeposit",
+    "AMMCreate",
+    "AMMVote",
+    "AMMWithdraw",
     "CheckCancel",
     "CheckCash",
     "CheckCreate",

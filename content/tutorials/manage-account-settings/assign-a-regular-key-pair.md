@@ -24,7 +24,7 @@ This tutorial walks through the steps required to assign a regular key pair to y
 
 Generate a key pair that you'll assign to your account as a regular key pair.
 
-This key pair is the same data type as a master key pair, so you can generate it the same way: you can use the client library of your choice or use the [wallet_propose method][] of a server you operate. This might look as follows:
+This key pair is the same data type as a master key pair, so you can generate it the same way: you can use the client library of your choice or use the [wallet_propose method][] of a server you run. This might look as follows:
 
 
 <!-- MULTICODE_BLOCK_START -->
@@ -135,7 +135,7 @@ Use a [SetRegularKey transaction][] to assign the key pair you generated in step
 
 When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are [several ways of securely signing transactions](set-up-secure-signing.html), but this tutorial uses a local `rippled` server.
 
-When you send subsequent SetRegularKey transactions, you can sign using the existing regular private key to replace or [remove itself](change-or-remove-a-regular-key-pair.html). Note that you should still not submit your regular private key across the network.
+When you send later SetRegularKey transactions, you can sign using the existing regular private key to replace or [remove itself](change-or-remove-a-regular-key-pair.html). Note that you should still not submit your regular private key across the network.
 
 
 ### Sign Your Transaction
@@ -277,7 +277,7 @@ An example of a successful response:
 
 The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
 
-Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `signedTransaction`) to the network.
+Next, use the `submit` command to send the transaction blob (`tx_blob` or `signedTransaction`) to the network.
 
 
 ### Submit Your Transaction
@@ -551,7 +551,7 @@ An example of a successful response:
 
 The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
 
-Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `signedTransaction`) to the network.
+Next, use the `submit` command to send the transaction blob (`tx_blob` or `signedTransaction`) to the network.
 
 
 ### Submit Your Transaction

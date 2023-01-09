@@ -34,7 +34,11 @@ An example of the request format:
 ```json
 {
     "method": "nft_sell_offers",
-    "tokenid": "00090000D0B007439B080E9B05BF62403911301A7B1F0CFAA048C0A200000007"
+    "params": [
+        {
+            "nft_id": "00090000D0B007439B080E9B05BF62403911301A7B1F0CFAA048C0A200000007"
+        }
+    ]
 }
 ```
 
@@ -101,7 +105,7 @@ The response follows the [standard format][], with a successful result containin
 |:---------|:-----------|:-----------------------------------------------------|
 | `nft_id` | String     | The NFToken these offers are for, as specified in the request. |
 | `offers` | Array      | A list of buy offers for the token. Each of these is formatted as a **Sell Offer** (see below). |
-| `limit`  | Number     | _(May be omitted)_The `limit`, as specified in the request. |
+| `limit`  | Number     | _(May be omitted)_ The `limit`, as specified in the request. |
 | `marker` | [Marker][] | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. |
 
 ### Sell Offers

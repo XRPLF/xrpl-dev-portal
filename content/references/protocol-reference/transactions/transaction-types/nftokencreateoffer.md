@@ -26,15 +26,16 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
+[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCreateOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22780C44B2EDFF8FC4152B3F7E98D4C435C13DF9BB5498E4BB2D019FCC7EF45BC6%22%2C%22binary%22%3Afalse%7D)
 
 {% include '_snippets/tx-fields-intro.md' %}
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
 | `Owner`       | String              | AccountID         | _(Optional)_ Who owns the corresponding `NFToken`. If the offer is to buy a token, this field must be present and it must be different than the `Account` field (since an offer to buy a token one already holds is meaningless). If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as the `Account` (since an offer to sell a token one doesn't already hold is meaningless). |
-| `NFTokenID`     | String              | Hash256           | Identifies the `NFToken` object that the offer references. |
+| `NFTokenID`   | String              | Hash256           | Identifies the `NFToken` object that the offer references. |
 | `Amount`      | [Currency Amount][] | Amount            | Indicates the amount expected or offered for the corresponding `NFToken`. The amount must be non-zero, except where this is an offer to sell and the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the `Destination` field. |
-| `Expiration`  | Number              | UInt32            | _(Optional)_ Indicates the time after which the offer will no longer be valid. The value is the number of [seconds since the Ripple Epoch][]. |
+| `Expiration`  | Number              | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. |
 | `Destination` | String              | AccountID         | _(Optional)_ If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to accept this offer MUST fail. |
 
 
@@ -49,7 +50,7 @@ Transactions of the NFTokenCreateOffer type support additional values in the [`F
 
 ## Error Cases
 
-In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
 
 | Error Code                       | Description                               |
 |:---------------------------------|:------------------------------------------|

@@ -443,21 +443,21 @@ An example of a successful response:
 
 The initial response follows the [standard format](response-formatting.html), with a successful result containing the following fields:
 
-| `Field`               | Type             | Description                       |
+| Field                 | Type             | Description                       |
 |:----------------------|:-----------------|:----------------------------------|
 | `alternatives`        | Array            | Array of objects with suggested [paths](paths.html) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
-| `destination_account` | String           | Unique address of the account that would receive a transaction |
-| `destination_amount`  | String or Object | [Currency Amount][] that the destination would receive in a transaction |
-| `id`                  | (Various)        | (WebSocket only) The ID provided in the WebSocket request is included again at this level. |
-| `source_account`      | String           | Unique address that would send a transaction |
+| `destination_account` | String           | Unique address of the account that would receive a transaction. |
+| `destination_amount`  | String or Object | [Currency Amount][] that the destination would receive in a transaction. |
+| `source_account`      | String           | Unique address that would send a transaction. |
 | `full_reply`          | Boolean          | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. [New in: rippled 0.29.0][] |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 
-| `Field`          | Type             | Description                            |
-|:-----------------|:-----------------|:---------------------------------------|
-| `paths_computed` | Array            | Array of arrays of objects defining [payment paths](paths.html) |
-| `source_amount`  | String or Object | [Currency Amount][] that the source would have to send along this path for the destination to receive the desired amount |
+| Field                | Type             | Description                            |
+|:---------------------|:-----------------|:---------------------------------------|
+| `paths_computed`     | Array            | Array of arrays of objects defining [payment paths](paths.html) |
+| `source_amount`      | String or Object | [Currency Amount][] that the source would have to send along this path for the destination to receive the desired amount. |
+| `destination_amount` | String or Object | _(May be omitted)_ [Currency Amount][] that the destination would receive along this path. Only included if the `destination_amount` from the request was the "-1" special case. |
 
 ### Possible Errors
 
@@ -520,7 +520,7 @@ An example of the request format:
 
 The request includes the following parameters:
 
-| `Field`      | Type   | Description                                |
+| Field        | Type   | Description                                |
 |:-------------|:-------|:-------------------------------------------|
 | `subcommand` | String | Use `"close"` to send the close sub-command |
 
@@ -528,7 +528,7 @@ The request includes the following parameters:
 
 If a pathfinding request was successfully closed, the response follows the same format as the initial response to [`path_find create`](#path_find-create), plus the following field:
 
-| `Field`  | Type    | Description                                             |
+| Field    | Type    | Description                                             |
 |:---------|:--------|:--------------------------------------------------------|
 | `closed` | Boolean | The value `true` indicates this reply is in response to a `path_find close` command. |
 
@@ -565,7 +565,7 @@ An example of the request format:
 
 The request includes the following parameters:
 
-| `Field`      | Type   | Description                                  |
+| Field        | Type   | Description                                  |
 |:-------------|:-------|:---------------------------------------------|
 | `subcommand` | String | Use `"status"` to send the status sub-command |
 
@@ -573,7 +573,7 @@ The request includes the following parameters:
 
 If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path_find-create), plus the following field:
 
-| `Field`  | Type    | Description                                             |
+| Field    | Type    | Description                                             |
 |:---------|:--------|:--------------------------------------------------------|
 | `status` | Boolean | The value `true` indicates this reply is in response to a `path_find status` command. |
 

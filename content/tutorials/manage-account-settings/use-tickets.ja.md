@@ -5,7 +5,6 @@ blurb: チケットは、通常のシーケンス順序以外でトランザク�
 embed_xrpl_js: true
 filters:
   - interactive_steps
-  - include_code
 labels:
   - アカウント
 ---

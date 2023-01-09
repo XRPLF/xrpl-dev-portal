@@ -92,7 +92,7 @@ To permanently destroy a NFToken:
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to examine the code samples.
 
 ## ripplex3-mint-nfts.js
-
+<!-- SPELLING_IGNORE: ripplex3 -->
 
 ### Mint Token
 
@@ -155,7 +155,7 @@ The Transfer Fee is a value 0 to 50000, used to set a royalty of 0.000% to 50.00
     "TransferFee": parseInt(standbyTransferFeeField.value),
 ```
 
-The TokenTaxon is a required value. It is an arbitrary value defined by the issuer. If you do not have a use for the field, you can set it to _0_.
+The `TokenTaxon` is a required value. It is an arbitrary value defined by the issuer. If you do not have a use for the field, you can set it to _0_.
 
 
 ```
@@ -221,7 +221,7 @@ async function getTokens() {
 ```
 
 
-Connect to the ledger and get the account wallet.
+Connect to the ledger and get the account.
 
 
 ```
@@ -482,9 +482,9 @@ Bold text in the following indicates changes to the form that support the new fu
   <body>
     <h1>Token Test Harness</h1>
     <form id="theForm">
-      Choose your ledger instance:
+      Choose your ledger instance:&nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233">
+        value="wss://s.altnet.rippletest.net:51233" checked>
       <label for="testnet">Testnet</label>
       &nbsp;&nbsp;
       <input type="radio" id="dn" name="server"
@@ -554,7 +554,7 @@ Bold text in the following indicates changes to the form that support the new fu
                         Amount
                       </td>
                       <td>
-                        <input type="text" id="standbyAmountField" size="40" value="100"></input>
+                        <input type="text" id="standbyAmountField" size="40"></input>
                         <br>
                       </td>
                     </tr>
@@ -706,7 +706,7 @@ Bold text in the following indicates changes to the form that support the new fu
                               Amount
                             </td>
                             <td>
-                              <input type="text" id="operationalAmountField" size="40" value="100"></input>
+                              <input type="text" id="operationalAmountField" size="40"></input>
                               <br>
                             </td>
                           </tr>

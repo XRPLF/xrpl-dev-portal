@@ -392,7 +392,7 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
   "method": "ledger_entry",
   "params": [{
     "escrow": {
-      "account": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
+      "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
       "seq": 126
     },
     "ledger_index": "validated"
@@ -403,7 +403,7 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "escrow": { "account": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -512,11 +512,11 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 
 Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] set aside for future use. Can be provided as string (object ID of the Ticket) or as an object. _(Added by the [TicketBatch amendment][])_
 
-| `Field`                 | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `ticket`                | Object or String           | The [Ticket object](ticket.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Ticket, as hexadecimal. If an object, the `owner` and `ticket_sequence` sub-fields are required to uniquely specify the Ticket entry. |
-| `ticket.owner`          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
-| `ticket.ticket_sequence` | Unsigned Integer          | _(Required if `ticket` is specified as an object)_ The Ticket Sequence number of the Ticket entry to retrieve. |
+| `Field`             | Type                 | Description           |
+|:--------------------|:---------------------|:----------------------|
+| `ticket`            | Object or String     | The [Ticket object](ticket.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Ticket, as hexadecimal. If an object, the `account` and `ticket_seq` sub-fields are required to uniquely specify the Ticket entry. |
+| `ticket.account`    | String - [Address][] | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
+| `ticket.ticket_seq` | Number               | _(Required if `ticket` is specified as an object)_ The Ticket Sequence number of the Ticket entry to retrieve. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -527,8 +527,8 @@ Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] 
   "id": "example_get_ticket",
   "command": "ledger_entry",
   "ticket": {
-    "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "ticket_sequence": 23
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "ticket_seq": 389
   },
   "ledger_index": "validated"
 }
@@ -541,8 +541,8 @@ Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] 
   "method": "ledger_entry",
   "params": [{
     "ticket": {
-      "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "ticket_sequence": 23
+      "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "ticket_seq": 389
     },
     "ledger_index": "validated"
   }]
@@ -552,14 +552,12 @@ Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] 
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "ticket": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_sequence: 23 }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq: 389 }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-<!-- TODO: enable if/when Tickets are available on Mainnet
 [Try it! >](websocket-api-tool.html#ledger_entry-ticket)
--->
 
 
 

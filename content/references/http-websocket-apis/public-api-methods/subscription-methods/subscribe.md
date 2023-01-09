@@ -79,14 +79,14 @@ The following parameters are deprecated and may be removed without further notic
 
 The `streams` parameter provides access to the following default streams of information:
 
-- `consensus` - Sends a message whenever the server changes phase in the consensus cycle (open, establish, accepted, and so forth)
-- `ledger` - Sends a message whenever the consensus process declares a new validated ledger
+- `consensus` - Sends a message whenever the server changes phase in the consensus cycle.
+- `ledger` - Sends a message whenever the consensus process declares a new validated ledger.
 - `manifests` - Sends a message whenever the server receives an update to a validator's ephemeral signing key.
 - `peer_status` - **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process.
-- `transactions` - Sends a message whenever a transaction is included in a closed ledger
+- `transactions` - Sends a message whenever a transaction is included in a closed ledger.
 - `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation.
     **Note:** [Even some transactions that don't succeed are included](transaction-results.html) in validated ledgers, because they take the anti-spam transaction fee.
-- `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes
+- `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes.
 - `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 
 **Note:** The following streams are not available from servers in [Reporting Mode][]: `server`, `peer_status`, `consensus`. Reporting Mode servers return the error `reportingUnsupported` if you request one of these streams. [Updated in: rippled 1.8.1][]
@@ -569,7 +569,7 @@ The fields from a consensus stream message are as follows:
 | `Field`             | Type                      | Description                |
 |:--------------------|:--------------------------|:---------------------------|
 | `type`              | String                    | `consensusPhase` indicates this is from the consensus stream |
-| `consensus`         | String                    | The new consensus phase the server is in. Possible values are open, establish, and accepted. |
+| `consensus`         | String                    | The new consensus phase the server is in. Possible values are `open`, `establish`, and `accepted`. |
 
 
 {% include '_snippets/rippled_versions.md' %}

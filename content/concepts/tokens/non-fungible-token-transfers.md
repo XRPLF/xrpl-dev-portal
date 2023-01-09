@@ -2,8 +2,6 @@
 html: non-fungible-token-transfers.html
 parent: non-fungible-tokens.html
 blurb: Trading NFTokens in direct or brokered mode.
-filters:
- - include_code
 labels:
  - Non-fungible Tokens, NFTs
 ---
@@ -20,12 +18,12 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ### Create a Sell Offer
 
-As the owner of a `NFToken` object, you can create a sell offer using a [NFTokenCreateOffer transaction][] with the `tfSellToken` flag. You provide the `NFTokenID` and the `Amount` you are willing to accept in payment. You can optionally specify an `Expiration` date, after which the offer is no longer valid, and a `Destination` account, which is the only account that is allowed to purchase the `NFToken`.
+As the owner of a `NFToken` object, you can create a sell offer using a [NFTokenCreateOffer transaction][] with the `tfSellToken` flag. You provide the `NFTokenID` and the `Amount` you are willing to accept in payment. You can optionally specify an `Expiration` date, after which the offer is no longer valid, and a `Destination` account, which is the only account that is allowed to buy the `NFToken`.
 
 
 ### Accept a Sell Offer
 
-To purchase a `NFToken` that is offered for sale, you use a `NFTokenAcceptOffer` transaction. You provide the owner account and specify the `NFTokenOfferID` of the `NFTokenOffer` object you choose to accept.
+To buy a `NFToken` that is offered for sale, you use a `NFTokenAcceptOffer` transaction. You provide the owner account and specify the `NFTokenOfferID` of the `NFTokenOffer` object you choose to accept.
 
 
 ## Buy Offers
@@ -45,9 +43,9 @@ Use the `NFTokenAcceptOffer` transaction to transfer a `NFToken`. Provide the `N
 
 When trading a `NFToken`, you can choose between a _direct_ transaction between a buyer and seller or a _brokered_ transaction, where a third party account matches a sell and buy offer to arrange the trade.
 
-Trading in direct mode gives the seller control over the transfer. The seller can either post a `NFToken` for purchase by anyone, or sell a `NFToken` to a specific destination account. The seller receives the entire purchase price for the `NFToken`.
+Trading in direct mode gives the seller control over the transfer. The seller can either post a `NFToken` for sale so that anyone can buy it, or sell a `NFToken` to a specific account. The seller receives the entire price for the `NFToken`.
 
-In brokered mode, the seller allows a third party account to broker the sale of the `NFToken`. The broker account collects a broker fee for the transfer at an agreed upon rate. The purchase is completed in real time, paying the broker and seller from the buyer’s funds without requiring an up front investment by the broker.
+In brokered mode, the seller allows a third party account to broker the sale of the `NFToken`. The broker account collects a broker fee for the transfer at an agreed upon rate. This happens as one transaction, paying the broker and seller from the buyer’s funds without requiring an up front investment by the broker.
 
 
 ### When to Use Brokered Mode

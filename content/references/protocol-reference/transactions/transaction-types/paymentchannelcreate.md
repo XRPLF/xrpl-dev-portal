@@ -28,6 +28,8 @@ Create a unidirectional channel and fund it with XRP. The address sending this t
 }
 ```
 
+[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22711C4F606C63076137FAE90ADC36379D7066CF551E96DA6FE2BDAB5ECBFACF2B%22%2C%22binary%22%3Afalse%7D)
+
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 

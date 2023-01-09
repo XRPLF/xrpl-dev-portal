@@ -55,10 +55,9 @@ A request can include the following parameters:
 | `Field`        | Type                        | Description                   |
 |:---------------|:----------------------------|:------------------------------|
 | `account`      | String                      | A unique identifier for the account, most commonly the account's [Address][]. |
-| `ledger`       | Unsigned Integer, or String | _(**Deprecated**, Optional)_ A unique identifier for the ledger version to use, such as a ledger index, a hash, or a shortcut such as "validated". |
 | `ledger_hash`  | String - [Hash][]           | _(Optional)_ A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | Number - [Ledger Index][]   | (Optional, defaults to `current`) The [ledger index][] of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers][]) |
-| `limit`        | Integer                     | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
+| `ledger_index` | Number - [Ledger Index][]   | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `limit`        | Integer                     | _(Optional)_ Limit the number of Offers to retrieve. The server may return fewer than this number of results. Must be within the inclusive range 10 to 400. The default is 200. [New in: rippled 0.26.4][] |
 | `marker`       | [Marker][]                  | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
 | `strict`       | Boolean                    | _(Optional)_ If `true`, then the `account` field only accepts a public key or XRP Ledger address. Otherwise, `account` can be a secret or passphrase (not recommended). The default is `false`. |
 

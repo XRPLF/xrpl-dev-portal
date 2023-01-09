@@ -40,15 +40,15 @@ Strive to have your validator always embody the following properties. Being a go
 
     A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/XRPLF/rippled/tree/release) without modifications. [Watch `rippled` releases](https://github.com/XRPLF/rippled/releases) and subscribe to the [Google Group](https://groups.google.com/g/ripple-server) to be notified of new releases.
 
-- **Issuing timely votes**
+- **Issuing prompt votes**
 
-    A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes timely, make sure your validator meets the recommended [system requirements](system-requirements.html), which include a fast internet connection.
+    A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes on time, make sure your validator meets the recommended [system requirements](system-requirements.html), which include a fast internet connection.
 
     It is possible to submit new transactions and query data using a validator, but heavy loads of API queries may make the validator less reliable at keeping up with consensus. If your API needs are light enough, then you can use a server for both purposes. Ideally, a validator should be dedicated to participating in consensus.
 
 - **Identified**
 
-    A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
+    A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators. <!-- STYLE_OVERRIDE: clearly -->
 
 It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt).
 

@@ -8,7 +8,7 @@ labels:
 # manifest
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "Source")
 
-The `{{currentpage.name}}` method reports the current "manifest" information for a given validator public key. The "manifest" is the public portion of that validator's configured token. [Updated in: rippled 1.7.0][]
+The `{{currentpage.name}}` method reports the current "manifest" information for a given validator public key. The "manifest" is a block of data that authorizes an ephemeral signing key with a signature from the validator's master key pair. [Updated in: rippled 1.7.0][]
 
 
 ### Request Format

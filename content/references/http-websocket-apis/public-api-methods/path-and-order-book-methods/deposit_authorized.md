@@ -9,7 +9,7 @@ labels:
 # deposit_authorized
 [[Source]](https://github.com/ripple/rippled/blob/817d2339b8632cb2f97d3edd6f7af33aa7631744/src/ripple/rpc/handlers/DepositAuthorized.cpp "Source")
 
-The `deposit_authorized` command indicates whether one account is authorized to send payments directly to another. See [Deposit Authorization](depositauth.html) for information on how to require authorization to deliver money to your account.
+The `deposit_authorized` command indicates whether one account is authorized to send payments directly to another. See [Deposit Authorization](depositauth.html) for information on how to require authorization to deliver money to your account. <!-- STYLE_OVERRIDE: is authorized to -->
 
 ## Request Format
 An example of the request format:
@@ -135,7 +135,7 @@ The response follows the [standard format][], with a successful result containin
 | `source_account`       | String - [Address][]      | The source account specified in the request. |
 | `validated`            | Boolean                   | _(May be omitted)_ If `true`, the information comes from a validated ledger version. |
 
-**Note:** A `deposit_authorized` status of `true` does not guarantee that a payment can be sent from the specified source to the specified destination. For example, the destination account may not have a [trust line](trust-lines-and-issuing.html) for the specified currency, or there may not be sufficient liquidity to deliver a payment.
+**Note:** A `deposit_authorized` status of `true` does not guarantee that a payment can be sent from the specified source to the specified destination. For example, the destination account may not have a [trust line](trust-lines-and-issuing.html) for the specified currency, or there may not be enough liquidity to deliver a payment.
 
 ## Possible Errors
 

@@ -11,7 +11,7 @@ labels:
 
 The XRP Ledger is designed to be censorship resistant. In support of this design, the XRP Ledger provides an automated transaction censorship detector that is available on all `rippled` servers, enabling all participants to see if censorship is affecting the network.
 
-While a `rippled` server is in sync with the network, the detector tracks all transactions that, in the view of the `rippled` server, should have been accepted in the last round of [consensus](intro-to-consensus.html) and included in the last validated ledger. The detector issues log messages of increasing severity for transactions that have not been included in a validated ledger after several rounds of consensus.
+While a `rippled` server is in sync with the network, the detector tracks all transactions that should have been accepted in the last round of [consensus](intro-to-consensus.html) and included in the last validated ledger. The detector issues log messages of increasing severity when it sees transactions that have not been included in a validated ledger after several rounds of consensus.
 
 
 
@@ -19,7 +19,7 @@ While a `rippled` server is in sync with the network, the detector tracks all tr
 
 At a high-level, here’s how the transaction censorship detector works:
 
-1. The detector adds all transactions in a `rippled` server's initial consensus proposal to the tracker.
+1. The detector adds all transactions in the server's initial consensus proposal to the tracker.
 
 2. At the close of the consensus round, the detector removes all transactions included in the resulting validated ledger from the tracker.
 
@@ -55,11 +55,11 @@ The transaction censorship detector may issue false positives in certain scenari
 
 Here are some scenarios that could cause the detector to issue false positive messages:
 
-- Your `rippled` server is running a build with code that is different from the rest of the network. This may cause your `rippled` server to apply transactions differently, resulting in false positives. While this type of false positive is unlikely, in general, it is crucial that you run the correct version of `rippled`.
+- Your server is running a build with code that is different from the rest of the network. This may cause your server to apply transactions differently, resulting in false positives. While this type of false positive is unlikely, in general, it is crucial that you run a compatible version of the core XRP Ledger server.
 
-- Your `rippled` server is out of sync with the network and has not yet realized it.
+- Your server is out of sync with the network and has not yet realized it.
 
-- `rippled` servers in the network, including possibly your own server, are being impacted by a class of bug that causes `rippled` servers to inconsistently relay transactions to other `rippled` servers in the network.
+- Servers in the network, including possibly your own server, have a bug that causes them to inconsistently relay transactions to other servers in the network.
 
     Currently, there are no known bugs that cause this unexpected behavior. However, if you see the impact of what you suspect is a bug, consider reporting it to the [Ripple Bug Bounty](https://ripple.com/bug-bounty/) program.
 

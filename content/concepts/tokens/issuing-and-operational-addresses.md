@@ -23,7 +23,7 @@ The standby addresses, which are operated by actual humans, send those tokens to
 
 Operational addresses, which are operated by automated systems, send payments to other counterparties, such as liquidity providers, partners, and other customers. Those counterparties may send funds freely among themselves multiple times.
 
-As always, token payments must "ripple through" the issuer across trust lines with sufficient limits.
+As always, token payments must "ripple through" the issuer across trust lines.
 
 Eventually, someone sends tokens back to the issuer. This destroys those tokens, reducing the issuer's obligations in the XRP Ledger. If the token is a stablecoin, this is the first step of redeeming the tokens for the corresponding off-ledger assets.
 

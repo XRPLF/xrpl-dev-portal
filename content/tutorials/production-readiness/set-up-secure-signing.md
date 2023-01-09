@@ -25,7 +25,7 @@ There are several configurations with varying levels of security that may be acc
 
 {{ include_svg("img/insecure-signing-options.svg", "Diagram of insecure configurations") }}
 
-Any configuration in which outside sources may gain access to your secret key is dangerous, and is likely to result in a malicious user stealing all your XRP (and anything else your XRP Ledger address has). Examples of such configurations include ones where you use the [sign method][] of someone else's `rippled` server over the internet, or you transmit your secret key in plain text over the internet to your own server.
+Any configuration in which outside sources may gain access to your secret key is dangerous, and is likely to result in a malicious user stealing all your XRP (and anything else your XRP Ledger address has). Examples of such configurations include ones where you use the [sign method][] of someone else's `rippled` server over the internet, or you send your secret key in plain text over the internet to your own server.
 
 You should maintain the secrecy of your secret keys at all times, which includes things like not emailing them to yourself, not typing them visibly in public, and saving them encrypted—never in plain text—when you are not using them. The balance between security and convenience depends in part on the value of your addresses' holdings, so you may want to use multiple addresses with different security configurations for different purposes.
 

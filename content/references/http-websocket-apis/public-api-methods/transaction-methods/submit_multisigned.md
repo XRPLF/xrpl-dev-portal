@@ -135,10 +135,10 @@ rippled submit_multisigned '{
 
 The request includes the following parameters:
 
-| `Field`     | Type    | Description                                          |
-|:------------|:--------|:-----------------------------------------------------|
-| `tx_json`   | Object  | [Transaction in JSON format](transaction-formats.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](signerlist.html). |
-| `fail_hard` | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers. |
+| `Field`     | Type    | Required? | Description                                          |
+|:------------|:--------|:----------|:-----------------------------------------------------|
+| `tx_json`   | Object  | Yes       | [Transaction in JSON format](transaction-formats.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](signerlist.html). |
+| `fail_hard` | Boolean | No        | If `true`, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is `false`. |
 
 ## Response Format
 
@@ -196,6 +196,53 @@ An example of a successful response:
 
 ```json
 200 OK
+
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "120014220004000024000000046380000000000000000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF74473045022100CC9C56DF51251CB04BB047E5F3B5EF01A0F4A8A549D7A20A7402BF54BA744064022061EF8EF1BCCBF144F480B32508B1D10FD4271831D5303F920DE41C64671CB5B78114204288D2E47F8EF6C99BCC457966320D12409711E1E010732103398A4EDAE8EE009A5879113EAA5BA15C7BB0F612A87F4103E793AC919BD1E3C174473045022100FEE8D8FA2D06CE49E9124567DCA265A21A9F5465F4A9279F075E4CE27E4430DE022042D5305777DA1A7801446780308897699412E4EDF0E1AEFDF3C8A0532BDE4D0881143A4C02EA95AD6AC3BED92FA036E0BBFB712C030CE1F1",
+        "tx_json": {
+            "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+            "Fee": "30000",
+            "Flags": 262144,
+            "LimitAmount": {
+                "currency": "USD",
+                "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                "value": "0"
+            },
+            "Sequence": 4,
+            "Signers": [
+                {
+                    "Signer": {
+                        "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                        "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                        "TxnSignature": "3045022100CC9C56DF51251CB04BB047E5F3B5EF01A0F4A8A549D7A20A7402BF54BA744064022061EF8EF1BCCBF144F480B32508B1D10FD4271831D5303F920DE41C64671CB5B7"
+                    }
+                },
+                {
+                    "Signer": {
+                        "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                        "SigningPubKey": "03398A4EDAE8EE009A5879113EAA5BA15C7BB0F612A87F4103E793AC919BD1E3C1",
+                        "TxnSignature": "3045022100FEE8D8FA2D06CE49E9124567DCA265A21A9F5465F4A9279F075E4CE27E4430DE022042D5305777DA1A7801446780308897699412E4EDF0E1AEFDF3C8A0532BDE4D08"
+                    }
+                }
+            ],
+            "SigningPubKey": "",
+            "TransactionType": "TrustSet",
+            "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
+        }
+    }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
 
 {
     "result": {

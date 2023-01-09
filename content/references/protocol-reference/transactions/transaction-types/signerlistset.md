@@ -8,7 +8,7 @@ labels:
 # SignerListSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](multi-signing.html) a transaction. This transaction type was introduced by the [MultiSign amendment][]. [New in: rippled 0.31.0][]
+The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](multi-signing.html) a transaction. This transaction type was introduced by the [MultiSign amendment][].
 
 ## Example {{currentpage.name}} JSON
 
@@ -42,6 +42,8 @@ The SignerListSet transaction creates, replaces, or removes a list of signers th
 }
 ```
 
+[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_SignerListSet%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%2209A9C86BF20695735AB03620EB1C32606635AC3DA0B70282F37C674FC889EFE7%22%2C%22binary%22%3Afalse%7D)
+
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 
@@ -58,7 +60,7 @@ You can create, update, or remove a signer list using the master key, regular ke
 
 You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (the account has the [`lsfDisableMaster` flag](accountroot.html#accountroot-flags) enabled) and the account does not have a [Regular Key](cryptographic-keys.html) configured, then you cannot delete the signer list from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](tec-codes.html).
 
-Creating or replacing a signer list enables the `lsfOneOwnerCount` flag on the [SignerList object](signerlist.html). Lists that were created before the [MultiSignReserve amendment][] became enabled do not have this flag and have a higher [owner reserve](reserves.html#owner-reserves). You can decrease the owner reserve for these lists by replacing the list with an identical one. For more information, see [SignerList Flags](signerlist.html#signerlist-flags).
+Creating or replacing a signer list enables the `lsfOneOwnerCount` flag on the [SignerList object](signerlist.html). Lists that were created before the [MultiSignReserve amendment][] became enabled do not have this flag and have a higher [owner reserve](reserves.html#owner-reserves). You can decrease the owner reserve for these lists by replacing the list with the same list. For more information, see [SignerList Flags](signerlist.html#signerlist-flags).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

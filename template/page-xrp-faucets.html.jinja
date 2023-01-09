@@ -1,28 +1,52 @@
 {% extends "base.html.jinja" %}
 
+{% set faucets = [
+  {
+    "id": "faucet-select-testnet",
+    "ws_url": "wss://s.altnet.rippletest.net:51233/",
+    "jsonrpc_url": "https://s.altnet.rippletest.net:51234/",
+    "shortname": "Testnet",
+    "faucet": "https://faucet.altnet.rippletest.net/accounts",
+    "desc": "Mainnet-like network for testing applications."
+  },
+  {
+    "id": "faucet-select-devnet",
+    "ws_url": "wss://s.devnet.rippletest.net:51233/",
+    "jsonrpc_url": "https://s.devnet.rippletest.net:51234/",
+    "shortname": "Devnet",
+    "faucet": "https://faucet.devnet.rippletest.net/accounts",
+    "desc": "Preview of upcoming amendments."
+  },
+  {
+    "id": "faucet-select-nftdevnet",
+    "ws_url": "wss://xls20-sandbox.rippletest.net:51233/",
+    "jsonrpc_url": "https://xls20-sandbox.rippletest.net:51234/",
+    "shortname": "NFT-Devnet",
+    "faucet": "https://faucet-nft.ripple.com/accounts",
+    "desc": "XLS-20d Non-Fungible Tokens preview network. <strong>(Deprecated)</strong>"
+  },
+  {
+    "id": "faucet-select-ammdevnet",
+    "ws_url": "wss://amm.devnet.rippletest.net:51233/",
+    "jsonrpc_url": "https://amm.devnet.rippletest.net:51234/",
+    "shortname": "AMM-Devnet",
+    "faucet": "https://ammfaucet.devnet.rippletest.net/accounts",
+    "desc": "XLS-30d Automated Market Makers preview network."
+  }
+] %}
+
 {% block bodyclasses %}page-test-net{% endblock %}
 
 {% block right_sidebar %}
-    <h4>Testnet Servers</h4>
+{% for net in faucets %}
+
+    <h4>{{net.shortname}} Servers</h4>
     <pre><code>// WebSocket
-wss://s.altnet.rippletest.net:51233
+{{net.ws_url}}
 
 // JSON-RPC
-https://s.altnet.rippletest.net:51234</code></pre>
-
-    <h4>Devnet Servers</h4>
-    <pre><code>// WebSocket
-wss://s.devnet.rippletest.net:51233
-
-// JSON-RPC
-https://s.devnet.rippletest.net:51234</code></pre>
-
-    <h4>NFT-Devnet Servers</h4>
-    <pre><code>// WebSocket
-wss://xls20-sandbox.rippletest.net:51233
-
-// JSON-RPC
-http://xls20-sandbox.rippletest.net:51234</code></pre>
+{{net.jsonrpc_url}}</code></pre>
+{% endfor %}
 {% endblock %}
 
 {% block main %}
@@ -30,13 +54,19 @@ http://xls20-sandbox.rippletest.net:51234</code></pre>
   <h1>XRP Faucets</h1>
 
   <div class="content">
-    <p>Ripple runs these <a href="parallel-networks.html">parallel XRP Ledger test networks</a>, the Testnet and Devnet, to provide a testing platform for any software products built on the XRP Ledger without using real funds.</p>
-    <p>These funds are intended for <strong>testing</strong> only. The Testnet ledger and balances will be reset approximately every 90 days, or when otherwise necessary. Devnet funds may be reset without warning as needed.</p>
-    <p>Testnet and Devnet balances are separate. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.</p>
+    <p>These <a href="parallel-networks.html">parallel XRP Ledger test networks</a> provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.</p>
+    <p>These funds are intended for <strong>testing</strong> only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.</p>
+    <p>All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.</p>
+    <h3>Choose Network:</h3>
+    {% for net in faucets %}
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="faucet-selector" id="{{net.id}}" value="{{net.faucet}}" data-jsonrpcurl="{{net.jsonrpc_url}}" data-wsurl="{{net.ws_url}}" data-shortname="{{net.shortname}}" {% if loop.index == 1 %} checked{% endif %} />
+      <label class="form-check-label" for="{{net.id}}"><strong>{{net.shortname}}</strong>: {{net.desc}}</label>
+    </div>
+    {% endfor %}
+    <p class="mb-3"><strong>Hooks Testnet</strong>: <a href="https://hooks-testnet-v2.xrpl-labs.com/" class="external-link">See the Hooks Faucet</a></p>
     <div class="btn-toolbar" role="toolbar" aria-label="Button">
-      <button id="testnet-creds-button" class="btn btn-primary mr-2 mb-2">Generate Testnet credentials</button>
-      <button id="devnet-creds-button" class="btn btn-primary mr-2 mb-2">Generate Devnet credentials</button>
-      <button id="nftnet-creds-button" class="btn btn-primary mb-2">Generate NFT-Devnet credentials</button>
+      <button id="generate-creds-button" class="btn btn-primary mr-2 mb-2">Generate credentials</button>
     </div><!--/.btn-toolbar-->
     <div id='your-credentials'></div>
     <div id='loader' style="display: none;"><img class="throbber" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png"> Generating Keys...</div>
@@ -50,7 +80,7 @@ http://xls20-sandbox.rippletest.net:51234</code></pre>
 
 {% block endbody %}
   {{target.ripple_lib_tag}}
-  <script type='text/javascript' src='assets/js/test-net.js'></script>
+  <script type='text/javascript' src='assets/js/faucet.js'></script>
   <script src="{{currentpage.prefix}}assets/js/multicodetab.js"></script>
   <script type="application/javascript">
     $(document).ready(function() {

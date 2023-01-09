@@ -7,9 +7,9 @@ labels:
 ---
 # Configure gRPC
 
-The `rippled` server has an experimental [gRPC API](https://grpc.io/). Currently, this API provides a subset of the full [`rippled` API](http-websocket-apis.html). You can enable the gRPC API on your server with a new configuration stanza. [New in: rippled 1.5.0][]
+The `rippled` server has a limited [gRPC API](https://grpc.io/) which [P2P mode servers](rippled-server-modes.html) can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza. [New in: rippled 1.5.0][]
 
-**Caution:** gRPC support in `rippled` v1.5.0 is experimental. Configuration settings and API formats are likely to have breaking changes in forthcoming versions.
+**Caution:** gRPC support is intended specifically for providing data to reporting mode servers from P2P mode servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.
 
 ## Prerequisites
 
@@ -34,26 +34,23 @@ To enable gRPC on your server, complete the following steps:
     - `port` field defines the port the server listens on for gRPC connections from client applications. The recommended port is `50051`.
     - `ip` defines which interfaces the server listens on. The value `0.0.0.0` listens on all available network interfaces. To limit connections to the local loopback network (same machine), use `127.0.0.1` instead.
 
-    {% include '_snippets/conf-file-location.md' %}<!--_ -->
+    {% include '_snippets/conf-file-location.md' %}
 
 2. Start (or restart) the `rippled` service.
 
-        $ sudo systemctl restart rippled
+        sudo systemctl restart rippled
 
 ## See Also
 
-<!-- TODO: add gRPC quickstart, overview docs here when available -->
-
 - **Concepts:**
     - [XRP Ledger Overview](xrp-ledger-overview.html)
-    - [Software Ecosystem](software-ecosystem.html)
-    - [Parallel Networks](parallel-networks.html)
+    - [`rippled` Server Modes](rippled-server-modes.html)
 - **Tutorials:**
+    - [Get Started Using HTTP / WebSocket APIs](get-started-using-http-websocket-apis.html)
     - [Reliable Transaction Submission](reliable-transaction-submission.html)
     - [Manage the rippled Server](manage-the-rippled-server.html)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-    - [Ripple Data API v2](data-api.html)
+    - [HTTP / WebSocket API Reference](http-websocket-apis.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

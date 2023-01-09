@@ -459,7 +459,7 @@ If the server does not find the transaction, it returns a `txnNotFound` error, w
 - The transaction has not been included in any ledger version, and has not been executed.
 - The transaction was included in a ledger version that the server does not have available.
 
-This means that a `txnNotFound` on its own is not sufficient to know the [final outcome of a transaction](finality-of-results.html).
+This means that a `txnNotFound` on its own is not enough to know the [final outcome of a transaction](finality-of-results.html).
 
 To further narrow down the possibilities, you can provide a range of ledgers to search using the `min_ledger` and `max_ledger` fields in the request. If you provide **both** of those fields, the `txnNotFound` response includes the following field:
 

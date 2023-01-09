@@ -15,7 +15,7 @@ In the XRP Ledger's [decentralized exchange](decentralized-exchange.html), trade
 
 ## Lifecycle of an Offer
 
-An [OfferCreate transaction][] is an instruction to conduct a trade, either between two tokens, or a token and XRP. Every such transaction contains a buy amount (`TakerPays`) and a sell amount (`TakerGets`). When the transaction is processed, it automatically consumes matching or crossing Offers to the extent possible. If that does not completely fill the new Offer, then the remainder becomes an Offer object in the ledger.
+An [OfferCreate transaction][] is an instruction to conduct a trade, either between two tokens, or a token and XRP. Every such transaction contains a buy amount (`TakerPays`) and a sell amount (`TakerGets`). When the transaction is processed, it automatically consumes matching or crossing Offers to the extent possible. If that does not completely fill the new Offer, then the rest becomes an Offer object in the ledger.
 
 The Offer object waits in the ledger until other Offers or cross-currency payments fully consume it. The account that placed the Offer is called the Offer's _owner_. You can cancel your own Offers at any time, using the dedicated [OfferCancel transaction][], or as an option of the [OfferCreate transaction][].
 
@@ -42,7 +42,7 @@ However, you don't need to hold the full amount specified in the Offer. Placing 
 
 **To sell XRP,** you must hold enough XRP to meet all the [reserve requirements](reserves.html), including the reserve for the Offer object to be placed in the ledger and for the trust line to hold the token you are buying. As long as you have any XRP left over after setting aside the reserve amount, you can place the Offer.
 
-When another Offer matches yours, both Offers execute to the extent that their owners' funds permit at the the time. If there are matching Offers and you run out of funds before yours is fully filled, the remainder of your Offer is canceled. An Offer can't make your balance of a token negative, unless you are the issuer of that token. (If you are the issuer, you can use Offers to issue new tokens up to the total amount specified in your Offers; tokens you issue are represented as negative balances from your perspective.)
+When another Offer matches yours, both Offers execute to the extent that their owners' funds allow at the the time. If there are matching Offers and you run out of funds before yours is fully filled, the rest of your Offer is canceled. An Offer can't make your balance of a token negative, unless you are the issuer of that token. (If you are the issuer, you can use Offers to issue new tokens up to the total amount specified in your Offers; tokens you issue are represented as negative balances from your perspective.)
 
 If you place an Offer that crosses any of your own Offers that exist in the ledger, the old, crossed Offers are automatically canceled regardless of the amounts involved.
 

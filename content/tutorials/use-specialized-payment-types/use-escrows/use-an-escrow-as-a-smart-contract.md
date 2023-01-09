@@ -10,7 +10,7 @@ labels:
 
 A smart contract is a blockchain-based program that encodes the conditions and fulfillment of an agreement between two or more parties and automatically fulfills the terms of the agreement once conditions are met. A smart contract can help you exchange anything of value in a transparent, traceable, tamper-resistant, and irreversible way.
 
-The benefit of encoding a smart contract into a blockchain is that it enables the contract to be securely performed without traditional third-parties, like financial or legal institutions. Instead, the contract is supervised by the distributed, decentralized network of computers that run the blockchain.
+The benefit of encoding a smart contract into a blockchain is that it enables the contract to be securely carried out without traditional third-parties, like financial or legal institutions. Instead, the contract is supervised by the distributed, decentralized network of computers that run the blockchain.
 
 You can use XRP Ledger escrows as smart contracts that release XRP after a certain time has passed or after a cryptographic condition has been fulfilled. In this case, we'll use an escrow as a smart contract that releases XRP after a cryptographic condition has been fulfilled.
 

@@ -12,16 +12,12 @@ labels:
 
 This example shows how to:
 
-
-
 1. Create NFToken Sell Offers.
 2. Create NFToken Buy Offers.
 3. Accept NFToken Sell Offers.
 4. Accept NFToken Buy Offers.
 5. Get a list of offers for a particular NFToken.
 6. Cancel an offer.
-
-
 
 ![Quickstart form with NFToken transfer fields](img/quickstart13.png)
 
@@ -33,8 +29,6 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Get Accounts
 
-
-
 1. Open `4.transfer-nftokens.html` in a browser.
 2. Choose your ledger instance (**Testnet** or **Devnet**).
 3. Get test accounts.
@@ -45,7 +39,6 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
-
 ![Form with account information](img/quickstart14.png)
 
 
@@ -54,16 +47,13 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 To create a NFToken sell offer:
 
-
 1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
 2. Set the **Flags** field to _1_.
 3. Enter the **NFToken ID** of the NFToken you want to sell.
 4. Optionally, enter a number of days until **Expiration**.
 5. Click **Create Sell Offer**.
 
-The important piece of information in the response is the Token Offer Index, labeled as _nft_offer_index,_ which is used to accept the sell offer.
-
-
+The important piece of information in the response is the NFToken Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
 
 ![NFToken Sell Offer](img/quickstart15.png)
 
@@ -71,16 +61,12 @@ The important piece of information in the response is the Token Offer Index, lab
 
 ## Accept Sell Offer
 
-Once a sell offer is available, another account can opt to accept the offer and purchase the NFToken.
+Once a sell offer is available, another account can opt to accept the offer and buy the NFToken.
 
 To accept an available sell offer:
 
-
-
-1. Enter the **NFToken Offer Index** (labeled as _nft_offer_index_ in the token offer results. This is not the same as the _nft_id_).
+1. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
 2. Click **Accept Sell Offer**.
-
-
 
 ![Accept Sell Offer](img/quickstart16.png)
 
@@ -92,15 +78,11 @@ You can offer to buy a NFToken from another account.
 
 To create an offer to buy a NFToken:
 
-
-
 1. Enter the **Amount** of your offer.
 2. Enter the **NFToken ID**.
 3. Enter the owner’s account string in the **Owner** field.
 4. Optionally enter the number of days until **Expiration**.
 5. Click **Create Buy Offer**.
-
-
 
 ![NFToken Buy Offer](img/quickstart17.png)
 
@@ -110,12 +92,8 @@ To create an offer to buy a NFToken:
 
 To accept an offer to buy a NFToken:
 
-
-
-1. Enter the **NFToken Offer Index** (the _nft_offer_index_ of the token buy offer).
+1. Enter the **NFToken Offer Index** (the `nft_offer_index` of the NFToken buy offer).
 3. Click **Accept Buy Offer**.
-
-
 
 ![Accept Buy Offer](img/quickstart18.png)
 
@@ -127,8 +105,6 @@ To list the buy and sell offers associated with a NFToken:
 1. Enter the **NFToken ID**.
 2. Click **Get Offers**.
 
-
-
 ![Get offers](img/quickstart19.png)
 
 
@@ -137,12 +113,8 @@ To list the buy and sell offers associated with a NFToken:
 
 To cancel a buy or sell offer that you have created:
 
-
-
 1. Enter the **NFToken Offer Index**.
 2. Click **Cancel Offer**.
-
-
 
 ![Cancel offer](img/quickstart20.png)
 
@@ -163,7 +135,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 ```
 
 
-Connect to the ledger and get the wallet accounts.
+Connect to the ledger and get the accounts.
 
 
 ```
@@ -179,7 +151,7 @@ async function createSellOffer() {
   document.getElementById('standbyResultField').value = results
 ```
 
-Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the expirationDate variable to the converted date in Ripple time. 
+Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the `expirationDate` variable to the converted date in Ripple time. 
 
 ```
   //------------------------------------- Prepare Expiration Date
@@ -213,7 +185,7 @@ If the Expiration Date is present, append it to the transaction.
   
 ```
 
-If the Destination field is not empty, append it to the transaction. When the destination is set, only the destination account can purchase the NFToken.
+If the Destination field is not empty, append it to the transaction. When the destination is set, only the destination account can buy the NFToken.
 
 ```
   if(standbyDestinationField.value !== '') {
@@ -319,7 +291,7 @@ async function createBuyOffer() {
 ```
 
 
-Get the account wallets and connect to the ledger.
+Get the account and connect to the ledger.
 
 
 ```
@@ -445,7 +417,7 @@ async function cancelOffer() {
 ```
 
 
-Get the standby wallet and connect to the ledger.
+Get the standby address and connect to the ledger.
 
 
 ```
@@ -631,7 +603,7 @@ async function acceptSellOffer() {
 ```
 
 
-Get the account wallets and connect to the ledger.
+Get the accounts and connect to the ledger.
 
 
 ```
@@ -724,7 +696,7 @@ async function acceptBuyOffer() {
 ```
 
 
-Get the account wallets and connect to the ledger.
+Get the accounts and connect to the ledger.
 
 
 ```
@@ -1192,7 +1164,7 @@ Update the form with fields and buttons to support the new functions.
       Choose your ledger instance:  
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233">
+        value="wss://s.altnet.rippletest.net:51233" checked>
       <label for="testnet">Testnet</label>
       &nbsp;&nbsp;
       <input type="radio" id="dn" name="server"

@@ -63,7 +63,7 @@ The [`Paths` field](payment.html#paths) of the [Payment transaction][] type can 
 
 The `Flags` field can contain various options that affect how a transaction should behave. The options are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.
 
-To check whether a transaction has a given flag enabled, use the bitwise-and operator on the flag's value and the `Flags` field. A result of zero indicates the flag is disabled, and a result equal to the flag value indicates the flag is enabled. (Any other result indicates you performed the wrong operation.)
+To check whether a transaction has a given flag enabled, use the bitwise-and operator on the flag's value and the `Flags` field. A result of zero indicates the flag is disabled, and a result equal to the flag value indicates the flag is enabled. (If you got any other result, you did something wrong.)
 
 Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the `TransactionType` field when setting and reading flags.
 
