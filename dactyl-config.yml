@@ -777,6 +777,11 @@ pages:
         targets:
             - en
             - ja
+
+    -   md: concepts/tokens/nftoken-authorized-minting.md
+        targets:
+            - en
+            - ja
             
     -   md: concepts/tokens/freezes.md
         targets:
