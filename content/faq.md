@@ -35,8 +35,7 @@ Yes, the XRP Ledger was built specifically to be able to tokenize arbitrary asse
 
 #### Isn’t XRPL only for payments?
 
-Although XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases. New standards proposals for issuing NFTs, XRPL Labs’ hooks amendment for smart contract functionality, and federated sidechains are all currently works in progress.
-
+Although XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases such as NFTs. New standards proposals for an automated market maker (AMM), XRPL Labs’ hooks amendment for smart contract functionality, and federated sidechains are all currently works in progress.
 
 ## Validators and Unique Node Lists
 
