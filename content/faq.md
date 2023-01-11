@@ -19,7 +19,7 @@ name: FAQ
 
 #### Is XRPL a private blockchain, owned by Ripple?
 
-No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the default Unique Node List (see [“What are Unique Node Lists (UNLs)?” below](#what-are-unique-node-lists-unls)) — Ripple runs 6 of these nodes.
+No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the default Unique Node List (see [“What are Unique Node Lists (UNLs)?” below](#what-are-unique-node-lists-unls)) — Ripple runs [only 2](https://foundation.xrpl.org/2022/10/06/unl-update-october-2022) of these nodes.
 
 #### Isn’t Proof of Work the best validation mechanism?
 
@@ -35,8 +35,7 @@ Yes, the XRP Ledger was built specifically to be able to tokenize arbitrary asse
 
 #### Isn’t XRPL only for payments?
 
-Although XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases. New standards proposals for issuing NFTs, XRPL Labs’ hooks amendment for smart contract functionality, and federated sidechains are all currently works in progress.
-
+Although XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases such as NFTs. New standards proposals for an automated market maker (AMM), XRPL Labs’ hooks amendment for smart contract functionality, and federated sidechains are all currently works in progress.
 
 ## Validators and Unique Node Lists
 
