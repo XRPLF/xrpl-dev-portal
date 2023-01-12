@@ -8,9 +8,11 @@ status: not_enabled
 ---
 # XChainCreateBridge
 
-The `XChainCreateBridge` transaction defines a new cross-chain bridge entrance on one of the chains that the bridge connects. It includes information about the type of tokens being exchanged. To fully set up a bridge, this transaction must be executed on both chains, alongside setting up witness servers.
+The `XChainCreateBridge` transaction creates a new `Bridge` ledger object and defines a new cross-chain bridge entrance on the chain that the transaction is submitted on. It includes information about door accounts and assets for the bridge. 
 
-The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This would ensure that the witness servers are truly in control of the funds.
+The transaction must be submitted by the door account. To set up a valid bridge, door accounts on both chains must submit this transaction, in addition to setting up witness servers.
+
+The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This ensures that the witness servers are truly in control of the funds.
 
 
 ## Example {{currentpage.name}} JSON
@@ -34,14 +36,11 @@ The complete production-grade setup would also include a `SignerListSet` transac
 
 {% include '_snippets/tx-fields-intro.md' %}
 
-| Field         | JSON Type           | [Internal Type][] | Description        |
-|:--------------|:--------------------|:------------------|:-------------------|
-| `XChainBridge`| String | Object | _Required_ The bridge for which the witness is attesting transactions. |
-| `LockingChainDoor` | String | AccountID | The door account on this chain. |
-| `LockingChainIssue` | String | Token | The token that is bridged on this chain. |
-| `IssuingChainDoor` | String  |  AccountID | The door account on the other chain. |
-| `SignatureReward`  | Number  |   |  _Required_ The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. |
-| `MinAccountCreateAmount`  | Number  |   |  _Optional_ The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present. |
+| Field         | JSON Type           | [Internal Type][] | Required? | Description        |
+|:--------------|:--------------------|:------------------|:----------|:-------------------|
+| `XChainBridge`| XChainBridge        | XCHAIN_BRIDGE     | Yes       | The bridge (door accounts and assets) to create. |
+| `SignatureReward` | Currency Amount | Amount            | Yes       | The total amount to pay the witness servers for their signatures. This amount will be split among the signers. |
+| `MinAccountCreateAmount` | Currency Amount | Amount     |  No       | The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present. |
 
 <!-- ## Error Cases
 

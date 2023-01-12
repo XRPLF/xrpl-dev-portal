@@ -38,15 +38,12 @@ The complete production-grade setup would also include a `SignerListSet` transac
 
 {% include '_snippets/tx-fields-intro.md' %}
 
-| Field         | JSON Type           | [Internal Type][] | Description        |
-|:--------------|:--------------------|:------------------|:-------------------|
-| `XChainBridge`| String | Object | _Required_ The XChainBridge stanza represents the bridge for which the witness is attesting transactions. |
-| `LockingChainDoor` | String | AccountID | The door account on the locking chain. |
-| `LockingChainIssue` | String | Token | The token that is bridged on the locking chain. |
-| `IssuingChainDoor` | String  |  AccountID | The door account on the issuing chain. |
-| `IssuingChainIssue` | String | Token | The token that is bridged on the issuing chain. |
-| `SignatureReward`  | Number  | Token |  _Required_ The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. |
-| `MinAccountCreateAmount`  | Number  |   |  _Optional_ The minimum amount, in XRP, required for a `XChainCreateAccountCommit` transaction. This is only applicable for XRP-XRP bridges and transactions fail if this field is not present. |
+| Field         | JSON Type           | [Internal Type][] | Required? | Description        |
+|:--------------|:--------------------|:------------------|:----------| :------------------|
+| `Destination` | String              | Object            | Yes       | The destination account on the destination chain. |
+| `Amount`      | Currency Amount     | Amount            | Yes       | The amount, in XRP, to use for account creation. This must be greater than or equal to the `MinAccountCreateAmount` specified in the `Bridge` ledger object. |
+| `SignatureReward` | Currency Amount | Amount            | Yes       | The total amount to pay the witness servers for their signatures. This amount must match the amount on the `Bridge` ledger object. These funds will be deducted from the sender's account. |
+| `XChainBridge` | XChainBridge       | XCHAIN_BRIDGE     | Yes       | The bridge including door accounts and assets. |
 
 
 <!-- ## Error Cases

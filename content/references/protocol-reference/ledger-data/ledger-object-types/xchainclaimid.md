@@ -33,7 +33,7 @@ An `XChainClaimID` object has the following fields:
 | Field               | JSON Type        | [Internal Type][] | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
 | `LedgerIndex`       | String           | Hash256           | Yes       | The ledger index is a hash of a unique prefix for `XChainClaimID`s, the actual `XChainClaimID` value, and the fields in `XChainBridge`. |
-| `XChainBridge`      | XChainBridge           | XCHAIN_BRIDGE     | Yes       | The bridge that this object correlates to. |
+| `XChainBridge`      | XChainBridge     | XCHAIN_BRIDGE     | Yes       | The bridge that this object correlates to. |
 | `OtherChainSource`  | String           | Account           | Yes       | The account that must send the corresponding `XChainCommit` on the source chain. Since the destination may be specified in the `XChainCommit` transaction, if the `SourceAccount` wasn't specified, another account could try to specify a different destination and steal the funds. This also allows tracking only a single set of signatures, since we know which account will send the `XChainCommit` transaction. |
 | `SignatureReward`   | Currency Amount  | Amount            | Yes       | The total amount to pay the witness servers for their signatures. It must be at least the value of `SignatureReward` in the `Bridge` ledger object. |
 | `XChainClaimAttestations` | Array      | Array            | Yes       | Attestations collected from the witness servers. This includes the parameters needed to recreate the message that was signed, including the amount, which chain (locking or issuing), optional destination, and reward account for that signature. |
