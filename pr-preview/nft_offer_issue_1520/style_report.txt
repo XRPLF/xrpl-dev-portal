@@ -16,7 +16,7 @@ Found 8 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3-d, 3rd, 3d
 
 -----------------------------
 Discouraged Words and Phrases
