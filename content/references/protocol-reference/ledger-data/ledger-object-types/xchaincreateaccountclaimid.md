@@ -1,6 +1,6 @@
 html: xchaincreateaccountclaimid.html
 parent: ledger-object-types.html
-blurb: A bridge connects and enables value to move efficiently between two blockchains. 
+blurb: An `XChainCreateAccountClaimID` object describes an account to be created on the issuing chain. 
 labels:
   - Interoperability
 status: not_enabled
@@ -11,11 +11,13 @@ status: not_enabled
  _(Added by the in-development Sidechains feature)_ :not_enabled:
 
 
+<!--
 ## Example {{currentpage.name}} JSON
 
 ```json
 
 ```
+-->
 
 ## {{currentpage.name}} Fields
 
@@ -25,10 +27,7 @@ An `XChainCreateAccountClaimID` object has the following fields:
 
 | Field               | JSON Type        | [Internal Type][] | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
-| `Account`           | String           | Account           | Yes       | The account that serves as a bridge entrance on one chain. |
-| `XChainBridge`      | String           | XCHAIN_BRIDGE     | Yes       | The bridge for which the witness is attesting transactions. |
-| `XChainAccountCreateCount` | String    | UInt64            | Yes       |   |
-| `XChainCreateAccountAttestations` | String | Account       | Yes       |   |
-| `OwnerNode`         | String           | UInt64            | Yes       | Internal bookkeeping, indicating the page inside the owner directory where this object is being tracked. |
-| `PreviousTxnID`     | String           | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | String           | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| `LedgerIndex`       | String           | Hash256           | Yes       | The ledger index is a hash of a unique prefix for `XChainCreateAccountClaimID`s, the `XChainAccountCreateCount`, and the fields in `XChainBridge`. |
+| `XChainBridge`      | XChainBridge     | XCHAIN_BRIDGE     | Yes       | The bridge including door accounts and assets. |
+| `XChainAccountCreateCount` | Number    | UInt64            | Yes       | An integer that determines the order that accounts created through cross-chain transfers must be performed. Smaller numbers must execute before larger numbers.  |
+| `XChainCreateAccountAttestations` | Array | Array          | Yes       | Attestations collected from the witness servers. This includes the parameters needed to recreate the message that was signed, including the amount, destination, signature reward amount, and reward account for that signature. With the exception of the reward account, all signatures must sign the message created with common parameters. |

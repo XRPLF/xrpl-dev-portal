@@ -12,26 +12,17 @@ status: not_enabled
 
 An `XChainClaimID` object represents *one* cross-chain transfer of value and includes information of the account on the source chain that locks or burns the funds on the source chain.
 
+The `XChainClaimID` object must be acquired on the destination chain before submitting a `XChainCommit` on the source chain. Its purpose is to prevent transaction replay attacks and is also used as a place to collect attestations from witness servers.
+
+A `XChainCreateClaimID` transaction is used to create a new `XChainClaimID`. It is destroyed when the funds are successfully claimed on the destination chain.
+
+<!--
 ## Example {{currentpage.name}} JSON
 
 ```json
-{
-  "Account": "rahDmoXrtPdh7sUdrPjini3gcnTVYjbjjw",
-  "OtherChainSource": "rMTi57fNy2UkUb4RcdoUeJm7gjxVQvxzUo",
-  "TransactionType": "XChainCreateClaimID",
-  "SignatureReward": "100",
-  "XChainBridge": {
-    "LockingChainDoor": "rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4",
-    "LockingChainIssue": {
-      "currency": "XRP"
-    },
-    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    "IssuingChainIssue": {
-      "currency": "XRP"
-    }
-  }
-}
+
 ```
+-->
 
 ## {{currentpage.name}} Fields
 
@@ -41,12 +32,9 @@ An `XChainClaimID` object has the following fields:
 
 | Field               | JSON Type        | [Internal Type][] | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
-| `Account`           | String           | Account           | Yes       | The account that serves as a bridge entrance on one chain. |
-| `XChainBridge`      | String           | XCHAIN_BRIDGE     | Yes       | The bridge for which the witness is attesting transactions. |
-| `XChainClaimID`     | String           | UInt64            | Yes       | The cross-chain claim ID that is used for a cross-chain transfer. A cross-chain claim ID represents *one* cross-chain transfer of value.  |
-| `OtherChainSource`  | String           | Account           | Yes       | The account that serves as a bridge entrance on the other chain. |
-| `XChainClaimAttestations` | String     | Amount            | Yes       |  |
-| `SignatureReward`   | String           | Amount            | Yes       | The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. |
-| `OwnerNode`         | String           | UInt64            | Yes       | Internal bookkeeping, indicating the page inside the owner directory where this object is being tracked. |
-| `PreviousTxnID`     | String           | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | String           | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| `LedgerIndex`       | String           | Hash256           | Yes       | The ledger index is a hash of a unique prefix for `XChainClaimID`s, the actual `XChainClaimID` value, and the fields in `XChainBridge`. |
+| `XChainBridge`      | XChainBridge           | XCHAIN_BRIDGE     | Yes       | The bridge that this object correlates to. |
+| `OtherChainSource`  | String           | Account           | Yes       | The account that must send the corresponding `XChainCommit` on the source chain. Since the destination may be specified in the `XChainCommit` transaction, if the `SourceAccount` wasn't specified, another account could try to specify a different destination and steal the funds. This also allows tracking only a single set of signatures, since we know which account will send the `XChainCommit` transaction. |
+| `SignatureReward`   | Currency Amount  | Amount            | Yes       | The total amount to pay the witness servers for their signatures. It must be at least the value of `SignatureReward` in the `Bridge` ledger object. |
+| `XChainClaimAttestations` | Array      | Array            | Yes       | Attestations collected from the witness servers. This includes the parameters needed to recreate the message that was signed, including the amount, which chain (locking or issuing), optional destination, and reward account for that signature. |
+| `XChainClaimID`     | String           | UInt64            | Yes       | The unique sequence number for a cross-chain transfer. |
