@@ -685,7 +685,7 @@ rippled<span class="w"> </span>submit<span class="w"> </span>s██████
 <h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
-<li><code>amendmentBlocked</code> - The transaction cannot be submitted to the network because the <code>rippled</code> server is <a href="amendments.html#amendment-blocked">amendment blocked</a>.</li>
+<li><code>amendmentBlocked</code> - The transaction cannot be submitted to the network because the <code>rippled</code> server is <a href="amendments.html#amendment-blocked-servers">amendment blocked</a>.</li>
 <li><code>highFee</code> - The <code>fee_mult_max</code> parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)</li>
 <li><code>internalJson</code> - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.</li>
 <li><code>internalSubmit</code> - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.</li>
