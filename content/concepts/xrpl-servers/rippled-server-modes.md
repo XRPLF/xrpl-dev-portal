@@ -81,28 +81,18 @@ Most notably, reporting mode servers do not report pending, non-validated ledger
 
 ## Stand-Alone Mode
 
-In stand-alone mode, the server operates without attempting to connect to the peer-to-peer network or follow the consensus process. The server still provides API access as normal and uses the same transaction processing engine, so you can test `rippled` behavior without being tied to the live network. For example, you can:
+In stand-alone mode, the server operates without connecting to the network and participating in the consensus process. Without the consensus process, you have to manually advance the ledger and no distinction is made between "closed" and "validated" ledgers. However, the server still provides API access and processes transactions the same. This enables you to:
 
-- [Test the effects of Amendments](amendments.html#testing-amendments) before those Amendments have gone into effect across the decentralized network.
+- [Test the effects of Amendments](test-amendments.html) before those Amendments have gone into effect across the decentralized network.
 - [Create a new genesis ledger](start-a-new-genesis-ledger-in-stand-alone-mode.html) from scratch.
 - [Load an existing ledger version](load-a-saved-ledger-in-stand-alone-mode.html) from disk, then replay specific transactions to re-create their outcomes or test other possibilities.
-
-**Caution:** In stand-alone mode, you must [manually advance the ledger](advance-the-ledger-in-stand-alone-mode.html).
 
 
 ## See Also
 
-- **References:**
-    - [Commandline Usage Reference](commandline-usage.html) - Detailed information on command-line options for all `rippled` server modes.
-    - [ledger_accept method][] - Manually advance the ledger in stand-alone mode.
-    - [feature method][] - Check [amendments](amendments.html) currently known and enabled.
 - **Tutorials:**
     - [Configure `rippled`](configure-rippled.html)
-        - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
-    - [Use rippled in Stand-Alone Mode](use-stand-alone-mode.html):
-        - [Start a New Genesis Ledger in Stand-Alone Mode](start-a-new-genesis-ledger-in-stand-alone-mode.html)
-        - [Load a Saved Ledger in Stand-Alone Mode](load-a-saved-ledger-in-stand-alone-mode.html)
-        - [Advance the Ledger in Stand-Alone Mode](advance-the-ledger-in-stand-alone-mode.html)
+    - [Use rippled in Stand-Alone Mode](use-stand-alone-mode.html)
 
 
 <!--{# common link defs #}-->
