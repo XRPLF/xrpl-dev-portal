@@ -187,7 +187,7 @@ The response follows the [standard format][], with a successful result containin
 |:------------|:--------|:-----------------------------------------------------|
 | `enabled`   | Boolean | Whether this amendment is currently enabled in the latest ledger. |
 | `name`      | String  | (May be omitted) The human-readable name for this amendment, if known. |
-| `supported` | Boolean | Whether the server knows how to apply this amendment. If this field is set to `false` (the server does not know how to apply this amendment) and `enabled` is set to `true` (this amendment is enabled in the latest ledger), this amendment may cause your server to be [amendment blocked](amendments.html#amendment-blocked). |
+| `supported` | Boolean | Whether the server knows how to apply this amendment. If this field is set to `false` (the server does not know how to apply this amendment) and `enabled` is set to `true` (this amendment is enabled in the latest ledger), this amendment may cause your server to be [amendment blocked](amendments.html#amendment-blocked-servers). |
 | `vetoed`    | Boolean | Whether the server has been instructed to vote against this amendment. |
 
 **Caution:** The `name` for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.
