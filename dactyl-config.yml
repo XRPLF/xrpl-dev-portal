@@ -1860,6 +1860,11 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-the-rippled-server/configuration/test-amendments.md
+        targets:
+            - en
+            - ja
+
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
         targets:
@@ -2031,7 +2036,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
         targets:
-            - ja
+            - ja    
 
     -   name: Troubleshooting
         html: troubleshoot-the-rippled-server.html
@@ -2078,6 +2083,11 @@ pages:
         # TODO: translate the blurb in this page's frontmatter
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-is-amendment-blocked.md
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
