@@ -14,6 +14,12 @@ The transaction must be submitted by the door account. To set up a valid bridge,
 
 The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This ensures that the witness servers are truly in control of the funds.
 
+CAUTION: Ensure that you do not create a duplicate bridge with different set of door accounts for an existing asset. Doing so can cause an imbalance of available wrapped XRP on the issuing chain. 
+
+To mitigate the possibility of creating a duplicate bridge, ensure the following:
+
+* The issuing chain door account should only issue tokens for a single bridge. Do not create two(2) bridges with the same issuing asset on the same issuing chain. 
+* Do not create two (2) bridges with the same locking asset in the same door account. You can create them with different door accounts. 
 
 ## Example {{currentpage.name}} JSON
 
