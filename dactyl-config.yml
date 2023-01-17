@@ -2062,12 +2062,11 @@ pages:
         targets:
             - ja
 
-        # TODO: translate page and blurb
     -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
         targets:
             - en
-            - ja
-
+            - ja       
+        
     -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
         targets:
             - en
@@ -3705,6 +3704,10 @@ pages:
     -   md: references/http-websocket-apis/peer-port-methods/health-check.md
         targets:
             - en
+
+    # TODO: translate page and blurb
+    -   md: references/http-websocket-apis/peer-port-methods/health-check.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/peer-port-methods/peer-crawler.md
