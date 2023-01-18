@@ -7,14 +7,22 @@ labels:
 ---
 # EnableAmendment
 
-An `EnableAmendment` [pseudo-transaction](pseudo-transaction-types.html) marks a change in status of an [amendment](amendments.html) to the XRP Ledger protocol, including:
+An `EnableAmendment` pseudo-transaction marks a change in the status of a proposed amendment when it:
 
-- A proposed amendment gained supermajority approval from validators.
-- A proposed amendment lost supermajority approval.
-- A proposed amendment has been enabled.
+- Gains supermajority approval from validators.
+- Loses supermajority approval.
+- Is enabled on the XRP Ledger protocol.
 
-**Note:** You cannot send a pseudo-transaction, but you may find one when processing ledgers.
+<!-- TODO: Move to propose amendments tutorial.
 
+A server only enables amendments when these conditions are met:
+  
+- A previous ledger includes an `EnableAmendment` pseudo-transaction with the `tfGotMajority` flag enabled.
+- The previous ledger in question is an ancestor of the current ledger.
+- The previous ledger in question has a close time that is at least two weeks before the close time of the latest flag ledger.
+- There are no `EnableAmendment` pseudo-transactions for this amendment with the `tfLostMajority` flag enabled in the consensus ledgers between the `tfGotMajority` pseudo-transaction and the current ledger.
+
+-->
 
 ## Example {{currentpage.name}} JSON
 
