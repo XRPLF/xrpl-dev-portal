@@ -1,7 +1,7 @@
 -------------
 Spell Checker
 -------------
-Found 10 possible spelling errors:
+Found 9 possible spelling errors:
 <Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
   nftokenminter: 
   unassigning: 
@@ -19,10 +19,7 @@ Found 10 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-
-<Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)> Unknown Words:
-  resulsts: results
+  30d: 3rd, 3d, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
