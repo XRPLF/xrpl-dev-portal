@@ -2036,7 +2036,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
         targets:
-            - ja    
+            - ja
 
     -   name: Troubleshooting
         html: troubleshoot-the-rippled-server.html
@@ -2065,8 +2065,8 @@ pages:
     -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
         targets:
             - en
-            - ja       
-        
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
         targets:
             - en
