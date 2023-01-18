@@ -90,8 +90,8 @@ The response's HTTP status code indicates the health of the server:
 | Status Code                   | Health Status | Description                  |
 |:------------------------------|:--------------|:-----------------------------|
 | **200 OK**                    | Healthy       | All health metrics are within acceptable ranges. |
-| **503 Service Unavailable**   | Warning       | One or more metric is in the warning range. Manual intervention may or may not be necessary. |
-| **500 Internal Server Error** | Critical      | One or more metric is in the critical range. There is a serious problem that probably needs manual intervention to fix. |
+| **503 Service Unavailable**   | Warning       | One or more metrics are in the warning range. Manual intervention may or may not be necessary. |
+| **500 Internal Server Error** | Critical      | One or more metrics are in the critical range. There is a serious problem that probably needs manual intervention to fix. |
 
 The response body is a JSON object with a single `info` object at the top level. The `info` object contains values for each metric that is in a warning or critical range. The response omits metrics that are in a healthy range, so a fully healthy server has an empty object.
 
