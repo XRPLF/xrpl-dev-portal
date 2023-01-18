@@ -1949,6 +1949,11 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-is-amendment-blocked.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
         targets:
             - en
