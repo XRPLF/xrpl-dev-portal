@@ -7,9 +7,9 @@ labels:
 ---
 # Amendments
 
-The amendment system uses the consensus process to approve any changes to the XRP Ledger. Fully-functional changes are introduced as amendments; validators then vote on these changes. If an amendment receives more than 80% support for two weeks, the amendment passes and the change applies permanently to all subsequent ledger versions. Disabling a passed amendment requires a new amendment to do so.
+The amendment system uses the consensus process to approve any changes that affect transaction processing on the XRP Ledger. Fully-functional, transaction process changes are introduced as amendments; validators then vote on these changes. If an amendment receives more than 80% support for two weeks, the amendment passes and the change applies permanently to all subsequent ledger versions. Disabling a passed amendment requires a new amendment to do so.
 
-**Note:** Bug fixes don't require amendments.
+**Note:** Bug fixes that change transaction processes also require amendments.
 
 <!-- TODO: Move this to an amendment tutorial.
 Every amendment has a unique identifying hex value and a short name. The short name is for readability only; servers can use different names to describe the same amendement ID, and the names aren't guaranteed to be unique. The amendment ID should be the SHA-512Half hash of the amendment's short name.
