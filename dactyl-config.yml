@@ -1860,6 +1860,11 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-the-rippled-server/configuration/test-amendments.md
+        targets:
+            - en
+            - ja
+
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
         targets:
@@ -2057,7 +2062,6 @@ pages:
         targets:
             - ja
 
-        # TODO: translate page and blurb
     -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
         targets:
             - en
@@ -2078,6 +2082,11 @@ pages:
         # TODO: translate the blurb in this page's frontmatter
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-is-amendment-blocked.md
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
@@ -3695,6 +3704,10 @@ pages:
     -   md: references/http-websocket-apis/peer-port-methods/health-check.md
         targets:
             - en
+
+    # TODO: translate page and blurb
+    -   md: references/http-websocket-apis/peer-port-methods/health-check.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/peer-port-methods/peer-crawler.md

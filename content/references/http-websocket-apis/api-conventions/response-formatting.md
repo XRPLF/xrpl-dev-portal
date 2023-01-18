@@ -126,7 +126,7 @@ Example warning:
 ]
 ```
 
-This warning indicates that the one or more [amendments](amendments.html) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](amendments.html#amendment-blocked), so you should [upgrade to the latest `rippled` version](install-rippled.html) as soon as possible. <!-- STYLE_OVERRIDE: will -->
+This warning indicates that the one or more [amendments](amendments.html) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](amendments.html#amendment-blocked-servers), so you should [upgrade to the latest `rippled` version](install-rippled.html) as soon as possible. <!-- STYLE_OVERRIDE: will -->
 
 The server only sends this warning if the client is [connected as an admin](get-started-using-http-websocket-apis.html#admin-access).
 
@@ -153,7 +153,7 @@ Example warning:
 ]
 ```
 
-This warning indicates that the server is [amendment blocked](amendments.html#amendment-blocked) and can no longer remain synced with the XRP Ledger.
+This warning indicates that the server is [amendment blocked](amendments.html#amendment-blocked-servers) and can no longer remain synced with the XRP Ledger.
 
 The server administrator must [upgrade `rippled`](install-rippled.html) to a version that supports the activated amendments.
 
