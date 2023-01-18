@@ -11,7 +11,7 @@ You can start a `rippled` server in [Stand-Alone Mode](rippled-server-modes.html
 
 Loading a historical ledger version is useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](amendments.html) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](consensus-protections.html) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a known-good network state starting with this process.
 
-**Caution:** As `rippled` is updated to newer versions, amendments are retired and become core functions of the ledger, which can affect how transactions are processed. To produce historically-accurate resulsts, you need to replay ledgers using the version of `rippled` the transaction was processed in.
+**Caution:** As `rippled` is updated to newer versions, amendments are retired and become core functions of the ledger, which can affect how transactions are processed. To produce historically accurate results, you need to replay ledgers using the version of `rippled` the transaction was processed in.
 
 ## 1. Start `rippled` normally.
 
@@ -65,13 +65,13 @@ For more information on the options you can use when starting `rippled` in stand
 
 ## 6. Manually advance the ledger.
 
-In stand-alone mode, you have to manually advance the ledger with the `ledger_accept` method:
+In stand-alone mode, you must manually advance the ledger with the `ledger_accept` method:
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
 
-If a transaction depends on the result of a transaction from a different address, advance the ledger to ensure they're processed in the correct order. Otherwise, you can submit multiple transactions from a single address `rippled` sorts transactions from the same address by ascending `Sequence` number.
+If a transaction depends on the result of a transaction from a different address, advance the ledger to ensure they are processed in the correct order. Otherwise, you can submit multiple transactions from a single address `rippled` sorts transactions from the same address by ascending `Sequence` number.
 
 
 ## See Also
