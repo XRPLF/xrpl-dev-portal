@@ -50,13 +50,14 @@ An example of the request format:
 
 A request can include the following fields:
 
-| `Field`        | Type                      | Required? | Description    |
-|:---------------|:--------------------------|:----------|----------------|
-| `ledger_hash`  | String - [Hash][]         | No        | A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | Number - [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `binary`       | Boolean                   | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`. |
-| `limit`        | Integer                   | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). The default is the maximum. |
-| `marker`       | [Marker][]                | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `Field`        | Type             | Required? | Description    |
+|:---------------|:-----------------|:----------|----------------|
+| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string identifying the ledger version to use. |
+| `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `binary`       | Boolean          | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`. |
+| `limit`        | Number           | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). The default is the maximum. |
+| `marker`       | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `type`         | String           | No        | Filter results to a specific type of ledger entry. Valid values include: 
 
 The `ledger` field is deprecated and may be removed without further notice.
 
