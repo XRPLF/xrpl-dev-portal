@@ -28,6 +28,8 @@ This example shows how to:
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
+**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
+
 
 ## Usage
 
