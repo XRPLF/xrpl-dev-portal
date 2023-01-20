@@ -7,7 +7,8 @@ if (typeof module !== "undefined") {
   // https://xrpl.org/nft_buy_offers.html#nft_buy_offers
   
   async function main() {
-    account = ""
+    // Testnet example: r3CJF73Ugs5cT4G58CDBp6RAmycGdnTAFN
+    account = "r3CJF73Ugs5cT4G58CDBp6RAmycGdnTAFN"
 
     // Connect to a testnet node
     console.log("Connecting to testnet...")
