@@ -1,57 +1,61 @@
-'use strict'
-const RippleAPI = require('ripple-lib').RippleAPI
-const cc = require('five-bells-condition')
-const crypto = require('crypto')
+if (typeof module !== "undefined") {
+    // Use var here because const/let are block-scoped to the if statement.
+    var xrpl = require('xrpl')
+  }
+  // Construct an EscrowCreate transaction to create an Escrow natively on the XRPL
+  // https://xrpl.org/escrow.html#escrow
+  // https://xrpl.org/escrowcreate.html#escrowcreate
 
-const myAddr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'
-const mySecret = 's████████████████████████████'
+  async function main() {
+    // Connect to a testnet node
+    console.log("Connecting to Testnet...")
+    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+    await client.connect()
+  
+    // Get account credentials from the Testnet Faucet
+    console.log("Requesting addresses from the Testnet faucet...")
+    const { wallet } = await client.fundWallet()
+    const { wallet: reciepient_wallet } = await client.fundWallet()
 
-// Construct condition and fulfillment
-const preimageData = crypto.randomBytes(32)
-const myFulfillment = new cc.PreimageSha256()
-myFulfillment.setPreimage(preimageData)
-const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase()
+    console.log(" Sending Account:", wallet.address)
+    console.log("            Seed:", wallet.seed)
 
-console.log('Condition:', conditionHex)
-console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase())
+    console.log("\n Receiving Account:", reciepient_wallet.address)
 
-// Construct transaction
-const currentTime = new Date()
-const myEscrow = {
-  "destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", // Destination can be same as source
-  "destinationTag": 2017,
-  "amount": "0.1113", //decimal XRP
-  "condition": conditionHex,
-  "allowExecuteAfter": currentTime.toISOString() // can be executed right away if the condition is met
-}
-const myInstructions = {
-  maxLedgerVersionOffset: 5
-}
+    // Get current datetime
+    const date = new Date();
 
-// Connect and submit
-const api = new RippleAPI({server: 'wss://s2.ripple.com'})
+    // ISO8601 timestmap to a ripple timestamp.
+    // After the FinishAfter time has passed, you are given 20 seconds to finish ('claim') the escrow
+    // After the CancelAfter time has passed, you're unable to finish the Escrow but you're allowed to Cancel it
+    // You could configure CancelAfter and FinishAfter to a different time but the CancelAfter field must always be sooner than the FinishAfter field
+    const CancelAfter = xrpl.isoTimeToRippleTime(date) + 25
+    const FinishAfter = xrpl.isoTimeToRippleTime(date) + 5
 
-function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
-  const signedData = api.sign(prepared.txJSON, secret)
-  console.log('Transaction ID: ', signedData.id)
-  return api.submit(signedData.signedTransaction).then(data => {
-    console.log('Tentative Result: ', data.resultCode)
-    console.log('Tentative Message: ', data.resultMessage)
-  })
-}
+    // Construct EscrowCreate transaction
+    const EscrowCreate_tx = await client.autofill({
+        "TransactionType": "EscrowCreate",
+        "Account": wallet.address,
+        "Amount": "10000000", // 1 XRP = 1,000,000 drops
+        "Destination": reciepient_wallet.address,
+        "CancelAfter": CancelAfter,
+        "FinishAfter": FinishAfter
+    })
+  
+    console.log(`\n The sender may finish the Escrow after ${xrpl.rippleTimeToISOTime(FinishAfter)}`)
+    console.log(`\n The sender may claim back (Cancel) the Escrow after the ${xrpl.rippleTimeToISOTime(CancelAfter)} due date has passed`)
+    
+    const EscrowCreate_tx_signed = wallet.sign(EscrowCreate_tx)
 
-api.connect().then(() => {
-  console.log('Connected')
-  return api.prepareEscrowCreation(myAddr, myEscrow, myInstructions)
-}).then(prepared => {
-  console.log('EscrowCreation Prepared')
-  return api.getLedger().then(ledger => {
-    console.log('Current Ledger', ledger.ledgerVersion)
-    return submitTransaction(ledger.ledgerVersion, prepared, mySecret)
-  })
-}).then(() => {
-  api.disconnect().then(() => {
-    console.log('api disconnected')
-    process.exit()
-  })
-}).catch(console.error)
+    console.log("\n Transaction hash:", EscrowCreate_tx_signed.hash)
+  
+    const EscrowCreate_tx_result = await client.submitAndWait(EscrowCreate_tx_signed.tx_blob)
+    console.log("\n Submit result:", EscrowCreate_tx_result.result.meta.TransactionResult)
+    console.log("    Tx content:", EscrowCreate_tx_result)
+    
+    client.disconnect()
+
+    // End main()
+  }
+  
+  main()
