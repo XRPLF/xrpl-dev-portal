@@ -1,0 +1,50 @@
+from xrpl.clients import JsonRpcClient
+from xrpl.models.transactions import Payment, Memo
+from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.wallet import generate_faucet_wallet
+
+# This code sample validates and sends a transaction with a Memo attached
+# A funded account on the testnet is provided for testing purposes
+# https://xrpl.org/transaction-common-fields.html#memos-field
+
+# Connect to a testnet node
+JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
+client = JsonRpcClient(JSON_RPC_URL)
+
+# Get account credentials from the Testnet Faucet
+print("Requesting account from the Testnet faucet...")
+test_wallet = generate_faucet_wallet(client=client)
+myAddr = test_wallet.classic_address
+
+# Example: TEXT 321 -+=
+memo_data = input("Enter memo data to insert into a transaction: ")
+# Example: text
+memo_type = input("Enter memo type to insert into a transaction: ")
+
+memo_data = memo_data.encode('utf-8').hex()
+memo_type = memo_type.encode('utf-8').hex()
+memo_format = "text/csv".encode('utf-8').hex()
+
+# Construct Payment transaction w/ memo field filled
+payment_tx = Payment(
+    account=myAddr,
+    destination="rjhpRPyL5FfCxkq2LXoWxEEyuz4koPeP5",
+    amount="1000000",
+    memos=[
+        Memo(
+            memo_type=memo_type,
+            memo_data=memo_data,
+            memo_format=memo_format
+        ),
+    ],
+)
+
+# Sign the transaction
+payment_tx_signed = safe_sign_and_autofill_transaction(payment_tx, wallet=test_wallet, client=client)
+print(f"\n Payment tx's memo field: {payment_tx_signed.memos}")
+
+# Send the transaction to the node
+submit_tx_regular = send_reliable_submission(client=client, transaction=payment_tx_signed)
+submit_tx_regular = submit_tx_regular.result
+print(f"\n Payment tx w/ memo result: {submit_tx_regular['meta']['TransactionResult']}")
+print(f"                Tx content: {submit_tx_regular}")
