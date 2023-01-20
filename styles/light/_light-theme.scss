@@ -724,7 +724,35 @@ pre code {
 
 
 
-
+  @each $company,$type in (
+    'bitgo': 'svg',
+    'sologenic-nft': 'svg',
+    'carbonland-trust': 'svg',
+    'x-tokenize': 'svg',
+    'casino-coin': 'svg',
+    'xrp-cafe': 'svg',
+    'coil': 'svg',
+    'xrp-toolkit': 'svg',
+    'cryptum': 'svg',
+    'xrpl-org-ledger-explorer': 'svg',
+    'evernode': 'svg',
+    'xrpl-rosetta': 'svg',
+    'ripples-cbdc-platform': 'svg',
+    'xrpscan': 'svg',
+    'ripples-on-demand-liquidity': 'svg',
+    'xumm-wallet': 'svg',
+    'sologenic-dex': 'svg'
+  ) 
+  {
+    #use_case_companies_list {
+      ##{$company} {
+        .biz-logo {
+          max-height: 40px;
+          content: url("../img/uses/lightmode/#{$company}.#{$type}");
+        }
+      } 
+    }
+  }
 
   // @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
   //   ##{$usecase} {
@@ -733,53 +761,54 @@ pre code {
   // }
 
   // darkened card graphics
-  @each $company,
-    $card-graphic
-      in (
-        "bitpay": "blue-green",
-        "exodus": "green",
-        "forte": "light-blue-2",
-        "ripple": "blue-light-blue",
-        "xrplorer": "green-purple"
-      )
-  {
-    ##{$company} .card-footer {
-      background-image: url("../img/cards/lightmode/3col-#{$card-graphic}.svg");
-    }
-  }
+  // @each $company,
+  //   $card-graphic
+  //     in (
+  //       "bitpay": "blue-green",
+  //       "exodus": "green",
+  //       "forte": "light-blue-2",
+  //       "ripple": "blue-light-blue",
+  //       "xrplorer": "green-purple"
+  //     )
+  // {
+  //   ##{$company} .card-footer {
+  //     background-image: url("../img/cards/lightmode/3col-#{$card-graphic}.svg");
+  //   }
+  // }
 
   // Monochrome logos; invert.
   #bitpay,
-  #coil,
+  // #coil,
   #forte,
   #xrplorer,
-  #gatehub {
+  #gatehub 
+  {
     .biz-logo {
       filter: invert(100%);
     }
   }
-  // Alternate SVG logos
-  @each $company in "bitgo", "exodus", "ripple", "xrpl-labs" {
-    ##{$company} {
-      .biz-logo {
-        content: url("../img/uses/lightmode/#{$company}.svg");
-      }
-    }
-  }
-  // non-SVG logos:
-  #raisedinspace {
-    .card-footer {
-      background-image: url("../img/cards/lightmode/3col-orange-yellow-2.svg");
-    }
-    .biz-logo {
-      content: url("../img/uses/lightmode/raised.png");
-    }
-  }
-  #towo {
-    .biz-logo {
-      content: url("../img/uses/lightmode/towo.png");
-    }
-  }
+  // // Alternate SVG logos
+  // @each $company in "bitgo", "exodus", "ripple", "xrpl-labs" {
+  //   ##{$company} {
+  //     .biz-logo {
+  //       content: url("../img/uses/lightmode/#{$company}.svg");
+  //     }
+  //   }
+  // }
+  // // non-SVG logos:
+  // #raisedinspace {
+  //   .card-footer {
+  //     background-image: url("../img/cards/lightmode/3col-orange-yellow-2.svg");
+  //   }
+  //   .biz-logo {
+  //     content: url("../img/uses/lightmode/raised.png");
+  //   }
+  // }
+  // #towo {
+  //   .biz-logo {
+  //     content: url("../img/uses/lightmode/towo.png");
+  //   }
+  // }
 }
 
 .landing-bg {

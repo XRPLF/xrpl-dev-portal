@@ -220,26 +220,58 @@
   //   }
   // }
 
-  @each $company,$card-graphic in (
-    "bitgo": "magenta-3",
-    "bitpay": "blue-green",
-    "coil": "purple-blue",
-    "exodus": "green",
-    "forte": "light-blue-2",
-    "gatehub": "orange-3",
-    "ripple": "blue-light-blue",
-    "towo": "purple",
-    "xrpl-labs": "magenta-2",
-    "xrplorer": "green-purple"
+  @each $company,$type in (
+    "bithomp": 'svg',
+    "onthedex": "svg",
+    "gatehub": "svg",
+    "towo-labs": "svg",
+    "xrp-toolkit": "svg",
+    "xrpl-org-ledger-explorer": "svg",
+    "xrpl-rosetta": "svg",
+    "xrpscan": "svg",
+    "evernode": "svg",
+    "cryptum": "svg",
+    "x-tokenize": "svg",
+    "multichain": "svg",
+    "xumm-wallet": "svg",
+    "gem-wallet": "svg",
+    "aesthetes": "svg",
+    "audiotarky": "svg",
+    "xrp-cafe": "svg",
+    "nft-master": "svg",
+    "onxrp": "svg",
+    "peerkat": "svg",
+    "sologenic-nft": "svg",
+    "sologenic-dex": "svg",
+    "xp-market": "svg",
+    "ledger-city": "svg",
+    "forte": "svg",
+    "anchain-ai": "svg",
+    "coil": "svg",
+    "carbonland-trust": "svg",
+    "casino-coin": "svg",
+    "bitgo": "svg",
+    "bitpay": "svg",
+    "ripples-on-demand-liquidity": "svg",
+    "ripples-cbdc-platform": "svg",
   ) {
-    ##{$company} {
-      .card-footer {
-        background-image: url("../img/cards/3col-#{$card-graphic}.svg");
-      }
-      .biz-logo {
-        content: url("../img/uses/#{$company}.svg");
-      }
+    #use_case_companies_list {
+      ##{$company} {
+        .biz-logo {
+          max-height: 40px;
+          content: url("../img/uses/#{$company}.#{$type}");
+        }
+      } 
     }
+
+    // ##{$company} {
+    //   .card-footer {
+    //     background-image: url("../img/cards/3col-#{$card-graphic}.svg");
+    //   }
+    //   .biz-logo {
+    //     content: url("../img/uses/#{$company}.svg");
+    //   }
+    // }
   }
   #raisedinspace {
     .card-footer {
