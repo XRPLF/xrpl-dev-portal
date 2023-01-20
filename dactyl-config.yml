@@ -1046,7 +1046,13 @@ pages:
         targets:
             - en
             - ja
-            
+
+        # TODO: translate
+    -   md: tutorials/quickstart/escrow-condition.md
+        targets:
+            - en
+            - ja
+
     -   name: NFTokens Quickstart
         html: nft-quickstart.html
         parent: quickstart.html
