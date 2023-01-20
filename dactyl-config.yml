@@ -1716,6 +1716,11 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-the-rippled-server/configuration/test-amendments.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md
         targets:
             - en
@@ -1942,6 +1947,11 @@ pages:
         # TODO: translate the blurb in this page's frontmatter
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-is-amendment-blocked.md
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
