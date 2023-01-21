@@ -166,7 +166,7 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
   "command": "ledger_entry",
   "amm": {
     "asset": {
-      "XRP"
+      "currency": "XRP"
     },
     "asset2": {
       "currency" : "TST",
@@ -186,7 +186,7 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
         {
           "amm": {
             "asset": {
-              "XRP"
+              "currency": "XRP"
             },
             "asset2": {
               "currency" : "TST",
@@ -202,12 +202,13 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "amm": { "asset": { "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
+
 
 
 ### Get DirectoryNode Object

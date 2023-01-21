@@ -97,7 +97,6 @@ To describe XRP without an amount, specify it as a JSON object with _only_ a `cu
 ## String Numbers
 
 {% include '_snippets/string-number-formatting.md' %}
-<!--{#_ #}-->
 
 ## XRP Precision
 
