@@ -55,9 +55,9 @@ if (typeof module !== "undefined") {
         console.log("\nIncoming/Received Check(s) that have not passed their Expiration date:")
         for (var i = 0; i < incoming_cashable.length; i++) {
             console.log(`\n${i+1}. Index (ObjectID/keylet): ${incoming_cashable[i].index}`)
-            console.log(` - Account: ${incoming_cashable[i].Account})`)
+            console.log(` - Account: ${incoming_cashable[i].Account}`)
             console.log(` - Destination: ${incoming_cashable[i].Destination}`)
-            console.log(` - Amount: ${incoming_cashable[i].Amount} drops`)
+            console.log(` - Amount: ${incoming_cashable[i].SendMax} drops`)
             console.log(` - PreviousTxnID: ${incoming_cashable[i].PreviousTxnID}`)
         }
 
@@ -73,18 +73,15 @@ if (typeof module !== "undefined") {
         const CheckCash_tx = await client.autofill({
             "TransactionType": "CheckCash",
             "Account": wallet.address,
-            "Owner": wallet.address,
-            "CheckID": get_check_id.result.CheckID 
+            "CheckID": incoming_cashable[0].index,
+            "Amount": incoming_cashable[0].SendMax
         })
 
         const CheckCash_tx_signed = wallet.sign(CheckCash_tx)
-
-        console.log("\n Transaction hash:", CheckCash_tx_signed.hash)
-
         const CheckCash_tx_result = await client.submitAndWait(CheckCash_tx_signed.tx_blob)
-        
-        console.log("\n Submit result:", CheckCash_tx_result.result.meta.TransactionResult)
-        console.log("    Tx content:", CheckCash_tx_result)
+
+        console.log("\n Transaction hash:", CheckCash_tx_signed.hash)        
+        console.log(" Submit result:", CheckCash_tx_result.result.meta.TransactionResult)
     } else {
         console.log(`\nThere are no Checks that have pass their Expiration date on account ${wallet.address}`)
     }
