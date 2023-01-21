@@ -19,8 +19,9 @@ if (typeof module !== "undefined") {
     console.log("   Seed: ", wallet.seed)
 
     // Enter memo data to insert into a transaction
-    const memoData = "TEXT 123 -+="
-    const memoDataHex = Buffer.from(memoData, 'utf8').toString('hex')
+    const MemoData = Buffer.from("TEXT 123 -+=", 'utf8').toString('hex')
+    const MemoType = Buffer.from("Text", 'utf8').toString('hex')
+    const MemoFormat = Buffer.from("text/csv", 'utf8').toString('hex')
 
     // Send AccountSet transaction 
     const prepared = await client.autofill({
@@ -30,17 +31,19 @@ if (typeof module !== "undefined") {
       "Amount": "1000000", // Amount in drops, 1 XRP = 1,000,000 drops
       "Memos": [{
             "Memo":{
-                "MemoType": "687474703a2f2f6578616d706c652e636f6d2f6d656d6f2f67656e65726963",
-                "MemoData": memoDataHex
+                "MemoType": MemoType,
+                "MemoData": MemoData,
+                "MemoFormat": MemoFormat
             }
         }]
     })
-  
+
     const signed = wallet.sign(prepared)  
     const submit_result = await client.submitAndWait(signed.tx_blob)
 
-    console.log("\nTransaction hash:", signed.hash)
-    console.log(" Submit result:", submit_result.result.meta.TransactionResult)
+    console.log(`\n Transaction MEMO: ${JSON.stringify({"MemoType": MemoType, "MemoData": MemoData, "MemoFormat": MemoFormat})}`)
+    console.log("\n Transaction hash:", signed.hash)
+    console.log("    Submit result:", submit_result.result.meta.TransactionResult)
     
     client.disconnect()
 
