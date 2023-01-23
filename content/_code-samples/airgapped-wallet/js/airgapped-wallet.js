@@ -205,9 +205,10 @@ main = async function () {
             required: true
         }])
 
-        const stxResult = await signTransaction(xrpAmount, destinationAddress, ledgerSequence, accountSequence, password)
+        await signTransaction(xrpAmount, destinationAddress, ledgerSequence, accountSequence, password)
     } else if (menu === 2) {
-
+        const {address, seed} = createWallet()
+        console.log('Generated readonly Wallet (address: ' + address + ' seed: ' + seed + ')')
     } else if (menu === 3) {
         const address = fs.readFileSync(path.join(__dirname, WALLET_DIR , 'address.txt')).toString()
         console.log('Wallet Address: ' + address)
