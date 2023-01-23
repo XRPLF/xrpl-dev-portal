@@ -167,6 +167,17 @@
 }
 
 .page-uses {
+  
+  .container-new {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+
   &::before {
     transform: scaleX(-1);
     background-image: url(../img/backgrounds/use-cases-blue.svg);
@@ -180,46 +191,137 @@
     max-height: 40px;
   }
 
-
-@each $usecase in "infrastructure",
-"developer_tooling",
-"interoperability",
-"wallet",
-"nfts",
-"exchanges",
-"gaming",
-"security",
-"payments",
-"web_monetization",
-"sustainability",
-"cbdc",
-"custody",
-"defi" {
-  ##{$usecase} {
-    content: url("../img/icons/usecases/ic_#{$usecase}.png");
+  /* Cleanup bootstrap modal */
+  .modal {
+    padding: 0; 
   }
-}
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #000;
 
+    background-clip: padding-box; 
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
 
-@include media-breakpoint-up(lg) {
-  .card-grid img {
-    max-height: 48px;
+    background: #111112;
   }
 
-  .card-grid {
-    grid-gap: 48px
+  .modal-header {
+    border: none;
+    background: #111112;
+    box-shadow: 0px 1px 2px #000000;
   }
-}
+  .modal-header .cancel .chevron {
+    transform: rotate(90deg);
+  }
+  .modal-header .apply .chevron {
+    transform: rotate(-90deg);
+  }
+
+  .modal-footer {
+    border: none;
+    background: #111112;
+    box-shadow: 0px -1px 2px #000000;
+    
+    align-items: unset; 
+    padding: 0.75rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }    
 
 
+// 
+  .card-title {
+    margin-bottom: 0.5rem;
+    line-height: 26px;
+  }
+  .card-uses {
+    padding: 16px;
+    margin: 0;
+    text-decoration: none;
+    transition: all 0.35s ease-out;
+  }
+  .card-uses:hover {
+    text-decoration: none;
+    color: #E0E0E1;
+    transform: translateY(-16px);
+    text-decoration: none;
+  }
+  .card-body {
+    background: #232325;
+    border-radius: 8px;
+    height: 100%;
+    padding: 32px;
+    margin: 0;
+  }
+  .page-events .label {
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+    padding-left: 26px;
+  }
+
+  .category-header {
+    font-weight: bold;
+    /*color: $gray-300;*/
+    color: #c1c1c2;
+  }
+
+  .category-checkbox {
+    display: flex;
+    align-items: center;
+  }
+  .category-checkbox label {
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+    padding-left: 26px;
+  }
+  .category_count {
+    padding: 0px 8px;
+    width: 24px;
+    height: 16px;
+    background: $blue-purple-800;
+    border-radius: 100px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: $blue-purple-300;
+  }
+  .category_sidebar {
+    position: sticky;
+    top: 10px;
+  }
 
 
-  // @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
-  //   ##{$usecase} {
-  //     content: url("../img/icons/#{$usecase}.svg");
-  //   }
-  // }
+  @each $usecase in "infrastructure",
+  "developer_tooling",
+  "interoperability",
+  "wallet",
+  "nfts",
+  "exchanges",
+  "gaming",
+  "security",
+  "payments",
+  "web_monetization",
+  "sustainability",
+  "cbdc",
+  "custody",
+  "defi" {
+    ##{$usecase} {
+      content: url("../img/icons/usecases/ic_#{$usecase}.png");
+    }
+  }
 
+// logos for cards
+// $type incase png or jpg is needed.
   @each $company,$type in (
     "bithomp": 'svg',
     "onthedex": "svg",
@@ -264,24 +366,36 @@
       } 
     }
 
-    // ##{$company} {
-    //   .card-footer {
-    //     background-image: url("../img/cards/3col-#{$card-graphic}.svg");
-    //   }
-    //   .biz-logo {
-    //     content: url("../img/uses/#{$company}.svg");
-    //   }
-    // }
   }
-  #raisedinspace {
-    .card-footer {
-      background-image: url(../img/cards/3col-orange-yellow-2.svg);
+
+
+  @include media-breakpoint-up(lg) {
+
+    h1 {
+      font-size: 62px;
     }
-    .biz-logo {
-      content: url(../img/uses/raised.png);
+    .container-new {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
+    
+    .card-grid img {
+      max-height: 48px;
+    }
+  
+    .card-grid {
+      grid-gap: 48px
+    }
+  
+    .card-uses {
+      padding: 24px;
     }
   }
+
+
+
 }
+// End UseCases 
 
 // History Page
 #history-orange {

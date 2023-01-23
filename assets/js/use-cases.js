@@ -47,7 +47,6 @@ $(document).ready(() => {
 
   $(".cat_checkbox input").change((event) => {
 
-    // const lang = $(event.target).val().toLowerCase().split(' ').join('_')
     const lang = $(event.target).val()
     const lang_checked = $(event.target).prop("checked")
     

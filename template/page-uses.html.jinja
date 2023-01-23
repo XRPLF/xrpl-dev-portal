@@ -17,76 +17,6 @@
 
 {% block main %}
 
-<!-- temp -->
-<style>
-  .container-new {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  h1 {
-    font-size: 42px;
-  }
-
-  @media (min-width: 992px) {
-
-    h1 {
-      font-size: 62px;
-    }
-
-
-    .container-new {
-      padding-left: 64px;
-      padding-right: 64px;
-    }
-  }
-
-  /* Cleanup bootstrap modal */
-  .modal {
-    padding: 0; 
-  }
-  .modal-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    pointer-events: auto;
-    background-color: #000;
-
-    background-clip: padding-box; 
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    outline: none;
-
-    background: #111112;
-  }
-
-  .modal-header {
-    border: none;
-    background: #111112;
-    box-shadow: 0px 1px 2px #000000;
-  }
-  .modal-header .cancel .chevron {
-    transform: rotate(90deg);
-  }
-  .modal-header .apply .chevron {
-    transform: rotate(-90deg);
-  }
-
-  .modal-footer {
-    border: none;
-    background: #111112;
-    box-shadow: 0px -1px 2px #000000;
-    
-    align-items: unset; 
-    padding: 0.75rem;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-</style>
-
 {% set cards = [
   {
     "id": "aesthetes",
@@ -383,10 +313,6 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <!-- <h5 class="modal-title" id="categoryFilterModalLabel"></h5>
-        <button type="button" class="" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">Cancel</span>
-        </button> -->
         <a class="btn cancel" data-dismiss="modal"><span class="chevron"><span></span><span></span></span> Cancel</a>
         <a class="btn apply" data-dismiss="modal">Apply <span class="chevron"><span></span><span></span></span></a>
       </div>
@@ -401,7 +327,6 @@
                       <label class="font-weight-bold" for="input_{{category_id}}">{{ category_name }}</label>
                   </div>
                 {% endfor %}
-  <!-- pt-lg-4 mt-lg-3 -->
               <p class="category-header pt-5 mt-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
                 {% for category_id, category_name in other_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
@@ -524,92 +449,13 @@
     <a class="btn  d-block d-lg-none" data-toggle="modal" data-target="#categoryFilterModal">
       <span class="mr-3"><img src="./assets/img/uses/usecase-filter.svg" class=""></span>Filter by Categories <span class="ml-3 total_count category_count">2</span>
     </a>
-    
-<!-- temp -->
-<style>
-  .card-title {
-    margin-bottom: 0.5rem;
-    line-height: 26px;
-  }
-  .card-uses {
-    padding: 16px;
-    margin: 0;
-    text-decoration: none;
-    transition: all 0.35s ease-out;
-  }
-  .card-uses:hover {
-    text-decoration: none;
-    color: #E0E0E1;
-    transform: translateY(-16px);
-    text-decoration: none;
-  }
-  .card-body {
-    background: #232325;
-    border-radius: 8px;
-    height: 100%;
-    padding: 32px;
-    margin: 0;
-  }
-  .page-events .label {
-    font-weight: normal;
-    font-size: 14px;
-    margin: 0;
-    padding-left: 26px;
-  }
-
-  .category-header {
-    font-weight: bold;
-    /*color: $gray-300;*/
-    color: #c1c1c2;
-  }
-
-  .category-checkbox {
-    display: flex;
-    align-items: center;
-  }
-  .category-checkbox label {
-    font-weight: normal;
-    font-size: 14px;
-    margin: 0;
-    padding-left: 26px;
-  }
-  .category_count {
-    padding: 0px 8px;
-    width: 24px;
-    height: 16px;
-    /* Blue-Purple / Blue-Purple 80 */
-    background: #350080;
-    border-radius: 100px;
-
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
-    /* Blue-Purple / Blue-Purple 30 */
-    color: #B480FF;
-  }
-  .page-events {
-    position: sticky;
-    top: 10px;
-  }
-
-
-  @media (min-width: 992px) {
-    .card-uses {
-      padding: 24px;
-    }
-
-  }
-
-</style>
-
-<!-- // TODO:rename events- css  -->
 
 <!-- Start company cards -->
     <div class="row col-12 m-0 p-0 mt-4 pt-2">
       <div class="left col-3 m-0 p-0 mt-2 d-none d-lg-block">
 
 <!-- Side bar Desktop.  -->
-        <div class="p-3 page-events">
+        <div class="p-3 category_sidebar">
             <form >
               <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
                 {% for category_id, category_name in featured_categories.items() %}
