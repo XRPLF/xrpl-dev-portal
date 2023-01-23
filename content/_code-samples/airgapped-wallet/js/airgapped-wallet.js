@@ -1,6 +1,7 @@
 const crypto = require("crypto")
 const fs = require('fs')
 const fernet = require("fernet");
+const open = require('open');
 const path = require('path')
 const prompt = require('prompt')
 const { generateSeed, deriveAddress, deriveKeypair } = require("ripple-keypairs/dist/")
@@ -93,8 +94,10 @@ signTransaction = async function (xrpAmount, destination, ledgerSequence, wallet
 
     const signedTx = wallet.sign(paymentTx)
 
-    fs.writeFileSync(path.join(__dirname, WALLET_DIR , 'tx_blob.txt'), JSON.stringify(signedTx.tx_blob))
-    QRCode.toFile(path.join(__dirname, WALLET_DIR , 'tx_blob.png'), JSON.stringify(signedTx.tx_blob))
+    fs.writeFileSync(path.join(__dirname, WALLET_DIR , 'tx_blob.txt'), signedTx.tx_blob)
+    QRCode.toFile(path.join(__dirname, WALLET_DIR , 'tx_blob.png'), signedTx.tx_blob)
+
+    open(path.join(__dirname, WALLET_DIR , 'tx_blob.png'))
 }
 
 main = async function () {
@@ -177,12 +180,12 @@ main = async function () {
             ledgerSequence
         } = await prompt.get([{
             name: 'password',
-            description: 'Enter Password:',
+            description: 'Enter Password',
             type: 'string',
             required: true
         }, {
             name: 'xrpAmount',
-            description: 'Enter XRP To Send:',
+            description: 'Enter XRP To Send',
             type: 'number',
             required: true
         }, {
@@ -192,7 +195,7 @@ main = async function () {
             required: true
         }, {
             name: 'accountSequence',
-            description: 'Look up the \'Next Sequence\' for the account using test.bithomp.com and enter it:',
+            description: 'Look up the \'Next Sequence\' for the account using test.bithomp.com and enter it',
             type: 'integer',
             required: true
         }, {
@@ -201,24 +204,19 @@ main = async function () {
             type: 'integer',
             required: true
         }])
-        console.log(password + xrpAmount + destinationAddress + accountSequence + ledgerSequence)
+
         const stxResult = await signTransaction(xrpAmount, destinationAddress, ledgerSequence, accountSequence, password)
     } else if (menu === 2) {
 
     } else if (menu === 3) {
-
+        const address = fs.readFileSync(path.join(__dirname, WALLET_DIR , 'address.txt')).toString()
+        console.log('Wallet Address: ' + address)
+        open(path.join(__dirname, WALLET_DIR , 'address.png'))
     } else {
         return
     }
 
     prompt.stop();
-
-    /*
-    let xrpAmount = 10
-    let destinationAddress = demoDestinationAddress
-    let ledgerSequence = 34784476
-    let accountSequence = 34724652
-     */
 }
 
 main()
