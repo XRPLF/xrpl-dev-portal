@@ -370,6 +370,11 @@ pages:
         targets:
             - ja
 
+    -   md: privacy-policy.md
+        targets:
+            - en
+            - ja
+
     # Redirect old technical-faq.html to new faq.html URL
     -   name: FAQ
         html: technical-faq.html
