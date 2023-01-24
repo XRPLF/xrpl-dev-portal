@@ -41,10 +41,21 @@ payment_tx = Payment(
 
 # Sign the transaction
 payment_tx_signed = safe_sign_and_autofill_transaction(payment_tx, wallet=test_wallet, client=client)
-print(f"\n Payment tx's memo field: {payment_tx_signed.memos}")
+print(f"\n  Encoded Transaction MEMO: {payment_tx_signed.memos}")
 
 # Send the transaction to the node
 submit_tx_regular = send_reliable_submission(client=client, transaction=payment_tx_signed)
 submit_tx_regular = submit_tx_regular.result
+
+tx_MemoData = bytes.fromhex(submit_tx_regular['Memos'][0]['Memo']['MemoData']).decode('utf-8')
+tx_MemoFormat = bytes.fromhex(submit_tx_regular['Memos'][0]['Memo']['MemoFormat']).decode('utf-8')
+tx_MemoType = bytes.fromhex(submit_tx_regular['Memos'][0]['Memo']['MemoType']).decode('utf-8')
+
+print(f"  Decoded Transaction MEMO:")
+print(f"         MemoData: {tx_MemoData}")
+print(f"       MemoFormat: {tx_MemoFormat}")
+print(f"         MemoType: {tx_MemoType}")
+
+
 print(f"\n Payment tx w/ memo result: {submit_tx_regular['meta']['TransactionResult']}")
-print(f"                Tx content: {submit_tx_regular}")
+print(f"                   Tx Hash: {submit_tx_regular['hash']}")
