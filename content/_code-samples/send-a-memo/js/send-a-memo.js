@@ -19,9 +19,9 @@ if (typeof module !== "undefined") {
     console.log("   Seed: ", wallet.seed)
 
     // Enter memo data to insert into a transaction
-    const MemoData = Buffer.from("TEXT 123 -+=", 'utf8').toString('hex')
-    const MemoType = Buffer.from("Text", 'utf8').toString('hex')
-    const MemoFormat = Buffer.from("text/csv", 'utf8').toString('hex')
+    const MemoData = xrpl.convertStringToHex(string="TEXT 123 -=+");
+    const MemoType = xrpl.convertStringToHex(string="Text");
+    const MemoFormat = xrpl.convertStringToHex(string="text/csv");
 
     // Send AccountSet transaction 
     const prepared = await client.autofill({
@@ -40,10 +40,10 @@ if (typeof module !== "undefined") {
 
     const signed = wallet.sign(prepared)  
     const submit_result = await client.submitAndWait(signed.tx_blob)
-
-    const tx_MemoData = Buffer.from(submit_result.result.Memos[0].Memo.MemoData, 'hex').toString('utf8');
-    const tx_MemoFormat = Buffer.from(submit_result.result.Memos[0].Memo.MemoFormat, 'hex').toString('utf8');
-    const tx_MemoType = Buffer.from(submit_result.result.Memos[0].Memo.MemoType, 'hex').toString('utf8');
+xrpl.convertHexToString
+    const tx_MemoData = xrpl.convertHexToString(string=submit_result.result.Memos[0].Memo.MemoData);
+    const tx_MemoFormat = xrpl.convertHexToString(string=submit_result.result.Memos[0].Memo.MemoFormat);
+    const tx_MemoType = xrpl.convertHexToString(string=submit_result.result.Memos[0].Memo.MemoType);
 
     console.log(`\n Encoded Transaction MEMO: ${JSON.stringify({"MemoType": MemoType, "MemoData": MemoData, "MemoFormat": MemoFormat})}`)
     console.log(` Decoded Transaction MEMO: ${JSON.stringify({"MemoType": tx_MemoType, "MemoData": tx_MemoData, "MemoFormat": tx_MemoFormat})}`);
