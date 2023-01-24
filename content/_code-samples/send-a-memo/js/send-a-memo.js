@@ -41,7 +41,12 @@ if (typeof module !== "undefined") {
     const signed = wallet.sign(prepared)  
     const submit_result = await client.submitAndWait(signed.tx_blob)
 
-    console.log(`\n Transaction MEMO: ${JSON.stringify({"MemoType": MemoType, "MemoData": MemoData, "MemoFormat": MemoFormat})}`)
+    const tx_MemoData = Buffer.from(submit_result.result.Memos[0].Memo.MemoData, 'hex').toString('utf8');
+    const tx_MemoFormat = Buffer.from(submit_result.result.Memos[0].Memo.MemoFormat, 'hex').toString('utf8');
+    const tx_MemoType = Buffer.from(submit_result.result.Memos[0].Memo.MemoType, 'hex').toString('utf8');
+
+    console.log(`\n Encoded Transaction MEMO: ${JSON.stringify({"MemoType": MemoType, "MemoData": MemoData, "MemoFormat": MemoFormat})}`)
+    console.log(` Decoded Transaction MEMO: ${JSON.stringify({"MemoType": tx_MemoType, "MemoData": tx_MemoData, "MemoFormat": tx_MemoFormat})}`);
     console.log("\n Transaction hash:", signed.hash)
     console.log("    Submit result:", submit_result.result.meta.TransactionResult)
     
