@@ -1,32 +1,31 @@
 'use strict'
 if (typeof module !== "undefined") {
   // Use var here because const/let are block-scoped to the if statement.
-  var xrpl = require('xrpl')
-}
+  var xrpl = require('xrpl');
+};
 
-const cc = require('five-bells-condition')
-const crypto = require('crypto')
+const cc = require('five-bells-condition');
+const crypto = require('crypto');
+
+const secret = "sEdTPPEeMH6SAgpo6rSj8YW7a9vFfUj";
 
 const main = async () => {
   try {
 
     // Construct condition and fulfillment ---------------------------------------
-    const preimageData = crypto.randomBytes(32)
-    const myFulfillment = new cc.PreimageSha256()
-    myFulfillment.setPreimage(preimageData)
-    const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase()
+    const preimageData = crypto.randomBytes(32);
+    const myFulfillment = new cc.PreimageSha256();
+    myFulfillment.setPreimage(preimageData);
+    const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase();
+    const wallet = await xrpl.Wallet.fromSeed(secret);
+    console.log("Wallet: ",wallet.address);
 
-    console.log('Condition:', conditionHex)
-    console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase())
+    console.log('Condition:', conditionHex);
+    console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase());
 
     // Connect -------------------------------------------------------------------
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
-    await client.connect()
-
-    // Get credentials from the Testnet Faucet -----------------------------------
-    console.log("Requesting an address from the Testnet faucet...")
-    const { wallet, balance } = await client.fundWallet();
-    console.log("Wallet: ",wallet.address);
+    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
+    await client.connect();
 
     const firstRippleEpoch = 946684800;
     const escrowCreateTransaction = {

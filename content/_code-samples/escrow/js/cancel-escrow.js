@@ -1,40 +1,37 @@
 'use strict'
-const RippleAPI = require('ripple-lib').RippleAPI
-
-const myAddr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'
-const mySecret = 's████████████████████████████'
-
-const myEscrowCancellation = {
-  owner: myAddr,
-  escrowSequence: 366
-}
-const myInstructions = {
-  maxLedgerVersionOffset: 5
+if (typeof module !== "undefined") {
+  // Use var here because const/let are block-scoped to the if statement.
+  var xrpl = require('xrpl')
 }
 
-const api = new RippleAPI({server: 'wss://s2.ripple.com'})
+const secret = "sEdTPPEeMH6SAgpo6rSj8YW7a9vFfUj";
 
-function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
-  const signedData = api.sign(prepared.txJSON, secret)
-  console.log('Transaction ID: ', signedData.id)
-  return api.submit(signedData.signedTransaction).then(data => {
-    console.log('Tentative Result: ', data.resultCode)
-    console.log('Tentative Message: ', data.resultMessage)
-  })
+const main = async () => {
+  try {
+    // Connect -------------------------------------------------------------------
+    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
+    await client.connect();
+    const wallet = await xrpl.Wallet.fromSeed(secret);
+
+    const escrowCancelTransaction = {
+      "Account": wallet.address,
+      "TransactionType": "EscrowCancel",
+      "Owner": wallet.address,
+      "OfferSequence": 34821001, // Sequence number
+    };
+
+    xrpl.validate(escrowCancelTransaction);
+
+    // Sign and submit the transaction --------------------------------------------
+    console.log('Signing and submitting the transaction:', escrowCancelTransaction);
+    const response  = await client.submitAndWait(escrowCancelTransaction, { wallet });
+    console.log(`Finished submitting! ${JSON.stringify(response.result)}`);
+
+    await client.disconnect();
+    
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-api.connect().then(() => {
-  console.log('Connected')
-  return api.prepareEscrowCancellation(myAddr, myEscrowCancellation, myInstructions)
-}).then(prepared => {
-  console.log('EscrowCancellation Prepared')
-  return api.getLedger().then(ledger => {
-    console.log('Current Ledger', ledger.ledgerVersion)
-    return submitTransaction(ledger.ledgerVersion, prepared, mySecret)
-  })
-}).then(() => {
-  api.disconnect().then(() => {
-    console.log('api disconnected')
-    process.exit()
-  })
-}).catch(console.error)
+main()
