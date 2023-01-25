@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 14 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gips, rifs, giff
-  kuressaare: 
+  gifs: gips, gift, gis
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
