@@ -42,11 +42,6 @@ Edit your `rippled.cfg` file.
 
         # No [ips] stanza. Use the default hubs to connect to Mainnet.
 
-    *NFT-Devnet*
-
-        [ips]
-        xls20-sandbox.rippletest.net 51235
-
     <!-- MULTICODE_BLOCK_END -->
 
 2. Comment out the previous `[ips]` stanza, if there is one:
@@ -74,11 +69,6 @@ Edit your `rippled.cfg` file.
 
         [network_id]
         main
-
-    *NFT-Devnet*
-
-        [network_id]
-        20
 
     <!-- MULTICODE_BLOCK_END -->
 
@@ -119,14 +109,6 @@ Edit your `validators.txt` file. This file is located in the same folder as your
         [validator_list_keys]
         ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 
-    *NFT-Devnet*
-
-        [validator_list_sites]
-        http://nftvalidators.s3.us-west-2.amazonaws.com/index.json
-
-        [validator_list_keys]
-        ED8E43A943A174190BA2FAE91F44AC6E2D1D8202EFDCC2EA3DBB39814576D690F7
-
     <!-- MULTICODE_BLOCK_END -->
 
     **Tip:** The packages for the NFT preview should already contain the necessary stanzas, but check them just in case.
@@ -151,16 +133,6 @@ Edit your `validators.txt` file. This file is located in the same folder as your
             # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
             # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
 
-## 3. (NFT-Devnet Only) Enable Features
-
-To connect to the NFT-Devnet, you must also forcefully enable the NFT feature, `XLS20`. Add or modify the `[features]` stanza of your config file as follows:
-
-```
-[features]
-NonFungibleTokensV1
-```
-
-**Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
 
 ## 4. Restart the server.
 
@@ -204,13 +176,6 @@ rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
 ```sh
 # s1.ripple.com
 rippled --rpc_ip 34.201.59.230:51234 server_info | grep seq
-```
-
-*NFT-Devnet*
-
-```sh
-# xls20-sandbox.rippletest.net
-rippled --rpc_ip 34.211.220.150:51234 server_info | grep seq
 ```
 
 <!-- MULTICODE_BLOCK_END -->
