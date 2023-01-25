@@ -105,3 +105,8 @@ $ pybabel compile -f -d ./locale/
 If you added a new language for the first time, you need to make sure its target definition (in the `dactyl-config.yml` file) has the MO file in the `locale_file` field.
 
 After that, next time you build the site using Dactyl it should pull the updated translations!
+
+## Issues, Projects, and Project Boards
+
+Use GitHub Issues to report bugs, feature requests, and suggestions. The GitHub Projects and Project Boards will be used to plan and track updates to xrpl.org. 
+
