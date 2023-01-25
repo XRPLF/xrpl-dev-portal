@@ -15,11 +15,6 @@ const main = async () => {
     const myFulfillment = new cc.PreimageSha256();
     myFulfillment.setPreimage(preimageData);
     const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase();
-    
-    // Get credentials from the Testnet Faucet ------------------------------------
-    console.log("Requesting an address from the Testnet faucet...");
-    const { wallet } = await client.fundWallet();
-    console.log("Wallet: ", wallet.address);
 
     console.log('Condition:', conditionHex);
     console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase());
@@ -27,6 +22,11 @@ const main = async () => {
     // Connect -------------------------------------------------------------------
     const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
     await client.connect();
+
+    // Get credentials from the Testnet Faucet ------------------------------------
+    console.log("Requesting an address from the Testnet faucet...");
+    const { wallet } = await client.fundWallet();
+    console.log("Wallet: ", wallet.address);
 
     const firstRippleEpoch = 946684800;
     const escrowCreateTransaction = {
