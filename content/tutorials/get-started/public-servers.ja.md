@@ -11,11 +11,13 @@ labels:
 
 | 運営者  | [ネットワーク][] | JSON-RPC URL | WebSocket URL | 尾行                |
 |:----------|:------------|:-------------|:--------------|:---------------------|
-| XRP Ledger 財団 | **Mainnet** | `https://xrplcluster.com/` <br> `https://xrpl.ws/` [²][] | `wss://xrplcluster.com/` <br>  `wss://xrpl.ws/` [²][] | 全履歴サーバークラスター |
+| XRP Ledger 財団 | **Mainnet** | `https://xrplcluster.com/` <br> `https://xrpl.ws/` [²][] | `wss://xrplcluster.com/` <br>  `wss://xrpl.ws/` [²][] | CORSをサポートする全履歴サーバークラスター |
 | Ripple[¹][]   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | 汎用サーバークラスター |
-| Ripple[¹][]   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [全履歴サーバ](ledger-history.html#すべての履歴) クラスタ |
+| Ripple[¹][]   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [全履歴サーバ](ledger-history.html#すべての履歴) クラスター |
 | Ripple[¹][]   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net/` | Testnet 公開サーバー |
+| XRPL Labs   | Testnet       | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | CORSをサポートする Testnet 公開サーバー |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net/` | Devnet 公開サーバー |
+| Ripple[¹][]   | AMM-Devnet  | `https://amm.devnet.rippletest.net:51234/` | `wss://amm.devnet.rippletest.net:51233/` | [XLS-30d Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78)開発用の特別なdevnetサーバー |
 
 [ネットワーク]: parallel-networks.html
 [¹]: #footnote-1
