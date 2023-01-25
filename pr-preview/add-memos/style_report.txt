@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 13 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: giss, gif, gins
-  kuressaare: 
+  gifs: gits, gibs, gifts
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
@@ -25,7 +25,7 @@ Found 13 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3rd, 3d, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
