@@ -4,15 +4,13 @@ if (typeof module !== "undefined") {
   var xrpl = require('xrpl');
 };
 
-const secret = "sEdTPPEeMH6SAgpo6rSj8YW7a9vFfUj";
+const address = "rNQhxJsQ5a4newq4acmWsrn8PbrSjLu69p";
 const source = ""; // Optional: filter by source
 const destination = ""; // Optional: filter by destination
 
 const main = async () => {
     const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
-    const wallet = await xrpl.Wallet.fromSeed(secret);
     await client.connect();
-
     let currMarker = null;
     let account_objects = [];
     
@@ -21,7 +19,7 @@ const main = async () => {
 
         const payload = {
             "command": "account_objects",
-            "account": wallet.address,
+            "account": address,
             "ledger_index": "validated",
             "type": "escrow",
         };
