@@ -108,5 +108,25 @@ After that, next time you build the site using Dactyl it should pull the updated
 
 ## Issues, Projects, and Project Boards
 
-Use GitHub Issues to report bugs, feature requests, and suggestions. The GitHub Projects and Project Boards will be used to plan and track updates to xrpl.org. 
+Use GitHub Issues to report bugs, feature requests, and suggestions. 
+
+If you are a contributor, use GitHub Projects and Project Boards to plan and track updates to xrpl.org. 
+
+### Project Board `xrpl-docs`
+
+The [`xrpl-docs`](https://github.com/orgs/XRPLF/projects/4) Kanban board is used to plan and track updates to the XRP Ledger Documentation. The Board only reflects the status of the Issues and contributors must update the status of an issue as it progresses through different stages. 
+
+The `xrpl-docs` board has six columns based on the status of Issues in this repository:
+
+* **No Status**: Lists new or existing issues which require their Status to be updated.  
+
+* **Backlog**: Lists issues that have been triaged by repository maintainers or contributors. Ensure that the GitHub Issue contains actionable and helpful information for a contributor to work on addressing the issue. 
+
+* **Planned**: Lists issues that have an assignee and are planned to be addressed in the near future, like 2-4 weeks. 
+
+* **In Progress**: Lists issues that are in progress. 
+
+* **In Review**: Lists issues that are being reviewed. 
+
+* **Done**: Lists issues that have been completed and the related content updates have been merged. 
 
