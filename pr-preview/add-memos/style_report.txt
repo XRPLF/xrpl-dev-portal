@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 13 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gies, ifs, gils
-  ringtee: 
+  gifs: gigs, gifu, gips
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
@@ -15,7 +15,7 @@ Found 13 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
@@ -25,7 +25,7 @@ Found 13 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3d, 3-d, 3rd
 
 -----------------------------
 Discouraged Words and Phrases
