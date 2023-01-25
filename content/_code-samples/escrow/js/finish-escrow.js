@@ -4,14 +4,16 @@ if (typeof module !== "undefined") {
   var xrpl = require('xrpl')
 }
 
-const secret = "sEdTPPEeMH6SAgpo6rSj8YW7a9vFfUj";
-
 const main = async () => {
   try {
     // Connect -------------------------------------------------------------------
     const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
     await client.connect();
-    const wallet = await xrpl.Wallet.fromSeed(secret);
+    
+    // Get credentials from the Testnet Faucet ------------------------------------
+    console.log("Requesting an address from the Testnet faucet...");
+    const { wallet } = await client.fundWallet();
+    console.log("Wallet: ", wallet.address);
 
     const escrowFinishTransaction = {
         "Account": wallet.address,

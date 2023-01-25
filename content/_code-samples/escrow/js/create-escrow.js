@@ -7,8 +7,6 @@ if (typeof module !== "undefined") {
 const cc = require('five-bells-condition');
 const crypto = require('crypto');
 
-const secret = "sEdTPPEeMH6SAgpo6rSj8YW7a9vFfUj";
-
 const main = async () => {
   try {
 
@@ -17,8 +15,11 @@ const main = async () => {
     const myFulfillment = new cc.PreimageSha256();
     myFulfillment.setPreimage(preimageData);
     const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase();
-    const wallet = await xrpl.Wallet.fromSeed(secret);
-    console.log("Wallet: ",wallet.address);
+    
+    // Get credentials from the Testnet Faucet ------------------------------------
+    console.log("Requesting an address from the Testnet faucet...");
+    const { wallet } = await client.fundWallet();
+    console.log("Wallet: ", wallet.address);
 
     console.log('Condition:', conditionHex);
     console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase());
