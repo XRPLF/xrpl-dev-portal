@@ -11,14 +11,17 @@ from xrpl.wallet import Wallet
 # https://xrpl.org/authorize-minter.html#set-minter
 
 seed = ""
+custom_wallet = None
+if(seed):
+    custom_wallet = Wallet(seed=seed, sequence=0)
 
 # Connect to a testnet node
 print("Connecting to Testnet...")
 JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 client = JsonRpcClient(JSON_RPC_URL)
 
-# Initialize wallet from seed
-issuer_wallet = Wallet(seed=seed, sequence=0)
+# Initialize wallet from seed    
+issuer_wallet = generate_faucet_wallet(client=client, wallet=custom_wallet)
 issuerAddr = issuer_wallet.classic_address
 
 # Get minter account credentials from the testnet faucet
@@ -61,11 +64,16 @@ mint_tx_1 = NFTokenMint(
 
 # Sign using previously authorized minter's account, this will result in the NFT's issuer field to be the Issuer Account
 # while the NFT's owner would be the Minter Account
+print(f"Minting a token from the newly authorized account to prove it works.")
 mint_tx_1_signed = safe_sign_and_autofill_transaction(transaction=mint_tx_1, wallet=nftoken_minter_wallet, client=client)
 mint_tx_1_signed = send_reliable_submission(transaction=mint_tx_1_signed, client=client)
 mint_tx_1_result = mint_tx_1_signed.result
 print(f"\n Mint tx result: {mint_tx_1_result['meta']['TransactionResult']}")
-print(f"       Tx content: {mint_tx_1_result}")
+print(f"\n     Tx content: {mint_tx_1_result}")
+
+print("\nYou should see the following fields in Tx content above:"
+f"\n       'Issuer': {issuer_wallet.classic_address} (The original account)"
+f"\n'NFTokenMinter': {nftoken_minter_wallet.classic_address} (The newly authorized minter account)\n")
 
 # Query the minter account for its account's NFTs
 get_account_nfts = AccountNFTs(
