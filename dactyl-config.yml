@@ -569,27 +569,32 @@ pages:
         targets:
             - ja
 
-
-    - md: concepts/server/xrpl-servers.md
+    - md: concepts/server/rippled-servers.md
       parent: concepts.html
       targets:
          - en
          - ja
 
-    - md: concepts/server/rippled-server.md
-      parent: xrpl-servers.html
-      targets:
-         - en
-         - ja
-         
-    - md: concepts/server/server-modes.md
-      parent: xrpl-servers.html
-      targets:
-         - en
-         - ja
-         
     - md: concepts/server/clio-server.md
-      parent: xrpl-servers.html
+      parent: rippled-servers.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/server/clustering.md
+      parent: rippled-servers.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/server/peer-protocol.md
+      parent: rippled-servers.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/server/transaction-censorship-detection.md
+      parent: rippled-servers.html
       targets:
          - en
          - ja
@@ -671,7 +676,25 @@ pages:
       targets:
          - en
          - ja
-            
+
+    - md: concepts/xrpl/ledger-history/ledger-history.md
+      parent: ledgers.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/xrpl/ledger-history/history-sharding.md
+      parent: ledger-history.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/xrpl/ledger-history/online-deletion.md
+      parent: ledger-history.html
+      targets:
+         - en
+         - ja
+
     - md: concepts/transactions/transactions.md
       parent: concepts.html
       targets:
