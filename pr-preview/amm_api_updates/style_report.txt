@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 14 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gids, gits, gifu
+  gifs: gif, gips, gids
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -25,10 +25,10 @@ Found 14 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3-d, 3d, 3rd
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3-d, 3d, 3rd
 
 -----------------------------
 Discouraged Words and Phrases
