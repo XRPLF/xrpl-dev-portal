@@ -2,39 +2,34 @@
 
 // Locale strings. TODO: maybe move these out to their own file.
 LOCALES = {
-  en: {
+  "en": {
     // Leave empty, use the keys provided (in English) by default
   },
-  ja: {
+  "ja": {
     "Address:": "アドレス：",
     "Secret:": "シード：",
     "Balance:": "残高：",
     "Complete all previous steps first": "前の手順をすべて完了して下さい",
     "Conection to the XRP Ledger required": "XRP Ledgerの接続が必要です",
     "Error:": "エラー：",
-    "Populated this page's examples with these credentials.":
-      "このページの例にこのアドレスとシードを入力しました。",
-    "There was an error connecting to the Faucet. Please try again.":
-      "テストネットワークFaucetにエラーが発生しました。もう一度試してください。",
+    "Populated this page's examples with these credentials.": "このページの例にこのアドレスとシードを入力しました。",
+    "There was an error connecting to the Faucet. Please try again.": "テストネットワークFaucetにエラーが発生しました。もう一度試してください。",
     "Connecting...": "接続しています...",
     "Connection required": "接続が必要です",
-    Connected: "接続されました",
-    "Faucet returned an error:":
-      "テストネットワークFaucetがこのエラーを返しました：",
-    Validated: "検証済み",
+    "Connected": "接続されました",
+    "Faucet returned an error:": "テストネットワークFaucetがこのエラーを返しました：",
+    "Validated": "検証済み",
     "Final Result:": "確定結果：",
     "(Still pending...)": "（まだ未決…）",
     "(None)": "（無）",
     "Prepared transaction:": "準備済みトランザクション：",
-    "Failed to achieve consensus (final)":
-      "検証済みレジャーには含まれません（決定結果）",
+    "Failed to achieve consensus (final)": "検証済みレジャーには含まれません（決定結果）",
     "Preliminary result:": "予備結果：",
-    Unknown: "不明",
-    "Couldn't get a valid address/secret value. Check that the previous steps were completed successfully.":
-      "有効なアドレスかシードの取得出来ませんでした。前の手順が完了しましたことを確認して下さい。",
-    "Transaction hash:": "トランザクションハッシュ：",
-  },
-};
+    "Unknown": "不明",
+    "Couldn't get a valid address/secret value. Check that the previous steps were completed successfully.": "有効なアドレスかシードの取得出来ませんでした。前の手順が完了しましたことを確認して下さい。",
+    "Transaction hash:": "トランザクションハッシュ："
+  }
+}
 
 /**
  * Quick-n-dirty localization function. TODO: migrate to a real localization
@@ -43,13 +38,13 @@ LOCALES = {
  * @return {String} The translated string, if one is available, or the provided
  *                  key value if no translation is available.
  */
-const current_locale = $("html").prop("lang");
+const current_locale = $("html").prop("lang")
 function tl(key) {
-  let mesg = LOCALES[current_locale][key];
+  let mesg = LOCALES[current_locale][key]
   if (typeof mesg === "undefined") {
-    mesg = key;
+    mesg = key
   }
-  return mesg;
+  return mesg
 }
 
 /**
@@ -62,16 +57,17 @@ function tl(key) {
  *                  and with most non-alphanumeric characters removed.
  */
 function slugify(s) {
-  const unacceptable_chars = /[^A-Za-z0-9._ ]+/g;
-  const whitespace_regex = /\s+/g;
-  s = s.replace(unacceptable_chars, "");
-  s = s.replace(whitespace_regex, "_");
-  s = s.toLowerCase();
+  const unacceptable_chars = /[^A-Za-z0-9._ ]+/g
+  const whitespace_regex = /\s+/g
+  s = s.replace(unacceptable_chars, "")
+  s = s.replace(whitespace_regex, "_")
+  s = s.toLowerCase()
   if (!s) {
-    s = "_";
+    s = "_"
   }
-  return s;
+  return s
 }
+
 
 /**
  * Check whether a given step has been marked completed already.
@@ -80,7 +76,7 @@ function slugify(s) {
  * @return {Boolean}         Whether or not this step has been marked complete.
  */
 function is_complete(step_name) {
-  return is_complete_by_id(slugify(step_name));
+  return is_complete_by_id(slugify(step_name))
 }
 
 /**
@@ -90,7 +86,7 @@ function is_complete(step_name) {
  * @return {Boolean}       Whether or not this step has been marked complete.
  */
 function is_complete_by_id(step_id) {
-  return $(".bc-" + step_id).hasClass("done");
+  return $(".bc-"+step_id).hasClass("done")
 }
 
 /**
@@ -101,7 +97,7 @@ function is_complete_by_id(step_id) {
  *                           start_step(step_name) function in the MD file.
  */
 function complete_step(step_name) {
-  complete_step_by_id(slugify(step_name));
+  complete_step_by_id(slugify(step_name))
 }
 
 /**
@@ -110,22 +106,15 @@ function complete_step(step_name) {
  * @param {String} step_id The slugified name of the step.
  */
 function complete_step_by_id(step_id) {
-  $(".bc-" + step_id)
-    .removeClass("active")
-    .addClass("done");
-  $(".bc-" + step_id)
-    .next()
-    .removeClass("disabled")
-    .addClass("active");
+  $(".bc-"+step_id).removeClass("active").addClass("done")
+  $(".bc-"+step_id).next().removeClass("disabled").addClass("active")
 
   // Enable follow-up steps that require this step to be done first
-  const next_ui = $(`#interactive-${step_id}`)
-    .nextAll(".interactive-block")
-    .eq(0)
-    .find(".previous-steps-required");
-  next_ui.prop("title", "");
-  next_ui.prop("disabled", false);
-  next_ui.removeClass("disabled");
+  const next_ui = $(`#interactive-${step_id}`).nextAll(
+                    ".interactive-block").eq(0).find(".previous-steps-required")
+  next_ui.prop("title", "")
+  next_ui.prop("disabled", false)
+  next_ui.removeClass("disabled")
 }
 
 /**
@@ -136,7 +125,7 @@ function complete_step_by_id(step_id) {
  */
 function get_block_id(jEl) {
   // Traverse up, then slice "interactive-" off the block's HTML ID
-  return jEl.closest(".interactive-block").prop("id").slice(12);
+  return jEl.closest(".interactive-block").prop("id").slice(12)
 }
 
 /**
@@ -146,10 +135,10 @@ function get_block_id(jEl) {
  */
 function pretty_print(j) {
   try {
-    return JSON.stringify(JSON.parse(j), null, 2);
+    return JSON.stringify(JSON.parse(j),null,2)
   } catch (e) {
     // probably already decoded JSON
-    return JSON.stringify(j, null, 2);
+    return JSON.stringify(j,null,2)
   }
 }
 
@@ -158,16 +147,10 @@ function pretty_print(j) {
  * them an appropriate tooltip message.
  */
 function disable_followup_steps() {
-  $(".previous-steps-required").prop(
-    "title",
-    tl("Complete all previous steps first")
-  );
-  $(".previous-steps-required").prop("disabled", true).addClass("disabled");
-  $(".connection-required").prop(
-    "title",
-    tl("Conection to the XRP Ledger required")
-  );
-  $(".connection-required").prop("disabled", true).addClass("disabled");
+  $(".previous-steps-required").prop("title", tl("Complete all previous steps first"))
+  $(".previous-steps-required").prop("disabled", true).addClass("disabled")
+  $(".connection-required").prop("title", tl("Conection to the XRP Ledger required"))
+  $(".connection-required").prop("disabled", true).addClass("disabled")
 }
 
 /**
@@ -180,8 +163,7 @@ function disable_followup_steps() {
 function show_error(block, message) {
   block.find(".output-area").html(
     `<p class="devportal-callout warning"><strong>${tl("Error:")}</strong>
-    ${message}</p>`
-  );
+    ${message}</p>`)
 }
 
 /**
@@ -192,57 +174,52 @@ function show_error(block, message) {
  * use the generated credentials instead of the placeholder EXAMPLE_ADDR and
  * EXAMPLE_SECRET.
  */
-const EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe";
-const EXAMPLE_SECRET = "s████████████████████████████";
+const EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+const EXAMPLE_SECRET = "s████████████████████████████"
 function setup_generate_step() {
-  $("#generate-creds-button").click(async (event) => {
-    const block = $(event.target).closest(".interactive-block");
-    block.find(".output-area").html("");
-    block.find(".loader").show();
+
+  $("#generate-creds-button").click( async (event) => {
+    const block = $(event.target).closest(".interactive-block")
+    block.find(".output-area").html("")
+    block.find(".loader").show()
     // Get faucet URL (Testnet/Devnet/etc.)
-    const faucet_url = $("#generate-creds-button").data("fauceturl");
+    const faucet_url = $("#generate-creds-button").data("fauceturl")
 
     try {
-      const data = await call_faucet(faucet_url, undefined, event);
+      const data = await call_faucet(faucet_url)
 
-      block.find(".loader").hide();
+      block.find(".loader").hide()
       block.find(".output-area").html(`<div><strong>${tl("Address:")}</strong>
           <span id="use-address">${data.account.address}</span></div>
           <div><strong>${tl("Secret:")}</strong>
           <span id="use-secret">${data.account.secret}</span></div>
           <strong>${tl("Balance:")}</strong>
-          ${Number(data.balance).toLocaleString(current_locale)} XRP`);
+          ${Number(data.balance).toLocaleString(current_locale)} XRP`)
 
       // Automatically populate all examples in the page with the
       // generated credentials...
-      $("code span:contains('" + EXAMPLE_ADDR + "')").each(function () {
-        let eltext = $(this).text();
-        $(this).text(eltext.replace(EXAMPLE_ADDR, data.account.address));
-      });
-      $("code span:contains('" + EXAMPLE_SECRET + "')").each(function () {
-        let eltext = $(this).text();
-        $(this).text(eltext.replace(EXAMPLE_SECRET, data.account.secret));
-      });
+      $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
+        let eltext = $(this).text()
+        $(this).text( eltext.replace(EXAMPLE_ADDR, data.account.address) )
+      })
+      $("code span:contains('"+EXAMPLE_SECRET+"')").each( function() {
+        let eltext = $(this).text()
+        $(this).text( eltext.replace(EXAMPLE_SECRET, data.account.secret) )
+      })
 
-      block
-        .find(".output-area")
-        .append(
-          `<p>${tl(
-            "Populated this page's examples with these credentials."
-          )}</p>`
-        );
+      block.find(".output-area").append(`<p>${tl("Populated this page's examples with these credentials.")}</p>`)
 
-      complete_step("Generate");
-    } catch (err) {
-      block.find(".loader").hide();
+      complete_step("Generate")
+
+    } catch(err) {
+      block.find(".loader").hide()
       block.find(".output-area").html(
         `<p class="devportal-callout warning"><strong>${tl("Error:")}</strong>
         ${tl("There was an error connecting to the Faucet. Please try again.")}
-        </p>`
-      );
-      return;
+        </p>`)
+      return
     }
-  });
+  })
 }
 
 /**
@@ -252,20 +229,13 @@ function setup_generate_step() {
  * @return {String, undefined} The address, if available, or undefined if not
  */
 function get_address(event) {
-  const address = $("#use-address").text();
+  const address = $("#use-address").text()
   if (!address) {
-    const block = $(event.target).closest(".interactive-block");
-    if (!block.length) {
-      return;
-    }
-    show_error(
-      block,
-      tl(
-        "Couldn't get a valid address/secret value. Check that the previous steps were completed successfully."
-      )
-    );
+    const block = $(event.target).closest(".interactive-block")
+    if (!block.length) {return}
+    show_error(block, tl("Couldn't get a valid address/secret value. Check that the previous steps were completed successfully."))
   }
-  return address;
+  return address
 }
 
 /**
@@ -275,33 +245,19 @@ function get_address(event) {
  * @return {Wallet, undefined} The Wallet instance, if available, or undefined if not
  */
 function get_wallet(event) {
-  const secret = $("#use-secret").text();
+  const secret = $("#use-secret").text()
   if (!secret) {
-    const block = $(event.target).closest(".interactive-block");
-    if (!block.length) {
-      return;
-    }
-    show_error(
-      block,
-      tl(
-        "Couldn't get a valid address/secret value. Check that the previous steps were completed successfully."
-      )
-    );
+    const block = $(event.target).closest(".interactive-block")
+    if (!block.length) {return}
+    show_error(block, tl("Couldn't get a valid address/secret value. Check that the previous steps were completed successfully."))
   }
   if (secret == EXAMPLE_SECRET) {
-    const block = $(event.target).closest(".interactive-block");
-    if (!block.length) {
-      return;
-    }
-    show_error(
-      block,
-      tl(
-        "Can't use the example secret here. Check that the previous steps were completed successfully."
-      )
-    );
-    return;
+    const block = $(event.target).closest(".interactive-block")
+    if (!block.length) {return}
+    show_error(block, tl("Can't use the example secret here. Check that the previous steps were completed successfully."))
+    return
   }
-  return xrpl.Wallet.fromSeed(secret);
+  return xrpl.Wallet.fromSeed(secret)
 }
 
 /**
@@ -309,42 +265,30 @@ function get_wallet(event) {
  * @param {String} faucet_url The URL of the faucet to call, for example:
  *                            https://faucet.altnet.rippletest.net/accounts
  */
-async function call_faucet(faucet_url, destination, event) {
+async function call_faucet(faucet_url, destination) {
   // Future feature: support the Faucet's optional xrpAmount param
-  const block = $(event.target).closest(".interactive-block");
-
-  const tutorial_info = {
-    path: window.location.pathname,
-    button: event.target.id,
-    step: block.data("stepnumber"),
-    totalsteps: block.data("totalsteps"),
-  };
-  const memo = {
-    data: JSON.stringify(tutorial_info, null, 0),
-    format: "application/json", // application/json
-    // The MemoType decodes to a URL that explains the format of this memo type:
-    // https://github.com/XRPLF/xrpl-dev-portal/blob/master/tool/INTERACTIVE_TUTORIALS_README.md
-    type: "https://github.com/XRPLF/xrpl-dev-portal/blob/master/tool/INTERACTIVE_TUTORIALS_README.md",
-  };
-
-  const body = {};
+  const body = {}
   if (typeof destination != "undefined") {
-    body["destination"] = destination;
+    body["destination"] = destination
   }
-  body["memos"] = [memo];
-  const response = await fetch(faucet_url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
+  body["memos"] = [
+    {
+      data: "xrpl.org-tutorials",
     },
-    body: JSON.stringify(body),
-  });
-  const data = await response.json();
+  ]
+  const response = await fetch(faucet_url, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    body: JSON.stringify(body)
+  })
+  const data = await response.json()
 
   if (!response.ok) {
-    throw `${tl("Faucet returned an error:")} ${data.error}`;
+    throw `${tl("Faucet returned an error:")} ${data.error}`
   }
-  return data;
+  return data
 }
 
 /**
@@ -356,6 +300,7 @@ async function call_faucet(faucet_url, destination, event) {
  */
 window.after_connect = window.after_connect || [];
 
+
 /**
  * To be used with _snippets/interactive-tutorials/connect-step.md
  * Adds an event to the "Connect" button to connect to the appropriate
@@ -364,46 +309,44 @@ window.after_connect = window.after_connect || [];
  */
 function setup_connect_step() {
   if (!$("#connect-button").length) {
-    console.debug("Connect step not included. Skipping related setup.");
-    return;
+    console.debug("Connect step not included. Skipping related setup.")
+    return
   }
-  const ws_url = $("#connect-button").data("wsurl");
+  const ws_url = $("#connect-button").data("wsurl")
   if (!ws_url) {
-    console.error(
-      "Interactive Tutorial: WS URL not found. Did you set use_network?"
-    );
-    return;
+    console.error("Interactive Tutorial: WS URL not found. Did you set use_network?")
+    return
   }
-  api = new xrpl.Client(ws_url);
-  api.on("connected", async function () {
-    $("#connection-status").text(tl("Connected"));
-    $("#connect-button").prop("disabled", true);
-    $("#loader-connect").hide();
-    $(".connection-required").prop("disabled", false);
-    $(".connection-required").prop("title", "");
+  api = new xrpl.Client(ws_url)
+  api.on('connected', async function() {
+    $("#connection-status").text(tl("Connected"))
+    $("#connect-button").prop("disabled", true)
+    $("#loader-connect").hide()
+    $(".connection-required").prop("disabled", false)
+    $(".connection-required").prop("title", "")
 
     // Subscribe to ledger close events
-    api.request({ command: "subscribe", streams: ["ledger"] });
+    api.request({command: "subscribe", streams: ["ledger"]})
 
-    complete_step("Connect");
-  });
-  api.on("disconnected", (code) => {
-    $("#connection-status").text(tl("Disconnected") + " (" + code + ")");
-    $("#connect-button").prop("disabled", false);
-    $(".connection-required").prop("disabled", true);
-    $(".connection-required").prop("title", tl("Connection required"));
+    complete_step("Connect")
+  })
+  api.on('disconnected', (code) => {
+    $("#connection-status").text( tl("Disconnected") +" ("+code+")" )
+    $("#connect-button").prop("disabled", false)
+    $(".connection-required").prop("disabled", true)
+    $(".connection-required").prop("title", tl("Connection required"))
 
-    disable_followup_steps();
-  });
+    disable_followup_steps()
+  })
   $("#connect-button").click(async (event) => {
-    $("#connection-status").text(tl("Connecting..."));
-    $("#loader-connect").show();
-    await api.connect();
+    $("#connection-status").text( tl("Connecting...") )
+    $("#loader-connect").show()
+    await api.connect()
 
     for (const fn of after_connect) {
-      fn();
+      fn()
     }
-  });
+  })
 }
 
 /**
@@ -416,71 +359,62 @@ function setup_connect_step() {
  * Requires xrpl.js to be loaded and instantiated as "api" first.
  */
 function setup_wait_steps() {
-  const wait_steps = $(".wait-step");
+  const wait_steps = $(".wait-step")
 
   wait_steps.each(async (i, el) => {
-    const wait_step = $(el);
-    const explorer_url = wait_step.data("explorerurl");
-    const status_box = wait_step.find(".tx-validation-status");
-    api.on("ledgerClosed", async (ledger) => {
+    const wait_step = $(el)
+    const explorer_url = wait_step.data("explorerurl")
+    const status_box = wait_step.find(".tx-validation-status")
+    api.on('ledgerClosed', async (ledger) => {
       // Update the latest validated ledger index in this step's table
-      wait_step.find(".validated-ledger-version").text(ledger.ledger_index);
+      wait_step.find(".validated-ledger-version").text(ledger.ledger_index)
       if (!status_box.data("status_pending")) {
         // Before submission or after a final result.
         // Either way, nothing more to do here.
-        return;
+        return
       }
 
-      const transaction = wait_step.find(".waiting-for-tx").text().trim();
-      const min_ledger = parseInt(
-        wait_step.find(".earliest-ledger-version").text()
-      );
-      const max_ledger = parseInt(wait_step.find(".lastledgersequence").text());
-      let tx_response;
+      const transaction = wait_step.find(".waiting-for-tx").text().trim()
+      const min_ledger = parseInt(wait_step.find(".earliest-ledger-version").text())
+      const max_ledger = parseInt(wait_step.find(".lastledgersequence").text())
+      let tx_response
       try {
         tx_response = await api.request({
           command: "tx",
           transaction,
           min_ledger,
-          max_ledger,
-        });
+          max_ledger
+        })
 
         if (tx_response.result.validated) {
           status_box.html(
-            `<th>${tl("Final Result:")}</th><td>${
-              tx_response.result.meta.TransactionResult
-            }
+          `<th>${tl("Final Result:")}</th><td>${tx_response.result.meta.TransactionResult}
           (<a href="${explorer_url}/transactions/${transaction}"
-          target="_blank">${tl("Validated")}</a>)</td>`
-          );
+          target="_blank">${tl("Validated")}</a>)</td>`)
 
-          const step_id = get_block_id(wait_step);
+          const step_id = get_block_id(wait_step)
           if (!is_complete_by_id(step_id)) {
-            status_box.data("status_pending", false);
-            complete_step_by_id(step_id);
+            status_box.data("status_pending", false)
+            complete_step_by_id(step_id)
           }
         } else {
           status_box.html(
             `<th>${tl("Final Result:")}</th>
             <td><img class="throbber" src="assets/img/xrp-loader-96.png">
-            ${tl("(Still pending...)")}</td>`
-          );
+            ${tl("(Still pending...)")}</td>`)
         }
-      } catch (e) {
+
+      } catch(e) {
         if (e.data.error == "txnNotFound" && e.data.searched_all) {
           status_box.html(
-            `<th>${tl("Final Result:")}</th><td>${tl(
-              "Failed to achieve consensus (final)"
-            )}</td>`
-          );
+            `<th>${tl("Final Result:")}</th><td>${tl("Failed to achieve consensus (final)")}</td>`)
         } else {
           status_box.html(
-            `<th>${tl("Final Result:")}</th><td>${tl("Unknown")}</td>`
-          );
+            `<th>${tl("Final Result:")}</th><td>${tl("Unknown")}</td>`)
         }
       }
-    }); // end 'ledger' event handler
-  }); // end "each" wait_step
+    }) // end 'ledger' event handler
+  }) // end "each" wait_step
 }
 
 /**
@@ -496,24 +430,25 @@ function setup_wait_steps() {
  *                           transaction blob via api.request({command: "submit", opts})
  */
 async function activate_wait_step(step_name, prelim) {
-  const step_id = slugify(step_name);
-  const wait_step = $(`#interactive-${step_id} .wait-step`);
-  const status_box = wait_step.find(".tx-validation-status");
-  const tx_id = prelim.result.tx_json.hash;
-  const lls = prelim.result.tx_json.LastLedgerSequence || tl("(None)");
+  const step_id = slugify(step_name)
+  const wait_step = $(`#interactive-${step_id} .wait-step`)
+  const status_box = wait_step.find(".tx-validation-status")
+  const tx_id = prelim.result.tx_json.hash
+  const lls = prelim.result.tx_json.LastLedgerSequence || tl("(None)")
 
   if (wait_step.find(".waiting-for-tx").text() == tx_id) {
     // Re-submitting the same transaction? Don't update min_ledger.
   } else {
-    wait_step.find(".waiting-for-tx").text(tx_id);
-    wait_step
-      .find(".earliest-ledger-version")
-      .text(prelim.result.validated_ledger_index);
+    wait_step.find(".waiting-for-tx").text(tx_id)
+    wait_step.find(".earliest-ledger-version").text(
+      prelim.result.validated_ledger_index
+    )
   }
-  wait_step.find(".lastledgersequence").text(lls);
-  status_box.html("");
-  status_box.data("status_pending", true);
+  wait_step.find(".lastledgersequence").text(lls)
+  status_box.html("")
+  status_box.data("status_pending", true)
 }
+
 
 /**
  * Get the hexadecimal ASCII representation of a string (must contain only
@@ -522,11 +457,11 @@ async function activate_wait_step(step_name, prelim) {
  * @return {String} The uppercase hexadecimal representation of the string.
  */
 function text_to_hex(s) {
-  result = "";
-  for (let i = 0; i < s.length; i++) {
-    result += s.charCodeAt(i).toString(16);
+  result = ""
+  for (let i=0; i<s.length; i++) {
+    result += s.charCodeAt(i).toString(16)
   }
-  return result.toUpperCase();
+  return result.toUpperCase()
 }
 
 /**
@@ -540,30 +475,29 @@ function text_to_hex(s) {
  *                         added to them (in-place).
  */
 function add_memo(event, tx_json) {
-  const block = $(event.target).closest(".interactive-block");
+  const block = $(event.target).closest(".interactive-block")
 
   const tutorial_info = {
-    path: window.location.pathname,
-    button: event.target.id,
-    step: block.data("stepnumber"),
-    totalsteps: block.data("totalsteps"),
-  };
+    "path": window.location.pathname,
+    "button": event.target.id,
+    "step": block.data("stepnumber"),
+    "totalsteps": block.data("totalsteps")
+  }
 
   const memo = {
-    Memo: {
-      MemoData: text_to_hex(JSON.stringify(tutorial_info, null, 0)),
-      MemoFormat: "6170706C69636174696F6E2F6A736F6E", // application/json
+    "Memo": {
+      "MemoData": text_to_hex(JSON.stringify(tutorial_info, null, 0)),
+      "MemoFormat": "6170706C69636174696F6E2F6A736F6E", // application/json
       // The MemoType decodes to a URL that explains the format of this memo type:
       // https://github.com/XRPLF/xrpl-dev-portal/blob/master/tool/INTERACTIVE_TUTORIALS_README.md
-      MemoType:
-        "68747470733A2F2F6769746875622E636F6D2F5852504C462F7872706C2D6465762D706F7274616C2F626C6F622F6D61737465722F746F6F6C2F494E5445524143544956455F5455544F5249414C535F524541444D452E6D64",
-    },
-  };
+      "MemoType": "68747470733A2F2F6769746875622E636F6D2F5852504C462F7872706C2D6465762D706F7274616C2F626C6F622F6D61737465722F746F6F6C2F494E5445524143544956455F5455544F5249414C535F524541444D452E6D64"
+    }
+  }
 
   if (tx_json.Memos === undefined) {
-    tx_json["Memos"] = [memo];
+    tx_json["Memos"] = [memo]
   } else {
-    tx_json["Memos"].push(memo);
+    tx_json["Memos"].push(memo)
   }
 }
 
@@ -588,35 +522,29 @@ function add_memo(event, tx_json) {
  *                        which was probably added by a "Get Credentials" step.
  */
 async function generic_full_send(event, tx_json, wallet) {
-  const block = $(event.target).closest(".interactive-block");
-  const blob_selector = $(event.target).data("txBlobFrom");
-  const wait_step_name = $(event.target).data("waitStepName");
-  block.find(".output-area").html("");
+  const block = $(event.target).closest(".interactive-block")
+  const blob_selector = $(event.target).data("txBlobFrom")
+  const wait_step_name = $(event.target).data("waitStepName")
+  block.find(".output-area").html("")
 
   if (wallet === undefined) {
-    wallet = get_wallet(event);
+    wallet = get_wallet(event)
   }
-  if (!wallet) {
-    return;
-  }
+  if (!wallet) {return}
 
-  add_memo(event, tx_json);
+  add_memo(event, tx_json)
 
-  block.find(".loader").show();
-  const prepared = await api.autofill(tx_json);
+  block.find(".loader").show()
+  const prepared = await api.autofill(tx_json)
   block.find(".output-area").append(
     `<p>${tl("Prepared transaction:")}</p>
-    <pre><code>${pretty_print(prepared)}</code></pre>`
-  );
+    <pre><code>${pretty_print(prepared)}</code></pre>`)
 
-  const { tx_blob, hash } = wallet.sign(prepared);
-  block
-    .find(".output-area")
-    .append(
-      `<p>${tl("Transaction hash:")} <code id="tx_id">${hash}</code></p>`
-    );
+  const {tx_blob, hash} = wallet.sign(prepared)
+  block.find(".output-area").append(
+    `<p>${tl("Transaction hash:")} <code id="tx_id">${hash}</code></p>`)
 
-  await do_submit(block, { tx_blob: tx_blob }, wait_step_name);
+  await do_submit(block, {"tx_blob":  tx_blob}, wait_step_name)
 }
 
 /**
@@ -633,11 +561,11 @@ async function generic_full_send(event, tx_json, wallet) {
  * click event handler.
  */
 async function submit_handler(event) {
-  const block = $(event.target).closest(".interactive-block");
-  const blob_selector = $(event.target).data("txBlobFrom");
-  const wait_step_name = $(event.target).data("waitStepName");
-  const tx_blob = $(blob_selector).text();
-  do_submit(block, { tx_blob }, wait_step_name);
+  const block = $(event.target).closest(".interactive-block")
+  const blob_selector = $(event.target).data("txBlobFrom")
+  const wait_step_name = $(event.target).data("waitStepName")
+  const tx_blob = $(blob_selector).text()
+  do_submit(block, {tx_blob}, wait_step_name)
 }
 
 /**
@@ -651,31 +579,30 @@ async function submit_handler(event) {
  *                                _snippets/interactive-tutorials/wait-step.md
  */
 async function do_submit(block, submit_opts, wait_step_name) {
-  block.find(".loader").show();
+  block.find(".loader").show()
   try {
-    submit_opts["command"] = "submit";
-    const prelim_result = await api.request(submit_opts);
+    submit_opts["command"] = "submit"
+    const prelim_result = await api.request(submit_opts)
     block.find(".output-area").append(
       `<p>${tl("Preliminary result:")}</p>
-      <pre><code>${pretty_print(prelim_result)}</code></pre>`
-    );
+      <pre><code>${pretty_print(prelim_result)}</code></pre>`)
 
-    block.find(".loader").hide();
-    submit_step_id = get_block_id(block);
-    complete_step_by_id(submit_step_id);
-    if (wait_step_name) {
-      activate_wait_step(wait_step_name, prelim_result);
+    block.find(".loader").hide()
+    submit_step_id = get_block_id(block)
+    complete_step_by_id(submit_step_id)
+    if (wait_step_name){
+      activate_wait_step(wait_step_name, prelim_result)
     }
-    return prelim_result;
-  } catch (error) {
-    block.find(".loader").hide();
-    show_error(block, error);
+    return prelim_result
+  } catch(error) {
+    block.find(".loader").hide()
+    show_error(block, error)
   }
 }
 
 $(document).ready(() => {
-  disable_followup_steps();
-  setup_generate_step();
-  setup_connect_step();
-  setup_wait_steps();
-});
+  disable_followup_steps()
+  setup_generate_step()
+  setup_connect_step()
+  setup_wait_steps()
+})
