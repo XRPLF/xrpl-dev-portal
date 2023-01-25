@@ -271,10 +271,15 @@ async function call_faucet(faucet_url, destination) {
   if (typeof destination != "undefined") {
     body["destination"] = destination
   }
+  body["memos"] = [
+    {
+      data: "xrpl.org-tutorials",
+    },
+  ]
   const response = await fetch(faucet_url, {
     method: 'POST',
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json; charset=utf-8"
     },
     body: JSON.stringify(body)
   })
