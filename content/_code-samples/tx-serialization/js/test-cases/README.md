@@ -1,7 +1,7 @@
 # Transaction Serialization Test Cases
 
 This folder contains several transactions in their JSON and binary forms, which
-you can use to verify the behavior of transaction serialization code.
+you can use to verify the behavior of the transaction serialization code.
 
 For example (starting from the `tx-serialization/js/` dir above this one):
 
