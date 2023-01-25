@@ -206,8 +206,8 @@ The `amm` field is an object describing the current status of an Automated Marke
 | Field           | Type                | Description |
 |-----------------|---------------------|-------------|
 | `amm_account`   | String              | The [Address][] of the AMM Account. |
-| `amount`        | [Currency Amount][] | The total amount of one asset in the AMM's pool. |
-| `amount2`       | [Currency Amount][] | The total amount of the other asset in the AMM's pool. |
+| `amount`        | [Currency Amount][] | The total amount of one asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
+| `amount2`       | [Currency Amount][] | The total amount of the other asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
 | `asset_frozen`  | Boolean             | _(Omitted for XRP)_ If `true`, the `amount` currency is currently [frozen](freezes.html). |
 | `asset2_frozen` | Boolean             | _(Omitted for XRP)_ If `true`, the `amount2` currency is currently [frozen](freezes.html). |
 | `auction_slot`  | Object              | _(May be omitted)_ An [Auction Slot Object](#auction-slot-object) describing the current auction slot holder, if there is one. |
