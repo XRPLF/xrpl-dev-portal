@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 13 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gids, gift, gils
+  gifs: gifu, gis, gigs
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -15,7 +15,7 @@ Found 13 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
