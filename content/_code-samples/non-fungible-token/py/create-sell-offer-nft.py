@@ -14,8 +14,8 @@ from xrpl.wallet import Wallet
 seed = ""
 
 if seed == "":
-    print("Please edit this code to update variable 'seed' to an account with a minted NFT to run this snippet."
-          "You can get this by running 'mint-nft.py' on the same folder and copying the printed seed.")
+    print("Please edit this code to update variable 'seed' to an account with a minted NFT to run this snippet. "
+          "You can get this by running 'mint-nft.py' and copying the printed seed.")
 else:
     # Connect to a testnet node
     print("Connecting to Testnet...")
