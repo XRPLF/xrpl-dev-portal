@@ -180,6 +180,11 @@ rippled --rpc_ip 34.201.59.230:51234 server_info | grep seq
 
 <!-- MULTICODE_BLOCK_END -->
 
+(On Mainnet, Testnet, and Devnet, no you)
+
+**Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
+
+
 **Note:** The IP addresses in these examples are for public servers, and may change periodically. If you get no response, look up the IP address of a [public server][public servers], for example using the `dig` command.
 
 
