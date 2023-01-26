@@ -38,7 +38,7 @@ for nft in get_account_nfts.result['account_nfts']:
     nft_int += 1
 
 
-nftoken_id = input("\nEnter which NFT (by ID) you want to put up for sell: ")
+nftoken_id = input("\nEnter which NFT (by ID) you want to put up for sale: ")
 nftoken_amount = input("Enter how much you want the NFT to go for, in drops: ")
 
 # Sell the NFT on the open market
