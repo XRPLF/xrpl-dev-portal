@@ -9,7 +9,7 @@ labels:
 # book_offers
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
-The `book_offers` method retrieves a list of offers, also known as the [order book](http://www.investopedia.com/terms/o/order-book.asp), between two currencies.
+The `book_offers` method retrieves a list of [Offers](offers.html) between two currencies, also known as an _order book_. The response omits [unfunded Offers](offers.html#lifecycle-of-an-offer) and reports how much of each remaining Offer's total is currently funded.
 
 ## Request Format
 An example of the request format:
@@ -68,14 +68,15 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 The request includes the following parameters:
 
-| `Field`        | Type             | Description                    |
-|:---------------|:-----------------|:-------------------------------|
-| `ledger_hash`  | [Hash][]         | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | [Ledger Index][] | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `limit`        | Number           | _(Optional)_ If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers. |
-| `taker`        | String           | _(Optional)_ The [Address][] of an account to use as a perspective. [Unfunded offers](offers.html#lifecycle-of-an-offer) placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.) |
-| `taker_gets`   | Object           | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts][Currency Amount]. |
-| `taker_pays`   | Object           | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts][Currency Amount]. |
+| `Field`        | Type             | Required? | Description |
+|:---------------|:-----------------|:----------|-------------|
+| `taker_gets`   | Object           | Yes       | The asset the account taking the Offer would receive, as a [currency without an amount](currency-formats.html#specifying-without-amounts). |
+| `taker_pays`   | Object           | Yes       | The asset the account taking the Offer would pay, as a [currency without an amount](currency-formats.html#specifying-without-amounts). |
+| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `limit`        | Number           | No        | The maximum number of Offers to return. The response may include fewer results. |
+| `taker`        | String           | No        | The [Address][] of an account to use as a perspective. The response includes this account's Offers even if they are unfunded. (You can use this to see what Offers are above or below yours in the order book.) |
+
 
 ## Response Format
 
