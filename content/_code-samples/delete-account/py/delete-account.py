@@ -19,6 +19,9 @@ print("Requesting account from the Testnet faucet...")
 test_wallet = generate_faucet_wallet(client=client)
 myAddr = test_wallet.classic_address
 
+print(f"\n Account: {test_wallet.classic_address}")
+print(f"    Seed: {test_wallet.seed}")
+
 # Construct SetRegularKey transaction
 tx_regulary_key = SetRegularKey(
     account=myAddr,
@@ -54,18 +57,6 @@ response = client.request(get_acc_flag)
 
 if response.result['account_data']['Flags'] & asfDisableMaster:
     print(f"\nAccount {myAddr}'s master key has been disabled, account is blackholed.")
-    tx_Payment = Payment(
-        account=myAddr,
-        destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-        amount="10",
-    )
 
-    # Sign the transaction
-    tx_Payment_signed = safe_sign_and_autofill_transaction(tx_Payment, wallet=test_wallet, client=client)
-    submit_tx_payment = send_reliable_submission(client=client, transaction=tx_Payment_signed)
-    submit_tx_payment = submit_tx_payment.result
-    print(f"\nIf this transaction fails, it means that account {myAddr} is blackholed!")
-    print(f"\n SetRegularKey tx submit result: {submit_tx_payment['meta']['TransactionResult']}")
-    print(f"                     Tx content: {submit_tx_payment}")
 else:
     print(f"\nAccount {myAddr}'s master key is still enabled, account is NOT blackholed")
