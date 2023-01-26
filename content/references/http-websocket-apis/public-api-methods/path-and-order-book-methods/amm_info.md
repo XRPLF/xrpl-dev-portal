@@ -235,11 +235,10 @@ The `auction_slot` field of the `amm` object describes the current auction slot 
 Each entry in the `vote_slots` array represents one liquidity provider's vote to set the trading fee, and contains the following fields:
 
 | Field         | Type   | Description |
-|---------------|--------|---|
+|---------------|--------|-------------|
 | `account`     | String | The [Address][] of this liquidity provider. |
 | `trading_fee` | Number | The trading fee this liquidity provider voted for, in units of 1/100,000. |
-| `vote_weight` | Number | How much this liquidity provider's vote counts towards the final trading fee. This is proportional to how much of the AMM's LP Tokens this liquidity provider holds. 
-
+| `vote_weight` | Number | How much this liquidity provider's vote counts towards the final trading fee. This is proportional to how much of the AMM's LP Tokens this liquidity provider holds. The value is equal to 100,000 times the number of this LP Tokens this liquidity provider holds, divided by the total number of LP Tokens outstanding. For example, a value of 1000 means that the liquidity provider holds 1% of this AMM's LP Tokens. |
 
 
 ### Possible Errors
