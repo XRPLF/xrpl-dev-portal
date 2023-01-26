@@ -11,7 +11,7 @@ from xrpl.clients import JsonRpcClient
 from xrpl.models import NFTSellOffers
 
 # This code snippet walks you through on how to mint a NFT, burn a NFT, authorize another account to mint on your behalf
-# And how to create an Offer, cancel an Offer, and accept an Offer on the XRP Ledger
+# And how to create an Offer, cancel an Offer, and accept an Offer native on the XRP Ledger
 
 # https://xrpl.org/non-fungible-tokens.html#nfts-on-the-xrp-ledger
 # https://xrpl.org/nftokenmint.html#nftokenmint
@@ -51,6 +51,7 @@ print(f"              Minter Account: {issuerAddr}"
       f"\n               Buyer Account: {buyerAddr}")
 
 # Construct NFTokenMint transaction to mint 1 NFT
+print(f"\n - Minting a NFT on account {issuerAddr}...")
 mint_tx = NFTokenMint(
     account=issuerAddr,
     nftoken_taxon=0
@@ -61,7 +62,7 @@ mint_tx_signed = safe_sign_and_autofill_transaction(transaction=mint_tx, wallet=
 mint_tx_signed = send_reliable_submission(transaction=mint_tx_signed, client=client)
 mint_tx_result = mint_tx_signed.result
 print(f"\n Mint tx result: {mint_tx_result['meta']['TransactionResult']}"
-      f"\n     Tx content: {mint_tx_result}")
+      f"\n    Tx response: {mint_tx_result}")
 
 # Query the issuer account for its NFTs
 get_account_nfts = client.request(AccountNFTs(account=issuerAddr))
@@ -73,6 +74,7 @@ print(f"\n - NFToken metadata:"
       f"\n NFT Taxon: {response['NFTokenTaxon']}")
 
 # Construct NFTokenBurn transaction to burn our previously minted NFT
+print(f"\n - Burning NFT {response['NFTokenID']} on account {issuerAddr}...")
 burn_tx = NFTokenBurn(
     account=issuerAddr,
     nftoken_id=response['NFTokenID']
@@ -83,7 +85,7 @@ burn_tx_signed = safe_sign_and_autofill_transaction(transaction=burn_tx, wallet=
 burn_tx_signed = send_reliable_submission(transaction=burn_tx_signed, client=client)
 burn_tx_result = burn_tx_signed.result
 print(f"\n Burn tx result: {burn_tx_result['meta']['TransactionResult']}"
-      f"\n     Tx content: {burn_tx_result}")
+      f"\n    Tx response: {burn_tx_result}")
 
 if burn_tx_result['meta']['TransactionResult'] == "tesSUCCESS":
     print(f"Transaction was successfully validated, NFToken {response['NFTokenID']} has been burned")
@@ -91,6 +93,7 @@ else:
     print(f"Transaction failed, NFToken was not burned, error code: {burn_tx_result['meta']['TransactionResult']}")
 
 # Construct AccountSet transaction to authorize the minter account to issue NFTs on the issuer account's behalf
+print(f"\n - Authorizing account {minterAddr} as a NFT minter on account {issuerAddr}...")
 authorize_minter_tx = AccountSet(
     account=issuerAddr,
     set_flag=AccountSetFlag.ASF_AUTHORIZED_NFTOKEN_MINTER,
@@ -102,7 +105,7 @@ authorize_minter_tx_signed = safe_sign_and_autofill_transaction(transaction=auth
 authorize_minter_tx_signed = send_reliable_submission(transaction=authorize_minter_tx_signed, client=client)
 authorize_minter_tx_result = authorize_minter_tx_signed.result
 print(f"\n Authorize minter tx result: {authorize_minter_tx_result['meta']['TransactionResult']}"
-      f"\n                 Tx content: {authorize_minter_tx_result}")
+      f"\n                Tx response: {authorize_minter_tx_result}")
 
 
 if authorize_minter_tx_result['meta']['TransactionResult'] == "tesSUCCESS":
@@ -112,6 +115,7 @@ else:
           f"\nMinter {minterAddr} is not authorized to issue NFTS on behalf of {issuerAddr}")
 
 # Construct NFTokenMint transaction to mint a brand new NFT
+print(f"\n - Minting a NFT from the newly authorized account to prove that it works...")
 mint_tx_1 = NFTokenMint(
     account=minterAddr,
     issuer=issuerAddr,
@@ -125,7 +129,7 @@ mint_tx_1_signed = safe_sign_and_autofill_transaction(transaction=mint_tx_1, wal
 mint_tx_1_signed = send_reliable_submission(transaction=mint_tx_1_signed, client=client)
 mint_tx_1_result = mint_tx_1_signed.result
 print(f"\n Mint tx result: {mint_tx_1_result['meta']['TransactionResult']}"
-      f"\n     Tx content: {mint_tx_1_result}")
+      f"\n    Tx response: {mint_tx_1_result}")
 
 # Query the minter account for its account's NFTs
 get_account_nfts = AccountNFTs(
@@ -141,10 +145,12 @@ print(f"\n - NFToken metadata:"
       f"\n NFT Taxon: {response['NFTokenTaxon']}")
 
 # Construct a NFTokenCreateOffer transaction to sell the previously minted NFT on the open market
+nftoken_amount = "10000000"
+print(f"\n - Selling NFT {response['NFTokenID']} for {int(nftoken_amount) / 1000000} XRP on the open market...")
 sell_tx = NFTokenCreateOffer(
     account=minterAddr,
     nftoken_id=response['NFTokenID'],
-    amount="10000000", # 10 XRP in drops, 1 XRP = 1,000,000 drops
+    amount=nftoken_amount, # 10 XRP in drops, 1 XRP = 1,000,000 drops
     flags=NFTokenCreateOfferFlag.TF_SELL_NFTOKEN,
 )
 
@@ -153,7 +159,7 @@ sell_tx_signed = safe_sign_and_autofill_transaction(transaction=sell_tx, wallet=
 sell_tx_signed = send_reliable_submission(transaction=sell_tx_signed, client=client)
 sell_tx_result = sell_tx_signed.result
 print(f"\n Sell Offer tx result: {sell_tx_result['meta']['TransactionResult']}"
-      f"\n           Tx content: {sell_tx_result}")
+      f"\n          Tx response: {sell_tx_result}")
 
 # Query the sell offer
 response_offers = client.request(
@@ -163,6 +169,7 @@ response_offers = client.request(
 offer_objects = response_offers.result
 
 # Cancel the previous Sell Offer
+print(f"\n - Cancelling offer {offer_objects['offers'][0]['nft_offer_index']}...")
 cancel_sell_offer_tx = NFTokenCancelOffer(
     account=minterAddr,
     nftoken_offers=[
@@ -175,13 +182,14 @@ cancel_sell_offer_tx_signed = safe_sign_and_autofill_transaction(transaction=can
 cancel_sell_offer_tx_signed = send_reliable_submission(transaction=cancel_sell_offer_tx_signed, client=client)
 cancel_sell_offer_tx_result = cancel_sell_offer_tx_signed.result
 print(f"\n Cancel Sell Offer tx result: {cancel_sell_offer_tx_result['meta']['TransactionResult']}"
-      f"\n                  Tx content: {cancel_sell_offer_tx_result}")
+      f"\n                 Tx response: {cancel_sell_offer_tx_result}")
 
 # Construct a NFTokenCreateOffer transaction to sell the previously minted NFT on the open market
+print(f"\n - Selling NFT {response['NFTokenID']} for {int(nftoken_amount) / 1000000} XRP on the open market...")
 sell_1_tx = NFTokenCreateOffer(
     account=minterAddr,
     nftoken_id=response['NFTokenID'],
-    amount="10000000", # 10 XRP in drops, 1 XRP = 1,000,000 drops
+    amount=nftoken_amount, # 10 XRP in drops, 1 XRP = 1,000,000 drops
     flags=NFTokenCreateOfferFlag.TF_SELL_NFTOKEN,
 )
 
@@ -190,7 +198,7 @@ sell_1_tx_signed = safe_sign_and_autofill_transaction(transaction=sell_1_tx, wal
 sell_1_tx_signed = send_reliable_submission(transaction=sell_1_tx_signed, client=client)
 sell_1_tx_result = sell_1_tx_signed.result
 print(f"\n Sell Offer tx result: {sell_1_tx_result['meta']['TransactionResult']}"
-      f"\n           Tx content: {sell_1_tx_result}")
+      f"\n          Tx response: {sell_1_tx_result}")
 
 # Query the sell offer
 response = client.request(
@@ -202,6 +210,7 @@ response = client.request(
 offer_objects = response.result
 
 # Construct a NFTokenAcceptOffer offer to buy the NFT being listed for sale on the open market
+print(f"\n - Accepting offer {offer_objects['offers'][0]['nft_offer_index']}...")
 buy_tx = NFTokenAcceptOffer(
     account=buyerAddr,
     nftoken_sell_offer=offer_objects['offers'][0]['nft_offer_index']
@@ -212,4 +221,4 @@ buy_tx_signed = safe_sign_and_autofill_transaction(transaction=buy_tx, wallet=bu
 buy_tx_signed = send_reliable_submission(transaction=buy_tx_signed, client=client)
 buy_tx_result = buy_tx_signed.result
 print(f"\n Buy Offer result: {buy_tx_result['meta']['TransactionResult']}"
-      f"\n       Tx content: {buy_tx_result}")
+      f"\n      Tx response: {buy_tx_result}")
