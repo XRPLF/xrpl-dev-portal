@@ -12,6 +12,8 @@ from xrpl.clients import JsonRpcClient
 # https://xrpl.org/set-up-multi-signing.html#set-up-multi-signing
 # https://xrpl.org/send-a-multi-signed-transaction.html#send-a-multi-signed-transaction
 
+# Note that this will only work with xrpl-py version v2.0.0-beta.0 or later
+
 # Connect to a testnet node
 JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 client = JsonRpcClient(JSON_RPC_URL)
