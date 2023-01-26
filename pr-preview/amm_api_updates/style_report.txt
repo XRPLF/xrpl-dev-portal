@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 14 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gips, gifu, gift
-  kuressaare: 
+  gifs: gifts, gigs, giff
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
@@ -15,7 +15,7 @@ Found 14 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
@@ -25,10 +25,10 @@ Found 14 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3d, 3rd, 3-d
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3d, 3rd, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
@@ -59,7 +59,7 @@ Page: <Page 'tem Codes' (tem-codes.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.0 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
@@ -102,7 +102,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 55
   Words: 744
-  Characters: 4,615
+  Characters: 4,614
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

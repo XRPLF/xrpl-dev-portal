@@ -359,7 +359,7 @@ rippled ledger validated
 <td style="text-align: left;"><code>accounts</code></td>
 <td style="text-align: left;">Boolean</td>
 <td style="text-align: left;">No</td>
-<td><strong>Admin only.</strong> If <code>true</code>, return the ledger's entire state data. Ignored if you did not specify a ledger version. The default is <code>false</code>. <strong>Caution:</strong> On Mainnet, this can be gigabytes worth of data, so the request is likely to time out. Use [ledger_data][] instead to fetch state data across multiple paginated requests.</td>
+<td><strong>Admin only.</strong> If <code>true</code>, return the ledger's entire state data. Ignored if you did not specify a ledger version. The default is <code>false</code>. <strong>Caution:</strong> On Mainnet, this can be gigabytes worth of data, so the request is likely to time out. Use <a href="ledger_data.html">ledger_data</a> instead to fetch state data across multiple paginated requests.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>transactions</code></td>
@@ -395,7 +395,7 @@ rippled ledger validated
 <td style="text-align: left;"><code>type</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">No</td>
-<td>Filter results to a specific type of ledger entry. The valid types are: <code>account</code>, <code>amendments</code>, <code>amm</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>,  <code>check</code>, <code>deposit_preauth</code>, <code>directory</code>, <code>escrow</code>, <code>fee</code>, <code>hashes</code>, <code>nft_offer</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>state</code> (trust line), and <code>ticket</code>. Ignored unless you request <code>accounts</code> (state data).</td>
+<td>Filter by a ledger entry type. The valid types are: <code>account</code>, <code>amendments</code>, <code>amm</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>,  <code>check</code>, <code>deposit_preauth</code>, <code>directory</code>, <code>escrow</code>, <code>fee</code>, <code>hashes</code>, <code>nft_offer</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>state</code> (trust line), and <code>ticket</code>. Ignored unless you request <code>accounts</code> (state data).</td>
 </tr>
 </tbody>
 </table>
