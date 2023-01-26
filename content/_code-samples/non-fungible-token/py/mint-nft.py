@@ -31,6 +31,7 @@ print(f"\nIssuer Account: {issuerAddr}")
 print(f"          Seed: {issuer_wallet.seed}")
 
 # Construct NFTokenMint transaction to mint 1 NFT
+print(f"Minting a NFT...")
 mint_tx = NFTokenMint(
     account=issuerAddr,
     nftoken_taxon=1,
@@ -43,7 +44,7 @@ mint_tx_signed = send_reliable_submission(transaction=mint_tx_signed, client=cli
 mint_tx_result = mint_tx_signed.result
 
 print(f"\n  Mint tx result: {mint_tx_result['meta']['TransactionResult']}")
-print(f"      Tx content: {mint_tx_result}")
+print(f"     Tx response: {mint_tx_result}")
 
 for node in mint_tx_result['meta']['AffectedNodes']:
     if "CreatedNode" in list(node.keys())[0]:
