@@ -45,7 +45,7 @@ nftoken_amount = input("Enter how much you want the NFT to go for, in drops: ")
 sell_tx = NFTokenCreateOffer(
     account=issuerAddr,
     nftoken_id=nftoken_id,
-    amount=nftoken_amount,  # 10 XRP in drops, 1 XRP = 1,000,000 drops
+    amount=nftoken_amount,  # 1 XRP = 1,000,000 drops
     flags=NFTokenCreateOfferFlag.TF_SELL_NFTOKEN,
 )
 
