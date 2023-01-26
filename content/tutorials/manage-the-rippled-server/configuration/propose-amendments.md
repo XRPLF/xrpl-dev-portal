@@ -104,7 +104,3 @@ Servers build the latest Deploy beta code to Devnet. If the default vote is set 
 Once the amendment code is merged into `master`, server operators will update to the latest server package and voting begins in earnest. The amendment is officially open for voting. Amendment goes through vetting process and if it keeps 80+% support for two weeks, it's enabled on Mainnet.
 
 ## 4. Veto
-
-<!-- At what point is an amendment removed from the code/vetoed? -->
-<!-- How are features added to server versions? -->
-<!-- Who builds server packages and decides what is included? -->
