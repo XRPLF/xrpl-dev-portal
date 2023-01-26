@@ -637,7 +637,7 @@
 <tr>
 <td><code>vote_weight</code></td>
 <td>Number</td>
-<td>How much this liquidity provider's vote counts towards the final trading fee. This is proportional to how much of the AMM's LP Tokens this liquidity provider holds.</td>
+<td>How much this liquidity provider's vote counts towards the final trading fee. This is proportional to how much of the AMM's LP Tokens this liquidity provider holds. The value is equal to 100,000 times the number of this LP Tokens this liquidity provider holds, divided by the total number of LP Tokens outstanding. For example, a value of 1000 means that the liquidity provider holds 1% of this AMM's LP Tokens.</td>
 </tr>
 </tbody>
 </table>
