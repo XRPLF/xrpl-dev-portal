@@ -12,7 +12,8 @@ from xrpl.wallet import Wallet
 
 seed = ""
 custom_wallet = None
-if(seed):
+
+if seed:
     custom_wallet = Wallet(seed=seed, sequence=0)
 
 # Connect to a testnet node
@@ -20,7 +21,7 @@ print("Connecting to Testnet...")
 JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 client = JsonRpcClient(JSON_RPC_URL)
 
-# Initialize wallet from seed    
+# Initialize wallet from seed
 issuer_wallet = generate_faucet_wallet(client=client, wallet=custom_wallet)
 issuerAddr = issuer_wallet.classic_address
 
@@ -36,6 +37,7 @@ print(f"\nAuthorized Minter Account: {minterAddr}")
 print(f"                     Seed: {nftoken_minter_wallet.seed}")
 
 # Construct AccountSet transaction to authorize another account (Minter Account) to issue NFTs on our behalf
+print(f"\nAuthorizing account {minterAddr} as a NFT minter on account {issuerAddr}...")
 authorize_minter_tx = AccountSet(
     account=issuerAddr,
     set_flag=AccountSetFlag.ASF_AUTHORIZED_NFTOKEN_MINTER,
@@ -49,12 +51,13 @@ authorize_minter_tx_result = authorize_minter_tx_signed.result
 print(f"\nAuthorize minter tx result: {authorize_minter_tx_result}")
 
 if authorize_minter_tx_result['meta']['TransactionResult'] == "tesSUCCESS":
-    print(f"Transaction was successfully validated, minter {minterAddr} is now authorized to issue NFTs on behalf of {issuerAddr}")
+    print(f"\nTransaction was successfully validated, minter {minterAddr} is now authorized to issue NFTs on behalf of {issuerAddr}")
 else:
     print(f"Transaction failed, error code: {authorize_minter_tx_result['meta']['TransactionResult']}"
           f"\nMinter {minterAddr} is not authorized to issue NFTS on behalf of {issuerAddr}")
 
 # Construct NFTokenMint transaction to mint a brand new NFT
+print(f"Minting a NFT from the newly authorized account to prove that it works...")
 mint_tx_1 = NFTokenMint(
     account=minterAddr,
     issuer=issuerAddr,
@@ -64,16 +67,11 @@ mint_tx_1 = NFTokenMint(
 
 # Sign using previously authorized minter's account, this will result in the NFT's issuer field to be the Issuer Account
 # while the NFT's owner would be the Minter Account
-print(f"Minting a token from the newly authorized account to prove it works.")
 mint_tx_1_signed = safe_sign_and_autofill_transaction(transaction=mint_tx_1, wallet=nftoken_minter_wallet, client=client)
 mint_tx_1_signed = send_reliable_submission(transaction=mint_tx_1_signed, client=client)
 mint_tx_1_result = mint_tx_1_signed.result
 print(f"\n Mint tx result: {mint_tx_1_result['meta']['TransactionResult']}")
-print(f"\n     Tx content: {mint_tx_1_result}")
-
-print("\nYou should see the following fields in Tx content above:"
-f"\n       'Issuer': {issuer_wallet.classic_address} (The original account)"
-f"\n'NFTokenMinter': {nftoken_minter_wallet.classic_address} (The newly authorized minter account)\n")
+print(f"    Tx response: {mint_tx_1_result}")
 
 # Query the minter account for its account's NFTs
 get_account_nfts = AccountNFTs(
@@ -83,7 +81,7 @@ get_account_nfts = AccountNFTs(
 response = client.request(get_account_nfts)
 response = response.result['account_nfts'][0]
 
-print(f" - NFToken metadata:"
+print(f"\n - NFToken metadata:"
       f"\n    Issuer: {response['Issuer']}"
       f"\n    NFT ID: {response['NFTokenID']}"
       f"\n NFT Taxon: {response['NFTokenTaxon']}")
