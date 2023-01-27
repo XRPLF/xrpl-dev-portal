@@ -43,6 +43,7 @@ Amendments that have had their source code removed without being enabled are con
 
 
 ## Amendment Blocked Servers
+<a id="amendment-blocked"></a>
 
 Amendment blocking is a security feature to protect the accuracy of XRP Ledger data. When an amendment is enabled, servers running earlier versions of `rippled` without the amendment's source code no longer understand the rules of the network. Rather than guess and misinterpret ledger data, these servers become **amendment blocked** and can't:
 

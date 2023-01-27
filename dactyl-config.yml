@@ -195,6 +195,8 @@ targets:
             # Fix links from untranslated AMM pages:
             "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
             "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
+            # Fix link from untranslated health-check.html:
+            "amendments.html#amendment-blocked-servers": "amendments.html#amendment-blocked"
 
 pages:
 
@@ -3709,10 +3711,6 @@ pages:
     -   md: references/http-websocket-apis/peer-port-methods/health-check.md
         targets:
             - en
-
-    # TODO: translate page and blurb
-    -   md: references/http-websocket-apis/peer-port-methods/health-check.ja.md
-        targets:
             - ja
 
     -   md: references/http-websocket-apis/peer-port-methods/peer-crawler.md
