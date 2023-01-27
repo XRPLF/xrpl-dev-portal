@@ -48,13 +48,13 @@ There are also expanded lessons demonstrating how to [Broker a NFToken Sale](bro
 
 To get started, create a new folder on your local disk and install the JavaScript library using `npm`.
 
-
 ```
     npm install xrpl
 ```
 
-
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive.
+
+**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
 
 ---
 
