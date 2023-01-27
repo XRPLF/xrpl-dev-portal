@@ -5,31 +5,27 @@ blurb:
 labels:
   - Blockchain
 ---
-# Propose Amendments
+# Contribute Code to the XRP Ledger
 
-Any changes to transaction processing on the XRP Ledger requires an amendment before it can be enabled on Mainnet. This includes:
-
-- Features
-- Enhancements
-- Bug Fixes
+The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it.
 
 
-## 1. Standards Draft
+## Standards Draft
 
-Feature and enhancement amendments start as a standards draft. This step enables you to incorporate feedback from the XRP Ledger dev community before committing to developing it.
+If you intend to make significant changes to the ledger, write a standards draft detailing the changes and submit it to the **XRPL-Standards** repository. Give the community time to discuss your idea and incorporate feedback before committing time and resources to developing the code.
 
-**Note:** Bug fixes don't require a standards draft, but still require an amendment if it affects transaction processing.
+See: [Standard Proposals](https://github.com/XRPLF/XRPL-Standards/discussions/categories/standard-proposals).
+
+**Note:** Bug fixes don't require a standards draft.
 
 
 ### Naming and Numbering Conventions
 
-Standards must be named and numbered in this format:
+Standard drafts must be named and numbered in this format:
 
 `4-digit natural number with leading 0s` XLS-`natural number without leading zeroes.`d: `Title of Proposal`
 
 **Example:** 0032 XLS-32d: Request URI Structure
-
-Revisions to your standards draft should use a "." seperator.
 
 
 ### Formatting Conventions
@@ -40,7 +36,6 @@ Your standards draft should supply the community with the necessary information 
 - Specifications
 - Considerations
 
-See: [Standard Proposals](https://github.com/XRPLF/XRPL-Standards/discussions/categories/standard-proposals)
 
 <!-- This hasn't been updated since 2021; is this step from the README valid? -->
 When a standard moves to a folder + file(s) in the Code section of this repository, it will be added to the standards.toml file: https://github.com/XRPLF/XRPL-Standards/blob/master/standards.toml
@@ -50,11 +45,17 @@ When a standard moves to a folder + file(s) in the Code section of this reposito
 After sufficient input from the community, create a corresponding **Issue** with the finalized standards draft in `XRPLF:develop`.
 
 
-## 2. Add Amendment to `rippled`
+## Create an Amendment
 
-<!-- Fixes are DefaultVote 'yes', but what about features? How is the defaultvote decided? -->
+Any changes that affect **transaction processing** requires an amendment. This applies to:
 
-1. Add the name of your feature or fix as a string to `rippled/src/ripple/protocol/impl/Feature.cpp` to define and initialize a  `uint256` variable. For example:
+- Features
+- Enhancements
+- Bug Fixes
+
+If your change doesn't require an amendment, you can skip this step.
+
+1. Add the name of your amendment as a string to `rippled/src/ripple/protocol/impl/Feature.cpp` to define and initialize a  `uint256` variable. For example:
 
 ```cpp
 REGISTER_FEATURE(FlowCross,                     Supported::yes, DefaultVote::yes);
@@ -62,13 +63,14 @@ REGISTER_FEATURE(CryptoConditionsSuite,         Supported::yes, DefaultVote::no)
 REGISTER_FIX    (fix1513,                       Supported::yes, DefaultVote::yes);
 ```
 
-**Note:** Fixes automatically defaultvote yes. `Supported` should only be set to `yes` when it's development complete.
+  - `Supported` parameter should be set to `no` initially.
+  - `DefaultVote` parameter should be set to `yes` for bug fixes. Work with the community to decide the default vote for features and enhancements.
 
 2. Navigate to `rippled/src/ripple/protocol/Feature.h` and modify these items:
 
-- Increment the `numFeatures` counter.
+  - Increment the `numFeatures` counter.
 
-- Add an `extern uint256 const` variable declaration. For example:
+  - Add an `extern uint256 const` variable declaration. For example:
 
 ```cpp
 extern uint256 const featureFlowCross;
@@ -76,31 +78,36 @@ extern uint256 const featureCryptoConditionsSuite;
 extern uint256 const fix1513;
 ```
 
+3. Navigate to `https://github.com/XRPLF/rippled/tree/master/src/ripple/app/tx/impl` and make your changes. Be sure to include an if/else condition to keep old behavior if it's not enabled.
 
-## Develop and Test Amendment
+## Develop and Test the Code
 
-1. As you develop your amendment, run unit tests to ensure your code passes; depending on the complexity of the amendment, you can also deploy to a private network and request feedback. When development and testing are complete, update the `Supported` parameter to `yes` in `Feature.cpp`.
+1. Create a fork or branch in the [`rippled` repository](https://github.com/XRPLF/rippled) to develop your code.
 
-2. Create a **Pull Request** on `XRPLF:develop` and link to the corresponding issue you created.
+2. As you develop your amendment, run unit and integration tests. Running a server in *Stand-alone* mode is useful for testing changes, but you may want to stand up a private network for extensive changes.
 
-<!-- Is there a process to add this to a Beta? What constitues a Beta? -->
-3. After the PR is approved, merge to `develop` as part of a Beta.
+3. When development is complete, update the `Supported` parameter to `yes` in `Feature.cpp`.
 
-**Note:** The `DefaultVote` parameter is now locked and can't be changed without another PR.
+4. Create a **Pull Request** on `XRPLF:develop` and link to the corresponding issue you created.
 
-<!-- How are `DefaultVote` no handled? What's the testing phase for these look like? -->
-Deploy beta code to Devnet. If the default vote is set to "Yes", it remains on Devnet (and goes through 2 weeks of voting/possible majority loss). If no issues are found on Devnet, the code is merged to the master branch and built into published packages.
+5. After the PR is approved by maintainers, your code is merged to `develop`. Additional testing can be done on Devnet, using server packages built from your fork/branch.
 
-
-## Deploy Code to Devnet
-
-Servers build the latest Deploy beta code to Devnet. If the default vote is set to "Yes", it remains on Devnet, where it goes through the two-week consensus process. After it's enabled, assuming no issues are found, the code is merged into the `master` branch. If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the defaultvote in the new PR.
-
-<!-- How often is code merged from develop into master? Who decides the frequency? -->
+**Note:**
+  - The `DefaultVote` parameter is now locked.
+  - If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the defaultvote in the new PR.
 
 
-## 3. Voting
+## Deploy to Mainnet
+
+1. On a quarterly basis, approved PRs are merged from `develop` into the `master` branch and a pre-release/releasea candidate is built.
+
+2. Everything is reviewed, and if no issues are found, the code is merged into `master` and server packages built.
+
+
+## Voting
 
 Once the amendment code is merged into `master`, server operators will update to the latest server package and voting begins in earnest. The amendment is officially open for voting. Amendment goes through vetting process and if it keeps 80+% support for two weeks, it's enabled on Mainnet.
 
 ## 4. Veto
+
+Amendments are vetoed through community feedback.
