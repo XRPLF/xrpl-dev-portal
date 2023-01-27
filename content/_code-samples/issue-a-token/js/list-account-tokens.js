@@ -33,10 +33,10 @@ if (typeof module !== "undefined") {
     for (var i = 0; i < response_objects.result.account_objects.length; i++) {
         if (response_objects.result.account_objects[i].LedgerEntryType != "RippleState") {
             console.log(`\n${i+1}. Index (ObjectID/keylet): ${response_objects.result.account_objects[i].index}`)
+            console.log(` - LedgerEntryType: ${response_objects.result.account_objects[i].LedgerEntryType}`)
             console.log(` - Account: ${response_objects.result.account_objects[i].Account})`)
             console.log(` - Destination: ${response_objects.result.account_objects[i].Destination}`)
             console.log(` - Amount: ${response_objects.result.account_objects[i].Amount} drops`)
-            console.log(` - LedgerEntryType: ${response_objects.result.account_objects[i].LedgerEntryType}`)
         } else {
             console.log(`\n${i+1}. Index (ObjectID/keylet): ${response_objects.result.account_objects[i].index}`)
             console.log(` - LedgerEntryType: ${response_objects.result.account_objects[i].LedgerEntryType} `)
