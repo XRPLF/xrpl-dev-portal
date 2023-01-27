@@ -9,6 +9,7 @@ from xrpl.clients import JsonRpcClient
 # and use the ticket for a multisignature transaction.
 # A funded account on the testnet is provided for testing purposes
 # https://xrpl.org/tickets.html#tickets
+# https://xrpl.org/use-tickets.html
 # https://xrpl.org/set-up-multi-signing.html#set-up-multi-signing
 # https://xrpl.org/send-a-multi-signed-transaction.html#send-a-multi-signed-transaction
 
