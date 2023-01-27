@@ -587,6 +587,18 @@ pages:
          - en
          - ja
 
+    - md: concepts/server/xrpl-interoperability.md
+      parent: rippled-servers.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/server/intro-to-evm-sidechain.md
+      parent: xrpl-interoperability.html
+      targets:
+         - en
+         - ja
+
     - md: concepts/server/peer-protocol.md
       parent: rippled-servers.html
       targets:
@@ -921,7 +933,25 @@ pages:
       targets:
          - en
          - ja
+
+    - md: concepts/tokens/non-fungible.md
+      parent: token-types.html
+      targets:
+         - en
+         - ja
          
+    - md: concepts/tokens/non-fungible-token-transfers.md
+      parent: non-fungible.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/tokens/nftoken-batch-minting.md
+      parent: non-fungible.html
+      targets:
+         - en
+         - ja
+
     - md: concepts/tokens/transfer-fees.md
       parent: tokens.html
       targets:
@@ -946,25 +976,49 @@ pages:
       targets:
          - en
          - ja
-            
-    - md: concepts/tokens/non-fungible.md
-      parent: token-types.html
+
+    - md: concepts/tokens/decentralized-exchange.md
+      parent: tokens.html
       targets:
          - en
          - ja
-         
-    - md: concepts/tokens/non-fungible-token-transfers.md
-      parent: non-fungible.html
+
+    - md: concepts/tokens/automated-market-makers.md
+      parent: decentralized-exchange.html
       targets:
          - en
          - ja
-         
-    - md: concepts/tokens/nftoken-batch-minting.md
-      parent: non-fungible.html
+
+    - md: concepts/tokens/offers.md
+      parent: decentralized-exchange.html
       targets:
          - en
+
+    - md: concepts/tokens/ffers.ja.md
+      parent: decentralized-exchange.html
+      targets:
          - ja
-         
+
+    - md: concepts/tokens/autobridging.md
+      parent: decentralized-exchange.html
+      targets:
+         - en
+
+    - md: concepts/tokens/autobridging.ja.md
+      parent: decentralized-exchange.html
+      targets:
+         - ja
+
+    - md: concepts/tokens/ticksize.md
+      parent: decentralized-exchange.html
+      targets:
+         - en
+
+    - md: concepts/tokens/ticksize.ja.md
+      parent: decentralized-exchange.html
+      targets:
+         - ja
+
     - md: concepts/accounts/accounts.md
       parent: concepts.html
       targets:
@@ -3716,27 +3770,27 @@ pages:
         targets:
             - ja
 
-    -   name: Decentralized Exchange
-        html: label-decentralized-exchange.html
-        parent: by-label.html
-        landing_for: Decentralized Exchange
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Decentralized Exchange built into the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
-
-    -   name: 分散型取引所
-        html: label-decentralized-exchange.html
-        parent: by-label.html
-        landing_for: 分散型取引所
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerの分散型取引所に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+#     -   name: Decentralized Exchange
+#         html: label-decentralized-exchange.html
+#         parent: by-label.html
+#         landing_for: Decentralized Exchange
+#         template: pagetype-label.html.jinja
+#         blurb: Pages about the Decentralized Exchange built into the XRP Ledger.
+#         filters:
+#             - labels
+#         targets:
+#             - en
+# 
+#     -   name: 分散型取引所
+#         html: label-decentralized-exchange.html
+#         parent: by-label.html
+#         landing_for: 分散型取引所
+#         template: pagetype-label.html.jinja
+#         blurb: XRP Ledgerの分散型取引所に関するページ。
+#         filters:
+#             - labels
+#         targets:
+#             - ja
 
     -   name: Development
         html: label-development.html
