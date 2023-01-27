@@ -28,7 +28,7 @@ Learn about [Escrow](escrow.html) on the XRP Ledger.
 
 Placing the money into escrow sharply limits the amount of XRP that can be stolen or redirected if a malicious actors gains temporary control over Ripple's XRP account. This reduces the risk of catastrophic losses of XRP and increases the time for Ripple to detect, prevent, and track down unintended uses of Ripple's XRP assets.
 
-To get started with time-based escrows, see: [Create Time-based Escrows](time-escrows.html).
+To get started with time-based escrows, see: [Create Time-based Escrows](escrow-time.html).
 
 
 ### Escrow Smart Contract
@@ -39,4 +39,4 @@ To get started with time-based escrows, see: [Create Time-based Escrows](time-es
 
 **Solution:**
 
-To get started with escrow smart contracts, see: [Create Conditionally-held Escrows]().
+To get started with escrow smart contracts, see: [Create Conditional Escrows](escrow-condition.html).

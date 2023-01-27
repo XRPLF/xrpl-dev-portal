@@ -1,5 +1,5 @@
 ---
-html: time-escrows.html
+html: escrow-time.html
 parent: xrpl-quickstart.html
 blurb: Create, finish, or cancel time-based escrow transactions.
 labels:
