@@ -118,6 +118,7 @@
   "account_objects",
   "account_offers",
   "account_tx",
+  "amm_info",
   "book_offers",
   "can_delete",
   "channel_authorize",

@@ -63,17 +63,19 @@ rippled ledger validated
 
 The request can contain the following parameters:
 
-| `Field`        | Type                       | Description                    |
-|:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]). |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `full`         | Boolean                    | _(Optional)_ **Admin required** If `true`, return full information on the entire ledger. Ignored if you did not specify a ledger version. The default is `false`. (Equivalent to enabling `transactions`, `accounts`, and `expand`.) The [Clio server](the-clio-server.html) does not support this field. **Caution:** On Mainnet, this can be gigabytes worth of data, so the request is likely to time out. |
-| `accounts`     | Boolean                    | _(Optional)_ **Admin required.** If `true`, return information on accounts in the ledger. Ignored if you did not specify a ledger version. The default is `false`. **Caution:** On Mainnet, this can be gigabytes worth of data, so the request is likely to time out. |
-| `transactions` | Boolean                    | _(Optional)_ If `true`, return information on transactions in the specified ledger version. The default is `false`. Ignored if you did not specify a ledger version. |
-| `expand`       | Boolean                    | _(Optional)_ Provide full JSON-formatted information for transaction/account information instead of only hashes. The default is `false`. Ignored unless you request transactions, accounts, or both. |
-| `owner_funds`  | Boolean                    | _(Optional)_ If `true`, include `owner_funds` field in the metadata of OfferCreate transactions in the response. The default is `false`. Ignored unless transactions are included and `expand` is true. |
-| `binary`       | Boolean                    | _(Optional)_ If `true`, and `transactions` and `expand` are both also `true`, return transaction information in binary format (hexadecimal string) instead of JSON format. [New in: rippled 0.28.0][] |
-| `queue`        | Boolean                    | _(Optional)_ If `true`, and the command is requesting the `current` ledger, includes an array of [queued transactions](transaction-cost.html#queued-transactions) in the results.
+| `Field`        | Type             | Required? | Description |
+|:---------------|:-----------------|:----------|-------------|
+| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]). |
+| `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `full`         | Boolean          | No        | **Admin only** If `true`, return full information on the entire ledger. Ignored if you did not specify a ledger version. The default is `false`. (Equivalent to enabling `transactions`, `accounts`, and `expand`.) The [Clio server](the-clio-server.html) does not support this field. **Caution:** On Mainnet, this can be gigabytes worth of data, so the request is likely to time out. |
+| `accounts`     | Boolean          | No        | **Admin only.** If `true`, return the ledger's entire state data. Ignored if you did not specify a ledger version. The default is `false`. **Caution:** On Mainnet, this can be gigabytes worth of data, so the request is likely to time out. Use [ledger_data][ledger_data method] instead to fetch state data across multiple paginated requests. |
+| `transactions` | Boolean          | No        | If `true`, return information on transactions in the specified ledger version. The default is `false`. Ignored if you did not specify a ledger version. |
+| `expand`       | Boolean          | No        | Provide full JSON-formatted information for transaction/account information instead of only hashes. The default is `false`. Ignored unless you request transactions, accounts, or both. |
+| `owner_funds`  | Boolean          | No        | If `true`, include `owner_funds` field in the metadata of OfferCreate transactions in the response. The default is `false`. Ignored unless transactions are included and `expand` is true. |
+| `binary`       | Boolean          | No        | If `true`, and `transactions` and `expand` are both also `true`, return transaction information in binary format (hexadecimal string) instead of JSON format. [New in: rippled 0.28.0][] |
+| `queue`        | Boolean          | No        | If `true`, and the command is requesting the `current` ledger, includes an array of [queued transactions](transaction-cost.html#queued-transactions) in the results. |
+| `type`         | String           | No        | Filter by a ledger entry type. {% include '_snippets/lowercase-types.md' %} Ignored unless you request `accounts` (state data). |
+
 
 The `ledger` field is deprecated and may be removed without further notice.
 
