@@ -41,7 +41,6 @@ Your standards draft should supply the community with the necessary information 
 When a standard moves to a folder + file(s) in the Code section of this repository, it will be added to the standards.toml file: https://github.com/XRPLF/XRPL-Standards/blob/master/standards.toml
 
 <!-- How much is enough discussion? The README mentions creating an issue to reference in the PR, but this doesn't seem to be happening in practice. -->
-
 After sufficient input from the community, create a corresponding **Issue** with the finalized standards draft in `XRPLF:develop`.
 
 
@@ -90,24 +89,23 @@ extern uint256 const fix1513;
 
 4. Create a **Pull Request** on `XRPLF:develop` and link to the corresponding issue you created.
 
-5. After the PR is approved by maintainers, your code is merged to `develop`. Additional testing can be done on Devnet, using server packages built from your fork/branch.
+5. After the PR is approved by XRP Ledger maintainers, your code is merged to `develop`. Additional testing can be done on Devnet.
 
 **Note:**
   - The `DefaultVote` parameter is now locked.
   - If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the defaultvote in the new PR.
 
-
 ## Deploy to Mainnet
 
-1. On a quarterly basis, approved PRs are merged from `develop` into the `master` branch and a pre-release/releasea candidate is built.
+1. On a quarterly basis, a release candidate is built from the approved PRs on `develop`. The package is deployed to Testnet and a few nodes on Mainnet.
 
-2. Everything is reviewed, and if no issues are found, the code is merged into `master` and server packages built.
+2. If no issues are found with the release candidate, the code is merged into `master` and the nodes on Mainnet upgrade to this build.
 
 
 ## Voting
 
-Once the amendment code is merged into `master`, server operators will update to the latest server package and voting begins in earnest. The amendment is officially open for voting. Amendment goes through vetting process and if it keeps 80+% support for two weeks, it's enabled on Mainnet.
+At this point, the amendment is officially open for voting. Amendments go through the consensus process, and if it maintains 80+% support for two weeks, it's enabled on Mainnet.
 
 ## 4. Veto
 
-Amendments are vetoed through community feedback.
+Amendments that aren't enabled can eventually be vetoed and have its code removed from server packages.
