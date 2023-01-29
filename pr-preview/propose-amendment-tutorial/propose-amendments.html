@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Propose Amendments - XRPL.org</title>
+    <title>Contribute Code to the XRP Ledger - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Propose Amendments | XRPL.org">
+    <meta property="og:title" content="Contribute Code to the XRP Ledger | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/propose-amendments.html" />
     <meta property="og:description" content="None" />
     <meta name="description" content="None" />
@@ -261,14 +261,14 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#propose-amendments">Propose Amendments</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#1-standards-draft">1. Standards Draft</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#standards-draft">Standards Draft</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#naming-and-numbering-conventions">Naming and Numbering Conventions</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#formatting-conventions">Formatting Conventions</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#2-add-amendment-to-rippled">2. Add Amendment to rippled</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#develop-and-test-amendment">Develop and Test Amendment</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#deploy-code-to-devnet">Deploy Code to Devnet</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#3-voting">3. Voting</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#create-an-amendment">Create an Amendment</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#develop-and-test-the-code">Develop and Test the Code</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#deploy-to-mainnet">Deploy to Mainnet</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#voting">Voting</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#4-veto">4. Veto</a></li>
       </ul>
   </div>
@@ -285,25 +285,20 @@
     <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
     <li class="active breadcrumb-item"><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
     <li class="active breadcrumb-item"><a href="configure-rippled.html">Configure rippled</a></li>
-    <li class="active breadcrumb-item">Propose Amendments</li>
+    <li class="active breadcrumb-item">Contribute Code to the XRP Ledger</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="propose-amendments">Propose Amendments<a aria-hidden="true" class="hover_anchor" href="#propose-amendments"><i class="fa fa-link"></i></a></h1>
-<p>Any changes to transaction processing on the XRP Ledger requires an amendment before it can be enabled on Mainnet. This includes:</p>
-<ul>
-<li>Features</li>
-<li>Enhancements</li>
-<li>Bug Fixes</li>
-</ul>
-<h2 id="1-standards-draft">1. Standards Draft<a aria-hidden="true" class="hover_anchor" href="#1-standards-draft"><i class="fa fa-link"></i></a></h2>
-<p>Feature and enhancement amendments start as a standards draft. This step enables you to incorporate feedback from the XRP Ledger dev community before committing to developing it.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Bug fixes don't require a standards draft, but still require an amendment if it affects transaction processing.</p>
+        <h1 id="contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#contribute-code-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
+<p>The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it.</p>
+<h2 id="standards-draft">Standards Draft<a aria-hidden="true" class="hover_anchor" href="#standards-draft"><i class="fa fa-link"></i></a></h2>
+<p>If you intend to make significant changes to the ledger, write a standards draft detailing the changes and submit it to the <strong>XRPL-Standards</strong> repository. Give the community time to discuss your idea and incorporate feedback before committing time and resources to developing the code.</p>
+<p>See: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/categories/standard-proposals" target="_blank">Standard Proposals <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Bug fixes don't require a standards draft.</p>
 <h3 id="naming-and-numbering-conventions">Naming and Numbering Conventions<a aria-hidden="true" class="hover_anchor" href="#naming-and-numbering-conventions"><i class="fa fa-link"></i></a></h3>
-<p>Standards must be named and numbered in this format:</p>
+<p>Standard drafts must be named and numbered in this format:</p>
 <p><code>4-digit natural number with leading 0s</code> XLS-<code>natural number without leading zeroes.</code>d: <code>Title of Proposal</code></p>
 <p><strong>Example:</strong> 0032 XLS-32d: Request URI Structure</p>
-<p>Revisions to your standards draft should use a "." seperator.</p>
 <h3 id="formatting-conventions">Formatting Conventions<a aria-hidden="true" class="hover_anchor" href="#formatting-conventions"><i class="fa fa-link"></i></a></h3>
 <p>Your standards draft should supply the community with the necessary information to facilitate useful discussion. Helpful sections to include are:</p>
 <ul>
@@ -311,21 +306,29 @@
 <li>Specifications</li>
 <li>Considerations</li>
 </ul>
-<p>See: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/categories/standard-proposals" target="_blank">Standard Proposals <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- This hasn't been updated since 2021; is this step from the README valid? -->
 <p>When a standard moves to a folder + file(s) in the Code section of this repository, it will be added to the standards.toml file: https://github.com/XRPLF/XRPL-Standards/blob/master/standards.toml</p>
 <!-- How much is enough discussion? The README mentions creating an issue to reference in the PR, but this doesn't seem to be happening in practice. -->
 <p>After sufficient input from the community, create a corresponding <strong>Issue</strong> with the finalized standards draft in <code>XRPLF:develop</code>.</p>
-<h2 id="2-add-amendment-to-rippled">2. Add Amendment to <code>rippled</code><a aria-hidden="true" class="hover_anchor" href="#2-add-amendment-to-rippled"><i class="fa fa-link"></i></a></h2>
-<!-- Fixes are DefaultVote 'yes', but what about features? How is the defaultvote decided? -->
+<h2 id="create-an-amendment">Create an Amendment<a aria-hidden="true" class="hover_anchor" href="#create-an-amendment"><i class="fa fa-link"></i></a></h2>
+<p>Any changes that affect <strong>transaction processing</strong> requires an amendment. This applies to:</p>
+<ul>
+<li>Features</li>
+<li>Enhancements</li>
+<li>Bug Fixes</li>
+</ul>
+<p>If your change doesn't require an amendment, you can skip this step.</p>
 <ol>
-<li>Add the name of your feature or fix as a string to <code>rippled/src/ripple/protocol/impl/Feature.cpp</code> to define and initialize a  <code>uint256</code> variable. For example:</li>
+<li>Add the name of your amendment as a string to <code>rippled/src/ripple/protocol/impl/Feature.cpp</code> to define and initialize a  <code>uint256</code> variable. For example:</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="n">REGISTER_FEATURE</span><span class="p">(</span><span class="n">FlowCross</span><span class="p">,</span><span class="w">                     </span><span class="n">Supported</span><span class="o">::</span><span class="n">yes</span><span class="p">,</span><span class="w"> </span><span class="n">DefaultVote</span><span class="o">::</span><span class="n">yes</span><span class="p">);</span>
 <span class="n">REGISTER_FEATURE</span><span class="p">(</span><span class="n">CryptoConditionsSuite</span><span class="p">,</span><span class="w">         </span><span class="n">Supported</span><span class="o">::</span><span class="n">yes</span><span class="p">,</span><span class="w"> </span><span class="n">DefaultVote</span><span class="o">::</span><span class="n">no</span><span class="p">);</span>
 <span class="n">REGISTER_FIX</span><span class="w">    </span><span class="p">(</span><span class="n">fix1513</span><span class="p">,</span><span class="w">                       </span><span class="n">Supported</span><span class="o">::</span><span class="n">yes</span><span class="p">,</span><span class="w"> </span><span class="n">DefaultVote</span><span class="o">::</span><span class="n">yes</span><span class="p">);</span>
 </code></pre></div>
-<p class="devportal-callout note"><strong>Note:</strong> Fixes automatically defaultvote yes. <code>Supported</code> should only be set to <code>yes</code> when it's development complete.</p>
+<ul>
+<li><code>Supported</code> parameter should be set to <code>no</code> initially.</li>
+<li><code>DefaultVote</code> parameter should be set to <code>yes</code> for bug fixes. Work with the community to decide the default vote for features and enhancements.</li>
+</ul>
 <ol start="2">
 <li>Navigate to <code>rippled/src/ripple/protocol/Feature.h</code> and modify these items:</li>
 </ol>
@@ -341,31 +344,43 @@
 <span class="k">extern</span><span class="w"> </span><span class="n">uint256</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">featureCryptoConditionsSuite</span><span class="p">;</span>
 <span class="k">extern</span><span class="w"> </span><span class="n">uint256</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">fix1513</span><span class="p">;</span>
 </code></pre></div>
-<h2 id="develop-and-test-amendment">Develop and Test Amendment<a aria-hidden="true" class="hover_anchor" href="#develop-and-test-amendment"><i class="fa fa-link"></i></a></h2>
+<ol start="3">
+<li>Navigate to <code>https://github.com/XRPLF/rippled/tree/master/src/ripple/app/tx/impl</code> and make your changes. Be sure to include an if/else condition to keep old behavior if it's not enabled.</li>
+</ol>
+<h2 id="develop-and-test-the-code">Develop and Test the Code<a aria-hidden="true" class="hover_anchor" href="#develop-and-test-the-code"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>
-<p>As you develop your amendment, run unit tests to ensure your code passes; depending on the complexity of the amendment, you can also deploy to a private network and request feedback. When development and testing are complete, update the <code>Supported</code> parameter to <code>yes</code> in <code>Feature.cpp</code>.</p>
+<p>Create a fork or branch in the <a class="external-link" href="https://github.com/XRPLF/rippled" target="_blank"><code>rippled</code> repository <i aria-hidden="true" class="fa fa-external-link"></i></a> to develop your code.</p>
+</li>
+<li>
+<p>As you develop your amendment, run unit and integration tests. Running a server in <em>Stand-alone</em> mode is useful for testing changes, but you may want to stand up a private network for extensive changes.</p>
+</li>
+<li>
+<p>When development is complete, update the <code>Supported</code> parameter to <code>yes</code> in <code>Feature.cpp</code>.</p>
 </li>
 <li>
 <p>Create a <strong>Pull Request</strong> on <code>XRPLF:develop</code> and link to the corresponding issue you created.</p>
 </li>
+<li>
+<p>After the PR is approved by XRP Ledger maintainers, your code is merged to <code>develop</code>. Additional testing can be done on Devnet.</p>
+</li>
 </ol>
-<!-- Is there a process to add this to a Beta? What constitues a Beta? -->
-<ol start="3">
-<li>After the PR is approved, merge to <code>develop</code> as part of a Beta.</li>
+<p class="devportal-callout note"><strong>Note:</strong>
+  - The <code>DefaultVote</code> parameter is now locked.
+  - If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the defaultvote in the new PR.</p>
+<h2 id="deploy-to-mainnet">Deploy to Mainnet<a aria-hidden="true" class="hover_anchor" href="#deploy-to-mainnet"><i class="fa fa-link"></i></a></h2>
+<ol>
+<li>
+<p>On a quarterly basis, a release candidate is built from the approved PRs on <code>develop</code>. The package is deployed to Testnet and a few nodes on Mainnet.</p>
+</li>
+<li>
+<p>If no issues are found with the release candidate, the code is merged into <code>master</code> and the nodes on Mainnet upgrade to this build.</p>
+</li>
 </ol>
-<p class="devportal-callout note"><strong>Note:</strong> The <code>DefaultVote</code> parameter is now locked and can't be changed without another PR.</p>
-<!-- How are `DefaultVote` no handled? What's the testing phase for these look like? -->
-<p>Deploy beta code to Devnet. If the default vote is set to "Yes", it remains on Devnet (and goes through 2 weeks of voting/possible majority loss). If no issues are found on Devnet, the code is merged to the master branch and built into published packages.</p>
-<h2 id="deploy-code-to-devnet">Deploy Code to Devnet<a aria-hidden="true" class="hover_anchor" href="#deploy-code-to-devnet"><i class="fa fa-link"></i></a></h2>
-<p>Servers build the latest Deploy beta code to Devnet. If the default vote is set to "Yes", it remains on Devnet, where it goes through the two-week consensus process. After it's enabled, assuming no issues are found, the code is merged into the <code>master</code> branch. If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the defaultvote in the new PR.</p>
-<!-- How often is code merged from develop into master? Who decides the frequency? -->
-<h2 id="3-voting">3. Voting<a aria-hidden="true" class="hover_anchor" href="#3-voting"><i class="fa fa-link"></i></a></h2>
-<p>Once the amendment code is merged into <code>master</code>, server operators will update to the latest server package and voting begins in earnest. The amendment is officially open for voting. Amendment goes through vetting process and if it keeps 80+% support for two weeks, it's enabled on Mainnet.</p>
+<h2 id="voting">Voting<a aria-hidden="true" class="hover_anchor" href="#voting"><i class="fa fa-link"></i></a></h2>
+<p>At this point, the amendment is officially open for voting. Amendments go through the consensus process, and if it maintains 80+% support for two weeks, it's enabled on Mainnet.</p>
 <h2 id="4-veto">4. Veto<a aria-hidden="true" class="hover_anchor" href="#4-veto"><i class="fa fa-link"></i></a></h2>
-<!-- At what point is an amendment removed from the code/vetoed? -->
-<!-- How are features added to server versions? -->
-<!-- Who builds server packages and decides what is included? -->
+<p>Amendments that aren't enabled can eventually be vetoed and have its code removed from server packages.</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -1371,7 +1386,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="propose-amendments.html">Propose Amendments</a>
+    <a class="nav-link nav-leaf" href="propose-amendments.html">Contribute Code to the XRP Ledger</a>
   </div>
 
     </nav>
