@@ -12,7 +12,7 @@ const main = async () => {
     let currMarker = null;
     let account_objects = [];
 
-    // Loop through all account objects until marker is undefined
+    // Loop through all account objects until marker is undefined --------------
     while(currMarker !== 'undefined'){
 
         const payload = {

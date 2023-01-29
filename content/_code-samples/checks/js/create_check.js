@@ -26,7 +26,7 @@ const main = async () => {
             "DestinationTag": 1,
             "Fee": "12"
         };
-        // Auto-fill the sequence number
+        // Auto-fill the fields
         const prepared = await client.autofill(request);
 
         // Submit the transaction

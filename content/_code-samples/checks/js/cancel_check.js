@@ -18,8 +18,11 @@ const main = async ()=> {
         "CheckID": checkId
     };
 
+    // Auto-fill the fields ---------------------------------------------------
+    const prepared = await client.autofill(request);
+
     // Submit -----------------------------------------------------------------
-    const response = await client.submitAndWait(checkCancelRequest, { wallet });
+    const response = await client.submitAndWait(prepared, { wallet });
     console.log(JSON.stringify(response.result, null, "\t"));
 
     // Disconnect -------------------------------------------------------------
