@@ -549,7 +549,7 @@ class TxSerializer {
         logger("Serializing field " + fieldName + " of type " + fieldType)
 
         const idPrefix = this.fieldId(fieldName)
-        logger("IdPrefix is: " + idPrefix)
+        logger("ID Prefix is: " + idPrefix)
 
         // Special case: convert from string to UInt16
         if (fieldName === "TransactionType") {
