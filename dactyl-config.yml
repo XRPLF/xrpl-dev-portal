@@ -994,7 +994,7 @@ pages:
       targets:
          - en
 
-    - md: concepts/tokens/ffers.ja.md
+    - md: concepts/tokens/offers.ja.md
       parent: decentralized-exchange.html
       targets:
          - ja

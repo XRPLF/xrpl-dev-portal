@@ -28,4 +28,4 @@ Learn about [Checks](checks.html) on the XRP Ledger.
     - Checks
 Checks are the most straightforward, familiar, and flexible way to transfer funds when deposite authorization is enabled.
 
-To get started with checks, see: [Create Checks]().
+To get started with checks, see: [Use Checks](use-checks.html).

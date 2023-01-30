@@ -19,7 +19,7 @@ Learn about [Direct XRP Payments](direct-xrp-payments.html) on the Ledger.
 
 ### Funding Accounts
 
-Any mathematically-valid address can receive an XRP payment, even if the XRP Ledger has no record of that address existing beforehand, as long as the payment delivers enough XRP to meet the minimum [account reserve](../../accounts/reserves.md). If the payment would not deliver enough XRP, it fails. Direct XRP payments are the only way to fund and create an account on the ledger.
+Any mathematically-valid address can receive an XRP payment, even if the XRP Ledger has no record of that address existing beforehand, as long as the payment delivers enough XRP to meet the minimum [account reserve](reserves.html). If the payment would not deliver enough XRP, it fails. Direct XRP payments are the only way to fund and create an account on the ledger.
 
 ### XRP to XRP Transactions
 
