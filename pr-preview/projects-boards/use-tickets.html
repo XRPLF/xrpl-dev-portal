@@ -300,7 +300,6 @@
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <!-- Source for this specific tutorial's interactive bits: -->
 <script src="assets/js/tutorials/use-tickets.js" type="application/javascript"></script>
-<!--TODO: change to Testnet eventually. NOTE, Testnet is a few days behind Mainnet in getting the amendment one enabled -->
 <p>This page provides JavaScript examples that use the <a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a> library. See <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> for setup instructions.</p>
 <p>Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.</p>
 <h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
@@ -312,7 +311,7 @@
 <li>(Steps 7-10) <strong>Use Ticket:</strong> Use one of your set-aside Tickets to send a transaction. You can repeat these steps while skipping the previous parts as long as you have at least one Ticket remaining to use.</li>
 </ul>
 <h3 id="1-get-credentials">1. Get Credentials<a aria-hidden="true" class="hover_anchor" href="#1-get-credentials"><i class="fa fa-link"></i></a></h3>
-<p>To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the <a href="parallel-networks.html">Devnet</a> using the following interface:</p>
+<p>To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the <a href="parallel-networks.html">Testnet</a> using the following interface:</p>
 <div class="interactive-block" data-stepnumber="1" data-totalsteps="11" id="interactive-generate">
 <div class="interactive-block-inner">
 <div class="breadcrumbs-wrap">
@@ -320,7 +319,7 @@
 <li class="breadcrumb-item bc-generate current"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
 </div><!--/.breadcrumbs-wrap-->
 <div class="interactive-block-ui">
-<button class="btn btn-primary" data-fauceturl="https://faucet.devnet.rippletest.net/accounts" id="generate-creds-button">Get Devnet credentials</button>
+<button class="btn btn-primary" data-fauceturl="https://faucet.altnet.rippletest.net/accounts" id="generate-creds-button">Get Testnet credentials</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Generating Keys...</div>
 <div class="output-area"></div>
 </div><!--/.interactive-block-ui-->
@@ -347,7 +346,7 @@
 <li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled current"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
 </div><!--/.breadcrumbs-wrap-->
 <div class="interactive-block-ui">
-<button class="btn btn-primary" data-wsurl="wss://s.devnet.rippletest.net:51233" id="connect-button">Connect to Devnet</button>
+<button class="btn btn-primary" data-wsurl="wss://s.altnet.rippletest.net:51233" id="connect-button">Connect to Testnet</button>
 <div>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
@@ -446,7 +445,7 @@
 <li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled current"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
 </div><!--/.breadcrumbs-wrap-->
 <div class="interactive-block-ui">
-<table class="wait-step table-responsive" data-explorerurl="https://devnet.xrpl.org">
+<table class="wait-step table-responsive" data-explorerurl="https://testnet.xrpl.org">
 <tr>
 <th>Transaction ID:</th>
 <td class="waiting-for-tx">(None)</td>
@@ -584,7 +583,7 @@
 <li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled current"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
 </div><!--/.breadcrumbs-wrap-->
 <div class="interactive-block-ui">
-<table class="wait-step table-responsive" data-explorerurl="https://devnet.xrpl.org">
+<table class="wait-step table-responsive" data-explorerurl="https://testnet.xrpl.org">
 <tr>
 <th>Transaction ID:</th>
 <td class="waiting-for-tx">(None)</td>

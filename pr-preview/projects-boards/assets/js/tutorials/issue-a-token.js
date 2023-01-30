@@ -14,8 +14,9 @@ function setup_2x_generate_step() {
     const faucet_url = $("#generate-2x-creds-button").data("fauceturl")
 
     try {
-      const data = await call_faucet(faucet_url)
-      const data2 = await call_faucet(faucet_url)
+      // destination not defined - API will create account.
+      const data = await call_faucet(faucet_url,undefined, event)
+      const data2 = await call_faucet(faucet_url, undefined, event)
 
       block.find(".loader").hide()
       block.find(".output-area").html(`<div class="row">

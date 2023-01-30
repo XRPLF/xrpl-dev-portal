@@ -290,7 +290,7 @@
     <div class="content">
         <h1 id="book_offers">book_offers<a aria-hidden="true" class="hover_anchor" href="#book_offers"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>book_offers</code> method retrieves a list of offers, also known as the <a class="external-link" href="http://www.investopedia.com/terms/o/order-book.asp" target="_blank">order book <i aria-hidden="true" class="fa fa-external-link"></i></a>, between two currencies.</p>
+<p>The <code>book_offers</code> method retrieves a list of <a href="offers.html">Offers</a> between two currencies, also known as an <em>order book</em>. The response omits <a href="offers.html#lifecycle-of-an-offer">unfunded Offers</a> and reports how much of each remaining Offer's total is currently funded.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
@@ -339,39 +339,46 @@ rippled<span class="w"> </span>book_offers<span class="w"> </span><span class="s
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Required?</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>limit</code></td>
-<td style="text-align: left;">Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>taker</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#addresses">Address</a> of an account to use as a perspective. <a href="offers.html#lifecycle-of-an-offer">Unfunded offers</a> placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.)</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>taker_gets</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">Specification of which currency the account taking the offer would receive, as an object with <code>currency</code> and <code>issuer</code> fields (omit issuer for XRP), like <a href="basic-data-types.html#specifying-currency-amounts">currency amounts</a>.</td>
+<td style="text-align: left;">Yes</td>
+<td>The asset the account taking the Offer would receive, as a <a href="currency-formats.html#specifying-without-amounts">currency without an amount</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>taker_pays</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">Specification of which currency the account taking the offer would pay, as an object with <code>currency</code> and <code>issuer</code> fields (omit issuer for XRP), like <a href="basic-data-types.html#specifying-currency-amounts">currency amounts</a>.</td>
+<td style="text-align: left;">Yes</td>
+<td>The asset the account taking the Offer would pay, as a <a href="currency-formats.html#specifying-without-amounts">currency without an amount</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_hash</code></td>
+<td style="text-align: left;"><a href="basic-data-types.html#hashes">Hash</a></td>
+<td style="text-align: left;">No</td>
+<td>A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_index</code></td>
+<td style="text-align: left;"><a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
+<td style="text-align: left;">No</td>
+<td>The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>limit</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">No</td>
+<td>The maximum number of Offers to return. The response may include fewer results.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>taker</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">No</td>
+<td>The <a href="basic-data-types.html#addresses">Address</a> of an account to use as a perspective. The response includes this account's Offers even if they are unfunded. (You can use this to see what Offers are above or below yours in the order book.)</td>
 </tr>
 </tbody>
 </table>
@@ -530,17 +537,17 @@ rippled<span class="w"> </span>book_offers<span class="w"> </span><span class="s
 <tbody>
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
-<td style="text-align: left;">Number - <a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
 <td style="text-align: left;"><em>(Omitted if <code>ledger_current_index</code> is provided)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the current in-progress ledger version, which was used to retrieve this information.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">Number - <a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
 <td style="text-align: left;"><em>(Omitted if <code>ledger_current_index</code> provided)</em> The ledger index of the ledger version that was used when retrieving this data, as requested.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String - <a href="basic-data-types.html#hashes">Hash</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#hashes">Hash</a></td>
 <td style="text-align: left;"><em>(May be omitted)</em> The identifying hash of the ledger version that was used when retrieving this data, as requested.</td>
 </tr>
 <tr>
@@ -567,13 +574,13 @@ rippled<span class="w"> </span>book_offers<span class="w"> </span><span class="s
 </tr>
 <tr>
 <td style="text-align: left;"><code>taker_gets_funded</code></td>
-<td style="text-align: left;">String (XRP) or Object (non-XRP)</td>
-<td style="text-align: left;">(Only included in partially-funded offers) The maximum amount of currency that the taker can get, given the funding status of the offer.</td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
+<td style="text-align: left;"><em>(Only included in partially-funded offers)</em> The maximum amount of currency that the taker can get, given the funding status of the offer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>taker_pays_funded</code></td>
-<td style="text-align: left;">String (XRP) or Object (non-XRP)</td>
-<td style="text-align: left;">(Only included in partially-funded offers) The maximum amount of currency that the taker would pay, given the funding status of the offer.</td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
+<td style="text-align: left;"><em>(Only included in partially-funded offers)</em> The maximum amount of currency that the taker would pay, given the funding status of the offer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>quality</code></td>

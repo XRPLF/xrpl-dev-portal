@@ -330,13 +330,13 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String - <a href="basic-data-types.html#hashes">Hash</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#hashes">Hash</a></td>
 <td style="text-align: left;">No</td>
 <td>A 20-byte hex string identifying the ledger version to use.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">Number - <a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
 <td style="text-align: left;">No</td>
 <td>The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
@@ -348,7 +348,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
-<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Number</td>
 <td style="text-align: left;">No</td>
 <td>Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). The default is the maximum.</td>
 </tr>
@@ -357,6 +357,12 @@
 <td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
 <td style="text-align: left;">No</td>
 <td>Value from a previous paginated response. Resume retrieving data where that response left off.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>type</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">No</td>
+<td>Filter results to a specific type of ledger entry. The valid types are: <code>account</code>, <code>amendments</code>, <code>amm</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>,  <code>check</code>, <code>deposit_preauth</code>, <code>directory</code>, <code>escrow</code>, <code>fee</code>, <code>hashes</code>, <code>nft_offer</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>state</code> (trust line), and <code>ticket</code>.</td>
 </tr>
 </tbody>
 </table>

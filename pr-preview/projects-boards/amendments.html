@@ -315,6 +315,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 <p>Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before it becomes permanently enabled.</p>
 <p>Amendments that have had their source code removed without being enabled are considered <strong>Vetoed</strong> by the network.</p>
 <h2 id="amendment-blocked-servers">Amendment Blocked Servers<a aria-hidden="true" class="hover_anchor" href="#amendment-blocked-servers"><i class="fa fa-link"></i></a></h2>
+<p><a id="amendment-blocked"></a></p>
 <p>Amendment blocking is a security feature to protect the accuracy of XRP Ledger data. When an amendment is enabled, servers running earlier versions of <code>rippled</code> without the amendment's source code no longer understand the rules of the network. Rather than guess and misinterpret ledger data, these servers become <strong>amendment blocked</strong> and can't:</p>
 <ul>
 <li>Determine the validity of a ledger.</li>
