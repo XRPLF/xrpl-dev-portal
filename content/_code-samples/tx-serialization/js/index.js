@@ -553,7 +553,10 @@ class TxSerializer {
 
         // Special case: convert from string to UInt16
         if (fieldName === "TransactionType") {
-            return idPrefix + this.txTypeToBytes(fieldValue)
+            const fieldBytes = this.txTypeToBytes(fieldValue)
+            logger(fieldName + ' : ' + fieldBytes)
+
+            return idPrefix + fieldBytes
         }
 
         const dispatch = {
@@ -571,9 +574,11 @@ class TxSerializer {
             "UInt32": this.uint32ToBytes.bind(this),
         }
 
-        const fieldBinary = dispatch[fieldType](fieldValue)
+        const fieldBytes = dispatch[fieldType](fieldValue)
 
-        return idPrefix.toString("hex") + fieldBinary
+        logger(fieldName + ' : ' + fieldBytes)
+
+        return idPrefix.toString("hex") + fieldBytes
     }
 
     /**
@@ -625,7 +630,6 @@ class TxSerializer {
 
                 const fieldValue = tx[fieldName]
                 const fieldBytes = this.fieldToBytes(fieldName, fieldValue)
-                logger(fieldName + ": " + fieldBytes)
                 fieldsAsBytes.push(fieldBytes)
             }
         }
