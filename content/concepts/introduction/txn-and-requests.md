@@ -35,7 +35,7 @@ Optional fields are available for all transactions, with additional fields avail
 
 You send the transaction to the ledger as a RESTful command from JavaScript, Python, the command line, or any compatible service. The rippled server proposes the transaction to the ledger. When 80% of the validators approve the transaction, it is recorded as part of the permanent ledger. The ledger returns the results of the transaction.
 
-For more information on Transactions, see [Transactions](../understanding-xrpl/transactions/transactions.md).
+For more information on Transactions, see [Transactions](transactions.html).
 
 ## How Do Requests Work?
 
@@ -52,7 +52,7 @@ This is a sample request in JSON format. This request gets the current account i
 }
 ```
 
-The request returns the information in a format appropriate for the language you used to make the request. Here is an example of the response for an account information request in JSON format.
+The request returns a wealth of information in a format appropriate for the language you used to make the request. Here is an example of the response for an account information request in JSON format.
 
 ```json
 {
@@ -99,3 +99,4 @@ The request returns the information in a format appropriate for the language you
     }
 }
 ```
+For information on the fields in an Account record, see [Accounts](accounts.html).
