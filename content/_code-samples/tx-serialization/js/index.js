@@ -576,7 +576,7 @@ class TxSerializer {
 
         const fieldBytes = dispatch[fieldType](fieldValue)
 
-        logger(fieldName + ' : ' + fieldBytes)
+        logger(fieldName + ': ' + fieldBytes)
 
         return idPrefix.toString("hex") + fieldBytes
     }
