@@ -59,7 +59,7 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 The serialization processes described here are implemented in multiple places and programming languages:
 
 - In C++ [in the `rippled` code base](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp).
-- In JavaScript in the [`ripple-binary-codec`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-binary-codec) package.
+- In JavaScript in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/).
 - In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/).
 
 Additionally, many [client libraries](client-libraries.html) provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.
