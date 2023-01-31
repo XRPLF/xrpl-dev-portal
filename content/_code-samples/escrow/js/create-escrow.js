@@ -7,6 +7,13 @@ if (typeof module !== "undefined") {
 const cc = require('five-bells-condition');
 const crypto = require('crypto');
 
+// Useful Documentation:- 
+// 1. five-bells-condition: https://www.npmjs.com/package/five-bells-condition
+// 2. Crypto module: https://nodejs.org/api/crypto.html
+
+// Your account seed value, for testing purposes you can generate using: https://xrpl.org/xrp-test-net-faucet.html
+const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy";
+
 const main = async () => {
   try {
 
@@ -23,12 +30,16 @@ const main = async () => {
     const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
     await client.connect();
 
-    // Get credentials from the Testnet Faucet ------------------------------------
-    console.log("Requesting an address from the Testnet faucet...");
-    const { wallet } = await client.fundWallet();
-    console.log("Wallet: ", wallet.address);
+    // Prepare wallet to sign the transaction -------------------------------------
+    const wallet = await xrpl.Wallet.fromSeed(seed);
+    console.log("Wallet Address: ", wallet.address);
+    console.log("Seed: ", seed);
 
-    const firstRippleEpoch = 946684800;
+    // Set the escrow finish time --------------------------------------------------
+    let finishAfter = new Date((new Date().getTime() / 1000) + 120); // 2 minutes from now
+    finishAfter = new Date(finishAfter * 1000);
+    console.log("This escrow will finish after: ", finishAfter);
+
     const escrowCreateTransaction = {
       "TransactionType": "EscrowCreate",
       "Account": wallet.address,
@@ -37,7 +48,7 @@ const main = async () => {
       "DestinationTag": 2023,
       "Condition": conditionHex,
       "Fee": "12",
-      "FinishAfter": Math.floor((new Date().getTime() / 1000) + 120) - firstRippleEpoch, // 2 minutes from now
+      "FinishAfter": xrpl.isoTimeToRippleTime(finishAfter.toISOString()), // Refer for more details: https://xrpl.org/basic-data-types.html#specifying-time
   };
 
     xrpl.validate(escrowCreateTransaction);

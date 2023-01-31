@@ -4,27 +4,43 @@ if (typeof module !== "undefined") {
   var xrpl = require('xrpl')
 }
 
+// Preqrequisites:
+// 1. Create an escrow using the create-escrow.js snippet
+// 2. Replace the OfferSequence with the sequence number of the escrow you created
+// 3. Replace the Condition and Fulfillment with the values from the escrow you created
+// 4. Paste the seed of the account that created the escrow
+// 5. Run the snippet
+
+const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy";
+const offerSequence = null;
+const condition = "";
+const fulfillment = "";
+
 const main = async () => {
   try {
     // Connect -------------------------------------------------------------------
     const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
     await client.connect();
     
-    // Get credentials from the Testnet Faucet ------------------------------------
-    console.log("Requesting an address from the Testnet faucet...");
-    const { wallet } = await client.fundWallet();
-    console.log("Wallet: ", wallet.address);
+    // Prepare wallet to sign the transaction -------------------------------------
+    const wallet = await xrpl.Wallet.fromSeed(seed);
+    console.log("Wallet Address: ", wallet.address);
+    console.log("Seed: ", seed);
+
+    if((!offerSequence)|| (condition === "" || fulfillment === "")){
+        throw new Error("Please specify the sequence number, condition and fulfillment of the escrow you created");
+    };
 
     const escrowFinishTransaction = {
         "Account": wallet.address,
         "TransactionType": "EscrowFinish",
         "Owner": wallet.address,
         // This should equal the sequence number of the escrow transaction
-        "OfferSequence": 7,
+        "OfferSequence": offerSequence,
         // Crypto condition that must be met before escrow can be completed, passed on escrow creation
-        "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100", 
+        "Condition": condition, 
         // Fulfillment of the condition, passed on escrow creation
-        "Fulfillment": "A0028000"
+        "Fulfillment": fulfillment,
     };
 
     xrpl.validate(escrowFinishTransaction);
