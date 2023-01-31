@@ -14,24 +14,27 @@ if (typeof module !== "undefined") {
     await client.connect()
   
     // Get account credentials from the Testnet Faucet
-    console.log("Requesting addresses from the Testnet faucet...")
+    console.log("Requesting an account from the Testnet faucet...")
     const { wallet, balance } = await client.fundWallet()
     
     console.log("\nAccount: ", wallet.address)
     console.log("   Seed: ", wallet.seed)
 
+    // This is a well known blackhole address
+    const blackhole_address = "rrrrrrrrrrrrrrrrrrrrBZbvji" 
+
     // Send AccountSet transaction 
     const SetRegularKey_tx = await client.autofill({
       "TransactionType": "SetRegularKey",
       "Account": wallet.address,
-      "RegularKey": "rrrrrrrrrrrrrrrrrrrrBZbvji" 
+      "RegularKey": blackhole_address
     })
   
     const SetRegularKey_tx_signed = wallet.sign(SetRegularKey_tx)  
     const SetRegularKey_tx_result = await client.submitAndWait(SetRegularKey_tx_signed.tx_blob)
 
-    console.log("\n            Transaction hash:", SetRegularKey_tx_signed.hash)
-    console.log(" SetRegularKey Submit result:", SetRegularKey_tx_result.result.meta.TransactionResult)
+    console.log(`\n Submitted a SetRegularKey transaction (Result: ${SetRegularKey_tx_result.result.meta.TransactionResult})`)
+    console.log(`                              Transaction hash: ${SetRegularKey_tx_signed.hash}`)
 
     // Send AccountSet transaction 
     const DisableMasterKey_tx = await client.autofill({
@@ -43,8 +46,8 @@ if (typeof module !== "undefined") {
     const DisableMasterKey_tx_signed = wallet.sign(DisableMasterKey_tx)
     const DisableMasterKey_tx_result = await client.submitAndWait(DisableMasterKey_tx_signed.tx_blob)
 
-    console.log("\n               Transaction hash:", DisableMasterKey_tx_signed.hash)
-    console.log(" DisableMasterKey Submit result:", DisableMasterKey_tx_result.result.meta.TransactionResult)
+    console.log(`\n Submitted a DisableMasterKey transaction (Result: ${DisableMasterKey_tx_result.result.meta.TransactionResult}`)
+    console.log(`                                 Transaction hash: ${DisableMasterKey_tx_signed.hash}`)
 
     const response = await client.request({
         "command": "account_info",
@@ -53,7 +56,7 @@ if (typeof module !== "undefined") {
     })
 
     if (response.result.account_data.Flags == 1114112) {
-        console.log(`\nAccount ${wallet.address}'s master key has been disabled, account is blackholed.`)
+        console.log(`\nAccount ${wallet.address}'s master key has been disabled, the account is now blackholed.`)
     } else {
         console.log(`\nAccount ${wallet.address}'s master key is still enabled, account is NOT blackholed.`)
     }
