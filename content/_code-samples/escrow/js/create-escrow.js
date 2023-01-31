@@ -28,8 +28,8 @@ if (typeof module !== "undefined") {
     // After the FinishAfter time has passed, you can claim the escrow and receive the funds
     // After the CancelAfter time has passed, you're unable to finish the Escrow but you're allowed to Cancel it
     // You could configure FinishAfter and CancelAfter to a different time but the FinishAfter field must always be sooner than the CancelAfter field
-    const CancelAfter = xrpl.isoTimeToRippleTime(date) + 25
-    const FinishAfter = xrpl.isoTimeToRippleTime(date) + 5
+    const CancelAfter = xrpl.isoTimeToRippleTime(date) + 120
+    const FinishAfter = xrpl.isoTimeToRippleTime(date) + 50
 
     // Construct EscrowCreate transaction
     const EscrowCreate_tx = await client.autofill({
