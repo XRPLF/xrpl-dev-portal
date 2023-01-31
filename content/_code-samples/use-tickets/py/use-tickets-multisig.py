@@ -54,6 +54,7 @@ tx_set_signer_list = SignerListSet(
 # if 3 of the signers sign a particular transaction, it's an authorized transaction on the XRPL
 
 # Sign transaction locally and submit
+print("Submitting a SignerListSet transaction to update our account to use our new Signers...")
 tx_set_signer_list_signed = safe_sign_and_submit_transaction(transaction=tx_set_signer_list, wallet=test_wallet, client=client)
 
 # Construct a TicketCreate transaction, 3 tickets will be created
