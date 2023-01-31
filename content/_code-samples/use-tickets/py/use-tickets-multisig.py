@@ -126,7 +126,7 @@ print(f"\n Account Set tx result: {result['engine_result']}"
 if result['engine_result'] == "tesSUCCESS":
     print("Multi-sig transaction using a Ticket was successful!")
 elif result == "terPRE_TICKET":
-    print("The provided Ticket Sequence does not exist in the ledger")
+    print(f"The provided Ticket Sequence {ticket_sequence} does not exist in the ledger")
 elif result == "tefMAX_LEDGER":
     print("Transaction failed to achieve consensus")
 elif result == "tefPAST_SEQ":
