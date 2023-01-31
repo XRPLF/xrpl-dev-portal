@@ -47,7 +47,7 @@ async function claimPayChannel(): Promise<void> {
   const accountObjects = (await client.request(accountObjectsRequest)).result
     .account_objects
 
-  console.log(accountObjects)
+  console.log("Account Objects:", accountObjects)
 
   // destination claims the Payment Channel and we see the balances to verify.
   const paymentChannelClaim: PaymentChannelClaim = {
