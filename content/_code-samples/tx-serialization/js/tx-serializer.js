@@ -273,7 +273,7 @@ class TxSerializer {
                 amount[1] |= (exponentByte & 0x03) << 6
             }
 
-            this._logger("Issued amount: " + amount.toString("hex"))
+            this._logger("Issued amount: " + amount.toString("hex").toUpperCase())
 
             const currencyCode = this.currencyCodeToBytes(value["currency"])
 
@@ -453,7 +453,7 @@ class TxSerializer {
             if (this.definitions["FIELDS"][fieldName]["isSerialized"]) {
                 const fieldValue = object[fieldName]
                 const fieldBytes = this.fieldToBytes(fieldName, fieldValue)
-                this._logger(fieldName + ": " + fieldBytes)
+                this._logger(fieldName + ": " + fieldBytes.toUpperCase())
                 fieldsAsBytes.push(fieldBytes)
             }
         }
@@ -484,7 +484,7 @@ class TxSerializer {
 
         for (let [key, path] of Object.entries(pathset)) {
             const pathBytes = this.pathToBytes(path)
-            this._logger("Path " + path + ": " + pathBytes)
+            this._logger("Path " + path + ": " + pathBytes.toUpperCase())
             pathsAsHexBytes += pathBytes
 
             if (parseInt(key) + 1 === pathset.length) {
@@ -585,12 +585,12 @@ class TxSerializer {
         this._logger("Serializing field " + fieldName + " of type " + fieldType)
 
         const idPrefix = this.fieldId(fieldName)
-        this._logger("ID Prefix is: " + idPrefix)
+        this._logger("ID Prefix is: " + idPrefix.toUpperCase())
 
         // Special case: convert from string to UInt16
         if (fieldName === "TransactionType") {
             const fieldBytes = this.txTypeToBytes(fieldValue)
-            this._logger(fieldName + ' : ' + fieldBytes)
+            this._logger(fieldName + ' : ' + fieldBytes.toUpperCase())
 
             return idPrefix + fieldBytes
         }
@@ -612,7 +612,7 @@ class TxSerializer {
 
         const fieldBytes = dispatch[fieldType](fieldValue)
 
-        this._logger(fieldName + ': ' + fieldBytes)
+        this._logger(fieldName + ': ' + fieldBytes.toUpperCase())
 
         return idPrefix.toString("hex") + fieldBytes
     }

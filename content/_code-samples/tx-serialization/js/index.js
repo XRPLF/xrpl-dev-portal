@@ -8,9 +8,16 @@ const TxSerializer = require('./tx-serializer') // Main serialization logic can 
 
 function main(rawJson, verbose) {
     const json = JSON.parse(rawJson)
-    const serializer = new TxSerializer(verbose)
-    const serializedTx = serializer.serializeTx(json)
+    console.log('\x1b[33m%s\x1b[0m', '\nXRPL Transaction Serialization Example')
+    console.log('\x1b[33m%s\x1b[0m', '--------------------------------------')
+    console.log('\x1b[37m%s\x1b[0m', '\nSerializing the following transaction:')
+    console.log(json)
+    if (verbose) console.log('')
 
+    const serializer = new TxSerializer(verbose)
+
+    const serializedTx = serializer.serializeTx(json)
+    console.log('\x1b[37m%s\x1b[0m', '\nSerialized Transaction:')
     console.log(serializedTx.toUpperCase())
 }
 
