@@ -59,7 +59,7 @@ tx_set_signer_list_signed = safe_sign_and_submit_transaction(transaction=tx_set_
 # Construct a TicketCreate transaction, 3 tickets will be created
 tx_create_ticket = TicketCreate(
     account=myAddr,
-    ticket_count=3
+    ticket_count=len(signers)
 )
 
 # Sign transaction locally and submit
