@@ -133,5 +133,4 @@ elif result == "tefPAST_SEQ":
     print("The sequence number is lower than the current sequence number of the account")
 elif result == "unknown":
     print("Transaction status unknown")
-else:
-    print(f"Transaction failed with code {result['engine_result']}")
+    print(f"The transaction's engine_result was {result['engine_result']}")
