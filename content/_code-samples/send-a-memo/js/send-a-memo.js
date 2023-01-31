@@ -2,7 +2,9 @@ if (typeof module !== "undefined") {
     // Use var here because const/let are block-scoped to the if statement.
     var xrpl = require('xrpl')
 }
-  // Validate and send a Memo
+  // Encode and send a Memo. 
+  // In general, Memo's can be added to any transaction, and are sometimes used to
+  // share extra information needed for a 3rd party integration.
   // https://xrpl.org/transaction-common-fields.html#memos-field
   
   async function main() {
