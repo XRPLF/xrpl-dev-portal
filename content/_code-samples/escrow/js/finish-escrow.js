@@ -12,82 +12,89 @@ if (typeof module !== "undefined") {
 
     seed = ""
 
-    // Connect to a testnet node
-    console.log("Connecting to Testnet...")
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
-    await client.connect()
+    if (seed != "") {
+        // Connect to a testnet node
+        console.log("Connecting to Testnet...")
+        const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+        await client.connect()
 
-    wallet = xrpl.Wallet.fromSeed(seed)
+        wallet = xrpl.Wallet.fromSeed(seed)
 
-    console.log(" Sending Account:", wallet.address)
-    console.log("            Seed:", wallet.seed)
+        console.log(" Sending Account:", wallet.address)
+        console.log("            Seed:", wallet.seed)
 
-    // Query the account's objects (Type: Escrow)
-    const response = await client.request({
-        "command": "account_objects",
-        "account": wallet.address,
-        "ledger_index": "validated",
-        "type": "escrow"
-    })
-
-    // Only append Escrows that were sent by this Account, outgoing Escrows are ignored since we have no authority to finish them
-    var outgoing = []
-    for (var i = 0; i < response.result.account_objects.length; i++) {
-        if (response.result.account_objects[i].Account == wallet.address) {
-            outgoing.push(response.result.account_objects[i])
-        }
-    }
-    // Get current datetime
-    const date = new Date();
-
-    // Only append outgoing Escrows that have passed their FinishAfter time
-    var outgoing_finishable = []
-    for (var i = 0; i < outgoing.length; i++) {
-        const FinishAfter_date = new Date(xrpl.rippleTimeToISOTime(outgoing[i].FinishAfter));
-        if (FinishAfter_date.getTime() <= date.getTime()) {
-            outgoing_finishable.push(outgoing[i])
-        }
-    }
-
-    if (outgoing_finishable.length != 0 ) {
-        console.log("\nOutgoing/Sent escrow(s) that have passed their FinishAfter time:")
-        for (var i = 0; i < outgoing_finishable.length; i++) {
-            console.log(`\n${i+1}. Index (ObjectID/keylet): ${outgoing_finishable[i].index}`)
-            console.log(` - Account: ${outgoing_finishable[i].Account})`)
-            console.log(` - Destination: ${outgoing_finishable[i].Destination}`)
-            console.log(` - Amount: ${outgoing_finishable[i].Amount} drops`)
-            console.log(` - PreviousTxnID: ${outgoing_finishable[i].PreviousTxnID}`)
-        }
-
-        console.log(`\nWe're going to finish Escrow ${outgoing_finishable[0].index} which was sending ${outgoing_finishable[0].Amount} drops to ${outgoing_finishable[0].Destination}`)
-     
-        // Get the transaction's sequence, this transaction created this Escrow
-        const get_escrow_seq = await client.request({
-            "command": "tx",
-            "transaction": outgoing_finishable[0].PreviousTxnID
+        // Query the account's objects (Type: Escrow)
+        const response = await client.request({
+            "command": "account_objects",
+            "account": wallet.address,
+            "ledger_index": "validated",
+            "type": "escrow"
         })
 
-        // Construct EscrowFinish transaction
-        const EscrowFinish_tx = await client.autofill({
-            "TransactionType": "EscrowFinish",
-            "Account": wallet.address,
-            "Owner": wallet.address,
-            "OfferSequence": get_escrow_seq.result.Sequence 
-        })
+        // Only append Escrows that were sent by this Account, outgoing Escrows are ignored since we have no authority to finish them
+        var outgoing = []
+        for (var i = 0; i < response.result.account_objects.length; i++) {
+            if (response.result.account_objects[i].Account == wallet.address) {
+                outgoing.push(response.result.account_objects[i])
+            }
+        }
+        // Get current datetime
+        const date = new Date();
 
-        const EscrowFinish_tx_signed = wallet.sign(EscrowFinish_tx)
+        // Only append outgoing Escrows that have passed their FinishAfter time
+        var outgoing_finishable = []
+        for (var i = 0; i < outgoing.length; i++) {
+            const FinishAfter_date = new Date(xrpl.rippleTimeToISOTime(outgoing[i].FinishAfter));
+            if (FinishAfter_date.getTime() <= date.getTime()) {
+                outgoing_finishable.push(outgoing[i])
+            } else if (FinishAfter_date.getTime() >= date.getTime()) {
+                console.log(`Escrow ${outgoing[i].index} has not passed its FinishAfter date, it will pass it in ${FinishAfter_date}`)
+            }
+        }
 
-        console.log("\n Transaction hash:", EscrowFinish_tx_signed.hash)
+        if (outgoing_finishable.length != 0 ) {
+            console.log("\nOutgoing/Sent escrow(s) that have passed their FinishAfter time:")
+            for (var i = 0; i < outgoing_finishable.length; i++) {
+                console.log(`\n${i+1}. Index (ObjectID/keylet): ${outgoing_finishable[i].index}`)
+                console.log(` - Account: ${outgoing_finishable[i].Account})`)
+                console.log(` - Destination: ${outgoing_finishable[i].Destination}`)
+                console.log(` - Amount: ${outgoing_finishable[i].Amount} drops`)
+                console.log(` - PreviousTxnID: ${outgoing_finishable[i].PreviousTxnID}`)
+            }
 
-        const EscrowFinish_tx_result = await client.submitAndWait(EscrowFinish_tx_signed.tx_blob)
+            console.log(`\nWe're going to finish Escrow ${outgoing_finishable[0].index} which was destined for ${outgoing_finishable[0].Destination} @ ${outgoing_finishable[0].Amount} drops...`)
         
-        console.log("\n Submit result:", EscrowFinish_tx_result.result.meta.TransactionResult)
-        console.log("    Tx content:", EscrowFinish_tx_result)
-    } else {
-        console.log(`\nThere are no Escrows that have pass their FinishAfter due date on account ${wallet.address}`)
-    }
+            // Get the transaction's sequence, this transaction created this Escrow
+            const get_escrow_seq = await client.request({
+                "command": "tx",
+                "transaction": outgoing_finishable[0].PreviousTxnID
+            })
 
-    client.disconnect()
+            // Construct EscrowFinish transaction
+            const EscrowFinish_tx = await client.autofill({
+                "TransactionType": "EscrowFinish",
+                "Account": wallet.address,
+                "Owner": wallet.address,
+                "OfferSequence": get_escrow_seq.result.Sequence 
+            })
+
+            const EscrowFinish_tx_signed = wallet.sign(EscrowFinish_tx)
+
+            console.log("\n Transaction hash:", EscrowFinish_tx_signed.hash)
+
+            const EscrowFinish_tx_result = await client.submitAndWait(EscrowFinish_tx_signed.tx_blob)
+            
+            console.log("\n Submit result:", EscrowFinish_tx_result.result.meta.TransactionResult)
+            console.log("    Tx content:", EscrowFinish_tx_result)
+        } else {
+        console.log(`\nThere are no Escrows that have pass their FinishAfter due date on account ${wallet.address}`)
+        }
+
+        client.disconnect()
+    } else {
+        console.log("Please edit this code to update variable 'seed' to an account with an incoming Escrow")
+        console.log("You can get this by running 'create-escrow.py' and copying the printed seed under 'Sending Account'.")
+    }
     // End main()
 }
 
