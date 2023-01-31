@@ -1,6 +1,6 @@
 ---
 html: clustering.html
-parent: xrpl-servers.html
+parent: rippled-servers.html
 blurb: Run rippled servers in a cluster to share the load of cryptography between them.
 labels:
   - Core Server
@@ -21,12 +21,6 @@ If you are running a validator as a [private peer](peer-protocol.html#private-pe
     - [Cluster `rippled` Servers](cluster-rippled-servers.html)
     - [Run rippled as a Validator](run-rippled-as-a-validator.html)
 - **References:**
-    - [peers method][]
-    - [connect method][]
+    - [peers method](peers.html)
+    - [connect method](connect.html)
     - [Peer Crawler](peer-crawler.html)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

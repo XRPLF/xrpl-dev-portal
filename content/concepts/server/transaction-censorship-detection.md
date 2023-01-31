@@ -1,17 +1,15 @@
 ---
 html: transaction-censorship-detection.html
-parent: xrpl-servers.html
+parent: rippled-servers.html
 blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
 labels:
   - Blockchain
 ---
 # Transaction Censorship Detection
 
-[New in: rippled 1.2.0][]
-
 The XRP Ledger is designed to be censorship resistant. In support of this design, the XRP Ledger provides an automated transaction censorship detector that is available on all `rippled` servers, enabling all participants to see if censorship is affecting the network.
 
-While a `rippled` server is in sync with the network, the detector tracks all transactions that should have been accepted in the last round of [consensus](intro-to-consensus.html) and included in the last validated ledger. The detector issues log messages of increasing severity when it sees transactions that have not been included in a validated ledger after several rounds of consensus.
+While a `rippled` server is in sync with the network, the detector tracks all transactions that should have been accepted in the last round of consensus and included in the last validated ledger. The detector issues log messages of increasing severity when it sees transactions that have not been included in a validated ledger after several rounds of consensus.
 
 
 
@@ -23,11 +21,11 @@ At a high-level, here’s how the transaction censorship detector works:
 
 2. At the close of the consensus round, the detector removes all transactions included in the resulting validated ledger from the tracker.
 
-3. The detector issues a [warning message](#example-warning-message) in the log for any transaction that remains in the tracker for 15 ledgers, surfacing it as a potentially censored transaction. The transaction's presence in the tracker at this time means that is has not been included in a validated ledger after 15 rounds of consensus. If the transaction remains in the tracker for another 15 ledgers, the detector issues another warning message in the log.
+3. The detector issues a warning message in the log for any transaction that remains in the tracker for 15 ledgers, surfacing it as a potentially censored transaction. The transaction's presence in the tracker at this time means that is has not been included in a validated ledger after 15 rounds of consensus. If the transaction remains in the tracker for another 15 ledgers, the detector issues another warning message in the log.
 
-    For as long as the transaction remains in the tracker, the detector continues to issue a warning message in the log every 15 ledgers, for up to five warning messages. After the fifth warning message, the detector issues a final [error message](#example-error-message) in the log and then stops issuing warning and error messages.
+    For as long as the transaction remains in the tracker, the detector continues to issue a warning message in the log every 15 ledgers, for up to five warning messages. After the fifth warning message, the detector issues a final error message in the log and then stops issuing warning and error messages.
 
-    If you see these messages in your `rippled` server log, you should investigate why other servers are failing to include the transaction, starting with the assumption that the cause is more likely to be a [false positive](#potential-false-positives) (innocent bug) than malicious censorship.
+    If you see these messages in your `rippled` server log, you should investigate why other servers are failing to include the transaction, starting with the assumption that the cause is more likely to be a false positive (innocent bug) than malicious censorship.
 
 
 
@@ -74,6 +72,3 @@ Here are some scenarios that could cause the detector to issue false positive me
     - [Understanding Log Messages](understanding-log-messages.html)
 - **References:**
     - [Transaction Results](transaction-results.html)
-
-
-{% include '_snippets/rippled_versions.md' %}

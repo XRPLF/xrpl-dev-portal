@@ -39,4 +39,5 @@ The EVM sidechain is directly connected to XRP Ledger through the XRP Ledger bri
 
 ## See Also
 
-[Get Started with EVM Sidechain](get-started-evm-sidechain.html)
+- **Tutorials:**
+    - [Get Started with EVM Sidechain](get-started-evm-sidechain.html)
