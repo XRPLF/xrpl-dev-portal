@@ -49,10 +49,9 @@ async function sendReliableTx(): Promise<void> {
   const { wallet: wallet2 } = await client.fundWallet();
 
   console.log("Balances of wallets before Payment tx");
-  console.log(
-    await client.getXrpBalance(wallet1.classicAddress),
-    await client.getXrpBalance(wallet2.classicAddress)
-  );
+
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getXrpBalance(wallet1.classicAddress)}XRP`);
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getXrpBalance(wallet2.classicAddress)}XRP`);
 
   // create a Payment tx and submit and wait for tx to be validated
   const payment: Payment = {
@@ -62,6 +61,7 @@ async function sendReliableTx(): Promise<void> {
     Destination: wallet2.classicAddress,
   };
 
+  console.log("Submitting a Payment transaction...")
   const paymentResponse = await client.submitAndWait(payment, {
     wallet: wallet1,
   });
@@ -74,10 +74,8 @@ async function sendReliableTx(): Promise<void> {
   console.log("Validated:", txResponse.result.validated);
 
   console.log("Balances of wallets after Payment tx:");
-  console.log(
-    await client.getXrpBalance(wallet1.classicAddress),
-    await client.getXrpBalance(wallet2.classicAddress)
-  );
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getXrpBalance(wallet1.classicAddress)}XRP`);
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getXrpBalance(wallet2.classicAddress)}XRP`);
 
   await client.disconnect();
 }

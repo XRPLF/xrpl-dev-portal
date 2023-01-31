@@ -1,11 +1,11 @@
+/*
+ * Use `SetRegularKey` to assign a key pair to a wallet and make a payment signed using the regular key wallet.
+ * Reference: https://xrpl.org/setregularkey.html
+ */
 import { Client, Payment, SetRegularKey } from 'xrpl'
 
 const client = new Client('wss://s.altnet.rippletest.net:51233')
 
-/*
- * The snippet walks us through an example usage of RegularKey.
- * Later,
- */
 async function setRegularKey(): Promise<void> {
   await client.connect()
   const { wallet: wallet1 } = await client.fundWallet()
@@ -13,8 +13,8 @@ async function setRegularKey(): Promise<void> {
   const { wallet: regularKeyWallet } = await client.fundWallet()
 
   console.log('Balances before payment')
-  console.log(await client.getXrpBalance(wallet1.classicAddress))
-  console.log(await client.getXrpBalance(wallet2.classicAddress))
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getXrpBalance(wallet1.classicAddress)}XRP`)
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getXrpBalance(wallet2.classicAddress)}XRP`)
 
   // assigns key-pair(regularKeyWallet) to wallet1 using `SetRegularKey`.
   const tx: SetRegularKey = {
@@ -22,6 +22,8 @@ async function setRegularKey(): Promise<void> {
     Account: wallet1.classicAddress,
     RegularKey: regularKeyWallet.classicAddress,
   }
+
+  console.log('Submitting a SetRegularKey transaction...')
   const response = await client.submitAndWait(tx, {
     wallet: wallet1,
   })
@@ -46,8 +48,8 @@ async function setRegularKey(): Promise<void> {
   console.log('Response for tx signed using Regular Key:')
   console.log(submitTx)
   console.log('Balances after payment:')
-  console.log(await client.getXrpBalance(wallet1.classicAddress))
-  console.log(await client.getXrpBalance(wallet2.classicAddress))
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getXrpBalance(wallet1.classicAddress)}XRP`)
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getXrpBalance(wallet2.classicAddress)}XRP`)
 
   await client.disconnect()
 }

@@ -1,3 +1,7 @@
+/*
+ * Create, claim and verify a Payment Channel.
+ * Reference: https://xrpl.org/paychannel.html 
+ */
 import {
   AccountObjectsRequest,
   Client,
@@ -19,8 +23,8 @@ async function claimPayChannel(): Promise<void> {
   const { wallet: wallet2 } = await client.fundWallet()
 
   console.log('Balances of wallets before Payment Channel is claimed:')
-  console.log(`Balance of ${wallet1.address} is ${await client.getXrpBalance(wallet1.address)} XRP)
-  console.log(`Balance of ${wallet2.address} is ${await client.getXrpBalance(wallet2.address)} XRP)
+  console.log(`Balance of ${wallet1.address} is ${await client.getXrpBalance(wallet1.address)} XRP`)
+  console.log(`Balance of ${wallet2.address} is ${await client.getXrpBalance(wallet2.address)} XRP`)
 
   // create a Payment Channel and submit and wait for tx to be validated
   const paymentChannelCreate: PaymentChannelCreate = {
@@ -31,11 +35,13 @@ async function claimPayChannel(): Promise<void> {
     SettleDelay: 86400,
     PublicKey: wallet1.publicKey,
   }
-
+  
+  console.log("Submitting a PaymentChannelCreate transaction...")
   const paymentChannelResponse = await client.submitAndWait(
     paymentChannelCreate,
     { wallet: wallet1 },
   )
+  console.log("PaymentChannelCreate transaction response:")
   console.log(paymentChannelResponse)
 
   // check that the object was actually created
@@ -61,14 +67,17 @@ async function claimPayChannel(): Promise<void> {
     Amount: '100',
   }
 
+  console.log("Submitting a PaymentChannelClaim transaction...")
+
   const channelClaimResponse = await client.submit(paymentChannelClaim, {
     wallet: wallet1,
   })
+  console.log("PaymentChannelClaim transaction response:")
   console.log(channelClaimResponse)
 
   console.log('Balances of wallets after Payment Channel is claimed:')
-  console.log(`Balance of ${wallet1.address} is ${await client.getXrpBalance(wallet1.address)} XRP)
-  console.log(`Balance of ${wallet2.address} is ${await client.getXrpBalance(wallet2.address)} XRP)
+  console.log(`Balance of ${wallet1.address} is ${await client.getXrpBalance(wallet1.address)} XRP`)
+  console.log(`Balance of ${wallet2.address} is ${await client.getXrpBalance(wallet2.address)} XRP`)
 
   await client.disconnect()
 }

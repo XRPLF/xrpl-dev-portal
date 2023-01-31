@@ -1,40 +1,82 @@
-
-import { Client, LedgerResponse, TxResponse } from 'xrpl'
+/*
+ * Create and submit a SignerListSet and multisign a transaction.
+ * Reference: https://xrpl.org/multi-signing.html
+*/
+import {
+  multisign,
+  Client,
+  AccountSet,
+  convertStringToHex,
+  SignerListSet,
+} from 'xrpl'
 
 const client = new Client('wss://s.altnet.rippletest.net:51233')
 
-async function getTransaction(): Promise<void> {
+async function multisigning(): Promise<void> {
   await client.connect()
-  const ledger: LedgerResponse = await client.request({
-    command: 'ledger',
-    transactions: true,
-    ledger_index: 'validated',
+  /*
+   * This wallet creation is for demonstration purposes.
+   * In practice, users generally will not have all keys in one spot,
+   * hence, users need to implement a way to get signatures.
+   */
+  const { wallet: wallet1 } = await client.fundWallet()
+  const { wallet: wallet2 } = await client.fundWallet()
+  const { wallet: walletMaster } = await client.fundWallet()
+  const signerListSet: SignerListSet = {
+    TransactionType: 'SignerListSet',
+    Account: walletMaster.classicAddress,
+    SignerEntries: [
+      {
+        SignerEntry: {
+          Account: wallet1.classicAddress,
+          SignerWeight: 1,
+        },
+      },
+      {
+        SignerEntry: {
+          Account: wallet2.classicAddress,
+          SignerWeight: 1,
+        },
+      },
+    ],
+    SignerQuorum: 2,
+  }
+
+  const signerListResponse = await client.submit(signerListSet, {
+    wallet: walletMaster,
   })
-  console.log(ledger)
+  console.log('SignerListSet constructed successfully:')
+  console.log(signerListResponse)
 
-  const transactions = ledger.result.ledger.transactions
-  if (transactions) {
-    const tx: TxResponse = await client.request({
-      command: 'tx',
-      transaction: transactions[0],
-    })
-    console.log(tx)
+  const accountSet: AccountSet = {
+    TransactionType: 'AccountSet',
+    Account: walletMaster.classicAddress,
+    Domain: convertStringToHex('example.com'),
+  }
+  const accountSetTx = await client.autofill(accountSet, 2)
+  console.log('AccountSet transaction is ready to be multisigned:')
+  console.log(accountSetTx)
+  const { tx_blob: tx_blob1 } = wallet1.sign(accountSetTx, true)
+  const { tx_blob: tx_blob2 } = wallet2.sign(accountSetTx, true)
+  const multisignedTx = multisign([tx_blob1, tx_blob2])
+  const submitResponse = await client.submit(multisignedTx)
 
-    // The meta field would be a string(hex) when the `binary` parameter is `true` for the `tx` request.
-    if (tx.result.meta == null) {
-      throw new Error('meta not included in the response')
+  if (submitResponse.result.engine_result === 'tesSUCCESS') {
+    console.log('The multisigned transaction was accepted by the ledger:')
+    console.log(submitResponse)
+    if (submitResponse.result.tx_json.Signers) {
+      console.log(
+        `The transaction had ${submitResponse.result.tx_json.Signers.length} signatures`,
+      )
     }
-    /*
-     * delivered_amount is the amount actually received by the destination account.
-     * Use this field to determine how much was delivered, regardless of whether the transaction is a partial payment.
-     * https://xrpl.org/transaction-metadata.html#delivered_amount
-     */
-    if (typeof tx.result.meta !== 'string') {
-      console.log('delivered_amount:', tx.result.meta.delivered_amount)
-    }
+  } else {
+    console.log(
+      "The multisigned transaction was rejected by rippled. Here's the response from rippled:",
+    )
+    console.log(submitResponse)
   }
 
   await client.disconnect()
 }
 
-void getTransaction()
+void multisigning()

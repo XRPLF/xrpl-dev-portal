@@ -3,6 +3,7 @@ import { Client, Payment, PaymentFlags, TrustSet } from 'xrpl'
 const client = new Client('wss://s.altnet.rippletest.net:51233')
 
 // This snippet walks us through partial payment.
+// Reference: https://xrpl.org/partial-payments.html
 async function partialPayment(): Promise<void> {
   await client.connect()
 
@@ -21,14 +22,18 @@ async function partialPayment(): Promise<void> {
       value: '10000000000',
     },
   }
+  console.log("Submitting a TrustSet transaction...")
 
-  await client.submitAndWait(trust_set_tx, {
+  const trust_set_res = await client.submitAndWait(trust_set_tx, {
     wallet: wallet2,
   })
 
+  console.log("TrustSet transaction response:")
+  console.log(trust_set_res)
+
   console.log('Balances after trustline is created')
-  console.log(await client.getBalances(wallet1.classicAddress))
-  console.log(await client.getBalances(wallet2.classicAddress))
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getBalances(wallet1.classicAddress)}`)
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getBalances(wallet2.classicAddress)}`)
 
   // Initially, the issuer(wallet1) sends an amount to the other account(wallet2)
   const issue_quantity = '3840'
@@ -47,11 +52,11 @@ async function partialPayment(): Promise<void> {
   const initialPayment = await client.submitAndWait(payment, {
     wallet: wallet1,
   })
-  console.log(initialPayment)
+  console.log("Initial payment response:", initialPayment)
 
   console.log('Balances after issuer(wallet1) sends IOU("FOO") to wallet2')
-  console.log(await client.getBalances(wallet1.classicAddress))
-  console.log(await client.getBalances(wallet2.classicAddress))
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getBalances(wallet1.classicAddress)}`)
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getBalances(wallet2.classicAddress)}`)
 
   /*
    * Send money less than the amount specified on 2 conditions:
@@ -75,16 +80,17 @@ async function partialPayment(): Promise<void> {
   }
 
   // submit payment
+  console.log("Submitting a Partial Payment transaction...")
   const submitResponse = await client.submitAndWait(partialPaymentTx, {
     wallet: wallet2,
   })
-  console.log(submitResponse)
+  console.log("Partial Payment response: ", submitResponse)
 
   console.log(
     "Balances after Partial Payment, when wallet2 tried to send 4000 FOO's",
   )
-  console.log(await client.getBalances(wallet1.classicAddress))
-  console.log(await client.getBalances(wallet2.classicAddress))
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getBalances(wallet1.classicAddress)}`)
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getBalances(wallet2.classicAddress)}`)
 
   await client.disconnect()
 }

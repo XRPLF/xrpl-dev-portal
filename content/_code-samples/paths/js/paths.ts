@@ -1,3 +1,7 @@
+/*
+ * Extract best paths from RipplePathFind to trade with and send a payment using paths.
+ * Reference: https://xrpl.org/paths.html
+ */
 import { Client, Payment, RipplePathFindResponse } from 'xrpl'
 
 const client = new Client('wss://s.altnet.rippletest.net:51233')
@@ -26,10 +30,10 @@ async function createTxWithPaths(): Promise<void> {
   }
 
   const resp: RipplePathFindResponse = await client.request(request)
-  console.log(resp)
+  console.log("Ripple Path Find response: ", resp)
 
   const paths = resp.result.alternatives[0].paths_computed
-  console.log(paths)
+  console.log("Computed paths: ", paths)
 
   const tx: Payment = {
     TransactionType: 'Payment',

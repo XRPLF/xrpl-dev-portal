@@ -24,6 +24,7 @@ if transactions:
     # Create a Transaction request and have the client call it
     tx_request = Tx(transaction=transactions[0])
     tx_response = client.request(tx_request)
+    print("First transaction in the ledger:")
     print(tx_response)
 else:
     print("No transactions were found on the ledger!")

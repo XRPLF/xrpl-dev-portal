@@ -1,4 +1,7 @@
-
+/*
+ * Retrieve and display a transaction on the ledger.
+ * Reference: https://xrpl.org/tx.html
+ */
 import { Client, LedgerResponse, TxResponse } from 'xrpl'
 
 const client = new Client('wss://s.altnet.rippletest.net:51233')
@@ -18,7 +21,8 @@ async function getTransaction(): Promise<void> {
       command: 'tx',
       transaction: transactions[0],
     })
-    console.log("Response from 'tx' request:", tx)
+    console.log("First transaction in the ledger:")
+    console.log(tx)
 
     // The meta field would be a string(hex) when the `binary` parameter is `true` for the `tx` request.
     if (tx.result.meta == null) {

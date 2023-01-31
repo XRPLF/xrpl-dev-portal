@@ -1,4 +1,8 @@
-"""Example of how we can multisign a transaction"""
+"""
+Example of how we can multisign a transaction.
+This will only work with version 2.0.0-beta.0 or later.
+Reference: https://xrpl.org/multi-signing.html
+"""
 from xrpl.clients import JsonRpcClient
 from xrpl.models.requests import SubmitMultisigned
 from xrpl.models.transactions import AccountSet, SignerEntry, SignerListSet
