@@ -23,7 +23,8 @@ if (typeof module !== "undefined") {
     // Enter memo data to insert into a transaction
     const MemoData = xrpl.convertStringToHex(string="Example Memo - 123 -=+");
     const MemoType = xrpl.convertStringToHex(string="Text");
-    const MemoFormat = xrpl.convertStringToHex(string="text/csv");
+    // MemoFormat values: # MemoFormat values: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+    const MemoFormat = xrpl.convertStringToHex(string="text/plain");
 
     // Send AccountSet transaction 
     const prepared = await client.autofill({
