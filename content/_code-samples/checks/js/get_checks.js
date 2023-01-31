@@ -1,7 +1,7 @@
 'use strict'
 const xrpl = require('xrpl');
 
-const address = "rEDvX5pbdgC7rYp2eHawTqr5smN7ikMB4r"; // <-- Change this to your account
+const address = "rEYyvXCwv1WJ6a8hW4sBx5afXbJTK97bbR"; // <-- Change this to your account
 
 const main = async () => {
   try {
