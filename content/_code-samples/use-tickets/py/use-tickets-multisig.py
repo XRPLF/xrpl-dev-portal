@@ -97,6 +97,8 @@ tx_1 = AccountSet(
 autofilled_account_set_tx = autofill(tx_1, client, len(signers))
 
 # Sign 'tx_1' using all the keys on signers[]
+# In a real app, you would share this transaction with key holders for them to sign
+# but since we own these accounts for test purposes, we can sign directly here.
 tx_result_1 = sign(transaction=autofilled_account_set_tx, wallet=signer_1_wallet, multisign=True)
 tx_result_2 = sign(transaction=autofilled_account_set_tx, wallet=signer_2_wallet, multisign=True)
 tx_result_3 = sign(transaction=autofilled_account_set_tx, wallet=signer_3_wallet, multisign=True)
