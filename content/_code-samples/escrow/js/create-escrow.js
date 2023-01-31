@@ -25,7 +25,6 @@ if (typeof module !== "undefined") {
     // Get current datetime
     const date = new Date();
 
-    // ISO8601 timestmap to a ripple timestamp.
     // After the FinishAfter time has passed, you are given 20 seconds to finish ('claim') the escrow
     // After the CancelAfter time has passed, you're unable to finish the Escrow but you're allowed to Cancel it
     // You could configure FinishAfter and CancelAfter to a different time but the FinishAfter field must always be sooner than the CancelAfter field
