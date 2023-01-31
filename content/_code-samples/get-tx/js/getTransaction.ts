@@ -10,7 +10,7 @@ async function getTransaction(): Promise<void> {
     transactions: true,
     ledger_index: 'validated',
   })
-  console.log(ledger)
+  console.log("Latest validated ledger:", ledger)
 
   const transactions = ledger.result.ledger.transactions
   if (transactions) {
