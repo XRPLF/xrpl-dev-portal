@@ -64,6 +64,7 @@ tx_create_ticket = TicketCreate(
 )
 
 # Sign transaction locally and submit
+print("Submitting a TicketCreate transaction to get Ticket Sequences for future transactions...")
 tx_create_ticket_signed = safe_sign_and_submit_transaction(transaction=tx_create_ticket, wallet=test_wallet, client=client)
 
 # Get a Ticket Sequence
