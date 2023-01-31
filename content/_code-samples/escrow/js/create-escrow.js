@@ -28,7 +28,7 @@ if (typeof module !== "undefined") {
     // ISO8601 timestmap to a ripple timestamp.
     // After the FinishAfter time has passed, you are given 20 seconds to finish ('claim') the escrow
     // After the CancelAfter time has passed, you're unable to finish the Escrow but you're allowed to Cancel it
-    // You could configure CancelAfter and FinishAfter to a different time but the CancelAfter field must always be sooner than the FinishAfter field
+    // You could configure FinishAfter and CancelAfter to a different time but the FinishAfter field must always be sooner than the CancelAfter field
     const CancelAfter = xrpl.isoTimeToRippleTime(date) + 25
     const FinishAfter = xrpl.isoTimeToRippleTime(date) + 5
 
