@@ -13,7 +13,9 @@ const main = async () => {
     let account_objects = [];
 
     // Loop through all account objects until marker is undefined --------------
-    while(currMarker !== 'undefined'){
+    let keepLooping = true;
+    
+    while(keepLooping){
 
         const payload = {
             "command": "account_objects",
@@ -27,9 +29,9 @@ const main = async () => {
         };
 
         let { result: { account_objects : checks, marker } } = await client.request(payload);
-
+        
         if (typeof marker === 'undefined' || marker === null || marker === currMarker) {
-            currMarker = 'undefined';
+            keepLooping = false;
         } else {
             currMarker =  marker;
         };
@@ -37,8 +39,12 @@ const main = async () => {
         account_objects.push(...checks);
     };
     
-    // Response: --------------------------------------------------------------
-    console.log("Final transaction result:", JSON.stringify(account_objects, null, "\t"));
+    // Print results ----------------------------------------------------------
+    if (account_objects.length === 0) {
+        console.log("No checks found.");
+    } else {
+      console.log("Checks: \n", JSON.stringify(account_objects, null, "\t"));
+    };
     await client.disconnect();
     
   } catch (error) {
