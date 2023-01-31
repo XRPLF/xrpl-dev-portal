@@ -59,7 +59,7 @@ if (typeof module !== "undefined") {
             console.log(` - PreviousTxnID: ${outgoing_finishable[i].PreviousTxnID}`)
         }
 
-        console.log(`\nWe're going to finish Escrow ${outgoing_finishable[0].index} which was destined for ${outgoing_finishable[0].Destination} @ ${outgoing_finishable[0].Amount} drops...`)
+        console.log(`\nWe're going to finish Escrow ${outgoing_finishable[0].index} which was sending ${outgoing_finishable[0].Amount} drops to ${outgoing_finishable[0].Destination}`)
      
         // Get the transaction's sequence, this transaction created this Escrow
         const get_escrow_seq = await client.request({
