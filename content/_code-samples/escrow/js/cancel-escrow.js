@@ -12,82 +12,89 @@ if (typeof module !== "undefined") {
 
     seed = ""
 
-    // Connect to a testnet node
-    console.log("Connecting to Testnet...")
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
-    await client.connect()
+    if (seed != "") {
+        // Connect to a testnet node
+        console.log("Connecting to Testnet...")
+        const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+        await client.connect()
 
-    wallet = xrpl.Wallet.fromSeed(seed)
+        wallet = xrpl.Wallet.fromSeed(seed)
 
-    console.log(" Sending Account:", wallet.address)
-    console.log("            Seed:", wallet.seed)
+        console.log(" Sending Account:", wallet.address)
+        console.log("            Seed:", wallet.seed)
 
-    // Query the account's objects (Type: Escrow)
-    const response = await client.request({
-        "command": "account_objects",
-        "account": wallet.address,
-        "ledger_index": "validated",
-        "type": "escrow"
-    })
-
-    // Only append Escrows that were sent by this Account, incoming Escrows are ignored since we have no authority to cancel them
-    var outgoing = []
-    for (var i = 0; i < response.result.account_objects.length; i++) {
-        if (response.result.account_objects[i].Account == wallet.address) {
-            outgoing.push(response.result.account_objects[i])
-        }
-    }
-
-    // Get current datetime
-    const date = new Date();
-
-    // Only append outgoing Escrows that have passed their CancelAfter time
-    var outgoing_cancelable = []
-    for (var i = 0; i < outgoing.length; i++) {
-        const CancelAfter_date = new Date(xrpl.rippleTimeToISOTime(outgoing[i].CancelAfter));
-        if (CancelAfter_date.getTime() <= date.getTime()) {
-            outgoing_cancelable.push(outgoing[i])
-        }
-    }
-    
-    if (outgoing_cancelable.length != 0 ) {
-        console.log("\nOutgoing/Sent escrow(s) that have passed their CancelAfter time:")
-        for (var i = 0; i < outgoing_cancelable.length; i++) {
-            console.log(`\n${i+1}. Index (ObjectID/keylet): ${outgoing_cancelable[i].index}`)
-            console.log(` - Account: ${outgoing_cancelable[i].Account})`)
-            console.log(` - Destination: ${outgoing_cancelable[i].Destination}`)
-            console.log(` - Amount: ${outgoing_cancelable[i].Amount} drops`)
-            console.log(` - PreviousTxnID: ${outgoing_cancelable[i].PreviousTxnID}`)
-        }
-
-        console.log(`\nWe're going to cancel Escrow ${outgoing_cancelable[0].index} which was sending ${outgoing_cancelable[0].Amount} drops to ${outgoing_cancelable[0].Destination}`)
-
-        // Get the transaction's sequence, this transaction created this Escrow
-        const get_escrow_seq = await client.request({
-            "command": "tx",
-            "transaction": outgoing_cancelable[0].PreviousTxnID
+        // Query the account's objects (Type: Escrow)
+        const response = await client.request({
+            "command": "account_objects",
+            "account": wallet.address,
+            "ledger_index": "validated",
+            "type": "escrow"
         })
 
-        // Construct EscrowCancel transaction
-        const EscrowCancel_tx = await client.autofill({
-            "TransactionType": "EscrowCancel",
-            "Account": wallet.address,
-            "Owner": wallet.address,
-            "OfferSequence": get_escrow_seq.result.Sequence 
-        })
+        // Only append Escrows that were sent by this Account, incoming Escrows are ignored since we have no authority to cancel them
+        var outgoing = []
+        for (var i = 0; i < response.result.account_objects.length; i++) {
+            if (response.result.account_objects[i].Account == wallet.address) {
+                outgoing.push(response.result.account_objects[i])
+            }
+        }
 
-        const EscrowCancel_tx_signed = wallet.sign(EscrowCancel_tx)
+        // Get current datetime
+        const date = new Date();
 
-        console.log("\n Transaction hash:", EscrowCancel_tx_signed.hash)
+        // Only append outgoing Escrows that have passed their CancelAfter time
+        var outgoing_cancelable = []
+        for (var i = 0; i < outgoing.length; i++) {
+            const CancelAfter_date = new Date(xrpl.rippleTimeToISOTime(outgoing[i].CancelAfter));
+            if (CancelAfter_date.getTime() <= date.getTime()) {
+                outgoing_cancelable.push(outgoing[i])
+            } else if (CancelAfter_date.getTime() >= date.getTime()) {
+                console.log(`Escrow ${outgoing[i].index} has not passed its CancelAfter date, it will pass it in ${CancelAfter_date}`)
+            }
+        }
+        
+        if (outgoing_cancelable.length != 0 ) {
+            console.log("\nOutgoing/Sent escrow(s) that have passed their CancelAfter time:")
+            for (var i = 0; i < outgoing_cancelable.length; i++) {
+                console.log(`\n${i+1}. Index (ObjectID/keylet): ${outgoing_cancelable[i].index}`)
+                console.log(` - Account: ${outgoing_cancelable[i].Account})`)
+                console.log(` - Destination: ${outgoing_cancelable[i].Destination}`)
+                console.log(` - Amount: ${outgoing_cancelable[i].Amount} drops`)
+                console.log(` - PreviousTxnID: ${outgoing_cancelable[i].PreviousTxnID}`)
+            }
 
-        const EscrowCancel_tx_result = await client.submitAndWait(EscrowCancel_tx_signed.tx_blob)
-        console.log("\n Submit result:", EscrowCancel_tx_result.result.meta.TransactionResult)
-        console.log("    Tx content:", EscrowCancel_tx_result)
+            console.log(`\nWe're going to cancel Escrow ${outgoing_cancelable[0].index} which was destined for ${outgoing_cancelable[0].Destination} @ ${outgoing_cancelable[0].Amount} drops...`)
+
+            // Get the transaction's sequence, this transaction created this Escrow
+            const get_escrow_seq = await client.request({
+                "command": "tx",
+                "transaction": outgoing_cancelable[0].PreviousTxnID
+            })
+
+            // Construct EscrowCancel transaction
+            const EscrowCancel_tx = await client.autofill({
+                "TransactionType": "EscrowCancel",
+                "Account": wallet.address,
+                "Owner": wallet.address,
+                "OfferSequence": get_escrow_seq.result.Sequence 
+            })
+
+            const EscrowCancel_tx_signed = wallet.sign(EscrowCancel_tx)
+
+            console.log("\n Transaction hash:", EscrowCancel_tx_signed.hash)
+
+            const EscrowCancel_tx_result = await client.submitAndWait(EscrowCancel_tx_signed.tx_blob)
+            console.log("\n Submit result:", EscrowCancel_tx_result.result.meta.TransactionResult)
+            console.log("    Tx content:", EscrowCancel_tx_result)
+        } else {
+            console.log(`\nThere are no Escrows that have pass their CancelAfter due date on account ${wallet.address}`)
+        }
+            
+        client.disconnect()
     } else {
-        console.log(`\nThere are no Escrows that have pass their CancelAfter due date on account ${wallet.address}`)
+        console.log("Please edit this code to update variable 'seed' to an account with an outgoing Escrow")
+        console.log("You can get this by running 'create-escrow.py' and copying the printed seed under 'Sending Account'.")
     }
-
-    client.disconnect()
     // End main()
 }
 
