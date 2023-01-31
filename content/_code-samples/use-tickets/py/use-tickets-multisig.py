@@ -5,9 +5,9 @@ from xrpl.models.requests.submit_multisigned import SubmitMultisigned
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.clients import JsonRpcClient
 
-# This code sample lists which tickets are outstanding against an account
-# and use the ticket for a multisignature transaction.
-# A funded account on the testnet is provided for testing purposes
+# This code sample shows how to use tickets with multisigning
+# to allow you to do a series of transactions in any order while you wait
+# for signers to come back with their signatures.
 # https://xrpl.org/tickets.html#tickets
 # https://xrpl.org/use-tickets.html
 # https://xrpl.org/set-up-multi-signing.html#set-up-multi-signing
