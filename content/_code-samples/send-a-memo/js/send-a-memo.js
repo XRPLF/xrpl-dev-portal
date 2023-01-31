@@ -1,7 +1,7 @@
 if (typeof module !== "undefined") {
     // Use var here because const/let are block-scoped to the if statement.
     var xrpl = require('xrpl')
-  }
+}
   // Validate and send a Memo
   // https://xrpl.org/transaction-common-fields.html#memos-field
   
