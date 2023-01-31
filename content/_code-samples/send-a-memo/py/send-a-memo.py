@@ -40,6 +40,7 @@ payment_tx = Payment(
 )
 
 # Sign the transaction
+print("Submitting a payment transaction with our memo...")
 payment_tx_signed = safe_sign_and_autofill_transaction(payment_tx, wallet=test_wallet, client=client)
 print(f"\n  Encoded Transaction MEMO: {payment_tx_signed.memos}")
 
