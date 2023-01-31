@@ -19,8 +19,8 @@ async function claimPayChannel(): Promise<void> {
   const { wallet: wallet2 } = await client.fundWallet()
 
   console.log('Balances of wallets before Payment Channel is claimed:')
-  console.log(await client.getXrpBalance(wallet1.classicAddress))
-  console.log(await client.getXrpBalance(wallet2.classicAddress))
+  console.log(`Balance of ${wallet1.address} is ${await client.getXrpBalance(wallet1.address)} XRP)
+  console.log(`Balance of ${wallet2.address} is ${await client.getXrpBalance(wallet2.address)} XRP)
 
   // create a Payment Channel and submit and wait for tx to be validated
   const paymentChannelCreate: PaymentChannelCreate = {
