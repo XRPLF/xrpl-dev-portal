@@ -3,8 +3,7 @@
 // Organize imports
 const fs = require("fs")
 const parseArgs = require('minimist')
-const TxSerializer = require('./tx-serializer') // Main serialization logic can be found in this file
-
+const TxSerializer = require('./tx-serializer')
 
 function main(rawJson, verbose) {
     const json = JSON.parse(rawJson)
@@ -37,7 +36,7 @@ const args = parseArgs(process.argv.slice(2), {
 let rawJson
 if (args.json) {
     rawJson = args.json
-    main(rawJson)
+    main(rawJson, args.verbose)
 } else if (args.stdin) {
     const stdin = process.openStdin();
 
@@ -48,7 +47,7 @@ if (args.json) {
     });
 
     stdin.on('end', function() {
-        main(data)
+        main(data, args.verbose)
     });
 } else {
     rawJson = fs.readFileSync(args.filename, 'utf8')

@@ -373,6 +373,11 @@ class TxSerializer {
      * @returns {string}
      */
     hash128ToBytes(contents) {
+        if (/^0+$/.exec(contents)) {
+            // Edge case, an all-zero bytes input returns an empty string
+            return ""
+        }
+
         const buffer = this.hashToBytes(contents)
         if(buffer.length !== 16) {
             // 16 bytes = 128 bits
@@ -585,11 +590,11 @@ class TxSerializer {
         this._logger("Serializing field " + fieldName + " of type " + fieldType)
 
         const idPrefix = this.fieldId(fieldName)
-        this._logger("ID Prefix is: " + idPrefix.toUpperCase())
 
         // Special case: convert from string to UInt16
         if (fieldName === "TransactionType") {
             const fieldBytes = this.txTypeToBytes(fieldValue)
+            this._logger("ID Prefix is: " + idPrefix.toUpperCase())
             this._logger(fieldName + ' : ' + fieldBytes.toUpperCase())
 
             return idPrefix + fieldBytes
@@ -612,6 +617,13 @@ class TxSerializer {
 
         const fieldBytes = dispatch[fieldType](fieldValue)
 
+        if (fieldBytes.length === 0) {
+            this._logger('Unset field: ' + fieldName)
+
+            return ''
+        }
+
+        this._logger("ID Prefix is: " + idPrefix.toUpperCase())
         this._logger(fieldName + ': ' + fieldBytes.toUpperCase())
 
         return idPrefix.toString("hex") + fieldBytes
