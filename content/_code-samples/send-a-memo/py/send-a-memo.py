@@ -16,14 +16,15 @@ print("Requesting an account from the Testnet faucet...")
 test_wallet = generate_faucet_wallet(client=client)
 myAddr = test_wallet.classic_address
 
-# Example: TEXT 321 -+=
-memo_data = input("Enter memo data to insert into a transaction: ")
-# Example: text
-memo_type = input("Enter memo type to insert into a transaction: ")
+memo_data = "Example Memo - 123 -=+"
+memo_type = "Text"
+memo_format = "text/plain"
 
 memo_data = memo_data.encode('utf-8').hex()
 memo_type = memo_type.encode('utf-8').hex()
-memo_format = "text/csv".encode('utf-8').hex()
+
+# MemoFormat values: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+memo_format = memo_format.encode('utf-8').hex()
 
 # Construct Payment transaction w/ memo field filled
 payment_tx = Payment(
