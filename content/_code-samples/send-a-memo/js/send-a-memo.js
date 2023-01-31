@@ -21,7 +21,7 @@ if (typeof module !== "undefined") {
     console.log("   Seed: ", wallet.seed)
 
     // Enter memo data to insert into a transaction
-    const MemoData = xrpl.convertStringToHex(string="TEXT 123 -=+");
+    const MemoData = xrpl.convertStringToHex(string="Example Memo - 123 -=+");
     const MemoType = xrpl.convertStringToHex(string="Text");
     const MemoFormat = xrpl.convertStringToHex(string="text/csv");
 
