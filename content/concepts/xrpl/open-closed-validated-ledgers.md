@@ -5,7 +5,6 @@ blurb: Ledger objects have one of three states — open, closed, or validated.
 labels:
   - Ledgers
 ---
-
 # Open, Closed, and Validated Ledgers
 
 The `rippled` server makes a distinction between ledger versions that are open, closed, and validated. A server has one open ledger, any number of closed but unvalidated ledgers, and an immutable history of validated ledgers.
@@ -27,7 +26,7 @@ An open ledger is only used as a temporary workspace. The temporary results migh
 
 ## See Also
 
-- For more information on how the XRP Ledger calculates unique close times for each ledger see [Ledger Close Times](ledger-close-times.html)
-
-- For more information about ledger headers, ledger object IDs, and ledger object types, see [Ledger Data Formats](ledger-data-formats.html)
-- For information on how servers track the history of changes to ledger state, see [Ledger History](ledger-history.html)
+- **Concepts:**
+    - [Ledger Close Times](ledger-close-times.html)
+    - [Ledger Data Formats](ledger-data-formats.html)
+    - [Ledger History](ledger-history.html)

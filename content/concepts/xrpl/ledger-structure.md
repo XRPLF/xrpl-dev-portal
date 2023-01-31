@@ -5,7 +5,6 @@ blurb: A closer look at the elements to be found in each XRP Ledger entry.
 labels:
   - Ledgers
 ---
-
 # XRP Ledger Structure
 
 The XRP Ledger is a block chain system, linking immutable data blocks in a meaningful sequence. This topic examines the data blocks that make up the XRPL block chain.
@@ -64,8 +63,3 @@ As its name might suggest, a ledger's state tree is a tree data structure. Each 
 **Tip:** Sometimes, an object in the ledger's state tree is called a _ledger node_. For example, transaction metadata returns a list of `AffectedNodes`. Do not confuse this with a _node_ (server) in the peer-to-peer network.
 
 In the case of transactions, the identifying hash is based on the signed transaction instructions. When you look up the transaction, its contents contain the results and metadata of the transaction, which are not taken into account when generating the hash.
-
-
-
-
-

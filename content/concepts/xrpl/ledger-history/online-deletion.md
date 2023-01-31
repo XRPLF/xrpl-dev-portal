@@ -7,9 +7,8 @@ labels:
   - Core Server
 ---
 # Online Deletion
-[[Source]<br/>](https://github.com/ripple/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp "Source")
 
-The online deletion feature lets the `rippled` server delete the server's local copy of old ledger versions to keep disk usage from rapidly growing over time. The default config file sets online deletion to run automatically, but online deletion can also be configured to run only when prompted. [New in: rippled 0.27.0][]
+The online deletion feature lets the `rippled` server delete the server's local copy of old ledger versions to keep disk usage from rapidly growing over time. The default config file sets online deletion to run automatically, but online deletion can also be configured to run only when prompted.
 
 The server always keeps the complete _current_ state of the ledger, with all the balances and settings it contains. The deleted data includes older transactions and versions of the ledger state that are older than the stored history.
 
@@ -20,7 +19,7 @@ The default config file sets the `rippled` server to keep the most recent 2000 l
 
 ## Background
 
-The `rippled` server stores [ledger history](ledger-history.html) in its _ledger store_. This data accumulates over time.
+The `rippled` server stores ledger history in its _ledger store_. This data accumulates over time.
 
 Inside the ledger store, ledger data is "de-duplicated". In other words, data that doesn't change from version to version is only stored once. The records themselves in the ledger store do not indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so the server cannot delete old data every time it closes a new ledger.
 
@@ -34,9 +33,9 @@ The online deletion settings configure how many ledger versions the `rippled` se
 
     If online deletion is delayed because the server is busy, ledger versions can continue to accumulate. When functioning normally, online deletion begins when the server has twice the configured number of ledger versions, but it may not complete until after several more ledger versions have accumulated.
 
-- If advisory deletion is enabled, the server stores all the ledger versions that it has acquired and built until its administrator calls the [can_delete method][].
+- If advisory deletion is enabled, the server stores all the ledger versions that it has acquired and built until its administrator calls the `can_delete` method.
 
-    The amount of data the server stores depends on how often you call [can_delete][can_delete method] and how big an interval of time your `online_delete` setting represents:
+    The amount of data the server stores depends on how often you call `can_delete` method and how big an interval of time your `online_delete` setting represents:
 
     - If you call `can_delete` _more often_ than your `online_delete` interval, the server stores **up to twice the `online_delete` number** of ledger versions. (After deletion, this is reduced to approximately the `online_delete` value.)
 
@@ -55,11 +54,11 @@ The server only counts validated ledger versions when deciding how far back it c
 
 ### Interrupting Online Deletion
 
-Online deletion automatically stops if the [server state](rippled-server-states.html) becomes less than `full`. If this happens, the server writes a log message with the prefix `SHAMapStore::WRN`. The server attempts to start online deletion again after the next validated ledger version after becoming fully synced.
+Online deletion automatically stops if the server state becomes less than `full`. If this happens, the server writes a log message with the prefix `SHAMapStore::WRN`. The server attempts to start online deletion again after the next validated ledger version after becoming fully synced.
 
 If you stop the server or it crashes while online deletion is running, online deletion resumes after the server is restarted and the server becomes fully synced.
 
-To temporarily disable online deletion, you can use the [can_delete method][] with an argument of `never`. This change persists until you re-enable online deletion by calling [can_delete][can_delete method] again. For more information on controlling when online deletion happens, see [Advisory Deletion](#advisory-deletion).
+To temporarily disable online deletion, you can use the `can_delete` method with an argument of `never`. This change persists until you re-enable online deletion by calling `can_delete` again.
 
 
 ## Configuration
@@ -68,7 +67,7 @@ The following settings relate to online deletion:
 
 - **`online_delete`** - Specify how many validated ledger versions to keep. The server periodically deletes any ledger versions that are older than this number. If not specified, no ledgers are deleted.
 
-    The default config file specifies 2000 for this value. This cannot be less than 256, because some events like [Fee Voting](fee-voting.html) and the [Amendment Process](amendments.html#amendment-process) update only every 256 ledgers.
+    The default config file specifies 2000 for this value. This cannot be less than 256, because some events like Fee Voting and the Amendment Process update only every 256 ledgers.
 
     **Caution:** If you run `rippled` with `online_delete` disabled, then later enable `online_delete` and restart the server, the server disregards but does not delete existing ledger history that your server already downloaded while `online_delete` was disabled. To save disk space, delete your existing history before re-starting the server after changing the `online_delete` setting.
 
@@ -98,7 +97,7 @@ For estimates of how much disk space is required to store different amounts of h
 
 ### Advisory Deletion
 
-The default config file schedules online deletion to happen automatically and periodically. If the config file does not specify an `online_delete` interval, online deletion does not occur. If config file enables the `advisory_delete` setting, online deletion only happens when an administrator triggers it using the [can_delete method][].
+The default config file schedules online deletion to happen automatically and periodically. If the config file does not specify an `online_delete` interval, online deletion does not occur. If config file enables the `advisory_delete` setting, online deletion only happens when an administrator triggers it using the `can_delete` method.
 
 You can use advisory deletion with a scheduled job to trigger automatic deletion based on clock time instead of the number of ledger versions closed. If your server is heavily used, the extra load from online deletion can cause your server to fall behind and temporarily de-sync from the consensus network. If this is the case, you can use advisory deletion and schedule online deletion to happen only during off-peak times.
 
@@ -117,25 +116,12 @@ When it comes time for online deletion, the server first walks through the oldes
 
 ## See Also
 
-- **Concepts:**
-    - [Ledgers](ledgers.html)
-    - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html)
-    - [Configure `rippled`](configure-rippled.html)
-        - [Configure Online Deletion](configure-online-deletion.html)
-        - [Configure Advisory Deletion](configure-advisory-deletion.html)
-        - [Configure History Sharding](configure-history-sharding.html)
-        - [Configure Full History](configure-full-history.html)
+    - [Configure Online Deletion](configure-online-deletion.html)
+    - [Configure Advisory Deletion](configure-advisory-deletion.html)
+    - [Configure History Sharding](configure-history-sharding.html)
+    - [Configure Full History](configure-full-history.html)
 - **References:**
-    - [ledger method][]
-    - [server_info method][]
-    - [ledger_request method][]
-    - [can_delete method][]
-    - [ledger_cleaner method][]
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [can_delete method](can_delete.html)
+    - [ledger_cleaner method](ledger_cleaner.html)

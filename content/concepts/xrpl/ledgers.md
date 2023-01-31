@@ -5,7 +5,6 @@ blurb: The XRP Ledger is a blockchain that records transactions of XRP and other
 labels:
   - Ledgers
 ---
-
 # Ledgers
 
 The XRP Ledger is a global distributed blockchain that is open to all. Individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The `rippled` server software accomplishes this by managing a ledger database that can only be updated according to very specific rules.
@@ -23,4 +22,3 @@ A single ledger version consists of three parts:
 * A **state tree** - All the ledger objects that contain the settings, balances, and objects in the ledger as of this version.
 
 See [Ledger Structure](ledger-structure.html) for a complete description of the elements of an XRP Ledger object.
-
