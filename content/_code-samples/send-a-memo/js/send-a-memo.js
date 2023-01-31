@@ -12,7 +12,7 @@ if (typeof module !== "undefined") {
     await client.connect()
   
     // Get account credentials from the Testnet Faucet
-    console.log("Requesting addresses from the Testnet faucet...")
+    console.log("Requesting an account from the Testnet faucet...")
     const { wallet, balance } = await client.fundWallet()
     
     console.log("Account: ", wallet.address)
