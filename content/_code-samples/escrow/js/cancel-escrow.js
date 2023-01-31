@@ -60,7 +60,7 @@ if (typeof module !== "undefined") {
             console.log(` - PreviousTxnID: ${outgoing_cancelable[i].PreviousTxnID}`)
         }
 
-        console.log(`\nWe're going to cancel Escrow ${outgoing_cancelable[0].index} which was destined for ${outgoing_cancelable[0].Destination} @ ${outgoing_cancelable[0].Amount} drops...`)
+        console.log(`\nWe're going to cancel Escrow ${outgoing_cancelable[0].index} which was sending ${outgoing_cancelable[0].Amount} drops to ${outgoing_cancelable[0].Destination}`)
 
         // Get the transaction's sequence, this transaction created this Escrow
         const get_escrow_seq = await client.request({
