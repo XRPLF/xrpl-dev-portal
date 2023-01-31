@@ -1,9 +1,9 @@
 'use strict'
 const xrpl = require('xrpl');
 
-const secret = "sEdTPPEeMH6SAgpo6rSj8YW7a9vFfUj";
-const checkId =  "505E0A4CCBCC971EE07DCD25611A612830CFFA4D50DBC04947EF952D898C94F3";
-const amount = "12";
+const secret = "sEdTPPEeMH6SAgpo6rSj8YW7a9vFfUj"; // TODO: Replace with your secret
+const checkId =  ""; // TODO: Replace with your check ID
+const amount = "12"; // TODO: Replace with the amount you want to cash
 
 const main = async () => {
     try {
@@ -11,10 +11,15 @@ const main = async () => {
         const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233");
         await client.connect();
 
-
         // Generate a wallet ------------------------------------------------------
         const wallet = await xrpl.Wallet.fromSeed(secret);
         console.log("Wallet address: ", wallet.address);
+
+        // Check if the check ID is provided --------------------------------------
+        if (checkId.length === 0) {
+            console.log("Please provide a check ID");
+            return;
+        }
 
         // Prepare the transaction ------------------------------------------------
         const transaction = {
