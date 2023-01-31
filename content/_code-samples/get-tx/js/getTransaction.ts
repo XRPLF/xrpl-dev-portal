@@ -18,7 +18,7 @@ async function getTransaction(): Promise<void> {
       command: 'tx',
       transaction: transactions[0],
     })
-    console.log(tx)
+    console.log("Response from 'tx' request:", tx)
 
     // The meta field would be a string(hex) when the `binary` parameter is `true` for the `tx` request.
     if (tx.result.meta == null) {
