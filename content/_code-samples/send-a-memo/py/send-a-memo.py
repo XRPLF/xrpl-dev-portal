@@ -12,7 +12,7 @@ JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 client = JsonRpcClient(JSON_RPC_URL)
 
 # Get account credentials from the Testnet Faucet
-print("Requesting account from the Testnet faucet...")
+print("Requesting an account from the Testnet faucet...")
 test_wallet = generate_faucet_wallet(client=client)
 myAddr = test_wallet.classic_address
 
