@@ -22,7 +22,6 @@ if (typeof module !== "undefined") {
         "type": "escrow"
     })
 
-    // Only append the NFTs' NFT ID onto the nft_keylets list, other fields aren't needed
     var incoming = []
     var outgoing = []
 
