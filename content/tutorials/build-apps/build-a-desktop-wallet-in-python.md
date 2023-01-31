@@ -17,7 +17,7 @@ To complete this tutorial, you should meet the following guidelines:
 
 - You have Python 3.7 or higher installed.
 - You are somewhat familiar with object-oriented programming in Python and have completed the [Get Started Using Python tutorial](get-started-using-python.html).
-- You have some understanding of what the XRP Ledger can do and of cryptocurrency in general. You don't need to be an expert.
+- You have some understanding of what the XRP Ledger can do and of cryptocurrency in general. (You do not need to be an expert.)
 
 ## Source Code
 
@@ -33,16 +33,17 @@ The exact look and feel of the user interface depend on your computer's operatin
 
 - Shows updates to the XRP Ledger in real-time.
 - Can view any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
-- Shows how much XRP is set aside for the account's [reserve requirement](reserves.html).
-- Can send [direct XRP payments](direct-xrp-payments.html), and provides feedback about the intended destination address, including:
-    - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
-    - If the address doesn't want to receive XRP ([DisallowXRP flag](become-an-xrp-ledger-gateway.html#disallow-xrp) enabled).
-    - If the address has a [verified domain name](https://xrpl.org/xrp-ledger-toml.html#account-verification) associated with it.
+- Shows how much XRP is set aside for the account's reserve requirement.
+- Can send direct XRP payments, and provides feedback about the intended destination address, including:
+    - Determine whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
+    - Determine whether the address does not want to receive XRP (DisallowXRP flag  enabled).
+    - Determine whether the address has a verified domain name associated with it.
 
-The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or use other [payment types](payment-types.html) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
+The application in this tutorial _does not_ have the ability to send or trade tokens or use other payment types like Escrow or Payment Channels. However, it provides a foundation  on top of which you can implement those and other features.
 
-In addition to the above features, you'll also learn a little bit about graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.
-
+<!-- I think the following sentence condescending. I would remove it.
+In addition to the above features, you will also learn a little bit about graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.
+ -->
 ## Steps
 
 ### Install Dependencies
@@ -70,6 +71,8 @@ On Windows, you can build apps using either Windows natively or by using the Win
 
 On native Windows, the GUI uses native Windows controls and should run without any dependencies beyond those mentioned above.
 
+<!-- Verify this. I also wonder how many users require these instructions. -->
+
 **Caution:** As of 2022-02-01, the latest wxPython is not compatible with Python 3.10 on Windows. You should be able to follow this tutorial if you downgrade to the latest release of Python 3.9.
 
 On WSL, you may need to install `libnotify-dev` as follows:
@@ -91,7 +94,7 @@ The first step is to build an app that combines the "hello world" equivalents fo
 
 {{ include_code("_code-samples/build-a-wallet/py/1_hello.py", language="py") }}
 
-When you run this script, it displays a single window that (hopefully) shows the latest validated ledger index on the XRP Ledger Testnet. It looks like this:
+When you run this script, it displays a single window that shows the latest validated ledger index on the XRP Ledger Testnet. It looks like this:
 
 ![Screenshot: Step 1, hello world equivalent](img/python-wallet-1.png)
 
@@ -185,7 +188,7 @@ In the `XRPLMonitorThread` class, rename and update the `watch_xrpl()` method as
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="async def watch_xrpl", end_before="async def on_connected") }}
 
-The newly renamed `watch_xrpl_account()` method now takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for [transaction stream messages](subscribe.html#transaction-streams). When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the [account_info method][]. When _that_ response arrives, the worker passes the account data to the GUI for display.
+The newly renamed `watch_xrpl_account()` method now takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for transaction stream messages. When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the [account_info method][]. When _that_ response arrives, the worker passes the account data to the GUI for display.
 
 Still in the `XRPLMonitorThread` class, update the `on_connected()` method as follows:
 
@@ -201,7 +204,7 @@ Update the `TWaXLFrame`'s constructor as follows:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def __init__(self, url, test_network=True):", end_before="def build_ui(self):") }}
 
-Now the constructor takes a boolean to indicate whether it's connecting to a test network. (If you provide a Mainnet URL, you should also pass `False`.) It uses this to encode and decode X-addresses and warn if they're intended for a different network. It also calls a new method, `prompt_for_account()` to get an address and wallet, and passes those to the renamed `watch_xrpl_account()` background job.
+Now the constructor takes a boolean to indicate whether it is connecting to a test network. (If you provide a Mainnet URL, you should also pass `False`.) It uses this to encode and decode X-addresses and warn if they are intended for a different network. It also calls a new method, `prompt_for_account()` to get an address and wallet, and passes those to the renamed `watch_xrpl_account()` background job.
 
 Update the `build_ui()` method definition as follows:
 
@@ -305,7 +308,7 @@ Add the following helper method to the `TWaXLFrame` class:
 
 {{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="def displayable_amount", end_before="def add_tx_row") }}
 
-This method takes a [currency amount](basic-data-types.html#specifying-currency-amounts) and converts it into a string for display to a human. Since it's used with the [`delivered_amount` field](transaction-metadata.html#delivered_amount) in particular, it also handles the special case for pre-2014 partial payments where the delivered amount is unavailable.
+This method takes a currency amount and converts it into a string for display to a human. Since it is used with the `delivered_amount` field in particular, it also handles the special case for pre-2014 partial payments where the delivered amount is unavailable.
 
 After that, add another helper method to the `TWaXLFrame` class:
 
@@ -356,7 +359,7 @@ Now, create a custom dialog for the user to input the necessary details for the 
 
 {{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="class SendXRPDialog", end_before="def on_to_edit") }}
 
-This subclass of [`wx.Dialog`](https://docs.wxpython.org/wx.Dialog.html) has several custom widgets, which are laid out using the `GridBagSizer` defined earlier. Notably, it has text boxes for the "To" address, the amount of XRP, and the [destination tag](source-and-destination-tags.html) to use, if any. (A destination tag is kind of like a phone extension for an XRP Ledger address: for addresses owned by individuals, you don't need it, but if the destination address has many users then you need to specify it so that the destination knows which recipient you intended. It's common to need a destination tag to deposit at a cryptocurrency exchange.) The dialog also has **OK** and **Cancel** buttons, which automatically function to cancel or complete the dialog, although the "OK" button is labeled "Send" instead to make it clearer what the app does when the user clicks it.
+This subclass of [`wx.Dialog`](https://docs.wxpython.org/wx.Dialog.html) has several custom widgets, which are laid out using the `GridBagSizer` defined earlier. Notably, it has text boxes for the "To" address, the amount of XRP, and the destination tag to use, if any. (A destination tag is kind of like a phone extension for an XRP Ledger address: for addresses owned by individuals, you don't need it, but if the destination address has many users then you need to specify it so that the destination knows which recipient you intended. It's common to need a destination tag to deposit at a cryptocurrency exchange.) The dialog also has **OK** and **Cancel** buttons, which automatically function to cancel or complete the dialog, although the "OK" button is labeled "Send" instead to make it clearer what the app does when the user clicks it.
 
 The `SendXRPDialog` constructor also binds two event handlers for when the user inputs text in the "to" and "destination tag" fields, so you need the definitions for those handlers to the same class. First, add `on_to_edit()`:
 
@@ -428,9 +431,9 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
     Save the classic address and seed somewhere.
 
-3. Open your wallet app and provide a **Secret** (seed) value from an already-funded address, such as one you got from the [Testnet Faucet](xrp-testnet-faucet.html).
+3. Open your wallet app and provide a **Secret** (seed) value from an already funded address, such as one you got from the Testnet Faucet.
 
-4. Send at least the [base reserve](reserves.html) (currently 10 XRP) to the brand-new classic address you generated in the Python interpreter.
+4. Send at least the base reserve (currently 10 XRP) to the brand-new classic address you generated in the Python interpreter.
 
 5. Wait for the transaction to be confirmed, then close your wallet app.
 
@@ -443,9 +446,9 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 **Full code for this step:** [`6_verification_and_polish.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/6_verification_and_polish.py)
 
-One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
+One of the biggest shortcomings of the wallet app from the previous step is that it does not provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
-One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](xrp-ledger-toml.html#account-verification). When an account's domain is verified, you could show it like this:
+One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called _account domain verification_. When an account's domain is verified, you could show it like this:
 
 ![Screenshot: domain verified destination](img/python-wallet-6.png)
 
@@ -551,8 +554,3 @@ Now that you have a functional wallet, you can take it in several new directions
 - Allow the user to trade in the [decentralized exchange](decentralized-exchange.html)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.
 - Support better account security including [regular key pairs](cryptographic-keys.html#regular-key-pair) or [multi-signing](multi-signing.html).
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
