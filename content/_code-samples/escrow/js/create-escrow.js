@@ -54,8 +54,9 @@ const main = async () => {
     xrpl.validate(escrowCreateTransaction);
 
     // Sign and submit the transaction --------------------------------------------
-    console.log('Signing and submitting the transaction:', JSON.stringify(escrowCreateTransaction, null,  "\t"));
+    console.log('Signing and submitting the transaction:', JSON.stringify(escrowCreateTransaction, null,  "\t"), "\n");
     const response  = await client.submitAndWait(escrowCreateTransaction, { wallet });
+    console.log(`Sequence number: ${response.result.Sequence}`);
     console.log(`Finished submitting! ${JSON.stringify(response.result, null, "\t")}`);
 
     await client.disconnect();
