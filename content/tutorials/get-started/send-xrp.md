@@ -417,3 +417,10 @@ After completing this tutorial, you may want to try the following:
 - Learn how [Transaction Metadata](transaction-metadata.html) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](payment-types.html) such as Escrows and Payment Channels.
 - Read best practices for [XRP Ledger Businesses](xrp-ledger-businesses.html).
+
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

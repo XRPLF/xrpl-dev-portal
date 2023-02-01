@@ -502,3 +502,10 @@ _Go_
     - [Transaction Types](transaction-types.html)
     - [Transaction Metadata](transaction-metadata.html) - Summary of the metadata format and fields that appear in metadata
     - [Transaction Results](transaction-results.html) - Tables of all possible result codes for transactions.
+
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

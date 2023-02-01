@@ -7,24 +7,24 @@ labels:
 ---
 # Set Up Multi-Signing
 
-[Multi-signing](multi-signing.html) is one of three ways to authorize [transactions](transaction-basics.html) for the XRP Ledger, alongside signing with [regular keys and master keys](cryptographic-keys.html). You can configure your [address](accounts.html) to allow any combination of the three methods to authorize transactions.
+Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with regular keys and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.
 
 This tutorial demonstrates how to enable multi-signing for an address.
 
 
 ## Prerequisites
 
-- You must have a funded XRP Ledger [address](accounts.html) with enough spare XRP to send transactions and meet the [reserve requirement](reserves.html) of a new signer list.
+- You must have a funded XRP Ledger account with enough spare XRP to send transactions and meet the reserve requirement of a new signer list.
 
-    - With the [MultiSignReserve amendment][] enabled, multi-signing requires 2 XRP for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
+    - Multi-signing requires 2 XRP for the account reserve, regardless of the number of signers and signatures you use.
 
-    - If you are on a test network that does not have the [MultiSignReserve amendment][] enabled, multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html), increasing with the number of signers in the list.
+    - If you are on a test network that does not have the [MultiSignReserve amendment][] enabled, multi-signing requires more than the usual amount of XRP for the account reserve, increasing with the number of signers in the list.
 
 - You must have access to a tool that can generate key pairs in the XRP Ledger format. If you are using a `rippled` server for this, you must have admin access because the [wallet_propose method][] is admin-only.
 
     - Alternatively, if you are authorizing others who already have XRP Ledger addresses to be signers for your address, you only need to know the account addresses of those people or entities.
 
-- Multi-signing must be available. (The MultiSign amendment has been enabled in the production XRP Ledger since **2016-06-27**.)
+- Multi-signing must be available.
 
 ## 1. Design Your Configuration
 
@@ -135,9 +135,9 @@ In this example, the signer list has 3 members, with the weights and quorum set 
        }
     }
 
-Make sure that the [Transaction Result](transaction-results.html) is [**`tesSUCCESS`**](tes-success.html). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers).
+Make sure that the transaction result is **`tesSUCCESS`**. Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers).
 
-**Note:** Without the [MultiSignReserve amendment][], the more members in the signer list, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [`tecINSUFFICIENT_RESERVE`](tec-codes.html). With the [MultiSignReserve amendment][] enabled, the XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves) is 5 XRP, regardless of the number of members in the signer list. See also: [Signer Lists and Reserves](signerlist.html#signer-lists-and-reserves).
+**Note:** Without the MultiSignReserve amendment, the more members in the signer list, the more XRP your address must have for purposes of the owner reserve. If your address does not have enough XRP, the transaction fails with `tecINSUFFICIENT_RESERVE`. With the MultiSignReserve amendment enabled, the XRP your address must have for purposes of the owner reserve is 5 XRP, regardless of the number of members in the signer list. See also: [Signer Lists and Reserves](signerlist.html#signer-lists-and-reserves).
 
 
 ## 4. Wait for validation

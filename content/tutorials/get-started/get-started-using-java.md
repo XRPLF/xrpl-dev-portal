@@ -219,3 +219,10 @@ Now that you know how to use `xrpl4j` to connect to the XRP Ledger, generate a w
 
 * [Send XRP](send-xrp.html).
 * [Set up secure signing](set-up-secure-signing.html) for your account.
+
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

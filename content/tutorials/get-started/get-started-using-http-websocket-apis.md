@@ -108,3 +108,9 @@ For a full list of API methods, see:
     - [Manage the rippled Server](manage-the-rippled-server.html)
 - **References:**
     - [rippled API Reference](http-websocket-apis.html)
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

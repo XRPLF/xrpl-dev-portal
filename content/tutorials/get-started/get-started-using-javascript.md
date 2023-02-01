@@ -166,3 +166,11 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, generate a 
     - [API Conventions](api-conventions.html)
         - [base58 Encodings](base58-encodings.html)
     - [Transaction Formats](transaction-formats.html)
+
+
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

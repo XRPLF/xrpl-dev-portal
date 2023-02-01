@@ -115,3 +115,10 @@ When you're ready to move on, continue using the XRP Ledger with these resources
 - [Understand the Concepts](concepts.html) behind the XRP Ledger's design.
 - [Install `rippled`](install-rippled.html) to participate in the network.
 - [Get Testnet XRP](xrp-testnet-faucet.html) to try sending and receiving payments.
+
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

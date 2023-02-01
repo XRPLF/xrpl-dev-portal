@@ -554,3 +554,10 @@ Now that you have a functional wallet, you can take it in several new directions
 - Allow the user to trade in the [decentralized exchange](decentralized-exchange.html)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.
 - Support better account security including [regular key pairs](cryptographic-keys.html#regular-key-pair) or [multi-signing](multi-signing.html).
+
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

@@ -8,7 +8,7 @@ labels:
 ---
 # Configure Advisory Deletion
 
-The default config file sets [`rippled`](xrpl-servers.html) to automatically delete outdated [history](ledger-history.html) of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact [server performance](capacity-planning.html).
+The default config file sets `rippled` to automatically delete outdated history of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact server performance.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ This tutorial assumes your server meets the following prerequisites:
 
 - You are on a supported operating system: Ubuntu Linux, Red Hat Enterprise Linux (RHEL), or CentOS.
 
-- The `rippled` server is already [installed](install-rippled.html) and [online deletion](online-deletion.html) is enabled.
+- The `rippled` server is already installed with online deletion enabled. See [Install rippled](install-rippled.html) and [online deletion](online-deletion.html)
 
     The default config file enables online deletion after 2000 ledger versions.
 
@@ -30,7 +30,9 @@ This tutorial assumes your server meets the following prerequisites:
 
 - Your server has enough disk space to store your chosen amount of history in its ledger store.
 
-    See [Capacity Planning](capacity-planning.html) for details of how much storage is required for different configurations. With advisory deletion enabled, the maximum history a server may accumulate before deletion is equal to the number of ledger versions configured in the `online_delete` setting **plus** the amount of time between online deletion prompts.
+    See [Capacity Planning](capacity-planning.html) for details of how much storage is required for different configurations.
+    
+With advisory deletion enabled, the maximum history a server can accumulate before deletion is equal to the number of ledger versions configured in the `online_delete` setting **plus** the amount of time between online deletion prompts.
 
 - You know which hours are least busy for your server.
 
@@ -52,7 +54,7 @@ To configure advisory deletion with a daily schedule, perform the following step
 
 2. Test running the [can_delete method][] to prompt the server to run online deletion.
 
-    You can use the [`rippled` commandline interface](get-started-using-http-websocket-apis.html#commandline) to run this command. For example:
+    You can use the `rippled` commandline interface to run this command. For example:
 
         $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
 
@@ -98,7 +100,7 @@ If online deletion does not seem to be running after configuring it, try the fol
 - Check that the user who configured the `cron` job has permissions to run the `rippled` server as a commandline client.
 - Check the syntax of your `cron` job and the time when it is supposed to run.
 - Check that the `rippled` executable is available at the path specified in your `cron` configuration. If necessary, specify the absolute path to the executable, such as `/opt/ripple/bin/rippled`.
-- Check your `rippled` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that [online deletion is being interrupted](online-deletion.html#interrupting-online-deletion) because your server fell out of sync with the network.
+- Check your `rippled` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that online deletion is being interrupted because your server fell out of sync with the network.
 
 ## See Also
 

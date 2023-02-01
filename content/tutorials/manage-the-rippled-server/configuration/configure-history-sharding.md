@@ -8,7 +8,7 @@ labels:
 ---
 # Configure History Sharding
 
-[History Sharding](history-sharding.html) lets servers contribute to preserving historical XRP Ledger data without each server needing to store the full history. By default, `rippled` servers do not store history shards.
+History Sharding lets servers contribute to preserving historical XRP Ledger data without each server needing to store the full history. By default, `rippled` servers do not store history shards.
 
 **Tip:** While both validator and tracking (or stock) `rippled` servers can be configured to store history shards, Ripple recommends _not_ configuring validator `rippled` servers to store shards, to reduce overhead on those servers. If you run a validator and want to contribute to storing XRP Ledger history, Ripple recommends you run a separate `rippled` server with history sharding enabled.
 
@@ -25,7 +25,7 @@ Before you configure your `rippled` server to store history shards, you must dec
 - The history shard store and the ledger store _MUST_ be stored at different file paths. You can configure the ledger store and history store to be on different disks or partitions if desired.
 - It is possible but redundant to hold full ledger history in both the ledger store and the history shard store.
 - The time to acquire a shard, number of file handles needed by the `rippled` server, and memory cache usage is directly affected by the size of the shard.
-- You can specify additional paths to store older history shards by providing a `[historical_shard_paths]` stanza. These paths may be on different, slower disks because they hold data that is used less often. The most recent two shards (the ones with the largest ledger indexes) are always stored in the path specified in the `[shard_db]` stanza. [New in: rippled 1.7.0][]
+- You can specify additional paths to store older history shards by providing a `[historical_shard_paths]` stanza. These paths may be on different, slower disks because they hold data that is used less often. The most recent two shards (the ones with the largest ledger indexes) are always stored in the path specified in the `[shard_db]` stanza.
 
 ## 2. Edit rippled.cfg
 
@@ -48,7 +48,7 @@ max_historical_shards=12
 /mnt/disk2
 ```
 
-The `type` field of `[shard_db]` can be omitted. If present, it _MUST_ be `NuDB`. [New in: rippled 1.3.1][]
+The `type` field of `[shard_db]` can be omitted. If present, it _MUST_ be `NuDB`.
 
 **Caution:** If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](server-wont-start.html). You should use a new folder for the shard store. If you previously used a RocksDB shard store (`rippled` 1.2.x and lower), use a different path or delete the RocksDB shard data.
 

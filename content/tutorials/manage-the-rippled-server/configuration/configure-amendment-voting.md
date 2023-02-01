@@ -8,7 +8,7 @@ labels:
 ---
 # Configure Amendment Voting
 
-Servers configured as validators can vote on [amendments](amendments.html) to the XRP Ledger protocol using the [feature method][]. (This method requires [admin access](get-started-using-http-websocket-apis.html#admin-access).)
+Servers configured as validators can vote on amendments to the XRP Ledger protocol using the [feature method][]. This method requires admin access.
 
 For example, to vote against the "SHAMapV2" amendment, run the following command:
 
@@ -47,7 +47,7 @@ rippled feature SHAMapV2 reject
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Note:** The short name of the amendment is case-sensitive. You can also use an amendment's ID as hexadecimal, which is not case sensitive.
+**Note:** The short name of the amendment is case sensitive. You can also use an amendment's ID as hexadecimal, which is not case sensitive.
 
 ## Using the Config File
 
