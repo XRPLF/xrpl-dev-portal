@@ -9,9 +9,9 @@ labels:
 ---
 # Connect Your rippled to a Parallel Network
 
-Various [alternative test and development networks](parallel-networks.html) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](xrpl-servers.html) to any of these test networks.
+Various alternative test and development networks exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your `rippled` server to any of these test networks.
 
-**Caution:** On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See the [Parallel Networks Page](parallel-networks.html) for information on what code version each network needs.
+**Caution:** On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See [Parallel Networks](parallel-networks.html) for information on what code version each network requires.
 
 ## Steps
 

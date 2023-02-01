@@ -8,16 +8,15 @@ labels:
 ---
 # Assign a Regular Key Pair
 
-The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](cryptographic-keys.html)_, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your [account](accounts.html) and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)
+The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](cryptographic-keys.html)_, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your account and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)
 
 For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
 This tutorial walks through the steps required to assign a regular key pair to your account:
 
-1. [Generate a key pair](#1-generate-a-key-pair)
-2. [Assign the key pair to your account as a regular key pair](#2-assign-the-key-pair-to-your-account-as-a-regular-key-pair)
-3. [Verify the regular key pair](#3-verify-the-regular-key-pair)
-4. [Explore next steps](#see-also)
+1. Generate a Key Pair
+2. Assign the Key Pair to Your Account as a Regular Key Pair
+3. Verify the Regular Key Pair
 
 
 ## 1. Generate a Key Pair
@@ -703,11 +702,7 @@ Now that you're familiar with the benefits of assigning a regular key pair to an
     - [SetRegularKey transaction][]
     - [AccountRoot object](accountroot.html) where the regular key is stored in the field `RegularKey`
 
-
-
-
-
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

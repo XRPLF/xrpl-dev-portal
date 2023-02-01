@@ -11,16 +11,18 @@ The following procedure demonstrates how to create, sign, and submit a multi-sig
 
 ## Prerequisites
 
-- You must have already [set up multi-signing](set-up-multi-signing.html) for your address.
+- You must have already for your address.
 
-- Multi-signing must be available. Multi-signing has been enabled by an [**Amendment**](amendments.html) to the XRP Ledger Consensus Protocol since 2016-06-27.
+- Multi-signing must be available.
+
+See [set up multi-signing](set-up-multi-signing.html).
 
 
 ## 1. Create the transaction
 
 Create a JSON object that represents the transaction you want to submit. You have to specify _everything_ about this transaction, including `Fee` and `Sequence`. Also include the field `SigningPubKey` as an empty string, to indicate that the transaction is multi-signed.
 
-Keep in mind that the `Fee` for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be at least (N+1) times the normal [transaction cost](transaction-cost.html), where N is the number of signatures you plan to provide. Since it sometimes takes a while to collect signatures from multiple sources, you may want to specify more than the current minimum, in case the [transaction cost](transaction-cost.html) increases in that time.
+Keep in mind that the `Fee` for multi-signed transactions is significantly higher than for regularly signed transactions. It should be at least (N+1) times the normal transaction cost, where N is the number of signatures you plan to provide. Since it sometimes takes a while to collect signatures from multiple sources, you may want to specify more than the current minimum, in case the transaction cost increases in that time. See [transaction cost](transaction-cost.html).
 
 Here's an example transaction ready to be multi-signed:
 

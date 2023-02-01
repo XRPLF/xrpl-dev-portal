@@ -9,9 +9,9 @@ labels:
 ---
 # Get Started
 
-The XRP Ledger is always online and entirely public. Anyone can access it **directly from a web browser** with source code like what's on this page.
+The XRP Ledger is always online and entirely public. Anyone can access it directly from a web browser with source code like the code shown on this page.
 
-The following example gets the latest [ledger version](ledgers.html) and a list of transactions that were newly-validated in that ledger version, using the [ledger method][]. Try running it as-is, or change the code and see what happens.
+The following example gets the latest ledger version and a list of transactions that were newly validated in that ledger version, using the [ledger method][]. Try running it as is, or change the code and see what happens.
 
 **Tip:** If you can, open your browser's Developer Tools by pressing **F12**. The "Console" tab provides a native JavaScript console and can give insight into what code is running on any webpage. <!-- SPELLING_IGNORE: f12 -->
 
@@ -100,7 +100,7 @@ Try editing the code above to do something different:
 
 ## Setup Steps
 
-This page has the necessary prerequisites already loaded, but you can access the XRP Ledger from **any webpage** if you load [xrpl.js](https://github.com/XRPLF/xrpl.js/) in that page's HTML. For example:
+This page has the necessary prerequisites already loaded, but you can access the XRP Ledger from any webpage if you load [xrpl.js](https://github.com/XRPLF/xrpl.js/) in that page's HTML. For example:
 
 ```html
 <script src="https://unpkg.com/xrpl@2.0.0/build/xrpl-latest-min.js"></script>
@@ -116,7 +116,9 @@ When you're ready to move on, continue using the XRP Ledger with these resources
 - [Install `rippled`](install-rippled.html) to participate in the network.
 - [Get Testnet XRP](xrp-testnet-faucet.html) to try sending and receiving payments.
 
+
+
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

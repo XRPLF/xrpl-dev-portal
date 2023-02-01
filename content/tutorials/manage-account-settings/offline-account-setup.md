@@ -8,7 +8,7 @@ labels:
 ---
 # Offline Account Setup Tutorial
 
-A highly secure [signing configuration](set-up-secure-signing.html) involves keeping an XRP Ledger [account](accounts.html)'s [cryptographic keys](cryptographic-keys.html) securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.
+A highly secure signing configuration involves keeping an XRP Ledger account's cryptographic keys securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.
 
 **Caution:** Proper operational security is necessary to protect your offline machine. For example, the offline machine must be physically located where untrusted people cannot get access to it, and trusted operators must be careful not to transfer compromised software onto the machine. (For example, do not use a USB drive that was previously attached to a network-connected computer.)
 
@@ -16,8 +16,8 @@ A highly secure [signing configuration](set-up-secure-signing.html) involves kee
 
 To use offline signing, you must meet the following prerequisites:
 
-- You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](system-requirements.html). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
-- You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive accurate information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](get-started-using-http-websocket-apis.html).
+- You must have one computer to use as an offline machine. This machine must be set up with a supported operating system. See [System Requirements](system-requirements.html), and your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
+- You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive accurate information about the state of the shared ledger. For example, you can use a WebSocket connection to a public server. See [Get Started Using HTTP WebSocket APIs](get-started-using-http-websocket-apis.html).
 - You must have a secure way to transfer signed transaction binary data from the offline machine to the online machine.
     - One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)
     - Another way is to copy files from the offline machine to an online machine using physical media. If you use this method, be sure not to use physical media that could infect your offline machine with malicious software. (For example, do not reuse the same USB drive on both online and offline machines.)
@@ -30,7 +30,7 @@ To use offline signing, you must meet the following prerequisites:
 
 ### {{n.next()}}. Set up offline machine
 
-The offline machine needs secure persistent storage (for example, an encrypted disk drive) and a way to [sign transactions](set-up-secure-signing.html). For an offline machine, you typically use physical media to transfer any necessary software after downloading it from an online machine. You must be sure that the online machine, the physical media, and the software itself are not infected with malware.
+The offline machine needs secure persistent storage (for example, an encrypted disk drive) and a way to sign transactions. For an offline machine, you typically use physical media to transfer any necessary software after downloading it from an online machine. You must be sure that the online machine, the physical media, and the software itself are not infected with malware.
 
 Software options for signing on the XRP Ledger include:
 

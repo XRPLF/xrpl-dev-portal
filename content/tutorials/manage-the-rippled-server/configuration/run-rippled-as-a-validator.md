@@ -10,22 +10,21 @@ top_nav_name: Join UNL
 ---
 # Run rippled as a Validator
 
-A [`rippled` server](xrpl-servers.html) running in [validator mode](rippled-server-modes.html) does everything a stock server does:
+A `rippled` server running in validator mode does everything a stock server does:
 
-- Connects to a [network of peers](consensus-network.html)
+- Connects to a network of peers
 
-- Relays cryptographically signed [transactions](transaction-basics.html)
+- Relays cryptographically signed transactions
 
-- Maintains a local copy of the complete shared global [ledger](ledgers.html)
+- Maintains a local copy of the complete shared global ledger
 
-What makes a validator _different_ is that it also issues validation messages, which are sets of candidate transactions for evaluation by the XRP Ledger network during the [consensus process](consensus-principles-and-rules.html#how-consensus-works).
+What makes a validator _different_ is that it also issues validation messages, which are sets of candidate transactions for evaluation by the XRP Ledger network during the consensus process.
 
 Issuing validation messages does not automatically give your validator a say in the consensus process, so the system is not vulnerable to a [Sybil attack](https://en.wikipedia.org/wiki/Sybil_attack). Other servers ignore your validation messages unless they add your validator to their Unique Node List (UNL). If your validator is included in a UNL, it is a _trusted_ validator and its proposals are considered in the consensus process by the servers that trust it.
 
-Even if your validator isn't a _trusted_ validator, it stills plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.
+Even if your validator isn't a _trusted_ validator, it still plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.
 
 **Warning:** Validators should not be accessible to the public. Do not allow public WebSocket access to your validator server or any other form of public access.
-
 
 
 ## 1. Understand the traits of a good validator
@@ -38,17 +37,17 @@ Strive to have your validator always embody the following properties. Being a go
 
 - **In agreement**
 
-    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/XRPLF/rippled/tree/release) without modifications. [Watch `rippled` releases](https://github.com/XRPLF/rippled/releases) and subscribe to the [Google Group](https://groups.google.com/g/ripple-server) to be notified of new releases.
+    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the latest `rippled` release without modifications. Watch [`rippled` releases](https://github.com/XRPLF/rippled/releases) and subscribe to the [Google Group](https://groups.google.com/g/ripple-server) to be notified of new releases.
 
 - **Issuing timely votes**
 
-    A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes timely, make sure your validator meets the recommended [system requirements](system-requirements.html), which include a fast internet connection.
+    A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes timely, make sure your validator meets the recommended system requirements, which include a fast internet connection. See [system requirements](system-requirements.html).
 
     It is possible to submit new transactions and query data using a validator, but heavy loads of API queries may make the validator less reliable at keeping up with consensus. If your API needs are light enough, then you can use a server for both purposes. Ideally, a validator should be dedicated to participating in consensus.
 
 - **Identified**
 
-    A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
+    A good validator has a clearly identified owner. Providing domain verification is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
 
 It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt).
 
@@ -57,7 +56,6 @@ It is strongly recommended that operators use the list providers that are presen
 ## 2. Install a `rippled` server
 
 For more information, see [Install `rippled`](install-rippled.html).
-
 
 
 ## 3. Enable validation on your `rippled` server
@@ -134,33 +132,39 @@ On your validator:
 
 This section describes three different configurations you can use to connect your validator to the XRP Ledger network. Use the configuration that best suits your use case.
 
-- [Discovered peers](#connect-using-discovered-peers): Connect to any servers in the peer-to-peer network.
+- Discovered peers: Connect to any servers in the peer-to-peer network.
 
-- [Proxies](#connect-using-proxies): Run stock `rippled` servers as proxies between your validator and the rest of the peer-to-peer network.
+- Proxies: Run stock `rippled` servers as proxies between your validator and the rest of the peer-to-peer network.
 
-- [Public hubs](#connect-using-public-hubs): Connect only to specific public servers with a high reputation.
+- Public hubs: Connect only to specific public servers with a high reputation.
 
 For a comparison of these approaches, see [Pros and Cons of Peering Configurations](peer-protocol.html#pros-and-cons-of-peering-configurations).
 
 
 ### Connect using discovered peers
 
-This configuration connects your validator to the XRP Ledger network using [discovered peers](peer-protocol.html#peer-discovery). This is the default behavior for `rippled` servers.
+This configuration connects your validator to the XRP Ledger network using discovered peers. This is the default behavior for `rippled` servers.
 
 _**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `rippled.cfg` file. The [example `rippled.cfg` file](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) is delivered with this configuration.
+
+See [Peer Discovery](peer-protocol.html#peer-discovery).
 
 
 ### Connect using proxies
 
 This configuration connects your validator to the network through stock `rippled` servers that you run yourself. These proxy servers sit between your validator and inbound and outbound network traffic.
 
+<!-- not sure why we're using this heading type - haven't seen it anywhere else, so far-->
+
 _**To connect your validator to the XRP Ledger network using proxies:**_
 
 1. Set up stock `rippled` servers. For more information, see [Install rippled](install-rippled.html).
 
-2. Configure your validator and stock `rippled` servers to run in a [cluster](cluster-rippled-servers.html).
+2. Configure your validator and stock `rippled` servers to run in a cluster. See [Cluster rippled Servers](cluster-rippled-servers.html).
 
-3. In your validator's `rippled.cfg` file, set `[peer_private]` to `1`. This prevents your validator's IP address from being forwarded. For more information, see [Private Peers](peer-protocol.html#private-peers). It also prevents your validator from connecting to servers other than those defined in the `[ips_fixed]` stanza you defined to run your validator in a cluster.
+3. In your validator's `rippled.cfg` file, set `[peer_private]` to `1`. This prevents your validator's IP address from being forwarded. For more information, see [Private Peers](peer-protocol.html#private-peers).
+
+It also prevents your validator from connecting to servers other than those defined in the `[ips_fixed]` stanza you defined to run your validator in a cluster.
 
     **Warning:** Be sure that you don't publish your validator's IP address in other ways.
 
@@ -183,7 +187,7 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 
 ### Connect using public hubs
 
-This configuration connects your validator to the network using three [public hubs](rippled-server-modes.html#public-hubs). This configuration is similar to [connecting using proxies you run yourself](#connect-using-proxies), but instead you connect through public hubs.
+This configuration connects your validator to the network using three [public hubs](rippled-server-modes.html#public-hubs). This configuration is similar to connecting using proxies you run yourself, but instead you connect through public hubs.
 
 _**To connect your validator to the network using public hubs:**_
 

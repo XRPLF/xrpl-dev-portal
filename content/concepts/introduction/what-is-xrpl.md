@@ -42,7 +42,7 @@ The block is also identified by a timestamp with its creation time.
 
 Each validator node gets its own copy of the data block. There is no single central authority. All copies are equally valid.
 
-![Validators with valid copies](img/introduction6-validators.png)
+![Validators with valid copies](img/introduction6-valid-copies.png)
 
 Each block contains a hash pointer as a link to the previous block. It also has a timestamp, new data, and its own unique hash number.
 
@@ -54,7 +54,7 @@ Using this structure, each block has a clear position in the chain, linking back
 
 By design, blockchains are resistant to modification of the data. Every ledger node gets an exact copy of the blockchain.
 
-![Two validators with identical copies of the blockchain](introduction9-2-sets-of-3.[png])
+![Two validators with identical copies of the blockchain](img/introduction9-2-sets-of-3.png)
 
 This creates an open, distributed ledger that records transactions between parties efficiently and in a verifiable and permanent way.
 
@@ -68,7 +68,9 @@ The XRP Ledger (XRPL) is the blockchain on which XRP currency is based and excha
 
 ### What Is In the XRPL Ecosystem?
 
-The basis of the XRP Ledger is a peer-to-peer network of always-on rippled (pronounced _ripple-d_) servers sharing transactions, engaging in the consensus process, and processing transactions. Everything else in the XRP Ledger ecosystem is directly or indirectly built on top of this peer-to-peer network.
+The basis of the XRP Ledger is a peer-to-peer network of always-on rippled (pronounced _ripple-dee_) servers sharing transactions, engaging in the consensus process, and processing transactions. Everything else in the XRP Ledger ecosystem is directly or indirectly built on top of this peer-to-peer network.
+
+![The XRP Ecosystem](img/ecosystem.png)
 
 Programming Libraries exist in higher level software, where they are imported directly into program code, and contain methods to access the XRP Ledger.
 
@@ -84,4 +86,4 @@ Most of the rippled servers in the XRPL monitor or propose transactions. An impo
 
 The XRPL is open to anyone who wants to set up their own instance of the rippled server and connect. The node can monitor the network, perform transactions, or become a validator.
 
-For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, _Testnet_ and _Devnet_. Users can create an account funded with 10,000 (fake) XRP and connect to either environment to interact with the XRPL. 
+For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, _Testnet_ and _Devnet_. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL. 

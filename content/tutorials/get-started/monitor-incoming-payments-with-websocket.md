@@ -9,7 +9,7 @@ labels:
 ---
 # Monitor Incoming Payments with WebSocket
 
-This tutorial shows how to monitor for incoming [payments](payment-types.html) using the [WebSocket `rippled` API](http-websocket-apis.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
+This tutorial shows how to monitor for incoming payments using the [WebSocket `rippled` API](http-websocket-apis.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
 
 WebSocket follows a model where the client and server establish one connection, then send messages both ways through the same connection, which remains open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.[¹](#footnote-1)<a id="from-footnote-1"></a>
 
@@ -18,8 +18,8 @@ WebSocket follows a model where the client and server establish one connection, 
 ## Prerequisites
 
 - The examples in this page use JavaScript and the WebSocket protocol, which are available in all major modern browsers. If you have some JavaScript knowledge and expertise in another programming language with a WebSocket client, you can follow along while adapting the instructions to the language of your choice.
-- You need a stable internet connection and access to a `rippled` server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` server](install-rippled.html), you can also connect to that server locally.
-- To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [tokens](tokens.html), you need even more precision. For more information, see [Currency Precision](currency-formats.html#xrp-precision).
+- You need a stable internet connection and access to a `rippled` server. The embedded examples connect to Ripple's pool of public servers. If you run your own `rippled` server, you can also connect to that server locally.
+- To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with tokens, you need even more precision. For more information, see [Currency Precision](currency-formats.html#xrp-precision).
 
 <!-- Big number support -->
 <script type="application/javascript" src="assets/vendor/big.min.js"></script>
@@ -63,13 +63,13 @@ socket.addEventListener('close', (event) => {
 })
 ```
 
-The above example opens a secure connection (`wss://`) to one of Ripple's public API servers on the [Test Net](xrp-test-net-faucet.html). To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
+The above example opens a secure connection (`wss://`) to one of Ripple's public API servers on the Testnet. To connect to a locally running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](admin-api-methods.html) and admin-only data in some responses such as [server_info][server_info method], in addition to the [public methods](public-api-methods.html) that are available when you connect to public servers over the internet.
+**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of admin methods and admin-only data in some responses such as the server_info method, in addition to the public methods that are available when you connect to public servers over the internet.
 
 Example:
 
@@ -123,7 +123,7 @@ Since WebSocket connections can have several messages going each way and there i
 
         **Warning:** When submitting transactions, a `status` of `success` at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see [Look Up Transaction Results](look-up-transaction-results.html).
 
-- For follow-up messages from [subscriptions](subscribe.html), the `type` indicates the type of follow-up message it is, such as the notification of a new transaction, ledger, or validation; or a follow-up to an ongoing [pathfinding request](path_find.html). Your client only receives these messages if it subscribes to them.
+- For follow-up messages from subscriptions, the `type` indicates the type of follow-up message it is, such as the notification of a new transaction, ledger, or validation; or a follow-up to an ongoing pathfinding request. Your client only receives these messages if it subscribes to them.
 
 **Tip:** The [xrpl.js library for JavaScript](https://js.xrpl.org/) handles this step by default. All asynchronous API requests use Promises to provide the response, and you can listen to streams using the `.on(event, callback)` method of the `Client`.
 
@@ -333,27 +333,27 @@ WS_HANDLERS["transaction"] = log_tx
 
 ## {{n.next()}}. Read Incoming Payments
 
-When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its [tokens](tokens.html). If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
+When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its tokens. If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
 
-- The **`validated` field** indicates that the transaction's outcome is [final](finality-of-results.html). This should always be the case when you subscribe to `accounts`, but if you _also_ subscribe to `accounts_proposed` or the `transactions_proposed` stream then the server sends similar messages on the same connection for unconfirmed transactions. As a precaution, it's best to always check the `validated` field.
-- The **`meta.TransactionResult` field** is the [transaction result](transaction-results.html). If the result is not `tesSUCCESS`, the transaction failed and cannot have delivered any value.
+- The **`validated` field** indicates that the transaction's outcome is final. This should always be the case when you subscribe to `accounts`, but if you _also_ subscribe to `accounts_proposed` or the `transactions_proposed` stream then the server sends similar messages on the same connection for unconfirmed transactions. As a precaution, it's best to always check the `validated` field.
+- The **`meta.TransactionResult` field** is the transaction result. If the result is not `tesSUCCESS`, the transaction failed and cannot have delivered any value.
 - The **`transaction.Account`** field is the sender of the transaction. If you are only looking for transactions sent by others, you can ignore any transactions where this field matches your account's address. (Keep in mind, it _is_ possible to make a cross-currency payment to yourself.)
 - The **`transaction.TransactionType` field** is the type of transaction. The transaction types that can possibly deliver currency to an account are as follows:
-    - **[Payment transactions][]** can deliver XRP or [tokens](tokens.html). Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are [formatted as strings](basic-data-types.html#specifying-currency-amounts).
+    - **[Payment transactions][]** can deliver XRP or tokens. Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are formatted as strings.
 
-        **Warning:** If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](partial-payments.html#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.
+        **Warning:** If you use the `transaction.Amount` field instead, you may be vulnerable to the partial payments exploit. Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you. For more information see [The Partial Payments Exploit](partial-payments.html#partial-payments-exploit).
 
     - **[CheckCash transactions][]** allow an account to receive money authorized by a different account's [CheckCreate transaction][]. Look at the metadata of a **CheckCash transaction** to see how much currency the account received.
 
-    - **[EscrowFinish transactions][]** can deliver XRP by finishing an [Escrow](escrow.html) created by a previous [EscrowCreate transaction][]. Look at the metadata of the **EscrowFinish transaction** to see which account received XRP from the escrow and how much.
+    - **[EscrowFinish transactions][]** can deliver XRP by finishing an Escrow created by a previous [EscrowCreate transaction][]. Look at the metadata of the **EscrowFinish transaction** to see which account received XRP from the escrow and how much.
 
-    - **[OfferCreate transactions][]** can deliver XRP or tokens by consuming offers your account has previously placed in the XRP Ledger's [decentralized exchange](decentralized-exchange.html). If you never place offers, you cannot receive money this way. Look at the metadata to see what currency the account received, if any, and how much.
+    - **[OfferCreate transactions][]** can deliver XRP or tokens by consuming offers your account has previously placed in the XRP Ledger's decentralized exchange. If you never place offers, you cannot receive money this way. Look at the metadata to see what currency the account received, if any, and how much.
 
-    - **[PaymentChannelClaim transactions][]** can deliver XRP from a [payment channel](payment-channels.html). Look at the metadata to see which accounts, if any, received XRP from the transaction.
+    - **[PaymentChannelClaim transactions][]** can deliver XRP from a payment channel. Look at the metadata to see which accounts, if any, received XRP from the transaction.
 
     - **[PaymentChannelFund transactions][]** can return XRP from a closed (expired) payment channel to the sender.
 
-- The **`meta` field** contains [transaction metadata](transaction-metadata.html), including exactly how much of which currency or currencies was delivered where. See [Look Up transaction Results](look-up-transaction-results.html) for more information on how to understand transaction metadata.
+- The **`meta` field** contains transaction metadata, including exactly how much of which currency or currencies was delivered where. See [Look Up transaction Results](look-up-transaction-results.html) for more information on how to understand transaction metadata.
 
 The following sample code looks at transaction metadata of all the above transaction types to report how much XRP an account received:
 
@@ -504,7 +504,8 @@ _Go_
     - [Transaction Results](transaction-results.html) - Tables of all possible result codes for transactions.
 
 
+
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

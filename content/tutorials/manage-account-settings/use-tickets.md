@@ -11,7 +11,7 @@ labels:
 ---
 # Use Tickets
 
-[Tickets](tickets.html) provide a way to send transactions out of the normal order. This tutorial walks through the steps of creating a Ticket, then using it to send another transaction.
+Tickets provide a way to send transactions out of the normal order. This tutorial walks through the steps of creating a ticket, then using it to send another transaction.
 
 ## Prerequisites
 
@@ -19,10 +19,9 @@ labels:
 <script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
 {% set use_network = "Devnet" %}<!--TODO: change to Testnet eventually. NOTE, Testnet is a few days behind Mainnet in getting the amendment one enabled -->
 
-This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
+This page provides JavaScript examples that use the `xrpl.js` library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
-
 
 
 ## Steps
@@ -41,7 +40,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a secure signing configuration. See [Production Readiness](production-readiness.html) and [Set Up Secure Signing](set-up-secure-signing.html).
 
 
 ### {{n.next()}}. Connect to Network
@@ -95,7 +94,7 @@ _JavaScript_
 
 <!-- MULTICODE_BLOCK_END -->
 
-Record the transaction's hash and `LastLedgerSequence` value so you can [be sure whether or not it got validated](reliable-transaction-submission.html) later.
+Record the transaction's hash and `LastLedgerSequence` value so you can later [verify it was validated](reliable-transaction-submission.html) .
 
 
 {{ start_step("Prepare & Sign") }}
@@ -180,7 +179,7 @@ _JavaScript_
 
 Now that you have a Ticket available, you can prepare a transaction that uses it.
 
-This can be any [type of transaction](transaction-types.html) you like. The following example uses a no-op [AccountSet transaction][] since that doesn't require any other setup in the ledger. Set the `Sequence` field to `0` and include a `TicketSequence` field with the Ticket Sequence number of one of your available Tickets.
+This can be any type of transaction you like. The following example uses a no-op [AccountSet transaction][] since that doesn't require any other setup in the ledger. Set the `Sequence` field to `0` and include a `TicketSequence` field with the Ticket Sequence number of one of your available Tickets.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -233,9 +232,9 @@ Ticketed transactions go through the consensus process the same way that Sequenc
 
 ## With Multi-Signing
 
-One of the main use cases for Tickets is to be able to collect signatures for several [multi-signed transactions](multi-signing.html) in parallel. By using a Ticket, you can send a multi-signed transaction as soon as it is fully signed and ready to go, without worrying about which one will be ready first.
+One of the main use cases for Tickets is to be able to collect signatures for several multi-signed transactions in parallel. By using a ticket, you can send a multi-signed transaction as soon as it is fully signed and ready to go, without worrying about which one will be ready first. See [Multi-signing](multi-signing.html)
 
-In this scenario, [step 8, "Prepare Ticketed Transaction"](#8-prepare-ticketed-transaction) is slightly different. Instead of preparing and signing all at once, you would follow the steps for [sending any multi-signed transaction](send-a-multi-signed-transaction.html): first prepare the transaction, then circulate it among trusted signers to collect their signatures, and finally combine the signatures into the final multi-signed transaction.
+In this scenario, [step 8, "Prepare Ticketed Transaction"](#8-prepare-ticketed-transaction) is slightly different. Instead of preparing and signing all at once, you would follow the steps for sending any multi-signed transaction: first prepare the transaction, then circulate it among trusted signers to collect their signatures, and finally combine the signatures into the final multi-signed transaction.
 
 You could do this in parallel for several different potential transactions as long as each one uses a different Ticket.
 
