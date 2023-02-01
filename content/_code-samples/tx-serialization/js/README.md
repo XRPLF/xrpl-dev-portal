@@ -18,6 +18,10 @@ On first run, you have to install the necessary node.js dependencies:
 
     node index.js -v
 
+### Raw output without formatting, use --raw or -r:
+
+    node index.js -r
+
 ### Pick JSON fixture file:
 
     node index.js -f test-cases/tx3.json
