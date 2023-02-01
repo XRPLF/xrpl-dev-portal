@@ -66,12 +66,5 @@ The diagram shows three different cases for three possible combinations of the e
 
 ## See Also
 
-- [Transactions](../transactions.html)
-    - [Transaction Cost](../transaction-cost.html)
-- [Escrow Tutorials](use-escrows.html)
-- [Transaction Reference](transaction-formats.html)
-    - [EscrowCreate transaction][]
-    - [EscrowFinish transaction][]
-    - [EscrowCancel transaction][]
-- [Ledger Reference](ledger-data-formats.html)
-    - [Escrow object](escrow-object.html)
+- **Tutorials:**
+    - [Use Escrows](use-escrows.html)

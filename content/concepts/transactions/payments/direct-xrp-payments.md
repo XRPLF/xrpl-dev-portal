@@ -35,17 +35,10 @@ Learn about [Direct XRP Payments](direct-xrp-payments-uc.html) use cases.
 4. The ledger debits and credits the corresponding accounts.
     
     **Note:** The sender is also debited the XRP transaction fee.
-    
-<!--
+
+
 ## See Also
 
-- **Concepts:**
-    - [Payment System Basics](payment-system-basics.html)
 - **Tutorials:**
     - [Send XRP (Interactive Tutorial)](send-xrp.html)
     - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
-- **References:**
-    - [Payment transaction][]
-    - [Transaction Results](transaction-results.html)
-    - [account_info method][] - for checking XRP balances
--->
