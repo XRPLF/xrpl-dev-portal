@@ -87,7 +87,7 @@ if (typeof module !== "undefined") {
             console.log("\n Submit result:", EscrowFinish_tx_result.result.meta.TransactionResult)
             console.log("    Tx content:", EscrowFinish_tx_result)
         } else {
-        console.log(`\nThere are no Escrows that have pass their FinishAfter due date on account ${wallet.address}`)
+            console.log(`\nThere are no Escrows that have pass their FinishAfter due date on account ${wallet.address}`)
         }
 
         client.disconnect()
