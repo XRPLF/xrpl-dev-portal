@@ -5,18 +5,17 @@ blurb: Transactions allow accounts to modify the XRP Ledger.
 labels:
   - Transactions
 ---
-
 # Trust Lines and Issuing
 
-Trust lines are structures in the XRP Ledger for holding [tokens](../tokens/tokens.md). Trust lines enforce the XRP Ledger's rule that you cannot cause someone else to hold a token they do not want. This precaution is necessary to enable the XRP Ledger's use case for [community credit](../tokens/tokens.md#community-credit) among other benefits.
+Trust lines are structures in the XRP Ledger for holding [tokens](tokens.html). Trust lines enforce the XRP Ledger's rule that you cannot cause someone else to hold a token they do not want. This precaution is necessary to enable the XRP Ledger's use case for [community credit](tokens.html#community-credit) among other benefits.
 
 Each trust line is a _bidirectional_ relationship consisting of:
 
-- The identifiers for the **two [accounts](../accounts/accounts.md)** that the trust line connects.
+- The identifiers for the **two [accounts](accounts.html)** that the trust line connects.
 - A single, shared **balance**, which is positive from the perspective of one account and negative from the other perspective.
     - The account with a negative balance is generally considered the "issuer" of the tokens. However, in the APIs<!-- [APIs](http-websocket-apis.md)-->, the name `issuer` can refer to either side.
 - Various **settings** and metadata. _Each_ of the two accounts can control its own settings on the trust line.
-    - Most importantly, each side sets a **limit** on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except [through that account's own actions](#going-below-the-limit).
+    - Most importantly, each side sets a **limit** on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except through that account's own actions.
 
 Each trust line is specific to a given currency code. Two accounts can have any number of trust lines between them for different currency codes, but only one shared trust line for any particular currency code.
 

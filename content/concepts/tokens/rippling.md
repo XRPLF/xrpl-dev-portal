@@ -13,7 +13,7 @@ In the XRP Ledger, "rippling" describes a process of atomic net settlement betwe
 
 Rippling only occurs along the [paths](paths.html) of a payment. [Direct XRP-to-XRP payments](direct-xrp-payments.html) do not involve rippling.
 
-For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between tokens with the same currency code but different issuers. The [No Ripple Flag](#the-no-ripple-flag) disables rippling by default when others open trust lines to your account, unless you enable rippling by default using the [Default Ripple flag](#the-default-ripple-flag).
+For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between tokens with the same currency code but different issuers. The No Ripple Flag disables rippling by default when others open trust lines to your account, unless you enable rippling by default using the Default Ripple flag.
 
 **Caution:** When you create a trust line, you must explicitly enable the `tfSetNoRipple` flag to block rippling on your side of that trust line.
 
@@ -27,7 +27,7 @@ If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the mon
 
 {{ include_svg("img/noripple-02.svg", "Charlie --($13)-- Alice --($17)-- Bob") }}
 
-We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same [currency code][]. The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
+We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same currency code. The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
 
 ## The No Ripple Flag
 
@@ -35,7 +35,7 @@ Non-issuing accounts, especially liquidity providers who may hold balances from 
 
 The **No Ripple** flag is a setting on a trust line. When two trust lines both have No Ripple enabled by the same address, payments from third parties cannot ripple through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers using the same currency code.
 
-An account can disable No Ripple on a single trust line, which can allow rippling through any pair that includes that trust line. The account can also enable rippling by default by enabling the [Default Ripple flag](#the-default-ripple-flag).
+An account can disable No Ripple on a single trust line, which can allow rippling through any pair that includes that trust line. The account can also enable rippling by default by enabling the Default Ripple flag.
 
 For example, imagine Emily has money issued by two different financial institutions, like so
 
@@ -64,7 +64,7 @@ The No Ripple flag makes certain paths invalid, so that they cannot be used to m
 
 The **Default Ripple** flag is an account setting that enables rippling on all _incoming_ trust lines by default. Issuers MUST enable this flag for their customers to be able to send tokens to each other.
 
-The Default Ripple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the Default Ripple setting of your account, trust lines that were created before the change keep their existing No Ripple settings. You can use a [TrustSet transaction][] to change the No Ripple setting of a trust line to match your address's new default.
+The Default Ripple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the Default Ripple setting of your account, trust lines that were created before the change keep their existing No Ripple settings. You can use a `TrustSet` transaction to change the No Ripple setting of a trust line to match your address's new default.
 
 For more information, see Default Ripple in 'Becoming an XRP Ledger Gateway'. <!--](become-an-xrp-ledger-gateway.html#default-ripple).-->
 
@@ -84,24 +84,3 @@ To enable the No Ripple flag, send a `TrustSet` transaction with the `tfSetNoRip
 In the case of two accounts that mutually trust each other, the No Ripple flag is tracked separately for each account.
 
 Using the HTTP/WebSocket APIs or your preferred [client library](client-libraries.html), look up trust lines with the `account_lines method`. For each trust line, the `no_ripple` field shows whether the current address has enabled the No Ripple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the No Ripple flag.
-
-<!-- 
-
-[HTTP / WebSocket APIs](http-websocket-apis.html)
-
-
-
-## See Also
-
-- **Concepts:**
-    - [Paths](paths.html)
-- **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
-- **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](accountroot.html#accountroot-flags)
-    - [RippleState (trust line) Flags](ripplestate.html#ripplestate-flags)
-

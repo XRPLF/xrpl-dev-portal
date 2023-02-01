@@ -39,39 +39,39 @@ The XRP Ledger checks all the following invariants on each transaction:
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L92 "Source")
 
-- [Transaction Fee Check](#transaction-fee-check)
+- Transaction Fee Check
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L118 "Source")
 
-- [XRP Not Created](#xrp-not-created)
+- XRP Not Created
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L146 "Source")
 
-- [Account Roots Not Deleted](#account-roots-not-deleted)
+- Account Roots Not Deleted
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L173 "Source")
 
-- [XRP Balance Checks](#xrp-balance-checks)
+- XRP Balance Checks
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L197 "Source")
 
-- [Ledger Entry Types Match](#ledger-entry-types-match)
+- Ledger Entry Types Match
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L224 "Source")
 
-- [No XRP Trust Lines](#no-xrp-trust-lines)
+- No XRP Trust Lines
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L251 "Source")
 
-- [No Bad Offers](#no-bad-offers)
+- No Bad Offers
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L275 "Source")
 
-- [No Zero Escrow](#no-zero-escrow)
+- No Zero Escrow
 
 [[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L300 "Source")
 
-- [Valid New Account Root](#valid-new-account-root)
+- Valid New Account Root
 
 
 ### Transaction Fee Check
@@ -89,7 +89,7 @@ The XRP Ledger checks all the following invariants on each transaction:
 ### Account Roots Not Deleted
 
 - **Invariant Condition(s):**
-    - An [account](accounts.html) cannot be deleted from the ledger except by an [AccountDelete transaction][].
+    - An [account](accounts.html) cannot be deleted from the ledger except by an `AccountDelete` transaction.
     - A successful AccountDelete transaction always deletes exactly 1 account.
 
 
@@ -129,28 +129,6 @@ The XRP Ledger checks all the following invariants on each transaction:
     - A new [account root](accountroot.html) must be the consequence of a payment.
     - A new account root must have the right starting [sequence](basic-data-types.html#account-sequence).
     - A transaction must not create more than one new [account](accounts.html).
-
-<!-- 
-
-## See Also
-
-- **Blog:**
-    - [Protecting the Ledger: Invariant Checking](https://xrpl.org/blog/2017/invariant-checking.html)
-
-- **Repository:**
-    - [Invariant Check.h](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h)
-    - [Invariant Check.cpp](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.cpp)
-    - [System Parameters](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/SystemParameters.h#L43)
-    - [XRP Amount](https://github.com/ripple/rippled/blob/develop/src/ripple/basics/XRPAmount.h#L244)
-    - [Ledger Formats](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/protocol/LedgerFormats.h#L36-L94)
-
-
-- **Other:**
-    - [Authorized Trust Lines](authorized-trust-lines.html)
-    - [XRP Properties](xrp.html#xrp-properties)
-    - [Calculating Balance Changes for a Transaction](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
- -->
-
 
 
 <!--{# common link defs #}-->

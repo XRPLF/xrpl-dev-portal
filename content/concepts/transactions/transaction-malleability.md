@@ -11,10 +11,9 @@ A transaction is "malleable" if it can be changed in any way after being signed,
 
 If vulnerable software submits malleable transactions and assumes they can only execute under the original hash, it may lose track of transactions. In the worst case, malicious actors could take advantage of this to steal money from the vulnerable system.
 
-On the XRP Ledger mainnet, only _multi-signed_ transactions can be malleable, if they have more signatures than necessary, or if an authorized signer provides an additional signature beyond what is necessary. Good operational security can protect against these problems. See [Mitigations for Multi-Signature Malleability](#mitigations-for-multi-signature-malleability) for guidelines.
+On the XRP Ledger mainnet, only _multi-signed_ transactions can be malleable, if they have more signatures than necessary, or if an authorized signer provides an additional signature beyond what is necessary. Good operational security can protect against these problems. See Mitigations for Multi-Signature Malleability for guidelines.
 
-Before 2014, single-signed transactions could be malleable due to properties of the default signing algorithm, ECDSA with the secp256k1 curve. For compatibility with legacy signing tools, it was possible to create and submit malleable single-signed transactions until the RequireFullyCanonicalSig amendment became enabled on 2020-07-03. (Transactions [signed with Ed25519 keys](../accounts/cryptographic-keys.md#signing-algorithms) were never vulnerable to this problem.)
-
+Before 2014, single-signed transactions could be malleable due to properties of the default signing algorithm, ECDSA with the secp256k1 curve. For compatibility with legacy signing tools, it was possible to create and submit malleable single-signed transactions until the RequireFullyCanonicalSig amendment became enabled on 2020-07-03. (Transactions [signed with Ed25519 keys](cryptographic-keys.html#signing-algorithms) were never vulnerable to this problem.)
 
 
 ## Background
@@ -128,3 +127,4 @@ The process to exploit a vulnerable system follows a series of steps like the fo
     For example, it may refund (or not debit) a customer's balance in its own system, to account for the funds that it thinks have not been sent in the XRP Ledger.
 
     Worse, the vulnerable system might construct a new transaction to replace the transaction, picking new `Sequence`, `LastLedgerSequence`, and `Fee` parameters based on the current state of the network, but keeping the rest of the transaction the same as the original. If this new transaction is also malleable, the system could be exploited in the same way an indefinite number of times.
+    

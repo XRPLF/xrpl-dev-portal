@@ -14,10 +14,10 @@ To submit [transactions](transaction-basics.html) to the XRP Ledger, you need a 
 
 There are several configurations with varying levels of security that may be acceptable for your situation. Choose one of the following that best fits your needs:
 
-- [Run `rippled` locally](#run-rippled-locally), or [in the same LAN](#run-rippled-on-the-same-lan).
-- [Use a client library](#use-a-client-library-with-local-signing) that can do local signing.
-- [Use a dedicated signing device](#use-a-dedicated-signing-device) that supports XRP Ledger signatures.
-- [Use a secure VPN to connect to a remote `rippled` machine](#use-a-secure-vpn-with-a-remote-rippled-server) you trust.
+- Run `rippled` locally, or in the same LAN.
+- Use a client library that can do local signing.
+- Use a dedicated signing device that supports XRP Ledger signatures.
+- Use a secure VPN to connect to a remote `rippled` machine you trust.
 
 <!-- Source for all diagrams in this article: https://drive.google.com/drive/u/0/folders/1MFkzxtMYpS8tzdm-TjWbLSVgU0zAG9Vh -->
 
@@ -134,7 +134,7 @@ Setting up this configuration depends on the specific device. You may need to ru
 
 This configuration uses a `rippled` server hosted remotely, such as in a colocation facility or a distant datacenter, but connects to it securely using an encrypted VPN.
 
-To use this configuration, follow the steps for [running `rippled` on a private LAN](#run-rippled-on-the-same-lan), but use a VPN to connect to the LAN of the remote `rippled` server. Instructions for setting up the VPN are specific to your environment and are not described in this guide.
+To use this configuration, follow the steps for running `rippled` on a private LAN, but use a VPN to connect to the LAN of the remote `rippled` server. Instructions for setting up the VPN are specific to your environment and are not described in this guide.
 
 
 ## See Also
@@ -143,18 +143,11 @@ To use this configuration, follow the steps for [running `rippled` on a private 
     - [Cryptographic Keys](cryptographic-keys.html)
     - [Multi-Signing](multi-signing.html)
 - **Tutorials:**
-    - [Install rippled](install-rippled.html)
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
-    - [Reliable Transaction Submission](reliable-transaction-submission.html)
     - [Enable Public Signing](enable-public-signing.html)
 - **References:**
     - [sign method][]
     - [submit method][]
-    - [xrpl.js Reference](https://js.xrpl.org/)
-    - [`xrpl-py` Reference](https://xrpl-py.readthedocs.io/en/latest/index.html)
-    - [`xrpl4j` Reference](https://javadoc.io/doc/org.xrpl/)
-
-
 
 
 <!--{# common link defs #}-->

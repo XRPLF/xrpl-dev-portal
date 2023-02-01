@@ -11,7 +11,7 @@ The Authorized Trust Lines feature enables issuers to create tokens that can onl
 
 To use the Authorized Trust Lines feature, enable the `RequireAuth` flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.
 
-You can authorize a trust line by sending a `TrustSet` transaction from your issuing address, configuring the trust line between your account and the account to authorize. After you have authorized a trust line, you can never revoke that authorization. (You can, however, [freeze](freezing-tokens.md) that trust line if you need to.)
+You can authorize a trust line by sending a `TrustSet` transaction from your issuing address, configuring the trust line between your account and the account to authorize. After you have authorized a trust line, you can never revoke that authorization. (You can, however, [freeze](freezing-tokens.html) that trust line if you need to.)
 
 The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address.
 
@@ -26,11 +26,11 @@ With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process 
 3. The customer sends a `TrustSet` transaction to create a trust line to the issuer's address, with a positive limit.
 4. The issuer sends a `TrustSet` transaction to authorize the customer's trust line.
 
-**Tip:** The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorizes the trust line first, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line. _(Added by the [TrustSetAuth amendment][].)_
+**Tip:** The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorizes the trust line first, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line.
 
 ## As a Precaution
 
-Even if you don't intend to use Authorized Trust Lines, you can enable the `RequireAuth` setting on [operational and standby accounts](../accounts/account-types.md), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
+Even if you don't intend to use Authorized Trust Lines, you can enable the `RequireAuth` setting on [operational and standby accounts](account-types.html), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
 
 
 ## Technical Details
@@ -113,7 +113,7 @@ To see whether a trust line has been authorized, use the `account_lines` method 
 
 In the response's `result.lines` array, find the object whose `currency` field indicates that it represents a trust line for the currency you want. If that object has a `peer_authorized` field with the value `true`, then the issuer (the address you used as the request's `peer` field) has authorized the trust line.
 
-<!--
+
 ## See Also
 
 - **Concepts:**
@@ -121,11 +121,3 @@ In the response's `result.lines` array, find the object whose `currency` field i
     - [Freezing Issued Currencies](freezes.html)
 - **Tutorials:**
     - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
-- **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](accountroot.html#accountroot-flags)
-    - [RippleState (trust line) Flags](ripplestate.html#ripplestate-flags)
--->

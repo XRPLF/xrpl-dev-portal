@@ -16,7 +16,7 @@ Transactions can do more than transfer currency. In addition to supporting vario
 Sending a transaction to the XRP Ledger involves several steps:
 
 1. Create an [unsigned transaction in JSON format](transaction-structure.html#example-unsigned-transaction).
-2. Use one or more signatures to [authorize the transaction](#authorizing-transactions).
+2. Use one or more signatures to authorize the transaction.
 3. Submit a transaction to an XRP Ledger server. 
 4. The [consensus process](consensus.html) determines which provisional transactions get included in the next validated ledger.
 5. The servers apply those transactions to the previous ledger in a canonical order and share their results.
@@ -46,7 +46,7 @@ The transaction hash can be used as a "proof of payment," since anyone can <!-- 
 
 ## Claimed Cost Justification
 
-Although it might seem unfair to charge a [transaction cost](transaction-cost.md) for a failed transaction, the `tec` class of errors exists for good reasons:
+Although it might seem unfair to charge a [transaction cost](transaction-cost.html) for a failed transaction, the `tec` class of errors exists for good reasons:
 
 * Transactions submitted after the failed one do not have to have their Sequence values renumbered. Incorporating the failed transaction into a ledger uses up the transaction's sequence number, preserving the expected sequence.
 * Distributing the transaction throughout the network increases network load. Enforcing a cost makes it harder for attackers to abuse the network with failed transactions.
@@ -60,7 +60,7 @@ Transactions are authorized by any of the following signature types:
 
 * A single signature from the master private key that is mathematically associated with the sending address. You can disable or enable the master key pair using an `AccountSet` transaction.
 * A single signature that matches the regular private key associated with the address. You can add, remove, or replace a regular key pair using a `SetRegularKey` transaction.
-* A [multi-signature](multi-signing.md) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a `SignerListSet` transaction.
+* A multi-signature that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a `SignerListSet` transaction.
 
 Any signature type can authorize any type of transaction, with the following exceptions:
 
@@ -70,32 +70,11 @@ Any signature type can authorize any type of transaction, with the following exc
 
 <!-- [disable the master public key](accountset.html) -->
 
-For more information about master and regular key pairs, see [Cryptographic Keys](../accounts/cryptographic-keys.md).
+For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
 <!--{# Add this reference after signatures concept doc is published. For more information about signatures, see [Understanding Signatures](concept-signatures.html). #}-->
-
-<!--
 
 ## See Also
 
 - **Concepts:**
     - [Payment Types](payment-types.html)
-    - [Consensus Network](consensus-network.html)
-- **Tutorials:**
-    - [Set Up Secure Signing](set-up-secure-signing.html)
-    - [Send XRP](send-xrp.html)
-    - [Look Up Transaction Results](look-up-transaction-results.html)
-    - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
-    - [Cancel or Skip a Transaction](cancel-or-skip-a-transaction.html)
-    - [Reliable Transaction Submission](reliable-transaction-submission.html)
-- **References:**
-    - [Transaction Common Fields](transaction-common-fields.html)
-    - [Transaction Types](transaction-types.html)
-    - [Transaction Metadata](transaction-metadata.html)
-    - [account_tx method][]
-    - [tx method][]
-    - [submit method][]
-    - [submit_multisigned method][] 
-    
--->
-    

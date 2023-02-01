@@ -164,7 +164,7 @@ Since the `ModifiedNode` entry for `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`'s accoun
 
 Almost any transaction can result in the following types of changes:
 
-- **Sequence and Transaction Cost changes:** [As mentioned, every transaction (excluding pseudo-transactions) modifies the sender's `AccountRoot` object](#2-interpret-metadata) to increase the sender's sequence number and destroy the XRP used to pay the transaction cost.
+- **Sequence and Transaction Cost changes:** As mentioned, every transaction (excluding pseudo-transactions) modifies the sender's `AccountRoot` object to increase the sender's sequence number and destroy the XRP used to pay the transaction cost.
 - **Account Threading:** Some transactions that create objects also modify the [AccountRoot object](accountroot.html) of an intended recipient or destination account to indicate that something relating to that account changed. This technique of "tagging" an account changes only that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields. This makes it more efficient to look up an account's transaction history by following the "thread" of transactions mentioned in these fields.
 - **Directory Updates:** Transactions that create or remove ledger objects often make changes to [DirectoryNode objects](directorynode.html) to track which objects exist. Also, when a transaction adds an object that counts towards an account's [owner reserve](reserves.html#owner-reserves), it increases the `OwnerCount` of the owner's [AccountRoot object][]. Removing an object decreases the `OwnerCount`. This is how the XRP Ledger tracks how much owner reserve each account owes at any point in time.
 
@@ -315,7 +315,7 @@ A successful [EscrowFinish transaction][] modifies the `AccountRoot` of the reci
 
 Of course, an EscrowFinish can only be successful if it meets the conditions of the escrow, and an EscrowCancel can only be successful if the expiration of the Escrow object is before the close time of the previous ledger.
 
-Escrow transactions also do normal [bookkeeping](#general-purpose-bookkeeping) for adjusting the sender's owner reserve and the directories of the accounts involved.
+Escrow transactions also do normal bookkeeping for adjusting the sender's owner reserve and the directories of the accounts involved.
 
 In the following excerpt, we see that `r9UUEX...`'s balance increases by 1 billion XRP and its owner count decreases by 1 because an escrow from that account to itself finished successfully. The `Sequence` number does not change because [a third party completed the escrow](https://xrpcharts.ripple.com/#/transactions/C4FE7F5643E20E7C761D92A1B8C98320614DD8B8CD8A04CFD990EBC5A39DDEA2):
 
@@ -391,7 +391,7 @@ There are several ways to request to close a payment channel, aside from the imm
 
 ### TrustSet Transactions
 
-TrustSet transactions create, modify, or delete [trust lines](trust-lines-and-issuing.html), which are represented as [`RippleState` objects](ripplestate.html). A single `RippleState` object contains settings for both parties involved, including their limits, [rippling settings](rippling.html), and more. Creating and modifying trust lines can also [adjust the sender's owner reserve and owner directory](#general-purpose-bookkeeping).
+TrustSet transactions create, modify, or delete [trust lines](trust-lines-and-issuing.html), which are represented as [`RippleState` objects](ripplestate.html). A single `RippleState` object contains settings for both parties involved, including their limits, [rippling settings](rippling.html), and more. Creating and modifying trust lines can also adjust the sender's owner reserve and owner directory.
 
 The following example shows a new trust line, where **`rf1BiG...`** is willing to hold up to 110 USD issued by **`rsA2Lp...`**:
 
@@ -442,14 +442,10 @@ Most other transactions create a specific type of ledger entry and [adjust the s
 ## See Also
 
 - **Concepts:**
-    - [Finality of Results](finality-of-results.html) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
+    - [Finality of Results](finality-of-results.html)
 - **Tutorials:**
     - [Reliable Transaction Submission](reliable-transaction-submission.html)
     - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
-- **References:**
-    - [Ledger Object Types Reference](ledger-object-types.html) - All possible fields of all types of ledger objects
-    - [Transaction Metadata](transaction-metadata.html) - Summary of the metadata format and fields that appear in metadata
-    - [Transaction Results](transaction-results.html) - Tables of all possible result codes for transactions.
 
 
 <!--{# common link defs #}-->
