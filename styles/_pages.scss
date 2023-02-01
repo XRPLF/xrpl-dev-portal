@@ -156,12 +156,6 @@
   right: -4px;
 }
 
-#use-case-card-grid {
-  // @include media-breakpoint-up(lg) {
-  //   margin-top: -40px; // offset the 40px margin of the cols
-  // }
-}
-
 #validator-graphic {
   content: url(../img/validators.svg);
 }
@@ -176,7 +170,6 @@
   h1 {
     font-size: 42px;
   }
-
 
   &::before {
     transform: scaleX(-1);
@@ -201,7 +194,7 @@
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    background-color: #000;
+    background-color: $black;
 
     background-clip: padding-box; 
     border: none;
@@ -209,13 +202,13 @@
     box-shadow: none;
     outline: none;
 
-    background: #111112;
+    background: $gray-900;
   }
 
   .modal-header {
     border: none;
-    background: #111112;
-    box-shadow: 0px 1px 2px #000000;
+    background: $gray-900;
+    box-shadow: 0px 1px 2px $black;
   }
   .modal-header .cancel .chevron {
     transform: rotate(90deg);
@@ -226,8 +219,8 @@
 
   .modal-footer {
     border: none;
-    background: #111112;
-    box-shadow: 0px -1px 2px #000000;
+    background: $gray-900;
+    box-shadow: 0px -1px 2px $black;
     
     align-items: unset; 
     padding: 0.75rem;
@@ -235,8 +228,6 @@
     flex-wrap: wrap;
   }    
 
-
-// 
   .card-title {
     margin-bottom: 0.5rem;
     line-height: 26px;
@@ -249,12 +240,12 @@
   }
   .card-uses:hover {
     text-decoration: none;
-    color: #E0E0E1;
+    color: $gray-200;
     transform: translateY(-16px);
     text-decoration: none;
   }
   .card-body {
-    background: #232325;
+    background: $gray-800;
     border-radius: 8px;
     height: 100%;
     padding: 32px;
@@ -270,7 +261,7 @@
   .category-header {
     font-weight: bold;
     /*color: $gray-300;*/
-    color: #c1c1c2;
+    color: $gray-300;
   }
 
   .category-checkbox {
