@@ -80,10 +80,10 @@ Main article: [Issuing and Operational Addresses](issuing-and-operational-addres
 There are several ways in which an issuer can seek to profit from XRP Ledger integration. These can include:
 
 * Withdrawal and Deposit fees. Issuers typically charge a small fee (such as 1%) for the service of adding or removing money from the XRP Ledger. You have the power to determine the rate you credit people when they move money onto and off of the XRP Ledger through your tokens.
-* Transfer fees. You can set a percentage fee to charge automatically when customers send each other tokens that you issued. This amount is debited from the XRP Ledger, decreasing your obligation each time your tokens change hands. See [Transfer Fees](#transfer-fees) for details.
+* Transfer fees. You can set a percentage fee to charge automatically when customers send each other tokens that you issued. This amount is debited from the XRP Ledger, decreasing your obligation each time your tokens change hands.
 * Indirect revenue from value added. XRP Ledger integration can provide valuable functionality for your customers that distinguishes your business from your competitors.
 * Interest on XRP Ledger-backed funds. You can keep the collateral for the funds you issue in XRP Ledger in a bank account that earns interest. Make sure you can always access enough funds to service customer withdrawals.
-* [Financial Exchange](#liquidity-and-currency-exchange). You also make offers to buy and sell your tokens in the XRP Ledger's decentralized exchange, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)
+* Financial Exchange. You also make offers to buy and sell your tokens in the XRP Ledger's decentralized exchange, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)
 
 
 ### Choosing Fee Rates
@@ -260,13 +260,11 @@ There are several prerequisites that ACME must meet for this to happen:
     - ACME can store the funds allocated to the XRP Ledger in a separate bank account.
     - If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the issuer is solvent.
 - ACME should control two separate XRP Ledger addresses. See [Issuing and Operational Addresses](issuing-and-operational-addresses.html) for details.
-    - ACME must enable the [Default Ripple Flag](#default-ripple) on its issuing address for customers to send and receive its tokens.
+    - ACME must enable the Default Ripple flag on its issuing address for customers to send and receive its tokens.
 - Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.
     - ACME should publicize its issuing address on its website where customers can find it. It can also use an [`xrp-ledger.toml` file](xrp-ledger-toml.html) to publish the issuing address to automated systems.
 - ACME must create a user interface for Alice to send funds from ACME into the XRP Ledger.
     - ACME needs to know Alice's XRP Ledger address. ACME can have Alice input her XRP Ledger address as part of the interface, or ACME can require Alice to input and verify her XRP Ledger address in advance.
-
-See [Sending Payments to Customers](#sending-payments-to-customers) for an example of how to send payments into the XRP Ledger.
 
 
 ## Sending from XRP Ledger
@@ -282,12 +280,12 @@ Payments going from the XRP Ledger to an issuer can be single-currency or cross-
 
 ### Requirements for Receiving from XRP Ledger
 
-In addition to the [requirements for sending into the XRP Ledger](#requirements-for-sending-to-xrp-ledger), there are several prerequisites that ACME must meet to process payments coming from the XRP Ledger:
+In addition to the requirements for sending into the XRP Ledger, there are several prerequisites that ACME must meet to process payments coming from the XRP Ledger:
 
 - ACME must monitor its XRP Ledger addresses for incoming payments.
 - ACME must know which user to credit in its system of record for the incoming payments.
-    - We recommend that ACME should [bounce any unrecognized incoming payments](#bouncing-payments) back to their sender.
-    - Typically, the preferred method of recognizing incoming payments is through [destination tags](#source-and-destination-tags).
+    - We recommend that ACME should bounce any unrecognized incoming payments back to their sender.
+    - Typically, the preferred method of recognizing incoming payments is through destination tags.
 
 
 ## Precautions
@@ -296,15 +294,15 @@ Processing payments to and from the XRP Ledger naturally comes with some risks, 
 
 - Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving tokens in the XRP Ledger.
 - When sending into the XRP Ledger, specify the issuing address as the issuer of the currency. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.
-- Before sending a payment into the XRP Ledger, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any [transfer fee](#transfer-fees) you have set.
+- Before sending a payment into the XRP Ledger, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any transfer fee you have set.
 - Before processing a payment out of the XRP Ledger, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.
-- Follow the guidelines for [reliable transaction submission](#reliable-transaction-submission) when sending XRP Ledger transactions.
-- [Robustly monitor for incoming payments](#robustly-monitoring-for-payments), and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a [partial payment](partial-payments.html).
+- Follow the guidelines for reliable transaction submission when sending XRP Ledger transactions.
+- Robustly monitor for incoming payments, and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a [partial payment](partial-payments.html).
 - Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.
 - Avoid ambiguous situations. We recommend the following:
-    - Enable the [Disallow XRP flag](#disallow-xrp) for the issuing address and all operational addresses, so customers do not accidentally send you XRP. (Private exchanges should *not* set this flag, since they trade XRP normally.)
+    - Enable the `Disallow XRP` flag for the issuing address and all operational addresses, so customers do not accidentally send you XRP. (Private exchanges should *not* set this flag, since they trade XRP normally.)
     - Enable the [`RequireDest` flag](require-destination-tags.html) for the issuing address and all operational addresses, so customers do not accidentally send a payment without the destination tag to indicate who should be credited.
-    - Enable the [`RequireAuth` flag](#require-auth) on all operational addresses so they cannot issue currency by accident.
+    - Enable the `RequireAuth` flag on all operational addresses so they cannot issue currency by accident.
 - Monitor for suspicious or abusive behavior. For example, a user could repeatedly send funds into and out of the XRP Ledger, as a denial of service attack that effectively empties an operational address's balance. Suspend customers whose addresses are involved in suspicious behavior by not processing their XRP Ledger payments.
 
 ## Trading on the XRP Ledger
@@ -313,8 +311,8 @@ After the tokens have been created in the XRP Ledger, they can be freely transfe
 
 - Anyone can buy/sell EUR.ACME on the XRP Ledger. If ACME issues multiple tokens, a separate trust line is necessary for each.
     - This includes XRP Ledger users who do not have an account in ACME Exchange's systems. To withdraw the funds successfully from ACME, users still have to register with ACME.
-    - Optionally, ACME uses the [Authorized Trust Lines](#authorized-trust-lines) feature to limit who can hold EUR.ACME in the XRP Ledger.
-    - If ACME determines that a customer has acted in bad faith, ACME can [Freeze](#freeze) that user's accounting relationships to ACME in the XRP Ledger, so that the user can no longer trade in the issuer's tokens.
+    - Optionally, ACME uses the Authorized Trust Lines feature to limit who can hold EUR.ACME in the XRP Ledger.
+    - If ACME determines that a customer has acted in bad faith, ACME can Freeze that user's accounting relationships to ACME in the XRP Ledger, so that the user can no longer trade in the issuer's tokens.
 - XRP Ledger users trading and sending EUR.ACME to one another requires no intervention by ACME.
 - All exchanges and balances in the XRP Ledger are publicly viewable.
 
@@ -418,14 +416,14 @@ To robustly check for incoming payments, issuers should do the following:
 * Look out for [Partial Payments](partial-payments.html). Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.
     * Check the transaction for a [`delivered_amount` field](partial-payments.html#the-delivered_amount-field). If present, that field indicates how much money *actually* got delivered to the `Destination` address.
     * In xrpl.js, you can use the [`xrpl.getBalanceChanges()` method](https://js.xrpl.org/modules.html#getBalanceChanges) to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.
-* Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero [transfer fee](#transfer-fees), then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's tokens. See [Transfer Fees](#transfer-fees) for more information.
+* Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero transfer fee, then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's tokens.
 
 To make things simpler for your customers, we recommend accepting payments to both your operational address and your issuing addresses.
 
 As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.
 
-* Use the [gateway_balances method][] to check your balances.
-* If you have a [Transfer Fee](#transfer-fees) set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your tokens among themselves.
+* Use the `gateway_balances` method to check your balances.
+* If you have a Transfer Fee set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your tokens among themselves.
 
 For more details on how to read the details of incoming transactions, see [Look Up Transaction Results](look-up-transaction-results.html).
 
@@ -520,18 +518,18 @@ Response:
 }
 ```
 
-In particular, note the following features of the [Payment transaction][]:
+In particular, note the following features of the `Payment` transaction:
 
 - No `Paths` field. The payment only succeeds if it can use a [default path](paths.html#default-paths), which is preferable. Using less direct paths can become much more expensive.
 - The `issuer` of both the `SendMax` and the `Amount` is the issuing address. This ensures that the transaction sends and delivers tokens from the intended issuer, and not from another issuer using the same currency code.
-- The `value` of the `SendMax` amount is slightly higher than the destination `Amount`, to compensate for the [transfer fee](#transfer-fees). In this case, the transfer fee is 0.5%, so the `SendMax` amount is exactly 1.005 times the destination `Amount`.
+- The `value` of the `SendMax` amount is slightly higher than the destination `Amount`, to compensate for the transfer fee. In this case, the transfer fee is 0.5%, so the `SendMax` amount is exactly 1.005 times the destination `Amount`.
 
 
 ## Bouncing Payments
 
 When one of your addresses receives a payment whose purpose is unclear, we recommend that you try to return the money to its sender. While this is more work than pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically.
 
-The first requirement to bouncing payments is [robustly monitoring for incoming payments](#robustly-monitoring-for-payments). You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) Malicious users can take advantage of a naive integration by sending [partial payments](partial-payments.html#partial-payments-exploit).
+The first requirement to bouncing payments is robustly monitoring for incoming payments. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) Malicious users can take advantage of a naive integration by sending [partial payments](partial-payments.html#partial-payments-exploit).
 
 Second, you should send bounced payments as Partial Payments. Since third parties can manipulate the cost of pathways between addresses, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the XRP Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from either an operational address or a standby address.
 
@@ -551,7 +549,7 @@ To submit transactions reliably, follow these guidelines:
 
 * Persist details of the transaction before submitting it.
 * Use the `LastLedgerSequence` parameter. (Many [client libraries](client-libraries.html) do this by default.)
-* Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is less than or equal to the transaction's `LastLedgerSequence` parameter.
+* Resubmit a transaction if it has not appeared in a validated ledger whose ledger index is less than or equal to the transaction's `LastLedgerSequence` parameter.
 
 For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
@@ -569,22 +567,3 @@ You can publish information about what currencies you issue, and which XRP Ledge
     - [Tokens](tokens.html)
     - [Decentralized Exchange](decentralized-exchange.html)
     - [Source and Destination Tags](source-and-destination-tags.html)
-- **Tutorials:**
-    - [Install `rippled`](install-rippled.html)
-    - [Set Up Secure Signing](set-up-secure-signing.html)
-    - [Issue a Fungible Token](issue-a-fungible-token.html)
-    - [Enable No Freeze](enable-no-freeze.html)
-    - [Freeze a Trust Line](freeze-a-trust-line.html)
-    - [Enact Global Freeze](enact-global-freeze.html)
-- **References:**
-    - [Payment transaction][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [RippleState object](ripplestate.html)
-    - [account_lines method][]
-    - [gateway_balances method][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

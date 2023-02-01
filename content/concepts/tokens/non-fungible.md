@@ -49,26 +49,3 @@ You destroy an `NFToken` using the `NFTokenBurn` transaction.
 You create a NFT using the `NFTokenMint` transaction. The `NFToken` lives on the `NFTokenPage` of the issuing account. You can create an `NFTokenOffer` to sell the `NFToken`, creating an entry to the XRP Ledger. Another account can accept the `NFTokenOffer`, transferring the `NFToken` to the accepting account’s `NFTokenPage`. If the `lsfTransferable `flag is set to _true_ (0x000008) when the `NFToken` is minted, the `NFToken` can be traded multiple times between accounts. The `NFToken` can be permanently destroyed by its owner using the `NFTokenBurn` transaction.
 
 ![The NFT Lifecycle](img/nft-lifecycle.png "NFT Lifecycle Image")
-
-
-<!--
-## Reference
-
-- [NFToken][] data type
-- Ledger Objects
-    - [NFTokenOffer object][]
-    - [NFTokenPage object][]
-- Transactions
-    - [NFTokenMint transaction][]
-    - [NFTokenCreateOffer transaction][]
-    - [NFTokenCancelOffer transaction][]
-    - [NFTokenAcceptOffer transaction][]
-    - [NFTokenBurn transaction][]
-
-
-### API Methods
-
-* `account_nfts`
-* `nft_sell_offers`
-* `nft_buy_offers`
--->

@@ -1,15 +1,19 @@
+---
+html: transfer-fees.html
+parent: non-fungible.html
+blurb:
+labels:
+  - Tokens
+---
 # Transfer Fees
 
 [Token](tokens.html) issuers can charge a _transfer fee_ that applies when users transfer those tokens among themselves. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee.
 
 For standard tokens, the tokens paid in the transfer fee are burned, and no longer tracked in the XRP Ledger. If the token is backed by off-ledger assets, this reduces the amount of those assets the issuer has to hold in reserve to meet its obligations in the XRP Ledger. Transfer fees are usually not appropriate for tokens that aren't backed with outside assets.
 
-Non-fungible tokens can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](non-fungible-tokens.html).
+Non-fungible tokens can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](non-fungible.html).
 
-The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address][] to another user.
-
-[operational address]: issuing-and-operational-addresses.html
-[issuing address]: issuing-and-operational-addresses.html
+The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address](issuing-and-operational-addresses.html) to another user.
 
 XRP never has a transfer fee, because it never has an issuer.
 
@@ -45,7 +49,7 @@ In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to de
 
 # Technical Details
 
-The transfer fee is represented by a setting on the [issuing address][]. The transfer fee cannot be less than 0% or more than 100% and is rounded down to the nearest 0.0000001%. The transfer fee applies to all tokens issued by the same account. If you want to have different transfer fees for different tokens, use multiple [issuing addresses][issuing address].
+The transfer fee is represented by a setting on the issuing address. The transfer fee cannot be less than 0% or more than 100% and is rounded down to the nearest 0.0000001%. The transfer fee applies to all tokens issued by the same account. If you want to have different transfer fees for different tokens, use multiple issuing addresses(issuing-address.html).
 
 In the [XRP Ledger protocol](protocol-reference.html), the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same token. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set to no fee. The value of `TransferRate` cannot be set to less than `1000000000` ("0%" fee) or more than `2000000000` (a "100%" fee). The value `0` is special case for no fee, equivalent to `1000000000`.
 
@@ -66,11 +70,4 @@ Some [client libraries](client-libraries.html) have convenience functions for ge
 - **Concepts:**
     - [Fees (Disambiguation)](fees.html)
     - [Transaction Cost](transaction-cost.html)
-    - [Paths](paths.html)
-- **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
-- **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [AccountRoot Flags](accountroot.html#accountroot-flags)
+

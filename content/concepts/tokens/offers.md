@@ -50,11 +50,11 @@ It is possible for an Offer to become temporarily or permanently _unfunded_ in t
 
 - If the owner no longer has any of the sell asset.
     - The Offer becomes funded again when the owner obtains more of that asset.
-- If the sell asset is a token in a [frozen trust line](freezes.html).
+- If the sell asset is a token in a [frozen trust line](freezing-tokens.html).
     - The Offer becomes funded again when the trust line is no longer frozen.
-- If the Offer needs to create a new trust line, but the owner does not have enough XRP for the increased [reserve](reserves.html). (See [Offers and Trust](#offers-and-trust).)
+- If the Offer needs to create a new trust line, but the owner does not have enough XRP for the increased [reserve](reserves.html).
     - The offer becomes funded again when the owner obtains more XRP, or the reserve requirements decrease.
-- If the Offer is expired. (See [Offer Expiration](#offer-expiration).)
+- If the Offer is expired.
 
 An unfunded Offer stays on the ledger until a transaction removes it. Ways that an Offer can be removed from the ledger include:
 

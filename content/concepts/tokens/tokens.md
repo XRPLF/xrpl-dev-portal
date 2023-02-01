@@ -11,7 +11,7 @@ All assets other than XRP can be represented in the XRP Ledger as **tokens**. To
 
 Any account can issue tokens to other recipients who are willing to hold them, but cannot unilaterally transfer tokens to users who do not want them.
 
-Standard tokens are fungible: meaning, all units of that token are interchangeable and indistinguishable. Non-fungible tokens are also possible: see [Non-Fungible Tokens](non-fungible-tokens.html) for details of the XRP Ledger's native support.
+Standard tokens are fungible: meaning, all units of that token are interchangeable and indistinguishable. Non-fungible tokens are also possible: see [Non-Fungible Tokens](non-fungible.html) for details of the XRP Ledger's native support.
 
 Standard tokens are tracked in relationships called [trust lines](trust-lines-and-issuing.html) between accounts.
  
@@ -23,7 +23,7 @@ The balance on a trust line is negative or positive, depending on which side you
 
 ## Token Structure
 
-Tokens in the XRP Ledger are fundamentally different than XRP. Tokens always exist _in trust lines_, and all transfers of tokens move along trust lines. You cannot cause someone else's account to hold more of a token than the _limit_ configured on their trust line. (You _can_ cause your own trust line to go over the limit, for example by buying more of it in the [decentralized exchange](../servers/decentralized-exchange.md) or by decreasing the limit after you already have a positive balance.)
+Tokens in the XRP Ledger are fundamentally different than XRP. Tokens always exist _in trust lines_, and all transfers of tokens move along trust lines. You cannot cause someone else's account to hold more of a token than the _limit_ configured on their trust line. (You _can_ cause your own trust line to go over the limit, for example by buying more of it in the [decentralized exchange](decentralized-exchange.html) or by decreasing the limit after you already have a positive balance.)
 
 Tokens use decimal (base-10) math with 15 digits of precision and an exponent that allows them to express very large values (up to 9999999999999999 × 10<sup>80</sup>) and very small values (down to 1.0 × 10<sup>-81</sup>).
 

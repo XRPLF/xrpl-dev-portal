@@ -55,15 +55,15 @@ As a decentralized system, the XRP Ledger does not have any information on the a
 ## See Also
 
 - **Concepts:**
-    - See [Offers](offers.html) for details on how trades work in the XRP Ledger.
-    - See [Tokens](tokens.html) for an overview of how various types of value can be represented in the XRP Ledger.
+    - [Offers](offers.html)
+    - [Tokens](tokens.html)
 - **References:**
-    - [account_offers method][] to look up Offers placed by an account
-    - [book_offers method][] to look up Offers to buy or sell a given currency pair
-    - [OfferCreate transaction][] to place a new Offer or replace an existing Offer
-    - [OfferCancel transaction][] to cancel an existing Offer
-    - [Offer object][] for the data structure of passive Offers in the ledger
-    - [DirectoryNode object][] for the data structure that tracks all the Offers for a given currency pair and exchange rate.
+    - [account_offers method][]
+    - [book_offers method][]
+    - [OfferCreate transaction][]
+    - [OfferCancel transaction][]
+    - [Offer object][]
+    - [DirectoryNode object][]
 
 <!-- NOTE: There aren't really any tutorials for using the DEX. When there are, add them here. -->
 
