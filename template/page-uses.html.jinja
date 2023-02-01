@@ -313,21 +313,21 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <a class="btn cancel" data-dismiss="modal"><span class="chevron"><span></span><span></span></span> Cancel</a>
-        <a class="btn apply" data-dismiss="modal">Apply <span class="chevron"><span></span><span></span></span></a>
+        <a class="btn cancel" data-dismiss="modal"><span class="chevron"><span></span><span></span></span> {% trans %}Cancel{% endtrans %}</a>
+        <a class="btn apply" data-dismiss="modal">{% trans %}Apply{% endtrans %} <span class="chevron"><span></span><span></span></span></a>
       </div>
       <div class="modal-body">
   <!--  -->
           <div class="p-3 page-events">
             <form >
-              <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
+              <p class="category-header mb-4">{% trans %}Featured Categories{% endtrans %} <span id="featured_count_old" class="featured_count category_count">2</span></p>
                 {% for category_id, category_name in featured_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}" checked>
                       <label class="font-weight-bold" for="input_{{category_id}}">{{ category_name }}</label>
                   </div>
                 {% endfor %}
-              <p class="category-header pt-5 mt-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
+              <p class="category-header pt-5 mt-3 mb-4">{% trans %}Other Categories{% endtrans %} <span id="other_count_old" class="other_count category_count">0</span></p>    
                 {% for category_id, category_name in other_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}">
@@ -339,8 +339,8 @@
   <!--  -->
        </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Apply</button>
-        <a class="btn " data-dismiss="modal">Cancel</a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans %}Apply{% endtrans %}</button>
+        <a class="btn " data-dismiss="modal">{% trans %}Cancel{% endtrans %}</a>
       </div>
     </div>
   </div>
@@ -447,7 +447,7 @@
     </div>
 
     <a class="btn  d-block d-lg-none" data-toggle="modal" data-target="#categoryFilterModal">
-      <span class="mr-3"><img src="./assets/img/uses/usecase-filter.svg" class=""></span>Filter by Categories <span class="ml-3 total_count category_count">2</span>
+      <span class="mr-3"><img src="./assets/img/uses/usecase-filter.svg" class=""></span>{% trans %}Filter by Categories{% endtrans %}<span class="ml-3 total_count category_count">2</span>
     </a>
 
 <!-- Start company cards -->
@@ -457,7 +457,7 @@
 <!-- Side bar Desktop.  -->
         <div class="p-3 category_sidebar">
             <form >
-              <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
+              <p class="category-header mb-4">{% trans %}Featured Categories{% endtrans %} <span id="featured_count_old" class="featured_count category_count">2</span></p>
                 {% for category_id, category_name in featured_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}" checked>
@@ -465,7 +465,7 @@
                   </div>
                 {% endfor %}
   
-              <p class="category-header pt-5 mt-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
+              <p class="category-header pt-5 mt-3 mb-4">{% trans %}Other Categories{% endtrans %} <span id="other_count_old" class="other_count category_count">0</span></p>    
                 {% for category_id, category_name in other_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}">
