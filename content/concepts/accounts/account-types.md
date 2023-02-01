@@ -25,7 +25,7 @@ If a malicious actor learns the secret key behind a institution's issuing accoun
 
 ### Multiple Issuing Accounts
 
-A financial institution can issue more than one type of token in the XRP Ledger from a single issuing account. However, there are some settings that apply equally to all (fungible) tokens issued from an account, including the percentage for [transfer fees](../tokens/transfer-fees.md) and the [global freeze](../tokens/freezing-tokens.md) status. If the financial institution wants the flexibility to manage settings differently for each type of token, the institution must multiple issuing accounts.
+A financial institution can issue more than one type of token in the XRP Ledger from a single issuing account. However, there are some settings that apply equally to all (fungible) tokens issued from an account, including the percentage for [transfer fees](transfer-fees.html) and the [global freeze](freezing-tokens.html) status. If the financial institution wants the flexibility to manage settings differently for each type of token, the institution must multiple issuing accounts.
 
 
 ## Operational Accounts
@@ -67,20 +67,3 @@ Operational accounts, which are operated by automated systems, send payments to 
 As always, token payments must "ripple through" the issuer across trust lines with sufficient limits.
 
 Eventually, someone sends tokens back to the issuer. This destroys those tokens, reducing the issuer's obligations in the XRP Ledger. If the token is a stablecoin, this is the first step of redeeming the tokens for the corresponding off-ledger assets.
-
-<!--
-
-## See Also
-
-- **Concepts:**
-    - [Accounts](accounts.html)
-    - [Cryptographic Keys](cryptographic-keys.html)
-- **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
-    - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
-- **References:**
-    - [account_info method][]
-    - [SetRegularKey transaction][]
-    - [AccountRoot object](accountroot.html)
--->

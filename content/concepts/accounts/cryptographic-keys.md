@@ -7,7 +7,7 @@ labels:
 ---
 # Cryptographic Keys
 
-In the XRP Ledger, a digital signature _authorizes_ a [transaction](../transactions/transactions.md) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
+In the XRP Ledger, a digital signature _authorizes_ a [transaction](transactions.html) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
 
 To make a digital signature, you use a cryptographic key pair associated with the transaction's sending account. A key pair can be generated using any of the XRP Ledger's supported cryptographic signing algorithms signing-algorithms. A key pair can be used as a master key pair, regular key pair, or a member of a signer list, regardless of what algorithm was used to generate it.
 
@@ -44,7 +44,7 @@ The passphrase is secret information, so you must protect it very carefully. Any
 
 ### Seed
 
-A _seed_ value is a compact value that is used to derive the actual private and public keys for an account. In a `wallet_propose` method response, the `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to sign transactions in the rippled APIs and some [other XRP Ledger software](xrpl-ecosystem.html). Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
+A _seed_ value is a compact value that is used to derive the actual private and public keys for an account. In a `wallet_propose` method response, the `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to sign transactions in the rippled APIs and some other XRP Ledger software. Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
 
 The seed value is secret information, so you must protect it very carefully. Anyone who has knows an address's seed value has effectively full control over that address.
 
@@ -246,19 +246,9 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     See [Address Encoding](addresses.html#address-encoding) for information and sample code to convert from an account's public key to its address.
 
-<!--
 
 ## See Also
 
-- **Concepts:**
-    - [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
 - **Tutorials:**
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
     - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
-- **References:**
-    - [SetRegularKey transaction][]
-    - [AccountRoot ledger object](accountroot.html)
-    - [wallet_propose method][]
-    - [account_info method][]
-    
--->
