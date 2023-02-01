@@ -33,7 +33,7 @@ if (typeof module !== "undefined") {
     const Expiration = xrpl.isoTimeToRippleTime(date) + 10
 
     // Construct EscrowCreate transaction
-    const EscrowCreate_tx = await client.autofill({
+    const CheckCreate_tx = await client.autofill({
         "TransactionType": "CheckCreate",
         "Account": wallet.address,
         "SendMax": "10000000", // 1 XRP = 1,000,000 drops
@@ -43,14 +43,14 @@ if (typeof module !== "undefined") {
   
     console.log(`\n The sender may cancel the Check after ${xrpl.rippleTimeToISOTime(Expiration)}`)
     
-    const EscrowCreate_tx_signed = wallet.sign(EscrowCreate_tx)
+    const CheckCreate_tx_signed = wallet.sign(CheckCreate_tx)
 
-    console.log("\n Transaction hash:", EscrowCreate_tx_signed.hash)
+    console.log("\n Transaction hash:", CheckCreate_tx_signed.hash)
   
-    const EscrowCreate_tx_result = await client.submitAndWait(EscrowCreate_tx_signed.tx_blob)
+    const CheckCreate_tx_result = await client.submitAndWait(CheckCreate_tx_signed.tx_blob)
     
-    console.log("\n Submit result:", EscrowCreate_tx_result.result.meta.TransactionResult)
-    console.log("    Tx content:", EscrowCreate_tx_result)
+    console.log("\n Submit result:", CheckCreate_tx_result.result.meta.TransactionResult)
+    console.log("    Tx content:", CheckCreate_tx_result)
     
     client.disconnect()
 
