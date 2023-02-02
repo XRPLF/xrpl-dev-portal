@@ -74,7 +74,7 @@ The available AccountSet flags are:
 | Flag Name          | Decimal Value | Corresponding Ledger Flag | Description   |
 |:-------------------|:--------------|:--------------------------|:--------------|
 | `asfAccountTxnID`  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](transaction-common-fields.html#accounttxnid) |
-| `asfAuthorizedNFTokenMinter`| 10         | (None)       | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](accountroot.html) object. This is an experimental field to enable behavior for NFToken support. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
+| `asfAuthorizedNFTokenMinter`| 10         | (None)       | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](accountroot.html) object. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `asfDefaultRipple` | 8             | `lsfDefaultRipple`        | Enable [rippling](rippling.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
 | `asfDepositAuth`   | 9             | `lsfDepositAuth`          | Enable [Deposit Authorization](depositauth.html) on this account. _(Added by the [DepositAuth amendment][].)_ |
 | `asfDisableMaster` | 4             | `lsfDisableMaster`        | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](cryptographic-keys.html) or a [Signer List](multi-signing.html). |
@@ -113,6 +113,10 @@ You can protect against unwanted incoming payments for non-XRP currencies by not
 The `TransferRate` field specifies a fee to charge whenever counterparties transfer the currency you issue. See [Transfer Fees](transfer-fees.html) for more information.
 
 In `rippled`'s WebSocket and JSON-RPC APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `1200000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
+
+## NFTokenMinter
+
+To remove an authorized minter, set `ClearFlag` to 10 (asfAuthorizedNFTokenMinter).
 
 <!-- SPELLING_IGNORE: TransferRate -->
 
