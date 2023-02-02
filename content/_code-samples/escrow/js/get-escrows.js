@@ -15,7 +15,7 @@ const main = async () => {
     let account_objects = [];
     
     // Loop through all account objects until marker is undefined
-    while(currMarker !== 'undefined'){
+    do {
 
         const payload = {
             "command": "account_objects",
@@ -30,14 +30,13 @@ const main = async () => {
 
         let { result: { account_objects : escrows, marker } } = await client.request(payload);
 
-        if (typeof marker === 'undefined' || marker === null || marker === currMarker) {
-            currMarker = 'undefined';
-        } else {
-            currMarker =  marker;
-        };
+        if(marker === currMarker){
+            break;
+        }
 
         account_objects.push(...escrows);
-    };
+        currMarker =  marker;
+    } while (typeof currMarker !== 'undefined')
 
     if (source.length > 0) {
         account_objects = account_objects.filter((escrow) =>  escrow.Account === source);
