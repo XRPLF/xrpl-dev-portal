@@ -1,7 +1,7 @@
 if (typeof module !== "undefined") {
     // Use var here because const/let are block-scoped to the if statement.
     var xrpl = require('xrpl')
-  }
+}
   // List which Tickets are outstanding against one’s own account and use Tickets to collect signatures for multisign transactions
   // https://xrpl.org/use-tickets.html
   // https://xrpl.org/signerlistset.html#signerlistset
