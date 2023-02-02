@@ -17,7 +17,7 @@ const main = async () => {
 
         // Check if the check ID is provided --------------------------------------
         if (checkId.length === 0) {
-            console.log("Please provide a check ID");
+            console.log("Please edit this snippet to provide a check ID. You can get a check ID by running create_check.js.");
             return;
         }
 
@@ -28,12 +28,9 @@ const main = async () => {
             CheckID: checkId,
             Amount: amount,
         };
-
-        // Auto-fill the fields ---------------------------------------------------
-        const prepared = await client.autofill(transaction);
         
         // Submit -----------------------------------------------------------------
-        const response = await client.submitAndWait(prepared, { wallet });
+        const response = await client.submitAndWait(transaction, { wallet });
         console.log(JSON.stringify(response.result, null, "\t"));
 
         // Disconnect -------------------------------------------------------------

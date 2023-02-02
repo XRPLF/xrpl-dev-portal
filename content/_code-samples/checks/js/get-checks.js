@@ -13,10 +13,7 @@ const main = async () => {
     let account_objects = [];
 
     // Loop through all account objects until marker is undefined --------------
-    let keepLooping = true;
-    
-    while(keepLooping){
-
+    do {
         const payload = {
             "command": "account_objects",
             "account": address,
@@ -29,15 +26,15 @@ const main = async () => {
         };
 
         let { result: { account_objects : checks, marker } } = await client.request(payload);
-        
-        if (typeof marker === 'undefined' || marker === null || marker === currMarker) {
-            keepLooping = false;
-        } else {
-            currMarker =  marker;
-        };
 
+        if (marker === currMarker) {
+            break;
+        }
+        
         account_objects.push(...checks);
-    };
+        currMarker = marker;
+        
+    } while (typeof currMarker !== "undefined")
     
     // Print results ----------------------------------------------------------
     if (account_objects.length === 0) {
@@ -45,8 +42,10 @@ const main = async () => {
     } else {
       console.log("Checks: \n", JSON.stringify(account_objects, null, "\t"));
     };
+
+    // Disconnect -------------------------------------------------------------
     await client.disconnect();
-    
+
   } catch (error) {
     console.log(error);
     process.exit(0);
