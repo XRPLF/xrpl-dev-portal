@@ -88,7 +88,7 @@ if (typeof module !== "undefined") {
     })
 
     console.log(`\n- Tickets issued by ${main_wallet.address}:\n`)
-    for (var i = 0; i < ticket_response.result.account_objects.length; i++) {
+    for (let i = 0; i < ticket_response.result.account_objects.length; i++) {
         console.log(`Ticket ${i+1}: ${ticket_response.result.account_objects[i].TicketSequence}`)
     }
 
