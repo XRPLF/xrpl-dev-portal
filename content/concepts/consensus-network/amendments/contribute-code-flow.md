@@ -50,7 +50,7 @@ The general development path breaks down as follows:
 
 1. Create a fork or branch in the [`rippled` repository](https://github.com/XRPLF/rippled) to develop your code.
 
-  **Tip:** If you're not sure where to start, _Dev Null Productions_ provides a detailed and thorough [`rippled` Source Code Guide](https://xrpintel.com/source).
+    **Tip:** If you're not sure where to start, _Dev Null Productions_ provides a detailed and thorough [`rippled` Source Code Guide](https://xrpintel.com/source).
 
 2. Run unit and integration tests. Running a server in _stand-alone mode_ is useful for testing your changes in an isolated environment, but you may want to stand up a private network for extensive changes.
 

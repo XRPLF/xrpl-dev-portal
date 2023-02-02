@@ -964,6 +964,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/consensus-network/amendments/contribute-code-flow.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/consensus-network/amendments/known-amendments.md
         targets:
             - en
@@ -1923,11 +1928,6 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.ja.md
         targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/propose-amendments.md
-        targets:
-            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.md
