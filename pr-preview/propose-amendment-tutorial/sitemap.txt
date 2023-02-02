@@ -67,6 +67,7 @@ https://xrpl.org/transaction-queue.html
 https://xrpl.org/about-canceling-a-transaction.html
 https://xrpl.org/transaction-malleability.html
 https://xrpl.org/amendments.html
+https://xrpl.org/contribute-code-flow.html
 https://xrpl.org/known-amendments.html
 https://xrpl.org/fee-voting.html
 https://xrpl.org/consensus-research.html
@@ -178,7 +179,6 @@ https://xrpl.org/configure-history-sharding.html
 https://xrpl.org/configure-full-history.html
 https://xrpl.org/configure-grpc.html
 https://xrpl.org/enable-public-signing.html
-https://xrpl.org/propose-amendments.html
 https://xrpl.org/configure-peering.html
 https://xrpl.org/cluster-rippled-servers.html
 https://xrpl.org/configure-a-private-server.html
