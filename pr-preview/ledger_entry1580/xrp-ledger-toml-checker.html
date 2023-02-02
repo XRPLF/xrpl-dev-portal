@@ -67,7 +67,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en toml-checker" data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -114,6 +114,7 @@
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -239,26 +240,49 @@
     <li class="active breadcrumb-item"><a href="dev-tools.html">Dev Tools</a></li>
     <li class="active breadcrumb-item">xrp-ledger.toml Checker</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap--><section class="container-fluid p-3">
-  <h1>xrp-ledger.toml Checker</h1>
+</nav><!--/.breadcrumbs-wrap--><section class="container-fluid">
+  <div class="p-3">
+    <h1>xrp-ledger.toml Checker</h1>
 
-  <p>If you run an XRP Ledger validator or use the XRP Ledger for your business, you can provide information about your usage of the XRP Ledger to the world in a machine-readable <a href="https://developers.ripple.com/xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>.</p>
+    <p>If you run an XRP Ledger validator or use the XRP Ledger for your business, you can provide information about your usage of the XRP Ledger to the world in a machine-readable <a href="https://xrpl.org/xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>.</p>
 
-  <p>This tool allows you to verify that your <code>xrp-ledger.toml</code> file is syntactically
-    correct and deployed properly.</p><br/>
-  <form id="domain-entry">
-    <div class="input-group">
-      <input id="domain" type="text" class="form-control" required
-             placeholder="example.com (Domain name to check)"
-             pattern="^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z][a-zA-Z-]{0,22}[a-zA-Z]$"><br>
-      <button class="btn btn-primary form-control">Check toml file</button>
-    </div><!--/.input-group-->
-  </form>
-  <div id="result">
-    <h5 class='result-title'>Result</h5>
-      <ul id="log">
-    </ul>
   </div>
+
+    <div class="p-3 pb-5">
+    <form id="domain-entry">
+    <h4>Look Up By Domain</h4>
+    <p>This tool allows you to verify that your <code>xrp-ledger.toml</code> file is syntactically
+      correct and deployed properly.</p>
+      <div class="input-group">
+        <input id="domain" type="text" class="form-control" required
+              placeholder="example.com (Domain name to check)"
+              pattern="^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z][a-zA-Z-]{0,22}[a-zA-Z]$"><br>
+        <button class="btn btn-primary form-control">Check toml file</button>
+      </div><!--/.input-group-->
+    </form>
+    <div id="result">
+      <h5 class='result-title'>Result</h5>
+        <ul id="log">
+      </ul>
+    </div>
+  </div>
+  <div class="p-3 pt-5">
+    <h4>Look Up By Account</h4>
+    <p>Enter an XRP Ledger address to see if that account is claimed by the domain it says owns it.</p>
+    <form id="domain-verification">
+        <div class="input-group">
+          <input id="verify-domain" type="text" class="form-control" required
+                placeholder="r... (Wallet Address to check)">
+                <br>
+          <button class="btn btn-primary form-control">Check account</button>
+        </div><!--/.input-group-->
+      </form>
+      <div id="verify-domain-result">
+        <h5 id="verify-domain-result-title" class='result-title'>Result</h5>
+          <ul id="verify-domain-log">
+        </ul>
+      </div>
+</div>
 </section>
       </main>
       <!-- Left sidebar last so it's at the end for mobile -->
@@ -1200,6 +1224,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -1347,6 +1376,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
   </div>
 
       
@@ -2722,6 +2756,7 @@
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2804,7 +2839,9 @@ $(document).ready(() => {
 <script type="application/javascript" src="assets/js/xrpl-2.2.0.min.js"></script>
 
 
-  <script type="application/javascript" src="assets/vendor/iarna-toml-parse.js"></script>
   <script type="application/javascript" src="assets/js/xrp-ledger-toml-checker.js"></script>
+
+  <!-- TOML tool -->
+  <script type="application/javascript" src="assets/vendor/iarna-toml-parse.js"></script>
 </body>
 </html>

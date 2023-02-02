@@ -8,6 +8,7 @@ https://xrpl.org/xrp-overview.html
 https://xrpl.org/impact.html
 https://xrpl.org/carbon-calculator.html
 https://xrpl.org/faq.html
+https://xrpl.org/privacy-policy.html
 https://xrpl.org/technical-faq.html
 https://xrpl.org/docs.html
 https://xrpl.org/concepts.html
@@ -168,6 +169,7 @@ https://xrpl.org/configure-rippled.html
 https://xrpl.org/run-rippled-as-a-validator.html
 https://xrpl.org/run-rippled-as-a-stock-server.html
 https://xrpl.org/configure-amendment-voting.html
+https://xrpl.org/test-amendments.html
 https://xrpl.org/configure-statsd.html
 https://xrpl.org/connect-your-rippled-to-the-xrp-test-net.html
 https://xrpl.org/configure-online-deletion.html
@@ -194,6 +196,7 @@ https://xrpl.org/diagnosing-problems.html
 https://xrpl.org/health-check-interventions.html
 https://xrpl.org/understanding-log-messages.html
 https://xrpl.org/server-doesnt-sync.html
+https://xrpl.org/server-is-amendment-blocked.html
 https://xrpl.org/server-wont-start.html
 https://xrpl.org/fix-sqlite-tx-db-page-size-issue.html
 https://xrpl.org/manage-the-clio-server.html

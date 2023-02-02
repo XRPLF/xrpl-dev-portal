@@ -130,6 +130,7 @@
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -416,7 +417,7 @@ Null method
 <h2 id="universal-errors">Universal Errors<a aria-hidden="true" class="hover_anchor" href="#universal-errors"><i class="fa fa-link"></i></a></h2>
 <p>All methods can potentially return any of the following values for the <code>error</code> code:</p>
 <ul>
-<li><code>amendmentBlocked</code> - The server is <a href="amendments.html#amendment-blocked">amendment blocked</a> and needs to be updated to the latest version to stay synced with the XRP Ledger network.</li>
+<li><code>amendmentBlocked</code> - The server is <a href="amendments.html#amendment-blocked-servers">amendment blocked</a> and needs to be updated to the latest version to stay synced with the XRP Ledger network.</li>
 <li><code>failedToForward</code> - (<a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a> servers only) The server tried to forward this request to a P2P Mode server, but the connection failed.</li>
 <li><code>invalid_API_version</code> - The server does not support the <a href="request-formatting.html#api-versioning">API version number</a> from the request.</li>
 <li><code>jsonInvalid</code> - (WebSocket only) The request is not a proper JSON object.<ul>
@@ -1401,6 +1402,11 @@ Null method
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -1548,6 +1554,11 @@ Null method
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
   </div>
 
       
@@ -2923,6 +2934,7 @@ Null method
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 

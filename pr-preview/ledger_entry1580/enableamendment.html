@@ -130,6 +130,7 @@
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -285,13 +286,22 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="enableamendment">EnableAmendment<a aria-hidden="true" class="hover_anchor" href="#enableamendment"><i class="fa fa-link"></i></a></h1>
-<p>An <code>EnableAmendment</code> <a href="pseudo-transaction-types.html">pseudo-transaction</a> marks a change in status of an <a href="amendments.html">amendment</a> to the XRP Ledger protocol, including:</p>
+<p>An <code>EnableAmendment</code> pseudo-transaction marks a change in the status of a proposed amendment when it:</p>
 <ul>
-<li>A proposed amendment gained supermajority approval from validators.</li>
-<li>A proposed amendment lost supermajority approval.</li>
-<li>A proposed amendment has been enabled.</li>
+<li>Gains supermajority approval from validators.</li>
+<li>Loses supermajority approval.</li>
+<li>Is enabled on the XRP Ledger protocol.</li>
 </ul>
-<p class="devportal-callout note"><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
+<!-- TODO: Move to propose amendments tutorial.
+
+A server only enables amendments when these conditions are met:
+
+- A previous ledger includes an `EnableAmendment` pseudo-transaction with the `tfGotMajority` flag enabled.
+- The previous ledger in question is an ancestor of the current ledger.
+- The previous ledger in question has a close time that is at least two weeks before the close time of the latest flag ledger.
+- There are no `EnableAmendment` pseudo-transactions for this amendment with the `tfLostMajority` flag enabled in the consensus ledgers between the `tfGotMajority` pseudo-transaction and the current ledger.
+
+-->
 <h2 id="example-enableamendment-json">Example EnableAmendment JSON<a aria-hidden="true" class="hover_anchor" href="#example-enableamendment-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrrhoLvTp"</span><span class="p">,</span>
@@ -1324,6 +1334,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -1471,6 +1486,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
   </div>
 
       
@@ -2846,6 +2866,7 @@
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 

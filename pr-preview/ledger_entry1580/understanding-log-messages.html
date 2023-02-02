@@ -130,6 +130,7 @@
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -358,7 +359,7 @@
 <p>The following message indicates that the server has detected that it is running an older software version than at least 60% of its trusted validators:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
 </code></pre></div>
-<p>This is not strictly a problem, but an old server version is likely to become <a href="amendments.html#amendment-blocked">amendment blocked</a>. You should <a href="install-rippled.html">update <code>rippled</code></a> to the latest stable version. (If you are connected to <a href="parallel-networks.html">devnet</a>, update to the latest nightly version instead.)</p>
+<p>This is not strictly a problem, but an old server version is likely to become <a href="amendments.html#amendment-blocked-servers">amendment blocked</a>. You should <a href="install-rippled.html">update <code>rippled</code></a> to the latest stable version. (If you are connected to <a href="parallel-networks.html">devnet</a>, update to the latest nightly version instead.)</p>
 <h2 id="connection-reset-by-peer">Connection reset by peer<a aria-hidden="true" class="hover_anchor" href="#connection-reset-by-peer"><i class="fa fa-link"></i></a></h2>
 <p>The following log message indicates that a peer <code>rippled</code> server closed a connection:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">Peer:WRN [012] onReadMessage: Connection reset by peer
@@ -1496,6 +1497,11 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -1643,6 +1649,11 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
   </div>
 
       
@@ -3018,6 +3029,7 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 

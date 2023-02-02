@@ -130,6 +130,7 @@
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -340,44 +341,52 @@ rippled<span class="w"> </span>account_objects<span class="w"> </span>r9cZA1mLK5
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Required?</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">A unique identifier for the account, most commonly the account's address.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>type</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> If included, filter results to include only this type of ledger object. The valid types are: <code>check</code>, <code>deposit_preauth</code>, <code>escrow</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>ticket</code>,  <code>state</code> (trust line), and <code>nft_offer</code>. <!-- Author's note: Omitted types that can't be owned by an account --></td>
+<td style="text-align: left;">Yes</td>
+<td>A unique identifier for the account, most commonly the account's <a href="basic-data-types.html#addresses">Address</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>deletion_blockers_only</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, the response only includes objects that would block this account from <a href="accounts.html#deletion-of-accounts">being deleted</a>. The default is <code>false</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">No</td>
+<td>If <code>true</code>, the response only includes objects that would block this account from <a href="accounts.html#deletion-of-accounts">being deleted</a>. The default is <code>false</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;"><a href="basic-data-types.html#hashes">Hash</a></td>
+<td style="text-align: left;">No</td>
+<td>A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Number</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;"><a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
+<td style="text-align: left;">No</td>
+<td>The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Optional)</em> The maximum number of objects to include in the results. Must be within the inclusive range <code>10</code> to <code>400</code> on non-admin connections. The default is <code>200</code>.</td>
+<td style="text-align: left;">No</td>
+<td>The maximum number of objects to include in the results. Must be within the inclusive range <code>10</code> to <code>400</code> on non-admin connections. The default is <code>200</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
-<td style="text-align: left;"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off.</td>
+<td style="text-align: left;">No</td>
+<td>Value from a previous paginated response. Resume retrieving data where that response left off.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>type</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">No</td>
+<td>Filter results by a ledger entry type. The valid types are: <code>check</code>, <code>deposit_preauth</code>, <code>escrow</code>, <code>nft_offer</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>state</code> (trust line), and <code>ticket</code>. <!-- Author's note: Omitted types that can't be owned by an account --></td>
 </tr>
 </tbody>
 </table>
@@ -2513,6 +2522,11 @@ rippled<span class="w"> </span>account_objects<span class="w"> </span>r9cZA1mLK5
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -2660,6 +2674,11 @@ rippled<span class="w"> </span>account_objects<span class="w"> </span>r9cZA1mLK5
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
   </div>
 
       
@@ -4035,6 +4054,7 @@ rippled<span class="w"> </span>account_objects<span class="w"> </span>r9cZA1mLK5
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 

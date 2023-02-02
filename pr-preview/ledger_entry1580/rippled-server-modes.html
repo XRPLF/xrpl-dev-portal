@@ -130,6 +130,7 @@
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -339,32 +340,17 @@
 <p>Most notably, reporting mode servers do not report pending, non-validated ledger data or transactions. This limitation is relevant to certain use cases that rely on rapid access to in-flux data, such as performing arbitrage in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
 <!-- TODO: link setup steps for Reporting Mode when those are ready -->
 <h2 id="stand-alone-mode">Stand-Alone Mode<a aria-hidden="true" class="hover_anchor" href="#stand-alone-mode"><i class="fa fa-link"></i></a></h2>
-<p>In stand-alone mode, the server operates without attempting to connect to the peer-to-peer network or follow the consensus process. The server still provides API access as normal and uses the same transaction processing engine, so you can test <code>rippled</code> behavior without being tied to the live network. For example, you can:</p>
+<p>In stand-alone mode, the server operates without connecting to the network and participating in the consensus process. Without the consensus process, you have to manually advance the ledger and no distinction is made between "closed" and "validated" ledgers. However, the server still provides API access and processes transactions the same. This enables you to:</p>
 <ul>
-<li><a href="amendments.html#testing-amendments">Test the effects of Amendments</a> before those Amendments have gone into effect across the decentralized network.</li>
+<li><a href="test-amendments.html">Test the effects of Amendments</a> before those Amendments have gone into effect across the decentralized network.</li>
 <li><a href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Create a new genesis ledger</a> from scratch.</li>
 <li><a href="load-a-saved-ledger-in-stand-alone-mode.html">Load an existing ledger version</a> from disk, then replay specific transactions to re-create their outcomes or test other possibilities.</li>
 </ul>
-<p class="devportal-callout caution"><strong>Caution:</strong> In stand-alone mode, you must <a href="advance-the-ledger-in-stand-alone-mode.html">manually advance the ledger</a>.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><strong>References:</strong><ul>
-<li><a href="commandline-usage.html">Commandline Usage Reference</a> - Detailed information on command-line options for all <code>rippled</code> server modes.</li>
-<li><a href="ledger_accept.html">ledger_accept method</a> - Manually advance the ledger in stand-alone mode.</li>
-<li><a href="feature.html">feature method</a> - Check <a href="amendments.html">amendments</a> currently known and enabled.</li>
-</ul>
-</li>
 <li><strong>Tutorials:</strong><ul>
-<li><a href="configure-rippled.html">Configure <code>rippled</code></a><ul>
-<li><a href="run-rippled-as-a-validator.html">Run <code>rippled</code> as a Validator</a></li>
-</ul>
-</li>
-<li><a href="use-stand-alone-mode.html">Use rippled in Stand-Alone Mode</a>:<ul>
-<li><a href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a></li>
-<li><a href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a></li>
-<li><a href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a></li>
-</ul>
-</li>
+<li><a href="configure-rippled.html">Configure <code>rippled</code></a></li>
+<li><a href="use-stand-alone-mode.html">Use rippled in Stand-Alone Mode</a></li>
 </ul>
 </li>
 </ul>
@@ -1335,6 +1321,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -1482,6 +1473,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
   </div>
 
       
@@ -2857,6 +2853,7 @@
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 

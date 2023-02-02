@@ -130,6 +130,7 @@
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -286,26 +287,14 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">rippled ledger_accept --conf=/path/to/rippled.cfg
 </code></pre></div>
 <p>In stand-alone mode, <code>rippled</code> makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see <a href="consensus.html">The XRP Ledger Consensus Process</a>.)</p>
-<p>Whenever <code>rippled</code> closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using <code>rippled</code> in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a transaction from a different address. Otherwise, the two transactions might be executed in reverse order when the ledger is closed. <strong>Note:</strong> You can safely submit multiple transactions from a single address to a single ledger, because <code>rippled</code> sorts transactions from the same address in ascending order by <a href="transaction-common-fields.html"><code>Sequence</code> number</a>.</p>
+<p>Whenever <code>rippled</code> closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using <code>rippled</code> in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a transaction from a different address. Otherwise, the two transactions might be executed in reverse order when the ledger is closed. </p>
+<p class="devportal-callout note"><strong>Note:</strong> You can safely submit multiple transactions from a single address to a single ledger, because <code>rippled</code> sorts transactions from the same address in ascending order by <a href="transaction-common-fields.html"><code>Sequence</code> number</a>.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><strong>Concepts:</strong><ul>
-<li><a href="xrpl-servers.html">The <code>rippled</code> Server</a><ul>
-<li><a href="rippled-server-modes.html"><code>rippled</code> Server Modes</a></li>
-</ul>
-</li>
-<li><a href="intro-to-consensus.html">Introduction to Consensus</a></li>
-<li><a href="amendments.html">Amendments</a></li>
-</ul>
-</li>
 <li><strong>References:</strong><ul>
 <li><a href="ledger_accept.html">ledger_accept method</a></li>
 <li><a href="server_info.html">server_info method</a></li>
 <li><a href="commandline-usage.html"><code>rippled</code> Commandline Usage</a></li>
-</ul>
-</li>
-<li><strong>Use Cases:</strong><ul>
-<li><a href="contribute-code.html">Contribute Code to the XRP Ledger</a></li>
 </ul>
 </li>
 </ul>
@@ -1276,6 +1265,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -1423,6 +1417,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
   </div>
 
       
@@ -2798,6 +2797,7 @@
             <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 
