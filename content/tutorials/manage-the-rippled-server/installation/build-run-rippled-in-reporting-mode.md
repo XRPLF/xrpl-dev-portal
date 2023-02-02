@@ -9,7 +9,7 @@ top_nav_grouping: Popular Pages
 ---
 # Build and Run `rippled` in Reporting Mode
 
-[Reporting mode](rippled-server-modes.html) is a mode of the XRP Ledger core server specialized for serving [HTTP and WebSocket APIs](http-websocket-apis.html).
+Reporting mode is a mode of the XRP Ledger core server specialized for serving HTTP and WebSocket APIs.
 
 In reporting mode, the server does not connect to the peer-to-peer network. Instead, it uses gRPC to get validated data from one or more trusted servers that are connected to the P2P network. 
 
@@ -35,7 +35,7 @@ Multiple reporting mode servers can share access to the same network accessible 
 
     **Note:** If you choose to use Cassandra as the database, the disk requirements for `rippled` will be lower as the data will not be stored on your local disk.  
 
-2. In order to run reporting mode, you also need to run one or more `rippled` servers in [P2P mode](install-rippled.html). Ensure that you have at least one `rippled` server running in P2P mode. 
+2. In order to run reporting mode, you also need to run one or more `rippled` servers in P2P mode. Ensure that you have at least one `rippled` server running in P2P mode. 
 
 3. A compatible version of CMake must be installed.
 

@@ -8,13 +8,13 @@ labels:
 ---
 # Configure a Private Server
 
-A [private server](peer-protocol.html#private-peers) is a `rippled` server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for [validators](run-rippled-as-a-validator.html), but it can be useful for other specific purposes.
+A private server is a `rippled` server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for validators, but it can be useful for other specific purposes.
 
 ## Prerequisites
 
 To use a private server, you must meet the following requirements:
 
-- You must have [`rippled` installed](install-rippled.html) and updated to the latest version, but not running yet.
+- You must have `rippled` installed and updated to the latest version, but not running yet.
 - You must decide whether to connect through **proxies** you run yourself, or through **public hubs**. For a comparison of these options, see [Pros and Cons of Peering Configurations](peer-protocol.html#pros-and-cons-of-peering-configurations).
     - If you are using proxies, you must have additional machines with `rippled` installed and running to use as the proxies. These servers must be able to connect to the outside network and to your private server.
     - For either configuration, you must know the IP addresses and ports of the peers you intend to connect to.
@@ -52,13 +52,13 @@ To set up a specific server as a private peer, complete the following steps:
         192.168.0.1 51235
         192.168.0.2 51235
 
-    **Note:** If you omit the port number, the server uses port 2459, the IANA-assigned port for the [XRP Ledger protocol](peer-protocol.html). [New in: rippled 1.6.0][]
+    **Note:** If you omit the port number, the server uses port 2459, the IANA-assigned port for the XRP Ledger protocol.
 
 4. If using proxies, cluster them with your private peer and each other.
 
     If you are using public hubs, skip this step.
 
-    If you are using proxies, [configure the proxies as a cluster](cluster-rippled-servers.html) that includes your private peer. Each member of the cluster should have an `[ips_fixed]` stanza that lists each _other_ member of the cluster. However, **only the private server** should have a `[peer_private]` stanza.
+    If you are using proxies, configure the proxies as a cluster that includes your private peer. Each member of the cluster should have an `[ips_fixed]` stanza that lists each _other_ member of the cluster. However, **only the private server** should have a `[peer_private]` stanza.
 
     Restart `rippled` on the proxies one-by-one. On each proxy server:
 
@@ -75,7 +75,7 @@ To set up a specific server as a private peer, complete the following steps:
 
 ## Next Steps
 
-As an additional precaution, you should configure your firewall to block incoming connections to your private server from servers that are not your specific peers. If you are running proxy servers, [forward peer ports](forward-ports-for-peering.html) through your firewall to the proxies, but **not** to the private peer. The exact details of how to configure this depend on what firewall you use.
+As an additional precaution, you should configure your firewall to block incoming connections to your private server from servers that are not your specific peers. If you are running proxy servers, forward peer ports through your firewall to the proxies, but **not** to the private peer. The exact details of how to configure this depend on what firewall you use.
 
 Be sure the firewall **does not block** outgoing HTTP connections on port 80. The default configuration uses this port to download the latest recommended validator list from **vl.ripple.com**. Without a validator list, the server does not know which validators to trust and cannot recognize when the network reaches a consensus.
 
