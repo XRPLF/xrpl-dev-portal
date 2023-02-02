@@ -81,10 +81,10 @@ if (typeof module !== "undefined") {
     console.log("        Submit result:", ticket_submit.result.meta.TransactionResult)
     
     const ticket_response = await client.request({
-        "command": "account_objects",
-        "account": main_wallet.address,
-        "ledger_index": "validated",
-        "type": "ticket"
+        command: "account_objects",
+        account: main_wallet.address,
+        ledger_index: "validated",
+        type: "ticket"
     })
 
     console.log(`\n- Tickets issued by ${main_wallet.address}:\n`)
