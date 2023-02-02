@@ -215,7 +215,7 @@ Request('ledger_entry - NFT Page', {
   description: "Returns an NFT Page object in its raw ledger format.",
   link: "ledger_entry.html#get-offer-object",
   body: {
-    "id": "example_get_accountroot",
+    "id": "example_get_nft_page",
     "command": "ledger_entry",
     "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
     "ledger_index": "validated"
