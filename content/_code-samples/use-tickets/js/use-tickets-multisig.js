@@ -63,7 +63,7 @@ if (typeof module !== "undefined") {
 
     const signerLiSetSignerList_tx_prepared = await client.autofill(signerLiSetSignerList_tx)
     const SetSignerList_tx_signed = main_wallet.sign(signerLiSetSignerList_tx_prepared)
-    console.log("\n SignerListSet Tx hash:", SetSignerList_tx_signed.hash)
+    console.log(`\n SignerListSet Tx hash: ${SetSignerList_tx_signed.hash}`)
   
     const setsignerlist_submit = await client.submitAndWait(SetSignerList_tx_signed.tx_blob)
     console.log("           Submit result:", setsignerlist_submit.result.meta.TransactionResult)
