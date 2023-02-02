@@ -69,9 +69,9 @@ if (typeof module !== "undefined") {
     console.log(`\t Submit result: ${setsignerlist_submit.result.meta.TransactionResult}`)
     
     const CreateTicket_tx = await client.autofill({
-      "TransactionType": "TicketCreate",
-      "Account": main_wallet.address,
-      "TicketCount": 3
+      TransactionType: "TicketCreate",
+      Account: main_wallet.address,
+      TicketCount: 3
     })
   
     const CreateTicket_tx_signed = main_wallet.sign(CreateTicket_tx)
