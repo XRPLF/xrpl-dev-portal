@@ -508,7 +508,7 @@ The following JSON object shows the metadata for [a complex cross-currency payme
 
 ## AffectedNodes
 
-The `AffectedNodes` array contains a complete list of the [objects in the ledger][] that this transaction modified in some way. Each entry in this array is an object with one top-level field indicating what type it is:
+The `AffectedNodes` array contains a complete list of the objects in the ledger that this transaction modified in some way. Each entry in this array is an object with one top-level field indicating what type it is:
 
 - `CreatedNode` indicates that the transaction created a new object in the ledger.
 - `DeletedNode` indicates that the transaction removed an object from the ledger.
@@ -532,8 +532,8 @@ A `DeletedNode` object contains the following fields:
 
 | Field             | Value             | Description                          |
 |:------------------|:------------------|:-------------------------------------|
-| `LedgerEntryType` | String            | The [type of ledger object][] that was deleted. |
-| `LedgerIndex`     | String - [Hash][] | The [ID of this ledger object](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
+| `LedgerEntryType` | String            | The type of ledger object that was deleted. |
+| `LedgerIndex`     | String - Hash | The [ID of this ledger object](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
 | `FinalFields`     | Object            | The content fields of the ledger object immediately before it was deleted. Which fields are present depends on what type of ledger object was created. |
 
 ### ModifiedNode Fields

@@ -41,4 +41,4 @@ When a Clio server receives an API request, it looks up data from these data sto
 
 - [Clio source code](https://github.com/XRPLF/clio)
 - **Tutorials:**
-    - [Install Clio server on Ubuntu](install-clio-on-ubuntu.html)
+    - [Manage the Clio Server](manage-the-clio-server.html)

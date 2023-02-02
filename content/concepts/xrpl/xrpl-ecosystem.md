@@ -1,4 +1,10 @@
-# Understanding the XRPL Ecosystem
+---
+html: xrpl-ecosystem.html
+parent:
+blurb: 
+labels:
+---
+# The XRPL Ecosystem
 
 The XRP Ledger is a layered ecosystem of software projects that power and enable the Internet of Value. It is impossible to list every project, tool, and business that interacts with the XRP Ledger. This page highlights some core projects. 
 

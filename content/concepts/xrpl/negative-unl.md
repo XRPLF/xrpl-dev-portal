@@ -5,12 +5,9 @@ blurb: Negative UNL improves the network's ability to make progress during a par
 labels:
   - Ledgers
 ---
-
 # Negative UNL
 
-_Added by the [NegativeUNL Amendment](known-amendments.html#negativeunl)._
-
-The _Negative UNL_ is a feature of the XRP Ledger [consensus protocol](consensus.html) that improves _liveness_, the network's ability to make forward progress during a partial outage. Using the Negative UNL, servers adjust their effective UNLs based on which validators are currently online and operational, so that a new [ledger version](ledgers.html) can be declared _validated_ even if several trusted validators are offline.
+The _Negative UNL_ is a feature of the XRP Ledger consensus protocol that improves _liveness_, the network's ability to make forward progress during a partial outage. Using the Negative UNL, servers adjust their effective UNLs based on which validators are currently online and operational, so that a new ledger version can be declared _validated_ even if several trusted validators are offline.
 
 The Negative UNL has no impact on how the network processes transactions or what transactions' outcomes are, except that it improves the network's ability to declare outcomes final during some types of partial outages.
 
@@ -34,12 +31,12 @@ In cases where validators go offline one or two at a time, the remaining validat
 
 If more than 20% of validators suddenly go offline all at once, the remaining servers cannot achieve the quorum necessary to validate a new ledger, so no new ledgers could be validated. However, those servers can still make tentative forward progress through successive consensus rounds. Over time, the remaining validators would continue to apply changes to the Negative UNL to the tentative ledgers and adjust their effective UNLs; eventually, if the situation persists, the network could resume fully validating ledgers by using the adjusted Negative UNL from the tentative ledger versions.
 
-Negative UNL has no effect on [stand-alone mode](rippled-server-modes.html) since the server does not use consensus in stand-alone mode.
+Negative UNL has no effect on stand-alone mode since the server does not use consensus in stand-alone mode.
 
 
 ## How It Works
 
-The Negative UNL is closely tied to the [consensus process](consensus.html) and is designed with safeguards to maintain the continuity and reliability of the network in adverse situations. When all trusted validators are operating normally, the Negative UNL is unused and has no effect. When some validators appear to be offline or out of sync, the Negative UNL rules take effect.
+The Negative UNL is closely tied to the consensus process and is designed with safeguards to maintain the continuity and reliability of the network in adverse situations. When all trusted validators are operating normally, the Negative UNL is unused and has no effect. When some validators appear to be offline or out of sync, the Negative UNL rules take effect.
 
 The Negative UNL is intentionally designed to change at a slow rate, to avoid any time-based disagreements about which Negative UNL should apply to a given ledger version's consensus process.
 
@@ -56,7 +53,7 @@ This metric of reliability measures the availability of a validator _and_ the be
 
 - The validator's validation votes are not reaching the server due to poor network connectivity between them.
 - The validator stops operating or gets overloaded.
-- The validator is not following the same protocol rules as the server, for a variety of reasons. Possibilities include misconfiguration, software bugs, intentionally following a [different network](parallel-networks.html), or malicious behavior.
+- The validator is not following the same protocol rules as the server, for a variety of reasons. Possibilities include misconfiguration, software bugs, intentionally following a parallel network, or malicious behavior.
 
 If a validator's reliability is **less than 50%**, it is a candidate to be added to the Negative UNL. To be removed from the Negative UNL, a validator's reliability must be **greater than 80%**.
 
@@ -82,7 +79,7 @@ Each flag ledger, all of the following changes apply:
     - It does not have that validator in its UNL. (If a validator goes down permanently, this rule ensures that it gets removed from the on-ledger Negative UNL after it has been removed from servers' configured UNLs.)
 4. If a proposed change to the Negative UNL achieves a consensus, the change is scheduled to go into effect in the following flag ledger. Up to one addition and one removal can be scheduled this way.
 
-The proposals to add and remove validators from the Negative UNL take the form of [UNLModify pseudo-transactions][]. The consensus process determines whether each pseudo-transaction achieves a consensus or gets thrown out, in the same way as other [pseudo-transactions](pseudo-transaction-types.html). In other words, for a particular validator to be added or removed from the Negative UNL, a consensus of servers must propose the same change.
+The proposals to add and remove validators from the Negative UNL take the form of [UNLModify pseudo-transactions](unlmodify.html). The consensus process determines whether each pseudo-transaction achieves a consensus or gets thrown out, in the same way as other pseudo-transactions. In other words, for a particular validator to be added or removed from the Negative UNL, a consensus of servers must propose the same change.
 
 Scheduled and effective changes to the Negative UNL are tracked in the [NegativeUNL object](negativeunl.html) in the ledger's state data.
 
@@ -164,13 +161,8 @@ The following example demonstrates how the Negative UNL affects the consensus pr
 
 ## See Also
 
-- **Concepts:**
-    - [Consensus Protocol](consensus.html)
 - **Tutorials:**
     - [Connect Your `rippled` to a Parallel Network](connect-your-rippled-to-the-xrp-test-net.html)
-    - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
 - **References:**
-    - [NegativeUNL Object](negativeunl.html)
-    - [UNLModify pseudo-transaction][]
-    - [ledger_entry method][]
-    - [consensus_info method][]
+    - [ledger_entry method](ledger_entry.html)
+    - [consensus_info method](consensus_info.html)

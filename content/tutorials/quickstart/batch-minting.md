@@ -8,7 +8,6 @@ labels:
   - Broker
   - XRP
 ---
-
 # Batch Mint NFTokens
 
 You can create an application that mints multiple NFTokens at one time. You can use a `for` loop to send one transaction after another.

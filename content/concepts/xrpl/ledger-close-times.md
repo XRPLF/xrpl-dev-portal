@@ -5,7 +5,6 @@ blurb: How the XRP Ledger calculates a unique close time value for each ledger v
 labels:
   - Ledgers
 ---
-
 # Ledger Close Times
 
 <!-- this topic needs illustrations -->

@@ -5,7 +5,6 @@ blurb: Consensus is the validation process for new entries to the XRP Ledger.
 labels:
   - Ledgers
 ---
-
 # Consensus
 
 This topic describes the consensus process used to validate each ledger version as it is added to the XRP Ledger block chain.

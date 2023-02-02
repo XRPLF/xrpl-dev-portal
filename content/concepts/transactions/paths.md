@@ -20,7 +20,7 @@ A path is made of steps that connect the sender to the receiver of the payment. 
 * Rippling through another address with the same currency
 * Trading tokens or XRP using an order book
 
-[Rippling](rippling.md) is the process of exchanging equivalent tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
+[Rippling](rippling.html) is the process of exchanging equivalent tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
 
 Trading tokens and possibly XRP involves going to an order book and finding the best exchange rate between the assets involved for the amount being sent. The path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
 
@@ -56,7 +56,7 @@ By convention, several steps of a path are implied by the [fields of the Payment
 
 ## Default Paths
 
-In addition to explicitly specified paths, a transaction can execute along the _default path_. The default path is the simplest possible way to connect the [implied steps](#implied-steps) of the transaction.
+In addition to explicitly specified paths, a transaction can execute along the _default path_. The default path is the simplest possible way to connect the implied steps of the transaction.
 
 The default path could be any of the following:
 
@@ -101,15 +101,10 @@ The `type` field, used for the binary serialization of a path set, is actually c
 | `0x10`      | 16              | A change of currency: the `currency` field is present. |
 | `0x20`      | 32              | A change of issuer: the `issuer` field is present. |
 
-<!-- 
+
 ## See Also
 
 - **Concepts:**
     - [Cross-Currency Payments](cross-currency-payments.html)
     - [Decentralized Exchange](decentralized-exchange.html)
-    - [Partial Payments](partial-payments.html)
-- **References:**
-    - [Payment transaction][]
-    - [path_find method][] (WebSocket only)
-    - [ripple_path_find method][]
--->
+    \

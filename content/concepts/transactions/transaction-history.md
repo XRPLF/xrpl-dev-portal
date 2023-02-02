@@ -21,4 +21,4 @@ The _conceptual_ transaction history of an account also includes transactions th
 - `Escrow` objects, representing held payments to or from the account that are locked by time or a crypto-condition.
 - `SignerList` objects, representing lists of addresses that can authorize transactions for the account by multi-signing. 
 
-For more information on each of these objects, see the Ledger Format Reference.
+For more information on each of these objects, see: [Ledger Data Formats](ledger-data-formats.html).

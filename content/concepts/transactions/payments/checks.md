@@ -33,14 +33,5 @@ Learn about [Check](checks-uc.html) use cases.
 
 ## See Also
 
-- [Transaction Reference](transaction-types.html)
-    - [CheckCreate][]
-    - [CheckCash][]
-    - [CheckCancel][]
-- [Checks Tutorials](use-checks.html)
-    - [Send a Check](send-a-check.html)
-    - [Look up Checks by sender address](look-up-checks-by-sender.html)
-    - [Look up Checks by recipient address](look-up-checks-by-recipient.html)
-    - [Cash a Check for an exact amount](cash-a-check-for-an-exact-amount.html)
-    - [Cash a Check for a flexible amount](cash-a-check-for-a-flexible-amount.html)
-    - [Cancel a Check](cancel-a-check.html)
+- **Tutorials:**
+    - [Use Checks](use-checks.html)

@@ -15,7 +15,7 @@ Accounts in the XRP Ledger are identified by an address in the XRP Ledger's base
 * Case-sensitive
 * Includes a 4-byte checksum so that the probability of generating a valid address from random characters is approximately 1 in 2<sup>32</sup>
 
-> **Note:** The XRP community has proposed an **X**-address format that "packs" a destination tag into the address. These addresses start with an `X` (for the mainnet) or a `T` (for the [testnet](../networks/parallel-networks.md)). Exchanges and wallets can use X-addresses to represent all the data a customer needs to know in one value. For more information, see the [X-address format site](https://xrpaddress.info/) and [codec](https://github.com/xrp-community/xrpl-tagged-address-codec).
+> **Note:** The XRP community has proposed an **X**-address format that "packs" a destination tag into the address. These addresses start with an `X` (for the mainnet) or a `T` (for the [testnet](parallel-networks.html)). Exchanges and wallets can use X-addresses to represent all the data a customer needs to know in one value. For more information, see the [X-address format site](https://xrpaddress.info/) and [codec](https://github.com/xrp-community/xrpl-tagged-address-codec).
 >
 > The XRP Ledger protocol only supports "classic" addresses natively, but many client libraries support X-addresses too.
 
@@ -26,8 +26,6 @@ For more information, see [Accounts](accounts.html).
 Any valid address can become an account in the XRP Ledger by being funded. You can also use an address that has not been funded to represent a regular key or a member of a signer list. Only a funded account can be the sender of a transaction.
 
 Creating a valid address is a strictly mathematical task starting with a key pair. You can generate a key pair and calculate its address entirely offline without communicating to the XRP Ledger or any other party. The conversion from a public key to an address involves a one-way hash function, so it is possible to confirm that a public key matches an address but it is impossible to derive the public key from the address alone. (This is part of the reason why signed transactions include the public key _and_ the address of the sender.)
-
-For more technical details of how to calculate an XRP Ledger address, see [Address Encoding](#address-encoding).
 
 
 ## Address Encoding

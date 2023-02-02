@@ -5,7 +5,6 @@ blurb: The XRP Ledger is designed to protect itself against both malicious actor
 labels:
   - Ledgers
 ---
-
 # Consensus Protections
 
 The XRP Ledger Consensus Protocol is a _byzantine fault tolerant_ consensus mechanism, which means it is designed to work even if all kinds of things can go wrong: participants depend on an unreliable open network to communicate, and malicious actors might be attempting to control or interrupt the system at any given time. On top of that, the set of participants in the XRP Ledger Consensus Protocol is not known in advance, and can change over time.
@@ -46,14 +45,14 @@ As with any software system, bugs (or intentionally malicious code) in the imple
 
 A [Sybil attack](https://en.wikipedia.org/wiki/Sybil_attack) is an attempt to take control of a network using a large number of fake identities. In the XRP Ledger, a Sybil attack would take the form of running a large number of validators, then convincing others to trust those validators. This sort of attack is theoretically possible, but would be very difficult to do because human intervention is necessary for validators to become trusted.
 
-No matter how many validating servers a would-be attacker runs, those servers have no say on what the existing participants consider validated unless those participants choose to trust the attacker's validators. Other servers only listen to the validators they are configured to trust, either through a validator list or explicit configuration. (See [validator overlap requirements](#validator-overlap-requirements) for a summary of how the default validator list works.)
+No matter how many validating servers a would-be attacker runs, those servers have no say on what the existing participants consider validated unless those participants choose to trust the attacker's validators. Other servers only listen to the validators they are configured to trust, either through a validator list or explicit configuration.
 
 This trust does not happen automatically, so performing a successful Sybil attack would involve the difficult work of convincing targeted humans and businesses to reconfigure their XRP Ledger servers to trust the attacker's validators. Even in the case that one individual entity was fooled into doing so, this would have a minimal impact on others who do not change their configurations.
 
 
 ## 51% Attack
 
-A "51% attack" is an attack on a blockchain system where one party controls more than 50% of all mining or voting power. (Technically, the attack is slightly misnamed because _any_ amount over 50% is enough.) The XRP Ledger is not vulnerable to a 51% attack because it does not use mining in its consensus mechanism. The next closest analogue for the XRP Ledger is a [Sybil attack](#sybil-attacks), which would also be difficult.
+A "51% attack" is an attack on a blockchain system where one party controls more than 50% of all mining or voting power. (Technically, the attack is slightly misnamed because _any_ amount over 50% is enough.) The XRP Ledger is not vulnerable to a 51% attack because it does not use mining in its consensus mechanism. The next closest analogue for the XRP Ledger is a Sybil attack, which would also be difficult.
 
 
 ## Validator Overlap Requirements
@@ -64,4 +63,4 @@ By default, XRP Ledger servers are configured to use a validator list site run b
 
 Technically, if you run a server, you can configure your own list site or explicitly choose validators to trust on an individual basis, but Ripple does not recommended doing so. If your chosen set of validators does not have enough overlap with others, your server may diverge from the rest of the network, and you could lose money by taking action based on your server's divergent state.
 
-Research is ongoing to design an improved consensus protocol that allows more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.md) page.
+Research is ongoing to design an improved consensus protocol that allows more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.html) page.

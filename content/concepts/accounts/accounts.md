@@ -24,6 +24,3 @@ The typical way to get an account in the XRP Ledger is as follows:
 **Caution:** Funding an account _does not_ give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it is possible that no one has the secret key, in which case the account is a black hole and the XRP is lost forever.
 
 **Caution:** The first time you receive XRP at your own XRP Ledger address, you must pay the account reserve (currently 10 XRP), which locks up that amount of XRP indefinitely. In contrast, private exchanges usually hold all their customers' XRP in a few shared XRP Ledger accounts, so customers do not have to pay the reserve for individual accounts at the exchange. Before withdrawing, consider whether having your own account directly on the XRP Ledger is worth the price.      
-
-
-
