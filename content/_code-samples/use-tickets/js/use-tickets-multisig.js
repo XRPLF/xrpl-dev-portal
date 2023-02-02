@@ -66,7 +66,7 @@ if (typeof module !== "undefined") {
     console.log(`\n SignerListSet Tx hash: ${SetSignerList_tx_signed.hash}`)
   
     const setsignerlist_submit = await client.submitAndWait(SetSignerList_tx_signed.tx_blob)
-    console.log("           Submit result:", setsignerlist_submit.result.meta.TransactionResult)
+    console.log(`\t Submit result: ${setsignerlist_submit.result.meta.TransactionResult}`)
     
     const CreateTicket_tx = await client.autofill({
       "TransactionType": "TicketCreate",
