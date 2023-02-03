@@ -116,7 +116,7 @@ In `rippled`'s WebSocket and JSON-RPC APIs, the transfer fee is represented as a
 
 ## NFTokenMinter
 
-To remove an authorized minter, set `ClearFlag` to 10 (asfAuthorizedNFTokenMinter).
+To remove an authorized minter, set `ClearFlag` to 10 (`asfAuthorizedNFTokenMinter`).
 
 <!-- SPELLING_IGNORE: TransferRate -->
 
