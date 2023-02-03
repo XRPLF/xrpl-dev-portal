@@ -7,9 +7,9 @@ labels:
 ---
 # Load a Saved Ledger in Stand-Alone Mode
 
-You can start a `rippled` server in [Stand-Alone Mode](rippled-server-modes.html) using a [historical ledger version](ledgers.html) that was previously saved to disk. For example, if your `rippled` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](parallel-networks.html), you can load any ledger version your server had available.
+You can start a `rippled` server in stand-alone mode using a historical ledger version that was previously saved to disk. For example, if your `rippled` server was previously synced with any XRP Ledger peer-to-peer network including the production Mainnet, the Testnet, or the Devnet, you can load any ledger version your server had available.
 
-Loading a historical ledger version is useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](amendments.html) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](consensus-protections.html) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a known-good network state starting with this process.
+Loading a historical ledger version is useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different amendments enabled. In the unlikely event that caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a known-good network state starting with this process. See [Consensus Protections](consensus-protections.html).
 
 **Caution:** As `rippled` is updated to newer versions, amendments are retired and become core functions of the ledger, which can affect how transactions are processed. To produce historically accurate results, you need to replay ledgers using the version of `rippled` the transaction was processed in.
 

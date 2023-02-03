@@ -7,7 +7,7 @@ labels:
 ---
 # Understanding Log Messages
 
-The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](xrpl-servers.html) debug log and how to interpret them.
+The following sections describe some of the most common types of log messages that can appear in a `rippled` server's debug log and how to interpret them.
 
 This is an important step in [Diagnosing Problems](diagnosing-problems.html) with `rippled`.
 
@@ -26,7 +26,7 @@ Each line represents one log entry, with the following parts in order, separated
 
 1. The date the log entry was written, such as `2020-Jul-08`.
 2. The time the log entry was written, such as `20:12:12.075081020`.
-3. The time zone indicator `UTC`. (Log dates are always in UTC.) [New in: rippled 1.5.0][]
+3. The time zone indicator `UTC`. (Log dates are always in UTC.)
 4. The log partition and severity, such as `LoadMonitor:WRN`.
 5. The log message, such as `Job: sweep run: 1172ms wait: 0ms`.
 
@@ -47,7 +47,7 @@ Terminating thread rippled: main: unhandled St13runtime_error
 
 If your server always crashes on startup, see [Server Won't Start](server-wont-start.html) for possible cases.
 
-If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](install-rippled.html) to the latest `rippled` version. If you are on the latest version and your server is still crashing, check the following:
+If your server crashes randomly during operation or as a result of particular commands, make sure you are updated to the latest `rippled` version. If you are on the latest version and your server is still crashing, check the following:
 
 - Is your server running out of memory? On some systems, `rippled` may be terminated by the Out Of Memory (OOM) Killer or another monitor process.
 - If your server is running in a shared environment, are other users or administrators causing the machine or service to be restarted? For example, some hosted providers automatically kill any service that uses a large amount of a shared machine's resources for an extended period of time.
@@ -97,7 +97,7 @@ The following message indicates that the server has detected that it is running 
 LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
 ```
 
-This is not strictly a problem, but an old server version is likely to become [amendment blocked](amendments.html#amendment-blocked). You should [update `rippled`](install-rippled.html) to the latest stable version. (If you are connected to [devnet](parallel-networks.html), update to the latest nightly version instead.)
+This is not strictly a problem, but an old server version is likely to become amendment blocked. You should update `rippled` to the latest stable version. (If you are connected to Devnet, update to the latest nightly version instead.)
 
 
 ## Connection reset by peer
@@ -136,7 +136,7 @@ To avoid being dropped by rate limiting on your own server, [connect as an admin
 InboundLedger:WRN 11 timeouts for ledger 8265938
 ```
 
-This indicates that your server is having trouble requesting specific ledger data from its peers. If the [ledger index](basic-data-types.html#ledger-index) is much lower than the most recent validated ledger's index as reported by the [server_info method][], this probably indicates that your server is downloading a [history shard](history-sharding.html).
+This indicates that your server is having trouble requesting specific ledger data from its peers. If the ledger index is much lower than the most recent validated ledger's index as reported by the [server_info method][], this probably indicates that your server is downloading a [history shard](history-sharding.html).
 
 This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `rippled` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
 
@@ -154,7 +154,7 @@ Log messages such as the following indicate that the server is requesting ledger
 InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CDD21E019B
 ```
 
-This is normal if your server is syncing, backfilling, or downloading [history shards](history-sharding.html).
+This is normal if your server is syncing, backfilling, or downloading history shards.
 
 
 ## LoadMonitor Job
@@ -211,9 +211,9 @@ Messages such as the following occur when [online deletion is interrupted](onlin
 SHAMapStore:WRN Not deleting. state: syncing. age 25s
 ```
 
-The `state` indicates the [server state](rippled-server-states.html). The `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
+The `state` indicates the server state. The `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
 
-During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the [system requirements](system-requirements.html), especially disk I/O, to run online deletion at the same time as everything else the server is doing.
+During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the system requirements, especially disk I/O, to run online deletion at the same time as everything else the server is doing.
 
 
 ## Potential Censorship
@@ -235,7 +235,7 @@ LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 
 ## rotating validatedSeq
 
-This message indicates that [online deletion](online-deletion.html) has started running:
+This message indicates that online deletion has started running:
 
 ```text
 SHAMapStore:WRN rotating  validatedSeq 54635511 lastRotated 54635255 deleteInterval 256 canDelete_ 4294967295
@@ -260,12 +260,13 @@ SHAMapStore:WRN finished rotation 54635511
 
 The number at the end of the message is the [ledger index][] of the validated ledger at the time online deletion started, matching the `validatedSeq` value of the "rotating" message. This becomes the `lastRotated` value the next time online deletion runs.
 
-If the server falls out of sync while running online deletion, it interrupts online deletion and writes a ["Not deleting" log message](#not-deleting) instead of a "finished rotation" message.
+If the server falls out of sync while running online deletion, it interrupts online deletion and writes a "Not deleting" log message instead of a "finished rotation" message.
 
 
 ## Shard: No such file or directory
+<!-- 
 
-A bug in `rippled` 1.3.1 can cause it to write log messages such as the following when you have [history sharding](history-sharding.html) enabled:
+A bug in `rippled` 1.3.1 can cause it to write log messages such as the following when you have history sharding enabled:
 
 ```text
 ShardStore:ERR shard 1804: No such file or directory
@@ -277,8 +278,9 @@ ShardStore:ERR shard 2236: No such file or directory
 ```
 
 This indicates that the server tried to start acquiring a new history shard, but it failed to create a new directory to hold the shard. This bug prevents rippled 1.3.1 from acquiring new shards. [A fix is forthcoming.](https://github.com/ripple/rippled/pull/3014)
+ -->
 
-Aside from the bug, this error can also occur if `rippled` became unable to write to the underlying file system **after startup**. Possible causes include:
+This error can occur if `rippled` became unable to write to the underlying file system **after startup**. Possible causes include:
 
 - Hardware failure of storage media
 - The file system became unmounted

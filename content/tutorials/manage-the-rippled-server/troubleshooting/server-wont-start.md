@@ -7,9 +7,9 @@ labels:
 ---
 # rippled Server Won't Start
 
-This page explains possible reasons [the `rippled` server](xrpl-servers.html) does not start and how to fix them.
+This page explains possible reasons the `rippled` server does not start and how to fix them.
 
-These instructions assume you have [installed `rippled`](install-rippled.html) on a supported platform.
+These instructions assume you have installed `rippled` on a supported platform.
 
 
 ## File Descriptors Limit
@@ -178,7 +178,7 @@ Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large
 
 ## Shard path missing
 
-An error such as the following indicates that the `rippled.cfg` has an incomplete [history sharding](history-sharding.html) configuration:
+An error such as the following indicates that the `rippled.cfg` has an incomplete history sharding configuration:
 
 ```text
 Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
@@ -188,7 +188,7 @@ If your config includes a `[shard_db]` stanza, it must contain a `path` field, w
 
 ## Unsupported shard store type: RocksDB
 
-RocksDB is no longer supported as a backend for [history sharding](history-sharding.html). If you have an existing configuration that defines a RocksDB shard store, the server fails to start. [New in: rippled 1.3.1][]
+RocksDB is no longer supported as a backend for [history sharding](history-sharding.html). If you have an existing configuration that defines a RocksDB shard store, the server fails to start.
 
 In this case, the process dies shortly after the log startup command, with a message such as the following appearing earlier in the output log:
 

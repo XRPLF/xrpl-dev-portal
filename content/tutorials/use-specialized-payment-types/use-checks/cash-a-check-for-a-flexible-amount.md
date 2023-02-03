@@ -9,9 +9,9 @@ labels:
 
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive a flexible amount by sending a [CheckCash transaction][] with a `DeliverMin` field. When cashing a Check in this way, the receiver gets as much as is possible to deliver, debiting the Check's sender for the Check's full `SendMax` amount or as much as is available. Cashing fails if it doesn't deliver at least the `DeliverMin` amount to the Check's recipient.
 
-You might cash a Check for a flexible amount if you want to get as much as possible from the Check.
+You might cash a Check for a flexible amount if you want to get as much as possible from the Check. See [Cash a Check for a Flexible Amount](cash-a-check-for-a-flexible-amount.html).
 
-The specified recipient can also [cash the check for an exact amount](cash-a-check-for-a-flexible-amount.html).
+The specified recipient can also cash the check for an exact amount. See [Cash a Check for an Exact Amount]().
 
 {% set cash_flex_n = cycler(* range(1,99)) %}
 
@@ -22,7 +22,7 @@ The specified recipient can also [cash the check for an exact amount](cash-a-che
 
 ## {{cash_flex_n.next()}}. Prepare the CheckCash transaction
 
-Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](transaction-common-fields.html#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be auto-filled when signing:
 
 | Field             | Value                     | Description                  |
 |:------------------|:--------------------------|:-----------------------------|
@@ -160,7 +160,7 @@ If cashing the Check failed with a `tec`-class code, look up the code in the [Fu
 | `tecNO_LINE` | The recipient doesn't have a trust line for the Check's currency. | If you want to hold this currency from this issuer, create a trust line for the specified currency and issuer with a reasonable limit using a [TrustSet transaction][], then try to cash the check again. |
 | `tecNO_PERMISSION` | The sender of the CheckCash transaction isn't the `Destination` of the Check. | Double-check the `Destination` of the Check. |
 | `tecNO_AUTH` | The issuer of the currency from the check is using [Authorized Trust Lines](authorized-trust-lines.html) but the recipient's trust line to the issuer is not approved. | Ask the issuer to authorize this trust line, then try again to cash the Check after they do. |
-| `tecPATH_PARTIAL` | The Check could not deliver enough tokens, either due to trust line limits or because the sender does not have enough balance of the token to send (including the issuer's [transfer fee](transfer-fees.html), if there is one). | If the problem is the trust line limit, send a [TrustSet transaction][] to increase your limit (if desired) or lower your balance by spending some of the currency, then try to cash the Check again. If the problem is the sender's balance, wait for the sender to have more of the Check's currency, or try again to cash the Check for a lesser amount. |
+| `tecPATH_PARTIAL` | The Check could not deliver enough tokens, either due to trust line limits or because the sender does not have enough balance of the token to send (including the issuer's transfer fee, if there is one). | If the problem is the trust line limit, send a [TrustSet transaction][] to increase your limit (if desired) or lower your balance by spending some of the currency, then try to cash the Check again. If the problem is the sender's balance, wait for the sender to have more of the Check's currency, or try again to cash the Check for a lesser amount. |
 | `tecUNFUNDED_PAYMENT` | The Check could not deliver enough XRP. | Wait for the sender to have more XRP, or try again to cash the Check for a lesser amount. |
 
 ## {{cash_flex_n.next()}}. Confirm delivered amount
@@ -206,7 +206,7 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
 
     <!--{# TODO: example of double-RippleState balance changes #}-->
 
-    - If the token has a [transfer fee](transfer-fees.html), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
+    - If the token has a transfer fee, the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.) See [Transfer Fees](transfer-fees.html).
 
 <!--{# common links #}-->
 {% include '_snippets/tx-type-links.md' %}

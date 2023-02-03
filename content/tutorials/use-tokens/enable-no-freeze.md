@@ -11,14 +11,14 @@ labels:
 ---
 # Enable No Freeze
 
-If you [issue tokens](issued-currencies.html) in the XRP Ledger, can enable the [No Freeze setting](freezes.html#no-freeze) to permanently limit your own ability to use the token freezing features of the XRP Ledger. (As a reminder, this only applies to issued tokens, not XRP.) This tutorial shows how to enable the No Freeze setting on your issuing account.
+If you issue tokens in the XRP Ledger, you can enable the [No Freeze setting](freezes.html#no-freeze) to permanently limit your own ability to use the token freezing features of the XRP Ledger. (As a reminder, this only applies to issued tokens, not XRP.) This tutorial shows how to enable the No Freeze setting on your issuing account.
 
 ## Prerequisites
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
     - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
-- You don't need to have [issued a token](issue-a-fungible-token.html) in the XRP Ledger to enable No Freeze, but the main reason you would do so is if you intend to or have already issued such a token.
+- You don't need to have issued a token in the XRP Ledger to enable No Freeze, but the main reason you would do so is if you intend to or have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/enable-no-freeze.js"></script>
@@ -35,20 +35,20 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](issuing-and-operational-addresses.html), you need the **master keys** to the _cold address_, which is the **issuer** of the token. Only the issuer's No Freeze setting has any effect on a token.
+To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate "cold" and "hot" addresses, you need the **master keys** to the _cold address_, which is the **issuer** of the token. Only the issuer's No Freeze setting has any effect on a token. See [Issuing and Operational Addresses](issuing-and-operational-addresses.html).
 
-**Caution:** You cannot use a [regular key pair](cryptographic-keys.html) or [multi-signing](multi-signing.html) to enable the No Freeze setting.
+**Caution:** You cannot use a regular key pair or multi-signing to enable the No Freeze setting.
 
 For this tutorial, you can get credentials from the following interface:
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're building production-ready software, you should use an existing account, and manage your keys using a secure signing configuration. See [Set Up Secure Signing](set-up-secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network
 
-You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
+You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported client library:
 
 <!-- MULTICODE_BLOCK_START -->
 

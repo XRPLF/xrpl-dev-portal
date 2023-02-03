@@ -26,24 +26,24 @@ Certain server configurations may always report a `warning` status even when ope
 Some examples of special cases that may occur include:
 
 - A [private peer](peer-protocol.html#private-peers) typically has a very small number of peer-to-peer connections to known servers only, but the health check reports a warning on the `peers` metric if the server is connected to 7 or fewer peers. You should know the exact number of peers your server is configured to have and check for that value.
-- On a [parallel or test network](parallel-networks.html) where new transactions are not being sent continuously, the network waits up to 20 seconds for new transactions before attempting to validate a new ledger version, but the health check reports a warning on the `validated_ledger` metric if the latest validated ledger is 7 or more seconds old. If you are running `rippled` on a non-production network, you may want to ignore `warning` messages for this metric unless you know that there should be transactions being regularly sent. You may still want to alert on the `critical` level of 20 seconds, because the XRP Ledger protocol is designed to validate new ledger versions at least once every 20 seconds even if there are no new transactions to process.
+- On a parallel or test network where new transactions are not being sent continuously, the network waits up to 20 seconds for new transactions before attempting to validate a new ledger version, but the health check reports a warning on the `validated_ledger` metric if the latest validated ledger is 7 or more seconds old. If you are running `rippled` on a non-production network, you may want to ignore `warning` messages for this metric unless you know that there should be transactions being regularly sent. You may still want to alert on the `critical` level of 20 seconds, because the XRP Ledger protocol is designed to validate new ledger versions at least once every 20 seconds even if there are no new transactions to process.
 
 ## Suggested Interventions
 
-When a health check fails, and it's not just a [momentary failure](#momentary-failures), the action to take to recover from the outage varies based on the cause. You may be able to configure your infrastructure to fix some types of failures automatically. Other failures require the intervention of a human administrator who can investigate and take the necessary steps to resolve more complex or critical failures; depending on the structure of your organization, you may have different levels of human administrator so that less skilled, lower level administrators can fix certain issues independently, but need to escalate to higher level administrators to fix larger or more complex issues. How and when you respond is likely to depend on your unique situation, but the metrics reported in the health check result can be a factor in these decisions. <!-- STYLE_OVERRIDE: just -->
+When a health check fails, and it's not just a momentary failure, the action to take to recover from the outage varies based on the cause. You may be able to configure your infrastructure to fix some types of failures automatically. Other failures require the intervention of a human administrator who can investigate and take the necessary steps to resolve more complex or critical failures; depending on the structure of your organization, you may have different levels of human administrator so that less skilled, lower level administrators can fix certain issues independently, but need to escalate to higher level administrators to fix larger or more complex issues. How and when you respond is likely to depend on your unique situation, but the metrics reported in the health check result can be a factor in these decisions. <!-- STYLE_OVERRIDE: just -->
 
 The following sections suggest some common interventions you may want to attempt and the health check statuses most likely to prompt those interventions. Automated systems and human administrators may selectively escalate through these and other interventions:
 
-- [Redirect traffic](#redirect-traffic) away from the affected server
-- [Restart](#restart) the server software or hardware
-- [Upgrade](#upgrade) the `rippled` software
-- [Investigate network](#investigate-network) in case the problem originates elsewhere
-- [Replace hardware](#replace-hardware)
+- Redirect traffic away from the affected server
+- Restart the server software or hardware
+- Upgrade the `rippled` software
+- Investigate network in case the problem originates elsewhere
+- Replace hardware
 
 
 ### Redirect Traffic
 
-A common reliability technique is to run a pool of redundant servers through one or more load-balancing proxies. You can do this with `rippled` servers, but should not do this with [validators](rippled-server-modes.html). In some cases, the load balancers can monitor the health of servers in their pools and direct traffic only to the servers that are currently reporting themselves as healthy. This allows servers to recover from being temporarily overloaded and automatically rejoin the pool of active servers.
+A common reliability technique is to run a pool of redundant servers through one or more load-balancing proxies. You can do this with `rippled` servers, but should not do this with validators. In some cases, the load balancers can monitor the health of servers in their pools and direct traffic only to the servers that are currently reporting themselves as healthy. This allows servers to recover from being temporarily overloaded and automatically rejoin the pool of active servers.
 
 Redirecting traffic away from a server that is unhealthy is an appropriate response, especially for servers that report a `health` status of `warning`. Servers in the `critical` range may need more significant interventions.
 
@@ -70,9 +70,9 @@ A stronger intervention is to restart the entire machine.
 
 ### Upgrade
 
-If the server reports `"amendment_blocked": true` in the health check, this indicates that the XRP Ledger has enabled a [protocol amendment](amendments.html) that your server does not understand. As a precaution against misinterpreting the revised rules of the network in a way that causes you to lose money, such servers become "amendment blocked" instead of operating normally.
+If the server reports `"amendment_blocked": true` in the health check, this indicates that the XRP Ledger has enabled a protocol amendment that your server does not understand. As a precaution against misinterpreting the revised rules of the network in a way that causes you to lose money, such servers become "amendment blocked" instead of operating normally.
 
-To resolve being amendment blocked, [update your server](install-rippled.html) to a newer software version that understands the amendment.
+To resolve being amendment blocked, update your server to a newer software version that understands the amendment.
 
 Also, software bugs can cause a server to get [stuck not syncing](server-doesnt-sync.html). In this case, the `server_state` metric is likely to be in a warning or critical state. If you are not using the latest stable release, you should upgrade to get the latest fixes for any known issues that could cause this.
 

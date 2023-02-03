@@ -12,7 +12,7 @@ labels:
 ---
 # Freeze a Trust Line
 
-This tutorial shows the steps to [freeze an individual trust line](freezes.html#individual-freeze). The issuer of a token in the XRP Ledger may freeze the trust line to a particular counterparty if that account is engaged in suspicious activity.
+This tutorial shows the steps to freeze an individual trust line. The issuer of a token in the XRP Ledger may freeze the trust line to a particular counterparty if that account is engaged in suspicious activity.
 
 **Tip:** As a reminder, freezes only apply to issued tokens, not XRP.
 
@@ -23,7 +23,7 @@ This tutorial shows the steps to [freeze an individual trust line](freezes.html#
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
     - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
 - This tutorial assumes **you have already [issued a token](issue-a-fungible-token.html)** in the XRP Ledger.
-- You **cannot** have enabled the [No Freeze setting](freezes.html#no-freeze), which gives up your ability to freeze individual trust lines.
+- You **cannot** have enabled the No Freeze setting, which gives up your ability to freeze individual trust lines.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/freeze-individual-line.js"></script>
@@ -40,7 +40,7 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](issuing-and-operational-addresses.html), you need the keys to the _cold address_, which is the **issuer** of the token.
+To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate "cold" and "hot" addresses, you need the keys to the _cold address_, which is the **issuer** of the token.
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
@@ -75,7 +75,7 @@ You can only freeze one trust line per transaction, so you need to know which tr
 - The address of the account linked to yours via the trust line.
 - The currency code of the trust line.
 
-There can be multiple [trust lines](trust-lines-and-issuing.html) between two accounts, each for a different currency. If you suspect a particular account is behaving maliciously, you may want to freeze all the trust lines between your accounts, one at a time. Use the [account_lines method][] with a pair of accounts to find all trust lines between those accounts, then choose a trust line to freeze from among the results. For example:
+There can be multiple trust lines between two accounts, each for a different currency. If you suspect a particular account is behaving maliciously, you may want to freeze all the trust lines between your accounts, one at a time. Use the [account_lines method][] with a pair of accounts to find all trust lines between those accounts, then choose a trust line to freeze from among the results. For example:
 
 <!-- MULTICODE_BLOCK_START -->
 

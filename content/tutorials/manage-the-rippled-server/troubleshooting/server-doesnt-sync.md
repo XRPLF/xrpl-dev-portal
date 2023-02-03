@@ -7,9 +7,9 @@ labels:
 ---
 # rippled Server Doesn't Sync
 
-This page explains possible reasons [a `rippled` server](xrpl-servers.html) may start successfully, but get stuck in a ["connected" state](rippled-server-states.html) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.html) instead.)
+This page explains possible reasons a `rippled` server may start successfully, but get stuck in a "connected" state without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.html) instead.)
 
-These instructions assume you have [installed `rippled`](install-rippled.html) on a supported platform.
+These instructions assume you have installed `rippled` on a supported platform.
 
 
 ## Normal Syncing Behavior
@@ -17,8 +17,8 @@ These instructions assume you have [installed `rippled`](install-rippled.html) o
 Syncing with the network normally takes about 5 to 15 minutes. During that time, the server does several things:
 
 - Loads a recommended validator list (typically from `vl.ripple.com`) to determine which validators it trusts.
-- [Discovers peer servers](peer-protocol.html#peer-discovery) and connects to them.
-- Downloads the [header](ledger-header.html) and full [state information](ledgers.html#tree-format) of the latest ledger from its peers, and uses that to build its internal database of ledger data.
+- Discovers peer servers and connects to them.
+- Downloads the header and full state information of the latest ledger from its peers, and uses that to build its internal database of ledger data.
 - Listens to its trusted validators to find which ledger hashes have been recently validated.
 - Collects newly-broadcast transactions and attempts to apply them to its in-progress ledger.
 
@@ -29,7 +29,7 @@ If the server is unable to keep up with the network while doing these tasks, the
 
 Many syncing issues can be resolved by restarting the server. No matter why it failed to sync the first time, it may succeed on the second try.
 
-If the [server_info method][] shows a [`server_state`](rippled-server-states.html) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `rippled` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
+If the [server_info method][] shows a `server_state` other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `rippled` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
 
 If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, [open an issue in the `rippled` repository](https://github.com/ripple/rippled/issues) and add the "Syncing issue" label.
 
@@ -47,7 +47,7 @@ If you are having trouble remaining synced, double-check that your server meets 
 
 ## Couldn't Load Validator List
 
-The default configuration uses a recommended list of validators retrieved from `vl.ripple.com`. This list is signed by Ripple's cryptographic key pair and has a built-in expiration date. If your server cannot download the list from `vl.ripple.com` for some reason, your server does not choose a set of trusted validators and cannot determine which possible ledgers to declare as valid. (If you are connected to [the testnet or another parallel network](parallel-networks.html), your server uses a list of trusted validators for that network instead.)
+The default configuration uses a recommended list of validators retrieved from `vl.ripple.com`. This list is signed by Ripple's cryptographic key pair and has a built-in expiration date. If your server cannot download the list from `vl.ripple.com` for some reason, your server does not choose a set of trusted validators and cannot determine which possible ledgers to declare as valid. (If you are connected to the testnet or another parallel network, your server uses a list of trusted validators for that network instead.)
 
 The `validator_list` block in the [server_info method][] response shows the status of your validator list including its expiration date. If you have a list, but it's expired, it's possible that your server had connectivity to the validator list site before but hasn't been able to connect lately, so your current list expired while your server was unable to download a more updated list.
 
@@ -58,9 +58,9 @@ You can also use the [validator_list_sites method][] to get more detailed inform
 
 ## Not Enough Peers
 
-If your server does not connect to enough [peer servers](peer-protocol.html), it may not be able to download enough data to remain synced with the network as the network continues processing new transactions. This can happen if your network connection is unreliable, or if you configure your server as a [private server](peer-protocol.html#private-peers) without adding enough reliable fixed peers.
+If your server does not connect to enough peer servers, it may not be able to download enough data to remain synced with the network as the network continues processing new transactions. This can happen if your network connection is unreliable, or if you configure your server as a private server without adding enough reliable fixed peers.
 
-Use the [peers method][] to get information about your server's current peers. If you have exactly 10 or 11 peers, that may indicate that your firewall is blocking incoming peer connections. [Set up port forwarding](forward-ports-for-peering.html) to allow more incoming connections. If your server is configured as a private server, double-check the contents and syntax of the `[ips_fixed]` stanza in your config file, and add more proxies or public hubs if possible.
+Use the [peers method][] to get information about your server's current peers. If you have exactly 10 or 11 peers, that may indicate that your firewall is blocking incoming peer connections. Set up port forwarding to allow more incoming connections. If your server is configured as a private server, double-check the contents and syntax of the `[ips_fixed]` stanza in your config file, and add more proxies or public hubs if possible. See [Port Forwarding](forward-ports-for-peering.html).
 
 
 ## Corrupt Databases
@@ -69,7 +69,7 @@ In rare cases, corrupt data saved in your `rippled` server's internal databases 
 
 As a test, you can temporarily change the paths to your server's databases as long as you have enough free space to re-download the current ledger and store other settings.
 
-**Note:** When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair][] and [peer reservations](peer-protocol.html#fixed-peers-and-peer-reservations). If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.
+**Note:** When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair][] and peer reservations. If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.
 
 1. Stop the `rippled` server if it is running.
 

@@ -7,7 +7,7 @@ labels:
 ---
 # List XRP as an Exchange
 
-This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at _custodial exchanges_ that holds fund on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of assets.
+This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at _custodial exchanges_ that hold fund on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of assets.
 
 ## Alpha Exchange
 
@@ -61,13 +61,15 @@ When the [`tfPartialPayment` flag](payment.html#payment-flags) is enabled, the `
 
 ### Accounts
 
-XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are [not easy to delete](accounts.html#deletion-of-accounts). To offset the costs associated with storing accounts, each account must hold a separate [reserve of XRP](reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.
+XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are not easy to delete. To offset the costs associated with storing accounts, each account must hold a separate reserve of XRP that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.
 
 <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
 
-To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](issuing-and-operational-addresses.html) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
+To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating _cold_, _hot_, and _warm_ accounts (these are sometimes referred to, respectively, as cold, hot, and warm wallets). See [Issuing and Operational Addresses](issuing-and-operational-addresses.html).
 
-* A [_cold wallet_](issuing-and-operational-addresses.html#issuing-address) to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send [deposits](#deposit-xrp-into-exchange).   To provide optimal security, this account's secret key should be offline.
+The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
+
+* A _cold wallet_ to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send deposits. To provide optimal security, this account's secret key should be offline.
 
     If a malicious actor compromises an exchange's cold wallet, the possible consequences are:
 
@@ -81,13 +83,13 @@ To follow Ripple's recommended best practices, Alpha Exchange should create at l
 
         * The malicious actor could issue tokens in the XRP Ledger by using the cold wallet, but those tokens should not be valued by anyone (unless the exchange is also a token issuer).
 
-        * If a malicious actor enables the [Authorized Trust Lines](authorized-trust-lines.html) setting for the account, that cannot be unset, although this only relates to issuing tokens and should not affect an exchange that is not also an issuer. Any other settings a malicious actor changes with a master key can be reverted.
+        * If a malicious actor enables the Authorized Trust Lines setting for the account, that cannot be unset, although this only relates to issuing tokens and should not affect an exchange that is not also an issuer. Any other settings a malicious actor changes with a master key can be reverted. See [Authorized Trust Lines]](authorized-trust-lines.html)
 
-* One or more [_hot wallets_](issuing-and-operational-addresses.html#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
+* One or more _hot wallets_ to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
 
     For more information about the possible consequences of a compromised hot wallet, see [Operational Account Compromise](issuing-and-operational-addresses.html#operational-address-compromise).
 
-* Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet does not need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement [multi-signing](multi-signing.html) to increase security.
+* Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet does not need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement multi-signing to increase security.
 
     For more information about the possible consequences of a compromised warm wallet, see [Standby Account Compromise](issuing-and-operational-addresses.html#standby-address-compromise).
 
@@ -213,13 +215,13 @@ The remaining sections describe how funds flow through the accounts managed by A
 
 There are four main steps involved in an exchange's typical flow of funds:
 
-1. [Deposit XRP into Exchange](#deposit-xrp-into-exchange)
+1. Deposit XRP into Exchange
 
-2. [Rebalance XRP Holdings](#rebalance-xrp-holdings)
+2. Rebalance XRP Holdings
 
-3. [Withdraw XRP from Exchange](#withdraw-xrp-from-exchange)
+3. Withdraw XRP from Exchange
 
-4. [Trade XRP on the Exchange](#trade-xrp-on-the-exchange)
+4. Trade XRP on the Exchange
 
 
 This list does not include the [prerequisites](#prerequisites-for-supporting-xrp) required of an exchange.

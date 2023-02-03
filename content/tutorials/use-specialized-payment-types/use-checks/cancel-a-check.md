@@ -7,9 +7,9 @@ labels:
 ---
 # Cancel a Check
 
-This tutorial shows how to cancel a [Check](checks.html), which removes the [Check object from the ledger](check.html) without sending money.
+This tutorial shows how to cancel a Check, which removes the Check object from the ledger without sending money.
 
-You may want to cancel an incoming Check if you do not want it. You might cancel an outgoing Check if you made a mistake when sending it or if circumstances have changed. If a Check expires, it's also necessary to cancel it to remove it from the ledger so the sender gets their [owner reserve](reserves.html#owner-reserves) back.
+You may want to cancel an incoming Check if you do not want it. You might cancel an outgoing Check if you made a mistake when sending it or if circumstances have changed. If a Check expires, it's also necessary to cancel it to remove it from the ledger so the sender gets their owner reserve back.
 
 {% set cancel_n = cycler(* range(1,99)) %}
 
@@ -26,7 +26,7 @@ To cancel a Check with this tutorial, you need the following:
 
 ## {{cancel_n.next()}}. Prepare the CheckCancel transaction
 
-Figure out the values of the [CheckCancel transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](transaction-common-fields.html#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCancel transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be auto-filled when signing:
 
 | Field             | Value            | Description                           |
 |:------------------|:-----------------|:--------------------------------------|
@@ -151,7 +151,7 @@ The following examples demonstrate how to cancel a Check.
 
 Use the [tx method][] with the CheckCancel transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
-Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryType": "Check"` to indicate that the transaction removed a [Check ledger object](check.html). The `LedgerIndex` of this object should match the ID of the Check.
+Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryType": "Check"` to indicate that the transaction removed a Check ledger object. The `LedgerIndex` of this object should match the ID of the Check.
 
 ### Example Request
 
