@@ -18,7 +18,9 @@ For other platforms, see the updated instructions for compiling from source. ([U
 
 ## Migration on CentOS or Red Hat Enterprise Linux (RHEL)
 
-Ripple's official RPM repository and instructions for using it have changed. If you have [automatic updates](update-rippled-automatically-on-linux.html) enabled, your system should perform the migration automatically. To migrate manually from the old repository to the new one, complete the following steps:
+Ripple's official RPM repository and instructions for using it have changed. If you have  enabled, your system should perform the migration automatically. See [Update Automatically on Linux](update-rippled-automatically-on-linux.html).
+
+To migrate manually from the old repository to the new one, complete the following steps:
 
 1. Stop the `rippled` server.
 
@@ -57,12 +59,12 @@ Ripple's official RPM repository and instructions for using it have changed. If 
         $ sudo systemctl start rippled.service
 
 
-**Warning:** If you use [automatic updates](update-rippled-automatically-on-linux.html), they should continue working after performing this migration process. However, **the `ripple-repo` package is now deprecated**. As a consequence, in the future, any changes to Ripple's repositories may require you to manually update your repos file.
+**Warning:** If you use automated updates, they should continue working after performing this migration process. However, **the `ripple-repo` package is now deprecated**. As a consequence, in the future, any changes to Ripple's repositories may require you to manually update your repos file. See [Update Automatically on Linux](update-rippled-automatically-on-linux.html).
 
 
 ## Migration on Ubuntu Linux
 
-Prior to version 1.3, the supported way to install `rippled` on Ubuntu Linux was using Alien to install the RPM package. Starting with `rippled` v1.3.1, Ripple provides a native package for Ubuntu and Debian Linux, which is the recommended way of installing it. If you already have the RPM package installed, complete the [installation steps](install-rippled-on-ubuntu.html) to upgrade the package and switch over to the native APT (`.deb`) package.
+Prior to version 1.3, the supported way to install `rippled` on Ubuntu Linux was using Alien to install the RPM package. Starting with `rippled` v1.3.1, Ripple provides a native package for Ubuntu and Debian Linux, which is the recommended way of installing it. If you already have the RPM package installed, complete the installation steps to upgrade the package and switch over to the native APT (`.deb`) package. See [Install on Ubuntu or Debian Linux](install-rippled-on-ubuntu.html).
 
 If you have made any changes to your config files (`/opt/ripple/etc/rippled.cfg` and `/opt/ripple/etc/validators.txt`), `apt` may prompt you during installation asking if you want to overwrite your config files with the newest versions from the packages. Version 1.3 does not require any changes to the config file, so you can safely keep your existing config files unchanged.
 

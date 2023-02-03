@@ -91,7 +91,7 @@ To configure your server to acquire and store full history, complete the followi
 
     The range of available ledgers reported in the `complete_ledgers` field should increase over time.
 
-    The earliest available ledger version in the production XRP Ledger's history is ledger index **32570**. The first two weeks or so of ledger history was lost due to a bug in the server at the time. [Test nets and other chains](parallel-networks.html) generally have history going back to ledger index **1**.
+    The earliest available ledger version in the production XRP Ledger's history is ledger index **32570**. The first two weeks or so of ledger history was lost due to a bug in the server at the time. Test nets and other chains generally have history going back to ledger index **1**.
 
 ## See Also
 

@@ -10,7 +10,7 @@ labels:
 
 This document describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of an XRP Ledger server.
 
-The load on an XRP Ledger server varies based on multiple factors. One is the activity in the network. The total size of data in the shared ledger and the total volume of transactions being sent vary based on organic factors throughout the global XRP Ledger community. Another factor is API usage; different types of [API calls](http-websocket-apis.html) put different load on the server. The performance characteristics can be very different between servers that provide a public API, provide a private API to specific integration software, or provide no API at all.
+The load on an XRP Ledger server varies based on multiple factors. One is the activity in the network. The total size of data in the shared ledger and the total volume of transactions being sent vary based on organic factors throughout the global XRP Ledger community. Another factor is API usage; different types of API calls put different load on the server. The performance characteristics can be very different between servers that provide a public API, provide a private API to specific integration software, or provide no API at all.
 
 You should consider these factors to ensure that your server has the capacity to handle XRP Ledger network activity today and in the future.
 
@@ -25,7 +25,7 @@ The settings in this section are parameters in the `rippled.cfg` file. You can a
 
 ### Node Size
 
-The `[node_size]` parameter should reflect the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) [Updated in: rippled 1.8.1][]
+The `[node_size]` parameter should reflect the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.)
 
 As a general rule, you should always use the largest node size your available RAM can support. See the following table for recommended settings.
 
@@ -43,7 +43,7 @@ To tune your server, it may be useful to start with `tiny` and increase the size
 | 32 GB         | `large`           | **Not recommended.** In practice, this setting performs worse than `huge` in most circumstances. Always use `huge` if you want stability. |
 | 64 GB         | `huge`            | Recommended for production servers.      |
 
-If you set the `[node_size]` parameter to an invalid value, the [server fails to start](server-wont-start.html#bad-node_size-value).
+If you set the `[node_size]` parameter to an invalid value, the server fails to start.
 
 
 ### Node DB Type
@@ -134,9 +134,11 @@ The speed of storage is one of the most important factors in a server's capacity
 
 #### Disk Space
 
-The `[node_db]` stanza controls the server's _ledger store_, which holds [ledger history](ledger-history.html). The amount of disk space you need depends on how much history you plan to keep available locally. An XRP Ledger server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. Configure the `path` of the `[node_db]` to point to your chosen storage location for the ledger store.
+The `[node_db]` stanza controls the server's _ledger store_, which holds ledger history. The amount of disk space you need depends on how much history you plan to keep available locally. An XRP Ledger server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. Configure the `path` of the `[node_db]` to point to your chosen storage location for the ledger store.
 
-You can control how much data you keep with [online deletion](online-deletion.html); the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
+You can control how much data you keep with online deletion; the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
+
+<!-- Need to update the table, info is 5 years old. -->
 
 The following table approximates the requirements for different amounts of history, at the time of writing (2018-12-13):
 
@@ -161,7 +163,7 @@ The `[database_path]` configures separate bookkeeping databases: these include t
 
 As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for a `rippled` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](configure-amendment-voting.html) and [peer reservations](use-a-peer-reservation.html).
 
-If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the [History Sharding](history-sharding.html) feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the `[shard_db]` stanza.
+If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the history sharding feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the `[shard_db]` stanza. See [History Sharding](history-sharding.html).
 
 
 ##### Amazon Web Services
@@ -178,7 +180,7 @@ Memory requirements are mainly a function of the `node_size` configuration setti
 
 #### Network
 
-Any enterprise or carrier-class data center should have substantial network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use. Consumer-grade home internet is generally not sufficient to run a reliable server.
+Any enterprise or carrier-class data center should have substantial network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling ledger history) also affects network use. Consumer-grade home internet is generally not sufficient to run a reliable server.
 
 During exceptionally high periods of transaction volume, some operators have reported that their servers have completely saturated a 100 megabit/s network link. Therefore, a gigabit network interface is required for reliable performance.
 
@@ -191,7 +193,7 @@ Here are examples of observed uncompressed network bandwidth use for common task
 | Serve historical ledger and transaction reports | 100 Mbps transmit           |
 | Start up `rippled`                              | 20 Mbps receive             |
 
-You can save bandwidth by [enabling compression on peer-to-peer communications](enable-link-compression.html), at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited.
+You can save bandwidth by enabling compression on peer-to-peer communications, at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited. See [Enable Link Compression](enable-link-compression.html).
 
 
 ## See Also

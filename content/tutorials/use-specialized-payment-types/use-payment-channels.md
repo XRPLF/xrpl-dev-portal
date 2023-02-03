@@ -8,9 +8,9 @@ labels:
 ---
 # Use Payment Channels
 
-[Payment Channels](payment-channels.html) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](http-websocket-apis.html) of a local [`rippled` server](xrpl-servers.html).
+Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](http-websocket-apis.html) of a local `rippled` server.
 
-Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
+Ideally, to step through this tutorial, you would have two people, each with the keys to a funded XRP Ledger account. However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
 ## Example Values
 
@@ -27,7 +27,7 @@ The example addresses used in this tutorial are:
 
 Additionally, you'll need a `rippled` server to send transactions to. The examples in this tutorial assume a `rippled` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
 
-To test without transferring real XRP, you can use [XRP Ledger Testnet](xrp-testnet-faucet.html) addresses with Testnet XRP. If you do use the Testnet, you can use the Testnet servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
+To test without transferring real XRP, you can use XRP Ledger Testnet addresses with Testnet XRP. If you do use the Testnet, you can use the Testnet servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
 
 You can use any amount of XRP for the payment channels. The example values in this tutorial set aside 100 XRP (`100000000` drops) in a payment channel for at least 1 day.
 
@@ -40,16 +40,16 @@ The following diagram summarizes the lifecycle of a payment channel:
 
 You can match up the numbered steps in this diagram with the steps of this tutorial.
 
-1. [Payer: Create channel](#1-the-payer-creates-a-payment-channel-to-a-particular-recipient)
-2. [Payee: Check channel](#2-the-payee-checks-specifics-of-the-payment-channel)
-3. [Payer: Sign claims](#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel)
-4. [Payer: Send claim(s) to payee](#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services)
-5. [Payee: Verify claims](#5-the-payee-verifies-the-claims)
-6. [Payee: Provide goods or services](#6-payee-provides-goods-or-services)
-7. [Repeat steps 3-6 as desired](#7-repeat-steps-3-6-as-desired)
-8. [Payee: Redeem claim](#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount)
-9. [Payer: Request to close channel](#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed)
-10. [Payer (or anyone else): Close expired channel](#10-anyone-can-close-the-expired-channel)
+1. Payer: Create channel
+2. Payee: Check channel
+3. Payer: Sign claims
+4. Payer: Send claim(s) to payee
+5. Payee: Verify claims
+6. Payee: Provide goods or services
+7. Repeat steps 3-6 as desired
+8. Payee: Redeem claim
+9. Payer: Request to close channel
+10. Payer (or anyone else): Close expired channel
 
 ## 1. The payer creates a payment channel to a particular recipient.
 
@@ -57,9 +57,9 @@ This is a [PaymentChannelCreate transaction][]. As part of this process, the pay
 
 **Tip:** The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.
 
-The following example shows creation of a payment channel by [submitting](submit.html#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (`rN7n7...`) to the [example payee](#example-values) (`rf1Bi...`) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
+The following example shows creation of a payment channel by submitting to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (`rN7n7...`) to the [example payee](#example-values) (`rf1Bi...`) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
 
-**Note:** A payment channel counts as one object toward the payer's [owner reserve](reserves.html#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
+**Note:** A payment channel counts as one object toward the payer's owner reserve. The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
 
 Request:
 
@@ -169,7 +169,7 @@ Response:
 In the response from the JSON-RPC, the payer should look for the following:
 
 - In the transaction's `meta` field, confirm that the `TransactionResult` is `tesSUCCESS`.
-- Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only [final](finality-of-results.html) if it appears in a validated ledger version.)
+- Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only final if it appears in a validated ledger version.)
 - In the `AffectedNodes` array of the transaction's `meta` field, look for a `CreatedNode` object with the `LedgerEntryType` of `PayChannel`. The `LedgerIndex` field of the `CreatedNode` object indicates the Channel ID. (In the above example, this is a hex string starting with "`5DB0`...") The Channel ID is necessary later to sign claims.
     For more information on the PayChannel ledger object type, see [PayChannel ledger object](paychannel.html).
 
@@ -468,7 +468,7 @@ The payee can also close a payment channel immediately after processing a claim 
 
 <!-- SPELLING_IGNORE: 9a, 9b -->
 
-Example of [submitting a transaction](submit.html#sign-and-submit-mode) requesting a channel to close:
+Example of submitting a transaction requesting a channel to close:
 
 ```json
 {
@@ -523,7 +523,7 @@ The channel can remain on the ledger in an expired state indefinitely. This is b
 
 Ripple recommends that the payer sends a second [PaymentChannelClaim transaction][] with the `tfClose` flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.
 
-The command to submit the transaction is the same as the previous example requesting channel expiration. (However, its resulting [auto-filled](transaction-common-fields.html#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
+The command to submit the transaction is the same as the previous example requesting channel expiration. (However, its resulting auto-filled `Sequence` number, signature, and identifying hash are unique.)
 
 Example of [submitting](submit.html#sign-and-submit-mode) a transaction to close an expired channel:
 

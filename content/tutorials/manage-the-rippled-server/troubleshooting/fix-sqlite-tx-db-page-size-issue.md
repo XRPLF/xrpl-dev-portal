@@ -6,7 +6,7 @@ status: removed
 ---
 # Fix SQLite Transaction Database Page Size Issue
 
-`rippled` servers with full [ledger history](ledger-history.html) (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to encounter this problem.
+`rippled` servers with full ledger history (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to encounter this problem.
 
 This document describes steps to detect and correct this problem if it occurs.
 
@@ -23,7 +23,7 @@ The capacity of the SQLite database is a result of the database's _page size_ pa
 
 If your server is vulnerable to this problem, you can detect it two ways:
 
-- You can detect the problem [proactively](#proactive-detection) (before it causes problems) if your `rippled` server is [version 1.1.0][New in: rippled 1.1.0] or later.
+- You can detect the problem [proactively](#proactive-detection) (before it causes problems) if your `rippled` server is version 1.1.0 or later.
 - You can identify the problem [reactively](#reactive-detection) (when your server is crashing) on any `rippled` version.
 
 In both cases, detection of the problem requires access to `rippled`'s server logs.
@@ -42,7 +42,7 @@ Transaction DB pathname: /opt/rippled/transaction.db; SQLite page size: 1024
 
 The value `SQLite page size: 1024 bytes` indicates that your transaction database is configured with a smaller page size and does not have capacity for full transaction history. If the value is already 4096 bytes or higher, then your SQLite database should already have adequate capacity to store full transaction history and you do not need to perform the migration described in this document.
 
-The `rippled` server halts if the `Free space` described in this log message becomes less than 524288000 bytes (500 MB). If your free space is approaching that threshold, [fix the problem](#fix) to avoid an unexpected outage.
+The `rippled` server halts if the `Free space` described in this log message becomes less than 524288000 bytes (500 MB). If your free space is approaching that threshold, fix the problem to avoid an unexpected outage.
 
 ### Reactive Detection
 
@@ -77,7 +77,7 @@ You can fix this issue using `rippled` on supported Linux systems according to t
 
 - You must be running **[rippled version 1.1.0][New in: rippled 1.1.0] or later**.
 
-    - [Upgrade rippled](install-rippled.html) to the latest stable version before starting this process.
+    - Upgrade rippled to the latest stable version before starting this process.
 
     - You can check what version of `rippled` you have installed locally by running the following command:
 
@@ -154,7 +154,7 @@ To migrate your transaction database to a larger page size, perform the followin
 
 11. Confirm that the `rippled` service started successfully.
 
-    You can use the [commandline interface](get-started-using-http-websocket-apis.html#commandline) to check the server status (unless you have configured your server not to accept JSON-RPC requests). For example:
+    You can use the commandline interface to check the server status (unless you have configured your server not to accept JSON-RPC requests). For example:
 
         /opt/ripple/bin/rippled server_info
 
@@ -164,7 +164,7 @@ To migrate your transaction database to a larger page size, perform the followin
 
         tail -F /var/log/rippled/debug.log
 
-    The [periodic log message](#proactive-detection) should also show significantly more free pages and free pages than it did before the migration.
+    The periodic log message should also show significantly more free pages and free pages than it did before the migration.
 
 13. Optionally, you may now remove the temporary folder you created for the migration process.
 

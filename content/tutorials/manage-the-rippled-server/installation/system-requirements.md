@@ -20,7 +20,7 @@ For reliable performance in production environments, it is recommended to run an
 
 ## Minimum Specifications
 
-For testing purposes or occasional use, you can run an XRP Ledger server on commodity hardware. The following minimum requirements should work for most cases, but may not always [stay synced with the network](server-doesnt-sync.html):
+For testing purposes or occasional use, you can run an XRP Ledger server on commodity hardware. The following minimum requirements should work for most cases, but may not always stay synced with the network (see [rippled Server Doesn't Sync](server-doesnt-sync.html)):
 
 - Operating System: Mac OS X, Windows (64-bit), or most Linux distributions (Red Hat, Ubuntu, and Debian supported).
 - CPU: 64-bit x86_64, 4+ cores.

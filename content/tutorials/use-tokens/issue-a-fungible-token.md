@@ -16,7 +16,7 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
 ## Prerequisites
 
 - You need two funded XRP Ledger accounts, each with an address, secret key, and some XRP. For this tutorial, you can generate new test credentials as needed.
-    - Each address needs enough XRP to satisfy the [reserve requirement](reserves.html) including the additional reserve for a trust line.
+    - Each address needs enough XRP to satisfy the reserve requirement, including the additional reserve for a trust line.
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
     - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
@@ -40,7 +40,7 @@ Complete sample code for all of the steps of these tutorials is available under 
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. You also need one or more recipients who are willing to hold the tokens you issue: unlike in some other blockchains, in the XRP Ledger you cannot force someone to hold a token they do not want.
 
-The best practice is to use ["cold" and "hot" addresses](issuing-and-operational-addresses.html). The cold address is the **issuer** of the token. The hot address is like a regular user's address that you control. It receives tokens from the cold address, which you can then transfer to other users. A hot address is not strictly necessary, since you could send tokens directly to users from the cold address, but it is good practice for security reasons. In production, you should take extra care of the cold address's cryptographic keys (for example, keeping them offline) because it is much harder to replace a cold address than a hot address.
+The best practice is to use "cold" and "hot" addresses. The cold address is the **issuer** of the token. The hot address is like a regular user's address that you control. It receives tokens from the cold address, which you can then transfer to other users. A hot address is not strictly necessary, since you could send tokens directly to users from the cold address, but it is good practice for security reasons. In production, you should take extra care of the cold address's cryptographic keys (for example, keeping them offline) because it is much harder to replace a cold address than a hot address.
 
 In this tutorial, the hot address receives the tokens you issue from the cold address. You can get the keys for two addresses using the following interface.
 
@@ -58,9 +58,9 @@ In this tutorial, the hot address receives the tokens you issue from the cold ad
 <div class="output-area"></div>
 {{ end_step() }}
 
-**Caution:** Ripple provides the [Testnet and Devnet](parallel-networks.html) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
+**Caution:** Ripple provides the Testnet and Devnet for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet. See [Parallel Networks](parallel-networks.html)]
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network
@@ -301,9 +301,9 @@ As before, wait for the previous transaction to be validated by consensus before
 
 ### {{n.next()}}. Create Trust Line from Hot to Cold Address
 
-Before you can receive tokens, you need to create a [trust line](trust-lines-and-issuing.html) to the token issuer. This trust line is specific to the [currency code](currency-formats.html#currency-codes) of the token you want to issue, such as USD or FOO. You can choose any currency code you want; each issuer's tokens are treated as separate in the XRP Ledger protocol. However, users' balances of tokens with the same currency code can [ripple](rippling.html) between different issuers if the users enable rippling settings.
+Before you can receive tokens, you need to create a trust line to the token issuer. This trust line is specific to the currency code of the token you want to issue, such as USD or FOO. You can choose any currency code you want; each issuer's tokens are treated as separate in the XRP Ledger protocol. However, users' balances of tokens with the same currency code can ripple between different issuers if the users enable rippling settings.
 
-The hot address needs a trust line like this before it can receive tokens from the issuer. Similarly, each user who wants to hold your token must also create a trust line[¹](#footnotes). Each trust line increases the [reserve requirement](reserves.html) of the hot address, so you must hold enough spare XRP to pay for the increased requirement. Your reserve requirement goes back down if you remove the trust line.
+The hot address needs a trust line like this before it can receive tokens from the issuer. Similarly, each user who wants to hold your token must also create a trust line[¹](#footnotes). Each trust line increases the reserve requirement of the hot address, so you must hold enough spare XRP to pay for the increased requirement. Your reserve requirement goes back down if you remove the trust line.
 
 **Tip:** A trust line has a "limit" on how much the recipient is willing to hold; others cannot send you more tokens than your specified limit. For community credit systems, you may want to configure limits per individual based on how much you trust that person. For other types and uses of tokens, it is normally OK to set the limit to a very large number.
 
@@ -506,7 +506,7 @@ Now that you've created the token, you can explore how it fits into features of 
 
 ## Footnotes
 
-¹ Users can hold your token without explicitly creating a trust line if they purchase your token in the [decentralized exchange](decentralized-exchange.html). Buying a token in the exchange [automatically creates the necessary trust lines](offers.html#offers-and-trust). This is only possible if someone is selling your token in the decentralized exchange.
+¹ Users can hold your token without explicitly creating a trust line if they purchase your token in the decentralized exchange. Buying a token in the exchange automatically creates the necessary trust lines. This is only possible if someone is selling your token in the decentralized exchange.
 
 
 <!--{# common link defs #}-->

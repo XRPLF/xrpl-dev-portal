@@ -1758,13 +1758,14 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.ja.md
-        targets:
-            - ja
+# 
+#     -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.md
+#         targets:
+#             - en
+# 
+#     -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.ja.md
+#         targets:
+#             - ja
 
     -   name: Configure rippled
         html: configure-rippled.html

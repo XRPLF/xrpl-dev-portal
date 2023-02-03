@@ -11,7 +11,7 @@ labels:
 ---
 # Trade in the Decentralized Exchange
 
-This tutorial demonstrates how you can buy and sell tokens in the [decentralized exchange](decentralized-exchange.html) (DEX).
+This tutorial demonstrates how you can buy and sell tokens in the decentralized exchange (DEX).
 
 ## Prerequisites
 
@@ -64,7 +64,9 @@ To transact on the XRP Ledger, you need an address, a secret key, and some XRP. 
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html). The following code shows how to create a Wallet instance to use your keys:
+When you're building production-ready software, you should use an existing account, and manage your keys using a secure signing configuration. See [Set Up Secure Signing](set-up-secure-signing.html)
+
+The following code shows how to create a Wallet instance to use your keys:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -90,7 +92,7 @@ _JavaScript_
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Note:** Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is [final](finality-of-results.html).
+**Note:** Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is final.
 
 The following block demonstrates these calculations in action:
 
@@ -174,7 +176,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
 ### {{n.next()}}. Check Metadata
 
-You can use the validated transaction's [metadata](transaction-metadata.html) to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](finality-of-results.html), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
+You can use the validated transaction's metadata to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](finality-of-results.html), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
 
 - Some or all of the Offer may have been filled by matching with existing Offers in the ledger.
 - The unmatched remainder, if any, has been placed into the ledger to await new matching Offers.
