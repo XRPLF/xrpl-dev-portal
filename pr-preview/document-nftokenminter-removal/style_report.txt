@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 16 possible spelling errors:
+Found 15 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gif, gins, gibs
+  gifs: gifts, giss, ifs
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -25,14 +25,13 @@ Found 16 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3rd, 3d, 3-d
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
-  asfauthorizednftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3rd, 3d, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
@@ -69,7 +68,7 @@ Page: <Page 'tem Codes' (tem-codes.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.0 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1

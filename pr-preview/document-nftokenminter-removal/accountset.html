@@ -529,7 +529,7 @@
 <p>The <code>TransferRate</code> field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
 <p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
 <h2 id="nftokenminter">NFTokenMinter<a aria-hidden="true" class="hover_anchor" href="#nftokenminter"><i class="fa fa-link"></i></a></h2>
-<p>To remove an authorized minter, set <code>ClearFlag</code> to 10 (asfAuthorizedNFTokenMinter).</p>
+<p>To remove an authorized minter, set <code>ClearFlag</code> to 10 (<code>asfAuthorizedNFTokenMinter</code>).</p>
 <!-- SPELLING_IGNORE: TransferRate -->
 <!-- -->
 <!-- -->
