@@ -8,7 +8,7 @@ labels:
 # manifest
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "Source")
 
-The `{{currentpage.name}}` method reports the current "manifest" information for a given validator public key. The "manifest" is the public portion of that validator's configured token. [Updated in: rippled 1.7.0][]
+The `{{currentpage.name}}` method reports the current "manifest" information for a given validator public key. The "manifest" is the public portion of that validator's configured token.
 
 
 ### Request Format
@@ -52,7 +52,6 @@ The request includes the following parameters:
 |:-------------|:-------|:-----------------------------------|
 | `public_key` | String | The [base58][]-encoded public key of the validator to look up. This can be the master public key or ephemeral public key. |
 
-**Note:** The commandline format for this method does not work in rippled v1.5.0. See [issue #3317](https://github.com/ripple/rippled/issues/3317) for details.
 
 ### Response Format
 
@@ -129,7 +128,7 @@ The response follows the [standard format][], with a successful result containin
 | `Field`     | Type   | Description                                           |
 |:------------|:-------|:------------------------------------------------------|
 | `details`   | Object | _(May be omitted)_ The data contained in this manifest. Omitted if the server does not have a manifest for the `public_key` from the request. See **Details Object** below for a full description of its contents. |
-| `manifest`  | String | _(May be omitted)_ The full manifest data in base64 format. This data is [serialized](serialization.html) to binary before being base64-encoded. Omitted if the server does not have a manifest for the `public_key` from the request. |
+| `manifest`  | String | _(May be omitted)_ The full manifest data in base64 format. This data is serialized to binary before being base64-encoded. Omitted if the server does not have a manifest for the `public_key` from the request. |
 | `requested` | String | The `public_key` from the request.                    |
 
 #### Details Object

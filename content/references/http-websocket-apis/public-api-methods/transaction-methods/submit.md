@@ -9,7 +9,7 @@ labels:
 # submit
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
 
-The `submit` method applies a [transaction](transaction-formats.html) and sends it to the network to be confirmed and included in future ledgers.
+The `submit` method applies a transaction and sends it to the network to be confirmed and included in future ledgers.
 
 This command has two modes:
 
@@ -24,7 +24,7 @@ A submit-only request includes the following parameters:
 
 | `Field`     | Type    | Description                                          |
 |:------------|:--------|:-----------------------------------------------------|
-| `tx_blob`   | String  | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](multi-signing.html). |
+| `tx_blob`   | String  | Hex representation of the signed transaction to submit. This can be a multi-signed transaction. |
 | `fail_hard` | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 
 ### Request Format
@@ -68,9 +68,9 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 ## Sign-and-Submit Mode
 
-This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](multi-signing.html).
+This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for multi-signed transactions.
 
-_By default, sign-and-submit mode is [admin-only](admin-api-methods.html)._ It can be used as a public method if the server has [enabled public signing](enable-public-signing.html).
+_By default, sign-and-submit mode is admin-only._ It can be used as a public method if the server has enabled public signing.
 
 You can provide the secret key used to sign the transaction in the following ways:
 
@@ -81,7 +81,7 @@ The request includes the following parameters:
 
 | `Field`        | Type    | Description                                       |
 |:---------------|:--------|:--------------------------------------------------|
-| `tx_json`      | Object  | [Transaction definition](transaction-formats.html) in JSON format, optionally omitting any auto-fillable fields. |
+| `tx_json`      | Object  | Transaction definition in JSON format, optionally omitting any auto-fillable fields. |
 | `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
 | `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
@@ -89,9 +89,9 @@ The request includes the following parameters:
 | `key_type`     | String  | _(Optional)_ Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
 | `fail_hard`    | Boolean | _(Optional)_ If `true`, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is `false`. [Updated in: rippled 1.5.0][] |
 | `offline`      | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not try to automatically fill in or validate values. |
-| `build_path`   | Boolean | _(Optional)_ If this field is provided, the server [auto-fills](transaction-common-fields.html#auto-fillable-fields) the `Paths` field of a [Payment transaction][] before signing. You must omit this field if the transaction is a [direct XRP payment](direct-xrp-payments.html) or if it is not a Payment-type transaction. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. ([Issue #3272](https://github.com/ripple/rippled/issues/3272)) |
-| `fee_mult_max` | Integer | _(Optional)_ Sign-and-submit fails with the error `rpcHIGH_FEE` if the [auto-filled `Fee` value](transaction-common-fields.html#auto-fillable-fields) would be greater than the [reference transaction cost](transaction-cost.html#special-transaction-costs) × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `10`. |
-| `fee_div_max`  | Integer | _(Optional)_ Sign-and-submit fails with the error `rpcHIGH_FEE` if the [auto-filled `Fee` value](transaction-common-fields.html#auto-fillable-fields) would be greater than the [reference transaction cost](transaction-cost.html#special-transaction-costs) × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `1`. [New in: rippled 0.30.1][] |
+| `build_path`   | Boolean | _(Optional)_ If this field is provided, the server auto-fills the `Paths` field of a [Payment transaction][] before signing. You must omit this field if the transaction is a [direct XRP payment](direct-xrp-payments.html) or if it is not a Payment-type transaction. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. ([Issue #3272](https://github.com/ripple/rippled/issues/3272)) |
+| `fee_mult_max` | Integer | _(Optional)_ Sign-and-submit fails with the error `rpcHIGH_FEE` if the auto-filled `Fee` value would be greater than the reference transaction cost × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `10`. |
+| `fee_div_max`  | Integer | _(Optional)_ Sign-and-submit fails with the error `rpcHIGH_FEE` if the auto-filled `Fee` value would be greater than the reference transaction cost × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `1`. |
 
 See the [sign method][] for detailed information on how the server automatically fills in certain fields.
 
@@ -292,19 +292,19 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`                 | Type    | Description                              |
 |:------------------------|:--------|:-----------------------------------------|
-| `engine_result`         | String  | Text [result code](transaction-results.html) indicating the preliminary result of the transaction, for example `tesSUCCESS` |
+| `engine_result`         | String  | Text result code indicating the preliminary result of the transaction, for example `tesSUCCESS` |
 | `engine_result_code`    | Integer | Numeric version of the [result code](transaction-results.html). **Not recommended.** |
 | `engine_result_message` | String  | Human-readable explanation of the transaction's preliminary result |
 | `tx_blob`               | String  | The complete transaction in hex string format |
 | `tx_json`               | Object  | The complete transaction in JSON format  |
-| `accepted`              | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was applied, queued, broadcast, or kept for later. The value `false` indicates that none of those happened, so the transaction cannot possibly succeed as long as you do not submit it again and have not already submitted it another time. [New in: rippled 1.5.0][] |
-| `account_sequence_available` | Number | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] available for the sending account after all pending and [queued](transaction-queue.html) transactions. [New in: rippled 1.5.0][] |
-| `account_sequence_next` | number  | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] for the sending account after all transactions that have been provisionally applied, but not transactions in the [queue](transaction-queue.html). [New in: rippled 1.5.0][] |
-| `applied`               | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that this transaction was applied to the open ledger. In this case, the transaction is likely, but not guaranteed, to be validated in the next ledger version. [New in: rippled 1.5.0][] |
-| `broadcast`             | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in [stand-alone mode][], the server uses the value `true` for cases where it _would_ have broadcast the transaction.) The value `false` indicates the transaction was not broadcast to any other servers. [New in: rippled 1.5.0][] |
-| `kept`                  | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was kept to be retried later. [New in: rippled 1.5.0][] |
-| `queued`                | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates the transaction was put in the [Transaction Queue](transaction-queue.html), which means it is likely to be included in a future ledger version. [New in: rippled 1.5.0][] |
-| `open_ledger_cost`      | String  | _(Omitted in sign-and-submit mode)_ The current [open ledger cost](transaction-cost.html#open-ledger-cost) before processing this transaction. Transactions with a lower cost are likely to be [queued](transaction-queue.html). [New in: rippled 1.5.0][] |
+| `accepted`              | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was applied, queued, broadcast, or kept for later. The value `false` indicates that none of those happened, so the transaction cannot possibly succeed as long as you do not submit it again and have not already submitted it another time. |
+| `account_sequence_available` | Number | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] available for the sending account after all pending and queued transactions. |
+| `account_sequence_next` | number  | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] for the sending account after all transactions that have been provisionally applied, but not transactions in the queue. |
+| `applied`               | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that this transaction was applied to the open ledger. In this case, the transaction is likely, but not guaranteed, to be validated in the next ledger version. |
+| `broadcast`             | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in [stand-alone mode][], the server uses the value `true` for cases where it _would_ have broadcast the transaction.) The value `false` indicates the transaction was not broadcast to any other servers. |
+| `kept`                  | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was kept to be retried later. |
+| `queued`                | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates the transaction was put in the transaction queue, which means it is likely to be included in a future ledger version. |
+| `open_ledger_cost`      | String  | _(Omitted in sign-and-submit mode)_ The current [open ledger cost](transaction-cost.html#open-ledger-cost) before processing this transaction. Transactions with a lower cost are likely to be queued. |
 | `validated_ledger_index` | Integer  | _(Omitted in sign-and-submit mode)_ The [ledger index][] of the newest validated ledger at the time of submission. This provides a lower bound on the ledger versions that the transaction can appear in as a result of this request. (The transaction could only have been validated in this ledger version or earlier if it had already been submitted before.) |
 
 **Warning:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](transaction-results.html) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
@@ -328,7 +328,7 @@ The response follows the [standard format][], with a successful result containin
 * `invalidTransaction` - The transaction is malformed or otherwise invalid.
 * `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
-* `notSupported` - Signing is not supported by this server (Sign-and-Submit mode only.) If you are the server admin, you can still access signing when connected [as an admin](admin-api-methods.html), or you could [enable public signing](enable-public-signing.html). [New in: rippled 1.1.0][]
+* `notSupported` - Signing is not supported by this server (Sign-and-Submit mode only.) If you are the server admin, you can still access signing when connected as an admin, or you could enable public signing.
 
 
 <!--{# common link defs #}-->

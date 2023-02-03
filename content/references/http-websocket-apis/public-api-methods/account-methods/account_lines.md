@@ -59,7 +59,7 @@ The request accepts the following parameters:
 | `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `peer`         | String                                     | _(Optional)_ The [Address][] of a second account. If provided, show only lines of trust connecting the two accounts. |
 | `limit`        | Integer                                    | (Optional, default varies) Limit the number of trust lines to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
-| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
+| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -413,10 +413,10 @@ The response follows the [standard format][], with a successful result containin
 |:-----------------------|:---------------------------|:-----------------------|
 | `account`              | String                     | Unique [Address][] of the account this request corresponds to. This is the "perspective account" for purpose of the trust lines. |
 | `lines`                | Array                      | Array of trust line objects, as described below. If the number of trust lines is large, only returns up to the `limit` at a time. |
-| `ledger_current_index` | Integer - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current open ledger, which was used when retrieving this information. [New in: rippled 0.26.4-sp1][] |
-| `ledger_index`         | Integer - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `ledger_hash`          | String - [Hash][]          | _(May be omitted)_ The identifying hash the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. [New in: rippled 0.26.4][] |
+| `ledger_current_index` | Integer - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current open ledger, which was used when retrieving this information. |
+| `ledger_index`         | Integer - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data. |
+| `ledger_hash`          | String - [Hash][]          | _(May be omitted)_ The identifying hash the ledger version that was used when retrieving this data. |
+| `marker`               | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 
 Each trust line object has some combination of the following fields:
 
@@ -429,12 +429,12 @@ Each trust line object has some combination of the following fields:
 | `limit_peer`     | String           | The maximum amount of currency that the counterparty account is willing to owe the perspective account |
 | `quality_in`     | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | `quality_out`    | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| `no_ripple`      | Boolean          | _(May be omitted)_ If `true`, this account has enabled the [No Ripple flag](rippling.html) for this trust line. If present and `false`, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered [the default state](ripplestate.html#contributing-to-the-owner-reserve). If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. [Updated in: rippled 1.7.0][] |
-| `no_ripple_peer` | Boolean          | _(May be omitted)_ If `true`, the peer account has enabled the [No Ripple flag](rippling.html) for this trust line. If present and `false`, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered [the default state](ripplestate.html#contributing-to-the-owner-reserve). If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. [Updated in: rippled 1.7.0][] |
-| `authorized`     | Boolean          | _(May be omitted)_ If `true`, this account has [authorized this trust line](authorized-trust-lines.html). The default is `false`. |
-| `peer_authorized`| Boolean          | _(May be omitted)_ If `true`, the peer account has [authorized this trust line](authorized-trust-lines.html). The default is `false`. |
-| `freeze`         | Boolean          | _(May be omitted)_ If `true`, this account has [frozen](freezes.html) this trust line. The default is `false`. |
-| `freeze_peer`    | Boolean          | _(May be omitted)_ If `true`, the peer account has [frozen](freezes.html) this trust line. The default is `false`. |
+| `no_ripple`      | Boolean          | _(May be omitted)_ If `true`, this account has enabled the `No Ripple` for this trust line. If present and `false`, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered the default state. If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. |
+| `no_ripple_peer` | Boolean          | _(May be omitted)_ If `true`, the peer account has enabled the `No Ripple` for this trust line. If present and `false`, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered the default state. If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. [Updated in: rippled 1.7.0][] |
+| `authorized`     | Boolean          | _(May be omitted)_ If `true`, this account has authorized this trust line. The default is `false`. |
+| `peer_authorized`| Boolean          | _(May be omitted)_ If `true`, the peer account has authorized this trust line. The default is `false`. |
+| `freeze`         | Boolean          | _(May be omitted)_ If `true`, this account has frozen this trust line. The default is `false`. |
+| `freeze_peer`    | Boolean          | _(May be omitted)_ If `true`, the peer account has frozen this trust line. The default is `false`. |
 
 ## Possible Errors
 

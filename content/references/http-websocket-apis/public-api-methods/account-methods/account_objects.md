@@ -13,13 +13,13 @@ The `account_objects` command returns the raw [ledger format][] for all objects 
 
 The types of objects that may appear in the `account_objects` response for an account include:
 
-- [Offer objects](offer.html) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](offers.html#lifecycle-of-an-offer) for more information.)
+- [Offer objects](offer.html) for orders that are currently live, unfunded, or expired but not yet removed.
 - [RippleState objects](ripplestate.html) for trust lines where this account's side is not in the default state.
-- The account's [SignerList](signerlist.html), if the account has [multi-signing](multi-signing.html) enabled.
+- The account's [SignerList](signerlist.html), if the account has multi-signing enabled.
 - [Escrow objects](escrow.html) for held payments that have not yet been executed or canceled.
 - [PayChannel objects](paychannel.html) for open payment channels.
 - [Check objects](check.html) for pending Checks.
-- [DepositPreauth objects](depositpreauth-object.html) for deposit preauthorizations. [New in: rippled 1.1.0][]
+- [DepositPreauth objects](depositpreauth-object.html) for deposit preauthorizations.
 - [Ticket objects](known-amendments.html#tickets) for Tickets.
 
 
@@ -75,7 +75,7 @@ The request includes the following parameters:
 |:-------------------------|:-----------------|:-------------------------------|
 | `account`                | String           | A unique identifier for the account, most commonly the account's address. |
 | `type`                   | String           | _(Optional)_ If included, filter results to include only this type of ledger object. The valid types are: `check`, `deposit_preauth`, `escrow`, `offer`, `payment_channel`, `signer_list`, `ticket`, and `state` (trust line). <!-- Author's note: Omitted types that can't be owned by an account --> |
-| `deletion_blockers_only` | Boolean          | _(Optional)_ If `true`, the response only includes objects that would block this account from [being deleted](accounts.html#deletion-of-accounts). The default is `false`. [New in: rippled 1.4.0][] |
+| `deletion_blockers_only` | Boolean          | _(Optional)_ If `true`, the response only includes objects that would block this account from being deleted. The default is `false`. |
 | `ledger_hash`            | String           | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`           | String or Number | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`                  | Number           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |

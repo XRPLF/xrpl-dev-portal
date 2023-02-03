@@ -8,9 +8,9 @@ labels:
 # peer_reservations_list
 [[Source]](https://github.com/ripple/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
 
-The `{{currentpage.name}}` method lists [peer reservations][]. [New in: rippled 1.4.0][]
+The `{{currentpage.name}}` method lists [peer reservations][].
 
-_The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `{{currentpage.name}}` method is an admin method that can't be run by unprivileged users._
 
 
 ### Request Format

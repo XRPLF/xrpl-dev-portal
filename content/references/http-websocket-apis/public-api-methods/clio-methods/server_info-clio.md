@@ -8,7 +8,7 @@ labels:
 # server_info
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/ServerInfo.cpp "Source")
 
-The `server_info` command asks the [Clio server](the-clio-server.html) for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](server_info.html) instead. [New in: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
+The `server_info` command asks the Clio server for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](server_info.html) instead. [New in: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
 
 
 ## Request Format
@@ -583,7 +583,7 @@ The `info` object may have some arrangement of the following fields:
 | `subscriptions.account`             |                 |   |
 | `subscriptions.accounts_proposed`   |                 |   |
 | `subscriptions.books`               |                 |   |
-| `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost) and the overall network's load factor. [Updated in: rippled 0.33.0][] |
+| `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the individual server's load factor, the cluster's load factor, the open ledger cost, and the overall network's load factor. |
 | `clio_version`                      | String          | The version number of the running `Clio` server.  |
 | `validation_quorum`                 | Number          | _(May be omitted)_ Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from `rippled`. This field may be omitted from the response if the `Clio` server is unable to connect to `rippled` for some reason. |
 | `rippled_version`                   | String          | _(May be omitted)_ The version number of the running `rippled` server that the `Clio` server is connected to. This field may be omitted from the response if the `Clio` server is unable to connect to `rippled` for some reason. |
@@ -594,7 +594,7 @@ The `info` object may have some arrangement of the following fields:
 | `validated_ledger.reserve_base_xrp` | Number          | Minimum amount of XRP (not drops) necessary for every account to keep in reserve. This may be represented in scientific notation such as `1e-05` for 0.00001. |
 | `validated_ledger.reserve_inc_xrp`  | Number          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. This may be represented in scientific notation such as `1e-05` for 0.00001. |
 | `validated_ledger.seq`              | Number          | The [ledger index][] of the latest validated ledger. |
-| `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list will expire, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. [Updated in: rippled 1.5.0][] |
+| `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list will expire, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. |
 | `cache`                             | Object          | Information on Clio's state data cache. |
 | `cache.size`                        | Number          | Number of state data objects currently in the cache. |
 | `cache.is_full`                     | Boolean         | True if cache contains all state data for a specific ledger, false otherwise. Some RPCs, such as book_offers, process much faster when the cache is full. |

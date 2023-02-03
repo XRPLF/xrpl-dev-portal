@@ -8,9 +8,9 @@ labels:
 # crawl_shards
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")
 
-Requests information from peer servers about which [shards of historical ledger data](history-sharding.html) they have available. [New in: rippled 1.2.0][]
+Requests information from peer servers about which shards of historical ledger data they have available.
 
-_The `crawl_shards` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `crawl_shards` method is an admin method that can't be run by unprivileged users._
 
 ### Request Format
 
@@ -117,12 +117,12 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
-| `complete_shards` | String | _(May be omitted)_ The range of [history shards](history-sharding.html) that are available on the local server. This may be an empty string, or a disjointed range. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. Omitted if this server does not have history sharding enabled. |
+| `complete_shards` | String | _(May be omitted)_ The range of history shards that are available on the local server. This may be an empty string, or a disjointed range. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. Omitted if this server does not have history sharding enabled. |
 | `peers`           | Array  | _(May be omitted)_ List of **Peer Shard Objects** (see below) describing which history shards each peer has available. The response omits this field if no peers within the number of hops specified by `limit` have any shards. |
 
 #### Peer Shard Objects
 
-Each member of the `peers` array of the response is an object that describes one server in the peer-to-peer network. The list only includes peers that have at least one complete [history shard](history-sharding.html) available. Each object in the array has the following fields:
+Each member of the `peers` array of the response is an object that describes one server in the peer-to-peer network. The list only includes peers that have at least one complete history shard](history-sharding.html) available. Each object in the array has the following fields:
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
@@ -138,6 +138,11 @@ The `ip` field is no longer provided. [Removed in: rippled 1.8.1][]
 - Any of the [universal error types][].
 - `invalidParams` - One or more required fields were omitted from the request, or a provided field was specified as the wrong data type.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+
+
+## See Also:
+- **Concepts:**
+    - [History Sharding](history-sharding.html)
 
 
 <!--{# common link defs #}-->

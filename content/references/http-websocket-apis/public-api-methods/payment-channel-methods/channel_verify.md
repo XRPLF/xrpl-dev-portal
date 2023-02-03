@@ -8,8 +8,6 @@ labels:
 # channel_verify
 [[Source]](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
 
-_(Added by the [PayChan amendment][] to be enabled. [New in: rippled 0.33.0][])_
-
 The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
 
 ## Request Format
@@ -59,7 +57,7 @@ The request includes the following parameters:
 |-------|------|-------------|
 | `amount` | String | The amount of [XRP, in drops][], the provided `signature` authorizes. |
 | `channel_id` | String | The Channel ID of the channel that provides the XRP. This is a 64-character hexadecimal string. |
-| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in hexadecimal or the XRP Ledger's [base58][] format. [Updated in: rippled 0.90.0][] |
+| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in hexadecimal or the XRP Ledger's [base58][] format. |
 | `signature` | String | The signature to verify, in hexadecimal. |
 
 ## Response Format

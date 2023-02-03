@@ -9,7 +9,7 @@ labels:
 ---
 # Public API Methods
 
-Communicate directly with an [XRP Ledger server](xrpl-servers.html) using the public API methods. Public methods are not necessarily meant for the general public, but they are used by any client attached to the server. Think of public methods as being for members or customers of the organization running the server.
+Communicate directly with an XRP Ledger server using the public API methods. Public methods are not necessarily meant for the general public, but they are used by any client attached to the server. Think of public methods as being for members or customers of the organization running the server.
 
 
 ## [Account Methods](account-methods.html)
@@ -107,8 +107,3 @@ Use these methods to perform convenient tasks, such as ping and random number ge
 * **[`json`](json.html)** - Use as a proxy to running other commands. Accepts the parameters for the command as a JSON value. _Commandline only._
 * **[`ping`](ping.html)** - Confirm connectivity with the server.
 * **[`random`](random.html)** - Generate a random number.
-
-
-## Deprecated Methods
-
-The `owner_info` command is deprecated. Use [`account_objects`](account_objects.html) instead.

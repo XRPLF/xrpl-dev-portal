@@ -78,8 +78,6 @@ The request includes the following parameters:
 
 **You must use at least one of the following fields** in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
 
-The following legacy fields are no longer supported: `offset`, `count`, `ledger_min`, `ledger_max`. [Removed in: rippled 1.7.0][]
-
 
 ### Iterating over queried data
 
@@ -458,7 +456,7 @@ Each transaction object includes the following fields, depending on whether it w
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
 * `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
-* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](server-doesnt-sync.html).
+* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is not synced with the network.
 
 
 {% include '_snippets/rippled_versions.md' %}

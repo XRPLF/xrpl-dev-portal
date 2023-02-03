@@ -85,7 +85,7 @@ The `streams` parameter provides access to the following default streams of info
 - `peer_status` - **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process.
 - `transactions` - Sends a message whenever a transaction is included in a closed ledger
 - `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation.
-    **Note:** [Even some transactions that don't succeed are included](transaction-results.html) in validated ledgers, because they take the anti-spam transaction fee.
+    **Note:** Even some transactions that don't succeed are included in validated ledgers, because they take the anti-spam transaction fee.
 - `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes
 - `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 
@@ -97,7 +97,7 @@ Each member of the `books` array, if provided, is an object with the following f
 |:-------------|:--------|:----------------------------------------------------|
 | `taker_gets` | Object  | Specification of which currency the account taking the Offer would receive, as a [currency object with no amount](currency-formats.html#specifying-without-amounts). |
 | `taker_pays` | Object  | Specification of which currency the account taking the Offer would pay, as a [currency object with no amount](currency-formats.html#specifying-without-amounts). |
-| `taker`      | String  | Unique [account address](accounts.html) to use as a perspective for viewing offers, in the XRP Ledger's [base58][] format. (This affects the funding status and fees of [Offers](offers.html).) |
+| `taker`      | String  | Unique account address to use as a perspective for viewing offers, in the XRP Ledger's [base58][] format. (This affects the funding status and fees of offers.) |
 | `snapshot`   | Boolean | _(Optional)_ If `true`, return the current state of the order book once when you subscribe before sending updates. The default is `false`. |
 | `both`       | Boolean | _(Optional)_ If `true`, return both sides of the order book. The default is `false`. |
 
@@ -125,7 +125,7 @@ The response follows the [standard format][]. The fields contained in the respon
 * `accounts` and `accounts_proposed` - No fields returned.
 * *Stream: `server`* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change.
 * *Stream: `transactions`*, *Stream: `transactions_proposed`*, *Stream: `validations`*, and *Stream: `consensus`* - No fields returned.
-* *Stream: `ledger`* - Information about the ledgers on hand and current fee schedule. This includes the same fields as a [ledger stream message](#ledger-stream), except that it omits the `type` and `txn_count` fields.
+* *Stream: `ledger`* - Information about the ledgers on hand and current fee schedule. This includes the same fields as a ledger stream message, except that it omits the `type` and `txn_count` fields.
 * `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book).
 
 ## Possible Errors
@@ -146,7 +146,7 @@ When you subscribe to a particular stream, you receive periodic responses on tha
 
 ## Ledger Stream
 
-The `ledger` stream only sends `ledgerClosed` messages when [the consensus process](consensus.html) declares a new validated ledger. The message identifies the ledger and provides some information about its contents.
+The `ledger` stream only sends `ledgerClosed` messages when the consensus process declares a new validated ledger. The message identifies the ledger and provides some information about its contents.
 
 ```json
 {
@@ -168,20 +168,18 @@ The fields from a ledger stream message are as follows:
 | `Field`             | Type                      | Description                |
 |:--------------------|:--------------------------|:---------------------------|
 | `type`              | String                    | `ledgerClosed` indicates this is from the ledger stream |
-| `fee_base`          | Number                    | The [reference transaction cost](transaction-cost.html#reference-transaction-cost) as of this ledger version, in [drops of XRP][]. If this ledger version includes a [SetFee pseudo-transaction](setfee.html) the new transaction cost applies starting with the following ledger version. |
-| `fee_ref`           | Number                    | The [reference transaction cost](transaction-cost.html#reference-transaction-cost) in "fee units". |
+| `fee_base`          | Number                    | The reference transaction cost as of this ledger version, in [drops of XRP][]. If this ledger version includes a `SetFee` pseudo-transaction the new transaction cost applies starting with the following ledger version. |
+| `fee_ref`           | Number                    | The reference transaction cost in "fee units". |
 | `ledger_hash`       | String - [Hash][]         | The identifying hash of the ledger version that was closed. |
 | `ledger_index`      | Number - [Ledger Index][] | The ledger index of the ledger that was closed. |
 | `ledger_time`       | Number                    | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
-| `reserve_base`      | Number                    | The minimum [reserve](reserves.html), in [drops of XRP][], that is required for an account. If this ledger version includes a [SetFee pseudo-transaction](setfee.html) the new base reserve applies starting with the following ledger version. |
-| `reserve_inc`       | Number                    | The [owner reserve](reserves.html#owner-reserves) for each object an account owns in the ledger, in [drops of XRP][]. If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new owner reserve applies after this ledger. |
+| `reserve_base`      | Number                    | The minimum reserve, in [drops of XRP][], that is required for an account. If this ledger version includes a `SetFee` pseudo-transaction the new base reserve applies starting with the following ledger version. |
+| `reserve_inc`       | Number                    | The owner reserve] for each object an account owns in the ledger, in [drops of XRP][]. If the ledger includes a `SetFee` pseudo-transaction the new owner reserve applies after this ledger. |
 | `txn_count`         | Number                    | Number of new transactions included in this ledger version. |
 | `validated_ledgers` | String                    | _(May be omitted)_ Range of ledgers that the server has available. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
 
 
 ## Validations Stream
-
-[New in: rippled 0.29.0][]
 
 The validations stream sends messages whenever it receives validation messages, also called validation votes, regardless of whether or not the validation message is from a trusted validator. The message looks like the following:
 
@@ -215,20 +213,20 @@ The fields from a validations stream message are as follows:
 | `Field`                 | Type             | Description                     |
 |:------------------------|:-----------------|:--------------------------------|
 | `type`                  | String           | The value `validationReceived` indicates this is from the validations stream. |
-| `amendments`            | Array of Strings | _(May be omitted)_ The [amendments](amendments.html) this server wants to be added to the protocol. [New in: rippled 0.32.0][] |
-| `base_fee`              | Integer          | _(May be omitted)_ The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
+| `amendments`            | Array of Strings | _(May be omitted)_ The amendments this server wants to be added to the protocol. |
+| `base_fee`              | Integer          | _(May be omitted)_ The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](fee-voting.html). |
 | `cookie`                | String - Number  | _(May be omitted)_ An arbitrary value chosen by the server at startup. If the same validation key pair signs validations with different cookies concurrently, that usually indicates that multiple servers are incorrectly configured to use the same validation key pair. [New in: rippled 1.8.1][] |
-| `flags`                 | Number           | Bit-mask of flags added to this validation message. The flag `0x80000000` indicates that the validation signature is fully-canonical. The flag `0x00000001` indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
-| `full`                  | Boolean          | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
+| `flags`                 | Number           | Bit-mask of flags added to this validation message. The flag `0x80000000` indicates that the validation signature is fully-canonical. The flag `0x00000001` indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. |
+| `full`                  | Boolean          | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. |
 | `ledger_hash`           | String           | The identifying hash of the proposed ledger is being validated. |
-| `ledger_index`          | String - Number  | The [Ledger Index][] of the proposed ledger. [New in: rippled 0.31.0][] |
-| `load_fee`              | Integer          | _(May be omitted)_ The local load-scaled transaction cost this validator is currently enforcing, in fee units. [New in: rippled 0.32.0][] |
-| `master_key`            | String           | _(May be omitted)_ The validator's master public key, if the validator is using a validator token, in the XRP Ledger's [base58][] format. (See also: [Enable Validation on your `rippled` Server](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).) [New in: rippled 1.4.0][] |
-| `reserve_base`          | Integer          | _(May be omitted)_ The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
-| `reserve_inc`           | Integer          | _(May be omitted)_ The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
+| `ledger_index`          | String - Number  | The [Ledger Index][] of the proposed ledger. |
+| `load_fee`              | Integer          | _(May be omitted)_ The local load-scaled transaction cost this validator is currently enforcing, in fee units. |
+| `master_key`            | String           | _(May be omitted)_ The validator's master public key, if the validator is using a validator token, in the XRP Ledger's [base58][] format. (See also: [Enable Validation on your `rippled` Server](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).) |
+| `reserve_base`          | Integer          | _(May be omitted)_ The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). |
+| `reserve_inc`           | Integer          | _(May be omitted)_ The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). |
 | `server_version`        | String - Number  | _(May be omitted)_ An 64-bit integer that encodes the version number of the validating server. For example, `"1745990410175512576"`. Only provided once every 256 ledgers. [New in: rippled 1.8.1][] |
 | `signature`             | String           | The signature that the validator used to sign its vote for this ledger. |
-| `signing_time`          | Number           | When this validation vote was signed, in [seconds since the Ripple Epoch][]. [New in: rippled 0.32.0][] |
+| `signing_time`          | Number           | When this validation vote was signed, in [seconds since the Ripple Epoch][]. |
 | `validated_hash`        | String           | The unique hash of the proposed ledger this validation applies to. [New in: rippled 1.8.1][] |
 | `validation_public_key` | String           | The public key from the key-pair that the validator used to sign the message, in the XRP Ledger's [base58][] format. This identifies the validator sending the message and can also be used to verify the `signature`. If the validator is using a token, this is an ephemeral public key. |
 
@@ -363,11 +361,11 @@ Transaction stream messages have the following fields:
 | `engine_result`         | String                    | String [Transaction result code](transaction-results.html) |
 | `engine_result_code`    | Number                    | Numeric [transaction response code](transaction-results.html), if applicable. |
 | `engine_result_message` | String                    | Human-readable explanation for the transaction response |
-| `ledger_current_index`  | Number - [Ledger Index][] | _(Unvalidated transactions only)_ The ledger index of the current in-progress [ledger version](ledgers.html) for which this transaction is currently proposed. |
+| `ledger_current_index`  | Number - [Ledger Index][] | _(Unvalidated transactions only)_ The ledger index of the current in-progress ledger version for which this transaction is currently proposed. |
 | `ledger_hash`           | String - [Hash][]         | _(Validated transactions only)_ The identifying hash of the ledger version that includes this transaction |
 | `ledger_index`          | Number - [Ledger Index][] | _(Validated transactions only)_ The ledger index of the ledger version that includes this transaction. |
-| `meta`                  | Object                    | _(Validated transactions only)_ The [transaction metadata](transaction-metadata.html), which shows the exact outcome of the transaction in detail. |
-| `transaction`           | Object                    | The [definition of the transaction](transaction-formats.html) in JSON format |
+| `meta`                  | Object                    | _(Validated transactions only)_ The transaction metadata, which shows the exact outcome of the transaction in detail. |
+| `transaction`           | Object                    | The definition of the transaction in JSON format |
 | `validated`             | Boolean                   | If `true`, this transaction is included in a validated ledger and its outcome is final. Responses from the `transaction` stream should always be validated. |
 
 
@@ -548,14 +546,14 @@ The format of an order book stream message is the same as that of [transaction s
 
 | `Field`                   | Value  | Description                             |
 |:--------------------------|:-------|:----------------------------------------|
-| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](freezes.html). |
+| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is frozen. |
 
 
 ## Consensus Stream
 
 [New in: rippled 1.4.0][]
 
-The `consensus` stream sends `consensusPhase` messages when [the consensus process](consensus.html) changes phase. The message contains the new phase of consensus the server is in.
+The `consensus` stream sends `consensusPhase` messages when the consensus process changes phase. The message contains the new phase of consensus the server is in.
 
 ```json
 {

@@ -8,9 +8,9 @@ labels:
 # download_shard
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp "Source")
 
-Instructs the server to download a specific [shard of historical ledger data](history-sharding.html) from an external source. Your `rippled` server must be [configured to store history shards](configure-history-sharding.html). [Updated in: rippled 1.6.0][]
+Instructs the server to download a specific shard of historical ledger data from an external source. Your `rippled` server must be configured to store history shards.
 
-_The `download_shard` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `download_shard` method is an admin method that can't be run by unprivileged users._
 
 The external source must provide the shard as an [lz4-compressed](https://lz4.github.io/lz4/) [tar archive](https://en.wikipedia.org/wiki/Tar_(computing)) served via HTTPS. The archive must contain the shard directory and data files in NuDB format.
 
@@ -75,7 +75,7 @@ Each **Shard Descriptor object** in the `shards` array has the following fields:
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `index` | Number | The index of the shard to retrieve. In the production XRP Ledger, the oldest shard has index 1 and contains ledgers 32750-32768. The next shard has index 2 and contains ledgers 32769-49152, and so on. |
-| `url`   | String | The URL where this shard can be downloaded. The URL must start with `http://` or `https://` and must end with `.tar.lz4` (not case-sensitive). The web server providing this download must use a valid TLS certificate signed by a trusted Certificate Authority (CA). (`rippled` uses the operating system's CA store.) [Updated in: rippled 1.7.0][] |
+| `url`   | String | The URL where this shard can be downloaded. The URL must start with `http://` or `https://` and must end with `.tar.lz4` (not case-sensitive). The web server providing this download must use a valid TLS certificate signed by a trusted Certificate Authority (CA). (`rippled` uses the operating system's CA store.) |
 
 ### Response Format
 

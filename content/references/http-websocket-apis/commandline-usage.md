@@ -56,17 +56,16 @@ The following generic options affect the amount of information written to standa
 rippled [OPTIONS]
 ```
 
-Daemon mode is the default mode of operation for `rippled`. In addition to the [Generic Options](#generic-options), you can provide any of the following:
+Daemon mode is the default mode of operation for `rippled`. In addition to the generic options, you can provide any of the following:
 
 | Option              | Description                                            |
 |:--------------------|:-------------------------------------------------------|
 | `--fg`              | Run the daemon as a single process in the foreground. Otherwise, `rippled` forks a second process for the daemon while the first process runs as a monitor. |
 | `--import`          | Before fully starting, import ledger data from another `rippled` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
 | `--net`             | **DEPRECATED** Intended for debugging: do not build a local ledger until one can be obtained from the network. |
-| `--nodetoshard`     | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
-| `--quorum {QUORUM}` | This option is intended for starting [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
+| `--nodetoshard`     | Before fully starting, copy any complete history shards from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
+| `--quorum {QUORUM}` | This option is intended for starting test networks. Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
 
-The following option has been removed: `--validateShards`. [Removed in: rippled 1.7.0][]
 
 ## Stand-Alone Mode Options
 
@@ -74,7 +73,7 @@ The following option has been removed: `--validateShards`. [Removed in: rippled 
 rippled --standalone [OPTIONS]
 rippled -a [OPTIONS]
 ```
-Run in [stand-alone mode](rippled-server-modes.html). In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
+Run in stand-alone mode. In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
 
 ### Initial Ledger Options
 
@@ -86,7 +85,7 @@ The following options determine which ledger to load first when starting up. The
 | `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided [`ledger-file.json`]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_api-examples/rippled-cli/ledger-file.json). |
 | `--load`              | **DEPRECATED** Intended for debugging. Only load the initial ledger from the ledger store on disk. |
 | `--replay`            | Intended for debugging. Use with `--ledger` to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
-| `--start`             | Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. The functionality of those amendments is therefore available starting from the second ledger, rather than going through the full two-week [Amendment Process](amendments.html). |
+| `--start`             | Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. The functionality of those amendments is therefore available starting from the second ledger, rather than going through the full two-week amendment process. |
 | `--valid`            | **DEPRECATED** Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network. |
 
 ## Client Mode Options
@@ -97,9 +96,9 @@ rippled [OPTIONS] -- {COMMAND} {COMMAND_PARAMETERS}
 
 In client mode, the `rippled` executable acts as a client to another `rippled` service. (The service may be the same executable running in a separate process locally, or it could be a `rippled` server on another server.)
 
-To run in client mode, provide the [commandline syntax](request-formatting.html#commandline-format) for one of the [`rippled` API](http-websocket-apis.html) methods.
+To run in client mode, provide the commandline syntax for one of the `rippled` API methods.
 
-In addition to the individual command syntax, client mode accepts the [Generic Options](#generic-options) and the following options:
+In addition to the individual command syntax, client mode accepts the generic options and the following options:
 
 | Option                  | Description                                        |
 |:------------------------|:---------------------------------------------------|
@@ -135,7 +134,7 @@ While running unit tests, you can specify the [Generic Options](#generic-options
 
 | Option                             | Short Version | Description             |
 |:-----------------------------------|:--------------|:------------------------|
-| `--unittest-ipv6`                  |               | Use [IPv6](https://en.wikipedia.org/wiki/IPv6) to connect to the local server when running unit tests. If not provided, unit tests use IPv4 instead. [New in: rippled 1.1.0][] |
+| `--unittest-ipv6`                  |               | Use [IPv6](https://en.wikipedia.org/wiki/IPv6) to connect to the local server when running unit tests. If not provided, unit tests use IPv4 instead. |
 | `--unittest-jobs {NUMBER_OF_JOBS}` |               | Use the specified number of processes to run unit tests. This can finish running tests faster on multi-core systems. The `{NUMBER_OF_JOBS}` should be a positive integer indicating the number of processes to use. |
 | `--unittest-log`                   |               | Allow unit tests to write to logs even if `--quiet` is specified. (No effect otherwise.) |
 | `--quiet`                          | `-q`          | Print fewer diagnostic messages when running unit tests. |

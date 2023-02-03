@@ -10,7 +10,7 @@ labels:
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 
-*The `print` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
+*The `print` method is an admin method that can't be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:

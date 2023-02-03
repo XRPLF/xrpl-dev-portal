@@ -8,9 +8,9 @@ labels:
 # peer_reservations_del
 [[Source]](https://github.com/ripple/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
 
-The `{{currentpage.name}}` method removes a specific [peer reservation][], if one exists. [New in: rippled 1.4.0][]
+The `{{currentpage.name}}` method removes a specific [peer reservation][], if one exists.
 
-_The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `{{currentpage.name}}` method is an admin method that can't be run by unprivileged users._
 
 **Note:** Removing a peer reservation does not automatically disconnect the corresponding peer, if that peer is connected.
 

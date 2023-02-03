@@ -9,11 +9,10 @@ labels:
 # wallet_propose
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](accounts.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
+Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must receive a `Payment` transaction that provides enough XRP to meet the reserve requirement.
 
-*The `wallet_propose` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
+*The `wallet_propose` method is an admin method that can't be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
-[Updated in: rippled 0.31.0][]
 
 ### Request Format
 
@@ -80,7 +79,7 @@ The request can contain the following parameters:
 
 | `Field`      | Type   | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
-| `key_type`   | String |Which [signing algorithm](cryptographic-keys.html#signing-algorithms) to use to derive this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). The default is `secp256k1`. |
+| `key_type`   | String | Which signing algorithm to use to derive this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). The default is `secp256k1`. |
 | `passphrase` | String | _(Optional)_ Generate a key pair and address from this seed value. This value can be formatted in [hexadecimal][], the XRP Ledger's [base58][] format, [RFC-1751][], or as an arbitrary string. Cannot be used with `seed` or `seed_hex`. |
 | `seed`       | String | _(Optional)_ Generate the key pair and address from this seed value in the XRP Ledger's [base58][]-encoded format. Cannot be used with `passphrase` or `seed_hex`. |
 | `seed_hex`   | String | _(Optional)_ Generate the key pair and address from this seed value in [hexadecimal][] format. Cannot be used with `passphrase` or `seed`. |
@@ -91,7 +90,7 @@ You must provide **at most one** of the following fields: `passphrase`, `seed`, 
 
 #### Specifying a Seed
 
-For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](transaction-basics.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to send transactions signed by that address. Generally, running this command with no parameters is a good way to generate a random seed.
 
 Cases where you would specify a known seed include:
 
@@ -176,14 +175,14 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
-| `key_type`        | String | Which [signing algorithm](cryptographic-keys.html#signing-algorithms) was used to derive this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). |
+| `key_type`        | String | Which signing algorithm was used to derive this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). |
 | `master_seed`     | String | This is the private key of the key pair. The master seed from which all other information about this account is derived, in the XRP Ledger's [base58][] encoded string format. Typically, you use the key in this format to sign transactions. |
 | `master_seed_hex` | String | The master seed, in hex format. A simple, widely-supported way to represent the private key. Can be used to sign transactions. |
 | `master_key`      | String | **DEPRECATED** The master seed, in [RFC-1751][] format. An easier to remember, easier-to-write-down version of the private key. Can be used to sign transactions. **Note:** The `rippled` implementation reverses the byte order of the key after decoding from RFC-1751 and before encoding it to RFC-1751; if you read or write keys for use with the XRP Ledger using a different RFC-1751 implementation, you must do the same to be compatible with `rippled`'s RFC-1751 encoding. |
-| `account_id`      | String | The [Address][] of the account in the XRP Ledger's [base58][] format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](multi-signing.html) also use these to identify other signers. |
+| `account_id`      | String | The [Address][] of the account in the XRP Ledger's [base58][] format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. Multi-signing lists also use these to identify other signers. |
 | `public_key`      | String | The public key of the key pair, in the XRP Ledger's [base58][] encoded string format. Derived from the `master_seed`. |
 | `public_key_hex`  | String | This is the public key of the key pair, in hexadecimal. Derived from the `master_seed`. To validate the signature on a transaction, `rippled` needs this public key. That's why the format for a signed transaction includes the public key in the `SigningPubKey` field. |
-| `warning`         | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. [New in: rippled 0.32.0][] |
+| `warning`         | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure.
 
 You can also use this method to generate a key pair to use as a regular key pair for an account. You assign a regular key pair to an account to be able to sign most transactions with it, while keeping your master key pair offline whenever possible.
 

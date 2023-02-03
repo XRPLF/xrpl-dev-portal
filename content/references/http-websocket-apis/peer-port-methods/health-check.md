@@ -8,11 +8,11 @@ labels:
 # Health Check
 [[Source]](https://github.com/ripple/rippled/blob/de0c52738785de8bf837f9124da65c7905e7bb5a/src/ripple/overlay/impl/OverlayImpl.cpp#L1084-L1168 "Source")
 
-The Health Check is a special [peer port method](peer-port-methods.html) for reporting on the health of an individual `rippled` server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server. [New in: rippled 1.6.0][]
+The Health Check is a special peer port method for reporting on the health of an individual `rippled` server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server.
 
 This method checks several metrics to see if they are in ranges generally considered healthy. If all metrics are in normal ranges, this method reports that the server is healthy. If any metric is outside normal ranges, this method reports that the server is unhealthy and reports the metric(s) that are unhealthy. Since some metrics may rapidly fluctuate into and out of unhealthy ranges, you should not raise alerts unless the health check fails multiple times in a row.
 
-**Note:** Since the health check is a [peer port method](peer-port-methods.html), it is not available when testing the server in [stand-alone mode][].
+**Note:** Since the health check is a peer port method, it is not available when testing the server in [stand-alone mode][].
 
 
 ## Request Format
@@ -99,11 +99,11 @@ The `info` object may contain the following fields:
 
 | `Field`             | Value   | Description                                  |
 |:--------------------|:--------|:---------------------------------------------|
-| `amendment_blocked` | Boolean | _(May be omitted)_ If `true`, the server is [amendment blocked](amendments.html#amendment-blocked) and must be upgraded to remain synced with the network; this state is critical. If the server is not amendment blocked, this field is omitted. |
+| `amendment_blocked` | Boolean | _(May be omitted)_ If `true`, the server is amendment blocked and must be upgraded to remain synced with the network; this state is critical. If the server is not amendment blocked, this field is omitted. |
 | `load_factor`       | Number | _(May be omitted)_ A measure of the overall load the server is under. This reflects I/O, CPU, and memory limitations. This is a warning if the load factor is over 100, or critical if the load factor is 1000 or higher. |
-| `peers`             | Number | _(May be omitted)_ The number of [peer servers](peer-protocol.html) this server is connected to. This is a warning if connected to 7 or fewer peers, and critical if connected to zero peers. |
-| `server_state`      | String | _(May be omitted)_ The current [server state](rippled-server-states.html). This is a warning if the server is in the `tracking`, `syncing`, or `connected` states. This is critical if the server is in the `disconnected` state. |
-| `validated_ledger`  | Number | _(May be omitted)_ The number of seconds since the last time a ledger was validated by [consensus](intro-to-consensus.html). If there is no validated ledger available ([as during the initial sync period when starting the server](server-doesnt-sync.html#normal-syncing-behavior)), this is the value `-1` and is considered a warning. This metric is also a warning if the last validated ledger was at least 7 seconds ago, or critical if the last validated ledger was at least 20 seconds ago. |
+| `peers`             | Number | _(May be omitted)_ The number of peer servers this server is connected to. This is a warning if connected to 7 or fewer peers, and critical if connected to zero peers. |
+| `server_state`      | String | _(May be omitted)_ The current server state. This is a warning if the server is in the `tracking`, `syncing`, or `connected` states. This is critical if the server is in the `disconnected` state. |
+| `validated_ledger`  | Number | _(May be omitted)_ The number of seconds since the last time a ledger was validated by consensus. If there is no validated ledger available (as during the initial sync period when starting the server), this is the value `-1` and is considered a warning. This metric is also a warning if the last validated ledger was at least 7 seconds ago, or critical if the last validated ledger was at least 20 seconds ago. |
 
 ## See Also
 

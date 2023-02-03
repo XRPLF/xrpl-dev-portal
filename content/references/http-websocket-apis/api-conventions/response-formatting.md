@@ -12,12 +12,12 @@ The fields of a successful response include:
 | `Field`         | Type     | Description                                     |
 |:----------------|:---------|:------------------------------------------------|
 | `id`            | (Varies) | (WebSocket only) ID provided in the request that prompted this response |
-| `status`        | String   | (WebSocket only) The value `success` indicates the request was successfully received and understood by the server. Some [client libraries](client-libraries.html) omit this field on success. |
-| `result.status` | String   | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. Some [client libraries](client-libraries.html) omit this field on success. |
-| `type`          | String   | (WebSocket only) The value `response` indicates a direct response to an API request. [Asynchronous notifications](subscribe.html) use a different value such as `ledgerClosed` or `transaction`. |
+| `status`        | String   | (WebSocket only) The value `success` indicates the request was successfully received and understood by the server. Some client libraries omit this field on success. |
+| `result.status` | String   | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. Some client libraries omit this field on success. |
+| `type`          | String   | (WebSocket only) The value `response` indicates a direct response to an API request. Asynchronous notifications use a different value such as `ledgerClosed` or `transaction`. |
 | `result`        | Object   | The result of the query; contents vary depending on the command. |
-| `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.html) threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
-| `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). [New in: rippled 1.5.0][] |
+| `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the rate limiting threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
+| `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). |
 | `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request and response have been forwarded from a [Reporting Mode][] server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is `false`. |
 
 
@@ -126,9 +126,9 @@ Example warning:
 ]
 ```
 
-This warning indicates that the one or more [amendments](amendments.html) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](amendments.html#amendment-blocked), so you should [upgrade to the latest `rippled` version](install-rippled.html) as soon as possible. <!-- STYLE_OVERRIDE: will -->
+This warning indicates that the one or more amendments to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become amendment blocked, so you should upgrade to the latest `rippled` version as soon as possible. <!-- STYLE_OVERRIDE: will -->
 
-The server only sends this warning if the client is [connected as an admin](get-started-using-http-websocket-apis.html#admin-access).
+The server only sends this warning if the client is connected as an admin.
 
 This warning includes a `details` field with the following fields:
 
@@ -153,12 +153,11 @@ Example warning:
 ]
 ```
 
-This warning indicates that the server is [amendment blocked](amendments.html#amendment-blocked) and can no longer remain synced with the XRP Ledger.
+This warning indicates that the server is amendment blocked and can no longer remain synced with the XRP Ledger.
 
-The server administrator must [upgrade `rippled`](install-rippled.html) to a version that supports the activated amendments.
+The server administrator must upgrade `rippled` to a version that supports the activated amendments.
 
 ### 1003. This is a reporting server
-[New in: rippled 1.7.0][]
 
 Example warning:
 
@@ -175,22 +174,21 @@ This warning indicates that the server answering the request is running [Reporti
 
 It is generally safe to ignore this warning.
 
-**Caution:** If you request ledger data without explicitly [specifying a ledger version][Specifying Ledgers], Reporting Mode uses the latest validated ledger by default instead of the current in-progress ledger.
+**Caution:** If you request ledger data without explicitly specifying a ledger version, Reporting Mode uses the latest validated ledger by default instead of the current in-progress ledger.
 
 
 ## See Also
 
-- [Request Formatting](request-formatting.html)
-- [Error Formatting](error-formatting.html) for unsuccessful API responses.
 - **Concepts:**
     - [The `rippled` Server](xrpl-servers.html)
     - [Introduction to Consensus](intro-to-consensus.html)
     - [Amendments](amendments.html)
-        - [Known Amendments](known-amendments.html)
 - **Tutorials:**
     - [Get Started with XRP Ledger APIs](get-started-using-http-websocket-apis.html)
     - [Install and Update `rippled`](install-rippled.html)
 - **References:**
+    - [Request Formatting](request-formatting.html)
+    - [Error Formatting](error-formatting.html)
     - [feature method][]
     - [server_info method][]
 

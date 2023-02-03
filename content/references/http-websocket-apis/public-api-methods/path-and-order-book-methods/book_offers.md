@@ -9,7 +9,7 @@ labels:
 # book_offers
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
-The `book_offers` method retrieves a list of offers, also known as the [order book](http://www.investopedia.com/terms/o/order-book.asp), between two currencies.
+The `book_offers` method retrieves a list of offers, also known as the order book, between two currencies.
 
 ## Request Format
 An example of the request format:
@@ -73,7 +73,7 @@ The request includes the following parameters:
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Unsigned Integer                           | _(Optional)_ If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers. |
-| `taker`        | String                                     | _(Optional)_ The [Address][] of an account to use as a perspective. [Unfunded offers](offers.html#lifecycle-of-an-offer) placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.) |
+| `taker`        | String                                     | _(Optional)_ The [Address][] of an account to use as a perspective. Unfunded offers placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.) |
 | `taker_gets`   | Object                                     | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts][Currency Amount]. |
 | `taker_pays`   | Object                                     | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts][Currency Amount]. |
 
@@ -240,7 +240,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` is provided)_ The [ledger index][] of the current in-progress ledger version, which was used to retrieve this information. |
 | `ledger_index`         | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` provided)_ The ledger index of the ledger version that was used when retrieving this data, as requested. |
 | `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data, as requested. |
-| `offers`               | Array                     | Array of offer objects, each of which has the fields of an [Offer object](offer.html) |
+| `offers`               | Array                     | Array of offer objects, each of which has the fields of an `Offer` object. |
 
 In addition to the standard Offer fields, the following fields may be included in members of the `offers` array:
 

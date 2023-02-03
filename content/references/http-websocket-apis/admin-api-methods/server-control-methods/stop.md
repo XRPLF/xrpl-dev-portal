@@ -10,7 +10,7 @@ labels:
 
 Gracefully shuts down the server.
 
-*The `stop` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
+*The `stop` method is an admin method that can't be run by unprivileged users.*
 
 ### Request Format
 An example of the request format:

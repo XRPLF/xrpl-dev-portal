@@ -11,7 +11,7 @@ labels:
 
 The `{{currentpage.name}}` method returns the current validator settings of the server, if it is configured as a validator.
 
-_The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `{{currentpage.name}}` method is an admin method that can't be run by unprivileged users._
 
 
 ### Request Format
@@ -113,7 +113,7 @@ The response follows the [standard format][], with a successful result containin
 |:--------|:-------|:----------------------------------------------------------|
 | `domain` | String | _(May be omitted)_ The domain name associated with this validator, if one has been configured.
 | `ephemeral_key` | String | _(May be omitted)_ The public key of the ephemeral key pair this server uses to sign validation messages, in [base58][]. This key changes if the validator's configured token changes. |
-| `manifest` | String | _(May be omitted)_ The public "manifest" corresponding to this validator's configured token, [serialized to binary](serialization.html) and then encoded in base64. This field does not contain any private information. |
+| `manifest` | String | _(May be omitted)_ The public "manifest" corresponding to this validator's configured token, serialized to binary and then encoded in base64. This field does not contain any private information. |
 | `master_key` | String | The public key of this validator's master key pair, in [base58][]. This key uniquely identifies the validator and remains the same if the validator rotates ephemeral keys. If the server is configured using a `[validation_seed]` instead of a `[validator_token]`, this is the only field in the response. |
 | `seq` | Number | _(May be omitted)_ A sequence number for this validator's configured validation token and settings. This number increases whenever the validator operator updates the validator's token to rotate ephemeral keys or change settings. |
 
@@ -123,7 +123,7 @@ For more information on validator tokens and key rotation, see the [validator-ke
 ### Possible Errors
 
 - Any of the [universal error types][].
-- `invalidParams` - The server returns this error with `"error_message" : "not a validator"` if the server is not [configured as a validator](run-rippled-as-a-validator.html).
+- `invalidParams` - The server returns this error with `"error_message" : "not a validator"` if the server is not configured as a validator.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

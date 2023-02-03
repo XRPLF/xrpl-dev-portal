@@ -10,7 +10,7 @@ labels:
 
 The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
 
-*The `ledger_request` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
+*The `ledger_request` method is an admin method that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:
@@ -162,9 +162,9 @@ Connecting to 127.0.0.1:5005
 
 The three possible response formats are as follows:
 
-1. When returning a `lgrNotFound` error, the response has a field, `acquiring` with a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
-2. When the response shows the server is currently fetching the ledger, the body of the result is a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
-3. When the ledger is fully available, the response is a representation of the [ledger header](ledger-header.html).
+1. When returning a `lgrNotFound` error, the response has a field, `acquiring` with a `Ledger Request` object indicating the progress of fetching the ledger from the peer-to-peer network.
+2. When the response shows the server is currently fetching the ledger, the body of the result is a `Ledger Request` object indicating the progress of fetching the ledger from the peer-to-peer network.
+3. When the ledger is fully available, the response is a representation of the ledger header.
 
 ### Ledger Request Object
 
@@ -174,9 +174,9 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 |:----------------------------|:-----------------|:----------------------------|
 | `hash`                      | String           | (May be omitted) The [Hash][] of the requested ledger, if the server knows it. |
 | `have_header`               | Boolean          | Whether the server has the header section of the requested ledger. |
-| `have_state`                | Boolean          | (May be omitted) Whether the server has the [account-state section](ledgers.html#tree-format) of the requested ledger. |
+| `have_state`                | Boolean          | (May be omitted) Whether the server has the account-state section of the requested ledger. |
 | `have_transactions`         | Boolean          | (May be omitted) Whether the server has the transaction section of the requested ledger. |
-| `needed_state_hashes`       | Array of Strings | (May be omitted) Up to 16 hashes of objects in the [state tree](ledgers.html#tree-format) that the server still needs to retrieve. |
+| `needed_state_hashes`       | Array of Strings | (May be omitted) Up to 16 hashes of objects in the state tree that the server still needs to retrieve. |
 | `needed_transaction_hashes` | Array of Strings | (May be omitted) Up to 16 hashes of objects in the transaction tree that the server still needs to retrieve. |
 | `peers`                     | Number           | How many peers the server is querying to find this ledger. |
 | `timeouts`                  | Number           | Number of times fetching this ledger has timed out so far. |
@@ -185,7 +185,7 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 
 - Any of the [universal error types][].
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
-- `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. (Previously, this error used the code `ledgerNotFound` instead.) [Updated in: rippled 0.30.1][]
+- `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. (Previously, this error used the code `ledgerNotFound` instead.)
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 <!--{# common link defs #}-->

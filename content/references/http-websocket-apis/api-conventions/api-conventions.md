@@ -6,6 +6,6 @@ template: pagetype-category.html.jinja
 ---
 # API Conventions
 
-This section describes data types and formats of the HTTP APIs (JSON-RPC and WebSocket) as implemented in [the `rippled` server](xrpl-servers.html).
+This section describes data types and formats of the HTTP APIs (JSON-RPC and WebSocket) as implemented in the `rippled` server.
 
 For information on the XRP Ledger protocol that applies to all APIs, see [Protocol Reference](protocol-reference.html).

@@ -10,7 +10,7 @@ labels:
 
 The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
 
-_The `log_level` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `log_level` method is an admin method that can't be run by unprivileged users._
 
 ### Request Format
 An example of the request format:

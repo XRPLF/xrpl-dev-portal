@@ -8,9 +8,9 @@ labels:
 ---
 # Validator List Method
 
-The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts. [New in: rippled 1.5.0][]
+The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts.
 
-Like the [Peer Crawler](peer-crawler.html), the validator list method is available by default on a non-privileged basis through the [Peer Protocol](peer-protocol.html) port, which is also used for `rippled` servers' peer-to-peer communications.
+Like the peer crawler, the validator list method is available by default on a non-privileged basis through the peer protocol port, which is also used for `rippled` servers' peer-to-peer communications.
 
 ## Request Format
 
@@ -38,18 +38,18 @@ The JSON object has the following fields:
 
 | `Field`          | Value  | Description                                      |
 |:-----------------|:-------|:-------------------------------------------------|
-| `manifest`       | String | The list publisher's [manifest data](#manifest-data), in either base64 or hexadecimal. |
+| `manifest`       | String | The list publisher's manifest data, in either base64 or hexadecimal. |
 | `blob`           | String | Base64-encoded JSON data representing the validator list. |
 | `signature`      | String | The signature of the `blob` data, in hexadecimal. |
 | `version`        | Number | The version of the validator list protocol this object uses. The current version is **1**. A higher version number indicates backwards-incompatible changes with a previous version of the validator list protocol. |
-| `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. [New in: rippled 1.7.0][] |
+| `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. |
 
 ### Manifest Data
 [[Source]](https://github.com/ripple/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66 "Source")
 
-A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a **validator** or a **list publisher**. A validator's manifest contains the _public_ information from that [validator's token](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server). A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard [binary serialization format](serialization.html). (There is no standard JSON representation of a manifest.)
+A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a **validator** or a **list publisher**. A validator's manifest contains the _public_ information from that validator's token. A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard binary serialization format. (There is no standard JSON representation of a manifest.)
 
-One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the [consensus process](consensus.html) and uses its master key pair only to sign new manifests. (The manifest is incorporated into a validator token, alongside private data, that [the validator administrator adds to the `rippled.cfg` config file](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).)
+One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the consensus process and uses its master key pair only to sign new manifests. (The manifest is incorporated into a validator token, alongside private data, that the validator administrator adds to the `rippled.cfg` config file.)
 
 The data encoded in a manifest is as follows:
 
@@ -63,7 +63,7 @@ The data encoded in a manifest is as follows:
 | `sfSigningPubKey`   | Blob          | _(Optional)_ The ephemeral public key of the key pair that this person or organization is currently using. This must be a 33-byte secp256k1 public key. |
 | `sfSignature`       | Blob          | _(Optional)_ A signature of this manifest data from the ephemeral key pair. |
 
-The `sfMasterSignature` and `sfSignature` signatures are created from signing the [serialized](serialization.html) binary data of the manifest, excluding the signature fields (`sfMasterSignature` and `sfSignature`) themselves.
+The `sfMasterSignature` and `sfSignature` signatures are created from signing the serialized binary data of the manifest, excluding the signature fields (`sfMasterSignature` and `sfSignature`) themselves.
 
 
 ### Blob Data
@@ -81,7 +81,7 @@ Each member of the `validators` array has the following fields:
 | `Field`                 | Value  | Description                               |
 |:------------------------|:-------|:------------------------------------------|
 | `validation_public_key` | String | The master public key that uniquely identifies this validator. |
-| `manifest`              | String | This validator's [manifest data](#manifest-data), in either base64 or hexadecimal. |
+| `manifest`              | String | This validator's manifest data, in either base64 or hexadecimal. |
 
 
 #### Example Decoded Blob

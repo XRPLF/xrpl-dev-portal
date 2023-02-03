@@ -8,9 +8,9 @@ labels:
 # peers
 [[Source]](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
 
-The `peers` command returns a list of all other `rippled` servers currently connected to this one over the [Peer Protocol](peer-protocol.html), including information on their connection and sync status.
+The `peers` command returns a list of all other `rippled` servers currently connected to this one over the peer protocol, including information on their connection and sync status.
 
-*The `peers` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
+*The `peers` method is an admin method that can't be run by unprivileged users.*
 
 ### Request Format
 An example of the request format:
@@ -371,7 +371,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
-| `cluster` | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](clustering.html). [New in: rippled 0.30.1][] |
+| `cluster` | Object | Summary of other `rippled` servers in the same cluster, if configured as a cluster. |
 | `peers`   | Array  | Array of peer objects.                                  |
 
 Each field of the `cluster` object is the public key of that `rippled` server's identifying key pair. (This is the same value that that server returns as `pubkey_node` in the [server_info method][].) The contents of that field are an object with the following fields:
@@ -379,7 +379,7 @@ Each field of the `cluster` object is the public key of that `rippled` server's 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `tag`   | String | The display name for this cluster member as defined in the config file. |
-| `fee`   | Number | _(May be omitted)_ The load multiplier this cluster member is applying to the [transaction cost](transaction-cost.html) |
+| `fee`   | Number | _(May be omitted)_ The load multiplier this cluster member is applying to the transaction cost. |
 | `age`   | Number | The number of seconds since the last cluster report from this cluster member. |
 
 Each member of the `peers` array is a peer object with the following fields:
@@ -395,11 +395,11 @@ Each member of the `peers` array is a peer object with the following fields:
 | `ledger`           | String  | The identifying [hash][Hash] of the peer's most recently closed ledger |
 | `load`             | Number  | A measure of the amount of load the peer server is putting on the local server. Larger numbers indicate more load. (The units by which load is measured are not formally defined.) |
 | `protocol`         | String  | _(May be omitted)_ The protocol version that the peer is using, if not the same as the local server. |
-| `metrics`          | Object  | Details on the amount of data sent to and received from this peer. See the description of the `metrics` object below for details. [New in: rippled 1.4.0][] |
+| `metrics`          | Object  | Details on the amount of data sent to and received from this peer. See the description of the `metrics` object below for details. |
 | `public_key`       | String  | _(May be omitted)_ A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
-| `sanity`           | String  | _(May be omitted)_ Whether this peer is following the same rules and ledger history as the current server. A value of `insane` probably indicates that the peer is part of a [parallel network](parallel-networks.html). The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
+| `sanity`           | String  | _(May be omitted)_ Whether this peer is following the same rules and ledger history as the current server. A value of `insane` probably indicates that the peer is part of a parallel network. The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
 | `status`           | String  | _(May be omitted)_ The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
-| `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer. [New in: rippled 0.30.1][] |
+| `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer. |
 | `version`          | string  | _(May be omitted)_ The `rippled` version number of the peer server |
 
 The `metrics` object contains the following fields:

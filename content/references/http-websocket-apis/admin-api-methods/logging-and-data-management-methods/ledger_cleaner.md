@@ -10,7 +10,7 @@ labels:
 
 The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in `rippled`'s database of ledgers.
 
-_The `ledger_cleaner` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `ledger_cleaner` method is an admin method that can't be run by unprivileged users._
 
 ### Request Format
 An example of the request format:

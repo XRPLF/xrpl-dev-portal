@@ -8,9 +8,9 @@ labels:
 # node_to_shard
 [[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/NodeToShard.cpp "Source")
 
-The `{{currentpage.name}}` method manages copying data from the ledger store to the [shard store](history-sharding.html). It can start, stop, or check the status of copying the data.
+The `{{currentpage.name}}` method manages copying data from the ledger store to the shard store. It can start, stop, or check the status of copying the data.
 
-_The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `{{currentpage.name}}` method is an admin method that can't be run by unprivileged users._
 
 
 ### Request Format
@@ -113,7 +113,7 @@ The response follows the [standard format][], with a successful result containin
 
 - Any of the [universal error types][].
 - `internal` - If you attempt an invalid operation like checking the status of a copy when one isn't running.
-- `notEnabled` - If the server is not configured to store [history shards](history-sharding.html).
+- `notEnabled` - If the server is not configured to store history shards.
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 
 <!--{# common link defs #}-->

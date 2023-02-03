@@ -112,7 +112,7 @@ Each member of the `offers` array represents one [NFTokenOffer object][] to buy 
 |:------------------|:-----------------|:--------------------------------------|
 | `amount`          | String or Object | The amount offered to sell the NFT for, as a String representing an amount in drops of XRP, or an object representing an amount of a fungible token. (See [Specifying Currency Amounts][Currency Amount]) |
 | `flags`           | Number           | A set of bit-flags for this offer. See [NFTokenOffer flags](nftokenoffer.html#nftokenoffer-flags) for possible values. |
-| `nft_offer_index` | String           | The [ledger object ID](ledger-object-ids.html) of this offer. |
+| `nft_offer_index` | String           | The `ledger` object ID of this offer. |
 | `owner`           | String           | The account that placed this offer.   |
 
 ## Possible Errors

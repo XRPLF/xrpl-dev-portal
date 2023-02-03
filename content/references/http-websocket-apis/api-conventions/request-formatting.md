@@ -56,9 +56,9 @@ After you open a WebSocket to the `rippled` server, you can send commands as a [
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `command`           | String    | The name of the [API method](public-api-methods.html). |
+| `command`           | String    | The name of the API method. |
 | `id`                | (Various) | _(Optional)_ A unique value to identify this request. The response to this request uses the same `id` field. This way, even if responses arrive out of order, you know which request prompted which response. |
-| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0][] |
+| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). |
 | (Method Parameters) | (Various) | Provide any parameters to the method at the top level. |
 
 See [Response Formatting](response-formatting.html) for the response from the server.
@@ -76,14 +76,14 @@ Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with th
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `method`            | String    | The name of the [API method](public-api-methods.html). |
+| `method`            | String    | The name of the API method. |
 | `params`            | Array     | _(Optional)_ A **one-item array** containing a nested JSON object with the parameters to this method. You may omit this field if the method does not require any parameters. |
 
 The object inside the `params` array can contain the following fields:
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0][] |
+| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). |
 | (Method Parameters) | (Various) | Provide any parameters to the method here. |
 
 See [Response Formatting](response-formatting.html) for the response from the server.
@@ -92,15 +92,15 @@ See [Response Formatting](response-formatting.html) for the response from the se
 
 Put the API method name after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them. Not all methods have commandline API syntax. For more information, see [Commandline Usage](https://xrpl.org/commandline-usage.html#client-mode-options).
 
-The commandline calls JSON-RPC, so its responses always match the JSON-RPC [response format](response-formatting.html).
+The commandline calls JSON-RPC, so its responses always match the JSON-RPC response format.
 
-The commandline always uses the latest [API version](#api-versioning).
+The commandline always uses the latest API version.
 
 **Caution:** The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!
 
 ## API Versioning
 
-The `rippled` server uses a single integer to identify the API version to use. The first API version is `1`; currently, this is the only version of the `rippled` API. (There is no API version 0.) [New in: rippled 1.5.0][]
+The `rippled` server uses a single integer to identify the API version to use. The first API version is `1`; currently, this is the only version of the `rippled` API. (There is no API version 0.)
 
 Future versions of `rippled` that introduce breaking changes will introduce a new API version number, such as `2`. The server will support a range of API versions, which it reports in the `version` API method. <!-- TODO: add a link when `version` method is documented. --> <!-- Uncomment when multiple API versions exist: Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make a server_info request using API version 2 and then make another server_info request using API version 1 from the same connection. -->
 

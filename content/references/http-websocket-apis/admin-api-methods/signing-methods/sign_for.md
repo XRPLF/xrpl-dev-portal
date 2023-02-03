@@ -8,12 +8,12 @@ labels:
 # sign_for
 [[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
 
-The `sign_for` command provides one signature for a [multi-signed transaction](multi-signing.html).
+The `sign_for` command provides one signature for a multi-signed transaction.
 
 {% include '_snippets/public-signing-note.md' %}
 <!--_ -->
 
-This command requires the [MultiSign amendment][] to be enabled. [New in: rippled 0.31.0][]
+This command requires the [MultiSign amendment][] to be enabled.
 
 ## Request Format
 An example of the request format:
@@ -97,7 +97,7 @@ The request includes the following parameters:
 | `Field`      | Type                 | Description                            |
 |:-------------|:---------------------|:---------------------------------------|
 | `account`    | String - [Address][] | The address which is providing the signature. |
-| `tx_json`    | Object               | The [Transaction](transaction-formats.html) to sign. Unlike using the [sign method][], all fields of the transaction must be provided, including `Fee` and `Sequence`. The transaction must include the field `SigningPubKey` with an empty string as the value. The object may optionally contain a `Signers` array with previously-collected signatures. |
+| `tx_json`    | Object               | The transaction to sign. Unlike using the [sign method][], all fields of the transaction must be provided, including `Fee` and `Sequence`. The transaction must include the field `SigningPubKey` with an empty string as the value. The object may optionally contain a `Signers` array with previously-collected signatures. |
 | `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
 | `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
@@ -230,8 +230,8 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
-| `tx_blob` | String | Hexadecimal representation of the signed transaction, including the newly-added signature. If it has enough signatures, you can [submit this string using the `submit` method](submit.html#submit-only-mode). |
-| `tx_json` | Object | The [transaction specification](transaction-formats.html) in JSON format, with the newly-added signature in the `Signers` array. If it has enough signatures, you can submit this object using the [submit_multisigned method][]. |
+| `tx_blob` | String | Hexadecimal representation of the signed transaction, including the newly-added signature. If it has enough signatures, you can submit this string using the `submit` method. |
+| `tx_json` | Object | The transaction specification in JSON format, with the newly-added signature in the `Signers` array. If it has enough signatures, you can submit this object using the [submit_multisigned method][]. |
 
 ## Possible Errors
 

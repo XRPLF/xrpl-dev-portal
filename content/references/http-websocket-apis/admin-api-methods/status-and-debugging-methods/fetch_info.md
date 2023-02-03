@@ -10,7 +10,7 @@ labels:
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.
 
-_The `fetch_info` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `fetch_info` method is an admin method that can't be run by unprivileged users._
 
 ### Request Format
 An example of the request format:
