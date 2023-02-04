@@ -25,7 +25,7 @@ The following JSON object shows the metadata for [a complex cross-currency payme
 
 ## AffectedNodes
 
-The `AffectedNodes` array contains a complete list of the [objects in the ledger](ledger-object-types.html) that this transaction modified in some way. Each entry in this array is an object with one top-level field indicating what type it is:
+The `AffectedNodes` array contains a complete list of the objects in the ledger that this transaction modified in some way. Each entry in this array is an object with one top-level field indicating what type it is:
 
 - `CreatedNode` indicates that the transaction created a new object in the ledger.
 - `DeletedNode` indicates that the transaction removed an object from the ledger.

@@ -11,7 +11,7 @@ labels:
 
 _(Added by the [TicketBatch amendment][].)_
 
-The `Ticket` object type represents a [Ticket](tickets.html), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][]. [New in: rippled 1.7.0][]
+The `Ticket` object type represents a Ticket, which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][]. See [Tickets](tickets.html).
 
 ## Example {{currentpage.name}} JSON
 
@@ -33,7 +33,7 @@ A `Ticket` object has the following fields:
 
 | Name                | JSON Type | Internal Type | Required? | Description                |
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
-| `Account`           | String    | AccountID     | Yes       | The [account](accounts.html) that owns this Ticket. |
+| `Account`           | String    | AccountID     | Yes       | The account that owns this Ticket. |
 | `Flags`             | Number    | UInt32        | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Ticket` objects. The value is always `0`. |
 | `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this object is a {{currentpage.name}} object. |
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |

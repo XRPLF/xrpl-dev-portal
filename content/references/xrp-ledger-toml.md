@@ -297,13 +297,13 @@ Domain verification requires establishing a two-way link between the domain oper
 
 1. The domain claims ownership of the validator:
 
-    - Serve an `xrp-ledger.toml` file, following all the [requirements described in this document](#serving-the-file), from the domain in question.
+    - Serve an `xrp-ledger.toml` file, following all the requirements described in this document, from the domain in question.
 
     - In that `xrp-ledger.toml` file, provide a `[[VALIDATORS]]` entry with the validator's master public key in the `public_key` field.
 
 2. The validator claims ownership of the domain:
 
-    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys.
+    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, [revoke your keys](run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys.
 
         Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**.
 
@@ -356,19 +356,19 @@ Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attest
 
 ## Account Verification
 
-Similar to [Domain Verification](#domain-verification), account verification is the idea of proving that the same entity controls a particular domain and a particular XRP Ledger address. Account verification is not necessary for using the XRP Ledger or providing an `xrp-ledger.toml` file, but you may desire to verify your accounts in the name of transparency.
+Similar to Domain Verification, account verification is the idea of proving that the same entity controls a particular domain and a particular XRP Ledger address. Account verification is not necessary for using the XRP Ledger or providing an `xrp-ledger.toml` file, but you may desire to verify your accounts in the name of transparency.
 
 Account verification requires establishing a two-way link between the domain operator and the address:
 
 1. The domain claims ownership of the address.
 
-    - Serve an `xrp-ledger.toml` file, following all the [requirements described in this document](#serving-the-file), from the domain in question.
+    - Serve an `xrp-ledger.toml` file, following all the requirements described in this document, from the domain in question.
 
     - In that `xrp-ledger.toml` file, provide an `[[ACCOUNTS]]` entry with the address of the account you want to verify. If you issue currency from this address, you may also provide this account in the `issuer` field of a `[[CURRENCIES]]` entry.
 
 2. The address claims ownership by a domain.
 
-    [Set the account's `Domain` field](accountset.html#domain) to match the domain that this `xrp-ledger.toml` file was served from. The domain value (when decoded from ASCII) MUST match _exactly_, including all subdomains such as `www.`. For internationalized domain names, set the `Domain` value to the Punycode of the domain, as described in [RFC3492](https://tools.ietf.org/html/rfc3492). <!-- SPELLING_IGNORE: punycode, rfc3492 -->
+    Set the account's `Domain` field to match the domain that this `xrp-ledger.toml` file was served from. The domain value (when decoded from ASCII) MUST match _exactly_, including all subdomains such as `www.`. For internationalized domain names, set the `Domain` value to the Punycode of the domain, as described in [RFC3492](https://tools.ietf.org/html/rfc3492). See [Account Set: Domain](accountset.html#domain)<!-- SPELLING_IGNORE: punycode, rfc3492 -->
 
     Since setting the `Domain` requires sending a transaction, whoever set the `Domain` value must have possessed the account's secret key when the transaction was sent.
 

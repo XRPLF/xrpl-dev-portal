@@ -8,7 +8,7 @@ labels:
 ---
 # Pseudo-Transactions
 
-Pseudo-transactions are never submitted by users, nor [propagated through the network](peer-protocol.html). Instead, a server may choose to inject pseudo-transactions in a proposed ledger directly according to specific protocol rules. If enough servers propose the exact same pseudo-transaction, the [consensus process](consensus.html) approves it, and the pseudo-transaction is included in that ledger's transaction data.
+Pseudo-transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject pseudo-transactions in a proposed ledger directly according to specific protocol rules. If enough servers propose the exact same pseudo-transaction, the consensus process approves it, and the pseudo-transaction is included in that ledger's transaction data.
 
 ## Special Values for Common Fields
 

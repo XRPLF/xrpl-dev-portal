@@ -8,7 +8,13 @@ labels:
 # FeeSettings
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")
 
-The `FeeSettings` object type contains the current base [transaction cost](transaction-cost.html) and [reserve amounts](reserves.html) as determined by [fee voting](fee-voting.html). Each ledger version contains **at most one** `FeeSettings` object.
+The `FeeSettings` object type contains the current base transaction cost and reserve amounts as determined by fee voting. Each ledger version contains **at most one** `FeeSettings` object.
+
+For more information, see
+
+- [Transaction Cost](transaction-cost.html)
+- [Reserves](reserves.html)
+- [Fee Voting](fee-voting.html)
 
 ## Example {{currentpage.name}} JSON
 
@@ -48,6 +54,7 @@ The `FeeSettings` object ID is the hash of the `FeeSettings` space key (`0x0065`
 ```
 4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651
 ```
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

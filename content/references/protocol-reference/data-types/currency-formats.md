@@ -8,7 +8,7 @@ label:
 ---
 # Currency Formats
 
-The XRP Ledger has two kinds of digital asset: [XRP](xrp.html) and [tokens](tokens.html). Both types have high precision, although their formats are different.
+The XRP Ledger has two kinds of digital asset: XRP and tokens. Both types have high precision, although their formats are different.
 
 ## Comparison
 
@@ -50,13 +50,13 @@ XRP amounts cannot be negative.
 
 ### Token Amounts
 
-To specify an amount of a [(fungible) token](tokens.html), use an Amount object. This is a JSON object with three fields:
+To specify an amount of a fungible token, use an Amount object. This is a JSON object with three fields:
 
 | `Field`    | Type                       | Description                        |
 |:-----------|:---------------------------|:-----------------------------------|
 | `currency` | String - [Currency Code][] | Arbitrary currency code for the token. Cannot be `XRP`. |
 | `value`    | [String Number][]          | Quoted decimal representation of the amount of the token. This can include scientific notation, such as `1.23e11` meaning 123,000,000,000. Both `e` and `E` may be used. This can be negative when displaying balances, but negative values are disallowed in other contexts such as specifying how much to send. |
-| `issuer`   | String                     | Generally, the [account](accounts.html) that issues this token. In special cases, this can refer to the account that holds the token instead. |
+| `issuer`   | String                     | Generally, the account that issues this token. In special cases, this can refer to the account that holds the token instead. |
 
 [String Number]: #string-numbers
 
@@ -74,7 +74,7 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 
 ### Specifying Without Amounts
 
-If you are specifying a token without an amount (typically for defining an order book in the [decentralized exchange](decentralized-exchange.html)) you should specify it as a currency object, but omit the `value` field.
+If you are specifying a token without an amount (typically for defining an order book in the decentralized exchange) you should specify it as a currency object, but omit the `value` field.
 
 If you are specifying XRP without an amount (typically for defining an order book), you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
 
@@ -92,7 +92,7 @@ XRP has the same precision as a 64-bit unsigned integer where each unit is equiv
 
 Tokens can represent a wide variety of assets, including those typically measured in very small or very large denominations. This format uses significant digits and a power-of-ten exponent in a similar way to scientific notation. The format supports positive and negative significant digits and exponents within the specified range. Unlike typical floating-point representations of non-whole numbers, this format uses integer math for all calculations, so it always maintains 15 decimal digits of precision. Multiplication and division have adjustments to compensate for over-rounding in the least significant digits.
 
-When sending token amounts in the XRP Ledger's peer-to-peer network, servers [serialize](serialization.html) the amount to a 64-bit binary value.
+When sending token amounts in the XRP Ledger's peer-to-peer network, servers serialize the amount to a 64-bit binary value.
 
 **Tip:** For tokens that should not be divisible at all, see [Non-Fungible Tokens (NFTs)](non-fungible-tokens.html).
 
@@ -111,7 +111,7 @@ The standard format for currency codes is a three-character string such as `USD`
 - Currency codes are case-sensitive.
 - The currency code `XRP` (all-uppercase) is disallowed. Real XRP typically does not use a currency code in the XRP Ledger protocol.
 
-At the protocol level, this format is [serialized](serialization.html#currency-codes) into a 160-bit binary value starting with `0x00`.
+At the protocol level, this format is serialized into a 160-bit binary value starting with `0x00`. See [Serialization: Currency Codes](serialization.html#currency-codes).
 
 ### Nonstandard Currency Codes
 

@@ -9,7 +9,7 @@ labels:
 
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
 
-An OfferCreate transaction places an [Offer](offers.html) in the [decentralized exchange](decentralized-exchange.html).
+An OfferCreate transaction places an Offer in the decentralized exchange.
 
 ## Example {{currentpage.name}} JSON
 

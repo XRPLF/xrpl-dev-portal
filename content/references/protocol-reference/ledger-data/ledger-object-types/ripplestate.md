@@ -8,13 +8,13 @@ labels:
 # RippleState
 [[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
 
-The `RippleState` object type connects two accounts in a single currency. Conceptually, a `RippleState` object represents two [trust lines](trust-lines-and-issuing.html) between the accounts, one from each side. Each account can change the settings for its side of the `RippleState` object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist, so `rippled` deletes `RippleState` objects when their properties are entirely default.
+The `RippleState` object type connects two accounts in a single currency. Conceptually, a `RippleState` object represents two trust lines between the accounts, one from each side. Each account can change the settings for its side of the `RippleState` object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist, so `rippled` deletes `RippleState` objects when their properties are entirely default. See [Trust Lines](trust-lines-and-issuing.html).
 
 ## High vs. Low Account
 
-There can only be one `RippleState` object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a `RippleState` object sorts account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when [decoded](accounts.html#address-encoding) is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.
+There can only be one `RippleState` object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a `RippleState` object sorts account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when decoded is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.
 
-The ["issuer"](trust-lines-and-issuing.html) for the balance in a trust line depends on whether the balance is positive or negative. If a `RippleState` object shows a positive balance, the high account is the issuer. If the balance is negative, the low account is the issuer. Often, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.
+The _issuer_ for the balance in a trust line depends on whether the balance is positive or negative. If a `RippleState` object shows a positive balance, the high account is the issuer. If the balance is negative, the low account is the issuer. Often, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.
 
 
 ## Example {{currentpage.name}} JSON
@@ -85,7 +85,7 @@ RippleState objects can have the following flag values:
 
 ## Contributing to the Owner Reserve
 
-If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's [owner reserve](reserves.html#owner-reserves). In a RippleState object, the `lsfLowReserve` and `lsfHighReserve` flags indicate which account(s) are responsible for the owner reserve. The `rippled` server automatically sets these flags when it modifies a trust line.
+If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's owner reserve. In a RippleState object, the `lsfLowReserve` and `lsfHighReserve` flags indicate which account(s) are responsible for the owner reserve. The `rippled` server automatically sets these flags when it modifies a trust line. See [Reserves: Owner Reserves](reserves.html#owner-reserves).
 
 The values that count towards a trust line's non-default state are as follows:
 

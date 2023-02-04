@@ -10,7 +10,7 @@ labels:
 
 A `DepositPreauth` object tracks a preauthorization from one account to another. [DepositPreauth transactions][] create these objects.
 
-This has no effect on processing of transactions unless the account that provided the preauthorization requires [Deposit Authorization](depositauth.html). In that case, the account that was preauthorized can send payments and other transactions directly to the account that provided the preauthorization. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.
+This has no effect on processing of transactions unless the account that provided the preauthorization requires Deposit Authorization. In that case, the account that was preauthorized can send payments and other transactions directly to the account that provided the preauthorization. Preauthorizations are one-directional, and have no effect on payments going the opposite direction. See [Deposit Authorization](depositauth.html).
 
 ## Example {{currentpage.name}} JSON
 

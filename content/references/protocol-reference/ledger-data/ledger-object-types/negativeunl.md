@@ -7,7 +7,6 @@ labels:
 ---
 # NegativeUNL
 
-_(Added by the [NegativeUNL amendment][].)_
 
 The `NegativeUNL` object type contains the current status of the [Negative UNL](negative-unl.html), a list of trusted validators currently believed to be offline.
 

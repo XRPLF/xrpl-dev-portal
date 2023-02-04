@@ -9,7 +9,7 @@ labels:
 # AccountRoot
 [[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
 
-The `AccountRoot` object type describes a single [account](accounts.html), its settings, and XRP balance.
+The `AccountRoot` object type describes a single account, its settings, and XRP balance.
 
 ## Example {{currentpage.name}} JSON
 
@@ -38,7 +38,7 @@ The `AccountRoot` object has the following fields:
 
 | Field                         | JSON Type | [Internal Type][] | Required? | Description  |
 |:------------------------------|:----------|:------------------|:----------|:-------------|
-| `Account`                     | String    | AccountID         | Yes       | The identifying (classic) address of this [account](accounts.html). |
+| `Account`                     | String    | AccountID         | Yes       | The identifying (classic) address of this account. |
 | `AccountTxnID`                | String    | Hash256           | No        | The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the [`AccountTxnID` transaction field](transaction-common-fields.html#accounttxnid). To enable it, send an [AccountSet transaction with the `asfAccountTxnID` flag enabled](accountset.html#accountset-flags). |
 | `Balance`                     | String    | Amount            | No        | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
 | `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](non-fungible-tokens.html) have been burned. This number is always equal or less than `MintedNFTokens`. |

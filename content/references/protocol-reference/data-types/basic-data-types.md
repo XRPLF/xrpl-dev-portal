@@ -92,7 +92,7 @@ Many API methods require you to specify an instance of the ledger, with the data
 
 There is also a deprecated `ledger` parameter which accepts any of the above three formats. *Do not* use this parameter; it may be removed without further notice.
 
-If you do not specify a ledger, the server decides which ledger to use to serve the request. By default, the server chooses the `current` (in-progress) ledger. In [Reporting Mode](rippled-server-modes.html#reporting-mode), the server uses the most recent validated ledger instead. Do not provide more than one field specifying ledgers.
+If you do not specify a ledger, the server decides which ledger to use to serve the request. By default, the server chooses the `current` (in-progress) ledger. In Reporting Mode, the server uses the most recent validated ledger instead. Do not provide more than one field specifying ledgers. See [Reporting Modes](rippled-server-modes.html).
 
 **Note:** Do not rely on the default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.
 

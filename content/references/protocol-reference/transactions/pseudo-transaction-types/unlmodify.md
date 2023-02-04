@@ -9,7 +9,11 @@ labels:
 
 _(Added by the [NegativeUNL amendment][].)_
 
-A `UNLModify` [pseudo-transaction](pseudo-transaction-types.html) marks a change to the [Negative UNL](negative-unl.html), indicating that a trusted validator has gone offline or come back online.
+A `UNLModify` pseudo-transaction marks a change to the Negative UNL, indicating that a trusted validator has gone offline or come back online.
+
+See Also:
+- [Pseudo-transaction](pseudo-transaction-types.html)
+- [Negative UNL](negative-unl.html)
 
 **Note:** You cannot send a pseudo-transaction, but you may find one when processing ledgers.
 

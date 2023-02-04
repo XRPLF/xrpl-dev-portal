@@ -9,7 +9,7 @@ labels:
 
 [[Source]](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
-An AccountSet transaction modifies the properties of an [account in the XRP Ledger](accountroot.html).
+An AccountSet transaction modifies the properties of an account in the XRP Ledger.
 
 ## Example {{currentpage.name}} JSON
 
@@ -42,7 +42,7 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 | `WalletLocator`    | String           | Hash256           | _(Optional)_ An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements. |
 | `WalletSize`       | Number           | UInt32            | _(Optional)_ Not used. This field is valid in AccountSet transactions but does nothing. |
 
-If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Cancel or Skip a Transaction](cancel-or-skip-a-transaction.html) for more details.
+If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Cancel or Skip a Transaction](cancel-or-skip-a-transaction.html).
 
 ## Domain
 

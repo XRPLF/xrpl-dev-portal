@@ -8,8 +8,6 @@ labels:
 # SignerList
 [[Source]](https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
-_(Added by the [MultiSign amendment][].)_
-
 The `SignerList` object type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a signer list using a [SignerListSet transaction][].
 
 
@@ -75,21 +73,19 @@ Each member of the `SignerEntries` field is an object that describes that signer
 | `SignerWeight`  | Number    | UInt16        | The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the signer list's `SignerQuorum` value. |
 | `WalletLocator` | String    | Hash256       | _(Optional)_ Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. _(Added by the [ExpandedSignerList amendment][].)_ |
 
-When processing a multi-signed transaction, the server looks up the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot object](accountroot.html), then only the [master private key](cryptographic-keys.html) associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
+When processing a multi-signed transaction, the server looks up the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded AccountRoot object, then only the master private key associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
 
 ## {{currentpage.name}} Flags
-
-_(Added by the [MultiSignReserve amendment][].)_
 
 SignerList objects can have the following flag value:
 
 | Flag Name          | Hex Value    | Decimal Value | Description              |
 |:-------------------|:-------------|:--------------|:-------------------------|
-| `lsfOneOwnerCount` | `0x00010000` | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](reserves.html#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment][] is enabled. |
+| `lsfOneOwnerCount` | `0x00010000` | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the owner reserve. Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment][] is enabled. See [Reserves: Owner Reserves](reserves.html#owner-reserves)|
 
 ## Signer Lists and Reserves
 
-A signer list contributes to its owner's [reserve requirement](reserves.html).
+A signer list contributes to its owner's reserve requirement.
 
 The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one object, regardless of how many members it has. As a result, the owner reserve associated with a new signer list is 2 XRP.
 

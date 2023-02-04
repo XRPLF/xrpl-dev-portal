@@ -7,7 +7,7 @@ labels:
 ---
 # Transaction Common Fields
 
-Every transaction has the same set of common fields, plus additional fields based on the [transaction type](transaction-types.html). Field names are case-sensitive. The common fields for all transactions are:
+Every transaction has the same set of common fields, plus additional fields based on the transaction type. Field names are case-sensitive. The common fields for all transactions are:
 
 | Field                | JSON Type        | [Internal Type][] | Description      |
 |:---------------------|:-----------------|:------------------|:-----------------|
@@ -40,13 +40,18 @@ Unlike the `PreviousTxnID` field, which tracks the last transaction to _modify_ 
 
 One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially have serious problems like some transactions sending twice and others not at all. Chaining your transactions together with `AccountTxnID` ensures that, even if both systems are active, only one of them can submit valid transactions at a time.
 
-The `AccountTxnID` field cannot be used on transactions that use [Tickets](tickets.html). Transactions that use `AccountTxnID` cannot be placed in the [transaction queue](transaction-queue.html).
+The `AccountTxnID` field cannot be used on transactions that use Tickets. Transactions that use `AccountTxnID` cannot be placed in the transaction queue.
+
+See Also:
+
+- [Tickets](tickets.html).
+- [Transaction Queue](transaction-queue.html)
 
 
 
 ## Auto-fillable Fields
 
-Some fields can be automatically filled in before a transaction is signed, either by a `rippled` server or by a [client library](client-libraries.html). Auto-filling values requires an active connection to the XRP Ledger to get the latest state, so it cannot be done offline. The details can vary by library, but auto-filling always provides suitable values for at least the following fields:
+Some fields can be automatically filled in before a transaction is signed, either by a `rippled` server or by a client library. Auto-filling values requires an active connection to the XRP Ledger to get the latest state, so it cannot be done offline. The details can vary by library, but auto-filling always provides suitable values for at least the following fields:
 
 * `Fee` - Automatically fill in the [Transaction Cost][] based on the network.
 
@@ -56,7 +61,7 @@ Some fields can be automatically filled in before a transaction is signed, eithe
 
 For a production system, we recommend _not_ leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.
 
-The [`Paths` field](payment.html#paths) of the [Payment transaction][] type can also be automatically filled in.
+The `Paths` field of the [Payment transaction][] type can also be filled in automatically.
 
 
 ## Flags Field
@@ -79,7 +84,9 @@ The only flag that applies globally to all transactions is as follows:
 
 When using the [sign method][] (or [submit method][] in "sign-and-submit" mode), `rippled` adds a `Flags` field with `tfFullyCanonicalSig` enabled unless the `Flags` field is already present. The `tfFullyCanonicalSig` flag is not automatically enabled if `Flags` is explicitly specified. The flag is not automatically enabled when using the [sign_for method][] to add a signature to a multi-signed transaction.
 
-**Note:** The `tfFullyCanonicalSig` flag was used from 2014 until 2020 to protect against [transaction malleability](transaction-malleability.html) while maintaining compatibility with legacy signing software. The [RequireFullyCanonicalSig amendment][] ended compatibility with such legacy software and made the protections the default for all transactions. If you are using a [parallel network](parallel-networks.html) that does not have RequireFullyCanonicalSig enabled, you should always enable the `tfFullyCanonicalSig` flag to protect against transaction malleability.
+**Note:** The `tfFullyCanonicalSig` flag was used from 2014 until 2020 to protect against transaction malleability while maintaining compatibility with legacy signing software. See [Transaction Malleability](transaction-malleability.html).
+
+The [RequireFullyCanonicalSig amendment][] ended compatibility with such legacy software and made the protections the default for all transactions. If you are using a parallel network that does not have `RequireFullyCanonicalSig` enabled, you should always enable the `tfFullyCanonicalSig` flag to protect against transaction malleability.
 
 ### Flag Ranges
 
@@ -91,7 +98,7 @@ A transaction's `Flags` field can contain flags that apply at different levels o
 | Type-based Flags | `0x00ff0000` | Flags with different meanings depending on the [transaction type](transaction-types.html) that uses them. |
 | Reserved Flags   | `0x0000ffff` | Flags that are not currently defined. A transaction is only valid if these flags are disabled. |
 
-**Note:** The [AccountSet transaction][] type has [its own non-bitwise flags](accountset.html#accountset-flags), which serve a similar purpose to type-based flags. [Ledger objects](ledger-object-types.html) also have a `Flags` field with different bitwise flag definitions.
+**Note:** The [AccountSet transaction][] type has its own non-bitwise flags, which serve a similar purpose to type-based flags. Ledger objects also have a `Flags` field with different bitwise flag definitions. See [Account Set: Account Set Flags](accountset.html#accountset-flags).
 
 
 ## Memos Field
@@ -130,7 +137,7 @@ Example of a transaction with a Memos field:
 
 ## Signers Field
 
-The `Signers` field contains a [multi-signature](multi-signing.html), which has signatures from up to 8 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
+The `Signers` field contains a multi-signature, which has signatures from up to 8 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
 
 | Field           | Type   | [Internal Type][] | Description                     |
 |:----------------|:-------|:------------------|:--------------------------------|

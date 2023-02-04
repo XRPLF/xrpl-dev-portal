@@ -7,7 +7,13 @@ labels:
 ---
 # SetFee
 
-A `SetFee` [pseudo-transaction](pseudo-transaction-types.html) marks a change in [transaction cost](transaction-cost.html) or [reserve requirements](reserves.html) as a result of [Fee Voting](fee-voting.html).
+A `SetFee` pseudo-transaction marks a change in transaction cost or reserve requirements as a result of fee voting.
+
+See Also
+- [Pseudo-transaction](pseudo-transaction-types.html)
+- [Transaction Cost](transaction-cost.html)
+- [Reserve Requirements](reserves.html)
+- [Fee Voting](fee-voting.html)
 
 **Note:** You cannot send a pseudo-transaction, but you may find one when processing ledgers.
 

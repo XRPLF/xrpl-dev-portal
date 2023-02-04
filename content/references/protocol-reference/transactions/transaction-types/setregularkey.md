@@ -38,7 +38,7 @@ For more information about regular and master key pairs, see [Cryptographic Keys
 
 For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](assign-a-regular-key-pair.html).
 
-For even greater security, you can use [multi-signing](multi-signing.html), but multi-signing requires additional XRP for the [transaction cost][] and [reserve](reserves.html).
+For even greater security, you can use multi-signing, but multi-signing requires additional XRP for the [transaction cost][] and [reserve](reserves.html).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

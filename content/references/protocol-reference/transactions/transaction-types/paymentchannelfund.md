@@ -10,7 +10,7 @@ labels:
 
 _Added by the [PayChan amendment][]._
 
-Add additional [XRP](xrp.html) to an open [payment channel](payment-channels.html), and optionally update the expiration time of the channel. Only the source address of the channel can use this transaction.
+Add additional XRP to an open payment channel, and optionally update the expiration time of the channel. Only the source address of the channel can use this transaction.
 
 Example PaymentChannelFund:
 

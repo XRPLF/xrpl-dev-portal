@@ -54,9 +54,9 @@ const xrpl = require("xrpl");
 
 ## Validated Results
 
-By default, most methods in ripple-lib 1.x only returned results that were validated by the [consensus process](consensus.html) and therefore final. The xrpl.js equivalents of many methods use the [`Client.request()` method](https://js.xrpl.org/classes/Client.html#request) to call the WebSocket API, where the XRP Ledger server's default settings often use the current (pending) ledger to serve data which is not final.
+By default, most methods in ripple-lib 1.x only returned results that were validated by the consensus process and therefore final. The xrpl.js equivalents of many methods use the [`Client.request()` method](https://js.xrpl.org/classes/Client.html#request) to call the WebSocket API, where the XRP Ledger server's default settings often use the current (pending) ledger to serve data which is not final.
 
-Sometimes you want to use the current open ledger because it has the pending results of many transactions that are likely to succeed, such as when looking up the state of the [decentralized exchange](decentralized-exchange.html). In other cases, you want to use a validated ledger, which only incorporates the results of transactions that are finalized.
+Sometimes you want to use the current open ledger because it has the pending results of many transactions that are likely to succeed, such as when looking up the state of the decentralized exchange. In other cases, you want to use a validated ledger, which only incorporates the results of transactions that are finalized.
 
 When making API requests with xrpl.js 2.0 using `Client.request()`, you should explicitly [specify what ledger to use](basic-data-types.html#specifying-ledgers). For example, to look up trust lines using the latest _validated ledger_:
 
@@ -83,7 +83,7 @@ console.log(trustlines.result)
 
 In xrpl.js, there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes:
 
-- Use `submitAndWait()` to submit a transaction and wait for its [final outcome](finality-of-results.html). If the transaction becomes validated, this resolves to a [tx method][] response; otherwise, it raises an exception. An exception does not guarantee that the transaction was not validated. For example, if the server has a [ledger gap](reliable-transaction-submission.html#ledger-gaps), then the transaction could have been validated in that gap.
+- Use `submitAndWait()` to submit a transaction and wait for its final outcome. If the transaction becomes validated, this resolves to a [tx method][] response; otherwise, it raises an exception. An exception does not guarantee that the transaction was not validated. For example, if the server has a ledger gap], then the transaction could have been validated in that gap. See [Ledger Gaps](reliable-transaction-submission.html#ledger-gaps)
 - Use `submit()` to submit and return immediately. This resolves to a [submit method][] response, which shows the preliminary (non-final) result. This method only raises an exception if there was a problem sending the transaction to the XRP Ledger server.
 
 For both methods, you can pass a signed transaction to the method directly, or you can sign the transaction right before submitting, by passing prepared transaction instructions and a [`Wallet` instance](#keys-and-wallets).
@@ -105,7 +105,9 @@ try {
 }
 ```
 
-Alternatively, you can use the `sign` method of a wallet to sign a transaction and then use `submitAndWait(tx_blob)` to submit it. This can be useful for building [reliable transaction submission](reliable-transaction-submission.html) that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)
+Alternatively, you can use the `sign` method of a wallet to sign a transaction and then use `submitAndWait(tx_blob)` to submit it. This can be useful for building reliable transaction submissions that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)
+
+See [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 ### Controlling LastLedgerSequence
 
@@ -140,7 +142,7 @@ const prepared = await client.autofill({
 
 ## Keys and Wallets
 
-xrpl.js 2.0 introduces a new [`Wallet` class](https://js.xrpl.org/classes/Wallet.html) for managing [cryptographic keys](cryptographic-keys.html) and signing transactions. This replaces functions that took seed or secret values in ripple-lib 1.x, and handles various address encoding and generation tasks as well.
+xrpl.js 2.0 introduces a new [`Wallet` class](https://js.xrpl.org/classes/Wallet.html) for managing cryptographic keys and signing transactions. This replaces functions that took seed or secret values in ripple-lib 1.x, and handles various address encoding and generation tasks as well.
 
 ### Generating Keys
 
