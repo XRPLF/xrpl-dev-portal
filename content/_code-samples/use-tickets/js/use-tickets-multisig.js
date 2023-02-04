@@ -3,15 +3,15 @@ if (typeof module !== "undefined") {
     var xrpl = require('xrpl')
 }
   // List which Tickets are outstanding against one’s own account and use Tickets to collect signatures for multisign transactions
-  // https://xrpl.org/use-tickets.html
-  // https://xrpl.org/signerlistset.html#signerlistset
-  // https://xrpl.org/multi-signing.html#multi-signing
+// https://xrpl.org/use-tickets.html
+// https://xrpl.org/signerlistset.html#signerlistset
+// https://xrpl.org/multi-signing.html#multi-signing
 
-  async function main() {
-    // Connect to a testnet node
-    console.log("Connecting to Testnet...")
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
-    await client.connect()
+async function main() {
+  // Connect to a testnet node
+  console.log("Connecting to Testnet...")
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+  await client.connect()
   
     // Get account credentials from the Testnet Faucet
     console.log("Requesting account credentials from the Testnet faucet, this may take awhile...")
