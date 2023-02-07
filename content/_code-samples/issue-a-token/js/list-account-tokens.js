@@ -12,14 +12,14 @@ if (typeof module !== "undefined") {
 
     // Connect to a testnet node
     console.log("Connecting to Testnet...")
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233/')
+    const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233/")
     await client.connect()
 
     // Query the ledger for an account's objects and its trustlines...
     const response_objects = await client.request({
-        "command": "account_objects",
-        "account": account,
-        "ledger_index": "validated",
+        command: "account_objects",
+        account: account,
+        ledger_index: "validated",
     })
 
     const response_lines = await client.request({
