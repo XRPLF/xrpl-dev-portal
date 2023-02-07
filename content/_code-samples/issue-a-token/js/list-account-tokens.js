@@ -30,7 +30,7 @@ if (typeof module !== "undefined") {
 
     // We'll only display the key data of RippleState ledger objects, other objects are simply shown as their ObjectID and their LedgerEntryType
     console.log(`\nAccount ${account}'s Ledger Objects:`)
-    for (var i = 0; i < response_objects.result.account_objects.length; i++) {
+    for (let i = 0; i < response_objects.result.account_objects.length; i++) {
         if (response_objects.result.account_objects[i].LedgerEntryType != "RippleState") {
             console.log(`\n${i+1}. Index (ObjectID/keylet): ${response_objects.result.account_objects[i].index}`)
             console.log(` - LedgerEntryType: ${response_objects.result.account_objects[i].LedgerEntryType}`)
