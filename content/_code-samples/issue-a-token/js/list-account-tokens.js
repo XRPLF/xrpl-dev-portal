@@ -44,7 +44,7 @@ if (typeof module !== "undefined") {
     }
 
     console.log(`\nAccount ${account}'s Trust lines:`)
-    for (var i = 0 ; i < response_lines.result.lines.length; i++) {
+    for (let i = 0 ; i < response_lines.result.lines.length; i++) {
         console.log(`\n${i+1}. Trustline:`)
         console.log(` - Account: ${response_lines.result.lines[i].account}`)
         console.log(` - Currency: ${response_lines.result.lines[i].currency}`)
