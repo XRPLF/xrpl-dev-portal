@@ -23,9 +23,9 @@ if (typeof module !== "undefined") {
     })
 
     const response_lines = await client.request({
-        "command": "account_lines",
-        "account": account,
-        "ledger_index": "validated",
+        command: "account_lines",
+        account: account,
+        ledger_index: "validated",
     })
 
     // We'll only display the key data of RippleState ledger objects, other objects are simply shown as their ObjectID and their LedgerEntryType
