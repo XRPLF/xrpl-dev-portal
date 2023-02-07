@@ -16,7 +16,7 @@ if (typeof module !== "undefined") {
     await client.connect()
 
     // Query the ledger for an account's objects and its trustlines...
-    const response_objects = await client.request({
+    const responseObjects = await client.request({
         command: "account_objects",
         account: account,
         ledger_index: "validated",
