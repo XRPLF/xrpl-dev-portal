@@ -233,7 +233,7 @@ Request('ledger_entry - DirectoryNode', {
 
 Request('ledger_entry - NFT Page', {
   description: "Returns an NFT Page object in its raw ledger format.",
-  link: "ledger_entry.html#get-offer-object",
+  link: "ledger_entry.html#get_nft_page",
   body: {
     "id": "example_get_nft_page",
     "command": "ledger_entry",

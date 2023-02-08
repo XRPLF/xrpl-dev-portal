@@ -54,7 +54,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v13.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v14.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -278,6 +278,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#get-paychannel-object">Get PayChannel Object</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-depositpreauth-object">Get DepositPreauth Object</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-ticket-object">Get Ticket Object</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#get-nft-page">Get NFT Page</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
       </ul>
@@ -347,6 +348,7 @@
 <li><a href="#get-paychannel-object"><code>payment_channel</code></a></li>
 <li><a href="#get-depositpreauth-object"><code>deposit_preauth</code></a></li>
 <li><a href="#get-ticket-object"><code>ticket</code></a></li>
+<li><a href="#get-nft-page"><code>nft_page</code></a></li>
 </ul>
 <p class="devportal-callout caution"><strong>Caution:</strong> If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.</p>
 <h3 id="get-ledger-object-by-id">Get Ledger Object by ID<a aria-hidden="true" class="hover_anchor" href="#get-ledger-object-by-id"><i class="fa fa-link"></i></a></h3>
@@ -952,6 +954,47 @@
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-ticket">Try it!</a></p>
+<h3 id="get-nft-page">Get NFT Page<a aria-hidden="true" class="hover_anchor" href="#get-nft-page"><i class="fa fa-link"></i></a></h3>
+<p>Return an NFT Page in its raw ledger format.</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>nft_page</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenpage.html">NFT Page</a> to retrieve.</td>
+</tr>
+</tbody>
+</table>
+<div class="multicode" id="code-11"><ul class="codetabs"><li><a class="websocket" href="#code-11-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-11-1">JSON-RPC</a></li><li><a class="commandline" href="#code-11-2">Commandline</a></li></ul>
+
+<div class="code_sample websocket" id="code-11-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_nft_page"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"nft_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-11-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-34" id="codeblock-34button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-34"><span class="p">{</span>
+<span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">"nft_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-11-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-35" id="codeblock-35button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-35">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-nft-page">Try it!</a></p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
 <table class="table-responsive">
@@ -986,9 +1029,9 @@
 </tbody>
 </table>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-11"><ul class="codetabs"><li><a class="websocket" href="#code-11-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-11-1">JSON-RPC</a></li><li><a class="commandline" href="#code-11-2">Commandline</a></li></ul>
+<div class="multicode" id="code-12"><ul class="codetabs"><li><a class="websocket" href="#code-12-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-12-1">JSON-RPC</a></li><li><a class="commandline" href="#code-12-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-11-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="p">{</span>
+<div class="code_sample websocket" id="code-12-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-36" id="codeblock-36button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-36"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_accountroot"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span>
@@ -1018,7 +1061,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-11-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-34" id="codeblock-34button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-34"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
+<div class="code_sample jsonrpc" id="code-12-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-37" id="codeblock-37button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-37"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
 
 <span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1048,7 +1091,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-11-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-35" id="codeblock-35button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-35"><span class="p">{</span>
+<div class="code_sample commandline" id="code-12-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-38" id="codeblock-38button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-38"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E"</span><span class="p">,</span>

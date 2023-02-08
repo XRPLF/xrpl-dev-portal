@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v13.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v14.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -269,7 +269,12 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#トラストラインと発行">トラストラインと発行</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#作成">作成</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#限度額以上を保有する">限度額以上を保有する</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#トラストラインの設定">トラストラインの設定</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#準備金と削除">準備金と削除</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#free-trust-lines">Free Trust Lines</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -283,21 +288,80 @@
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/tokens.html">発行済み通貨の概要</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
     <li class="active breadcrumb-item">トラストラインと発行</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="トラストラインと発行">トラストラインと発行<a aria-hidden="true" class="hover_anchor" href="#トラストラインと発行"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerの<a href="issued-currencies.html">発行済み通貨</a>は、XRP Ledger外部で <em>ゲートウェイ</em> が保有する価値をしばしば表します。ユーザーがXRP Ledgerの残高をイシュアーに返却して清算するときには、XRP Ledger内でこれらの資金を発行するアドレスが、XRP Ledger外部で残高を払い戻すことが期待されます。</p>
-<p>コンピュータープログラムは外界で約束を守ることを誰にも強制できないため、トラストラインは、イシュアーがあなたの代わりに保有する価値の量として、あなたが信頼できる量を設定する手段となります。信用のある大手金融機関は、お金のないルームメートに比べれば返済能力は高いため、トラストラインごとに異なる限度を設定して、XRP Ledgerでイシュアーがあなたから「借用」できる上限額を指定できます。イシュアーが債務不履行になった場合や、倒産した場合には、XRP Ledgerでの保有残高をその他の等価の資産と交換できなくなるため、設定した上限額まで失う可能性があります。（XRP Ledgerで引き続き発行済み通貨を保持または取引できますが、発行済み通貨に価値があると見なされる理由がなくなる可能性があります。）</p>
-<p>次の2つの場合、残高が限度額を <em>超過</em> しても、トラストラインにその残高を保有できます。<a href="decentralized-exchange.html">取引</a>によりその通貨をさらに積み増しする場合と、トラストラインの限度を引き下げる場合。</p>
-<p>トラストラインはレジャーのスペースを使用するため、<a href="reserves.html">トラストラインにより、アカウントの準備金として保有する必要のあるXRPが増加します</a>。これは、信頼を受けているアカウントではなく、信頼を拡大しているアカウントに適用されます。</p>
+<p>トラストラインとは、XRP Ledgerにおける<a href="tokens.html">トークン</a>を保持するための仕組みを指します。トラストラインは、XRP Ledgerのルールである「不要なトークンを他者に保有させることはできない」という原則を強制するものです。この制限は、XRP Ledgerのユースケースである<a href="tokens.html#コミュニティクレジット">コミュニティクレジット</a>などを実現するために不可欠なものです。</p>
+<p>それぞれの「トラストライン」は、以下のような <em>双方向</em> の関係から成り立っています。</p>
+<ul>
+<li>トラストラインが接続する <strong>2つの<a href="accounts.html">アカウント</a></strong> の識別子</li>
+<li>一方のアカウントから見てプラス、他方のアカウントから見てマイナスとなる、単一の共有された<strong>残高</strong><ul>
+<li>残高がマイナスのアカウントは、一般的にトークンの「発行者」とみなされます。ただし、<a href="http-websocket-apis.html">API</a>では、<code>issuer</code>という名称はどちらを指すこともあるようです。</li>
+</ul>
+</li>
+<li>様々な <strong>設定</strong> とメタデータ。2つのアカウントの <em>それぞれ</em> は、トラストライン上の設定を制御することができます。<ul>
+<li>最も重要なことは、各サイドがトラストラインに <strong>限度額</strong> を設定できることです。これはデフォルトでは0です。各アカウントの残高は(トラストラインから見て)そのアカウントの上限を超えることはできません。ただし、<a href="#限度額以上を保有する">アカウント自身の操作</a>を除きます。</li>
+</ul>
+</li>
+</ul>
 <p>各トラストラインは、特定の<a href="currency-formats.html#通貨コード">通貨コード</a>に固有です。2つのアカウント間に作成できる各種通貨コードのトラストラインの数に制限はありませんが、どの通貨コードについても、作成できるトラストラインは1方向に1つだけです。</p>
+<h2 id="作成">作成<a aria-hidden="true" class="hover_anchor" href="#作成"><i class="fa fa-link"></i></a></h2>
+<p>アカウントはいずれも、ゼロでない上限と独自の設定を持つ<a href="trustset.html">TrustSetトランザクション</a>を送信することによって、他のアカウントに対して一方的にトークンを「トラスト」することができます。これによって、残高ゼロのトラストラインが作成され、相手側の設定がデフォルトとして設定されます。</p>
+<p>トラストラインは、<a href="decentralized-exchange.html">分散型取引所</a>でトークンを購入するときなど、いくつかのトランザクションによって暗黙的に作成されることがあります。この場合、トラストラインはデフォルト設定をそのまま使用します。</p>
+<h2 id="限度額以上を保有する">限度額以上を保有する<a aria-hidden="true" class="hover_anchor" href="#限度額以上を保有する"><i class="fa fa-link"></i></a></h2>
+<p>トラストラインの限度額よりも <em>大きい</em> 残高を保有できるケースは次の3つがあります。</p>
+<ol>
+<li><a href="decentralized-exchange.html">トレード</a>によって、限度額以上のトークンを取得した場合</li>
+<li>プラスの残高があるトラストラインの限度額を減らした場合</li>
+<li><a href="checks.html">チェックの現金化</a>によって、トークンを限度額以上取得する場合 (<em><a href="known-amendments.html#checkcashmakestrustline">CheckCashMakesTrustLine amendment</a>が必要です。</em>)</li>
+</ol>
 <h2 id="トラストラインの設定">トラストラインの設定<a aria-hidden="true" class="hover_anchor" href="#トラストラインの設定"><i class="fa fa-link"></i></a></h2>
-<p>トラストラインは、レジャーの状態データでは<a href="ripplestate.html">RippleStateオブジェクト</a>として表されます。1つのRippleStateオブジェクトは、一方向または両方向のトラストラインの可能性を表します。このオブジェクトにはトラストラインのそれぞれのサイドに対する制限やその他の設定が含まれていますが、両サイドは1つの正味残高を共有しています。</p>
-<p>トラストラインの設定がデフォルトの状態である場合、トラストラインがないのと同等です。</p>
-<p><a href="rippling.html">NoRippleフラグ</a>（デフォルトの設定はDefaultRippleフラグの設定に応じて異なる）を除き、トラストラインフラグのすべてのフラグは、デフォルトでオフになっています。</p>
+<p>アカウントごとに、共通残高のほかに、トラストラインの設定項目があり、その構成は以下のとおりです。</p>
+<ul>
+<li><strong>Limit</strong>: 0から<a href="currency-formats.html">トークンの上限量</a>の範囲内の数字です。支払いや他のアカウントの操作によって、(このアカウントから見た)トラストラインの残高が限度額を超えることはできません。デフォルトは<code>0</code>です。</li>
+<li><strong>Authorized</strong>: <a href="authorized-trust-lines.html">Authorized Trust Lines</a>と併用し、このアカウントが発行するトークンを相手側に保持させることを許可するための値(true/false)です。デフォルトは<code>false</code>です。一度<code>true</code>に設定すると、元に戻すことはできません。</li>
+<li><strong>No Ripple</strong>: トークンがこのトラストラインを通過して<a href="rippling.html">ripple</a>するかどうかを設定するための値(true/false)です。デフォルトはアカウントの"Default Ripple"設定に依存します。新しいアカウントでは"Default Ripple"はoffで、つまり<code>true</code>がNo Rippleのデフォルト値となります。通常、発行者はrippleを許可し、非発行者はコミュニティクレジットのためにトラストラインを使用していない限り、rippleを無効にするべきです。</li>
+<li><strong>Freeze</strong>: このトラストラインに<a href="freezes.html#individual-freeze">個別の凍結</a>が適用されているかどうかを示す値(true/false)です。デフォルトは`false です。</li>
+<li><strong>Quality In</strong> および <strong>Quality Out</strong>: この設定により、このトラストライン上の他のアカウントで発行されたトークンを額面より少なく（または多く）評価することができます。たとえば、ステーブルコインの発行者が、オフレッジャーにある同等の資産に対してトークンの引き出しに3%の手数料を課している場合、この設定を使用して、それらのトークンを額面の97%で評価することが可能です。デフォルトは<code>0</code>で、額面価格を表しています。</li>
+</ul>
+<h2 id="準備金と削除">準備金と削除<a aria-hidden="true" class="hover_anchor" href="#準備金と削除"><i class="fa fa-link"></i></a></h2>
+<p>トラストラインは台帳のスペースを使用するため、<a href="reserves.html">トラストラインはあなたのアカウントが準備金として保持しなければならないXRPを増加させます</a>。 トラストラインのどちらか、または両方のアカウントにトラストラインの準備金が負担されることがあります。トラストラインの設定がデフォルトでない場合、またはプラス残高を保持している場合、所有者準備金の1つとしてカウントされます。</p>
+<p>一般に、トラストラインを作成したアカウントが準備金を負担し、発行者は負担しないという意味です。<!-- STYLE_OVERRIDE: is responsible for --></p>
+<p>トラストラインは、両者の設定がデフォルトの状態で、残高が0であれば自動的に削除されます。つまり、トラストラインを削除するには次の方法があります。</p>
+<ol>
+<li>設定した内容をデフォルトに戻すために、<a href="trustset.html">TrustSetトランザクション</a>を送信する。</li>
+<li>トラストラインにあるプラスの残高をすべて処分します。これは<a href="cross-currency-payments.html">支払い</a>によって通貨を送るか、<a href="decentralized-exchange.html">分散型取引所</a>で通貨を売却することで可能です。</li>
+</ol>
+<p>残高がマイナス（あなたが発行者）の場合や、相手側の設定が初期状態でない場合、トラストラインを完全に削除させることはできませんが、同様の手順で所有者準備金にカウントされないようにすることが可能です。</p>
+<p><strong>Authorized</strong> の設定は、一度オンにするとオフにできないため、トラストラインの初期状態にはカウントされません。</p>
+<h2 id="free-trust-lines">Free Trust Lines<a aria-hidden="true" class="hover_anchor" href="#free-trust-lines"><i class="fa fa-link"></i></a></h2>
+<p><a class="external-link" href="https://github.com/ripple/rippled/blob/72377e7bf25c4eaee5174186d2db3c6b4210946f/src/ripple/app/tx/impl/SetTrust.cpp#L148-L168" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>トラストラインはXRP Ledgerの強力な機能であるため、アカウントの最初の2つのトラストラインを「無料」にする特別な機能が用意されています。</p>
+<p>アカウントが新しいトラストラインを作成する際、台帳の中で新しいトラストラインを含む最大2つのオブジェクトを所有している場合、アカウントの所有者準備金は通常の量ではなく、0として扱われます。これにより、アカウントが台帳内のオブジェクトを所有するために必要な準備金の増加分を満たすだけのXRPを保有していない場合でも、取引を成功させることができます。</p>
+<p>アカウントが台帳に3つ以上のオブジェクトを所有している場合、所有者準備金が全額適用されます。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="decentralized-exchange.html">分散型取引所</a></li>
+<li><a href="rippling.html">リップリング</a></li>
+</ul>
+</li>
+<li><strong>チュートリアル:</strong><ul>
+<li><a href="become-an-xrp-ledger-gateway.html">XRP Ledgerゲートウェイの開設</a></li>
+</ul>
+</li>
+<li><strong>リファレンス:</strong><ul>
+<li><a href="account_lines.html">account_linesメソッド</a> - 指定されたアカウントに関連付けられたトラストラインを確認</li>
+<li><a href="gateway_balances.html">gateway_balancesメソッド</a> - 発行者の発行残高を確認</li>
+<li><a href="ripplestate.html">RippleStateオブジェクト</a> - 台帳の状態データのうち、トラストラインのデータ形式</li>
+<li><a href="trustset.html">TrustSetトランザクション</a> - トラストラインを作成・変更するトランザクション</li>
+<li></li>
+</ul>
+</li>
+</ul>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -507,7 +571,7 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="true" aria-controls="tree_nav_group_2_4"></a>
 
-        <a class="nav-link" href="/ja/tokens.html">発行済み通貨の概要</a>
+        <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_2_4">
       
