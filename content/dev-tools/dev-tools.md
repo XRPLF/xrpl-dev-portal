@@ -48,11 +48,11 @@ The following tools are maintained by the XRP Ledger community:
 
 - **[XRPScan](https://xrpscan.com/)**
 
+Explore ledger activity, view [amendment voting](amendments.html) in real-time, and get account information. [API access](https://docs.xrpscan.com/) also available.
+
 - **[NowNodes](https://nownodes.io/)**
     
     Get [free access](https://account.nownodes.io/auth/signup) to a full XRP node via API key.   
 
-
-    Explore ledger activity, view [amendment voting](amendments.html) in real-time, and get account information. [API access](https://docs.xrpscan.com/) also available.
 
 Have an idea for a tool not provided here? [Contact us >](mailto:docs@ripple.com) or [Open a pull request >]({{target.github_forkurl}}/edit/{{target.github_branch}}/content/{{currentpage.md}})
