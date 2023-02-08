@@ -82,7 +82,7 @@ signTransaction = async function (xrpAmount, destination, ledgerSequence, wallet
     // const preparedTx = await client.autofill(paymentTx)
     //
     // But since this is an airgapped wallet without internet
-    // connection, we have to do it by manually:
+    // connection, we have to do it manually:
     //
     // paymentTx.Sequence is set in setNextValidSequenceNumber() via sugar/autofill
     // paymentTx.LastLedgerSequence is set in setLatestValidatedLedgerSequence() via sugar/autofill
