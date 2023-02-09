@@ -76,15 +76,3 @@ The general development path breaks down as follows:
 ## Code Flowchart
 
 ***TODO: Add flowchart.***
-
-<!-- Move this section into XLS spec outline.
-
-### Naming and Numbering Conventions
-
-Standard drafts must be named and numbered in this format:
-
-`4-digit natural number with leading 0s` XLS-`natural number without leading zeroes.`d: `Title of Proposal`
-
-**Example:** 0032 XLS-32d: Request URI Structure
-
--->
