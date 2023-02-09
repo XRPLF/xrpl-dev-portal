@@ -60,13 +60,13 @@
     <h3>Choose Network:</h3>
     {% for net in faucets %}
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="faucet-selector" id="{{net.id}}" value="{{net.faucet}}" data-jsonrpcurl="{{net.jsonrpc_url}}" data-wsurl="{{net.ws_url}}" data-shortname="{{net.shortname}}" {% if loop.index == 1 %} checked{% endif %} />
+      <input onclick="document.getElementById('generate-creds-button').innerHTML='Generate {{net.shortname}} credentials'" class="form-check-input" type="radio" name="faucet-selector" id="{{net.id}}" value="{{net.faucet}}" data-jsonrpcurl="{{net.jsonrpc_url}}" data-wsurl="{{net.ws_url}}" data-shortname="{{net.shortname}}" {% if loop.index == 1 %} checked{% endif %} />
       <label class="form-check-label" for="{{net.id}}"><strong>{{net.shortname}}</strong>: {{net.desc}}</label>
     </div>
     {% endfor %}
     <p class="mb-3"><strong>Hooks Testnet</strong>: <a href="https://hooks-testnet-v2.xrpl-labs.com/" class="external-link">See the Hooks Faucet</a></p>
     <div class="btn-toolbar" role="toolbar" aria-label="Button">
-      <button id="generate-creds-button" class="btn btn-primary mr-2 mb-2">Generate credentials</button>
+      <button id="generate-creds-button" class="btn btn-primary mr-2 mb-2">Generate Testnet credentials</button>
     </div><!--/.btn-toolbar-->
     <div id='your-credentials'></div>
     <div id='loader' style="display: none;"><img class="throbber" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png"> Generating Keys...</div>
