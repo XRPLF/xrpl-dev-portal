@@ -1,0 +1,147 @@
+-------------
+Spell Checker
+-------------
+Found 15 possible spelling errors:
+<Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
+  gifs: gigs, gifts, kifs
+  kuressaare: 
+  ringtee: 
+  lõõtsa: 
+
+<Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
+  nftokenminter: 
+  unassigning: 
+  transferfee: transferee
+
+<Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
+  stablefoo: 
+  unbalances: unbalance, unbalanced
+  machowski: 
+
+<Page 'Amendments' (amendments.html)> Unknown Words:
+  11d: 
+
+<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
+  0b0: 
+
+<Page 'Public Servers' (public-servers.html)> Unknown Words:
+  30d: 3d, 3-d, 3rd
+
+<Page 'AccountSet' (accountset.html)> Unknown Words:
+  nftokenminter: 
+
+<Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
+  30d: 3d, 3-d, 3rd
+
+-----------------------------
+Discouraged Words and Phrases
+-----------------------------
+Found 27 discouraged words/phrases:
+Page: <Page 'FAQ' (faq.html)>
+   Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
+Page: <Page 'Privacy Policy' (privacy-policy.html)>
+   Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
+   Discouraged word: assist (1 instances); suggest 'aid, help' instead.
+   Discouraged phrase: the use of (2 instances); suggest '(omit)' instead.
+   Discouraged word: will (6 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: permit (1 instances); suggest 'let' instead.
+   Discouraged word: retain (3 instances); suggest 'keep' instead.
+   Discouraged word: advise (1 instances); suggest 'recommend, tell' instead.
+   Discouraged word: notify (1 instances); suggest 'let know, tell' instead.
+   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
+   Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
+Page: <Page 'Amendments' (amendments.html)>
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'XRPL Quickstart' (xrpl-quickstart.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page '2. Create Trust Line and Send Currency' (create-trustline-send-currency.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'tem Codes' (tem-codes.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+------------------
+Readability Scores
+------------------
+Average Page Readability Scores:
+  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
+  Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
+  SMOG Index: Grade level 11.4
+  Gunning FOG Index: Grade level 9.1
+  Automated Readability Index: Grade level 10.9
+  Coleman-Liau Index: Grade level 11.5
+  Linsear Write Formula: Grade level 8.5
+
+
+Most difficult pages by Flesch Reading Ease:
+<Page 'Interoperability' (xrpl-interoperability.html)> Readability Scores:
+  Flesch Reading Ease Score: 27.8 (Very Confusing)
+  Dale-Chall Readability Score: 10.2 (higher than average college level)
+  SMOG Index: Grade level 0.0
+  Gunning FOG Index: Grade level 12.8
+  Automated Readability Index: Grade level 17.4
+  Coleman-Liau Index: Grade level 17.9
+  Linsear Write Formula: Grade level 12.5
+
+<Page 'XRP-API' (xrp-api.html)> Readability Scores:
+  Flesch Reading Ease Score: 29.2 (Very Confusing)
+  Dale-Chall Readability Score: 12.5 (higher than average college level)
+  SMOG Index: Grade level 0.0
+  Gunning FOG Index: Grade level 19.6
+  Automated Readability Index: Grade level 18.2
+  Coleman-Liau Index: Grade level 14.8
+  Linsear Write Formula: Grade level 20.5
+
+<Page 'Update Automatically on Linux' (update-rippled-automatically-on-linux.html)> Readability Scores:
+  Flesch Reading Ease Score: 31.4 (Difficult)
+  Dale-Chall Readability Score: 12.1 (higher than average college level)
+  SMOG Index: Grade level 13.2
+  Gunning FOG Index: Grade level 11.7
+  Automated Readability Index: Grade level 14.7
+  Coleman-Liau Index: Grade level 16.3
+  Linsear Write Formula: Grade level 7.5
+
+-------------------
+Page Length Metrics
+-------------------
+Average Page Length Metrics:
+  Sentences: 55
+  Words: 743
+  Characters: 4,614
+
+Longest pages by character count:
+<Page 'Known Amendments' (known-amendments.html)> Length Metrics:
+  Sentences: 485
+  Words: 6,721
+  Characters: 49,337
+
+<Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
+  Sentences: 380
+  Words: 5,852
+  Characters: 36,639
+
+<Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Length Metrics:
+  Sentences: 299
+  Words: 5,187
+  Characters: 29,550
+
+Shortest pages by character count:
+<Page 'API Conventions' (api-conventions.html)> Length Metrics:
+  Sentences: 4
+  Words: 38
+  Characters: 231
+
+<Page 'XRP-API' (xrp-api.html)> Length Metrics:
+  Sentences: 3
+  Words: 29
+  Characters: 169
+
+<Page 'Use Checks' (use-checks.html)> Length Metrics:
+  Sentences: 3
+  Words: 22
+  Characters: 129
+
