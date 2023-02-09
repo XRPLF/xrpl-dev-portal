@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>発行済み通貨の概要 - XRPL.org (日本語)</title>
+    <title>トークン - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="発行済み通貨の概要 | XRPL.org (日本語)">
+    <meta property="og:title" content="トークン | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/tokens.html" />
-    <meta property="og:description" content="発行済み通貨の概要と、XRP Ledgerにおけるその特性について説明します。" />
-    <meta name="description" content="発行済み通貨の概要と、XRP Ledgerにおけるその特性について説明します。" />
+    <meta property="og:description" content="XRP Ledger上でデジタルな価値を表すトークンを作成することができます。" />
+    <meta name="description" content="XRP Ledger上でデジタルな価値を表すトークンを作成することができます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -268,9 +268,11 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#発行済み通貨の概要">発行済み通貨の概要</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#発行済み通貨の使用方法">発行済み通貨の使用方法</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#発行済み通貨の特性">発行済み通貨の特性</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#トークン">トークン</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ステーブルコイン">ステーブルコイン</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#コミュニティクレジット">コミュニティクレジット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#その他のトークン">その他のトークン</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#トークンの特性">トークンの特性</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
@@ -285,35 +287,35 @@
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
-    <li class="active breadcrumb-item">発行済み通貨の概要</li>
+    <li class="active breadcrumb-item">トークン</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="発行済み通貨の概要">発行済み通貨の概要<a aria-hidden="true" class="hover_anchor" href="#発行済み通貨の概要"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerでは、XRP以外の通貨はすべて<strong>発行済み通貨</strong>とされます。このようなデジタル資産（「イシュアンス」または「IOU」とも呼ばれます）は、「トラストライン」と呼ばれるアドレス間の会計上の関係で管理されます。発行済み通貨は通常、負債とも資産とも見なされるため、トラストラインの残高は、見る視点によってマイナスにもプラスにもなります。どのアドレスも（XRP以外の）通貨を自由に発行できますが、他のアドレスが希望する保有量によってのみ制限されます。</p>
-<p>発行済み通貨は、同一通貨コードを使用する複数のイシュアーと保有者を通じて「Rippling」されます。これが役立つ場合もありますが、予期しない結果や望ましくない結果が生じることもあります。トラストライン上で<a href="rippling.html">NoRippleフラグ</a>を使用すれば、トラストラインを通じたRipplingを防ぐことができます。</p>
-<p>XRP Ledgerの分散型取引所では、発行済み通貨対XRPの取引や、発行済み通貨間の取引を行えます。</p>
-<p>一般的なモデルでは、発行済み通貨は、XRP Ledger外部で保有されている通貨またはその他の資産に結び付けられています。通貨のイシュアー（<em>ゲートウェイ</em>）は、XRP Ledger外部の通貨を、XRP Ledgerの発行済み通貨の同等の残高と交換するための入出金処理を行います。ゲートウェイの運用方法についての詳細は、<a href="become-an-xrp-ledger-gateway.html">XRP Ledgerのゲートウェイになる</a>を参照してください。</p>
-<p>XRP Ledgerの発行済み通貨は他の用途にも使えます。たとえば、固定量の通貨をセカンダリアドレスに発行し、イシュアーへキーを譲渡すれば、「イニシャルコインオファリング」（ICO）を作成できます。</p>
+        <h1 id="トークン">トークン<a aria-hidden="true" class="hover_anchor" href="#トークン"><i class="fa fa-link"></i></a></h1>
+<p>XRP以外のすべての資産は、XRP Ledgerでは <strong>トークン</strong> として扱うことができます。通常のトークンは、アカウント間の<a href="trust-lines-and-issuing.html">トラストライン</a> と呼ばれる関係で管理されます。すべてのアカウントは、トークンを保有することを許可する他のアカウントにあトークンを発行できますが、トークンを必要としないアカウントに一方的にトークンを配付することはできません。トークンは、台帳の外に存在する資産に裏付けられた「ステーブルコイン」、XRP Ledger上で独自に作成された純粋なデジタルトークン、コミュニティクレジットなど、様々な種類の価値を表すことが出来ます。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledger上のトークンは、過去に「IOUs」（<a class="external-link" href="https://en.wikipedia.org/wiki/IOU" target="_blank">I-owe-you <i aria-hidden="true" class="fa fa-external-link"></i></a>の略）および「発行済み通貨」とも呼ばれてきました。しかし、これらの呼称は、XRP Ledgerのトークンが表すことのできるデジタル資産の全範囲をカバーしていないため、望ましくないとされています。<!-- STYLE_OVERRIDE: ious --></p>
+<p>通常のトークンは代替可能です。つまり、同じトークンはすべて代替可能であり、区別がつきません。非代替トークン(NFT)も可能です。XRP Ledgerでのネイティブ対応の詳細については、<a href="non-fungible-tokens.html">非代替トークン(NFT)</a>を参照してください。</p>
+<p>トークンは<a href="cross-currency-payments.html">複数通貨間の支払い</a>に使用でき、<a href="decentralized-exchange.html">分散型取引所(DEX)</a>で取引することができます。</p>
+<p>トラストラインの残高は、どちら側から見るかによって、プラスまたはマイナスで表されます。マイナスの残高を持つ側は「発行者」と呼ばれ、そのトークンに関するいくつかの機能を設定することができます。発行者ではない別のアカウントにトークンを送ると、それらのトークンは発行者、場合によっては同じ通貨コードを使用している他のアカウントに「ripple」します。これは便利な場合もありますが、想定外の挙動を引き起こす可能性もあります。トラストラインに<a href="rippling.html">No Ripple flag</a>を使用すると、トラストラインがripplingしないように設定することができます。</p>
+<h2 id="ステーブルコイン">ステーブルコイン<a aria-hidden="true" class="hover_anchor" href="#ステーブルコイン"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledger におけるトークンの代表的なモデルとして、発行者が XRP Ledgerの外部に価値ある資産を保有し、その価値を表すトークンをLedger上で発行するというものがあります。このタイプの発行者は、そのサービスを通じてXRP Ledgerに通貨を送受信できることから、 <em>ゲートウェイ</em> と呼ばれることもあります。トークンの裏付けとなる資産が、台帳上のトークンと同じ金額と額面を使用している場合、そのトークンは「ステーブルコイン」といえるでしょう。なぜなら、そのトークンと台帳外の資産との交換レートは理論上1：1で安定するはずだからです。</p>
+<p>ステーブルコインの発行者は、XRP Ledgerの外側において、トークンを実際の通貨や資産と交換するための <em>入金</em> と <em>出金</em> のサービスを提供する必要があります。</p>
+<p>実際には、XRP Ledger はただのシステムであり、その外側にいかなるルールも適用することはできません。そのため、XRP Ledger上のステーブルコインは、その発行者を信頼し、その発行者が要求に応じてトークンを現物資産へ交換することができなければ、そのステーブルコインの価値が維持されないと考えるべきでしょう。ユーザは、誰がトークンを発行しているのか、信頼できるのか、合法的なのか、支払能力があるのか、という点について十分に注意をしなければなりません。信頼できない場合は、そのトークンを保有するべきではないでしょう。</p>
+<p>ゲートウェイの運営方法については、<a href="become-an-xrp-ledger-gateway.html">XRP Ledger Gatewayの開設</a>をご覧ください。</p>
+<h2 id="コミュニティクレジット">コミュニティクレジット<a aria-hidden="true" class="hover_anchor" href="#コミュニティクレジット"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerのもう一つの利用方法として、「コミュニティクレジット」という、知人同士がXRP Ledgerを利用して、誰が誰にいくら借金があるのかを把握する仕組みがあります。この借金を自動的かつアトミックに活用し、<a href="rippling.html">rippling</a>を通じて支払いを決済できるのが、XRP Ledgerの優れた機能です。</p>
+<p>例えば、AsheeshがMarcusに20ドル、MarcusがBharathに50ドルの借金がある場合、BharathはAsheeshのMarcusに対する借金を帳消しにする代わりに、その分のMarcusに対する借金を帳消しすることによってAsheeshに20ドルを「支払う」ことができる。逆もまた可能である。AsheeshはMarcusを通してBharathに支払うことで、それぞれの負債を減らすことができるのです。XRP Ledgerは、このように複雑な連鎖的な取引を、中間にいるアカウントが何もせずとも、単一の取引で決済することができるのです。</p>
+<p>このタイプの使用法については、<a href="paths.html">paths</a>を参照してください。<!-- --></p>
+<h2 id="その他のトークン">その他のトークン<a aria-hidden="true" class="hover_anchor" href="#その他のトークン"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerで発行されるトークンには、その他にも使用例があります。例えば、セカンダリアドレスに一定数量の通貨を発行し、発行者に「キーを渡す」ことで、「ICO（Initial Coin Offering）」を行うことができます。</p>
 <p class="devportal-callout 警告"><strong>警告:</strong> ICOは米国では<a class="external-link" href="https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings" target="_blank">証券と見なされ、規制対象となる <i aria-hidden="true" class="fa fa-external-link"></i></a>可能性があります。</p>
 <p>金融サービスビジネスを始める前に、関連規制を調査されることを強くお勧めします。</p>
-<h2 id="発行済み通貨の使用方法">発行済み通貨の使用方法<a aria-hidden="true" class="hover_anchor" href="#発行済み通貨の使用方法"><i class="fa fa-link"></i></a></h2>
-<p>トラストラインは、ゲートウェイの債務を負う意思を明示的に表明するものです。（つまり、「あなたはXRP Ledgerの外部で私からこれだけのお金を借りることができます。」ということです。）</p>
-<p>発行済み通貨の使用方法として想定されるモデルは、信頼できる金融機関である <em>ゲートウェイ</em> で使用することです。ゲートウェイでは、外界の資産を管理し、<a href="cross-currency-payments.html">複数通貨間の支払い</a>や<a href="decentralized-exchange.html">分散型取引所</a>での取引のためにXRP Ledgerで使用できるようにします。この流れは以下のようになります。</p>
-<ol>
-<li>顧客がゲートウェイに通貨を送金します。通貨は、法定通貨やBitcoinなど、XRP Ledgerのネイティブ資産でないものが考えられます。</li>
-<li>ゲートウェイは、その通貨を保管して記録します。</li>
-<li>ゲートウェイは、その顧客に属するアドレスに対して、XRP Ledgerでの残高を同じ通貨建てで発行します。</li>
-<li>顧客は、<a href="cross-currency-payments.html">複数通貨間の支払い</a>の送金や<a href="decentralized-exchange.html">分散型取引所</a>での取引などによって、発行済み通貨をXRP Ledgerで自由に使用できます。</li>
-<li>顧客（必ずしも最初に預金した顧客ではない）は、発行済み通貨をゲートウェイのXRP Ledgerのアドレスに送金します。</li>
-<li>ゲートウェイは、XRP Ledgerの資金の残高を送信した顧客のIDを確認し、対応する金額を <em>XRP Ledgerの外部で</em> その顧客に付与します。</li>
-</ol>
-<p>XRP Ledgerへの「入金」や「出金」のプロセスに関する詳細は、ゲートウェイ、法的管轄、関連する資産のタイプなどの要因に基づいて異なります。</p>
-<h2 id="発行済み通貨の特性">発行済み通貨の特性<a aria-hidden="true" class="hover_anchor" href="#発行済み通貨の特性"><i class="fa fa-link"></i></a></h2>
-<p>XRP Ledger内の発行済み通貨はすべてトラストラインに存在し、レジャーのデータでは<a href="ripplestate.html">RippleStateオブジェクト</a>として表示されます。発行済み通貨を作成するには、発行アドレスは、対象となる通貨に対し非ゼロ制限のあるイシュアーへのトラストラインを持つアドレスに対し、<a href="payment.html">Paymentトランザクション</a>を送信します。（発行済み通貨は、このようなトラストラインを通じてRipplingする方法でも作成できます。）発行済み通貨を消去するには、通貨をイシュアーに戻します。</p>
-<p>通貨のイシュアーは、2名の当事者が発行済み通貨で取引をする際に差し引かれる<a href="transfer-fees.html">送金手数料</a>のパーセンテージを定義できます。</p>
-<p>アドレスは発行済み通貨を<a href="freezes.html">凍結</a>することもでき、企業が当該地域の金融規制に準拠する際に有用です。この機能が不要で、通貨を凍結しない場合は、アドレスが有する個別のトラストラインを凍結する機能と、Global Freezeを取り消す機能を放棄できます。XRPは凍結できません。</p>
-<p>発行済み通貨は、あらゆる種類の通貨または資産（額面価格が極めて低い、または高いものを含む）に相当するとされています。通貨コードの種類と発行済み通貨の表記の数値制限に関する技術的な詳細は、<a href="currency-formats.html">通貨フォーマットのリファレンス</a>を参照してください。</p>
+<h2 id="トークンの特性">トークンの特性<a aria-hidden="true" class="hover_anchor" href="#トークンの特性"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerにおけるトークンは、<a href="currency-formats.html">XRPと異なる性質</a>を持ちます。トークンは常に <em>トラストライン内</em> に存在し、トークンのすべての移動はトラストラインに沿って行われます。他のアカウントに、トラストラインに設定された上限を超えるトークンを保有させることはできません。(自分のトラストラインを制限以上に増やすことは <em>可能</em> です。例えば、<a href="decentralized-exchange.html">分散型取引所</a>でさらに購入したり、すでにプラスの残高がある状態で上限値を下げたりすることができます。)</p>
+<p>トークンは、精度が15桁の10進数（基数10）と指数を用いて、非常に大きな値（最大9999999999999999×10<sup>80</sup>）から、非常に小さな値（最小1.0×10<sup>-81</sup>まで）を表現することができます。</p>
+<p>必要なトラストラインが設定されていれば、誰でも<a href="payment.html">Paymentトランザクション</a>を送信することでトークンを発行することができます。トークンを発行者に送り返せば、トークンを「burn」することができます。また、発行者の設定により、<a href="cross-currency-payments.html">複数通貨間の支払い</a>やトレードでトークンをさらに生み出せるケースもあります。</p>
+<p>発行者は、ユーザがトークンを送金する際に自動で差し引かれる「送金手数料」(transfer-fees.html)を設定することができます。発行者は、自分のトークンを含む取引レートの<a href="ticksize.html">ティックサイズ</a>を定義することもできます。発行者と一般アカウントのどちらも、トラストラインを<a href="freezes.html">凍結</a>することができ、トラストライン内のトークンの使用方法を制限することができます。( XRPにはこのいずれも適用されません。)</p>
+<p>トークン発行の技術的な手順については、<a href="issue-a-fungible-token.html">代替可能トークンの発行</a> を参照してください。</p>
 <h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong></li>
@@ -321,6 +323,7 @@
 <li><a href="cross-currency-payments.html">複数通貨間の支払い</a></li>
 <li><a href="decentralized-exchange.html">分散型取引所</a></li>
 <li><strong>チュートリアル:</strong></li>
+<li><a href="issue-a-fungible-token.html">代替可能トークンの発行</a></li>
 <li><a href="become-an-xrp-ledger-gateway.html">XRP Ledgerゲートウェイの開設</a></li>
 <li><a href="look-up-transaction-results.html">トランザクションの結果の確認</a></li>
 <li><a href="use-specialized-payment-types.html">専門化した支払いタイプの使用</a></li>
@@ -541,7 +544,7 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="true" aria-controls="tree_nav_group_2_4"></a>
 
-        <a class="nav-link" href="/ja/tokens.html">発行済み通貨の概要</a>
+        <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_2_4">
       

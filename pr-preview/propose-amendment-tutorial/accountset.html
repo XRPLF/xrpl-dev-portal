@@ -268,6 +268,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#accountset-flags">AccountSet Flags</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#blocking-incoming-transactions">Blocking Incoming Transactions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#transferrate">TransferRate</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenminter">NFTokenMinter</a></li>
       </ul>
   </div>
       </aside>
@@ -417,7 +418,7 @@
 <td style="text-align: left;"><code>asfAuthorizedNFTokenMinter</code></td>
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">(None)</td>
-<td style="text-align: left;">Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the <code>NFTokenMinter</code> field of the <a href="accountroot.html">AccountRoot</a> object. This is an experimental field to enable behavior for NFToken support. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></td>
+<td style="text-align: left;">Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the <code>NFTokenMinter</code> field of the <a href="accountroot.html">AccountRoot</a> object. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>asfDefaultRipple</code></td>
@@ -527,6 +528,8 @@
 <h2 id="transferrate">TransferRate<a aria-hidden="true" class="hover_anchor" href="#transferrate"><i class="fa fa-link"></i></a></h2>
 <p>The <code>TransferRate</code> field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
 <p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
+<h2 id="nftokenminter">NFTokenMinter<a aria-hidden="true" class="hover_anchor" href="#nftokenminter"><i class="fa fa-link"></i></a></h2>
+<p>To remove an authorized minter, set <code>ClearFlag</code> to 10 (<code>asfAuthorizedNFTokenMinter</code>).</p>
 <!-- SPELLING_IGNORE: TransferRate -->
 <!-- -->
 <!-- -->

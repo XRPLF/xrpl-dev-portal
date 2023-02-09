@@ -270,7 +270,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#standards-draft">Standards Draft</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledger-standards">XRP Ledger Standards</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amendment-implementation">Amendment Implementation</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#coding-and-deployment">Coding and Deployment</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#code-flowchart">Code Flowchart</a></li>
@@ -298,33 +298,33 @@
     <div class="content">
         <h1 id="contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#contribute-code-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
 <p>The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. If you want to contribute code, it's important to work with the community in defining the specifications of your changes and testing the code before adding it to <code>rippled</code>.</p>
-<h2 id="standards-draft">Standards Draft<a aria-hidden="true" class="hover_anchor" href="#standards-draft"><i class="fa fa-link"></i></a></h2>
-<p>Most changes will start with a standards draft. The standards draft outlines the specifications of your change and provides the XRPL community a chance to give feedback. Before committing to development, always submit a standards draft to the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/categories/standard-proposals" target="_blank">XRPL-Standards repo <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Bug fixes don't require standards drafts, but may require amendments.</p>
-<p>Your standards draft should supply the community with information to facilitate useful discussion. Helpful sections to include are:</p>
+<h2 id="xrp-ledger-standards">XRP Ledger Standards<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger-standards"><i class="fa fa-link"></i></a></h2>
+<p>Changes to <code>rippled</code> are tracked by an XRP Ledger Standard (XLS), a document that identifies and details the specifications of a change. Before committing to development, always submit an XLS draft (XLSd) to the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/categories/standard-proposals" target="_blank">XRPL-Standards repo <i aria-hidden="true" class="fa fa-external-link"></i></a>. This provides the community a chance to discuss and provide feedback about your change.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Bug fixes don't require an XLS, but may require an amendment.</p>
+<p>Your XLSd should supply the community with information to facilitate useful discussion. Helpful sections to include are:</p>
 <ul>
 <li>Abstract/Introduction</li>
 <li>Specifications</li>
 <li>Considerations</li>
 </ul>
-<p><strong><em>TODO: Link to a standards draft outline.</em></strong></p>
-<p>After receiving sufficient input from the community, you can move forward in the process. "Sufficient" is subjective in open-source development, but gauging the community response to your standards draft can help you understand how it will be received if it needs to be voted on as an amendment.</p>
+<p>See: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/README.md" target="_blank">XLS README <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>After receiving sufficient input from the community, you can move forward in the process. "Sufficient" is subjective in open-source development, but gauging the community response to your XLSd can help you understand how it will be received if it needs to be voted on as an amendment.</p>
 <h2 id="amendment-implementation">Amendment Implementation<a aria-hidden="true" class="hover_anchor" href="#amendment-implementation"><i class="fa fa-link"></i></a></h2>
-<p>After you've finalized the standards draft with the community, you now need to determine if your change requires an amendment. Anything that affects <strong>transaction processing</strong> requires an amendment. This applies to:</p>
+<p>After you've finalized the XLSd with the community, you now need to determine if your change requires an amendment. Changes that affect <strong>transaction processing</strong> require amendments, specifically changes that:</p>
 <ul>
-<li>Features</li>
-<li>Enhancements</li>
-<li>Bug Fixes</li>
+<li>Modify ledger rules, resulting in different outcomes.</li>
+<li>Add or remove transactions.</li>
+<li>Affect consensus.</li>
 </ul>
-<p class="devportal-callout note"><strong>Note:</strong> If your change doesn't affect how transactions are processed by the ledger, you can go straight to coding and deployment.</p>
-<p>Implementing code as an amendment requires you to modify these files:</p>
+<p class="devportal-callout note"><strong>Note:</strong> If your change doesn't need an amendment, you can go straight to coding and deployment.</p>
+<p>Implementing code as an amendment requires you to add the amendment to these files:</p>
 <ul>
-<li>
-<p><strong>Feature.cpp</strong>: Add your amendment and set the <code>DefaultVote</code> and <code>Supported</code> parameters.</p>
-</li>
-<li>
-<p><strong>Feature.h</strong>: Increment the <code>numFeatures</code> counter and declare an <code>extern uint256 const</code> variable for your amendment.</p>
-</li>
+<li><strong>Feature.cpp</strong>:</li>
+</ul>
+<p><code>Supported</code> parameter should be set to <code>no</code> until development is complete.</p>
+<p><code>DefaultVote</code> parameter should be set to <code>yes</code> for bug fixes; everything else defaults to <code>no</code>.</p>
+<ul>
+<li><strong>Feature.h</strong>: Increment the <code>numFeatures</code> counter and declare an <code>extern uint256 const</code> variable.</li>
 </ul>
 <h2 id="coding-and-deployment">Coding and Deployment<a aria-hidden="true" class="hover_anchor" href="#coding-and-deployment"><i class="fa fa-link"></i></a></h2>
 <p>The general development path breaks down as follows:</p>
@@ -337,13 +337,14 @@
 <p>Run unit and integration tests. Running a server in <em>stand-alone mode</em> is useful for testing your changes in an isolated environment, but you may want to stand up a private network for extensive changes.</p>
 </li>
 <li>
-<p>When development is complete, update the <code>Supported</code> parameter to <code>yes</code> in <strong>Feature.cpp</strong>.</p>
+<p>Create a pull request on <code>XRPLF:develop</code>.</p>
+<p><strong>Note for Amendments:</strong> Update the <code>Supported</code> paramter to <code>yes</code> in <strong>Feature.cpp</strong>.</p>
 </li>
 <li>
-<p>Create a pull reuest on <code>XRPLF:develop</code>.</p>
-</li>
-<li>
-<p>After the pull request is approved by XRP Ledger maintainers, your code is merged into <code>develop</code> and additional testing can be done on Devnet. If problems are found with your amendment, you must fix the issue and submit a new PR.</p>
+<p>After the pull request is approved by XRP Ledger maintainers, your code is merged into <code>develop</code> and additional testing can be done on Devnet.</p>
+<p><strong>Note for Amendments:</strong>
+- The <code>DefaultVote</code> parameter is now locked.
+- If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the default vote in the new PR.</p>
 </li>
 <li>
 <p>On a quarterly basis, a release candidate is built from approved PRs on <code>develop</code>. The package is deployed to Testnet and a few nodes on Mainnet. If no issues are found with the release candidate, the code is merged into <code>master</code> and nodes on Mainnet can upgrade to this build.</p>
@@ -567,7 +568,7 @@ Standard drafts must be named and numbered in this format:
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
-        <a class="nav-link" href="/ja/tokens.html">発行済み通貨の概要</a>
+        <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
