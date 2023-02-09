@@ -414,12 +414,13 @@
 #impact-green {
   position: absolute;
   top: 0;
-  right: -4px;
+  left: -4px;
+  rotate: (180deg);
 }
-#impact-orange {
+#impact-purple {
   position: absolute;
   top: 100px;
-  left: -4px;
+  right: -4px;
 }
 #impact-magenta {
   position: absolute;
@@ -450,6 +451,42 @@
   top: 40px;
   right: -4px;
 }
+
+.page-impact {
+
+  .connect-list {
+    @each $connect in "connect-01", "connect-02", "connect-03", "connect-04" {
+      ##{$connect} {
+        content: url("../img/impact/#{$connect}.svg");
+      }
+    }
+  }
+
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
+  }
+  
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+
+
+}
+
 
 .page-funding {
 
