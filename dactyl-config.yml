@@ -220,6 +220,7 @@ pages:
         top_nav_name: アバウト
         top_nav_grouping: XRP Ledger
         sidebar: disabled
+        blurb: XRPL開発者コミュニティが推進するパブリックブロックチェーン「XRP Ledger」の主なメリットと特徴をご紹介します。
         targets:
             - ja
 
@@ -385,6 +386,7 @@ pages:
         nav_omit: true
         targets:
             - en
+            # Indicated as FAQ in Japanese
             - ja
 
 
@@ -4297,6 +4299,14 @@ pages:
         sidebar: left_only
         targets:
             - en
+
+    -   name: 開発者ツール
+        html: dev-tools.html
+        template: page-dev-tools.html.jinja
+        parent: docs.html
+        top_nav_grouping: Online Tools
+        sidebar: left_only
+        targets:
             - ja
 
     -   name: Dev Tools # Redirect page for old broken URL
@@ -4314,15 +4324,27 @@ pages:
         top_nav_grouping: Online Tools
         targets:
             - en
-            - ja  
+
+    -   name: XRPL学習ポータル
+        html: https://learn.xrpl.org/
+        parent: docs.html
+        top_nav_grouping: Online Tools
+        targets:
+            - ja
 
     -   name: RPC Tool
         html: xrp-ledger-rpc-tool.html
         parent: dev-tools.html
         targets:
             - en
-            - ja
         template: page-rpc-tool.html.jinja
+
+    -   name: RPCツール
+        html: xrp-ledger-rpc-tool.html
+        parent: dev-tools.html
+        template: page-rpc-tool.html.jinja
+        targets:
+            - ja
 
     -   name: WebSocket API Tool
         html: websocket-api-tool.html
@@ -4331,6 +4353,13 @@ pages:
         canonical_url: https://xrpl.org/websocket-api-tool.html
         targets:
             - en
+
+    -   name: WebSocket APIツール
+        html: websocket-api-tool.html
+        parent: dev-tools.html
+        template: page-websocket-api-tool.html.jinja
+        canonical_url: https://xrpl.org/ja/websocket-api-tool.html
+        targets:
             - ja
 
     -   name: ripple.txt Validator # Redirect from ripple.txt validator to toml
@@ -4350,6 +4379,13 @@ pages:
         embed_xrpl_js: true
         targets:
             - en
+
+    -   name: xrp-ledger.tomlチェッカー
+        html: xrp-ledger-toml-checker.html
+        parent: dev-tools.html
+        template: page-toml-checker.html.jinja
+        embed_xrpl_js: true
+        targets:
             - ja
 
     -   name: Domain Verification Checker
@@ -4358,6 +4394,12 @@ pages:
         template: page-validator-domain-verifier.html.jinja
         targets:
             - en
+
+    -   name: ドメイン検証チェッカー
+        html: validator-domain-verifier.html
+        parent: dev-tools.html
+        template: page-validator-domain-verifier.html.jinja
+        targets:
             - ja
 
     -   name: XRP Faucets
@@ -4393,6 +4435,13 @@ pages:
         embed_xrpl_js: true
         targets:
             - en
+
+    -   name: トランザクション送信ツール
+        html: tx-sender.html
+        parent: dev-tools.html
+        template: page-tx-sender.html.jinja
+        embed_xrpl_js: true
+        targets:
             - ja
 
 
@@ -4449,6 +4498,13 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: アンバサダー
+        html: ambassadors.html
+        parent: contribute.html
+        template: page-ambassadors.html.jinja
+        sidebar: disabled
+        targets:
             - ja
 
     -   name: Developer Funding
@@ -4458,6 +4514,13 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: 開発者ファンド
+        html: developer-funding.html
+        parent: contribute.html
+        template: page-funding.html.jinja
+        sidebar: disabled
+        targets:
             - ja
 
     -   name: XRPL Jobs
