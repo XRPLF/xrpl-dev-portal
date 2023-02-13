@@ -1,0 +1,21 @@
+{
+  "name": "my-electron-app-wallet",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "hello": "electron ./1_hello.js",
+    "async-poll": "electron ./2_async-poll.js",
+    "async-subscribe": "electron ./2_async-subscribe.js",
+    "account": "electron ./3_account.js",
+    "tx-history": "electron ./4_tx-history.js",
+    "send-xrp": "electron ./5_send-xrp.js"
+  },
+  "dependencies": {
+    "async": "^3.2.4",
+    "xrpl": "^2.6.0"
+  },
+  "devDependencies": {
+    "electron": "^22.1.0"
+  }
+}

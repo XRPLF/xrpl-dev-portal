@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+    <title>My XRPL Wallet</title>
+</head>
+
+<body>
+<h3>Build a XRPL Wallet - Part 4/6</h3>
+<fieldset>
+    <legend>Account</legend>
+    Classic Address: <strong id="account-address-classic"></strong><br/>
+    X-Address: <strong id="account-address-x"></strong><br/>
+    XRP Balance: <strong id="account-balance"></strong><br/>
+    XRP Reserved: <strong id="account-reserve"></strong><br/>
+</fieldset>
+
+<fieldset>
+    <legend>Latest validated ledger</legend>
+    Ledger Index: <strong id="ledger-index"></strong><br/>
+    Ledger Hash: <strong id="ledger-hash"></strong><br/>
+    Close Time: <strong id="ledger-close-time"></strong><br/>
+</fieldset>
+
+<fieldset>
+    <legend>Transactions:</legend>
+    <table id="tx-table">
+        <thead>
+        <tr>
+            <th>Confirmed</th>
+            <th>Type</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Value Delivered</th>
+            <th>Hash</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</fieldset>
+
+</body>
+
+<script src="4_renderer.js"></script>
+
+</html>
