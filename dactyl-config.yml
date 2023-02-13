@@ -785,7 +785,7 @@ pages:
             - en
             - ja
 
-    -   md: concepts/tokens/nft-authorized-minting.md
+    -   md: concepts/tokens/nftoken-authorized-minting.md
         targets:
             - en
             - ja
