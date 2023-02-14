@@ -34,7 +34,7 @@ Run the auction in brokered mode, as an auction with a reserve.
 
 - There must be implicit trust between the seller and the marketplace that the marketplace will not take more than some previously-agreed-upon rate. If the reserve was 1 XRP and the winning bid was 1000 XRP, there is no on-chain mechanism to prevent the broker from taking 999 XRP as profit, leaving only the reserve profits for the Seller.
 
-A major mitigating factor of this downside is that if this behavior were to happen, Brokers would lose their entire market share, which sellers Should understand.
+A major mitigating factor of this downside is that if this behavior were to happen, Brokers would lose their entire market share, which sellers should understand.
 
 ## Run the Auction in Brokered Mode, without a Reserve. 
 
