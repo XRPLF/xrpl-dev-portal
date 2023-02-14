@@ -57,4 +57,4 @@ This is the most complex workflow of the three.
 **Cons:**
 
 - After the auction is complete, the sale is contingent on the seller agreeing to the final bid amount and broker fee amount. This means that sellers can back out of an otherwise complete auction or that sellers can delay settlement due to being distracted or not seeing some notification.
-- After the auction is complete, a seller can actively refuse the winning bid, instead selling to someone else.
+- After the auction is complete, a seller can refuse the winning bid, instead selling to someone else.
