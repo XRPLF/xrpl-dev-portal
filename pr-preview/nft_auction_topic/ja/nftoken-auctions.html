@@ -307,9 +307,9 @@
 <p>Run the auction in brokered mode, as an auction with a reserve.</p>
 <p><img alt="Auction in Brokered Mode with a Reserve" src="img/nft-auction1.png" title="Auction in Brokered Mode with a Reserve"/></p>
 <ol>
-<li>The Seller creates the NFT, then sets the auction reserve price using <code>NFTokenCreateOffer</code>, specifying the broker account as the destination.</li>
-<li>Buyers make bids using <code>NFTokenCreateOffer</code>, setting the broker account as the destination.</li>
-<li>The Broker selects the winning bid, completes the sale using <code>NFTokenAcceptOffer</code>, collecting the broker fee. Then the Broker cancels any losing bids using <code>NFTokenCancelOffer</code>.</li>
+<li>The seller creates the NFT, then sets the auction reserve price using <code>NFTokenCreateOffer</code>, specifying the broker account as the destination.</li>
+<li>The bidders make offers using <code>NFTokenCreateOffer</code>, setting the broker account as the destination.</li>
+<li>The broker selects the winning bid, completes the sale using <code>NFTokenAcceptOffer</code>, collecting the broker fee. Then the broker cancels any losing bids using <code>NFTokenCancelOffer</code>.</li>
 </ol>
 <p><strong>Pros:</strong></p>
 <ul>
@@ -319,24 +319,24 @@
 </ul>
 <p><strong>Cons:</strong></p>
 <ul>
-<li>There must be implicit trust between the seller and the marketplace that the marketplace will not take more than some previously-agreed-upon rate. If the reserve was 1 XRP and the winning bid was 1000 XRP, there is no on-chain mechanism to prevent the broker from taking 999 XRP as profit, leaving only the reserve profits for the Seller.</li>
+<li>There must be implicit trust between the seller and the broker that the broker will not take more than some previously agreed-upon rate. If the reserve was 1 XRP and the winning bid was 1000 XRP, there is no on-chain mechanism to prevent the broker from taking 999 XRP as profit, leaving only the reserve profits for the seller.</li>
 </ul>
-<p>A major mitigating factor of this downside is that if this behavior were to happen, Brokers would lose their entire market share, which sellers should understand.</p>
+<p>A major mitigating factor of this downside is that if this behavior were to happen, brokers would lose their entire market share, which sellers should understand.</p>
 <h2 id="run-the-auction-in-brokered-mode-without-a-reserve">Run the Auction in Brokered Mode, without a Reserve.<a aria-hidden="true" class="hover_anchor" href="#run-the-auction-in-brokered-mode-without-a-reserve"><i class="fa fa-link"></i></a></h2>
 <p>This is the most complex workflow of the three.</p>
 <p><img alt="Auction in Brokered Mode without a Reserve" src="img/nft-auction2.png" title="Auction in Brokered Mode without a Reserve"/></p>
 <ol>
-<li>The seller creates an NFT using NFTokenMint.</li>
-<li>The bidders make bids using NFTokenCreateOffer, setting the broker as the destination.</li>
-<li>The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests theseller sign a sell off for this amount via NFTokenCreateOffer.</li>
+<li>The seller creates an NFT using <code>NFTokenMint</code>.</li>
+<li>The bidders make offers using <code>NFTokenCreateOffer</code>, setting the broker as the destination.</li>
+<li>The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests the seller sign a sell off for this amount via <code>NFTokenCreateOffer</code>.</li>
 <li>The seller signs the requested offer, setting the broker as the destination.</li>
-<li>The broker completes the sale using NFTokenAcceptOffer, and receives the broker fee.</li>
-<li>The broker cancels any remaining bids using NFTokenCancelOffer.</li>
+<li>The broker completes the sale using <code>NFTokenAcceptOffer</code>, and receives the broker fee.</li>
+<li>The broker cancels any remaining bids using <code>NFTokenCancelOffer</code>.</li>
 </ol>
 <p><strong>Pros:</strong></p>
 <ul>
-<li>This flow requires absolutely no trust among participants, making it option one would most often expect on the blockchain.</li>
-<li>Sellers know exactly how much the marketplace takes from them in fees and must agree to it on the chain.</li>
+<li>This flow requires absolutely no trust among participants, making it the option most people expect on the blockchain.</li>
+<li>Sellers know exactly how much the broker takes from them in fees and must agree to it on the chain.</li>
 </ul>
 <p><strong>Cons:</strong></p>
 <ul>
