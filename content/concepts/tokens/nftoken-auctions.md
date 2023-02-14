@@ -12,7 +12,11 @@ There are several ways to run an auction, each with advantages and disadvantages
 
 ## Run the Auction Off the XRPL, Complete the Purchase on XRPL
 
-This flow is listed first as it is the most straightforward. You store your bids in a private database. You take a cut of the winning bid prior to sending the Buyer/Seller the XRPL transaction that completes the purchase. Note that because NFTokenOffer objects can always be canceled by their creator, it is not currently possible to implement a binding offer.
+This flow is the most straightforward. Note that the `NFTokenOffer` objects can always be canceled by their creator, so it's not possible to implement a binding offer.
+
+1. Store your bids in a private database.
+2. You take a cut of the winning bid.
+3. Send the buyer/seller the XRPL transaction to complete the purchase. 
 
 ## Run the Auction in Brokered Mode, with a Reserve
 
