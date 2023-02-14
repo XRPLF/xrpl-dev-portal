@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 16 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: ifs, gis, gibs
+  gifs: gies, giss, gibs
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -18,7 +18,7 @@ Found 16 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
@@ -28,18 +28,18 @@ Found 16 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3d, 3rd, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 31 discouraged words/phrases:
+Found 29 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -53,8 +53,7 @@ Page: <Page 'Privacy Policy' (privacy-policy.html)>
    Discouraged word: notify (1 instances); suggest 'let know, tell' instead.
    Discouraged phrase: prior to (1 instances); suggest 'before' instead.
 Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
-   Discouraged word: purchase (2 instances); suggest 'buy' instead.
-   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
    Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.

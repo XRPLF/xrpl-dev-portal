@@ -287,7 +287,12 @@
         <h1 id="running-an-nft-auction">Running an NFT Auction<a aria-hidden="true" class="hover_anchor" href="#running-an-nft-auction"><i class="fa fa-link"></i></a></h1>
 <p>There are several ways to run an auction, each with advantages and disadvantages.</p>
 <h2 id="run-the-auction-off-the-xrpl-complete-the-purchase-on-xrpl">Run the Auction Off the XRPL, Complete the Purchase on XRPL<a aria-hidden="true" class="hover_anchor" href="#run-the-auction-off-the-xrpl-complete-the-purchase-on-xrpl"><i class="fa fa-link"></i></a></h2>
-<p>This flow is listed first as it is the most straightforward. You store your bids in a private database. You take a cut of the winning bid prior to sending the Buyer/Seller the XRPL transaction that completes the purchase. Note that because NFTokenOffer objects can always be canceled by their creator, it is not currently possible to implement a binding offer.</p>
+<p>This flow is the most straightforward. Note that the <code>NFTokenOffer</code> objects can always be canceled by their creator, so it's not possible to implement a binding offer.</p>
+<ol>
+<li>Store your bids in a private database.</li>
+<li>You take a cut of the winning bid.</li>
+<li>Send the buyer/seller the XRPL transaction to complete the purchase. </li>
+</ol>
 <h2 id="run-the-auction-in-brokered-mode-with-a-reserve">Run the Auction in Brokered Mode, with a Reserve<a aria-hidden="true" class="hover_anchor" href="#run-the-auction-in-brokered-mode-with-a-reserve"><i class="fa fa-link"></i></a></h2>
 <p>Run the auction in brokered mode, as an auction with a reserve.</p>
 <p><img alt="Auction in Brokered Mode with a Reserve" src="img/nft-auction1.png" title="Auction in Brokered Mode with a Reserve"/></p>
@@ -326,7 +331,7 @@
 <p><strong>Cons:</strong></p>
 <ul>
 <li>After the auction is complete, the sale is contingent on the seller agreeing to the final bid amount and broker fee amount. This means that sellers can back out of an otherwise complete auction or that sellers can delay settlement due to being distracted or not seeing some notification.</li>
-<li>After the auction is complete, a seller can actively refuse the winning bid, instead selling to someone else.</li>
+<li>After the auction is complete, a seller can refuse the winning bid, instead selling to someone else.</li>
 </ul>
     </div>
   </article>
