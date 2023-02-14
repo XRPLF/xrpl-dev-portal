@@ -302,7 +302,7 @@
 <p>Run the auction in brokered mode, as an auction with a reserve.</p>
 <p><img alt="Auction in Brokered Mode with a Reserve" src="img/nft-auction1.png" title="Auction in Brokered Mode with a Reserve"/></p>
 <ol>
-<li>The Seller creates the NFT, then sets the auction reserve price using NFTokenCreateOffer, specifying the broker account as the destination.</li>
+<li>The Seller creates the NFT, then sets the auction reserve price using <code>NFTokenCreateOffer</code>, specifying the broker account as the destination.</li>
 <li>Buyers make bids using NFTokenCreateOffer, setting the broker account as the destination.</li>
 <li>The Broker selects the winning bid, completes the sale using NFTokenAcceptOffer, collecting the broker fee. Then the Broker cancels any losing bids using NFTokenCancelOffer.</li>
 </ol>
