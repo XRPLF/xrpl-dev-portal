@@ -789,7 +789,12 @@ pages:
         targets:
             - en
             - ja
-            
+
+    -   md: concepts/tokens/nftoken-auctions.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/freezes.md
         targets:
             - en
