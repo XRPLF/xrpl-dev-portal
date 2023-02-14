@@ -52,7 +52,7 @@ This is the most complex workflow of the three.
 **Pros:**
 
 - This flow requires absolutely no trust among participants, making it option one would most often expect on the blockchain.
-- Sellers know exactly how much the marketplace take from them in fees and must agree to it on chain.
+- Sellers know exactly how much the marketplace takes from them in fees and must agree to it on the chain.
 
 **Cons:**
 
