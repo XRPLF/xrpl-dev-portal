@@ -24,9 +24,9 @@ Run the auction in brokered mode, as an auction with a reserve.
 
 ![Auction in Brokered Mode with a Reserve](img/nft-auction1.png "Auction in Brokered Mode with a Reserve")
 
-1. The Seller creates the NFT, then sets the auction reserve price using `NFTokenCreateOffer`, specifying the broker account as the destination.
-1. Buyers make bids using `NFTokenCreateOffer`, setting the broker account as the destination.
-1. The Broker selects the winning bid, completes the sale using `NFTokenAcceptOffer`, collecting the broker fee. Then the Broker cancels any losing bids using `NFTokenCancelOffer`.
+1. The seller creates the NFT, then sets the auction reserve price using `NFTokenCreateOffer`, specifying the broker account as the destination.
+1. The bidders make offers using `NFTokenCreateOffer`, setting the broker account as the destination.
+1. The broker selects the winning bid, completes the sale using `NFTokenAcceptOffer`, collecting the broker fee. Then the broker cancels any losing bids using `NFTokenCancelOffer`.
 
 **Pros:**
 
@@ -36,9 +36,9 @@ Run the auction in brokered mode, as an auction with a reserve.
 
 **Cons:**
 
-- There must be implicit trust between the seller and the marketplace that the marketplace will not take more than some previously-agreed-upon rate. If the reserve was 1 XRP and the winning bid was 1000 XRP, there is no on-chain mechanism to prevent the broker from taking 999 XRP as profit, leaving only the reserve profits for the Seller.
+- There must be implicit trust between the seller and the broker that the broker will not take more than some previously agreed-upon rate. If the reserve was 1 XRP and the winning bid was 1000 XRP, there is no on-chain mechanism to prevent the broker from taking 999 XRP as profit, leaving only the reserve profits for the seller.
 
-A major mitigating factor of this downside is that if this behavior were to happen, Brokers would lose their entire market share, which sellers should understand.
+A major mitigating factor of this downside is that if this behavior were to happen, brokers would lose their entire market share, which sellers should understand.
 
 ## Run the Auction in Brokered Mode, without a Reserve. 
 
@@ -46,12 +46,12 @@ This is the most complex workflow of the three.
 
 ![Auction in Brokered Mode without a Reserve](img/nft-auction2.png "Auction in Brokered Mode without a Reserve")
 
-1. The seller creates an NFT using NFTokenMint.
-1. The bidders make bids using NFTokenCreateOffer, setting the broker as the destination.
-1. The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests theseller sign a sell off for this amount via NFTokenCreateOffer.
+1. The seller creates an NFT using `NFTokenMint`.
+1. The bidders make offers using `NFTokenCreateOffer`, setting the broker as the destination.
+1. The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests the seller sign a sell off for this amount via `NFTokenCreateOffer`.
 1. The seller signs the requested offer, setting the broker as the destination.
-1. The broker completes the sale using NFTokenAcceptOffer, and receives the broker fee.
-1. The broker cancels any remaining bids using NFTokenCancelOffer.
+1. The broker completes the sale using `NFTokenAcceptOffer`, and receives the broker fee.
+1. The broker cancels any remaining bids using `NFTokenCancelOffer`.
 
 **Pros:**
 
