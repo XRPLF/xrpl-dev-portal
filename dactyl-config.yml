@@ -4313,7 +4313,7 @@ pages:
             - en
             - ja
     
-    -   name: XRPL Education Portal
+    -   name: XRPL Learning Portal
         html: https://learn.xrpl.org/
         parent: docs.html
         top_nav_grouping: Online Tools
