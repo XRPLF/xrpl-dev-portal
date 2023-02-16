@@ -262,6 +262,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#trading-nftokens-on-the-xrp-ledger">Trading NFTokens on the XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#reserve-requirements">Reserve Requirements</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#sell-offers">Sell Offers</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#create-a-sell-offer">Create a Sell Offer</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#accept-a-sell-offer">Accept a Sell Offer</a></li>
@@ -293,6 +294,9 @@
         <h1 id="trading-nftokens-on-the-xrp-ledger">Trading NFTokens on the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#trading-nftokens-on-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
 <p>You can transfer <code>NFToken</code> objects between accounts on the XRP Ledger. You can offer to buy or sell a <code>NFToken</code>, or accept offers from other accounts to buy a <code>NFToken</code> you own. You can even give away a <code>NFToken</code> by offering to sell it at a price of 0.  All offers are created using <a href="nftokencreateoffer.html">NFTokenCreateOffer transaction</a>.</p>
 <p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
+<h2 id="reserve-requirements">Reserve Requirements<a aria-hidden="true" class="hover_anchor" href="#reserve-requirements"><i class="fa fa-link"></i></a></h2>
+<p>Every NFTokenOffer object requires that your account increase its owner reserve, currently 2 XRP per <code>NFTokenSellOffer</code> and 2 XRP per <code>NFTokenBuyOffer</code>. This is to prevent accounts from spamming the ledger with offers they don't intend to complete.</p>
+<p>See <a href="nft-reserve-requirements.html">NFT Reserve Requirements</a>.</p>
 <h2 id="sell-offers">Sell Offers<a aria-hidden="true" class="hover_anchor" href="#sell-offers"><i class="fa fa-link"></i></a></h2>
 <h3 id="create-a-sell-offer">Create a Sell Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-sell-offer"><i class="fa fa-link"></i></a></h3>
 <p>As the owner of a <code>NFToken</code> object, you can create a sell offer using a <a href="nftokencreateoffer.html">NFTokenCreateOffer transaction</a> with the <code>tfSellToken</code> flag. You provide the <code>NFTokenID</code> and the <code>Amount</code> you are willing to accept in payment. You can optionally specify an <code>Expiration</code> date, after which the offer is no longer valid, and a <code>Destination</code> account, which is the only account that is allowed to buy the <code>NFToken</code>.</p>

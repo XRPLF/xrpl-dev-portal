@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 17 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gifts, gips, gibs
-  kuressaare: 
+  gifs: gies, giff, gins
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -83,7 +83,7 @@ Average Page Readability Scores:
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.8
+  Automated Readability Index: Grade level 10.9
   Coleman-Liau Index: Grade level 11.5
   Linsear Write Formula: Grade level 8.5
 
@@ -121,8 +121,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 741
-  Characters: 4,600
+  Words: 742
+  Characters: 4,602
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
