@@ -40,9 +40,21 @@ Each `NFTokenOffer` object costs the account placing the offer one incremental r
 
 ## Practical Considerations
 
-When minting, holding, and offering NFTs, the reserve requirements can add up quickly. This can result in your account going below the reserve requirement during a transaction. Going below the requirement can limit your ability to trade on the XRPL. See [Going Below the Reserve Requirement](reserves.html#going-below-the-reserve-requirement).
+When minting, holding, and offering to buy and sell NFTs, the reserve requirements can add up quickly. This can result in your account going below the reserve requirement during a transaction. Going below the requirement can limit your ability to trade on the XRPL. See [Going Below the Reserve Requirement](reserves.html#going-below-the-reserve-requirement).
 
-For example, if you were to mint 200 NFTs and create an `NFTokenOffer`for each, that would require as much as 436 XRP held in reserve.
+If you create a new account, mint an NFT, and create an `NFTokenSellOffer` on the XRP Ledger, that requires a minimum reserve of 14 XRP.
+
+| Reserve Type        | Amount  |
+|:--------------------|--------:|
+| Base                | 10 XRP  |
+| NFToken Page        | 2 XRP   |
+| NFToken Offers      | 2 XRP   |
+| Total               | 14 XRP  |
+|                     |         |
+
+**Note** While not a reserve requirement, keep in mind that you would want to have at least 1 XRP above your reserves to cover the trivial fee for each transaction in the mint and sell process (typically 12 drops, or .000012 XRP).
+
+If you were to mint 200 NFTs and create an `NFTokenSellOffer`for each, that would require as much as 436 XRP held in reserve.
 
 | Reserve Type        | Amount  |
 |:--------------------|--------:|
