@@ -12,7 +12,7 @@ Minting, holding, and offering NFTs for sale require XRP held in reserve. The re
 
 ## Base Reserve
 
-You account must set aside a base reserve, currently 10 XRP. The base reserve XRP amount is subject to change. See [Base Reserve and Owner Reserve](reserves.html#base-reserve-and-owner-reserve).
+Your account must set aside a base reserve, currently 10 XRP. The base reserve XRP amount is subject to change. See [Base Reserve and Owner Reserve](reserves.html#base-reserve-and-owner-reserve).
 
 ## Owner Reserve
 
