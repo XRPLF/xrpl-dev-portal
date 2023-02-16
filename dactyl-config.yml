@@ -780,6 +780,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/nft-reserve-requirements.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/nftoken-batch-minting.md
         targets:
             - en
