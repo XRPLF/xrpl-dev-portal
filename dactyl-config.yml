@@ -796,6 +796,9 @@ pages:
     -   md: concepts/tokens/nftoken-auctions.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-auctions.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/freezes.md
