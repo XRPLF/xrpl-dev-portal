@@ -42,7 +42,17 @@ When you're [building production-ready software](production-readiness.html), you
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
 
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
 {{ include_code("_code-samples/get-started/js/base.js", language="js") }}
+
+_Python_
+
+{{ include_code("_code-samples/get-started/py/base.py", language="py") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 For this tutorial, click the following button to connect:
 
@@ -59,6 +69,10 @@ For example:
 _JavaScript_
 
 {{ include_code("_code-samples/require-destination-tags/js/require-destination-tags.js", language="js", start_with="// Send AccountSet", end_before="// Confirm Account") }}
+
+_Python_
+
+{{ include_code("_code-samples/require-destination-tags/py/require-destination-tags.py", language="py", start_with="# Send AccountSet", end_before="# Confirm Account") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -88,6 +102,10 @@ After the transaction is validated, you can check your account's settings to con
 _JavaScript_
 
 {{ include_code("_code-samples/require-destination-tags/js/require-destination-tags.js", language="js", start_with="// Confirm Account", end_before="// End main()") }}
+
+_Python_
+
+{{ include_code("_code-samples/require-destination-tags/py/require-destination-tags.py", language="py", start_with="# Confirm Account", end_before="# End main()") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
