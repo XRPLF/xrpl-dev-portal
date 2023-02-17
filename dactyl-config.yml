@@ -783,6 +783,9 @@ pages:
     -   md: concepts/tokens/nftoken-batch-minting.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-batch-minting.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/nftoken-authorized-minting.md
