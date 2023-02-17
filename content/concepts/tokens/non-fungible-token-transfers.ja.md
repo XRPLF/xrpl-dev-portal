@@ -1,10 +1,10 @@
 ---
+name: NFTの取引
 html: non-fungible-token-transfers.html
 parent: non-fungible-tokens.html
 blurb: NFTokenをダイレクトモードまたはブローカーモードで取引する。
 labels:
  - Non-fungible Tokens, NFTs
-status: not_enabled
 ---
 
 # XRP Ledger上でNFTokenを売買する
