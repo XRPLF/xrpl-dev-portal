@@ -790,6 +790,11 @@ pages:
             - en
             - ja
 
+    -   md: concepts/tokens/nft-fixed-supply.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/nftoken-auctions.md
         targets:
             - en

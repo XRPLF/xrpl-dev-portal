@@ -6,7 +6,7 @@ labels:
  - Non-fungible Tokens, NFTs
 ---
 
-# Batch minting
+# Batch Minting
 
 There are two common approaches to minting NFToken objects in batches: mint on demand and scripted minting.
 
