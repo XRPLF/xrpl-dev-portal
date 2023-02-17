@@ -795,6 +795,11 @@ pages:
             - en
             - ja
 
+    -   md: concepts/tokens/nft-collections.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/freezes.md
         targets:
             - en
