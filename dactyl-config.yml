@@ -791,6 +791,9 @@ pages:
     -   md: concepts/tokens/nftoken-authorized-minting.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-authorized-minting.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/nftoken-auctions.md

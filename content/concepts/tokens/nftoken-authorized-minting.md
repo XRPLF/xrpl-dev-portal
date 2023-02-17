@@ -50,7 +50,7 @@ const transactionBlob = {
   "URI": xrpl.convertStringToHex("ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"),
   "Flags": 8,
   "TransferFee": 5000,
-  "NFTokenTaxon": 0
+  "NFTokenTaxon": 0,
   "Issuer": "rrE5EgHN4DfjXhR9USecudHm7UyhTYq6m", // Needed when minting for another
                                                  // account.
 }
