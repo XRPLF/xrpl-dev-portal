@@ -19,13 +19,20 @@ This tutorial demonstrates how to enable the Require Destination Tag flag on you
 ## Prerequisites
 
 - You need a funded XRP Ledger account, with an address, secret key, and some XRP. For production, you can use the same address and secret consistently. For this tutorial, you can generate new test credentials as needed.
-- You need a connection to the XRP Ledger network.
-
-This page provides examples that use [xrpl.js](get-started-using-javascript.html) in the web browser, so you can read along and use the interactive steps without any setup.
+- You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
+- You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
+    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
+    - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/require-destination-tags.js"></script>
 
+## Example Code
+
+Complete sample code for all the steps of these tutorials is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
+
+- See [Code Samples: Require Destination Tags](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/require-destination-tags/) in the source repository for this website.
 
 ## Steps
 {% set n = cycler(* range(1,99)) %}
