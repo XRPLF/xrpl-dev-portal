@@ -14,13 +14,15 @@ This tutorial demonstrates how you can buy and sell tokens in the [decentralized
 
 ## Prerequisites
 
+- You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
+- You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
+    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
+    - You can also read along and use the interactive steps in your browser without any setup.
+
 <!-- Source for this specific tutorial's interactive bits: -->
 <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
 <script type="application/javascript" src="assets/js/tutorials/trade-in-the-dex.js"></script>
-
-This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
-
-Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
 
 ## Example Code
 
@@ -48,6 +50,10 @@ You must be connected to the network to submit transactions to it. Additionally,
 _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/base-with-bignumber.js", language="js") }}
+
+_Python_
+
+{{ include_code("_code-samples/get-started/py/base.py", language="py") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
