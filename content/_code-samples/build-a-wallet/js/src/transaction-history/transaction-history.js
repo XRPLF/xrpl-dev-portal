@@ -82,6 +82,11 @@ const fetchTxHistory = async () => {
             }),
         ];
 
+        // If there are no more transactions, hide the load more button
+        if (!nextMarker) {
+            loadMore.style.display = 'none';
+        }
+
         // If there are no transactions, show a message
         if (values.length === 0) {
             const row = document.createElement('tr');
@@ -131,9 +136,10 @@ const fetchTxHistory = async () => {
         loadMore.disabled = false;
 
         // Return the marker
-        return nextMarker;
+        return nextMarker ?? null;
     } catch (error) {
         console.log(error);
+        return null;
     }
 };
 
@@ -149,11 +155,7 @@ const renderTxHistory = async () => {
         loadMore.style.display = 'block';
         loadMore.addEventListener('click', async () => {
             const nextMarker = await fetchTxHistory();
-            if (!nextMarker) {
-                loadMore.style.display = 'none';
-            } else {
-                marker = nextMarker;
-            }
+            marker = nextMarker;
         });
     }
 };
