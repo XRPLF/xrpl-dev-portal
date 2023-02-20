@@ -998,6 +998,15 @@ $placeholder-color: $gray-600;
     }
   }
 
+  #map-light,
+  #map-light-small {
+    display: block;
+  }
+  #map-dark,
+  #map-dark-small {
+    display: none;
+  }
+
 }
 
 

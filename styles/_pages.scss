@@ -454,6 +454,15 @@
 
 .page-impact {
 
+  #map-light,
+  #map-light-small {
+    display: none;
+  }
+  #map-dark,
+  #map-dark-small {
+    display: block;
+  }
+
   .connect-list {
     @each $connect in "connect-01", "connect-02", "connect-03", "connect-04" {
       ##{$connect} {
