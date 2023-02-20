@@ -77,6 +77,10 @@ _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Get credentials", end_before="// Define the proposed trade") }}
 
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Get credentials", end_before="# Define the proposed trade") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 ### {{n.next()}}. Look Up Offers
@@ -92,6 +96,10 @@ The following code shows how to look up existing Offers and compare them to a pr
 _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Define the proposed trade", end_before="// Send OfferCreate") }}
+
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Define the proposed trade", end_before="# Send OfferCreate") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -159,6 +167,10 @@ _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Send OfferCreate", end_before="// Check metadata") }}
 
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Send OfferCreate", end_before="# Check metadata") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 You can use this interface to send the transaction specified by the amounts in the previous step:
@@ -193,6 +205,10 @@ _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Check metadata", end_before="// Check balances") }}
 
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Check metadata", end_before="# Check balances") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 You can use this interface to test it out:
@@ -215,6 +231,10 @@ The following code demonstrates how to look up balances using the [account_lines
 _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Check balances", end_before="client.disconnect()") }}
+
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Check balances", end_before="# End main()") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
