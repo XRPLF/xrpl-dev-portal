@@ -6,7 +6,8 @@ import addXrplLogo from '../helpers/addXrplLogo';
 
 addXrplLogo();
 
-var values = [];
+let values = [];
+let marker = null;
 
 // Get the elements from the DOM
 const txHistoryElement = document.querySelector('#tx_history_data');
@@ -42,7 +43,7 @@ const getTokenName = (value) =>
         : value;
 
 // Fetches the transaction history from the ledger
-const fetchTxHistory = async (marker) => {
+const fetchTxHistory = async () => {
     try {
         loadMore.textContent = 'Loading...';
         loadMore.disabled = true;
@@ -138,7 +139,7 @@ const fetchTxHistory = async (marker) => {
 
 const renderTxHistory = async () => {
     // Fetch the transaction history
-    const marker = await fetchTxHistory();
+    marker = await fetchTxHistory();
 
     // If there are no more transactions, hide the load more button
     if (!marker) {
@@ -147,9 +148,11 @@ const renderTxHistory = async () => {
         // Otherwise, show the load more button
         loadMore.style.display = 'block';
         loadMore.addEventListener('click', async () => {
-            const nextMarker = await fetchTxHistory(marker);
+            const nextMarker = await fetchTxHistory();
             if (!nextMarker) {
                 loadMore.style.display = 'none';
+            } else {
+                marker = nextMarker;
             }
         });
     }
