@@ -197,6 +197,11 @@ targets:
             "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
             # Fix link from untranslated health-check.html:
             "amendments.html#amendment-blocked-servers": "amendments.html#amendment-blocked"
+            # Fix link from nft-reserve-requirements.html:
+            "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
+            # Fix link from nft-reserve-requirements.html:
+            "reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+
 
 pages:
 
@@ -780,6 +785,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/nft-reserve-requirements.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/nftoken-batch-minting.md
         targets:
             - en
@@ -796,6 +806,11 @@ pages:
             - ja
 
     -   md: concepts/tokens/nftoken-auctions.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/nft-collections.md
         targets:
             - en
             - ja
@@ -2243,6 +2258,8 @@ pages:
         targets:
             - en
 
+        # TODO: update translation to use the term "sequence number" rather than
+        # "dumb sequential"
     -   md: references/protocol-reference/data-types/nftoken.ja.md
         targets:
             - ja

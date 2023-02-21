@@ -7,6 +7,7 @@ labels:
 ---
 # NFToken
 
+<<<<<<< HEAD
 The `NFToken` object represents a single non-fungible token (NFT). It is not stored on its own, but is contained in a [NFTokenPage object][]  alongside other `NFToken` objects.
 
 ## NFToken Flags
@@ -29,6 +30,11 @@ Flags are properties or other options associated with the `NFToken` object.
 <!-- SPELLING_IGNORE: nftokentaxon -->
 
 The fourth section is a `NFTokenTaxon` created by the issuer.
+
+=======
+
+The `NFToken` object represents a single non-fungible token (NFT).
+>>>>>>> c4516e62876bd6b101183bca12622503aaea6a52
 
 
 <!--{# common link defs #}-->
