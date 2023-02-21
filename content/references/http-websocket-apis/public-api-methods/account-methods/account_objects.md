@@ -71,15 +71,15 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
 The request includes the following parameters:
 
-| `Field`                  | Type             | Description                    |
-|:-------------------------|:-----------------|:-------------------------------|
-| `account`                | String           | A unique identifier for the account, most commonly the account's address. |
-| `type`                   | String           | _(Optional)_ If included, filter results to include only this type of ledger object. The valid types are: `check`, `deposit_preauth`, `escrow`, `offer`, `payment_channel`, `signer_list`, `ticket`, and `state` (trust line). <!-- Author's note: Omitted types that can't be owned by an account --> |
-| `deletion_blockers_only` | Boolean          | _(Optional)_ If `true`, the response only includes objects that would block this account from [being deleted](accounts.html#deletion-of-accounts). The default is `false`. [New in: rippled 1.4.0][] |
-| `ledger_hash`            | String           | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`           | String or Number | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `limit`                  | Number           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
-| `marker`                 | [Marker][]       | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `Field`                  | Type             | Required? | Description |
+|:-------------------------|:-----------------|:----------|-------------|
+| `account`                | String           | Yes       | A unique identifier for the account, most commonly the account's [Address][]. |
+| `deletion_blockers_only` | Boolean          | No        | If `true`, the response only includes objects that would block this account from [being deleted](accounts.html#deletion-of-accounts). The default is `false`. [New in: rippled 1.4.0][] |
+| `ledger_hash`            | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index`           | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `limit`                  | Number           | No        | The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
+| `marker`                 | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `type`                   | String           | No        | Filter results by a ledger entry type. The valid types are: `check`, `deposit_preauth`, `escrow`, `nft_offer`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. <!-- Author's note: Omitted types that can't be owned by an account --> |
 
 ## Response Format
 

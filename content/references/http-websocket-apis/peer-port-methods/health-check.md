@@ -90,8 +90,8 @@ The response's HTTP status code indicates the health of the server:
 | Status Code                   | Health Status | Description                  |
 |:------------------------------|:--------------|:-----------------------------|
 | **200 OK**                    | Healthy       | All health metrics are within acceptable ranges. |
-| **503 Service Unavailable**   | Warning       | One or more metric is in the warning range. Manual intervention may or may not be necessary. |
-| **500 Internal Server Error** | Critical      | One or more metric is in the critical range. There is a serious problem that probably needs manual intervention to fix. |
+| **503 Service Unavailable**   | Warning       | One or more metrics are in the warning range. Manual intervention may or may not be necessary. |
+| **500 Internal Server Error** | Critical      | One or more metrics are in the critical range. There is a serious problem that probably needs manual intervention to fix. |
 
 The response body is a JSON object with a single `info` object at the top level. The `info` object contains values for each metric that is in a warning or critical range. The response omits metrics that are in a healthy range, so a fully healthy server has an empty object.
 
@@ -99,7 +99,7 @@ The `info` object may contain the following fields:
 
 | `Field`             | Value   | Description                                  |
 |:--------------------|:--------|:---------------------------------------------|
-| `amendment_blocked` | Boolean | _(May be omitted)_ If `true`, the server is [amendment blocked](amendments.html#amendment-blocked) and must be upgraded to remain synced with the network; this state is critical. If the server is not amendment blocked, this field is omitted. |
+| `amendment_blocked` | Boolean | _(May be omitted)_ If `true`, the server is [amendment blocked](amendments.html#amendment-blocked-servers) and must be upgraded to remain synced with the network; this state is critical. If the server is not amendment blocked, this field is omitted. |
 | `load_factor`       | Number | _(May be omitted)_ A measure of the overall load the server is under. This reflects I/O, CPU, and memory limitations. This is a warning if the load factor is over 100, or critical if the load factor is 1000 or higher. |
 | `peers`             | Number | _(May be omitted)_ The number of [peer servers](peer-protocol.html) this server is connected to. This is a warning if connected to 7 or fewer peers, and critical if connected to zero peers. |
 | `server_state`      | String | _(May be omitted)_ The current [server state](rippled-server-states.html). This is a warning if the server is in the `tracking`, `syncing`, or `connected` states. This is critical if the server is in the `disconnected` state. |

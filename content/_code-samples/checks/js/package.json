@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
-    "ripple-lib": "^1.0.0-beta.1"
+    "ripple-lib": "^1.0.0-beta.1",
+    "xrpl": "^2.8.0-beta.0"
   }
 }

@@ -97,7 +97,7 @@ The following message indicates that the server has detected that it is running 
 LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
 ```
 
-This is not strictly a problem, but an old server version is likely to become [amendment blocked](amendments.html#amendment-blocked). You should [update `rippled`](install-rippled.html) to the latest stable version. (If you are connected to [devnet](parallel-networks.html), update to the latest nightly version instead.)
+This is not strictly a problem, but an old server version is likely to become [amendment blocked](amendments.html#amendment-blocked-servers). You should [update `rippled`](install-rippled.html) to the latest stable version. (If you are connected to [devnet](parallel-networks.html), update to the latest nightly version instead.)
 
 
 ## Connection reset by peer

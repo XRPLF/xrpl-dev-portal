@@ -42,11 +42,6 @@ Edit your `rippled.cfg` file.
 
         # No [ips] stanza. Use the default hubs to connect to Mainnet.
 
-    *NFT-Devnet*
-
-        [ips]
-        xls20-sandbox.rippletest.net 51235
-
     *AMM-Devnet*
 
         [ips]
@@ -79,11 +74,6 @@ Edit your `rippled.cfg` file.
 
         [network_id]
         main
-
-    *NFT-Devnet*
-
-        [network_id]
-        20
 
     *AMM-Devnet*
 
@@ -128,14 +118,6 @@ Edit your `validators.txt` file. This file is located in the same folder as your
 
         [validator_list_keys]
         ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-
-    *NFT-Devnet*
-
-        [validator_list_sites]
-        http://nftvalidators.s3.us-west-2.amazonaws.com/index.json
-
-        [validator_list_keys]
-        ED8E43A943A174190BA2FAE91F44AC6E2D1D8202EFDCC2EA3DBB39814576D690F7
 
     *AMM-Devnet*
 
@@ -194,13 +176,6 @@ _Mainnet_
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Mainnet.
-```
-
-_NFT-Devnet_
-
-```
-[features]
-NonFungibleTokensV1
 ```
 
 _AMM-Devnet_

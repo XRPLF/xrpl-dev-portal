@@ -11,51 +11,58 @@ top_nav_grouping: Popular Pages
 
 The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM.
 
-To have an account, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send that address enough XRP to meet the reserve requirement.
+To have an account, an address must hold a minimum amount of XRP in the shared global ledger. To fund a new address, you must receive enough XRP at that address to meet the reserve requirement. You cannot send the reserved XRP to others, but you can recover some of the XRP by [deleting the account](accounts.html#deletion-of-accounts).
 
-The reserve requirement changes from time to time due to the [Fee Voting](fee-voting.html) process, where validators can agree to new reserve settings. On [Mainnet](parallel-networks.html), the current minimum reserve requirement is **10 XRP**. (This is the cost of an address that owns no other objects in the ledger.) Each new [account](accounts.html) must set aside this much XRP. Some of this XRP can be recovered by [deleting the account](accounts.html#deletion-of-accounts).
-
-To determine the current minimum reserve requirement, use the [`server_info` command](server_info.html) and take `validated_ledger.reserve_base_xrp`.
+The reserve requirement changes from time to time due to the [Fee Voting](fee-voting.html) process, where validators can agree to new reserve settings.
 
 ## Base Reserve and Owner Reserve
 
 The reserve requirement has two parts:
 
 * The **Base Reserve** is a minimum amount of XRP that is required for each address in the ledger.
-* The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger.
+* The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger. The cost per item is also called the _incremental reserve_.
 
+The current reserve requirements on Mainnet are:
 
-### Owner Reserves
+- Base reserve: **10 XRP**
+- Owner reserve: **2 XRP** per item
 
-Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. Each object increases the reserve requirement by the Owner Reserve. On Mainnet, this is currently 2 XRP (`2000000` [drops](xrp.html#xrp-properties)) per item.
+Reserves on other networks may vary.
 
-When objects are removed from the ledger, they no longer count against their owner's reserve requirement.
+## Owner Reserves
 
-To retrieve the number of objects an account owns in the ledger, use the [account_info method][] and take `account_data.OwnerCount`. `OwnerCount` is one of the fields of the [`AccountRoot` object](accountroot.html). To look up reserve settings, use the [server_info method][]: the `validated_ledger.reserve_inc_xrp` is the owner reserve and the `validated_ledger.reserve_base_xrp` is the base reserve, both in decimal XRP. To get the values in integer drops of XRP instead, use the [server_state method][].
+Many objects in the ledger (ledger entries) are owned by a particular account. Usually, the owner is the account that created the object. Each object increases the owner's total reserve requirement by the owner reserve. When objects are removed from the ledger, they no longer count against the reserve requirement.
 
-To calculate an address's Owner Reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](build-a-desktop-wallet-in-python.html#codeblock-17) of this calculation in Python.
+Objects that count towards their owner's reserve requirement include: [Checks](checks.html), [Deposit Preauthorizations](depositauth.html#preauthorization), [Escrows](escrow.html), [NFT Offers](non-fungible-token-transfers.html), [NFT Pages](non-fungible-tokens.html), [Offers](offer.html), [Payment Channels](payment-channels.html), [Signer Lists](multi-signing.html), [Tickets](tickets.html), and [Trust Lines](trust-lines-and-issuing.html).
 
-- [Offers](offer.html) are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an [OfferCancel transaction][], or by sending an [OfferCreate transaction][] that contains an `OfferSequence` parameter.
-- [Trust lines](ripplestate.html) are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See [Contributing to the Owner Reserve](ripplestate.html#contributing-to-the-owner-reserve) for details.
-- A SignerList counts as 1 object for purposes of the owner reserve (since the [MultiSignReserve amendment][] activated in April 2019). See also: [Signer Lists and Reserves](signerlist.html#signer-lists-and-reserves).
-- [Held Payments (Escrow)](escrow-object.html) are owned by the address that placed them.
-- [Payment Channels](use-payment-channels.html) are owned by the address that created them.
-- [Owner directories](directorynode.html) list all the ledger objects that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
-- [Checks](checks.html) are owned by the address that created them (the sender, not the destination).
+Some special cases:
 
+- Non-Fungible Tokens (NFTs) are grouped into pages containing up to 32 NFTs each, and the owner reserve applies per page rather than per NFT. Due to the mechanism for splitting and combining pages, the number of NFTs actually stored per page varies. See also: [Reserve for NFTokenPage objects](nftokenpage.html#reserve-for-nftokenpage-objects).
+- Trust lines (`RippleState` entries) are shared between two accounts. The owner reserve can apply to one or both of them. Most often, the token holder owes a reserve and the issuer does not. See also: [RippleState: Contributing to the Owner Reserve](ripplestate.html#contributing-to-the-owner-reserve).
+- Signer lists created before the [MultiSignReserve amendment][] activated in April 2019 count as multiple objects. See also: [Signer Lists and Reserves](signerlist.html#signer-lists-and-reserves).
+- An [Owner Directory](directorynode.html) is a ledger entry that lists all objects related to an account, including all objects the account owns. However, the owner directory itself does not count towards the reserve.
 
-#### Owner Reserve Edge Cases
+### Looking Up Reserves
 
-The XRP Ledger considers an [OfferCreate transaction][] to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the `taker_pays` currency if such a trust line does not exist. However, if the offer's owner does not hold enough XRP to also meet the owner reserve requirement of the new trust line, the offer is considered unfunded. See also: [Lifecycle of an Offer](offers.html#lifecycle-of-an-offer).
+Applications can look up the current base and incremental reserve values using the [server_info method][] or [server_state method][]:
+
+| Method                  | Units                | Base Reserve Field                  | Incremental Reserve Field          |
+|-------------------------|----------------------|-------------------------------------|------------------------------------|
+| [server_info method][]  | Decimal XRP          | `validated_ledger.reserve_base_xrp` | `validated_ledger.reserve_inc_xrp` |
+| [server_state method][] | Integer drops of XRP | `validated_ledger.reserve_base`     | `validated_ledger.reserve_inc`     |
+
+To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the [account_info method][] and take `account_data.OwnerCount`. 
+
+To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](build-a-desktop-wallet-in-python.html#codeblock-17) of this calculation in Python.
 
 
 ## Going Below the Reserve Requirement
 
-During transaction processing, the [transaction cost](transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.
+During transaction processing, the [transaction cost](transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement. You can even destroy _all_ of your XRP this way.
 
-When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would transfer XRP to others, or increase its own reserve. Even so, the address continues to exist in the ledger and can send other transactions as long as it has enough XRP to pay the transaction cost. The address can become able to send all types of transactions again if it receives enough XRP to meet its reserve requirement again, or if the [reserve requirement decreases](#changing-the-reserve-requirements) to less than the address's XRP holdings.
+When your account holds less XRP than its current reserve requirement, you cannot send XRP to others, or create new objects that would increase your account's reserve requirement. Even so, the account continues to exist in the ledger and you can still send transactions that don't do these things, as long as you have enough XRP to pay the transaction cost. You can go back above the reserve requirement by receiving enough XRP, or if the [reserve requirement decreases](#changing-the-reserve-requirements) below the amount you have.
 
-**Tip:** When an address is below the reserve requirement, it can send new [OfferCreate transactions][] to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](ripplestate.html), or [Offer nodes in the ledger](offer.html), so they can only execute trades that consume Offers that are already in the order books.
+**Tip:** If your address is below the reserve requirement, you can send an [OfferCreate transactions][] to acquire more XRP and get back above the reserve requirement. However, since you cannot create an [Offer entry in the ledger](offer.html) while you are below the reserve, this transaction can only consume Offers that are already in the order books.
 
 
 ## Changing the Reserve Requirements

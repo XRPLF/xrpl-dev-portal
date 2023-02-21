@@ -156,56 +156,237 @@
   right: -4px;
 }
 
-#use-case-card-grid {
-  @include media-breakpoint-up(lg) {
-    margin-top: -40px; // offset the 40px margin of the cols
-  }
-}
-
 #validator-graphic {
   content: url(../img/validators.svg);
 }
 
 .page-uses {
+  
+  .container-new {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
   &::before {
+    transform: scaleX(-1);
     background-image: url(../img/backgrounds/use-cases-blue.svg);
   }
-  @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
+
+  .card-grid {
+    grid-gap: 8px
+  }
+
+  .card-grid img {
+    max-height: 40px;
+  }
+
+  /* Cleanup bootstrap modal */
+  .modal {
+    padding: 0; 
+  }
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: $black;
+
+    background-clip: padding-box; 
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+
+    background: $gray-900;
+  }
+
+  .modal-header {
+    border: none;
+    background: $gray-900;
+    box-shadow: 0px 1px 2px $black;
+  }
+  .modal-header .cancel .chevron {
+    transform: rotate(90deg);
+  }
+  .modal-header .apply .chevron {
+    transform: rotate(-90deg);
+  }
+
+  .modal-footer {
+    border: none;
+    background: $gray-900;
+    box-shadow: 0px -1px 2px $black;
+    
+    align-items: unset; 
+    padding: 0.75rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }    
+
+  .card-title {
+    margin-bottom: 0.5rem;
+    line-height: 26px;
+  }
+  .card-uses {
+    padding: 16px;
+    margin: 0;
+    text-decoration: none;
+    transition: all 0.35s ease-out;
+  }
+  .card-uses:hover {
+    text-decoration: none;
+    color: $gray-200;
+    transform: translateY(-16px);
+    text-decoration: none;
+  }
+  .card-body {
+    background: $gray-800;
+    border-radius: 8px;
+    height: 100%;
+    padding: 32px;
+    margin: 0;
+  }
+  .page-events .label {
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+    padding-left: 26px;
+  }
+
+  .category-header {
+    font-weight: bold;
+    /*color: $gray-300;*/
+    color: $gray-300;
+  }
+
+  .category-checkbox {
+    display: flex;
+    align-items: center;
+  }
+  .category-checkbox label {
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+    padding-left: 26px;
+  }
+  .category_count {
+    padding: 0px 8px;
+    width: 24px;
+    height: 16px;
+    background: $blue-purple-800;
+    border-radius: 100px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: $blue-purple-300;
+  }
+  .category_sidebar {
+    position: sticky;
+    top: 10px;
+  }
+
+
+  @each $usecase in "infrastructure",
+  "developer_tooling",
+  "interoperability",
+  "wallet",
+  "nfts",
+  "exchanges",
+  "gaming",
+  "security",
+  "payments",
+  "web_monetization",
+  "sustainability",
+  "cbdc",
+  "custody",
+  "defi" {
     ##{$usecase} {
-      content: url("../img/icons/#{$usecase}.svg");
+      content: url("../img/icons/usecases/ic_#{$usecase}.png");
     }
   }
 
-  @each $company,$card-graphic in (
-    "bitgo": "magenta-3",
-    "bitpay": "blue-green",
-    "coil": "purple-blue",
-    "exodus": "green",
-    "forte": "light-blue-2",
-    "gatehub": "orange-3",
-    "ripple": "blue-light-blue",
-    "towo": "purple",
-    "xrpl-labs": "magenta-2",
-    "xrplorer": "green-purple"
+// logos for cards
+// $type incase png or jpg is needed.
+  @each $company,$type in (
+    "bithomp": 'svg',
+    "onthedex": "svg",
+    "gatehub": "svg",
+    "towo-labs": "svg",
+    "xrp-toolkit": "svg",
+    "xrpl-org-ledger-explorer": "svg",
+    "xrpl-rosetta": "svg",
+    "xrpscan": "svg",
+    "evernode": "svg",
+    "cryptum": "svg",
+    "x-tokenize": "svg",
+    "multichain": "svg",
+    "xumm-wallet": "svg",
+    "gem-wallet": "svg",
+    "aesthetes": "svg",
+    "audiotarky": "svg",
+    "xrp-cafe": "svg",
+    "nft-master": "svg",
+    "onxrp": "svg",
+    "peerkat": "svg",
+    "sologenic-nft": "svg",
+    "sologenic-dex": "svg",
+    "xp-market": "svg",
+    "ledger-city": "svg",
+    "forte": "svg",
+    "anchain-ai": "svg",
+    "coil": "svg",
+    "carbonland-trust": "svg",
+    "casino-coin": "svg",
+    "bitgo": "svg",
+    "bitpay": "svg",
+    "ripples-on-demand-liquidity": "svg",
+    "ripples-cbdc-platform": "svg",
   ) {
-    ##{$company} {
-      .card-footer {
-        background-image: url("../img/cards/3col-#{$card-graphic}.svg");
-      }
-      .biz-logo {
-        content: url("../img/uses/#{$company}.svg");
-      }
+    #use_case_companies_list {
+      ##{$company} {
+        .biz-logo {
+          max-height: 40px;
+          content: url("../img/uses/#{$company}.#{$type}");
+        }
+      } 
+    }
+
+  }
+
+
+  @include media-breakpoint-up(lg) {
+
+    h1 {
+      font-size: 62px;
+    }
+    .container-new {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
+    
+    .card-grid img {
+      max-height: 48px;
+    }
+  
+    .card-grid {
+      grid-gap: 48px
+    }
+  
+    .card-uses {
+      padding: 24px;
     }
   }
-  #raisedinspace {
-    .card-footer {
-      background-image: url(../img/cards/3col-orange-yellow-2.svg);
-    }
-    .biz-logo {
-      content: url(../img/uses/raised.png);
-    }
-  }
+
+
+
 }
+// End UseCases 
 
 // History Page
 #history-orange {

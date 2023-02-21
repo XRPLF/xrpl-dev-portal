@@ -9,7 +9,9 @@ labels:
 
 You can start a `rippled` server in [Stand-Alone Mode](rippled-server-modes.html) using a [historical ledger version](ledgers.html) that was previously saved to disk. For example, if your `rippled` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](parallel-networks.html), you can load any ledger version your server had available.
 
-Loading a historical ledger version so may be useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](amendments.html) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](consensus-protections.html) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a previous, known-good network state starting with this process.
+Loading a historical ledger version is useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](amendments.html) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](consensus-protections.html) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a known-good network state starting with this process.
+
+**Caution:** As `rippled` is updated to newer versions, amendments are retired and become core functions of the ledger, which can affect how transactions are processed. To produce historically accurate results, you need to replay ledgers using the version of `rippled` the transaction was processed in.
 
 ## 1. Start `rippled` normally.
 
@@ -63,20 +65,17 @@ For more information on the options you can use when starting `rippled` in stand
 
 ## 6. Manually advance the ledger.
 
-When you load a ledger with `--ledger` in stand-alone mode, it goes to the current open ledger, so you must [manually advance the ledger](advance-the-ledger-in-stand-alone-mode.html):
+In stand-alone mode, you must manually advance the ledger with the `ledger_accept` method:
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
 
+If a transaction depends on the result of a transaction from a different address, advance the ledger to ensure they are processed in the correct order. Otherwise, you can submit multiple transactions from a single address `rippled` sorts transactions from the same address by ascending `Sequence` number.
+
 
 ## See Also
 
-- **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
-        - [`rippled` Server Modes](rippled-server-modes.html)
-    - [Introduction to Consensus](intro-to-consensus.html)
-    - [Amendments](amendments.html)
 - **References:**
     - [ledger_accept method][]
     - [server_info method][]

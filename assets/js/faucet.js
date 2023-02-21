@@ -56,7 +56,7 @@ function TestNetCredentials(url, altnet_name, ws_url) {
       destination: test_wallet.address,
       memos: [
         {
-          data: xrpl.convertStringToHex("xrpl.org-faucet"),
+          data: "xrpl.org-faucet",
         },
       ],
     }),

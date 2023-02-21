@@ -1,0 +1,13 @@
+{
+  "name": "transaction-serialisation-examples",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "^1.2.7",
+    "xrpl": "^2.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}

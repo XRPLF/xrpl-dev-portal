@@ -33,7 +33,7 @@ There are three cases where you can hold a balance that is _greater_ than your l
 
 1. When you acquire more of that token through [trading](decentralized-exchange.html).
 2. When you decrease the limit on a trust line that has a positive balance.
-3. When you acquire more of that token by [cashing a Check](checks.html). (_Requires the [CheckCashMakesTrustLine amendment][] :not_enabled:_)
+3. When you acquire more of that token by [cashing a Check](checks.html). (_Requires the [CheckCashMakesTrustLine amendment][]_)
 
 
 ## Trust Line Settings

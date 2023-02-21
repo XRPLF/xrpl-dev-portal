@@ -936,7 +936,6 @@ if __name__ == "__main__":
         "mainnet": "wss://xrplcluster.com",
         "testnet": "wss://s.altnet.rippletest.net:51233",
         "devnet": "wss://s.devnet.rippletest.net:51233",
-        "nft-devnet": "wss://xls20-sandbox.rippletest.net:51233",
     }
     parser = ArgumentParser()
     parser.add_argument("--network", "-n", choices=networks.keys(), default="testnet")

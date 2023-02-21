@@ -195,6 +195,13 @@ targets:
             # Fix links from untranslated AMM pages:
             "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
             "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
+            # Fix link from untranslated health-check.html:
+            "amendments.html#amendment-blocked-servers": "amendments.html#amendment-blocked"
+            # Fix link from nft-reserve-requirements.html:
+            "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
+            # Fix link from nft-reserve-requirements.html:
+            "reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+
 
 pages:
 
@@ -368,6 +375,11 @@ pages:
 
     -   md: faq.ja.md
         targets:
+            - ja
+
+    -   md: privacy-policy.md
+        targets:
+            - en
             - ja
 
     # Redirect old technical-faq.html to new faq.html URL
@@ -773,6 +785,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/nft-reserve-requirements.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/nftoken-batch-minting.md
         targets:
             - en
@@ -782,7 +799,17 @@ pages:
         targets:
             - en
             - ja
-            
+
+    -   md: concepts/tokens/nftoken-auctions.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/nft-collections.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/freezes.md
         targets:
             - en
@@ -1860,6 +1887,11 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-the-rippled-server/configuration/test-amendments.md
+        targets:
+            - en
+            - ja
+
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
         targets:
@@ -2057,7 +2089,6 @@ pages:
         targets:
             - ja
 
-        # TODO: translate page and blurb
     -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
         targets:
             - en
@@ -2078,6 +2109,11 @@ pages:
         # TODO: translate the blurb in this page's frontmatter
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-is-amendment-blocked.md
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
@@ -2217,6 +2253,8 @@ pages:
         targets:
             - en
 
+        # TODO: update translation to use the term "sequence number" rather than
+        # "dumb sequential"
     -   md: references/protocol-reference/data-types/nftoken.ja.md
         targets:
             - ja
@@ -4292,7 +4330,7 @@ pages:
             - en
             - ja
     
-    -   name: XRPL Education Portal
+    -   name: XRPL Learning Portal
         html: https://learn.xrpl.org/
         parent: docs.html
         top_nav_grouping: Online Tools
@@ -4584,7 +4622,6 @@ pages:
 ignore_anchors_in:
     - data-api-v2-tool.html
     - websocket-api-tool.html
-
 #Sometimes, a link is not really problematic, but the link checker detects it
 # as such and the easiest solution is to ignore it.
 known_broken_links:
@@ -4599,6 +4636,7 @@ known_broken_links:
     - /blog/label/rippled-release-notes.html
     - /blog/label/amendments.html
     - /blog/label/features.html
+    - /blog/2023/nft-devnet-decommission.html
     # For various reasons these links break from the Python requests client,
     #  but they work in browser. (Often a protection against bots, like
     #  Cloudflare.)
