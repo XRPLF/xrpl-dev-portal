@@ -6,7 +6,6 @@ import addXrplLogo from '../helpers/addXrplLogo';
 
 addXrplLogo();
 
-let values = [];
 let marker = null;
 
 // Get the elements from the DOM
@@ -67,25 +66,20 @@ const fetchTxHistory = async () => {
 
         const { transactions, marker: nextMarker } = result;
         // Add the transactions to the table
-        values = [
-            ...values,
-            ...transactions.map((transaction) => {
-                const { meta, tx } = transaction;
-                return {
-                    Account: tx.Account,
-                    Fee: tx.Fee,
-                    Amount: tx.Amount,
-                    Hash: tx.hash,
-                    TransactionType: tx.TransactionType,
-                    result: meta?.TransactionResult,
-                };
-            }),
-        ];
+        const values = transactions.map((transaction) => {
+            const { meta, tx } = transaction;
+            return {
+                Account: tx.Account,
+                Fee: tx.Fee,
+                Amount: tx.Amount,
+                Hash: tx.hash,
+                TransactionType: tx.TransactionType,
+                result: meta?.TransactionResult,
+            };
+        });
 
         // If there are no more transactions, hide the load more button
-        if (!nextMarker) {
-            loadMore.style.display = 'none';
-        }
+        loadMore.style.display = nextMarker ? 'block' : 'none';
 
         // If there are no transactions, show a message
         if (values.length === 0) {
@@ -146,18 +140,10 @@ const fetchTxHistory = async () => {
 const renderTxHistory = async () => {
     // Fetch the transaction history
     marker = await fetchTxHistory();
-
-    // If there are no more transactions, hide the load more button
-    if (!marker) {
-        loadMore.style.display = 'none';
-    } else {
-        // Otherwise, show the load more button
-        loadMore.style.display = 'block';
-        loadMore.addEventListener('click', async () => {
-            const nextMarker = await fetchTxHistory();
-            marker = nextMarker;
-        });
-    }
+    loadMore.addEventListener('click', async () => {
+        const nextMarker = await fetchTxHistory();
+        marker = nextMarker;
+    });
 };
 
 renderTxHistory();
