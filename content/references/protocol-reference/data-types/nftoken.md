@@ -7,7 +7,9 @@ labels:
 ---
 # NFToken
 
+
 The `NFToken` object represents a single non-fungible token (NFT).
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
