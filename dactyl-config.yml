@@ -2243,6 +2243,8 @@ pages:
         targets:
             - en
 
+        # TODO: update translation to use the term "sequence number" rather than
+        # "dumb sequential"
     -   md: references/protocol-reference/data-types/nftoken.ja.md
         targets:
             - ja
