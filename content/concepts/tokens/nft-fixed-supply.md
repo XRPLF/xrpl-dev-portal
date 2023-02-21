@@ -1,7 +1,7 @@
 ---
 html: nft-fixed-supply.html
 parent: non-fungible-tokens.html
-blurb: Introduction to XRPL NFTs.
+blurb: Use a new account to mint a fixed number of NFTs, then black hole the account.
 labels:
   - Non-fungible Tokens, NFTs
 ---
@@ -19,3 +19,5 @@ To guarantee a fixed number of NFTs:
 1. “Blackhole” the Issuer account. See [Disable Master Key Pair](disable-master-key-pair.html).
 
 At this point, it is impossible for any new tokens to be minted with the issuer’s address as the issuing account.
+
+**Caution** Once you "blackhole" the account, no one, including you, receives transfer fees for future sales of the NFTs.
