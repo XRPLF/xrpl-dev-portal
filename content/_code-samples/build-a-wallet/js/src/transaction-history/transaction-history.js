@@ -126,10 +126,9 @@ const fetchTxHistory = async () => {
         await client.disconnect();
 
         // Enable the load more button only if there are more transactions
-        if (!nextMarker) {
-            loadMore.textContent = 'Load More';
-            loadMore.disabled = false;
-        }
+        loadMore.textContent = 'Load More';
+        loadMore.disabled = false;
+        
         // Return the marker
         return nextMarker ?? null;
     } catch (error) {
