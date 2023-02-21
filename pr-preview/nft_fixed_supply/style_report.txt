@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 19 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gis, gif, gils
-  kuressaare: 
+  gifs: kifs, gids, gibs
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -17,7 +17,7 @@ Found 19 possible spelling errors:
   transferfee: transferee
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: blockhole, black-hole
+  blackhole: black-hole, blockhole
 
 <Page 'Running an NFT Auction' (nftoken-auctions.html)> Unknown Words:
   buyside: bayside
@@ -27,7 +27,7 @@ Found 19 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
@@ -37,13 +37,13 @@ Found 19 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3d, 3rd, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
@@ -85,9 +85,9 @@ Page: <Page 'tem Codes' (tem-codes.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.2 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
-  SMOG Index: Grade level 11.4
+  SMOG Index: Grade level 11.3
   Gunning FOG Index: Grade level 9.1
   Automated Readability Index: Grade level 10.8
   Coleman-Liau Index: Grade level 11.5
@@ -104,6 +104,15 @@ Most difficult pages by Flesch Reading Ease:
   Coleman-Liau Index: Grade level 17.9
   Linsear Write Formula: Grade level 12.5
 
+<Page 'NFToken' (nftoken.html)> Readability Scores:
+  Flesch Reading Ease Score: 28.5 (Very Confusing)
+  Dale-Chall Readability Score: 16.4 (higher than average college level)
+  SMOG Index: Grade level 0.0
+  Gunning FOG Index: Grade level 12.5
+  Automated Readability Index: Grade level 13.4
+  Coleman-Liau Index: Grade level 14.5
+  Linsear Write Formula: Grade level 5.5
+
 <Page 'XRP-API' (xrp-api.html)> Readability Scores:
   Flesch Reading Ease Score: 29.2 (Very Confusing)
   Dale-Chall Readability Score: 12.5 (higher than average college level)
@@ -113,22 +122,13 @@ Most difficult pages by Flesch Reading Ease:
   Coleman-Liau Index: Grade level 14.8
   Linsear Write Formula: Grade level 20.5
 
-<Page 'Update Automatically on Linux' (update-rippled-automatically-on-linux.html)> Readability Scores:
-  Flesch Reading Ease Score: 31.4 (Difficult)
-  Dale-Chall Readability Score: 12.1 (higher than average college level)
-  SMOG Index: Grade level 13.2
-  Gunning FOG Index: Grade level 11.7
-  Automated Readability Index: Grade level 14.7
-  Coleman-Liau Index: Grade level 16.3
-  Linsear Write Formula: Grade level 7.5
-
 -------------------
 Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 54
-  Words: 738
-  Characters: 4,577
+  Words: 735
+  Characters: 4,560
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
@@ -147,11 +147,6 @@ Longest pages by character count:
   Characters: 29,550
 
 Shortest pages by character count:
-<Page 'API Conventions' (api-conventions.html)> Length Metrics:
-  Sentences: 4
-  Words: 38
-  Characters: 231
-
 <Page 'XRP-API' (xrp-api.html)> Length Metrics:
   Sentences: 3
   Words: 29
@@ -161,4 +156,9 @@ Shortest pages by character count:
   Sentences: 3
   Words: 22
   Characters: 129
+
+<Page 'NFToken' (nftoken.html)> Length Metrics:
+  Sentences: 3
+  Words: 11
+  Characters: 68
 
