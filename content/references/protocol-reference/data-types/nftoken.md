@@ -98,14 +98,15 @@ The fourth section is a `NFTokenTaxon` created by the issuer.
 
 An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual `NFTokenTaxon`.
 
-![Dumb Sequential](img/nftokene.png "Dumb Sequential")
-
-Notice that the scrambled version of the `NFTokenTaxon` is `0xBC8B858E`: the scrambled version of the `NFTokenTaxon` specified by the issuer. But the _actual_ value of the `NFTokenTaxon` is the unscrambled value.
+Notice that the scrambled version of the `NFTokenTaxon` is `0xBC8B858E`, the scrambled version of the `NFTokenTaxon` specified by the issuer. But the _actual_ value of the `NFTokenTaxon` is the unscrambled value.
 
 ### Token Sequence
 
-The fifth section is a sequence number that increases with each `NFToken` the issuer creates. The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
+The fifth section is a sequence number that increases with each `NFToken` the issuer creates.
 
+![Sequence Number](img/nftokene.png "Sequence Number")
+
+The [`NFTokenMint` transaction][] sets this part of the `NFTokenID` automatically based on the `MintedTokens` field of the `Issuer` account. If the issuer's [`AccountRoot` object][] does not have a `MintedTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
 
 ## URI
 

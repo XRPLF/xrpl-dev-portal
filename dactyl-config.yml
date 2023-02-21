@@ -805,6 +805,11 @@ pages:
             - en
             - ja
 
+    -   md: concepts/tokens/nft-collections.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/freezes.md
         targets:
             - en
@@ -2248,6 +2253,8 @@ pages:
         targets:
             - en
 
+        # TODO: update translation to use the term "sequence number" rather than
+        # "dumb sequential"
     -   md: references/protocol-reference/data-types/nftoken.ja.md
         targets:
             - ja
