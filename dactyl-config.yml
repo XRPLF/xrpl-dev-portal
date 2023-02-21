@@ -197,6 +197,11 @@ targets:
             "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
             # Fix link from untranslated health-check.html:
             "amendments.html#amendment-blocked-servers": "amendments.html#amendment-blocked"
+            # Fix link from nft-reserve-requirements.html:
+            "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
+            # Fix link from nft-reserve-requirements.html:
+            "reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+
 
 pages:
 
