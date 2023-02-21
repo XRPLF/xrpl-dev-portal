@@ -8,7 +8,7 @@ labels:
 
 # Guaranteeing a Fixed Supply of NFTs
 
-For some projects, you might want to guarantee that no more than a fixed number of NFTs are minted from a given issuing account. Use the following steps to achieve that goal.
+For some projects, you might want to guarantee that no more than a fixed number of NFTs are minted from an issuing account.
 
 To guarantee a fixed number of NFTs:
 
