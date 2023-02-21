@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 18 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gif, rifs
-  ringtee: 
+  gifs: gins, gifu, gigs
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -34,13 +34,13 @@ Found 18 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3d, 3-d, 3rd
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3d, 3-d, 3rd
 
 -----------------------------
 Discouraged Words and Phrases
