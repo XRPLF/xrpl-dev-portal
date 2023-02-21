@@ -298,9 +298,9 @@
         <h1 id="nft-reserve-requirements">NFT Reserve Requirements<a aria-hidden="true" class="hover_anchor" href="#nft-reserve-requirements"><i class="fa fa-link"></i></a></h1>
 <p>Minting, holding, and offering NFTs for sale require XRP held in reserve. The reserve charges can add up quickly. Understanding the reserve requirements can help you choose the best approach for your business case.</p>
 <h2 id="base-reserve">Base Reserve<a aria-hidden="true" class="hover_anchor" href="#base-reserve"><i class="fa fa-link"></i></a></h2>
-<p>Your account must set aside a base reserve, currently 10 XRP. The base reserve XRP amount is subject to change. See <a href="reserves.html#base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</a>.</p>
+<p>Your account must set aside a base reserve, currently 10 XRP. The base reserve XRP amount is subject to change. See <a href="reserves.html#基本準備金と所有者準備金">Base Reserve and Owner Reserve</a>.</p>
 <h2 id="owner-reserve">Owner Reserve<a aria-hidden="true" class="hover_anchor" href="#owner-reserve"><i class="fa fa-link"></i></a></h2>
-<p>For each object you own on the XRP Ledger, there is an owner reserve, currently 2 XRP. This is to discourage users from spamming the ledger with unnecessary data, and to encourage them to clean up any data that is no longer necessary. The owner reserve amount is subject to change. See <a href="reserves.html#base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</a>.</p>
+<p>For each object you own on the XRP Ledger, there is an owner reserve, currently 2 XRP. This is to discourage users from spamming the ledger with unnecessary data, and to encourage them to clean up any data that is no longer necessary. The owner reserve amount is subject to change. See <a href="reserves.html#基本準備金と所有者準備金">Base Reserve and Owner Reserve</a>.</p>
 <p>For NFTs, the <em>object</em> does not refer to the individual NFTs, but to the <code>NFTokenPage</code> objects owned by the account. <code>NFTokenPage</code> objects can store up to 32 NFTs.</p>
 <p>However, NFTs are not packed into pages to minimize space used. If you have 64 NFTs, it's not necessarily true that you have only 2 <code>NFTokenPage</code> objects.</p>
 <p>A good rule of thumb is to assume, on average, that each <code>NFTokenPage</code> stores 24 NFTs.
@@ -345,7 +345,7 @@ Therefore, you can estimate the reserve requirements for minting or owning <em>N
 <h2 id="nftokenoffer-reserve"><code>NFTokenOffer</code> Reserve<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-reserve"><i class="fa fa-link"></i></a></h2>
 <p>Each <code>NFTokenOffer</code> object costs the account placing the offer one incremental reserve. As of this writing, the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer. The reserve is also recovered if the offer is accepted, which removes the offer from the XRP Ledger.</p>
 <h2 id="practical-considerations">Practical Considerations<a aria-hidden="true" class="hover_anchor" href="#practical-considerations"><i class="fa fa-link"></i></a></h2>
-<p>When minting, holding, and offering to buy and sell NFTs, the reserve requirements can add up quickly. This can result in your account going below the reserve requirement during a transaction. Going below the requirement can limit your ability to trade on the XRPL. See <a href="reserves.html#going-below-the-reserve-requirement">Going Below the Reserve Requirement</a>.</p>
+<p>When minting, holding, and offering to buy and sell NFTs, the reserve requirements can add up quickly. This can result in your account going below the reserve requirement during a transaction. Going below the requirement can limit your ability to trade on the XRPL. See <a href="reserves.html#必要準備金を下回る">Going Below the Reserve Requirement</a>.</p>
 <p>If you create a new account, mint an NFT, and create an <code>NFTokenSellOffer</code> on the XRP Ledger, that requires a minimum reserve of 14 XRP.</p>
 <table class="table-responsive">
 <thead>
