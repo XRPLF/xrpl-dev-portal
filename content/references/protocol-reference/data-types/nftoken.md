@@ -106,7 +106,6 @@ Notice that the scrambled version of the `NFTokenTaxon` is `0xBC8B858E`: the scr
 
 The fifth section is a sequence number that increases with each `NFToken` the issuer creates. The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
 
-
 ## URI
 
 The URI field points to the data or metadata associated with the `NFToken`. This field does not need to be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, an [RFC 2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even a totally custom encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.
