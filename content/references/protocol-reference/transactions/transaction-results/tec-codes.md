@@ -7,9 +7,9 @@ labels:
 ---
 # tec Codes
 
-These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](transaction-cost.html). They have numerical values in the range 100 to 199. Ripple recommends using the text code, not the numeric value.
+These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](transaction-cost.html). They have numerical values in the range 100 to 199. It is recommended to use the text code, not the numeric value.
 
-For the most part, transactions with `tec` codes take no action other than to destroy the XRP paid as a [transaction cost](transaction-cost.html), but there are some exceptions. As one such exception, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](offers.html#lifecycle-of-an-offer). Always look at the [transaction metadata](transaction-metadata.html) to see precisely what a transaction did.
+Transactions with `tec` codes destroy the XRP paid as a [transaction cost](transaction-cost.html), and consume a [sequence number](basic-data-types.html#account-sequence). For the most part, the transactions take no other action, but there are some exceptions. For example, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](offers.html#lifecycle-of-an-offer). Always look at the [transaction metadata](transaction-metadata.html) to see precisely what a transaction did.
 
 **Caution:** A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](reliable-transaction-submission.html).
 

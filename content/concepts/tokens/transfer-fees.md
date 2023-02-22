@@ -61,7 +61,7 @@ A token issuer can submit an [AccountSet transaction][] from its [issuing addres
 
 Anyone can check an account's `TransferRate` with the [account_info method][]. If the `TransferRate` is omitted, then that indicates no fee.
 
-**Note:** The [fix1201 amendment](amendments.html), introduced in `rippled` v0.80.0 and enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). The ledger may still contain accounts with a transfer fee setting higher than 100% because transfer fees that were already set continue to apply at their stated rate.
+**Note:** The [fix1201](known-amendments.html#fix1201) [amendment](amendments.html), introduced in `rippled` v0.80.0 and enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). The ledger may still contain accounts with a transfer fee setting higher than 100% because transfer fees that were already set continue to apply at their stated rate.
 
 ## Client Library Support
 
