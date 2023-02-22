@@ -248,6 +248,7 @@ pages:
         template: page-uses.html.jinja
         html: uses.html
         parent: xrp-ledger-overview.html
+        blurb: Here’s how the XRP Ledger is used to power innovative technology across the payments and public blockchain landscape.
         top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
@@ -1587,6 +1588,7 @@ pages:
             - ja
 
         # TODO: translate
+        # This page may be removed soon.
     -   md: tutorials/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
         targets:
             - en
@@ -2860,7 +2862,6 @@ pages:
         parent: client-libraries.html
         blurb: JavaScript/TypeScript client library to the XRP Ledger.
         skip_spell_checker: true
-        # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
         targets:
             - en
 
