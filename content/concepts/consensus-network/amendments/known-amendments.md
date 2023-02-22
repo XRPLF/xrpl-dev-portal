@@ -558,7 +558,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 
 | Amendment | fixNonFungibleTokensV1_2 |
 |:----------|:-----------|
-| Amendment ID |  |
+| Amendment ID | 73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669 |
 | Status | Open for Voting  |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
