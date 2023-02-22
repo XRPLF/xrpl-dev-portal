@@ -1,7 +1,7 @@
-import addXrplLogo from './src/helpers/addXrplLogo';
+import addXrplLogo from './src/helpers/render-xrpl-logo';
 import { dropsToXrp } from 'xrpl';
-import { fetchLatestLedgerDetails } from './src/helpers/getLatestLedgerDetails.js';
-import { fetchWalletDetails } from './src/helpers/fetchWalletDetails.js';
+import getLedgerDetails from './src/helpers/get-ledger-details.js';
+import getWalletDetails  from './src/helpers/get-wallet-details.js';
 
 addXrplLogo();
 
@@ -22,7 +22,7 @@ txHistoryButton.addEventListener('click', () => {
 });
 
 // Fetch the wallet details
-fetchWalletDetails().then(({ account_data, accountReserves, tagged, address }) => {
+getWalletDetails().then(({ account_data, accountReserves, tagged, address }) => {
     walletElement.querySelector(
         '.wallet_address'
     ).textContent = `Wallet Address: ${account_data.Account}`;
@@ -52,4 +52,4 @@ fetchWalletDetails().then(({ account_data, accountReserves, tagged, address }) =
 });
 
 // Fetch the latest ledger details
-fetchLatestLedgerDetails();
+getLedgerDetails();

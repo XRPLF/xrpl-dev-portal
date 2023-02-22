@@ -2,7 +2,7 @@ import { Client, Wallet } from 'xrpl';
 
 import { Encode } from 'xrpl-tagged-address-codec';
 
-export const fetchWalletDetails = async () => {
+export default async function getWalletDetails() {
     try {
         const client = new Client(process.env.CLIENT);
         const wallet = Wallet.fromSeed(process.env.SEED);

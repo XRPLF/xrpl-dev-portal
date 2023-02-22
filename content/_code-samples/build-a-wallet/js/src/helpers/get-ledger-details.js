@@ -1,6 +1,6 @@
 import { Client } from 'xrpl';
 
-const fetchLedgerData = async () => {
+async function fetchLedgerData() {
     try {
         const client = new Client(process.env.CLIENT);
 
@@ -42,7 +42,7 @@ async function getAndRenderDetails() {
     closeTime.textContent = `Close Time: ${ledger.result.ledger.close_time_human}`;
 }
 
-export const fetchLatestLedgerDetails = async () => {
+export default async function getLedgerDetails() {
     window.onload = function () {
         // On page load, get the latest ledger details
         getAndRenderDetails();

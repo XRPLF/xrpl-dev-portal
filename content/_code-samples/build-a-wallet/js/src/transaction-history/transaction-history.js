@@ -1,8 +1,8 @@
 import { Client, Wallet, convertHexToString, dropsToXrp } from 'xrpl';
 
-import addXrplLogo from '../helpers/addXrplLogo';
+import renderXrplLogo from '../helpers/render-xrpl-logo';
 
-addXrplLogo();
+renderXrplLogo();
 
 let marker = null;
 

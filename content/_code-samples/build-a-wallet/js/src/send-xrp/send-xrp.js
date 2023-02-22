@@ -1,10 +1,10 @@
 import { dropsToXrp, isValidClassicAddress, xrpToDrops } from 'xrpl';
 
-import addXrplLogo from '../helpers/addXrplLogo';
-import { fetchWalletDetails } from '../helpers/fetchWalletDetails';
-import { submitTransactionToLedger } from '../helpers/submitTransactionToLedger';
+import getWalletDetails from '../helpers/get-wallet-details';
+import renderXrplLogo from '../helpers/render-xrpl-logo';
+import submitTransaction from '../helpers/submit-transaction';
 
-addXrplLogo();
+renderXrplLogo();
 
 // Get the elements from the DOM
 const homeButton = document.querySelector('#home_button');
@@ -31,7 +31,7 @@ txHistoryButton.addEventListener('click', () => {
 });
 
 // Fetch the wallet details and show the available balance
-fetchWalletDetails().then(({ accountReserves, account_data }) => {
+getWalletDetails().then(({ accountReserves, account_data }) => {
     availableBalanceElement.textContent = `Available Balance: ${dropsToXrp(
         account_data.Balance
     ) - accountReserves} XRP`;
@@ -98,7 +98,7 @@ submitTxBtn.addEventListener('click', async () => {
         }
 
         // Submit the transaction to the ledger
-        const { result } = await submitTransactionToLedger({ tx: txJson });
+        const { result } = await submitTransaction({ tx: txJson });
         const txResult =
             result?.meta?.TransactionResult || result?.engine_result || '';
 

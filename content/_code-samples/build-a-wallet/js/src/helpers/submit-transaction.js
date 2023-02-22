@@ -1,6 +1,6 @@
 import { Client, Wallet } from 'xrpl';
 
-export const submitTransactionToLedger = async ({ tx }) => {
+export default async function submitTransaction ({ tx }) {
     try {
         const client = new Client(process.env.CLIENT);
         // Wait for the client to connect

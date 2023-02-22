@@ -1,6 +1,6 @@
 import xrplLogo from '../assets/xrpl.svg';
 
-export default function addXrplLogo() {
+export default function renderXrplLogo() {
     document.getElementById('heading_logo').innerHTML = `
 <a
     href="https://xrpl.org/"
