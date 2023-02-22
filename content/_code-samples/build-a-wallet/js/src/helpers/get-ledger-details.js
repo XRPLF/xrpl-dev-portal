@@ -1,6 +1,6 @@
 import { Client } from 'xrpl';
 
-async function fetchLedgerData() {
+export default async function getLedgerDetails() {
     try {
         const client = new Client(process.env.CLIENT);
 
@@ -30,26 +30,4 @@ async function fetchLedgerData() {
         console.log('Error getting latest ledger details', error);
         return error;
     }
-};
-
-async function getAndRenderDetails() {
-    const ledger = await fetchLedgerData();
-    const ledgerIndex = document.querySelector('#ledger_index');
-    const ledgerHash = document.querySelector('#ledger_hash');
-    const closeTime = document.querySelector('#close_time');
-    ledgerIndex.textContent = `Ledger Index: ${ledger.result.ledger_index}`;
-    ledgerHash.textContent = `Ledger Hash: ${ledger.result.ledger_hash}`;
-    closeTime.textContent = `Close Time: ${ledger.result.ledger.close_time_human}`;
-}
-
-export default async function getLedgerDetails() {
-    window.onload = function () {
-        // On page load, get the latest ledger details
-        getAndRenderDetails();
-
-        // Every 4 seconds, get the latest ledger details
-        setInterval(() => {
-            getAndRenderDetails();
-        }, 4000);
-    };
 };

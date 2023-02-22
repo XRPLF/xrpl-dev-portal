@@ -11,7 +11,6 @@ const txHistoryButton = document.querySelector('#transaction_history_button');
 const walletElement = document.querySelector('#wallet');
 
 // Add event listeners to the buttons
-
 sendXrpButton.addEventListener('click', () => {
     window.location.pathname = '/src/send-xrp/send-xrp.html';
 });
@@ -52,4 +51,20 @@ getWalletDetails().then(({ account_data, accountReserves, tagged, address }) => 
 });
 
 // Fetch the latest ledger details
-getLedgerDetails();
+async function getAndRenderDetails() {
+    const ledger = await getLedgerDetails();
+    const ledgerIndex = document.querySelector('#ledger_index');
+    const ledgerHash = document.querySelector('#ledger_hash');
+    const closeTime = document.querySelector('#close_time');
+    ledgerIndex.textContent = `Ledger Index: ${ledger.result.ledger_index}`;
+    ledgerHash.textContent = `Ledger Hash: ${ledger.result.ledger_hash}`;
+    closeTime.textContent = `Close Time: ${ledger.result.ledger.close_time_human}`;
+}
+
+// On page load, get the latest ledger details
+getAndRenderDetails();
+
+// Every 4 seconds, get the latest ledger details
+setInterval(() => {
+    getAndRenderDetails();
+}, 4000);
