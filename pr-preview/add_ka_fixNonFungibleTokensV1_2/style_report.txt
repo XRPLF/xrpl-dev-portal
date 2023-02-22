@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 19 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gits, gins
+  gifs: gibs, gifu, gids
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -24,7 +24,7 @@ Found 19 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
@@ -127,14 +127,14 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 740
+  Words: 741
   Characters: 4,594
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
   Sentences: 504
-  Words: 6,924
-  Characters: 50,656
+  Words: 6,925
+  Characters: 50,720
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
   Sentences: 380
