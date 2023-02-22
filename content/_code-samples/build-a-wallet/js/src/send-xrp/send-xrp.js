@@ -1,5 +1,3 @@
-import '../../index.css';
-
 import { isValidClassicAddress, xrpToDrops } from 'xrpl';
 
 import addXrplLogo from '../helpers/addXrplLogo';

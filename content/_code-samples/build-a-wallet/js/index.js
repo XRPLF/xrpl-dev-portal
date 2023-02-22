@@ -1,5 +1,3 @@
-import './index.css';
-
 import addXrplLogo from './src/helpers/addXrplLogo';
 import { fetchLatestLedgerDetails } from './src/helpers/getLatestLedgerDetails.js';
 import { fetchWalletDetails } from './src/helpers/fetchWalletDetails.js';

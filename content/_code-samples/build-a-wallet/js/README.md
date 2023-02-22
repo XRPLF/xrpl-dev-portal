@@ -3,7 +3,7 @@
 1. [Node.js](https://nodejs.org/en/download/) (v10.15.3 or higher)
 2. Install [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) or [NPM](https://www.npmjs.com/get-npm) (v6.4.1 or higher)
 3. Add your Seed, Client, and specify testnet/mainnet in .env file - see [example.env](example.env)
-4. Run `yarn install` to install dependencies
+4. Run `yarn install` or `npm install` to install dependencies
 5. Start the app with `yarn dev` or `npm dev`
 
 # Wallet Details

@@ -1,5 +1,3 @@
-import '../../index.css';
-
 import { Client, Wallet, convertHexToString, dropsToXrp } from 'xrpl';
 
 import addXrplLogo from '../helpers/addXrplLogo';
