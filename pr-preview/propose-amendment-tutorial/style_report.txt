@@ -1,17 +1,26 @@
 -------------
 Spell Checker
 -------------
-Found 16 possible spelling errors:
+Found 19 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: ifs, gips, gits
+  gifs: gids, gifts, ifs
   ringtee: 
   kuressaare: 
   lõõtsa: 
+
+<Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
+  24n: 
 
 <Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
   nftokenminter: 
   unassigning: 
   transferfee: transferee
+
+<Page 'Running an NFT Auction' (nftoken-auctions.html)> Unknown Words:
+  buyside: bayside
+
+<Page 'Minting NFTs into Collections' (nft-collections.html)> Unknown Words:
+  nftokentaxon: 
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
@@ -28,18 +37,18 @@ Found 16 possible spelling errors:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3rd, 3d, 3-d
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3rd, 3d, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 32 discouraged words/phrases:
+Found 35 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -52,6 +61,11 @@ Page: <Page 'Privacy Policy' (privacy-policy.html)>
    Discouraged word: advise (1 instances); suggest 'recommend, tell' instead.
    Discouraged word: notify (1 instances); suggest 'let know, tell' instead.
    Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+Page: <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
    Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.
    Discouraged word: remainder (1 instances); suggest 'rest' instead.
@@ -76,12 +90,12 @@ Page: <Page 'tem Codes' (tem-codes.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.0 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.2 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.9
-  Coleman-Liau Index: Grade level 11.6
+  Automated Readability Index: Grade level 10.8
+  Coleman-Liau Index: Grade level 11.5
   Linsear Write Formula: Grade level 8.5
 
 
@@ -118,8 +132,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 742
-  Characters: 4,606
+  Words: 739
+  Characters: 4,582
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
