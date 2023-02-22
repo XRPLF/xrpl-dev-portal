@@ -16,6 +16,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 |:----------------------------------|:-----------|:------------------------------|
 | [fixTrustLinesToSelf][]           | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [Open for Voting: TBD]("BADGE_80d0e0") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1_1][]         | v1.9.2     | [Enabled: 2022-10-31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [Enabled: 2022-10-27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
@@ -552,6 +553,45 @@ This amendment fixes a bug in the [NonFungibleTokensV1][] amendment code where N
 
 This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. This amendment is obsolete because its effects are included as part of [NonFungibleTokensV1_1][].
 
+## fixNonFungibleTokensV1_2
+[fixNonFungibleTokensV1_2]: #fixnonfungibletokensv1_2
+
+| Amendment | fixNonFungibleTokensV1_2 |
+|:----------|:-----------|
+| Amendment ID |  |
+| Status | Open for Voting  |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Amendment `fixNonFungibleTokensV1_2` is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process:
+
+**Fix Unburnable NFT**
+
+Currently, an NFT cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers, leaving any remaining offers untouched.
+
+See [PR 4346](https://github.com/XRPLF/rippled/pull/4346).
+
+**Fix 3 Issues Around NFToken Offer Acceptance**
+
+Issue 1: Resolve situation where an account is unable to broker a deal due to an erroneous insufficient funds condition.
+
+Issue 2: Resolve situation where a buyer has insufficient funds to cover a transfer fee on the account.
+
+Issue 3: Enable currency issuers to buy and sell NFTs using their own currency.
+
+See [PR 4380](https://github.com/XRPLF/rippled/pull/4380).
+
+**Prevent Brokered Sale of NFToken to Owner (fix #4374)**
+
+This fix prevents a broker from selling an NFT to the account that already owns the token.
+
+See [Issue 4374](https://github.com/XRPLF/rippled/issues/4374).
+
+**Only allow the destination to settle an NFT offer through brokerage (fix #4373)**
+
+If you set a destination on an NFT offer, only that destination can settle through brokerage (fix #4373).
+
+See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 
 ## fixPayChanRecipientOwnerDir
 [fixPayChanRecipientOwnerDir]: #fixpaychanrecipientownerdir
