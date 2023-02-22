@@ -1,6 +1,7 @@
-import { isValidClassicAddress, xrpToDrops } from 'xrpl';
+import { dropsToXrp, isValidClassicAddress, xrpToDrops } from 'xrpl';
 
 import addXrplLogo from '../helpers/addXrplLogo';
+import { fetchWalletDetails } from '../helpers/fetchWalletDetails';
 import { submitTransactionToLedger } from '../helpers/submitTransactionToLedger';
 
 addXrplLogo();
@@ -12,6 +13,7 @@ const destinationAddress = document.querySelector('#destination_address');
 const amount = document.querySelector('#amount');
 const destinationTag = document.querySelector('#destination_tag');
 const submitTxBtn = document.querySelector('#submit_tx_button');
+const availableBalanceElement = document.querySelector('#available_balance');
 
 // Disable the submit button by default
 submitTxBtn.disabled = true;
@@ -26,6 +28,13 @@ homeButton.addEventListener('click', () => {
 txHistoryButton.addEventListener('click', () => {
     window.location.pathname =
         '/src/transaction-history/transaction-history.html';
+});
+
+// Fetch the wallet details and show the available balance
+fetchWalletDetails().then(({ accountReserves, account_data }) => {
+    availableBalanceElement.textContent = `Available Balance: ${dropsToXrp(
+        account_data.Balance
+    ) - accountReserves} XRP`;
 });
 
 const validateAddress = () => {

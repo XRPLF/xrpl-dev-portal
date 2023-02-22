@@ -1,8 +1,6 @@
-import { Client, Wallet, dropsToXrp } from 'xrpl';
+import { Client, Wallet } from 'xrpl';
 
 import { Encode } from 'xrpl-tagged-address-codec';
-
-const walletElement = document.querySelector('#wallet');
 
 export const fetchWalletDetails = async () => {
     try {
@@ -41,19 +39,6 @@ export const fetchWalletDetails = async () => {
 
         console.log('Got wallet details!');
 
-        // Render the wallet details
-        walletElement.querySelector(
-            '.wallet_address'
-        ).textContent = `Wallet Address: ${account_data.Account}`;
-        walletElement.querySelector(
-            '.wallet_balance'
-        ).textContent = `Wallet Balance: ${dropsToXrp(
-            account_data.Balance
-        )} XRP`;
-        walletElement.querySelector(
-            '.wallet_reserve'
-        ).textContent = `Wallet Reserve: ${accountReserves} XRP`;
-
         // Get X-Address
         const tagged = Encode({
             account: wallet.address,
@@ -61,24 +46,9 @@ export const fetchWalletDetails = async () => {
             test: false,
         });
 
-        // Render the X-Address
-        walletElement.querySelector(
-            '.wallet_xaddress'
-        ).textContent = `X-Address: ${tagged}`;
-
-        // Redirect on View More link click
-        console.log(walletElement.querySelector('#view_more_button'));
-        walletElement
-            .querySelector('#view_more_button')
-            .addEventListener('click', () => {
-                window.open(
-                    `https://${process.env.EXPLORER_NETWORK}.xrpl.org/accounts/${wallet.address}`,
-                    '_blank'
-                );
-            });
-
         // Disconnect the client
         await client.disconnect();
+        return { account_data, accountReserves, tagged, address: wallet.address };
     } catch (error) {
         console.log('Error getting wallet details', error);
     }
