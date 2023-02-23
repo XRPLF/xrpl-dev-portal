@@ -1546,7 +1546,7 @@
 </table>
 <p>Amendment <code>fixNonFungibleTokensV1_2</code> is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process:</p>
 <p><strong>Fix Unburnable NFT</strong></p>
-<p>Currently, an NFT cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers, leaving any remaining offers untouched.</p>
+<p>Currently, an NFT with the <code>lsfBurnable</code> flag enabled cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers upon burning the NFT, leaving any remaining offers untouched.</p>
 <p>See <a class="external-link" href="https://github.com/XRPLF/rippled/pull/4346" target="_blank">PR 4346 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p><strong>Fix 3 Issues Around NFToken Offer Acceptance</strong></p>
 <p>Issue 1: Resolve situation where an account is unable to broker a deal due to an erroneous insufficient funds condition.</p>
@@ -4383,7 +4383,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="clio-methods.html">Clio Server Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
       
