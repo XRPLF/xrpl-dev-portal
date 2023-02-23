@@ -2,14 +2,14 @@ import { Client } from 'xrpl';
 
 export default async function getLedgerDetails() {
     try {
-        const client = new Client(process.env.CLIENT);
+        const client = new Client(process.env.CLIENT); // Get the client from the environment variables
 
         // Wait for the client to connect
         console.log('Connecting...');
         await client.connect();
         console.log('Connected! Getting latest ledger details...');
 
-        // Get the latest ledger details
+        // Get the latest ledger details: https://xrpl.org/ledger.html
         const ledger = await client.request({
             command: 'ledger',
             ledger_index: 'validated',
@@ -30,4 +30,4 @@ export default async function getLedgerDetails() {
         console.log('Error getting latest ledger details', error);
         return error;
     }
-};
+}

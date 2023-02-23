@@ -2,8 +2,10 @@ import { Client, Wallet, convertHexToString, dropsToXrp } from 'xrpl';
 
 import renderXrplLogo from '../helpers/render-xrpl-logo';
 
+// Optional: Render the XRPL logo
 renderXrplLogo();
 
+// Declare the variables
 let marker = null;
 
 // Get the elements from the DOM
@@ -25,6 +27,7 @@ homeButton.addEventListener('click', () => {
 const header = document.createElement('tr');
 header.innerHTML = `
     <th>Account</th>
+    <th>Destination</th>
     <th>Fee (XRP)</th>
     <th>Amount</th>
     <th>Transaction Type</th>
@@ -34,13 +37,18 @@ header.innerHTML = `
 txHistoryElement.appendChild(header);
 
 // Converts the hex value to a string
-const getTokenName = (value) =>
-    value.length === 40
-        ? convertHexToString(value).replaceAll('\u0000', '')
-        : value;
+const getTokenName = (value) => (value.length === 40 ? convertHexToString(value).replaceAll('\u0000', '') : value);
+
+function renderTokenValueColumn(value) {
+    return value.Amount
+        ? `<td>${
+              typeof value.Amount === 'object' ? `${value.Amount.value} ${getTokenName(value.Amount.currency)}` : `${dropsToXrp(value.Amount)} XRP`
+          }</td>`
+        : '-';
+}
 
 // Fetches the transaction history from the ledger
-const fetchTxHistory = async () => {
+async function fetchTxHistory() {
     try {
         loadMore.textContent = 'Loading...';
         loadMore.disabled = true;
@@ -60,6 +68,7 @@ const fetchTxHistory = async () => {
             payload.marker = marker;
         }
 
+        // Wait for the response: use the client.request() method to send the payload
         const { result } = await client.request(payload);
 
         const { transactions, marker: nextMarker } = result;
@@ -68,6 +77,7 @@ const fetchTxHistory = async () => {
             const { meta, tx } = transaction;
             return {
                 Account: tx.Account,
+                Destination: tx.Destination,
                 Fee: tx.Fee,
                 Amount: tx.Amount,
                 Hash: tx.hash,
@@ -80,41 +90,26 @@ const fetchTxHistory = async () => {
         loadMore.style.display = nextMarker ? 'block' : 'none';
 
         // If there are no transactions, show a message
+        // Create a new row: https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+        // Add the row to the table: https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+
         if (values.length === 0) {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td colspan="6">No transactions found</td>
-            `;
+            row.innerHTML = `<td colspan="6">No transactions found</td>`;
             txHistoryElement.appendChild(row);
         } else {
-            // Otherwise, show the transactions
+            // Otherwise, show the transactions by iterating over each transaction and adding it to the table
             values.forEach((value) => {
-                // Create a new row
                 const row = document.createElement('tr');
-
                 // Add the transaction details to the row
                 row.innerHTML = `
-                <td>${value.Account}</td>
-               ${value.Fee ? `<td>${dropsToXrp(value.Fee)}</td>` : '-'}
-               ${
-                   value.Amount
-                       ? `<td>${
-                             typeof value.Amount === 'object'
-                                 ? `${value.Amount.value} ${getTokenName(
-                                       value.Amount.currency
-                                   )}`
-                                 : `${dropsToXrp(value.Amount)} XRP`
-                         }</td>`
-                       : '-'
-               }
-                <td>${value.TransactionType}</td>
-                <td>${value.result}</td>
-                <td><a href="https://${
-                    process.env.EXPLORER_NETWORK
-                }.xrpl.org/transactions/${
-                    value.Hash
-                }" target="_blank">View</a></td>
-            `;
+                ${value.Account ? `<td>${value.Account}</td>` : '-'}
+                ${value.Destination ? `<td>${value.Destination}</td>` : '-'}
+                ${value.Fee ? `<td>${dropsToXrp(value.Fee)}</td>` : '-'}
+                ${renderTokenValueColumn(value)}
+                ${value.TransactionType ? `<td>${value.TransactionType}</td>` : '-'}
+                ${value.result ? `<td>${value.result}</td>` : '-'}
+                ${value.Hash ? `<td><a href="https://testnet.xrpl.org/transactions/${value.Hash}" target="_blank">View</a></td>` : '-'}`;
                 // Add the row to the table
                 txHistoryElement.appendChild(row);
             });
@@ -126,22 +121,24 @@ const fetchTxHistory = async () => {
         // Enable the load more button only if there are more transactions
         loadMore.textContent = 'Load More';
         loadMore.disabled = false;
-        
+
         // Return the marker
         return nextMarker ?? null;
     } catch (error) {
         console.log(error);
         return null;
     }
-};
+}
 
-const renderTxHistory = async () => {
+// Render the transaction history
+async function renderTxHistory() {
     // Fetch the transaction history
     marker = await fetchTxHistory();
     loadMore.addEventListener('click', async () => {
         const nextMarker = await fetchTxHistory();
         marker = nextMarker;
     });
-};
+}
 
+// Call the renderTxHistory() function
 renderTxHistory();

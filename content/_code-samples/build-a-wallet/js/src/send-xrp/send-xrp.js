@@ -4,6 +4,7 @@ import getWalletDetails from '../helpers/get-wallet-details';
 import renderXrplLogo from '../helpers/render-xrpl-logo';
 import submitTransaction from '../helpers/submit-transaction';
 
+// Optional: Render the XRPL logo
 renderXrplLogo();
 
 // Get the elements from the DOM
@@ -26,16 +27,17 @@ homeButton.addEventListener('click', () => {
 });
 
 txHistoryButton.addEventListener('click', () => {
-    window.location.pathname =
-        '/src/transaction-history/transaction-history.html';
+    window.location.pathname = '/src/transaction-history/transaction-history.html';
 });
 
 // Fetch the wallet details and show the available balance
-getWalletDetails().then(({ accountReserves, account_data }) => {
-    availableBalanceElement.textContent = `Available Balance: ${dropsToXrp(
-        account_data.Balance
-    ) - accountReserves} XRP`;
-});
+function renderAvailableBalance() {
+    getWalletDetails().then(({ accountReserves, account_data }) => {
+        availableBalanceElement.textContent = `Available Balance: ${dropsToXrp(account_data.Balance) - accountReserves} XRP`;
+    });
+}
+
+renderAvailableBalance();
 
 const validateAddress = () => {
     destinationAddress.value = destinationAddress.value.trim();
@@ -74,8 +76,7 @@ for (let i = 0; i < allInputs.length; i++) {
     allInputs[i].addEventListener('input', () => {
         let values = [];
         allInputs.forEach((v) => values.push(v.value));
-        submitTxBtn.disabled =
-            !isValidDestinationAddress || values.includes('');
+        submitTxBtn.disabled = !isValidDestinationAddress || values.includes('');
     });
 }
 
@@ -85,10 +86,11 @@ submitTxBtn.addEventListener('click', async () => {
         console.log('Submitting transaction');
         submitTxBtn.disabled = true;
         submitTxBtn.textContent = 'Submitting...';
-        // Create the transaction object
+
+        // Create the transaction object: https://xrpl.org/transaction-common-fields.html
         const txJson = {
             TransactionType: 'Payment',
-            Amount: xrpToDrops(amount.value),
+            Amount: xrpToDrops(amount.value), // Convert XRP to drops: https://xrpl.org/basic-data-types.html#specifying-currency-amounts
             Destination: destinationAddress.value,
         };
 
@@ -99,10 +101,11 @@ submitTxBtn.addEventListener('click', async () => {
 
         // Submit the transaction to the ledger
         const { result } = await submitTransaction({ tx: txJson });
-        const txResult =
-            result?.meta?.TransactionResult || result?.engine_result || '';
+        const txResult = result?.meta?.TransactionResult || result?.engine_result || ''; // Response format: https://xrpl.org/transaction-results.html
 
+        // Check if the transaction was successful or not and show the appropriate message to the user
         if (txResult === 'tesSUCCESS') {
+            renderAvailableBalance();
             alert('Transaction submitted successfully!');
         } else {
             throw new Error(txResult);
@@ -111,6 +114,7 @@ submitTxBtn.addEventListener('click', async () => {
         alert('Error submitting transaction, Please try again.');
         console.error(error);
     } finally {
+        // Re-enable the submit button after the transaction is submitted so the user can submit another transaction
         submitTxBtn.disabled = false;
         submitTxBtn.textContent = 'Submit Transaction';
     }
