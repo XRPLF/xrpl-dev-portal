@@ -567,7 +567,7 @@ Amendment `fixNonFungibleTokensV1_2` is a combination of bug fixes that have bee
 
 **Fix Unburnable NFT**
 
-Currently, an NFT cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers, leaving any remaining offers untouched.
+Currently, an NFT with the `lsfBurnable` flag enabled cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers upon burning the NFT, leaving any remaining offers untouched.
 
 See [PR 4346](https://github.com/XRPLF/rippled/pull/4346).
 
