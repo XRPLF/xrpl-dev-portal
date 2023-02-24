@@ -12,7 +12,7 @@ XRP Ledgerには、世界でおそらく最も古い _分散型取引所_ (「DE
 
 ## 構造
 
-XRP Ledgerの分散型取引所は、無制限の通貨ペアで構成されており、ユーザーが取引を行う際にオンデマンドで追跡されます。通貨ペアは、XRPとトークン、または2つの異なるトークンから構成されます。トークンは常に、発行者と通貨コードの組み合わせによって識別されます。同じ通貨コードで異なる発行者のトークン同士、または同じ発行者で異なる通貨コードのトークン同士の取引も可能です。 <!-- STYLE_OVERRIDE: limited number -->
+XRP Ledgerの分散型取引所は、無制限の通貨ペアで構成されており、ユーザーが取引を行う際にオンデマンドで追跡されます。通貨ペアは、XRPとトークン、または2つの異なるトークンから構成されます。トークンは常に、発行者と通貨コードの組み合わせによって識別されます。同じ通貨コードで異なる発行者のトークン同士、または同じ発行者で異なる通貨コードのトークン同士の取引も可能です。
 
 XRP Ledgerのすべての変更がそうであるように、取引を行うには[トランザクション](transaction-basics.html)を送信する必要があります。XRP Ledgerにおける取引は、[オファー](offers.html)と呼ばれています。オファーは事実上、ある通貨(XRPまたはトークン)を特定の金額で他の通貨と売買するための[_指値注文_](https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%9F%E3%83%83%E3%83%88%E3%82%AA%E3%83%BC%E3%83%80%E3%83%BC)です。ネットワークがオファーを実行する際、同じ通貨ペアでマッチングするオファーがあれば、最も良い取引レートから順に約定されます。
 
@@ -24,7 +24,7 @@ XRP Ledgerのすべての変更がそうであるように、取引を行うに�
 
 ### 取引の例
 
-{{ include_svg("img/decentralized-exchange-example-trade.svg", "Diagram: Partially filled offer to buy a token for XRP.") }}
+{{ include_svg("img/decentralized-exchange-example-trade.svg", "図: XRPでトークンを購入する注文が一部約定する。") }}
 
 上の図は、分散型取引所での取引例です。この例では、Tranというトレーダーが、WayGateという架空の企業が発行するFOOという通貨コードのトークン100個の購入オファーを出しています。(簡潔にするため、「FOO.WayGate」はこれらのトークンを指します。)Tranは、合計で最大1000XRPまで支払う意思があることを明記しています。Tranのトランザクションが処理されると、次のようなことが起こります。
 
@@ -63,8 +63,6 @@ XRP Ledgerは、成行注文、指値注文、レバレッジ取引などの概�
     - [OfferCancelトランザクション][]: 既存のオファーをキャンセル
     - [Offerオブジェクト][] 台帳のオファーのデータ構造
     - [DirectoryNodeオブジェクト][]: 特定の通貨ペアと取引レートのすべてのオファーを追跡するデータ構造
-
-<!-- NOTE: There aren't really any tutorials for using the DEX. When there are, add them here. -->
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
