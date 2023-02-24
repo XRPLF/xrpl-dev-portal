@@ -2386,10 +2386,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
