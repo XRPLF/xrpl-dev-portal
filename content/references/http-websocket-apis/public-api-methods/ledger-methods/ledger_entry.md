@@ -40,6 +40,7 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
 - [`payment_channel`](#get-paychannel-object)
 - [`deposit_preauth`](#get-depositpreauth-object)
 - [`ticket`](#get-ticket-object)
+- [`nft_page`](#get-nft-page)
 
 **Caution:** If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.
 
@@ -627,6 +628,48 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 [Try it! >](websocket-api-tool.html#ledger_entry-ticket)
 
 
+### Get NFT Page
+
+Return an NFT Page in its raw ledger format.
+
+| `Field`                 | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `nft_page`              | String | The [object ID](ledger-object-ids.html) of an [NFT Page](nftokenpage.html) to retrieve. |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+    "id": "example_get_nft_page",
+    "command": "ledger_entry",
+    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
+    "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
+    "ledger_index": "validated"
+  }]
+}
+```
+
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](websocket-api-tool.html#ledger_entry-nft-page)
 
 ## Response Format
 
