@@ -896,10 +896,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/decentralized-exchange/automated-market-makers.md
         targets:
             - en
+
+    -   md: concepts/decentralized-exchange/automated-market-makers.ja.md
+        targets:
             - ja
 
     -   md: concepts/decentralized-exchange/offers.md
