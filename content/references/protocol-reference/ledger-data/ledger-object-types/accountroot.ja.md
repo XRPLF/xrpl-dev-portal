@@ -7,7 +7,7 @@ labels:
   - XRP
 ---
 # AccountRoot
-[[ソース]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
+[[ソース]](https://github.com/xrplf/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
 
 `AccountRoot`オブジェクトタイプは、1つの[アカウント](accounts.html)、そのアカウントの設定、XRP残高を記述します。
 
@@ -36,25 +36,29 @@ labels:
 
 `AccountRoot`オブジェクトのフィールドは次のとおりです。
 
-| フィールド                         | JSONの型 | [内部の型][] | 説明  |
-|:------------------------------|:----------|:------------------|:-------------|
-| `LedgerEntryType`             | 文字列    | UInt16            | 値`0x0061`が文字列`AccountRoot`にマッピングされている場合は、これがAccountRootオブジェクトであることを示します。 |
-| `Account`                     | 文字列    | AccountID         | このアカウントの識別用アドレス（rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnなど）。 |
-| `Balance`                     | 文字列    | Amount            | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |
-| [`Flags`](#accountrootのフラグ) | 数値    | UInt32            | このアカウントに対して有効になっているブールフラグのビットマップ。 |
-| `OwnerCount`                  | 数値    | UInt32            | レジャーでこのアカウントが所有しており、アカウント所有者の準備金に資金を付与するオブジェクトの数。 |
-| `PreviousTxnID`               | 文字列    | Hash256           | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq`           | 数値    | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
-| `Sequence`                    | 数値    | UInt32            | このアカウントの次に有効なトランザクションのシーケンス番号。（各アカウントはSequence = 1で開始し、トランザクションが作られるたびにこの値が増加します。） |
-| `AccountTxnID`                | 文字列    | Hash256           | _（省略可）_ このアカウントが最後に送信したトランザクションの識別用ハッシュ。 |
-| `Domain`                      | 文字列    | VariableLength    | _（省略可）_ このアカウントに関連付けられているドメイン。JSONではこれはドメインのASCII表現の16進数値です。 |
-| `EmailHash`                   | 文字列    | Hash128           | _（省略可）_ メールアドレスのmd5ハッシュ。クライアントはこれを使用してサービス内で[Gravatar](https://en.gravatar.com/)などのアバターを検索できます。 |
-| `MessageKey`                  | 文字列    | VariableLength    | _（省略可）_ 暗号化メッセージをこのアカウントに送信するときに使用できる公開鍵。JSONでは16進数値を使用します。33バイト以下です。 |
-| `RegularKey`                  | 文字列    | AccountID         | _（省略可）_ このアカウントのトランザクションに署名するときにマスターキーの代わりに使用できる[キーペア](cryptographic-keys.html)のアドレス。この値を変更するには[SetRegularKeyトランザクション][]を使用してください。 |
-| `TickSize`                    | 数値    | UInt8             | _（省略可）_ このアドレスが発行した通貨が関わるオファーの為替レートに使用する有効桁数。有効な値は`3`以上`15`以下です。_（[TickSize Amendment][]が必要です。）_ |
-| `TransferRate`                | 数値    | UInt32            | _（省略可）_ このアカウントが発行した通貨を他のユーザーが相互に送金する際に、これらのユーザーに請求する[送金手数料](transfer-fees.html)。 |
-| `WalletLocator`               | 文字列    | Hash256           | _（省略可）_ **廃止予定**。使用しないでください。 |
-| `WalletSize`                  | 数値    | UInt32            | _（省略可）_ **廃止予定**。使用しないでください。 |
+| フィールド                      | JSONの型 | [内部の型][]        | 必須？ | 説明  |
+|:------------------------------|:---------|:------------------|:-------------|
+| `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](accounts.html)を識別するための（クラシック）アドレスです。。 |
+| `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](transaction-common-fields.html#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](accountset.html#AccountSetのフラグ)を送信してください。 |
+| `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |
+| `BurnedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントで発行された [非代替性トークン](non-fungible-tokens.html) のうち、バーンしたトークンの総数を表します。この数値は常に `MintedNFTokens` と同じかそれ以下となります。 |
+| `Domain`                      | 文字列    | VariableLength    | いいえ | このアカウントに関連付けられたドメイン。JSONでは、ドメインのASCII表現を16進数で表現します。[256バイトを超える長さは使用できません](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
+| `EmailHash`                   | 文字列    | Hash128           | いいえ | メールアドレスのmd5ハッシュ。クライアントはこれを使用してサービス内で[Gravatar](https://ja.gravatar.com/)などのアバターを検索できます。 |
+| [`Flags`](#accountrootのフラグ) | 数値     | UInt32            | はい   | このアカウントに対して有効になっているブールフラグのビットマップ。 |
+| `LedgerEntryType`             | 文字列    | UInt16            | はい   | 値`0x0061`で文字列`AccountRoot`にマッピングされ、AccountRootオブジェクトであることを示します。 |
+| `MessageKey`                  | 文字列    | VariableLength    | いいえ | このアカウントに暗号化されたメッセージを送信するために使用することができる公開鍵です。JSONでは、16進数で指定します。33バイトであることが必要で、最初の1バイトは鍵の種類を表します。secp256k1鍵の場合は`0x02`または`0x03`、Ed25519鍵の場合は`0xED`となります。 |
+| `MintedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントによって、またはこのアカウントのためにMintされた[非代替性トークン](non-fungible-tokens.html) の合計数。 |
+| `NFTokenMinter`               | 文字列    | AccountID         | いいえ | このアカウントに代わって[非代替性トークン](non-fungible-tokens.html)をミントできる別のアカウントを表します。 |
+| `OwnerCount`                  | 数値      | UInt32            | はい   | レジャーでこのアカウントが所有しており、アカウント所有者の準備金に資金を付与するオブジェクトの数。 |
+| `PreviousTxnID`               | 文字列    | Hash256           | はい   | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
+| `PreviousTxnLgrSeq`           | 数値      | UInt32            | はい   | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
+| `RegularKey`                  | 文字列    | AccountID         | いいえ |  このアカウントのトランザクションに署名するときにマスターキーの代わりに使用できる[キーペア](cryptographic-keys.html)のアドレス。この値を変更するには[SetRegularKeyトランザクション][]を使用してください。 |
+| `Sequence`                    | 数値      | UInt32            | はい   | このアカウントの有効な次のトランザクションの[シーケンス番号](basic-data-types.html#アカウントシーケンス) を表します。 |
+| `TicketCount`                 | 数値      | UInt32            | いいえ | このアカウントが台帳に保有する[チケット](tickets.html)の数です。これは、アカウントが一度に250 チケットという上限以内に留まることを保証するために自動的に更新されます。このフィールドは、チケットの数がゼロの場合は省略されます。 _([TicketBatch amendment][]によって追加されました)_ |
+| `TickSize`                    | 数値      | UInt8             | いいえ | このアドレスが発行した通貨が関わるオファーの為替レートに使用する有効桁数。有効な値は`3`以上`15`以下です。_（[TickSize Amendment][]が必要です。）_ |
+| `TransferRate`                | 数値      | UInt32            | いいえ | このアカウントが発行した通貨を他のユーザーが相互に送金する際に、これらのユーザーに請求する[送金手数料](transfer-fees.html)。 |
+| `WalletLocator`               | 文字列    | Hash256           | いいえ | ユーザーが設定できる任意の256bit値。 |
+| `WalletSize`                  | 数値      | UInt32            | いいえ | 未使用。(コード上ではこのフィールドをサポートしていますが、設定する方法はありません)。 |
 
 ## AccountRootのフラグ
 
@@ -75,7 +79,7 @@ AccountRootオブジェクトには以下のフラグ値を指定できます。
 | `lsfRequireAuth`    | `0x00040000` | 262144   | `asfRequireAuth`   | このアカウントは、他のユーザーがこのアカウントのトークンを保有することを個別に承認する必要があります。 |
 | `lsfRequireDestTag` | `0x00020000` | 131072   | `asfRequireDest`   | 受信ペイメントには宛先タグの指定が必要です。 |
 
-## AMM向けの特殊なAccountRootオブジェクト
+## AMMの特殊なAccountRootオブジェクト
 
 {% include '_snippets/amm-disclaimer.md' %}
 
@@ -83,8 +87,8 @@ AccountRootオブジェクトには以下のフラグ値を指定できます。
 
 - `lsfAMM` **有効** : これは、AccountRootがAMMの一部であり、通常のアカウントでないことを示します。
 - `lsfDisableMaster` **有効** : トランザクションへ署名する手段はありません。これにより、誰もそのアカウントを直接操作することができず、トランザクションを送信することができなくなります。
-- `lsfRequireAuth` **有効** :  事前承認されているアカウントは存在しません。これにより、AMMアカウントに資産を追加する唯一の方法は、[AMMDepositトランザクション][]を使用することであることが保証されます。
-- `lsfDefaultRipple` **有効**. ユーザー間でAMMのLPトークンを送信したり、取引したりすることが可能になります。
+- `lsfRequireAuth` **有効** : 事前承認されているアカウントは存在しません。これにより、AMMアカウントに資産を追加する唯一の方法は、[AMMDepositトランザクション][]を使用することであることが保証されます。
+- `lsfDefaultRipple` **有効** : ユーザー間でAMMのLPトークンを送信したり、取引したりすることが可能になります。
 
 これらの特殊なアカウントは、[準備金要件](reserves.html)の対象外ですが、AMMのプール内の2つの資産のうちの1つであれば、XRPを保有することができます。
 

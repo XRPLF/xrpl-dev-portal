@@ -2374,7 +2374,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with new section from the English version
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
         targets:
             - ja
