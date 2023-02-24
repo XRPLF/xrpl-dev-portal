@@ -56,39 +56,39 @@ labels:
 | `WalletLocator`               | 文字列    | Hash256           | _（省略可）_ **廃止予定**。使用しないでください。 |
 | `WalletSize`                  | 数値    | UInt32            | _（省略可）_ **廃止予定**。使用しないでください。 |
 
-## Special AMM AccountRoot Objects
-<!-- TODO: translate this section -->
-
-{% include '_snippets/amm-disclaimer.md' %}
-
-[Automated Market Makers](automated-market-makers.html) (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, in addition to the [AMM object][] for tracking some of the details of the AMM. The address of an AMM's associated AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoots are created with the following settings:
-
-- `lsfAMM` **enabled**. This indicates that the AccountRoot is part of an AMM and is not a regular account.
-- `lsfDisableMaster` **enabled** and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.
-- `lsfRequireAuth` **enabled** and no accounts preauthorized. This ensures that the only way to add money to the AMM Account is using the [AMMDeposit transaction][].
-- `lsfDefaultRipple` **enabled**. This ensures that users can send and trade the AMM's LP Tokens among themselves.
-
-These special accounts are not subject to the [reserve requirement](reserves.html) but they can hold XRP if it is one of the two assets in the AMM's pool.
-
-In most other ways, these accounts function like ordinary accounts; the LP Tokens they issue behave like other [tokens](tokens.html) except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.
-
 ## AccountRootのフラグ
 
 このアカウントに対して有効化または無効化できる各種オプションがあります。これらのオプションを変更するには、[AccountSetトランザクション][]を使用します。レジャーではフラグはバイナリ値として表され、これらのバイナリ値はビットOR演算と組み合わせることができます。レジャーでのフラグのビット値は、トランザクションでこれらのフラグを有効または無効にするために使用する値とは異なります。レジャーのフラグには、 _lsf_ で始まる名前が付いています。
 
 AccountRootオブジェクトには以下のフラグ値を指定できます。
 
-| フラグ名 | 16進数値 | 10進数値 | 説明 | 対応する[AccountSetのフラグ](accountset.html#accountsetのフラグ) |
-|-----------|-----------|---------------|-------------|-------------------------------|
-| lsfDefaultRipple | 0x00800000 | 8388608 | このアドレスのトラストラインでデフォルトで[rippling](rippling.html)を有効にします。発行アドレスに必要です。他のアドレスでの使用は推奨されません。 | asfDefaultRipple |
-| lsfDepositAuth | 0x01000000 | 16777216 | このアカウントは、アカウントが送信するトランザクションと、[事前承認された](depositauth.html#事前承認)アカウントからの資金だけを受領します。（[DepositAuth](depositauth.html)が有効になっています。） | asfDepositAuth |
-| lsfDisableMaster | 0x00100000 | 1048576 | このアカウントのトランザクションの署名にマスターキーを使用することを禁止します。 | asfDisableMaster |
-| lsfDisallowXRP | 0x00080000 | 524288 | クライアントアプリケーションはこのアカウントにXRPを送金しないでください。`rippled`により強制されるものではありません。 | asfDisallowXRP |
-| lsfGlobalFreeze | 0x00400000 | 4194304 | このアドレスが発行するすべての資産が凍結されます。 | asfGlobalFreeze |
-| lsfNoFreeze | 0x00200000 | 2097152 | このアドレスは、このアドレスに接続しているトラストラインを凍結できません。一度有効にすると、無効にできません。 | asfNoFreeze |
-| lsfPasswordSpent | 0x00010000 | 65536 | このアカウントは無料のSetRegularKeyトランザクションを使用しています。 | （なし） |
-| lsfRequireAuth | 0x00040000 | 262144 | このアカウントは、他のユーザーがこのアカウントのイシュアンスを保有することを個別に承認する必要があります。 | asfRequireAuth |
-| lsfRequireDestTag | 0x00020000 | 131072 | 受信ペイメントには宛先タグの指定が必要です。 | asfRequireDest |
+| フラグ名             | 16進数値       | 10進数値 | 対応する[AccountSetのフラグ](accountset.html#accountsetのフラグ) | 説明 |
+|---------------------|--------------|----------|---------------|-------------------------------|
+| `lsfAMM`:not_enabled:  | `0x00010000` | 33554432    | （なし）            | このアカウントは、自動マーケットメーカーrのインスタンスです。:not_enabled: |
+| `lsfDefaultRipple`  | `0x00800000` | 8388608  | `asfDefaultRipple` | このアドレスのトラストラインでデフォルトで[rippling](rippling.html)を有効にします。発行アドレスに必要です。他のアドレスでの使用は推奨されません。 |
+| `lsfDepositAuth`    | `0x01000000` | 16777216 | `asfDepositAuth`   | このアカウントは、アカウントが送信するトランザクションと、[事前承認された](depositauth.html#事前承認)アカウントからの資金だけを受領します。（[DepositAuth](depositauth.html)が有効になっています。） |
+| `lsfDisableMaster`  | `0x00100000` | 1048576  | `asfDisableMaster` | このアカウントのトランザクションの署名にマスターキーを使用することを禁止します。 |
+| `lsfDisallowXRP`    | `0x00080000` | 524288   | `asfDisallowXRP`   | クライアントアプリケーションはこのアカウントにXRPを送金しないでください。`rippled`により強制されるものではありません。 |
+| `lsfGlobalFreeze`   | `0x00400000` | 4194304  | `asfGlobalFreeze`  | このアドレスが発行するすべての資産が凍結されます。 |
+| `lsfNoFreeze`       | `0x00200000` | 2097152  | `asfNoFreeze`      | このアドレスは、このアドレスに接続しているトラストラインを凍結できません。一度有効にすると、無効にできません。 |
+| `lsfPasswordSpent`  | `0x00010000` | 65536    | （なし）            | このアカウントは無料のSetRegularKeyトランザクションを使用しています。 |
+| `lsfRequireAuth`    | `0x00040000` | 262144   | `asfRequireAuth`   | このアカウントは、他のユーザーがこのアカウントのトークンを保有することを個別に承認する必要があります。 |
+| `lsfRequireDestTag` | `0x00020000` | 131072   | `asfRequireDest`   | 受信ペイメントには宛先タグの指定が必要です。 |
+
+## AMM向けの特殊なAccountRootオブジェクト
+
+{% include '_snippets/amm-disclaimer.md' %}
+
+[自動マーケットメーカー](automated-market-makers.html) (AMM) は、AMMの詳細の一部を追跡するための[AMMオブジェクト][]に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootオブジェクトを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザーがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。
+
+- `lsfAMM` **有効** : これは、AccountRootがAMMの一部であり、通常のアカウントでないことを示します。
+- `lsfDisableMaster` **有効** : トランザクションへ署名する手段はありません。これにより、誰もそのアカウントを直接操作することができず、トランザクションを送信することができなくなります。
+- `lsfRequireAuth` **有効** :  事前承認されているアカウントは存在しません。これにより、AMMアカウントに資産を追加する唯一の方法は、[AMMDepositトランザクション][]を使用することであることが保証されます。
+- `lsfDefaultRipple` **有効**. ユーザー間でAMMのLPトークンを送信したり、取引したりすることが可能になります。
+
+これらの特殊なアカウントは、[準備金要件](reserves.html)の対象外ですが、AMMのプール内の2つの資産のうちの1つであれば、XRPを保有することができます。
+
+LPトークンは他の[トークン](tokens.html)と同様に動作しますが、これらのトークンはAMM関連のトランザクションでも使用することができます。AMMの残高や、AMMに影響を与えたトランザクションの履歴は、通常のアカウントと同じように確認することができます。
 
 ## AccountRoot IDのフォーマット
 
