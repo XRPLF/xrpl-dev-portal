@@ -8,9 +8,9 @@ labels:
 # Offer
 [[ソース]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
-`Offer`オブジェクトタイプは、XRP Ledgerの分散型取引所での（従来は _オーダー_ と呼ばれていた）通貨取引オファーを記述します。[OfferCreateトランザクション][]は、レジャーにすでに含まれている他のオファーを使ってオファーを全額約定できない場合に、レジャーに`Offer`オブジェクトを作成します。
+台帳の`Offer`項目は、XRP Ledgerの[分散型取引所](decentralized-exchange.html)で通貨を交換する[オファー](offers.html)を表しています。（金融ではより伝統的に _オーダー_ として知られています）。[OfferCreateトランザクション][]は台帳にある他のOfferを全額約定できない場合、台帳に`Offer`項目を作成します。
 
-オファーがレジャーに存在している間に、ネットワークの他のアクティビティによってオファーが資金化されないことがあります。ただし`rippled`ではトランザクション処理において資金化されないオファーはすべて自動的に取り除かれます（レジャー状態を変更できるのはトランザクションだけであることから、これはトランザクション処理で _のみ_ 行われます）。
+オファーがネットワーク上の他の活動によって資金不足になることはありますが、元帳には残ります。トランザクションを処理する際、ネットワークはトランザクションが見つけた資金不足のオファーを自動的に削除します。( _トランザクションのみ_ が台帳の状態を変更できるため、削除が行われないと資金不足のオファーが残ってしまいます。)
 
 詳細は、[オファー](offers.html)を参照してください。
 
@@ -74,7 +74,9 @@ labels:
 * Offerスペースキー（`0x006F`）
 * オファーを行うアカウントのAccountID
 * オファーを作成した[OfferCreateトランザクション][]のシーケンス番号
+
     OfferCreateトランザクションが[Ticket](tickets.html)を使用した場合、代わりに`TicketSequence`値を使用します。
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
