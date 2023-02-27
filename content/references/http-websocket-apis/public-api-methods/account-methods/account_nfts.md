@@ -24,7 +24,7 @@ An example of the request format:
 ```json
 {
   "command": "account_nfts",
-  "account": "rsuHaTvJh1bDmDoxX9QcKP7HEBSBt4XsHx",
+  "account": "rBKXVs4NBYLVBvaeCBVFsdJSYBjoHhf1yY",
   "ledger_index": "validated"
 }
 ```
@@ -35,7 +35,7 @@ An example of the request format:
 {
   "method": "account_nfts",
   "params": [{
-    "account": "rsuHaTvJh1bDmDoxX9QcKP7HEBSBt4XsHx",
+    "account": "rBKXVs4NBYLVBvaeCBVFsdJSYBjoHhf1yY",
     "ledger_index": "validated"
   }]
 }
