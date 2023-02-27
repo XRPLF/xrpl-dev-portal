@@ -3,7 +3,7 @@ html: nftokencreateoffer.html
 parent: transaction-types.html
 blurb: NFTの売買のオファーを作成する。
 labels:
-  - Non-fungible Tokens, NFTs
+  - 非代替性トークン, NFT
 ---
 # NFTokenCreateOffer
 
