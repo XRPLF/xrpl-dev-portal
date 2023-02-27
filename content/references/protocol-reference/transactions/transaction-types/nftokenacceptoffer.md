@@ -44,8 +44,8 @@ The mode in which the transaction operates depends on the presence of the `NFTok
 | `NFTokenSellOffer` | `NFTokenBuyOffer` | Mode     |
 |:-------------------|:------------------|:---------|
 | ✔️                  | ✔️                 | Brokered |
-| ✔️                  | ×                 | Direct   |
-| ×                  | ✔️                 | Direct   |
+| ✔️                  | ❌                 | Direct   |
+| ❌                  | ✔️                 | Direct   |
 
 
 If neither of those fields is specified, the transaction is malformed and produces a `tem` class error.
