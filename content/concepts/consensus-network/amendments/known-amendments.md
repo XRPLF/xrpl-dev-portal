@@ -16,7 +16,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 |:----------------------------------|:-----------|:------------------------------|
 | [fixTrustLinesToSelf][]           | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [Open for Voting: TBD]("BADGE_80d0e0") |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [In Development: TBD]("BADGE_80d0e0") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
 | [NonFungibleTokensV1_1][]         | v1.9.2     | [Enabled: 2022-10-31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [Enabled: 2022-10-27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
