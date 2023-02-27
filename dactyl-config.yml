@@ -844,6 +844,9 @@ pages:
     -   md: concepts/tokens/common-misconceptions-about-freezes.md
         targets:
             - en
+
+    -   md: concepts/tokens/common-misconceptions-about-freezes.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/rippling.md
