@@ -196,6 +196,7 @@
   "DeletableAccounts",
   "DepositAuth",
   "DepositPreauth",
+  "DisallowIncoming",
   "EnforceInvariants",
   "Escrow",
   "ExpandedSignerList",
