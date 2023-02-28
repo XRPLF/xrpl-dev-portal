@@ -1315,6 +1315,8 @@ pages:
 
     -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
 
+    -   md: tutorials/build-apps/build-a-desktop-wallet-in-javascript.md
+
     -   name: Production Readiness
         html: production-readiness.html
         parent: tutorials.html
