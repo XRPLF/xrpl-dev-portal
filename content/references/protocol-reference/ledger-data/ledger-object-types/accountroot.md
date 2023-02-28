@@ -67,18 +67,22 @@ There are several options which can be either enabled or disabled for an account
 
 AccountRoot objects can have the following flag values:
 
-| Flag Name           | Hex Value    | Decimal Value | Corresponding [AccountSet Flag](accountset.html#accountset-flags) | Description |
-|---------------------|--------------|---------------|--------------------|----|
-| `lsfAMM` :not_enabled: | `0x02000000` | 33554432   | (None)             | This account is an Automated Market Maker instance. :not_enabled: |
-| `lsfDefaultRipple`  | `0x00800000` | 8388608       | `asfDefaultRipple` | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. |
-| `lsfDepositAuth`    | `0x01000000` | 16777216      | `asfDepositAuth`   | This account can only receive funds from transactions it sends, and from [preauthorized](depositauth.html#preauthorization) accounts. (It has [DepositAuth](depositauth.html) enabled.) |
-| `lsfDisableMaster`  | `0x00100000` | 1048576       | `asfDisableMaster` | Disallows use of the master key to sign transactions for this account. |
-| `lsfDisallowXRP`    | `0x00080000` | 524288        | `asfDisallowXRP`   | Client applications should not send XRP to this account. Not enforced by `rippled`. |
-| `lsfGlobalFreeze`   | `0x00400000` | 4194304       | `asfGlobalFreeze`  | All assets issued by this address are frozen. |
-| `lsfNoFreeze`       | `0x00200000` | 2097152       | `asfNoFreeze`      | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. |
-| `lsfPasswordSpent`  | `0x00010000` | 65536         | (None)             | The account has used its free SetRegularKey transaction. |
-| `lsfRequireAuth`    | `0x00040000` | 262144        | `asfRequireAuth`   | This account must individually approve other users for those users to hold this account's tokens. |
-| `lsfRequireDestTag` | `0x00020000` | 131072        | `asfRequireDest`   | Requires incoming payments to specify a Destination Tag. |
+| Flag Name                      | Hex Value    | Decimal Value | Corresponding [AccountSet Flag](accountset.html#accountset-flags) | Description |
+|--------------------------------|--------------|---------------|--------------------------------|----|
+| `lsfAMM` :not_enabled:         | `0x02000000` | 33554432      | (None)                         | This account is an Automated Market Maker instance. :not_enabled: |
+| `lsfDefaultRipple`             | `0x00800000` | 8388608       | `asfDefaultRipple`             | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. |
+| `lsfDepositAuth`               | `0x01000000` | 16777216      | `asfDepositAuth`               | This account can only receive funds from transactions it sends, and from [preauthorized](depositauth.html#preauthorization) accounts. (It has [DepositAuth](depositauth.html) enabled.) |
+| `lsfDisableMaster`             | `0x00100000` | 1048576       | `asfDisableMaster`             | Disallows use of the master key to sign transactions for this account. |
+| `lsfDisallowIncomingCheck`     | `0x08000000` | 134217728     | `asfDisallowIncomingCheck`     | This account is blocking incoming checks. _(Added by the [DisallowIncoming amendment][].)_ |
+| `lsfDisallowIncomingNFTOffer`  | `0x04000000` | 67108864      | `asfDisallowIncomingNFTOffer`  | This account is blocking incoming NFToken offers. _(Added by the [DisallowIncoming amendment][].)_ |
+| `lsfDisallowIncomingPayChan`   | `0x10000000` | 268435456     | `asfDisallowIncomingPayChan`   | This account is blocking incoming payment channels. _(Added by the [DisallowIncoming amendment][].)_ |
+| `lsfDisallowIncomingTrustline` | `0x20000000` | 536870912     | `asfDisallowIncomingTrustline` | This account is blocking incoming trust lines. _(Added by the [DisallowIncoming amendment][].)_ |
+| `lsfDisallowXRP`               | `0x00080000` | 524288        | `asfDisallowXRP`               | Client applications should not send XRP to this account. Not enforced by `rippled`. |
+| `lsfGlobalFreeze`              | `0x00400000` | 4194304       | `asfGlobalFreeze`              | All assets issued by this address are frozen. |
+| `lsfNoFreeze`                  | `0x00200000` | 2097152       | `asfNoFreeze`                  | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. |
+| `lsfPasswordSpent`             | `0x00010000` | 65536         | (None)                         | The account has used its free SetRegularKey transaction. |
+| `lsfRequireAuth`               | `0x00040000` | 262144        | `asfRequireAuth`               | This account must individually approve other users for those users to hold this account's tokens. |
+| `lsfRequireDestTag`            | `0x00020000` | 131072        | `asfRequireDest`               | Requires incoming payments to specify a Destination Tag. |
 
 
 ## Special AMM AccountRoot Objects
