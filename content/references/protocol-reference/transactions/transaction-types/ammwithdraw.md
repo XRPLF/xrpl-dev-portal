@@ -50,7 +50,7 @@ Withdraw assets from an [Automated Market Maker](automated-market-makers.html) (
 | `EPrice`     | [Currency Amount][] | Amount            | No        | The minimum effective price, in LP Token returned, to pay per unit of the asset to withdraw. |
 | `LPTokenIn`  | [Currency Amount][] | Amount            | No        | How many of the AMM's LP Tokens to redeem. |
 
-**Note:** For a two-asset withdrawal, it is possible for `Asset` to correspond to _either_ `Amount` or `Amount2` as long as `Asset2` corresponds to the other one. It is recommended to match them (that is, `Amount2` is an amount of the asset defined in `Asset2`) because it is less confusing that way.
+**Note:** For a double-asset withdrawal, it is possible for `Asset` to correspond to _either_ `Amount` or `Amount2` as long as `Asset2` corresponds to the other one. It is recommended to match them (that is, `Amount2` is an amount of the asset defined in `Asset2`) because it is less confusing that way.
 
 ### AMMWithdraw Modes
 
@@ -59,7 +59,7 @@ This transaction has several modes, depending on which flags you specify. Each m
 - **Double-asset withdrawals**, in which you receive both assets from the AMM's pool in proportions that match their balances there. These withdrawals are not subject to a fee.
 - **Single-asset withdrawals**, in which you receive one asset from the AMM's pool. The AMM charges a fee based on how much your deposit shifts the balance of assets in the pool. Depending on the withdraw mode, the amount of the fee can be added to the amount of LP Tokens paid in, or debited from the amount of the asset paid out.
 
-The following modes are for a **double-asset withdrawal**:
+The following combinations of fields indicat a **double-asset withdrawal**:
 
 | Flag Name(s)    | Flag Value   | Fields Specified       | Meaning |
 |-----------------|--------------|------------------------|---------|
