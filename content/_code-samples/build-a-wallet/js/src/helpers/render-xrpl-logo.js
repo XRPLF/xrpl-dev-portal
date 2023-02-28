@@ -7,7 +7,7 @@ export default function renderXrplLogo() {
     target="_blank"
     class="logo_link"
 >
-    <img id="xrpl_logo" class="logo vanilla" alt="JavaScript logo" src="${xrplLogo}" />
+    <img id="xrpl_logo" class="logo vanilla" alt="XRPL logo" src="${xrplLogo}" />
 </a>
 `;
 }

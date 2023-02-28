@@ -1319,6 +1319,7 @@ pages:
             - ja
 
     -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
+    -   md: tutorials/build-apps/build-a-desktop-wallet-in-js.md
 
     -   name: Production Readiness
         html: production-readiness.html

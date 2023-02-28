@@ -1,4 +1,16 @@
-## Pre-requisites
+---
+parent: build-apps.html
+targets:
+  - en
+  - ja # TODO: translate this page
+blurb: Build a graphical desktop wallet for the XRPL using Javascript.
+---
+# Build a Desktop Wallet in Javascript
+<!-- STYLE_OVERRIDE: wallet -->
+
+This tutorial demonstrates how to build a desktop wallet for the XRP Ledger using the Javascript programming language and various libraries. This application can be used as a starting point for building a more complete and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.
+
+## Prerequisites
 
 To implement this tutorial you should have a basic understanding of JavaScript and Node.js. You should also have a basic idea about XRP Ledger. For more information, visit the [XRP Ledger Dev Portal](https://xrpl.org) and the [XRPL Learning Portal](https://learn.xrpl.org/) for videos, libraries, and other resources.
 
@@ -6,13 +18,18 @@ Follow the steps below to get started:
 
 1. [Node.js](https://nodejs.org/en/download/) (v10.15.3 or higher)
 2. Install [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) or [NPM](https://www.npmjs.com/get-npm) (v6.4.1 or higher)
-3. Add your Seed, Client, and specify testnet/mainnet in .env file - see [example.env](example.env)
+3. Add your Seed, Client, and specify testnet/mainnet in .env file. Example .env file is provided in the source code below.
 4. Run `yarn install` or `npm install` to install dependencies
 5. Start the app with `yarn dev` or `npm dev`
+## Source Code
+
+You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/).
 
 ## Goals
 
-At the end of this tutorial, you should be able to build a simple XRP wallet that is displayed in the screenshot section.
+At the end of this tutorial, you should be able to build a simple XRP wallet displayed below.
+
+![Home Page Screenshot](img/js-wallet-home.png)
 
 This application is capable of the following:
 
@@ -28,6 +45,7 @@ This application is capable of the following:
 ## Steps
 
 Before you begin, make sure you have the pre-requisites installed. Check your node version by running `node -v`. If you don't have node installed, you can download it [here](https://nodejs.org/en/download/).
+
 ### Step 1: Setting up the project
 
 - Navigate to the directory that you want to create the project in.
@@ -63,7 +81,7 @@ SEED="sEd7B2Jm7RBhhh5i88SH38aZB8ot8Kq" // Replace with your seed
 
 In this step, we will create the home page that will display the account details and the ledger details.
 
-[Home Page Screenshot](_code-samples/build-a-wallet/js/src/assets/screenshot-home.png)
+![Home Page Screenshot](img/js-wallet-home.png)
 
 - In your project directory, create new files named index.html, index.js and index.css in the src directory. You can copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html), [index.js](_code-samples/build-a-wallet/js/index.js) and [index.css](_code-samples/build-a-wallet/js/index.css) files to your project's files.
 
@@ -95,7 +113,7 @@ We also call the getWalletDetails and getLedgerDetails functions to fetch the ac
 
 In the code above you'll notice addXrpLogo function, this function is used to add the XRP logo to the pages. This is an optional step just for aesthetic purpose, you can skip this step if you don't want to add the XRP logo to the pages.
 
-{{ include_code("_code-samples/build-a-wallet/js/src/helpers/render-xrp-logo.js", language="js") }}
+{{ include_code("_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js", language="js") }}
 
 - Now, are javascript code is ready. We'll now create the HTML and CSS for the home page. In the index.html file, add the following code:
 
@@ -107,7 +125,7 @@ It's basic HTML code with preloading CSS files, we are using plain CSS for this 
 
 Till now, we have created the home page that displays the account and ledger details. In this step, we will create the Send XRP page that will allow users to send XRP to another account with optional destination tag.
 
-[Send XRP Page Screenshot](_code-samples/build-a-wallet/js/src/assets/screenshot-send-xrp.png)
+![Send XRP Page Screenshot](img/js-wallet-send-xrp.png)
 
 - Create a folder named send-xrp in the src directory and add two files named send-xrp.js and send-xrp.html. You can also create a separate css file depending on your choice. 
 
@@ -149,7 +167,7 @@ In this step, we will create the Transactions page that will display the latest 
   - Result: The result of the transaction.
   - Link: A link to the transaction on the XRP Ledger Explorer.
 
-[Transactions Page Screenshot](_code-samples/build-a-wallet/js/src/assets/screenshot-tx.png)
+![Transactions Page Screenshot](img/js-wallet-transaction.png)
 
 - Create a folder named transaction-history in the src directory and add two files named transaction-history.js and transaction-history.html. 
 
@@ -175,7 +193,7 @@ Remember that you can also modify the CSS code in the index.css file to adjust t
 
 ### Step 5: Running the App
 
-- Set up vite bundler 
+1. Set up vite bundler 
 
 After completing the code for the app, you'll need to run and test it. Before you start, make sure you have Node.js installed on your system and a basic understanding of bundlers like Vite or Webpack.
 
@@ -187,7 +205,7 @@ xrpl.js requires some configuration to run with the vite bundler. You can find t
 
 {{ include_code("_code-samples/build-a-wallet/js/vite.config.js", language="js") }}
 
-- Add scripts to package.json
+2. Add scripts to package.json
 
 In your package.json file, add:
 
@@ -209,22 +227,12 @@ This will start the app in development mode. Check your terminal for the URL whe
 
 If you're having trouble running the app, go through the steps again and make sure you've completed all the steps correctly. If still the app doesn't run, join the XRPL community on [Discord](https://discord.com/invite/KTNmhJDXqa) and ask for suggestions.
 
-
-## Notes
-
-- The app uses the [XRP Ledger Test Net](https://xrpl.org/xrp-test-net-faucet.html) by default. To use the mainnet, change the `XRPL_NETWORK` variable in the .env file to `mainnet`.
-- The app uses the [XRP Ledger WebSocket API](https://xrpl.org/websocket-api-tool.html) to connect to the XRP Ledger. The WebSocket API is a convenient way to connect to the XRP Ledger and subscribe to account notifications. 
-- The app uses the [account_tx](https://xrpl.org/account_tx.html) method to fetch the latest transactions for the account. 
-- The app uses the [account_info](https://xrpl.org/account_info.html) method to fetch the account details.
-- The app uses [xrpl.js](https://js.xrpl.org) to sign transactions and submit them to the XRP Ledger.
-
-
 ## Next Steps
 
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
 - You could support more of the XRP Ledger's [transaction types](transaction-types.html) including [tokens](issued-currencies.html) and [cross-currency payments](cross-currency-payments.html)
-    - Example code for displaying token balances and other objects: [`7_owned_objects.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/7_owned_objects.py)
+- You could add support for multiple currencies, including IOUs.
 - Allow the user to trade in the [decentralized exchange](decentralized-exchange.html)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.
 - Support better account security including [regular key pairs](cryptographic-keys.html#regular-key-pair) or [multi-signing](multi-signing.html).
