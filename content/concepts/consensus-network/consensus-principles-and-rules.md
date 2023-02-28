@@ -22,7 +22,7 @@ As a cryptographic system, the owners of XRP Ledger accounts are identified by _
 
 ### The Double Spend Problem
 
-The "double spend" problem is a fundamental challenge to operating any sort of payment system. The problem comes from the requirement that when money is spent in one place, it can't also be spent in another place. More generally, the problem occurs when you have any two transactions such that either one is valid but not both together.
+The "double spend" problem is a fundamental challenge to any digital payment system. The problem comes from the requirement that when money is spent in one place, it can't also be spent in another place. More generally, the problem occurs when you have any two transactions such that either one is valid but not both together.
 
 Suppose Alice, Bob, and Charlie are using a payment system, and Alice has a balance of $10. For the payment system to be useful, Alice must be able to send her $10 to Bob, or to Charlie. However, if Alice tries to send $10 to Bob and also send $10 to Charlie at the same time, that's where the double spend problem comes in.
 
