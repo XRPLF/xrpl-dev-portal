@@ -987,3 +987,24 @@ $placeholder-color: $gray-600;
     filter: invert(100%) brightness(0.8);
   }
 }
+
+.page-impact {
+
+  .connect-list {
+    @each $connect in "connect-01", "connect-02", "connect-03", "connect-04" {
+      ##{$connect} {
+        content: url("../img/impact/lightmode/#{$connect}.svg");
+      }
+    }
+  }
+
+  #map-light {
+    display: block;
+  }
+  #map-dark {
+    display: none;
+  }
+
+}
+
+

@@ -8,118 +8,225 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+      <!-- Play videos from youtube -->
+  <script src="{{currentpage.prefix}}assets/js/video.js"></script>
+
 {% endblock %}
 
 {% block bodyclasses %}no-sidebar{% endblock %}
-{% block mainclasses %}landing{% endblock %}
+{% block mainclasses %}landing page-impact{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
 <div class="overflow-hidden">
 
-  <div class="position-relative">
-    <img src="./img/backgrounds/impact-green.svg" class="landing-bg" id="impact-green">
+  <div class="position-relative d-none-sm">
+    <img src="./img/backgrounds/community-purple.svg" class="landing-bg" id="impact-purple">
   </div>
 
-  <section class="py-26">
-    <div class="col-lg-5 mx-auto text-center">
+  <section class="container-new py-26 text-lg-center">
+    <div class="p-0 col-lg-8 mx-lg-auto">
       <div class="d-flex flex-column-reverse">
-        <h1 class="mb-0">{% trans %}Faster, Cheaper, Green Money{% endtrans %}</h1>
-        <h6 class="eyebrow mb-3">{% trans %}Impact{% endtrans %}</h6>
+        <h1 class="mb-0">{% trans %}The first major, global, public carbon-neutral blockchain{% endtrans %}</h1>
+        <h6 class="eyebrow mb-3">{% trans %}XRPL Sustainability & Impact{% endtrans %}</h6>
       </div>
-    </div>
-  </section>
-
-  <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm pt-0">
-      <h6 class="longform mb-10">{% trans %}The digital asset XRP is a truly global currency—ideally suited to enable today’s global economy.{% endtrans %}</h6>
-      <p class="mb-6">{% trans %}As an optimal medium of exchange, XRP and the XRP Ledger on which it operates help to move money around the world faster, cheaper and more sustainably than any other currency available today. {% endtrans %}</p>
-      <p class="mb-10">{% trans %}It was designed this way, and it’s proving its impact in global payments and beyond.{% endtrans %}</p>
-      <a class="btn btn-primary btn-arrow" href="carbon-calculator.html">How Green is Your Currency?</a>
+      <p class="px-lg-4 mt-4">The XRPL was designed to settle transactions sustainably in addition to providing developers with utility, speed, and low fees.</p>
     </div>
   </section>
 
   <div class="position-relative d-none-sm">
-    <img src="./img/backgrounds/impact-orange.svg" id="impact-orange">
+    <img src="./img/backgrounds/home-green.svg" id="impact-green">
   </div>
 
-  <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
-      <h2 class="h4 h2-sm mb-8">{% trans %}Creating Economic Opportunity{% endtrans %}</h2>
-      <h5 class="longform mb-10">{% trans %}For more than <a href="https://publications.iom.int/system/files/pdf/wmr_2020.pdf" target="_blank">272 million migrants</a> worldwide, sending and receiving money across borders is expensive, unreliable and complex.{% endtrans %}</h5>
-      <p class="mb-6">{% trans %}XRP and the XRP Ledger are changing that. The technology has been adopted by financial institutions around the world to source liquidity for international transactions. Because of the unprecedented efficiency it offers, they’re able to bring down costs and improve services.{% endtrans %}</p>
-      <p class="mb-0">{% trans %}This means hundreds of millions of people worldwide who need to move money safely and securely across borders can do so more affordably and reliably than ever before.{% endtrans %}</p>
+  <!-- World map -->
+  <section class="container-new py-10">
+    <div class="col-sm-10 col-lg-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
+      <h6 class="eyebrow mb-3">Building for the Future</h6>
+
+      <h2 class="h4 h2-sm mb-8">{% trans %}Consensus protocol is efficient and sustainable{% endtrans %}</h2>
+      
+      <h5 class="longform mb-10">For more than 272 million migrants worldwide, sending and receiving money across borders is expensive, unreliable and complex.</h5>
+      <p class="mb-6">{% trans %}Open and decentralized, blockchain and crypto are seeing an increase in adoption across the financial services industry, from retail and institutional investment to commercial use cases like CBDCs, NFTs and cross-border payments.{% endtrans %}</p>
+      <p class="mb-0">{% trans %}With usage growing, it’s critical that measures are taken today to ensure that the technology is environmentally sustainable tomorrow.{% endtrans %}</p>
+    </div>
+
+    <div>
+      <!-- Large -->
+      <div class="col d-none d-lg-block align-self-center">
+        <div class="mt-10" id="map-dark"></div>
+        <div class="mt-10" id="map-light"></div>
+      </div>
+  
     </div>
   </section>
 
+  <!-- Video sidebar -->
   <section class="container-new py-26">
     <div class="mt-10 card-grid card-grid-2xN">
-      <div class="col ls-none mb-16-sm">
-        <h2 class="h4 h2-sm mb-8">{% trans %}Building for the Future{% endtrans %}</h2>
-        <h5 class="longform mb-10">{% trans %}Digital assets and blockchain technology are the future of finance. Open and decentralized, they offer the first-ever global standards for value exchange broadly—whether it’s money, stocks, loyalty points, intellectual property or more.{% endtrans %}</h5>
-        <p class="mb-6">{% trans %}This has spawned increasing adoption of the technology across the financial services industry, from retail and institutional investment to commercial use cases like CBDCs, NFTs and cross-border payments.{% endtrans %}</p>
-        <p class="mb-0">{% trans %}With usage growing, it’s critical that measures are taken today to ensure that the technology is environmentally sustainable tomorrow.{% endtrans %}</p>
+      
+      <div class="col">
+        <iframe id="video1" style="display:none;" width="560" height="315" src="https://www.youtube.com/embed/WsmldDNGQ9s" title="What makes the XRPL sustainable?" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <a href="#" id="playvideo">
+          <img src="./assets/img/impact/video_sustainable@2x.png" id="xrpl-overview-video-intro" class="w-100 video-image">
+        </a>
       </div>
+
       <div class="col ls-none mb-16-sm">
-        <div class="col-md-8 mx-auto pl-0-sm pr-0-sm">
-          <h6 class="mb-10-until-sm mb-8-sm">{% trans %}Projected BTC, ETH and XRP Transactions in USD{% endtrans %}</h6>
-          <div class="mb-10">
-            <div class="d-flex align-items-baseline mb-3">
-              <h5 class="mb-0">{% trans %}2025{% endtrans %}</h5>
-              <p class="stat-highlight h6 ml-10 mb-0">
-                <img src="{{currentpage.prefix}}assets/img/icons/green-up-arrow.svg">
-                {% trans %}+195.3%{% endtrans %}
-              </p>
-            </div>
-            <p class="numbers">{% trans %}$8.6T{% endtrans %}</p>
-          </div>
-          <div>
-            <div class="d-flex align-items-baseline mb-3">
-              <h5 class="mb-0">{% trans %}2030{% endtrans %}</h5>
-              <p class="stat-highlight h6 ml-10 mb-0">
-                <img src="{{currentpage.prefix}}assets/img/icons/green-up-arrow.svg">
-                {% trans %}+21.4%{% endtrans %}
-              </p>
-            </div>
-            <p class="numbers">{% trans %}$10.5T{% endtrans %}</p>
-          </div>
+        <h6 class="eyebrow mb-3">A Sustainable Future</h6>
+        <h2 class="h4 h2-sm mb-8">{% trans %}What makes the XRPL sustainable?{% endtrans %}</h2>
+        <h5 class="longform mb-10">{% trans %}XRPL’s unique consensus mechanism is eco-friendly—it does not require mining to settle transactions. This results in efficiency without sacrificing security, decentralization, or scalability.{% endtrans %}</h5>
+        <p>{% trans %}The trivial amount of energy it does consume is then neutralized with carbon credits through EW Zero, an open-source blockchain decarbonization tool.{% endtrans %}</p>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Card -->
+  <section class="container-new py-26">
+    <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
+      
+      <img src="./img/backgrounds/cta-community-purple.svg" class="cta cta-top-left">
+      <img src="./img/backgrounds/cta-calculator-green.svg" class="cta cta-bottom-right">
+      <div class="z-index-1 position-relative">
+        <div class="d-flex flex-column-reverse">
+          <h2 class="h4 h2-sm mb-10-until-sm mb-8-sm">{% trans %}Featured companies & projects running on the XRP Ledger.{% endtrans %}</h2>
+          <h6 class="eyebrow mb-3">{% trans %}Sustainable Projects{% endtrans %}</h6>
         </div>
+        <p class="mb-10">{% trans %}Learn more about companies and developers who are using the XRP Ledger to solve interesting problems efficiently and sustainably.{% endtrans %}</p>
+        <a class="btn btn-primary btn-arrow" href="{{currentpage.prefix}}uses.html">{% trans %}See More{% endtrans %}</a>
       </div>
     </div>
-  </section>
+</section>
 
-  <div class="position-relative d-none-sm">
-    <img src="./img/backgrounds/impact-magenta.svg" id="impact-magenta">
+<!-- Connect -->
+<section class="container-new py-26">
+  <!-- flex. Col for mobile. Row for large. on large align content to the center  -->
+  <div class="d-flex flex-column flex-lg-row align-items-lg-center mr-lg-4">
+
+      <div class="order-1  mb-4 pb-3 mb-lg-0 pb-lg-0 col-lg-6 px-0 p-lg-3">
+          <div class="d-flex flex-column-reverse py-lg-3">
+              <h3 class="h4 h2-sm">{% trans %}How can developers connect and contribute?{% endtrans %}</h3>
+          </div>
+          <p class="py-lg-3 mb-2 longform" style="max-width: 520px;">{% trans %}If sustainability, security and decentralization are important to you, you’re invited to join the XRPL community in its quest to build a better world. Here are some ways to get involved:{% endtrans %}</p>
+
+          <div class="d-none d-lg-block py-lg-3">
+              <a class="btn btn-primary btn-arrow" href="/contribute.html">{% trans %}Join the Community{% endtrans %}</a>
+          </div>
+      </div>
+
+      <div class="order-2 col-lg-6 px-0 pl-lg-3">
+          <div class="row align-items-center m-0 connect-list"> 
+              <!-- connect list -->
+              <div class="col-12 col-lg-6 p-0 pr-3">
+                  <div class="px-lg-3 pb-3">
+                      <img id="connect-01" src="data:," />
+                      <div class="pt-3">
+                          <h6 class="mb-3">{% trans %}Blog{% endtrans %}</h6>
+                          <p>Check out the <a href="https://xrpl.org/blog/">XRPL dev blog</a> to stay up-to-date on the latest innovations and developments in the XRPL community.</p>
+                      </div>
+                  </div>
+                  <!-- Hide on large -->
+                  <div class="px-lg-3 pb-3 d-lg-none">
+                      <img id="connect-02" src="data:," />
+                      <div class="pt-3">
+                          <h6 class="mb-3">{% trans %}Events{% endtrans %}</h6>
+                          <p>Attend <a href="/events.html">meetups, hackathons, and conferences</a> to meet other members of the community.</p>
+                      </div>
+                  </div>
+                  <div class="px-lg-3 pb-3 pt-lg-5">
+                      <img id="connect-03" src="data:," />
+                      <div class="pt-3">
+                          <h6 class="mb-3">{% trans %}Code{% endtrans %}</h6>
+                          <p>View the <a href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">Github repositories</a> to find projects to see how you can contribute.</p>
+                      </div>
+                  </div>
+                  <!-- Hide on large -->
+                  <div class="px-lg-3 pb-3 d-lg-none">
+                      <img id="connect-04" src="data:," />
+                      <div class="pt-3">
+                          <h6 class="mb-3">{% trans %}Connect{% endtrans %}</h6>
+                          <p>{% trans %}Join the conversation on social media using #XRPLCommunity.{% endtrans %}</p>
+                      </div>
+                  </div>
+              </div>
+              <!-- end col 1 -->
+
+              <!-- Show on large -->
+              <div class="col-12 col-lg-6 p-0  pr-3 d-none d-lg-block">
+                  <div class="px-lg-3 pb-3 pt-5 mt-5">
+                      <div class="pt-1 mt-3">
+                          <img id="connect-02" src="data:," />
+                          <div class="pt-3">
+                              <h6 class="mb-3">{% trans %}Events{% endtrans %}</h6>
+                              <p>Attend <a href="/events.html">meetups, hackathons, and conferences</a> to meet other members of the community.</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="px-lg-3 pb-3 pt-5">
+                      <img id="connect-04" src="data:," />
+                      <div class="pt-3">
+                          <h6 class="mb-3">{% trans %}Connect{% endtrans %}</h6>
+                          <p>{% trans %}Join the conversation on social media using #XRPLCommunity.{% endtrans %}</p>
+                      </div>
+                  </div>
+              </div>
+              <!-- end col 2 -->
+          </div>
+      </div>
+
+      <div class="d-lg-none order-3 mt-4 pt-3">
+        <a class="btn btn-primary btn-arrow" target="_blank" href="/contribute.html">{% trans %}Join the Community{% endtrans %}</a>
+      </div>
   </div>
+</section>
 
-  <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
-      <h2 class="h4 h2-sm mb-8">{% trans %}Are All Digital Assets Alike?{% endtrans %}</h2>
-      <h5 class="longform mb-10">{% trans %}All digital assets have different strengths that make them ideal for various use cases.{% endtrans %}</h5>
-      <p class="mb-6">{% trans %}Bitcoin has historically been recognized as a store of value and Ether (ETH) for its smart contract capabilities.{% endtrans %}</p>
-      <p class="mb-6">{% trans %}XRP was designed to be optimal for global payments—it’s fast, cheap, scalable and energy-efficient. But the XRP Ledger is also increasingly popular for innovative blockchain use cases, like NFTs and DeFi.{% endtrans %}</p>
-      <p class="mb-6">{% trans %}The same characteristics that make XRP ideal for global transactions mean it’s also better for our environment. XRP is green by nature.{% endtrans %}</p>
-    </div>
-  </section>
-
-
-  <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 p-10-until-sm pl-0-sm pr-0-sm">
-      <h2 class="h4 h2-sm mb-8">{% trans %}What Makes the XRP Ledger Green?{% endtrans %}</h2>
-      <h5 class="longform mb-10">{% trans %}Most currencies today—whether digital or physical—are not environmentally friendly. The potential for long-term impact on our planet could hold startling consequences. {% endtrans %}</h5>
-      <p class="mb-6">{% trans %}The XRP Ledger processes transactions through a unique “consensus” mechanism that consumes negligible energy and all XRP currency is already in circulation.{% endtrans %}</p>
-      <p class="mb-6">{% trans %}Cash also leaves a substantial carbon footprint, and the environmental impact goes beyond energy consumption—eutrophication (due to waste), photochemical ozone creation, greenhouse gas emissions and more factor into the equation.{% endtrans %}</p>
-      <p class="mb-6">{% trans %}Other digital assets, like Bitcoin, rely on a different mechanism to both validate transactions and create new coins. This “proof-of-work” algorithm requires “mining.” Mining is an incredibly energy-intensive process for validating transactions that consumes more energy in a year than entire countries.{% endtrans %}</p>
-      <p class="mb-10">{% trans %}Adopting XRP more broadly will help limit this waste and ensure a sustainable future for our planet and global economy.{% endtrans %}
-      </p>
-      <a class="btn btn-primary btn-arrow" href="carbon-calculator.html">{% trans %}Explore the Carbon Calculator{% endtrans %}</a>
-    </div>
-  </section>
-</div>
 
 {% endblock %}
 
+
+{% block endbody %}
+
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/bodymovin.min.js"></script>
+
+<!-- Light -->
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/impact/map-animation-light.json"></script>
+
+<!-- Dark -->
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/impact/map-animation-dark.json"></script>
+
+<script type="text/javascript">
+
+  //Light
+  function mapLightAnimation(){
+    bodymovin.loadAnimation({
+      container: document.getElementById('map-light'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: mapLight
+    });
+  };
+  
+  mapLightAnimation();
+
+
+  //Dark
+  function mapDarkAnimation(){
+    bodymovin.loadAnimation({
+      container: document.getElementById('map-dark'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: mapDark
+    });
+  };
+  
+  mapDarkAnimation();
+  
+</script>
+
+{% endblock %}
 
 {% block analytics %}
     <script type="application/javascript">
