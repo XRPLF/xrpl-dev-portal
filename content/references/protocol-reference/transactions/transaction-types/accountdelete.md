@@ -55,7 +55,7 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 | `tecDST_TAG_NEEDED` | Occurs if the `Destination` account requires a [destination tag](source-and-destination-tags.html), but the `DestinationTag` field was not provided. |
 | `tecNO_DST` | Occurs if the `Destination` account is not a funded account in the ledger. |
 | `tecNO_PERMISSION` | Occurs if the `Destination` account requires [deposit authorization](depositauth.html) and the sender is not preauthorized. |
-| `tecTOO_SOON` | Occurs if the sender's `Sequence` number is too high. The transaction's `Sequence` number plus 256 must be less than the current [Ledger Index][]. |
+| `tecTOO_SOON` | Occurs if the sender's `Sequence` number is too high. The transaction's `Sequence` number plus 256 must be less than the current [Ledger Index][]. This prevents replay of old transactions if this account is resurrected after it is deleted. |
 | `tecHAS_OBLIGATIONS` | Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as [escrows](escrow.html) and for example [NFT's minted](nftokenmint.html), [even if owned by another account](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp#L197).) |
 | `tefTOO_BIG` | Occurs if the sending account is linked to more than 1000 objects in the ledger. The transaction could succeed on retry if some of those objects were deleted separately first. |
 

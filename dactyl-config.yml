@@ -840,10 +840,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/common-misconceptions-about-freezes.md
         targets:
             - en
+
+    -   md: concepts/tokens/common-misconceptions-about-freezes.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/rippling.md
@@ -887,12 +889,10 @@ pages:
             - ja
 
     -   md: concepts/decentralized-exchange/decentralized-exchange.md
+        targets:
+            - en
 
-    -   name: 分散型取引所
-        html: decentralized-exchange.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerには多機能な取引所が含まれており、この取引所を利用してユーザーは発行済み通貨をXRPに、あるいはXRPを発行済み通貨に交換できます。
+    -   md: concepts/decentralized-exchange/decentralized-exchange.ja.md
         targets:
             - ja
 

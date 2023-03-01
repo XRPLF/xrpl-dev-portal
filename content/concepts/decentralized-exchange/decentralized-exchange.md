@@ -66,8 +66,6 @@ As a decentralized system, the XRP Ledger does not have any information on the a
     - [Offer object][] for the data structure of passive Offers in the ledger
     - [DirectoryNode object][] for the data structure that tracks all the Offers for a given currency pair and exchange rate.
 
-<!-- NOTE: There aren't really any tutorials for using the DEX. When there are, add them here. -->
-
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
