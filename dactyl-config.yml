@@ -840,7 +840,6 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/common-misconceptions-about-freezes.md
         targets:
             - en
