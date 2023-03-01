@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 32 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: giff, gips, gif
-  ringtee: 
+  gifs: gils, giss, rifs
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -31,24 +31,24 @@ Found 32 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  xrpfees: 
-  immediateofferkilled: 
   disallowincoming: 
-  depositpreauthamendment: 
-  fixnonfungibletokensv1_2: 
   fixuniversalnumber: 
+  immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
+  xrpfees: 
+  depositpreauthamendment: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
   asfdisallowincomingcheck: 
   asfdisallowincomingnftoffer: 
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
@@ -60,7 +60,7 @@ Found 32 possible spelling errors:
   xrpfees: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 -----------------------------
 Discouraged Words and Phrases
