@@ -14,10 +14,10 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [fixTrustLinesToSelf][]           | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [DisallowIncoming][]              | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixNonFungibleTokensV1_2][]      | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixTrustLinesToSelf][]           | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixUniversalNumber][]            | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [ImmediateOfferKilled][]          | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [XRPFees][]                       | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
