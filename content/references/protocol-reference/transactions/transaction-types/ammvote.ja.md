@@ -10,7 +10,7 @@ status: not_enabled
 [[Source]](https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMVote.cpp "Source")
 <!-- TODO: Update source link to merged version when available -->
 
-{% include '_snippets/amm-disclaimer.md' %}
+{% include '_snippets/amm-disclaimer.ja.md' %}
 
 [自動マーケットメーカー](automated-market-makers.html)インスタンスの取引手数料を投票します。最大8つのアカウントが、保有するAMMのLPトークンの量に比例して投票することができます。各新規投票では、投票の加重平均に基づいてAMMの取引手数料が再計算されます。
 

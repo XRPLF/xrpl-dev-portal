@@ -10,7 +10,7 @@ status: not_enabled
 [[Source]](https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
 <!-- TODO: Update source link to merged version when available -->
 
-{% include '_snippets/amm-disclaimer.md' %}
+{% include '_snippets/amm-disclaimer.ja.md' %}
 
 AMMの流動性プロバイダトークン（LPトークン）を返すことで、[自動マーケットメーカー](automated-market-makers.html)(AMM)インスタンスから資産を引き出します。
 
@@ -87,7 +87,7 @@ AMMの流動性プロバイダトークン（LPトークン）を返すことで
 
 ### AMMWithdrawフラグ
 
-AMMWithdrawタイプのトランザクションは、以下のように[`Flags`フィールド](transaction-common-fields.html#Flagsフィールド)の値を追加でサポートしています。
+AMMWithdrawタイプのトランザクションは、以下のように[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)の値を追加でサポートしています。
 
 | フラグ名                 | 16進数値      | 10進数値       | 説明                   |
 |:------------------------|:-------------|:--------------|:----------------------|
@@ -108,7 +108,7 @@ AMMWithdrawタイプのトランザクションは、以下のように[`Flags`�
 
 | エラーコード               | 説明                                          |
 |:-------------------------|:---------------------------------------------|
-| `tecFROZEN`              | トランザクションは[凍結](freeze.html)されたトークンを引き出そうとしました。 |
+| `tecFROZEN`              | トランザクションは[凍結](freezes.html)されたトークンを引き出そうとしました。 |
 | `tecAMM_BALANCE`         | トランザクションによって、プールから1つの資産をすべて引き出そうとしている、もしくは`tfWithdrawAll`の場合に端数処理によって0以外の金額が残ってしまっています。 |
 | `tecAMM_FAILED_WITHDRAW` | 例えば、`EPrice`フィールドに指定された有効価格が低過ぎる場合など、引き出しに関する条件が成立しませんでした。 |
 | `tecAMM_INVALID_TOKENS`  | トークンペアのAMMが存在しないか、計算の結果、引き出し額がゼロに丸められました。 |

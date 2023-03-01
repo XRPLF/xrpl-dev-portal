@@ -39,7 +39,7 @@ labels:
 | フィールド                      | JSONの型 | [内部の型][]        | 必須？ | 説明  |
 |:------------------------------|:---------|:------------------|:-------------|
 | `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](accounts.html)を識別するための（クラシック）アドレスです。。 |
-| `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](transaction-common-fields.html#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](accountset.html#AccountSetのフラグ)を送信してください。 |
+| `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](transaction-common-fields.html#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](accountset.html#accountsetのフラグ)を送信してください。 |
 | `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |
 | `BurnedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントで発行された [非代替性トークン](non-fungible-tokens.html) のうち、バーンしたトークンの総数を表します。この数値は常に `MintedNFTokens` と同じかそれ以下となります。 |
 | `Domain`                      | 文字列    | VariableLength    | いいえ | このアカウントに関連付けられたドメイン。JSONでは、ドメインのASCII表現を16進数で表現します。[256バイトを超える長さは使用できません](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
@@ -68,7 +68,7 @@ AccountRootオブジェクトには以下のフラグ値を指定できます。
 
 | フラグ名             | 16進数値       | 10進数値 | 対応する[AccountSetのフラグ](accountset.html#accountsetのフラグ) | 説明 |
 |---------------------|--------------|----------|---------------|-------------------------------|
-| `lsfAMM`:not_enabled:  | `0x00010000` | 33554432    | （なし）            | このアカウントは、自動マーケットメーカーrのインスタンスです。:not_enabled: |
+| `lsfAMM`:not_enabled:  | `0x00010000` | 33554432    | （なし）            | このアカウントは、自動マーケットメーカーのインスタンスです。:not_enabled: |
 | `lsfDefaultRipple`  | `0x00800000` | 8388608  | `asfDefaultRipple` | このアドレスのトラストラインでデフォルトで[rippling](rippling.html)を有効にします。発行アドレスに必要です。他のアドレスでの使用は推奨されません。 |
 | `lsfDepositAuth`    | `0x01000000` | 16777216 | `asfDepositAuth`   | このアカウントは、アカウントが送信するトランザクションと、[事前承認された](depositauth.html#事前承認)アカウントからの資金だけを受領します。（[DepositAuth](depositauth.html)が有効になっています。） |
 | `lsfDisableMaster`  | `0x00100000` | 1048576  | `asfDisableMaster` | このアカウントのトランザクションの署名にマスターキーを使用することを禁止します。 |
@@ -81,7 +81,7 @@ AccountRootオブジェクトには以下のフラグ値を指定できます。
 
 ## AMMの特殊なAccountRootオブジェクト
 
-{% include '_snippets/amm-disclaimer.md' %}
+{% include '_snippets/amm-disclaimer.ja.md' %}
 
 [自動マーケットメーカー](automated-market-makers.html) (AMM) は、AMMの詳細の一部を追跡するための[AMMオブジェクト][]に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootオブジェクトを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザーがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。
 

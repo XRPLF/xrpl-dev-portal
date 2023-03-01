@@ -10,11 +10,11 @@ status: not_enabled
 [[Source]](https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMCreate.cpp "Source")
 <!-- TODO: Update source link to merged version when available -->
 
-{% include '_snippets/amm-disclaimer.md' %}
+{% include '_snippets/amm-disclaimer.ja.md' %}
 
 資産（[代替可能トークン](tokens.html)または[XRP](xrp.html)）のペアを取引するための新しい[自動マーケットメーカー](automated-market-makers.html)(AMM)インスタンスを作成します。
 
-AMMを表す[AMMオブジェクト][]と[特殊なAccountRootオブジェクト](accountroot.html#AMMの特殊なAccountRootオブジェクト)を作成します。また、両資産の開始残高の所有権を送信者から、作成された`AccountRoot`に移し、初期残高の流動性プロバイダトークン（LPトークン）をAMMアカウントから送信者に発行します。
+AMMを表す[AMMオブジェクト][]と[特殊なAccountRootオブジェクト](accountroot.html#ammの特殊なaccountrootオブジェクト)を作成します。また、両資産の開始残高の所有権を送信者から、作成された`AccountRoot`に移し、初期残高の流動性プロバイダトークン（LPトークン）をAMMアカウントから送信者に発行します。
 
 **注意:** AMMを作成する際には、各資産を（ほぼ）同額ずつ投入する必要があります。そうしないと、他のユーザーがあなたの負担において、このAMMを使った取引で利益を得ることができます（[アービトラージの実行](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/#price-arbitrage))。流動性供給者が負う通貨リスクは、資産ペアのボラティリティ（不均衡の可能性）が高ければ高いほど、大きくなります。取引手数料が高いほど、このリスクを相殺することになりますので、資産ペアのボラティリティに応じて取引手数料を設定するとよいでしょう。
 
@@ -61,7 +61,7 @@ AMMを表す[AMMオブジェクト][]と[特殊なAccountRootオブジェクト]
 | `terNO_ACCOUNT`     | リクエストで参照されたいずれかのアカウントが存在しません。|
 | `tecNO_AUTH`        | 送信者は資産（`Amount`または`Amount2`）のいずれかを保有する権限がありません。 |
 | `tecNO_LINE`        | 送信者は資産（`Amount`または`Amount2`）のうちいずれか1つに対するトラストラインを保有していません。 |
-| `tecFROZEN`         | 資産（`Amount`または`Amount2`）の少なくとも1つが現在[凍結](freeze.html)されています。 |
+| `tecFROZEN`         | 資産（`Amount`または`Amount2`）の少なくとも1つが現在[凍結](freezes.html)されています。 |
 | `tecUNFUNDED_AMM`   | 送信者は`Amount`と`Amount2`で指定された金額をAMMに入金するための十分な資金を保有していません。 |
 | `tecAMM_EXISTS`     | この通貨ペアを扱っているAMMが既に存在しています。 |
 

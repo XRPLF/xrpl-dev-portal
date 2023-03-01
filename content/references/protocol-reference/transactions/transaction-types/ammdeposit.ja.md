@@ -10,7 +10,7 @@ status: not_enabled
 [[Source]](https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMDeposit.cpp "Source")
 <!-- TODO: Update source link to merged version when available -->
 
-{% include '_snippets/amm-disclaimer.md' %}
+{% include '_snippets/amm-disclaimer.ja.md' %}
 
 [自動マーケットメーカー](automated-market-makers.html)（AMM）インスタンスに資金を預け、引き換えにAMMの流動性プロバイダートークン（ _LPトークン_ ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。
 
@@ -45,8 +45,8 @@ status: not_enabled
 
 | フィールド      | JSONの型   | [内部の型][] | 必須? | 説明 |
 |:--------------|:-----------|:-----------|:------|:------------|
-| `Asset`       | オブジェクト | STIssue    | はい   | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRP の場合は`issuer`を省略します）。 |
-| `Asset2`      | オブジェクト | STIssue    | はい   | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRP の場合は`issuer`を省略します）。 |
+| `Asset`       | オブジェクト | STIssue    | はい   | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
+| `Asset2`      | オブジェクト | STIssue    | はい   | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
 | `Amount`      | [通貨額][]  | Amount     | いいえ | AMMに預ける1つの資産の量を指定します。存在する場合、これはAMMのプールにある資産の一つ（トークンまたはXRP）と一致する必要があります。 |
 | `Amount2`     | [通貨額][]  | Amount     | いいえ | AMMに追加する別の資産の量を指定します。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じ資産にすることはできません。 |
 | `EPrice`      | [通貨額][]  | Amount     | いいえ | 受け取った各LPトークンに支払う、預け入れ資産の最大有効価格です。 |
@@ -55,7 +55,7 @@ status: not_enabled
 
 ### AMMDepositモード
 
-このトランザクションには5つのモードがあり、どのフラグを指定するかで定義されます。それぞれのモードは、特定のフィールドの組み合わせを必要とし、次の2つのカテゴリーに分類さ れます。
+このトランザクションには5つのモードがあり、どのフラグを指定するかで定義されます。それぞれのモードは、特定のフィールドの組み合わせを必要とし、次の2つのカテゴリーに分類されます。
 
 - **ダブルアセット入金**: AMMのプールにある両方(2つ)の資産を、既存の資産の残高に比例して預けます。この預け入れは手数料の対象外です。
 - **シングルアセット入金**, AMMの2つの資産のうち1つだけを預けます。AMMは、この預け入れによってプール内の資産残高がどれだけ変化したかによって、対価として支払われるLPトークンから差し引く手数料を設定します。
@@ -96,7 +96,7 @@ status: not_enabled
 
 ### AMMDepositフラグ
 
-AMMDepositタイプのトランザクションは、以下のように[`Flags`フィールド](transaction-common-fields.html#Flagsフィールド)の値を追加でサポートしています。
+AMMDepositタイプのトランザクションは、以下のように[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)の値を追加でサポートしています。
 
 | フラグ名             | 16進数値      | 10進数値       | 説明                   |
 |:--------------------|:-------------|:--------------|:----------------------|
@@ -117,7 +117,7 @@ AMMDepositタイプのトランザクションは、以下のように[`Flags`�
 | エラーコード              | 説明                                          |
 |:------------------------|:---------------------------------------------|
 | `temBAD_AMM_OPTIONS`    | トランザクションで無効なフィールドの組み合わせが指定されました。詳細は、[AMMDepositモード](#ammdepositモード)を参照してください。 |
-| `tecFROZEN`             | トランザクションは[凍結](freeze.html)されてトークンを預けようとしました。 |
+| `tecFROZEN`             | トランザクションは[凍結](freezes.html)されているトークンを預けようとしました。 |
 | `tecAMM_BALANCE`        | AMMが預け入れを行うのに十分な量の資産を保有していない（たとえば、シングルアセット入金に必要な残高を保有していない）、または送信者が指定されたトークンを十分に保有していない場合など。 |
 | `temBAD_AMM_TOKENS`     | トランザクションでLPトークンが正しく指定されています。例えば、`issuer`がAMMのAccountRootアドレスでない、`currency`がこのAMMのLPトークンの通貨コードでない、またはトランザクションがAssetフィールドのいずれかにこのAMMのLPトークンを指定した、など。 |
 | `tecAMM_FAILED_DEPOSIT` | 預け入れの条件が成立しませんでした。例えば、`EPrice`フィールドに指定された実効価格が低すぎる場合など。 |
