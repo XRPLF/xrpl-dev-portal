@@ -841,6 +841,14 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/nft-fixed-supply.md
+        targets:
+            - en
+
+    -   md: concepts/tokens/nft-fixed-supply.ja.md
+        targets:
+            - ja
+
     -   md: concepts/tokens/freezes.md
         targets:
             - en
