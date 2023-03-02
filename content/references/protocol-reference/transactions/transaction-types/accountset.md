@@ -114,14 +114,14 @@ For example, a destination tag is typically used to identify which hosted balanc
 
 You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the `asfDisallowXRP` flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in `rippled` because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the `asfDisallowXRP` flag enabled.
 
-You also have the option to prevent block all incoming checks, NFToken offers, payment channels, and trust lines, using these account flags:
+You also have the option to block all incoming checks, NFToken offers, payment channels, and trust lines, using these account flags:
 
 - `asfDisallowIncomingCheck`
 - `asfDisallowIncomingNFTOffer`
 - `asfDisallowIncomingPayChan`
 - `asfDisallowIncomingTrustline`
 
-If a destination account has these flags enabled, `rippled` won't create the corresponding object on the ledger and return the error code `tecNO_PERMISSION`.
+If a destination account has these flags enabled, `rippled` won't create the corresponding object on the ledger and returns the error code `tecNO_PERMISSION`.
 
 ## TransferRate
 
