@@ -550,14 +550,14 @@
 <p>Incoming transactions with unclear purposes may be an inconvenience for financial institutions, who would have to recognize when a customer made a mistake, and then potentially refund accounts or adjust balances depending on the mistake. The <code>asfRequireDest</code> and <code>asfDisallowXRP</code> flags are intended to protect users from accidentally sending funds in a way that is unclear about the reason the funds were sent.</p>
 <p>For example, a destination tag is typically used to identify which hosted balance should be credited when a financial institution receives a payment. If the destination tag is omitted, it may be unclear which account should be credited, creating a need for refunds, among other problems. By using the <code>asfRequireDest</code> tag, you can ensure that every incoming payment has a destination tag, which makes it harder for others to send you an ambiguous payment by accident.</p>
 <p>You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in <code>rippled</code> because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
-<p>You also have the option to prevent block all incoming checks, NFToken offers, payment channels, and trust lines, using these account flags:</p>
+<p>You also have the option to block all incoming checks, NFToken offers, payment channels, and trust lines, using these account flags:</p>
 <ul>
 <li><code>asfDisallowIncomingCheck</code></li>
 <li><code>asfDisallowIncomingNFTOffer</code></li>
 <li><code>asfDisallowIncomingPayChan</code></li>
 <li><code>asfDisallowIncomingTrustline</code></li>
 </ul>
-<p>If a destination account has these flags enabled, <code>rippled</code> won't create the corresponding object on the ledger and return the error code <code>tecNO_PERMISSION</code>.</p>
+<p>If a destination account has these flags enabled, <code>rippled</code> won't create the corresponding object on the ledger and returns the error code <code>tecNO_PERMISSION</code>.</p>
 <h2 id="transferrate">TransferRate<a aria-hidden="true" class="hover_anchor" href="#transferrate"><i class="fa fa-link"></i></a></h2>
 <p>The <code>TransferRate</code> field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
 <p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>

@@ -349,6 +349,7 @@
 </table>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
 <ul>
+<li>If the <code>Destination</code> is blocking incoming checks, the transaction fails with the result code <code>tecNO_PERMISSION</code>. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></li>
 <li>If the <code>Destination</code> is the sender of the transaction, the transaction fails with the result code <code>temREDUNDANT</code>.</li>
 <li>If the <code>Destination</code> <a href="accounts.html">account</a> does not exist in the ledger, the transaction fails with the result code <code>tecNO_DST</code>.</li>
 <li>If the <code>Destination</code> account has the <code>RequireDest</code> flag enabled but the transaction does not include a <code>DestinationTag</code> field, the transaction fails with the result code <code>tecDST_TAG_NEEDED</code>.</li>

@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 32 possible spelling errors:
+Found 36 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gies, ifs, rifs
+  gifs: gins, gits, rifs
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -31,24 +31,24 @@ Found 32 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixuniversalnumber: 
+  disallowincoming: 
+  depositpreauthamendment: 
   immediateofferkilled: 
   fixnonfungibletokensv1_2: 
-  disallowincoming: 
   xrpfees: 
-  depositpreauthamendment: 
-  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
-  30d: 3d, 3rd, 3-d
+  asfdisallowincomingcheck: 
+  asfdisallowincomingnftoffer: 
+  asfdisallowincomingtrustline: 
+  30d: 3-d, 3d, 3rd
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3-d, 3d, 3rd
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 
@@ -57,8 +57,20 @@ Found 32 possible spelling errors:
   disallowincoming: 
   nftokenminter: 
 
+<Page 'CheckCreate' (checkcreate.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'PaymentChannelCreate' (paymentchannelcreate.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'TrustSet' (trustset.html)> Unknown Words:
+  disallowincoming: 
+
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3-d, 3d, 3rd
 
 -----------------------------
 Discouraged Words and Phrases
@@ -145,7 +157,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 55
   Words: 743
-  Characters: 4,610
+  Characters: 4,612
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
