@@ -833,10 +833,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nft-collections.md
         targets:
             - en
+
+    -   md: concepts/tokens/nft-collections.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/freezes.md
