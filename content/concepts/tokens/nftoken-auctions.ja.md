@@ -22,7 +22,7 @@ labels:
 
 最低落札価格ありのオークションとして、ブローカー方式で運営する。
 
-![Auction in Brokered Mode with a Reserve](img/nft-auction1.png "Auction in Brokered Mode with a Reserve")
+![ブローカー方式で最低落札価格ありのオークション](img/nft-auction1.png "ブローカー方式で最低落札価格ありのオークション")
 
 1. 売り手はNFTを作成し，`NFTokenCreateOffer`を用い，ブローカーアカウントを宛先に設定して，オークションの最低落札価格を設定します。
 1. 入札者は`NFTokenCreateOffer`を使ってオファーを出し、ブローカーアカウントを宛先として設定します。
