@@ -5,7 +5,6 @@ blurb: NFTのMintを他のアカウントに代行してもらうことができ
 labels:
  - 非代替性トークン, NFT
 ---
-
 # NFTオークションの実施
 
 オークションの運営にはいくつかの方法があり、それぞれにメリットとデメリットがあります。
@@ -44,7 +43,7 @@ labels:
 
 この3つのうち、最も複雑なワークフローとなります。
 
-![Auction in Brokered Mode without a Reserve](img/nft-auction2.png "Auction in Brokered Mode without a Reserve")
+![ブローカー方式で最低落札価格なしのオークション](img/nft-auction2.png "ブローカー方式で最低落札価格なしのオークション")
 
 1. 売り手は`NFTokenMint`を使用してNFTを作成します。
 1. 入札者は`NFTokenCreateOffer`を使って、ブローカーを宛先としてオファーを出します。

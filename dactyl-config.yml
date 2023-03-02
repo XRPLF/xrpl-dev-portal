@@ -808,7 +808,6 @@ pages:
             - en
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-batch-minting.md
         targets:
             - en
@@ -817,7 +816,6 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-authorized-minting.md
         targets:
             - en
@@ -826,7 +824,6 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-auctions.md
         targets:
             - en
