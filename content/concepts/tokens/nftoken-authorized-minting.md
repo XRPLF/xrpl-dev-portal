@@ -5,7 +5,6 @@ blurb: You can assign another account to mint NFTs in your stead.
 labels:
  - Non-fungible Tokens, NFTs
 ---
-
 # Authorizing Another Account to Mint Your NFTs
 
 Each account can have 0 or 1 authorized minter that can mint NFTs on its behalf. By authorizing a minter, a creator can allow a different account to mint NFTs for them, which allows them to focus on making more NFTs.
