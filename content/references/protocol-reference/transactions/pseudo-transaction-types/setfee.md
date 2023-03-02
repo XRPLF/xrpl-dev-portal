@@ -46,9 +46,9 @@ If the _[XRPFees amendment][]_ is enabled, `SetFee` pseudo-transactions use thes
 
 | Field                   | JSON Type | [Internal Type][] | Description     |
 |:------------------------|:----------|:------------------|:----------------|
-| `BaseFeeDrops`          | String    | UInt64            | The charge, in drops of XRP, for the reference transaction. (This is the [transaction cost](transaction-cost.html) before scaling for load.) |
-| `ReserveBaseDrops`      | String    | UInt64            | The base reserve, in drops |
-| `ReserveIncrementDrops` | String    | UInt64            | The incremental reserve, in drops |
+| `BaseFeeDrops`          | String    | Amount            | The charge, in drops of XRP, for the reference transaction. (This is the [transaction cost](transaction-cost.html) before scaling for load.) |
+| `ReserveBaseDrops`      | String    | Amount            | The base reserve, in drops |
+| `ReserveIncrementDrops` | String    | Amount            | The incremental reserve, in drops |
 | `LedgerSequence`        | Number    | UInt32            | _(Omitted for some historical `SetFee` pseudo-transactions)_ The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 

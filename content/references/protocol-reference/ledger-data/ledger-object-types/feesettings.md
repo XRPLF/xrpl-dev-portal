@@ -46,11 +46,11 @@ If the _[XRPFees amendment][]_ is enabled, the `FeeSettings` object has these fi
 
 | Name                    | JSON Type | [Internal Type][] | Required? | Description            |
 |:------------------------|:----------|:------------------|:----------|:-----------------------|
-| `BaseFeeDrops`          | String    | UInt64            | Yes       | The [transaction cost](transaction-cost.html) of the "reference transaction" in drops of XRP. |
+| `BaseFeeDrops`          | String    | Amount            | Yes       | The [transaction cost](transaction-cost.html) of the "reference transaction" in drops of XRP. |
 | `Flags`                 | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `FeeSettings` objects. The value is always `0`. |
 | `LedgerEntryType`       | String    | UInt16            | Yes       | The value `0x0073`, mapped to the string `FeeSettings`, indicates that this object contains the ledger's fee settings. |
-| `ReserveBaseDrops`      | String    | UInt64            | Yes       | The [base reserve](reserves.html#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
-| `ReserveIncrementDrops` | String    | UInt64            | Yes       | The incremental [owner reserve](reserves.html#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
+| `ReserveBaseDrops`      | String    | Amount            | Yes       | The [base reserve](reserves.html#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
+| `ReserveIncrementDrops` | String    | Amount            | Yes       | The incremental [owner reserve](reserves.html#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
 
 
 ## FeeSettings ID Format
