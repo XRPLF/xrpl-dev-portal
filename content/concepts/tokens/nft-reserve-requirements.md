@@ -38,6 +38,8 @@ The following table provides examples of how much the total owner reserve might 
 
 Each `NFTokenOffer` object costs the account placing the offer one incremental reserve. As of this writing, the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer. The reserve is also recovered if the offer is accepted, which removes the offer from the XRP Ledger.
 
+**Tip** After you sell an NFT, as a courtesy, cancel any stale NFTokenOffer objects on behalf of your bidders to give them back their reserve.
+
 ## Practical Considerations
 
 When minting, holding, and offering to buy and sell NFTs, the reserve requirements can add up quickly. This can result in your account going below the reserve requirement during a transaction. Going below the requirement can limit your ability to trade on the XRPL. See [Going Below the Reserve Requirement](reserves.html#going-below-the-reserve-requirement).
