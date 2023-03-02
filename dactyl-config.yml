@@ -748,7 +748,6 @@ pages:
         targets:
             - en
 
-    # TODO: Outdated translation
     -   md: concepts/tokens/tokens.ja.md
         targets:
             - ja
@@ -802,10 +801,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nft-reserve-requirements.md
         targets:
             - en
+
+    -   md: concepts/tokens/nft-reserve-requirements.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/nftoken-batch-minting.md
