@@ -345,7 +345,7 @@ Therefore, you can estimate the reserve requirements for minting or owning <em>N
 </table>
 <h2 id="nftokenoffer-reserve"><code>NFTokenOffer</code> Reserve<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-reserve"><i class="fa fa-link"></i></a></h2>
 <p>Each <code>NFTokenOffer</code> object costs the account placing the offer one incremental reserve. As of this writing, the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer. The reserve is also recovered if the offer is accepted, which removes the offer from the XRP Ledger.</p>
-<p class="devportal-callout tip"><strong>Tip</strong> After you sell an NFT, as a courtesy, cancel any stale NFTokenOffer objects on behalf of your bidders to give them back their reserve.</p>
+<p class="devportal-callout tip"><strong>Tip</strong> After you sell an NFT, as a courtesy, cancel any stale <code>NFTokenOffer</code> objects on behalf of your bidders to give them back their reserve. You can do this with <a href="nftokencanceloffer.html">NFTokenCancelOffer</a> transactions.</p>
 <h2 id="practical-considerations">Practical Considerations<a aria-hidden="true" class="hover_anchor" href="#practical-considerations"><i class="fa fa-link"></i></a></h2>
 <p>When minting, holding, and offering to buy and sell NFTs, the reserve requirements can add up quickly. This can result in your account going below the reserve requirement during a transaction. Going below the requirement can limit your ability to trade on the XRPL. See <a href="reserves.html#必要準備金を下回る">Going Below the Reserve Requirement</a>.</p>
 <p>If you create a new account, mint an NFT, and create an <code>NFTokenSellOffer</code> on the XRP Ledger, that requires a minimum reserve of 14 XRP.</p>
