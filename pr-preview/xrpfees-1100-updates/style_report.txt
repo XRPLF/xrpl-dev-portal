@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 32 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gips, gids, gis
+  gifs: gifu, ifs, gins
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -24,19 +24,19 @@ Found 32 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  depositpreauthamendment: 
+  immediateofferkilled: 
+  fixuniversalnumber: 
   fixnonfungibletokensv1_2: 
   disallowincoming: 
   xrpfees: 
-  immediateofferkilled: 
-  fixuniversalnumber: 
-  depositpreauthamendment: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingnftoffer: 
   asfdisallowincomingpaychan: 
