@@ -832,6 +832,12 @@ pages:
             - en
             - ja
 
+    # TODO: translate
+    -   md: concepts/tokens/nft-fixed-supply.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/freezes.md
         targets:
             - en
