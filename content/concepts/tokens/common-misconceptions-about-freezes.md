@@ -1,5 +1,6 @@
 ---
 parent: freezes.html
+html: common-misconceptions-about-freezes.html
 blurb: Clarify common misunderstandings about the XRP Ledger's freeze feature.
 labels:
   - Tokens
