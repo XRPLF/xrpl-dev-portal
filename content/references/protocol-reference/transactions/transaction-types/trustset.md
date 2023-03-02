@@ -43,6 +43,8 @@ Create or modify a trust line linking two accounts.
 | `QualityIn`              | Number    | UInt32            | _(Optional)_ Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 | `QualityOut`             | Number    | UInt32            | _(Optional)_ Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 
+If the `LimitAmount.issuer` is blocking incoming trust lines, the transaction fails with result code `tecNO_Permission`. _(Added by the [DisallowIncoming amendment][].)_
+
 
 ## TrustSet Flags
 
