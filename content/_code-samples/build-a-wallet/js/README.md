@@ -1,4 +1,4 @@
-# Build a Wallet Sample Code (JavaScript) [WIP]
+# Build a Wallet Sample Code (JavaScript)
 
 This folder contains sample code for a non-custodial XRP Ledger wallet application in JavaScript.
 
