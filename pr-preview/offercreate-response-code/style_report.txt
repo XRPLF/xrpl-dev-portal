@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 31 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gifu, gifts
-  kuressaare: 
+  gifs: gifts, gif, gids
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -32,16 +32,16 @@ Found 31 possible spelling errors:
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
+  fixuniversalnumber: 
   xrpfees: 
   depositpreauthamendment: 
-  fixuniversalnumber: 
-  disallowincoming: 
-  fixnonfungibletokensv1_2: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingcheck: 
   30d: 3-d, 3rd, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
