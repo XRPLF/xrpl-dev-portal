@@ -67,7 +67,7 @@ Before you begin, make sure you have the pre-requisites installed. Check your no
     "xrpl-tagged-address-codec": "^0.2.1"
 }
 ```
-you can install them by copying the dependencies from the [package.json](_code-samples/build-a-wallet/js/package.json) file to your project's package.json or simply running `yarn add <package-name>` or `npm install <package-name>` for each package.
+you can install them by copying the dependencies from the [package.json](_code-samples/build-a-wallet/js/package.json) file to your project's package.json and running `yarn` or `npm i`. You can also do `yarn add <package-name>` or `npm install <package-name>` for each individual package.
 
 - Create a new file `.env` in the root directory of the project and add the following variables:
 
@@ -83,7 +83,7 @@ In this step, we will create the home page that will display the account details
 
 ![Home Page Screenshot](img/js-wallet-home.png)
 
-- In your project directory, create new files named index.html, index.js and index.css in the src directory. You can copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html), [index.js](_code-samples/build-a-wallet/js/index.js) and [index.css](_code-samples/build-a-wallet/js/index.css) files to your project's files.
+- In your project directory, create new files named index.html, index.js and index.css. You can copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html), [index.js](_code-samples/build-a-wallet/js/index.js) and [index.css](_code-samples/build-a-wallet/js/index.css) files to your project's files.
 
 - Make a new folder named src in the root directory of the project and add two folders named assets and helpers. In assets folder add contents of the [logo.png](_code-samples/build-a-wallet/js/src/assets/logo.png) to render the logo on the home page.
 

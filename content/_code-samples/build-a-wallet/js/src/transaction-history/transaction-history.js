@@ -54,6 +54,7 @@ async function fetchTxHistory() {
         loadMore.disabled = true;
         const wallet = Wallet.fromSeed(process.env.SEED);
         const client = new Client(process.env.CLIENT);
+
         // Wait for the client to connect
         await client.connect();
 
@@ -72,6 +73,7 @@ async function fetchTxHistory() {
         const { result } = await client.request(payload);
 
         const { transactions, marker: nextMarker } = result;
+        
         // Add the transactions to the table
         const values = transactions.map((transaction) => {
             const { meta, tx } = transaction;

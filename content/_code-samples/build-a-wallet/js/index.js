@@ -23,7 +23,6 @@ txHistoryButton.addEventListener('click', () => {
 });
 
 // Fetch the wallet details
-
 getWalletDetails()
     .then(({ account_data, accountReserves, tagged, address }) => {
         walletElement.querySelector('.wallet_address').textContent = `Wallet Address: ${account_data.Account}`;
