@@ -29,16 +29,16 @@ At the end of this tutorial, you should be able to build a simple XRP wallet dis
 
 ![Home Page Screenshot](img/js-wallet-home.png)
 
-This application is capable of the following:
+This application can:
 
-- Shows updates to the XRP Ledger in real-time.
-- Can view any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
-- Shows how much XRP is set aside for the account's reserve requirement. 
-- Can send direct XRP payments, and provides feedback about the intended destination address, including:
-  - Displays available balance in your account
-  - Verifies that the destination address is valid
-  - Validates amount input to ensure it is a valid number and that the account has enough XRP to send
-  - Allows addition of the destination tag
+- Show updates to the XRP Ledger in real-time.
+- View any XRP Ledger account's activity, including showing how much XRP was delivered by each transaction.
+- Show how much XRP is set aside for the account's [reserve requirement](reserves.html). 
+- Send [direct XRP payments](direct-xrp-payments.html), and provide feedback about the intended destination address, including:
+    - Displaying your account's available balance
+    - Verifying that the destination address is valid
+    - Validating the account has enough XRP to send
+    - Allowing you to specify a destination tag
 
 ## Steps
 
