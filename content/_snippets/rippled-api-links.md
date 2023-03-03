@@ -223,6 +223,7 @@
   "Flow",
   "FlowCross",
   "FlowV2",
+  "ImmediateOfferKilled",
   "MultiSign",
   "MultiSignReserve",
   "NegativeUNL",
