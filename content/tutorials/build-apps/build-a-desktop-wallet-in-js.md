@@ -12,12 +12,11 @@ This tutorial demonstrates how to build a desktop wallet for the XRP Ledger usin
 
 ## Prerequisites
 
-To implement this tutorial you should have a basic understanding of JavaScript and Node.js. You should also have a basic idea about XRP Ledger. For more information, visit the [XRP Ledger Dev Portal](https://xrpl.org) and the [XRPL Learning Portal](https://learn.xrpl.org/) for videos, libraries, and other resources.
+To complete this tutorial, you should meet the following guidelines:
 
-Follow the steps below to get started:
-
-1. [Node.js](https://nodejs.org/en/download/) (v10.15.3 or higher)
-2. Install [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) or [NPM](https://www.npmjs.com/get-npm) (v6.4.1 or higher)
+1. You have [Node.js](https://nodejs.org/en/download/) v10.15.3 or higher installed.
+2. You have [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) or [NPM](https://www.npmjs.com/get-npm) (v6.4.1 or higher) installed.
+3. You are somewhat familiar with coding with JavaScript and have completed the [Get Started Using JavaScript](get-started-using-python.html) tutorial.
 
 ## Source Code
 
