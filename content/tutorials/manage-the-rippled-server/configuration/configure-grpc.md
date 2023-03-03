@@ -7,7 +7,7 @@ labels:
 ---
 # Configure gRPC
 
-The `rippled` server has a limited [gRPC API](https://grpc.io/) which [P2P mode servers](rippled-server-modes.html) can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza. [New in: rippled 1.5.0][]
+The `rippled` server has a limited [gRPC API](https://grpc.io/) which [P2P mode servers](rippled-server-modes.html) can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza.
 
 **Caution:** gRPC support is intended specifically for providing data to reporting mode servers from P2P mode servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.
 
@@ -17,22 +17,20 @@ To enable gRPC, you must meet the following prerequisites:
 
 - You must have [installed rippled](install-rippled.html).
 
-- Your server must be able to bind to the port you choose. The recommended port for gRPC is `50051`.
+- Your server must be able to bind to the port you choose.
 
 ## Steps
 
 To enable gRPC on your server, complete the following steps:
 
-1. In your `rippled`'s config file, add a `[port_grpc]` configuration stanza.
+1. Ensure the `[port_grpc]` stanza is in your `rippled` config file.
 
         [port_grpc]
         port = 50051
-        ip = 0.0.0.0
+        ip = 127.0.0.1
 
-    The configurable fields are as follows:
-
-    - `port` field defines the port the server listens on for gRPC connections from client applications. The recommended port is `50051`.
-    - `ip` defines which interfaces the server listens on. The value `0.0.0.0` listens on all available network interfaces. To limit connections to the local loopback network (same machine), use `127.0.0.1` instead.
+    - `port` defines the port the server listens on for gRPC connections from client applications. The recommended port is `50051`.
+    - `ip` defines which interfaces the server listens on. `127.0.0.1` limits connections to the local loopback network (same machine) and is enabled by default. Changing the value to `0.0.0.0` listens on all available network interfaces.
 
     {% include '_snippets/conf-file-location.md' %}
 
