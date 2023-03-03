@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>ユースケースと注目プロジェクト - XRPL.org (日本語)</title>
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="ユースケースと注目プロジェクト | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/uses.html" />
+    <meta property="og:description" content="XRP Ledgerが、決済やパブリックブロックチェーンの分野で、どのように革新的な技術を支えているのかをご紹介します。" />
+    <meta name="description" content="XRP Ledgerが、決済やパブリックブロックチェーンの分野で、どのように革新的な技術を支えているのかをご紹介します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+    <meta name="docsearch:language" content="ja" />
+    <link rel="alternate" href="https://xrpl.org/uses.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/uses.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/uses.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/ja/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ja/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ja/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="/ja/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="/ja/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Splash Page",
+      "page_group": "About"
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    
+
+    <!-- Stylesheet -->
+    <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v14.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+
+
+    <!-- Theme switch -->
+    <script src="/ja/assets/js/theme-switch.js"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal lang-ja no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
+    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
+    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item active" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
+            <a class="dropdown-item" href="/ja/history.html">沿革</a>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="/ja/xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="/ja/impact.html">インパクト</a>
+            <a class="dropdown-item" href="/ja/carbon-calculator.html">二酸化炭素電卓</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
+            <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="/ja/docs.html">
+            <img id="top-nav-hero-docs" alt="ドキュメント icon" />
+            <div class="dropdown-hero-text">
+              <h4>ドキュメント</h4>
+              <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
+            </div>
+          </a>
+          <div class="navcol col-for-質問">
+            <h5 class="dropdown-item">質問</h5>
+            <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
+          </div><!--./col-->
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
+            <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
+            <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
+          </div><!--./col-->
+          <div class="navcol col-for-online-tools">
+            <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-人気ページ">
+            <h5 class="dropdown-item">人気ページ</h5>
+            <a class="dropdown-item" href="/ja/send-xrp.html">XRPの送金</a>
+            <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
+            <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
+          </div><!--./col-->
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+            <div class="dropdown-hero-text">
+              <h4>貢献する</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/events.html">イベント</a>
+            <a class="dropdown-item" href="/ja/ambassadors.html">アンバサダー</a>
+            <a class="dropdown-item" href="/ja/developer-funding.html">開発者ファンド</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group" id="topsearchboxcontainer">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/uses.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+
+      <!-- main column -->
+      <main class="main col-md-12 order-md-3  landing page-uses landing-builtin-bg" role="main" id="main_content_body">
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade " id="categoryFilterModal" tabindex="-1" aria-labelledby="categoryFilterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="btn cancel" data-dismiss="modal"><span class="chevron"><span></span><span></span></span> Cancel</a>
+        <a class="btn apply" data-dismiss="modal">Apply <span class="chevron"><span></span><span></span></span></a>
+      </div>
+      <div class="modal-body">
+  <!--  -->
+          <div class="p-3 page-events">
+            <form >
+              <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_infrastructure" type="checkbox" name="categories" id="input_infrastructure" value="infrastructure" checked>
+                      <label class="font-weight-bold" for="input_infrastructure">Infrastructure</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_developer_tooling" type="checkbox" name="categories" id="input_developer_tooling" value="developer_tooling" checked>
+                      <label class="font-weight-bold" for="input_developer_tooling">Developer Tooling</label>
+                  </div>
+              <p class="category-header pt-5 mt-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_interoperability" type="checkbox" name="categories" id="input_interoperability" value="interoperability">
+                      <label for="input_interoperability">Interoperability</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_wallet" type="checkbox" name="categories" id="input_wallet" value="wallet">
+                      <label for="input_wallet">Wallet</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_nfts" type="checkbox" name="categories" id="input_nfts" value="nfts">
+                      <label for="input_nfts">NFTs</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_exchanges" type="checkbox" name="categories" id="input_exchanges" value="exchanges">
+                      <label for="input_exchanges">Exchanges</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_gaming" type="checkbox" name="categories" id="input_gaming" value="gaming">
+                      <label for="input_gaming">Gaming</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_security" type="checkbox" name="categories" id="input_security" value="security">
+                      <label for="input_security">Security</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_payments" type="checkbox" name="categories" id="input_payments" value="payments">
+                      <label for="input_payments">Payments</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_web_monetization" type="checkbox" name="categories" id="input_web_monetization" value="web_monetization">
+                      <label for="input_web_monetization">Web Monetization</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_sustainability" type="checkbox" name="categories" id="input_sustainability" value="sustainability">
+                      <label for="input_sustainability">Sustainability</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_cbdcs" type="checkbox" name="categories" id="input_cbdcs" value="cbdcs">
+                      <label for="input_cbdcs">CBDCs</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_custody" type="checkbox" name="categories" id="input_custody" value="custody">
+                      <label for="input_custody">Custody</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_defi" type="checkbox" name="categories" id="input_defi" value="defi">
+                      <label for="input_defi">DeFi</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_other" type="checkbox" name="categories" id="input_other" value="other">
+                      <label for="input_other">Other</label>
+                  </div>
+            </form>
+        </div>
+  <!--  -->
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Apply</button>
+        <a class="btn " data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+
+
+<div class="overflow-hidden">
+
+   <section class="container-new py-26 text-lg-center">
+    <div class="p-3 col-lg-8 mx-lg-auto">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="mb-0">Powering Innovative Technology</h1>
+        <h6 class="eyebrow mb-3">利用例を見る</h6>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="col-lg-5 p-3 mb-3 mb-lg-5">
+      <div class="d-flex flex-column-reverse">
+        <h3 class="h4 h2-sm">Powering innovative use cases and projects</h3>
+        <h6 class="eyebrow mb-3">XRPL Ecosystem</h6>
+      </div>
+    </div>
+
+    <ul class="card-grid card-grid-3xN ls-none mt-4 pt-lg-2" id="use-case-card-grid">
+      <li class="col ls-none p-3">
+        <img id="infrastructure" alt="インフラストラクチャ icon">
+        <h4 class="mt-3 mb-0 h5">インフラストラクチャ</h4>
+        <p class="mt-2 mt-md-3 mb-0">Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="developer_tooling" alt="Developer Tooling icon">
+        <h4 class="mt-3 mb-0 h5">Developer Tooling</h4>
+        <p class="mt-2 mt-md-3 mb-0">Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="interoperability" alt="Interoperability icon">
+        <h4 class="mt-3 mb-0 h5">Interoperability</h4>
+        <p class="mt-2 mt-md-3 mb-0">Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="wallet" alt="Wallet icon">
+        <h4 class="mt-3 mb-0 h5">Wallet</h4>
+        <p class="mt-2 mt-md-3 mb-0">Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="nfts" alt="NFT icon">
+        <h4 class="mt-3 mb-0 h5">NFT</h4>
+        <p class="mt-2 mt-md-3 mb-0">XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs).</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="exchanges" alt="取引所 icon">
+        <h4 class="mt-3 mb-0 h5">取引所</h4>
+        <p class="mt-2 mt-md-3 mb-0">Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="gaming" alt="Gaming icon">
+        <h4 class="mt-3 mb-0 h5">Gaming</h4>
+        <p class="mt-2 mt-md-3 mb-0">The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="security" alt="セキュリティ icon">
+        <h4 class="mt-3 mb-0 h5">セキュリティ</h4>
+        <p class="mt-2 mt-md-3 mb-0">Build services and tools that help prevent and combat fraudulent activity with the XRPL.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="payments" alt="Payments icon">
+        <h4 class="mt-3 mb-0 h5">Payments</h4>
+        <p class="mt-2 mt-md-3 mb-0">Leverage the efficiency and speed of the XRP Ledger to move value all over the globe.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="web_monetization" alt="ウェブ収益化 icon">
+        <h4 class="mt-3 mb-0 h5">ウェブ収益化</h4>
+        <p class="mt-2 mt-md-3 mb-0">Support creators and their content directly leveraging the power of the XRP Ledger.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="sustainability" alt="サステナビリティ icon">
+        <h4 class="mt-3 mb-0 h5">サステナビリティ</h4>
+        <p class="mt-2 mt-md-3 mb-0">Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="cbdc" alt="CBDC icon">
+        <h4 class="mt-3 mb-0 h5">CBDC</h4>
+        <p class="mt-2 mt-md-3 mb-0">A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="custody" alt="Custody icon">
+        <h4 class="mt-3 mb-0 h5">Custody</h4>
+        <p class="mt-2 mt-md-3 mb-0">Use the XRP Ledger to build crypto custody and securely hold, store and use your assets.</p>
+      </li>
+      <li class="col ls-none p-3">
+        <img id="defi" alt="DeFi icon">
+        <h4 class="mt-3 mb-0 h5">DeFi</h4>
+        <p class="mt-2 mt-md-3 mb-0">Provide access to financial products and services replacing the traditional role of financial institutions.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="col-12 col-lg-8 col-xl-6 p-3 mb-5">
+      <div class="d-flex flex-column-reverse">
+        <h3 class="h4 h2-sm">Businesses and projects running<br class="until-sm"> on the XRP Ledger</h3>
+        <h6 class="eyebrow mb-3">さまざまな業界の実際の問題を解決しています</h6>
+      </div>
+      <p class="mb-0 longform mt-8-until-sm mt-3 ">There are companies and developer projects around the world that leverage the XRP Ledger to solve interesting problems across a variety of industries and use cases.</p>
+    </div>
+
+    <a class="btn  d-block d-lg-none" data-toggle="modal" data-target="#categoryFilterModal">
+      <span class="mr-3"><img src="./assets/img/uses/usecase-filter.svg" class=""></span>Filter by Categories<span class="ml-3 total_count category_count">2</span>
+    </a>
+
+<!-- Start company cards -->
+    <div class="row col-12 m-0 p-0 mt-4 pt-2">
+      <div class="left col-3 m-0 p-0 mt-2 d-none d-lg-block">
+
+<!-- Side bar Desktop.  -->
+        <div class="p-3 category_sidebar">
+            <form >
+              <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_infrastructure" type="checkbox" name="categories" id="input_infrastructure" value="infrastructure" checked>
+                      <label class="font-weight-bold" for="input_infrastructure">Infrastructure</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_developer_tooling" type="checkbox" name="categories" id="input_developer_tooling" value="developer_tooling" checked>
+                      <label class="font-weight-bold" for="input_developer_tooling">Developer Tooling</label>
+                  </div>
+  
+              <p class="category-header pt-5 mt-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_interoperability" type="checkbox" name="categories" id="input_interoperability" value="interoperability">
+                      <label for="input_interoperability">Interoperability</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_wallet" type="checkbox" name="categories" id="input_wallet" value="wallet">
+                      <label for="input_wallet">Wallet</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_nfts" type="checkbox" name="categories" id="input_nfts" value="nfts">
+                      <label for="input_nfts">NFTs</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_exchanges" type="checkbox" name="categories" id="input_exchanges" value="exchanges">
+                      <label for="input_exchanges">Exchanges</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_gaming" type="checkbox" name="categories" id="input_gaming" value="gaming">
+                      <label for="input_gaming">Gaming</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_security" type="checkbox" name="categories" id="input_security" value="security">
+                      <label for="input_security">Security</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_payments" type="checkbox" name="categories" id="input_payments" value="payments">
+                      <label for="input_payments">Payments</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_web_monetization" type="checkbox" name="categories" id="input_web_monetization" value="web_monetization">
+                      <label for="input_web_monetization">Web Monetization</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_sustainability" type="checkbox" name="categories" id="input_sustainability" value="sustainability">
+                      <label for="input_sustainability">Sustainability</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_cbdcs" type="checkbox" name="categories" id="input_cbdcs" value="cbdcs">
+                      <label for="input_cbdcs">CBDCs</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_custody" type="checkbox" name="categories" id="input_custody" value="custody">
+                      <label for="input_custody">Custody</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_defi" type="checkbox" name="categories" id="input_defi" value="defi">
+                      <label for="input_defi">DeFi</label>
+                  </div>
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_other" type="checkbox" name="categories" id="input_other" value="other">
+                      <label for="input_other">Other</label>
+                  </div>
+            </form>
+        </div>
+<!-- End sidebar desktop -->
+
+      </div>
+
+      <!-- cards -->
+      <div class="right row col row-cols-lg-2 m-0 p-0" id="use_case_companies_list">
+
+        <a class="card-uses category_nfts" href="https://aesthetes.art/" target="_blank" id="aesthetes">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Aesthetes">
+            </span>
+            <h4 class="card-title h6">Aesthetes</h4>
+            <p class="card-text">Aesthetes is a bridge between fine art and blockchain, enabling everyone, around the world, to buy and sell with just a click for fractional ownership of international physical art.</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_security" href="https://anchain.ai" target="_blank" id="anchain-ai">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Anchain.AI">
+            </span>
+            <h4 class="card-title h6">Anchain.AI</h4>
+            <p class="card-text">AnChain.AI offers AI-powered intelligence enhancing blockchain security, risk, and compliance strategies.</p>
+            <div class="align-self-end"><span class="label label-use-security">Security</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_nfts" href="https://www.audiotarky.com/" target="_blank" id="audiotarky">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Audiotarky">
+            </span>
+            <h4 class="card-title h6">Audiotarky</h4>
+            <p class="card-text">Audiotarky is a new music streaming platform that prioritises artists and privacy over algorithms and shareholders.</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_custody" href="https://www.bitgo.com/" target="_blank" id="bitgo">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="BitGo">
+            </span>
+            <h4 class="card-title h6">BitGo</h4>
+            <p class="card-text">BitGoは、XRPなどのデジタルアセット向けのカストディ型および非カストディ型アセット保有サービスを提供しています。BitGoのエンタープライズレベルのセキュリティを活用して、さまざまな企業がXRPなどのデジタル通貨を新規や既存の金融システムに統合しています。</p>
+            <div class="align-self-end"><span class="label label-use-custody">Custody</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_infrastructure" href="https://bithomp.com/" target="_blank" id="bithomp">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Bithomp">
+            </span>
+            <h4 class="card-title h6">Bithomp</h4>
+            <p class="card-text">Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency exchanges. Bithomp was launched in 2015 with a mission to build the most user-friendly XRPL explorer.</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_payments" href="https://bitpay.com/" target="_blank" id="bitpay">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="bitpay">
+            </span>
+            <h4 class="card-title h6">bitpay</h4>
+            <p class="card-text">BitPayは、XRPなどの暗号資産の受け入れや支払いが可能になる、強力なエンタープライズグレードのツールを構築しています。</p>
+            <div class="align-self-end"><span class="label label-use-payments">Payments</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_sustainability" href="https://www.carbonlandtrust.com/" target="_blank" id="carbonland-trust">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Carbonland Trust">
+            </span>
+            <h4 class="card-title h6">Carbonland Trust</h4>
+            <p class="card-text">Carbonland Trust offers transparent nature-based carbon credits, and inclusive access to voluntary carbon markets for landowners and corporations alike. </p>
+            <div class="align-self-end"><span class="label label-use-sustainability">Carbon Markets/Sustainability</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_other" href="https://casinocoin.im/" target="_blank" id="casino-coin">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Casino Coin">
+            </span>
+            <h4 class="card-title h6">Casino Coin</h4>
+            <p class="card-text">CasinoCoin (CSC) is a digital currency developed specifically for the regulated gaming industry.</p>
+            <div class="align-self-end"><span class="label label-use-other">Other</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_web_monetization" href="https://coil.com/" target="_blank" id="coil">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Coil">
+            </span>
+            <h4 class="card-title h6">Coil</h4>
+            <p class="card-text">Coil provides better ways to access and reward the creators, publishers and platforms that create the content people love.</p>
+            <div class="align-self-end"><span class="label label-use-web_monetization">Web Monetization</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_developer_tooling" href="https://blockforce.in/products/cryptum" target="_blank" id="cryptum">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Cryptum">
+            </span>
+            <h4 class="card-title h6">Cryptum</h4>
+            <p class="card-text">Cryptum is an API/SDK platform for integrating the XRP Ledger with any application.</p>
+            <div class="align-self-end"><span class="label label-use-developer_tooling">Developer Tooling</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_developer_tooling" href="https://evernode.wordpress.com/" target="_blank" id="evernode">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Evernode">
+            </span>
+            <h4 class="card-title h6">Evernode</h4>
+            <p class="card-text">Evernode proposes a permissionless, flexible, scalable Layer 2 smart contract network built from the XRP Ledger.</p>
+            <div class="align-self-end"><span class="label label-use-developer_tooling">Developer Tooling</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_gaming" href="https://www.forte.io/" target="_blank" id="forte">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Forte">
+            </span>
+            <h4 class="card-title h6">Forte</h4>
+            <p class="card-text">Forteはゲーム開発者向けに、ゲームにブロックチェーン技術を組み込むことができる、今までになかったような使いやすいツールとサービスを提供しています。これらを活用することで、世界中のゲーマーに新たな収益化と創造の機会をもたらすことができます。</p>
+            <div class="align-self-end"><span class="label label-use-gaming">Gaming</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_infrastructure" href="https://gatehub.net/markets" target="_blank" id="gatehub">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Gatehub">
+            </span>
+            <h4 class="card-title h6">Gatehub</h4>
+            <p class="card-text">Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger.</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_wallet" href="https://gemwallet.app/" target="_blank" id="gem-wallet">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Gem Wallet">
+            </span>
+            <h4 class="card-title h6">Gem Wallet</h4>
+            <p class="card-text">GemWallet is a web extension that enables users to make fast payments on the XRP Ledger via a browser. It's a safer alternative to copying and pasting private keys for use with web applications.</p>
+            <div class="align-self-end"><span class="label label-use-wallet">Wallet</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_gaming" href="https://ledgercitygame.com/" target="_blank" id="ledger-city">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Ledger City">
+            </span>
+            <h4 class="card-title h6">Ledger City</h4>
+            <p class="card-text">Ledger City is a crypto real estate game powered by the XRP Ledger.</p>
+            <div class="align-self-end"><span class="label label-use-gaming">Gaming</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_interoperability" href="https://multichain.org/" target="_blank" id="multichain">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Multichain">
+            </span>
+            <h4 class="card-title h6">Multichain</h4>
+            <p class="card-text">Multichain is the ultimate Router for web3. It is an infrastructure developed for arbitrary cross-chain interactions.</p>
+            <div class="align-self-end"><span class="label label-use-interoperability">Interoperability</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_nfts" href="https://nftmaster.com/" target="_blank" id="nft-master">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="NFT Master">
+            </span>
+            <h4 class="card-title h6">NFT Master</h4>
+            <p class="card-text">NFT Master is an NFT marketplace where creators can buy, mint and sell NFTs.</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_infrastructure" href="https://onthedex.live/" target="_blank" id="onthedex">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="OnTheDex">
+            </span>
+            <h4 class="card-title h6">OnTheDex</h4>
+            <p class="card-text">OnTheDex is a quality source of information for aggregator sites to take live feeds of XRPL token activity.</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_nfts" href="https://onxrp.com/about/" target="_blank" id="onxrp">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="onXRP">
+            </span>
+            <h4 class="card-title h6">onXRP</h4>
+            <p class="card-text">onXRP is an NFT marketplace where creators can buy, mint and sell NFTs built by the XPUNKs.</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_nfts" href="https://peerkat.io/" target="_blank" id="peerkat">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Peerkat">
+            </span>
+            <h4 class="card-title h6">Peerkat</h4>
+            <p class="card-text">Peerkat is an NFT services and tooling provider for the XRPL community.</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_cbdcs" href="https://ripple.com/solutions/central-bank-digital-currency/" target="_blank" id="ripples-cbdc-platform">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Ripple's CBDC Platform">
+            </span>
+            <h4 class="card-title h6">Ripple's CBDC Platform</h4>
+            <p class="card-text">Ripple's Central Bank Digital Currency (CBDC) solution enables banks to mint, manage, transact and redeem currency to easily manage the full CBDC lifecycle. Each solution is built on a private ledger that is based upon XRP Ledger technology.</p>
+            <div class="align-self-end"><span class="label label-use-cbdcs">CBDC</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_payments" href="https://ripple.com/" target="_blank" id="ripples-on-demand-liquidity">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Ripple's On-Demand Liquidity">
+            </span>
+            <h4 class="card-title h6">Ripple's On-Demand Liquidity</h4>
+            <p class="card-text">Ripple powers real-time, low-cost cross-border payment settlement  by using XRP as a bridge currency between two fiat currencies.</p>
+            <div class="align-self-end"><span class="label label-use-payments">Payments</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_exchanges" href="https://sologenic.org/" target="_blank" id="sologenic-dex">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Sologenic DEX">
+            </span>
+            <h4 class="card-title h6">Sologenic DEX</h4>
+            <p class="card-text">Sologenic DEX is a popular decentralized exchange on the XRP Ledger made by Sologenic.</p>
+            <div class="align-self-end"><span class="label label-use-exchanges">Exchanges</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_nfts" href="https://sologenic.org/nfts/marketplace?network=mainnet" target="_blank" id="sologenic-nft">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Sologenic NFT">
+            </span>
+            <h4 class="card-title h6">Sologenic NFT</h4>
+            <p class="card-text">Sologenic NFT is an NFT marketplace designed by Sologenic.</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_infrastructure" href="https://towolabs.com/" target="_blank" id="towo-labs">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Towo Labs">
+            </span>
+            <h4 class="card-title h6">Towo Labs</h4>
+            <p class="card-text">Towo Labsは2019年に設立された会社です。XRP LedgerおよびInterledgerのインフラストラクチャの開発を手がけ、より簡単な非カストディ型暗号資産管理を実現するために取り組んでいます。</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_developer_tooling" href="https://x-tokenize.com/" target="_blank" id="x-tokenize">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="X-tokenize">
+            </span>
+            <h4 class="card-title h6">X-tokenize</h4>
+            <p class="card-text">X-Tokenize is a command line tool to simplify the process of creating, managing and distributing issued currencies and eventually NFTs on the XRPL.</p>
+            <div class="align-self-end"><span class="label label-use-developer_tooling">Developer Tooling</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_exchanges" href="https://xpmarket.com/" target="_blank" id="xp-market">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="XP Market">
+            </span>
+            <h4 class="card-title h6">XP Market</h4>
+            <p class="card-text">XP Market is a price-tracking website for cryptoassets on the XRPL coupled with a decentralized exchange.</p>
+            <div class="align-self-end"><span class="label label-use-exchanges">Exchanges</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_nfts" href="https://xrp.cafe/" target="_blank" id="xrp-cafe">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="XRP Cafe">
+            </span>
+            <h4 class="card-title h6">XRP Cafe</h4>
+            <p class="card-text">XRP Cafe is an NFT marketplace built by the community that aims to be the easiest way to build, sell and mint NFTs.</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_infrastructure" href="https://www.xrptoolkit.com/" target="_blank" id="xrp-toolkit">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="XRP Toolkit">
+            </span>
+            <h4 class="card-title h6">XRP Toolkit</h4>
+            <p class="card-text">XRP Toolkit is a platform for managing crypto assets and trading on the XRP Ledger's decentralized exchange.</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_infrastructure" href="https://threexrp.dev/" target="_blank" id="xrpl-rosetta">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="XRPL Rosetta">
+            </span>
+            <h4 class="card-title h6">XRPL Rosetta</h4>
+            <p class="card-text">XRPL Rosetta explores fiat data on XRPL through visualization.</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_infrastructure" href="https://livenet.xrpl.org/" target="_blank" id="xrpl-org-ledger-explorer">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="XRPL.org Ledger Explorer">
+            </span>
+            <h4 class="card-title h6">XRPL.org Ledger Explorer</h4>
+            <p class="card-text">XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger.</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_infrastructure" href="https://xrpscan.com/" target="_blank" id="xrpscan">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="XRPScan">
+            </span>
+            <h4 class="card-title h6">XRPScan</h4>
+            <p class="card-text">XRPSCAN is an explorer and analytics platform for the XRP Ledger. We provide a clean and simple way to look up accounts, ledgers and transactions.</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_wallet" href="https://xumm.app/#team" target="_blank" id="xumm-wallet">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Xumm Wallet">
+            </span>
+            <h4 class="card-title h6">Xumm Wallet</h4>
+            <p class="card-text">Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger.</p>
+            <div class="align-self-end"><span class="label label-use-wallet">Wallet</span></div>
+          </div>
+        </a>
+
+      </div>
+      <!-- end cards -->
+
+    </div> 
+    <!-- end company cards -->
+
+  </section>
+
+</div>
+
+      </main>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>アバウト</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
+            <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>ドキュメント</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
+            <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
+            <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
+            <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
+            <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
+            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
+            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>コミュニティー</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
+            <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
+            <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="/ja/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+  indexName: 'xrpl',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:ja"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+
+
+<script type="application/javascript" src="/ja/assets/js/use-cases.js"></script>
+</body>
+</html>
