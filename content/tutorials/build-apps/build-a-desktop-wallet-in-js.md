@@ -45,34 +45,30 @@ Before you begin, make sure you have the pre-requisites installed. Check your no
 
 ### Step 1: Setting up the project
 
-- Navigate to the directory that you want to create the project in.
-- Run `yarn create vite-app <project-name>` or `npm init vite-app <project-name>` to create a new project.
-- Install the dependencies that are mentioned below:
+1. Navigate to the directory that you want to create the project in.
+2. Run 
+   ```sh
+    yarn create vite-app <project-name>
+    ```
+    or
+    ```sh
+    npm init vite-app <project-name>
+    ```
+    to create a new project.
 
-```json
-{
-    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
-    "crypto-browserify": "^3.12.0",
-    "events": "^3.3.0",
-    "https-browserify": "^1.0.0",
-    "rollup-plugin-polyfill-node": "^0.12.0",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "vite": "^4.1.0",
-    "dotenv": "^16.0.3",
-    "xrpl": "^2.7.0-beta.2",
-    "xrpl-tagged-address-codec": "^0.2.1"
-}
-```
-you can install them by copying the dependencies from the [package.json](_code-samples/build-a-wallet/js/package.json) file to your project's package.json and running `yarn` or `npm i`. You can also do `yarn add <package-name>` or `npm install <package-name>` for each individual package.
+3. Navigate to your project directory and copy this [package.json](_code-samples/build-a-wallet/js/package.json) file to your project.
+        - Alternatively you can also do `yarn add <package-name>` or `npm install <package-name>` for each individual package to add them to your `package.json` file.
+  
+4. Run `yarn` or `npm i` to install the packages.
 
-- Create a new file `.env` in the root directory of the project and add the following variables:
+5. Create a new file `.env` in the root directory of the project and add the following variables:
 
 ```bash
 CLIENT="wss://s.altnet.rippletest.net/" // or any other server
 EXPLORER_NETWORK="testnet" // or "mainnet"
 SEED="sEd7B2Jm7RBhhh5i88SH38aZB8ot8Kq" // Replace with your seed
 ```
+6. Change the seed to your own seed. You can get a testnet account from [here](https://xrpl.org/xrp-test-net-faucet.html).
 
 ### Step 2: Creating the Home Page (Displaying Account & Ledger Details)
 
