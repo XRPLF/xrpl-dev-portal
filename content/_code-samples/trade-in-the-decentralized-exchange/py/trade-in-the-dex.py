@@ -61,6 +61,7 @@ async def main() -> int:
 
         # Look up Offers. -----------------------------------------------------------
         # To buy TST, look up Offers where "TakerGets" is TST:
+        print("Requesting orderbook information...")
         orderbook_info = await client.request(
             BookOffers(
                 taker=wallet.classic_address,
@@ -116,6 +117,7 @@ async def main() -> int:
             # ours, so TakerGets and TakerPays are reversed from the previous
             # book_offers request.
 
+            print("Requesting second orderbook information...")
             orderbook2_info = await client.request(
                 BookOffers(
                     taker=wallet.classic_address,
@@ -241,3 +243,4 @@ async def main() -> int:
 
 if __name__ == "__main__":
     asyncio.run(main())
+
