@@ -31,10 +31,12 @@ async def main() -> int:
         print("Transaction hash:", signed_tx.get_hash())
 
         # Submit the transaction and wait for response (validated or rejected)
+        print("Submitting transaction...")
         submit_result = await send_reliable_submission(signed_tx, client)
         print("Submit result:", submit_result)
 
         # Confirm Account Settings --------------------------------------------------
+        print("Requesting account information...")
         account_info = await client.request(
             AccountInfo(
                 account=wallet.classic_address,
@@ -45,9 +47,9 @@ async def main() -> int:
         # Verify that the AccountRoot lsfRequireDestTag flag is set
         flags = account_info.result["account_data"]["Flags"]
         if flags & 0x00020000 != 0:
-            print("Require Destination Tag is enabled.")
+            print(f"Require Destination Tag for account {wallet.classic_address} is enabled.")
         else:
-            print("Require Destination Tag is DISABLED.")
+            print(f"Require Destination Tag for account {wallet.classic_address} is DISABLED.")
 
     # End main()
     return 0
