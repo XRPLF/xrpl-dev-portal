@@ -57,7 +57,7 @@ _JavaScript_
 
 _Python_
 
-{{ include_code("_code-samples/get-started/py/base.py", language="py") }}
+{{ include_code("_code-samples/get-started/py/base-async.py", language="py") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
