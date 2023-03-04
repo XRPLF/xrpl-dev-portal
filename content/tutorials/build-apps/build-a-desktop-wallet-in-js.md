@@ -76,23 +76,23 @@ In this step, we will create the home page that will display the account details
 
 ![Home Page Screenshot](img/js-wallet-home.png)
 
-- In your project directory, create new files named index.html, index.js and index.css. You can copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html), [index.js](_code-samples/build-a-wallet/js/index.js) and [index.css](_code-samples/build-a-wallet/js/index.css) files to your project's files.
+1. In your project directory, create new files named index.html, index.js and index.css. You can copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html), [index.js](_code-samples/build-a-wallet/js/index.js) and [index.css](_code-samples/build-a-wallet/js/index.css) files to your project's files.
 
-- Make a new folder named src in the root directory of the project and add two folders named assets and helpers. In assets folder add contents of the [logo.png](_code-samples/build-a-wallet/js/src/assets/logo.png) to render the logo on the home page.
+2. Make a new folder named src in the root directory of the project and add two folders named assets and helpers. In assets folder add contents of the [logo.png](_code-samples/build-a-wallet/js/src/assets/logo.png) to render the logo on the home page.
 
-- Create a new file in helpers folder named get-wallet-details.js and copy the code written below to the file.
+3. Create a new file in helpers folder named get-wallet-details.js and copy the code written below to the file.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
 In the function getWalletDetails, we are using the [account_info](https://xrpl.org/account_info.html) method to fetch the account details. We are also using the [server_info](https://xrpl.org/server_info.html) method to calculate the reserve base and increment. You can read more about the reserve requirement [here](https://xrpl.org/reserves.html). Follow the comments in the code to understand the logic.
 
-- Similar to the above file, create a new file in helpers folder named get-ledger-details.js which will be used to fetch the ledger details.
+4. Similar to the above file, create a new file in helpers folder named get-ledger-details.js which will be used to fetch the ledger details.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-ledger-details.js", language="js") }}
 
 In the function getLedgerDetails, we are using the [ledger](https://xrpl.org/ledger.html) that will fetch the details of the latest ledger, you can tweak the code to fetch the details of a specific ledger and also to fetch account details and other information. Follow the link to read more about the ledger method.
 
-- In the index.js file, import the getWalletDetails and getLedgerDetails functions from the helpers folder.
+5. In the index.js file, import the getWalletDetails and getLedgerDetails functions from the helpers folder.
 
 Your index.js file should look like this:
 
@@ -108,7 +108,7 @@ In the code above you'll notice addXrpLogo function, this function is used to ad
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js", language="js") }}
 
-- Now, are javascript code is ready. We'll now create the HTML and CSS for the home page. In the index.html file, add the following code:
+6. Now, are javascript code is ready. We'll now create the HTML and CSS for the home page. In the index.html file, add the following code:
 
 {{ include_code("_code-samples/build-a-wallet/js/index.html", language="html") }}
 
@@ -120,15 +120,15 @@ Till now, we have created the home page that displays the account and ledger det
 
 ![Send XRP Page Screenshot](img/js-wallet-send-xrp.png)
 
-- Create a folder named send-xrp in the src directory and add two files named send-xrp.js and send-xrp.html. You can also create a separate css file depending on your choice. 
+1. Create a folder named send-xrp in the src directory and add two files named send-xrp.js and send-xrp.html. You can also create a separate css file depending on your choice. 
 
-- In the send-xrp.js file, we will use a helper function that submits the payment transaction to the XRP Ledger.
+2. In the send-xrp.js file, we will use a helper function that submits the payment transaction to the XRP Ledger.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/submit-transaction.js", language="js") }}
 
 We won't go into details about signing and submitting the transaction, you can read more about the process [here](https://xrpl.org/send-xrp.html#send-xrp) and how to sign transactions [here](https://xrpl.org/sign.html).
 
-- Now, we've a method to submit the transaction. We'll now add event listeners to the user inputs for validations and to submit the transaction to the XRP Ledger. 
+3. Now, we've a method to submit the transaction. We'll now add event listeners to the user inputs for validations and to submit the transaction to the XRP Ledger. 
 
 **Optional:** You can also display user balance and reserve by calling the method we created in the previous step. So, the user can see the balance before sending the transaction.
 
@@ -142,7 +142,7 @@ The code includes comments to help you understand the logic. In summary, the inp
 
 In the send button event listener, we call the submitTransaction function and pass the destination address, amount, and destination tag as parameters. The submitTransaction function will submit the transaction to the XRP Ledger and return the transaction response. You can use the response to display a success message to the user or an error message in case of failure. Additionally, you can use the response to display the transaction details or create a popup to navigate to the transaction page.
 
-- After completing the javascript code, we'll now create the HTML and CSS for the Send XRP page. In the send-xrp.html file, add the following code:
+4. After completing the javascript code, we'll now create the HTML and CSS for the Send XRP page. In the send-xrp.html file, add the following code:
 
 {{ include_code("_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html", language="html") }}
 
@@ -153,18 +153,18 @@ We are using the index.css file that has been imported in the HTML code above, a
 ### Step 4: Creating the Transactions Page
 
 In this step, we will create the Transactions page that will display the latest transactions for the account. The transactions will be fetched from the XRP Ledger using the getTransactions method from the xrpl.js library. The transactions will be displayed in a table with the following columns:
-  - Account: The account that sent the transaction.
-  - Destination: The account that received the transaction.
-  - Amount: The amount of XRP sent in the transaction.
-  - Transaction Type: The type of transaction.
-  - Result: The result of the transaction.
-  - Link: A link to the transaction on the XRP Ledger Explorer.
+  1. Account: The account that sent the transaction.
+  2. Destination: The account that received the transaction.
+  3. Amount: The amount of XRP sent in the transaction.
+  4. Transaction Type: The type of transaction.
+  5. Result: The result of the transaction.
+  6. Link: A link to the transaction on the XRP Ledger Explorer.
 
 ![Transactions Page Screenshot](img/js-wallet-transaction.png)
 
-- Create a folder named transaction-history in the src directory and add two files named transaction-history.js and transaction-history.html. 
+1. Create a folder named transaction-history in the src directory and add two files named transaction-history.js and transaction-history.html. 
 
-- In the transaction-history.js file, first we will create a HTML table and add headers to it. Following that, define a function that will fetch the latest transactions for the account and display them in the table. In the code below, we have defined a function named getTransactions that will fetch the latest transactions for the account and adds rows to the table. The function takes the account address as a parameter and returns the transactions. 
+2. In the transaction-history.js file, first we will create a HTML table and add headers to it. Following that, define a function that will fetch the latest transactions for the account and display them in the table. In the code below, we have defined a function named getTransactions that will fetch the latest transactions for the account and adds rows to the table. The function takes the account address as a parameter and returns the transactions. 
 
 There are various types of transactions that can be sent to the XRP Ledger. You can read more about the different types of transactions [here](https://xrpl.org/transaction-types.html). Not all transactions have XRP as their mode of payment, some use other currencies issued by an issuer. You can issue your own currency on the XRP Ledger and use it to send transactions. Read more about issuing currencies [here](https://xrpl.org/issue-a-fungible-token.html#issue-a-fungible-token).
 
@@ -176,7 +176,7 @@ Note: While fetching the transactions, disable the Load More button to prevent t
 
 All the necessary code with the comments is provided in the code sample above. Click the links mentioned in the comments to understand about the different functions used in the code.
 
-- Moving on, we'll now create the HTML code for the Transactions page. In the transaction-history.html file, add the following code:
+3. Moving on, we'll now create the HTML code for the Transactions page. In the transaction-history.html file, add the following code:
 
 {{ include_code("_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html", language="html") }}
 
