@@ -345,29 +345,29 @@ pages:
         targets:
             - ja
 
-    -   name: Carbon Calculator
-        html: carbon-calculator.html
-        parent: xrp-ledger-overview.html
-        template: page-calculator.html.jinja
-        top_nav_grouping: Sustainability
-        sidebar: disabled
-        blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the XRPL cryptocurrency carbon calculator to compare.
-        fb_card: currency-calculator-card-fb.png
-        twitter_card: currency-calculator-card-tw.png
-        targets:
-            - en
+    # -   name: Carbon Calculator
+    #     html: carbon-calculator.html
+    #     parent: xrp-ledger-overview.html
+    #     template: page-calculator.html.jinja
+    #     top_nav_grouping: Sustainability
+    #     sidebar: disabled
+    #     blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the XRPL cryptocurrency carbon calculator to compare.
+    #     fb_card: currency-calculator-card-fb.png
+    #     twitter_card: currency-calculator-card-tw.png
+    #     targets:
+    #         - en
 
-    -   name: 二酸化炭素電卓
-        html: carbon-calculator.html
-        parent: xrp-ledger-overview.html
-        template: page-calculator.html.jinja
-        top_nav_grouping: Sustainability
-        sidebar: disabled
-        blurb: 現金、クレジットカード、暗号資産でもエネルギー消費する。インタラクティブツールで消費量を比較しましょう。
-        fb_card: currency-calculator-card-fb.png
-        twitter_card: currency-calculator-card-tw.png
-        targets:
-            - ja
+    # -   name: 二酸化炭素電卓
+    #     html: carbon-calculator.html
+    #     parent: xrp-ledger-overview.html
+    #     template: page-calculator.html.jinja
+    #     top_nav_grouping: Sustainability
+    #     sidebar: disabled
+    #     blurb: 現金、クレジットカード、暗号資産でもエネルギー消費する。インタラクティブツールで消費量を比較しましょう。
+    #     fb_card: currency-calculator-card-fb.png
+    #     twitter_card: currency-calculator-card-tw.png
+    #     targets:
+    #         - ja
 
     -   name: XRPL Foundation
         html: https://foundation.xrpl.org/
