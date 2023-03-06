@@ -1881,12 +1881,8 @@ pages:
         targets:
             - en
             - ja
-
-        # Redirect to build instructions on rippled repo.
-    -   name: Build and Run rippled in Reporting Mode
-        html: build-run-rippled-in-reporting-mode.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
+        
+    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
             - ja
