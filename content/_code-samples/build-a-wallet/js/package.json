@@ -9,13 +9,16 @@
     "async-subscribe": "electron ./2_async-subscribe.js",
     "account": "electron ./3_account.js",
     "tx-history": "electron ./4_tx-history.js",
-    "send-xrp": "electron ./5_send-xrp.js"
+    "send-xrp": "electron ./5_send-xrp.js",
+    "domain-verification": "electron ./6_domain-verification.js"
   },
   "dependencies": {
     "async": "^3.2.4",
+    "node-fetch": "^2.6.9",
+    "toml": "^3.0.0",
     "xrpl": "^2.6.0"
   },
   "devDependencies": {
-    "electron": "^22.2.1"
+    "electron": "^22.3.1"
   }
 }

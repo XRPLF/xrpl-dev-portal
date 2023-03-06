@@ -1,8 +1,9 @@
-const async = require('async');
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
+const async = require('async')
+const { app, BrowserWindow } = require('electron')
+const path = require('path')
 const xrpl = require("xrpl")
 
+const testnetUrl = "wss://s.altnet.rippletest.net:51233"
 const getValidatedLedgerData = async (client) => {
     const ledgerRequest = {
         "command": "ledger",
@@ -23,7 +24,7 @@ const createWindow = () => {
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '2_async.html'));
+    appWindow.loadFile(path.join(__dirname, 'view', '2_async.html'))
 
     return appWindow
 }
@@ -31,7 +32,7 @@ const createWindow = () => {
 const main = async () => {
     const appWindow = createWindow()
 
-    const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233")
+    const client = new xrpl.Client(testnetUrl)
 
     await client.connect()
 
@@ -42,7 +43,7 @@ const main = async () => {
             })
 
             setTimeout(function() {
-                next();
+                next()
             }, 2500)
         },
         function(err) {
@@ -57,13 +58,13 @@ app.whenReady().then(() => {
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow();
+            createWindow()
         }
-    });
-});
+    })
+})
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
-        app.quit();
+        app.quit()
     }
-});
+})

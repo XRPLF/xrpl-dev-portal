@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
 const { sendXrp } = require('./library/5_helpers')
+const { verify } = require('./library/6_helpers')
 
 const testnetUrl = "wss://s.altnet.rippletest.net:51233"
 
@@ -54,11 +55,11 @@ const createWindow = () => {
         width: 1024,
         height: 768,
         webPreferences: {
-            preload: path.join(__dirname, 'view', '5_preload.js'),
+            preload: path.join(__dirname, 'view', '6_preload.js'),
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '5_send-xrp.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', '6_domain-verification.html'))
 
     return appWindow
 }
@@ -124,6 +125,12 @@ const main = async () => {
         sendXrp(paymentData, client, wallet).then((result) => {
             console.log(result)
             appWindow.webContents.send('send-xrp-transaction-finish', result)
+        })
+    })
+
+    ipcMain.on('destination-account-change', (event, destinationAccount) => {
+        verify(destinationAccount, client).then((result) => {
+            appWindow.webContents.send('update-domain-verification-data', result)
         })
     })
 }

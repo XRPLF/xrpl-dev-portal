@@ -13,18 +13,27 @@ Run any of the scripts (higher numbers are more complete/advanced examples):
 ```sh
 npm run hello
 ```
+
 ```sh
 npm run async-poll
 ```
+
 ```sh
 npm run async-subscribe
 ```
+
 ```sh
 npm run account
 ```
+
 ```sh
 npm run tx-history
 ```
+
 ```sh
 npm run send-xrp
+```
+
+```sh
+npm run domain-verification
 ```

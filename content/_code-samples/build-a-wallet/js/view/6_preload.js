@@ -15,5 +15,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
     },
     onSendXrpTransactionFinish: (callback) => {
         ipcRenderer.on('send-xrp-transaction-finish', callback)
-    }
+    },
+    onDestinationAccountChange: (callback) => {
+        ipcRenderer.send('destination-account-change', callback)
+    },
+    onUpdateDomainVerificationData: (callback) => {
+        ipcRenderer.on('update-domain-verification-data', callback)
+    },
+
 })

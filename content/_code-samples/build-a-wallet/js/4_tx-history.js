@@ -1,6 +1,8 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
+const { app, BrowserWindow } = require('electron')
+const path = require('path')
 const xrpl = require("xrpl")
+
+const testnetUrl = "wss://s.altnet.rippletest.net:51233"
 
 let reserveBaseXrp = null, reserveIncrementXrp = null
 
@@ -38,7 +40,7 @@ const prepareTxData = (transactions) => {
         to: transaction.tx.Destination,
         value: xrpl.dropsToXrp(transaction.tx.Amount),
         hash: transaction.tx.hash
-    }));
+    }))
 }
 
 const createWindow = () => {
@@ -51,7 +53,7 @@ const createWindow = () => {
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '4_tx_history.html'));
+    appWindow.loadFile(path.join(__dirname, 'view', '4_tx-history.html'))
 
     return appWindow
 }
@@ -59,7 +61,7 @@ const createWindow = () => {
 const main = async () => {
     const appWindow = createWindow()
 
-    const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233")
+    const client = new xrpl.Client(testnetUrl)
 
     await client.connect()
 
@@ -117,13 +119,13 @@ app.whenReady().then(() => {
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow();
+            createWindow()
         }
-    });
-});
+    })
+})
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
-        app.quit();
+        app.quit()
     }
-});
+})
