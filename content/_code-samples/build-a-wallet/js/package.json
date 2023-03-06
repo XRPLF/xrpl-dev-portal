@@ -19,6 +19,6 @@
     "xrpl": "^2.6.0"
   },
   "devDependencies": {
-    "electron": "^22.3.1"
+    "electron": "22.3.2"
   }
 }
