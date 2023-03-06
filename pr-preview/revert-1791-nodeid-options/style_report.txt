@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 30 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gits, gids
-  ringtee: 
+  gifs: gins, giff, gids
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -24,37 +24,37 @@ Found 30 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  immediateofferkilled: 
   fixuniversalnumber: 
-  fixnonfungibletokensv1_2: 
-  depositpreauthamendment: 
-  disallowincoming: 
+  immediateofferkilled: 
   xrpfees: 
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
+  depositpreauthamendment: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingcheck: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingnftoffer: 
+  asfdisallowincomingcheck: 
   asfdisallowincomingpaychan: 
-  30d: 3rd, 3-d, 3d
+  asfdisallowincomingtrustline: 
+  30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3d, 3rd, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
