@@ -3854,7 +3854,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/http-websocket-apis/commandline-usage.ja.md
         targets:
             - ja
